@@ -1,3 +1,10 @@
+"""First-pass sample scene from the art finish comparison (docs/design-gate/00). Simple solids,
+Cycles. A reference for scripting Blender headlessly, NOT the art style (that is chosen at
+design gate board 1).
+
+Run: blender -b --factory-startup -P tools/blender/sample_stall.py -- /abs/out.png
+Optional env: SAMPLES (default 96), RES (resolution multiplier, default 1).
+"""
 import bpy, bmesh, math, sys
 from mathutils import Vector
 out = sys.argv[sys.argv.index("--")+1]

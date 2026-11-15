@@ -15,6 +15,7 @@ v1 ships two original games:
 
 | If you want to know | Read |
 |---|---|
+| Picking this project up cold | [`docs/HANDOFF.md`](docs/HANDOFF.md) |
 | What is being built | [`docs/PRD.md`](docs/PRD.md), [`docs/games/`](docs/games/) |
 | What works today | [`docs/STATUS.md`](docs/STATUS.md) |
 | What comes next | [`docs/ROADMAP.md`](docs/ROADMAP.md) |

@@ -8,6 +8,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 ## Works
 
 - Repository, requirements, design rules, architecture, build loop and tracking docs.
+- `docs/HANDOFF.md`: full context from the planning conversation for the build session.
 - `python3 tools/trace_check.py`: 118 requirements tracked, check passes.
 - Blender 5.2 LTS runs headlessly on the dev Mac; `tools/blender/sample_stall.py` renders the
   sample stall scene in about ten seconds.

@@ -4,6 +4,9 @@ A browser games platform: one big screen shows the game, phones are the controll
 players. v1 ships two original games, **Tabao Rush** (co-op hawker-centre cooking) and
 **Peek Poker** (memory poker). Owner: Randy.
 
+**New to this repo? Read `docs/HANDOFF.md` first**: it carries the planning context, Randy's
+own words, environment facts and the first task.
+
 Read before any work: `docs/PRD.md`, `docs/WORKFLOW.md`, `docs/STATUS.md`. Read before any UI
 or art work: `docs/DESIGN.md`. This file is the short binding version; the docs hold the detail.
 
@@ -121,3 +124,4 @@ Not all exist yet; they are created in M2 and M3. Keep this list true.
 | `docs/ARCHITECTURE.md` | Structure, game interface, networking |
 | `docs/DECISIONS.md` | Append-only decision log |
 | `docs/OPEN-QUESTIONS.md` | Waiting on Randy; unconfirmed assumptions |
+| `docs/HANDOFF.md` | Planning context, Randy's words, environment facts, first task |
