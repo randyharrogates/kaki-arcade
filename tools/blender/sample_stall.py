@@ -103,7 +103,7 @@ cyl("plate", (px,2.3,cz+0.025), 0.62, 0.05, white, 0.02)
 cyl("well", (px,2.3,cz+0.052), 0.45, 0.01, white, 0.004)
 ball("rice", (px-0.12,2.26,cz+0.06), 0.30, rice, (1,1,0.55))
 for i in range(3):
-    c = box(f"chick{i}", (px+0.20,2.46-0.16*i,cz+0.11), (0.44,0.13,0.09), chick, 0.03); print("CHICK", tuple(round(v,2) for v in c.matrix_world.translation), [round(v,2) for v in c.dimensions])
+    c = box(f"chick{i}", (px+0.20,2.46-0.16*i,cz+0.11), (0.44,0.13,0.09), chick, 0.03)
 ball("garnish", (px-0.32,2.60,cz+0.10), 0.09, green, (1,1,0.6)); ball("chilli", (px-0.36,1.98,cz+0.10), 0.08, red, (1,1,0.6))
 
 # cook
