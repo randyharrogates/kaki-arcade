@@ -154,7 +154,9 @@ layout functions named below are in `tools/boards/board3_template.html`. Every s
 - The single-design phone screens on board 4 stand as shown.
 - **Buttons must not be too small** (Randy, D-051). The four face buttons are at least the
   110 px shown on board 4 at 844 × 390, and scale up with the phone; any other control a
-  player taps during play is at least 89 px, and nothing tappable anywhere is under 55 px.
+  player taps during play is at least 89 px wide and 68 px tall (the Peek Poker grid cell on
+  board 4, where a 4 × 4 grid of 89 × 68 px cells with 8 px gaps is 296 px tall), and nothing
+  tappable anywhere is under 55 px.
 
 ### 4.5 Motion tokens — **decided** (board 5, D-051)
 

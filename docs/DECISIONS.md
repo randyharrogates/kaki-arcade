@@ -72,3 +72,8 @@ part of D-043: issues may be built by Claude sub-agents (Opus 5.5 where it fits)
 (`gpt-6.1-sol`, workspace-write, in the issue's worktree). Claude still leads, briefs and
 merges; every issue keeps an independent Claude review. `CLAUDE.md` rule 8, `AGENTS.md` and
 `PLAN.md` updated.
+
+**D-053 · 2026-11-16 · Claude** — Correction to my reading in D-051: the floor for an in-play
+control other than a face button is 89 px wide by 68 px tall, not 89 px square. A square floor
+would have made the Peek Poker grid Randy chose on board 4 (4 × 4 cells of 89 × 68 px) 380 px
+tall, which does not fit a 390 px phone. Found by the F-04 review.
