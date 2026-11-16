@@ -719,3 +719,21 @@ levels: with one chopping board and one plating counter, three stars is out of r
 pinned, released 2026-10-07) for the UAT harness (F-07). It drives the Chromium build already
 on this machine; nothing is added to any shipped bundle. WebKit and Firefox are not installed
 yet: Safari and Firefox UAT wait for K-07 and Randy's real devices.
+
+**D-095 · 2026-11-17 · Claude (under D-057)** — Phone join page (review of C-08). (a) The join
+and lobby screens on the phone work held upright as well as sideways, stacking board 4's
+landscape composition; the turn-sideways prompt applies only once a game controller is shown.
+(b) An occupied seat whose link quality is not yet measured says "Connected" with no quality
+icon; "Good", "Weak" and "Relayed" appear once measured (amends D-090). (c) A phone whose data
+channel is lost paces its attempts to rejoin at 1 s doubling to 30 s, honouring Retry-After
+capped at 30 s; each attempt's 15 s deadline starts after that wait; while a phone's data
+channel is open it ignores whether the pairing server is reachable (amends D-086 f, extends
+D-092 a to phones). (d) Host and controller share one entry for now; the 300 KB controller
+budget counts that whole entry and everything in `public/`; the controller gets its own entry
+before any game renderer or art joins the host's. (e) Changing a name is its own screen: the
+name only, "Save name" and "Cancel"; it can never leave the room or dial another. (f) OQ-033
+decided: while its links to the phones are open, a room the pairing server reports as gone,
+expired or not allowed keeps playing. Phones with an open data channel ignore those reports.
+The host stops offering the join code and offers a new room once the game is over. The phone
+side is built in C-08; the host side is carried to C-10 and C-15. (g) Players are never told
+about "the pairing server": the phone says "Can't reach the room. We'll keep trying."

@@ -55,7 +55,7 @@ on with the match totals. That needs a checkpoint and resume hook added to the g
 Recommendation: keep today's behaviour for v1 and revisit after the first real game night.
 Needed by: M4 (Peek Poker playable).
 
-**OQ-033 · A room the pairing server has dropped while a game is running.** After an
+**OQ-033 · A room the pairing server has dropped while a game is running. Decided by Claude under D-057 as D-095 f (keep playing); Randy may overrule.** After an
 outage longer than the ten-minute idle limit, or at the twelve-hour limit, the pairing server
 answers "gone". Today the host then ends the room and closes every phone link, although the
 links still work. Recommendation (Claude and the reviewer): keep the game and its links,
