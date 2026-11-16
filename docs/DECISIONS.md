@@ -693,3 +693,24 @@ strength; nothing is dimmed by opacity. Empty seats say "Scan to join" only whil
 is on screen. (e) During a seat change the card's surface stays put and only its contents
 wipe; the outgoing contents fade to the new token `--ka-opacity-ghost` (0.08). (f) New tokens
 in `packages/ui`: `--ka-type-233` (the room code, DESIGN §4.3) and `--ka-opacity-ghost`.
+
+**D-093 · 2026-11-17 · Claude (under D-057)** — Tabao Rush levels (review of T-06); all
+provisional until levels are seen and played. (a) Screen fit: the validator reserves 144 px at
+the bottom for the 5A HUD and 120 px for prop height at the fixed 120 px tile and 0.866 depth,
+so a kitchen is at most 15 by 6 tiles; T-07 confirms this on a rendered frame. (b) Level
+rounds are 60 to 600 s; the default stays 210 s. (c) Seed levels use the D-091 default solo
+star base (200, 400, 600) until tuning (T-16); a level sets its own only with a stated reason.
+(d) Supply: each kitchen starts with at least one clean container of every kind its dishes
+need, and at least 6 clean plates when it serves plated dishes (the board's largest size);
+supply beyond that is tuned in T-16. The "no reuse" plate rule is dropped. (e) Chopping: boards
+times round length divided by 3 s must cover the worst chop count of the orders that can
+arrive at 8 cooks; a floor for sanity, not a fairness proof. (f) Until the floor fallback is
+made kitchen-aware (T-14), every level has one connected floor; split kitchens and separated
+versus arenas wait for that. (g) A twist counts toward TR-050 only once its behaviour exists:
+the validator refuses a twist kind that has no behaviour, which today is every kind, so the
+seed levels declare none; the twist data shapes stay in the format for T-11. (h) Levels carry
+a venue (kopitiam, hawker centre, pasar malam, zi char) for the background and music.
+(i) Extinguisher within 15 four-way steps of every burnable station's access tile; fires only
+on levels with ordinal 5 or more. (j) The two seed levels are test kitchens, not final
+levels: with one chopping board and one plating counter, three stars is out of reach at
+8 cooks; the eight real layouts are T-11's work.
