@@ -14,7 +14,7 @@ if [ ! -d "$dir" ]; then git -C "$root" worktree add -q -b "$branch" "$dir" main
 letter=$(printf '%s' "$id" | cut -c1); num=$(printf '%s' "$id" | sed 's/[^0-9]//g')
 idx=$(printf '%s' "GSFCKRPTAX" | awk -v l="$letter" '{print index($0,l)}')
 [ "$idx" -eq 0 ] && idx=11
-base=$(( 4000 + idx * 270 + (num % 27) * 10 ))
+base=$(( 4000 + idx * 270 + (10#$num % 27) * 10 ))
 echo "worktree: $dir"
 echo "branch:   $branch"
 echo "ports:    web=$base signal=$((base+1)) uat=$((base+2)) spare=$((base+3))-$((base+9))"
