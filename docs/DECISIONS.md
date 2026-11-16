@@ -540,3 +540,17 @@ calling the game's join again. While paused the runner does not sample the input
 button released or pressed during a pause is seen correctly on resume. The layout comparison
 of D-079 (a) first checks whether the game returned the very same object as last time and
 only then compares by shape; it must not allocate.
+
+**D-083 · 2026-11-17 · Claude (under D-057)** — Pairing server limits, second review of C-03;
+replaces D-081 (b) and (c) and extends (a). (a) Room creation and connection attempts are also
+metered per IPv6 /48 (64 rooms at once, then one a second), checked before the /64. (b) A full
+limiter evicts the least-recently-seen entry whose meters are full; failing that, the entry
+with the fewest failures that has no live block or lease; only when every entry is blocked or
+leased do new clients go to overflow buckets, split by key bits, with normal budgets, never
+larger. An entry that has used up its room creations is not clean. (c) A room full of
+unidentified sockets closes one for a newcomer only if it belongs to the same client or has
+been silent for at least 1.5 seconds, and that closure counts as a failure for its owner;
+otherwise the newcomer is refused, not charged. (e) stands: counters stay in memory only. An
+attacker who waits for an idle limiter to be dropped gets at worst about 500 guesses an hour,
+about 2 in 100,000 over a 12-hour room against 1,000 clients; storing offenders would bring
+back an attacker-driven storage write and long retention.
