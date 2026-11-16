@@ -36,14 +36,6 @@ is on the relay would roughly halve relay data (see OQ-028), but eight lost fram
 360 ten-second runs at 5% loss in runs. Claude's default: 60 always, until the real-phone test
 shows how much relay data matters. Needed by: C-04.
 
-**OQ-033 · Seven fixes found by the token review (F-06).** Seat numerals on yellow, orange and
-teal; secondary text on marble; secondary text on Peek Poker panels; the stick outline on dark
-themes; small white text on team colours; the phone type scale; blur on icon swaps against the
-no-blur performance rule. Options with measured ratios are in
-`docs/design-gate/06-contrast-fixes.html`. Claude recommends 1B 2C 3B 4B 5B 6B 7A. Until Randy
-rules, the tokens keep the decided values and the failures are pinned in a test. Needed by:
-C-07, C-08, K-01 and every game screen.
-
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot

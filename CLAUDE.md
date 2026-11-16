@@ -64,7 +64,7 @@ Full text and the review checklist are in `docs/DESIGN.md`. In brief:
 - Do: ease-out entrances · ease-in-out moves · menus 150–250 ms · stagger rows 30 ms · press
   scale 0.97 · popovers from 0.95 · stretch moving thumbs ~12% · arcs · a pulse to confirm
   success · enter from and exit to the trigger · exits ~20% shorter · overlap old and new
-  states · masks for reveals · crossfade + blur for icon swaps · rubber-band past bounds ·
+  states · masks for reveals · crossfade for icon swaps (no blur, D-056) · rubber-band past bounds ·
   expand the **same** object for detail views.
 - Don't: bounce or spring overshoot · tween while a control is held or dragged (track 1:1).
 - Respect `prefers-reduced-motion`: drop the motion, keep the state change.

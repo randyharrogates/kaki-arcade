@@ -292,3 +292,17 @@ OQ-008; `ART-PIPELINE.md` §1 and §7, the A-01 backlog line and `.gitignore` up
 **D-055 · 2026-11-16 · Randy** — "Use codex only for implementation." Narrows D-052: every
 builder is Codex from now on, including fix rounds on issues a Claude agent started. Claude
 plans, briefs, reviews (Opus 5.5 where it fits), runs and looks at UAT, integrates and merges.
+
+**D-056 · 2026-11-16 · Randy** — Token-review fixes: **1C** dark seat numbers on all eight
+seats, **2C** marble secondary text `#706151`, **3B** Peek Poker panel secondary `#597469`,
+**4B** stick outline in the theme's secondary text colour, **5B** bold small text on team
+colours, **6B** phone type 13/21/34/55/89, **7A** icon swaps crossfade with no blur anywhere.
+Closes OQ-033. Also by Claude under PERF-012: a press shows at once (no ease into 0.97); the
+release eases.
+
+**D-057 · 2026-11-16 · Randy** — Standing order: "From now on, please go with everything as
+recommended by fable 5.2 best reocmmendation." Claude decides open design and product choices
+by its own recommendation without waiting, records each in this log, and still publishes
+design choices as artifacts for the record so Randy can overrule. Claude's reading: this does
+not lift the hard gates in `CLAUDE.md` rule 9 (spending money, publishing publicly, DNS,
+pushing the repository) or the real-device tests only Randy can do.

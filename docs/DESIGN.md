@@ -51,7 +51,7 @@ Applies to interface and gameplay alike.
 - Exits about 20% shorter than entrances.
 - Overlap old and new states (no blank frame).
 - Masks for reveals and colour changes.
-- Crossfade + blur to swap icons.
+- Crossfade to swap icons, with no blur anywhere (D-056: blur is ruled out by `PERFORMANCE.md` §2).
 - Rubber-band past scroll or drag bounds.
 - Expand the **same** object for detail views (shared element); never swap in a disconnected
   replacement.
@@ -96,13 +96,18 @@ Standard: must look finished, not primitive; characters move correctly (PRD NN-4
 golden-ratio variant. Source of the values: `design-gate/02-visual-identity.html`.
 
 - Console surfaces: white marble `#EFEAE2` with a terrazzo speckle; panels `#FFFFFF` to
-  `#F6F1E7` with a 3 px `#D8CDBB` edge; ink `#2B2118`; secondary text `#7A6A58`; kopi brown
+  `#F6F1E7` with a 3 px `#D8CDBB` edge; ink `#2B2118`; secondary text `#706151` (D-056; was `#7A6A58`); kopi brown
   `#6B4426`; accent red `#B5371F`.
 - Lettering: DM Serif Display for headings, DM Sans for everything else, JetBrains Mono for
   codes and numbers.
-- Type sizes on screen: 21, 34, 55, 89 and 144 px at true size. Corners 13 px.
+- Type sizes on screen: 21, 34, 55, 89 and 144 px at true size. Corners 13 px. On the phone:
+  13, 21, 34, 55 and 89 px (D-056); no 15 or 44.
 - Player colours 1 to 8: `#D9483B` `#2F7FD6` `#F2B21B` `#39A85B` `#8E5BD0` `#F07C2A` `#22A6A6`
   `#D95C9A`, always with the seat number. Team themes: red `#D9483B`, blue `#2F7FD6`.
+- **Fixes after the token review (Randy, 2026-11-16, D-056):** seat numbers are drawn in dark
+  ink `#2B2118` on all eight player colours; Peek Poker panel secondary text is `#597469` (was
+  `#5E7A6E`); the stick-area outline on Rabakz and Peek Poker uses the theme's secondary text
+  colour (`#E9B7C8`, `#BFE3D2`), not the chip colour; small text on a team colour is bold.
 - Answer and face-button colours are fixed everywhere: cross red `#D9483B`, circle blue
   `#2F7FD6`, square amber `#B87D0C`, triangle green `#2E9A5B`, each with its own shape and no
   letter (D-047, D-048, D-050).
