@@ -14,7 +14,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 |---|---|---|---|---|---|
 | C-01 | Pairing server: Worker and one Durable Object per room, unguessable codes, handshake forwarding, idle expiry, hibernation | PLAT-001, NET-002, DATA-005 | F-02 | 1 | merged |
 | C-02 | Relay: short-lived TURN credentials, monthly usage tracking, cut-off at the limit with the same-Wi-Fi message | NET-003, NET-004 | C-01 | 1 | todo |
-| C-03 | Rate limits on room creation and joins | DATA-005 | C-01 | 1 | doing (Codex) |
+| C-03 | Rate limits on room creation and joins | DATA-005 | C-01 | 1 | merged |
 | C-04 | Netcode: WebRTC data channels, sequenced input state, repeated release, link-quality measurement | NET-001, NET-002, NET-005, PERF-010 | F-02 | 1 | merged |
 | C-06 | Room state (pure): seats, colours, nicknames with the blocked-words filter, leader and hand-over, capacity of 8, joining from the lobby | PLAT-003, PLAT-004, PLAT-005, PLAT-006, PLAT-008 | F-02 | 1 | merged |
 | C-07 | Host lobby screen: room code and QR, seated players, connection quality | PLAT-001, PLAT-004, PLAT-010, PERF-022 | C-04, C-06, F-06 | 2 | doing (Codex) |
@@ -93,3 +93,11 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   must prove: sessionStorage across reload and reopen-closed-tab, the page lifecycle events, a
   Wi-Fi drop with no online event, duplicate tabs, re-pairing time for 8 phones after a host
   reload.
+- **From C-03 (rate limits):** netcode should retry once on `opening-timeout` and honour
+  Retry-After on room creation, and the host page should show the wait. The shell needs a host
+  kick that blocks rejoining (anyone with the code can take all 8 seats). Before a public
+  deploy: the staging probes in D-089 and the eight-point checklist in
+  `docs/slices/C-03-rate-limits.md`. Accepted trade-offs: someone on the same address can push
+  out a housemate's fresh connection; one abuser with several /64s in a carrier's /48 can keep
+  that /48's joins backed off. Every change to `apps/signal` is smoke-tested on a real local
+  server before merge (`scripts/smoke.mjs`, needs `ADMISSION_SECRET` in `.dev.vars`).

@@ -69,10 +69,10 @@ function messages(ws: FakeSocket): Record<string, unknown>[] {
 describe('C-01 Durable Object adapter review round 1', () => {
     it('M1 M3 rejects before accept and reserves host admission under silent saturation', async () => {
         const h = await setup();
-        for (let i = 0; i < 11; i++) {
-            expect((await h.upgrade()).status).toBe(i < 4 ? 101 : 429);
+        for (let i = 0; i < 19; i++) {
+            expect((await h.upgrade()).status).toBe(i < 16 ? 101 : 429);
         }
-        expect(h.ctx.sockets).toHaveLength(4);
+        expect(h.ctx.sockets).toHaveLength(16);
         const host = await h.host();
         expect(messages(host)[0]).toMatchObject({ t: 'created', reopened: false });
         expect(h.ctx.sockets[0]?.closed).toBe(false);
@@ -82,7 +82,7 @@ describe('C-01 Durable Object adapter review round 1', () => {
         expect(messages(replacement)[0]).toMatchObject({ t: 'created', reopened: true });
         expect(host.closed).toBe(true);
         expect(host.closeReason).toBe('replaced');
-        expect(h.ctx.getWebSockets()).toHaveLength(5);
+        expect(h.ctx.getWebSockets()).toHaveLength(17);
     });
     it('DATA-005 refuses 1000 wrong host upgrades without allocating or evicting sockets', async () => {
         const h = await setup();

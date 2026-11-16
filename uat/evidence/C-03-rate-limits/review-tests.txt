@@ -1,0 +1,39 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-03
+
+R02 honest create status 200 Retry-After null
+R03 guesses from one /64: 300 sent, 283 refused
+R04 honest phone while pool held by 2 silent addresses: 101
+R05 honest household's own host reconnect after room-full 429s: 101
+R07 school burst: 155 of 240 admitted in 30 s (pacing alone would admit ~156)
+R09 limiter down: 503
+R10 join while limiter down: ok
+R11 retry after clock step back 1 h: 60 s
+R12 limiter DO calls: refused request 0; admitted wrong guess 4 + room 1
+E1 offender (17 failures) survives 2,048 churned unresolved guesses over 10 s: true
+E2 guesses/hour by one identity that never lets a miss resolve, churning 1,024 keys per cycle: 72
+E5 to block all 64 overflow buckets of one shard: 620 new keys, 10540 failures (plus 17,408 to block the 1,024 entries)
+E6 university /48 refusals: 0
+P3 housemate push-out of a 1 ms-old opening: true
+ADDR ::192.0.2.1 -> ["0:0:0:0::/64","0:0:0::/48"]
+ADDR 2002:c000:0201::1 -> ["2002:c000:201:0::/64","2002:c000:201::/48"]
+ADDR 2002:c000:0201:ffff::1 -> ["2002:c000:201:ffff::/64","2002:c000:201::/48"]
+ADDR 2001:0:4136:e378:8000:63bf:3fff:fdd2 -> ["2001:0:4136:e378::/64","2001:0:4136::/48"]
+ADDR 2001:0:4136:e378:8000:63bf:1111:2222 -> ["2001:0:4136:e378::/64","2001:0:4136::/48"]
+ADDR 64:ff9b::192.0.2.1 -> ["64:ff9b:0:0::/64","64:ff9b:0::/48"]
+ADDR fe80::1%25en0 -> ["fe80:0:0:0::/64","fe80:0:0::/48"]
+ADDR FE80::1%ETH0 -> ["fe80:0:0:0::/64","fe80:0:0::/48"]
+G1 guess-path failed guesses/hour/client: 81
+G2 after 129 overflow failures: honest join retry=0; overflow creates before refusal=244; honest create retry=0
+G3 parallel unresolved guesses for one client on the overflow path: 17
+G4 create retry after churn eviction: 60
+P1 honest opening pushed out within 85 ms by 16 attacker upgrades: false
+R18 failed guesses in one hour from one address with concurrent bursts: 81
+COST IPv4: refused=0, wrong=4 limiter + 1 room, session=38 limiter + 10 room fetches + 8 join events, storage reads=0, writes=0
+COST IPv6: refused=0, wrong=8 limiter + 1 room, session=76 limiter + 10 room fetches + 8 join events, storage reads=0, writes=0
+
+ Test Files  9 passed (9)
+      Tests  189 passed (189)
+   Start at  01:36:20
+   Duration  5.20s (transform 119ms, setup 0ms, import 261ms, tests 6.18s, environment 0ms)
+

@@ -173,6 +173,18 @@ Rules:
   so an idle room costs nothing. A room is deleted 10 minutes after its last socket closes and
   at most 12 hours after creation. Clients treat the errors `not-allowed`, `bad-message` and `opening-timeout`
   as final and do not wait for a close event. Request headers are never logged.
+- **Limits (`apps/signal`, C-03, D-081 to D-089):** a Worker-side admission check runs before
+  any room lookup. Clients are counted by IPv4 address or IPv6 /64, with second meters per /48,
+  under a rotating HMAC so no address is stored; counters live in memory only, in 16 limiter
+  objects each held in memory for ten minutes after its last use. Room creation: 8 at once,
+  then one a minute. Connection attempts: 96 at once, then two a second. A wrong or abandoned
+  join is charged when admitted and refunded on success; after 16 failures the client backs
+  off (1 s doubling to 60 s). At most 12 silent sockets per client per room and 17 unresolved
+  in all. A room holds 16 silent sockets, each with 3 seconds to send its join; when full it
+  closes one for a newcomer only if it is the same client's or has been silent 1.5 seconds,
+  and charges its owner. A full limiter evicts only clean entries; otherwise newcomers share
+  overflow buckets with normal budgets. If the limiter fails, creation and joins answer 503
+  and rooms keep working. Unproven on the real edge (D-089).
 - **Connection lifecycle (`packages/netcode`, C-04):** the host paces its own signalling
   below the pairing server's rate limit, offers and answers ahead of candidates and phones in
   rotation. A peer that has not connected within 15 seconds is abandoned; a phone's clock

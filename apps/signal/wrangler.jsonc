@@ -7,23 +7,28 @@
       {
         "name": "ROOMS",
         "class_name": "RoomObject"
-      }
+      },
+      { "name": "ADMISSION", "class_name": "AdmissionObject" }
     ]
   },
   "migrations": [
     {
       "tag": "v1",
       "new_sqlite_classes": [
-        "RoomObject"
+        "RoomObject", "AdmissionObject"
       ]
     }
   ],
+  // Provision ADMISSION_SECRET (at least 32 random characters) separately in each environment.
   // Never log request headers: the host secret travels in Sec-WebSocket-Protocol.
+  // EDGE_LIMIT is keyed by the first-seen IPv4 address or IPv6 /64 HMAC, never /48.
+  "ratelimits": [{ "name": "EDGE_LIMIT", "namespace_id": "1001", "simple": { "limit": 240, "period": 60 } }],
   "observability": {
     "logs": { "enabled": false }
   },
   "env": {
     "dev": {
+      "ratelimits": [{ "name": "EDGE_LIMIT", "namespace_id": "1001", "simple": { "limit": 240, "period": 60 } }],
       "vars": {
         "ALLOWED_ORIGINS": "http://localhost:5090,http://127.0.0.1:5090"
       },
@@ -32,7 +37,8 @@
           {
             "name": "ROOMS",
             "class_name": "RoomObject"
-          }
+          },
+          { "name": "ADMISSION", "class_name": "AdmissionObject" }
         ]
       }
     }

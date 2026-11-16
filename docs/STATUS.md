@@ -68,7 +68,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   only signalling between a phone and its host, caps and times out silent sockets, throttles
   floods, survives a restart with no ghost players, and expires idle rooms. Runs locally only
   (`pnpm --filter @kaki/signal dev`); **not deployed**, no relay credentials (C-02) and no
-  cross-client rate limits (C-03) yet. Built by Codex; two review rounds against a real local
+  cross-client rate limits were added by C-03 below. Built by Codex; two review rounds against a real local
   server; smoke test of 12 steps run by the integrator.
 
 - **Game interface and conformance kit (F-04).** `packages/platform/src/game`: the `GameModule`
@@ -147,6 +147,14 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   strictly and holds nothing secret. Fake storage and simulated connections only: not yet
   proven on a real phone or browser. Built by Codex; two review rounds, last fix by the
   integrator.
+
+- **Pairing server limits (C-03).** Limits per client and per network on room creation,
+  connection attempts, wrong or abandoned joins and silent sockets, with nothing about a client
+  written to storage. Honest traffic (eight phones on one address, a school, a long evening)
+  is never refused in tests. The 16-step smoke test passes on a real local server, where it
+  caught a fault four review rounds had missed. **Not deployed, and not proven on Cloudflare's
+  edge:** a staging probe is required first (D-089, OQ-030). Built by Codex; five review
+  rounds and three smoke rounds.
 
 ## Does not exist yet
 

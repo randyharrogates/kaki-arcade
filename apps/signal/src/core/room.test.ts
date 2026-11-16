@@ -267,7 +267,7 @@ describe('C-01', () => {
                 }
                 expect(other.state().sockets.map((s) => s.id)).toEqual(['other-host', 'other-phone']);
                 expect(state.sockets.filter((s) => s.role === 'phone').length).toBeLessThanOrEqual(8);
-                expect(state.sockets.filter((s) => s.role === 'opening').length).toBeLessThanOrEqual(4);
+                expect(state.sockets.filter((s) => s.role === 'opening').length).toBeLessThanOrEqual(16);
                 expect(out.sends.some((s) => s.id.startsWith('other-'))).toBe(false);
             }
         }

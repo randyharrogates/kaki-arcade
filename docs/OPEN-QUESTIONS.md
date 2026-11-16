@@ -37,7 +37,13 @@ included" in `ARCHITECTURE.md` §6 is a Paid-plan figure and nothing caps spendi
 billing alert); set the `ADMISSION_SECRET` secret; apply the limiter's binding and migration;
 confirm logging, Logpush, Tail and trace sampling are off; approve the DNS route; and agree
 the privacy page wording for the limiter (addresses are hashed with a rotating key and held in
-memory only, D-081 e). The full checklist is in `docs/slices/C-03-rate-limits.md`. Also for the
+memory only, D-081 e). The full checklist is in `docs/slices/C-03-rate-limits.md`. **Cost of the limiter (D-089):** up to
+about US$60 a month in duration charges if all 16 limiter shards are kept alive all month
+(steady traffic or a deliberate trickle of about 2,300 requests a day); nothing for a few game
+nights. A two-minute hold instead of ten costs about US$12 a month and allows about 500
+guesses an hour instead of 138. **Before any public deploy:** a staging deploy and probe on the
+real edge (shard memory after 590 s idle; the address header for IPv4 and IPv6; the rate-limit
+binding), which needs Randy's go. Also for the
 shell: anyone with a room code can take all 8 seats; the host needs a kick that blocks
 rejoining. Needed by: first deploy (M8).
 

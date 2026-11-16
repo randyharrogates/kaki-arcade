@@ -12,7 +12,9 @@ function environment(allowList?: string) {
             return { fetch: () => Promise.resolve(new Response(null, { status: 200 })) };
         },
     };
-    const env = { ROOMS: namespace, ALLOWED_ORIGINS: allowList } as unknown as Env;
+    const env = { ROOMS: namespace, ALLOWED_ORIGINS: allowList,
+        ADMISSION_SECRET: 'test-only-secret-with-at-least-32-characters',
+        ADMISSION: { idFromName: (name: string) => name, get: () => ({ fetch: () => Promise.resolve(new Response('0')) }) } } as unknown as Env;
     return { env, names };
 }
 describe('C-01 Worker admission', () => {
@@ -39,7 +41,7 @@ describe('C-01 Worker admission', () => {
         const { env, names } = environment('http://localhost:5090');
         for (const code of ['BCDF2345', 'bcdf2345', 'bcdf-2345', 'bcdf%202345']) {
             const response = await worker.fetch(new Request(`https://signal/rooms/${code}/phone`, {
-                headers: { Origin: 'http://localhost:5090' },
+                headers: { Origin: 'http://localhost:5090', 'CF-Connecting-IP': '192.0.2.1' },
             }), env);
             expect(response.status).toBe(200);
         }
@@ -48,9 +50,34 @@ describe('C-01 Worker admission', () => {
     it.each(['%xx', 'BCDF23', '00000000'])('M6 refuses invalid path code %s', async (code) => {
         const { env, names } = environment('http://localhost:5090');
         const response = await worker.fetch(new Request(`https://signal/rooms/${code}/phone`, {
-            headers: { Origin: 'http://localhost:5090' },
+            headers: { Origin: 'http://localhost:5090', 'CF-Connecting-IP': '192.0.2.1' },
         }), env);
         expect(response.status).toBe(404);
         expect(names).toEqual([]);
+    });
+});
+
+// DATA-005: a room-pool refusal is transient and carries no limiter back-off.
+describe('D-084 room refusal forwarding', () => {
+    it('passes Retry-After 1 and retries the room immediately without a cached refusal', async () => {
+        const { env } = environment('http://localhost:5090');
+        let calls = 0;
+        env.ROOMS = {
+            idFromName: (name: string) => name,
+            get: () => ({ fetch: () => {
+                calls++;
+                return Promise.resolve(new Response(null, { status: calls === 1 ? 429 : 200,
+                    headers: { 'Retry-After': '1' } }));
+            } }),
+        } as unknown as DurableObjectNamespace;
+        const request = () => new Request('https://signal/rooms/BCDF2345/phone', { headers: {
+            Origin: 'http://localhost:5090', 'CF-Connecting-IP': '192.0.2.1', Upgrade: 'websocket',
+        } });
+        const refused = await worker.fetch(request(), env);
+        expect(refused.status).toBe(429);
+        expect(refused.headers.get('Retry-After')).toBe('1');
+        expect(refused.headers.get('Access-Control-Expose-Headers')).toBe('Retry-After');
+        expect((await worker.fetch(request(), env)).status).toBe(200);
+        expect(calls).toBe(2);
     });
 });

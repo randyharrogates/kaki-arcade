@@ -1,0 +1,33 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-03
+
+ ❯ apps/signal/src/admission-worker.test.ts (19 tests | 1 failed | 18 skipped) 37ms
+     × retains twelve deadline failures across a refused thirteenth and idle eviction (probe B) 36ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > retains twelve deadline failures across a refused thirteenth and idle eviction (probe B)
+AssertionError: expected 101 to be 429 // Object.is equality
+
+- Expected
++ Received
+
+- 429
++ 101
+
+ ❯ apps/signal/src/admission-worker.test.ts:369:48
+    367|         vi.setSystemTime(14000);
+    368|         for (let i = 0; i < 5; i++) expect((await h.request(path)).sta…
+    369|         expect((await h.request(path)).status).toBe(429);
+       |                                                ^
+    370|         vi.setSystemTime(17000);
+    371|         await entry.object.alarm(); await entry.ctx.drain();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 18 skipped (19)
+   Start at  02:56:45
+   Duration  408ms (transform 179ms, setup 0ms, import 235ms, tests 37ms, environment 0ms)
+

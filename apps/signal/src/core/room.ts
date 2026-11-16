@@ -5,8 +5,8 @@ import { normalizeCode } from './codes';
 import { BURST, consume } from './bucket';
 import type { Bucket } from './bucket';
 export const IDLE_MS = 10 * 60 * 1000;
-export const OPENING_MS = 10000;
-export const MAX_UNIDENTIFIED = 4;
+export const OPENING_MS = 3000;
+export const MAX_UNIDENTIFIED = 16;
 export const ABSOLUTE_MS = 12 * 60 * 60 * 1000;
 // C-02 replaces this grant provider; no credentials or usage accounting here.
 export function iceGrant(): IceGrant {
@@ -18,6 +18,7 @@ export interface SocketState {
     bucket: Bucket;
     roomToken: string;
     openedAt: number;
+    clientKey?: string | undefined;
 }
 export interface RoomState {
     code: string;
@@ -33,6 +34,7 @@ export type Event = {
     id: string;
     roomToken: string;
     authenticatedHost: boolean;
+    clientKey?: string | undefined;
 } | {
     t: 'message';
     id: string;
@@ -151,32 +153,39 @@ function handleConnect(context: Transition, event: Extract<Event, { t: 'connect'
     const { state, out, now, error, host, send, phones } = context;
     if (!event.authenticatedHost &&
         state.sockets.filter((s) => s.role === 'opening').length >= MAX_UNIDENTIFIED) {
-        out.closes.push(event.id);
-    }
-    else {
-        if (event.authenticatedHost) {
-            const old = host();
-            if (old) {
-                error(old.id, 'not-allowed');
-                out.closes.push(old.id);
-                state.sockets = state.sockets.filter((s) => s.id !== old.id);
-            }
+        const oldest = state.sockets.filter((s) => s.role === 'opening' && ((event.clientKey !== undefined && s.clientKey === event.clientKey) || now - s.openedAt >= 1500)).sort((a, b) => a.openedAt - b.openedAt)[0];
+        if (!oldest) {
+            error(event.id, 'rate-limited');
+            out.closes.push(event.id);
+            return;
         }
-        state.sockets.push({
-            id: event.id, roomToken: event.roomToken,
-            role: event.authenticatedHost ? 'host' : 'opening',
-            bucket: { tokens: BURST, at: now }, openedAt: now,
-        });
-        if (event.authenticatedHost) {
-            send(event.id, { v, t: 'created', code: state.code, hostToken: state.hostToken,
-                reopened: state.hostOpened, ice: iceGrant() });
-            state.hostOpened = true;
-            for (const p of phones()) {
-                send(p.id, { v, t: 'host', present: true });
-                send(event.id, { v, t: 'peer-joined', peer: p.id });
-            }
+        error(oldest.id, 'opening-timeout');
+        out.closes.push(oldest.id);
+        state.sockets = state.sockets.filter((s) => s.id !== oldest.id);
+    }
+    if (event.authenticatedHost) {
+        const old = host();
+        if (old) {
+            error(old.id, 'not-allowed');
+            out.closes.push(old.id);
+            state.sockets = state.sockets.filter((s) => s.id !== old.id);
         }
     }
+    state.sockets.push({
+        id: event.id, roomToken: event.roomToken, clientKey: event.clientKey,
+        role: event.authenticatedHost ? 'host' : 'opening',
+        bucket: { tokens: BURST, at: now }, openedAt: now,
+    });
+    if (event.authenticatedHost) {
+        send(event.id, { v, t: 'created', code: state.code, hostToken: state.hostToken,
+            reopened: state.hostOpened, ice: iceGrant() });
+        state.hostOpened = true;
+        for (const p of phones()) {
+            send(p.id, { v, t: 'host', present: true });
+            send(event.id, { v, t: 'peer-joined', peer: p.id });
+        }
+    }
+
 }
 
 function handleDisconnect(context: Transition, event: Extract<Event, { t: 'disconnect' }>): void {

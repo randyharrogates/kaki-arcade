@@ -23,6 +23,13 @@ export class FakeSocket {
     }
 }
 export class FakeState {
+    readonly tasks: Promise<unknown>[] = [];
+    pendingTasks = 0;
+    waitUntil(promise: Promise<unknown>): void {
+        this.pendingTasks++;
+        this.tasks.push(promise.finally(() => { this.pendingTasks--; }));
+    }
+    async drain(): Promise<void> { await Promise.all(this.tasks.splice(0)); }
     sockets: FakeSocket[] = [];
     records = new Map<string, unknown>();
     writes = 0;
@@ -34,10 +41,16 @@ export class FakeState {
             this.reads++;
             return Promise.resolve(structuredClone(this.records.get(key)) as T | undefined);
         },
-        put: (key: string, value: unknown): Promise<void> => {
+        put: (key: string | Record<string, unknown>, value?: unknown): Promise<void> => {
             this.writes++;
-            this.records.set(key, structuredClone(value));
+            if (typeof key === 'string') this.records.set(key, structuredClone(value));
+            else for (const [name, entry] of Object.entries(key)) this.records.set(name, structuredClone(entry));
             return Promise.resolve();
+        },
+        delete: (keys: string[]): Promise<number> => {
+            let count = 0;
+            for (const key of keys) if (this.records.delete(key)) count++;
+            return Promise.resolve(count);
         },
         deleteAll: (): Promise<void> => {
             this.records.clear();
@@ -64,5 +77,26 @@ export class FakeState {
     }
     setWebSocketAutoResponse(value: unknown): void {
         this.autoResponse = value;
+    }
+}
+
+// Miniflare/workerd drops an idle object after ten seconds. Pending waitUntil
+// work pins it; unlike durable storage, ordinary instance fields do not survive.
+export class FakeIdleObject<T> {
+    private lastUsed = -Infinity;
+    private entry: { ctx: FakeState; object: T } | undefined;
+    evictions = 0;
+    constructor(private readonly create: (ctx: FakeState) => T) {}
+    get(): { ctx: FakeState; object: T } {
+        if (this.entry && Date.now() - this.lastUsed >= 10000 && !this.entry.ctx.pendingTasks) {
+            this.entry = undefined;
+            this.evictions++;
+        }
+        if (!this.entry) {
+            const ctx = new FakeState();
+            this.entry = { ctx, object: this.create(ctx) };
+        }
+        this.lastUsed = Date.now();
+        return this.entry;
     }
 }

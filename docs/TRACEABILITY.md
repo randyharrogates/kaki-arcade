@@ -83,7 +83,7 @@ requirement.
 | DATA-002 | MUST | Scores, stars and settings are saved on the host device only | M8 | not started | — | — | — |
 | DATA-003 | MUST | The only telemetry is anonymous error and performance counts with no nicknames, IPs or device identifiers… | M8 | not started | — | — | — |
 | DATA-004 | MUST | A short privacy page states the above in plain English | M8 | not started | — | — | — |
-| DATA-005 | MUST | Room codes are unguessable enough to prevent casual gate-crashing, rooms expire when idle, and the pairing… | M8 | in progress | `apps/signal/src/core/codes.ts`, `core/room.ts` (8-character codes, idle and absolute expiry, per-socket limits; cross-client rate limits are C-03) | `apps/signal/src/core/room.test.ts`, `room-object.test.ts` | `uat/evidence/C-01-pairing-server/` |
+| DATA-005 | MUST | Room codes are unguessable enough to prevent casual gate-crashing, rooms expire when idle, and the pairing… | M8 | in progress | `apps/signal/src/core/codes.ts`, `core/room.ts` (8-character codes, idle and absolute expiry, per-socket limits), `apps/signal/src/core/admission.ts`, `core/address.ts`, `admission-object.ts` (limits per client and per network on creation, attempts, failed guesses and silent sockets; local runtime only, not deployed) | `apps/signal/src/core/room.test.ts`, `room-object.test.ts` | `uat/evidence/C-01-pairing-server/` |
 
 ## Public release
 

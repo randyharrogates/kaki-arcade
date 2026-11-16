@@ -2,6 +2,11 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — C-03: pairing server rate limits
+
+- `apps/signal/src/core/admission.ts`, `core/address.ts`, `admission-object.ts`; smoke test
+  extended (D-081, D-083, D-084, D-089; OQ-030). (DATA-005 advanced)
+
 ## 2026-11-17 — C-05: reconnect and host reload
 
 - `packages/platform/src/reconnect/` (D-086; OQ-031 open). (PLAT-007, PLAT-009 in progress)

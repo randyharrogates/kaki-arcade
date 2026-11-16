@@ -4,6 +4,9 @@ import { request } from 'node:http';
 import { randomBytes } from 'node:crypto';
 const port = Number(process.env.KAKI_PORT_SIGNAL ?? '5091');
 const origin = 'http://localhost:5090';
+// Local-only synthetic clients; confirm Wrangler preserves this header before trusting results.
+let clientAddress = '192.0.2.1';
+let clientSequence = 1;
 /** @type {import('node:net').Socket[]} */
 const sockets = [];
 /**
@@ -14,7 +17,7 @@ const sockets = [];
  */
 function open(path, hostToken = null) {
     return new Promise((resolve, reject) => {
-        const req = request({ hostname: '127.0.0.1', port, path, headers: { Origin: origin, Upgrade:
+        const req = request({ hostname: '127.0.0.1', port, path, headers: { 'CF-Connecting-IP': clientAddress, Origin: origin, Upgrade:
           'websocket', Connection: 'Upgrade', 'Sec-WebSocket-Version': '13', 'Sec-WebSocket-Key':
           randomBytes(16).toString('base64'), 'Sec-WebSocket-Protocol': hostToken === null
             ? 'kaki.v1' : `kaki.v1, kaki.host.${hostToken}` } });
@@ -136,16 +139,24 @@ function open(path, hostToken = null) {
         req.end();
     });
 }
+async function newRoom(address = clientAddress) {
+    const response = await fetch(`http://127.0.0.1:${String(port)}/rooms`, {
+        method: 'POST', headers: { Origin: origin, 'CF-Connecting-IP': address },
+    });
+    assert.equal(response.status, 200);
+    return /** @type {{code:string,hostToken:string}} */ (await response.json());
+}
 let stepName = 'initialise';
 /** @param {string} name */
-function step(name) {
+function step(name, freshClient = true) {
     stepName = name;
+    if (freshClient) clientAddress = `192.0.2.${String(++clientSequence)}`;
     process.stdout.write(`STEP ${name}\n`);
 }
 try {
     step('create room');
     const response = await fetch(`http://127.0.0.1:${String(
-      port)}/rooms`, { method: 'POST', headers: { Origin: origin } });
+      port)}/rooms`, { method: 'POST', headers: { Origin: origin, 'CF-Connecting-IP': clientAddress } });
     assert.equal(response.status, 200);
     const room = /** @type {{code:string,hostToken:string}} */ (await response.json());
     process.stdout.write('PASS create room\n');
@@ -223,13 +234,13 @@ try {
     step('silent saturation and deadline');
     // a2/a5/a6: all excess upgrades fail before 101; a host still gets in.
     const freshResponse = await fetch(`http://127.0.0.1:${String(port)}/rooms`, {
-        method: 'POST', headers: { Origin: origin },
+        method: 'POST', headers: { Origin: origin, 'CF-Connecting-IP': clientAddress },
     });
     const fresh = /** @type {{code:string,hostToken:string}} */ (await freshResponse.json());
     const silentStarted = Date.now();
     const silent = [];
-    for (let i = 0; i < 11; i++) {
-        if (i < 4)
+    for (let i = 0; i < 19; i++) {
+        if (i < 12)
             silent.push(await open(`/rooms/${fresh.code}/phone`));
         else
             await assert.rejects(open(`/rooms/${fresh.code}/phone`), /429/);
@@ -238,6 +249,7 @@ try {
         await assert.rejects(open(`/rooms/${fresh.code}/phone`), /429/);
     }
     await assert.rejects(open('/rooms/22222222/phone'), /404/);
+    clientAddress = `192.0.2.${String(++clientSequence)}`;
     const recovered = await open(`/rooms/${fresh.code}/host`, fresh.hostToken);
     assert.equal((await recovered.receive()).reopened, false);
     assert.ok(silent[0]);
@@ -246,7 +258,7 @@ try {
     assert.equal((await (silent[1]).receive(13000)).code, 'opening-timeout');
     assert.equal((await (silent[1]).receive()).closed, true);
     assert.ok(Date.now() - deadlineStart <= 13000);
-    assert.ok(Date.now() - silentStarted >= 9000);
+    assert.ok(Date.now() - silentStarted >= 2000);
     process.stdout.write('PASS silent saturation, excess HTTP refusals, host admission and deadline\n');
     step('full room and normalised codes');
     // a2: full room, authenticated host reload and live phone-token replacement.
@@ -320,6 +332,81 @@ try {
     assert.ok(pongs < 10000);
     assert.equal((await returning.receive()).closed, true);
     process.stdout.write(`PASS 10000 noncanonical pings throttled (${String(pongs)} pongs)\n`);
+    step('C-03 creation bucket, Retry-After and another client');
+    for (let i = 0; i < 8; i++) {
+        const response = await fetch(`http://127.0.0.1:${String(port)}/rooms`, {
+            method: 'POST', headers: { Origin: origin, 'CF-Connecting-IP': clientAddress },
+        });
+        assert.equal(response.status, 200);
+    }
+    const deniedCreate = await fetch(`http://127.0.0.1:${String(port)}/rooms`, {
+        method: 'POST', headers: { Origin: origin, 'CF-Connecting-IP': clientAddress },
+    });
+    assert.equal(deniedCreate.status, 429);
+    assert.ok(Number(deniedCreate.headers.get('Retry-After')) > 0);
+    assert.equal(deniedCreate.headers.get('Access-Control-Expose-Headers'), 'Retry-After');
+    process.stdout.write('PASS C-03 creation burst 8, ninth 429 with Retry-After\n');
+    step('C-03 failed malformed joins and back-off');
+    const malformedRoom = await newRoom();
+    for (let i = 0; i < 17; i++) await assert.rejects(open('/rooms/00000000/phone'), /404/);
+    await assert.rejects(open(`/rooms/${malformedRoom.code}/phone`), /429/);
+    process.stdout.write('PASS C-03 malformed guesses back off regardless of room existence\n');
+    step('C-03 connection attempts including non-upgrade probes');
+    const attemptRoom = await newRoom();
+    for (let i = 0; i < 4; i++) await open(`/rooms/${attemptRoom.code}/phone`);
+    for (let i = 0; i < 92; i++) {
+        const response = await fetch(`http://127.0.0.1:${String(port)}/rooms/${attemptRoom.code}/phone`, {
+            headers: { Origin: origin, 'CF-Connecting-IP': clientAddress },
+        });
+        assert.equal(response.status, 426);
+    }
+    let attemptLimited = false;
+    for (let i = 0; i < 200 && !attemptLimited; i++) {
+        const response = await fetch(`http://127.0.0.1:${String(port)}/rooms/${attemptRoom.code}/phone`, {
+            headers: { Origin: origin, 'CF-Connecting-IP': clientAddress },
+        });
+        attemptLimited = response.status === 429;
+        if (attemptLimited) assert.ok(Number(response.headers.get('Retry-After')) > 0);
+    }
+    assert.ok(attemptLimited);
+    process.stdout.write('PASS C-03 attempt burst 96 then 429 (also covers upgrade retries)\n');
+    step('C-03 unidentified cap leaves four slots for a different client');
+    const pendingRoom = await newRoom(`192.0.2.${String(++clientSequence)}`);
+    const pendingClient = clientAddress;
+    const pending = [];
+    // D-081/D-083: twelve unresolved openings per client, before room replacement.
+    // Progress labels must preserve the address throughout this scenario.
+    for (let i = 0; i < 12; i++) {
+        step(`C-03 pending opening ${String(i + 1)} of 12`, false);
+        pending.push(await open(`/rooms/${pendingRoom.code}/phone`));
+    }
+    step('C-03 thirteenth opening from one client is refused', false);
+    await assert.rejects(open(`/rooms/${pendingRoom.code}/phone`), /429/);
+    step('C-03 a different client joins while twelve openings wait');
+    const other = await open(`/rooms/${pendingRoom.code}/phone`);
+    other.send({ t: 'join', code: pendingRoom.code, roomToken: null });
+    assert.equal((await other.receive()).t, 'joined');
+    for (const ws of pending) assert.equal((await ws.receive(13000)).code, 'opening-timeout');
+    // A per-room refusal caches a ten-second lease deadline, longer than the
+    // room's three-second opening deadline. Also exercise the runtime's ten-second
+    // idle-eviction window after the room reports all twelve failures.
+    await new Promise((resolve) => setTimeout(resolve, 10500));
+    clientAddress = pendingClient;
+    const abandoned = [];
+    // Twelve confirmed abandonments leave five provisional charges (17 - 12).
+    for (let i = 0; i < 5; i++) abandoned.push(await open(`/rooms/${pendingRoom.code}/phone`));
+    await assert.rejects(open(`/rooms/${pendingRoom.code}/phone`), /429/);
+    for (const ws of abandoned) assert.equal((await ws.receive(13000)).code, 'opening-timeout');
+    // Receipt of all five errors bounds the final failure time. Allow its one-second
+    // block (and the sixth request's cache) to expire before the single trial.
+    await new Promise((resolve) => setTimeout(resolve, 1100));
+    // Seventeen failures: the short first block has now run out, so
+    // exactly one unresolved opening may test it; a second at the same moment is refused.
+    const probe = await open(`/rooms/${pendingRoom.code}/phone`);
+    await assert.rejects(open(`/rooms/${pendingRoom.code}/phone`), /429/);
+    assert.equal((await probe.receive(13000)).code, 'opening-timeout');
+    process.stdout.write('PASS C-03 pending cap, other-client join and abandonment back-off\n');
+
 }
 catch (error) {
     process.stderr.write(`FAIL ${stepName}: ${String(error instanceof Error ? error.stack : error)}\n`);

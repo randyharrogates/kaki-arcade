@@ -1,0 +1,167 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-03
+
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R01 pure: a full shard still admits a never-seen honest client 8ms
+R02 honest create status 200 Retry-After null
+R03 guesses from one /64: 300 sent, 283 refused
+R04 honest phone while pool held by 2 silent addresses: 101
+R05 honest household's own host reconnect after room-full 429s: 101
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R02 worker: distinct addresses from ONE IPv6 /64 cannot deny room creation to an unrelated IPv4 household 273ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R03 one /64 rotating its interface id cannot make more than ~17 failed guesses before back-off 81ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R04 two addresses (or one /64) cannot fill the 16-slot opening pool and lock an honest phone out 18ms
+R07 school burst: 155 of 240 admitted in 30 s (pacing alone would admit ~156)
+R09 limiter down: 503
+R10 join while limiter down: ok
+R11 retry after clock step back 1 h: 60 s
+R12 limiter DO calls: refused request 0; admitted wrong guess 4 + room 1
+ ✓ apps/signal/src/core/admission.test.ts > C-03 DATA-005 pure admission > admits eight phones, retries and several rooms first, with bounded pending reservations 4ms
+ ✓ apps/signal/src/core/admission.test.ts > C-03 DATA-005 pure admission > refills creation at one per minute without window-boundary double bursts or clock rollback 0ms
+ ✓ apps/signal/src/core/admission.test.ts > C-03 DATA-005 pure admission > bounds all connection attempts and probes, including host routes 2ms
+ ✓ apps/signal/src/core/admission.test.ts > C-03 DATA-005 pure admission > grows back-off to 60s, ignores refusals without moving the deadline, and decays after quiet 1ms
+ ✓ apps/signal/src/core/admission.test.ts > C-03 DATA-005 pure admission > releases successful reservations, counts failure once, and penalises silent expiry 1ms
+ ✓ apps/signal/src/core/admission.test.ts > C-03 DATA-005 pure admission > survives snapshot restoration and expires counters after ten minutes without activity 1ms
+ ✓ apps/signal/src/core/admission.test.ts > C-03 DATA-005 pure admission > bounds a million distinct clients by evicting clean entries; expired entries free capacity 1188ms
+ ✓ apps/signal/src/core/admission.test.ts > C-03 DATA-005 pure admission > rotates salted keys every ten minutes, consistently across isolates; never encodes the address 11ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 compares every character for equal-length secrets despite early mismatches 2ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > PLAT-001 DATA-005 generates safe unambiguous codes and rejects biased bytes 56ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring FVCK 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring FCK 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring FK 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring CNT 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring CVNT 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring DCK 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring DVCK 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring PSSY 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring NGGR 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring WNK 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring WNKR 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring KNN 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring CB 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring CCB 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring LJ 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring SHT 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring BTCH 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring SLT 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring FKN 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring XXX 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring F46 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring F49 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring 5H7 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 screens rude substring 69 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > M5 keeps the host alive until twelve hours and idles from the last socket close 2ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > PLAT-009 authenticates replacement and reports absence/replays peers 2ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > NET-002 refuses invalid opening create with bad-message and closes it 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > NET-002 refuses invalid opening reopen with bad-message and closes it 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > NET-002 refuses invalid opening unknown with bad-message and closes it 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > NET-002 forwards only role-correct signalling to the named peer 1ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > NET-002 DATA-005 rejects a different room and honours host drop/close 1ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-005 bounds phones, buckets and origins 1ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > DATA-001 DATA-002 DATA-003 DATA-005 wipes secrets at idle/absolute expiry 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > NET-002 isolates two populated rooms and still forwards each room’s own offers 0ms
+ ✓ apps/signal/src/core/room.test.ts > C-01 > NET-002 DATA-005 seeded event sequences preserve room and role invariants 249ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > admits eight simultaneous phones, eight retries, a host reload and several rooms on shared Wi-Fi 121ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > denies the ninth creation before room allocation, supplies CORS Retry-After and admits at refill 6ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > backs off failed probes /rooms/BCDF2345/phone before lookup, regardless of code existence 10ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > backs off failed probes /rooms/%xx/phone before lookup, regardless of code existence 8ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > backs off failed probes /rooms/bad/phone before lookup, regardless of code existence 8ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > backs off failed probes /rooms/BCDF2345/host before lookup, regardless of code existence 8ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > counts wrong/malformed opening messages and rejects subsequent attempts before reaching rooms 10ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > backs off wrong host credentials without replacing the authenticated host 8ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > bounds connection floods including probes; no status probe bypasses back-off 32ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > one silent address cannot fill all slots; room timeout survives restart while idle limiter counters reset 20ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > keeps no limiter storage, reads or alarms, including after eviction 2ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > carries creation limits and pending reservations across the ten-minute hash rotation 10ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > replaces silent openings without penalising newcomers, and counts abandoned closes 34ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > admits eight phones after an initial failed upgrade and keeps noncanonical heartbeats below the bucket 14ms
+ ✓ apps/signal/src/admission-worker.test.ts > C-03 DATA-005 Worker and real room adapters > fails closed when the HMAC secret has not been provisioned 0ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > M1 M3 rejects before accept and reserves host admission under silent saturation 18ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-005 refuses 1000 wrong host upgrades without allocating or evicting sockets 120ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-005 selects kaki.v1 and sends hostToken only to the authenticated host 3ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-005 rejects invalid host offers before allocating:  1ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-005 rejects invalid host offers before allocating: kaki.host.secret 0ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-005 rejects invalid host offers before allocating: kaki.v1, kaki.host.wrong 0ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-005 rejects invalid host offers before allocating: kaki.v1, kaki.host.one, kaki.host.two 0ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-005 counts every noncanonical frame against the bucket 1ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-005 counts every noncanonical frame against the bucket 2ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-005 counts every noncanonical frame against the bucket 1ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-005 counts every noncanonical frame against the bucket 1ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-005 counts every noncanonical frame against the bucket 1ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > M1 closes orphan transports and unknown message senders, including missing rooms 0ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > M2 reconciles dead phones after restart without replaying ghosts or retaining capacity 1ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > M2 emits ordinary close effects for a dead peer and never sends to it again 1ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > M3 opening deadline runs by alarm and lazily, with the earliest alarm scheduled 1ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > PLAT-009 labels only the old host replaced when upgrade also expires a silent phone 0ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > M4 rejects socket creation clearly and enforces route roles 0ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > M5 host lives for twelve hours; last close starts idle expiry; storage is wiped 1ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > DATA-001–003 wipes room storage and alarm when the host closes the room 0ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > S2 auto-responds canonical keep-alives; frames cause no persistent reads or writes 1ms
+ ✓ apps/signal/src/room-object.test.ts > C-01 Durable Object adapter review round 1 > S6 phone token replaces a live phone even when all eight slots are occupied 2ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > S7 fails closed for unconfigured origins: undefined 21ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > S7 fails closed for unconfigured origins:  0ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > S7 fails closed for unconfigured origins:     0ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > S7 fails closed for unconfigured origins: https://example.test 0ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > S7 refuses origin null before lookup 0ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > S7 refuses origin null before lookup 0ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > S7 refuses origin https://localhost:5090 before lookup 0ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > S7 refuses origin http://localhost:5090.evil before lookup 0ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > S7 refuses origin  before lookup 0ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > M6 routes raw, lower-case, hyphenated and space-separated codes to the same object 13ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > M6 refuses invalid path code %xx 1ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > M6 refuses invalid path code BCDF23 0ms
+ ✓ apps/signal/src/worker.test.ts > C-01 Worker admission > M6 refuses invalid path code 00000000 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > normalises 192.0.2.1 2ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > normalises 2001:0DB8:0000:0001:0000:0000:0000:0001 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > normalises 2001:db8:0:1::ffff 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > normalises fe80::1%eth0 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > normalises ::ffff:192.0.2.1 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > normalises 0:0:0:0:0:FFFF:c000:201 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > normalises ::1 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses null 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses  0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses unknown 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses garbage 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses 192.0.2.256 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses 192.00.2.1 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses 1.2.3 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses 2001:db8:::1 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses 2001:db8::1::2 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses 2001:xyz::1 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses [::1] 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses ::1/64 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses 1:2:3:4:5:6:7:8:9 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses ::1]/garbage#[ 0ms
+ ✓ apps/signal/src/core/address.test.ts > DATA-005 canonical client networks > refuses 192.0.2.1%eth0 0ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R05 an attacker-filled pool does not turn into address-level back-off for the honest household 30ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R06 one address can take all eight seats with valid joins and is never penalised (documents residual risk) 11ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R07 a bursty but honest shared address (school: 8 arrivals/s for 30 s) is paced, not escalated into back-off 1ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R08 a request without CF-Connecting-IP is refused rather than pooled into one shared identity 0ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R09 limiter unavailable: the Worker answers a well-formed 503 with CORS and Retry-After, never throws 1ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R10 limiter unavailable while a phone joins: the room still processes the join (no throw inside blockConcurrencyWhile) 2ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R11 clock stepping backwards never advertises Retry-After above the 60 s cap 1ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R12 an already-refused client costs no Durable Object request 8ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R13 a blocked client sees identical answers for an existing and a missing code 11ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R14 HMAC keys survive a full epoch overlap and change after two epochs (linkability window is 20 min) 1ms
+R18 failed guesses in one hour from one address with concurrent bursts: 81
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R15 property: random honest/abusive op mixes keep every bound (seeded, monotonic clock) 9201ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R16 property: a long honest evening (4 h, a room every 3 min, 8 phones, one retry each, the odd typo) is never refused 1ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 attacks (each asserts the secure behaviour; a failure is a finding) > R17 burst of 8 phones x 4 netcode retries + 4 probes within 4 s (all refused upstream by a full pool) stays below the attempt bucket 0ms
+ ✓ apps/signal/src/review-attacks.test.ts > REVIEW C-03 guessing rate > R18 a concurrent prober cannot outrun back-off (failures are charged only after the guess resolves) 1ms
+COST IPv4: refused=0, wrong=4 limiter + 1 room, session=38 limiter + 10 room fetches + 8 join events, storage reads=0, writes=0
+COST IPv6: refused=0, wrong=8 limiter + 1 room, session=74 limiter + 10 room fetches + 8 join events, storage reads=0, writes=0
+ ✓ apps/signal/src/review-attacks.test.ts > D-081 additional regression and cost evidence > uses a second failure counter across /64s in the same IPv6 /48 191ms
+ ✓ apps/signal/src/review-attacks.test.ts > D-081 additional regression and cost evidence > uses the optional edge binding with a canonical opaque client key before limiter calls 2ms
+ ✓ apps/signal/src/review-attacks.test.ts > D-081 additional regression and cost evidence > answers joins with CORS, Retry-After 5 and 503 when the limiter fails 1ms
+ ✓ apps/signal/src/review-attacks.test.ts > D-081 additional regression and cost evidence > measures limiter calls and storage for a refusal, wrong guess and honest session 42ms
+ ✓ apps/signal/src/review-attacks.test.ts > D-081 capacity and room-full refunds > evicts the least recently seen clean entry and retains offenders 2ms
+ ✓ apps/signal/src/review-attacks.test.ts > D-081 capacity and room-full refunds > shares a generous bounded overflow when all normal entries are offenders and resolves its leases 14ms
+ ✓ apps/signal/src/review-attacks.test.ts > D-081 capacity and room-full refunds > never charges a valid join refused because all eight seats are taken 24ms
+ ✓ apps/signal/src/review-attacks.test.ts > D-081 limiter isolation > finishes a room join even when lease resolution never returns 2ms
+ ✓ apps/signal/src/review-attacks.test.ts > D-081 limiter isolation > caps an isolate-cached Retry-After after the wall clock rolls back 7ms
+ ✓ apps/signal/src/review-attacks.test.ts > D-081 provisional failure budget > bounds unresolved guesses before feedback and refunds successful provisional charges 1ms
+ ✓ apps/signal/src/review-attacks.test.ts > D-081 host lease isolation > keeps an authenticated host upgrade when the limiter fails after admission 2ms
+
+ Test Files  7 passed (7)
+      Tests  146 passed (146)
+   Start at  00:42:47
+   Duration  10.40s (transform 322ms, setup 0ms, import 605ms, tests 11.96s, environment 1ms)
+

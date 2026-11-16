@@ -1,0 +1,8 @@
+Alphabet: 28
+Conservative attempts/client/hour: 96 + 2 * 3600 = 7296
+8 characters: raw=377801998336; safe=361866010493
+  1 clients: raw probability <= 1.93117030406e-08; safe probability <= 2.01621588888e-08 (2.01621589e-06%)
+  1000 clients: raw probability <= 1.93117030406e-05; safe probability <= 2.01621588888e-05 (0.00201621589%)
+6 characters: raw=481890304; safe=467451596
+  1 clients: raw probability <= 1.51403751838e-05; safe probability <= 1.56080331363e-05 (0.00156080331%)
+  1000 clients: raw probability <= 0.0151403751838; safe probability <= 0.0156080331363 (1.56080331%)

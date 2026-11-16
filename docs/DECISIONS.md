@@ -629,3 +629,18 @@ build. Dependencies added: `preact` (shell, about 5 KB compressed), `vite` and
 dependencies, about 4 KB compressed; drawing a QR code by hand is not worth the risk of a code
 phones cannot scan). Screens are checked by the integrator in a real browser through
 Playwright until the UAT harness (F-07) exists.
+
+**D-089 · 2026-11-17 · Claude (under D-057)** — Pairing server limits, fifth review of C-03.
+A smoke test on a real local server showed that an idle limiter was dropped from memory after
+about ten seconds, forgetting its failures (D-081 e assumed minutes). The limiter keeps its
+counters in memory only and now holds each touched shard in memory for its ten-minute
+retention window with one bounded timer. Whether Cloudflare's edge honours that is unproven
+(the reviewer puts it at about 40%): before any public deploy, a staging probe must show a
+shard still remembers failures after 590 seconds idle. If it does not, the fallback is to
+persist only entries with confirmed failures or a live block, at most one coalesced write per
+shard every 5 seconds, deleted at expiry. Even with no fix at all, 8-character codes hold
+(about 2 in 10,000 over a 12-hour room against 1,000 clients at ten seconds). The keep-alive
+is billed by duration: nothing for a few game nights a month, up to about US$60 a month if
+every shard is kept alive all month, which an attacker can force with about 2,300 requests a
+day; this is added to OQ-030. Lesson recorded: the pairing server's fakes are not the runtime;
+every signal issue is smoke-tested on a real local server by the integrator before merge.
