@@ -160,6 +160,16 @@ Rules:
   so an idle room costs nothing. A room is deleted 10 minutes after its last socket closes and
   at most 12 hours after creation. Clients treat the errors `not-allowed`, `bad-message` and `opening-timeout`
   as final and do not wait for a close event. Request headers are never logged.
+- **Connection lifecycle (`packages/netcode`, C-04):** the host paces its own signalling
+  below the pairing server's rate limit, offers and answers ahead of candidates and phones in
+  rotation. A peer that has not connected within 15 seconds is abandoned; a phone's clock
+  starts at the host's first offer. A host signalling reconnect or a phone's signalling socket
+  closing never drops an open data channel. A new offer always gets a new peer connection on
+  the phone. Both signalling sockets send keep-alive pings. A relay refresh with no answer in
+  3 seconds falls back to the existing grant. A phone's identity across reconnects is its seat
+  token (D-076). All of this is proven against the pairing server's real room logic with
+  simulated connections; real browsers and phones are the checklist in
+  `docs/slices/C-04-netcode.md`.
 - **Relay:** ICE tries direct paths first. The pairing server issues Cloudflare TURN credentials
   with a short lifetime, tracks monthly relay usage, and stops issuing them past the limit
   (NET-004).

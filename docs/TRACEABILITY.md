@@ -67,11 +67,11 @@ requirement.
 
 | ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
 |---|---|---|---|---|---|---|---|
-| NET-001 | MUST | The host browser is authoritative: it runs the simulation | M3 | in progress | `packages/protocol/src/channel.ts` (no host → phone message can carry state or another player's view; the host runner is C-10) | `packages/protocol/src/*.test.ts` | `uat/evidence/F-02-protocol/` |
-| NET-002 | MUST | Phones connect to the host directly (WebRTC data channels) | M3 | in progress | `apps/signal/src/core/room.ts`, `room-object.ts` (signalling only, forwarding validated; the data channels are C-04) | `apps/signal/src/core/room.test.ts`, `room-object.test.ts` | `uat/evidence/C-01-pairing-server/` |
+| NET-001 | MUST | The host browser is authoritative: it runs the simulation | M3 | in progress | `packages/protocol/src/channel.ts` (no host → phone message can carry state or another player's view; the host runner is C-10), `packages/netcode/src/` (validated control channel, per-phone revisions) | `packages/protocol/src/*.test.ts`, `packages/netcode/src/*.test.ts` | `uat/evidence/F-02-protocol/`, `uat/evidence/C-04-netcode/` |
+| NET-002 | MUST | Phones connect to the host directly (WebRTC data channels) | M3 | in progress | `apps/signal/src/core/room.ts`, `room-object.ts` (signalling only, forwarding validated), `packages/netcode/src/` (pairing clients and data channels, simulated connections only) | `apps/signal/src/core/room.test.ts`, `room-object.test.ts`, `packages/netcode/src/*.test.ts` | `uat/evidence/C-01-pairing-server/`, `uat/evidence/C-04-netcode/` |
 | NET-003 | MUST | When a direct link is impossible, the connection falls back to a relay (Cloudflare TURN) automatically | M3 | not started | — | — | — |
 | NET-004 | MUST | The pairing server stops issuing relay access once monthly relay usage passes a configured limit (default… | M8 | not started | — | — | — |
-| NET-005 | MUST | Input messages are small, sequenced and tolerant of loss; a dropped packet never leaves a button stuck down | M3 | in progress | `packages/protocol/src/input.ts`, `packages/sim-core/src/input.ts` (netcode sender and receiver: C-04) | `packages/protocol/src/*.test.ts` | `uat/evidence/F-02-protocol/` |
+| NET-005 | MUST | Input messages are small, sequenced and tolerant of loss; a dropped packet never leaves a button stuck down | M3 | in progress | `packages/protocol/src/input.ts`, `packages/sim-core/src/input.ts` `packages/netcode/src/input-sender.ts`, `input-receiver.ts` | `packages/protocol/src/*.test.ts`, `packages/netcode/src/*.test.ts` | `uat/evidence/F-02-protocol/`, `uat/evidence/C-04-netcode/` |
 | NET-006 | MUST | All pages are served over HTTPS (required for motion sensors, wake lock and WebRTC) | M3 | not started | — | — | — |
 | NET-007 | LATER | Phase 2: a remote player on a single device sees the game view and plays with on-screen or keyboard controls | Phase 2 | later | — | — | — |
 

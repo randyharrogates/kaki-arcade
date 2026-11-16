@@ -112,6 +112,13 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   view. No item lost or duplicated in 586,000 reviewed cook-steps; step time stays flat through
   a whole round of button-mashing. Rules only: no screen yet. Built by Codex; two review rounds.
 
+- **Netcode (C-04).** `packages/netcode`: pairing clients for host and phone, the two WebRTC
+  data channels, input sending and receiving into the real input buffer, the control channel,
+  link quality, and a connection lifecycle that survives host blips, early joiners and eight
+  phones at once. 107 tests, including 45 written by the reviewer against the pairing
+  server's real room logic. **Simulated connections only: it has never run in a browser.**
+  Built by Codex; three review rounds.
+
 ## Does not exist yet
 
 - No host page, controller or game screen yet.

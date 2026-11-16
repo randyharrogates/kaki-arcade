@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — C-04: netcode
+
+- `packages/netcode`: pairing clients, WebRTC transport, input sender and receiver, control
+  channel, link quality (D-076, D-077). `ARCHITECTURE.md` §5 gains the connection lifecycle.
+  (NET-001, NET-002, NET-005, PERF-010 in progress)
+
 ## 2026-11-16 — T-02: Tabao Rush items
 
 - `games/tabao-rush/src/rules`: carrying, crates, counters, throwing and catching (D-078).

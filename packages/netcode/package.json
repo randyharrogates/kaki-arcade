@@ -9,5 +9,8 @@
   },
   "dependencies": {
     "@kaki/protocol": "workspace:*"
+  },
+  "devDependencies": {
+    "@kaki/signal": "workspace:*"
   }
 }

@@ -241,6 +241,10 @@ importers:
       '@kaki/protocol':
         specifier: workspace:*
         version: link:../protocol
+    devDependencies:
+      '@kaki/signal':
+        specifier: workspace:*
+        version: link:../../apps/signal
 
   packages/platform:
     dependencies:

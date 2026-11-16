@@ -15,7 +15,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | C-01 | Pairing server: Worker and one Durable Object per room, unguessable codes, handshake forwarding, idle expiry, hibernation | PLAT-001, NET-002, DATA-005 | F-02 | 1 | merged |
 | C-02 | Relay: short-lived TURN credentials, monthly usage tracking, cut-off at the limit with the same-Wi-Fi message | NET-003, NET-004 | C-01 | 1 | todo |
 | C-03 | Rate limits on room creation and joins | DATA-005 | C-01 | 1 | todo |
-| C-04 | Netcode: WebRTC data channels, sequenced input state, repeated release, link-quality measurement | NET-001, NET-002, NET-005, PERF-010 | F-02 | 1 | doing (Codex) |
+| C-04 | Netcode: WebRTC data channels, sequenced input state, repeated release, link-quality measurement | NET-001, NET-002, NET-005, PERF-010 | F-02 | 1 | merged |
 | C-06 | Room state (pure): seats, colours, nicknames with the blocked-words filter, leader and hand-over, capacity of 8, joining from the lobby | PLAT-003, PLAT-004, PLAT-005, PLAT-006, PLAT-008 | F-02 | 1 | merged |
 | C-07 | Host lobby screen: room code and QR, seated players, connection quality | PLAT-001, PLAT-004, PLAT-010, PERF-022 | C-04, C-06, F-06 | 2 | todo |
 | C-08 | Join page on the phone: scan or type the code, nickname, seat and colour, room-full message | PLAT-002, PLAT-003, PLAT-004, PERF-021 | C-04, C-06, F-06 | 2 | todo |
@@ -67,3 +67,10 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   per client in the Worker (by `CF-Connecting-IP`) before the room object is reached, and back
   off a client whose sockets are repeatedly closed without a `join`. The pairing server is not
   to be deployed publicly before C-03 merges.
+- **From C-04:** C-05's reducer must verify the seat token before accepting a resume as an
+  identity. C-10 needs the resume acknowledgement on the wire (a protocol change, allowed until
+  the first deploy, D-070). C-03 sizes the server's rate bucket for eight phones joining at
+  once. F-07 and the real-phone test carry the browser checklist in the slice note. When F-08
+  measures garbage, decide on an `expandInput` that fills a reused buffer. Offers take priority
+  over candidates in the pacing queue; `take()` copies the queue per send (fine at signalling
+  volumes).
