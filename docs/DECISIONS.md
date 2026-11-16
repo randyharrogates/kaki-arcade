@@ -608,3 +608,12 @@ double to 8 s, each attempt abandoned after 15 s, within the two-minute hold; af
 the phone shows a distinct state with a rejoin action and retries slowly. (g) A code the
 player has just entered always wins over a stored seat for another room. (h) The hold is
 inclusive: a return at exactly 120,000 ms keeps the seat.
+
+**D-087 · 2026-11-17 · Claude (under D-057)** — Tabao Rush recipes, second review of T-04;
+adds to D-085. (a) A container takes food only when that food's steps are complete apart from
+a final mix or spread, so half-prepared food cannot be trapped on a plate. Noodles may be
+added to finished broth in the pot or in a bowl. (b) A cup can be lifted off a plate with an
+empty-handed cross press at a plating counter; binning or washing a plate that carries a cup,
+or a fire under it, puts the cup down beside it (in the cook's free hand, else on the
+counter, else the floor), never fused to the plate. (c) Toast without its filled cup is
+rejected as missing ingredient: drink.
