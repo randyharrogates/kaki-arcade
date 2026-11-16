@@ -3,7 +3,7 @@
 What actually works today. Kept honest: if it has not been seen working in UAT, it is not
 listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5).
 
-**Last updated:** 2026-11-16 · **Milestone:** M0 complete, M1 (design gate) in planning: board 1A published, plan being confirmed with Randy before implementation.
+**Last updated:** 2026-11-16 · **Milestone:** M0 complete. **Build started 2026-11-16 on Randy's go (D-043):** Wave 0 running. Design gate: boards 0, 0B, 1A, 2 and 2B done; 1, 3, 4 and 5 to come.
 
 ## Works
 
@@ -30,7 +30,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 | 1A Modelling approach | Done: chunky toy, scripted, one body with 8 heads (D-037) |
 | 1 3D art style | Pending (direction set by 1A) |
 | 2 Visual identity | Done: C Marble table as the general rule (D-042) |
-| 2B A theme for each game | Published 2026-11-16, awaiting Randy's choice |
+| 2B A theme for each game | Done: R1 Bandung, K1 Green baize, T1 Order chit (D-043) |
 | 3 Big-screen layouts | Pending |
 | 4 Phone controller | Pending |
 | 5 Motion | Pending |
@@ -51,4 +51,4 @@ None run yet (`UAT.md` §5).
 - Performance budgets are targets, not measurements, until M2.
 - Whether the TCL Q65's own browser can run the game is unknown (REL-005).
 - Names are not checked for trademarks (OQ-001).
-- The build has not started: it waits for Randy's go after the end-goal vision board (OQ-021).
+- Boards 1, 3, 4 and 5 still need Randy's choices; nothing visible is built before them.

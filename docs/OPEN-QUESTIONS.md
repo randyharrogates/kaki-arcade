@@ -19,12 +19,6 @@ known. Needed by: M5.
 **OQ-019 · How the two versus kitchens interact (TR-058).** To be chosen from options on design
 board 3. Needed by: board 3.
 
-**OQ-021 · Go to start.** The plan is agreed. Randy asked to see the end-goal vision board
-(0B) first; Wave 0 starts on his go. Needed by: now.
-
-**OQ-023 · Board 2B choices.** One theme variant per game: Rabakz R1, R2 or R3; Peek Poker K1,
-K2 or K3; Tabao Rush T1, T2 or T3. Needed by: boards 3 and 4.
-
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot

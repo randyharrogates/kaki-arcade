@@ -1,7 +1,9 @@
 # Kaki Arcade — Build Plan (concurrent agents, git worktrees)
 
-**Status: approach and waves agreed by Randy on 2026-11-16 (D-039). Implementation starts on
-his go after he has seen the end-goal vision board (`design-gate/00b-end-goal-vision.html`).**
+**Status: agreed by Randy; build started 2026-11-16 on his go (D-043).** His standing orders for
+the build: Claude only, Codex for image generation only; concurrent sub-agents where they help;
+check free memory before every sub-agent; run every issue through the loop; a 10-minute watch
+that no sub-process is stuck; keep going until v1 is playable.
 
 How v1 gets built: the three games, the controller and the console are broken into stories and
 issues in `docs/backlog/`, and several Claude agents work issues at the same time, each in its
