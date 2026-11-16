@@ -1,0 +1,32 @@
+# Design lint fails on findings
+# Violation: a CSS file, a TSX file and an SVG file with off-scale spacing, rem, raw colours, an excused line and a marker in a string
+# Expected: pnpm verify stops at the design lint; the line with design-lint-ignore-line is not reported; the marker inside a string excuses nothing
+# Run in a copy of the tree exported with git archive (shown as <copy>); node v24.21.0, pnpm 12.8.1
+
+$ pnpm verify
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 9 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+games/rabakz/art/zz_violation.svg:1:53  raw-colour  raw colour #ff0000 outside packages/ui/; use a design token
+games/rabakz/src/zz_violation.css:2:12  spacing-scale  4px in "padding" is not on the spacing scale (0, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377)
+games/rabakz/src/zz_violation.css:3:11  spacing-unit  1rem in "margin": use px values from the spacing scale, not rem or em
+games/rabakz/src/zz_violation.css:4:18  spacing-scale  4px in "border-radius" is not on the radius scale (0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, or 999 or 9999 for a pill)
+games/rabakz/src/zz_violation.css:5:10  raw-colour  raw colour #ff0000 outside packages/ui/; use a design token
+games/rabakz/src/zz_violation.css:6:15  raw-colour  raw colour oklch(…) outside packages/ui/; use a design token
+games/rabakz/src/zz_violation.css:7:10  spacing-scale  6px in "--gap" is not on the spacing scale (0, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377)
+games/rabakz/src/zz_violation.css:9:19  spacing-scale  4px in "top" is not on the spacing scale (0, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377) (design-lint-ignore excuses one finding; use design-lint-ignore-line for the whole line)
+packages/platform/src/zz_violation.tsx:1:33  spacing-scale  4 in "padding" is not on the spacing scale (0, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377)
+packages/platform/src/zz_violation.tsx:1:41  spacing-scale  12 in "gap" is not on the spacing scale (0, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377)
+packages/platform/src/zz_violation.tsx:1:59  spacing-scale  6 in "borderRadius" is not on the radius scale (0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, or 999 or 9999 for a pill)
+packages/platform/src/zz_violation.tsx:1:75  raw-colour  raw colour rgb(…) outside packages/ui/; use a design token
+packages/platform/src/zz_violation.tsx:2:21  raw-colour  raw colour 0xff0000 outside packages/ui/; use a design token
+packages/platform/src/zz_violation.tsx:3:77  raw-colour  raw colour #102030 outside packages/ui/; use a design token
+packages/platform/src/zz_violation.tsx:5:23  spacing-scale  4px in "padding" is not on the spacing scale (0, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377)
+design lint failed: 15 finding(s) in 12 file(s) scanned
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.
+
+exit code: 1

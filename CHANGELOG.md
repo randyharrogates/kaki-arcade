@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — F-01: workspace and `pnpm verify`
+
+- pnpm workspace, strict TypeScript with project references, ESLint, Vitest, a workspace guard
+  (`tools/check_workspace.mjs`), a design lint (`tools/lint_design.mjs`) and `pnpm verify`.
+  Nine stub packages wired in dependency order. Two review rounds; evidence in
+  `uat/evidence/F-01-workspace/` (no screen involved). (NN-7, NN-8, NFR-TEST)
+
 ## 2026-11-16 — F-09: agent tooling
 
 - `issue-builder` agent, `/issue` integrator command, `tools/agents/worktree.sh` (worktree and

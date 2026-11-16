@@ -1,0 +1,23 @@
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 9 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 9 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade/.claude/worktrees/agent-a626d0e1516bd2edd
+
+
+ Test Files  2 passed (2)
+      Tests  135 passed (135)
+   Start at  11:57:06
+   Duration  133ms (transform 60ms, setup 0ms, import 77ms, tests 34ms, environment 0ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+no bundles yet
+$ python3 tools/trace_check.py
+152 requirements; 4 in progress, 1 later, 147 not started
+trace check passed
+exit code: 0

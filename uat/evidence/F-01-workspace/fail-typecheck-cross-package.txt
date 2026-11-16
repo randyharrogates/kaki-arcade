@@ -1,0 +1,15 @@
+# Typecheck follows a cross-package reference on a clean checkout (no dist anywhere)
+# Violation: packages/netcode/src/index.ts imports a type that @kaki/protocol does not export
+# Expected: pnpm verify stops at typecheck with TS2305 about @kaki/protocol, not TS6310
+# Run in a copy of the tree exported with git archive (shown as <copy>); node v24.21.0, pnpm 12.8.1
+
+$ pnpm verify
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 9 folder(s)
+$ tsc -b tsconfig.build.json
+packages/netcode/src/index.ts(1,15): error TS2305: Module '"@kaki/protocol"' has no exported member 'Missing'.
+[ELIFECYCLE] Command failed with exit code 2.
+[ELIFECYCLE] Command failed with exit code 2.
+
+exit code: 2

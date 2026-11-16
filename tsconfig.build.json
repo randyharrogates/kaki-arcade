@@ -1,0 +1,15 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.json" },
+    { "path": "packages/protocol" },
+    { "path": "packages/sim-core" },
+    { "path": "packages/platform" },
+    { "path": "packages/netcode" },
+    { "path": "packages/controller-kit" },
+    { "path": "packages/ui" },
+    { "path": "games/rabakz" },
+    { "path": "games/peek-poker" },
+    { "path": "games/tabao-rush" }
+  ]
+}

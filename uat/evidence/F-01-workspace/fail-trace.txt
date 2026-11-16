@@ -1,0 +1,32 @@
+# Trace check fails when a PRD requirement has no row
+# Violation: the NN-7 row is deleted from docs/TRACEABILITY.md
+# Expected: pnpm verify runs every earlier step and stops at the trace check
+# Run in a copy of the tree exported with git archive (shown as <copy>); node v24.21.0, pnpm 12.8.1
+
+$ pnpm verify
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 9 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 9 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 <copy>
+
+
+ Test Files  2 passed (2)
+      Tests  126 passed (126)
+   Start at  11:44:33
+   Duration  123ms (transform 57ms, setup 0ms, import 73ms, tests 34ms, environment 0ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+no bundles yet
+$ python3 tools/trace_check.py
+152 requirements; 3 in progress, 1 later, 147 not started
+FAIL  missing from TRACEABILITY: NN-7
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.
+
+exit code: 1

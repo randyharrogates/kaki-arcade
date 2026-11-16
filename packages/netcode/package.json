@@ -1,0 +1,13 @@
+{
+  "name": "@kaki/netcode",
+  "version": "0.0.0",
+  "private": true,
+  "description": "WebRTC transport, reconnect, input sequencing, link-quality measurement",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@kaki/protocol": "workspace:*"
+  }
+}

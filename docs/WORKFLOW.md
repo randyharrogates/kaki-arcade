@@ -53,10 +53,12 @@ Run `pnpm verify`. It must pass completely before UAT:
 
 | Check | Fails when |
 |---|---|
+| Workspace check | A package is not registered for type-checking, or a workspace dependency has no project reference |
 | Typecheck | Any TypeScript error |
-| Lint | Any error (includes a rule banning spacing values off the φ scale and raw colour literals outside `packages/ui`) |
+| Lint | Any ESLint error or warning |
+| Design lint | A spacing value off the φ scale, or a raw colour literal outside `packages/ui` (code that cannot draw is exempt; see `PLAN.md` §5) |
 | Unit tests | Any failure; simulation determinism test fails |
-| Build | Bundle fails or exceeds PERF-020 / PERF-022 size budgets |
+| Build | Bundle fails or exceeds PERF-020 / PERF-022 size budgets (the size check starts with the first bundle; until then it is a no-op hook) |
 | Trace check | `tools/trace_check.py` finds a PRD ID missing from `TRACEABILITY.md`, or a `done` row without code, test and evidence |
 | Performance | `pnpm perf` exceeds a budget in `PERFORMANCE.md` (from the slice where the harness exists) |
 

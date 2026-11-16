@@ -1,0 +1,14 @@
+{
+  "name": "@kaki/game-peek-poker",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Peek Poker memory poker game",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@kaki/platform": "workspace:*",
+    "@kaki/sim-core": "workspace:*"
+  }
+}

@@ -1,0 +1,23 @@
+# ESLint fails on an error
+# Violation: packages/netcode/src/zz_violation.ts uses any
+# Expected: pnpm verify stops at lint
+# Run in a copy of the tree exported with git archive (shown as <copy>); node v24.21.0, pnpm 12.8.1
+
+$ pnpm verify
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 9 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+
+<copy>/packages/netcode/src/zz_violation.ts
+  1:30  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  2:3   error  Unsafe return of a value of type `any`        @typescript-eslint/no-unsafe-return
+  2:16  error  Unsafe member access .name on an `any` value  @typescript-eslint/no-unsafe-member-access
+
+✖ 3 problems (3 errors, 0 warnings)
+
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.
+
+exit code: 1

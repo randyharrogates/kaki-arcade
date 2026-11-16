@@ -15,10 +15,16 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 - Blender 5.2 LTS runs headlessly on the dev Mac; `tools/blender/sample_stall.py` renders the
   sample stall scene in about ten seconds.
 
+- **Workspace (F-01, merged 2026-11-16):** pnpm workspace with nine empty packages wired in
+  their dependency order; strict TypeScript; ESLint; a design lint for off-scale spacing and
+  raw colours; Vitest (135 tests, all on the two lint tools); `pnpm verify` passes from a clean
+  checkout and was shown to fail on a type error, a lint error, a design-lint finding, a failing
+  test, a trace failure and an unregistered package. No game or screen code yet.
+
 ## Does not exist yet
 
-- Any application code: no host page, controller, pairing server or game.
-- `pnpm` workspace, `pnpm verify`, `pnpm uat`, `pnpm perf`, `pnpm assets` (created in M2 and M3).
+- Any application code: no host page, controller, pairing server or game (the packages are empty stubs).
+- `pnpm uat`, `pnpm perf`, `pnpm assets`, `pnpm dev` (later issues).
 - Design tokens: `DESIGN.md` §4.2 to §4.6 are pending the design gate.
 
 ## Design gate

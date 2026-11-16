@@ -20,8 +20,8 @@ requirement.
 | NN-4 | MUST | Art is produced through Blender (route D) and must look finished: not primitive, with correct character… | M2, M5 | not started | — | — | — |
 | NN-5 | MUST | The design rules in DESIGN.md (golden ratio, motion, no flat backgrounds) are binding for the interface… | M1 on | not started | — | — | — |
 | NN-6 | MUST | Visual and art direction is chosen by Randy from artifact option boards before any game code is written… | M1 | in progress | — | — | — |
-| NN-7 | MUST | Implementation is tracked against this PRD in local repo docs at all times (TRACEABILITY.md) | M0 on | in progress | — | — | — |
-| NN-8 | MUST | Work proceeds in the loop code → verify → test (UAT with screenshots) → review → code (WORKFLOW.md) | M0 on | in progress | — | — | — |
+| NN-7 | MUST | Implementation is tracked against this PRD in local repo docs at all times (TRACEABILITY.md) | M0 on | in progress | `tools/trace_check.py`, `package.json` (verify) | `tools/*.test.ts` | `uat/evidence/F-01-workspace/` |
+| NN-8 | MUST | Work proceeds in the loop code → verify → test (UAT with screenshots) → review → code (WORKFLOW.md) | M0 on | in progress | `package.json` (verify), `tools/check_workspace.mjs`, `tools/lint_design.mjs`, `.claude/agents/` | `tools/*.test.ts` | `uat/evidence/F-01-workspace/` |
 | NN-9 | MUST | Built by Claude | all | not started | — | — | — |
 
 ## Platform: rooms, picker, game interface
@@ -104,7 +104,7 @@ requirement.
 | NFR-DES | MUST | Every screen passes the checklist in DESIGN.md §6 at review | M3 on | not started | — | — | — |
 | NFR-A11Y | MUST | Colour is never the only way to tell players apart (colour plus shape or number) | M3 on | not started | — | — | — |
 | NFR-REL | MUST | A 30-minute 8-player session completes with no crash, no stuck input and no desync between the big screen… | M6, M8 | not started | — | — | — |
-| NFR-TEST | MUST | Game rules have unit tests on the deterministic simulation | M3 on | not started | — | — | — |
+| NFR-TEST | MUST | Game rules have unit tests on the deterministic simulation | M3 on | in progress | `vitest.config.ts` (runner only; no game rules yet) | — | `uat/evidence/F-01-workspace/` |
 | NFR-DOC | MUST | TRACEABILITY.md, STATUS.md and CHANGELOG.md are updated in the same loop as the change they describe | M0 on | in progress | — | — | — |
 
 ## Performance budgets

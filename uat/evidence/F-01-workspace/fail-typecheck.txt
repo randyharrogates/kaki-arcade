@@ -1,0 +1,17 @@
+# Typecheck fails on a type error in a package
+# Violation: packages/protocol/src/zz_violation.ts assigns a string to a number, and ["a"][0] to a string
+# Expected: pnpm verify stops at typecheck with TS2322 twice (strict, noUncheckedIndexedAccess)
+# Run in a copy of the tree exported with git archive (shown as <copy>); node v24.21.0, pnpm 12.8.1
+
+$ pnpm verify
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 9 folder(s)
+$ tsc -b tsconfig.build.json
+packages/protocol/src/zz_violation.ts(1,14): error TS2322: Type 'string' is not assignable to type 'number'.
+packages/protocol/src/zz_violation.ts(2,14): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+[ELIFECYCLE] Command failed with exit code 2.
+[ELIFECYCLE] Command failed with exit code 2.
+
+exit code: 2

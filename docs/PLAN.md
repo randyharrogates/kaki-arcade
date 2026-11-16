@@ -91,6 +91,14 @@ Per `CLAUDE.md` rule 8 every agent is Claude. Codex is used only for image gener
   `docs/PERFORMANCE.md`, `docs/TRACEABILITY.md`, `docs/STATUS.md`, `CHANGELOG.md`,
   `docs/DECISIONS.md`, `docs/backlog/`, root config, `pnpm-lock.yaml`, or another track's
   folder. These are where concurrent branches would collide.
+- **Two narrow exceptions** (review of F-01): an issue that creates a new package adds that
+  package's one line to `tsconfig.build.json`; and an issue may add a `workspace:*` dependency
+  between packages in its own lane, run `pnpm install`, and commit the resulting lockfile
+  change. The known dependency graph is already wired on `main`. Any dependency from the npm
+  registry is still a Request. How to add a package: `docs/slices/F-01-workspace.md`.
+- **Pure logic goes where the design lint does not look:** `packages/sim-core`,
+  `packages/protocol`, `packages/netcode`, and `src/rules/`, `src/sim/` and `src/levels/` inside
+  a game. Everything else is linted for off-scale spacing and raw colours.
 - **Need something outside your lane?** Write it under "Requests" in the slice note and stop
   that part: a contract change, a new dependency, a fix in another track, a requirement the
   PRD does not state. The integrator makes the change on `main`; the agent rebases.

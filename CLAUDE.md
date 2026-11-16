@@ -99,7 +99,7 @@ Not all exist yet; they are created in M2 and M3. Keep this list true.
 | Command | Does |
 |---|---|
 | `pnpm dev` | Host, controller and local pairing server |
-| `pnpm verify` | Typecheck, lint, unit tests, build with size budgets, trace check, performance |
+| `pnpm verify` | Workspace check, typecheck, ESLint, design lint, unit tests, build, trace check (works today; size budgets and performance join with F-08) |
 | `pnpm uat -- <slice>` | Playwright UAT for a slice; screenshots to `uat/evidence/<slice>/` |
 | `pnpm perf` | Performance harness with scripted controllers |
 | `pnpm assets` | Render and pack art from Blender sources |

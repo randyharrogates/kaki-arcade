@@ -1,0 +1,13 @@
+# Globs only pick up folders that hold a package.json, so tools/blender and other
+# non-JavaScript folders are ignored. tools/check_workspace.mjs reads this list too: it
+# understands "folder/*" and plain folder names.
+packages:
+  - "apps/*"
+  - "packages/*"
+  - "games/*"
+  - "content/*"
+  - "tools/*"
+
+# Refuse to install on a Node version outside "engines" in package.json. The same setting is in
+# .npmrc for tools that read it there.
+engineStrict: true

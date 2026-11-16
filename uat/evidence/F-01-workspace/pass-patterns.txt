@@ -1,0 +1,33 @@
+# The documented patterns pass: workspace dependency with its reference, a test that needs Node types, a package config file
+# Violation: none. platform depends on sim-core with the reference the guard asked for; sim-core gains a test using node:fs (tsconfig.test.json) and a vitest.config.ts covered by a tsconfig.node.json
+# Expected: pnpm install and pnpm verify both exit 0; ESLint does not report 'not found by the project service'
+# Run in a copy of the tree exported with git archive (shown as <copy>); node v24.21.0, pnpm 12.8.1
+
+$ bash -c pnpm install --no-frozen-lockfile 2>&1 | grep -v -e "^Update available" -e "^Changelog:" -e "^To update, run" -e "^Progress:" && pnpm verify
+Scope: all 10 workspace projects
+Already up to date
+Done in 2ms using pnpm v12.8.1
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 9 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 12 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 <copy>
+
+
+ Test Files  3 passed (3)
+      Tests  127 passed (127)
+   Start at  11:44:40
+   Duration  130ms (transform 97ms, setup 0ms, import 121ms, tests 35ms, environment 0ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+no bundles yet
+$ python3 tools/trace_check.py
+152 requirements; 4 in progress, 1 later, 147 not started
+trace check passed
+
+exit code: 0

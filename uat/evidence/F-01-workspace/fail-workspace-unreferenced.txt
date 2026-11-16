@@ -1,0 +1,19 @@
+# Workspace guard fails on a package missing from tsconfig.build.json
+# Violation: apps/web is added with a package.json, a tsconfig.json and src/main.ts holding 'const n: number = "x"', but is not referenced from tsconfig.build.json
+# Expected: pnpm verify stops at the first step, the workspace check, naming the line to add
+# Run in a copy of the tree exported with git archive (shown as <copy>); node v24.21.0, pnpm 12.8.1
+
+$ pnpm verify
+Scope: all 11 workspace projects
+✓ Lockfile passes supply-chain policies (verified 10m ago)
+Lockfile is up to date, resolution step is skipped
+Already up to date
+Done in 47ms using pnpm v12.8.1
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+tsconfig.build.json  build-reference  add { "path": "apps/web" } to "references": apps/web has a tsconfig.json but is never type-checked or built
+workspace check failed: 1 problem(s)
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.
+
+exit code: 1

@@ -1,0 +1,19 @@
+# Workspace guard fails on a workspace dependency with no project reference
+# Violation: packages/platform/package.json gains "@kaki/sim-core": "workspace:*" but packages/platform/tsconfig.lib.json has no reference to it
+# Expected: pnpm verify stops at the workspace check, naming the file and the line to add
+# Run in a copy of the tree exported with git archive (shown as <copy>); node v24.21.0, pnpm 12.8.1
+
+$ pnpm verify
+Scope: all 10 workspace projects
+✓ Lockfile passes supply-chain policies (verified 10m ago)
+Already up to date
+Progress: resolved 0, reused 116, downloaded 0, added 0, done
+Done in 67ms using pnpm v12.8.1
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+packages/platform/tsconfig.lib.json  dependency-reference  add { "path": "../sim-core/tsconfig.lib.json" } to "references": @kaki/platform depends on @kaki/sim-core (workspace:) but has no project reference to it
+workspace check failed: 1 problem(s)
+[ELIFECYCLE] Command failed with exit code 1.
+[ELIFECYCLE] Command failed with exit code 1.
+
+exit code: 1

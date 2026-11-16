@@ -1,0 +1,12 @@
+# Install refuses a Node version outside engines
+# Violation: engines.node in the root package.json is changed to >=99
+# Expected: pnpm install exits non-zero
+# Run in a copy of the tree exported with git archive (shown as <copy>); node v24.21.0, pnpm 12.8.1
+
+$ pnpm install --frozen-lockfile --reporter=append-only
+Error: ERR_PNPM_UNSUPPORTED_ENGINE
+
+  × Unsupported engine for <copy>: wanted: {"node":">=99"} (current: {"node":"24.21.0"})
+
+
+exit code: 1

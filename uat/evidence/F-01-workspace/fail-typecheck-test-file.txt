@@ -1,0 +1,15 @@
+# Typecheck covers test files
+# Violation: packages/sim-core/src/zz_violation.test.ts holds a type error
+# Expected: pnpm verify stops at typecheck with TS2322 in the test file
+# Run in a copy of the tree exported with git archive (shown as <copy>); node v24.21.0, pnpm 12.8.1
+
+$ pnpm verify
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 9 folder(s)
+$ tsc -b tsconfig.build.json
+packages/sim-core/src/zz_violation.test.ts(3,7): error TS2322: Type 'string' is not assignable to type 'number'.
+[ELIFECYCLE] Command failed with exit code 2.
+[ELIFECYCLE] Command failed with exit code 2.
+
+exit code: 2

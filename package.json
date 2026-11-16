@@ -1,0 +1,28 @@
+{
+  "name": "kaki-arcade",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.8.1",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "check:workspace": "node tools/check_workspace.mjs",
+    "typecheck": "tsc -b tsconfig.build.json",
+    "lint": "eslint . --max-warnings 0",
+    "lint:design": "node tools/lint_design.mjs",
+    "test": "vitest run",
+    "build": "tsc -b tsconfig.build.json && node tools/check_budgets.mjs",
+    "trace": "python3 tools/trace_check.py",
+    "verify": "pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.19.2",
+    "eslint": "10.15.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.2",
+    "vitest": "4.1.12"
+  }
+}

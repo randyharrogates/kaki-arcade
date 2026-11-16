@@ -1,0 +1,14 @@
+{
+  "name": "@kaki/game-rabakz",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Rabakz trivia game",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@kaki/platform": "workspace:*",
+    "@kaki/sim-core": "workspace:*"
+  }
+}

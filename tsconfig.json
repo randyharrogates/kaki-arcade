@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.test.base.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "tsBuildInfoFile": "node_modules/.cache/tsc/root.tsbuildinfo"
+  },
+  "include": [
+    "*.ts",
+    "*.js",
+    "*.mjs",
+    "tools/**/*.ts",
+    "tools/**/*.mjs",
+    "uat/**/*.ts",
+    "spikes/**/*.ts"
+  ],
+  "exclude": ["**/node_modules", "**/dist", "uat/evidence"]
+}

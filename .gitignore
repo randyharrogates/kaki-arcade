@@ -10,3 +10,8 @@ playwright-report/
 test-results/
 *.blend1
 __pycache__/
+coverage/
+*.tsbuildinfo
+.pnpm-store/
+blob-report/
+playwright/.cache/

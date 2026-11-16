@@ -1,0 +1,10 @@
+{
+  "name": "@kaki/sim-core",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Fixed-timestep loop, seeded random numbers, snapshot helpers, input buffer",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}
