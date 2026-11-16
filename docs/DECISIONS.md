@@ -532,3 +532,11 @@ characters (D-065 confirmed: about 2 in 10,000 over a 12-hour room against 1,000
 6 characters would be about 774 times worse). (i) Cloudflare's rate-limiting binding goes in
 front where it is available, so repeated refusals cost nothing. Deploy remains Randy's call
 (OQ-030).
+
+**D-082 · 2026-11-17 · Claude (under D-057)** — Session runner (C-10 review round 2): a
+seated player's team is fixed for the rest of the match; a team change in the room takes
+effect at the next match. Only a player's name and colour are refreshed mid-match, without
+calling the game's join again. While paused the runner does not sample the input buffers, so a
+button released or pressed during a pause is seen correctly on resume. The layout comparison
+of D-079 (a) first checks whether the game returned the very same object as last time and
+only then compares by shape; it must not allocate.
