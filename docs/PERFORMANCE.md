@@ -53,8 +53,11 @@ Measured from the touch event on the phone to the simulation step that applies i
 - **One body, eight heads.** All cooks share one set of body animation frames; each character
   is a small head sprite placed on a per-frame anchor (Randy, D-037). Player or team colour is
   a tint over a mask layer on the apron and cap.
-- **No allocation in the frame loop.** Object pools for particles and order cards; no per-frame
-  array or object creation in `step` or render.
+- **No allocation in the render loop.** Object pools for particles and order cards; no per-frame
+  array or object creation in render. A simulation `step` may return a new state that shares
+  every unchanged part with the old one (Randy, D-048); it must not copy the whole state, and
+  Tabao Rush must still meet its frame budget and show no garbage-collection pause over a full
+  round in `pnpm perf`.
 - **Fixed timestep.** Simulation cost is constant and independent of frame rate.
 - **Everything loaded before play.** No network requests, decoding or shader compilation during
   a round.

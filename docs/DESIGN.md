@@ -144,7 +144,7 @@ layout functions named below are in `tools/boards/board3_template.html`. Every s
 - **Tabao Rush buttons: 1A**, a diamond of four equal buttons, marked with the four shapes
   **cross, circle, square and triangle** in place of the letters A, B, X and Y. Cross (bottom)
   picks up and puts down, circle (right) acts, square (left) dashes, triangle (top) throws. The
-  shapes are drawn by us in the kit's own colours.
+  shapes are drawn by us in the kit's own colours, not the PlayStation colours (Randy, D-048).
 - **Stick: 2B**, floating: it appears where the left thumb lands, inside an outlined area.
 - **Button style: 3A**, filled colour; a press is shown by scale 0.97 and a vibration.
 - **Peek Poker picker: 4B**, grid in the centre with 89 px cells and a 144 px Lock in button

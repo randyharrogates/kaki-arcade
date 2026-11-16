@@ -35,9 +35,7 @@ held at 60 Hz measured about 22 MB an hour through a relay, against the 10 MB an
 behind the 800 GB limit in NET-004; the send policy for C-04 (on touch plus a 30 Hz tick) roughly
 halves it. Needed by: C-04, S-04.
 
-**OQ-026 · Rabakz buzzer rules: Claude's readings to confirm.** (1) "Same time" means within
-0.25 s of the first correct answer. (2) An option answered wrongly is marked wrong on the TV for
-everyone. (3) In team mode the question's points go to the winner's team. (4) Solo: only the
+**OQ-026 · Rabakz buzzer rules: Claude's readings to confirm.** (1) and (2) confirmed, D-048. (3) In team mode the question's points go to the winner's team. (4) Solo: only the
 first answer scores. (5) The streak counts questions won in a row. (6) True-or-false questions
 stay in: after one wrong answer the next player gets an easy point. (7) Question files are static, so a player who opens one in a browser can read the answers; this is accepted for a party game played in one room. Needed by: R-01.
 
@@ -46,14 +44,6 @@ counted in visible characters, so Tamil names and emoji such as 🤷‍♀️ ar
 are stored. (2) The Singapore question pack (R-12) writes place and food names in romanised form
 only; Chinese or Tamil script on the question screen would need its widths measured first.
 Needed by: C-06, R-12.
-
-**OQ-030 · May a simulation step create objects?** `PERFORMANCE.md` §2 says no per-frame array or
-object creation in `step` or render. The safest rule for game code is "`step` returns a new state
-and never changes the one it was given", which creates objects every step. Free for Rabakz and
-Peek Poker; for Tabao Rush at 60 steps a second it is unmeasured. Options: (a) amend §2 to allow
-copies that share unchanged parts, and measure Tabao Rush against the frame budget; (b) let
-games change state in place and drop the freeze check for them. Claude recommends (a). Only
-Randy changes §2. Needed by: F-04.
 
 ## Assumptions Claude is working to (say if wrong)
 

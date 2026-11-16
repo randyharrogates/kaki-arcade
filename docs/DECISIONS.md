@@ -39,3 +39,10 @@ and triangle, not letters; stick **2B** floating; button style **3A** filled; Pe
 **4B**. Claude's reading: the shapes sit where that layout puts them (triangle top, circle
 right, cross bottom, square left), drawn by us in the kit's colours, not copied artwork or
 that maker's colours (rule 7). The golden-ratio variant 1B was offered and not chosen.
+
+**D-048 · 2026-11-16 · Randy** — (1) Shape buttons are drawn in Kaki Arcade's own colours, not
+the PlayStation colours. (2) `PERFORMANCE.md` §2 amended: a simulation step may return a new
+state that shares unchanged parts ("allow it, then measure"); Tabao Rush must prove it in the
+performance harness. Closes OQ-030. (3) Rabakz: "same time" is within 0.25 s of the first
+correct answer, and a wrongly chosen option is marked wrong on the TV for everyone (RZ-005,
+RZ-006 stand as written).
