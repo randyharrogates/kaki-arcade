@@ -365,3 +365,9 @@ or ambiguous words only as whole words; protected names are checked per word.
 characters (shown as two groups of four) until the per-client limit on failed joins exists
 (C-03). Six characters leaned on a rate limit that is not built yet; shortening the code is
 reconsidered when C-03 merges.
+
+**D-066 · 2026-11-16 · Claude (under D-057)** — The host proves its secret when it opens its
+socket, not in a first message: it offers the WebSocket subprotocols `kaki.v1` and
+`kaki.host.<secret>`; the server checks the secret before accepting and answers with `kaki.v1`.
+So no unproven connection can ever hold or block the host's place. Phones offer `kaki.v1` only.
+The protocol's `reopen` message is retired with `create` in F-02b.
