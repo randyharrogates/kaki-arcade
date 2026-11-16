@@ -10,8 +10,8 @@ design gate (board 1); this file is the process.
   `blender`.
 - Driven headlessly by Python scripts in `tools/blender/`:
   `blender -b --factory-startup -P tools/blender/<script>.py -- <args>`
-- No add-ons and no manual clicking: every asset must be reproducible from a script and a
-  `.blend` source, so it can be rebuilt and reviewed.
+- No add-ons and no manual clicking: every asset must be reproducible from a script alone, so
+  it can be rebuilt and reviewed. The script builds the scene; no `.blend` file is a source.
 - `tools/blender/sample_stall.py` is the first-pass sample scene from the art comparison
   (simple solids, Cycles, about ten seconds a frame on the M3). It is a reference for the
   scripting approach, not a style.
@@ -74,5 +74,8 @@ Models, rigs, animation scripts and all code are Claude's.
 
 ## 7. Source files
 
-`.blend` files are binary and large. They are tracked with Git LFS under `assets/src/`. Set
-this up in M2 before the first real model is committed.
+The scripts in `tools/blender/` are the source. **`.blend` files are not committed and Git LFS
+is not used** (Randy, 2026-11-16, D-054): a script may save a `.blend` for inspection, but it
+is git-ignored and can be deleted at any time. Small hand-made inputs a script needs (a
+texture, a reference image) go under `assets/src/` as ordinary files and count towards the
+repository size, so keep them small.

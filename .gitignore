@@ -8,6 +8,7 @@ dist/
 .DS_Store
 playwright-report/
 test-results/
+*.blend
 *.blend1
 __pycache__/
 coverage/

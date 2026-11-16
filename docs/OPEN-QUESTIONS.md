@@ -13,10 +13,6 @@ trademarks or existing games of the same name. Check before public release (M8).
 in code. Music needs a source: tracks under a free licence with credit, or loops composed in
 code. Claude will put two or three candidates per game to Randy to hear. Needed by: M6.
 
-**OQ-008 · Git LFS for `.blend` files.** GitHub's free LFS allowance is small. If sources grow
-past it, options are paying for LFS or keeping sources in Cloudflare R2. Decide when sizes are
-known. Needed by: M5.
-
 **OQ-028 · Network spike (S-01): needs Randy's real phones, and a ruling on PERF-010.** On one Mac
 with emulated phones the network costs 1 to 4 ms and scripted input reaches the simulation in
 17 to 31 ms at the 95th percentile with 8 phones, inside the 50 ms budget. But the one emulated

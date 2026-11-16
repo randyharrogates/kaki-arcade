@@ -12,7 +12,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
-| A-01 | Pipeline tooling: `pnpm assets`, atlas packer, manifest with sizes checked against the budgets, half-resolution variants, Git LFS | PERF-023, PERF-024 | F-01 | 1 | doing (Codex) |
+| A-01 | Pipeline tooling: `pnpm assets`, atlas packer, manifest with sizes checked against the budgets, half-resolution variants (no Git LFS: D-054) | PERF-023, PERF-024 | F-01 | 1 | doing (Codex) |
 | A-02 | The cook body: rig and 9 actions in 8 directions with no foot sliding, colour mask for apron and cap, head anchor per frame | TR-060, NN-4 | G-01, S-02, A-01 | 2 | todo |
 | A-03 | The 8 character heads in 8 directions | TR-064, TR-061 | A-02 | 2 | todo |
 | A-04 | Ingredients and the 7 dishes in each state, with order-card icons | TR-040, TR-041 | G-01, A-01 | 2 | todo |

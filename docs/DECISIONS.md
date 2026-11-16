@@ -77,3 +77,7 @@ merges; every issue keeps an independent Claude review. `CLAUDE.md` rule 8, `AGE
 control other than a face button is 89 px wide by 68 px tall, not 89 px square. A square floor
 would have made the Peek Poker grid Randy chose on board 4 (4 × 4 cells of 89 × 68 px) 380 px
 tall, which does not fit a 390 px phone. Found by the F-04 review.
+
+**D-054 · 2026-11-16 · Randy** — No Git LFS. Every model is built by a script, so the scripts
+are the source and `.blend` files are not committed ("go with ur recommendation"). Closes
+OQ-008; `ART-PIPELINE.md` §1 and §7, the A-01 backlog line and `.gitignore` updated.
