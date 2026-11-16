@@ -15,7 +15,7 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 | T-01 | State shape, movement on the next step with no smoothing, 8-way facing, soft collisions that never deadlock, the station a cook would use | TR-002, TR-020, TR-021, TR-022 | F-04 | 1 | merged |
 | T-02 | Items: carry one thing, crates, counters, passing, throwing and catching | TR-002, TR-009, TR-023 | T-01 | 1 | merged |
 | T-03 | Stations and timers: chop, wok, pot, grill, rice, drinks, plating, sink, bin; burning with a warning; fires that start, spread and are put out | TR-007, TR-008, TR-010, TR-030 | T-01 | 1 | merged |
-| T-04 | Recipes for the 7 dishes, plating, serving, rejection with a reason | TR-003, TR-004, TR-040 | T-02, T-03 | 1 | doing (Codex) |
+| T-04 | Recipes for the 7 dishes, plating, serving, rejection with a reason | TR-003, TR-004, TR-040 | T-02, T-03 | 1 | merged |
 | T-05 | Orders, patience, score and tips, stars, scaling by player count, round timer | TR-001, TR-004, TR-005, TR-006 | T-04 | 1 | todo |
 | T-06 | Level format and loader: collision map, station anchors, twists; a validator that every level fits the screen with no scrolling | TR-050, TR-057 | T-01 | 1 | todo |
 | T-07 | Big-screen renderer: baked background, sprites from atlases, body plus head, interpolation for everything not player-controlled, HUD and order cards | TR-001, TR-030, TR-031, TR-061, TR-062, PERF-001 | T-05, S-04, A-02, F-06 | 2 | todo |
@@ -73,4 +73,16 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
   extinguisher" (today it is refused at the first step, not at init). T-04 clears a plate's
   history when it goes dirty (it grows by one entry per wash). If the last fire goes out in the
   step a new one starts, the fire clock does not restart. All station timings are D-080 and
+  provisional until seen on a screen.
+- **From T-04 (recipes), for T-05:** `stationCross` calls `checkRecipe(held)` with no allowed
+  list: pass in the open orders. "Not ordered" is checked last, so a dish that is both wrong
+  and not ordered reports its defect. A served event names the drink and carries the step.
+  Containers still in transit at round end stay in `returns`. **For T-06:** one reachable
+  return counter per kitchen; one rack per container kind with its kind set; keep serving
+  counters, racks and return counters out of `fireNeighbours`; the validator owns "a level
+  needs a return counter" (thrown in `prepareStations` today); keep rack contents bounded;
+  the fixtures' return counter at tile 0 cannot be walked to. **Tidy:** restore the 8-cook
+  serve journey or assert a served dish inside the kit script; route `separateCup` through
+  `relocate`. **For T-07:** fire hands a separated cup to whichever empty-handed cook is
+  aiming at the station, which will look odd. All counts and timings are D-085 and D-087,
   provisional until seen on a screen.

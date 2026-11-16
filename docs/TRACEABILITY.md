@@ -186,12 +186,12 @@ requirement.
 |---|---|---|---|---|---|---|---|
 | TR-001 | MUST | Orders appear as cards on an order board (dish, recipe icons, patience timer); no customer characters | M5 | not started | — | — | — |
 | TR-002 | MUST | Players move freely around the stall floor, carry one item at a time, and interact with the station they face | M5 | in progress | `games/tabao-rush/src/rules/` (movement and carrying; rules only) | `games/tabao-rush/src/rules/movement.test.ts` | `uat/evidence/T-01-tabao-movement/`, `uat/evidence/T-02-tabao-items/` |
-| TR-003 | MUST | A dish is made by taking ingredients through stations in the recipe's order, then plating and delivering… | M5 | not started | — | — | — |
-| TR-004 | MUST | Correct orders score points plus a speed tip | M5 | not started | — | — | — |
+| TR-003 | MUST | A dish is made by taking ingredients through stations in the recipe's order, then plating and delivering… | M5 | in progress | `games/tabao-rush/src/rules/recipes.ts`, `stations.ts` (seven recipes as data, containers, ordered steps; rules only, no screen) | `games/tabao-rush/src/rules/recipes.test.ts` | `uat/evidence/T-04-tabao-recipes/` |
+| TR-004 | MUST | Correct orders score points plus a speed tip | M5 | in progress | `games/tabao-rush/src/rules/recipes.ts`, `stations.ts` (serving and rejection with a reason only; scoring, tips and orders are T-05) | `games/tabao-rush/src/rules/recipes.test.ts` | `uat/evidence/T-04-tabao-recipes/` |
 | TR-005 | MUST | A round lasts a fixed time (default 3 minutes 30 seconds) | M5 | not started | — | — | — |
 | TR-006 | MUST | Score thresholds and order rate scale with the number of players so 1 player and 8 players both face a… | M5 | not started | — | — | — |
 | TR-007 | MUST | Cooking stations run on timers once loaded | M5 | in progress | `games/tabao-rush/src/rules/stations.ts` (rules only; no screen) | `games/tabao-rush/src/rules/stations.test.ts` | `uat/evidence/T-03-tabao-stations/` |
-| TR-008 | MUST | Used plates return dirty and must be washed before reuse | M5 | in progress | `games/tabao-rush/src/rules/stations.ts` (rules only; dirty plates have no source until T-04) | `games/tabao-rush/src/rules/stations.test.ts` | `uat/evidence/T-03-tabao-stations/` |
+| TR-008 | MUST | Used plates return dirty and must be washed before reuse | M5 | in progress | `games/tabao-rush/src/rules/stations.ts` (rules only; served containers come back dirty at the return counter and are washed at the sink, T-04) | `games/tabao-rush/src/rules/stations.test.ts` | `uat/evidence/T-03-tabao-stations/` |
 | TR-009 | MUST | Throwing a held raw or chopped ingredient on an arc; teammates catch | M5 | in progress | `games/tabao-rush/src/rules/items.ts` (rules only; no screen) | `games/tabao-rush/src/rules/items.test.ts` | `uat/evidence/T-02-tabao-items/` |
 | TR-010 | MUST | Fires: start, spread, burning station unusable, extinguisher; harder levels only | M6 | in progress | `games/tabao-rush/src/rules/stations.ts` (rules only; no screen) | `games/tabao-rush/src/rules/stations.test.ts` | `uat/evidence/T-03-tabao-stations/` |
 | TR-020 | MUST | Movement responds on the next simulation step after input arrives, with no acceleration smoothing while… | M5 | in progress | `games/tabao-rush/src/rules/` (rules only; no screen) | `games/tabao-rush/src/rules/movement.test.ts` | `uat/evidence/T-01-tabao-movement/` |
@@ -200,7 +200,7 @@ requirement.
 | TR-023 | MUST | Players can pass items by placing them on counters | M5 | in progress | `games/tabao-rush/src/rules/items.ts` (rules only; no screen) | `games/tabao-rush/src/rules/items.test.ts` | `uat/evidence/T-02-tabao-items/` |
 | TR-030 | MUST | Every station shows its state at a glance from 3 m: empty, working (with progress), done, burning | M5 | in progress | `games/tabao-rush/src/rules/stations.ts` (view data only; nothing is drawn) | `games/tabao-rush/src/rules/stations.test.ts` | `uat/evidence/T-03-tabao-stations/` |
 | TR-031 | MUST | Progress and state are readable without colour alone (NFR-A11Y) | M5 | not started | — | — | — |
-| TR-040 | MUST | 7 dishes at launch, introduced gradually across levels | M6 | not started | — | — | — |
+| TR-040 | MUST | 7 dishes at launch, introduced gradually across levels | M6 | in progress | `games/tabao-rush/src/rules/recipes.ts`, `stations.ts` (the seven dishes exist as recipes; gradual introduction is T-06 and T-16) | `games/tabao-rush/src/rules/recipes.test.ts` | `uat/evidence/T-04-tabao-recipes/` |
 | TR-041 | MUST | Each dish is recognisable as itself at game size on a TV (checked at the design gate and in UAT) | M6 | not started | — | — | — |
 | TR-050 | MUST | 8 co-op levels across hawker-world venues, each a distinct layout and twist; fires from level 5 | M6 | not started | — | — | — |
 | TR-051 | MUST | Co-op mode for 1 to 8 players | M5 | not started | — | — | — |

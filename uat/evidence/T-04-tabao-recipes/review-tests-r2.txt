@@ -1,0 +1,13 @@
+Final workspace verification: exit 0; 85 files passed, 2380 tests passed, 1 existing skipped.
+A: exhaustive preparation/container enumeration PASS; no ruins or preview mismatches.
+A additional: lifted broth + bowl noodles + add preview completes laksa PASS.
+B: bin separation, own-kind racks, named cup lift PASS.
+B additional: washing and fire separate cups with identities/state retained PASS.
+C: toast alone / loose drink / empty cup -> missing ingredient: drink PASS.
+D: replacement plating content resets to 0/0; simultaneous work counts once PASS.
+Reviewer R1-R16 updated for D-087: PASS.
+Round-2 fuzz: 8/8 PASS (1/2/4/8 cooks, fires enabled/disabled).
+Round-1 fuzz: 8/8 PASS.
+All seven original walking/button prepare/assemble/serve/return/wash/rack journeys: PASS.
+Conformance: PASS, both 12601-step scenarios and membership replays, all checks retained.
+Existing 120-second conformance test limit retained; no limit raised.

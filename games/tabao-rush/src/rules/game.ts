@@ -3,7 +3,7 @@ import { secondsToSteps } from '@kaki/platform';
 import type { ControllerLayout, GameModule, PlayerInfo } from '@kaki/platform';
 import { prepareStations, advanceStations, stationViews } from './stations';
 import { TEST_LEVEL } from './level';
-import { dropLeaving, floorPickup, interactItems, landItems } from './items';
+import { dropLeaving, floorPickup, interactItems, landItems, actionPreview } from './items';
 import { moveCooks } from './movement';
 import { inventory, items, participant, SOFT_SEPARATION } from './state';
 import type { Cook, TabaoState } from './state';
@@ -72,7 +72,7 @@ export const tabaoRush: GameModule<TabaoState> = {
   },
   step(state, inputs) {
     if (state.tick >= state.endTick) return state;
-    const interacted = advanceStations(interactItems(prepareStations(state), inputs));
+    const interacted = advanceStations(interactItems(prepareStations(state.serviceEvents?.length ? { ...state, serviceEvents: [] } : state), inputs));
     return landItems({
       ...interacted,
       tick: state.tick + 1,
@@ -99,13 +99,16 @@ export const tabaoRush: GameModule<TabaoState> = {
   },
   publicView(state) {
     const prepared = prepareStations(state);
+    const inTransit = new Set(prepared.returns?.map((r) => r.item.id));
     return {
       level: state.level,
-      items: items(prepared),
+      items: items(prepared).filter((item) => !inTransit.has(item.id)),
       stations: stationViews(prepared),
+      serviceEvents: state.serviceEvents ?? [],
       players: state.players,
       cooks: state.cooks.map((cook) => ({ ...cook,
         floorItem: floorPickup(state, cook)?.id ?? null,
+        actions: actionPreview(prepared, cook),
       })),
       tick: state.tick,
       endTick: state.endTick,
@@ -114,7 +117,7 @@ export const tabaoRush: GameModule<TabaoState> = {
   privateView: () => null,
   controllerLayout(state, id) {
     return state.players.some((player) => player.id === id && !player.spectating)
-      ? Object.keys(state.stations ?? {}).length > 0
+      ? Object.values(state.stations ?? {}).some((s) => s.type !== 'return-counter' && s.type !== 'dish-rack' && s.type !== 'serving' && s.type !== 'bin')
         ? STATION_LAYOUT : PLAY_LAYOUT
       : WATCH_LAYOUT;
   },

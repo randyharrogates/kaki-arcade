@@ -3,6 +3,7 @@ import type { Level, Tile } from '../state';
 export function build(id: string, rows: string[], spawns: { x: number; y: number }[]): Level {
   const width = (rows[0] ?? '').length;
   return { id, width, height: rows.length, spawns, tiles: rows.flatMap((row, y) => Array.from(row, (m, x): Tile => {
+    if (x === 0 && y === 0) return { kind: 'station', stationId: 'returns', stationType: 'return-counter' };
     if (m === '#') return { kind: 'wall' };
     if (m === 'c') return { kind: 'counter' };
     if (m === 's') return { kind: 'station', stationId: `s${String(y * width + x)}` };

@@ -19,6 +19,7 @@ const level: Level = {
   id: 'station-mechanisms', width: 14, height: 5, firesEnabled: true, extinguisherTile: 26,
   spawns: Array.from({ length: 8 }, (_, i) => ({ x: i + 1.5, y: 2.5 })),
   tiles: Array.from({ length: 70 }, (_, i) => {
+    if (i === 0) return { kind: 'station', stationId: 'returns', stationType: 'return-counter' };
     const type = types[i - 15];
     if (type) return { kind: 'station', stationId: type, stationType: type };
     if (i === 24) return { kind: 'station', stationId: 'crate', ingredient: 'kopi' };
@@ -35,8 +36,11 @@ function aim(state: TabaoState, tile: number, id = 'p0'): TabaoState {
   return { ...state, cooks: state.cooks.map((c) => c.id === id ? { ...c, targetTile: tile,
     x: tile % 14 + 0.5, y: Math.floor(tile / 14) + 1.5, facing: 6 } : c) };
 }
-function hand(state: TabaoState, kind: Item['kind'], ingredient = 'kopi', id = 'p0'): TabaoState {
-  const item: Item = { id: state.nextItemId, kind, ingredient, place: { kind: 'held', cook: id } };
+function hand(state: TabaoState, kind: Item['kind'], ingredient?: string, id = 'p0'): TabaoState {
+  const target = state.cooks.find((c) => c.id === id)?.targetTile;
+  const type = target === null || target === undefined ? undefined : state.stations?.[target]?.type;
+  ingredient ??= type === 'chop' ? 'satay' : type === 'grill' ? kind === 'raw' ? 'bread' : 'satay' : type === 'wok' ? 'kway-teow' : type === 'pot' ? 'laksa-broth' : type === 'rice' ? 'rice' : 'kopi';
+  const item: Item = { id: state.nextItemId, kind, ingredient, ...(kind === 'chopped' ? { processes: ['chop'] as const } : {}), place: { kind: 'held', cook: id } };
   return { ...state, nextItemId: state.nextItemId + 1, inventory: { ...state.inventory,
     held: { ...state.inventory.held, [id]: item } } };
 }
@@ -53,7 +57,7 @@ function run(state: TabaoState, n: number, buttons = 0): TabaoState {
   for (let i = 0; i < n; i++) state = step(state, input(buttons));
   return state;
 }
-function load(type: StationType, kind: Item['kind'] = 'raw'): TabaoState {
+function load(type: StationType, kind: Item['kind'] = type === 'wok' ? 'chopped' : 'raw'): TabaoState {
   return itemPress(hand(aim(initial(), 15 + types.indexOf(type)), kind), 'p0', 'cross');
 }
 function station(state: TabaoState, type: StationType) {
@@ -90,7 +94,7 @@ it('A04 fire spreads to a station separated by one plain counter', () => {
   const w = 10;
   const lv: Level = { id: 'gap', width: w, height: 4, firesEnabled: true, extinguisherTile: 18,
     spawns: [{ x: 1.5, y: 2.5 }],
-    tiles: Array.from({ length: 40 }, (_, i) => i === 12 ? { kind: 'station', stationId: 'w', stationType: 'wok' as const }
+    tiles: Array.from({ length: 40 }, (_, i) => i === 0 ? { kind: 'station', stationId: 'returns', stationType: 'return-counter' as const } : i === 12 ? { kind: 'station', stationId: 'w', stationType: 'wok' as const }
       : i === 13 ? { kind: 'counter' } : i === 14 ? { kind: 'station', stationId: 'p', stationType: 'pot' as const }
       : i === 18 ? { kind: 'counter' }
       : i < w || i >= 30 || i % w === 0 || i % w === w - 1 ? { kind: 'wall' } : { kind: 'floor' }) };

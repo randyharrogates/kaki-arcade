@@ -19,6 +19,7 @@ export const TEST_LEVEL: Level = {
     '#........#',
     '##########',
   ].flatMap((row, y) => Array.from(row, (mark, x): Tile => {
+    if (x === 0 && y === 0) return { kind: 'station', stationId: 'returns', stationType: 'return-counter' };
     if (mark === '#') return WALL;
     if (mark === 's') return { kind: 'station', stationId: `anchor-${String(y * 10 + x)}`,
       ...(x === 3 ? { ingredient: 'cucumber' } : {}) };

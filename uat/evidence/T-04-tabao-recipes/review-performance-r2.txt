@@ -1,0 +1,11 @@
+[A] returns in transit=343 returned=14057
+[A] steps delivering returns=12300 mean=0.0425 p95=0.0894 worst=0.655 ms
+[A] steps>1ms=1 overlapping a GC=0 gcEvents=0
+[A] step mean=0.0426 p95=0.0898 p99=0.1588 worst=0.655 (all-worst 1.776@0) over1ms=0 top=1.776@0,0.709@69,0.655@12586,0.645@28,0.574@10236,0.500@8477,0.389@7939,0.387@5408
+[A] view mean=0.7964 p95=1.4465 worst=8.017 bytes=1577527 events=2
+[B] returns in transit=343 returned=14057
+[B] steps delivering returns=12300 mean=0.0407 p95=0.0806 worst=3.035 ms
+[B] steps>1ms=2 overlapping a GC=0 gcEvents=0
+[B] step mean=0.0408 p95=0.0810 p99=0.1206 worst=3.035 (all-worst 3.035@10838) over1ms=2 top=3.035@10838,1.198@9808,0.965@8418,0.680@10276,0.555@401,0.526@6728,0.451@8229,0.429@3650
+[B] view mean=0.7249 p95=1.1930 worst=4.037 bytes=1577527 events=2
+[idle] mean=0.0069 p95=0.0079 worst=0.369

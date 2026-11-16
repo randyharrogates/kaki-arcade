@@ -156,6 +156,14 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   edge:** a staging probe is required first (D-089, OQ-030). Built by Codex; five review
   rounds and three smoke rounds.
 
+- **Tabao Rush recipes (T-04).** The seven dishes as data; plates, bowls and cups that hold
+  food; racks, a return counter for dirty containers and washing; laksa, mixing and spreading;
+  a serving counter that accepts a correct dish and refuses a wrong one with a specific reason
+  without consuming it. Each dish is cooked and served from crates by walking and button
+  presses in a scripted test. No food or container lost or duplicated in the reviewed fuzz, no
+  soft lock found. Orders, patience and scoring are T-05. Rules only: no screen yet. Built by
+  Codex; three review rounds.
+
 ## Does not exist yet
 
 - No host page, controller or game screen yet.

@@ -1,0 +1,75 @@
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 11 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 170 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-04
+
+1 true {"c:plate:counter":99154,"c:plate:held":1646,"crate":61,"ev:rejected:nothing-to-serve":5,"ev:rejected:wrong-container":24,"maxFloor":26,"maxLive":49,"pv:bin":21,"pv:nothing":3821,"pv:pick":311,"pv:put":94,"pv:reject:":29,"pv:return":28,"pv:take":29,"pvc:chop":73,"pvc:drinks":21,"pvc:extinguish":693,"pvc:nothing":4362,"pvc:turn":6,"sink:bin":21,"sink:fire":2}
+1 false {"c:dirty-plate:counter":8712,"c:dirty-plate:held":10,"c:dish:counter":16941,"c:dish:held":7214,"c:plate:counter":65827,"c:plate:held":2096,"crate":75,"ev:rejected:missing-ingredient":24,"ev:rejected:nothing-to-serve":7,"ev:rejected:wrong-container":52,"ev:served:laksa":1,"maxFloor":27,"maxLive":52,"pv:add":13,"pv:bin":34,"pv:nothing":3335,"pv:pick":579,"pv:place":20,"pv:pour":9,"pv:put":157,"pv:reject:":83,"pv:return":38,"pv:serve":1,"pv:take":44,"pvc:chop":122,"pvc:drinks":60,"pvc:nothing":4875,"pvc:spread":4,"pvc:turn":6,"pvc:wash":32,"sink:bin":37,"sink:served":2}
+2 true {"c:dirty-plate:counter":10637,"c:dirty-plate:held":4,"c:dish:counter":12181,"c:dish:held":319,"c:plate:counter":75412,"c:plate:held":2247,"crate":85,"ev:rejected:missing-ingredient":16,"ev:rejected:nothing-to-serve":8,"ev:rejected:wrong-container":73,"ev:served:laksa":1,"maxFloor":28,"maxLive":52,"pv:add":13,"pv:bin":35,"pv:nothing":3792,"pv:pick":575,"pv:pour":7,"pv:put":162,"pv:reject:":73,"pv:return":30,"pv:serve":1,"pv:take":32,"pvc:chop":120,"pvc:drinks":68,"pvc:nothing":5177,"pvc:spread":3,"pvc:turn":3,"pvc:wash":33,"sink:bin":45,"sink:served":2}
+2 false {"c:dirty-plate:counter":11829,"c:dirty-plate:held":2,"c:dish:counter":11553,"c:dish:held":1665,"c:plate:counter":72579,"c:plate:held":3172,"crate":96,"ev:rejected:missing-ingredient":33,"ev:rejected:nothing-to-serve":5,"ev:rejected:wrong-container":69,"ev:served:laksa":1,"maxFloor":28,"maxLive":55,"pv:add":14,"pv:bin":40,"pv:nothing":3870,"pv:pick":516,"pv:place":1,"pv:pour":6,"pv:put":135,"pv:reject:":78,"pv:return":56,"pv:serve":1,"pv:take":55,"pvc:chop":70,"pvc:drinks":46,"pvc:nothing":5299,"pvc:spread":11,"pvc:turn":6,"pvc:wash":24,"sink:bin":54,"sink:served":2}
+4 true {"c:dirty-plate:counter":10452,"c:dirty-plate:held":1,"c:dish:counter":16292,"c:dish:held":3431,"c:plate:counter":64744,"c:plate:held":5880,"crate":141,"ev:rejected:missing-ingredient":55,"ev:rejected:nothing-to-serve":8,"ev:rejected:wrong-container":109,"ev:served:laksa":1,"maxFloor":30,"maxLive":62,"pv:add":9,"pv:bin":39,"pv:nothing":4544,"pv:pick":532,"pv:place":5,"pv:pour":5,"pv:put":156,"pv:reject:":77,"pv:return":37,"pv:serve":1,"pv:take":49,"pvc:chop":100,"pvc:drinks":69,"pvc:nothing":6260,"pvc:spread":7,"pvc:turn":4,"pvc:wash":31,"sink:bin":99,"sink:served":2}
+4 false {"c:dish:counter":5260,"c:dish:held":421,"c:plate:counter":88913,"c:plate:held":6206,"crate":124,"ev:rejected:missing-ingredient":61,"ev:rejected:nothing-to-serve":21,"ev:rejected:wrong-container":77,"maxFloor":31,"maxLive":60,"pv:add":14,"pv:bin":32,"pv:nothing":4559,"pv:pick":571,"pv:pour":1,"pv:put":174,"pv:reject:":65,"pv:return":60,"pv:take":56,"pvc:chop":101,"pvc:drinks":84,"pvc:nothing":6179,"pvc:spread":11,"pvc:turn":5,"sink:bin":84}
+8 true {"c:dirty-plate:counter":11666,"c:dirty-plate:held":13,"c:dish:counter":15771,"c:dish:held":6062,"c:plate:counter":57640,"c:plate:held":9648,"crate":351,"ev:rejected:missing-ingredient":190,"ev:rejected:nothing-to-serve":20,"ev:rejected:wrong-container":303,"ev:served:laksa":3,"maxFloor":35,"maxLive":73,"pv:add":17,"pv:bin":57,"pv:nothing":4662,"pv:pick":563,"pv:place":10,"pv:pour":7,"pv:put":134,"pv:reject:":94,"pv:return":31,"pv:take":28,"pvc:chop":84,"pvc:drinks":70,"pvc:nothing":6399,"pvc:spread":6,"pvc:turn":3,"pvc:wash":20,"sink:bin":301,"sink:served":6}
+8 false {"c:dirty-plate:counter":9310,"c:dirty-plate:held":14,"c:dish:counter":9070,"c:dish:held":2781,"c:plate:counter":69106,"c:plate:floor":38,"c:plate:held":10481,"crate":314,"ev:rejected:missing-ingredient":149,"ev:rejected:nothing-to-serve":36,"ev:rejected:wrong-container":298,"ev:served:char-kway-teow":1,"ev:served:laksa":1,"maxFloor":37,"maxLive":66,"pv:add":18,"pv:bin":44,"pv:nothing":4796,"pv:pick":529,"pv:place":2,"pv:pour":5,"pv:put":135,"pv:reject:":121,"pv:return":37,"pv:take":33,"pvc:chop":100,"pvc:drinks":54,"pvc:nothing":6286,"pvc:spread":3,"pvc:turn":2,"pvc:wash":24,"pvc:wok":1,"sink:bin":266,"sink:served":3}
+1 true {"c:plate:counter":99154,"c:plate:held":1646,"crate":61,"ev:rejected:nothing-to-serve":5,"ev:rejected:wrong-container":24,"maxFloor":26,"maxLive":49,"pv:bin":21,"pv:nothing":3821,"pv:pick":311,"pv:put":94,"pv:reject:":29,"pv:return":28,"pv:take":29,"pvc:chop":73,"pvc:drinks":21,"pvc:extinguish":693,"pvc:nothing":4362,"pvc:turn":6,"sink:bin":21,"sink:fire":2}
+1 false {"c:dish:counter":9016,"c:dish:held":2719,"c:plate:counter":86253,"c:plate:held":2812,"crate":69,"ev:rejected:missing-ingredient":35,"ev:rejected:nothing-to-serve":14,"ev:rejected:wrong-container":38,"maxFloor":28,"maxLive":48,"pv:add":12,"pv:bin":33,"pv:nothing":3407,"pv:pick":526,"pv:place":4,"pv:pour":4,"pv:put":174,"pv:reject:":87,"pv:return":45,"pv:take":50,"pvc:chop":106,"pvc:drinks":64,"pvc:nothing":4884,"pvc:turn":5,"sink:bin":34}
+2 true {"c:dish:counter":8920,"c:dish:held":364,"c:plate:counter":88556,"c:plate:held":2960,"crate":87,"ev:rejected:missing-ingredient":31,"ev:rejected:nothing-to-serve":6,"ev:rejected:wrong-container":74,"maxFloor":30,"maxLive":51,"pv:add":13,"pv:bin":37,"pv:nothing":3879,"pv:pick":519,"pv:put":155,"pv:reject:":87,"pv:return":46,"pv:take":50,"pvc:chop":101,"pvc:drinks":58,"pvc:nothing":5171,"pvc:spread":3,"pvc:turn":2,"sink:bin":49}
+2 false {"c:dirty-plate:counter":11828,"c:dirty-plate:held":3,"c:dish:counter":8389,"c:dish:held":319,"c:plate:counter":76848,"c:plate:floor":160,"c:plate:held":3253,"crate":98,"ev:rejected:missing-ingredient":35,"ev:rejected:nothing-to-serve":10,"ev:rejected:wrong-container":60,"ev:served:laksa":1,"maxFloor":28,"maxLive":52,"pv:add":8,"pv:bin":42,"pv:nothing":3748,"pv:pick":550,"pv:pour":3,"pv:put":138,"pv:reject:":82,"pv:return":49,"pv:serve":1,"pv:take":58,"pvc:chop":81,"pvc:drinks":66,"pvc:nothing":5295,"pvc:spread":3,"pvc:turn":2,"pvc:wash":24,"sink:bin":58,"sink:served":2}
+4 true {"c:dish:counter":5515,"c:dish:held":558,"c:plate:counter":89053,"c:plate:held":5674,"crate":117,"ev:rejected:missing-ingredient":49,"ev:rejected:nothing-to-serve":19,"ev:rejected:wrong-container":99,"maxFloor":31,"maxLive":55,"pv:add":14,"pv:bin":33,"pv:nothing":4535,"pv:pick":583,"pv:place":1,"pv:pour":1,"pv:put":177,"pv:reject:":62,"pv:return":43,"pv:take":57,"pvc:chop":117,"pvc:drinks":96,"pvc:nothing":6162,"pvc:spread":4,"pvc:turn":2,"sink:bin":80}
+4 false {"c:dish:counter":5787,"c:dish:held":849,"c:plate:counter":87668,"c:plate:held":6496,"crate":151,"ev:rejected:missing-ingredient":96,"ev:rejected:nothing-to-serve":24,"ev:rejected:wrong-container":134,"maxFloor":29,"maxLive":63,"pv:add":14,"pv:bin":49,"pv:nothing":4467,"pv:pick":616,"pv:place":1,"pv:pour":2,"pv:put":187,"pv:reject:":114,"pv:return":61,"pv:take":48,"pvc:chop":128,"pvc:drinks":95,"pvc:nothing":6103,"pvc:spread":1,"pvc:turn":2,"sink:bin":112}
+8 true {"c:dirty-plate:counter":16117,"c:dirty-plate:held":35,"c:dish:counter":7939,"c:dish:held":1934,"c:plate:counter":65742,"c:plate:held":9033,"crate":309,"ev:rejected:missing-ingredient":166,"ev:rejected:nothing-to-serve":29,"ev:rejected:wrong-container":334,"ev:served:kopi-teh":1,"ev:served:laksa":2,"maxFloor":35,"maxLive":63,"pv:add":13,"pv:bin":41,"pv:nothing":4800,"pv:pick":512,"pv:place":1,"pv:pour":1,"pv:put":126,"pv:reject:":108,"pv:return":24,"pv:take":26,"pvc:chop":83,"pvc:drinks":61,"pvc:nothing":6362,"pvc:spread":3,"pvc:wash":36,"sink:bin":257,"sink:served":5}
+8 false {"c:dirty-plate:counter":23087,"c:dirty-plate:held":1614,"c:dish:counter":8656,"c:dish:held":1286,"c:plate:counter":56436,"c:plate:held":9721,"crate":335,"ev:rejected:dirty":11,"ev:rejected:extra-ingredient":1,"ev:rejected:missing-ingredient":115,"ev:rejected:nothing-to-serve":30,"ev:rejected:wrong-container":244,"ev:served:kopi-teh":1,"ev:served:laksa":2,"maxFloor":37,"maxLive":66,"pv:add":9,"pv:bin":52,"pv:nothing":4772,"pv:pick":505,"pv:pour":6,"pv:put":134,"pv:reject:":77,"pv:return":41,"pv:take":33,"pvc:chop":91,"pvc:drinks":54,"pvc:nothing":6404,"pvc:spread":4,"pvc:turn":3,"pvc:wash":41,"sink:bin":279,"sink:served":5}
+[sim-core overhead] clock + loop: 0.0213 µs per step (0.00013% of a 16.7 ms step)
+[sim-core overhead] clock + loop + 8-controller input buffer: 0.4411 µs per step (0.00265% of a 16.7 ms step)
+[A] returns in transit=343 returned=14057
+[A] steps delivering returns=12300 mean=0.0425 p95=0.0894 worst=0.655 ms
+[A] steps>1ms=1 overlapping a GC=0 gcEvents=0
+[A] step mean=0.0426 p95=0.0898 p99=0.1588 worst=0.655 (all-worst 1.776@0) over1ms=0 top=1.776@0,0.709@69,0.655@12586,0.645@28,0.574@10236,0.500@8477,0.389@7939,0.387@5408
+[A] view mean=0.7964 p95=1.4465 worst=8.017 bytes=1577527 events=2
+[A broth lifted before noodles] {"lifted":"laksa-broth","canReturnToPot":false,"preview":"pick up"}
+[A ruins] []
+[A preview mismatches] []
+[B after bin] {"kind":"plate"}
+[B plate rack preview] "return plate"
+[B cup rack preview] "nothing"
+[B after refill] {"contents":["bread","kopi"],"check":{"reason":{"code":"missing-ingredient","ingredient":"drink"}}}
+[B second cup] {"plateCup":502}
+[B empty-hand cross takes] {"held":502,"hasCup":false}
+[C toast only] {"reason":{"code":"missing-ingredient","ingredient":"drink"}}
+[C toast + loose kopi] {"reason":{"code":"missing-ingredient","ingredient":"drink"}}
+[C toast + empty cup] {"reason":{"code":"missing-ingredient","ingredient":"drink"}}
+[C unspread toast + cup] {"reason":{"code":"missing-step","ingredient":"bread","step":"spread"}}
+[C rojak unmixed] {"reason":{"code":"missing-step","ingredient":"rojak","step":"mix"}}
+[C raw rice in hand] {"reason":{"code":"wrong-container"}}
+[D] {"afterPickup":{"status":"empty","p":0,"t":0},"emptyPlate":{"status":"done","p":0,"t":0}}
+[D two cooks] 1
+[E events served] 8
+[E return counter] {"n":8,"kinds":["plate:dirty-plate","bowl:dirty-plate","cup:dirty-plate"],"inTransit":0,"containers":8}
+[E round over mid-transit] {"over":true,"inTransit":1,"viewItems":8}
+[F burnt laksa] {"kind":"burnt","contents":[{"id":92,"kind":"cooked","ingredient":"noodles","processes":["pot"]}]}
+[F binned] {"foods":0}
+[G] {"ok":{"dish":"char-kway-teow"},"notOrdered":{"reason":{"code":"not-ordered"}},"wrongButNotOrdered":{"reason":{"code":"missing-step","ingredient":"kway-teow","step":"wok"}}}
+[B] returns in transit=343 returned=14057
+[B] steps delivering returns=12300 mean=0.0407 p95=0.0806 worst=3.035 ms
+[B] steps>1ms=2 overlapping a GC=0 gcEvents=0
+[B] step mean=0.0408 p95=0.0810 p99=0.1206 worst=3.035 (all-worst 3.035@10838) over1ms=2 top=3.035@10838,1.198@9808,0.965@8418,0.680@10276,0.555@401,0.526@6728,0.451@8229,0.429@3650
+[B] view mean=0.7249 p95=1.1930 worst=4.037 bytes=1577527 events=2
+[idle] mean=0.0069 p95=0.0079 worst=0.369
+
+ Test Files  85 passed (85)
+      Tests  2380 passed | 1 skipped (2381)
+   Start at  03:03:43
+   Duration  291.23s (transform 1.96s, setup 0ms, import 5.91s, tests 566.08s, environment 6ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+no bundles yet
+no asset sets in assets/src yet
+$ python3 tools/trace_check.py
+152 requirements; 64 in progress, 1 later, 87 not started
+trace check passed

@@ -1,0 +1,4 @@
+Final workspace verification: recipes.test.ts 29/29 PASS.
+Seven walking/button journeys PASS: chicken rice, char kway teow, satay, laksa, rojak, kaya toast set, kopi/teh.
+Seven defect suites, recipe data, capacity/bin, allowed dishes, previews, fire containers, unchanged conformance, 1–8 cook conservation/reload and bounded-work probes PASS.
+See verify.txt for the full workspace output and conformance.txt for kit details.

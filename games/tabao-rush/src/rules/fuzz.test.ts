@@ -17,6 +17,7 @@ const W = 16, H = 9;
 const top: (string | null)[] = [null, 'chop', 'wok', 'pot', 'grill', 'rice', 'drinks', 'plating', 'sink', 'bin', 'crate:kopi', 'crate:chicken', 'crate:teh', 'counter', 'counter', null];
 const bottom: (string | null)[] = [null, 'chop', 'counter', 'wok', 'wok', 'grill', 'counter', 'plating', 'sink', 'counter', 'counter', 'crate:bread', 'pot', 'rice', 'counter', null];
 const tiles: Tile[] = Array.from({ length: W * H }, (_, i) => {
+  if (i === 0) return { kind: 'station', stationId: 'returns', stationType: 'return-counter' };
   const x = i % W, y = Math.floor(i / W);
   if (x === 0 || x === W - 1 || y === 0 || y === H - 1) return { kind: 'wall' };
   const spec = y === 1 ? top[x] : y === 7 ? bottom[x] : (y === 4 && x >= 5 && x <= 9) ? 'counter' : null;
@@ -46,8 +47,9 @@ function setup(seed: number, n: number): TabaoState {
 }
 
 function check(before: TabaoState, after: TabaoState, frames: Map<string, { held: number; pressed: number }>, ctx: string, stats: Record<string, number>) {
-  const bi = new Map(items(before).map((i) => [i.id, i]));
-  const ai = items(after);
+  const expanded = (s: TabaoState): Item[] => items(s).flatMap((i) => [i, ...(i.contents ?? []).map((f) => ({ ...f, place: i.place }))]);
+  const bi = new Map(expanded(before).map((i) => [i.id, i]));
+  const ai = expanded(after);
   const ids = new Set(ai.map((i) => i.id));
   if (ids.size !== ai.length) throw new Error(`dup ids ${ctx}`);
   const ext = ai.filter((i) => i.kind === 'extinguisher');
@@ -82,7 +84,7 @@ function check(before: TabaoState, after: TabaoState, frames: Map<string, { held
       if (!st) throw new Error(`kind change outside station ${JSON.stringify(prior)} -> ${it.kind} ${ctx}`);
       if (prior.kind === 'burnt') throw new Error(`unburnt ${ctx}`);
       if (it.kind === 'burnt') { if (prior.kind !== 'cooked') throw new Error(`burnt from ${prior.kind}`); }
-      else if (it.kind !== OUT[st.type]) throw new Error(`wrong output ${st.type} ${it.kind} ${ctx}`);
+      else if (!(st.type === 'plating' && (it.kind === 'dish' || after.stations?.[st.tile]?.fire && it.kind === 'plate')) && it.kind !== OUT[st.type]) throw new Error(`wrong output ${st.type} ${it.kind} ${ctx}`);
       stats[`x:${st.type}:${it.kind}`] = (stats[`x:${st.type}:${it.kind}`] ?? 0) + 1;
     }
     // leaving a station: what came out must be finished output, burnt, or plating storage
@@ -95,6 +97,8 @@ function check(before: TabaoState, after: TabaoState, frames: Map<string, { held
     }
     const history = prior.processes ?? [];
     expect((it.processes ?? []).slice(0, history.length)).toEqual(history);
+    const nested = items(after).some((parent) => parent.contents?.some((f) => f.id === it.id));
+    if (nested) continue;
     const p = it.place;
     if (p.kind === 'held' && after.inventory.held[p.cook] !== it) throw new Error(`held idx ${ctx}`);
     if (p.kind === 'counter' && (after.stations?.[p.tile]?.content ?? after.inventory.counters[p.tile]) !== it) throw new Error(`counter idx ${ctx}`);

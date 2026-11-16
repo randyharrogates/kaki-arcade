@@ -1,4 +1,5 @@
 import type { ColourToken, PlayerInfo } from '@kaki/platform';
+import type { Rejection, ServiceEvent } from './recipes';
 import type { RngState } from '@kaki/sim-core';
 
 /** Tile units; positive y is down the screen. All tuning is provisional for T-01. */
@@ -15,7 +16,7 @@ export type Tile =
   | { readonly kind: 'floor' }
   | { readonly kind: 'wall' }
   | { readonly kind: 'counter' }
-  | { readonly kind: 'station'; readonly stationId: string; readonly ingredient?: string; readonly stationType?: StationType };
+  | { readonly kind: 'station'; readonly stationId: string; readonly ingredient?: string; readonly kitchen?: string; readonly container?: Container; readonly stationType?: StationType };
 
 export interface Level {
   readonly id: string;
@@ -64,16 +65,30 @@ export type ItemLocation =
       readonly startStep: number; readonly duration: number; readonly thrower: string };
 
 /** Processing replaces kind in place, preserving identity and ingredient; carrying relocates. */
+export type Process = StationType | 'mix' | 'spread';
+export type Container = 'plate' | 'bowl' | 'cup';
+export interface Food {
+  readonly id: number;
+  readonly ingredient?: string;
+  readonly kind: Item['kind'];
+  readonly processes?: readonly Process[];
+}
+
 export interface Item {
   readonly id: number;
   readonly kind: 'raw' | 'chopped' | 'cooked' | 'burnt' | 'dirty-plate' | 'plate' | 'dish' | 'extinguisher';
   readonly ingredient?: string;
   /** Ordered completed processes; omitted on older/fixture items means no recorded steps. */
-  readonly processes?: readonly StationType[];
+  readonly processes?: readonly Process[];
+  readonly container?: Container;
+  readonly cup?: Item;
+  readonly contents?: readonly Food[];
   readonly place: ItemLocation;
 }
 
 export interface TabaoState {
+  readonly returns?: readonly { readonly due: number; readonly tile: number; readonly item: Item }[];
+  readonly serviceEvents?: readonly ServiceEvent[];
   readonly fireSpreadClock?: number;
   readonly stations?: Readonly<Record<number, Station>>;
   readonly inventory: Inventory;
@@ -114,7 +129,8 @@ export function items(state: TabaoState): readonly Item[] {
     ...Object.values(state.inventory.counters).filter((i): i is Item => i !== undefined),
     ...Object.values(state.inventory.floor).flatMap((pile) => pile ?? []),
     ...state.inventory.flights,
-    ...Object.values(state.stations ?? {}).flatMap((s) => s.content ? [s.content] : [])].sort((a, b) => a.id - b.id);
+    ...(state.returns ?? []).map((r) => r.item),
+    ...Object.values(state.stations ?? {}).flatMap((s) => [...(s.content ? [s.content] : []), ...(s.supply ?? [])])].sort((a, b) => a.id - b.id);
 }
 
 export function inventory(entries: readonly Item[] = []): Inventory {
@@ -134,8 +150,12 @@ export function inventory(entries: readonly Item[] = []): Inventory {
   return { held, counters, floor, flights, floorCount, reserved };
 }
 
-export type StationType = 'chop' | 'wok' | 'pot' | 'grill' | 'rice' | 'drinks' | 'plating' | 'sink' | 'bin';
+export type StationType = 'chop' | 'wok' | 'pot' | 'grill' | 'rice' | 'drinks' | 'plating' | 'sink' | 'bin' | 'serving' | 'dish-rack' | 'return-counter';
 export interface Station {
+  readonly kitchen?: string;
+  readonly container?: Container;
+  readonly supply?: readonly Item[];
+  readonly rejection?: { readonly reason: Rejection; readonly until: number };
   readonly tile: number;
   readonly id: string;
   readonly type: StationType;

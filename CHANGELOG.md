@@ -2,6 +2,11 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — T-04: Tabao Rush recipes, plating and serving
+
+- `games/tabao-rush/src/rules/recipes.ts` and station changes; rule details added to the game
+  spec (D-085, D-087). (TR-003, TR-004, TR-040 in progress; TR-008 advanced)
+
 ## 2026-11-17 — C-03: pairing server rate limits
 
 - `apps/signal/src/core/admission.ts`, `core/address.ts`, `admission-object.ts`; smoke test

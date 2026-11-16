@@ -20,7 +20,7 @@ const players = Array.from({ length: 8 }, (_, i) => ({ id: `p${String(i + 1)}`,
   seat: i + 1, name: `Cook ${String(i + 1)}`, colour: 'seat-1' as const }));
 const level: Level = {
   id: 'item-rules', width: 10, height: 5, spawns: [],
-  tiles: Array.from({ length: 50 }, (_, i) => i < 10 || i >= 40 || i % 10 === 0 || i % 10 === 9
+  tiles: Array.from({ length: 50 }, (_, i) => i === 0 ? { kind: 'station' as const, stationId: 'returns', stationType: 'return-counter' as const } : i < 10 || i >= 40 || i % 10 === 0 || i % 10 === 9
     ? { kind: 'wall' as const } : i === 13 ? { kind: 'station' as const,
       stationId: 'crate', ingredient: 'cucumber' } : i === 16 || i === 26
       ? { kind: 'counter' as const } : { kind: 'floor' as const }),
@@ -135,7 +135,7 @@ it('TR-009 counter landings, occupied counters, walls, boundaries and stations p
     expect(items(blocked)).toHaveLength(1);
     expect(items(blocked)[0]?.place.kind).toBe('floor');
   }
-  const open: Level = { ...level, tiles: level.tiles.map(() => ({ kind: 'floor' })) };
+  const open: Level = { ...level, tiles: level.tiles.map((_, i) => i === 0 ? { kind: 'station', stationId: 'returns', stationType: 'return-counter' } : { kind: 'floor' }) };
   const outside = finish(itemPress({ ...carrying(initial([cook('p1', 8.5, 3.5, 0)])),
     level: open }, 'p1', 'triangle'));
   expect(items(outside)[0]?.place).toEqual({ kind: 'floor', tile: 39 });
@@ -273,7 +273,7 @@ it('TR-002 TR-009 TR-023 TR-020 TR-021 TR-022 seeded long matches conserve ident
   });
 
 it('TR-009 diagonal arcs keep Euclidean range and an obstructed corner cannot leak through a wall', () => {
-  const open: Level = { ...level, tiles: level.tiles.map(() => ({ kind: 'floor' })) };
+  const open: Level = { ...level, tiles: level.tiles.map((_, i) => i === 0 ? { kind: 'station', stationId: 'returns', stationType: 'return-counter' } : { kind: 'floor' }) };
   for (const facing of [0, 1, 2, 3, 4, 5, 6, 7] as const) {
     const state = { ...carrying(initial([cook('p1', 5, 2.5, facing)])), level: open };
     const flight = items(itemPress(state, 'p1', 'triangle'))[0]?.place;

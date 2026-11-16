@@ -1,0 +1,9 @@
+Final verification; Node/shared-machine measurements, no wall-clock assertions.
+Synthetic stress replenishes inputs and clears synthetic transit each sample.
+[A] steps>1ms=1 overlapping a GC=0 gcEvents=0
+[A] step mean=0.0123 p95=0.0143 p99=0.0208 worst=0.502 (all-worst 1.125@0) over1ms=0 top=1.125@0,0.502@877,0.248@51,0.235@436,0.225@111,0.170@10180,0.163@2640,0.136@1
+[A] view mean=0.0103 p95=0.0112 worst=0.572 bytes=22068 events=2
+[B] steps>1ms=0 overlapping a GC=0 gcEvents=0
+[B] step mean=0.0113 p95=0.0123 p99=0.0150 worst=0.149 (all-worst 0.149@10283) over1ms=0 top=0.149@10283,0.145@0,0.141@10127,0.130@6930,0.126@1206,0.110@1050,0.102@1891,0.098@10923
+[B] view mean=0.0097 p95=0.0107 worst=0.137 bytes=22068 events=2
+[idle] mean=0.0044 p95=0.0048 worst=0.411

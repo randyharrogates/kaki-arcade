@@ -98,3 +98,24 @@ plating counter · serving counter · sink and dish rack · bin.
 
 Tracked in `../OPEN-QUESTIONS.md`: exact star thresholds, order-rate curve, bot difficulty, and
 the level list. These are tuning decisions made during M6 with playtests, not requirement gaps.
+
+## Rule details (D-080, D-085, D-087; provisional until seen on a screen)
+
+- A crate press gives one raw portion. A station takes an ingredient only when it is that
+  ingredient's next step. The order in a recipe applies to each ingredient, not across them.
+- Cucumber is chopped in every dish that uses it. Char kway teow's noodles are chopped, then
+  tossed in the wok. Rojak's three ingredients are pineapple, turnip and cucumber.
+- Laksa: adding noodles to finished broth, in the pot or in a bowl, completes it.
+- Mix (rojak) and spread (kaya toast) are 1 s of circle on the plating counter with the food
+  on its plate. Adding food undoes a mix.
+- Racks hold one kind of container: 4 plates, 2 bowls, 2 cups. A plate holds 4 portions, a
+  bowl 2, a cup 1. A container takes only food whose steps are finished.
+- The kaya toast set is toast on a plate with a filled cup standing on it. Kopi and teh are
+  interchangeable. A cup can be lifted off a plate at a plating counter.
+- A served dish's containers come back dirty at the return counter 5 s later and are washed
+  at the sink. The bin takes food only and leaves the container clean.
+- Serving counters, racks and return counters do not burn. A dish caught in a fire leaves a
+  dirty container.
+- A wrong dish is refused, never consumed, with one reason shown for 3 s, checked in this
+  order: nothing to serve, dirty, burnt, wrong container, not a dish we serve, missing
+  ingredient, extra ingredient, missing step, extra step.

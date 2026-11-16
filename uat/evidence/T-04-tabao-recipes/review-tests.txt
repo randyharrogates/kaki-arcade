@@ -1,0 +1,22 @@
+Final command: VITEST_MAX_WORKERS=2 T04_EVIDENCE=1 pnpm verify
+
+PASS R1 next-step acceptance refuses raw kway-teow at wok with a silent preview
+PASS R2 chopped cucumber is required in satay; repeat or premature processing is refused
+PASS R3 rejection precedence: empty, dirty, burnt, container; allowed list returns not ordered
+PASS R4 wrong container precedes missing ingredient; explicit unknown, extra ingredient and extra step
+PASS R5 spread takes one second, retains interrupted work, affects grilled bread only, publishes seat
+PASS R6 serving, racks and returns never burn and have no fire neighbours
+PASS R7 fire empties food and dirties both plate and cup without losing identities
+PASS R8 leaving drops a dish with contents intact
+PASS R9 toast needs a filled cup; service returns both identities dirty after five seconds
+PASS R10 simultaneous service follows seat order and clears events next step
+PASS R11 mix is timed and adding food undoes it
+PASS R12 noodles enter only finished unburnt broth and complete laksa immediately
+PASS R13 ingredient preparation order is independent across ingredients
+PASS R14 public view serialises and exposes each of eight cooks previews
+PASS R15 crates issue one raw portion only to empty hands and refuse containers
+PASS R16 each rack gives its own kind in one press and accepts only that clean empty kind
+
+Reviewer fuzz: 8/8 PASS (1/2/4/8 cooks; fires on/off; 12,600 steps each).
+Reviewer performance: 2/2 PASS (busy rounds twice, idle baseline; recorded figures only).
+Workspace: 83 files passed; 2,363 tests passed, 1 existing skip; build/trace passed.

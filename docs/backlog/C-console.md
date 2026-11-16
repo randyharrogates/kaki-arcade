@@ -101,3 +101,9 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   out a housemate's fresh connection; one abuser with several /64s in a carrier's /48 can keep
   that /48's joins backed off. Every change to `apps/signal` is smoke-tested on a real local
   server before merge (`scripts/smoke.mjs`, needs `ADMISSION_SECRET` in `.dev.vars`).
+- **Automated security review of the C-03 merge, acknowledged:** (1) memory-only counters can
+  be lost if the edge drops an idle limiter: known, D-089, staging probe before deploy with
+  storage of offenders as the fallback. (2) A phone silent for 1.5 s can be pushed out by
+  another client while the room's pool is full and is charged one failure: accepted in the
+  third review (one failure against a budget of 16, only under attack; not charging would
+  make holding a room's pool full free again). Revisit both at the staging probe.

@@ -8,6 +8,7 @@ import { formatReport, readSources, runConformance } from '@kaki/platform/kit';
 import { tabaoRush, ROUND_STEPS } from './game';
 import { inventory, items } from './state';
 import type { Item, Level, StationType, TabaoState } from './state';
+import { containerOf } from './recipes';
 import { clearOfWalls } from './level';
 import { MIN_SEPARATION } from './state';
 import { itemPress } from './items';
@@ -21,6 +22,7 @@ const level: Level = {
   id: 'station-mechanisms', width: 14, height: 5, firesEnabled: true, extinguisherTile: 26,
   spawns: Array.from({ length: 8 }, (_, i) => ({ x: i + 1.5, y: 2.5 })),
   tiles: Array.from({ length: 70 }, (_, i) => {
+    if (i === 0) return { kind: 'station', stationId: 'returns', stationType: 'return-counter' };
     const type = types[i - 15];
     if (type) return { kind: 'station', stationId: type, stationType: type };
     if (i === 24) return { kind: 'station', stationId: 'crate', ingredient: 'kopi' };
@@ -37,8 +39,11 @@ function aim(state: TabaoState, tile: number, id = 'p0'): TabaoState {
   return { ...state, cooks: state.cooks.map((c) => c.id === id ? { ...c, targetTile: tile,
     x: tile % 14 + 0.5, y: Math.floor(tile / 14) + 1.5, facing: 6 } : c) };
 }
-function hand(state: TabaoState, kind: Item['kind'], ingredient = 'kopi', id = 'p0'): TabaoState {
-  const item: Item = { id: state.nextItemId, kind, ingredient, place: { kind: 'held', cook: id } };
+function hand(state: TabaoState, kind: Item['kind'], ingredient?: string, id = 'p0'): TabaoState {
+  const target = state.cooks.find((c) => c.id === id)?.targetTile;
+  const type = target === null || target === undefined ? undefined : state.stations?.[target]?.type;
+  ingredient ??= type === 'chop' ? 'chicken' : type === 'wok' ? 'kway-teow' : type === 'pot' ? 'laksa-broth' : type === 'grill' ? 'satay' : type === 'rice' ? 'rice' : 'kopi';
+  const item: Item = { id: state.nextItemId, kind, ingredient, ...(kind === 'chopped' ? { processes: ['chop'] as const } : {}), place: { kind: 'held', cook: id } };
   return { ...state, nextItemId: state.nextItemId + 1, inventory: { ...state.inventory,
     held: { ...state.inventory.held, [id]: item } } };
 }
@@ -56,7 +61,7 @@ function run(state: TabaoState, n: number, buttons = 0): TabaoState {
   for (let i = 0; i < n; i++) state = step(state, input(buttons));
   return state;
 }
-function load(type: StationType, kind: Item['kind'] = 'raw'): TabaoState {
+function load(type: StationType, kind: Item['kind'] = type === 'wok' || type === 'grill' ? 'chopped' : 'raw'): TabaoState {
   return itemPress(hand(aim(initial(), 15 + types.indexOf(type)), kind), 'p0', 'cross');
 }
 function station(state: TabaoState, type: StationType) {
@@ -72,11 +77,12 @@ it('TR-007 TR-008 TR-030 every station accepts only its mechanism inputs, capaci
       const accepted = type === 'bin' ? ['raw', 'chopped', 'cooked', 'burnt'].includes(kind)
         : type === 'sink' ? kind === 'dirty-plate'
         : type === 'plating' ? ['plate', 'chopped', 'cooked', 'dish'].includes(kind)
-        : type === 'chop' || type === 'drinks' ? kind === 'raw' : kind === 'raw' || kind === 'chopped';
+        : type === 'chop' || type === 'drinks' ? kind === 'raw' : type === 'wok' || type === 'grill' ? kind === 'chopped' : kind === 'raw';
       expect(station(state, type).content?.kind).toBe(accepted && type !== 'bin' ? kind : undefined);
       expect(items(state)).toHaveLength(accepted && type === 'bin' ? 1 : 2); // fixed extinguisher + input
       const occupied = hand(state, 'raw');
-      if (station(state, type).content) expect(itemPress(occupied, 'p0', 'cross')).toBe(occupied);
+      const content = station(state, type).content;
+      if (content && !(type === 'plating' && containerOf(content))) expect(itemPress(occupied, 'p0', 'cross')).toBe(occupied);
     }
   }
   const wrongDrink = hand(aim(initial(), 20), 'raw', 'cucumber');
@@ -105,7 +111,7 @@ it('TR-007 TR-030 automatic stations finish unattended, warn before irreversible
   for (const type of ['wok', 'pot', 'rice'] as const) {
     let state = aim(load(type), 25);
     state = run(state, COOK_STEPS - 1);
-    expect(station(state, type).content?.kind).toBe('raw');
+    expect(station(state, type).content?.kind).toBe(type === 'wok' ? 'chopped' : 'raw');
     state = step(state);
     expect(station(state, type).content?.kind).toBe('cooked');
     const ready = aim(state, 15 + types.indexOf(type));
@@ -200,7 +206,7 @@ for (let count = 1; count <= 8; count++) {
     // Start every mechanism with one valid input, including the later recipe owner's plate seam.
     for (const type of types.filter((t) => t !== 'bin')) {
       state = itemPress(hand(aim(state, 15 + types.indexOf(type)), type === 'sink' ? 'dirty-plate'
-        : type === 'plating' ? 'plate' : 'raw'), 'p0', 'cross');
+        : type === 'plating' ? 'plate' : type === 'wok' || type === 'grill' ? 'chopped' : 'raw'), 'p0', 'cross');
     }
     state = { ...state, cooks: initial(count).cooks };
     let replay = cloneState(state);
@@ -218,8 +224,9 @@ for (let count = 1; count <= 8; count++) {
       replay = step(replay, inputs);
       expect(state.cooks.every((c, i) => clearOfWalls(state.level, c.x, c.y) &&
         state.cooks.slice(i + 1).every((d) => Math.hypot(c.x - d.x, c.y - d.y) >= MIN_SEPARATION - 1e-9))).toBe(true);
-      const oldItems = new Map(items(before).map((i) => [i.id, i]));
-      const current = items(state);
+      const expanded = (s: TabaoState): Item[] => items(s).flatMap((i) => [i, ...(i.contents ?? []).map((f) => ({ ...f, place: i.place }))]);
+      const oldItems = new Map(expanded(before).map((i) => [i.id, i]));
+      const current = expanded(state);
       const currentIds = new Set(current.map((i) => i.id));
       expect(currentIds.size).toBe(current.length);
       for (const old of oldItems.values()) if (!currentIds.has(old.id)) {
@@ -236,7 +243,12 @@ for (let count = 1; count <= 8; count++) {
           expect(item.kind).toBe('raw');
         }
         const prior = oldItems.get(item.id);
-        if (prior && prior.kind !== item.kind) {
+        if (prior && prior.kind !== item.kind && item.kind === 'dish') {
+          expect(prior.kind).toBe('plate');
+          expect(prior.place.kind).toBe('counter');
+          expect(prior.place.kind === 'counter' && before.stations?.[prior.place.tile]?.type).toBe('plating');
+        }
+        if (prior && prior.kind !== item.kind && item.kind !== 'dish') {
           expect(prior.place.kind).toBe('counter');
           const mechanism = prior.place.kind === 'counter' ? before.stations?.[prior.place.tile] : undefined;
           expect(mechanism).toBeDefined();
@@ -248,6 +260,8 @@ for (let count = 1; count <= 8; count++) {
         if (burnt.has(item.id)) expect(item.kind).toBe('burnt');
         if (item.kind === 'burnt') burnt.add(item.id);
         const place = item.place;
+        const nested = items(state).some((parent) => parent.contents?.some((f) => f.id === item.id));
+        if (nested) continue;
         if (place.kind === 'held') expect(state.inventory.held[place.cook]).toBe(item);
         if (place.kind === 'counter') expect(state.stations?.[place.tile]?.content ?? state.inventory.counters[place.tile]).toBe(item);
         if (place.kind === 'floor') expect(state.inventory.floor[place.tile]).toContain(item);
@@ -325,12 +339,12 @@ it('TR-007 TR-008 TR-010 TR-030 station work passes unmodified conformance kit a
     let state = prepareStations({ ...base, level, cooks: base.cooks.map((c, i) => ({ ...c,
       x: i + 1.5, y: 2.5, facing: 6, targetTile: 15 + i })) });
     const first = seated[0];
-    if (first) state = hand(state, 'raw', 'kopi', first.id);
+    if (first) state = hand(state, 'raw', 'chicken', first.id);
     if (seated.length === 8) {
       const grill = station(state, 'grill'), wok = station(state, 'wok');
       state = { ...state, stations: { ...state.stations,
         [grill.tile]: { ...grill, progress: COOK_STEPS / 2, content: { id: state.nextItemId,
-          kind: 'raw', processes: [], place: { kind: 'counter', tile: grill.tile } } },
+          kind: 'raw', ingredient: 'satay', processes: [], place: { kind: 'counter', tile: grill.tile } } },
         [wok.tile]: { ...wok, fire: true } }, nextItemId: state.nextItemId + 1,
         cooks: state.cooks.map((c, i) => i === 6 ? { ...c, x: 12.5, targetTile: 26 }
           : i === 7 ? { ...c, x: 9.5, targetTile: 23 } : c) };
@@ -379,6 +393,7 @@ it('TR-007 TR-030 PERF-001 abuse plus occupied stations has bounded 210-second w
     tiles: Array.from({ length: 160 }, (_, at) => {
       const x = at % 20, y = Math.floor(at / 20);
       if (y === 1 && x >= 1 && x <= 8) return { kind: 'station', stationId: `crate-${String(x)}`, ingredient: 'kopi' };
+      if (at === 0) return { kind: 'station', stationId: 'returns', stationType: 'return-counter' };
       const type = y === 4 ? types[x - 1] : undefined;
       if (type) return { kind: 'station', stationId: type, stationType: type };
       if (at === 98) return { kind: 'counter' };

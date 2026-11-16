@@ -1,0 +1,40 @@
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 11 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 168 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-04
+
+1 true {"c:plate:counter":99154,"c:plate:held":1646,"crate":61,"ev:rejected:nothing-to-serve":5,"ev:rejected:wrong-container":24,"maxFloor":26,"maxLive":49,"pv:bin":21,"pv:nothing":3821,"pv:pick":311,"pv:put":94,"pv:reject:":29,"pv:return":28,"pv:take":29,"pvc:chop":73,"pvc:drinks":21,"pvc:extinguish":693,"pvc:nothing":4362,"pvc:turn":6,"sink:bin":21,"sink:fire":2}
+1 false {"c:dish:counter":12680,"c:dish:held":325,"c:plate:counter":84986,"c:plate:held":2809,"crate":69,"ev:rejected:missing-ingredient":15,"ev:rejected:nothing-to-serve":6,"ev:rejected:wrong-container":67,"maxFloor":29,"maxLive":50,"pv:add":16,"pv:bin":29,"pv:nothing":3369,"pv:pick":553,"pv:pour":4,"pv:put":171,"pv:reject:":88,"pv:return":45,"pv:take":53,"pvc:chop":120,"pvc:drinks":68,"pvc:nothing":4892,"pvc:spread":10,"pvc:turn":6,"sink:bin":32}
+2 true {"c:dish:counter":5584,"c:dish:held":246,"c:plate:counter":91746,"c:plate:held":3224,"crate":83,"ev:rejected:missing-ingredient":9,"ev:rejected:nothing-to-serve":9,"ev:rejected:wrong-container":61,"maxFloor":28,"maxLive":57,"pv:add":16,"pv:bin":33,"pv:nothing":3674,"pv:pick":570,"pv:pour":4,"pv:put":181,"pv:reject:":61,"pv:return":52,"pv:take":57,"pvc:chop":140,"pvc:drinks":84,"pvc:nothing":5244,"pvc:spread":6,"pvc:turn":3,"sink:bin":48}
+2 false {"c:dish:counter":4123,"c:dish:held":358,"c:plate:counter":87145,"c:plate:held":9174,"crate":83,"ev:rejected:nothing-to-serve":8,"ev:rejected:wrong-container":74,"maxFloor":29,"maxLive":51,"pv:add":7,"pv:bin":34,"pv:nothing":3776,"pv:pick":610,"pv:place":1,"pv:put":168,"pv:reject:":62,"pv:return":40,"pv:take":44,"pvc:chop":123,"pvc:drinks":92,"pvc:nothing":5294,"pvc:spread":7,"pvc:turn":4,"sink:bin":46}
+4 true {"c:dirty-plate:counter":8802,"c:dirty-plate:held":1,"c:dish:counter":6217,"c:dish:held":753,"c:plate:counter":68085,"c:plate:held":16942,"crate":131,"ev:rejected:missing-ingredient":12,"ev:rejected:nothing-to-serve":18,"ev:rejected:wrong-container":153,"ev:served:laksa":1,"maxFloor":31,"maxLive":56,"pv:add":11,"pv:bin":29,"pv:nothing":4529,"pv:pick":590,"pv:place":1,"pv:pour":2,"pv:put":166,"pv:reject:":87,"pv:return":31,"pv:serve":1,"pv:take":30,"pvc:chop":128,"pvc:drinks":62,"pvc:nothing":6204,"pvc:spread":7,"pvc:wash":21,"sink:bin":88,"sink:served":2}
+4 false {"c:dirty-plate:counter":11476,"c:dirty-plate:held":6,"c:dish:counter":8899,"c:dish:held":1500,"c:plate:counter":54628,"c:plate:floor":14,"c:plate:held":24277,"crate":137,"ev:rejected:missing-ingredient":53,"ev:rejected:nothing-to-serve":17,"ev:rejected:wrong-container":207,"ev:served:laksa":1,"maxFloor":31,"maxLive":58,"pv:add":13,"pv:bin":28,"pv:nothing":4407,"pv:pick":633,"pv:place":1,"pv:pour":7,"pv:put":179,"pv:reject:":114,"pv:return":27,"pv:take":32,"pvc:chop":116,"pvc:drinks":82,"pvc:nothing":6205,"pvc:spread":4,"pvc:turn":2,"pvc:wash":27,"sink:bin":95,"sink:served":2}
+8 true {"c:dirty-plate:counter":10784,"c:dirty-plate:held":12,"c:dish:counter":9034,"c:dish:floor":10,"c:dish:held":1565,"c:plate:counter":58922,"c:plate:held":20473,"crate":301,"ev:rejected:missing-ingredient":78,"ev:rejected:nothing-to-serve":33,"ev:rejected:wrong-container":448,"ev:served:laksa":1,"maxFloor":33,"maxLive":67,"pv:add":12,"pv:bin":44,"pv:nothing":4732,"pv:pick":510,"pv:pour":9,"pv:put":152,"pv:reject:":114,"pv:return":31,"pv:take":36,"pvc:chop":117,"pvc:drinks":61,"pvc:nothing":6342,"pvc:spread":5,"pvc:turn":3,"pvc:wash":19,"sink:bin":255,"sink:served":2}
+8 false {"c:dirty-plate:counter":19654,"c:dirty-plate:held":14,"c:dish:counter":8665,"c:dish:floor":685,"c:dish:held":2021,"c:plate:counter":44302,"c:plate:held":25459,"crate":362,"ev:rejected:missing-ingredient":47,"ev:rejected:nothing-to-serve":21,"ev:rejected:wrong-container":496,"ev:served:laksa":2,"maxFloor":36,"maxLive":65,"pv:add":16,"pv:bin":47,"pv:nothing":4794,"pv:pick":538,"pv:pour":5,"pv:put":135,"pv:reject:":115,"pv:return":10,"pv:take":12,"pvc:chop":102,"pvc:drinks":65,"pvc:nothing":6321,"pvc:spread":14,"pvc:turn":5,"pvc:wash":41,"pvc:wok":1,"sink:bin":318,"sink:served":4}
+[A] steps>1ms=1 overlapping a GC=0 gcEvents=0
+[A] step mean=0.0123 p95=0.0143 p99=0.0208 worst=0.502 (all-worst 1.125@0) over1ms=0 top=1.125@0,0.502@877,0.248@51,0.235@436,0.225@111,0.170@10180,0.163@2640,0.136@1
+[A] view mean=0.0103 p95=0.0112 worst=0.572 bytes=22068 events=2
+[B] steps>1ms=0 overlapping a GC=0 gcEvents=0
+[B] step mean=0.0113 p95=0.0123 p99=0.0150 worst=0.149 (all-worst 0.149@10283) over1ms=0 top=0.149@10283,0.145@0,0.141@10127,0.130@6930,0.126@1206,0.110@1050,0.102@1891,0.098@10923
+[B] view mean=0.0097 p95=0.0107 worst=0.137 bytes=22068 events=2
+[idle] mean=0.0044 p95=0.0048 worst=0.411
+[sim-core overhead] clock + loop: 0.0144 µs per step (0.00009% of a 16.7 ms step)
+[sim-core overhead] clock + loop + 8-controller input buffer: 0.2814 µs per step (0.00169% of a 16.7 ms step)
+
+ Test Files  83 passed (83)
+      Tests  2363 passed | 1 skipped (2364)
+   Start at  02:35:55
+   Duration  170.32s (transform 959ms, setup 0ms, import 3.32s, tests 330.70s, environment 4ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+no bundles yet
+no asset sets in assets/src yet
+$ python3 tools/trace_check.py
+152 requirements; 64 in progress, 1 later, 87 not started
+trace check passed

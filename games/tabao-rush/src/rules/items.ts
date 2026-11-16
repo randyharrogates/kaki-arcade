@@ -4,6 +4,7 @@ import type { StepInputs } from '@kaki/platform';
 import { tileAt } from './level';
 import { COOK_RADIUS } from './state';
 import type { Cook, Item, ItemLocation, Point, TabaoState } from './state';
+import { assemblyAction } from './recipes';
 import { stationAction, stationCross } from './stations';
 import { isHeld } from '@kaki/sim-core';
 import { FACING_X, FACING_Y } from './target';
@@ -27,7 +28,7 @@ export function relocate(state: TabaoState, item: Item, place: ItemLocation): Ta
     floor: { ...index.floor, [old.tile]: index.floor[old.tile]?.filter((i) => i.id !== item.id) } };
   else if (old.kind === 'counter') {
     const station = state.stations?.[old.tile];
-    if (station) state = { ...state, stations: { ...state.stations, [old.tile]: { ...station, content: null, progress: 0, doneAge: 0, burntAge: 0, warning: false, turned: false } } };
+    if (station) state = { ...state, stations: { ...state.stations, [old.tile]: { ...station, content: null, progress: 0, ...(station.type === 'plating' ? { total: 0 } : {}), doneAge: 0, burntAge: 0, warning: false, turned: false } } };
   }
   else index = { ...index, flights: index.flights.filter((i) => i.id !== item.id),
     reserved: { ...index.reserved, [old.rest.tile]: (index.reserved[old.rest.tile] ?? 1) - 1 } };
@@ -38,7 +39,7 @@ export function relocate(state: TabaoState, item: Item, place: ItemLocation): Ta
     floor: { ...index.floor, [place.tile]: [...(index.floor[place.tile] ?? []), moved].sort((a, b) => a.id - b.id) } };
   else if (place.kind === 'counter') {
     const station = state.stations?.[place.tile];
-    if (station) state = { ...state, stations: { ...state.stations, [place.tile]: { ...station, content: moved, progress: 0, doneAge: 0, burntAge: 0, warning: false, turned: false } } };
+    if (station) state = { ...state, stations: { ...state.stations, [place.tile]: { ...station, content: moved, progress: 0, ...(station.type === 'plating' ? { total: 0 } : {}), doneAge: 0, burntAge: 0, warning: false, turned: false } } };
   }
   else index = { ...index, flights: [...index.flights, moved],
     reserved: { ...index.reserved, [place.rest.tile]: (index.reserved[place.rest.tile] ?? 0) + 1 } };
@@ -232,4 +233,28 @@ export function dropLeaving(state: TabaoState, id: string): TabaoState {
   return relocate(state, item, destination.kind === 'floor' &&
     (state.inventory.floor[destination.tile]?.length || state.inventory.reserved[destination.tile])
     ? { kind: 'floor', tile: floorTile(state, cook) } : destination);
+}
+
+/** Same pure transition functions as input resolution, evaluated against the published state. */
+export function actionPreview(state: TabaoState, cook: Cook) {
+  const cross = itemPress(state, cook.id, 'cross');
+  const circle = stationAction(state, cook.id);
+  const station = cook.targetTile === null ? undefined : state.stations?.[cook.targetTile];
+  const held = heldItem(state, cook.id);
+  const event = station?.type === 'serving' && cross !== state ? cross.serviceEvents?.at(-1) : undefined;
+  const offer = event?.type === 'served' ? `serve ${event.dish}` : event?.type === 'rejected'
+    ? `reject: ${event.reason.code}${'ingredient' in event.reason ? ` ${event.reason.ingredient}` : ''}${'step' in event.reason ? ` ${event.reason.step}` : ''}` : 'nothing';
+  return {
+    cross: cross === state ? 'nothing' : station?.type === 'serving' ? offer
+      : station?.type === 'dish-rack' || station?.type === 'return-counter' ? held ? `return ${held.container ?? 'plate'}` : `take ${station.supply?.[0]?.container ?? 'plate'}`
+      : station?.type === 'plating' && !held && station.content?.cup && cross.inventory.held[cook.id]?.id === station.content.cup.id ? 'pick up cup'
+      : station?.type === 'pot' && held && station.content ? `add ${held.ingredient ?? 'food'}`
+      : station?.type === 'plating' && held?.container === 'cup' && held.contents?.length && station.content?.container === 'plate' && !station.content.cup ? `place cup on ${station.content.container ?? 'plate'}`
+      : station?.type === 'plating' && held?.container && station.content ? `pour ${held.container}`
+      : station?.type === 'plating' && held && station.content ? `add ${held.ingredient ?? 'contents'} to ${station.content.container ?? 'plate'}`
+      : held ? station?.type === 'bin' ? 'bin food' : 'put down' : 'pick up',
+    circle: circle === state ? 'nothing' : station?.fire ? 'extinguish'
+      : station?.type === 'plating' ? station.content ? assemblyAction(station.content)?.action ?? 'nothing' : 'nothing'
+      : station?.type === 'grill' ? 'turn' : station?.type === 'sink' ? 'wash' : station?.type ?? 'nothing',
+  };
 }
