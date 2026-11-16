@@ -416,3 +416,11 @@ final-round announcement plays its first question. (g) Answers arriving in the s
 the leader's skip are counted before the skip. (h) If a multiplayer match falls to one player,
 solo rules apply from that question. (i) The game takes questions in the bank's own shape,
 including picture file, alt text and credit, so credits can be shown (RZ-025).
+
+**D-072 · 2026-11-16 · Claude (under D-057)** — Tabao Rush movement (review of T-01): facing
+keeps its current direction until the stick is more than 8 degrees past the edge of its
+sector, so the highlighted station does not flicker with ordinary thumb noise (TR-021). This
+is not movement smoothing: position still follows the stick on the next step (TR-020). A cook
+steps aside only when another cook blocks it, never because of a wall. All movement constants
+(walk speed 3 tiles a second, dead zone 0.12, cook radius 0.20, reach 0.85 and the rest) are
+provisional until they can be judged on a screen and shown to Randy.
