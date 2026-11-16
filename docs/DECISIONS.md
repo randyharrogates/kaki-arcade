@@ -679,3 +679,17 @@ step zero; orders are drawn uniformly from the level's dishes on a seeded stream
 service takes the oldest matching order, by seat, and beats expiry on the same step; kopi and
 teh are one order; mid-round joiners watch and share the team score; no penalty for orders
 still open at the end. (h) In versus each kitchen will scale by its own cooks (T-14).
+
+**D-092 · 2026-11-17 · Claude (under D-057)** — Host lobby, second review of C-07. (a) Once
+a room is open, a dropped connection to the pairing server never closes the links to the
+phones: the host reconnects to the pairing server in place, paced by the one back-off (1 s
+doubling to 30 s), and the game carries on over the open links. (b) A room is declared gone
+only on the pairing server's own signed reply (a 404 carrying the header `X-Kaki-Room: gone`);
+a bare 404 or any 5xx, for example from a proxy or a static host, means unreachable. (c) A
+name too long for two lines at the 34 px reading size takes a third line at 34 px; names
+never step down in size. (d) Seats in a state that is not live (restoring, unreachable,
+expired, taken over) use the secondary ink at full opacity and keep their badges at full
+strength; nothing is dimmed by opacity. Empty seats say "Scan to join" only while a join code
+is on screen. (e) During a seat change the card's surface stays put and only its contents
+wipe; the outgoing contents fade to the new token `--ka-opacity-ghost` (0.08). (f) New tokens
+in `packages/ui`: `--ka-type-233` (the room code, DESIGN §4.3) and `--ka-opacity-ghost`.
