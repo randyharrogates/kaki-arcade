@@ -343,3 +343,14 @@ host alone runs the simulation. (5) Peek Poker's picker is tap-to-pick with a Lo
 (board 4, 4B); the D-pad cursor in its spec does not fit beside the grid at the size floors and
 is dropped, and letter button names in the game specs are replaced by the shapes. (6) Bots
 (TR-053) live inside the game's own state; the interface does not know about them.
+
+**D-063 · 2026-11-16 · Claude (under D-057)** — Pairing server (C-01) rulings from its review.
+(1) A room is created by an HTTP POST, not by a `create` message on a socket: it is the natural
+place for the rate limit (C-03). `ARCHITECTURE.md` §5 and the protocol's comments are amended
+at merge; the protocol's socket `create` message is retired in F-02b. (2) The host keeps its
+signalling socket open for the whole life of the room (free while hibernating), so reloads and
+re-pairing always work; a room is deleted 10 minutes after its last socket closes and at most
+12 hours after creation. (3) Room codes are 6 characters from the 28-character alphabet (about
+480 million), shown as two groups of three; the QR code is the main way in, and the join rate
+limit in C-03 is what makes guessing impractical. (4) Seat accept and refuse stay on the data
+channel; signalling gets no new messages.
