@@ -554,3 +554,14 @@ otherwise the newcomer is refused, not charged. (e) stands: counters stay in mem
 attacker who waits for an idle limiter to be dropped gets at worst about 500 guesses an hour,
 about 2 in 100,000 over a 12-hour room against 1,000 clients; storing offenders would bring
 back an attacker-driven storage write and long retention.
+
+**D-084 · 2026-11-17 · Claude (under D-057)** — Pairing server limits, third review of C-03;
+narrows D-083 (b). A limiter entry may be evicted only when its expired leases have first been
+settled into failures, its failures after quiet-time decay are zero, it has no lease, live
+probe or block, and its creation meter is full; least recently seen first; otherwise new
+clients use the overflow buckets. The edge rate limit is keyed like the first-seen client
+(IPv4 address or IPv6 /64), never by /48, so a university or carrier is not refused by it.
+Accepted and recorded: anyone on the same address as a phone (a housemate, or a stranger on a
+shared mobile-carrier address) can push out its fresh connection, since they could already
+take the seats; and one abuser with several /64s in a carrier's /48 can keep that /48's joins
+backed off.
