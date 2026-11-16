@@ -397,3 +397,8 @@ the last. (d) The reveal lasts 8 seconds, then a scoreboard phase of 5 seconds b
 round or the end. (e) A player who joins before the first step plays round 1; later joiners
 wait for the next deal. (f) Grid faces are secret whenever face down. (g) A personal best is
 saved only for a match that ended with one player and never admitted another.
+
+**D-070 · 2026-11-16 · Claude (under D-057)** — The protocol version stays 1 (`kaki.v1`)
+through the F-02b clean-up, although two socket messages were removed and an error code added:
+nothing is deployed and no client exists, so a bump would protect no one. Version 1 is frozen
+at the first deploy; any wire-visible change after that needs a version bump.
