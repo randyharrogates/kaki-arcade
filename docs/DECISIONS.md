@@ -440,3 +440,10 @@ no effect once someone has answered correctly, so the 0.25 s tie window always r
 package. F-05 is split: F-05 builds the headless runner (scripted and recorded controllers,
 replay, text dumps of views) now; F-05b adds the bare dev page with keyboard controllers once
 a game has a big-screen view to draw, since a page with nothing to draw proves nothing.
+
+**D-076 · 2026-11-16 · Claude (under D-057)** — Netcode (review of C-04): a phone's identity
+across reconnects is its seat token, already carried in the resume message; no separate device
+id is added. The host paces its own signalling below the pairing server's rate limit; sizing
+the server's bucket for eight phones joining at once is part of C-03. A peer that has not
+connected within 15 seconds is abandoned. Both signalling sockets send the protocol's
+keep-alive ping.
