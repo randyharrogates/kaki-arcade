@@ -661,3 +661,21 @@ animates at once; the 30 ms stagger applies only when several seats change toget
 landing page is not part of C-07: `/` is a plain link to the host page until X-01 builds
 REL-002. (h) Status icons are inline SVG, not font glyphs, so a TV's font cannot drop them.
 These are shown to Randy in the lobby artifact with the screenshots; he can overrule any.
+
+**D-091 · 2026-11-17 · Claude (under D-057)** — Tabao Rush orders and scoring (review of
+T-05). The spec gives no numbers for these, so all are provisional until the game can be
+played (OQ-032). (a) Base points follow effort: kopi or teh 40, laksa 80, char kway teow 80,
+chicken rice 100, satay 100, kaya toast set 120, rojak 120. The speed tip is up to 20% of the
+base, in proportion to the patience left. No combos. (b) Patience depends on the dish: kopi or
+teh 40 s, laksa and char kway teow 55 s, chicken rice and satay 60 s, kaya toast set and rojak
+75 s; a warning in the last quarter. (c) An expired order loses 25% of its base points; the
+score never goes below zero (a kind reading of "expired orders lose points" for a party
+game). (d) Crew factor e = n^0.8 for n cooks (1, 1.74, 2.41, 3.03, 3.62, 4.19, 4.74, 5.28):
+a new order every 24/e seconds; the queue holds n+1 orders, at most 6; star thresholds are
+the level's solo base (200, 400, 600 by default) times e. (e) The n used for stars is the
+time-weighted average of cooks over the round, so leaving near the end cannot earn stars. (f)
+When the board is empty the next order arrives within 3 seconds. (g) The first order opens at
+step zero; orders are drawn uniformly from the level's dishes on a seeded stream per kitchen;
+service takes the oldest matching order, by seat, and beats expiry on the same step; kopi and
+teh are one order; mid-round joiners watch and share the team score; no penalty for orders
+still open at the end. (h) In versus each kitchen will scale by its own cooks (T-14).

@@ -55,6 +55,13 @@ on with the match totals. That needs a checkpoint and resume hook added to the g
 Recommendation: keep today's behaviour for v1 and revisit after the first real game night.
 Needed by: M4 (Peek Poker playable).
 
+**OQ-032 · Tabao Rush tuning.** The spec leaves star thresholds and the order-rate curve
+open (§7). Every number for orders, patience, points, tips, penalties, scaling and stars is
+provisional (D-091), worked out by arithmetic, not by play. To settle once a round can be
+played on a screen: whether patience and the warning feel right; whether orders at 8 cooks
+flood; whether plates are the bottleneck (4 plates cap an 8-cook round near 34 to 46 dishes);
+whether three stars is fair at every cook count. Needed by: T-16 (tuning).
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot
