@@ -20,7 +20,7 @@ tracked in `../TRACEABILITY.md`.
 | TR-007 | MUST | Cooking stations run on timers once loaded. Food left too long burns, must be binned, and a burning wok shows a clear warning before it is lost. |
 | TR-008 | MUST | Used plates return dirty and must be washed before reuse. |
 | TR-009 | MUST | Throwing: a cook can throw the raw or chopped ingredient they hold about 4 tiles in the direction they face, on an arc. A teammate in its path catches it; otherwise it lands on a counter or the floor and can be picked up. Plates and finished dishes cannot be thrown. |
-| TR-010 | MUST | Fires: food left burning for 5 more seconds catches fire. A fire spreads to a neighbouring station every 6 seconds. A burning station cannot be used and its food is lost. Any cook puts a fire out by holding B while carrying the extinguisher, which is kept at a fixed spot in the level. Fires happen only in the more difficult levels (TR-050). |
+| TR-010 | MUST | Fires: food left burning for 5 more seconds catches fire. A fire spreads to a neighbouring station every 6 seconds. A burning station cannot be used and its food is lost. Any cook puts a fire out by holding circle (the right button) while carrying the extinguisher, which is kept at a fixed spot in the level. Fires happen only in the more difficult levels (TR-050). |
 
 ## 2. Controls
 

@@ -64,7 +64,7 @@ Declared to the controller kit (CTRL-002):
 | Phase | Phone shows |
 |---|---|
 | Memorise | "Watch the TV" and the countdown. No controls. |
-| Pick | Private display panel with a face-down 4 × 4 grid. Tap to select 2, tap again to deselect, **A** to lock in. D-pad also moves a cursor for players who prefer buttons. |
+| Pick | Private display panel with a face-down 4 × 4 grid. Tap to select 2, tap again to deselect, then the **Lock in** button (board 4, 4B; D-062: no D-pad cursor, which does not fit beside the grid at the size floors). |
 | Reveal | The player's own hand, its name and points. |
 
 | ID | Pri | Requirement |
