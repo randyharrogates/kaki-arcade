@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — F-03: simulation core
+
+- `packages/sim-core`: seeded generator with pinned known answers, fixed-timestep driver with a
+  catch-up cap, input buffer with edge latching, snapshot/hash/freeze/encode helpers, record and
+  replay. Three review rounds; evidence in `uat/evidence/F-03-sim-core/` (no screen involved).
+  (PLAT-032 in progress until the games pass the F-04 conformance kit)
+
 ## 2026-11-16 — R-10: Rabakz question schema, build and selector
 
 - `content/rabakz`: schema and validator, deterministic build to content-hashed chunks, seeded

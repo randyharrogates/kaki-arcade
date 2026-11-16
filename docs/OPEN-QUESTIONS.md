@@ -51,6 +51,14 @@ are stored. (2) The Singapore question pack (R-12) writes place and food names i
 only; Chinese or Tamil script on the question screen would need its widths measured first.
 Needed by: C-06, R-12.
 
+**OQ-030 · May a simulation step create objects?** `PERFORMANCE.md` §2 says no per-frame array or
+object creation in `step` or render. The safest rule for game code is "`step` returns a new state
+and never changes the one it was given", which creates objects every step. Free for Rabakz and
+Peek Poker; for Tabao Rush at 60 steps a second it is unmeasured. Options: (a) amend §2 to allow
+copies that share unchanged parts, and measure Tabao Rush against the frame budget; (b) let
+games change state in place and drop the freeze check for them. Claude recommends (a). Only
+Randy changes §2. Needed by: F-04.
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot

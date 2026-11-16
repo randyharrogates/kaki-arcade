@@ -1,0 +1,211 @@
+
+ RUN  v4.1.12 <worktree>
+
+ ✓ packages/sim-core/src/purity.test.ts > sim-core source is pure > finds the library files 2ms
+ ✓ packages/sim-core/src/purity.test.ts > sim-core source is pure > never mentions a clock, a timer or an unseeded random source 1ms
+ ✓ packages/sim-core/src/purity.test.ts > sim-core source is pure > imports nothing but its own files 0ms
+ ✓ packages/sim-core/src/purity.test.ts > sim-core source is pure > the scanner catches each forbidden thing (so a clean result means something) 1ms
+ ✓ packages/sim-core/src/purity.test.ts > sim-core source is pure > the import reader sees every form of import 1ms
+[sim-core overhead] clock + loop: 0.0105 µs per step (0.00006% of a 16.7 ms step)
+ ✓ packages/sim-core/src/rng.test.ts > known answers (these numbers must never change) > seed 0 2ms
+ ✓ packages/sim-core/src/rng.test.ts > known answers (these numbers must never change) > seed 1 0ms
+ ✓ packages/sim-core/src/rng.test.ts > known answers (these numbers must never change) > seed 42 0ms
+ ✓ packages/sim-core/src/rng.test.ts > known answers (these numbers must never change) > seed 4294967296 0ms
+ ✓ packages/sim-core/src/rng.test.ts > known answers (these numbers must never change) > seed 9007199254740991 0ms
+ ✓ packages/sim-core/src/rng.test.ts > known answers (these numbers must never change) > seed "kaki" 1ms
+ ✓ packages/sim-core/src/rng.test.ts > known answers (these numbers must never change) > seed "" 0ms
+ ✓ packages/sim-core/src/rng.test.ts > known answers (these numbers must never change) > helpers drawn in a fixed order from seed 2026 1ms
+ ✓ packages/sim-core/src/rng.test.ts > known answers (these numbers must never change) > forks from seed 7 0ms
+ ✓ packages/sim-core/src/rng.test.ts > the generator > matches sfc32 written out independently with big integers 16ms
+ ✓ packages/sim-core/src/rng.test.ts > the generator > keeps its state as four unsigned 32-bit integers that survive JSON 119ms
+[sim-core overhead] clock + loop + 8-controller input buffer: 0.2309 µs per step (0.00139% of a 16.7 ms step)
+ ✓ packages/sim-core/src/overhead.test.ts > driver overhead per step > clock and loop alone cost under 5 µs a step (0.03% of the step) 19ms
+ ✓ packages/sim-core/src/overhead.test.ts > driver overhead per step > with 8 controllers each sending a packet every step, under 20 µs a step (0.12%) 235ms
+ ✓ packages/sim-core/src/replay.test.ts > determinism (PLAT-032) > same seed and inputs give the same state hash at every one of 10,000 steps 197ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > known answers (these must never change) 1ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > is 16 lower-case hex characters and repeatable 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > ignores the order of object keys 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > depends on the order of Map entries and Set items 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > changes when any leaf changes 1ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > tells apart values that look alike 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > hashes every not-a-number alike 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > has no collisions across 200,000 small distinct states 335ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > refuses things that are not plain data, naming where they are 1ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > refuses a state that refers to itself, naming where 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > accepts one object used in two places (that is not a cycle) 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > handles nesting far deeper than any real state (the only limit is the engine's call stack) 1ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > refuses an array with a hole or an extra property, naming where 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > refuses an own property named __proto__, naming where 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > hashState > supports 64-bit integer arrays 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > cloneState > copies everything and shares nothing 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > cloneState > keeps types and order 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > cloneState > passes simple values through, and keeps undefined and objects with no prototype 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > cloneState > can copy a frozen state into one that can be changed 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > cloneState > refuses things that are not plain data 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > deepFreeze > makes every level throw on change, and returns the same object 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > deepFreeze > makes Maps and Sets throw on change but still readable 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > deepFreeze > copes with simple values and with one object used in two places 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > deepFreeze > goes all the way down through a value that is already frozen on the surface 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > deepFreeze > freezes a shallow-frozen level table embedded in a state, at any depth and inside Maps and Sets 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > deepFreeze > refuses a Map that was frozen by hand: it is still writable and can no longer be guarded 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > deepFreeze > refuses a Set that was frozen by hand 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > deepFreeze > refuses a Set or Map that was sealed or made non-extensible 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > deepFreeze > accepts a Map or Set it froze itself, any number of times, and they stay read-only 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > deepFreeze > refuses what is not plain data, naming where it is, and freezes nothing when it does 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > deepFreeze > leaves typed arrays writable (the language cannot freeze them) 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > encodeState and decodeState > a state survives JSON with the same hash, types and order 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > encodeState and decodeState > keeps what plain JSON loses 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > encodeState and decodeState > keeps objects whose keys look like its own tags, and objects with no prototype 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > encodeState and decodeState > leaves JSON-safe data as it is 0ms
+ ✓ packages/sim-core/src/snapshot.test.ts > encodeState and decodeState > refuses what is not plain data, and encodings it did not make 0ms
+ ✓ packages/sim-core/src/replay.test.ts > determinism (PLAT-032) > a different seed gives a different state 122ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > defaults to 60 steps a second with a cap of 6 1ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > gives exactly one step for each step of time, however long it runs 484ms
+ ✓ packages/sim-core/src/replay.test.ts > determinism (PLAT-032) > different inputs give a different state 116ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > banks time below a step and reports the fraction as alpha 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > runs two steps a frame on a 30 frames-a-second display 2ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > simulates the same total whatever the frame pattern 1ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > caps catch-up after a stall and drops the rest 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > never spirals: with the cap, steps per advance are bounded for any input 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > treats an elapsed time of -5 as nothing 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > treats an elapsed time of NaN as nothing 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > treats an elapsed time of Infinity as nothing 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > treats an elapsed time of -Infinity as nothing 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > treats an elapsed time of 0 as nothing 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > snaps display jitter to whole steps when asked to 50ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > resetClock forgets banked time but keeps the running total of dropped time 1ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > refuses the options {"stepMs":0} 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > refuses the options {"stepMs":-1} 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > refuses the options {"stepMs":null} 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > refuses the options {"stepMs":null} 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > refuses the options {"maxCatchUpSteps":0} 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > refuses the options {"maxCatchUpSteps":1.5} 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > refuses the options {"snapToleranceMs":-1} 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > advanceClock > refuses the options {"snapToleranceMs":9} 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > createSimLoop > samples inputs once before each step, in order, and passes the fixed dt 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > createSimLoop > runs nothing when no step is due 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > createSimLoop > when a step throws: the error passes through and the unfinished steps are counted as dropped 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > createSimLoop > when onStep throws, the step it followed still counts: clock and tick agree 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > createSimLoop > a throw comes after sampleInputs, so that step's presses are already consumed 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > createSimLoop > when a step throws on top of a stall, both kinds of dropped time are added 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > createSimLoop > reaches the same state at the same tick whatever the frame rate 2ms
+ ✓ packages/sim-core/src/timestep.test.ts > createSimLoop > applies an input on the first step after it arrives 0ms
+ ✓ packages/sim-core/src/timestep.test.ts > runSteps > runs one step per input with the given dt 0ms
+ ✓ packages/sim-core/src/rng.test.ts > the generator > gives the same stream for the same seed and a different one for a different seed 10ms
+ ✓ packages/sim-core/src/rng.test.ts > the generator > uses the high bits of a seed above 2^32 2ms
+ ✓ packages/sim-core/src/rng.test.ts > the generator > refuses the seed -1 2ms
+ ✓ packages/sim-core/src/rng.test.ts > the generator > refuses the seed 1.5 0ms
+ ✓ packages/sim-core/src/rng.test.ts > the generator > refuses the seed NaN 0ms
+ ✓ packages/sim-core/src/rng.test.ts > the generator > refuses the seed Infinity 0ms
+ ✓ packages/sim-core/src/rng.test.ts > the generator > refuses the seed 9007199254740992 0ms
+ ✓ packages/sim-core/src/rng.test.ts > the generator > throws when drawn from inside a frozen state, and cloneRng is the way round 1ms
+ ✓ packages/sim-core/src/rng.test.ts > the generator > clones independently 0ms
+ ✓ packages/sim-core/src/rng.test.ts > splitRng > known answers from seed 7 (these numbers must never change) 0ms
+ ✓ packages/sim-core/src/rng.test.ts > splitRng > advances the parent, so the same label gives a new stream each time 0ms
+ ✓ packages/sim-core/src/rng.test.ts > splitRng > is repeatable, takes exactly two draws from the parent, and separates labels 0ms
+ ✓ packages/sim-core/src/rng.test.ts > splitRng > where forkRng would deal the same deck every round, splitRng deals a new one 0ms
+ ✓ packages/sim-core/src/rng.test.ts > forkRng > does not advance the parent and does not depend on fork order 0ms
+ ✓ packages/sim-core/src/rng.test.ts > forkRng > gives different streams for different labels, parents and parent positions 0ms
+ ✓ packages/sim-core/src/rng.test.ts > helpers > nextFloat stays in 0 (inclusive) to 1 (exclusive) and averages one half 467ms
+ ✓ packages/sim-core/src/replay.test.ts > determinism (PLAT-032) > the input script itself is repeatable 13ms
+ ✓ packages/sim-core/src/replay.test.ts > determinism (PLAT-032) > the step never changes the state or the inputs it is given 8ms
+ ✓ packages/sim-core/src/replay.test.ts > determinism (PLAT-032) > reaches the same state through the clock-driven loop at any frame rate 7ms
+ ✓ packages/sim-core/src/replay.test.ts > record and replay > a recording replays to identical hashes at every step 23ms
+ ✓ packages/sim-core/src/replay.test.ts > record and replay > keeps a hash every N steps when asked 15ms
+ ✓ packages/sim-core/src/replay.test.ts > record and replay > copies inputs as it records, so reused input frames are safe 0ms
+ ✓ packages/sim-core/src/replay.test.ts > record and replay > reports the step where a replay stops matching 18ms
+ ✓ packages/sim-core/src/replay.test.ts > record and replay > reports a wrong seed at the first step, and a hand-edited input where it is 31ms
+ ✓ packages/sim-core/src/replay.test.ts > record and replay > does not match when the recording has more or fewer hashes than the run 30ms
+ ✓ packages/sim-core/src/replay.test.ts > record and replay > a recording saved as JSON text and read back replays to the same hashes 43ms
+ ✓ packages/sim-core/src/replay.test.ts > record and replay > takes a string seed (a room code) and keeps it through recording, saving and replay 2ms
+ ✓ packages/sim-core/src/replay.test.ts > record and replay > refuses to decode what is not a recording 25ms
+ ✓ packages/sim-core/src/replay.test.ts > record and replay > refuses a bad hash interval 0ms
+ ✓ packages/sim-core/src/rng.test.ts > helpers > nextFloatBetween stays in range 5ms
+ ✓ packages/sim-core/src/rng.test.ts > helpers > nextInt includes both ends and is even 248ms
+ ✓ packages/sim-core/src/input.test.ts > latest state wins > starts at rest 1ms
+ ✓ packages/sim-core/src/input.test.ts > latest state wins > reports a press once, then held, then a release once 0ms
+ ✓ packages/sim-core/src/input.test.ts > latest state wins > uses the newest of several packets in one step 0ms
+ ✓ packages/sim-core/src/input.test.ts > latest state wins > ignores a repeated packet 0ms
+ ✓ packages/sim-core/src/input.test.ts > latest state wins > survives every packet being sent three times 0ms
+ ✓ packages/sim-core/src/input.test.ts > latest state wins > never lets an older packet change what is held or the axes 0ms
+ ✓ packages/sim-core/src/input.test.ts > latest state wins > accepts a jump in sequence numbers (packets lost in between) 0ms
+ ✓ packages/sim-core/src/input.test.ts > taps are not missed > reports a tap that starts and ends inside one step 0ms
+ ✓ packages/sim-core/src/input.test.ts > taps are not missed > reports release-then-press inside one step while the button stays held 0ms
+ ✓ packages/sim-core/src/input.test.ts > taps are not missed > reports a press when the packets before it were lost 0ms
+ ✓ packages/sim-core/src/input.test.ts > taps are not missed > recovers a tap whose press arrives after its release (reordering) 0ms
+ ✓ packages/sim-core/src/input.test.ts > taps are not missed > recovers a reordered tap even when it is the very first thing a phone sends 0ms
+ ✓ packages/sim-core/src/input.test.ts > taps are not missed > reports a reordered tap on the next step when it arrives after its step 0ms
+ ✓ packages/sim-core/src/input.test.ts > taps are not missed > does not invent a second press from a late packet inside one hold 0ms
+ ✓ packages/sim-core/src/input.test.ts > taps are not missed > counts a late packet only once 0ms
+ ✓ packages/sim-core/src/input.test.ts > taps are not missed > drops a late packet too old to place, without inventing a press 0ms
+ ✓ packages/sim-core/src/input.test.ts > taps are not missed > places late packets correctly when the history is exactly full 0ms
+ ✓ packages/sim-core/src/input.test.ts > no stuck buttons > releases a button when its release packet is lost but a later state arrives 0ms
+ ✓ packages/sim-core/src/input.test.ts > no stuck buttons > is not re-pressed by an old "down" packet arriving after the release 0ms
+ ✓ packages/sim-core/src/input.test.ts > no stuck buttons > releases everything when a controller goes silent while holding 1ms
+ ✓ packages/sim-core/src/input.test.ts > no stuck buttons > centres a stick left pushed over when a controller goes silent 0ms
+ ✓ packages/sim-core/src/input.test.ts > no stuck buttons > keeps a hold alive as long as packets keep coming, and leaves an idle controller alone 2ms
+ ✓ packages/sim-core/src/input.test.ts > no stuck buttons > does not treat packets from before a silence as taps afterwards 7ms
+ ✓ packages/sim-core/src/input.test.ts > no stuck buttons > can have the silence rule turned off 8ms
+ ✓ packages/sim-core/src/input.test.ts > no stuck buttons > reset releases what is held and hears a phone that restarts its numbering 0ms
+ ✓ packages/sim-core/src/input.test.ts > sequence numbers that wrap > treats 0 as newer than 65535 when the range is 65536 0ms
+ ✓ packages/sim-core/src/input.test.ts > sequence numbers that wrap > recovers a reordered tap across the wrap 0ms
+ ✓ packages/sim-core/src/input.test.ts > sequence numbers that wrap > runs for many laps 60ms
+ ✓ packages/sim-core/src/input.test.ts > sequence numbers that wrap > rejects a number outside the range 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > ignores packets for a controller it does not know 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > rejects the sequence number -1 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > rejects the sequence number 1.5 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > rejects the sequence number NaN 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > rejects the sequence number Infinity 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > rejects the sequence number 9007199254740992 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > clamps axes, reads rubbish as 0, and fills in missing ones 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > handles all 32 buttons as an unsigned mask 1ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > keeps controllers separate and in the order they were added 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > reuses its map and frames between samples (so callers must copy what they keep) 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > copyInputFrame copies every field and resizes the axes 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > refuses the options {"axisCount":-1} 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > refuses the options {"axisCount":1.5} 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > refuses the options {"seqModulus":1} 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > refuses the options {"seqModulus":-4} 0ms
+ ✓ packages/sim-core/src/input.test.ts > bad input and bookkeeping > refuses the options {"staleAfterSteps":-1} 0ms
+ ✓ packages/sim-core/src/input.test.ts > what game rules meet at the edges > up then down again inside one step on a held button: held, pressed and released all set 0ms
+ ✓ packages/sim-core/src/input.test.ts > what game rules meet at the edges > two taps inside one step read as one 0ms
+ ✓ packages/sim-core/src/input.test.ts > what game rules meet at the edges > edges pile up while sample() is not called, and arrive on the next sample 0ms
+ ✓ packages/sim-core/src/input.test.ts > what game rules meet at the edges > a removed controller gets no release: its frame just stops appearing 0ms
+ ✓ packages/sim-core/src/input.test.ts > what game rules meet at the edges > reset (new channel): a button still held reads as a release, then a new press 0ms
+ ✓ packages/sim-core/src/input.test.ts > what game rules meet at the edges > reset reads what the game last saw from its own record, not from the frame it handed out 0ms
+ ✓ packages/sim-core/src/input.test.ts > what game rules meet at the edges > a reset (the old way to resume) drops the piled-up edges and releases only what the game last saw held 0ms
+ ✓ packages/sim-core/src/input.test.ts > what game rules meet at the edges > reset on a controller the game never saw holding anything reports nothing 0ms
+ ✓ packages/sim-core/src/input.test.ts > discardEdges: resuming from a pause > held all through the pause: no edges, still held, and the next heartbeat changes nothing 0ms
+ ✓ packages/sim-core/src/input.test.ts > discardEdges: resuming from a pause > released during the pause: exactly one released 0ms
+ ✓ packages/sim-core/src/input.test.ts > discardEdges: resuming from a pause > pressed during the pause and still held: exactly one pressed 0ms
+ ✓ packages/sim-core/src/input.test.ts > discardEdges: resuming from a pause > a tap wholly inside the pause leaves nothing 0ms
+ ✓ packages/sim-core/src/input.test.ts > discardEdges: resuming from a pause > let go and pressed again inside the pause, held at both ends: nothing 0ms
+ ✓ packages/sim-core/src/input.test.ts > discardEdges: resuming from a pause > a reordered packet from inside the pause arriving after it: no phantom press 0ms
+ ✓ packages/sim-core/src/input.test.ts > discardEdges: resuming from a pause > where reset gets a resume wrong, discardEdges gets it right 0ms
+ ✓ packages/sim-core/src/input.test.ts > discardEdges: resuming from a pause > works for one controller or all, keeps sequence numbers, and ignores an unknown id 0ms
+ ✓ packages/sim-core/src/input.test.ts > discardEdges: resuming from a pause > is not fooled by a sample nobody used: edges are measured from the last sample 0ms
+ ✓ packages/sim-core/src/input.test.ts > normaliseAxes > caps a diagonal at length 1 and keeps its direction 0ms
+ ✓ packages/sim-core/src/input.test.ts > normaliseAxes > makes every direction equally fast at full push 0ms
+ ✓ packages/sim-core/src/input.test.ts > normaliseAxes > leaves a vector inside the circle exactly as it is 0ms
+ ✓ packages/sim-core/src/input.test.ts > normaliseAxes > reads rubbish as 0 and writes into the array it is given 0ms
+ ✓ packages/sim-core/src/input.test.ts > normaliseAxes > is what a frame from the buffer needs: clamped axes alone leave a diagonal 1.41 long 0ms
+ ✓ packages/sim-core/src/input.test.ts > sampled frames are borrowed > a sampled frame cannot be stored in a writable slot (checked by the compiler) 0ms
+ ✓ packages/sim-core/src/input.test.ts > sampled frames are borrowed > copyFrame gives a separate, equal, writable frame 0ms
+ ✓ packages/sim-core/src/input.test.ts > required options > will not be made without seqModulus and staleAfterSteps 0ms
+ ✓ packages/sim-core/src/input.test.ts > required options > with the 16-bit range, hears 65534, 65535, 0, 1, 2 (and shows what a wrong range does) 0ms
+ ✓ packages/sim-core/src/input.test.ts > required options > follows a controller through three laps of 16-bit numbers under loss, repeats and reordering 833ms
+ ✓ packages/sim-core/src/input.test.ts > against a simulated bad link > with duplication and reordering but no loss, sees every tap exactly once 109ms
+ ✓ packages/sim-core/src/rng.test.ts > helpers > nextInt handles one value, negatives and the full 32-bit span 5ms
+ ✓ packages/sim-core/src/rng.test.ts > helpers > nextInt refuses bad ranges 0ms
+ ✓ packages/sim-core/src/rng.test.ts > helpers > nextChance is never at 0, always at 1, and about right in between 179ms
+ ✓ packages/sim-core/src/rng.test.ts > helpers > pick returns items from the list, all of them eventually, and refuses an empty list 0ms
+ ✓ packages/sim-core/src/rng.test.ts > helpers > shuffle keeps every item, works in place, and reaches every order of three evenly 17ms
+ ✓ packages/sim-core/src/rng.test.ts > helpers > shuffled leaves the original alone 0ms
+ ✓ packages/sim-core/src/input.test.ts > against a simulated bad link > with heavy loss, duplication and reordering, never leaves a button stuck 10ms
+ ✓ packages/sim-core/src/input.test.ts > against a simulated bad link > keeps held, pressed and released consistent step to step under any link 455ms
+
+ Test Files  7 passed (7)
+      Tests  200 passed (200)
+   Start at  13:38:36
+   Duration  1.68s (transform 327ms, setup 0ms, import 553ms, tests 4.38s, environment 0ms)
+

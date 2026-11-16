@@ -1,0 +1,25 @@
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 9 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 22 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 <worktree>
+
+[sim-core overhead] clock + loop: 0.0124 µs per step (0.00007% of a 16.7 ms step)
+[sim-core overhead] clock + loop + 8-controller input buffer: 0.2625 µs per step (0.00157% of a 16.7 ms step)
+
+ Test Files  9 passed (9)
+      Tests  335 passed (335)
+   Start at  13:38:33
+   Duration  1.62s (transform 343ms, setup 0ms, import 604ms, tests 4.46s, environment 0ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+no bundles yet
+$ python3 tools/trace_check.py
+152 requirements; 5 in progress, 1 later, 146 not started
+trace check passed
+exit code: 0

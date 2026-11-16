@@ -21,6 +21,11 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   checkout and was shown to fail on a type error, a lint error, a design-lint finding, a failing
   test, a trace failure and an unregistered package. No game or screen code yet.
 
+- **Simulation core (F-03, merged 2026-11-16):** `packages/sim-core` has a seeded random number
+  generator, a fixed-timestep loop, the host's input buffer (loss, reordering and the 16-bit
+  wrap handled; `discardEdges` for resume, `reset` for a new connection), and snapshot, hash,
+  freeze, encode and record-and-replay helpers. 200 tests. No game uses it yet. Known gap: a tap
+  made in the last moments of a pause can still land as play restarts.
 - **Rabakz question bank tooling (R-10, merged 2026-11-16):** `content/rabakz` holds the question
   schema, a validating build that writes one chunk per category, a seeded question selector and
   a stats report. 20 sample questions only: the bank is short of its targets by 1,480 questions,

@@ -46,7 +46,7 @@ requirement.
 | PLAT-025 | MUST | Games may declare team play; two teams with colour themes, balanced by default, changeable on phones | M3 | not started | — | — | — |
 | PLAT-030 | MUST | Games are modules behind one documented interface | M3 | not started | — | — | — |
 | PLAT-031 | MUST | The interface covers: metadata, player range, controller layout per player and game phase, simulation… | M3 | not started | — | — | — |
-| PLAT-032 | MUST | Game simulation is a pure, deterministic function of state, inputs and a seed, with no access to… | M3 | not started | — | — | — |
+| PLAT-032 | MUST | Game simulation is a pure, deterministic function of state, inputs and a seed, with no access to… | M3 | in progress | `packages/sim-core/src/` (generator, timestep, input buffer, snapshot, replay; games must still pass the F-04 kit) | `packages/sim-core/src/*.test.ts` | `uat/evidence/F-03-sim-core/` |
 | PLAT-033 | MUST | All three v1 games use this interface with no private back doors | M3 | not started | — | — | — |
 
 ## Controller kit
