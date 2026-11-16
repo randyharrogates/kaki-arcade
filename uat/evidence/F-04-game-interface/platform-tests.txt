@@ -1,0 +1,184 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-04
+
+ ✓ packages/platform/src/game/fixtures/picks.test.ts > fixture game: Picks > gives the round to the highest number nobody else picked, and reveals early when all have locked 2ms
+ ✓ packages/platform/src/game/fixtures/picks.test.ts > fixture game: Picks > adds the bonus, fills missing picks from the seed when time runs out, and plays the set number of rounds 1ms
+ ✓ packages/platform/src/game/fixtures/picks.test.ts > fixture game: Picks > seats a late joiner from the next round with nothing, and lets the leader cut the reveal short 0ms
+ ✓ packages/platform/src/game/fixtures/picks.test.ts > fixture game: Picks > shows no pick, bonus or seal on the TV until the reveal 0ms
+ ✓ packages/platform/src/game/json.test.ts > jsonProblem > passes plain JSON, including -0, null and empty things 1ms
+ ✓ packages/platform/src/game/json.test.ts > jsonProblem > names where JSON would lose or change something 1ms
+ ✓ packages/platform/src/game/json.test.ts > jsonProblem > lets the same object appear twice when nothing contains itself 0ms
+ ✓ packages/platform/src/game/json.test.ts > sizes > counts UTF-8 bytes 0ms
+ ✓ packages/platform/src/game/json.test.ts > jsonEqual and firstDifference > ignores key order and respects everything else 0ms
+ ✓ packages/platform/src/game/json.test.ts > jsonEqual and firstDifference > says where two views first differ 0ms
+ ✓ packages/platform/src/game/json.test.ts > findSecret > finds a string as a whole value, inside a longer string, and as a key 0ms
+ ✓ packages/platform/src/game/json.test.ts > findSecret > matches a one-character string only as a whole value 2ms
+ ✓ packages/platform/src/game/json.test.ts > findSecret > finds numbers exactly, as values and as keys, and so also finds innocent ones 0ms
+ ✓ packages/platform/src/game/json.test.ts > findSecret > compares arrays and objects whole 0ms
+ ✓ packages/platform/src/game/json.test.ts > findSecret > gives a predicate every value with its path 0ms
+ ✓ packages/platform/src/game/layout.test.ts > the schema fits the three games > Tabao Rush is sound, within the caps and fits a phone 2ms
+ ✓ packages/platform/src/game/layout.test.ts > the schema fits the three games > Rabakz question is sound, within the caps and fits a phone 0ms
+ ✓ packages/platform/src/game/layout.test.ts > the schema fits the three games > Rabakz reveal is sound, within the caps and fits a phone 0ms
+ ✓ packages/platform/src/game/layout.test.ts > the schema fits the three games > Peek Poker pick is sound, within the caps and fits a phone 0ms
+ ✓ packages/platform/src/game/layout.test.ts > the schema fits the three games > Peek Poker reveal is sound, within the caps and fits a phone 0ms
+ ✓ packages/platform/src/game/layout.test.ts > the schema fits the three games > pad buttons are named by position and map to the frame bits 0ms
+ ✓ packages/platform/src/game/layout.test.ts > the stated phone limits > uses real rows and columns at the decided floors 0ms
+ ✓ packages/platform/src/game/layout.test.ts > the stated phone limits > rejects 5 by 12 grid 0ms
+ ✓ packages/platform/src/game/layout.test.ts > the stated phone limits > rejects faces, options and grid 0ms
+ ✓ packages/platform/src/game/layout.test.ts > the stated phone limits > rejects stick, pad, six buttons, swipe and options 0ms
+ ✓ packages/platform/src/game/layout.test.ts > the stated phone limits > rejects twenty options 0ms
+ ✓ packages/platform/src/game/layout.test.ts > the stated phone limits > rejects stick, pad and grid 0ms
+ ✓ packages/platform/src/game/layout.test.ts > checkLayout > refuses what is not a layout at all 0ms
+ ✓ packages/platform/src/game/layout.test.ts > checkLayout > refuses a control or a field that is not in the schema 0ms
+ ✓ packages/platform/src/game/layout.test.ts > checkLayout > refuses colour values, taking only token names 0ms
+ ✓ packages/platform/src/game/layout.test.ts > checkLayout > holds ids, labels and counts to the stated limits 1ms
+ ✓ packages/platform/src/game/layout.test.ts > checkLayout > counts characters, not code units, so Tamil and emoji labels are not cut short 0ms
+ ✓ packages/platform/src/game/layout.test.ts > checkLayout > enforces the 4,096-byte cap 0ms
+ ✓ packages/platform/src/game/layout.test.ts > checkPrivateView > accepts nothing to show 0ms
+ ✓ packages/platform/src/game/layout.test.ts > checkPrivateView > refuses what is outside the schema or the limits 0ms
+ ✓ packages/platform/src/game/layout.test.ts > checkPrivateView > enforces the 8,192-byte cap 1ms
+ ✓ packages/platform/src/game/layout.test.ts > tapSignature > does not change for a countdown, a selection or an option greyed out 0ms
+ ✓ packages/platform/src/game/layout.test.ts > tapSignature > changes when a tap would mean something else 0ms
+ ✓ packages/platform/src/game/layout.test.ts > supports audience on controls and panels, focus independent of selection, and only the decided colour tokens 0ms
+ ✓ packages/platform/src/game/layout.test.ts > round 2 measures unbreakable words and the entire options block 0ms
+ ✓ packages/platform/src/game/purity.test.ts > stripCommentsAndStrings > blanks comments and string contents and keeps every position 1ms
+ ✓ packages/platform/src/game/purity.test.ts > stripCommentsAndStrings > keeps the code inside a template placeholder and blanks the text round it 0ms
+ ✓ packages/platform/src/game/purity.test.ts > stripCommentsAndStrings > copes with escapes, braces in placeholders, regular expressions and division 0ms
+ ✓ packages/platform/src/game/purity.test.ts > scanSource > catches every forbidden thing (so a clean result means something) 3ms
+ ✓ packages/platform/src/game/purity.test.ts > scanSource > allows deterministic Math, and the bare words in comments and strings (the two faults of the sim-core scan) 1ms
+ ✓ packages/platform/src/game/purity.test.ts > scanSource > reports the line, once per place, with Math.random named as itself 0ms
+ ✓ packages/platform/src/game/purity.test.ts > scanSource > keeps imports to the folder, the two core packages and what the caller allows 0ms
+ ✓ packages/platform/src/game/purity.test.ts > scanSource > reads every form of import 0ms
+ ✓ packages/platform/src/game/purity.test.ts > readSources > walks a folder in a fixed order, leaving out tests, packages and other file types 1ms
+ ✓ packages/platform/src/game/purity.test.ts > readSources > takes the real node:fs 1ms
+ ✓ packages/platform/src/game/purity.test.ts > the game interface itself is pure > has no clock, timer or unseeded randomness, and imports only sim-core 22ms
+ ✓ packages/platform/src/game/purity.test.ts > review scan: device access, async work, module state, comparator and a justified escape 0ms
+ ✓ packages/platform/src/game/purity.test.ts > round 2 refuses browser access and string-literal excuses, while allowing pure maths 0ms
+ ↓ packages/platform/src/game/benchmark.test.ts > step modes at Tabao Rush size: 8 cooks, 40 stations, 40 items, 5 orders > measures in-place, structural sharing and whole-state copy over 10,000 steps
+ ✓ packages/platform/src/game/benchmark.test.ts > step modes at Tabao Rush size: 8 cooks, 40 stations, 40 items, 5 orders > sharing really shares: untouched stations and items are the same objects 3ms
+ ✓ packages/platform/src/game/fixtures/dots.test.ts > fixture game: Dots > moves a dot by its stick, the same distance straight or diagonally 2ms
+ ✓ packages/platform/src/game/fixtures/dots.test.ts > fixture game: Dots > shares what did not change and never touches the old state 1ms
+ ✓ packages/platform/src/game/fixtures/dots.test.ts > fixture game: Dots > scores the gem, moves it from the seed, and halves speed while the button is held 0ms
+ ✓ packages/platform/src/game/fixtures/dots.test.ts > fixture game: Dots > ends when time runs out and ranks ties together, teams by their totals 0ms
+ ✓ packages/platform/src/game/drive.test.ts > rejectAction > lets through a tap the layout offers 2ms
+ ✓ packages/platform/src/game/drive.test.ts > rejectAction > says why a tap must not reach the game 1ms
+ ✓ packages/platform/src/game/drive.test.ts > layoutFor > keeps the leader's controls off everyone else's phone 1ms
+ ✓ packages/platform/src/game/drive.test.ts > driveStep > applies leavers, then joiners, then the taps that still fit, then one step 0ms
+ ✓ packages/platform/src/game/drive.test.ts > driveStep > hands the tick itself to step when nothing was dropped, and allocates no list 0ms
+ ✓ packages/platform/src/game/drive.test.ts > driveStep > checks taps against the layout AFTER joins and leaves 0ms
+ ✓ packages/platform/src/game/drive.test.ts > driveStep > createTick fills in an empty room 0ms
+ ✓ packages/platform/src/game/drive.test.ts > small helpers > teams are in use when every player has one 0ms
+ ✓ packages/platform/src/game/drive.test.ts > small helpers > a module that does not say is returns-new 0ms
+ ✓ packages/platform/src/game/drive.test.ts > delivers the first accepted tap per player per control, with rejected taps consuming no slot 0ms
+ ✓ packages/platform/src/game/drive.test.ts > exports exact step units and forwards per-player connectivity 0ms
+ ✓ packages/platform/src/game/drive.test.ts > strips console START from held, pressed and released without changing SHAKE or borrowed frames 0ms
+ ✓ packages/platform/src/game/conformance-support.test.ts > fixture game: Dots > moves a dot by its stick, the same distance straight or diagonally 2ms
+ ✓ packages/platform/src/game/conformance-support.test.ts > fixture game: Dots > shares what did not change and never touches the old state 1ms
+ ✓ packages/platform/src/game/conformance-support.test.ts > fixture game: Dots > scores the gem, moves it from the seed, and halves speed while the button is held 0ms
+ ✓ packages/platform/src/game/conformance-support.test.ts > fixture game: Dots > ends when time runs out and ranks ties together, teams by their totals 1ms
+ ✓ packages/platform/src/game/conformance-support.test.ts > fixture game: Picks > gives the round to the highest number nobody else picked, and reveals early when all have locked 1ms
+ ✓ packages/platform/src/game/conformance-support.test.ts > fixture game: Picks > adds the bonus, fills missing picks from the seed when time runs out, and plays the set number of rounds 1ms
+ ✓ packages/platform/src/game/conformance-support.test.ts > fixture game: Picks > seats a late joiner from the next round with nothing, and lets the leader cut the reveal short 2ms
+ ✓ packages/platform/src/game/conformance-support.test.ts > fixture game: Picks > shows no pick, bonus or seal on the TV until the reveal 0ms
+ ✓ packages/platform/src/game/conformance-support.test.ts > the check registry has unique ids 0ms
+ ✓ packages/platform/src/game/settings.test.ts > settings schema > is sound, and its defaults validate 2ms
+ ✓ packages/platform/src/game/settings.test.ts > settings schema > hands out a fresh copy each time, lists included 1ms
+ ✓ packages/platform/src/game/settings.test.ts > settings schema > refuses each kind of wrong value in words the leader can read 1ms
+ ✓ packages/platform/src/game/settings.test.ts > settings schema > lays changes over the defaults 0ms
+ ✓ packages/platform/src/game/settings.test.ts > settings schema > accepts fractional steps 0ms
+ ✓ packages/platform/src/game/settings.test.ts > settings schema > finds what is wrong with a schema 0ms
+ ✓ packages/platform/src/game/settings.test.ts > settings schema > ties each field to a key of the settings type 0ms
+ ✓ packages/platform/src/game/settings.test.ts > builds settings from loaded data, saved progress and the teams switch 0ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > fixture game: Dots > moves a dot by its stick, the same distance straight or diagonally 2ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > fixture game: Dots > shares what did not change and never touches the old state 1ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > fixture game: Dots > scores the gem, moves it from the seed, and halves speed while the button is held 0ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > fixture game: Dots > ends when time runs out and ranks ties together, teams by their totals 0ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > fixture game: Picks > gives the round to the highest number nobody else picked, and reveals early when all have locked 1ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > fixture game: Picks > adds the bonus, fills missing picks from the seed when time runs out, and plays the set number of rounds 1ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > fixture game: Picks > seats a late joiner from the next round with nothing, and lets the leader cut the reveal short 1ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > fixture game: Picks > shows no pick, bonus or seal on the TV until the reveal 0ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the check registry has unique ids 0ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a returns-new step that changes the state it was given 40ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a returns-new step that writes into a typed array, which freezing cannot stop 599ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > fixture game: Dots > moves a dot by its stick, the same distance straight or diagonally 1ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > fixture game: Dots > shares what did not change and never touches the old state 0ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > fixture game: Dots > scores the gem, moves it from the seed, and halves speed while the button is held 0ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > fixture game: Dots > ends when time runs out and ranks ties together, teams by their totals 0ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > fixture game: Picks > gives the round to the highest number nobody else picked, and reveals early when all have locked 1ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > fixture game: Picks > adds the bonus, fills missing picks from the seed when time runs out, and plays the set number of rounds 0ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > fixture game: Picks > seats a late joiner from the next round with nothing, and lets the leader cut the reveal short 0ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > fixture game: Picks > shows no pick, bonus or seal on the TV until the reveal 0ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > the check registry has unique ids 0ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > review round 1 attacks > requires both endpoint scenarios and whole matches at the minimum 901ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > Math.random in a step: caught by the replay checks and by the source scan 418ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a module-level counter: state that lives outside the state 399ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a secret in the public view 30ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a secret in disguise (how many have picked): only scrambleSecrets can see it 49ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a secret in another player's private view and in another player's layout 45ms
+ ✓ packages/platform/src/game/conformance.test.ts > fixture game: Dots > moves a dot by its stick, the same distance straight or diagonally 1ms
+ ✓ packages/platform/src/game/conformance.test.ts > fixture game: Dots > shares what did not change and never touches the old state 0ms
+ ✓ packages/platform/src/game/conformance.test.ts > fixture game: Dots > scores the gem, moves it from the seed, and halves speed while the button is held 0ms
+ ✓ packages/platform/src/game/conformance.test.ts > fixture game: Dots > ends when time runs out and ranks ties together, teams by their totals 0ms
+ ✓ packages/platform/src/game/conformance.test.ts > fixture game: Picks > gives the round to the highest number nobody else picked, and reveals early when all have locked 1ms
+ ✓ packages/platform/src/game/conformance.test.ts > fixture game: Picks > adds the bonus, fills missing picks from the seed when time runs out, and plays the set number of rounds 0ms
+ ✓ packages/platform/src/game/conformance.test.ts > fixture game: Picks > seats a late joiner from the next round with nothing, and lets the leader cut the reveal short 0ms
+ ✓ packages/platform/src/game/conformance.test.ts > fixture game: Picks > shows no pick, bonus or seal on the TV until the reveal 0ms
+ ✓ packages/platform/src/game/conformance.test.ts > the check registry has unique ids 0ms
+ ✓ packages/platform/src/game/conformance.test.ts > the conformance kit on the fixture games > passes Dots (real time, returns-new, optional teams) 1602ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > review round 1 attacks > requires leave to tolerate zero players and empty teams without scoring 869ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a sampled input frame stored in the state 3ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > an action object kept by an in-place game 5ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a step that changes its inputs 23ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a view that is not JSON 9ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > state whose behaviour depends on two fields being the same object 505ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > review round 1 attacks > rejects a missing, identity, or partially effective scramble 542ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > review round 1 attacks > catches a disguised leak on just one other phone and only on some steps 52ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > review round 1 attacks > catches uneven co-op scores, premature results.save and invalid save data 25ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > review round 1 attacks > catches a global revision counter, including dropped in-flight taps 26ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > state that does not survive a host reload 464ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > review round 1 attacks > catches scoring twice or answering while locked in a single step 598ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a layout over the byte cap, over what a phone holds, or outside the schema 14ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a layout whose taps change meaning without a new revision 40ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a score that changes when someone else leaves 440ms
+ ✓ packages/platform/src/game/conformance.test.ts > the conformance kit on the fixture games > passes Picks (turn-phased, in-place, secrets, data and a saved best) 1519ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > review attack: stepping after the match is over must still be safe 120ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a join that throws 290ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > review attacks: Map mutation, input frames retained in a closure, and sorting a view in place 426ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a game that ignores its seed 415ms
+ ✓ packages/platform/src/game/conformance.test.ts > the conformance kit on the fixture games > gives the same report twice (the kit itself is deterministic) 964ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a pause that leaves a mark 410ms
+ ✓ packages/platform/src/game/conformance.test.ts > the conformance kit on the fixture games > assertConformance throws the whole report 238ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > round 2 catches late joins, last leaves, copies, results leaks and lock then pick 981ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > round 2 checks private revisions and delayed outcomes independently 475ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > results that are not total or not in order 916ms
+ ✓ packages/platform/src/game/conformance.test.ts > the conformance kit on the fixture games > refuses a scenario the game cannot play, and a run with no scenarios 23ms
+ ✓ packages/platform/src/game/conformance.test.ts > checkResults > accepts ties that share a place and skip the next 0ms
+ ✓ packages/platform/src/game/conformance.test.ts > checkResults > accepts coop with a shared score and everyone first 0ms
+ ✓ packages/platform/src/game/conformance.test.ts > checkResults > accepts teams, with the players still listed 0ms
+ ✓ packages/platform/src/game/conformance.test.ts > checkResults > says what is wrong with a list that is not total or not in order 0ms
+ ✓ packages/platform/src/game/conformance.test.ts > round 3 passes always-null private view 838ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > an asset first named during play 406ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a view that is not pure 411ms
+ ✓ packages/platform/src/game/conformance.test.ts > round 3 passes full round re-deal 848ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a step that throws on something the host can deliver 16ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > picker details and settings that do not hold together 3ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a game that cannot start with every player count it claims 394ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > round 2 allows co-op late joiners sharing the existing score 1388ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > round 2 allows text-only layout revisions when no tap could be in flight 817ms
+ ✓ packages/platform/src/game/conformance.test.ts > round 3 lets a lone waiting joiner finish auto-skips beyond the scenario length 1324ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > a game that keeps the generator it was handed in a frozen state and draws from it 4ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > an honest in-place copy of Dots also passes 1197ms
+ ✓ packages/platform/src/game/conformance-broken.test.ts > coverage probes for sustained copies and private revision changes 145ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > round 3 permits needless private revisions 929ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > round 2 repeat probes respect the original control audience 905ms
+ ✓ packages/platform/src/game/conformance-attacks.test.ts > review round 4 attacks > fails when cosmetic labels and revisions change every step and drop all delayed taps 403ms
+
+ Test Files  12 passed (12)
+      Tests  170 passed | 1 skipped (171)
+   Start at  17:52:57
+   Duration  9.72s (transform 692ms, setup 0ms, import 1.25s, tests 24.61s, environment 1ms)
+
+JSON report written to /private/tmp/f04-r4-platform.json
+real 9.94
+user 36.11
+sys 0.85

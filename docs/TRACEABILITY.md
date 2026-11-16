@@ -43,11 +43,11 @@ requirement.
 | PLAT-022 | MUST | After a game ends, the room returns to a results screen and then the picker, keeping the same players | M3 | not started | — | — | — |
 | PLAT-023 | MUST | The leader can pause a running game and quit to the picker | M3 | not started | — | — | — |
 | PLAT-024 | SHOULD | The big screen can be driven without a phone for setup (keyboard) so the host is never stuck | M3 | not started | — | — | — |
-| PLAT-025 | MUST | Games may declare team play; two teams with colour themes, balanced by default, changeable on phones | M3 | not started | — | — | — |
-| PLAT-030 | MUST | Games are modules behind one documented interface | M3 | not started | — | — | — |
-| PLAT-031 | MUST | The interface covers: metadata, player range, controller layout per player and game phase, simulation… | M3 | not started | — | — | — |
+| PLAT-025 | MUST | Games may declare team play; two teams with colour themes, balanced by default, changeable on phones | M3 | in progress | `packages/platform/src/game/types.ts` (games declare teams; team setup is C-11) | `packages/platform/src/game/*.test.ts` | `uat/evidence/F-04-game-interface/` |
+| PLAT-030 | MUST | Games are modules behind one documented interface | M3 | in progress | `packages/platform/src/game/` (interface and conformance kit; no real game yet) | `packages/platform/src/game/*.test.ts` | `uat/evidence/F-04-game-interface/` |
+| PLAT-031 | MUST | The interface covers: metadata, player range, controller layout per player and game phase, simulation… | M3 | in progress | `packages/platform/src/game/types.ts`, `layout.ts`, `settings.ts`, `drive.ts` | `packages/platform/src/game/*.test.ts` | `uat/evidence/F-04-game-interface/` |
 | PLAT-032 | MUST | Game simulation is a pure, deterministic function of state, inputs and a seed, with no access to… | M3 | in progress | `packages/sim-core/src/` (generator, timestep, input buffer, snapshot, replay; games must still pass the F-04 kit) | `packages/sim-core/src/*.test.ts` | `uat/evidence/F-03-sim-core/` |
-| PLAT-033 | MUST | All three v1 games use this interface with no private back doors | M3 | not started | — | — | — |
+| PLAT-033 | MUST | All three v1 games use this interface with no private back doors | M3 | in progress | `packages/platform/src/game/conformance.ts` (the kit each game must pass; the games are tracks R, P, T) | `packages/platform/src/game/conformance-*.test.ts` | `uat/evidence/F-04-game-interface/` |
 
 ## Controller kit
 

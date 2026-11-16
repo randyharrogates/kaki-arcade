@@ -25,7 +25,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 |---|---|---|---|---|---|
 | F-02 | Protocol: every phone, host and pairing-server message with validators | NET-001, NET-005 | F-01 | 1 | merged |
 | F-03 | Simulation core: fixed timestep loop, seeded random numbers, snapshot helpers, input buffer | PLAT-032 | F-01 | 1 | merged |
-| F-04 | Game interface: `GameModule` types with settings schema, team support, controller layout schema and private view schema, plus the conformance kit every game must pass | PLAT-030, PLAT-031, PLAT-032, PLAT-025 | F-03 | 1 | doing |
+| F-04 | Game interface: `GameModule` types with settings schema, team support, controller layout schema and private view schema, plus the conformance kit every game must pass | PLAT-030, PLAT-031, PLAT-032, PLAT-025 | F-03 | 1 | merged |
 | F-05 | Game dev harness: run any `GameModule` headless or on a bare dev page with scripted or keyboard controllers, so games are built without the console | PLAT-030, NFR-TEST | F-04 | 1 | todo |
 | F-06 | Design tokens and motion helpers in `packages/ui`, taken from `DESIGN.md` §4 | NN-5, NFR-DES | G-06 | 2 | merged |
 
@@ -48,3 +48,9 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   text where it crosses a terrazzo speck (3.03 to 3.73), and seat badge fills 3, 4, 6, 7 and 8
   against marble (1.57 to 2.95; each badge keeps its white ring). No disabled-state token yet.
   Clip-mode `expand` must be measured on the TV before full-screen use.
+- **From F-04:** F-08 measures allocation per step (the kit only reports step time). The kit
+  cannot detect a leak on steps where a game declares no secret, or a game rule such as a
+  lock-out waiting on a disconnected player: each game tests those itself. For Rabakz: a wrong
+  press inside the 0.25 s window is that player's answer, and Skip in the step that closes the
+  window must not wipe the winners. At C-10 add a test that the kit's button table equals the
+  protocol's bit order.

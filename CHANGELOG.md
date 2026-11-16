@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — F-04: game interface and conformance kit
+
+- `packages/platform/src/game`: `GameModule` types, settings, layouts with revisions, private
+  views, phone limits, `driveStep`, purity scan and the conformance kit (`@kaki/platform/kit`).
+  `ARCHITECTURE.md` §3 rewritten to match; game specs use shape names (D-062).
+  (PLAT-025, PLAT-030, PLAT-031, PLAT-032, PLAT-033 in progress)
+
 ## 2026-11-16 — C-01: pairing server
 
 - `apps/signal`: Worker, room Durable Object with hibernation, a pure room core, host

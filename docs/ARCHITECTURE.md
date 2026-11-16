@@ -56,35 +56,60 @@ docs/
 
 ## 3. The game interface (PLAT-030 to PLAT-033)
 
-Every game is a module exporting:
+Every game is a module exporting the interface below. The exact types are in
+`packages/platform/src/game/types.ts`, which is the contract; this is a summary.
 
 ```ts
-interface GameModule<State, Input, Config> {
-  meta: { id: string; name: string; blurb: string; players: { min: number; max: number };
-          teams?: "none" | "optional" | "required" };          // PLAT-025
-  settings: SettingsSchema<Config>;                            // what the leader chooses before play
-  init(config: Config, players: PlayerInfo[], seed: number): State;
-  step(state: State, inputs: Map<PlayerId, Input>, dtMs: number): State;   // pure, deterministic
-  controllerLayout(state: State, player: PlayerId): ControllerLayout;      // kit parts for this phase
-  privateView(state: State, player: PlayerId): PrivateView | null;         // what only this phone sees
-  publicView(state: State): PublicView;                                    // what the big screen draws from
-  isOver(state: State): Results | null;
+interface GameModule<State, Settings, View> {
+  meta: { id; name; blurb; players: { min; max }; teams: 'none' | 'optional' | 'required'; coop; solo };
+  stepMode?: 'returns-new' | 'in-place';          // default returns-new (D-048)
+  settings: SettingsSchema<Settings> | ((context: SetupContext) => SettingsSchema<Settings>);
+  preload?(settings: Settings | null): AssetManifest;
+  save?(state: State): JsonValue;                 // what the console may store at any time
+  init(seed: number, players: PlayerInfo[], settings: Settings, context: InitContext): State;
+  step(state: State, inputs: StepInputs, dtMs: number): State;   // pure, deterministic
+  join(state: State, player: PlayerInfo): State;  // mid-match (PLAT-008)
+  leave(state: State, player: PlayerId): State;
+  pause?(state: State): State;  resume?(state: State): State;
+  publicView(state: State): View;                 // what the big screen draws from
+  privateView(state: State, player: PlayerId): PrivateView | null;       // carries a revision
+  controllerLayout(state: State, player: PlayerId): ControllerLayout;    // carries a revision
+  isOver(state: State): boolean;
+  results(state: State): Results;                 // callable at any step; marks joinedMidGame
+  assets(state: State): AssetManifest;            // everything loaded before the first step
+  secrets(state: State): Secret[];
+  scrambleSecrets?(state: State, viewer: PlayerId | null, salt: number): State;
 }
 ```
 
 Rules:
 
 - `step` has no access to the DOM, network, timers or `Math.random`. All randomness comes from
-  the seed. This is what makes rules unit-testable, bots possible and UAT repeatable.
+  the seed. Same inputs give the same result on the same browser engine (D-062). Games count
+  steps (`STEPS_PER_SECOND`, `secondsToSteps`), never milliseconds.
+- `StepInputs` gives sampled stick and button frames per player in seat order, the taps of this
+  step, the leader, and who is connected. The console's pause button never reaches a game.
+  Button bits follow the wire order in `packages/protocol` and are named by position
+  (`FACE_BOTTOM`, `FACE_RIGHT`, `FACE_LEFT`, `FACE_TOP`), never by letter (D-047, D-062).
+- A layout names controls by position and carries a per-player revision that changes only when
+  what that player can tap changes; the host compares revisions, never JSON. At most the first
+  accepted tap per player per control per step counts, and a tap the layout after the step
+  refuses has no effect. Layouts must fit a 844 × 390 phone at the decided size floors
+  (`PHONE_LIMITS`, `DESIGN.md` §4.4).
 - The big screen renders from `publicView` only. `publicView` is serialisable, so in phase 2 the
   same snapshot can be sent to a remote player (NET-007) without touching game rules.
-- Secrets (Peek Poker picks) exist only in `State` on the host and in that player's
-  `privateView`. They never appear in `publicView` before the rules reveal them (PP-020).
+- Secrets exist only in `State` on the host and in that player's `privateView`. A game declares
+  them in `secrets` and provides `scrambleSecrets`; nothing a player must not see appears in the
+  public view, another phone, a layout or `results` before the rules reveal it (PP-020). A game
+  stops declaring a secret once the screen gives it away.
+- Mid-game joiners are marked `joinedMidGame`; in co-op they share the team score, in
+  competitive play they start at 0 (D-062). Bots live inside a game's own state.
 - The platform owns: joining, seats, teams, pause, reconnect, leaving, the picker and results
-  chrome.
-- Every game passes the shared conformance kit (determinism, serialisable public view, no
-  private data in the public view). The exact types are published by issue F-04 and are then a
-  contract: changed only by the integrator (`PLAN.md` §2).
+  chrome. Nothing in `packages/platform` knows about a particular game.
+- Every game passes the shared conformance kit, imported from `@kaki/platform/kit` so it never
+  ships in the console bundle. It runs 25 checks (determinism, serialisable views, secrets,
+  revisions, taps, joins and leaves across a whole match, phone size limits, a source scan for
+  impurity). The types are a contract: changed only by the integrator (`PLAN.md` §2).
 
 ## 4. Simulation and rendering
 

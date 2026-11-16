@@ -1,0 +1,18 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-04
+
+[step-mode benchmark] in-place                             0.332 µs per step (0.0020% of a 16.7 ms step), about      0 bytes per step (0 KB a second at 60 steps)
+[step-mode benchmark] returns-new, sharing                 0.596 µs per step (0.0036% of a 16.7 ms step), about   2648 bytes per step (155 KB a second at 60 steps)
+[step-mode benchmark] returns-new, whole copy by hand      1.289 µs per step (0.0077% of a 16.7 ms step), about   7539 bytes per step (442 KB a second at 60 steps)
+[step-mode benchmark] returns-new, cloneState every step  15.942 µs per step (0.0957% of a 16.7 ms step), about  23831 bytes per step (1396 KB a second at 60 steps)
+ ✓ packages/platform/src/game/benchmark.test.ts > step modes at Tabao Rush size: 8 cooks, 40 stations, 40 items, 5 orders > measures in-place, structural sharing and whole-state copy over 10,000 steps 2068ms
+ ✓ packages/platform/src/game/benchmark.test.ts > step modes at Tabao Rush size: 8 cooks, 40 stations, 40 items, 5 orders > sharing really shares: untouched stations and items are the same objects 0ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  17:53:14
+   Duration  2.18s (transform 31ms, setup 0ms, import 40ms, tests 2.07s, environment 0ms)
+
+real 2.38
+user 2.47
+sys 0.09

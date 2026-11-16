@@ -71,6 +71,13 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   cross-client rate limits (C-03) yet. Built by Codex; two review rounds against a real local
   server; smoke test of 12 steps run by the integrator.
 
+- **Game interface and conformance kit (F-04).** `packages/platform/src/game`: the `GameModule`
+  contract, layout and private-view schemas, phone size limits from the decided button floors,
+  the step driver, and a kit of 25 checks with 67 deliberately broken games it catches. Imported
+  by games from `@kaki/platform/kit`. An independent reviewer's skeletons of all three games
+  pass it. No real game exists yet. Started by a Claude builder, finished by Codex; four review
+  rounds.
+
 ## Does not exist yet
 
 - No host page, controller or game yet.
