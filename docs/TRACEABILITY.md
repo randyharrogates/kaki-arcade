@@ -18,7 +18,7 @@ requirement.
 | NN-2 | MUST | The phone is the controller | M3 | not started | — | — | — |
 | NN-3 | MUST | No perceptible lag in play | M2 on | not started | — | — | — |
 | NN-4 | MUST | Art is produced through Blender (route D) and must look finished: not primitive, with correct character… | M2, M5 | not started | — | — | — |
-| NN-5 | MUST | The design rules in DESIGN.md (golden ratio, motion, no flat backgrounds) are binding for the interface… | M1 on | not started | — | — | — |
+| NN-5 | MUST | The design rules in DESIGN.md (golden ratio, motion, no flat backgrounds) are binding for the interface… | M1 on | in progress | `packages/ui` (tokens, themes, motion helpers; screens come later) | `packages/ui/src/*.test.ts` | `uat/evidence/F-06-design-tokens/` |
 | NN-6 | MUST | Visual and art direction is chosen by Randy from artifact option boards before any game code is written… | M1 | in progress | `docs/DESIGN.md` §4 (a decision gate, not code; closed 2026-11-16, D-051) | — | `docs/design-gate/` boards 0 to 5 |
 | NN-7 | MUST | Implementation is tracked against this PRD in local repo docs at all times (TRACEABILITY.md) | M0 on | in progress | `tools/trace_check.py`, `package.json` (verify) | `tools/*.test.ts` | `uat/evidence/F-01-workspace/` |
 | NN-8 | MUST | Work proceeds in the loop code → verify → test (UAT with screenshots) → review → code (WORKFLOW.md) | M0 on | in progress | `package.json` (verify), `tools/check_workspace.mjs`, `tools/lint_design.mjs`, `.claude/agents/` | `tools/*.test.ts` | `uat/evidence/F-01-workspace/` |
@@ -101,7 +101,7 @@ requirement.
 | ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
 |---|---|---|---|---|---|---|---|
 | NFR-PERF | MUST | All budgets in PERFORMANCE.md are met and tested automatically | M2 on | not started | — | — | — |
-| NFR-DES | MUST | Every screen passes the checklist in DESIGN.md §6 at review | M3 on | not started | — | — | — |
+| NFR-DES | MUST | Every screen passes the checklist in DESIGN.md §6 at review | M3 on | in progress | `packages/ui/src/contrast.ts`, `tools/design_lint` (tokens only; no screen exists yet) | `packages/ui/src/contrast.test.ts` | `uat/evidence/F-06-design-tokens/` |
 | NFR-A11Y | MUST | Colour is never the only way to tell players apart (colour plus shape or number) | M3 on | not started | — | — | — |
 | NFR-REL | MUST | A 30-minute 8-player session completes with no crash, no stuck input and no desync between the big screen… | M6, M8 | not started | — | — | — |
 | NFR-TEST | MUST | Game rules have unit tests on the deterministic simulation | M3 on | in progress | `vitest.config.ts` (runner only; no game rules yet) | — | `uat/evidence/F-01-workspace/` |
@@ -115,7 +115,7 @@ requirement.
 | PERF-002 | MUST | TV-class device (the TCL Q65's browser) — 95th-percentile frame time ≤ 33.3 ms (30 fps) in lower-detail… | M2, M8 | not started | — | — | — |
 | PERF-010 | MUST | Direct, same Wi-Fi — 95th percentile ≤ 50 ms | M2 on | not started | — | — | — |
 | PERF-011 | MUST | Relayed — 95th percentile ≤ 120 ms; the big screen marks the player as relayed (PLAT-010) | M2 on | not started | — | — | — |
-| PERF-012 | MUST | Phone feedback — The controller shows the press within one frame of the touch, independent of the network | M2 on | not started | — | — | — |
+| PERF-012 | MUST | Phone feedback — The controller shows the press within one frame of the touch, independent of the network | M2 on | in progress | `packages/ui/src/motion.ts` `press`, `.ka-pressable` (press-down is instant; the controller is K-01) | `packages/ui/src/motion.test.ts` | — |
 | PERF-020 | MUST | Controller page — ≤ 300 KB transferred; interactive ≤ 2 s on a mid-range phone on Wi-Fi | M2 on | not started | — | — | — |
 | PERF-021 | MUST | QR scan to seated in lobby — ≤ 5 s | M2 on | not started | — | — | — |
 | PERF-022 | MUST | Host shell (landing to lobby) — ≤ 1.5 MB transferred | M2 on | not started | — | — | — |

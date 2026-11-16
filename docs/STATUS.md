@@ -48,11 +48,16 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   and per-round sizes, and fails when a round is over PERF-023 or PERF-024. Proven on synthetic
   frames only: no real art exists yet. Two review rounds.
 
+- **Design tokens and motion helpers (F-06).** `packages/ui` holds every decided colour, size,
+  spacing step, type size and motion value, the four themes, and helpers for press, enter and
+  exit, stagger, arcs, count-up, crossfade and card turn, with reduced-motion handling.
+  `tokens.css` and `specimen.html` are generated and checked for staleness. 5.8 KB compressed.
+  Real fonts are not bundled yet (F-06b). One review round plus fixes checked by the integrator.
+
 ## Does not exist yet
 
 - Any application code: no host page, controller, pairing server or game (the packages are empty stubs).
 - `pnpm uat`, `pnpm perf`, `pnpm dev` (later issues).
-- Design tokens: `DESIGN.md` §4 is decided and locked (gate closed 2026-11-16); `packages/ui` does not hold them yet.
 
 ## Design gate
 

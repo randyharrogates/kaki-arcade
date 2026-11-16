@@ -27,7 +27,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | F-03 | Simulation core: fixed timestep loop, seeded random numbers, snapshot helpers, input buffer | PLAT-032 | F-01 | 1 | merged |
 | F-04 | Game interface: `GameModule` types with settings schema, team support, controller layout schema and private view schema, plus the conformance kit every game must pass | PLAT-030, PLAT-031, PLAT-032, PLAT-025 | F-03 | 1 | doing |
 | F-05 | Game dev harness: run any `GameModule` headless or on a bare dev page with scripted or keyboard controllers, so games are built without the console | PLAT-030, NFR-TEST | F-04 | 1 | todo |
-| F-06 | Design tokens and motion helpers in `packages/ui`, taken from `DESIGN.md` §4 | NN-5, NFR-DES | G-06 | 2 | doing |
+| F-06 | Design tokens and motion helpers in `packages/ui`, taken from `DESIGN.md` §4 | NN-5, NFR-DES | G-06 | 2 | merged |
 
 ## Carried from reviews
 
@@ -40,3 +40,11 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   acknowledged the resume (F-03 review 3).
 - **Root lint:** purity restrictions for `packages/sim-core` and game rules folders; durations
   and easings only from tokens outside `packages/ui`.
+- **F-06b fonts:** bundle DM Serif Display 400, DM Sans 400/500/700 and JetBrains Mono 500/700
+  as Latin-subset woff2 (SIL OFL), with metric-matched fallback faces (`size-adjust`,
+  `ascent-override`) and preloading before any round; the phone loads only what it shows. Every
+  F-06 screenshot uses fallback fonts.
+- **F-06c:** known contrast failures still pinned in `contrast.test.ts` after D-056: secondary
+  text where it crosses a terrazzo speck (3.03 to 3.73), and seat badge fills 3, 4, 6, 7 and 8
+  against marble (1.57 to 2.95; each badge keeps its white ring). No disabled-state token yet.
+  Clip-mode `expand` must be measured on the TV before full-screen use.

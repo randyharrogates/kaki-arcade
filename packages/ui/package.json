@@ -4,7 +4,13 @@
   "private": true,
   "description": "Design tokens, shared shell components, motion helpers",
   "type": "module",
+  "sideEffects": ["*.css"],
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./tokens.css": "./tokens.css"
+  },
+  "scripts": {
+    "build:tokens": "node scripts/build.mjs",
+    "check:tokens": "node scripts/build.mjs --check"
   }
 }

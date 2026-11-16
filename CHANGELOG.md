@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — F-06: design tokens and motion helpers
+
+- `packages/ui`: tokens, four themes, motion helpers, generated `tokens.css` and specimen page.
+  Review fixes: per-frame helpers allocate nothing; a press shows at once. Seven contrast and
+  type rulings applied (D-056). Started by a Claude builder, finished by Codex.
+  (NN-5, NFR-DES, PERF-012 in progress)
+
 ## 2026-11-16 — A-01: asset pipeline
 
 - `tools/assets`: atlas packer, manifest and budget check behind `pnpm assets`; verify now packs
