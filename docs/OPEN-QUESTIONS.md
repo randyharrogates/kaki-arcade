@@ -31,6 +31,16 @@ cannot be thrown; the versus sabo in TR-058 has "dirty plates thrown across". Cl
 TR-009 for now (D-078 i) and will treat the sabo as plates arriving in the other kitchen by
 the game's own action, not by a player's throw, unless Randy says otherwise. Needed by: T-14.
 
+**OQ-030 · Pairing server deploy: plan, cost and checklist.** Nothing is deployed. Before a
+public deploy Randy must: approve the Workers Paid plan (the "1 million Durable Object requests
+included" in `ARCHITECTURE.md` §6 is a Paid-plan figure and nothing caps spending: set a
+billing alert); set the `ADMISSION_SECRET` secret; apply the limiter's binding and migration;
+confirm logging, Logpush, Tail and trace sampling are off; approve the DNS route; and agree
+the privacy page wording for the limiter (addresses are hashed with a rotating key and held in
+memory only, D-081 e). The full checklist is in `docs/slices/C-03-rate-limits.md`. Also for the
+shell: anyone with a room code can take all 8 seats; the host needs a kick that blocks
+rejoining. Needed by: first deploy (M8).
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot

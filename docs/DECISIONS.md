@@ -513,3 +513,22 @@ records the steps done to it in order (chopped, grilled, and so on), so recipes 
 order (TR-003). (g) Everything recipes need beyond this — plates that hold several things,
 pots with two ingredients, mixing, spreading, cups, a clean-plate supply, a serving counter —
 belongs to T-04.
+
+**D-081 · 2026-11-16 · Claude (under D-057)** — Pairing server limits (review of C-03).
+(a) Clients are counted by IPv4 address or IPv6 /64, with a second failure counter per IPv6
+/48. (b) A full limiter never refuses a client it has not seen: it evicts the
+least-recently-seen clean entry, and if none is clean new clients share one generous overflow
+bucket. No refusal asks a client to wait more than 60 seconds (600 for room creation). (c) A
+room that is full of unidentified sockets closes the oldest one for a newcomer; an
+unidentified socket has 3 seconds to send its join. A room's own "full" answer is never
+counted against the client. (d) A guess is charged when admitted and refunded on success, so
+parallel guessing gains nothing. Only real failures count; a refused request is not a
+failure. (e) The limiter keeps its counters in memory only: nothing about a client is written
+to storage, which also removes the storage cost. Counters are lost when an idle limiter is
+evicted; that only helps a client who was quiet anyway. (f) If the limiter fails, room
+creation and joins answer 503 with a short retry, and a room never fails because the limiter
+did. (g) A request with no client address is refused with 400. (h) Room codes stay at 8
+characters (D-065 confirmed: about 2 in 10,000 over a 12-hour room against 1,000 addresses;
+6 characters would be about 774 times worse). (i) Cloudflare's rate-limiting binding goes in
+front where it is available, so repeated refusals cost nothing. Deploy remains Randy's call
+(OQ-030).
