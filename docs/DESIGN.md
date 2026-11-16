@@ -6,8 +6,8 @@ Binding for every screen: landing page, big-screen shell, phone controller **and
 Sections 1 to 3 are Randy's standing design rules, copied from his global instructions on
 2026-11-15. If his global rules change, update this file and log it in `DECISIONS.md`.
 
-Section 5 (the design gate) is **not yet complete**. Until it is, sections 4.x marked
-*pending* have no values and no game or shell UI code may be written.
+Section 5 (the design gate) **closed on 2026-11-16** (D-051). Section 4 is locked: changes go
+through Randy.
 
 ---
 
