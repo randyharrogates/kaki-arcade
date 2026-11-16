@@ -163,7 +163,7 @@ golden-ratio variant, and says which proportions use it. The source of each boar
 | 1 | 3D art style | Four looks of the same kitchen and eight cooks at true game size: finish (glossy or matte), lighting (day or evening), camera tilt (42°, 50°, 60°). Source `design-gate/01-art-style.html`, built by `tools/blender/board1_style.py` and `tools/boards/build_board1.py` | **Done** — C: matte, day, 60° (D-044) |
 | 2 | Visual identity | Three directions: palette, type pairing, surface treatment; plus where trivia photos come from. Source `design-gate/02-visual-identity.html`, built by `tools/boards/build_board2.py` | **Done** — C Marble table as the general rule; real photographs, Codex only as a fallback (D-042) |
 | 2B | A theme for each game | Three variants each for Rabakz, Peek Poker and Tabao Rush inside the Marble table console. Source `design-gate/02b-game-themes.html`, built by `tools/boards/build_board2b.py` | **Done** — R1 Bandung, K1 Green baize, T1 Order chit (D-043) |
-| 3 | Big-screen layouts | Lobby, picker, Tabao Rush HUD, Peek Poker table, results | Pending |
+| 3 | Big-screen layouts | Landing, lobby, picker, team setup, Rabakz question and reveal, Peek Poker table, Tabao Rush HUD, versus and how the two kitchens interact, results. Source `design-gate/03-big-screen-layouts.html`, built by `tools/blender/board3_scenes.py` and `tools/boards/build_board3.py` | Published 2026-11-16, awaiting Randy |
 | 4 | Phone controller | Kit styling and both games' layouts at 390 × 844 landscape | Pending |
 | 5 | Motion | Live samples of the key transitions | Pending |
 
