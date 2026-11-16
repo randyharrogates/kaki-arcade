@@ -1,0 +1,10 @@
+{
+  "host_cap_bytes": 65536,
+  "phone_cap_bytes": 2048,
+  "eight_seat_example_bytes": 1864,
+  "phone_example_bytes": 140,
+  "normal_write_interval_ms": 1000,
+  "extra_final_lifecycle_writes_per_owner": 1,
+  "per_step_snapshot_captures": 0,
+  "per_step_snapshot_writes": 0
+}

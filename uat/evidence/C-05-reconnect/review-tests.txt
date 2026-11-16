@@ -1,0 +1,25 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-05
+
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-007 boundaries > phone reload after exactly 120000 ms 49ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-007 boundaries > phone reload after exactly 120001 ms 4ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-007 boundaries > network drop with no wake: phone retries by itself and returns at 60 s 5ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-007 boundaries > after the hold the phone retries slowly and recovers 32ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: phone code precedence > a fresh room B code overrides a stored room A seat 1ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: phone code precedence > failed resume send and lobby broadcast retry resume without hello 0ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-009 holds and snapshot > a phone gone for ten minutes expires through repeated host reloads 10ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-009 holds and snapshot > results growth keeps only the last result 4ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-009 holds and snapshot > transient reopen failure keeps the snapshot and returns retryable 1ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-009 holds and snapshot > a clock 1 ms behind writtenAt accepts the snapshot 1ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-009 holds and snapshot > 8 long names in 4-byte script fit; size reported 16ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-009 holds and snapshot > rejects {"__proto__":{"polluted":1},"version":1} safely 1ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-009 holds and snapshot > rejects [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] safely 0ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-009 holds and snapshot > rejects not json safely 0ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-009 holds and snapshot > snapshot with __proto__ key added to a valid snapshot is rejected 0ms
+ ✓ packages/platform/src/reconnect/review.test.ts > review: PLAT-009 holds and snapshot > a second page-hide flushes pending changes after bfcache return 1ms
+
+ Test Files  1 passed (1)
+      Tests  16 passed (16)
+   Start at  02:46:59
+   Duration  1.14s (transform 707ms, setup 0ms, import 822ms, tests 128ms, environment 0ms)
+

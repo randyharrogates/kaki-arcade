@@ -2,6 +2,10 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — C-05: reconnect and host reload
+
+- `packages/platform/src/reconnect/` (D-086; OQ-031 open). (PLAT-007, PLAT-009 in progress)
+
 ## 2026-11-17 — C-10: session runner
 
 - `packages/platform/src/session/` (D-079, D-082). (PLAT-022, PLAT-023 in progress; PLAT-030,

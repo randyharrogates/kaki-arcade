@@ -140,6 +140,14 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   mid-match joins. Simulated transport only: no screen and no real network yet. Built by Codex;
   three review rounds, last fix by the integrator.
 
+- **Reconnect (C-05).** `packages/platform/src/reconnect`: a phone that sleeps, reloads or
+  drops returns to its seat within two minutes with the same colour, name, score and private
+  view; a reloaded host page brings back the room, players, leader, teams and last results and
+  returns to the lobby (the running match is lost, OQ-031). Saved data is bounded, validated
+  strictly and holds nothing secret. Fake storage and simulated connections only: not yet
+  proven on a real phone or browser. Built by Codex; two review rounds, last fix by the
+  integrator.
+
 ## Does not exist yet
 
 - No host page, controller or game screen yet.

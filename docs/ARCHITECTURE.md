@@ -186,9 +186,27 @@ Rules:
 - **Relay:** ICE tries direct paths first. The pairing server issues Cloudflare TURN credentials
   with a short lifetime, tracks monthly relay usage, and stops issuing them past the limit
   (NET-004).
-- **Reconnect:** phones keep a room token and seat token in `sessionStorage`. On return they
-  re-pair and the host restores the seat (PLAT-007). The host keeps room, players and scores in
-  `sessionStorage` to survive its own reload (PLAT-009).
+- **Reconnect (`packages/platform/src/reconnect`, C-05, D-086):** a phone keeps its room code,
+  seat token, accepted nickname, signalling room token and the time it dropped in
+  `sessionStorage` (`kaki.phone-reconnect.v1`, at most 2 KiB). On return it re-pairs and sends
+  `resume`; the host gives back the same seat, colour, name, team and score, sends its layout
+  and private view at once and counts its first input (PLAT-007, D-079 c). The hold is 2
+  minutes, inclusive; the newest connection presenting a seat token wins and the older one is
+  closed. Retries start at 250 ms and double to 8 s, each attempt abandoned after 15 s; after
+  the hold the phone shows a distinct state with a rejoin action and retries every 8 s. A newly
+  entered valid room code wins over a stored seat. The host keeps its credentials, the room
+  (seats, names, colours, teams, leader and each phone's original drop time), the last results
+  and the game selection with its `save()` output in `sessionStorage`
+  (`kaki.host-reconnect.v1`, at most 64 KiB). It writes at most once a second plus at every
+  page exit, never per step, and a good snapshot is never erased because a newer one could not
+  be written. On reload the host reopens signalling with the stored secret (D-066) and waits up
+  to 15 s; only a definitive refusal erases the snapshot, while a timeout or network error
+  keeps it for another attempt. The restored room returns to the lobby and the running match
+  is lost for every game (PLAT-009, OQ-031). Phones connected at the reload start a new hold;
+  phones already away keep their original drop time. No game state, private view, layout or
+  recording is stored. A snapshot older than 12 hours, from another room, of another version,
+  or more than 5 s ahead of the clock is discarded. `sessionStorage` survives a reload and
+  reopening a closed tab, not a new tab.
 
 ## 6. Hosting
 
