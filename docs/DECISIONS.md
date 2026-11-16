@@ -644,3 +644,20 @@ is billed by duration: nothing for a few game nights a month, up to about US$60 
 every shard is kept alive all month, which an attacker can force with about 2,300 requests a
 day; this is added to OQ-030. Lesson recorded: the pairing server's fakes are not the runtime;
 every signal issue is smoke-tested on a real local server by the integrator before merge.
+
+**D-090 · 2026-11-17 · Claude (under D-057)** — Host lobby (review of C-07): readings of
+board 3 option 1B where it was silent or could not hold what the requirements ask. (a) The
+seat strip is taller than on the board (about 305 px at 1080p against 178) so each seat can
+show link quality, the leader mark and a held seat's countdown, which the board itself noted
+it had no room for; the join panel and seat strip split 1.618 : 1. (b) Seat badges are 55 px
+with a dark numeral and no white ring (board 6, D-056). A held seat keeps its seat colour as
+a ring round a panel-coloured badge, with the name dimmed and the seconds left shown. (c) The
+room code is shown as two groups of four at 233 px with a 144 px gap (on the large-gap scale,
+D-050) and no letter-spacing: the board's .08em tracking does not fit eight characters. (d)
+Empty seats show "Seat N" and "Scan to join" at the 3 m reading size. (e) Seat and panel
+changes use a mask wipe so two labels never show in one place; the outgoing and incoming
+halves share one duration, so this one exit is not 20% shorter. (f) A single join or leave
+animates at once; the 30 ms stagger applies only when several seats change together. (g) The
+landing page is not part of C-07: `/` is a plain link to the host page until X-01 builds
+REL-002. (h) Status icons are inline SVG, not font glyphs, so a TV's font cannot drop them.
+These are shown to Randy in the lobby artifact with the screenshots; he can overrule any.
