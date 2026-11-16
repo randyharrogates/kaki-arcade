@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — R-12: Singapore question pack
+
+- 305 original Singapore questions (food, places, history, life, nature, arts and sport), all
+  four-option, romanised names only, each with a source note. One independent editorial review;
+  facts not yet checked against sources. (RZ-021 and RZ-024 in progress)
+
 ## 2026-11-16 — Design gate closed
 
 - Boards 4 (phone controller) and 5 (motion) decided; `DESIGN.md` §4 locked (D-047 to D-051).

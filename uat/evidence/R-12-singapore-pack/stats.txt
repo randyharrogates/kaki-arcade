@@ -1,0 +1,32 @@
+$ pnpm --filter @kaki/content-rabakz stats
+$ node --import ./scripts/register.ts scripts/stats.ts
+Rabakz question bank
+
+Category                         easy     medium       hard    general  singapore    picture      total
+food-and-drink                      2          1          1          2          2          0          4
+geography                           2          1          2          3          2          0          5
+history                             1          2          2          2          3          0          5
+science-and-nature                  2          2          2          6          0          0          6
+singapore-arts-and-sport            9         23         15          0         47          0         47
+singapore-food                     19         22         16          0         57          0         57
+singapore-history                  10         17         23          0         50          0         50
+singapore-life                     22         21          8          0         51          0         51
+singapore-nature                   12         19         15          0         46          0         46
+singapore-places                   18         19         17          0         54          0         54
+All                                97        127        101         13        312          0        325
+
+By type: multiple choice 320, true or false 5, picture 0
+Written for Kaki Arcade: 325. From datasets: 0.
+
+True-or-false answers: True 4, False 1 (shown in the fixed order True, False)
+Four-option answers by source position: 78 / 79 / 90 / 73 (not a fault: the game shuffles these)
+Pictures: 0 file(s), 0 bytes, largest 0
+
+Launch sizes (RZ-024)
+  Questions in total      325 of 1500  short by 1175
+  Singapore pack          312 of 200   met
+  Picture questions         0 of 60    short by 60
+
+All chunks together: 88716 bytes uncompressed, 4% of the 2 MB match budget (RZ-020) before pictures.
+The bank is not yet at launch size.
+exit code: 0

@@ -168,10 +168,10 @@ requirement.
 | RZ-015 | MUST | No repeats within a match; recently seen questions avoided on this host | M4 | not started | — | — | — |
 | RZ-016 | MUST | Players level on points share the placing | M4 | not started | — | — | — |
 | RZ-020 | MUST | Bundled bank; everything for a match loaded before it starts, at most 2 MB | M4 | in progress | `content/rabakz/src/select.ts` (loader and budget; fetching before a match is R-08) | `content/rabakz/src/select.test.ts` | `uat/evidence/R-10-question-schema/` |
-| RZ-021 | MUST | Sources: Open Trivia Database (CC BY-SA 4.0, credited) and a Singapore pack spot-checked by Randy | M4 | not started | — | — | — |
+| RZ-021 | MUST | Sources: Open Trivia Database (CC BY-SA 4.0, credited) and a Singapore pack spot-checked by Randy | M4 | in progress | `content/rabakz/src/questions/singapore-*.json` (305 written; import in R-11; Randy's spot-check R-14 outstanding) | `content/rabakz/scripts/build.test.ts` | `uat/evidence/R-12-singapore-pack/` |
 | RZ-022 | MUST | Question schema and build-time validation of lengths | M4 | in progress | `content/rabakz/src/schema.ts`, `validate.ts`, `build.ts` | `content/rabakz/src/validate.test.ts`, `scripts/build.test.ts` | `uat/evidence/R-10-question-schema/` |
 | RZ-023 | MUST | Bank screened for a public, all-ages audience | M4 | not started | — | — | — |
-| RZ-024 | MUST | Launch size: 1,500 questions, 200 Singapore, 60 picture | M4 | not started | — | — | — |
+| RZ-024 | MUST | Launch size: 1,500 questions, 200 Singapore, 60 picture | M4 | in progress | `content/rabakz/src/questions/` (Singapore 312 of 200 met; total and pictures outstanding: R-11, R-13) | `content/rabakz/scripts/build.test.ts` | `uat/evidence/R-12-singapore-pack/` |
 | RZ-025 | MUST | Picture images are real photographs (free licence, credited) or Codex-generated and checked; no renders | M4 | not started | — | — | — |
 | RZ-026 | MUST | Option order shuffled from the seed; correct position uniform | M4 | not started | — | — | — |
 | RZ-030 | MUST | Question and options readable from 3 m; options differ by letter and shape | M4 | not started | — | — | — |

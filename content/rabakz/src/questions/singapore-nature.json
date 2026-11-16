@@ -1,0 +1,834 @@
+{
+  "category": "singapore-nature",
+  "title": "Singapore nature",
+  "questions": [
+    {
+      "id": "sg-nat-0001",
+      "type": "multiple-choice",
+      "prompt": "What is Singapore's national flower?",
+      "options": [
+        "Red hibiscus",
+        "Vanda Miss Joaquim",
+        "White frangipani",
+        "Pink lotus"
+      ],
+      "answer": "Vanda Miss Joaquim",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The orchid Vanda Miss Joaquim (Papilionanthe Miss Joaquim) is the national flower. Check: NParks, 'National Flower'; NLB Singapore Infopedia, 'Vanda Miss Joaquim'."
+      }
+    },
+    {
+      "id": "sg-nat-0002",
+      "type": "multiple-choice",
+      "prompt": "Which large lizard is often seen swimming in Singapore's canals and reservoirs?",
+      "options": [
+        "Komodo dragon",
+        "Water monitor",
+        "Frilled lizard",
+        "Gila monster"
+      ],
+      "answer": "Water monitor",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Malayan water monitor (Varanus salvator) is common near water. Check: NParks, 'Monitor lizards'."
+      }
+    },
+    {
+      "id": "sg-nat-0003",
+      "type": "multiple-choice",
+      "prompt": "The red junglefowl seen in Singapore is the wild ancestor of which farm bird?",
+      "options": [
+        "Duck",
+        "Turkey",
+        "Goose",
+        "Chicken"
+      ],
+      "answer": "Chicken",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The red junglefowl (Gallus gallus) is the ancestor of the domestic chicken. Check: NParks Flora and Fauna Web, 'Gallus gallus'; Britannica, 'chicken'."
+      }
+    },
+    {
+      "id": "sg-nat-0004",
+      "type": "multiple-choice",
+      "prompt": "What kind of climate does Singapore have?",
+      "options": [
+        "Tropical",
+        "Desert",
+        "Temperate",
+        "Polar"
+      ],
+      "answer": "Tropical",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Singapore has a tropical rainforest climate: warm, humid and rainy all year. Check: Meteorological Service Singapore, 'Climate of Singapore'."
+      }
+    },
+    {
+      "id": "sg-nat-0005",
+      "type": "multiple-choice",
+      "prompt": "Ah Meng, the Singapore Zoo's most famous resident, was which kind of animal?",
+      "options": [
+        "Orang utan",
+        "Polar bear",
+        "White tiger",
+        "Giant panda"
+      ],
+      "answer": "Orang utan",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Ah Meng (about 1960 to 2008) was a Sumatran orang utan. Check: NLB Singapore Infopedia, 'Ah Meng'."
+      }
+    },
+    {
+      "id": "sg-nat-0006",
+      "type": "multiple-choice",
+      "prompt": "Which fish, often seen at Sungei Buloh, can move about on mud out of the water?",
+      "options": [
+        "Mudskipper",
+        "Catfish",
+        "Seahorse",
+        "Stingray"
+      ],
+      "answer": "Mudskipper",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Mudskippers live on mangrove mudflats and breathe air through their skin. Check: NParks, 'Sungei Buloh Wetland Reserve'; Britannica, 'mudskipper'."
+      }
+    },
+    {
+      "id": "sg-nat-0007",
+      "type": "multiple-choice",
+      "prompt": "Which agency looks after Singapore's parks and nature reserves?",
+      "options": [
+        "PUB",
+        "LTA",
+        "NEA",
+        "NParks"
+      ],
+      "answer": "NParks",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The National Parks Board (NParks) manages parks, nature reserves and roadside greenery. Check: NParks, 'About us'."
+      }
+    },
+    {
+      "id": "sg-nat-0008",
+      "type": "multiple-choice",
+      "prompt": "Pitcher plants in Singapore's forests trap what in their 'pitchers'?",
+      "options": [
+        "Raindrops only",
+        "Insects",
+        "Small birds",
+        "Falling seeds"
+      ],
+      "answer": "Insects",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Nepenthes pitcher plants trap and digest insects. Check: NParks Flora and Fauna Web, 'Nepenthes'."
+      }
+    },
+    {
+      "id": "sg-nat-0009",
+      "type": "multiple-choice",
+      "prompt": "Wild orang utans live only on Sumatra and which other island?",
+      "options": [
+        "Borneo",
+        "Java",
+        "Sulawesi",
+        "Singapore"
+      ],
+      "answer": "Borneo",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Wild orang utans are found only on Borneo and Sumatra. Check: Britannica, 'orangutan'."
+      }
+    },
+    {
+      "id": "sg-nat-0010",
+      "type": "multiple-choice",
+      "prompt": "Which wild animals are often seen swimming in family groups in Singapore's rivers and bays?",
+      "options": [
+        "Otters",
+        "Beavers",
+        "Seals",
+        "Capybaras"
+      ],
+      "answer": "Otters",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Families of smooth-coated otters live along Singapore's waterways. Check: NParks, 'Otters'."
+      }
+    },
+    {
+      "id": "sg-nat-0011",
+      "type": "multiple-choice",
+      "prompt": "In Malay, what does 'orang utan' mean?",
+      "options": [
+        "Person of the forest",
+        "Red monkey",
+        "Long arms",
+        "Tree climber"
+      ],
+      "answer": "Person of the forest",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Orang' is person and 'hutan' is forest. Check: Britannica, 'orangutan'; Kamus Dewan, 'orang utan'."
+      }
+    },
+    {
+      "id": "sg-nat-0012",
+      "type": "multiple-choice",
+      "prompt": "What colour are the flowers of Vanda Miss Joaquim?",
+      "options": [
+        "Bright yellow",
+        "Pure white",
+        "Deep blue",
+        "Pinkish purple"
+      ],
+      "answer": "Pinkish purple",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The flower is rosy violet to mauve with an orange patch on its lip. Check: NParks, 'National Flower'."
+      }
+    },
+    {
+      "id": "sg-nat-0013",
+      "type": "multiple-choice",
+      "prompt": "Which monkey is the one most often seen in Singapore's parks and forests?",
+      "options": [
+        "Proboscis monkey",
+        "Long-tailed macaque",
+        "Golden langur",
+        "Spider monkey"
+      ],
+      "answer": "Long-tailed macaque",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The long-tailed macaque (Macaca fascicularis) is Singapore's most common monkey. Check: NParks, 'Long-tailed macaques'."
+      }
+    },
+    {
+      "id": "sg-nat-0014",
+      "type": "multiple-choice",
+      "prompt": "Roughly how tall is Bukit Timah Hill?",
+      "options": [
+        "About 164 metres",
+        "About 64 metres",
+        "About 464 metres",
+        "About 964 metres"
+      ],
+      "answer": "About 164 metres",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The summit is 163.63 metres above sea level. Check: NParks, 'Bukit Timah Nature Reserve'."
+      }
+    },
+    {
+      "id": "sg-nat-0015",
+      "type": "multiple-choice",
+      "prompt": "What type of flower is Vanda Miss Joaquim?",
+      "options": [
+        "A lily",
+        "An orchid",
+        "A rose",
+        "A jasmine"
+      ],
+      "answer": "An orchid",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "It is a hybrid orchid named after Agnes Joaquim and first described in 1893. Check: NLB Singapore Infopedia, 'Vanda Miss Joaquim'."
+      }
+    },
+    {
+      "id": "sg-nat-0016",
+      "type": "multiple-choice",
+      "prompt": "Which species of otter is the one commonly seen in Singapore?",
+      "options": [
+        "Sea otter",
+        "Giant otter",
+        "Smooth-coated otter",
+        "Marine otter"
+      ],
+      "answer": "Smooth-coated otter",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The smooth-coated otter (Lutrogale perspicillata) is the common species; the small-clawed otter is rare. Check: NParks, 'Otters'."
+      }
+    },
+    {
+      "id": "sg-nat-0017",
+      "type": "multiple-choice",
+      "prompt": "Sungei Buloh Wetland Reserve is best known as a stopover for what?",
+      "options": [
+        "Sea turtles",
+        "Fruit bats",
+        "Migratory birds",
+        "Wild elephants"
+      ],
+      "answer": "Migratory birds",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Shorebirds on the East Asian-Australasian Flyway stop at Sungei Buloh each year. Check: NParks, 'Sungei Buloh Wetland Reserve'."
+      }
+    },
+    {
+      "id": "sg-nat-0018",
+      "type": "multiple-choice",
+      "prompt": "What kind of forest grows along the muddy shore at Sungei Buloh?",
+      "options": [
+        "Mangrove forest",
+        "Pine forest",
+        "Bamboo forest",
+        "Cloud forest"
+      ],
+      "answer": "Mangrove forest",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Sungei Buloh protects mangroves, mudflats and ponds. Check: NParks, 'Sungei Buloh Wetland Reserve'."
+      }
+    },
+    {
+      "id": "sg-nat-0019",
+      "type": "multiple-choice",
+      "prompt": "Inuka, born at the Singapore Zoo in 1990, was which animal?",
+      "options": [
+        "Orang utan",
+        "White rhino",
+        "Pygmy hippo",
+        "Polar bear"
+      ],
+      "answer": "Polar bear",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Inuka (1990 to 2018) was the first polar bear born in the tropics. Check: NLB Singapore Infopedia, 'Inuka'; Mandai Wildlife Group, 'Inuka'."
+      }
+    },
+    {
+      "id": "sg-nat-0020",
+      "type": "multiple-choice",
+      "prompt": "Which roadside tree in Singapore is known for its wide umbrella-shaped crown?",
+      "options": [
+        "Casuarina",
+        "Rain tree",
+        "Coconut palm",
+        "Traveller's palm"
+      ],
+      "answer": "Rain tree",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The rain tree (Samanea saman) has a broad umbrella-shaped crown and is widely planted for shade. Check: NParks Flora and Fauna Web, 'Samanea saman'."
+      }
+    },
+    {
+      "id": "sg-nat-0021",
+      "type": "multiple-choice",
+      "prompt": "What colour are the flowers of the angsana tree?",
+      "options": [
+        "Yellow",
+        "White",
+        "Pink",
+        "Purple"
+      ],
+      "answer": "Yellow",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The angsana (Pterocarpus indicus) bursts into fragrant yellow flowers, often after a dry spell. Check: NParks Flora and Fauna Web, 'Pterocarpus indicus'."
+      }
+    },
+    {
+      "id": "sg-nat-0022",
+      "type": "multiple-choice",
+      "prompt": "Which big cat lived wild in Singapore until the 1930s?",
+      "options": [
+        "Lion",
+        "Tiger",
+        "Cheetah",
+        "Jaguar"
+      ],
+      "answer": "Tiger",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Tigers were common in the 19th century; the last wild ones were recorded in the 1930s. Check: NLB Singapore Infopedia, 'Tigers in Singapore'."
+      }
+    },
+    {
+      "id": "sg-nat-0023",
+      "type": "multiple-choice",
+      "prompt": "Which scaly, ant-eating mammal lives in Singapore's forests?",
+      "options": [
+        "Sunda pangolin",
+        "Armadillo",
+        "Echidna",
+        "Aardvark"
+      ],
+      "answer": "Sunda pangolin",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Sunda pangolin (Manis javanica) is native and critically endangered. Check: NParks, 'Sunda pangolin'."
+      }
+    },
+    {
+      "id": "sg-nat-0024",
+      "type": "multiple-choice",
+      "prompt": "How does the Malayan colugo travel from tree to tree?",
+      "options": [
+        "It swings by its tail",
+        "It glides",
+        "It hops along the ground",
+        "It flaps its wings"
+      ],
+      "answer": "It glides",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The colugo glides on a membrane of skin stretched between its limbs. Check: NParks Flora and Fauna Web, 'Galeopterus variegatus'."
+      }
+    },
+    {
+      "id": "sg-nat-0025",
+      "type": "multiple-choice",
+      "prompt": "Dugongs, occasionally recorded in Singapore's waters, feed mainly on what?",
+      "options": [
+        "Jellyfish",
+        "Seagrass",
+        "Small fish",
+        "Coral"
+      ],
+      "answer": "Seagrass",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Dugongs graze on seagrass; feeding trails have been found at Chek Jawa and Changi. Check: NParks, 'Chek Jawa Wetlands'; Britannica, 'dugong'."
+      }
+    },
+    {
+      "id": "sg-nat-0026",
+      "type": "multiple-choice",
+      "prompt": "The Sisters' Islands are the heart of Singapore's first what?",
+      "options": [
+        "Bird sanctuary",
+        "Geopark",
+        "Marine park",
+        "Turtle hatchery"
+      ],
+      "answer": "Marine park",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Sisters' Islands Marine Park was designated in 2014. Check: NParks, 'Sisters' Islands Marine Park'."
+      }
+    },
+    {
+      "id": "sg-nat-0027",
+      "type": "multiple-choice",
+      "prompt": "The TreeTop Walk suspension bridge is in which nature reserve?",
+      "options": [
+        "Central Catchment",
+        "Bukit Timah",
+        "Labrador",
+        "Sungei Buloh"
+      ],
+      "answer": "Central Catchment",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The 250-metre TreeTop Walk links two high points near MacRitchie in the Central Catchment Nature Reserve. Check: NParks, 'TreeTop Walk'."
+      }
+    },
+    {
+      "id": "sg-nat-0028",
+      "type": "multiple-choice",
+      "prompt": "The rambutan gets its name from the Malay word 'rambut'. What does 'rambut' mean?",
+      "options": [
+        "Hair",
+        "Red",
+        "Sweet",
+        "Lantern"
+      ],
+      "answer": "Hair",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Rambut' means hair, for the fruit's hairy skin. Check: Kamus Dewan, 'rambut'; Britannica, 'rambutan'."
+      }
+    },
+    {
+      "id": "sg-nat-0029",
+      "type": "multiple-choice",
+      "prompt": "The giant flower Rafflesia is named after which person?",
+      "options": [
+        "Charles Darwin",
+        "Sir Joseph Banks",
+        "Sir Stamford Raffles",
+        "Alfred Russel Wallace"
+      ],
+      "answer": "Sir Stamford Raffles",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Rafflesia arnoldii was named after Raffles and the naturalist Joseph Arnold, who collected it in Sumatra in 1818. Check: Britannica, 'Rafflesiaceae'."
+      }
+    },
+    {
+      "id": "sg-nat-0031",
+      "type": "multiple-choice",
+      "prompt": "Horseshoe crabs live on Singapore's mudflats. What colour is their blood?",
+      "options": [
+        "Green",
+        "Blue",
+        "Red",
+        "Clear"
+      ],
+      "answer": "Blue",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Horseshoe crab blood is blue because it carries oxygen with copper-based haemocyanin. Check: Britannica, 'horseshoe crab'; Nature Society (Singapore), Horseshoe Crab Rescue and Research."
+      }
+    },
+    {
+      "id": "sg-nat-0032",
+      "type": "multiple-choice",
+      "prompt": "What colour is the black-naped oriole, a common garden bird in Singapore?",
+      "options": [
+        "Bright blue",
+        "Bright red",
+        "Bright green",
+        "Bright yellow"
+      ],
+      "answer": "Bright yellow",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The black-naped oriole is golden yellow with a black band through the eye to the nape. Check: NParks Flora and Fauna Web, 'Oriolus chinensis'."
+      }
+    },
+    {
+      "id": "sg-nat-0035",
+      "type": "multiple-choice",
+      "prompt": "In which year did Singapore choose its national flower?",
+      "options": [
+        "1965",
+        "1971",
+        "1990",
+        "1981"
+      ],
+      "answer": "1981",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "It was chosen on 15 April 1981. Check: NLB Singapore Infopedia, 'Vanda Miss Joaquim'; NParks, 'National Flower'."
+      }
+    },
+    {
+      "id": "sg-nat-0036",
+      "type": "multiple-choice",
+      "prompt": "Which rare black-and-white monkey lives in the Central Catchment Nature Reserve?",
+      "options": [
+        "Silvered leaf monkey",
+        "White-handed gibbon",
+        "Raffles' banded langur",
+        "Pig-tailed macaque"
+      ],
+      "answer": "Raffles' banded langur",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Raffles' banded langur (Presbytis femoralis) survives in small numbers in the Central Catchment. Check: NParks, 'Raffles' banded langur'."
+      }
+    },
+    {
+      "id": "sg-nat-0037",
+      "type": "multiple-choice",
+      "prompt": "Which bird topped a 2015 Nature Society poll to choose a national bird for Singapore?",
+      "options": [
+        "Olive-backed sunbird",
+        "Javan myna",
+        "Crimson sunbird",
+        "Black-naped oriole"
+      ],
+      "answer": "Crimson sunbird",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The crimson sunbird won the Nature Society (Singapore) Bird Group's public poll in 2015. Check: Nature Society (Singapore), national bird poll 2015."
+      }
+    },
+    {
+      "id": "sg-nat-0038",
+      "type": "multiple-choice",
+      "prompt": "Which hornbill has made a comeback in Singapore since the 1990s?",
+      "options": [
+        "Rhinoceros hornbill",
+        "Great hornbill",
+        "Helmeted hornbill",
+        "Oriental pied hornbill"
+      ],
+      "answer": "Oriental pied hornbill",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Oriental pied hornbills returned to Pulau Ubin in the 1990s and have since spread across the main island. Check: NParks, 'Oriental pied hornbill' (Singapore Hornbill Project)."
+      }
+    },
+    {
+      "id": "sg-nat-0039",
+      "type": "multiple-choice",
+      "prompt": "Which monsoon usually brings Singapore's wettest weather, around December?",
+      "options": [
+        "Southwest Monsoon",
+        "Southeast Monsoon",
+        "Northwest Monsoon",
+        "Northeast Monsoon"
+      ],
+      "answer": "Northeast Monsoon",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The wet phase of the Northeast Monsoon (December and January) brings the heaviest rain. Check: Meteorological Service Singapore, 'Climate of Singapore'."
+      }
+    },
+    {
+      "id": "sg-nat-0040",
+      "type": "multiple-choice",
+      "prompt": "Which wild cat still lives in Singapore's forests?",
+      "options": [
+        "Leopard cat",
+        "Clouded leopard",
+        "Fishing cat",
+        "Marbled cat"
+      ],
+      "answer": "Leopard cat",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The leopard cat (Prionailurus bengalensis) is Singapore's last surviving wild cat. Check: NParks Flora and Fauna Web, 'Prionailurus bengalensis'."
+      }
+    },
+    {
+      "id": "sg-nat-0041",
+      "type": "multiple-choice",
+      "prompt": "Which species of crocodile is sometimes seen at Sungei Buloh?",
+      "options": [
+        "Estuarine crocodile",
+        "Nile crocodile",
+        "Siamese crocodile",
+        "Mugger crocodile"
+      ],
+      "answer": "Estuarine crocodile",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The estuarine or saltwater crocodile (Crocodylus porosus) lives in the reserve. Check: NParks, 'Estuarine crocodiles'."
+      }
+    },
+    {
+      "id": "sg-nat-0042",
+      "type": "multiple-choice",
+      "prompt": "How many nature reserves does Singapore have?",
+      "options": [
+        "Two",
+        "Six",
+        "Four",
+        "Eight"
+      ],
+      "answer": "Four",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Bukit Timah, Central Catchment, Sungei Buloh Wetland Reserve and Labrador are the four gazetted nature reserves. Check: NParks, 'Nature reserves'; Parks and Trees Act, Schedule."
+      }
+    },
+    {
+      "id": "sg-nat-0043",
+      "type": "multiple-choice",
+      "prompt": "Which nature reserve on the southern coast protects a rocky shore and coastal cliff?",
+      "options": [
+        "Sungei Buloh",
+        "Bukit Timah",
+        "Labrador",
+        "Central Catchment"
+      ],
+      "answer": "Labrador",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Labrador Nature Reserve has the main island's last rocky shore and a coastal cliff forest. Check: NParks, 'Labrador Nature Reserve'."
+      }
+    },
+    {
+      "id": "sg-nat-0044",
+      "type": "multiple-choice",
+      "prompt": "Which myna, with white under its tail, is the most common in Singapore?",
+      "options": [
+        "Common myna",
+        "Javan myna",
+        "Hill myna",
+        "Crested myna"
+      ],
+      "answer": "Javan myna",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The introduced Javan (white-vented) myna has outnumbered the native common myna for decades. Check: NParks Flora and Fauna Web, 'Acridotheres javanicus'."
+      }
+    },
+    {
+      "id": "sg-nat-0045",
+      "type": "multiple-choice",
+      "prompt": "Tampines takes its name from the tempinis. What is a tempinis?",
+      "options": [
+        "A river fish",
+        "A wild orchid",
+        "A sea snail",
+        "A timber tree"
+      ],
+      "answer": "A timber tree",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The tempinis (Streblus elongatus) is a hardwood tree once common in the area. Check: NLB Singapore Infopedia, 'Tampines'; NParks Flora and Fauna Web, 'Streblus elongatus'."
+      }
+    },
+    {
+      "id": "sg-nat-0046",
+      "type": "multiple-choice",
+      "prompt": "The Malayan colugo is also known by which misleading name?",
+      "options": [
+        "Flying fox",
+        "Tree shrew",
+        "Flying lemur",
+        "Slow loris"
+      ],
+      "answer": "Flying lemur",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The colugo is called the flying lemur, though it neither flies nor is a lemur. Check: Britannica, 'flying lemur'; NParks Flora and Fauna Web, 'Galeopterus variegatus'."
+      }
+    },
+    {
+      "id": "sg-nat-0048",
+      "type": "multiple-choice",
+      "prompt": "Henry Ridley of the Botanic Gardens was nicknamed 'Mad Ridley' for promoting which crop?",
+      "options": [
+        "Rubber",
+        "Pepper",
+        "Gambier",
+        "Oil palm"
+      ],
+      "answer": "Rubber",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Ridley, director from 1888, developed rubber tapping methods and urged planters to grow rubber. Check: NLB Singapore Infopedia, 'Henry Nicholas Ridley'."
+      }
+    },
+    {
+      "id": "sg-nat-0049",
+      "type": "multiple-choice",
+      "prompt": "Which crops did Chinese planters grow widely in Singapore in the early 1800s?",
+      "options": [
+        "Gambier and pepper",
+        "Tea and coffee",
+        "Rice and sugar",
+        "Cocoa and vanilla"
+      ],
+      "answer": "Gambier and pepper",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Gambier and pepper plantations covered much of the island's interior in the 19th century. Check: NLB Singapore Infopedia, 'Gambier'."
+      }
+    },
+    {
+      "id": "sg-nat-0050",
+      "type": "multiple-choice",
+      "prompt": "Sungei Buloh's name comes from the Malay word 'buloh'. What does 'buloh' mean?",
+      "options": [
+        "Bamboo",
+        "Mud",
+        "Heron",
+        "Crab"
+      ],
+      "answer": "Bamboo",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Buloh' (buluh) is bamboo: 'bamboo river'. Check: Kamus Dewan, 'buluh'; NLB Singapore Infopedia, 'Sungei Buloh Wetland Reserve'."
+      }
+    }
+  ]
+}

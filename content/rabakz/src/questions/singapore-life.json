@@ -1,0 +1,924 @@
+{
+  "category": "singapore-life",
+  "title": "Singapore life",
+  "questions": [
+    {
+      "id": "sg-life-0001",
+      "type": "multiple-choice",
+      "prompt": "How many official languages does Singapore have?",
+      "options": [
+        "Two",
+        "Four",
+        "Three",
+        "Five"
+      ],
+      "answer": "Four",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "English, Malay, Mandarin and Tamil are the four official languages. Check: Constitution of the Republic of Singapore, Article 153A."
+      }
+    },
+    {
+      "id": "sg-life-0002",
+      "type": "multiple-choice",
+      "prompt": "The national anthem is sung in which language?",
+      "options": [
+        "English",
+        "Malay",
+        "Hokkien",
+        "Tamil"
+      ],
+      "answer": "Malay",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Majulah Singapura' is sung in Malay, the national language. Check: National Heritage Board, 'National Anthem'."
+      }
+    },
+    {
+      "id": "sg-life-0003",
+      "type": "multiple-choice",
+      "prompt": "What does 'Majulah Singapura' mean?",
+      "options": [
+        "Beloved Singapore",
+        "Peaceful Singapore",
+        "Beautiful Singapore",
+        "Onward Singapore"
+      ],
+      "answer": "Onward Singapore",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The title means 'Onward Singapore'. Check: National Heritage Board, 'National Anthem'."
+      }
+    },
+    {
+      "id": "sg-life-0004",
+      "type": "multiple-choice",
+      "prompt": "What do the letters MRT stand for?",
+      "options": [
+        "Metro Rail Transit",
+        "Main Road Transport",
+        "Mass Rapid Transit",
+        "Modern Rail Train"
+      ],
+      "answer": "Mass Rapid Transit",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "MRT is the Mass Rapid Transit system. Check: NLB Singapore Infopedia, 'Mass Rapid Transit (MRT) system'."
+      }
+    },
+    {
+      "id": "sg-life-0005",
+      "type": "multiple-choice",
+      "prompt": "What do the letters HDB stand for?",
+      "options": [
+        "Home Design Bureau",
+        "Housing and Development Board",
+        "Housing Department of Buildings",
+        "Homes and Dwellings Board"
+      ],
+      "answer": "Housing and Development Board",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Housing and Development Board is the public housing authority. Check: NLB Singapore Infopedia, 'Housing and Development Board'."
+      }
+    },
+    {
+      "id": "sg-life-0006",
+      "type": "multiple-choice",
+      "prompt": "What colour is the East-West Line on the MRT map?",
+      "options": [
+        "Red",
+        "Purple",
+        "Green",
+        "Blue"
+      ],
+      "answer": "Green",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The East-West Line is green; North-South is red. Check: Land Transport Authority, MRT system map."
+      }
+    },
+    {
+      "id": "sg-life-0007",
+      "type": "multiple-choice",
+      "prompt": "What is the open ground floor of an HDB block called?",
+      "options": [
+        "Sky garden",
+        "Car porch",
+        "Town hall",
+        "Void deck"
+      ],
+      "answer": "Void deck",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The void deck is the open space at the foot of an HDB block. Check: NLB Singapore Infopedia, 'Void deck'."
+      }
+    },
+    {
+      "id": "sg-life-0008",
+      "type": "multiple-choice",
+      "prompt": "To 'chope' a seat at a hawker centre, what do people most famously leave on the table?",
+      "options": [
+        "A pair of chopsticks",
+        "A drink can",
+        "A shoe",
+        "A packet of tissues"
+      ],
+      "answer": "A packet of tissues",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Reserving a seat with a tissue packet is the best-known way to 'chope'. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'chope'; NLB Singapore Infopedia, 'Hawker centres'."
+      }
+    },
+    {
+      "id": "sg-life-0009",
+      "type": "multiple-choice",
+      "prompt": "In Singlish, what does 'shiok' mean?",
+      "options": [
+        "Very tired",
+        "Very enjoyable",
+        "Very noisy",
+        "Very late"
+      ],
+      "answer": "Very enjoyable",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Shiok' expresses great pleasure or delight. Check: Oxford English Dictionary, 'shiok'."
+      }
+    },
+    {
+      "id": "sg-life-0010",
+      "type": "multiple-choice",
+      "prompt": "In Singlish, what does 'makan' mean?",
+      "options": [
+        "To sleep",
+        "To eat",
+        "To run",
+        "To shop"
+      ],
+      "answer": "To eat",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Makan' is Malay for eat. Check: Kamus Dewan, 'makan'; Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English'."
+      }
+    },
+    {
+      "id": "sg-life-0011",
+      "type": "multiple-choice",
+      "prompt": "Someone who is 'kiasu' is afraid of what?",
+      "options": [
+        "Ghost stories",
+        "Spicy food",
+        "Losing out",
+        "Hard work"
+      ],
+      "answer": "Losing out",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Kiasu' is Hokkien for afraid to lose. Check: Oxford English Dictionary, 'kiasu'."
+      }
+    },
+    {
+      "id": "sg-life-0012",
+      "type": "multiple-choice",
+      "prompt": "When you 'tabao' your food, what are you doing?",
+      "options": [
+        "Sharing it with friends",
+        "Taking it away to eat",
+        "Eating it very quickly",
+        "Sending it back"
+      ],
+      "answer": "Taking it away to eat",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Tabao' (dabao) means to pack food to take away. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'ta pau'."
+      }
+    },
+    {
+      "id": "sg-life-0013",
+      "type": "multiple-choice",
+      "prompt": "What is an 'ang bao'?",
+      "options": [
+        "A red packet of money",
+        "A lion dance drum",
+        "A paper lantern",
+        "A festive biscuit"
+      ],
+      "answer": "A red packet of money",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "An ang bao (hongbao) is a red packet of money given at Chinese New Year and other occasions. Check: NLB Singapore Infopedia, 'Hongbao giving'."
+      }
+    },
+    {
+      "id": "sg-life-0014",
+      "type": "multiple-choice",
+      "prompt": "Which festival is known as the Festival of Lights?",
+      "options": [
+        "Hari Raya Haji",
+        "Vesak Day",
+        "Christmas",
+        "Deepavali"
+      ],
+      "answer": "Deepavali",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Deepavali (Diwali) is the Hindu Festival of Lights and a public holiday in Singapore. Check: NLB Singapore Infopedia, 'Deepavali'."
+      }
+    },
+    {
+      "id": "sg-life-0015",
+      "type": "multiple-choice",
+      "prompt": "At Chinese New Year, which fruit do visitors exchange in pairs?",
+      "options": [
+        "Mandarin oranges",
+        "Red apples",
+        "Pineapples",
+        "Pomelos"
+      ],
+      "answer": "Mandarin oranges",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Visitors offer a pair of mandarin oranges to their hosts. Check: NLB Singapore Infopedia, 'Chinese New Year customs in Singapore'."
+      }
+    },
+    {
+      "id": "sg-life-0016",
+      "type": "multiple-choice",
+      "prompt": "Which number do you call in Singapore for an ambulance or the fire service?",
+      "options": [
+        "999",
+        "911",
+        "1777",
+        "995"
+      ],
+      "answer": "995",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "995 is the SCDF emergency line; 999 is the police and 1777 is for non-emergency ambulances. Check: Singapore Civil Defence Force, 'Emergency Medical Services'."
+      }
+    },
+    {
+      "id": "sg-life-0018",
+      "type": "multiple-choice",
+      "prompt": "Which fruit is famously not allowed on MRT trains?",
+      "options": [
+        "Jackfruit",
+        "Pineapple",
+        "Durian",
+        "Mango"
+      ],
+      "answer": "Durian",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Durians may not be brought onto trains because of their smell; 'No durians' signs are displayed in MRT stations. Check: Land Transport Authority and SMRT, rules on what may be brought onto MRT trains."
+      }
+    },
+    {
+      "id": "sg-life-0020",
+      "type": "multiple-choice",
+      "prompt": "Which of these is an official language of Singapore?",
+      "options": [
+        "Hindi",
+        "Hokkien",
+        "Tamil",
+        "Cantonese"
+      ],
+      "answer": "Tamil",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The official languages are Malay, Mandarin, Tamil and English. Check: Constitution of the Republic of Singapore, Article 153A."
+      }
+    },
+    {
+      "id": "sg-life-0021",
+      "type": "multiple-choice",
+      "prompt": "What do the letters PSLE stand for?",
+      "options": [
+        "Primary Six Learning Exam",
+        "Pupil Skills Level Evaluation",
+        "Primary School Leaving Examination",
+        "Public School Leaving Exercise"
+      ],
+      "answer": "Primary School Leaving Examination",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The PSLE is taken at the end of Primary 6. Check: Singapore Examinations and Assessment Board, 'PSLE'."
+      }
+    },
+    {
+      "id": "sg-life-0022",
+      "type": "multiple-choice",
+      "prompt": "What is the main colour of Singapore's two-dollar note?",
+      "options": [
+        "Purple",
+        "Green",
+        "Red",
+        "Blue"
+      ],
+      "answer": "Purple",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "In the Portrait series the $2 note is purple, $5 green, $10 red and $50 blue. Check: Monetary Authority of Singapore, 'Portrait series' currency notes."
+      }
+    },
+    {
+      "id": "sg-life-0023",
+      "type": "multiple-choice",
+      "prompt": "Residents of older HDB flats traditionally hang laundry outside the window on what?",
+      "options": [
+        "Steel cables",
+        "Rope ladders",
+        "Plastic hoops",
+        "Bamboo poles"
+      ],
+      "answer": "Bamboo poles",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Laundry on bamboo poles slotted into holders outside kitchen windows is a familiar HDB sight. Check: National Heritage Board (Roots), material on life in HDB flats (bamboo pole holders)."
+      }
+    },
+    {
+      "id": "sg-life-0024",
+      "type": "multiple-choice",
+      "prompt": "What is Singapore's national language?",
+      "options": [
+        "English",
+        "Malay",
+        "Mandarin",
+        "Tamil"
+      ],
+      "answer": "Malay",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Malay is the national language; all four languages are official. Check: Constitution of the Republic of Singapore, Article 153A."
+      }
+    },
+    {
+      "id": "sg-life-0025",
+      "type": "multiple-choice",
+      "prompt": "Which stored-value card for buses and trains was launched in Singapore in 2002?",
+      "options": [
+        "Octopus",
+        "Oyster",
+        "EZ-Link",
+        "Touch 'n Go"
+      ],
+      "answer": "EZ-Link",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The EZ-Link card replaced magnetic farecards from April 2002. Check: NLB Singapore Infopedia, 'EZ-Link card'."
+      }
+    },
+    {
+      "id": "sg-life-0026",
+      "type": "multiple-choice",
+      "prompt": "What do the letters ERP stand for on Singapore's roads?",
+      "options": [
+        "Express Road Pass",
+        "Electronic Road Pricing",
+        "Evening Rush Period",
+        "Estate Road Permit"
+      ],
+      "answer": "Electronic Road Pricing",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Electronic Road Pricing began in 1998. Check: NLB Singapore Infopedia, 'Electronic Road Pricing'."
+      }
+    },
+    {
+      "id": "sg-life-0027",
+      "type": "multiple-choice",
+      "prompt": "What colour is the North East Line on the MRT map?",
+      "options": [
+        "Yellow",
+        "Brown",
+        "Purple",
+        "Blue"
+      ],
+      "answer": "Purple",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The North East Line is purple; the Circle Line is orange-yellow, Downtown blue and Thomson-East Coast brown. Check: Land Transport Authority, MRT system map."
+      }
+    },
+    {
+      "id": "sg-life-0028",
+      "type": "multiple-choice",
+      "prompt": "In Singlish, what does 'paiseh' mean?",
+      "options": [
+        "Hungry",
+        "Lucky",
+        "Embarrassed",
+        "Sleepy"
+      ],
+      "answer": "Embarrassed",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Paiseh' is Hokkien for embarrassed or shy. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'paiseh'."
+      }
+    },
+    {
+      "id": "sg-life-0029",
+      "type": "multiple-choice",
+      "prompt": "A 'kaypoh' person is someone who is what?",
+      "options": [
+        "Stingy",
+        "Clumsy",
+        "Bossy",
+        "Nosy"
+      ],
+      "answer": "Nosy",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "A kaypoh is a busybody. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'kaypoh'."
+      }
+    },
+    {
+      "id": "sg-life-0030",
+      "type": "multiple-choice",
+      "prompt": "If a friend says 'bo jio', what are they complaining about?",
+      "options": [
+        "They were not invited",
+        "The food was too spicy",
+        "The queue was too long",
+        "They lost a game"
+      ],
+      "answer": "They were not invited",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Bo jio' is Hokkien for 'did not invite'. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'bo jio'."
+      }
+    },
+    {
+      "id": "sg-life-0031",
+      "type": "multiple-choice",
+      "prompt": "In Singlish, a restaurant described as 'atas' is what?",
+      "options": [
+        "Posh",
+        "Very crowded",
+        "Very cheap",
+        "Old-fashioned"
+      ],
+      "answer": "Posh",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Atas', Malay for 'above', means high-class or snobbish in Singlish. Check: Oxford English Dictionary, 'atas'."
+      }
+    },
+    {
+      "id": "sg-life-0032",
+      "type": "multiple-choice",
+      "prompt": "The word 'kopitiam' joins the Malay for coffee with the Hokkien for what?",
+      "options": [
+        "Cup",
+        "Uncle",
+        "Shop",
+        "Morning"
+      ],
+      "answer": "Shop",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Kopi' is Malay for coffee and 'tiam' Hokkien for shop. Check: NLB Singapore Infopedia, 'Kopitiam'."
+      }
+    },
+    {
+      "id": "sg-life-0033",
+      "type": "multiple-choice",
+      "prompt": "The Singlish word 'makan' comes from which language?",
+      "options": [
+        "Hokkien",
+        "Tamil",
+        "Malay",
+        "Cantonese"
+      ],
+      "answer": "Malay",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Makan' is a Malay word. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'makan'."
+      }
+    },
+    {
+      "id": "sg-life-0034",
+      "type": "multiple-choice",
+      "prompt": "When reciting the National Pledge, where do people place their right fist?",
+      "options": [
+        "On the forehead",
+        "On the left shoulder",
+        "Behind the back",
+        "Over the heart"
+      ],
+      "answer": "Over the heart",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The pledge is taken with the right fist clenched over the heart. Check: National Heritage Board, 'National Pledge'."
+      }
+    },
+    {
+      "id": "sg-life-0035",
+      "type": "multiple-choice",
+      "prompt": "Hari Raya Puasa is celebrated at the end of which month of fasting?",
+      "options": [
+        "Syawal",
+        "Muharram",
+        "Safar",
+        "Ramadan"
+      ],
+      "answer": "Ramadan",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Hari Raya Puasa (Aidilfitri) falls on the first day of Syawal, after the fasting month of Ramadan. Check: NLB Singapore Infopedia, 'Hari Raya Puasa'."
+      }
+    },
+    {
+      "id": "sg-life-0036",
+      "type": "multiple-choice",
+      "prompt": "How many days of public holiday does Singapore have for Chinese New Year?",
+      "options": [
+        "One",
+        "Three",
+        "Fifteen",
+        "Two"
+      ],
+      "answer": "Two",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The first two days of the lunar new year are public holidays. Check: Ministry of Manpower, 'Public holidays'; Holidays Act."
+      }
+    },
+    {
+      "id": "sg-life-0037",
+      "type": "multiple-choice",
+      "prompt": "Whose portrait is on the front of Singapore's Portrait series notes, issued from 1999?",
+      "options": [
+        "Lee Kuan Yew",
+        "Stamford Raffles",
+        "Zubir Said",
+        "Yusof Ishak"
+      ],
+      "answer": "Yusof Ishak",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Portrait series, issued from 1999, shows the first President, Yusof Ishak. Check: Monetary Authority of Singapore, 'Portrait series' currency notes."
+      }
+    },
+    {
+      "id": "sg-life-0038",
+      "type": "multiple-choice",
+      "prompt": "The import and sale of which sweet treat was banned in Singapore in 1992?",
+      "options": [
+        "Candy floss",
+        "Chewing gum",
+        "Lollipops",
+        "Bubble tea"
+      ],
+      "answer": "Chewing gum",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The ban on importing and selling chewing gum took effect in January 1992. Check: NLB Singapore Infopedia, 'Chewing gum ban'."
+      }
+    },
+    {
+      "id": "sg-life-0039",
+      "type": "multiple-choice",
+      "prompt": "What do the letters CCA stand for in Singapore schools?",
+      "options": [
+        "Co-Curricular Activity",
+        "Class Committee Award",
+        "Child Care Allowance",
+        "Core Curriculum Area"
+      ],
+      "answer": "Co-Curricular Activity",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "CCA stands for co-curricular activity, formerly called extra-curricular activity (ECA). Check: Ministry of Education, 'Co-curricular activities'."
+      }
+    },
+    {
+      "id": "sg-life-0040",
+      "type": "multiple-choice",
+      "prompt": "On which island do most National Service recruits begin their training?",
+      "options": [
+        "Pulau Ubin",
+        "Pulau Tekong",
+        "Sentosa",
+        "Pulau Brani"
+      ],
+      "answer": "Pulau Tekong",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Basic Military Training Centre is on Pulau Tekong. Check: NLB Singapore Infopedia, 'Pulau Tekong'; MINDEF, 'Basic Military Training'."
+      }
+    },
+    {
+      "id": "sg-life-0041",
+      "type": "multiple-choice",
+      "prompt": "What is NEWater?",
+      "options": [
+        "Bottled spring water",
+        "Filtered rainwater",
+        "Purified recycled water",
+        "Desalinated seawater"
+      ],
+      "answer": "Purified recycled water",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "NEWater is high-grade reclaimed water made from treated used water. Check: PUB, 'NEWater'."
+      }
+    },
+    {
+      "id": "sg-life-0043",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the lion mascot of Singapore's courtesy and kindness campaigns?",
+      "options": [
+        "Merli",
+        "Nila",
+        "Sharity",
+        "Singa"
+      ],
+      "answer": "Singa",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Singa the Lion was introduced in 1982 for the National Courtesy Campaign. Check: NLB Singapore Infopedia, 'Singa the Courtesy Lion'."
+      }
+    },
+    {
+      "id": "sg-life-0044",
+      "type": "multiple-choice",
+      "prompt": "The Singlish word 'kiasu' comes from which Chinese dialect?",
+      "options": [
+        "Cantonese",
+        "Hokkien",
+        "Teochew",
+        "Hainanese"
+      ],
+      "answer": "Hokkien",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Kiasu' is from Hokkien 'kia' (afraid) and 'su' (lose). Check: Oxford English Dictionary, 'kiasu'."
+      }
+    },
+    {
+      "id": "sg-life-0045",
+      "type": "multiple-choice",
+      "prompt": "In Singlish, what does 'gostan' mean?",
+      "options": [
+        "Go backwards",
+        "Speed up",
+        "Turn left",
+        "Stop at once"
+      ],
+      "answer": "Go backwards",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Gostan' means to reverse, from the nautical 'go astern'. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'gostan'."
+      }
+    },
+    {
+      "id": "sg-life-0046",
+      "type": "multiple-choice",
+      "prompt": "Who wrote the words of the Singapore National Pledge in 1966?",
+      "options": [
+        "Zubir Said",
+        "S. Rajaratnam",
+        "Goh Keng Swee",
+        "Toh Chin Chye"
+      ],
+      "answer": "S. Rajaratnam",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "S. Rajaratnam, then Minister for Foreign Affairs, drafted the pledge in 1966. Check: National Heritage Board, 'National Pledge'; NLB Singapore Infopedia, 'National Pledge'."
+      }
+    },
+    {
+      "id": "sg-life-0047",
+      "type": "multiple-choice",
+      "prompt": "On which date do Singapore schools mark Racial Harmony Day?",
+      "options": [
+        "21 July",
+        "15 February",
+        "1 July",
+        "9 August"
+      ],
+      "answer": "21 July",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Racial Harmony Day has been observed on 21 July since 1997. Check: NLB Singapore Infopedia, 'Racial Harmony Day'."
+      }
+    },
+    {
+      "id": "sg-life-0048",
+      "type": "multiple-choice",
+      "prompt": "In which year did National Service begin for young men in Singapore?",
+      "options": [
+        "1959",
+        "1967",
+        "1965",
+        "1971"
+      ],
+      "answer": "1967",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The National Service (Amendment) Act was passed in March 1967 and the first batch enlisted that year. Check: NLB Singapore Infopedia, 'National Service: Early years'."
+      }
+    },
+    {
+      "id": "sg-life-0049",
+      "type": "multiple-choice",
+      "prompt": "In National Service, what do the letters BMT stand for?",
+      "options": [
+        "Battalion March Test",
+        "Basic Military Training",
+        "Base Medical Team",
+        "Border Mission Tour"
+      ],
+      "answer": "Basic Military Training",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "BMT is Basic Military Training. Check: MINDEF, 'Basic Military Training'."
+      }
+    },
+    {
+      "id": "sg-life-0050",
+      "type": "multiple-choice",
+      "prompt": "What is Singapore's standard time?",
+      "options": [
+        "UTC+7",
+        "UTC+7:30",
+        "UTC+9",
+        "UTC+8"
+      ],
+      "answer": "UTC+8",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Singapore Standard Time has been 8 hours ahead of UTC since 1 January 1982. Check: NLB Singapore Infopedia, 'Singapore Standard Time'."
+      }
+    },
+    {
+      "id": "sg-life-0051",
+      "type": "multiple-choice",
+      "prompt": "What do the letters COE stand for in Singapore?",
+      "options": [
+        "Cost of Engine",
+        "Car Owner's Excise",
+        "Class of Emission",
+        "Certificate of Entitlement"
+      ],
+      "answer": "Certificate of Entitlement",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "A Certificate of Entitlement gives the right to register and use a vehicle for 10 years. Check: Land Transport Authority, 'Certificate of Entitlement'; NLB Singapore Infopedia, 'Certificate of Entitlement'."
+      }
+    },
+    {
+      "id": "sg-life-0052",
+      "type": "multiple-choice",
+      "prompt": "In which year did ERP gantries start charging on Singapore's roads?",
+      "options": [
+        "1990",
+        "2003",
+        "1998",
+        "2008"
+      ],
+      "answer": "1998",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "ERP replaced the manual Area Licensing Scheme in 1998. Check: NLB Singapore Infopedia, 'Electronic Road Pricing'."
+      }
+    },
+    {
+      "id": "sg-life-0053",
+      "type": "multiple-choice",
+      "prompt": "The Tembusu tree is pictured on the back of which Singapore note?",
+      "options": [
+        "Two-dollar note",
+        "Ten-dollar note",
+        "Fifty-dollar note",
+        "Five-dollar note"
+      ],
+      "answer": "Five-dollar note",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The $5 Portrait series note (theme: Garden City) shows the old tembusu tree of the Botanic Gardens. Check: Monetary Authority of Singapore, 'Portrait series' currency notes."
+      }
+    },
+    {
+      "id": "sg-life-0054",
+      "type": "multiple-choice",
+      "prompt": "What do the letters CPF stand for?",
+      "options": [
+        "Citizens' Pension Fund",
+        "Community Payment Facility",
+        "Central Provident Fund",
+        "Central Public Finance"
+      ],
+      "answer": "Central Provident Fund",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Central Provident Fund, set up in 1955, is the compulsory savings scheme. Check: NLB Singapore Infopedia, 'Central Provident Fund'."
+      }
+    }
+  ]
+}

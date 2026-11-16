@@ -1,0 +1,5 @@
+$ pnpm --filter @kaki/content-rabakz build -- --strict
+$ node --import ./scripts/register.ts scripts/build.ts -- --strict
+Rabakz bank built: 325 question(s) in 10 chunk(s), 0 picture(s), 0 error(s), 0 warning(s)
+Written to /Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-12/content/rabakz/generated
+exit code: 0

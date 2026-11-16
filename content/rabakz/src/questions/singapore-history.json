@@ -1,0 +1,906 @@
+{
+  "category": "singapore-history",
+  "title": "Singapore history",
+  "questions": [
+    {
+      "id": "sg-hist-0001",
+      "type": "multiple-choice",
+      "prompt": "The old name 'Singapura' means what?",
+      "options": [
+        "Sea Town",
+        "Tiger Port",
+        "Lion City",
+        "Garden Island"
+      ],
+      "answer": "Lion City",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Singapura' comes from the Sanskrit for lion (simha) and city (pura). Check: NLB Singapore Infopedia, 'Sang Nila Utama'."
+      }
+    },
+    {
+      "id": "sg-hist-0002",
+      "type": "multiple-choice",
+      "prompt": "In the legend, which animal did the prince who named Singapura believe he saw?",
+      "options": [
+        "A lion",
+        "A tiger",
+        "A crocodile",
+        "An elephant"
+      ],
+      "answer": "A lion",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Malay Annals say the prince saw a beast he took to be a lion and named the place Singapura. Check: NLB Singapore Infopedia, 'Sang Nila Utama'."
+      }
+    },
+    {
+      "id": "sg-hist-0003",
+      "type": "multiple-choice",
+      "prompt": "Which old name for Singapore is said to mean 'sea town'?",
+      "options": [
+        "Malaya",
+        "Batavia",
+        "Temasek",
+        "Nanyang"
+      ],
+      "answer": "Temasek",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Temasek, the 14th-century name of the island, is thought to mean 'sea town'. Check: NLB Singapore Infopedia, 'Temasek/Singapura'."
+      }
+    },
+    {
+      "id": "sg-hist-0004",
+      "type": "multiple-choice",
+      "prompt": "On which date does Singapore celebrate National Day?",
+      "options": [
+        "1 May",
+        "31 August",
+        "1 October",
+        "9 August"
+      ],
+      "answer": "9 August",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "National Day marks independence on 9 August 1965. Check: NLB Singapore Infopedia, 'National Day Parade'."
+      }
+    },
+    {
+      "id": "sg-hist-0005",
+      "type": "multiple-choice",
+      "prompt": "Who was Singapore's first Prime Minister?",
+      "options": [
+        "Goh Chok Tong",
+        "David Marshall",
+        "Lee Kuan Yew",
+        "Yusof Ishak"
+      ],
+      "answer": "Lee Kuan Yew",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Lee Kuan Yew was Prime Minister from 1959 to 1990. Check: NLB Singapore Infopedia, 'Lee Kuan Yew'."
+      }
+    },
+    {
+      "id": "sg-hist-0006",
+      "type": "multiple-choice",
+      "prompt": "How many stars are on the Singapore flag?",
+      "options": [
+        "Three",
+        "Four",
+        "Five",
+        "Six"
+      ],
+      "answer": "Five",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The flag has a crescent moon and five stars. Check: National Heritage Board, 'National Flag'."
+      }
+    },
+    {
+      "id": "sg-hist-0007",
+      "type": "multiple-choice",
+      "prompt": "What is Singapore's national anthem called?",
+      "options": [
+        "Majulah Singapura",
+        "Negaraku",
+        "Semoga Bahagia",
+        "Di Tanjong Katong"
+      ],
+      "answer": "Majulah Singapura",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Majulah Singapura' was adopted as the state anthem in 1959 and became the national anthem in 1965. Check: National Heritage Board, 'National Anthem'."
+      }
+    },
+    {
+      "id": "sg-hist-0009",
+      "type": "multiple-choice",
+      "prompt": "Which British official set up a trading post in Singapore in 1819?",
+      "options": [
+        "Captain James Cook",
+        "Sir Francis Light",
+        "Sir Stamford Raffles",
+        "Lord Nelson"
+      ],
+      "answer": "Sir Stamford Raffles",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Raffles established a British trading post in Singapore in 1819. Check: NLB Singapore Infopedia, 'Stamford Raffles's landing in Singapore'."
+      }
+    },
+    {
+      "id": "sg-hist-0010",
+      "type": "multiple-choice",
+      "prompt": "What are the two colours of the Singapore flag?",
+      "options": [
+        "Red and white",
+        "Blue and white",
+        "Red and yellow",
+        "Green and white"
+      ],
+      "answer": "Red and white",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The flag is red above white. Check: National Heritage Board, 'National Flag'."
+      }
+    },
+    {
+      "id": "sg-hist-0011",
+      "type": "multiple-choice",
+      "prompt": "Which country did Singapore separate from to become independent?",
+      "options": [
+        "Indonesia",
+        "Malaysia",
+        "Britain",
+        "Japan"
+      ],
+      "answer": "Malaysia",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Singapore separated from Malaysia on 9 August 1965. Check: National Library Board HistorySG, entry on Singapore's separation from Malaysia (9 August 1965)."
+      }
+    },
+    {
+      "id": "sg-hist-0013",
+      "type": "multiple-choice",
+      "prompt": "According to the Malay Annals, which prince gave Singapura its name?",
+      "options": [
+        "Parameswara",
+        "Sang Nila Utama",
+        "Hang Tuah",
+        "Sultan Hussein"
+      ],
+      "answer": "Sang Nila Utama",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Sejarah Melayu credits Sang Nila Utama, a prince from Palembang. Check: NLB Singapore Infopedia, 'Sang Nila Utama'."
+      }
+    },
+    {
+      "id": "sg-hist-0014",
+      "type": "multiple-choice",
+      "prompt": "Who was Singapore's first President?",
+      "options": [
+        "Benjamin Sheares",
+        "Devan Nair",
+        "Wee Kim Wee",
+        "Yusof Ishak"
+      ],
+      "answer": "Yusof Ishak",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Yusof Ishak, Yang di-Pertuan Negara from 1959, became the first President in 1965. Check: NLB Singapore Infopedia, 'Yusof Ishak'."
+      }
+    },
+    {
+      "id": "sg-hist-0015",
+      "type": "multiple-choice",
+      "prompt": "In which year did Singapore become part of Malaysia?",
+      "options": [
+        "1957",
+        "1959",
+        "1967",
+        "1963"
+      ],
+      "answer": "1963",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Malaysia was formed on 16 September 1963. Check: NLB Singapore Infopedia, 'Merger with Malaysia'."
+      }
+    },
+    {
+      "id": "sg-hist-0016",
+      "type": "multiple-choice",
+      "prompt": "The Japanese Occupation of Singapore began in which year?",
+      "options": [
+        "1939",
+        "1941",
+        "1945",
+        "1942"
+      ],
+      "answer": "1942",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The British surrendered Singapore on 15 February 1942. Check: NLB Singapore Infopedia, 'Japanese Occupation of Singapore'."
+      }
+    },
+    {
+      "id": "sg-hist-0017",
+      "type": "multiple-choice",
+      "prompt": "Which day, kept each year on 15 February, recalls the fall of Singapore?",
+      "options": [
+        "Racial Harmony Day",
+        "National Day",
+        "Armed Forces Day",
+        "Total Defence Day"
+      ],
+      "answer": "Total Defence Day",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Total Defence Day has been marked on 15 February since 1998. Check: NLB Singapore Infopedia, 'Total Defence'."
+      }
+    },
+    {
+      "id": "sg-hist-0018",
+      "type": "multiple-choice",
+      "prompt": "Which company employed Stamford Raffles when he came to Singapore?",
+      "options": [
+        "Dutch East India Company",
+        "Hudson's Bay Company",
+        "British East India Company",
+        "Royal Niger Company"
+      ],
+      "answer": "British East India Company",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Raffles was Lieutenant-Governor of Bencoolen for the British East India Company. Check: NLB Singapore Infopedia, 'Stamford Raffles's career and contributions to Singapore'."
+      }
+    },
+    {
+      "id": "sg-hist-0019",
+      "type": "multiple-choice",
+      "prompt": "Who was the first British Resident of Singapore?",
+      "options": [
+        "William Farquhar",
+        "John Crawfurd",
+        "Samuel Bonham",
+        "Thomas Braddell"
+      ],
+      "answer": "William Farquhar",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Major William Farquhar was Resident and Commandant from 1819 to 1823. Check: NLB Singapore Infopedia, 'William Farquhar'."
+      }
+    },
+    {
+      "id": "sg-hist-0020",
+      "type": "multiple-choice",
+      "prompt": "Which school began in 1823 as the Singapore Institution?",
+      "options": [
+        "St Joseph's Institution",
+        "Anglo-Chinese School",
+        "Raffles Institution",
+        "Victoria School"
+      ],
+      "answer": "Raffles Institution",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Singapore Institution, founded in 1823, was renamed Raffles Institution in 1868. Check: NLB Singapore Infopedia, 'Raffles Institution'."
+      }
+    },
+    {
+      "id": "sg-hist-0021",
+      "type": "multiple-choice",
+      "prompt": "Who composed 'Majulah Singapura'?",
+      "options": [
+        "Dick Lee",
+        "P. Ramlee",
+        "S. Rajaratnam",
+        "Zubir Said"
+      ],
+      "answer": "Zubir Said",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Zubir Said composed the song in 1958. Check: NLB Singapore Infopedia, 'Zubir Said'; National Heritage Board, 'National Anthem'."
+      }
+    },
+    {
+      "id": "sg-hist-0022",
+      "type": "multiple-choice",
+      "prompt": "What does the crescent moon on the Singapore flag stand for?",
+      "options": [
+        "The island's coastline",
+        "Peace with all neighbours",
+        "A young nation on the rise",
+        "The night sky at sea"
+      ],
+      "answer": "A young nation on the rise",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The crescent represents a young nation on the ascendant. Check: National Heritage Board, 'National Flag'."
+      }
+    },
+    {
+      "id": "sg-hist-0023",
+      "type": "multiple-choice",
+      "prompt": "In which year did Changi Airport open?",
+      "options": [
+        "1981",
+        "1971",
+        "1975",
+        "1990"
+      ],
+      "answer": "1981",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Changi Airport began operations on 1 July 1981. Check: NLB Singapore Infopedia, 'Singapore Changi Airport'."
+      }
+    },
+    {
+      "id": "sg-hist-0024",
+      "type": "multiple-choice",
+      "prompt": "Before Changi opened, which was Singapore's main international airport?",
+      "options": [
+        "Seletar",
+        "Kallang",
+        "Paya Lebar",
+        "Tengah"
+      ],
+      "answer": "Paya Lebar",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Paya Lebar Airport served from 1955 until Changi opened in 1981. Check: NLB Singapore Infopedia, 'Paya Lebar Airport'."
+      }
+    },
+    {
+      "id": "sg-hist-0025",
+      "type": "multiple-choice",
+      "prompt": "Singapore was a founding member of which regional group in 1967?",
+      "options": [
+        "APEC",
+        "SEATO",
+        "The Commonwealth",
+        "ASEAN"
+      ],
+      "answer": "ASEAN",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "ASEAN was founded in Bangkok on 8 August 1967 by Indonesia, Malaysia, the Philippines, Singapore and Thailand. Check: ASEAN Secretariat, 'The Founding of ASEAN'."
+      }
+    },
+    {
+      "id": "sg-hist-0026",
+      "type": "multiple-choice",
+      "prompt": "In the legend of Redhill, which sea creatures attacked Singapore's shore?",
+      "options": [
+        "Sharks",
+        "Giant crabs",
+        "Swordfish",
+        "Sea snakes"
+      ],
+      "answer": "Swordfish",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Malay Annals tell of swordfish attacking the coast until a boy suggested a barrier of banana stems. Check: NLB Singapore Infopedia, 'Bukit Merah (Redhill)'."
+      }
+    },
+    {
+      "id": "sg-hist-0027",
+      "type": "multiple-choice",
+      "prompt": "In 1980 the University of Singapore merged with which other university to form NUS?",
+      "options": [
+        "Nanyang University",
+        "Ngee Ann College",
+        "Raffles College",
+        "Singapore Polytechnic"
+      ],
+      "answer": "Nanyang University",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "NUS was formed on 8 August 1980 by merging the University of Singapore and Nanyang University. Check: NLB Singapore Infopedia, 'National University of Singapore'."
+      }
+    },
+    {
+      "id": "sg-hist-0028",
+      "type": "multiple-choice",
+      "prompt": "Which Singapore newspaper was first published in 1845?",
+      "options": [
+        "The Business Times",
+        "The Straits Times",
+        "The New Paper",
+        "Berita Harian"
+      ],
+      "answer": "The Straits Times",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Straits Times first appeared on 15 July 1845. Check: NLB Singapore Infopedia, 'The Straits Times'."
+      }
+    },
+    {
+      "id": "sg-hist-0029",
+      "type": "multiple-choice",
+      "prompt": "Tan Tock Seng, a 19th-century merchant, is best remembered for funding what?",
+      "options": [
+        "A school for girls",
+        "A public library",
+        "A hospital for the poor",
+        "A botanic garden"
+      ],
+      "answer": "A hospital for the poor",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "He funded the Chinese Pauper Hospital of 1844, now Tan Tock Seng Hospital. Check: NLB Singapore Infopedia, 'Tan Tock Seng'."
+      }
+    },
+    {
+      "id": "sg-hist-0030",
+      "type": "multiple-choice",
+      "prompt": "About how long did the Japanese Occupation of Singapore last?",
+      "options": [
+        "About 3.5 years",
+        "About 1.5 years",
+        "About 2.5 years",
+        "About 5.5 years"
+      ],
+      "answer": "About 3.5 years",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "From 15 February 1942 to the surrender ceremony of 12 September 1945. Check: NLB Singapore Infopedia, 'Japanese Occupation of Singapore'."
+      }
+    },
+    {
+      "id": "sg-hist-0031",
+      "type": "multiple-choice",
+      "prompt": "Who became Singapore's first Chief Minister in 1955?",
+      "options": [
+        "Lim Yew Hock",
+        "Toh Chin Chye",
+        "Goh Keng Swee",
+        "David Marshall"
+      ],
+      "answer": "David Marshall",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "David Marshall led the Labour Front to form the government after the 1955 election. Check: NLB Singapore Infopedia, 'David Saul Marshall'."
+      }
+    },
+    {
+      "id": "sg-hist-0032",
+      "type": "multiple-choice",
+      "prompt": "In which year did Singapore attain full internal self-government?",
+      "options": [
+        "1955",
+        "1963",
+        "1965",
+        "1959"
+      ],
+      "answer": "1959",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Singapore became a self-governing state on 3 June 1959. Check: NLB Singapore Infopedia, 'Singapore attains self-government'."
+      }
+    },
+    {
+      "id": "sg-hist-0033",
+      "type": "multiple-choice",
+      "prompt": "During the Occupation Singapore was renamed Syonan-to. What does that mean?",
+      "options": [
+        "Gate of the West",
+        "Light of the South",
+        "Pearl of the East",
+        "Island of the Lion"
+      ],
+      "answer": "Light of the South",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Syonan-to means 'Light of the South Island'. Check: NLB Singapore Infopedia, 'Japanese Occupation of Singapore'."
+      }
+    },
+    {
+      "id": "sg-hist-0034",
+      "type": "multiple-choice",
+      "prompt": "In which building did the British surrender Singapore to the Japanese?",
+      "options": [
+        "City Hall",
+        "The Ford Factory",
+        "Fort Canning",
+        "Raffles Hotel"
+      ],
+      "answer": "The Ford Factory",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Lieutenant-General Percival surrendered at the Ford Motor Factory in Bukit Timah on 15 February 1942. Check: NLB Singapore Infopedia, 'Former Ford Factory'."
+      }
+    },
+    {
+      "id": "sg-hist-0035",
+      "type": "multiple-choice",
+      "prompt": "In which building was the Japanese surrender in Singapore signed in September 1945?",
+      "options": [
+        "The Municipal Building",
+        "The Ford Factory",
+        "The Cathay Building",
+        "Government House"
+      ],
+      "answer": "The Municipal Building",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The ceremony of 12 September 1945 was held in the Municipal Building, later renamed City Hall. Check: NLB Singapore Infopedia, 'City Hall'."
+      }
+    },
+    {
+      "id": "sg-hist-0036",
+      "type": "multiple-choice",
+      "prompt": "In 1826 Singapore joined Malacca and which other port to form the Straits Settlements?",
+      "options": [
+        "Batavia",
+        "Penang",
+        "Bencoolen",
+        "Rangoon"
+      ],
+      "answer": "Penang",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Straits Settlements of 1826 were Penang, Malacca and Singapore. Check: NLB Singapore Infopedia, 'Straits Settlements'."
+      }
+    },
+    {
+      "id": "sg-hist-0037",
+      "type": "multiple-choice",
+      "prompt": "The 1822 town plan of Singapore is often named after which engineer who drew it?",
+      "options": [
+        "George Coleman",
+        "John Turnbull Thomson",
+        "Philip Jackson",
+        "James Brooke"
+      ],
+      "answer": "Philip Jackson",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Lieutenant Philip Jackson drew the Plan of the Town of Singapore, known as the Jackson Plan. Check: NLB Singapore Infopedia, 'Raffles Town Plan (Jackson Plan)'."
+      }
+    },
+    {
+      "id": "sg-hist-0038",
+      "type": "multiple-choice",
+      "prompt": "Raffles signed the 1819 treaty with Sultan Hussein and which other Malay leader?",
+      "options": [
+        "Bendahara Ali",
+        "Sultan Abu Bakar",
+        "Temenggong Abdul Rahman",
+        "Raja Haji Fisabilillah"
+      ],
+      "answer": "Temenggong Abdul Rahman",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The treaty of 6 February 1819 was signed with Sultan Hussein Shah and Temenggong Abdul Rahman. Check: NLB Singapore Infopedia, '1819 Singapore Treaty'."
+      }
+    },
+    {
+      "id": "sg-hist-0039",
+      "type": "multiple-choice",
+      "prompt": "In which year did the Straits Settlements become a British Crown Colony?",
+      "options": [
+        "1826",
+        "1867",
+        "1858",
+        "1900"
+      ],
+      "answer": "1867",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Control passed from India to the Colonial Office in London on 1 April 1867. Check: NLB Singapore Infopedia, 'Straits Settlements'."
+      }
+    },
+    {
+      "id": "sg-hist-0040",
+      "type": "multiple-choice",
+      "prompt": "On the Singapore flag, what does the white half stand for?",
+      "options": [
+        "Peace and prosperity",
+        "Courage and strength",
+        "Purity and virtue",
+        "Justice and progress"
+      ],
+      "answer": "Purity and virtue",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "White stands for pervading and everlasting purity and virtue. Check: National Heritage Board, 'National Flag'."
+      }
+    },
+    {
+      "id": "sg-hist-0041",
+      "type": "multiple-choice",
+      "prompt": "Which civil airport opened in Singapore in 1937?",
+      "options": [
+        "Seletar Airport",
+        "Paya Lebar Airport",
+        "Kallang Airport",
+        "Changi Airport"
+      ],
+      "answer": "Kallang Airport",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Kallang Airport opened on 12 June 1937. Check: NLB Singapore Infopedia, 'Kallang Airport'."
+      }
+    },
+    {
+      "id": "sg-hist-0042",
+      "type": "multiple-choice",
+      "prompt": "In which year was the Singapore dollar first issued?",
+      "options": [
+        "1967",
+        "1959",
+        "1965",
+        "1973"
+      ],
+      "answer": "1967",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Board of Commissioners of Currency issued the first Singapore dollar notes on 12 June 1967. Check: Monetary Authority of Singapore, history of Singapore's currency (Orchid series notes, 1967)."
+      }
+    },
+    {
+      "id": "sg-hist-0043",
+      "type": "multiple-choice",
+      "prompt": "Which body built public housing in Singapore before the HDB took over in 1960?",
+      "options": [
+        "Singapore Improvement Trust",
+        "Public Works Department",
+        "City Council",
+        "Jurong Town Corporation"
+      ],
+      "answer": "Singapore Improvement Trust",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Singapore Improvement Trust (1927) was replaced by the Housing and Development Board on 1 February 1960. Check: NLB Singapore Infopedia, 'Singapore Improvement Trust'."
+      }
+    },
+    {
+      "id": "sg-hist-0044",
+      "type": "multiple-choice",
+      "prompt": "The ancient Singapore Stone once stood at the mouth of which river?",
+      "options": [
+        "Singapore River",
+        "Kallang River",
+        "Rochor River",
+        "Seletar River"
+      ],
+      "answer": "Singapore River",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The inscribed boulder stood at the river mouth until it was blown up in 1843; a fragment is in the National Museum. Check: NLB Singapore Infopedia, 'Singapore Stone'."
+      }
+    },
+    {
+      "id": "sg-hist-0045",
+      "type": "multiple-choice",
+      "prompt": "In legend, which strongman hurled the Singapore Stone to the river mouth?",
+      "options": [
+        "Hang Tuah",
+        "Hang Nadim",
+        "Hang Jebat",
+        "Badang"
+      ],
+      "answer": "Badang",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Malay Annals tell of Badang, a strongman at the court of Singapura. Check: NLB Singapore Infopedia, 'Badang'; 'Singapore Stone'."
+      }
+    },
+    {
+      "id": "sg-hist-0046",
+      "type": "multiple-choice",
+      "prompt": "Which brothers opened Raffles Hotel in 1887?",
+      "options": [
+        "The Shaw brothers",
+        "The Sarkies brothers",
+        "The Aw brothers",
+        "The Alkaff brothers"
+      ],
+      "answer": "The Sarkies brothers",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Armenian Sarkies brothers opened the hotel in 1887. Check: NLB Singapore Infopedia, 'Raffles Hotel'."
+      }
+    },
+    {
+      "id": "sg-hist-0047",
+      "type": "multiple-choice",
+      "prompt": "In which year did television broadcasting begin in Singapore?",
+      "options": [
+        "1963",
+        "1955",
+        "1969",
+        "1974"
+      ],
+      "answer": "1963",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Television Singapura began a pilot service on 15 February 1963. Check: NLB HistorySG timeline, entry for 15 February 1963 (launch of Television Singapura)."
+      }
+    },
+    {
+      "id": "sg-hist-0048",
+      "type": "multiple-choice",
+      "prompt": "Just before 1819, Singapore was part of which sultanate?",
+      "options": [
+        "Sultanate of Malacca",
+        "Sultanate of Johor",
+        "Sultanate of Aceh",
+        "Sultanate of Brunei"
+      ],
+      "answer": "Sultanate of Johor",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Singapore belonged to the Johor (Johor-Riau) Sultanate, administered by the Temenggong. Check: NLB Singapore Infopedia, '1819 Singapore Treaty'."
+      }
+    },
+    {
+      "id": "sg-hist-0049",
+      "type": "multiple-choice",
+      "prompt": "Parameswara, a ruler of old Singapura, is said to have gone on to found which city?",
+      "options": [
+        "Palembang",
+        "Johor Bahru",
+        "Malacca",
+        "Penang"
+      ],
+      "answer": "Malacca",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Parameswara fled Singapura and founded Malacca around 1400. Check: Britannica, 'Paramesvara'; NLB Singapore Infopedia, 'Iskandar Shah'."
+      }
+    },
+    {
+      "id": "sg-hist-0050",
+      "type": "multiple-choice",
+      "prompt": "Which school did the businessman Tan Kah Kee found in Singapore in 1919?",
+      "options": [
+        "Nanyang Girls' High School",
+        "The Chinese High School",
+        "Chung Cheng High School",
+        "Catholic High School"
+      ],
+      "answer": "The Chinese High School",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Tan Kah Kee founded the Singapore Nanyang Overseas Chinese Middle School (The Chinese High School) in 1919. Check: NLB Singapore Infopedia, 'Tan Kah Kee'."
+      }
+    },
+    {
+      "id": "sg-hist-0051",
+      "type": "multiple-choice",
+      "prompt": "Yishun is named after which pioneer, once called the 'pineapple king'?",
+      "options": [
+        "Lim Nee Soon",
+        "Lim Boon Keng",
+        "Tan Kim Seng",
+        "Seah Eu Chin"
+      ],
+      "answer": "Lim Nee Soon",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Yishun' is the Mandarin reading of Nee Soon; Lim Nee Soon was a rubber and pineapple planter. Check: NLB Singapore Infopedia, 'Lim Nee Soon'."
+      }
+    },
+    {
+      "id": "sg-hist-0052",
+      "type": "multiple-choice",
+      "prompt": "In which city is Sir Stamford Raffles buried?",
+      "options": [
+        "Singapore",
+        "Calcutta",
+        "Penang",
+        "London"
+      ],
+      "answer": "London",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Raffles died in 1826 and is buried at St Mary's Church, Hendon, in London. Check: NLB Singapore Infopedia, 'Stamford Raffles's career and contributions to Singapore'; Britannica, 'Sir Stamford Raffles'."
+      }
+    }
+  ]
+}

@@ -1,0 +1,852 @@
+{
+  "category": "singapore-arts-and-sport",
+  "title": "Singapore arts and sport",
+  "questions": [
+    {
+      "id": "sg-arts-0001",
+      "type": "multiple-choice",
+      "prompt": "Who won Singapore's first Olympic gold medal?",
+      "options": [
+        "Fandi Ahmad",
+        "Tan Howe Liang",
+        "Joseph Schooling",
+        "Ang Peng Siong"
+      ],
+      "answer": "Joseph Schooling",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Joseph Schooling won the men's 100 m butterfly at the Rio 2016 Olympic Games. Check: International Olympic Committee, Rio 2016 results; NLB Singapore Infopedia, 'Joseph Schooling'."
+      }
+    },
+    {
+      "id": "sg-arts-0002",
+      "type": "multiple-choice",
+      "prompt": "What is the nickname of Singapore's national football team?",
+      "options": [
+        "The Tigers",
+        "The Eagles",
+        "The Lions",
+        "The Dragons"
+      ],
+      "answer": "The Lions",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The national team is known as the Lions. Check: Football Association of Singapore, 'National teams'."
+      }
+    },
+    {
+      "id": "sg-arts-0003",
+      "type": "multiple-choice",
+      "prompt": "Fandi Ahmad is a Singapore legend in which sport?",
+      "options": [
+        "Badminton",
+        "Football",
+        "Swimming",
+        "Table tennis"
+      ],
+      "answer": "Football",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Fandi Ahmad played for Singapore from 1979 to 1997 and for clubs including FC Groningen. Check: NLB Singapore Infopedia, 'Fandi Ahmad'."
+      }
+    },
+    {
+      "id": "sg-arts-0004",
+      "type": "multiple-choice",
+      "prompt": "In the game of chapteh, what do players do with the feathered shuttle?",
+      "options": [
+        "Throw it through a hoop",
+        "Hit it with a racket",
+        "Balance it on a stick",
+        "Keep it in the air by kicking"
+      ],
+      "answer": "Keep it in the air by kicking",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Chapteh is kept aloft with the foot. Check: NLB Singapore Infopedia, 'Chapteh'."
+      }
+    },
+    {
+      "id": "sg-arts-0005",
+      "type": "multiple-choice",
+      "prompt": "The traditional game of five stones is played with five small what?",
+      "options": [
+        "Cloth bags",
+        "Glass marbles",
+        "Wooden sticks",
+        "Rubber balls"
+      ],
+      "answer": "Cloth bags",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Five stones uses small triangular cloth bags filled with seeds, rice or sand. Check: NLB Singapore Infopedia, 'Five stones'."
+      }
+    },
+    {
+      "id": "sg-arts-0006",
+      "type": "multiple-choice",
+      "prompt": "The TV character Phua Chu Kang is famous for wearing boots of which colour?",
+      "options": [
+        "Red",
+        "Yellow",
+        "Black",
+        "White"
+      ],
+      "answer": "Yellow",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The contractor Phua Chu Kang, played by Gurmit Singh, wears yellow rubber boots. Check: NLB Singapore Infopedia, 'Phua Chu Kang Pte Ltd'."
+      }
+    },
+    {
+      "id": "sg-arts-0007",
+      "type": "multiple-choice",
+      "prompt": "The lion dance is most often performed during which festival?",
+      "options": [
+        "Deepavali",
+        "Chinese New Year",
+        "Hari Raya Puasa",
+        "Christmas"
+      ],
+      "answer": "Chinese New Year",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Lion dances are performed at Chinese New Year and at openings to bring good fortune. Check: NLB Singapore Infopedia, 'Lion dance'."
+      }
+    },
+    {
+      "id": "sg-arts-0008",
+      "type": "multiple-choice",
+      "prompt": "The Singapore Grand Prix is raced on what kind of track?",
+      "options": [
+        "An oval speedway",
+        "A desert rally course",
+        "An airfield circuit",
+        "A street circuit"
+      ],
+      "answer": "A street circuit",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The race is run on the Marina Bay Street Circuit on public roads. Check: Formula 1, 'Singapore Grand Prix'; NLB Singapore Infopedia, 'Singapore Grand Prix'."
+      }
+    },
+    {
+      "id": "sg-arts-0009",
+      "type": "multiple-choice",
+      "prompt": "How many dancers perform inside one lion in a lion dance?",
+      "options": [
+        "Two",
+        "One",
+        "Three",
+        "Five"
+      ],
+      "answer": "Two",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Each lion has two dancers: one for the head and one for the body and tail. Check: NLB Singapore Infopedia, 'Lion dance'."
+      }
+    },
+    {
+      "id": "sg-arts-0011",
+      "type": "multiple-choice",
+      "prompt": "What is a 'wayang kulit' show performed with?",
+      "options": [
+        "Fire torches",
+        "Masks and stilts",
+        "Shadow puppets",
+        "Hand bells"
+      ],
+      "answer": "Shadow puppets",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Wayang kulit is shadow puppet theatre, with leather puppets behind a lit screen. Check: NLB Singapore Infopedia, 'Wayang kulit'."
+      }
+    },
+    {
+      "id": "sg-arts-0012",
+      "type": "multiple-choice",
+      "prompt": "Loh Kean Yew became a world champion in 2021 in which sport?",
+      "options": [
+        "Badminton",
+        "Table tennis",
+        "Squash",
+        "Fencing"
+      ],
+      "answer": "Badminton",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Loh Kean Yew won the men's singles at the 2021 BWF World Championships. Check: Badminton World Federation, World Championships 2021 results."
+      }
+    },
+    {
+      "id": "sg-arts-0013",
+      "type": "multiple-choice",
+      "prompt": "Yip Pin Xiu has won Paralympic gold medals for Singapore in which sport?",
+      "options": [
+        "Athletics",
+        "Swimming",
+        "Archery",
+        "Table tennis"
+      ],
+      "answer": "Swimming",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Yip Pin Xiu has won Paralympic gold medals in backstroke since Beijing 2008. Check: International Paralympic Committee, 'Yip Pin Xiu'."
+      }
+    },
+    {
+      "id": "sg-arts-0014",
+      "type": "multiple-choice",
+      "prompt": "In zero point, children jump over a long rope made of what?",
+      "options": [
+        "Old shoelaces",
+        "Plaited raffia",
+        "Rubber bands",
+        "Bamboo strips"
+      ],
+      "answer": "Rubber bands",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The zero point rope is a chain of linked rubber bands. Check: National Heritage Board (Roots), material on traditional childhood games (zero point)."
+      }
+    },
+    {
+      "id": "sg-arts-0015",
+      "type": "multiple-choice",
+      "prompt": "Which National Day song begins 'Whenever I am feeling low'?",
+      "options": [
+        "Home",
+        "Together",
+        "Where I Belong",
+        "Our Singapore"
+      ],
+      "answer": "Home",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Home' (1998), written by Dick Lee and sung by Kit Chan, opens with that line. Check: NLB Singapore Infopedia, 'National Day songs'."
+      }
+    },
+    {
+      "id": "sg-arts-0017",
+      "type": "multiple-choice",
+      "prompt": "Singapore's women won an Olympic silver medal in 2008 in which team sport?",
+      "options": [
+        "Badminton",
+        "Netball",
+        "Table tennis",
+        "Hockey"
+      ],
+      "answer": "Table tennis",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Li Jiawei, Feng Tianwei and Wang Yuegu took silver in the women's team event at Beijing 2008. Check: International Olympic Committee, Beijing 2008 results."
+      }
+    },
+    {
+      "id": "sg-arts-0019",
+      "type": "multiple-choice",
+      "prompt": "The crowd's 'Kallang Roar' is linked with which venue?",
+      "options": [
+        "Jalan Besar Stadium",
+        "The Padang",
+        "Toa Payoh Stadium",
+        "National Stadium"
+      ],
+      "answer": "National Stadium",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Kallang Roar was the cheer of football crowds at the old National Stadium in Kallang. Check: NLB Singapore Infopedia, 'National Stadium'; 'Kallang Roar'."
+      }
+    },
+    {
+      "id": "sg-arts-0020",
+      "type": "multiple-choice",
+      "prompt": "When Singapore first held its Formula One Grand Prix in 2008, it was the sport's first what?",
+      "options": [
+        "Race in Asia",
+        "Night race",
+        "Street race",
+        "Race in the rain"
+      ],
+      "answer": "Night race",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The 2008 Singapore Grand Prix was the first Formula One race held at night. Check: Formula 1, 'Singapore Grand Prix'; NLB Singapore Infopedia, 'Singapore Grand Prix'."
+      }
+    },
+    {
+      "id": "sg-arts-0021",
+      "type": "multiple-choice",
+      "prompt": "Which sport is played by kicking a rattan ball over a net?",
+      "options": [
+        "Sepak takraw",
+        "Chapteh",
+        "Silat",
+        "Kabaddi"
+      ],
+      "answer": "Sepak takraw",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "In sepak takraw, teams volley a rattan (or synthetic) ball over a net without using their hands. Check: NLB Singapore Infopedia, 'Sepak takraw'."
+      }
+    },
+    {
+      "id": "sg-arts-0023",
+      "type": "multiple-choice",
+      "prompt": "A gasing is a traditional Malay toy. What is it?",
+      "options": [
+        "A spinning top",
+        "A kite",
+        "A drum",
+        "A blowpipe"
+      ],
+      "answer": "A spinning top",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Gasing is top spinning, played with wooden tops and a cord. Check: NLB Singapore Infopedia, 'Gasing'."
+      }
+    },
+    {
+      "id": "sg-arts-0024",
+      "type": "multiple-choice",
+      "prompt": "Congkak is a traditional game played with seeds or marbles on what?",
+      "options": [
+        "A chalk grid on the floor",
+        "A wooden board with holes",
+        "A square of cloth",
+        "A round metal tray"
+      ],
+      "answer": "A wooden board with holes",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Congkak uses a boat-shaped wooden board with two rows of holes and a store at each end. Check: NLB Singapore Infopedia, 'Congkak'."
+      }
+    },
+    {
+      "id": "sg-arts-0025",
+      "type": "multiple-choice",
+      "prompt": "In which year did Singapore host the first Youth Olympic Games?",
+      "options": [
+        "2006",
+        "2008",
+        "2010",
+        "2012"
+      ],
+      "answer": "2010",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The inaugural Summer Youth Olympic Games were held in Singapore in August 2010. Check: NLB Singapore Infopedia, 'Youth Olympic Games 2010'."
+      }
+    },
+    {
+      "id": "sg-arts-0026",
+      "type": "multiple-choice",
+      "prompt": "Who wrote the National Day song 'Home'?",
+      "options": [
+        "Kit Chan",
+        "Zubir Said",
+        "Jeremy Monteiro",
+        "Dick Lee"
+      ],
+      "answer": "Dick Lee",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Dick Lee wrote 'Home' for National Day 1998. Check: NLB Singapore Infopedia, 'Dick Lee'; 'National Day songs'."
+      }
+    },
+    {
+      "id": "sg-arts-0027",
+      "type": "multiple-choice",
+      "prompt": "Which 2002 Jack Neo film is about three schoolboys struggling with their studies?",
+      "options": [
+        "Money No Enough",
+        "Homerun",
+        "I Not Stupid",
+        "Ah Boys to Men"
+      ],
+      "answer": "I Not Stupid",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'I Not Stupid' (2002) was directed by Jack Neo. Check: NLB Singapore Infopedia, 'I Not Stupid'."
+      }
+    },
+    {
+      "id": "sg-arts-0028",
+      "type": "multiple-choice",
+      "prompt": "'Under One Roof', first shown in 1995, was what kind of Singapore TV show?",
+      "options": [
+        "A cooking contest",
+        "A sitcom",
+        "A police drama",
+        "A quiz show"
+      ],
+      "answer": "A sitcom",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Under One Roof' was Singapore's first locally made English-language sitcom. Check: NLB Singapore Infopedia, 'Under One Roof'."
+      }
+    },
+    {
+      "id": "sg-arts-0029",
+      "type": "multiple-choice",
+      "prompt": "In batik, what is applied to the cloth to stop dye reaching parts of it?",
+      "options": [
+        "Wax",
+        "Glue",
+        "Salt",
+        "Clay"
+      ],
+      "answer": "Wax",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Batik is a wax-resist dyeing technique. Check: Britannica, 'batik'; National Heritage Board (Roots), 'Batik'."
+      }
+    },
+    {
+      "id": "sg-arts-0030",
+      "type": "multiple-choice",
+      "prompt": "What kind of instrument is the kompang?",
+      "options": [
+        "A hand drum",
+        "A bamboo flute",
+        "A bowed fiddle",
+        "A brass gong"
+      ],
+      "answer": "A hand drum",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The kompang is a shallow hand-held frame drum played in groups at Malay weddings and events. Check: NLB Singapore Infopedia, 'Kompang'."
+      }
+    },
+    {
+      "id": "sg-arts-0031",
+      "type": "multiple-choice",
+      "prompt": "The angklung, often played in Singapore schools, is made of what?",
+      "options": [
+        "Brass",
+        "Clay",
+        "Coconut shell",
+        "Bamboo"
+      ],
+      "answer": "Bamboo",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The angklung is a rattle of bamboo tubes in a frame, of Indonesian origin. Check: UNESCO Intangible Cultural Heritage, 'Indonesian Angklung'."
+      }
+    },
+    {
+      "id": "sg-arts-0032",
+      "type": "multiple-choice",
+      "prompt": "The Chingay Parade is held as part of which festive season?",
+      "options": [
+        "Mid-Autumn Festival",
+        "National Day",
+        "Chinese New Year",
+        "Deepavali"
+      ],
+      "answer": "Chinese New Year",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Chingay has been held during the Chinese New Year season since 1973. Check: NLB Singapore Infopedia, 'Chingay'."
+      }
+    },
+    {
+      "id": "sg-arts-0033",
+      "type": "multiple-choice",
+      "prompt": "The Cultural Medallion honours Singaporeans for excellence in what?",
+      "options": [
+        "Sport",
+        "Science",
+        "Teaching",
+        "The arts"
+      ],
+      "answer": "The arts",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Cultural Medallion, begun in 1979, is the highest award for the arts. Check: National Arts Council, 'Cultural Medallion'."
+      }
+    },
+    {
+      "id": "sg-arts-0034",
+      "type": "multiple-choice",
+      "prompt": "'Di Tanjong Katong' is a well-loved folk song in which language?",
+      "options": [
+        "Tamil",
+        "Teochew",
+        "Malay",
+        "English"
+      ],
+      "answer": "Malay",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Di Tanjong Katong' is a Malay folk song often sung at National Day. Check: NLB Singapore Infopedia, 'National Day songs'; NLB MusicSG, 'Di Tanjong Katong'."
+      }
+    },
+    {
+      "id": "sg-arts-0035",
+      "type": "multiple-choice",
+      "prompt": "Bharatanatyam, taught at many Singapore arts schools, is a classical form of what?",
+      "options": [
+        "Poetry",
+        "Painting",
+        "Drumming",
+        "Dance"
+      ],
+      "answer": "Dance",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Bharatanatyam is a classical dance of South India. Check: Britannica, 'bharata natyam'."
+      }
+    },
+    {
+      "id": "sg-arts-0036",
+      "type": "multiple-choice",
+      "prompt": "In which year was Singapore's hawker culture added to UNESCO's intangible heritage list?",
+      "options": [
+        "2010",
+        "2015",
+        "2020",
+        "2018"
+      ],
+      "answer": "2020",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Hawker culture in Singapore' was inscribed in December 2020. Check: UNESCO Intangible Cultural Heritage, 'Hawker culture in Singapore'."
+      }
+    },
+    {
+      "id": "sg-arts-0037",
+      "type": "multiple-choice",
+      "prompt": "Which is Singapore's oldest museum, in its Stamford Road building since 1887?",
+      "options": [
+        "Asian Civilisations Museum",
+        "National Museum of Singapore",
+        "Singapore Art Museum",
+        "Peranakan Museum"
+      ],
+      "answer": "National Museum of Singapore",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The National Museum opened in its Stamford Road building in 1887 as the Raffles Library and Museum. Check: NLB Singapore Infopedia, 'National Museum of Singapore'."
+      }
+    },
+    {
+      "id": "sg-arts-0038",
+      "type": "multiple-choice",
+      "prompt": "Tan Howe Liang won Singapore's first Olympic medal, a silver in 1960, in which sport?",
+      "options": [
+        "Boxing",
+        "Weightlifting",
+        "Sailing",
+        "Athletics"
+      ],
+      "answer": "Weightlifting",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Tan Howe Liang won silver in lightweight weightlifting at the Rome 1960 Olympic Games. Check: NLB Singapore Infopedia, 'Tan Howe Liang'."
+      }
+    },
+    {
+      "id": "sg-arts-0039",
+      "type": "multiple-choice",
+      "prompt": "In which year did Singapore first win the ASEAN football championship, then the Tiger Cup?",
+      "options": [
+        "1994",
+        "1996",
+        "1998",
+        "2002"
+      ],
+      "answer": "1998",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Singapore beat Vietnam 1-0 in Hanoi in the 1998 Tiger Cup final. Check: ASEAN Football Federation, championship history; NLB Singapore Infopedia, 'Tiger Cup'."
+      }
+    },
+    {
+      "id": "sg-arts-0040",
+      "type": "multiple-choice",
+      "prompt": "Who first sang the National Day song 'Home' in 1998?",
+      "options": [
+        "Stefanie Sun",
+        "Tanya Chua",
+        "Corrinne May",
+        "Kit Chan"
+      ],
+      "answer": "Kit Chan",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Kit Chan performed 'Home' at the 1998 National Day Parade. Check: NLB Singapore Infopedia, 'Kit Chan'; 'National Day songs'."
+      }
+    },
+    {
+      "id": "sg-arts-0041",
+      "type": "multiple-choice",
+      "prompt": "Which Anthony Chen film won the Camera d'Or at the Cannes Film Festival in 2013?",
+      "options": [
+        "12 Storeys",
+        "Ilo Ilo",
+        "Mee Pok Man",
+        "Wet Season"
+      ],
+      "answer": "Ilo Ilo",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Ilo Ilo' won the Camera d'Or for best first feature in 2013. Check: Festival de Cannes, 2013 awards; NLB Singapore Infopedia, 'Anthony Chen'."
+      }
+    },
+    {
+      "id": "sg-arts-0042",
+      "type": "multiple-choice",
+      "prompt": "Which French designer created the sarong kebaya uniform of Singapore Airlines' cabin crew?",
+      "options": [
+        "Christian Dior",
+        "Yves Saint Laurent",
+        "Pierre Balmain",
+        "Pierre Cardin"
+      ],
+      "answer": "Pierre Balmain",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Pierre Balmain designed the uniform in 1968. Check: NLB Singapore Infopedia, 'Singapore Girl'."
+      }
+    },
+    {
+      "id": "sg-arts-0043",
+      "type": "multiple-choice",
+      "prompt": "How many strings does an erhu have?",
+      "options": [
+        "One",
+        "Three",
+        "Two",
+        "Four"
+      ],
+      "answer": "Two",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The erhu is a two-stringed bowed fiddle. Check: Britannica, 'erhu'; Singapore Chinese Orchestra, 'Instruments'."
+      }
+    },
+    {
+      "id": "sg-arts-0044",
+      "type": "multiple-choice",
+      "prompt": "Liu Kang, Chen Wen Hsi and Georgette Chen were pioneers of which style of painting?",
+      "options": [
+        "Nanyang style",
+        "Straits school",
+        "Lion City school",
+        "Merdeka style"
+      ],
+      "answer": "Nanyang style",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Nanyang style blended Chinese ink and School of Paris techniques with Southeast Asian subjects. Check: National Gallery Singapore, 'Nanyang art'; NLB Singapore Infopedia, 'Nanyang style'."
+      }
+    },
+    {
+      "id": "sg-arts-0045",
+      "type": "multiple-choice",
+      "prompt": "The song 'Munnaeru Vaalibaa' is sung in which language?",
+      "options": [
+        "Malay",
+        "Tamil",
+        "Hindi",
+        "Bengali"
+      ],
+      "answer": "Tamil",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Munnaeru Vaalibaa' ('Forward, Youth') is a Tamil community song written by S. Jesudassan in the 1960s. Check: NLB Singapore Infopedia, 'National Day songs'; NLB MusicSG, 'Munnaeru Vaalibaa'."
+      }
+    },
+    {
+      "id": "sg-arts-0046",
+      "type": "multiple-choice",
+      "prompt": "What is dikir barat?",
+      "options": [
+        "A Malay choral singing form",
+        "A Malay martial art",
+        "A style of batik",
+        "A harvest dance"
+      ],
+      "answer": "A Malay choral singing form",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Dikir barat is group singing led by a tok juara and tukang karut, with rhythmic clapping and percussion. Check: NLB Singapore Infopedia, 'Dikir barat'."
+      }
+    },
+    {
+      "id": "sg-arts-0047",
+      "type": "multiple-choice",
+      "prompt": "Who wrote the one-woman play 'Emily of Emerald Hill'?",
+      "options": [
+        "Stella Kon",
+        "Catherine Lim",
+        "Kuo Pao Kun",
+        "Haresh Sharma"
+      ],
+      "answer": "Stella Kon",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Stella Kon's play was first staged in 1984. Check: NLB Singapore Infopedia, 'Emily of Emerald Hill'."
+      }
+    },
+    {
+      "id": "sg-arts-0048",
+      "type": "multiple-choice",
+      "prompt": "Which poet wrote 'Ulysses by the Merlion'?",
+      "options": [
+        "Arthur Yap",
+        "Lee Tzu Pheng",
+        "Alfian Sa'at",
+        "Edwin Thumboo"
+      ],
+      "answer": "Edwin Thumboo",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Edwin Thumboo's poem was published in 1979. Check: NLB Singapore Infopedia, 'Edwin Thumboo'."
+      }
+    },
+    {
+      "id": "sg-arts-0049",
+      "type": "multiple-choice",
+      "prompt": "Wong Peng Soon, a Singapore sporting hero of the 1950s, was a champion in which sport?",
+      "options": [
+        "Badminton",
+        "Tennis",
+        "Boxing",
+        "Billiards"
+      ],
+      "answer": "Badminton",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Wong Peng Soon won the All England men's singles four times between 1950 and 1955. Check: NLB Singapore Infopedia, 'Wong Peng Soon'."
+      }
+    },
+    {
+      "id": "sg-arts-0050",
+      "type": "multiple-choice",
+      "prompt": "Ang Peng Siong was once ranked the world's fastest over 50 metres in which sport?",
+      "options": [
+        "Sprinting",
+        "Cycling",
+        "Swimming",
+        "Rowing"
+      ],
+      "answer": "Swimming",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Ang Peng Siong swam the world's fastest 50 m freestyle time of 1982. Check: NLB Singapore Infopedia, 'Ang Peng Siong'."
+      }
+    },
+    {
+      "id": "sg-arts-0051",
+      "type": "multiple-choice",
+      "prompt": "Shanti Pereira won Singapore's first Asian Games athletics gold in 49 years in 2023. In which event?",
+      "options": [
+        "200 metres",
+        "100 metres",
+        "400 metres",
+        "Long jump"
+      ],
+      "answer": "200 metres",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Shanti Pereira won the women's 200 m (and silver in the 100 m) at the Hangzhou Asian Games in 2023. Check: Olympic Council of Asia, Hangzhou 2022 athletics results."
+      }
+    }
+  ]
+}

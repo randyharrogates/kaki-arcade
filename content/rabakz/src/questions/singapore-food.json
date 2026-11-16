@@ -1,0 +1,1032 @@
+{
+  "category": "singapore-food",
+  "title": "Singapore food",
+  "questions": [
+    {
+      "id": "sg-food-0001",
+      "type": "multiple-choice",
+      "prompt": "Which fruit is often called the 'king of fruits' in Singapore?",
+      "options": [
+        "Durian",
+        "Mango",
+        "Rambutan",
+        "Jackfruit"
+      ],
+      "answer": "Durian",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The durian is widely known as the 'king of fruits'. Check: NLB Singapore Infopedia, 'Durian'."
+      }
+    },
+    {
+      "id": "sg-food-0002",
+      "type": "multiple-choice",
+      "prompt": "In the name 'nasi lemak', what does the Malay word 'nasi' mean?",
+      "options": [
+        "Noodles",
+        "Coconut",
+        "Rice",
+        "Chicken"
+      ],
+      "answer": "Rice",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Nasi' is cooked rice in Malay. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'nasi'; NLB Singapore Infopedia, 'Nasi lemak'."
+      }
+    },
+    {
+      "id": "sg-food-0003",
+      "type": "multiple-choice",
+      "prompt": "The rice in nasi lemak is cooked in what?",
+      "options": [
+        "Chicken broth",
+        "Coconut milk",
+        "Tomato sauce",
+        "Barley water"
+      ],
+      "answer": "Coconut milk",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Lemak' refers to the richness of coconut milk in which the rice is cooked. Check: NLB Singapore Infopedia, 'Nasi lemak'."
+      }
+    },
+    {
+      "id": "sg-food-0004",
+      "type": "multiple-choice",
+      "prompt": "Satay is usually served with which dipping sauce?",
+      "options": [
+        "Sweet plum sauce",
+        "Dark soy sauce",
+        "Mint sauce",
+        "Peanut sauce"
+      ],
+      "answer": "Peanut sauce",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Satay is served with a spiced peanut sauce, ketupat, cucumber and onion. Check: NLB Singapore Infopedia, 'Satay'."
+      }
+    },
+    {
+      "id": "sg-food-0005",
+      "type": "multiple-choice",
+      "prompt": "What is roti prata?",
+      "options": [
+        "A steamed bun",
+        "A rice dumpling",
+        "A noodle soup",
+        "A fried flatbread"
+      ],
+      "answer": "A fried flatbread",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Roti prata is a flatbread of South Indian origin fried on a flat griddle. Check: NLB Singapore Infopedia, 'Roti prata'."
+      }
+    },
+    {
+      "id": "sg-food-0006",
+      "type": "multiple-choice",
+      "prompt": "Ice kachang is built on a mound of what?",
+      "options": [
+        "Sticky rice",
+        "Shaved ice",
+        "Bread cubes",
+        "Mashed yam"
+      ],
+      "answer": "Shaved ice",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Ice kachang is shaved ice with syrups over red beans, jelly and other toppings. Check: NLB Singapore Infopedia, 'Ice kachang'."
+      }
+    },
+    {
+      "id": "sg-food-0007",
+      "type": "multiple-choice",
+      "prompt": "What colour is a pandan chiffon cake?",
+      "options": [
+        "Green",
+        "Purple",
+        "Pink",
+        "Orange"
+      ],
+      "answer": "Green",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Pandan leaf juice gives the cake its green colour. Check: NLB Singapore Infopedia, 'Pandan cake'; NParks Flora and Fauna Web, 'Pandanus amaryllifolius'."
+      }
+    },
+    {
+      "id": "sg-food-0008",
+      "type": "multiple-choice",
+      "prompt": "At a drinks stall, what does 'peng' mean, as in 'Milo peng'?",
+      "options": [
+        "With milk",
+        "No sugar",
+        "With ice",
+        "Takeaway"
+      ],
+      "answer": "With ice",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Peng' is Hokkien for ice. Check: NLB Singapore Infopedia, 'Kopitiam'; Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English'."
+      }
+    },
+    {
+      "id": "sg-food-0009",
+      "type": "multiple-choice",
+      "prompt": "What is 'ikan bilis'?",
+      "options": [
+        "Dried anchovies",
+        "Salted peanuts",
+        "Fried shallots",
+        "Prawn crackers"
+      ],
+      "answer": "Dried anchovies",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Ikan bilis is the Malay name for small anchovies, usually dried. Check: Kamus Dewan, 'ikan bilis'; NLB Singapore Infopedia, 'Nasi lemak'."
+      }
+    },
+    {
+      "id": "sg-food-0010",
+      "type": "multiple-choice",
+      "prompt": "In 'ayam penyet' and 'ayam goreng', what does the Malay word 'ayam' mean?",
+      "options": [
+        "Fish",
+        "Beef",
+        "Prawn",
+        "Chicken"
+      ],
+      "answer": "Chicken",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Ayam' is chicken in Malay. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'ayam'."
+      }
+    },
+    {
+      "id": "sg-food-0011",
+      "type": "multiple-choice",
+      "prompt": "In 'mee goreng' and 'nasi goreng', what does the Malay word 'goreng' mean?",
+      "options": [
+        "Spicy",
+        "Fried",
+        "Sweet",
+        "Steamed"
+      ],
+      "answer": "Fried",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Goreng' means fried in Malay. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'goreng'; NLB Singapore Infopedia, 'Mee goreng'."
+      }
+    },
+    {
+      "id": "sg-food-0012",
+      "type": "multiple-choice",
+      "prompt": "Popiah is best described as what?",
+      "options": [
+        "A fried dumpling",
+        "A rice porridge",
+        "A fresh spring roll",
+        "A baked pastry"
+      ],
+      "answer": "A fresh spring roll",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Popiah is a fresh (unfried) spring roll in a thin wheat skin. Check: NLB Singapore Infopedia, 'Popiah'."
+      }
+    },
+    {
+      "id": "sg-food-0013",
+      "type": "multiple-choice",
+      "prompt": "Bandung is a pink drink made with milk and which syrup?",
+      "options": [
+        "Strawberry syrup",
+        "Lychee syrup",
+        "Rose syrup",
+        "Cherry syrup"
+      ],
+      "answer": "Rose syrup",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Bandung is rose syrup (rose cordial) mixed with evaporated or condensed milk. Check: Singapore Tourism Board, material on local drinks (bandung); Kamus Dewan (Dewan Bahasa dan Pustaka), 'air bandung'."
+      }
+    },
+    {
+      "id": "sg-food-0014",
+      "type": "multiple-choice",
+      "prompt": "What is the usual filling of a classic curry puff?",
+      "options": [
+        "Sweet red bean",
+        "Minced fish paste",
+        "Curried potato",
+        "Shredded coconut"
+      ],
+      "answer": "Curried potato",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The classic curry puff is filled with curried potato, often with chicken and egg. Check: NLB Singapore Infopedia, 'Curry puff'."
+      }
+    },
+    {
+      "id": "sg-food-0015",
+      "type": "multiple-choice",
+      "prompt": "A kaya toast set at a kopitiam usually comes with which eggs?",
+      "options": [
+        "Soft-boiled eggs",
+        "Scrambled eggs",
+        "Salted duck eggs",
+        "Century eggs"
+      ],
+      "answer": "Soft-boiled eggs",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The traditional breakfast set is kaya toast, soft-boiled eggs and coffee or tea. Check: NLB Singapore Infopedia, 'Kaya toast'; 'Kopitiam'."
+      }
+    },
+    {
+      "id": "sg-food-0016",
+      "type": "multiple-choice",
+      "prompt": "Sambal is a spicy paste made mainly from what?",
+      "options": [
+        "Peanuts",
+        "Tamarind",
+        "Ginger",
+        "Chillies"
+      ],
+      "answer": "Chillies",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Sambal is a chilli-based paste or relish. Check: Oxford English Dictionary, 'sambal'; Kamus Dewan, 'sambal'."
+      }
+    },
+    {
+      "id": "sg-food-0017",
+      "type": "multiple-choice",
+      "prompt": "Mooncakes are eaten during which festival?",
+      "options": [
+        "Dragon Boat Festival",
+        "Mid-Autumn Festival",
+        "Chinese New Year",
+        "Qingming Festival"
+      ],
+      "answer": "Mid-Autumn Festival",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Mooncakes are the traditional food of the Mid-Autumn Festival. Check: NLB Singapore Infopedia, 'Mid-Autumn Festival'; 'Mooncake'."
+      }
+    },
+    {
+      "id": "sg-food-0018",
+      "type": "multiple-choice",
+      "prompt": "What is a 'Milo dinosaur'?",
+      "options": [
+        "Iced Milo topped with Milo powder",
+        "Hot Milo with a shot of coffee",
+        "Milo blended with ice cream",
+        "Milo mixed with soya milk"
+      ],
+      "answer": "Iced Milo topped with Milo powder",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "A Milo dinosaur is iced Milo with a heap of undissolved Milo powder on top. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', entry for Milo dinosaur."
+      }
+    },
+    {
+      "id": "sg-food-0019",
+      "type": "multiple-choice",
+      "prompt": "How is satay traditionally cooked?",
+      "options": [
+        "Steamed in a basket",
+        "Boiled in broth",
+        "Grilled over charcoal",
+        "Baked in a clay oven"
+      ],
+      "answer": "Grilled over charcoal",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Satay is skewered meat grilled over a charcoal fire. Check: NLB Singapore Infopedia, 'Satay'."
+      }
+    },
+    {
+      "id": "sg-food-0020",
+      "type": "multiple-choice",
+      "prompt": "In the drink name 'teh tarik', what does the Malay word 'tarik' mean?",
+      "options": [
+        "Sweet",
+        "Milky",
+        "Frothy",
+        "Pulled"
+      ],
+      "answer": "Pulled",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Tarik' means pull; the tea is poured back and forth between two vessels. Check: NLB Singapore Infopedia, 'Teh tarik'."
+      }
+    },
+    {
+      "id": "sg-food-0021",
+      "type": "multiple-choice",
+      "prompt": "In 'ice kachang', what does the Malay word 'kachang' mean?",
+      "options": [
+        "Ice",
+        "Syrup",
+        "Beans",
+        "Jelly"
+      ],
+      "answer": "Beans",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Kachang' (kacang) means beans or nuts; the dessert is named for its red beans. Check: NLB Singapore Infopedia, 'Ice kachang'; Kamus Dewan, 'kacang'."
+      }
+    },
+    {
+      "id": "sg-food-0022",
+      "type": "multiple-choice",
+      "prompt": "Kopi C is coffee with sugar and which milk?",
+      "options": [
+        "Condensed milk",
+        "Evaporated milk",
+        "Coconut milk",
+        "Soya milk"
+      ],
+      "answer": "Evaporated milk",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Plain 'kopi' has condensed milk; 'kopi C' has evaporated milk and sugar. Check: National Library Board Infopedia, entry on the kopitiam; Singapore Tourism Board, guide to ordering local coffee."
+      }
+    },
+    {
+      "id": "sg-food-0023",
+      "type": "multiple-choice",
+      "prompt": "When ordering a drink, what does 'kosong' mean, as in 'teh O kosong'?",
+      "options": [
+        "No ice",
+        "No sugar",
+        "Extra milk",
+        "Extra strong"
+      ],
+      "answer": "No sugar",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Kosong' is Malay for empty or zero: no sugar (and, with 'O', no milk). Check: Kamus Dewan, 'kosong'; NLB Singapore Infopedia, 'Kopitiam'."
+      }
+    },
+    {
+      "id": "sg-food-0024",
+      "type": "multiple-choice",
+      "prompt": "What does 'gao' mean when you order 'kopi gao'?",
+      "options": [
+        "Less sweet",
+        "Extra strong",
+        "Extra hot",
+        "Less milk"
+      ],
+      "answer": "Extra strong",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Gao' is Hokkien for thick: a stronger brew. Check: National Library Board Infopedia, entry on the kopitiam; Singapore Tourism Board, guide to ordering local coffee."
+      }
+    },
+    {
+      "id": "sg-food-0025",
+      "type": "multiple-choice",
+      "prompt": "Chwee kueh, the steamed rice cakes, are topped with what?",
+      "options": [
+        "Dried shrimp floss",
+        "Preserved radish",
+        "Crushed peanuts",
+        "Fried shallots"
+      ],
+      "answer": "Preserved radish",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Chwee kueh are served with diced preserved radish (chai poh) and chilli. Check: NLB Singapore Infopedia, 'Chwee kueh'."
+      }
+    },
+    {
+      "id": "sg-food-0026",
+      "type": "multiple-choice",
+      "prompt": "The hawker dish 'carrot cake' (chai tow kway) is made with which vegetable?",
+      "options": [
+        "Orange carrot",
+        "Sweet potato",
+        "White radish",
+        "Purple yam"
+      ],
+      "answer": "White radish",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The 'cake' is steamed rice flour and white radish (daikon), cut up and fried with egg. Check: NLB Singapore Infopedia, 'Chai tow kway (carrot cake)'."
+      }
+    },
+    {
+      "id": "sg-food-0027",
+      "type": "multiple-choice",
+      "prompt": "What makes the gravy of Singapore-style laksa rich and creamy?",
+      "options": [
+        "Evaporated milk",
+        "Coconut milk",
+        "Peanut paste",
+        "Egg yolk"
+      ],
+      "answer": "Coconut milk",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Laksa lemak, the style common in Singapore, has a spicy coconut milk gravy. Check: NLB Singapore Infopedia, 'Laksa'."
+      }
+    },
+    {
+      "id": "sg-food-0028",
+      "type": "multiple-choice",
+      "prompt": "Ondeh-ondeh are little green balls filled with what?",
+      "options": [
+        "Gula melaka",
+        "Red bean paste",
+        "Ground peanuts",
+        "Lotus paste"
+      ],
+      "answer": "Gula melaka",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Ondeh-ondeh are glutinous rice balls filled with liquid gula melaka and rolled in grated coconut. Check: National Library Board Infopedia, entries on kueh (ondeh-ondeh); Kamus Dewan (Dewan Bahasa dan Pustaka), 'onde-onde'."
+      }
+    },
+    {
+      "id": "sg-food-0029",
+      "type": "multiple-choice",
+      "prompt": "Gula melaka is a sugar made from the sap of which plant?",
+      "options": [
+        "Sugar cane",
+        "Maple tree",
+        "Palm tree",
+        "Sugar beet"
+      ],
+      "answer": "Palm tree",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Gula melaka is palm sugar, made by boiling down the sap of the coconut palm's flower buds. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'gula melaka'; Britannica, entry on palm sugar."
+      }
+    },
+    {
+      "id": "sg-food-0030",
+      "type": "multiple-choice",
+      "prompt": "Chilli crab is commonly eaten with which bread to mop up the sauce?",
+      "options": [
+        "Naan",
+        "Baguette slices",
+        "Roti prata",
+        "Mantou buns"
+      ],
+      "answer": "Mantou buns",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Chilli crab is served with fried or steamed mantou. Check: NLB Singapore Infopedia, 'Chilli crab'."
+      }
+    },
+    {
+      "id": "sg-food-0031",
+      "type": "multiple-choice",
+      "prompt": "Bak kut teh is a peppery or herbal soup made with which meat?",
+      "options": [
+        "Beef shank",
+        "Pork ribs",
+        "Mutton chops",
+        "Chicken wings"
+      ],
+      "answer": "Pork ribs",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Bak kut teh ('meat bone tea' in Hokkien) is pork ribs simmered with pepper, garlic or herbs. Check: NLB Singapore Infopedia, 'Bak kut teh'."
+      }
+    },
+    {
+      "id": "sg-food-0032",
+      "type": "multiple-choice",
+      "prompt": "The main filling of popiah is stewed bangkuang. What is bangkuang?",
+      "options": [
+        "A leafy green cabbage",
+        "A small purple yam",
+        "A long green gourd",
+        "A crunchy white yam bean"
+      ],
+      "answer": "A crunchy white yam bean",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Bangkuang is the yam bean or jicama, called turnip locally. Check: NLB Singapore Infopedia, 'Popiah'; NParks Flora and Fauna Web, 'Pachyrhizus erosus'."
+      }
+    },
+    {
+      "id": "sg-food-0033",
+      "type": "multiple-choice",
+      "prompt": "The stock for Singapore-style fried Hokkien mee is made mainly from what?",
+      "options": [
+        "Chicken",
+        "Beef",
+        "Prawns",
+        "Mushrooms"
+      ],
+      "answer": "Prawns",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The noodles are braised in a stock of prawn heads and shells, usually with pork bones. Check: NLB Singapore Infopedia, 'Hokkien prawn noodles (Hokkien mee)'."
+      }
+    },
+    {
+      "id": "sg-food-0034",
+      "type": "multiple-choice",
+      "prompt": "Kway teow are flat noodles made from what?",
+      "options": [
+        "Wheat",
+        "Mung beans",
+        "Rice",
+        "Tapioca"
+      ],
+      "answer": "Rice",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Kway teow are flat rice noodles. Check: NLB Singapore Infopedia, 'Char kway teow'."
+      }
+    },
+    {
+      "id": "sg-food-0035",
+      "type": "multiple-choice",
+      "prompt": "Otah (otak-otak) is a grilled parcel made mainly from what?",
+      "options": [
+        "Sticky rice and egg",
+        "Mashed tapioca",
+        "Minced mutton",
+        "Spiced fish paste"
+      ],
+      "answer": "Spiced fish paste",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Otak-otak is fish paste blended with chilli and spices, wrapped in a leaf and grilled. Check: National Library Board Infopedia, entry on otak-otak; Kamus Dewan (Dewan Bahasa dan Pustaka), 'otak-otak'."
+      }
+    },
+    {
+      "id": "sg-food-0036",
+      "type": "multiple-choice",
+      "prompt": "Nasi lemak is traditionally wrapped in which leaf?",
+      "options": [
+        "Pandan leaf",
+        "Lotus leaf",
+        "Banana leaf",
+        "Yam leaf"
+      ],
+      "answer": "Banana leaf",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Nasi lemak was traditionally sold wrapped in banana leaf. Check: NLB Singapore Infopedia, 'Nasi lemak'."
+      }
+    },
+    {
+      "id": "sg-food-0037",
+      "type": "multiple-choice",
+      "prompt": "Ketupat is rice cooked in a pouch woven from which leaves?",
+      "options": [
+        "Banana leaves",
+        "Coconut leaves",
+        "Bamboo leaves",
+        "Pandan leaves"
+      ],
+      "answer": "Coconut leaves",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Ketupat is rice boiled in a casing woven from young coconut palm leaves. Check: NLB Singapore Infopedia, 'Ketupat'."
+      }
+    },
+    {
+      "id": "sg-food-0038",
+      "type": "multiple-choice",
+      "prompt": "Rice dumplings (bak chang) are eaten at which festival?",
+      "options": [
+        "Mid-Autumn Festival",
+        "Lantern Festival",
+        "Winter Solstice",
+        "Dragon Boat Festival"
+      ],
+      "answer": "Dragon Boat Festival",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Rice dumplings are the food of the Dragon Boat (Dumpling) Festival. Check: NLB Singapore Infopedia, 'Dragon Boat Festival'."
+      }
+    },
+    {
+      "id": "sg-food-0039",
+      "type": "multiple-choice",
+      "prompt": "Tossing yusheng for good luck at Chinese New Year is known as what?",
+      "options": [
+        "Ang bao",
+        "Chap goh mei",
+        "Bai nian",
+        "Lo hei"
+      ],
+      "answer": "Lo hei",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Lo hei' (Cantonese) is the tossing of the raw fish salad. Check: NLB Singapore Infopedia, 'Yusheng'."
+      }
+    },
+    {
+      "id": "sg-food-0040",
+      "type": "multiple-choice",
+      "prompt": "Which fruit, with a thick purple rind and white flesh, is called the 'queen of fruits'?",
+      "options": [
+        "Mangosteen",
+        "Dragon fruit",
+        "Rambutan",
+        "Langsat"
+      ],
+      "answer": "Mangosteen",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The mangosteen is popularly called the 'queen of fruits'. Check: NParks Flora and Fauna Web, 'Garcinia mangostana'; Britannica, 'mangosteen'."
+      }
+    },
+    {
+      "id": "sg-food-0041",
+      "type": "multiple-choice",
+      "prompt": "Which dish takes its name from a Malay word meaning 'mixture'?",
+      "options": [
+        "Satay",
+        "Rojak",
+        "Laksa",
+        "Lontong"
+      ],
+      "answer": "Rojak",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Rojak' means a mixture in Malay. Check: NLB Singapore Infopedia, 'Rojak'; Kamus Dewan, 'rojak'."
+      }
+    },
+    {
+      "id": "sg-food-0042",
+      "type": "multiple-choice",
+      "prompt": "Tau kwa, tau pok and tau huay are all made from which bean?",
+      "options": [
+        "Mung bean",
+        "Red bean",
+        "Broad bean",
+        "Soya bean"
+      ],
+      "answer": "Soya bean",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Firm beancurd, beancurd puffs and beancurd pudding are all soya bean products. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English' ('tau kwa', 'tau pok', 'tau huay')."
+      }
+    },
+    {
+      "id": "sg-food-0043",
+      "type": "multiple-choice",
+      "prompt": "Hainanese chicken rice is named after an island that is part of which country?",
+      "options": [
+        "Vietnam",
+        "Malaysia",
+        "Indonesia",
+        "China"
+      ],
+      "answer": "China",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Hainan is an island province of China; the dish was adapted by Hainanese immigrants. Check: NLB Singapore Infopedia, 'Hainanese chicken rice'."
+      }
+    },
+    {
+      "id": "sg-food-0044",
+      "type": "multiple-choice",
+      "prompt": "The rice in Hainanese chicken rice is cooked in what?",
+      "options": [
+        "Coconut milk",
+        "Chicken stock",
+        "Tomato soup",
+        "Soya milk"
+      ],
+      "answer": "Chicken stock",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The rice is fried in chicken fat and cooked in chicken stock. Check: NLB Singapore Infopedia, 'Hainanese chicken rice'."
+      }
+    },
+    {
+      "id": "sg-food-0045",
+      "type": "multiple-choice",
+      "prompt": "Belacan is a pungent paste made from fermented what?",
+      "options": [
+        "Shrimp",
+        "Soya beans",
+        "Black beans",
+        "Tamarind"
+      ],
+      "answer": "Shrimp",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Belacan is a fermented shrimp (krill) paste. Check: Oxford English Dictionary, 'belacan'; Kamus Dewan, 'belacan'."
+      }
+    },
+    {
+      "id": "sg-food-0046",
+      "type": "multiple-choice",
+      "prompt": "What does 'penyet' mean in the dish 'ayam penyet'?",
+      "options": [
+        "Grilled",
+        "Steamed",
+        "Stuffed",
+        "Smashed"
+      ],
+      "answer": "Smashed",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Penyet' is Javanese for pressed or smashed: the fried chicken is flattened with a pestle. Check: Kamus Besar Bahasa Indonesia, 'penyet'; Singapore Tourism Board, material on ayam penyet."
+      }
+    },
+    {
+      "id": "sg-food-0047",
+      "type": "multiple-choice",
+      "prompt": "Katong laksa is traditionally served with which noodles?",
+      "options": [
+        "Yellow egg noodles",
+        "Thick rice vermicelli",
+        "Flat rice noodles",
+        "Glass noodles"
+      ],
+      "answer": "Thick rice vermicelli",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Katong laksa uses thick rice vermicelli (thick bee hoon) cut short to eat with a spoon. Check: NLB Singapore Infopedia, 'Laksa'."
+      }
+    },
+    {
+      "id": "sg-food-0048",
+      "type": "multiple-choice",
+      "prompt": "How is kueh tutu cooked?",
+      "options": [
+        "Baked",
+        "Deep-fried",
+        "Grilled",
+        "Steamed"
+      ],
+      "answer": "Steamed",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Kueh tutu are rice flour cakes with coconut or peanut filling, steamed in small moulds. Check: NLB Singapore Infopedia, 'Kueh tutu'."
+      }
+    },
+    {
+      "id": "sg-food-0049",
+      "type": "multiple-choice",
+      "prompt": "Roti john is an omelette sandwich made with which bread?",
+      "options": [
+        "A round flatbread",
+        "A steamed white bun",
+        "A thick slice of toast",
+        "A long French-style loaf"
+      ],
+      "answer": "A long French-style loaf",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Roti john is a halved French loaf fried with egg, minced meat and onion. Check: NLB Singapore Infopedia, 'Roti john'."
+      }
+    },
+    {
+      "id": "sg-food-0050",
+      "type": "multiple-choice",
+      "prompt": "Buah keluak, used in Peranakan cooking, is what?",
+      "options": [
+        "A dried mushroom",
+        "A root like ginger",
+        "The seed of a tree",
+        "A kind of shellfish"
+      ],
+      "answer": "The seed of a tree",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Buah keluak is the seed of the kepayang tree (Pangium edule). Check: NParks Flora and Fauna Web, 'Pangium edule'; NLB Singapore Infopedia, 'Peranakan (Straits Chinese) cuisine'."
+      }
+    },
+    {
+      "id": "sg-food-0051",
+      "type": "multiple-choice",
+      "prompt": "Thosai batter is made from rice and what?",
+      "options": [
+        "Chickpeas",
+        "Wheat",
+        "Lentils",
+        "Maize"
+      ],
+      "answer": "Lentils",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Thosai (dosa) batter is fermented rice and black gram lentils (urad dal). Check: NLB Singapore Infopedia, 'Thosai'; Britannica, 'dosa'."
+      }
+    },
+    {
+      "id": "sg-food-0052",
+      "type": "multiple-choice",
+      "prompt": "Singapore's fish head curry is classically made with the head of which fish?",
+      "options": [
+        "Sea bass",
+        "Pomfret",
+        "Red snapper",
+        "Mackerel"
+      ],
+      "answer": "Red snapper",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The dish uses the head of a red snapper (ikan merah). Check: NLB Singapore Infopedia, 'Fish-head curry'."
+      }
+    },
+    {
+      "id": "sg-food-0053",
+      "type": "multiple-choice",
+      "prompt": "Tau sar piah is a flaky pastry filled with what?",
+      "options": [
+        "Mung bean paste",
+        "Lotus seed paste",
+        "Red date paste",
+        "Yam paste"
+      ],
+      "answer": "Mung bean paste",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Tau sar piah has a sweet or salty mung bean paste filling. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'tau sar piah'."
+      }
+    },
+    {
+      "id": "sg-food-0054",
+      "type": "multiple-choice",
+      "prompt": "What is lontong?",
+      "options": [
+        "Fried fish crackers",
+        "Sweet potato fritters",
+        "Compressed rice cakes",
+        "Steamed tapioca cake"
+      ],
+      "answer": "Compressed rice cakes",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Lontong is rice compressed into a cake, sliced and served in a coconut vegetable stew. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'lontong'; National Library Board Infopedia, entry on lontong."
+      }
+    },
+    {
+      "id": "sg-food-0055",
+      "type": "multiple-choice",
+      "prompt": "What is murtabak?",
+      "options": [
+        "A sour fish noodle soup",
+        "A spiced rice and meat dish",
+        "A grilled skewer of meat",
+        "A stuffed pan-fried flatbread"
+      ],
+      "answer": "A stuffed pan-fried flatbread",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Murtabak is a prata-like dough folded around minced meat, egg and onion and pan-fried. Check: NLB Singapore Infopedia, 'Murtabak'."
+      }
+    },
+    {
+      "id": "sg-food-0056",
+      "type": "multiple-choice",
+      "prompt": "Mee siam is made with which noodles?",
+      "options": [
+        "Thin rice vermicelli",
+        "Thick wheat noodles",
+        "Broad rice sheets",
+        "Yellow egg noodles"
+      ],
+      "answer": "Thin rice vermicelli",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Mee siam is thin rice vermicelli (bee hoon) in a sweet, sour and spicy gravy. Check: NLB Singapore Infopedia, 'Mee siam'."
+      }
+    },
+    {
+      "id": "sg-food-0057",
+      "type": "multiple-choice",
+      "prompt": "Which sauce is traditionally added, with pepper, to the eggs in a kaya toast set?",
+      "options": [
+        "Soy sauce",
+        "Chilli sauce",
+        "Oyster sauce",
+        "Fish sauce"
+      ],
+      "answer": "Soy sauce",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The soft-boiled eggs are seasoned with soy sauce (usually dark) and white pepper. Check: National Library Board Infopedia, entry on kaya toast."
+      }
+    }
+  ]
+}

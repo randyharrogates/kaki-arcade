@@ -1,0 +1,978 @@
+{
+  "category": "singapore-places",
+  "title": "Singapore places",
+  "questions": [
+    {
+      "id": "sg-place-0001",
+      "type": "multiple-choice",
+      "prompt": "What is the name of Singapore's main international airport?",
+      "options": [
+        "Seletar Airport",
+        "Paya Lebar Airport",
+        "Changi Airport",
+        "Kallang Airport"
+      ],
+      "answer": "Changi Airport",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Changi Airport is Singapore's main civilian international airport. Check: NLB Singapore Infopedia, 'Singapore Changi Airport'."
+      }
+    },
+    {
+      "id": "sg-place-0002",
+      "type": "multiple-choice",
+      "prompt": "On which island would you find Universal Studios Singapore?",
+      "options": [
+        "Sentosa",
+        "Pulau Ubin",
+        "Kusu Island",
+        "St John's Island"
+      ],
+      "answer": "Sentosa",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Universal Studios Singapore is in Resorts World Sentosa. Check: Sentosa Development Corporation, 'Universal Studios Singapore'."
+      }
+    },
+    {
+      "id": "sg-place-0003",
+      "type": "multiple-choice",
+      "prompt": "The Merlion has the head of a lion and the body of what?",
+      "options": [
+        "A dragon",
+        "A fish",
+        "A turtle",
+        "A snake"
+      ],
+      "answer": "A fish",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Merlion is half lion, half fish. Check: NLB Singapore Infopedia, 'Merlion'."
+      }
+    },
+    {
+      "id": "sg-place-0004",
+      "type": "multiple-choice",
+      "prompt": "Which road is Singapore's best-known shopping street?",
+      "options": [
+        "Bukit Timah Road",
+        "Serangoon Road",
+        "Upper Thomson Road",
+        "Orchard Road"
+      ],
+      "answer": "Orchard Road",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Orchard Road is the main shopping belt. Check: NLB Singapore Infopedia, 'Orchard Road'."
+      }
+    },
+    {
+      "id": "sg-place-0005",
+      "type": "multiple-choice",
+      "prompt": "What are the giant tree-like structures at Gardens by the Bay called?",
+      "options": [
+        "Supertrees",
+        "Skytrees",
+        "Megatrees",
+        "Cloud Trees"
+      ],
+      "answer": "Supertrees",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The vertical gardens are named Supertrees. Check: Gardens by the Bay, 'Supertree Grove'."
+      }
+    },
+    {
+      "id": "sg-place-0006",
+      "type": "multiple-choice",
+      "prompt": "The Causeway connects Singapore to which country?",
+      "options": [
+        "Malaysia",
+        "Indonesia",
+        "Thailand",
+        "Brunei"
+      ],
+      "answer": "Malaysia",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Johor-Singapore Causeway opened in 1924 and links Woodlands to Johor Bahru. Check: NLB Singapore Infopedia, 'The Causeway'."
+      }
+    },
+    {
+      "id": "sg-place-0007",
+      "type": "multiple-choice",
+      "prompt": "What does the Malay word 'pulau' mean, as in Pulau Ubin?",
+      "options": [
+        "Beach",
+        "Village",
+        "River",
+        "Island"
+      ],
+      "answer": "Island",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Pulau' means island. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'pulau'."
+      }
+    },
+    {
+      "id": "sg-place-0008",
+      "type": "multiple-choice",
+      "prompt": "What does the Malay word 'bukit' mean, as in Bukit Timah and Bukit Batok?",
+      "options": [
+        "Forest",
+        "Lake",
+        "Hill",
+        "Road"
+      ],
+      "answer": "Hill",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Bukit' means hill. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'bukit'."
+      }
+    },
+    {
+      "id": "sg-place-0009",
+      "type": "multiple-choice",
+      "prompt": "The Esplanade theatres are nicknamed after which spiky fruit?",
+      "options": [
+        "Durian",
+        "Pineapple",
+        "Jackfruit",
+        "Rambutan"
+      ],
+      "answer": "Durian",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The spiked domes earned the Esplanade the nickname 'the Durian'. Check: NLB Singapore Infopedia, 'Esplanade - Theatres on the Bay'."
+      }
+    },
+    {
+      "id": "sg-place-0010",
+      "type": "multiple-choice",
+      "prompt": "How many hotel towers hold up the SkyPark at Marina Bay Sands?",
+      "options": [
+        "Three",
+        "Two",
+        "Four",
+        "Five"
+      ],
+      "answer": "Three",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Marina Bay Sands has three 55-storey hotel towers joined at the top by the SkyPark. Check: NLB Singapore Infopedia, 'Marina Bay Sands'."
+      }
+    },
+    {
+      "id": "sg-place-0011",
+      "type": "multiple-choice",
+      "prompt": "Which river flows past Boat Quay and Clarke Quay?",
+      "options": [
+        "Kallang River",
+        "Rochor River",
+        "Geylang River",
+        "Singapore River"
+      ],
+      "answer": "Singapore River",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Boat Quay, Clarke Quay and Robertson Quay line the Singapore River. Check: NLB Singapore Infopedia, 'Singapore River (historical overview)'."
+      }
+    },
+    {
+      "id": "sg-place-0012",
+      "type": "multiple-choice",
+      "prompt": "The cable car from Mount Faber takes you to which island?",
+      "options": [
+        "Pulau Ubin",
+        "Kusu Island",
+        "Pulau Tekong",
+        "Sentosa"
+      ],
+      "answer": "Sentosa",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Singapore Cable Car has linked Mount Faber and Sentosa since 1974. Check: NLB Singapore Infopedia, 'Singapore Cable Car'."
+      }
+    },
+    {
+      "id": "sg-place-0013",
+      "type": "multiple-choice",
+      "prompt": "What kind of attraction is the Singapore Flyer?",
+      "options": [
+        "A roller coaster",
+        "A river boat ride",
+        "A giant observation wheel",
+        "A cable car line"
+      ],
+      "answer": "A giant observation wheel",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Singapore Flyer is a 165-metre observation wheel at Marina Bay. Check: NLB Singapore Infopedia, 'Singapore Flyer'."
+      }
+    },
+    {
+      "id": "sg-place-0014",
+      "type": "multiple-choice",
+      "prompt": "Which wildlife park in Mandai opens after dark to show animals active at night?",
+      "options": [
+        "River Wonders",
+        "Night Safari",
+        "Bird Paradise",
+        "Rainforest Wild"
+      ],
+      "answer": "Night Safari",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Night Safari opened in 1994 as a park for nocturnal animals. Check: NLB Singapore Infopedia, 'Night Safari'."
+      }
+    },
+    {
+      "id": "sg-place-0015",
+      "type": "multiple-choice",
+      "prompt": "Which country lies to the south of Singapore, across the Singapore Strait?",
+      "options": [
+        "Thailand",
+        "Vietnam",
+        "Indonesia",
+        "Brunei"
+      ],
+      "answer": "Indonesia",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Indonesia's Riau Islands (Batam, Bintan) lie south of the Singapore Strait. Check: Britannica, 'Singapore Strait'."
+      }
+    },
+    {
+      "id": "sg-place-0016",
+      "type": "multiple-choice",
+      "prompt": "Roughly how far north of the equator is Singapore?",
+      "options": [
+        "About 10 degrees",
+        "About 20 degrees",
+        "About 30 degrees",
+        "About 1 degree"
+      ],
+      "answer": "About 1 degree",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Singapore is about 1 degree 17 minutes north of the equator. Check: Britannica, 'Singapore'."
+      }
+    },
+    {
+      "id": "sg-place-0017",
+      "type": "multiple-choice",
+      "prompt": "Changi Airport is at which end of Singapore's main island?",
+      "options": [
+        "Western end",
+        "Northern end",
+        "Eastern end",
+        "Southern end"
+      ],
+      "answer": "Eastern end",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Changi is at the eastern tip of the main island. Check: NLB Singapore Infopedia, 'Singapore Changi Airport'."
+      }
+    },
+    {
+      "id": "sg-place-0018",
+      "type": "multiple-choice",
+      "prompt": "Which garden inside the Singapore Botanic Gardens shows over 1,000 orchid species?",
+      "options": [
+        "National Rose Garden",
+        "National Lily Garden",
+        "National Lotus Garden",
+        "National Orchid Garden"
+      ],
+      "answer": "National Orchid Garden",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The National Orchid Garden, opened in 1995, displays over 1,000 orchid species and 2,000 hybrids. Check: NParks, 'National Orchid Garden'."
+      }
+    },
+    {
+      "id": "sg-place-0019",
+      "type": "multiple-choice",
+      "prompt": "Which long park runs along Singapore's south-eastern shore?",
+      "options": [
+        "East Coast Park",
+        "West Coast Park",
+        "Pasir Ris Park",
+        "Labrador Park"
+      ],
+      "answer": "East Coast Park",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "East Coast Park stretches about 15 km along the south-eastern coast on reclaimed land. Check: NParks, 'East Coast Park'."
+      }
+    },
+    {
+      "id": "sg-place-0020",
+      "type": "multiple-choice",
+      "prompt": "The Causeway links Woodlands in Singapore to which city?",
+      "options": [
+        "Melaka",
+        "Kuala Lumpur",
+        "Kota Tinggi",
+        "Johor Bahru"
+      ],
+      "answer": "Johor Bahru",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Causeway runs from Woodlands to Johor Bahru. Check: NLB Singapore Infopedia, 'The Causeway'."
+      }
+    },
+    {
+      "id": "sg-place-0021",
+      "type": "multiple-choice",
+      "prompt": "The Second Link bridge to Malaysia leaves Singapore from which area?",
+      "options": [
+        "Woodlands",
+        "Changi",
+        "Tuas",
+        "Punggol"
+      ],
+      "answer": "Tuas",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Malaysia-Singapore Second Link (1998) joins Tuas to Tanjung Kupang in Johor. Check: NLB Singapore Infopedia, 'Malaysia-Singapore Second Link'."
+      }
+    },
+    {
+      "id": "sg-place-0022",
+      "type": "multiple-choice",
+      "prompt": "Which strait separates Singapore from Peninsular Malaysia?",
+      "options": [
+        "Johor Strait",
+        "Singapore Strait",
+        "Malacca Strait",
+        "Sunda Strait"
+      ],
+      "answer": "Johor Strait",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Johor Strait (Straits of Johor) lies between Singapore and Johor. Check: Britannica, 'Johor Strait'."
+      }
+    },
+    {
+      "id": "sg-place-0023",
+      "type": "multiple-choice",
+      "prompt": "What does the Malay word 'pasir' mean, as in Pasir Ris and Pasir Panjang?",
+      "options": [
+        "Rock",
+        "Sand",
+        "Mud",
+        "Wind"
+      ],
+      "answer": "Sand",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Pasir' means sand; Pasir Panjang is 'long sand'. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'pasir'."
+      }
+    },
+    {
+      "id": "sg-place-0024",
+      "type": "multiple-choice",
+      "prompt": "Pulau Ubin's name refers to which material once quarried there?",
+      "options": [
+        "Granite",
+        "Limestone",
+        "Marble",
+        "Sandstone"
+      ],
+      "answer": "Granite",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Pulau Ubin means 'granite island'; its quarries supplied granite for buildings such as Horsburgh Lighthouse. Check: NLB Singapore Infopedia, 'Pulau Ubin'."
+      }
+    },
+    {
+      "id": "sg-place-0025",
+      "type": "multiple-choice",
+      "prompt": "The name 'Sentosa' comes from a Malay word meaning what?",
+      "options": [
+        "Golden sands",
+        "Safe harbour",
+        "Peace and tranquillity",
+        "Island of the sun"
+      ],
+      "answer": "Peace and tranquillity",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Sentosa' means peace and tranquillity. Check: NLB Singapore Infopedia, 'Sentosa'."
+      }
+    },
+    {
+      "id": "sg-place-0026",
+      "type": "multiple-choice",
+      "prompt": "Chek Jawa, known for its wetlands, is at the eastern end of which island?",
+      "options": [
+        "Sentosa",
+        "Pulau Tekong",
+        "Pulau Ubin",
+        "Pulau Semakau"
+      ],
+      "answer": "Pulau Ubin",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Chek Jawa Wetlands are at the eastern tip of Pulau Ubin. Check: NParks, 'Chek Jawa Wetlands'."
+      }
+    },
+    {
+      "id": "sg-place-0027",
+      "type": "multiple-choice",
+      "prompt": "The shape of the Helix Bridge at Marina Bay was inspired by what?",
+      "options": [
+        "The structure of DNA",
+        "A dragon's tail",
+        "A spiral seashell",
+        "A coil of rope"
+      ],
+      "answer": "The structure of DNA",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The double-helix footbridge was modelled on the structure of DNA. Check: NLB Singapore Infopedia, 'The Helix Bridge'."
+      }
+    },
+    {
+      "id": "sg-place-0028",
+      "type": "multiple-choice",
+      "prompt": "Which place in Singapore became a UNESCO World Heritage Site in 2015?",
+      "options": [
+        "Fort Canning Park",
+        "Chinatown",
+        "Singapore Botanic Gardens",
+        "Pulau Ubin"
+      ],
+      "answer": "Singapore Botanic Gardens",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Singapore Botanic Gardens was inscribed on 4 July 2015. Check: UNESCO World Heritage List, 'Singapore Botanic Gardens'."
+      }
+    },
+    {
+      "id": "sg-place-0029",
+      "type": "multiple-choice",
+      "prompt": "Serangoon Road is the main street of which historic district?",
+      "options": [
+        "Little India",
+        "Chinatown",
+        "Kampong Glam",
+        "Joo Chiat"
+      ],
+      "answer": "Little India",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Serangoon Road runs through the heart of Little India. Check: NLB Singapore Infopedia, 'Little India'; 'Serangoon Road'."
+      }
+    },
+    {
+      "id": "sg-place-0030",
+      "type": "multiple-choice",
+      "prompt": "Arab Street and Haji Lane are in which historic district?",
+      "options": [
+        "Little India",
+        "Chinatown",
+        "Tiong Bahru",
+        "Kampong Glam"
+      ],
+      "answer": "Kampong Glam",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Arab Street, Haji Lane and Bussorah Street are in Kampong Glam. Check: NLB Singapore Infopedia, 'Kampong Glam'."
+      }
+    },
+    {
+      "id": "sg-place-0031",
+      "type": "multiple-choice",
+      "prompt": "Which riverside building was the General Post Office before it became a hotel?",
+      "options": [
+        "Raffles Hotel",
+        "The Arts House",
+        "The Fullerton Building",
+        "Capitol Building"
+      ],
+      "answer": "The Fullerton Building",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Fullerton Building (1928) housed the General Post Office until 1996 and reopened as a hotel in 2001. Check: NLB Singapore Infopedia, 'Fullerton Building'."
+      }
+    },
+    {
+      "id": "sg-place-0032",
+      "type": "multiple-choice",
+      "prompt": "Haw Par Villa was built by the brothers behind which brand?",
+      "options": [
+        "Axe Brand Oil",
+        "Three Legs",
+        "Eagle Brand",
+        "Tiger Balm"
+      ],
+      "answer": "Tiger Balm",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Aw Boon Haw built the villa and gardens for his brother Aw Boon Par in 1937; the family made Tiger Balm. Check: NLB Singapore Infopedia, 'Haw Par Villa (Tiger Balm Gardens)'."
+      }
+    },
+    {
+      "id": "sg-place-0033",
+      "type": "multiple-choice",
+      "prompt": "The name of the food centre Lau Pa Sat means what?",
+      "options": [
+        "Old market",
+        "New kitchen",
+        "Big table",
+        "Iron house"
+      ],
+      "answer": "Old market",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Lau pa sat' is Hokkien for old market; it is the former Telok Ayer Market. Check: NLB Singapore Infopedia, 'Lau Pa Sat (Telok Ayer Market)'."
+      }
+    },
+    {
+      "id": "sg-place-0034",
+      "type": "multiple-choice",
+      "prompt": "What does the Malay word 'padang' mean, as in the Padang in front of City Hall?",
+      "options": [
+        "Field",
+        "Square",
+        "Garden",
+        "Stage"
+      ],
+      "answer": "Field",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Padang' means field. Check: Kamus Dewan, 'padang'; NLB Singapore Infopedia, 'Padang'."
+      }
+    },
+    {
+      "id": "sg-place-0035",
+      "type": "multiple-choice",
+      "prompt": "What is the indoor waterfall at Jewel Changi Airport called?",
+      "options": [
+        "Sky Cascade",
+        "Cloud Falls",
+        "Rain Vortex",
+        "Crystal Curtain"
+      ],
+      "answer": "Rain Vortex",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The 40-metre Rain Vortex is the centrepiece of Jewel, which opened in 2019. Check: Jewel Changi Airport, 'Rain Vortex'."
+      }
+    },
+    {
+      "id": "sg-place-0036",
+      "type": "multiple-choice",
+      "prompt": "Kusu Island's name means what in Hokkien?",
+      "options": [
+        "Crab Island",
+        "Monkey Island",
+        "Snake Island",
+        "Tortoise Island"
+      ],
+      "answer": "Tortoise Island",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Kusu' means tortoise or turtle in Hokkien. Check: NLB Singapore Infopedia, 'Kusu Island'."
+      }
+    },
+    {
+      "id": "sg-place-0037",
+      "type": "multiple-choice",
+      "prompt": "Singapore sits at the southern tip of which peninsula?",
+      "options": [
+        "Indochina Peninsula",
+        "Malay Peninsula",
+        "Korean Peninsula",
+        "Arabian Peninsula"
+      ],
+      "answer": "Malay Peninsula",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Singapore lies off the southern tip of the Malay Peninsula. Check: Britannica, 'Singapore'."
+      }
+    },
+    {
+      "id": "sg-place-0038",
+      "type": "multiple-choice",
+      "prompt": "What was Sentosa called before it was renamed?",
+      "options": [
+        "Pulau Brani",
+        "Pulau Bukom",
+        "Pulau Sudong",
+        "Pulau Blakang Mati"
+      ],
+      "answer": "Pulau Blakang Mati",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The island was Pulau Blakang Mati until it was renamed Sentosa after a public naming contest around 1970. Check: NLB Singapore Infopedia, 'Sentosa'."
+      }
+    },
+    {
+      "id": "sg-place-0039",
+      "type": "multiple-choice",
+      "prompt": "Which is the longest river in Singapore?",
+      "options": [
+        "Singapore River",
+        "Kallang River",
+        "Rochor River",
+        "Geylang River"
+      ],
+      "answer": "Kallang River",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Kallang River, about 10 km from Lower Peirce Reservoir to Kallang Basin, is the longest. Check: PUB, 'Kallang River'; NLB Singapore Infopedia, 'Kallang River'."
+      }
+    },
+    {
+      "id": "sg-place-0040",
+      "type": "multiple-choice",
+      "prompt": "Fort Canning Hill was once known as Bukit Larangan. What does that mean?",
+      "options": [
+        "Forbidden Hill",
+        "Windy Hill",
+        "Golden Hill",
+        "Lion Hill"
+      ],
+      "answer": "Forbidden Hill",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Bukit Larangan is Malay for Forbidden Hill, where Malay kings were said to be buried. Check: NLB Singapore Infopedia, 'Fort Canning Park'."
+      }
+    },
+    {
+      "id": "sg-place-0041",
+      "type": "multiple-choice",
+      "prompt": "The Night Safari and the Singapore Zoo sit beside which reservoir?",
+      "options": [
+        "Bedok Reservoir",
+        "Pandan Reservoir",
+        "Upper Seletar Reservoir",
+        "Kranji Reservoir"
+      ],
+      "answer": "Upper Seletar Reservoir",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Both parks are on a peninsula in Upper Seletar Reservoir at Mandai. Check: NLB Singapore Infopedia, 'Singapore Zoo'; 'Night Safari'."
+      }
+    },
+    {
+      "id": "sg-place-0042",
+      "type": "multiple-choice",
+      "prompt": "National Gallery Singapore is housed in the former City Hall and which other building?",
+      "options": [
+        "Parliament House",
+        "General Post Office",
+        "Central Fire Station",
+        "Supreme Court"
+      ],
+      "answer": "Supreme Court",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The Gallery (2015) joins the former Supreme Court and City Hall. Check: NLB Singapore Infopedia, 'National Gallery Singapore'."
+      }
+    },
+    {
+      "id": "sg-place-0043",
+      "type": "multiple-choice",
+      "prompt": "Which red-and-white fire station, completed in 1909, is Singapore's oldest still standing?",
+      "options": [
+        "Central Fire Station",
+        "Alexandra Fire Station",
+        "Geylang Fire Station",
+        "Sembawang Fire Station"
+      ],
+      "answer": "Central Fire Station",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Central Fire Station on Hill Street was completed in 1909 and is a national monument. Check: NLB Singapore Infopedia, 'Central Fire Station'."
+      }
+    },
+    {
+      "id": "sg-place-0044",
+      "type": "multiple-choice",
+      "prompt": "Which bridge is the oldest across the Singapore River still in its original form?",
+      "options": [
+        "Anderson Bridge",
+        "Cavenagh Bridge",
+        "Elgin Bridge",
+        "Coleman Bridge"
+      ],
+      "answer": "Cavenagh Bridge",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Cavenagh Bridge opened in 1869 and keeps its original structure. Check: NLB Singapore Infopedia, 'Cavenagh Bridge'."
+      }
+    },
+    {
+      "id": "sg-place-0045",
+      "type": "multiple-choice",
+      "prompt": "What is the last surviving kampong on mainland Singapore called?",
+      "options": [
+        "Kampong Wak Hassan",
+        "Kampong Tengah",
+        "Kampong Lorong Buangkok",
+        "Kampong Kembangan"
+      ],
+      "answer": "Kampong Lorong Buangkok",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Kampong Lorong Buangkok, off Yio Chu Kang Road, dates from 1956. Check: NLB Singapore Infopedia, 'Kampong Lorong Buangkok'."
+      }
+    },
+    {
+      "id": "sg-place-0046",
+      "type": "multiple-choice",
+      "prompt": "Raffles Lighthouse stands on which southern island?",
+      "options": [
+        "Pulau Hantu",
+        "Pulau Satumu",
+        "Pulau Semakau",
+        "Kusu Island"
+      ],
+      "answer": "Pulau Satumu",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Raffles Lighthouse (1855) is on Pulau Satumu, the southernmost island. Check: NLB Singapore Infopedia, 'Raffles Lighthouse'."
+      }
+    },
+    {
+      "id": "sg-place-0047",
+      "type": "multiple-choice",
+      "prompt": "By what name was Mount Faber known before 1845?",
+      "options": [
+        "Bukit Chandu",
+        "Telok Blangah Hill",
+        "Pearl's Hill",
+        "Kent Ridge"
+      ],
+      "answer": "Telok Blangah Hill",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Telok Blangah Hill was renamed after Captain Charles Edward Faber, who built the road to its top. Check: NLB Singapore Infopedia, 'Mount Faber'."
+      }
+    },
+    {
+      "id": "sg-place-0048",
+      "type": "multiple-choice",
+      "prompt": "In which area is Haw Par Villa?",
+      "options": [
+        "Katong",
+        "Bukit Timah",
+        "Changi",
+        "Pasir Panjang"
+      ],
+      "answer": "Pasir Panjang",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Haw Par Villa stands on Pasir Panjang Road. Check: NLB Singapore Infopedia, 'Haw Par Villa (Tiger Balm Gardens)'."
+      }
+    },
+    {
+      "id": "sg-place-0049",
+      "type": "multiple-choice",
+      "prompt": "Which town was Singapore's first satellite town?",
+      "options": [
+        "Queenstown",
+        "Toa Payoh",
+        "Ang Mo Kio",
+        "Jurong"
+      ],
+      "answer": "Queenstown",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Queenstown, begun by the Singapore Improvement Trust in the 1950s, was the first satellite town. Check: NLB Singapore Infopedia, 'Queenstown'."
+      }
+    },
+    {
+      "id": "sg-place-0050",
+      "type": "multiple-choice",
+      "prompt": "The name Toa Payoh means what?",
+      "options": [
+        "Long road",
+        "Red earth",
+        "Big swamp",
+        "Old village"
+      ],
+      "answer": "Big swamp",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Toa' is Hokkien for big and 'payoh' comes from the Malay 'paya', swamp. Check: NLB Singapore Infopedia, 'Toa Payoh New Town'."
+      }
+    },
+    {
+      "id": "sg-place-0051",
+      "type": "multiple-choice",
+      "prompt": "Before it became a place for recreation, St John's Island was used as what?",
+      "options": [
+        "A tin smelting works",
+        "A rubber plantation",
+        "A quarantine station",
+        "A pepper farm"
+      ],
+      "answer": "A quarantine station",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "A quarantine station for immigrants operated on St John's Island from 1874. Check: NLB Singapore Infopedia, 'St John's Island'."
+      }
+    },
+    {
+      "id": "sg-place-0052",
+      "type": "multiple-choice",
+      "prompt": "Dhoby Ghaut is named after people who once did which work there?",
+      "options": [
+        "Washing clothes",
+        "Selling cloth",
+        "Tending horses",
+        "Making bricks"
+      ],
+      "answer": "Washing clothes",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Dhoby' is from the Hindi for washerman and 'ghaut' for the steps to the water; Indian laundrymen worked by the Stamford stream. Check: NLB Singapore Infopedia, 'Dhoby Ghaut'."
+      }
+    },
+    {
+      "id": "sg-place-0053",
+      "type": "multiple-choice",
+      "prompt": "What does the Malay word 'tanjong' mean, as in Tanjong Pagar and Tanjong Rhu?",
+      "options": [
+        "Harbour",
+        "Bridge",
+        "Cape",
+        "Market"
+      ],
+      "answer": "Cape",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Tanjong' (tanjung) is a cape or headland. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'tanjung'."
+      }
+    },
+    {
+      "id": "sg-place-0054",
+      "type": "multiple-choice",
+      "prompt": "What does the Malay word 'telok' mean, as in Telok Ayer and Telok Blangah?",
+      "options": [
+        "Well",
+        "Hill",
+        "Bay",
+        "Fort"
+      ],
+      "answer": "Bay",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "'Telok' (teluk) means bay. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'teluk'."
+      }
+    }
+  ]
+}

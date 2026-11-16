@@ -29,7 +29,7 @@ Content work. It needs no code from other tracks and starts in Wave 0.
 |---|---|---|---|---|---|
 | R-10 | Question schema, build and validation script, per-category chunks loaded before a match | RZ-020, RZ-022 | F-01 | 0 | merged |
 | R-11 | Import the Open Trivia Database: licence and attribution recorded, length filter, all-ages screen, difficulty mapped | RZ-021, RZ-023, RZ-024 | R-10 | 0 | doing |
-| R-12 | Singapore pack: at least 200 questions written by Claude, each with a source note | RZ-021, RZ-024 | R-10 | 1 | doing |
+| R-12 | Singapore pack: at least 200 questions written by Claude, each with a source note | RZ-021, RZ-024 | R-10 | 1 | merged |
 | R-13 | Picture questions: at least 60, with real photographs under a free licence (licence and credit recorded per image); a Codex-generated image, checked for accuracy and logged in `DECISIONS.md`, only where no suitable photograph can be found (D-042) | RZ-002, RZ-024, RZ-025 | R-10, G-02 | 2 | todo |
 | R-14 | Randy spot-checks the Singapore pack and a sample of the rest | RZ-021, RZ-023 | R-11, R-12 | 3 | todo |
 
@@ -53,3 +53,9 @@ Content work. It needs no code from other tracks and starts in Wave 0.
   in one match, because the budget counts uncompressed bytes.
 - **D-049 follow-up (small, R track):** remove the true-or-false type from the `content/rabakz`
   schema, validator, selector and tests once R-11 and R-12 have merged with none in the bank.
+- **From R-12's review:** add a "do not co-select" topic group to the schema and selector so
+  same-topic questions cannot meet in one match (groups listed in
+  `docs/slices/R-12-singapore-pack.md`, Request 7); drop the R-10 sample `his-0003`, which three
+  Singapore history prompts give away; a test that holds the pack to at least 200 questions and
+  25 per Singapore category; decide whether six Singapore categories show as one group on the
+  setup screen (a design choice for Randy, R-04).

@@ -1,0 +1,1021 @@
+# R-12 Singapore pack: all 305 questions
+
+For Randy's spot-check (R-14). Generated from `content/rabakz/src/questions/singapore-*.json`; the correct option is in bold.
+
+- 305 questions in 6 categories: easy 90, medium 121, hard 94.
+- All four-option multiple choice. No true-or-false questions (D-049) and no picture questions.
+- **Every question was written from memory with no web access.** The source notes name where each fact can be checked (mostly National Library Board Singapore Infopedia articles, NParks and National Heritage Board pages, Kamus Dewan for Malay words). Article titles are from memory and none has been opened and checked; where no exact title was known the note names the publishing body and the subject. No addresses are given because none was verified.
+- The independent review read every question and found no wrong marked answer; the list below is what it asked to be verified against a source.
+
+## Verify these 17 first
+
+1. `sg-arts-0037` Which is Singapore's oldest museum, in its Stamford Road building since 1887? Answer: **National Museum of Singapore**. Doubt: 1887 is when the Stamford Road building opened; the institution (Raffles Library and Museum) is older, and 'oldest museum' rests on that lineage.
+2. `sg-arts-0028` 'Under One Roof', first shown in 1995, was what kind of Singapore TV show? Answer: **A sitcom**. Doubt: the first-shown year (1995) and the description 'sitcom' are from memory.
+3. `sg-place-0044` Which bridge is the oldest across the Singapore River still in its original form? Answer: **Cavenagh Bridge**. Doubt: Cavenagh Bridge as the oldest bridge on the river still in its original form.
+4. `sg-place-0038` What was Sentosa called before it was renamed? Answer: **Pulau Blakang Mati**. Doubt: the old name and its spelling (Blakang Mati); the note gives the renaming only as 'around 1970'.
+5. `sg-arts-0045` The song 'Munnaeru Vaalibaa' is sung in which language? Answer: **Tamil**. Doubt: the language (Tamil) is certain; the composer and decade in the note are from memory.
+6. `sg-arts-0042` Which French designer created the sarong kebaya uniform of Singapore Airlines' cabin crew? Answer: **Pierre Balmain**. Doubt: Pierre Balmain as the designer, and 1968 in the note.
+7. `sg-nat-0037` Which bird topped a 2015 Nature Society poll to choose a national bird for Singapore? Answer: **Crimson sunbird**. Doubt: that the crimson sunbird topped the Nature Society's 2015 poll.
+8. `sg-food-0052` Singapore's fish head curry is classically made with the head of which fish? Answer: **Red snapper**. Doubt: red snapper as the classic fish for fish head curry.
+9. `sg-place-0043` Which red-and-white fire station, completed in 1909, is Singapore's oldest still standing? Answer: **Central Fire Station**. Doubt: Central Fire Station as the oldest still standing, and its 1909 date.
+10. `sg-place-0039` Which is the longest river in Singapore? Answer: **Kallang River**. Doubt: the Kallang River as the longest, and the 10 km in the note.
+11. `sg-nat-0022` Which big cat lived wild in Singapore until the 1930s? Answer: **Tiger**. Doubt: 'until the 1930s' for the last wild tigers.
+12. `sg-arts-0051` Shanti Pereira won Singapore's first Asian Games athletics gold in 49 years in 2023. In which event? Answer: **200 metres**. Doubt: 'first athletics gold in 49 years' (1974 to 2023) in the prompt.
+13. `sg-hist-0049` Parameswara, a ruler of old Singapura, is said to have gone on to found which city? Answer: **Malacca**. Doubt: Parameswara founding Malacca is the traditional account; the prompt says 'is said to'.
+14. `sg-nat-0045` Tampines takes its name from the tempinis. What is a tempinis? Answer: **A timber tree**. Doubt: the tempinis as a timber tree, and the species named in the note.
+15. `sg-life-0018` Which fruit is famously not allowed on MRT trains? Answer: **Durian**. Doubt: durians on the MRT: the rule is real, but the exact regulation behind the signs is not pinned down.
+16. `sg-food-0053` Tau sar piah is a flaky pastry filled with what? Answer: **Mung bean paste**. Doubt: mung bean paste as the filling of tau sar piah.
+17. `sg-arts-0047` Who wrote the one-woman play 'Emily of Emerald Hill'? Answer: **Stella Kon**. Doubt: Stella Kon as the author is certain; the first-staging year in the note is from memory.
+
+## Re-check yearly
+
+- `sg-place-0045` What is the last surviving kampong on mainland Singapore called? Answer: **Kampong Lorong Buangkok**. Why: 'last surviving kampong on the mainland' holds only while Kampong Lorong Buangkok stands.
+- `sg-nat-0042` How many nature reserves does Singapore have? Answer: **Four**. Why: the number of gazetted nature reserves could change.
+- `sg-place-0014` Which wildlife park in Mandai opens after dark to show animals active at night? Answer: **Night Safari**. Why: the wrong options are the names of the other Mandai parks, which have been renamed before.
+
+## Singapore arts and sport (`singapore-arts-and-sport`, 47 questions)
+
+
+### Singapore arts and sport: easy (9)
+
+- `sg-arts-0001` Who won Singapore's first Olympic gold medal?
+  - Fandi Ahmad · Tan Howe Liang · **Joseph Schooling (correct)** · Ang Peng Siong
+  - Source note: Joseph Schooling won the men's 100 m butterfly at the Rio 2016 Olympic Games. Check: International Olympic Committee, Rio 2016 results; NLB Singapore Infopedia, 'Joseph Schooling'.
+- `sg-arts-0002` What is the nickname of Singapore's national football team?
+  - The Tigers · The Eagles · **The Lions (correct)** · The Dragons
+  - Source note: The national team is known as the Lions. Check: Football Association of Singapore, 'National teams'.
+- `sg-arts-0004` In the game of chapteh, what do players do with the feathered shuttle?
+  - Throw it through a hoop · Hit it with a racket · Balance it on a stick · **Keep it in the air by kicking (correct)**
+  - Source note: Chapteh is kept aloft with the foot. Check: NLB Singapore Infopedia, 'Chapteh'.
+- `sg-arts-0005` The traditional game of five stones is played with five small what?
+  - **Cloth bags (correct)** · Glass marbles · Wooden sticks · Rubber balls
+  - Source note: Five stones uses small triangular cloth bags filled with seeds, rice or sand. Check: NLB Singapore Infopedia, 'Five stones'.
+- `sg-arts-0007` The lion dance is most often performed during which festival?
+  - Deepavali · **Chinese New Year (correct)** · Hari Raya Puasa · Christmas
+  - Source note: Lion dances are performed at Chinese New Year and at openings to bring good fortune. Check: NLB Singapore Infopedia, 'Lion dance'.
+- `sg-arts-0008` The Singapore Grand Prix is raced on what kind of track?
+  - An oval speedway · A desert rally course · An airfield circuit · **A street circuit (correct)**
+  - Source note: The race is run on the Marina Bay Street Circuit on public roads. Check: Formula 1, 'Singapore Grand Prix'; NLB Singapore Infopedia, 'Singapore Grand Prix'.
+- `sg-arts-0009` How many dancers perform inside one lion in a lion dance?
+  - **Two (correct)** · One · Three · Five
+  - Source note: Each lion has two dancers: one for the head and one for the body and tail. Check: NLB Singapore Infopedia, 'Lion dance'.
+- `sg-arts-0014` In zero point, children jump over a long rope made of what?
+  - Old shoelaces · Plaited raffia · **Rubber bands (correct)** · Bamboo strips
+  - Source note: The zero point rope is a chain of linked rubber bands. Check: National Heritage Board (Roots), material on traditional childhood games (zero point).
+- `sg-arts-0015` Which National Day song begins 'Whenever I am feeling low'?
+  - **Home (correct)** · Together · Where I Belong · Our Singapore
+  - Source note: 'Home' (1998), written by Dick Lee and sung by Kit Chan, opens with that line. Check: NLB Singapore Infopedia, 'National Day songs'.
+
+### Singapore arts and sport: medium (23)
+
+- `sg-arts-0003` Fandi Ahmad is a Singapore legend in which sport?
+  - Badminton · **Football (correct)** · Swimming · Table tennis
+  - Source note: Fandi Ahmad played for Singapore from 1979 to 1997 and for clubs including FC Groningen. Check: NLB Singapore Infopedia, 'Fandi Ahmad'.
+- `sg-arts-0006` The TV character Phua Chu Kang is famous for wearing boots of which colour?
+  - Red · **Yellow (correct)** · Black · White
+  - Source note: The contractor Phua Chu Kang, played by Gurmit Singh, wears yellow rubber boots. Check: NLB Singapore Infopedia, 'Phua Chu Kang Pte Ltd'.
+- `sg-arts-0011` What is a 'wayang kulit' show performed with?
+  - Fire torches · Masks and stilts · **Shadow puppets (correct)** · Hand bells
+  - Source note: Wayang kulit is shadow puppet theatre, with leather puppets behind a lit screen. Check: NLB Singapore Infopedia, 'Wayang kulit'.
+- `sg-arts-0012` Loh Kean Yew became a world champion in 2021 in which sport?
+  - **Badminton (correct)** · Table tennis · Squash · Fencing
+  - Source note: Loh Kean Yew won the men's singles at the 2021 BWF World Championships. Check: Badminton World Federation, World Championships 2021 results.
+- `sg-arts-0013` Yip Pin Xiu has won Paralympic gold medals for Singapore in which sport?
+  - Athletics · **Swimming (correct)** · Archery · Table tennis
+  - Source note: Yip Pin Xiu has won Paralympic gold medals in backstroke since Beijing 2008. Check: International Paralympic Committee, 'Yip Pin Xiu'.
+- `sg-arts-0017` Singapore's women won an Olympic silver medal in 2008 in which team sport?
+  - Badminton · Netball · **Table tennis (correct)** · Hockey
+  - Source note: Li Jiawei, Feng Tianwei and Wang Yuegu took silver in the women's team event at Beijing 2008. Check: International Olympic Committee, Beijing 2008 results.
+- `sg-arts-0019` The crowd's 'Kallang Roar' is linked with which venue?
+  - Jalan Besar Stadium · The Padang · Toa Payoh Stadium · **National Stadium (correct)**
+  - Source note: The Kallang Roar was the cheer of football crowds at the old National Stadium in Kallang. Check: NLB Singapore Infopedia, 'National Stadium'; 'Kallang Roar'.
+- `sg-arts-0020` When Singapore first held its Formula One Grand Prix in 2008, it was the sport's first what?
+  - Race in Asia · **Night race (correct)** · Street race · Race in the rain
+  - Source note: The 2008 Singapore Grand Prix was the first Formula One race held at night. Check: Formula 1, 'Singapore Grand Prix'; NLB Singapore Infopedia, 'Singapore Grand Prix'.
+- `sg-arts-0021` Which sport is played by kicking a rattan ball over a net?
+  - **Sepak takraw (correct)** · Chapteh · Silat · Kabaddi
+  - Source note: In sepak takraw, teams volley a rattan (or synthetic) ball over a net without using their hands. Check: NLB Singapore Infopedia, 'Sepak takraw'.
+- `sg-arts-0023` A gasing is a traditional Malay toy. What is it?
+  - **A spinning top (correct)** · A kite · A drum · A blowpipe
+  - Source note: Gasing is top spinning, played with wooden tops and a cord. Check: NLB Singapore Infopedia, 'Gasing'.
+- `sg-arts-0024` Congkak is a traditional game played with seeds or marbles on what?
+  - A chalk grid on the floor · **A wooden board with holes (correct)** · A square of cloth · A round metal tray
+  - Source note: Congkak uses a boat-shaped wooden board with two rows of holes and a store at each end. Check: NLB Singapore Infopedia, 'Congkak'.
+- `sg-arts-0025` In which year did Singapore host the first Youth Olympic Games?
+  - 2006 · 2008 · **2010 (correct)** · 2012
+  - Source note: The inaugural Summer Youth Olympic Games were held in Singapore in August 2010. Check: NLB Singapore Infopedia, 'Youth Olympic Games 2010'.
+- `sg-arts-0026` Who wrote the National Day song 'Home'?
+  - Kit Chan · Zubir Said · Jeremy Monteiro · **Dick Lee (correct)**
+  - Source note: Dick Lee wrote 'Home' for National Day 1998. Check: NLB Singapore Infopedia, 'Dick Lee'; 'National Day songs'.
+- `sg-arts-0027` Which 2002 Jack Neo film is about three schoolboys struggling with their studies?
+  - Money No Enough · Homerun · **I Not Stupid (correct)** · Ah Boys to Men
+  - Source note: 'I Not Stupid' (2002) was directed by Jack Neo. Check: NLB Singapore Infopedia, 'I Not Stupid'.
+- `sg-arts-0028` 'Under One Roof', first shown in 1995, was what kind of Singapore TV show?
+  - A cooking contest · **A sitcom (correct)** · A police drama · A quiz show
+  - Source note: 'Under One Roof' was Singapore's first locally made English-language sitcom. Check: NLB Singapore Infopedia, 'Under One Roof'.
+- `sg-arts-0029` In batik, what is applied to the cloth to stop dye reaching parts of it?
+  - **Wax (correct)** · Glue · Salt · Clay
+  - Source note: Batik is a wax-resist dyeing technique. Check: Britannica, 'batik'; National Heritage Board (Roots), 'Batik'.
+- `sg-arts-0030` What kind of instrument is the kompang?
+  - **A hand drum (correct)** · A bamboo flute · A bowed fiddle · A brass gong
+  - Source note: The kompang is a shallow hand-held frame drum played in groups at Malay weddings and events. Check: NLB Singapore Infopedia, 'Kompang'.
+- `sg-arts-0031` The angklung, often played in Singapore schools, is made of what?
+  - Brass · Clay · Coconut shell · **Bamboo (correct)**
+  - Source note: The angklung is a rattle of bamboo tubes in a frame, of Indonesian origin. Check: UNESCO Intangible Cultural Heritage, 'Indonesian Angklung'.
+- `sg-arts-0032` The Chingay Parade is held as part of which festive season?
+  - Mid-Autumn Festival · National Day · **Chinese New Year (correct)** · Deepavali
+  - Source note: Chingay has been held during the Chinese New Year season since 1973. Check: NLB Singapore Infopedia, 'Chingay'.
+- `sg-arts-0033` The Cultural Medallion honours Singaporeans for excellence in what?
+  - Sport · Science · Teaching · **The arts (correct)**
+  - Source note: The Cultural Medallion, begun in 1979, is the highest award for the arts. Check: National Arts Council, 'Cultural Medallion'.
+- `sg-arts-0034` 'Di Tanjong Katong' is a well-loved folk song in which language?
+  - Tamil · Teochew · **Malay (correct)** · English
+  - Source note: 'Di Tanjong Katong' is a Malay folk song often sung at National Day. Check: NLB Singapore Infopedia, 'National Day songs'; NLB MusicSG, 'Di Tanjong Katong'.
+- `sg-arts-0035` Bharatanatyam, taught at many Singapore arts schools, is a classical form of what?
+  - Poetry · Painting · Drumming · **Dance (correct)**
+  - Source note: Bharatanatyam is a classical dance of South India. Check: Britannica, 'bharata natyam'.
+- `sg-arts-0037` Which is Singapore's oldest museum, in its Stamford Road building since 1887?
+  - Asian Civilisations Museum · **National Museum of Singapore (correct)** · Singapore Art Museum · Peranakan Museum
+  - Source note: The National Museum opened in its Stamford Road building in 1887 as the Raffles Library and Museum. Check: NLB Singapore Infopedia, 'National Museum of Singapore'.
+
+### Singapore arts and sport: hard (15)
+
+- `sg-arts-0036` In which year was Singapore's hawker culture added to UNESCO's intangible heritage list?
+  - 2010 · 2015 · **2020 (correct)** · 2018
+  - Source note: 'Hawker culture in Singapore' was inscribed in December 2020. Check: UNESCO Intangible Cultural Heritage, 'Hawker culture in Singapore'.
+- `sg-arts-0038` Tan Howe Liang won Singapore's first Olympic medal, a silver in 1960, in which sport?
+  - Boxing · **Weightlifting (correct)** · Sailing · Athletics
+  - Source note: Tan Howe Liang won silver in lightweight weightlifting at the Rome 1960 Olympic Games. Check: NLB Singapore Infopedia, 'Tan Howe Liang'.
+- `sg-arts-0039` In which year did Singapore first win the ASEAN football championship, then the Tiger Cup?
+  - 1994 · 1996 · **1998 (correct)** · 2002
+  - Source note: Singapore beat Vietnam 1-0 in Hanoi in the 1998 Tiger Cup final. Check: ASEAN Football Federation, championship history; NLB Singapore Infopedia, 'Tiger Cup'.
+- `sg-arts-0040` Who first sang the National Day song 'Home' in 1998?
+  - Stefanie Sun · Tanya Chua · Corrinne May · **Kit Chan (correct)**
+  - Source note: Kit Chan performed 'Home' at the 1998 National Day Parade. Check: NLB Singapore Infopedia, 'Kit Chan'; 'National Day songs'.
+- `sg-arts-0041` Which Anthony Chen film won the Camera d'Or at the Cannes Film Festival in 2013?
+  - 12 Storeys · **Ilo Ilo (correct)** · Mee Pok Man · Wet Season
+  - Source note: 'Ilo Ilo' won the Camera d'Or for best first feature in 2013. Check: Festival de Cannes, 2013 awards; NLB Singapore Infopedia, 'Anthony Chen'.
+- `sg-arts-0042` Which French designer created the sarong kebaya uniform of Singapore Airlines' cabin crew?
+  - Christian Dior · Yves Saint Laurent · **Pierre Balmain (correct)** · Pierre Cardin
+  - Source note: Pierre Balmain designed the uniform in 1968. Check: NLB Singapore Infopedia, 'Singapore Girl'.
+- `sg-arts-0043` How many strings does an erhu have?
+  - One · Three · **Two (correct)** · Four
+  - Source note: The erhu is a two-stringed bowed fiddle. Check: Britannica, 'erhu'; Singapore Chinese Orchestra, 'Instruments'.
+- `sg-arts-0044` Liu Kang, Chen Wen Hsi and Georgette Chen were pioneers of which style of painting?
+  - **Nanyang style (correct)** · Straits school · Lion City school · Merdeka style
+  - Source note: The Nanyang style blended Chinese ink and School of Paris techniques with Southeast Asian subjects. Check: National Gallery Singapore, 'Nanyang art'; NLB Singapore Infopedia, 'Nanyang style'.
+- `sg-arts-0045` The song 'Munnaeru Vaalibaa' is sung in which language?
+  - Malay · **Tamil (correct)** · Hindi · Bengali
+  - Source note: 'Munnaeru Vaalibaa' ('Forward, Youth') is a Tamil community song written by S. Jesudassan in the 1960s. Check: NLB Singapore Infopedia, 'National Day songs'; NLB MusicSG, 'Munnaeru Vaalibaa'.
+- `sg-arts-0046` What is dikir barat?
+  - **A Malay choral singing form (correct)** · A Malay martial art · A style of batik · A harvest dance
+  - Source note: Dikir barat is group singing led by a tok juara and tukang karut, with rhythmic clapping and percussion. Check: NLB Singapore Infopedia, 'Dikir barat'.
+- `sg-arts-0047` Who wrote the one-woman play 'Emily of Emerald Hill'?
+  - **Stella Kon (correct)** · Catherine Lim · Kuo Pao Kun · Haresh Sharma
+  - Source note: Stella Kon's play was first staged in 1984. Check: NLB Singapore Infopedia, 'Emily of Emerald Hill'.
+- `sg-arts-0048` Which poet wrote 'Ulysses by the Merlion'?
+  - Arthur Yap · Lee Tzu Pheng · Alfian Sa'at · **Edwin Thumboo (correct)**
+  - Source note: Edwin Thumboo's poem was published in 1979. Check: NLB Singapore Infopedia, 'Edwin Thumboo'.
+- `sg-arts-0049` Wong Peng Soon, a Singapore sporting hero of the 1950s, was a champion in which sport?
+  - **Badminton (correct)** · Tennis · Boxing · Billiards
+  - Source note: Wong Peng Soon won the All England men's singles four times between 1950 and 1955. Check: NLB Singapore Infopedia, 'Wong Peng Soon'.
+- `sg-arts-0050` Ang Peng Siong was once ranked the world's fastest over 50 metres in which sport?
+  - Sprinting · Cycling · **Swimming (correct)** · Rowing
+  - Source note: Ang Peng Siong swam the world's fastest 50 m freestyle time of 1982. Check: NLB Singapore Infopedia, 'Ang Peng Siong'.
+- `sg-arts-0051` Shanti Pereira won Singapore's first Asian Games athletics gold in 49 years in 2023. In which event?
+  - **200 metres (correct)** · 100 metres · 400 metres · Long jump
+  - Source note: Shanti Pereira won the women's 200 m (and silver in the 100 m) at the Hangzhou Asian Games in 2023. Check: Olympic Council of Asia, Hangzhou 2022 athletics results.
+
+## Singapore food (`singapore-food`, 57 questions)
+
+
+### Singapore food: easy (19)
+
+- `sg-food-0001` Which fruit is often called the 'king of fruits' in Singapore?
+  - **Durian (correct)** · Mango · Rambutan · Jackfruit
+  - Source note: The durian is widely known as the 'king of fruits'. Check: NLB Singapore Infopedia, 'Durian'.
+- `sg-food-0002` In the name 'nasi lemak', what does the Malay word 'nasi' mean?
+  - Noodles · Coconut · **Rice (correct)** · Chicken
+  - Source note: 'Nasi' is cooked rice in Malay. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'nasi'; NLB Singapore Infopedia, 'Nasi lemak'.
+- `sg-food-0003` The rice in nasi lemak is cooked in what?
+  - Chicken broth · **Coconut milk (correct)** · Tomato sauce · Barley water
+  - Source note: 'Lemak' refers to the richness of coconut milk in which the rice is cooked. Check: NLB Singapore Infopedia, 'Nasi lemak'.
+- `sg-food-0004` Satay is usually served with which dipping sauce?
+  - Sweet plum sauce · Dark soy sauce · Mint sauce · **Peanut sauce (correct)**
+  - Source note: Satay is served with a spiced peanut sauce, ketupat, cucumber and onion. Check: NLB Singapore Infopedia, 'Satay'.
+- `sg-food-0005` What is roti prata?
+  - A steamed bun · A rice dumpling · A noodle soup · **A fried flatbread (correct)**
+  - Source note: Roti prata is a flatbread of South Indian origin fried on a flat griddle. Check: NLB Singapore Infopedia, 'Roti prata'.
+- `sg-food-0006` Ice kachang is built on a mound of what?
+  - Sticky rice · **Shaved ice (correct)** · Bread cubes · Mashed yam
+  - Source note: Ice kachang is shaved ice with syrups over red beans, jelly and other toppings. Check: NLB Singapore Infopedia, 'Ice kachang'.
+- `sg-food-0007` What colour is a pandan chiffon cake?
+  - **Green (correct)** · Purple · Pink · Orange
+  - Source note: Pandan leaf juice gives the cake its green colour. Check: NLB Singapore Infopedia, 'Pandan cake'; NParks Flora and Fauna Web, 'Pandanus amaryllifolius'.
+- `sg-food-0008` At a drinks stall, what does 'peng' mean, as in 'Milo peng'?
+  - With milk · No sugar · **With ice (correct)** · Takeaway
+  - Source note: 'Peng' is Hokkien for ice. Check: NLB Singapore Infopedia, 'Kopitiam'; Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English'.
+- `sg-food-0009` What is 'ikan bilis'?
+  - **Dried anchovies (correct)** · Salted peanuts · Fried shallots · Prawn crackers
+  - Source note: Ikan bilis is the Malay name for small anchovies, usually dried. Check: Kamus Dewan, 'ikan bilis'; NLB Singapore Infopedia, 'Nasi lemak'.
+- `sg-food-0010` In 'ayam penyet' and 'ayam goreng', what does the Malay word 'ayam' mean?
+  - Fish · Beef · Prawn · **Chicken (correct)**
+  - Source note: 'Ayam' is chicken in Malay. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'ayam'.
+- `sg-food-0011` In 'mee goreng' and 'nasi goreng', what does the Malay word 'goreng' mean?
+  - Spicy · **Fried (correct)** · Sweet · Steamed
+  - Source note: 'Goreng' means fried in Malay. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'goreng'; NLB Singapore Infopedia, 'Mee goreng'.
+- `sg-food-0012` Popiah is best described as what?
+  - A fried dumpling · A rice porridge · **A fresh spring roll (correct)** · A baked pastry
+  - Source note: Popiah is a fresh (unfried) spring roll in a thin wheat skin. Check: NLB Singapore Infopedia, 'Popiah'.
+- `sg-food-0013` Bandung is a pink drink made with milk and which syrup?
+  - Strawberry syrup · Lychee syrup · **Rose syrup (correct)** · Cherry syrup
+  - Source note: Bandung is rose syrup (rose cordial) mixed with evaporated or condensed milk. Check: Singapore Tourism Board, material on local drinks (bandung); Kamus Dewan (Dewan Bahasa dan Pustaka), 'air bandung'.
+- `sg-food-0014` What is the usual filling of a classic curry puff?
+  - Sweet red bean · Minced fish paste · **Curried potato (correct)** · Shredded coconut
+  - Source note: The classic curry puff is filled with curried potato, often with chicken and egg. Check: NLB Singapore Infopedia, 'Curry puff'.
+- `sg-food-0015` A kaya toast set at a kopitiam usually comes with which eggs?
+  - **Soft-boiled eggs (correct)** · Scrambled eggs · Salted duck eggs · Century eggs
+  - Source note: The traditional breakfast set is kaya toast, soft-boiled eggs and coffee or tea. Check: NLB Singapore Infopedia, 'Kaya toast'; 'Kopitiam'.
+- `sg-food-0016` Sambal is a spicy paste made mainly from what?
+  - Peanuts · Tamarind · Ginger · **Chillies (correct)**
+  - Source note: Sambal is a chilli-based paste or relish. Check: Oxford English Dictionary, 'sambal'; Kamus Dewan, 'sambal'.
+- `sg-food-0017` Mooncakes are eaten during which festival?
+  - Dragon Boat Festival · **Mid-Autumn Festival (correct)** · Chinese New Year · Qingming Festival
+  - Source note: Mooncakes are the traditional food of the Mid-Autumn Festival. Check: NLB Singapore Infopedia, 'Mid-Autumn Festival'; 'Mooncake'.
+- `sg-food-0018` What is a 'Milo dinosaur'?
+  - **Iced Milo topped with Milo powder (correct)** · Hot Milo with a shot of coffee · Milo blended with ice cream · Milo mixed with soya milk
+  - Source note: A Milo dinosaur is iced Milo with a heap of undissolved Milo powder on top. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', entry for Milo dinosaur.
+- `sg-food-0019` How is satay traditionally cooked?
+  - Steamed in a basket · Boiled in broth · **Grilled over charcoal (correct)** · Baked in a clay oven
+  - Source note: Satay is skewered meat grilled over a charcoal fire. Check: NLB Singapore Infopedia, 'Satay'.
+
+### Singapore food: medium (22)
+
+- `sg-food-0020` In the drink name 'teh tarik', what does the Malay word 'tarik' mean?
+  - Sweet · Milky · Frothy · **Pulled (correct)**
+  - Source note: 'Tarik' means pull; the tea is poured back and forth between two vessels. Check: NLB Singapore Infopedia, 'Teh tarik'.
+- `sg-food-0021` In 'ice kachang', what does the Malay word 'kachang' mean?
+  - Ice · Syrup · **Beans (correct)** · Jelly
+  - Source note: 'Kachang' (kacang) means beans or nuts; the dessert is named for its red beans. Check: NLB Singapore Infopedia, 'Ice kachang'; Kamus Dewan, 'kacang'.
+- `sg-food-0022` Kopi C is coffee with sugar and which milk?
+  - Condensed milk · **Evaporated milk (correct)** · Coconut milk · Soya milk
+  - Source note: Plain 'kopi' has condensed milk; 'kopi C' has evaporated milk and sugar. Check: National Library Board Infopedia, entry on the kopitiam; Singapore Tourism Board, guide to ordering local coffee.
+- `sg-food-0023` When ordering a drink, what does 'kosong' mean, as in 'teh O kosong'?
+  - No ice · **No sugar (correct)** · Extra milk · Extra strong
+  - Source note: 'Kosong' is Malay for empty or zero: no sugar (and, with 'O', no milk). Check: Kamus Dewan, 'kosong'; NLB Singapore Infopedia, 'Kopitiam'.
+- `sg-food-0026` The hawker dish 'carrot cake' (chai tow kway) is made with which vegetable?
+  - Orange carrot · Sweet potato · **White radish (correct)** · Purple yam
+  - Source note: The 'cake' is steamed rice flour and white radish (daikon), cut up and fried with egg. Check: NLB Singapore Infopedia, 'Chai tow kway (carrot cake)'.
+- `sg-food-0027` What makes the gravy of Singapore-style laksa rich and creamy?
+  - Evaporated milk · **Coconut milk (correct)** · Peanut paste · Egg yolk
+  - Source note: Laksa lemak, the style common in Singapore, has a spicy coconut milk gravy. Check: NLB Singapore Infopedia, 'Laksa'.
+- `sg-food-0028` Ondeh-ondeh are little green balls filled with what?
+  - **Gula melaka (correct)** · Red bean paste · Ground peanuts · Lotus paste
+  - Source note: Ondeh-ondeh are glutinous rice balls filled with liquid gula melaka and rolled in grated coconut. Check: National Library Board Infopedia, entries on kueh (ondeh-ondeh); Kamus Dewan (Dewan Bahasa dan Pustaka), 'onde-onde'.
+- `sg-food-0030` Chilli crab is commonly eaten with which bread to mop up the sauce?
+  - Naan · Baguette slices · Roti prata · **Mantou buns (correct)**
+  - Source note: Chilli crab is served with fried or steamed mantou. Check: NLB Singapore Infopedia, 'Chilli crab'.
+- `sg-food-0031` Bak kut teh is a peppery or herbal soup made with which meat?
+  - Beef shank · **Pork ribs (correct)** · Mutton chops · Chicken wings
+  - Source note: Bak kut teh ('meat bone tea' in Hokkien) is pork ribs simmered with pepper, garlic or herbs. Check: NLB Singapore Infopedia, 'Bak kut teh'.
+- `sg-food-0034` Kway teow are flat noodles made from what?
+  - Wheat · Mung beans · **Rice (correct)** · Tapioca
+  - Source note: Kway teow are flat rice noodles. Check: NLB Singapore Infopedia, 'Char kway teow'.
+- `sg-food-0036` Nasi lemak is traditionally wrapped in which leaf?
+  - Pandan leaf · Lotus leaf · **Banana leaf (correct)** · Yam leaf
+  - Source note: Nasi lemak was traditionally sold wrapped in banana leaf. Check: NLB Singapore Infopedia, 'Nasi lemak'.
+- `sg-food-0038` Rice dumplings (bak chang) are eaten at which festival?
+  - Mid-Autumn Festival · Lantern Festival · Winter Solstice · **Dragon Boat Festival (correct)**
+  - Source note: Rice dumplings are the food of the Dragon Boat (Dumpling) Festival. Check: NLB Singapore Infopedia, 'Dragon Boat Festival'.
+- `sg-food-0039` Tossing yusheng for good luck at Chinese New Year is known as what?
+  - Ang bao · Chap goh mei · Bai nian · **Lo hei (correct)**
+  - Source note: 'Lo hei' (Cantonese) is the tossing of the raw fish salad. Check: NLB Singapore Infopedia, 'Yusheng'.
+- `sg-food-0040` Which fruit, with a thick purple rind and white flesh, is called the 'queen of fruits'?
+  - **Mangosteen (correct)** · Dragon fruit · Rambutan · Langsat
+  - Source note: The mangosteen is popularly called the 'queen of fruits'. Check: NParks Flora and Fauna Web, 'Garcinia mangostana'; Britannica, 'mangosteen'.
+- `sg-food-0042` Tau kwa, tau pok and tau huay are all made from which bean?
+  - Mung bean · Red bean · Broad bean · **Soya bean (correct)**
+  - Source note: Firm beancurd, beancurd puffs and beancurd pudding are all soya bean products. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English' ('tau kwa', 'tau pok', 'tau huay').
+- `sg-food-0043` Hainanese chicken rice is named after an island that is part of which country?
+  - Vietnam · Malaysia · Indonesia · **China (correct)**
+  - Source note: Hainan is an island province of China; the dish was adapted by Hainanese immigrants. Check: NLB Singapore Infopedia, 'Hainanese chicken rice'.
+- `sg-food-0044` The rice in Hainanese chicken rice is cooked in what?
+  - Coconut milk · **Chicken stock (correct)** · Tomato soup · Soya milk
+  - Source note: The rice is fried in chicken fat and cooked in chicken stock. Check: NLB Singapore Infopedia, 'Hainanese chicken rice'.
+- `sg-food-0048` How is kueh tutu cooked?
+  - Baked · Deep-fried · Grilled · **Steamed (correct)**
+  - Source note: Kueh tutu are rice flour cakes with coconut or peanut filling, steamed in small moulds. Check: NLB Singapore Infopedia, 'Kueh tutu'.
+- `sg-food-0054` What is lontong?
+  - Fried fish crackers · Sweet potato fritters · **Compressed rice cakes (correct)** · Steamed tapioca cake
+  - Source note: Lontong is rice compressed into a cake, sliced and served in a coconut vegetable stew. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'lontong'; National Library Board Infopedia, entry on lontong.
+- `sg-food-0055` What is murtabak?
+  - A sour fish noodle soup · A spiced rice and meat dish · A grilled skewer of meat · **A stuffed pan-fried flatbread (correct)**
+  - Source note: Murtabak is a prata-like dough folded around minced meat, egg and onion and pan-fried. Check: NLB Singapore Infopedia, 'Murtabak'.
+- `sg-food-0056` Mee siam is made with which noodles?
+  - **Thin rice vermicelli (correct)** · Thick wheat noodles · Broad rice sheets · Yellow egg noodles
+  - Source note: Mee siam is thin rice vermicelli (bee hoon) in a sweet, sour and spicy gravy. Check: NLB Singapore Infopedia, 'Mee siam'.
+- `sg-food-0057` Which sauce is traditionally added, with pepper, to the eggs in a kaya toast set?
+  - **Soy sauce (correct)** · Chilli sauce · Oyster sauce · Fish sauce
+  - Source note: The soft-boiled eggs are seasoned with soy sauce (usually dark) and white pepper. Check: National Library Board Infopedia, entry on kaya toast.
+
+### Singapore food: hard (16)
+
+- `sg-food-0024` What does 'gao' mean when you order 'kopi gao'?
+  - Less sweet · **Extra strong (correct)** · Extra hot · Less milk
+  - Source note: 'Gao' is Hokkien for thick: a stronger brew. Check: National Library Board Infopedia, entry on the kopitiam; Singapore Tourism Board, guide to ordering local coffee.
+- `sg-food-0025` Chwee kueh, the steamed rice cakes, are topped with what?
+  - Dried shrimp floss · **Preserved radish (correct)** · Crushed peanuts · Fried shallots
+  - Source note: Chwee kueh are served with diced preserved radish (chai poh) and chilli. Check: NLB Singapore Infopedia, 'Chwee kueh'.
+- `sg-food-0029` Gula melaka is a sugar made from the sap of which plant?
+  - Sugar cane · Maple tree · **Palm tree (correct)** · Sugar beet
+  - Source note: Gula melaka is palm sugar, made by boiling down the sap of the coconut palm's flower buds. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'gula melaka'; Britannica, entry on palm sugar.
+- `sg-food-0032` The main filling of popiah is stewed bangkuang. What is bangkuang?
+  - A leafy green cabbage · A small purple yam · A long green gourd · **A crunchy white yam bean (correct)**
+  - Source note: Bangkuang is the yam bean or jicama, called turnip locally. Check: NLB Singapore Infopedia, 'Popiah'; NParks Flora and Fauna Web, 'Pachyrhizus erosus'.
+- `sg-food-0033` The stock for Singapore-style fried Hokkien mee is made mainly from what?
+  - Chicken · Beef · **Prawns (correct)** · Mushrooms
+  - Source note: The noodles are braised in a stock of prawn heads and shells, usually with pork bones. Check: NLB Singapore Infopedia, 'Hokkien prawn noodles (Hokkien mee)'.
+- `sg-food-0035` Otah (otak-otak) is a grilled parcel made mainly from what?
+  - Sticky rice and egg · Mashed tapioca · Minced mutton · **Spiced fish paste (correct)**
+  - Source note: Otak-otak is fish paste blended with chilli and spices, wrapped in a leaf and grilled. Check: National Library Board Infopedia, entry on otak-otak; Kamus Dewan (Dewan Bahasa dan Pustaka), 'otak-otak'.
+- `sg-food-0037` Ketupat is rice cooked in a pouch woven from which leaves?
+  - Banana leaves · **Coconut leaves (correct)** · Bamboo leaves · Pandan leaves
+  - Source note: Ketupat is rice boiled in a casing woven from young coconut palm leaves. Check: NLB Singapore Infopedia, 'Ketupat'.
+- `sg-food-0041` Which dish takes its name from a Malay word meaning 'mixture'?
+  - Satay · **Rojak (correct)** · Laksa · Lontong
+  - Source note: 'Rojak' means a mixture in Malay. Check: NLB Singapore Infopedia, 'Rojak'; Kamus Dewan, 'rojak'.
+- `sg-food-0045` Belacan is a pungent paste made from fermented what?
+  - **Shrimp (correct)** · Soya beans · Black beans · Tamarind
+  - Source note: Belacan is a fermented shrimp (krill) paste. Check: Oxford English Dictionary, 'belacan'; Kamus Dewan, 'belacan'.
+- `sg-food-0046` What does 'penyet' mean in the dish 'ayam penyet'?
+  - Grilled · Steamed · Stuffed · **Smashed (correct)**
+  - Source note: 'Penyet' is Javanese for pressed or smashed: the fried chicken is flattened with a pestle. Check: Kamus Besar Bahasa Indonesia, 'penyet'; Singapore Tourism Board, material on ayam penyet.
+- `sg-food-0047` Katong laksa is traditionally served with which noodles?
+  - Yellow egg noodles · **Thick rice vermicelli (correct)** · Flat rice noodles · Glass noodles
+  - Source note: Katong laksa uses thick rice vermicelli (thick bee hoon) cut short to eat with a spoon. Check: NLB Singapore Infopedia, 'Laksa'.
+- `sg-food-0049` Roti john is an omelette sandwich made with which bread?
+  - A round flatbread · A steamed white bun · A thick slice of toast · **A long French-style loaf (correct)**
+  - Source note: Roti john is a halved French loaf fried with egg, minced meat and onion. Check: NLB Singapore Infopedia, 'Roti john'.
+- `sg-food-0050` Buah keluak, used in Peranakan cooking, is what?
+  - A dried mushroom · A root like ginger · **The seed of a tree (correct)** · A kind of shellfish
+  - Source note: Buah keluak is the seed of the kepayang tree (Pangium edule). Check: NParks Flora and Fauna Web, 'Pangium edule'; NLB Singapore Infopedia, 'Peranakan (Straits Chinese) cuisine'.
+- `sg-food-0051` Thosai batter is made from rice and what?
+  - Chickpeas · Wheat · **Lentils (correct)** · Maize
+  - Source note: Thosai (dosa) batter is fermented rice and black gram lentils (urad dal). Check: NLB Singapore Infopedia, 'Thosai'; Britannica, 'dosa'.
+- `sg-food-0052` Singapore's fish head curry is classically made with the head of which fish?
+  - Sea bass · Pomfret · **Red snapper (correct)** · Mackerel
+  - Source note: The dish uses the head of a red snapper (ikan merah). Check: NLB Singapore Infopedia, 'Fish-head curry'.
+- `sg-food-0053` Tau sar piah is a flaky pastry filled with what?
+  - **Mung bean paste (correct)** · Lotus seed paste · Red date paste · Yam paste
+  - Source note: Tau sar piah has a sweet or salty mung bean paste filling. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'tau sar piah'.
+
+## Singapore history (`singapore-history`, 50 questions)
+
+
+### Singapore history: easy (10)
+
+- `sg-hist-0001` The old name 'Singapura' means what?
+  - Sea Town · Tiger Port · **Lion City (correct)** · Garden Island
+  - Source note: 'Singapura' comes from the Sanskrit for lion (simha) and city (pura). Check: NLB Singapore Infopedia, 'Sang Nila Utama'.
+- `sg-hist-0002` In the legend, which animal did the prince who named Singapura believe he saw?
+  - **A lion (correct)** · A tiger · A crocodile · An elephant
+  - Source note: The Malay Annals say the prince saw a beast he took to be a lion and named the place Singapura. Check: NLB Singapore Infopedia, 'Sang Nila Utama'.
+- `sg-hist-0003` Which old name for Singapore is said to mean 'sea town'?
+  - Malaya · Batavia · **Temasek (correct)** · Nanyang
+  - Source note: Temasek, the 14th-century name of the island, is thought to mean 'sea town'. Check: NLB Singapore Infopedia, 'Temasek/Singapura'.
+- `sg-hist-0004` On which date does Singapore celebrate National Day?
+  - 1 May · 31 August · 1 October · **9 August (correct)**
+  - Source note: National Day marks independence on 9 August 1965. Check: NLB Singapore Infopedia, 'National Day Parade'.
+- `sg-hist-0005` Who was Singapore's first Prime Minister?
+  - Goh Chok Tong · David Marshall · **Lee Kuan Yew (correct)** · Yusof Ishak
+  - Source note: Lee Kuan Yew was Prime Minister from 1959 to 1990. Check: NLB Singapore Infopedia, 'Lee Kuan Yew'.
+- `sg-hist-0006` How many stars are on the Singapore flag?
+  - Three · Four · **Five (correct)** · Six
+  - Source note: The flag has a crescent moon and five stars. Check: National Heritage Board, 'National Flag'.
+- `sg-hist-0007` What is Singapore's national anthem called?
+  - **Majulah Singapura (correct)** · Negaraku · Semoga Bahagia · Di Tanjong Katong
+  - Source note: 'Majulah Singapura' was adopted as the state anthem in 1959 and became the national anthem in 1965. Check: National Heritage Board, 'National Anthem'.
+- `sg-hist-0009` Which British official set up a trading post in Singapore in 1819?
+  - Captain James Cook · Sir Francis Light · **Sir Stamford Raffles (correct)** · Lord Nelson
+  - Source note: Raffles established a British trading post in Singapore in 1819. Check: NLB Singapore Infopedia, 'Stamford Raffles's landing in Singapore'.
+- `sg-hist-0010` What are the two colours of the Singapore flag?
+  - **Red and white (correct)** · Blue and white · Red and yellow · Green and white
+  - Source note: The flag is red above white. Check: National Heritage Board, 'National Flag'.
+- `sg-hist-0011` Which country did Singapore separate from to become independent?
+  - Indonesia · **Malaysia (correct)** · Britain · Japan
+  - Source note: Singapore separated from Malaysia on 9 August 1965. Check: National Library Board HistorySG, entry on Singapore's separation from Malaysia (9 August 1965).
+
+### Singapore history: medium (17)
+
+- `sg-hist-0013` According to the Malay Annals, which prince gave Singapura its name?
+  - Parameswara · **Sang Nila Utama (correct)** · Hang Tuah · Sultan Hussein
+  - Source note: The Sejarah Melayu credits Sang Nila Utama, a prince from Palembang. Check: NLB Singapore Infopedia, 'Sang Nila Utama'.
+- `sg-hist-0014` Who was Singapore's first President?
+  - Benjamin Sheares · Devan Nair · Wee Kim Wee · **Yusof Ishak (correct)**
+  - Source note: Yusof Ishak, Yang di-Pertuan Negara from 1959, became the first President in 1965. Check: NLB Singapore Infopedia, 'Yusof Ishak'.
+- `sg-hist-0015` In which year did Singapore become part of Malaysia?
+  - 1957 · 1959 · 1967 · **1963 (correct)**
+  - Source note: Malaysia was formed on 16 September 1963. Check: NLB Singapore Infopedia, 'Merger with Malaysia'.
+- `sg-hist-0016` The Japanese Occupation of Singapore began in which year?
+  - 1939 · 1941 · 1945 · **1942 (correct)**
+  - Source note: The British surrendered Singapore on 15 February 1942. Check: NLB Singapore Infopedia, 'Japanese Occupation of Singapore'.
+- `sg-hist-0017` Which day, kept each year on 15 February, recalls the fall of Singapore?
+  - Racial Harmony Day · National Day · Armed Forces Day · **Total Defence Day (correct)**
+  - Source note: Total Defence Day has been marked on 15 February since 1998. Check: NLB Singapore Infopedia, 'Total Defence'.
+- `sg-hist-0018` Which company employed Stamford Raffles when he came to Singapore?
+  - Dutch East India Company · Hudson's Bay Company · **British East India Company (correct)** · Royal Niger Company
+  - Source note: Raffles was Lieutenant-Governor of Bencoolen for the British East India Company. Check: NLB Singapore Infopedia, 'Stamford Raffles's career and contributions to Singapore'.
+- `sg-hist-0019` Who was the first British Resident of Singapore?
+  - **William Farquhar (correct)** · John Crawfurd · Samuel Bonham · Thomas Braddell
+  - Source note: Major William Farquhar was Resident and Commandant from 1819 to 1823. Check: NLB Singapore Infopedia, 'William Farquhar'.
+- `sg-hist-0020` Which school began in 1823 as the Singapore Institution?
+  - St Joseph's Institution · Anglo-Chinese School · **Raffles Institution (correct)** · Victoria School
+  - Source note: The Singapore Institution, founded in 1823, was renamed Raffles Institution in 1868. Check: NLB Singapore Infopedia, 'Raffles Institution'.
+- `sg-hist-0021` Who composed 'Majulah Singapura'?
+  - Dick Lee · P. Ramlee · S. Rajaratnam · **Zubir Said (correct)**
+  - Source note: Zubir Said composed the song in 1958. Check: NLB Singapore Infopedia, 'Zubir Said'; National Heritage Board, 'National Anthem'.
+- `sg-hist-0022` What does the crescent moon on the Singapore flag stand for?
+  - The island's coastline · Peace with all neighbours · **A young nation on the rise (correct)** · The night sky at sea
+  - Source note: The crescent represents a young nation on the ascendant. Check: National Heritage Board, 'National Flag'.
+- `sg-hist-0023` In which year did Changi Airport open?
+  - **1981 (correct)** · 1971 · 1975 · 1990
+  - Source note: Changi Airport began operations on 1 July 1981. Check: NLB Singapore Infopedia, 'Singapore Changi Airport'.
+- `sg-hist-0024` Before Changi opened, which was Singapore's main international airport?
+  - Seletar · Kallang · **Paya Lebar (correct)** · Tengah
+  - Source note: Paya Lebar Airport served from 1955 until Changi opened in 1981. Check: NLB Singapore Infopedia, 'Paya Lebar Airport'.
+- `sg-hist-0025` Singapore was a founding member of which regional group in 1967?
+  - APEC · SEATO · The Commonwealth · **ASEAN (correct)**
+  - Source note: ASEAN was founded in Bangkok on 8 August 1967 by Indonesia, Malaysia, the Philippines, Singapore and Thailand. Check: ASEAN Secretariat, 'The Founding of ASEAN'.
+- `sg-hist-0026` In the legend of Redhill, which sea creatures attacked Singapore's shore?
+  - Sharks · Giant crabs · **Swordfish (correct)** · Sea snakes
+  - Source note: The Malay Annals tell of swordfish attacking the coast until a boy suggested a barrier of banana stems. Check: NLB Singapore Infopedia, 'Bukit Merah (Redhill)'.
+- `sg-hist-0028` Which Singapore newspaper was first published in 1845?
+  - The Business Times · **The Straits Times (correct)** · The New Paper · Berita Harian
+  - Source note: The Straits Times first appeared on 15 July 1845. Check: NLB Singapore Infopedia, 'The Straits Times'.
+- `sg-hist-0029` Tan Tock Seng, a 19th-century merchant, is best remembered for funding what?
+  - A school for girls · A public library · **A hospital for the poor (correct)** · A botanic garden
+  - Source note: He funded the Chinese Pauper Hospital of 1844, now Tan Tock Seng Hospital. Check: NLB Singapore Infopedia, 'Tan Tock Seng'.
+- `sg-hist-0030` About how long did the Japanese Occupation of Singapore last?
+  - **About 3.5 years (correct)** · About 1.5 years · About 2.5 years · About 5.5 years
+  - Source note: From 15 February 1942 to the surrender ceremony of 12 September 1945. Check: NLB Singapore Infopedia, 'Japanese Occupation of Singapore'.
+
+### Singapore history: hard (23)
+
+- `sg-hist-0027` In 1980 the University of Singapore merged with which other university to form NUS?
+  - **Nanyang University (correct)** · Ngee Ann College · Raffles College · Singapore Polytechnic
+  - Source note: NUS was formed on 8 August 1980 by merging the University of Singapore and Nanyang University. Check: NLB Singapore Infopedia, 'National University of Singapore'.
+- `sg-hist-0031` Who became Singapore's first Chief Minister in 1955?
+  - Lim Yew Hock · Toh Chin Chye · Goh Keng Swee · **David Marshall (correct)**
+  - Source note: David Marshall led the Labour Front to form the government after the 1955 election. Check: NLB Singapore Infopedia, 'David Saul Marshall'.
+- `sg-hist-0032` In which year did Singapore attain full internal self-government?
+  - 1955 · 1963 · 1965 · **1959 (correct)**
+  - Source note: Singapore became a self-governing state on 3 June 1959. Check: NLB Singapore Infopedia, 'Singapore attains self-government'.
+- `sg-hist-0033` During the Occupation Singapore was renamed Syonan-to. What does that mean?
+  - Gate of the West · **Light of the South (correct)** · Pearl of the East · Island of the Lion
+  - Source note: Syonan-to means 'Light of the South Island'. Check: NLB Singapore Infopedia, 'Japanese Occupation of Singapore'.
+- `sg-hist-0034` In which building did the British surrender Singapore to the Japanese?
+  - City Hall · **The Ford Factory (correct)** · Fort Canning · Raffles Hotel
+  - Source note: Lieutenant-General Percival surrendered at the Ford Motor Factory in Bukit Timah on 15 February 1942. Check: NLB Singapore Infopedia, 'Former Ford Factory'.
+- `sg-hist-0035` In which building was the Japanese surrender in Singapore signed in September 1945?
+  - **The Municipal Building (correct)** · The Ford Factory · The Cathay Building · Government House
+  - Source note: The ceremony of 12 September 1945 was held in the Municipal Building, later renamed City Hall. Check: NLB Singapore Infopedia, 'City Hall'.
+- `sg-hist-0036` In 1826 Singapore joined Malacca and which other port to form the Straits Settlements?
+  - Batavia · **Penang (correct)** · Bencoolen · Rangoon
+  - Source note: The Straits Settlements of 1826 were Penang, Malacca and Singapore. Check: NLB Singapore Infopedia, 'Straits Settlements'.
+- `sg-hist-0037` The 1822 town plan of Singapore is often named after which engineer who drew it?
+  - George Coleman · John Turnbull Thomson · **Philip Jackson (correct)** · James Brooke
+  - Source note: Lieutenant Philip Jackson drew the Plan of the Town of Singapore, known as the Jackson Plan. Check: NLB Singapore Infopedia, 'Raffles Town Plan (Jackson Plan)'.
+- `sg-hist-0038` Raffles signed the 1819 treaty with Sultan Hussein and which other Malay leader?
+  - Bendahara Ali · Sultan Abu Bakar · **Temenggong Abdul Rahman (correct)** · Raja Haji Fisabilillah
+  - Source note: The treaty of 6 February 1819 was signed with Sultan Hussein Shah and Temenggong Abdul Rahman. Check: NLB Singapore Infopedia, '1819 Singapore Treaty'.
+- `sg-hist-0039` In which year did the Straits Settlements become a British Crown Colony?
+  - 1826 · **1867 (correct)** · 1858 · 1900
+  - Source note: Control passed from India to the Colonial Office in London on 1 April 1867. Check: NLB Singapore Infopedia, 'Straits Settlements'.
+- `sg-hist-0040` On the Singapore flag, what does the white half stand for?
+  - Peace and prosperity · Courage and strength · **Purity and virtue (correct)** · Justice and progress
+  - Source note: White stands for pervading and everlasting purity and virtue. Check: National Heritage Board, 'National Flag'.
+- `sg-hist-0041` Which civil airport opened in Singapore in 1937?
+  - Seletar Airport · Paya Lebar Airport · **Kallang Airport (correct)** · Changi Airport
+  - Source note: Kallang Airport opened on 12 June 1937. Check: NLB Singapore Infopedia, 'Kallang Airport'.
+- `sg-hist-0042` In which year was the Singapore dollar first issued?
+  - **1967 (correct)** · 1959 · 1965 · 1973
+  - Source note: The Board of Commissioners of Currency issued the first Singapore dollar notes on 12 June 1967. Check: Monetary Authority of Singapore, history of Singapore's currency (Orchid series notes, 1967).
+- `sg-hist-0043` Which body built public housing in Singapore before the HDB took over in 1960?
+  - **Singapore Improvement Trust (correct)** · Public Works Department · City Council · Jurong Town Corporation
+  - Source note: The Singapore Improvement Trust (1927) was replaced by the Housing and Development Board on 1 February 1960. Check: NLB Singapore Infopedia, 'Singapore Improvement Trust'.
+- `sg-hist-0044` The ancient Singapore Stone once stood at the mouth of which river?
+  - **Singapore River (correct)** · Kallang River · Rochor River · Seletar River
+  - Source note: The inscribed boulder stood at the river mouth until it was blown up in 1843; a fragment is in the National Museum. Check: NLB Singapore Infopedia, 'Singapore Stone'.
+- `sg-hist-0045` In legend, which strongman hurled the Singapore Stone to the river mouth?
+  - Hang Tuah · Hang Nadim · Hang Jebat · **Badang (correct)**
+  - Source note: The Malay Annals tell of Badang, a strongman at the court of Singapura. Check: NLB Singapore Infopedia, 'Badang'; 'Singapore Stone'.
+- `sg-hist-0046` Which brothers opened Raffles Hotel in 1887?
+  - The Shaw brothers · **The Sarkies brothers (correct)** · The Aw brothers · The Alkaff brothers
+  - Source note: The Armenian Sarkies brothers opened the hotel in 1887. Check: NLB Singapore Infopedia, 'Raffles Hotel'.
+- `sg-hist-0047` In which year did television broadcasting begin in Singapore?
+  - **1963 (correct)** · 1955 · 1969 · 1974
+  - Source note: Television Singapura began a pilot service on 15 February 1963. Check: NLB HistorySG timeline, entry for 15 February 1963 (launch of Television Singapura).
+- `sg-hist-0048` Just before 1819, Singapore was part of which sultanate?
+  - Sultanate of Malacca · **Sultanate of Johor (correct)** · Sultanate of Aceh · Sultanate of Brunei
+  - Source note: Singapore belonged to the Johor (Johor-Riau) Sultanate, administered by the Temenggong. Check: NLB Singapore Infopedia, '1819 Singapore Treaty'.
+- `sg-hist-0049` Parameswara, a ruler of old Singapura, is said to have gone on to found which city?
+  - Palembang · Johor Bahru · **Malacca (correct)** · Penang
+  - Source note: Parameswara fled Singapura and founded Malacca around 1400. Check: Britannica, 'Paramesvara'; NLB Singapore Infopedia, 'Iskandar Shah'.
+- `sg-hist-0050` Which school did the businessman Tan Kah Kee found in Singapore in 1919?
+  - Nanyang Girls' High School · **The Chinese High School (correct)** · Chung Cheng High School · Catholic High School
+  - Source note: Tan Kah Kee founded the Singapore Nanyang Overseas Chinese Middle School (The Chinese High School) in 1919. Check: NLB Singapore Infopedia, 'Tan Kah Kee'.
+- `sg-hist-0051` Yishun is named after which pioneer, once called the 'pineapple king'?
+  - **Lim Nee Soon (correct)** · Lim Boon Keng · Tan Kim Seng · Seah Eu Chin
+  - Source note: 'Yishun' is the Mandarin reading of Nee Soon; Lim Nee Soon was a rubber and pineapple planter. Check: NLB Singapore Infopedia, 'Lim Nee Soon'.
+- `sg-hist-0052` In which city is Sir Stamford Raffles buried?
+  - Singapore · Calcutta · Penang · **London (correct)**
+  - Source note: Raffles died in 1826 and is buried at St Mary's Church, Hendon, in London. Check: NLB Singapore Infopedia, 'Stamford Raffles's career and contributions to Singapore'; Britannica, 'Sir Stamford Raffles'.
+
+## Singapore life (`singapore-life`, 51 questions)
+
+
+### Singapore life: easy (22)
+
+- `sg-life-0001` How many official languages does Singapore have?
+  - Two · **Four (correct)** · Three · Five
+  - Source note: English, Malay, Mandarin and Tamil are the four official languages. Check: Constitution of the Republic of Singapore, Article 153A.
+- `sg-life-0002` The national anthem is sung in which language?
+  - English · **Malay (correct)** · Hokkien · Tamil
+  - Source note: 'Majulah Singapura' is sung in Malay, the national language. Check: National Heritage Board, 'National Anthem'.
+- `sg-life-0003` What does 'Majulah Singapura' mean?
+  - Beloved Singapore · Peaceful Singapore · Beautiful Singapore · **Onward Singapore (correct)**
+  - Source note: The title means 'Onward Singapore'. Check: National Heritage Board, 'National Anthem'.
+- `sg-life-0004` What do the letters MRT stand for?
+  - Metro Rail Transit · Main Road Transport · **Mass Rapid Transit (correct)** · Modern Rail Train
+  - Source note: MRT is the Mass Rapid Transit system. Check: NLB Singapore Infopedia, 'Mass Rapid Transit (MRT) system'.
+- `sg-life-0005` What do the letters HDB stand for?
+  - Home Design Bureau · **Housing and Development Board (correct)** · Housing Department of Buildings · Homes and Dwellings Board
+  - Source note: The Housing and Development Board is the public housing authority. Check: NLB Singapore Infopedia, 'Housing and Development Board'.
+- `sg-life-0006` What colour is the East-West Line on the MRT map?
+  - Red · Purple · **Green (correct)** · Blue
+  - Source note: The East-West Line is green; North-South is red. Check: Land Transport Authority, MRT system map.
+- `sg-life-0007` What is the open ground floor of an HDB block called?
+  - Sky garden · Car porch · Town hall · **Void deck (correct)**
+  - Source note: The void deck is the open space at the foot of an HDB block. Check: NLB Singapore Infopedia, 'Void deck'.
+- `sg-life-0008` To 'chope' a seat at a hawker centre, what do people most famously leave on the table?
+  - A pair of chopsticks · A drink can · A shoe · **A packet of tissues (correct)**
+  - Source note: Reserving a seat with a tissue packet is the best-known way to 'chope'. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'chope'; NLB Singapore Infopedia, 'Hawker centres'.
+- `sg-life-0009` In Singlish, what does 'shiok' mean?
+  - Very tired · **Very enjoyable (correct)** · Very noisy · Very late
+  - Source note: 'Shiok' expresses great pleasure or delight. Check: Oxford English Dictionary, 'shiok'.
+- `sg-life-0010` In Singlish, what does 'makan' mean?
+  - To sleep · **To eat (correct)** · To run · To shop
+  - Source note: 'Makan' is Malay for eat. Check: Kamus Dewan, 'makan'; Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English'.
+- `sg-life-0011` Someone who is 'kiasu' is afraid of what?
+  - Ghost stories · Spicy food · **Losing out (correct)** · Hard work
+  - Source note: 'Kiasu' is Hokkien for afraid to lose. Check: Oxford English Dictionary, 'kiasu'.
+- `sg-life-0012` When you 'tabao' your food, what are you doing?
+  - Sharing it with friends · **Taking it away to eat (correct)** · Eating it very quickly · Sending it back
+  - Source note: 'Tabao' (dabao) means to pack food to take away. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'ta pau'.
+- `sg-life-0013` What is an 'ang bao'?
+  - **A red packet of money (correct)** · A lion dance drum · A paper lantern · A festive biscuit
+  - Source note: An ang bao (hongbao) is a red packet of money given at Chinese New Year and other occasions. Check: NLB Singapore Infopedia, 'Hongbao giving'.
+- `sg-life-0014` Which festival is known as the Festival of Lights?
+  - Hari Raya Haji · Vesak Day · Christmas · **Deepavali (correct)**
+  - Source note: Deepavali (Diwali) is the Hindu Festival of Lights and a public holiday in Singapore. Check: NLB Singapore Infopedia, 'Deepavali'.
+- `sg-life-0015` At Chinese New Year, which fruit do visitors exchange in pairs?
+  - **Mandarin oranges (correct)** · Red apples · Pineapples · Pomelos
+  - Source note: Visitors offer a pair of mandarin oranges to their hosts. Check: NLB Singapore Infopedia, 'Chinese New Year customs in Singapore'.
+- `sg-life-0016` Which number do you call in Singapore for an ambulance or the fire service?
+  - 999 · 911 · 1777 · **995 (correct)**
+  - Source note: 995 is the SCDF emergency line; 999 is the police and 1777 is for non-emergency ambulances. Check: Singapore Civil Defence Force, 'Emergency Medical Services'.
+- `sg-life-0018` Which fruit is famously not allowed on MRT trains?
+  - Jackfruit · Pineapple · **Durian (correct)** · Mango
+  - Source note: Durians may not be brought onto trains because of their smell; 'No durians' signs are displayed in MRT stations. Check: Land Transport Authority and SMRT, rules on what may be brought onto MRT trains.
+- `sg-life-0020` Which of these is an official language of Singapore?
+  - Hindi · Hokkien · **Tamil (correct)** · Cantonese
+  - Source note: The official languages are Malay, Mandarin, Tamil and English. Check: Constitution of the Republic of Singapore, Article 153A.
+- `sg-life-0021` What do the letters PSLE stand for?
+  - Primary Six Learning Exam · Pupil Skills Level Evaluation · **Primary School Leaving Examination (correct)** · Public School Leaving Exercise
+  - Source note: The PSLE is taken at the end of Primary 6. Check: Singapore Examinations and Assessment Board, 'PSLE'.
+- `sg-life-0022` What is the main colour of Singapore's two-dollar note?
+  - **Purple (correct)** · Green · Red · Blue
+  - Source note: In the Portrait series the $2 note is purple, $5 green, $10 red and $50 blue. Check: Monetary Authority of Singapore, 'Portrait series' currency notes.
+- `sg-life-0023` Residents of older HDB flats traditionally hang laundry outside the window on what?
+  - Steel cables · Rope ladders · Plastic hoops · **Bamboo poles (correct)**
+  - Source note: Laundry on bamboo poles slotted into holders outside kitchen windows is a familiar HDB sight. Check: National Heritage Board (Roots), material on life in HDB flats (bamboo pole holders).
+- `sg-life-0025` Which stored-value card for buses and trains was launched in Singapore in 2002?
+  - Octopus · Oyster · **EZ-Link (correct)** · Touch 'n Go
+  - Source note: The EZ-Link card replaced magnetic farecards from April 2002. Check: NLB Singapore Infopedia, 'EZ-Link card'.
+
+### Singapore life: medium (21)
+
+- `sg-life-0024` What is Singapore's national language?
+  - English · **Malay (correct)** · Mandarin · Tamil
+  - Source note: Malay is the national language; all four languages are official. Check: Constitution of the Republic of Singapore, Article 153A.
+- `sg-life-0026` What do the letters ERP stand for on Singapore's roads?
+  - Express Road Pass · **Electronic Road Pricing (correct)** · Evening Rush Period · Estate Road Permit
+  - Source note: Electronic Road Pricing began in 1998. Check: NLB Singapore Infopedia, 'Electronic Road Pricing'.
+- `sg-life-0027` What colour is the North East Line on the MRT map?
+  - Yellow · Brown · **Purple (correct)** · Blue
+  - Source note: The North East Line is purple; the Circle Line is orange-yellow, Downtown blue and Thomson-East Coast brown. Check: Land Transport Authority, MRT system map.
+- `sg-life-0028` In Singlish, what does 'paiseh' mean?
+  - Hungry · Lucky · **Embarrassed (correct)** · Sleepy
+  - Source note: 'Paiseh' is Hokkien for embarrassed or shy. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'paiseh'.
+- `sg-life-0029` A 'kaypoh' person is someone who is what?
+  - Stingy · Clumsy · Bossy · **Nosy (correct)**
+  - Source note: A kaypoh is a busybody. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'kaypoh'.
+- `sg-life-0030` If a friend says 'bo jio', what are they complaining about?
+  - **They were not invited (correct)** · The food was too spicy · The queue was too long · They lost a game
+  - Source note: 'Bo jio' is Hokkien for 'did not invite'. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'bo jio'.
+- `sg-life-0031` In Singlish, a restaurant described as 'atas' is what?
+  - **Posh (correct)** · Very crowded · Very cheap · Old-fashioned
+  - Source note: 'Atas', Malay for 'above', means high-class or snobbish in Singlish. Check: Oxford English Dictionary, 'atas'.
+- `sg-life-0032` The word 'kopitiam' joins the Malay for coffee with the Hokkien for what?
+  - Cup · Uncle · **Shop (correct)** · Morning
+  - Source note: 'Kopi' is Malay for coffee and 'tiam' Hokkien for shop. Check: NLB Singapore Infopedia, 'Kopitiam'.
+- `sg-life-0033` The Singlish word 'makan' comes from which language?
+  - Hokkien · Tamil · **Malay (correct)** · Cantonese
+  - Source note: 'Makan' is a Malay word. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'makan'.
+- `sg-life-0034` When reciting the National Pledge, where do people place their right fist?
+  - On the forehead · On the left shoulder · Behind the back · **Over the heart (correct)**
+  - Source note: The pledge is taken with the right fist clenched over the heart. Check: National Heritage Board, 'National Pledge'.
+- `sg-life-0035` Hari Raya Puasa is celebrated at the end of which month of fasting?
+  - Syawal · Muharram · Safar · **Ramadan (correct)**
+  - Source note: Hari Raya Puasa (Aidilfitri) falls on the first day of Syawal, after the fasting month of Ramadan. Check: NLB Singapore Infopedia, 'Hari Raya Puasa'.
+- `sg-life-0036` How many days of public holiday does Singapore have for Chinese New Year?
+  - One · Three · Fifteen · **Two (correct)**
+  - Source note: The first two days of the lunar new year are public holidays. Check: Ministry of Manpower, 'Public holidays'; Holidays Act.
+- `sg-life-0037` Whose portrait is on the front of Singapore's Portrait series notes, issued from 1999?
+  - Lee Kuan Yew · Stamford Raffles · Zubir Said · **Yusof Ishak (correct)**
+  - Source note: The Portrait series, issued from 1999, shows the first President, Yusof Ishak. Check: Monetary Authority of Singapore, 'Portrait series' currency notes.
+- `sg-life-0038` The import and sale of which sweet treat was banned in Singapore in 1992?
+  - Candy floss · **Chewing gum (correct)** · Lollipops · Bubble tea
+  - Source note: The ban on importing and selling chewing gum took effect in January 1992. Check: NLB Singapore Infopedia, 'Chewing gum ban'.
+- `sg-life-0039` What do the letters CCA stand for in Singapore schools?
+  - **Co-Curricular Activity (correct)** · Class Committee Award · Child Care Allowance · Core Curriculum Area
+  - Source note: CCA stands for co-curricular activity, formerly called extra-curricular activity (ECA). Check: Ministry of Education, 'Co-curricular activities'.
+- `sg-life-0040` On which island do most National Service recruits begin their training?
+  - Pulau Ubin · **Pulau Tekong (correct)** · Sentosa · Pulau Brani
+  - Source note: The Basic Military Training Centre is on Pulau Tekong. Check: NLB Singapore Infopedia, 'Pulau Tekong'; MINDEF, 'Basic Military Training'.
+- `sg-life-0041` What is NEWater?
+  - Bottled spring water · Filtered rainwater · **Purified recycled water (correct)** · Desalinated seawater
+  - Source note: NEWater is high-grade reclaimed water made from treated used water. Check: PUB, 'NEWater'.
+- `sg-life-0043` What is the name of the lion mascot of Singapore's courtesy and kindness campaigns?
+  - Merli · Nila · Sharity · **Singa (correct)**
+  - Source note: Singa the Lion was introduced in 1982 for the National Courtesy Campaign. Check: NLB Singapore Infopedia, 'Singa the Courtesy Lion'.
+- `sg-life-0049` In National Service, what do the letters BMT stand for?
+  - Battalion March Test · **Basic Military Training (correct)** · Base Medical Team · Border Mission Tour
+  - Source note: BMT is Basic Military Training. Check: MINDEF, 'Basic Military Training'.
+- `sg-life-0051` What do the letters COE stand for in Singapore?
+  - Cost of Engine · Car Owner's Excise · Class of Emission · **Certificate of Entitlement (correct)**
+  - Source note: A Certificate of Entitlement gives the right to register and use a vehicle for 10 years. Check: Land Transport Authority, 'Certificate of Entitlement'; NLB Singapore Infopedia, 'Certificate of Entitlement'.
+- `sg-life-0054` What do the letters CPF stand for?
+  - Citizens' Pension Fund · Community Payment Facility · **Central Provident Fund (correct)** · Central Public Finance
+  - Source note: The Central Provident Fund, set up in 1955, is the compulsory savings scheme. Check: NLB Singapore Infopedia, 'Central Provident Fund'.
+
+### Singapore life: hard (8)
+
+- `sg-life-0044` The Singlish word 'kiasu' comes from which Chinese dialect?
+  - Cantonese · **Hokkien (correct)** · Teochew · Hainanese
+  - Source note: 'Kiasu' is from Hokkien 'kia' (afraid) and 'su' (lose). Check: Oxford English Dictionary, 'kiasu'.
+- `sg-life-0045` In Singlish, what does 'gostan' mean?
+  - **Go backwards (correct)** · Speed up · Turn left · Stop at once
+  - Source note: 'Gostan' means to reverse, from the nautical 'go astern'. Check: Jack Tsen-Ta Lee, 'A Dictionary of Singlish and Singapore English', 'gostan'.
+- `sg-life-0046` Who wrote the words of the Singapore National Pledge in 1966?
+  - Zubir Said · **S. Rajaratnam (correct)** · Goh Keng Swee · Toh Chin Chye
+  - Source note: S. Rajaratnam, then Minister for Foreign Affairs, drafted the pledge in 1966. Check: National Heritage Board, 'National Pledge'; NLB Singapore Infopedia, 'National Pledge'.
+- `sg-life-0047` On which date do Singapore schools mark Racial Harmony Day?
+  - **21 July (correct)** · 15 February · 1 July · 9 August
+  - Source note: Racial Harmony Day has been observed on 21 July since 1997. Check: NLB Singapore Infopedia, 'Racial Harmony Day'.
+- `sg-life-0048` In which year did National Service begin for young men in Singapore?
+  - 1959 · **1967 (correct)** · 1965 · 1971
+  - Source note: The National Service (Amendment) Act was passed in March 1967 and the first batch enlisted that year. Check: NLB Singapore Infopedia, 'National Service: Early years'.
+- `sg-life-0050` What is Singapore's standard time?
+  - UTC+7 · UTC+7:30 · UTC+9 · **UTC+8 (correct)**
+  - Source note: Singapore Standard Time has been 8 hours ahead of UTC since 1 January 1982. Check: NLB Singapore Infopedia, 'Singapore Standard Time'.
+- `sg-life-0052` In which year did ERP gantries start charging on Singapore's roads?
+  - 1990 · 2003 · **1998 (correct)** · 2008
+  - Source note: ERP replaced the manual Area Licensing Scheme in 1998. Check: NLB Singapore Infopedia, 'Electronic Road Pricing'.
+- `sg-life-0053` The Tembusu tree is pictured on the back of which Singapore note?
+  - Two-dollar note · Ten-dollar note · Fifty-dollar note · **Five-dollar note (correct)**
+  - Source note: The $5 Portrait series note (theme: Garden City) shows the old tembusu tree of the Botanic Gardens. Check: Monetary Authority of Singapore, 'Portrait series' currency notes.
+
+## Singapore nature (`singapore-nature`, 46 questions)
+
+
+### Singapore nature: easy (12)
+
+- `sg-nat-0001` What is Singapore's national flower?
+  - Red hibiscus · **Vanda Miss Joaquim (correct)** · White frangipani · Pink lotus
+  - Source note: The orchid Vanda Miss Joaquim (Papilionanthe Miss Joaquim) is the national flower. Check: NParks, 'National Flower'; NLB Singapore Infopedia, 'Vanda Miss Joaquim'.
+- `sg-nat-0002` Which large lizard is often seen swimming in Singapore's canals and reservoirs?
+  - Komodo dragon · **Water monitor (correct)** · Frilled lizard · Gila monster
+  - Source note: The Malayan water monitor (Varanus salvator) is common near water. Check: NParks, 'Monitor lizards'.
+- `sg-nat-0003` The red junglefowl seen in Singapore is the wild ancestor of which farm bird?
+  - Duck · Turkey · Goose · **Chicken (correct)**
+  - Source note: The red junglefowl (Gallus gallus) is the ancestor of the domestic chicken. Check: NParks Flora and Fauna Web, 'Gallus gallus'; Britannica, 'chicken'.
+- `sg-nat-0004` What kind of climate does Singapore have?
+  - **Tropical (correct)** · Desert · Temperate · Polar
+  - Source note: Singapore has a tropical rainforest climate: warm, humid and rainy all year. Check: Meteorological Service Singapore, 'Climate of Singapore'.
+- `sg-nat-0006` Which fish, often seen at Sungei Buloh, can move about on mud out of the water?
+  - **Mudskipper (correct)** · Catfish · Seahorse · Stingray
+  - Source note: Mudskippers live on mangrove mudflats and breathe air through their skin. Check: NParks, 'Sungei Buloh Wetland Reserve'; Britannica, 'mudskipper'.
+- `sg-nat-0008` Pitcher plants in Singapore's forests trap what in their 'pitchers'?
+  - Raindrops only · **Insects (correct)** · Small birds · Falling seeds
+  - Source note: Nepenthes pitcher plants trap and digest insects. Check: NParks Flora and Fauna Web, 'Nepenthes'.
+- `sg-nat-0010` Which wild animals are often seen swimming in family groups in Singapore's rivers and bays?
+  - **Otters (correct)** · Beavers · Seals · Capybaras
+  - Source note: Families of smooth-coated otters live along Singapore's waterways. Check: NParks, 'Otters'.
+- `sg-nat-0011` In Malay, what does 'orang utan' mean?
+  - **Person of the forest (correct)** · Red monkey · Long arms · Tree climber
+  - Source note: 'Orang' is person and 'hutan' is forest. Check: Britannica, 'orangutan'; Kamus Dewan, 'orang utan'.
+- `sg-nat-0012` What colour are the flowers of Vanda Miss Joaquim?
+  - Bright yellow · Pure white · Deep blue · **Pinkish purple (correct)**
+  - Source note: The flower is rosy violet to mauve with an orange patch on its lip. Check: NParks, 'National Flower'.
+- `sg-nat-0013` Which monkey is the one most often seen in Singapore's parks and forests?
+  - Proboscis monkey · **Long-tailed macaque (correct)** · Golden langur · Spider monkey
+  - Source note: The long-tailed macaque (Macaca fascicularis) is Singapore's most common monkey. Check: NParks, 'Long-tailed macaques'.
+- `sg-nat-0015` What type of flower is Vanda Miss Joaquim?
+  - A lily · **An orchid (correct)** · A rose · A jasmine
+  - Source note: It is a hybrid orchid named after Agnes Joaquim and first described in 1893. Check: NLB Singapore Infopedia, 'Vanda Miss Joaquim'.
+- `sg-nat-0029` The giant flower Rafflesia is named after which person?
+  - Charles Darwin · Sir Joseph Banks · **Sir Stamford Raffles (correct)** · Alfred Russel Wallace
+  - Source note: Rafflesia arnoldii was named after Raffles and the naturalist Joseph Arnold, who collected it in Sumatra in 1818. Check: Britannica, 'Rafflesiaceae'.
+
+### Singapore nature: medium (19)
+
+- `sg-nat-0005` Ah Meng, the Singapore Zoo's most famous resident, was which kind of animal?
+  - **Orang utan (correct)** · Polar bear · White tiger · Giant panda
+  - Source note: Ah Meng (about 1960 to 2008) was a Sumatran orang utan. Check: NLB Singapore Infopedia, 'Ah Meng'.
+- `sg-nat-0007` Which agency looks after Singapore's parks and nature reserves?
+  - PUB · LTA · NEA · **NParks (correct)**
+  - Source note: The National Parks Board (NParks) manages parks, nature reserves and roadside greenery. Check: NParks, 'About us'.
+- `sg-nat-0009` Wild orang utans live only on Sumatra and which other island?
+  - **Borneo (correct)** · Java · Sulawesi · Singapore
+  - Source note: Wild orang utans are found only on Borneo and Sumatra. Check: Britannica, 'orangutan'.
+- `sg-nat-0014` Roughly how tall is Bukit Timah Hill?
+  - **About 164 metres (correct)** · About 64 metres · About 464 metres · About 964 metres
+  - Source note: The summit is 163.63 metres above sea level. Check: NParks, 'Bukit Timah Nature Reserve'.
+- `sg-nat-0016` Which species of otter is the one commonly seen in Singapore?
+  - Sea otter · Giant otter · **Smooth-coated otter (correct)** · Marine otter
+  - Source note: The smooth-coated otter (Lutrogale perspicillata) is the common species; the small-clawed otter is rare. Check: NParks, 'Otters'.
+- `sg-nat-0017` Sungei Buloh Wetland Reserve is best known as a stopover for what?
+  - Sea turtles · Fruit bats · **Migratory birds (correct)** · Wild elephants
+  - Source note: Shorebirds on the East Asian-Australasian Flyway stop at Sungei Buloh each year. Check: NParks, 'Sungei Buloh Wetland Reserve'.
+- `sg-nat-0018` What kind of forest grows along the muddy shore at Sungei Buloh?
+  - **Mangrove forest (correct)** · Pine forest · Bamboo forest · Cloud forest
+  - Source note: Sungei Buloh protects mangroves, mudflats and ponds. Check: NParks, 'Sungei Buloh Wetland Reserve'.
+- `sg-nat-0019` Inuka, born at the Singapore Zoo in 1990, was which animal?
+  - Orang utan · White rhino · Pygmy hippo · **Polar bear (correct)**
+  - Source note: Inuka (1990 to 2018) was the first polar bear born in the tropics. Check: NLB Singapore Infopedia, 'Inuka'; Mandai Wildlife Group, 'Inuka'.
+- `sg-nat-0020` Which roadside tree in Singapore is known for its wide umbrella-shaped crown?
+  - Casuarina · **Rain tree (correct)** · Coconut palm · Traveller's palm
+  - Source note: The rain tree (Samanea saman) has a broad umbrella-shaped crown and is widely planted for shade. Check: NParks Flora and Fauna Web, 'Samanea saman'.
+- `sg-nat-0021` What colour are the flowers of the angsana tree?
+  - **Yellow (correct)** · White · Pink · Purple
+  - Source note: The angsana (Pterocarpus indicus) bursts into fragrant yellow flowers, often after a dry spell. Check: NParks Flora and Fauna Web, 'Pterocarpus indicus'.
+- `sg-nat-0022` Which big cat lived wild in Singapore until the 1930s?
+  - Lion · **Tiger (correct)** · Cheetah · Jaguar
+  - Source note: Tigers were common in the 19th century; the last wild ones were recorded in the 1930s. Check: NLB Singapore Infopedia, 'Tigers in Singapore'.
+- `sg-nat-0023` Which scaly, ant-eating mammal lives in Singapore's forests?
+  - **Sunda pangolin (correct)** · Armadillo · Echidna · Aardvark
+  - Source note: The Sunda pangolin (Manis javanica) is native and critically endangered. Check: NParks, 'Sunda pangolin'.
+- `sg-nat-0024` How does the Malayan colugo travel from tree to tree?
+  - It swings by its tail · **It glides (correct)** · It hops along the ground · It flaps its wings
+  - Source note: The colugo glides on a membrane of skin stretched between its limbs. Check: NParks Flora and Fauna Web, 'Galeopterus variegatus'.
+- `sg-nat-0025` Dugongs, occasionally recorded in Singapore's waters, feed mainly on what?
+  - Jellyfish · **Seagrass (correct)** · Small fish · Coral
+  - Source note: Dugongs graze on seagrass; feeding trails have been found at Chek Jawa and Changi. Check: NParks, 'Chek Jawa Wetlands'; Britannica, 'dugong'.
+- `sg-nat-0026` The Sisters' Islands are the heart of Singapore's first what?
+  - Bird sanctuary · Geopark · **Marine park (correct)** · Turtle hatchery
+  - Source note: Sisters' Islands Marine Park was designated in 2014. Check: NParks, 'Sisters' Islands Marine Park'.
+- `sg-nat-0027` The TreeTop Walk suspension bridge is in which nature reserve?
+  - **Central Catchment (correct)** · Bukit Timah · Labrador · Sungei Buloh
+  - Source note: The 250-metre TreeTop Walk links two high points near MacRitchie in the Central Catchment Nature Reserve. Check: NParks, 'TreeTop Walk'.
+- `sg-nat-0028` The rambutan gets its name from the Malay word 'rambut'. What does 'rambut' mean?
+  - **Hair (correct)** · Red · Sweet · Lantern
+  - Source note: 'Rambut' means hair, for the fruit's hairy skin. Check: Kamus Dewan, 'rambut'; Britannica, 'rambutan'.
+- `sg-nat-0031` Horseshoe crabs live on Singapore's mudflats. What colour is their blood?
+  - Green · **Blue (correct)** · Red · Clear
+  - Source note: Horseshoe crab blood is blue because it carries oxygen with copper-based haemocyanin. Check: Britannica, 'horseshoe crab'; Nature Society (Singapore), Horseshoe Crab Rescue and Research.
+- `sg-nat-0032` What colour is the black-naped oriole, a common garden bird in Singapore?
+  - Bright blue · Bright red · Bright green · **Bright yellow (correct)**
+  - Source note: The black-naped oriole is golden yellow with a black band through the eye to the nape. Check: NParks Flora and Fauna Web, 'Oriolus chinensis'.
+
+### Singapore nature: hard (15)
+
+- `sg-nat-0035` In which year did Singapore choose its national flower?
+  - 1965 · 1971 · 1990 · **1981 (correct)**
+  - Source note: It was chosen on 15 April 1981. Check: NLB Singapore Infopedia, 'Vanda Miss Joaquim'; NParks, 'National Flower'.
+- `sg-nat-0036` Which rare black-and-white monkey lives in the Central Catchment Nature Reserve?
+  - Silvered leaf monkey · White-handed gibbon · **Raffles' banded langur (correct)** · Pig-tailed macaque
+  - Source note: Raffles' banded langur (Presbytis femoralis) survives in small numbers in the Central Catchment. Check: NParks, 'Raffles' banded langur'.
+- `sg-nat-0037` Which bird topped a 2015 Nature Society poll to choose a national bird for Singapore?
+  - Olive-backed sunbird · Javan myna · **Crimson sunbird (correct)** · Black-naped oriole
+  - Source note: The crimson sunbird won the Nature Society (Singapore) Bird Group's public poll in 2015. Check: Nature Society (Singapore), national bird poll 2015.
+- `sg-nat-0038` Which hornbill has made a comeback in Singapore since the 1990s?
+  - Rhinoceros hornbill · Great hornbill · Helmeted hornbill · **Oriental pied hornbill (correct)**
+  - Source note: Oriental pied hornbills returned to Pulau Ubin in the 1990s and have since spread across the main island. Check: NParks, 'Oriental pied hornbill' (Singapore Hornbill Project).
+- `sg-nat-0039` Which monsoon usually brings Singapore's wettest weather, around December?
+  - Southwest Monsoon · Southeast Monsoon · Northwest Monsoon · **Northeast Monsoon (correct)**
+  - Source note: The wet phase of the Northeast Monsoon (December and January) brings the heaviest rain. Check: Meteorological Service Singapore, 'Climate of Singapore'.
+- `sg-nat-0040` Which wild cat still lives in Singapore's forests?
+  - **Leopard cat (correct)** · Clouded leopard · Fishing cat · Marbled cat
+  - Source note: The leopard cat (Prionailurus bengalensis) is Singapore's last surviving wild cat. Check: NParks Flora and Fauna Web, 'Prionailurus bengalensis'.
+- `sg-nat-0041` Which species of crocodile is sometimes seen at Sungei Buloh?
+  - **Estuarine crocodile (correct)** · Nile crocodile · Siamese crocodile · Mugger crocodile
+  - Source note: The estuarine or saltwater crocodile (Crocodylus porosus) lives in the reserve. Check: NParks, 'Estuarine crocodiles'.
+- `sg-nat-0042` How many nature reserves does Singapore have?
+  - Two · Six · **Four (correct)** · Eight
+  - Source note: Bukit Timah, Central Catchment, Sungei Buloh Wetland Reserve and Labrador are the four gazetted nature reserves. Check: NParks, 'Nature reserves'; Parks and Trees Act, Schedule.
+- `sg-nat-0043` Which nature reserve on the southern coast protects a rocky shore and coastal cliff?
+  - Sungei Buloh · Bukit Timah · **Labrador (correct)** · Central Catchment
+  - Source note: Labrador Nature Reserve has the main island's last rocky shore and a coastal cliff forest. Check: NParks, 'Labrador Nature Reserve'.
+- `sg-nat-0044` Which myna, with white under its tail, is the most common in Singapore?
+  - Common myna · **Javan myna (correct)** · Hill myna · Crested myna
+  - Source note: The introduced Javan (white-vented) myna has outnumbered the native common myna for decades. Check: NParks Flora and Fauna Web, 'Acridotheres javanicus'.
+- `sg-nat-0045` Tampines takes its name from the tempinis. What is a tempinis?
+  - A river fish · A wild orchid · A sea snail · **A timber tree (correct)**
+  - Source note: The tempinis (Streblus elongatus) is a hardwood tree once common in the area. Check: NLB Singapore Infopedia, 'Tampines'; NParks Flora and Fauna Web, 'Streblus elongatus'.
+- `sg-nat-0046` The Malayan colugo is also known by which misleading name?
+  - Flying fox · Tree shrew · **Flying lemur (correct)** · Slow loris
+  - Source note: The colugo is called the flying lemur, though it neither flies nor is a lemur. Check: Britannica, 'flying lemur'; NParks Flora and Fauna Web, 'Galeopterus variegatus'.
+- `sg-nat-0048` Henry Ridley of the Botanic Gardens was nicknamed 'Mad Ridley' for promoting which crop?
+  - **Rubber (correct)** · Pepper · Gambier · Oil palm
+  - Source note: Ridley, director from 1888, developed rubber tapping methods and urged planters to grow rubber. Check: NLB Singapore Infopedia, 'Henry Nicholas Ridley'.
+- `sg-nat-0049` Which crops did Chinese planters grow widely in Singapore in the early 1800s?
+  - **Gambier and pepper (correct)** · Tea and coffee · Rice and sugar · Cocoa and vanilla
+  - Source note: Gambier and pepper plantations covered much of the island's interior in the 19th century. Check: NLB Singapore Infopedia, 'Gambier'.
+- `sg-nat-0050` Sungei Buloh's name comes from the Malay word 'buloh'. What does 'buloh' mean?
+  - **Bamboo (correct)** · Mud · Heron · Crab
+  - Source note: 'Buloh' (buluh) is bamboo: 'bamboo river'. Check: Kamus Dewan, 'buluh'; NLB Singapore Infopedia, 'Sungei Buloh Wetland Reserve'.
+
+## Singapore places (`singapore-places`, 54 questions)
+
+
+### Singapore places: easy (18)
+
+- `sg-place-0001` What is the name of Singapore's main international airport?
+  - Seletar Airport · Paya Lebar Airport · **Changi Airport (correct)** · Kallang Airport
+  - Source note: Changi Airport is Singapore's main civilian international airport. Check: NLB Singapore Infopedia, 'Singapore Changi Airport'.
+- `sg-place-0002` On which island would you find Universal Studios Singapore?
+  - **Sentosa (correct)** · Pulau Ubin · Kusu Island · St John's Island
+  - Source note: Universal Studios Singapore is in Resorts World Sentosa. Check: Sentosa Development Corporation, 'Universal Studios Singapore'.
+- `sg-place-0003` The Merlion has the head of a lion and the body of what?
+  - A dragon · **A fish (correct)** · A turtle · A snake
+  - Source note: The Merlion is half lion, half fish. Check: NLB Singapore Infopedia, 'Merlion'.
+- `sg-place-0004` Which road is Singapore's best-known shopping street?
+  - Bukit Timah Road · Serangoon Road · Upper Thomson Road · **Orchard Road (correct)**
+  - Source note: Orchard Road is the main shopping belt. Check: NLB Singapore Infopedia, 'Orchard Road'.
+- `sg-place-0005` What are the giant tree-like structures at Gardens by the Bay called?
+  - **Supertrees (correct)** · Skytrees · Megatrees · Cloud Trees
+  - Source note: The vertical gardens are named Supertrees. Check: Gardens by the Bay, 'Supertree Grove'.
+- `sg-place-0006` The Causeway connects Singapore to which country?
+  - **Malaysia (correct)** · Indonesia · Thailand · Brunei
+  - Source note: The Johor-Singapore Causeway opened in 1924 and links Woodlands to Johor Bahru. Check: NLB Singapore Infopedia, 'The Causeway'.
+- `sg-place-0007` What does the Malay word 'pulau' mean, as in Pulau Ubin?
+  - Beach · Village · River · **Island (correct)**
+  - Source note: 'Pulau' means island. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'pulau'.
+- `sg-place-0008` What does the Malay word 'bukit' mean, as in Bukit Timah and Bukit Batok?
+  - Forest · Lake · **Hill (correct)** · Road
+  - Source note: 'Bukit' means hill. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'bukit'.
+- `sg-place-0009` The Esplanade theatres are nicknamed after which spiky fruit?
+  - **Durian (correct)** · Pineapple · Jackfruit · Rambutan
+  - Source note: The spiked domes earned the Esplanade the nickname 'the Durian'. Check: NLB Singapore Infopedia, 'Esplanade - Theatres on the Bay'.
+- `sg-place-0010` How many hotel towers hold up the SkyPark at Marina Bay Sands?
+  - **Three (correct)** · Two · Four · Five
+  - Source note: Marina Bay Sands has three 55-storey hotel towers joined at the top by the SkyPark. Check: NLB Singapore Infopedia, 'Marina Bay Sands'.
+- `sg-place-0011` Which river flows past Boat Quay and Clarke Quay?
+  - Kallang River · Rochor River · Geylang River · **Singapore River (correct)**
+  - Source note: Boat Quay, Clarke Quay and Robertson Quay line the Singapore River. Check: NLB Singapore Infopedia, 'Singapore River (historical overview)'.
+- `sg-place-0012` The cable car from Mount Faber takes you to which island?
+  - Pulau Ubin · Kusu Island · Pulau Tekong · **Sentosa (correct)**
+  - Source note: The Singapore Cable Car has linked Mount Faber and Sentosa since 1974. Check: NLB Singapore Infopedia, 'Singapore Cable Car'.
+- `sg-place-0013` What kind of attraction is the Singapore Flyer?
+  - A roller coaster · A river boat ride · **A giant observation wheel (correct)** · A cable car line
+  - Source note: The Singapore Flyer is a 165-metre observation wheel at Marina Bay. Check: NLB Singapore Infopedia, 'Singapore Flyer'.
+- `sg-place-0014` Which wildlife park in Mandai opens after dark to show animals active at night?
+  - River Wonders · **Night Safari (correct)** · Bird Paradise · Rainforest Wild
+  - Source note: The Night Safari opened in 1994 as a park for nocturnal animals. Check: NLB Singapore Infopedia, 'Night Safari'.
+- `sg-place-0015` Which country lies to the south of Singapore, across the Singapore Strait?
+  - Thailand · Vietnam · **Indonesia (correct)** · Brunei
+  - Source note: Indonesia's Riau Islands (Batam, Bintan) lie south of the Singapore Strait. Check: Britannica, 'Singapore Strait'.
+- `sg-place-0017` Changi Airport is at which end of Singapore's main island?
+  - Western end · Northern end · **Eastern end (correct)** · Southern end
+  - Source note: Changi is at the eastern tip of the main island. Check: NLB Singapore Infopedia, 'Singapore Changi Airport'.
+- `sg-place-0018` Which garden inside the Singapore Botanic Gardens shows over 1,000 orchid species?
+  - National Rose Garden · National Lily Garden · National Lotus Garden · **National Orchid Garden (correct)**
+  - Source note: The National Orchid Garden, opened in 1995, displays over 1,000 orchid species and 2,000 hybrids. Check: NParks, 'National Orchid Garden'.
+- `sg-place-0019` Which long park runs along Singapore's south-eastern shore?
+  - **East Coast Park (correct)** · West Coast Park · Pasir Ris Park · Labrador Park
+  - Source note: East Coast Park stretches about 15 km along the south-eastern coast on reclaimed land. Check: NParks, 'East Coast Park'.
+
+### Singapore places: medium (19)
+
+- `sg-place-0016` Roughly how far north of the equator is Singapore?
+  - About 10 degrees · About 20 degrees · About 30 degrees · **About 1 degree (correct)**
+  - Source note: Singapore is about 1 degree 17 minutes north of the equator. Check: Britannica, 'Singapore'.
+- `sg-place-0020` The Causeway links Woodlands in Singapore to which city?
+  - Melaka · Kuala Lumpur · Kota Tinggi · **Johor Bahru (correct)**
+  - Source note: The Causeway runs from Woodlands to Johor Bahru. Check: NLB Singapore Infopedia, 'The Causeway'.
+- `sg-place-0021` The Second Link bridge to Malaysia leaves Singapore from which area?
+  - Woodlands · Changi · **Tuas (correct)** · Punggol
+  - Source note: The Malaysia-Singapore Second Link (1998) joins Tuas to Tanjung Kupang in Johor. Check: NLB Singapore Infopedia, 'Malaysia-Singapore Second Link'.
+- `sg-place-0022` Which strait separates Singapore from Peninsular Malaysia?
+  - **Johor Strait (correct)** · Singapore Strait · Malacca Strait · Sunda Strait
+  - Source note: The Johor Strait (Straits of Johor) lies between Singapore and Johor. Check: Britannica, 'Johor Strait'.
+- `sg-place-0023` What does the Malay word 'pasir' mean, as in Pasir Ris and Pasir Panjang?
+  - Rock · **Sand (correct)** · Mud · Wind
+  - Source note: 'Pasir' means sand; Pasir Panjang is 'long sand'. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'pasir'.
+- `sg-place-0024` Pulau Ubin's name refers to which material once quarried there?
+  - **Granite (correct)** · Limestone · Marble · Sandstone
+  - Source note: Pulau Ubin means 'granite island'; its quarries supplied granite for buildings such as Horsburgh Lighthouse. Check: NLB Singapore Infopedia, 'Pulau Ubin'.
+- `sg-place-0025` The name 'Sentosa' comes from a Malay word meaning what?
+  - Golden sands · Safe harbour · **Peace and tranquillity (correct)** · Island of the sun
+  - Source note: 'Sentosa' means peace and tranquillity. Check: NLB Singapore Infopedia, 'Sentosa'.
+- `sg-place-0026` Chek Jawa, known for its wetlands, is at the eastern end of which island?
+  - Sentosa · Pulau Tekong · **Pulau Ubin (correct)** · Pulau Semakau
+  - Source note: Chek Jawa Wetlands are at the eastern tip of Pulau Ubin. Check: NParks, 'Chek Jawa Wetlands'.
+- `sg-place-0027` The shape of the Helix Bridge at Marina Bay was inspired by what?
+  - **The structure of DNA (correct)** · A dragon's tail · A spiral seashell · A coil of rope
+  - Source note: The double-helix footbridge was modelled on the structure of DNA. Check: NLB Singapore Infopedia, 'The Helix Bridge'.
+- `sg-place-0028` Which place in Singapore became a UNESCO World Heritage Site in 2015?
+  - Fort Canning Park · Chinatown · **Singapore Botanic Gardens (correct)** · Pulau Ubin
+  - Source note: The Singapore Botanic Gardens was inscribed on 4 July 2015. Check: UNESCO World Heritage List, 'Singapore Botanic Gardens'.
+- `sg-place-0029` Serangoon Road is the main street of which historic district?
+  - **Little India (correct)** · Chinatown · Kampong Glam · Joo Chiat
+  - Source note: Serangoon Road runs through the heart of Little India. Check: NLB Singapore Infopedia, 'Little India'; 'Serangoon Road'.
+- `sg-place-0030` Arab Street and Haji Lane are in which historic district?
+  - Little India · Chinatown · Tiong Bahru · **Kampong Glam (correct)**
+  - Source note: Arab Street, Haji Lane and Bussorah Street are in Kampong Glam. Check: NLB Singapore Infopedia, 'Kampong Glam'.
+- `sg-place-0031` Which riverside building was the General Post Office before it became a hotel?
+  - Raffles Hotel · The Arts House · **The Fullerton Building (correct)** · Capitol Building
+  - Source note: The Fullerton Building (1928) housed the General Post Office until 1996 and reopened as a hotel in 2001. Check: NLB Singapore Infopedia, 'Fullerton Building'.
+- `sg-place-0032` Haw Par Villa was built by the brothers behind which brand?
+  - Axe Brand Oil · Three Legs · Eagle Brand · **Tiger Balm (correct)**
+  - Source note: Aw Boon Haw built the villa and gardens for his brother Aw Boon Par in 1937; the family made Tiger Balm. Check: NLB Singapore Infopedia, 'Haw Par Villa (Tiger Balm Gardens)'.
+- `sg-place-0033` The name of the food centre Lau Pa Sat means what?
+  - **Old market (correct)** · New kitchen · Big table · Iron house
+  - Source note: 'Lau pa sat' is Hokkien for old market; it is the former Telok Ayer Market. Check: NLB Singapore Infopedia, 'Lau Pa Sat (Telok Ayer Market)'.
+- `sg-place-0034` What does the Malay word 'padang' mean, as in the Padang in front of City Hall?
+  - **Field (correct)** · Square · Garden · Stage
+  - Source note: 'Padang' means field. Check: Kamus Dewan, 'padang'; NLB Singapore Infopedia, 'Padang'.
+- `sg-place-0035` What is the indoor waterfall at Jewel Changi Airport called?
+  - Sky Cascade · Cloud Falls · **Rain Vortex (correct)** · Crystal Curtain
+  - Source note: The 40-metre Rain Vortex is the centrepiece of Jewel, which opened in 2019. Check: Jewel Changi Airport, 'Rain Vortex'.
+- `sg-place-0036` Kusu Island's name means what in Hokkien?
+  - Crab Island · Monkey Island · Snake Island · **Tortoise Island (correct)**
+  - Source note: 'Kusu' means tortoise or turtle in Hokkien. Check: NLB Singapore Infopedia, 'Kusu Island'.
+- `sg-place-0037` Singapore sits at the southern tip of which peninsula?
+  - Indochina Peninsula · **Malay Peninsula (correct)** · Korean Peninsula · Arabian Peninsula
+  - Source note: Singapore lies off the southern tip of the Malay Peninsula. Check: Britannica, 'Singapore'.
+
+### Singapore places: hard (17)
+
+- `sg-place-0038` What was Sentosa called before it was renamed?
+  - Pulau Brani · Pulau Bukom · Pulau Sudong · **Pulau Blakang Mati (correct)**
+  - Source note: The island was Pulau Blakang Mati until it was renamed Sentosa after a public naming contest around 1970. Check: NLB Singapore Infopedia, 'Sentosa'.
+- `sg-place-0039` Which is the longest river in Singapore?
+  - Singapore River · **Kallang River (correct)** · Rochor River · Geylang River
+  - Source note: The Kallang River, about 10 km from Lower Peirce Reservoir to Kallang Basin, is the longest. Check: PUB, 'Kallang River'; NLB Singapore Infopedia, 'Kallang River'.
+- `sg-place-0040` Fort Canning Hill was once known as Bukit Larangan. What does that mean?
+  - **Forbidden Hill (correct)** · Windy Hill · Golden Hill · Lion Hill
+  - Source note: Bukit Larangan is Malay for Forbidden Hill, where Malay kings were said to be buried. Check: NLB Singapore Infopedia, 'Fort Canning Park'.
+- `sg-place-0041` The Night Safari and the Singapore Zoo sit beside which reservoir?
+  - Bedok Reservoir · Pandan Reservoir · **Upper Seletar Reservoir (correct)** · Kranji Reservoir
+  - Source note: Both parks are on a peninsula in Upper Seletar Reservoir at Mandai. Check: NLB Singapore Infopedia, 'Singapore Zoo'; 'Night Safari'.
+- `sg-place-0042` National Gallery Singapore is housed in the former City Hall and which other building?
+  - Parliament House · General Post Office · Central Fire Station · **Supreme Court (correct)**
+  - Source note: The Gallery (2015) joins the former Supreme Court and City Hall. Check: NLB Singapore Infopedia, 'National Gallery Singapore'.
+- `sg-place-0043` Which red-and-white fire station, completed in 1909, is Singapore's oldest still standing?
+  - **Central Fire Station (correct)** · Alexandra Fire Station · Geylang Fire Station · Sembawang Fire Station
+  - Source note: Central Fire Station on Hill Street was completed in 1909 and is a national monument. Check: NLB Singapore Infopedia, 'Central Fire Station'.
+- `sg-place-0044` Which bridge is the oldest across the Singapore River still in its original form?
+  - Anderson Bridge · **Cavenagh Bridge (correct)** · Elgin Bridge · Coleman Bridge
+  - Source note: Cavenagh Bridge opened in 1869 and keeps its original structure. Check: NLB Singapore Infopedia, 'Cavenagh Bridge'.
+- `sg-place-0045` What is the last surviving kampong on mainland Singapore called?
+  - Kampong Wak Hassan · Kampong Tengah · **Kampong Lorong Buangkok (correct)** · Kampong Kembangan
+  - Source note: Kampong Lorong Buangkok, off Yio Chu Kang Road, dates from 1956. Check: NLB Singapore Infopedia, 'Kampong Lorong Buangkok'.
+- `sg-place-0046` Raffles Lighthouse stands on which southern island?
+  - Pulau Hantu · **Pulau Satumu (correct)** · Pulau Semakau · Kusu Island
+  - Source note: Raffles Lighthouse (1855) is on Pulau Satumu, the southernmost island. Check: NLB Singapore Infopedia, 'Raffles Lighthouse'.
+- `sg-place-0047` By what name was Mount Faber known before 1845?
+  - Bukit Chandu · **Telok Blangah Hill (correct)** · Pearl's Hill · Kent Ridge
+  - Source note: Telok Blangah Hill was renamed after Captain Charles Edward Faber, who built the road to its top. Check: NLB Singapore Infopedia, 'Mount Faber'.
+- `sg-place-0048` In which area is Haw Par Villa?
+  - Katong · Bukit Timah · Changi · **Pasir Panjang (correct)**
+  - Source note: Haw Par Villa stands on Pasir Panjang Road. Check: NLB Singapore Infopedia, 'Haw Par Villa (Tiger Balm Gardens)'.
+- `sg-place-0049` Which town was Singapore's first satellite town?
+  - **Queenstown (correct)** · Toa Payoh · Ang Mo Kio · Jurong
+  - Source note: Queenstown, begun by the Singapore Improvement Trust in the 1950s, was the first satellite town. Check: NLB Singapore Infopedia, 'Queenstown'.
+- `sg-place-0050` The name Toa Payoh means what?
+  - Long road · Red earth · **Big swamp (correct)** · Old village
+  - Source note: 'Toa' is Hokkien for big and 'payoh' comes from the Malay 'paya', swamp. Check: NLB Singapore Infopedia, 'Toa Payoh New Town'.
+- `sg-place-0051` Before it became a place for recreation, St John's Island was used as what?
+  - A tin smelting works · A rubber plantation · **A quarantine station (correct)** · A pepper farm
+  - Source note: A quarantine station for immigrants operated on St John's Island from 1874. Check: NLB Singapore Infopedia, 'St John's Island'.
+- `sg-place-0052` Dhoby Ghaut is named after people who once did which work there?
+  - **Washing clothes (correct)** · Selling cloth · Tending horses · Making bricks
+  - Source note: 'Dhoby' is from the Hindi for washerman and 'ghaut' for the steps to the water; Indian laundrymen worked by the Stamford stream. Check: NLB Singapore Infopedia, 'Dhoby Ghaut'.
+- `sg-place-0053` What does the Malay word 'tanjong' mean, as in Tanjong Pagar and Tanjong Rhu?
+  - Harbour · Bridge · **Cape (correct)** · Market
+  - Source note: 'Tanjong' (tanjung) is a cape or headland. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'tanjung'.
+- `sg-place-0054` What does the Malay word 'telok' mean, as in Telok Ayer and Telok Blangah?
+  - Well · Hill · **Bay (correct)** · Fort
+  - Source note: 'Telok' (teluk) means bay. Check: Kamus Dewan (Dewan Bahasa dan Pustaka), 'teluk'.

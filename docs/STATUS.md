@@ -26,6 +26,10 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   wrap handled; `discardEdges` for resume, `reset` for a new connection), and snapshot, hash,
   freeze, encode and record-and-replay helpers. 200 tests. No game uses it yet. Known gap: a tap
   made in the last moments of a pause can still land as play restarts.
+- **Singapore question pack (R-12, merged 2026-11-16):** 305 original four-option questions in
+  six categories, each with a source note. Written and reviewed from memory with no web access:
+  **no fact has been checked against a source**, and Randy's spot-check (R-14) is outstanding;
+  `uat/evidence/R-12-singapore-pack/questions.md` lists the 17 to check first.
 - **Rabakz question bank tooling (R-10, merged 2026-11-16):** `content/rabakz` holds the question
   schema, a validating build that writes one chunk per category, a seeded question selector and
   a stats report. 20 sample questions only: the bank is short of its targets by 1,480 questions,
