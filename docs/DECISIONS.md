@@ -324,3 +324,10 @@ Dick Lee) must never be blocked, and `dick` is a known, accepted gap. (2) Leader
 once when the leader leaves, and after 10 seconds when the leader's phone drops; a returning
 ex-leader does not take it back. (3) A host reload keeps the same leader. (4) Names that look
 the same are treated as the same name.
+
+**D-061 · 2026-11-16 · Claude (under D-057)** — Dependencies for the pairing server
+(`apps/signal`, dev only): `wrangler` 4.162.0 to run and bundle the Worker locally and
+`@cloudflare/workers-types` 4.20251014.0 for types. Install scripts are allowed for `esbuild`
+and `workerd` only (`allowBuilds` in `pnpm-workspace.yaml`); every other package's install
+script stays refused. Nothing is deployed and no Cloudflare account is touched until Randy
+says so (rule 9).

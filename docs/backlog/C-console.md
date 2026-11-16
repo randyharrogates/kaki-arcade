@@ -12,7 +12,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
-| C-01 | Pairing server: Worker and one Durable Object per room, unguessable codes, handshake forwarding, idle expiry, hibernation | PLAT-001, NET-002, DATA-005 | F-02 | 1 | todo |
+| C-01 | Pairing server: Worker and one Durable Object per room, unguessable codes, handshake forwarding, idle expiry, hibernation | PLAT-001, NET-002, DATA-005 | F-02 | 1 | doing (Codex) |
 | C-02 | Relay: short-lived TURN credentials, monthly usage tracking, cut-off at the limit with the same-Wi-Fi message | NET-003, NET-004 | C-01 | 1 | todo |
 | C-03 | Rate limits on room creation and joins | DATA-005 | C-01 | 1 | todo |
 | C-04 | Netcode: WebRTC data channels, sequenced input state, repeated release, link-quality measurement | NET-001, NET-002, NET-005, PERF-010 | F-02 | 1 | todo |
