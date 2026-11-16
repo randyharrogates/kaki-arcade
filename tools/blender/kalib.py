@@ -31,6 +31,8 @@ def mat(col, kind="hard"):
 
     if kind == "gloss":
         setv("Roughness", 0.12); setv("Coat Weight", 1.0)
+    elif STYLE == "matte":
+        setv("Roughness", 0.78); setv("Subsurface Weight", 0.06); setv("Subsurface Scale", 0.04)
     elif STYLE == "toy":
         setv("Roughness", 0.42 if kind == "skin" else 0.3); setv("Coat Weight", 0.25 if kind == "skin" else 0.6)
     elif STYLE == "clay":
@@ -120,7 +122,7 @@ PLAYER = ["#D9483B", "#2F7FD6", "#F2B21B", "#39A85B", "#8E5BD0", "#F07C2A", "#22
 
 
 def stylised(root, style, look, pose="idle", apron=None, same_body=False):
-    P = dict(PROPS[style]); L = LOOKS[look]
+    P = dict(PROPS["toy" if style == "matte" else style]); L = LOOKS[look]
     if not same_body: P.update(L.get("tweak", {}))
     skin = mat(L["skin"], "skin"); top = mat(L["top"], "cloth"); bottom = mat(L["bottom"], "cloth")
     shoe = mat(L["shoe"], "hard"); hair = mat(L["hair"], "hair"); acc = mat(apron or L["accent"], "cloth")
@@ -270,7 +272,7 @@ def cook(style, look="cap", pose="idle", rot=0, loc=(0, 0, 0), apron=None, same_
     if style == "real":
         realistic(root, pose); place(root, 1.81, 1.38, rot, loc)
     else:
-        P = PROPS[style]; stylised(root, style, look, pose, apron, same_body)
+        P = PROPS["toy" if style == "matte" else style]; stylised(root, style, look, pose, apron, same_body)
         hip = .07 + P["leg"]; h = hip + P["rz"] * 1.82 + P["head_r"] * (P["sink"] + P["squash"])
         place(root, h, P["height"], rot, loc)
     return root

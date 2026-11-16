@@ -28,7 +28,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 | 0 Art finish | Done: route D (Blender) |
 | 0B End-goal vision | Published 2026-11-16 for Randy to see before the build starts |
 | 1A Modelling approach | Done: chunky toy, scripted, one body with 8 heads (D-037) |
-| 1 3D art style | Pending (direction set by 1A) |
+| 1 3D art style | Published 2026-11-16, awaiting Randy's choice |
 | 2 Visual identity | Done: C Marble table as the general rule (D-042) |
 | 2B A theme for each game | Done: R1 Bandung, K1 Green baize, T1 Order chit (D-043) |
 | 3 Big-screen layouts | Pending |

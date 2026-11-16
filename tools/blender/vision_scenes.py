@@ -16,6 +16,7 @@ ONLY = [s for s in os.environ.get("ONLY", "").split(",") if s]
 K.PROPS["toy"]["height"] = 1.5
 rad = math.radians
 TOP = 0.92  # counter top height
+STYLE = "toy"
 
 
 def pm(col, rough=.55, metal=0.0, emit=0.0, coat=0.0):
@@ -23,6 +24,7 @@ def pm(col, rough=.55, metal=0.0, emit=0.0, coat=0.0):
     b = m.node_tree.nodes["Principled BSDF"]
     b.inputs["Base Color"].default_value = (*K.hexc(col), 1)
     b.inputs["Roughness"].default_value = rough; b.inputs["Metallic"].default_value = metal
+    if K.STYLE == "matte": rough, coat = max(rough, .62) if not metal else rough, 0.0
     if coat and "Coat Weight" in b.inputs: b.inputs["Coat Weight"].default_value = coat
     if emit:
         b.inputs["Emission Color"].default_value = (*K.hexc(col), 1); b.inputs["Emission Strength"].default_value = emit
@@ -242,7 +244,7 @@ def wall(m, banners=()):
 
 
 def cook(i, look, loc, rot, pose="idle", colour=None):
-    return K.cook("toy", look, pose, rot, (loc[0], loc[1], 0), apron=colour or K.PLAYER[i], same_body=True)
+    return K.cook(STYLE, look, pose, rot, (loc[0], loc[1], 0), apron=colour or K.PLAYER[i], same_body=True)
 
 
 def held(loc, rot, fn, m, dist=.52, z=.6):
@@ -265,7 +267,7 @@ def coop():
     cook(1, "auntie", (-2.6, 1.75), 0, "act")
     cook(2, "cap", (5.3, -0.4), 90, "carry"); held((5.3, -0.4), 90, chicken_rice, m)
     cook(3, "makcik", (-6.4, -0.2), -90, "act")
-    cook(4, "bun", (-4.6, 2.7), 55, "carry"); held((-4.6, 2.7), 55, lambda c, mm: ball((c[0], c[1], c[2] + .07), .07, mm["cuke"], (2.4, 1, 1)), m)
+    cook(4, "bun", (-4.6, 2.7), 55, "walk")
     cook(5, "specs", (3.3, -2.3), -90, "throw")
     ball((0.7, -2.3, 2.1), .11, m["cuke"], (2.4, 1, 1))
     cook(6, "turban", (-2.0, -2.3), 90, "catch")
@@ -300,15 +302,16 @@ def heads8():
 
 def run(name, build, w, h, target, elev, scale, transparent=False, floor=True):
     if ONLY and not any(name.startswith(p) for p in ONLY): return
-    bpy.ops.wm.read_factory_settings(use_empty=True); K.STYLE = "toy"
+    bpy.ops.wm.read_factory_settings(use_empty=True); K.STYLE = STYLE
     build()
     if floor: K.floor(catcher=transparent)
     K.lights(); K.render(name, w, h, target, elev, scale, transparent)
 
 
-run("tr_coop", coop, 1920, 1080, (0, .75, 0), 50, 16.0)
-run("tr_versus", versus, 1920, 1080, (0, .75, 0), 50, 16.0)
-run("heads8", heads8, 1920, 420, (0, 0, .78), 24, 13.2)
-for nm, fn in DISHES.items():
-    run("dish_" + nm, lambda fn=fn: fn((0, 0, 0), M()), 320, 320, (0, 0, .06), 50, .62, transparent=True)
-print("VISION DONE")
+if __name__ == "__main__":
+    run("tr_coop", coop, 1920, 1080, (0, .75, 0), 50, 16.0)
+    run("tr_versus", versus, 1920, 1080, (0, .75, 0), 50, 16.0)
+    run("heads8", heads8, 1920, 420, (0, 0, .78), 24, 13.2)
+    for nm, fn in DISHES.items():
+        run("dish_" + nm, lambda fn=fn: fn((0, 0, 0), M()), 320, 320, (0, 0, .06), 50, .62, transparent=True)
+    print("VISION DONE")

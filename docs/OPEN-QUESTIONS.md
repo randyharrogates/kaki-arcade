@@ -19,6 +19,9 @@ known. Needed by: M5.
 **OQ-019 · How the two versus kitchens interact (TR-058).** To be chosen from options on design
 board 3. Needed by: board 3.
 
+**OQ-024 · Board 1 choice.** Finish, lighting and camera tilt: A, B, C, D or a mix. Needed by:
+S-02 and every art issue (A-02 onwards).
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot
