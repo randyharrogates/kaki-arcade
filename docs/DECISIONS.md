@@ -565,3 +565,26 @@ Accepted and recorded: anyone on the same address as a phone (a housemate, or a 
 shared mobile-carrier address) can push out its fresh connection, since they could already
 take the seats; and one abuser with several /64s in a carrier's /48 can keep that /48's joins
 backed off.
+
+**D-085 · 2026-11-17 · Claude (under D-057)** — Tabao Rush recipe rules the spec left open
+(review of T-04); counts and timings provisional until seen on a screen. (a) A crate press
+gives one raw portion. A station takes an ingredient only when that station is the next step
+in its recipe, so food cannot be ruined by a press the game allowed. (b) Each rack holds one
+kind of container, set by the level: plates, bowls or cups (4, 2 and 2 to start). A plate
+holds 4 portions, a bowl 2, a cup 1. Things are combined only at plating counters; emptying a
+container leaves it clean in hand; binning a dish leaves its container clean in hand. (c) The
+order in a recipe applies to each ingredient, not across ingredients. Cucumber is chopped in
+every dish that uses it, satay included. Char kway teow's noodles are chopped, then tossed in
+the wok. Rojak's three ingredients are pineapple, turnip and cucumber. (d) Laksa: adding
+noodles to finished broth completes it, with no second cooking. (e) Mix (rojak) and spread
+(kaya toast) are circle work on the plating counter with the food already on its plate, 1 s,
+shown as station progress like chopping; spread applies only to grilled bread; adding food
+undoes a mix. (f) Kopi and teh are interchangeable. The kaya toast set is the toast on a plate
+with a filled cup standing on the same plate; a plate may carry one cup. (g) A served dish's
+containers come back dirty at the kitchen's return counter 5 s later, not in the server's
+hand; a level has one return counter per kitchen, which holds any number and does not burn.
+(h) Serving counters, racks and return counters do not burn. A dish caught in a station fire
+loses its food and its container comes out dirty. (i) Rejection reasons, checked in this
+order: nothing to serve, dirty, burnt, wrong container, not a dish we serve, missing
+ingredient, extra ingredient, missing step (names the ingredient and the step), extra step
+(names the ingredient); shown for 3 s; a rejected dish is never consumed or changed.
