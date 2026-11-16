@@ -24,7 +24,7 @@ v1 ships with a game picker and three original games:
 - **Tabao Rush** — a real-time co-op cooking game set in a Singapore hawker centre.
   Spec: `games/tabao-rush.md`.
 - **Peek Poker** — a turn-based memory game using poker hands. Spec: `games/peek-poker.md`.
-- **Rabakz** — a trivia night game where everyone answers at once on their phone.
+- **Rabakz** — a trivia night game played as a buzzer race on the phones: the first correct answer wins the question.
   Spec: `games/rabakz.md`.
 
 The platform exists so more games can be added later without rebuilding rooms, pairing or

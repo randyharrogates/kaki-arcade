@@ -37,7 +37,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 | 1 3D art style | Done: C, matte finish, daylight, camera at 60° (D-044) |
 | 2 Visual identity | Done: C Marble table as the general rule (D-042) |
 | 2B A theme for each game | Done: R1 Bandung, K1 Green baize, T1 Order chit (D-043) |
-| 3 Big-screen layouts | Published 2026-11-16, awaiting Randy's choice |
+| 3 Big-screen layouts | Done: 1B, 2A, 3A, 4B, 5A; versus interactions rotate (D-046) |
 | 4 Phone controller | Pending |
 | 5 Motion | Pending |
 

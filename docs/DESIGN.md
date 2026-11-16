@@ -117,9 +117,27 @@ golden-ratio variant. Source of the values: `design-gate/02-visual-identity.html
 - Trivia pictures are real photographs under a free licence; Codex-generated images only where
   no suitable photograph can be found (D-042).
 
-### 4.3 Big-screen layouts — *pending (gate board 3)*
+### 4.3 Big-screen layouts — **decided** (board 3)
 
-Landing, lobby with join code, game picker, in-game HUD for each game, results.
+Chosen by Randy on 2026-11-16 (D-046). Source: `design-gate/03-big-screen-layouts.html`; the
+layout functions named below are in `tools/boards/board3_template.html`. Every screen is
+1920 × 1080 with a 55 px safe margin and never scrolls.
+
+- **Landing** (`landing`): title, one line, one button, the three games listed. Split 1.618 : 1.
+- **Lobby: 1B** (`lobbyB`): join panel on top with the QR code at 440 px and the room code at
+  233 px; eight seats in a row along the bottom.
+- **Game picker: 2A** (`pickA`): the highlighted game 1.618 times the width of the others.
+- **Team setup** (`teams`): red left, blue right, unassigned in the middle.
+- **Rabakz question: 3A** (`rzA`): picture beside the question at 1 : 1.618, answers in a
+  2 × 2 block matching the phone. **No timer is drawn** (RZ-004 as changed); the "Answered"
+  row also shows who is locked out.
+- **Rabakz reveal** (`rzReveal`), **results** (`results`): as shown.
+- **Peek Poker table: 4B** (`ppB`): players down the left with Picking or Picked, the grid in
+  the centre, round, shared cards and timer on the right.
+- **Tabao Rush HUD: 5A** (`trA`): order cards bottom left, time, score and stars bottom right.
+- **Tabao Rush versus** (`vs`): team scores in the top corners, each team's orders under its
+  kitchen, one clock in the middle. Not explicitly confirmed by Randy; taken as accepted.
+- **Versus interaction:** all four forms, one or two per arena (TR-058).
 
 ### 4.4 Phone controller — *pending (gate board 4)*
 
@@ -163,7 +181,7 @@ golden-ratio variant, and says which proportions use it. The source of each boar
 | 1 | 3D art style | Four looks of the same kitchen and eight cooks at true game size: finish (glossy or matte), lighting (day or evening), camera tilt (42°, 50°, 60°). Source `design-gate/01-art-style.html`, built by `tools/blender/board1_style.py` and `tools/boards/build_board1.py` | **Done** — C: matte, day, 60° (D-044) |
 | 2 | Visual identity | Three directions: palette, type pairing, surface treatment; plus where trivia photos come from. Source `design-gate/02-visual-identity.html`, built by `tools/boards/build_board2.py` | **Done** — C Marble table as the general rule; real photographs, Codex only as a fallback (D-042) |
 | 2B | A theme for each game | Three variants each for Rabakz, Peek Poker and Tabao Rush inside the Marble table console. Source `design-gate/02b-game-themes.html`, built by `tools/boards/build_board2b.py` | **Done** — R1 Bandung, K1 Green baize, T1 Order chit (D-043) |
-| 3 | Big-screen layouts | Landing, lobby, picker, team setup, Rabakz question and reveal, Peek Poker table, Tabao Rush HUD, versus and how the two kitchens interact, results. Source `design-gate/03-big-screen-layouts.html`, built by `tools/blender/board3_scenes.py` and `tools/boards/build_board3.py` | Published 2026-11-16, awaiting Randy |
+| 3 | Big-screen layouts | Landing, lobby, picker, team setup, Rabakz question and reveal, Peek Poker table, Tabao Rush HUD, versus and how the two kitchens interact, results. Source `design-gate/03-big-screen-layouts.html`, built by `tools/blender/board3_scenes.py` and `tools/boards/build_board3.py` | **Done** — 1B, 2A, 3A, 4B, 5A, all four versus interactions in rotation (D-046) |
 | 4 | Phone controller | Kit styling and both games' layouts at 390 × 844 landscape | Pending |
 | 5 | Motion | Live samples of the key transitions | Pending |
 

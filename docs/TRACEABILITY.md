@@ -154,16 +154,16 @@ requirement.
 | RZ-001 | MUST | A match is 10, 30 or 50 questions chosen by the leader | M4 | not started | — | — | — |
 | RZ-002 | MUST | Multiple choice, true or false and picture questions; no typed answers | M4 | not started | — | — | — |
 | RZ-003 | MUST | Question and options on the big screen; matching answer buttons on each phone | M4 | not started | — | — | — |
-| RZ-004 | MUST | Everyone answers at once within the answer time; first press is final | M4 | not started | — | — | — |
-| RZ-005 | MUST | Before the reveal only who has answered is shown; answers stay private | M4 | not started | — | — | — |
-| RZ-006 | MUST | Question ends when all have answered or time runs out; reveal shows answer, counts and points | M4 | not started | — | — | — |
-| RZ-007 | MUST | Scoring: 100 for a correct answer plus a speed bonus up to 100; never negative | M4 | not started | — | — | — |
-| RZ-008 | MUST | Streak bonus from the third correct answer in a row | M4 | not started | — | — | — |
+| RZ-004 | MUST | No timer; any player answers at any moment; a press is final for that turn | M4 | not started | — | — | — |
+| RZ-005 | MUST | TV shows who answered and which options were wrong; nothing sent to other phones | M4 | not started | — | — | — |
+| RZ-006 | MUST | First correct answer ends the question; 0.25 s tie window; wrong = locked until all have had a turn; leader skip; auto-skip at 30 s | M4 | not started | — | — | — |
+| RZ-007 | MUST | Correct answer scores 100; no speed bonus; scores never go down | M4 | not started | — | — | — |
+| RZ-008 | MUST | Streak: +50 from the third question won in a row | M4 | not started | — | — | — |
 | RZ-009 | MUST | Final round scores double | M4 | not started | — | — | — |
 | RZ-010 | MUST | Leader chooses categories or Mixed | M4 | not started | — | — | — |
 | RZ-011 | MUST | Leader chooses difficulty: Easy, Mixed or Hard | M4 | not started | — | — | — |
-| RZ-012 | MUST | Free-for-all for 1 to 8 and a two-team mode scored by team average | M4 | not started | — | — | — |
-| RZ-013 | MUST | Solo score attack against a personal best per match length | M4 | not started | — | — | — |
+| RZ-012 | MUST | Free-for-all and two-team mode; a won question scores for the team | M4 | not started | — | — | — |
+| RZ-013 | MUST | Solo score attack; only the first answer can score | M4 | not started | — | — | — |
 | RZ-014 | MUST | Mid-match joiner enters at the next question with 0 | M4 | not started | — | — | — |
 | RZ-015 | MUST | No repeats within a match; recently seen questions avoided on this host | M4 | not started | — | — | — |
 | RZ-016 | MUST | Players level on points share the placing | M4 | not started | — | — | — |
@@ -175,9 +175,9 @@ requirement.
 | RZ-025 | MUST | Picture images are real photographs (free licence, credited) or Codex-generated and checked; no renders | M4 | not started | — | — | — |
 | RZ-026 | MUST | Option order shuffled from the seed; correct position uniform | M4 | not started | — | — | — |
 | RZ-030 | MUST | Question and options readable from 3 m; options differ by letter and shape | M4 | not started | — | — | — |
-| RZ-031 | MUST | Timer readable without colour; motion follows DESIGN.md §3 | M4 | not started | — | — | — |
+| RZ-031 | MUST | No timer shown; lock-out marked without colour alone; motion rules | M4 | not started | — | — | — |
 | RZ-032 | MUST | Scoreboard every 5 questions and a final podium; team totals first in team mode | M4 | not started | — | — | — |
-| RZ-033 | SHOULD | Sound effects with shared volume controls | M4 | not started | — | — | — |
+| RZ-033 | SHOULD | Sounds for answer, correct, wrong, unlock | M4 | not started | — | — | — |
 | RZ-034 | MUST | Players shown by seat number, colour and nickname; no cook characters | M4 | not started | — | — | — |
 
 ## Tabao Rush

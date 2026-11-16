@@ -11,21 +11,23 @@ No betting, no wagering of points, no real-money element.
 
 ## 1. Rules
 
+**Changed 2026-11-16 (D-046), by Randy:** Rabakz is a buzzer race, not a timed quiz. The first correct answer wins the question; RZ-004 to RZ-008, RZ-012, RZ-013, RZ-031 and RZ-033 were rewritten to match.
+
 | ID | Pri | Requirement |
 |---|---|---|
 | RZ-001 | MUST | A match is a fixed number of questions chosen by the leader: **10, 30 or 50** (default 10). The highest total score wins. |
 | RZ-002 | MUST | Three question types are mixed in a match: **multiple choice** (four options), **true or false** (two options) and **picture** (an image on the TV with four options). There is no type-the-answer question. |
 | RZ-003 | MUST | The question and its options are shown on the big screen. Each phone shows one large button per option, carrying the same letter, shape and colour as the option on the TV, and the option's text. |
-| RZ-004 | MUST | All players answer at the same time within the answer time (default 15 seconds; 20 seconds for a picture question). A player's first press is their answer and cannot be changed. |
-| RZ-005 | MUST | Until the reveal, the big screen shows only **who** has answered (seat markers), never what they chose, and no answer is sent to another phone. |
-| RZ-006 | MUST | A question ends when every player has answered or the time runs out. The reveal shows the correct option, how many players chose each option, and the points each player gained. |
-| RZ-007 | MUST | Scoring: a correct answer scores **100 points plus a speed bonus of up to 100**, falling evenly from 100 at the start of the answer time to 0 at the end. A wrong answer or no answer scores 0. Scores never go down. |
-| RZ-008 | MUST | Streak bonus: from a player's third correct answer in a row, each correct answer scores **50 extra** until they miss one. The phone and the big screen show the streak. |
+| RZ-004 | MUST | There is **no answer timer**. Any player may answer at any moment after the question appears. A press is that player's answer for this turn and cannot be changed. |
+| RZ-005 | MUST | While a question is open the big screen shows **who** has answered (seat markers) and marks an option as wrong once someone has chosen it wrongly. No answer is sent to another phone. |
+| RZ-006 | MUST | A question ends as soon as someone answers correctly. Correct answers that reach the host within **0.25 seconds** of the first correct one count as answered at the same time and all score. A player who answers wrongly is **locked out until every other player has taken a turn** on this question; when every player has answered wrongly, all are unlocked and may answer again. The leader can skip a question, and after **30 seconds** with no answer and no skip the game reveals the answer and moves on; no countdown is shown. The reveal shows the correct option, who chose what, and the points gained. |
+| RZ-007 | MUST | Scoring: the player (or each of the players, when simultaneous) who answers correctly scores **100 points**. There is no speed bonus. A wrong answer, a skipped question or no answer scores 0. Scores never go down. |
+| RZ-008 | MUST | Streak bonus: from a player's third question won in a row, each question they win scores **50 extra**. The streak ends when another player wins a question without them, or they answer wrongly. The phone and the big screen show the streak. |
 | RZ-009 | MUST | Final round: the last 1 question of a 10-question match, the last 3 of 30 and the last 5 of 50 score **double**, announced on the big screen before they start. |
 | RZ-010 | MUST | Before a match the leader chooses categories: any set of the bank's categories, or Mixed (default). |
 | RZ-011 | MUST | Before a match the leader chooses difficulty: Easy, Mixed (default) or Hard. Easy is suitable for children. |
-| RZ-012 | MUST | Free-for-all for 1 to 8 players, and a team mode with two teams (PLAT-025). A team's score for a question is the **average** of its members' points, so uneven teams are fair. Individual scores are still shown. |
-| RZ-013 | MUST | With 1 player the match is a score attack against a personal best saved on the host device, kept separately for each match length. |
+| RZ-012 | MUST | Free-for-all for 1 to 8 players, and a team mode with two teams (PLAT-025). In team mode the points for a question go to the team of the player who won it (once per team, even if two team-mates answer at the same time); the lock-out applies to each player, not to the team. Individual scores are still shown. |
+| RZ-013 | MUST | With 1 player the match is a score attack against a personal best saved on the host device, kept separately for each match length. Only the player's first answer to a question can score; after a wrong answer the correct one is revealed. |
 | RZ-014 | MUST | A player who joins mid-match enters at the next question with a score of 0. |
 | RZ-015 | MUST | No question repeats within a match. Questions recently seen on this host device are avoided until the pool for the chosen categories and difficulty runs out (DATA-002). |
 | RZ-016 | MUST | Players level on points at the end share the placing. |
@@ -58,9 +60,9 @@ Declared to the controller kit (CTRL-002):
 | ID | Pri | Requirement |
 |---|---|---|
 | RZ-030 | MUST | The question and options are readable from 3 m (NFR-A11Y), and options differ by letter and shape as well as colour. |
-| RZ-031 | MUST | The answer timer is readable without colour alone. Motion follows `../DESIGN.md` §3: the reveal uses a mask, scores count up and stop with no overshoot, and a correct answer pulses once. |
+| RZ-031 | MUST | No timer is shown. A locked-out player is marked without relying on colour alone, on the TV and on their phone. Motion follows `../DESIGN.md` §3: the reveal uses a mask, scores count up and stop with no overshoot, and a correct answer pulses once. |
 | RZ-032 | MUST | A scoreboard is shown after every 5 questions and a podium at the end; in team mode both show team totals first. |
-| RZ-033 | SHOULD | Sound effects for lock-in, time running out, correct and wrong, with the shared volume controls. |
+| RZ-033 | SHOULD | Sound effects for an answer, correct, wrong and unlock, with the shared volume controls. |
 | RZ-034 | MUST | Players appear as seat number, colour and nickname. Cook characters are not used in this game. |
 
 ## 5. Why this game is in v1

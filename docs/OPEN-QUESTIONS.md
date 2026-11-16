@@ -16,17 +16,17 @@ music needs a source (a licensed free track, or generated). Who chooses? Needed 
 past it, options are paying for LFS or keeping sources in Cloudflare R2. Decide when sizes are
 known. Needed by: M5.
 
-**OQ-019 · Board 3 choices.** Lobby 1A or 1B; picker 2A or 2B; Rabakz question 3A or 3B; Peek
-Poker table 4A or 4B; Tabao Rush HUD 5A, 5B or 5C; versus screen yes or changes; how the two
-versus kitchens interact (TR-058), any of 7A shared pantry, 7B trade across, 7C gold order, 7D
-sabo. The single-design screens (landing, team setup, Rabakz reveal, results) need a yes or
-changes. Needed by: every console and game screen issue.
-
 **OQ-025 · Spacing values beyond 5 to 89 px.** `DESIGN.md` §1 lists 5 · 8 · 13 · 21 · 34 · 55 · 89
 and says no other spacing values. The design lint (F-01) also allows 0, the next Fibonacci steps
 144 · 233 · 377 for large layout gaps, and 1 · 2 · 3 px plus full pills on corner radii only.
 Claude is working to the wider set; say if you want it held strictly to §1. Needed by: first UI
 slice.
+
+**OQ-026 · Rabakz buzzer rules: Claude's readings to confirm.** (1) "Same time" means within
+0.25 s of the first correct answer. (2) An option answered wrongly is marked wrong on the TV for
+everyone. (3) In team mode the question's points go to the winner's team. (4) Solo: only the
+first answer scores. (5) The streak counts questions won in a row. (6) True-or-false questions
+stay in: after one wrong answer the next player gets an easy point. Needed by: R-01.
 
 ## Assumptions Claude is working to (say if wrong)
 
