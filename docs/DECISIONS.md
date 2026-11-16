@@ -617,3 +617,15 @@ empty-handed cross press at a plating counter; binning or washing a plate that c
 or a fire under it, puts the cup down beside it (in the cook's free hand, else on the
 counter, else the floor), never fused to the plate. (c) Toast without its filled cup is
 rejected as missing ingredient: drink.
+
+**D-088 · 2026-11-17 · Claude (under D-057)** — The web app starts now, on the laptop, ahead
+of the TV spike. `apps/web` is a Vite app with Preact for the shell screens (landing, lobby,
+join, picker, results), as `ARCHITECTURE.md` §4 proposed; S-04 still decides the renderer for
+game scenes from the TV numbers and may replace Preact if the TV cannot carry it (the shell is
+small, so the risk is a few days). *Why now:* every rules-side dependency of the lobby and
+join page has merged and the design gate is closed; waiting for the TV test would idle the
+build. Dependencies added: `preact` (shell, about 5 KB compressed), `vite` and
+`@preact/preset-vite` (build only), `qrcode-generator` (the lobby's QR code, MIT, no
+dependencies, about 4 KB compressed; drawing a QR code by hand is not worth the risk of a code
+phones cannot scan). Screens are checked by the integrator in a real browser through
+Playwright until the UAT harness (F-07) exists.
