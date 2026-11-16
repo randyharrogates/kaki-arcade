@@ -78,7 +78,7 @@ is not started before that spike reports: T-07 waits for S-04, A-02 waits for S-
 - **`uat-runner` and `reviewer`** — the existing agents (`.claude/agents/`), run per issue with
   a fresh context, inside that issue's worktree.
 
-Per `CLAUDE.md` rule 8 (as changed by D-052) a builder is a Claude sub-agent or Codex. Codex
+Per `CLAUDE.md` rule 8 (as changed by D-052 and D-055) the builder is Codex only. Codex
 is run by the integrator as `codex exec -m gpt-6.1-sol -s workspace-write` inside the issue's
 worktree, with the same brief an `issue-builder` gets; it follows `AGENTS.md`. Reviewers and
 the UAT runner are always Claude, and never the agent that built the issue. Opus 5.5 may be

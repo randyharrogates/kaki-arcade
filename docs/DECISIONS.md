@@ -81,3 +81,7 @@ tall, which does not fit a 390 px phone. Found by the F-04 review.
 **D-054 · 2026-11-16 · Randy** — No Git LFS. Every model is built by a script, so the scripts
 are the source and `.blend` files are not committed ("go with ur recommendation"). Closes
 OQ-008; `ART-PIPELINE.md` §1 and §7, the A-01 backlog line and `.gitignore` updated.
+
+**D-055 · 2026-11-16 · Randy** — "Use codex only for implementation." Narrows D-052: every
+builder is Codex from now on, including fix rounds on issues a Claude agent started. Claude
+plans, briefs, reviews (Opus 5.5 where it fits), runs and looks at UAT, integrates and merges.
