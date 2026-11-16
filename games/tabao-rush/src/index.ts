@@ -1,2 +1,2 @@
-// @kaki/game-tabao-rush: placeholder until its first issue lands. Nothing is exported yet.
-export {};
+export { tabaoRush, ROUND_STEPS } from './rules/game';
+export type { Cook, Facing, Level, Participant, TabaoState, Tile } from './rules/state';

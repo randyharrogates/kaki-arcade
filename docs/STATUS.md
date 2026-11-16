@@ -94,6 +94,13 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   socket gets `opening-timeout`. Protocol version stays 1 until the first deploy (D-070). One
   review round; the pairing server's smoke test was rerun locally by the integrator.
 
+- **Tabao Rush movement (T-01).** `games/tabao-rush/src/rules`: level and cook state, movement
+  that follows the stick on the next step, eight-way facing with a steadying hold, wall
+  sliding, soft collisions and the station a cook would use. No deadlock in any reviewed case
+  (corridor, doorway, dead end, wall-lean, 210,000 random cook-steps). Rules only: how it feels
+  cannot be judged until there is a screen, and every constant is provisional. Built by Codex;
+  three review rounds.
+
 ## Does not exist yet
 
 - No host page, controller or game screen yet.

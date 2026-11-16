@@ -2,6 +2,11 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — T-01: Tabao Rush state shape and movement
+
+- `games/tabao-rush/src/rules`: pure movement against the game interface (D-072, D-073).
+  (TR-002, TR-020, TR-021, TR-022 in progress)
+
 ## 2026-11-16 — F-02b: protocol clean-up
 
 - `packages/protocol`, `apps/signal`: buttons by position, socket `create`/`reopen` removed,

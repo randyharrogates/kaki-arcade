@@ -12,7 +12,7 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
-| T-01 | State shape, movement on the next step with no smoothing, 8-way facing, soft collisions that never deadlock, the station a cook would use | TR-002, TR-020, TR-021, TR-022 | F-04 | 1 | doing (Codex) |
+| T-01 | State shape, movement on the next step with no smoothing, 8-way facing, soft collisions that never deadlock, the station a cook would use | TR-002, TR-020, TR-021, TR-022 | F-04 | 1 | merged |
 | T-02 | Items: carry one thing, crates, counters, passing, throwing and catching | TR-002, TR-009, TR-023 | T-01 | 1 | todo |
 | T-03 | Stations and timers: chop, wok, pot, grill, rice, drinks, plating, sink, bin; burning with a warning; fires that start, spread and are put out | TR-007, TR-008, TR-010, TR-030 | T-01 | 1 | todo |
 | T-04 | Recipes for the 7 dishes, plating, serving, rejection with a reason | TR-003, TR-004, TR-040 | T-02, T-03 | 1 | todo |
@@ -43,3 +43,12 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
 | T-14 | Versus: 3 arenas side by side on one screen, team colour themes, normalised scoring, the cross-kitchen interactions chosen on board 3 | TR-052, TR-058, PLAT-025 | T-17, C-11, G-03 | 3 | todo |
+
+## Carried from reviews
+
+- **From T-01:** every movement constant is provisional (walk speed 3 tiles a second, dead zone
+  0.12, cook radius 0.20, overlap 0.04, reach 0.85, step-aside at walk speed) and the
+  step-aside rule is invented steering: show both to Randy on a real screen as a design choice
+  (D-072). The 210-second round counter is scaffolding for the conformance kit; T-05 replaces
+  it. Measure a real browser round, including garbage-collection pauses, in `pnpm perf` (F-08).
+  Add the reviewer's nine wall-lean variants to the movement tests when movement is next touched.

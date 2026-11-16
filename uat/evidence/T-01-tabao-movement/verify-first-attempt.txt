@@ -1,0 +1,286 @@
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 11 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 102 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-01
+
+ ❯ packages/sim-core/src/input.test.ts (75 tests | 2 failed) 13483ms
+     × follows a controller through three laps of 16-bit numbers under loss, repeats and reordering 7128ms
+     × keeps held, pressed and released consistent step to step under any link 5113ms
+ ❯ content/rabakz/scripts/build.test.ts (27 tests | 2 failed) 20527ms
+     × writes the same bytes on every run 6623ms
+     × refuses the real source folder of this package through the command line 8396ms
+ ❯ games/tabao-rush/src/rules/movement.test.ts (14 tests | 1 failed) 5741ms
+     × TR-022 seeded cramped runs preserve walls, overlap and free-ahead progress 5494ms
+[sim-core overhead] clock + loop: 0.0241 µs per step (0.00014% of a 16.7 ms step)
+[sim-core overhead] clock + loop + 8-controller input buffer: 1.4833 µs per step (0.00890% of a 16.7 ms step)
+ ❯ packages/platform/src/room/invariants.test.ts (1 test | 1 failed) 10694ms
+   × PLAT-003 deterministic builds and golden hash 10693ms
+ ❯ packages/protocol/src/messages.test.ts (171 tests | 2 failed) 49401ms
+     × random and damaged text never makes the decoder throw 7705ms
+     × random and damaged text never makes the decoder throw 5079ms
+ ❯ packages/platform/src/game/conformance-broken.test.ts (37 tests | 3 failed) 73694ms
+     × state whose behaviour depends on two fields being the same object 6597ms
+     × results that are not total or not in order 9216ms
+     × an honest in-place copy of Dots also passes 9741ms
+ ❯ packages/platform/src/game/conformance.test.ts (21 tests | 2 failed) 52230ms
+     × gives the same report twice (the kit itself is deterministic) 8212ms
+   × round 3 passes always-null private view 6241ms
+ ❯ packages/platform/src/game/conformance-attacks.test.ts (25 tests | 6 failed) 75621ms
+     × requires both endpoint scenarios and whole matches at the minimum 8288ms
+     × requires leave to tolerate zero players and empty teams without scoring 10451ms
+     × rejects a missing, identity, or partially effective scramble 5530ms
+     × catches scoring twice or answering while locked in a single step 5497ms
+   × round 2 catches late joins, last leaves, copies, results leaks and lock then pick 10121ms
+   × round 2 allows text-only layout revisions when no tap could be in flight 6473ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 19 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  content/rabakz/scripts/build.test.ts > the build command > writes the same bytes on every run
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ content/rabakz/scripts/build.test.ts:140:3
+    138|   });
+    139|
+    140|   it('writes the same bytes on every run', () => {
+       |   ^
+    141|     const first = tempDir();
+    142|     const second = tempDir();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/19]⎯
+
+ FAIL  content/rabakz/scripts/build.test.ts > where the build may write (--out) > refuses the real source folder of this package through the command line
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ content/rabakz/scripts/build.test.ts:325:3
+    323|   });
+    324|
+    325|   it('refuses the real source folder of this package through the comma…
+       |   ^
+    326|     const real = packagePaths();
+    327|     const before = readAll(real.sources);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/19]⎯
+
+ FAIL  packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server': seeded random garbage > random and damaged text never makes the decoder throw
+ FAIL  packages/protocol/src/messages.test.ts > 'data channel: host → phone': seeded random garbage > random and damaged text never makes the decoder throw
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/protocol/src/messages.test.ts:974:3
+    972|   });
+    973|
+    974|   it('random and damaged text never makes the decoder throw', () => {
+       |   ^
+    975|     const random = seeded(0xf02_0004);
+    976|     for (let i = 0; i < 20_000; i += 1) {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/19]⎯
+
+ FAIL  packages/sim-core/src/input.test.ts > required options > follows a controller through three laps of 16-bit numbers under loss, repeats and reordering
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/sim-core/src/input.test.ts:787:3
+    785|   });
+    786|
+    787|   it('follows a controller through three laps of 16-bit numbers under …
+       |   ^
+    788|     const rng = createRng(65536);
+    789|     const buffer = one({ seqModulus: 65536, staleAfterSteps: 0 });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/19]⎯
+
+ FAIL  packages/sim-core/src/input.test.ts > against a simulated bad link > keeps held, pressed and released consistent step to step under any link
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/sim-core/src/input.test.ts:918:3
+    916|   });
+    917|
+    918|   it('keeps held, pressed and released consistent step to step under a…
+       |   ^
+    919|     const rng = createRng(77);
+    920|     const buffer = one({ staleAfterSteps: 5 });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/19]⎯
+
+ FAIL  packages/platform/src/game/conformance-attacks.test.ts > review round 1 attacks > requires both endpoint scenarios and whole matches at the minimum
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance-attacks.test.ts:37:3
+     35| } from './conformance-support.test';
+     36| describe('review round 1 attacks', () => {
+     37|   it('requires both endpoint scenarios and whole matches at the minimu…
+       |   ^
+     38|     const missing = keep(
+     39|       'BROKEN Dots: missing endpoint scenarios',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/19]⎯
+
+ FAIL  packages/platform/src/game/conformance-attacks.test.ts > review round 1 attacks > requires leave to tolerate zero players and empty teams without scoring
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance-attacks.test.ts:52:3
+     50|     expect(said(alone, 'runs')).toMatch(/needs another player/);
+     51|   });
+     52|   it('requires leave to tolerate zero players and empty teams without …
+       |   ^
+     53|     const zero = brokenDots('cannot leave to zero', {
+     54|       leave(state, id) {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/19]⎯
+
+ FAIL  packages/platform/src/game/conformance-attacks.test.ts > review round 1 attacks > rejects a missing, identity, or partially effective scramble
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance-attacks.test.ts:75:3
+     73|     expect(said(team, 'min-players')).toMatch(/empty team/);
+     74|   });
+     75|   it('rejects a missing, identity, or partially effective scramble', (…
+       |   ^
+     76|     const missing = { ...picks };
+     77|     delete missing.scrambleSecrets;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/19]⎯
+
+ FAIL  packages/platform/src/game/conformance-attacks.test.ts > review round 1 attacks > catches scoring twice or answering while locked in a single step
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance-attacks.test.ts:183:3
+    181|     expect(failed(report)).not.toContain('late-taps');
+    182|   });
+    183|   it('catches scoring twice or answering while locked in a single step…
+       |   ^
+    184|     // A buzzer: first accepted answer locks this player. Wrong answer…
+    185|     // Use the fixture's seeded, secret-bearing state and score report…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/19]⎯
+
+ FAIL  packages/platform/src/game/conformance-attacks.test.ts > round 2 catches late joins, last leaves, copies, results leaks and lock then pick
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance-attacks.test.ts:298:1
+    296| );
+    297| // Round 2: generic versions of the independent review's shipped-game …
+    298| it('round 2 catches late joins, last leaves, copies, results leaks and…
+       | ^
+    299|   const join = brokenPicks('join throws after round one', {
+    300|     join(state, player) {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/19]⎯
+
+ FAIL  packages/platform/src/game/conformance-attacks.test.ts > round 2 allows text-only layout revisions when no tap could be in flight
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance-attacks.test.ts:416:1
+    414| });
+    415|
+    416| it('round 2 allows text-only layout revisions when no tap could be in …
+       | ^
+    417|   const report = keep(
+    418|     'Dots text-only screens',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/19]⎯
+
+ FAIL  packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > state whose behaviour depends on two fields being the same object
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance-broken.test.ts:297:3
+    295|     );
+    296|   });
+    297|   it('state whose behaviour depends on two fields being the same objec…
+       |   ^
+    298|     interface Shared extends PicksState {
+    299|       first: PicksState['players'][number] | null;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/19]⎯
+
+ FAIL  packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > results that are not total or not in order
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance-broken.test.ts:490:3
+    488|     );
+    489|   });
+    490|   it('results that are not total or not in order', () => {
+       |   ^
+    491|     const order = brokenDots('results in seat order', {
+    492|       results: (state) => ({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/19]⎯
+
+ FAIL  packages/platform/src/game/conformance-broken.test.ts > the kit catches each kind of broken game > an honest in-place copy of Dots also passes
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance-broken.test.ts:640:3
+    638|     expect(failed(report)).toContain('state-contract');
+    639|   });
+    640|   it('an honest in-place copy of Dots also passes', () => {
+       |   ^
+    641|     const report = keep(
+    642|       'Dots, run as in-place',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/19]⎯
+
+ FAIL  packages/platform/src/game/conformance.test.ts > the conformance kit on the fixture games > gives the same report twice (the kit itself is deterministic)
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance.test.ts:55:3
+     53|     },
+     54|   );
+     55|   it('gives the same report twice (the kit itself is deterministic)', …
+       |   ^
+     56|     const run = (): string =>
+     57|       formatReport(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/19]⎯
+
+ FAIL  packages/platform/src/game/conformance.test.ts > round 3 passes always-null private view
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance.test.ts:215:12
+    213|   ['always-null private view', nullPrivateDots],
+    214|   ['full round re-deal', redealDots],
+    215| ] as const)('round 3 passes %s', (name, game) => {
+       |            ^
+    216|   const report = keep(`Dots ${name}`, runConformance(game,
+    217|     DOTS_SCENARIOS.filter((_, i) => i !== 1), { sources: DOTS_SOURCES,…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/19]⎯
+
+ FAIL  packages/platform/src/room/invariants.test.ts > PLAT-003 deterministic builds and golden hash
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/room/invariants.test.ts:5:1
+      3| import { createRoom, applyPhoneEvent } from './room';
+      4| import { join, resume, host, identity, invariants } from './test-helpe…
+      5| it('PLAT-003 deterministic builds and golden hash', () => {
+       | ^
+      6|   const run = () => {
+      7|     let s = createRoom();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/19]⎯
+
+ FAIL  games/tabao-rush/src/rules/movement.test.ts > Tabao Rush pure movement > TR-022 seeded cramped runs preserve walls, overlap and free-ahead progress
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ games/tabao-rush/src/rules/movement.test.ts:182:3
+    180|   });
+    181|
+    182|   it('TR-022 seeded cramped runs preserve walls, overlap and free-ahea…
+       |   ^
+    183|     const level = map([
+    184|       '##############', '#.....##.....#', '#............#', '#.....##.…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/19]⎯
+
+
+ Test Files  8 failed | 42 passed (50)
+      Tests  19 failed | 1859 passed | 1 skipped (1879)
+   Start at  18:07:32
+   Duration  118.65s (transform 6.03s, setup 0ms, import 16.14s, tests 503.45s, environment 50ms)
+
+[ELIFECYCLE] Test failed. See above for more details.
+[ELIFECYCLE] Command failed with exit code 1.
