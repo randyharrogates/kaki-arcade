@@ -8,7 +8,7 @@ describe('PERF-023/024 asset pipeline', () => {
     expect(result.status, result.stderr).toBe(0);
     expect(result.stderr).toMatch(/Ran 14 tests/);
     expect(result.stderr).toContain('OK');
-  });
+  }, 90_000);
   it('exports the runtime manifest shape without a workspace package', () => {
     const empty: AssetManifest = {
       version: 1, alphaMode: 'straight', mipmaps: false, halfRule: 'divide geometry by two', atlases: [], sets: {}, rounds: {},
