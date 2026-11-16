@@ -1,0 +1,693 @@
+{
+  "category": "wrong",
+  "title": "Wrong",
+  "questions": [
+    {
+      "id": "bad-prompt-long",
+      "type": "multiple-choice",
+      "prompt": "PPPPPPPPPP long long long long long long long long long long long long long long long long long long long long long long ?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-prompt-long"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-prompt-word",
+      "type": "multiple-choice",
+      "prompt": "Where is Llanfairpwllgwyngyllgogerychwyrndrobwll?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-prompt-word"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-option-long",
+      "type": "multiple-choice",
+      "prompt": "Which option is too long for the TV?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "An option that runs on to forty-one chars"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-option-word",
+      "type": "multiple-choice",
+      "prompt": "Which option has a word too long for a phone?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "Electromagnetism"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-option-twice",
+      "type": "multiple-choice",
+      "prompt": "Which option appears twice here?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "alpha",
+        "Delta"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-option-count",
+      "type": "multiple-choice",
+      "prompt": "Which question has only three options?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-answer",
+      "type": "multiple-choice",
+      "prompt": "Which answer is not one of the options?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-answer"
+      ],
+      "answer": "Echo",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-type",
+      "type": "type-the-answer",
+      "prompt": "Which type is not allowed in Rabakz?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-type"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-true-false",
+      "type": "true-false",
+      "prompt": "This statement offers Yes and No.",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-difficulty",
+      "type": "multiple-choice",
+      "prompt": "Which difficulty does not exist?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-difficulty"
+      ],
+      "answer": "Alpha",
+      "difficulty": "impossible",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-region",
+      "type": "multiple-choice",
+      "prompt": "Which region does not exist?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-region"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "asia",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "Bad_Id",
+      "type": "multiple-choice",
+      "prompt": "Which id is not lower-case and hyphenated?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "Bad_Id"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-unknown-field",
+      "type": "multiple-choice",
+      "prompt": "Which field is misspelt here?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-unknown-field"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      },
+      "dificulty": "easy"
+    },
+    {
+      "id": "bad-no-source",
+      "type": "multiple-choice",
+      "prompt": "Which question has no source at all?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-no-source"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "bad-blocklist",
+      "type": "multiple-choice",
+      "prompt": "Which card game is used for gambling?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-blocklist"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-entity",
+      "type": "multiple-choice",
+      "prompt": "Is this &quot;decoded&quot; properly?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-entity"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-entity-open",
+      "type": "multiple-choice",
+      "prompt": "Which dish is fish &amp chips?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-entity-open"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-tag",
+      "type": "multiple-choice",
+      "prompt": "Which tag is <b>bold</b> here?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-tag"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-nbsp",
+      "type": "multiple-choice",
+      "prompt": "Which space is non-breaking here?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-nbsp"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-zwj",
+      "type": "multiple-choice",
+      "prompt": "Which family is this: 👨‍👩‍👧?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-zwj"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-mixed-script",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Frаnce?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-mixed-script"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-script",
+      "type": "multiple-choice",
+      "prompt": "What does 谢谢 mean in English?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-script"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "bad-picture-missing",
+      "type": "picture",
+      "prompt": "Which landmark is shown here?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-picture-missing"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      },
+      "picture": {
+        "file": "missing.jpg",
+        "alt": "A white statue beside a bay",
+        "credit": "Photo: A. Tan",
+        "licence": "CC BY 4.0",
+        "sourceUrl": "https://example.org/photo"
+      }
+    },
+    {
+      "id": "bad-picture-empty",
+      "type": "picture",
+      "prompt": "Which landmark is shown here?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-picture-empty"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      },
+      "picture": {
+        "file": "empty.jpg",
+        "alt": "A white statue beside a bay",
+        "credit": "Photo: A. Tan",
+        "licence": "CC BY 4.0",
+        "sourceUrl": "https://example.org/photo"
+      }
+    },
+    {
+      "id": "bad-picture-text",
+      "type": "picture",
+      "prompt": "Which landmark is shown here?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-picture-text"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      },
+      "picture": {
+        "file": "notes.jpg",
+        "alt": "A white statue beside a bay",
+        "credit": "Photo: A. Tan",
+        "licence": "CC BY 4.0",
+        "sourceUrl": "https://example.org/photo"
+      }
+    },
+    {
+      "id": "bad-picture-renamed",
+      "type": "picture",
+      "prompt": "Which landmark is shown here?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-picture-renamed"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      },
+      "picture": {
+        "file": "renamed.jpg",
+        "alt": "A white statue beside a bay",
+        "credit": "Photo: A. Tan",
+        "licence": "CC BY 4.0",
+        "sourceUrl": "https://example.org/photo"
+      }
+    },
+    {
+      "id": "bad-picture-huge",
+      "type": "picture",
+      "prompt": "Which landmark is shown here?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-picture-huge"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      },
+      "picture": {
+        "file": "huge.jpg",
+        "alt": "A white statue beside a bay",
+        "credit": "Photo: A. Tan",
+        "licence": "CC BY 4.0",
+        "sourceUrl": "https://example.org/photo"
+      }
+    },
+    {
+      "id": "bad-picture-licence",
+      "type": "picture",
+      "prompt": "Which landmark is shown here?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-picture-licence"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      },
+      "picture": {
+        "file": "statue.jpg",
+        "alt": "A white statue beside a bay",
+        "credit": "",
+        "licence": "CC BY-NC 4.0",
+        "sourceUrl": "https://example.org/photo"
+      }
+    },
+    {
+      "id": "bad-picture-version",
+      "type": "picture",
+      "prompt": "Which landmark is shown here?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-picture-version"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      },
+      "picture": {
+        "file": "statue.jpg",
+        "alt": "A white statue beside a bay",
+        "credit": "Photo: A. Tan",
+        "licence": "CC BY 3.5",
+        "sourceUrl": "https://example.org/photo"
+      }
+    },
+    {
+      "id": "bad-picture-answer",
+      "type": "picture",
+      "prompt": "Which landmark is shown here?",
+      "options": [
+        "The Merlion",
+        "Raffles Hotel",
+        "The Esplanade",
+        "bad-picture-answer"
+      ],
+      "answer": "The Merlion",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      },
+      "picture": {
+        "file": "statue.jpg",
+        "alt": "The Merlion spouting water",
+        "credit": "Photo: A. Tan",
+        "licence": "CC BY 4.0",
+        "sourceUrl": "https://example.org/photo"
+      }
+    },
+    {
+      "id": "bad-picture-on-text",
+      "type": "multiple-choice",
+      "prompt": "Which question has a picture it should not?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "bad-picture-on-text"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      },
+      "picture": {
+        "file": "statue.jpg",
+        "alt": "A white statue beside a bay",
+        "credit": "Photo: A. Tan",
+        "licence": "CC BY 4.0",
+        "sourceUrl": "https://example.org/photo"
+      }
+    },
+    {
+      "id": "bad-duplicate",
+      "type": "multiple-choice",
+      "prompt": "which CITY is the capital of australia",
+      "options": [
+        "Perth",
+        "Melbourne",
+        "Canberra",
+        "Sydney"
+      ],
+      "answer": "Canberra",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "good-0002",
+      "type": "multiple-choice",
+      "prompt": "Which id is used twice in this bank?",
+      "options": [
+        "Alpha",
+        "Bravo",
+        "Charlie",
+        "good-0002"
+      ],
+      "answer": "Alpha",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "warn-giveaway",
+      "type": "multiple-choice",
+      "prompt": "What is white light made of?",
+      "options": [
+        "Red",
+        "Blue",
+        "A mixture of red, green and blue light",
+        "Green"
+      ],
+      "answer": "A mixture of red, green and blue light",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "warn-same-options",
+      "type": "multiple-choice",
+      "prompt": "Which is the fourth planet from the Sun?",
+      "options": [
+        "Mars",
+        "Venus",
+        "Mercury",
+        "Jupiter"
+      ],
+      "answer": "Mars",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    }
+  ]
+}

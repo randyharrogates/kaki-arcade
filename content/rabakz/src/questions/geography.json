@@ -1,0 +1,94 @@
+{
+  "category": "geography",
+  "title": "Geography",
+  "questions": [
+    {
+      "id": "geo-0001",
+      "type": "multiple-choice",
+      "prompt": "What is the capital city of Australia?",
+      "options": [
+        "Sydney",
+        "Canberra",
+        "Melbourne",
+        "Perth"
+      ],
+      "answer": "Canberra",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Canberra has been the seat of Australia's government since 1927. Check: Encyclopaedia Britannica, 'Canberra'."
+      }
+    },
+    {
+      "id": "geo-0002",
+      "type": "true-false",
+      "prompt": "The Pacific is the largest ocean on Earth.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "The Pacific covers about a third of the Earth's surface. Check: NOAA National Ocean Service, ocean facts."
+      }
+    },
+    {
+      "id": "geo-0003",
+      "type": "multiple-choice",
+      "prompt": "What is the highest natural point in Singapore?",
+      "options": [
+        "Mount Faber",
+        "Bukit Timah Hill",
+        "Fort Canning Hill",
+        "Bukit Batok Hill"
+      ],
+      "answer": "Bukit Timah Hill",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Bukit Timah Hill stands about 163 m high. Check: National Parks Board, Bukit Timah Nature Reserve."
+      }
+    },
+    {
+      "id": "geo-0004",
+      "type": "multiple-choice",
+      "prompt": "Counting overseas territories, which country spans the most time zones?",
+      "options": [
+        "Russia",
+        "United States",
+        "France",
+        "United Kingdom"
+      ],
+      "answer": "France",
+      "difficulty": "hard",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "France uses 12 time zones through its overseas territories; Russia and the United States use 11 each. Check: Britannica, 'time zone'."
+      }
+    },
+    {
+      "id": "geo-0005",
+      "type": "multiple-choice",
+      "prompt": "Which is the oldest reservoir in Singapore?",
+      "options": [
+        "Bedok Reservoir",
+        "Lower Peirce Reservoir",
+        "MacRitchie Reservoir",
+        "Upper Seletar Reservoir"
+      ],
+      "answer": "MacRitchie Reservoir",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "MacRitchie was completed in 1868 as the Impounding Reservoir. Check: PUB and National Parks Board pages on MacRitchie Reservoir."
+      }
+    }
+  ]
+}

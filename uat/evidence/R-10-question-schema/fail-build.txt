@@ -1,0 +1,48 @@
+The committed fixture content/rabakz/fixtures/bad-bank: good.json is valid, wrong.json has one
+fault per question (named by its id), twice.json repeats a key, broken.json is not JSON.
+
+$ pnpm --filter @kaki/content-rabakz build -- --sources fixtures/bad-bank/questions --pictures fixtures/bad-bank/pictures --blocklist fixtures/bad-bank/blocklist.txt --out <scratch>/fail-out
+$ node --import ./scripts/register.ts scripts/build.ts -- --sources fixtures/bad-bank/questions --pictures fixtures/bad-bank/pictures --blocklist fixtures/bad-bank/blocklist.txt --out <scratch>/fail-out
+error  broken.json  [json] not valid JSON: Unexpected end of JSON input
+error  twice.json  [json] the key "answer" appears twice in one object
+error  wrong.json bad-prompt-long  [prompt] prompt is 122 characters; the limit is 120
+error  wrong.json bad-prompt-word  [prompt] prompt has the unbroken word "Llanfairpwllgwyngyllgogerychwyrndrobwll" (39 characters); the limit is 30
+error  wrong.json bad-option-long  [options] option 4 is 41 characters; the limit is 40
+error  wrong.json bad-option-word  [options] option 4 has the unbroken word "Electromagnetism" (16 characters); the limit is 15
+error  wrong.json bad-option-twice  [options] options 1 and 3 are the same ("alpha")
+error  wrong.json bad-option-count  [options] a multiple-choice question has exactly 4 options; this has 3
+error  wrong.json bad-answer  [answer] answer "Echo" is not one of the options, letter for letter
+error  wrong.json bad-type  [type] type must be one of multiple-choice, true-false, picture
+error  wrong.json bad-true-false  [options] a true-false question has the options "True" then "False", spelt so
+error  wrong.json bad-difficulty  [difficulty] difficulty must be one of easy, medium, hard
+error  wrong.json bad-region  [region] region must be one of general, singapore
+error  wrong.json #12  [id] id must be lower-case words and digits joined by hyphens, at most 48 characters
+error  wrong.json bad-unknown-field  [unknown-field] unknown field dificulty
+error  wrong.json bad-no-source  [source] a question needs a source (or the file a defaultSource)
+error  wrong.json bad-blocklist  [blocklist] contains a term on the all-ages blocklist: gambling
+error  wrong.json bad-entity  [prompt] prompt has an HTML entity (such as "&amp;" or "&#39;"); write the character itself
+error  wrong.json bad-entity-open  [prompt] prompt has an HTML entity (such as "&amp;" or "&#39;"); write the character itself
+error  wrong.json bad-tag  [prompt] prompt has "<" directly before a letter, which reads as an HTML tag; put a space after "<"
+error  wrong.json bad-nbsp  [prompt] prompt has a non-breaking or other special space (U+00A0); use an ordinary space
+error  wrong.json bad-zwj  [prompt] prompt has a zero-width joiner (U+200D), as a joined emoji does; use a single emoji or a word
+error  wrong.json bad-mixed-script  [prompt] prompt mixes Latin and Cyrillic letters in the word "Frаnce"; a look-alike letter from another alphabet is the usual cause
+error  wrong.json bad-script  [prompt] prompt has "谢" (Chinese); only Latin and Greek letters are accepted, because the length limits were measured for Latin text
+error  wrong.json bad-picture-missing  [picture] picture file pictures/missing.jpg does not exist
+error  wrong.json bad-picture-empty  [picture] picture file pictures/empty.jpg is empty
+error  wrong.json bad-picture-text  [picture] picture file pictures/notes.jpg is not a JPEG, PNG or WebP image
+error  wrong.json bad-picture-renamed  [picture] picture file pictures/renamed.jpg is a png image under another extension
+error  wrong.json bad-picture-huge  [picture] picture file pictures/huge.jpg is 150001 bytes; the limit is 150000
+error  wrong.json bad-picture-licence  [picture] picture credit is empty
+error  wrong.json bad-picture-licence  [picture] picture licence must be a free licence written as "Public domain", "CC0 1.0", "CC BY 4.0" or "CC BY-SA 4.0" (version 1.0, 2.0, 2.5, 3.0 or 4.0)
+error  wrong.json bad-picture-version  [picture] picture licence must be a free licence written as "Public domain", "CC0 1.0", "CC BY 4.0" or "CC BY-SA 4.0" (version 1.0, 2.0, 2.5, 3.0 or 4.0)
+error  wrong.json bad-picture-answer  [picture] picture alt text contains the correct answer "The Merlion"
+error  wrong.json bad-picture-on-text  [picture] only a picture question may have a picture
+warning  wrong.json warn-giveaway  [length-giveaway] the correct option (38 characters) is much longer than every other (longest 5)
+error  wrong.json bad-duplicate  [duplicate-question] the same prompt with the same options is already in the bank as good.json good-0001
+error  wrong.json good-0002  [duplicate-id] the id is already used in good.json
+warning  wrong.json warn-same-options  [same-options] has the same options and the same correct answer as good.json good-0002; check it is not the same question reworded
+Rabakz bank not built: 36 error(s), 2 warning(s)
+exit code: 1
+
+$ ls <scratch>/fail-out   (nothing was written)
+ls: <scratch>/fail-out: No such file or directory

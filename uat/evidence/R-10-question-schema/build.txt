@@ -1,0 +1,133 @@
+$ pnpm --filter @kaki/content-rabakz build
+$ node --import ./scripts/register.ts scripts/build.ts
+Rabakz bank built: 20 question(s) in 4 chunk(s), 0 picture(s), 0 error(s), 0 warning(s)
+Written to <worktree>/content/rabakz/generated
+exit code: 0
+
+$ (cd content/rabakz/generated && shasum -a 256 *.json)   (first build)
+5a8e7c1637529fc90c2101d1d22d9d420065691f891f86f793525c3d9e22a4c6  food-and-drink.5a8e7c163752.json
+76d674471da9758edafa1059e0385150b9fed208de5bf2e8acded3aca6d3a4de  geography.76d674471da9.json
+83908d67ed4c13e5fad1cbe2bde7730afdd5cff10d8427e393d75cdb0d719b06  history.83908d67ed4c.json
+051fdec6ba64cd0b0a081a1e5dac2138b9f6684b865cadb61bd0d7e6fff49ce0  index.json
+7a30bb7bb906e7503eabda4938e98d90a3087844e65b86d43bd530df8f85277b  science-and-nature.7a30bb7bb906.json
+
+$ pnpm --filter @kaki/content-rabakz build   (second build)
+Rabakz bank built: 20 question(s) in 4 chunk(s), 0 picture(s), 0 error(s), 0 warning(s)
+Written to <worktree>/content/rabakz/generated
+$ (cd content/rabakz/generated && shasum -a 256 *.json)   (second build: identical)
+5a8e7c1637529fc90c2101d1d22d9d420065691f891f86f793525c3d9e22a4c6  food-and-drink.5a8e7c163752.json
+76d674471da9758edafa1059e0385150b9fed208de5bf2e8acded3aca6d3a4de  geography.76d674471da9.json
+83908d67ed4c13e5fad1cbe2bde7730afdd5cff10d8427e393d75cdb0d719b06  history.83908d67ed4c.json
+051fdec6ba64cd0b0a081a1e5dac2138b9f6684b865cadb61bd0d7e6fff49ce0  index.json
+7a30bb7bb906e7503eabda4938e98d90a3087844e65b86d43bd530df8f85277b  science-and-nature.7a30bb7bb906.json
+
+$ python3 -m json.tool content/rabakz/generated/index.json | head -75
+{
+    "format": 1,
+    "totals": {
+        "total": 20,
+        "byDifficulty": {
+            "easy": 7,
+            "medium": 6,
+            "hard": 7
+        },
+        "byRegion": {
+            "general": 13,
+            "singapore": 7
+        },
+        "byType": {
+            "multiple-choice": 15,
+            "true-false": 5,
+            "picture": 0
+        },
+        "byDifficultyAndRegion": {
+            "easy": {
+                "general": 4,
+                "singapore": 3
+            },
+            "medium": {
+                "general": 4,
+                "singapore": 2
+            },
+            "hard": {
+                "general": 5,
+                "singapore": 2
+            }
+        },
+        "picturesByDifficultyAndRegion": {
+            "easy": {
+                "general": 0,
+                "singapore": 0
+            },
+            "medium": {
+                "general": 0,
+                "singapore": 0
+            },
+            "hard": {
+                "general": 0,
+                "singapore": 0
+            }
+        }
+    },
+    "answers": {
+        "trueFalse": {
+            "true": 4,
+            "false": 1
+        },
+        "sourcePositions": [
+            0,
+            11,
+            4,
+            0
+        ]
+    },
+    "categories": [
+        {
+            "id": "food-and-drink",
+            "title": "Food and drink",
+            "file": "food-and-drink.5a8e7c163752.json",
+            "hash": "5a8e7c1637529fc90c2101d1d22d9d420065691f891f86f793525c3d9e22a4c6",
+            "bytes": 1053,
+            "counts": {
+                "total": 4,
+                "byDifficulty": {
+                    "easy": 2,
+                    "medium": 1,
+                    "hard": 1
+                },
+                "byRegion": {
+                    "general": 2,
+
+$ python3 -m json.tool content/rabakz/generated/history.*.json | head -30
+{
+    "format": 1,
+    "category": "history",
+    "title": "History",
+    "questions": [
+        {
+            "id": "his-0001",
+            "type": "multiple-choice",
+            "category": "history",
+            "difficulty": "easy",
+            "region": "singapore",
+            "prompt": "In which year did Singapore become an independent country?",
+            "options": [
+                "1959",
+                "1963",
+                "1965",
+                "1971"
+            ],
+            "correct": 2
+        },
+        {
+            "id": "his-0002",
+            "type": "true-false",
+            "category": "history",
+            "difficulty": "medium",
+            "region": "general",
+            "prompt": "The Berlin Wall came down in 1989.",
+            "options": [
+                "True",
+                "False"
+
+$ git status --short content/rabakz/generated   (ignored: prints nothing)

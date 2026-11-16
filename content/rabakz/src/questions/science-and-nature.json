@@ -1,0 +1,110 @@
+{
+  "category": "science-and-nature",
+  "title": "Science and nature",
+  "questions": [
+    {
+      "id": "sci-0001",
+      "type": "multiple-choice",
+      "prompt": "Which planet is known as the Red Planet?",
+      "options": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Mercury"
+      ],
+      "answer": "Mars",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Iron oxide dust gives Mars its red colour. Check: NASA Science, 'Mars facts'."
+      }
+    },
+    {
+      "id": "sci-0002",
+      "type": "true-false",
+      "prompt": "Sound travels faster than light.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "False",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Sound moves at about 343 m/s in air; light at about 300,000 km/s. Check: any school physics text."
+      }
+    },
+    {
+      "id": "sci-0003",
+      "type": "multiple-choice",
+      "prompt": "What is the chemical symbol for gold?",
+      "options": [
+        "Ag",
+        "Gd",
+        "Au",
+        "Pt"
+      ],
+      "answer": "Au",
+      "difficulty": "medium",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Au, from the Latin aurum. Ag is silver, Gd gadolinium, Pt platinum. Check: IUPAC periodic table."
+      }
+    },
+    {
+      "id": "sci-0004",
+      "type": "multiple-choice",
+      "prompt": "Which gas makes up most of the Earth's atmosphere?",
+      "options": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Argon"
+      ],
+      "answer": "Nitrogen",
+      "difficulty": "medium",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Dry air is about 78% nitrogen and 21% oxygen. Check: NASA Earth fact sheet."
+      }
+    },
+    {
+      "id": "sci-0005",
+      "type": "multiple-choice",
+      "prompt": "Which element has the atomic number 26?",
+      "options": [
+        "Copper",
+        "Iron",
+        "Zinc",
+        "Cobalt"
+      ],
+      "answer": "Iron",
+      "difficulty": "hard",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Iron is 26; cobalt 27, copper 29, zinc 30. Check: IUPAC periodic table."
+      }
+    },
+    {
+      "id": "sci-0006",
+      "type": "true-false",
+      "prompt": "Venus takes longer to spin once on its axis than to orbit the Sun.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "difficulty": "hard",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Venus rotates once in about 243 Earth days and orbits the Sun in about 225. Check: NASA Venus fact sheet."
+      }
+    }
+  ]
+}

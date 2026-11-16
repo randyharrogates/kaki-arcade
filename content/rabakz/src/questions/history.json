@@ -1,0 +1,94 @@
+{
+  "category": "history",
+  "title": "History",
+  "questions": [
+    {
+      "id": "his-0001",
+      "type": "multiple-choice",
+      "prompt": "In which year did Singapore become an independent country?",
+      "options": [
+        "1959",
+        "1963",
+        "1965",
+        "1971"
+      ],
+      "answer": "1965",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Singapore separated from Malaysia on 9 August 1965. Check: National Archives of Singapore; National Library Board Infopedia."
+      }
+    },
+    {
+      "id": "his-0002",
+      "type": "true-false",
+      "prompt": "The Berlin Wall came down in 1989.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": "True",
+      "difficulty": "medium",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "The border was opened on 9 November 1989. Check: Britannica, 'Berlin Wall'."
+      }
+    },
+    {
+      "id": "his-0003",
+      "type": "multiple-choice",
+      "prompt": "In which year did Stamford Raffles land in Singapore?",
+      "options": [
+        "1786",
+        "1819",
+        "1824",
+        "1867"
+      ],
+      "answer": "1819",
+      "difficulty": "medium",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Raffles landed on 28 January 1819. Check: National Library Board Infopedia, 'Stamford Raffles's landing in Singapore'."
+      }
+    },
+    {
+      "id": "his-0004",
+      "type": "multiple-choice",
+      "prompt": "In which year did Singapore's MRT first carry passengers?",
+      "options": [
+        "1983",
+        "1987",
+        "1990",
+        "1996"
+      ],
+      "answer": "1987",
+      "difficulty": "hard",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "The first section, Yio Chu Kang to Toa Payoh, opened on 7 November 1987. Check: National Library Board Infopedia, 'Mass Rapid Transit (MRT) system'."
+      }
+    },
+    {
+      "id": "his-0005",
+      "type": "multiple-choice",
+      "prompt": "Which ancient wonder stood on the island of Pharos?",
+      "options": [
+        "Colossus of Rhodes",
+        "Lighthouse of Alexandria",
+        "Temple of Artemis",
+        "Hanging Gardens of Babylon"
+      ],
+      "answer": "Lighthouse of Alexandria",
+      "difficulty": "hard",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "The lighthouse stood on Pharos, off Alexandria in Egypt. Check: Britannica, 'Lighthouse of Alexandria'."
+      }
+    }
+  ]
+}

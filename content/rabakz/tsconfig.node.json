@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.test.base.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "dist/.node.tsbuildinfo"
+  },
+  "include": ["scripts/**/*.ts"],
+  "references": [{ "path": "./tsconfig.lib.json" }]
+}

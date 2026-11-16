@@ -1,0 +1,15 @@
+{
+  "name": "@kaki/content-rabakz",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Rabakz question bank: sources, validator, build script, generated chunks and the match loader",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tools": "./src/tools.ts"
+  },
+  "scripts": {
+    "build": "node --import ./scripts/register.ts scripts/build.ts",
+    "stats": "node --import ./scripts/register.ts scripts/stats.ts"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "category": "twice",
+  "title": "Twice",
+  "questions": [
+    {
+      "id": "twice-0001",
+      "type": "true-false",
+      "prompt": "A key may appear twice in one object.",
+      "options": ["True", "False"],
+      "answer": "False",
+      "answer": "True",
+      "difficulty": "easy",
+      "region": "general",
+      "source": { "kind": "original", "note": "Fixture question: not a real fact." }
+    }
+  ]
+}

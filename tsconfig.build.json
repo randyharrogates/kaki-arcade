@@ -10,6 +10,7 @@
     { "path": "packages/ui" },
     { "path": "games/rabakz" },
     { "path": "games/peek-poker" },
-    { "path": "games/tabao-rush" }
+    { "path": "games/tabao-rush" },
+    { "path": "content/rabakz" }
   ]
 }

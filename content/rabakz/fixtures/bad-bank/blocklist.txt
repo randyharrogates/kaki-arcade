@@ -1,0 +1,2 @@
+# Fixture list for the failing-build evidence. Not the real list.
+gambling

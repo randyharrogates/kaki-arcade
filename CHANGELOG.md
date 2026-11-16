@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — R-10: Rabakz question schema, build and selector
+
+- `content/rabakz`: schema and validator, deterministic build to content-hashed chunks, seeded
+  selector for 10, 30 or 50 questions with difficulty mixes and a recently-used list, a public
+  question type without the answer, and a stats report against the bank targets. Two review
+  rounds; evidence in `uat/evidence/R-10-question-schema/` (no screen involved). (RZ-020 partial,
+  RZ-022 partial until the full bank passes)
+
 ## 2026-11-16 — S-01: network spike, first half
 
 - `spikes/s01-network/`: host page, phone page, pairing server and an unattended run with 1, 4

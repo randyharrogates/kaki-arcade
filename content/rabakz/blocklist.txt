@@ -1,0 +1,9 @@
+# Rabakz all-ages blocklist (RZ-023).
+#
+# One term per line. A term is one word or a phrase. Matching ignores case, accents and
+# punctuation and only matches whole words, so "ass" does not match "class" or "bass".
+# Lines starting with # and blank lines are ignored.
+#
+# The build fails on any question whose prompt, options or picture alt text contains a term.
+# The list is filled by the Open Trivia Database import (R-11). It is a first screen, not the
+# whole of RZ-023: a person still reads the bank.

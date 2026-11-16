@@ -1,0 +1,24 @@
+$ pnpm --filter @kaki/content-rabakz stats
+$ node --import ./scripts/register.ts scripts/stats.ts
+Rabakz question bank
+Category                         easy     medium       hard    general  singapore    picture      total
+food-and-drink                      2          1          1          2          2          0          4
+geography                           2          1          2          3          2          0          5
+history                             1          2          2          2          3          0          5
+science-and-nature                  2          2          2          6          0          0          6
+All                                 7          6          7         13          7          0         20
+By type: multiple choice 15, true or false 5, picture 0
+Written for Kaki Arcade: 20. From datasets: 0.
+True-or-false answers: True 4, False 1 (shown in the fixed order True, False)
+Four-option answers by source position: 0 / 11 / 4 / 0 (not a fault: the game shuffles these)
+Pictures: 0 file(s), 0 bytes, largest 0
+Launch sizes (RZ-024)
+  Questions in total       20 of 1500  short by 1480
+  Singapore pack            7 of 200   short by 193
+  Picture questions         0 of 60    short by 60
+All chunks together: 4963 bytes uncompressed, 0% of the 2 MB match budget (RZ-020) before pictures.
+The bank is not yet at launch size.
+exit code: 0
+
+$ pnpm --filter @kaki/content-rabakz stats -- --check   (exits 1 while the bank is short)
+exit code: 1

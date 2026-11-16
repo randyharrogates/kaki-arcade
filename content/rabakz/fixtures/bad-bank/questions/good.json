@@ -1,0 +1,67 @@
+{
+  "category": "good",
+  "title": "Good",
+  "questions": [
+    {
+      "id": "good-0001",
+      "type": "multiple-choice",
+      "prompt": "Which city is the capital of Australia?",
+      "options": [
+        "Sydney",
+        "Canberra",
+        "Melbourne",
+        "Perth"
+      ],
+      "answer": "Canberra",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "good-0002",
+      "type": "multiple-choice",
+      "prompt": "Which planet is known as the Red Planet?",
+      "options": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Mercury"
+      ],
+      "answer": "Mars",
+      "difficulty": "easy",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      }
+    },
+    {
+      "id": "good-0003",
+      "type": "picture",
+      "prompt": "Which landmark is this?",
+      "options": [
+        "The Merlion",
+        "Raffles Hotel",
+        "The Esplanade",
+        "Marina Barrage"
+      ],
+      "answer": "The Merlion",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Fixture question: not a real fact."
+      },
+      "picture": {
+        "file": "statue.jpg",
+        "alt": "A white statue beside a bay",
+        "credit": "Photo: A. Tan",
+        "licence": "CC BY 4.0",
+        "sourceUrl": "https://example.org/photo"
+      }
+    }
+  ]
+}

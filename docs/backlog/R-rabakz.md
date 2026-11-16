@@ -27,7 +27,7 @@ Content work. It needs no code from other tracks and starts in Wave 0.
 
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
-| R-10 | Question schema, build and validation script, per-category chunks loaded before a match | RZ-020, RZ-022 | F-01 | 0 | doing |
+| R-10 | Question schema, build and validation script, per-category chunks loaded before a match | RZ-020, RZ-022 | F-01 | 0 | merged |
 | R-11 | Import the Open Trivia Database: licence and attribution recorded, length filter, all-ages screen, difficulty mapped | RZ-021, RZ-023, RZ-024 | R-10 | 0 | todo |
 | R-12 | Singapore pack: at least 200 questions written by Claude, each with a source note | RZ-021, RZ-024 | R-10 | 1 | todo |
 | R-13 | Picture questions: at least 60, with real photographs under a free licence (licence and credit recorded per image); a Codex-generated image, checked for accuracy and logged in `DECISIONS.md`, only where no suitable photograph can be found (D-042) | RZ-002, RZ-024, RZ-025 | R-10, G-02 | 2 | todo |
@@ -44,3 +44,10 @@ Content work. It needs no code from other tracks and starts in Wave 0.
   nodes only, and screenshots a longest-allowed prompt with four longest-allowed options.
 - **R-08 or the app build** runs `pnpm --filter @kaki/content-rabakz build` before dev and
   production builds, serves `content/rabakz/generated/`, and fails loudly if it is missing.
+- **R-11** changes the real-bank test from "no problems" to "no errors" (imported data raises
+  length-giveaway warnings), retitles dataset categories longer than 24 characters, decodes
+  HTML entities and strips soft hyphens before validating, and drops what the rules reject
+  (about 1% of the Open Trivia Database in a sample of 559).
+- **R-12** writes Singapore names in romanised form (OQ-029).
+- **R-13** sets a target picture size; at the 150 KB cap about 10 pictures fit beside a full bank
+  in one match, because the budget counts uncompressed bytes.

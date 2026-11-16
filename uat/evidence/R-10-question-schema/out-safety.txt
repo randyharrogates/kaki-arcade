@@ -1,0 +1,105 @@
+$ pnpm --filter @kaki/content-rabakz build -- --out .
+Rabakz bank not built: <worktree>/content/rabakz is not empty and is not the output of an earlier build (it has no index.json of format 1); nothing was written. Choose an empty or new folder
+exit code: 1
+
+$ pnpm --filter @kaki/content-rabakz build -- --out src/questions
+Rabakz bank not built: <worktree>/content/rabakz/src/questions is not empty and is not the output of an earlier build (it has no index.json of format 1); nothing was written. Choose an empty or new folder
+exit code: 1
+
+$ pnpm --filter @kaki/content-rabakz build -- --out src
+Rabakz bank not built: <worktree>/content/rabakz/src is not empty and is not the output of an earlier build (it has no index.json of format 1); nothing was written. Choose an empty or new folder
+exit code: 1
+
+$ pnpm --filter @kaki/content-rabakz build -- --out
+Rabakz bank not built: --out needs a path after it
+Usage: build [--strict] [--out <folder>] [--sources <folder>] [--pictures <folder>] [--blocklist <file>]
+exit code: 1
+
+$ pnpm --filter @kaki/content-rabakz build -- --out --strict
+Rabakz bank not built: --out needs a path after it
+Usage: build [--strict] [--out <folder>] [--sources <folder>] [--pictures <folder>] [--blocklist <file>]
+exit code: 1
+
+$ pnpm --filter @kaki/content-rabakz build -- --strct
+Rabakz bank not built: unknown argument "--strct"
+Usage: build [--strict] [--out <folder>] [--sources <folder>] [--pictures <folder>] [--blocklist <file>]
+exit code: 1
+
+$ ls <scratch>/ev/mine
+thesis.txt
+$ pnpm --filter @kaki/content-rabakz build -- --out <scratch>/ev/mine
+Rabakz bank not built: <scratch>/ev/mine is not empty and is not the output of an earlier build (it has no index.json of format 1); nothing was written. Choose an empty or new folder
+exit code: 1
+$ ls <scratch>/ev/mine   (untouched)
+thesis.txt
+
+$ pnpm --filter @kaki/content-rabakz build -- --out <scratch>/ev/new   (a new folder)
+Rabakz bank built: 20 question(s) in 4 chunk(s), 0 picture(s), 0 error(s), 0 warning(s)
+exit code: 0
+$ echo mine > <scratch>/ev/new/notes.txt
+$ pnpm --filter @kaki/content-rabakz build -- --out <scratch>/ev/new   (again, over its own output)
+Rabakz bank built: 20 question(s) in 4 chunk(s), 0 picture(s), 0 error(s), 0 warning(s)
+exit code: 0
+$ ls <scratch>/ev/new   (the five build files, and notes.txt still there)
+food-and-drink.5a8e7c163752.json
+geography.76d674471da9.json
+history.83908d67ed4c.json
+index.json
+notes.txt
+science-and-nature.7a30bb7bb906.json
+
+--- A forged index: it lists files that are not of a shape the build writes
+$ cat <scratch>/ev/forged/index.json
+{"format":1,"categories":[{"file":"geography.json"},{"file":"notes.txt"},{"file":"../mine/thesis.txt"},{"file":"food.0123456789ab.json"}]}
+$ ls <scratch>/ev/forged
+food.0123456789ab.json
+geography.json
+index.json
+notes.txt
+$ pnpm --filter @kaki/content-rabakz build -- --out <scratch>/ev/forged
+Rabakz bank built: 20 question(s) in 4 chunk(s), 0 picture(s), 0 error(s), 0 warning(s)
+exit code: 0
+$ ls <scratch>/ev/forged   (geography.json and notes.txt kept; only the chunk-shaped old file is gone)
+food-and-drink.5a8e7c163752.json
+geography.76d674471da9.json
+geography.json
+history.83908d67ed4c.json
+index.json
+notes.txt
+science-and-nature.7a30bb7bb906.json
+$ cat <scratch>/ev/forged/geography.json <scratch>/ev/mine/thesis.txt
+mine
+keep
+
+--- The pictures folder of the output is a link to another place
+$ ls -l <scratch>/ev/new | grep pictures
+pictures -> <scratch>/ev/album
+$ pnpm --filter @kaki/content-rabakz build -- --out <scratch>/ev/new
+Rabakz bank not built: <scratch>/ev/new/pictures is a link to another place; nothing was written. Remove the link or choose another folder
+exit code: 1
+$ ls <scratch>/ev/album   (untouched)
+holiday.jpg
+
+$ ls content/rabakz/src/questions content/rabakz/src | head -30   (the sources are all still there)
+content/rabakz/src:
+blocklist.ts
+build.test.ts
+build.ts
+index.ts
+questions
+schema.ts
+select.test.ts
+select.ts
+stats.test.ts
+stats.ts
+text.test.ts
+text.ts
+tools.ts
+validate.test.ts
+validate.ts
+
+content/rabakz/src/questions:
+food-and-drink.json
+geography.json
+history.json
+science-and-nature.json

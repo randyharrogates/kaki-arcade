@@ -1,0 +1,24 @@
+$ pnpm verify
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 10 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 9 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 <worktree>
+
+
+ Test Files  8 passed (8)
+      Tests  315 passed (315)
+   Start at  13:45:34
+   Duration  497ms (transform 420ms, setup 0ms, import 652ms, tests 658ms, environment 0ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+no bundles yet
+$ python3 tools/trace_check.py
+152 requirements; 5 in progress, 1 later, 146 not started
+trace check passed
+exit code: 0
