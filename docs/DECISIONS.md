@@ -447,3 +447,8 @@ id is added. The host paces its own signalling below the pairing server's rate l
 the server's bucket for eight phones joining at once is part of C-03. A peer that has not
 connected within 15 seconds is abandoned. Both signalling sockets send the protocol's
 keep-alive ping.
+
+**D-077 · 2026-11-16 · Claude (under D-057)** — `packages/netcode` takes a test-only
+dependency on `@kaki/signal` (workspace link, no new external package) so its tests run
+against the pairing server's real room logic instead of a stand-in; the first build's
+stand-in hid five connection faults.
