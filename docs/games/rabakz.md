@@ -17,7 +17,7 @@ No betting, no wagering of points, no real-money element.
 |---|---|---|
 | RZ-001 | MUST | A match is a fixed number of questions chosen by the leader: **10, 30 or 50** (default 10). The highest total score wins. |
 | RZ-002 | MUST | Two question types are mixed in a match: **multiple choice** (four options) and **picture** (an image on the TV with four options). There are no true-or-false questions (Randy, D-049: in a buzzer race one wrong press gives the answer away). There is no type-the-answer question. |
-| RZ-003 | MUST | The question and its options are shown on the big screen. Each phone shows one large button per option, carrying the same letter, shape and colour as the option on the TV, and the option's text. |
+| RZ-003 | MUST | The question and its options are shown on the big screen. Each phone shows one large button per option, carrying the same shape and colour as the option on the TV (no letters, D-050), and the option's text. |
 | RZ-004 | MUST | There is **no answer timer**. Any player may answer at any moment after the question appears. A press is that player's answer for this turn and cannot be changed. |
 | RZ-005 | MUST | While a question is open the big screen shows **who** has answered (seat markers) and marks an option as wrong once someone has chosen it wrongly. No answer is sent to another phone. |
 | RZ-006 | MUST | A question ends as soon as someone answers correctly. Correct answers that reach the host within **0.25 seconds** of the first correct one count as answered at the same time and all score. A player who answers wrongly is **locked out until every other player has taken a turn** on this question; when every player has answered wrongly, all are unlocked and may answer again. The leader can skip a question, and after **30 seconds** with no answer and no skip the game reveals the answer and moves on; no countdown is shown. The reveal shows the correct option, who chose what, and the points gained. |
@@ -59,7 +59,7 @@ Declared to the controller kit (CTRL-002):
 
 | ID | Pri | Requirement |
 |---|---|---|
-| RZ-030 | MUST | The question and options are readable from 3 m (NFR-A11Y), and options differ by letter and shape as well as colour. |
+| RZ-030 | MUST | The question and options are readable from 3 m (NFR-A11Y), and options differ by shape as well as colour (cross, circle, square, triangle; no letters, D-050). |
 | RZ-031 | MUST | No timer is shown. A locked-out player is marked without relying on colour alone, on the TV and on their phone. Motion follows `../DESIGN.md` §3: the reveal uses a mask, scores count up and stop with no overshoot, and a correct answer pulses once. |
 | RZ-032 | MUST | A scoreboard is shown after every 5 questions and a podium at the end; in team mode both show team totals first. |
 | RZ-033 | SHOULD | Sound effects for an answer, correct, wrong and unlock, with the shared volume controls. |

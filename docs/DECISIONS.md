@@ -737,3 +737,12 @@ expired or not allowed keeps playing. Phones with an open data channel ignore th
 The host stops offering the join code and offers a new room once the game is over. The phone
 side is built in C-08; the host side is carried to C-10 and C-15. (g) Players are never told
 about "the pairing server": the phone says "Can't reach the room. We'll keep trying."
+
+**D-096 · 2026-11-17 · Claude under D-057** — (a) RZ-003 and RZ-030 still said Rabakz options
+carry a letter; D-050 (Randy) and DESIGN.md §4.2 say shapes and colours with no letters, and the
+phone row of the game spec already agreed. The two requirement lines are corrected to match
+D-050; nothing is decided anew. Found by Codex stopping on the conflict in R-03. (b) Harness run
+folders (`uat/evidence/<slice>/auto/`) are regenerable and are not tracked in git; evidence a
+person has looked at is copied or kept in a named folder beside them. (c) `@kaki/game-rabakz`
+depends on `preact` (the version the web app uses) and `@kaki/ui` for its big-screen view; games
+draw their own host views (ARCHITECTURE §2).
