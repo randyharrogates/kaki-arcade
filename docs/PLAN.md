@@ -1,7 +1,7 @@
 # Kaki Arcade — Build Plan (concurrent agents, git worktrees)
 
 **Status: agreed by Randy; build started 2026-11-16 on his go (D-043).** His standing orders for
-the build: Claude only, Codex for image generation only; concurrent sub-agents where they help;
+the build: Claude leads and integrates; issues are built by Claude sub-agents or, from 2026-11-16, by Codex (D-052); Codex also generates images; concurrent sub-agents where they help;
 check free memory before every sub-agent; run every issue through the loop; a 10-minute watch
 that no sub-process is stuck; keep going until v1 is playable.
 
@@ -78,7 +78,11 @@ is not started before that spike reports: T-07 waits for S-04, A-02 waits for S-
 - **`uat-runner` and `reviewer`** — the existing agents (`.claude/agents/`), run per issue with
   a fresh context, inside that issue's worktree.
 
-Per `CLAUDE.md` rule 8 every agent is Claude. Codex is used only for image generation.
+Per `CLAUDE.md` rule 8 (as changed by D-052) a builder is a Claude sub-agent or Codex. Codex
+is run by the integrator as `codex exec -m gpt-6.1-sol -s workspace-write` inside the issue's
+worktree, with the same brief an `issue-builder` gets; it follows `AGENTS.md`. Reviewers and
+the UAT runner are always Claude, and never the agent that built the issue. Opus 5.5 may be
+used for Claude sub-agents where it fits.
 
 ## 5. Worktree rules
 

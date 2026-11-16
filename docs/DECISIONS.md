@@ -65,3 +65,10 @@ the first answer scores; a wrong answer reveals the correct one and the match mo
 "note the buttons just not be too small": Claude's reading is a floor of 110 px for the four
 face buttons at 844 × 390, 89 px for other in-play controls and 55 px for anything tappable
 (`DESIGN.md` §4.4). **The design gate is closed**; `DESIGN.md` §4 is locked.
+
+**D-052 · 2026-11-16 · Randy** — "please also use codex for subagent work from now on", and
+"Please use opus 5.5 for subagents where you deem better". Supersedes D-018 and the Claude-only
+part of D-043: issues may be built by Claude sub-agents (Opus 5.5 where it fits) or by Codex
+(`gpt-6.1-sol`, workspace-write, in the issue's worktree). Claude still leads, briefs and
+merges; every issue keeps an independent Claude review. `CLAUDE.md` rule 8, `AGENTS.md` and
+`PLAN.md` updated.

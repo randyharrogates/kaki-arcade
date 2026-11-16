@@ -34,9 +34,11 @@ or art work: `docs/DESIGN.md`. This file is the short binding version; the docs 
    one is exceeded. Fix the cause; never loosen a threshold.
 7. **Originality.** Tabao Rush is an original game. Do not copy the name, characters, art,
    music, levels or look of any existing game. Peek Poker has no betting or real-money element.
-8. **Claude builds this.** Do not hand implementation to Codex. Codex is only for image
-   generation or a task Claude cannot do (`AGENTS.md`); log each use in `docs/DECISIONS.md`.
-   Work is done by concurrent Claude agents, one issue each, in git worktrees. If you are an
+8. **Claude leads; Claude and Codex agents build.** Claude plans, briefs, integrates and merges.
+   An issue may be built by a Claude sub-agent or by Codex (Randy, 2026-11-16, D-052), one
+   issue each, in git worktrees, under the same lane rules and the same loop. Every issue is
+   reviewed by a Claude reviewer that did not build it, and only the integrator merges.
+   Codex also does image generation (`AGENTS.md`). If you are an
    issue agent: stay inside the paths your issue owns, never edit the shared trackers, the PRD,
    the contracts or the lockfile, and never merge (`docs/PLAN.md` §5).
 9. **Stop at human gates.** The design gate, the end of each milestone, anything that costs
