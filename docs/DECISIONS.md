@@ -434,3 +434,9 @@ applies only while the stick was already deflected.
 **D-074 · 2026-11-16 · Claude (under D-057)** — Adds to D-073: in Rabakz a leader's skip has
 no effect once someone has answered correctly, so the 0.25 s tie window always runs out
 (RZ-006).
+
+**D-075 · 2026-11-16 · Claude (under D-057)** — The game dev harness (F-05) lives in
+`packages/platform/src/harness`, imported as `@kaki/platform/harness`, so it needs no new
+package. F-05 is split: F-05 builds the headless runner (scripted and recorded controllers,
+replay, text dumps of views) now; F-05b adds the bare dev page with keyboard controllers once
+a game has a big-screen view to draw, since a page with nothing to draw proves nothing.
