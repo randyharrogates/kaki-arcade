@@ -30,12 +30,12 @@ requirement.
 |---|---|---|---|---|---|---|---|
 | PLAT-001 | MUST | Opening the host page creates a room with a short room code and a QR code that encodes the join link | M3 | not started | — | — | — |
 | PLAT-002 | MUST | A phone that scans the QR code (or types the code at the join page) lands in the lobby as a player, with… | M3 | not started | — | — | — |
-| PLAT-003 | MUST | A room holds 1 to 8 players | M3 | not started | — | — | — |
-| PLAT-004 | MUST | Each player picks a nickname (max 12 characters) and is assigned a distinct colour and seat number shown… | M3 | not started | — | — | — |
-| PLAT-005 | MUST | Nicknames pass a blocked-words filter | M8 | not started | — | — | — |
-| PLAT-006 | MUST | The first player to join is the room leader and can start games, change settings and return to the picker | M3 | not started | — | — | — |
+| PLAT-003 | MUST | A room holds 1 to 8 players | M3 | in progress | `packages/platform/src/room/room.ts` (pure state: 8 seats; no screen yet) | `room/seats-and-leader.test.ts`, `room/invariants.test.ts` | `uat/evidence/C-06-room-state/` |
+| PLAT-004 | MUST | Each player picks a nickname (max 12 characters) and is assigned a distinct colour and seat number shown… | M3 | in progress | `packages/platform/src/room/room.ts` (nickname check, uniqueness, seat and colour; no screen yet) | `room/names.test.ts` | `uat/evidence/C-06-room-state/` |
+| PLAT-005 | MUST | Nicknames pass a blocked-words filter | M8 | in progress | `packages/platform/src/room/blocked-words.ts` (rule in D-067; known gaps in the slice note) | `room/filter.test.ts` | `uat/evidence/C-06-room-state/` |
+| PLAT-006 | MUST | The first player to join is the room leader and can start games, change settings and return to the picker | M3 | in progress | `packages/platform/src/room/room.ts` (leader, hand-over; leader actions come with C-07 to C-10) | `room/seats-and-leader.test.ts`, `room/restore.test.ts` | `uat/evidence/C-06-room-state/` |
 | PLAT-007 | MUST | A player whose phone sleeps, reloads or drops is put back in the same seat with the same state when they… | M3 | not started | — | — | — |
-| PLAT-008 | MUST | Players can join mid-session from the lobby | M3 | not started | — | — | — |
+| PLAT-008 | MUST | Players can join mid-session from the lobby | M3 | in progress | `packages/platform/src/room/room.ts` (joining by phase and game policy; no screen yet) | `room/seats-and-leader.test.ts` | `uat/evidence/C-06-room-state/` |
 | PLAT-009 | MUST | If the host page closes or reloads, phones show "host disconnected" and reconnect automatically when the… | M3 | not started | — | — | — |
 | PLAT-010 | SHOULD | The big screen shows connection quality per player (good, weak, relayed) | M3 | not started | — | — | — |
 | PLAT-020 | MUST | The lobby shows a game picker listing every installed game with name, player range and a one-line description | M3 | not started | — | — | — |

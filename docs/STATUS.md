@@ -58,6 +58,11 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   `tokens.css` and `specimen.html` are generated and checked for staleness. 5.8 KB compressed.
   Real fonts are not bundled yet (F-06b). One review round plus fixes checked by the integrator.
 
+- **Room state (C-06).** A pure module in `packages/platform` for seats 1 to 8 and their
+  colours, nicknames (12 visible characters, unique, filtered), the leader and hand-over, the
+  two-minute seat hold, host reload, and joining by phase. No screen or network uses it yet.
+  Built by Codex; four review rounds, the last three on the nickname filter.
+
 ## Does not exist yet
 
 - Any application code: no host page, controller, pairing server or game (the packages are empty stubs).

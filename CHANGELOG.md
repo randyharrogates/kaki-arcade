@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — C-06: room state
+
+- `packages/platform/src/room`: pure room reducer (seats, colours, nicknames with a blocked-words
+  filter, leader and hand-over, seat hold, restore after a host reload, join policy), a public
+  view with no tokens, and 660 tests. Rulings D-060, D-064, D-067.
+  (PLAT-003, PLAT-004, PLAT-005, PLAT-006, PLAT-008 in progress)
+
 ## 2026-11-16 — R-11: Open Trivia Database import
 
 - 2,342 imported questions across ten categories with licence credit, an all-ages screen and
