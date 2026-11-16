@@ -360,3 +360,8 @@ leader is kept, but if their phone has not come back 20 seconds after the first 
 returns, leadership passes on, so a lobby never waits two minutes for an absent leader. The
 nickname filter matches strong words anywhere in a name and across spaces and hyphens; short
 or ambiguous words only as whole words; protected names are checked per word.
+
+**D-065 · 2026-11-16 · Claude (under D-057)** — Reverses D-063 (3): room codes stay at 8
+characters (shown as two groups of four) until the per-client limit on failed joins exists
+(C-03). Six characters leaned on a rate limit that is not built yet; shortening the code is
+reconsidered when C-03 merges.
