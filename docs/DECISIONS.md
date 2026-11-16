@@ -331,3 +331,15 @@ the same are treated as the same name.
 and `workerd` only (`allowBuilds` in `pnpm-workspace.yaml`); every other package's install
 script stays refused. Nothing is deployed and no Cloudflare account is touched until Randy
 says so (rule 9).
+
+**D-062 · 2026-11-16 · Claude (under D-057)** — Game interface (F-04) rulings from its second
+review. (1) Mid-game joiners: results mark them `joinedMidGame`; in co-op they share the team
+score and a join must not change it; in competitive play they start at 0. (2) Button bits follow
+the wire order in `packages/protocol`; the protocol's letter names `a/b/x/y` mean bottom, right,
+left, top and are to be renamed to positions (F-02b). (3) Each player's private view carries its
+own revision so the host can tell cheaply that it changed. (4) The determinism promise is "same
+inputs, same result on the same browser engine"; `Math.sin` and friends stay allowed because the
+host alone runs the simulation. (5) Peek Poker's picker is tap-to-pick with a Lock in button
+(board 4, 4B); the D-pad cursor in its spec does not fit beside the grid at the size floors and
+is dropped, and letter button names in the game specs are replaced by the shapes. (6) Bots
+(TR-053) live inside the game's own state; the interface does not know about them.
