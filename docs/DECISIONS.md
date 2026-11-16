@@ -714,3 +714,8 @@ a venue (kopitiam, hawker centre, pasar malam, zi char) for the background and m
 on levels with ordinal 5 or more. (j) The two seed levels are test kitchens, not final
 levels: with one chopping board and one plating counter, three stars is out of reach at
 8 cooks; the eight real layouts are T-11's work.
+
+**D-094 · 2026-11-17 · Claude (under D-057)** — Dependency: `playwright` 1.64.0 (dev only,
+pinned, released 2026-10-07) for the UAT harness (F-07). It drives the Chromium build already
+on this machine; nothing is added to any shipped bundle. WebKit and Firefox are not installed
+yet: Safari and Firefox UAT wait for K-07 and Randy's real devices.
