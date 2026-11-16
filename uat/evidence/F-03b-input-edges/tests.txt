@@ -1,0 +1,9 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-03b
+
+
+ Test Files  2 passed (2)
+      Tests  31 passed (31)
+   Start at  18:01:49
+   Duration  256ms (transform 56ms, setup 0ms, import 72ms, tests 286ms, environment 0ms)
+

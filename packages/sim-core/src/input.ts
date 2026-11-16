@@ -35,11 +35,16 @@
 // What game rules will meet at the edges:
 //   - Up then down again inside one step, on a button that was held: `held`, `pressed` and
 //     `released` are all set. The order was release first, then press; it is still held.
-//   - Two or more taps inside one step: `pressed` and `released` are single bits, so they
-//     read as one tap. (At 60 steps a second that needs two taps within 17 ms.)
-//   - Edges pile up for as long as `sample()` is not called. They are not lost and not
-//     counted twice, but a press made during a pause would be delivered on the first step
-//     after it, unless the host calls `discardEdges()` (rule 2).
+//   - A repeated edge of the same kind defers that tick and subsequent ticks until the
+//     next sample. Ticks wait at most 4 samples; then the remaining queue collapses:
+//     after a stall, each button reports at most one press and one release for everything
+//     that happened in it, and its final state is the newest. A hard 256-tick bound is a safety net.
+//   - Edges wait within the queue bound while `sample()` is not called. A press made
+//     during a pause is delivered after it unless the host calls `discardEdges()` (rule 2).
+//   - After silence releases a button, held may resume but pressed is suppressed until
+//     an accepted tick (including a late UP) shows it up. Games see released after silence,
+//     then held without pressed on resumption, then a second released on letting go.
+//     A new-channel reset clears this suppression.
 //   - A controller that is removed while holding a button gets no release: its frame simply
 //     stops appearing. Rules must treat a controller with no frame as holding nothing.
 //   - A button held across a reconnect reads as a release, then a new press when the new
@@ -191,7 +196,7 @@ export interface InputBufferOptions {
 
 /**
  * What became of a packet.
- * - `applied`: newest so far; it is now the controller's state.
+ * - `applied`: newest so far; applied now or queued behind a repeated edge.
  * - `late`: older than the newest, but it filled a gap; used only to recover edges.
  * - `stale`: a repeat, or too old to place. Ignored.
  * - `unknown`: no such controller. Ignored.
@@ -245,8 +250,20 @@ export interface InputBuffer<Id> {
 // How many recent packets are remembered per controller for placing a late one.
 const HISTORY = 8;
 
+// Wait cap is primary; 256 preallocated entries bound memory even without sampling.
+// Reaching this safety bound collapses immediately, rather than replaying an old prefix.
+const DEFERRED_TICKS = 256;
+const MAX_WAIT_SAMPLES = 4;
+
 interface Slot {
   lastSeq: number;
+  suppressed: number;
+  queued: number;
+  queueSeq: number[];
+  queueWait: number[];
+  queueButtons: number[];
+  queueAxes: number[];
+  scratchAxes: number[];
   buttons: number;
   pendingPressed: number;
   pendingReleased: number;
@@ -337,7 +354,7 @@ export function createInputBuffer<Id>(options: InputBufferOptions): InputBuffer<
     slot.historyFromRest = false;
   }
 
-  function receiveLate(slot: Slot, seq: number, buttons: number): ReceiveResult {
+  function receiveLate(slot: Slot, seq: number, buttons: number, coalesce = false): ReceiveResult | 'blocked' {
     // Find the remembered packets either side of this one.
     let index = 0;
     while (index < slot.historyCount) {
@@ -355,10 +372,94 @@ export function createInputBuffer<Id>(options: InputBufferOptions): InputBuffer<
     // Already counted: the changes straight from `before` to `after`. New with this packet:
     // a button up on both sides but down here (a tap), or down on both sides but up here.
     const flickered = (~before & buttons & ~after) | (before & ~buttons & after);
-    slot.pendingPressed |= flickered;
+    // A late UP between two DOWN states proves a real re-press even after silence.
+    const rearmed = slot.suppressed & ~buttons;
+    const pressed = flickered & (~slot.suppressed | rearmed);
+    if (!coalesce && ((pressed & slot.pendingPressed) !== 0 || (flickered & slot.pendingReleased) !== 0)) {
+      return 'blocked';
+    }
+    slot.pendingPressed |= pressed;
+    slot.suppressed &= buttons;
     slot.pendingReleased |= flickered;
     remember(slot, index, seq, buttons);
     return 'late';
+  }
+
+  function apply(
+    slot: Slot,
+    seq: number,
+    buttons: number,
+    axes?: ArrayLike<number>,
+    coalesce = false,
+  ): ReceiveResult | 'blocked' {
+    const down = buttons >>> 0;
+    if (slot.lastSeq >= 0) {
+      const distance = ahead(seq, slot.lastSeq);
+      if (distance === 0) return 'stale';
+      if (distance < 0) return receiveLate(slot, seq, down, coalesce);
+    }
+    const changed = down ^ slot.buttons;
+    const pressed = changed & down & ~slot.suppressed;
+    const released = changed & ~down;
+    if (!coalesce && ((pressed & slot.pendingPressed) !== 0 || (released & slot.pendingReleased) !== 0)) {
+      return 'blocked';
+    }
+    slot.suppressed &= down;
+    slot.pendingPressed |= pressed;
+    slot.pendingReleased |= changed & ~down;
+    slot.buttons = down;
+    for (let i = 0; i < axisCount; i += 1) slot.axes[i] = clampAxis(axes?.[i]);
+    slot.lastSeq = seq;
+    slot.silentSteps = 0;
+    remember(slot, slot.historyCount, seq, down);
+    return 'applied';
+  }
+
+  function drain(slot: Slot, mode: 'normal' | 'collapse' | 'discard'): void {
+    let consumed = 0;
+    while (consumed < slot.queued) {
+      // Reuse a scratch array allocated with the slot, rather than slicing the queue.
+      for (let i = 0; i < axisCount; i += 1) {
+        slot.scratchAxes[i] = slot.queueAxes[consumed * axisCount + i] ?? 0;
+      }
+      if (mode === 'discard') {
+        slot.pendingPressed = 0;
+        slot.pendingReleased = 0;
+      }
+      const result = apply(
+        slot,
+        slot.queueSeq[consumed] ?? 0,
+        slot.queueButtons[consumed] ?? 0,
+        slot.scratchAxes,
+        mode === 'collapse',
+      );
+      if (result === 'blocked') break;
+      consumed += 1;
+    }
+    for (let i = consumed; i < slot.queued; i += 1) {
+      slot.queueWait[i - consumed] = slot.queueWait[i] ?? 0;
+      slot.queueSeq[i - consumed] = slot.queueSeq[i] ?? 0;
+      slot.queueButtons[i - consumed] = slot.queueButtons[i] ?? 0;
+      for (let axis = 0; axis < axisCount; axis += 1) {
+        slot.queueAxes[(i - consumed) * axisCount + axis] =
+          slot.queueAxes[i * axisCount + axis] ?? 0;
+      }
+    }
+    slot.queued -= consumed;
+  }
+
+  function collapse(slot: Slot): void {
+    drain(slot, 'collapse');
+    forgetHistory(slot);
+  }
+
+  function forgetHistory(slot: Slot): void {
+    if (slot.historyCount > 0) {
+      slot.historySeq[0] = slot.lastSeq;
+      slot.historyButtons[0] = slot.buttons;
+      slot.historyCount = 1;
+    }
+    slot.historyFromRest = false;
   }
 
   return {
@@ -368,6 +469,13 @@ export function createInputBuffer<Id>(options: InputBufferOptions): InputBuffer<
       const frame = createInputFrame(axisCount);
       const slot: Slot = {
         lastSeq: -1,
+        suppressed: 0,
+        queued: 0,
+        queueSeq: new Array<number>(DEFERRED_TICKS).fill(0),
+        queueWait: new Array<number>(DEFERRED_TICKS).fill(0),
+        queueButtons: new Array<number>(DEFERRED_TICKS).fill(0),
+        queueAxes: new Array<number>(DEFERRED_TICKS * axisCount).fill(0),
+        scratchAxes: new Array<number>(axisCount).fill(0),
         buttons: 0,
         pendingPressed: 0,
         pendingReleased: 0,
@@ -398,6 +506,8 @@ export function createInputBuffer<Id>(options: InputBufferOptions): InputBuffer<
       const slot = slots.get(id);
       if (slot === undefined) return;
       rest(slot);
+      slot.queued = 0;
+      slot.suppressed = 0;
       // Edges not yet sampled are forgotten. The simulation is told of the release of exactly
       // what it last saw held, and of nothing it never saw.
       slot.pendingPressed = 0;
@@ -409,16 +519,10 @@ export function createInputBuffer<Id>(options: InputBufferOptions): InputBuffer<
     discardEdges(id) {
       for (const slot of slotList) {
         if (id !== undefined && slots.get(id) !== slot) continue;
-        slot.pendingPressed = slot.buttons & ~slot.lastSampledHeld;
+        drain(slot, 'discard');
+        slot.pendingPressed = slot.buttons & ~slot.lastSampledHeld & ~slot.suppressed;
         slot.pendingReleased = slot.lastSampledHeld & ~slot.buttons;
-        // Forget everything but the newest packet, so one sent before now and arriving
-        // later cannot be placed and cannot bring back a tap from inside the pause.
-        if (slot.historyCount > 0) {
-          slot.historySeq[0] = slot.lastSeq;
-          slot.historyButtons[0] = slot.buttons;
-          slot.historyCount = 1;
-        }
-        slot.historyFromRest = false;
+        forgetHistory(slot);
       }
     },
     receive(id, seq, buttons, axes) {
@@ -427,28 +531,50 @@ export function createInputBuffer<Id>(options: InputBufferOptions): InputBuffer<
       if (!Number.isSafeInteger(seq) || seq < 0 || (seqModulus !== 0 && seq >= seqModulus)) {
         return 'invalid';
       }
-      const down = buttons >>> 0;
-      if (slot.lastSeq >= 0) {
-        const distance = ahead(seq, slot.lastSeq);
-        if (distance === 0) return 'stale';
-        if (distance < 0) return receiveLate(slot, seq, down);
+      if (seq === slot.lastSeq) return 'stale';
+      for (let i = 0; i < slot.historyCount; i += 1) {
+        if (slot.historySeq[i] === seq) return 'stale';
       }
-      const changed = down ^ slot.buttons;
-      slot.pendingPressed |= changed & down;
-      slot.pendingReleased |= changed & ~down;
-      slot.buttons = down;
-      for (let i = 0; i < axisCount; i += 1) slot.axes[i] = clampAxis(axes?.[i]);
-      slot.lastSeq = seq;
-      slot.silentSteps = 0;
-      remember(slot, slot.historyCount, seq, down);
-      return 'applied';
+      if (slot.queued === 0) {
+        const result = apply(slot, seq, buttons, axes);
+        if (result !== 'blocked') return result;
+      }
+      for (let i = 0; i < slot.queued; i += 1) {
+        if (slot.queueSeq[i] === seq) return 'stale';
+      }
+      if (slot.queued === DEFERRED_TICKS) collapse(slot);
+      if (slot.queued === 0) {
+        const result = apply(slot, seq, buttons, axes);
+        if (result !== 'blocked') return result;
+      }
+      const at = slot.queued;
+      slot.queueWait[at] = 0;
+      slot.queueSeq[at] = seq;
+      slot.queueButtons[at] = buttons >>> 0;
+      for (let i = 0; i < axisCount; i += 1) {
+        slot.queueAxes[at * axisCount + i] = clampAxis(axes?.[i]);
+      }
+      slot.queued = Math.min(slot.queued + 1, DEFERRED_TICKS);
+      return slot.lastSeq < 0 || ahead(seq, slot.lastSeq) > 0 ? 'applied' : 'late';
     },
     sample() {
       for (const slot of slotList) {
         if (staleAfterSteps > 0 && slot.silentSteps >= staleAfterSteps) {
           let active = slot.buttons !== 0;
           for (let i = 0; i < axisCount && !active; i += 1) active = slot.axes[i] !== 0;
-          if (active) rest(slot);
+          if (active) {
+            slot.suppressed |= slot.buttons;
+            rest(slot);
+          }
+        }
+        let expired = false;
+        for (let i = 0; i < slot.queued; i += 1) {
+          if ((slot.queueWait[i] ?? 0) >= MAX_WAIT_SAMPLES) expired = true;
+        }
+        if (expired) collapse(slot);
+        else drain(slot, 'normal');
+        for (let i = 0; i < slot.queued; i += 1) {
+          slot.queueWait[i] = (slot.queueWait[i] ?? 0) + 1;
         }
         const frame = slot.frame;
         frame.held = slot.buttons;

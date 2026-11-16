@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — F-03b, F-03c: input buffer follow-ups
+
+- `packages/sim-core`: duplicate edges deferred to the next step, a four-step wait cap with a
+  collapse that keeps one press and one release per button (D-068), no new press after a
+  silence release until the button is seen up. `ARCHITECTURE.md` §5 updated. (NET-005, PERF-010)
+
 ## 2026-11-16 — F-04: game interface and conformance kit
 
 - `packages/platform/src/game`: `GameModule` types, settings, layouts with revisions, private

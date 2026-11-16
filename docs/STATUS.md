@@ -78,6 +78,10 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   pass it. No real game exists yet. Started by a Claude builder, finished by Codex; four review
   rounds.
 
+- **Input buffer follow-ups (F-03b, F-03c).** Two fast taps arriving together both count, a
+  delay spike cannot repeat a tap, and a stall never replays old taps late. Two review rounds
+  with 16 attack sequences.
+
 ## Does not exist yet
 
 - No host page, controller or game yet.

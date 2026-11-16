@@ -139,9 +139,13 @@ Rules:
   the released state has gone out nine times. The host expands each frame with `expandInput`
   and feeds the ticks to the simulation core's input buffer, which ignores what it has seen.
   A tap is lost only if every frame carrying it is lost, there is no added delay, and a button
-  cannot stick: silence for 15 steps releases it (NET-005). Known limits are in
-  `docs/slices/F-02-protocol.md`: two presses of one button that arrive inside one simulation
-  step count as one, and a link delay spike of 250 ms or more can repeat a tap.
+  cannot stick: silence for 15 steps releases it (NET-005). Two presses of one button that
+  arrive inside one step both count: the second waits for the next step (F-03b). A waiting
+  tick waits at most four steps (about 67 ms); after a longer stall each button reports at
+  most one press and one release for everything that happened in it, and ends in its newest
+  state (D-068). After a silence release, a button still held gives no new press until it
+  has been seen up, so a delay spike cannot repeat a tap (F-03c); a game then sees released,
+  held with no pressed, and a second released when the player lets go.
 - **Link checks:** binary ping and pong on the input channel, one a second and a burst of 12
   on connect. Relay credentials (ICE servers) arrive in the pairing server's `created` and
   `joined` replies.

@@ -249,9 +249,9 @@ describe('no stuck buttons', () => {
     }
     expect(step(buffer)).toMatchObject({ held: 0, pressed: 0, released: A | C, axes: [0, 0], age: 30 });
     expect(step(buffer)).toMatchObject({ held: 0, pressed: 0, released: 0, axes: [0, 0] });
-    // The link comes back with A still down: that is a fresh press.
+    // NET-005: a delayed hold resumes without another press.
     buffer.receive('p1', 1, A);
-    expect(step(buffer)).toMatchObject({ held: A, pressed: A, released: 0, age: 0 });
+    expect(step(buffer)).toMatchObject({ held: A, pressed: 0, released: 0, age: 0 });
   });
 
   it('centres a stick left pushed over when a controller goes silent', () => {
@@ -448,12 +448,13 @@ describe('what game rules meet at the edges', () => {
     expect(step(buffer)).toMatchObject({ held: A, pressed: 0, released: 0 });
   });
 
-  it('two taps inside one step read as one', () => {
+  it('NET-005: two taps inside one window are sampled separately', () => {
     const buffer = one();
     buffer.receive('p1', 0, A);
     buffer.receive('p1', 1, 0);
     buffer.receive('p1', 2, A);
     buffer.receive('p1', 3, 0);
+    expect(step(buffer)).toMatchObject({ held: 0, pressed: A, released: A });
     expect(step(buffer)).toMatchObject({ held: 0, pressed: A, released: A });
     expect(step(buffer)).toMatchObject({ held: 0, pressed: 0, released: 0 });
   });
@@ -915,9 +916,9 @@ describe('against a simulated bad link', () => {
     for (let i = 0; i < 10; i += 1) expect(step(buffer).held).toBe(0);
   });
 
-  it('keeps held, pressed and released consistent step to step under any link', () => {
+  it('keeps held, pressed and released consistent without silence suppression', () => {
     const rng = createRng(77);
-    const buffer = one({ staleAfterSteps: 5 });
+    const buffer = one({ staleAfterSteps: 0 });
     let seq = 0;
     let previousHeld = 0;
     for (let stepIndex = 0; stepIndex < 30_000; stepIndex += 1) {

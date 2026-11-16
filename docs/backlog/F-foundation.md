@@ -31,11 +31,8 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 
 ## Carried from reviews
 
-- **F-03b (small, sim-core):** when a tick would latch a press or release already pending for
-  that button in this step, defer that tick and the rest of the slot's ticks until after the
-  next `sample()`, so two fast taps delivered together after a loss both count (F-02 review 3).
-- **F-03c (small, sim-core or C-04):** after a silence release, do not raise `pressed` for a
-  button until a tick shows it up, so a link delay spike cannot repeat a tap (F-02 review 3).
+- **F-03b and F-03c:** merged 2026-11-16 (duplicate edges deferred; no repeat tap after
+  silence; D-068).
 - **Resume barrier (C-04):** ignore input frames after a pause until one sent after the phone
   acknowledged the resume (F-03 review 3).
 - **Root lint:** purity restrictions for `packages/sim-core` and game rules folders; durations
