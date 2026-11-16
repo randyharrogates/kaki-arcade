@@ -41,6 +41,14 @@ memory only, D-081 e). The full checklist is in `docs/slices/C-03-rate-limits.md
 shell: anyone with a room code can take all 8 seats; the host needs a kick that blocks
 rejoining. Needed by: first deploy (M8).
 
+**OQ-031 · What a host reload keeps mid-match.** PLAT-009 says "A running round is lost; the
+room, players and scores so far are restored." Built today (D-086 a): the whole running match
+is lost and the room returns to the lobby with everyone seated. For Peek Poker, where a match
+is several rounds, "scores so far" could instead mean: lose only the current round and carry
+on with the match totals. That needs a checkpoint and resume hook added to the game contract.
+Recommendation: keep today's behaviour for v1 and revisit after the first real game night.
+Needed by: M4 (Peek Poker playable).
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot

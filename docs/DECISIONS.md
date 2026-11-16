@@ -588,3 +588,23 @@ loses its food and its container comes out dirty. (i) Rejection reasons, checked
 order: nothing to serve, dirty, burnt, wrong container, not a dish we serve, missing
 ingredient, extra ingredient, missing step (names the ingredient and the step), extra step
 (names the ingredient); shown for 3 s; a rejected dish is never consumed or changed.
+
+**D-086 · 2026-11-17 · Claude (under D-057)** — Reconnect (review of C-05). (a) PLAT-009 is
+read as: a host reload loses the running match for all three games and restores the room,
+seats, names, colours, teams, leader and the results of the last finished match, then returns
+to the lobby. The game contract has no checkpoint or resume hook, so the totals of an
+interrupted Peek Poker or Rabakz match are not kept; whether "scores so far" must include
+them is OQ-031. (b) Reconnect data is stored in sessionStorage under
+`kaki.phone-reconnect.v1` and `kaki.host-reconnect.v1` at format version 1; any other version
+is discarded. Caps are 2 KiB per phone record and 64 KiB per host snapshot, and what is kept
+is bounded (the last results only) so a legal session never reaches the cap; a good snapshot
+is never erased because a newer one could not be written. (c) Host checkpoints write at most
+once a second, coalesced, plus a flush at every page exit; nothing runs per step. (d) A host
+restore waits 15 s for the server; a timeout or network error keeps the snapshot for another
+attempt, and only a definitive refusal erases it. A snapshot older than the room's 12-hour
+life is discarded. (e) A host reload keeps each phone's original drop time; only phones
+connected at the reload start a new two-minute hold. (f) Phone retries start at 250 ms and
+double to 8 s, each attempt abandoned after 15 s, within the two-minute hold; after the hold
+the phone shows a distinct state with a rejoin action and retries slowly. (g) A code the
+player has just entered always wins over a stored seat for another room. (h) The hold is
+inclusive: a return at exactly 120,000 ms keeps the seat.
