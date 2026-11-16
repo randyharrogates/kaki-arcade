@@ -1,0 +1,2350 @@
+{
+  "issue": "S-01",
+  "takenAt": "2026-11-16T05:05:09.840Z",
+  "caveat": "Emulated phones: headless Chrome pages on the same Mac as the host, over loopback. No radio, no router, no phone CPU. This is a best case and does not prove PERF-010 on real Wi-Fi.",
+  "machine": {
+    "cpu": "Apple M3",
+    "cores": 8,
+    "memoryGb": 16,
+    "chrome": "Chrome/157.0.8103.51",
+    "node": "v24.21.0"
+  },
+  "method": {
+    "delay": "touch→step: host clock time of the 60 Hz simulation step that applies an input, minus the phone clock time of the touch event (scripted events for bots), mapped to the host clock by the ping/pong offset.",
+    "clock": "ping/pong on the unreliable channel; offset = (t0 + t1)/2 − phone time; the sample with the lowest round trip of the last 16 is used.",
+    "channels": "input: ordered=false, maxRetransmits=0. control: ordered, reliable.",
+    "iceServers": "none (local addresses only; no external service contacted)",
+    "inputMessageBytes": 24
+  },
+  "budgets": {
+    "PERF-010": {
+      "budget": "direct, same Wi-Fi: p95 ≤ 50 ms",
+      "measuredWorstP95Ms": 54.35,
+      "worstScenario": "1-phone-touch-60hz",
+      "measuredOn": "loopback, emulated phones, every fixed-60 Hz scenario including the touch-driven one",
+      "within": false,
+      "proven": false,
+      "why": "needs real phones on real Wi-Fi"
+    },
+    "PERF-011": {
+      "budget": "relayed: p95 ≤ 120 ms",
+      "measured": null,
+      "proven": false,
+      "why": "no relay run: needs TURN credentials and Randy (README)"
+    }
+  },
+  "allPathsDirect": true,
+  "eightPhoneBytesPerPhonePerSecond": [
+    {
+      "rxPerSecond": 4561,
+      "txPerSecond": 1701
+    },
+    {
+      "rxPerSecond": 4565,
+      "txPerSecond": 1724
+    },
+    {
+      "rxPerSecond": 4564,
+      "txPerSecond": 1699
+    },
+    {
+      "rxPerSecond": 4565,
+      "txPerSecond": 1696
+    },
+    {
+      "rxPerSecond": 4565,
+      "txPerSecond": 1726
+    },
+    {
+      "rxPerSecond": 4565,
+      "txPerSecond": 1730
+    },
+    {
+      "rxPerSecond": 4566,
+      "txPerSecond": 1723
+    },
+    {
+      "rxPerSecond": 4565,
+      "txPerSecond": 1729
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "1-phone-60hz",
+      "phoneCount": 1,
+      "phoneQuery": "bot=1&hz=60",
+      "measuredSeconds": 30,
+      "roomCode": "LTZK",
+      "phones": [
+        {
+          "id": "p1",
+          "slot": 1,
+          "name": "bot1",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 29,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1655,
+            "p50": 14.7,
+            "p95": 22.55,
+            "p99": 24.2,
+            "max": 39.25,
+            "min": 4.2
+          },
+          "net": {
+            "n": 1801,
+            "p50": 1.25,
+            "p95": 2.35,
+            "p99": 2.7,
+            "max": 16.75,
+            "min": 0.3
+          },
+          "received": 1800,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 1.1,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 250.69999998807907,
+          "clockErrorSameMachineMs": 0,
+          "bytes": {
+            "rxPerSecond": 4560,
+            "txPerSecond": 1692
+          },
+          "stick": {
+            "x": -0.984251968503937,
+            "y": -0.15748031496062992
+          },
+          "buttons": 0
+        }
+      ],
+      "all": {
+        "total": {
+          "n": 1655,
+          "p50": 14.7,
+          "p95": 22.55,
+          "p99": 24.2,
+          "max": 39.25,
+          "min": 4.2
+        },
+        "net": {
+          "n": 1801,
+          "p50": 1.25,
+          "p95": 2.35,
+          "p99": 2.7,
+          "max": 16.75,
+          "min": 0.3
+        }
+      },
+      "host": {
+        "seconds": 30,
+        "frameMs": {
+          "n": 1801,
+          "p50": 16.7,
+          "p95": 18.1,
+          "p99": 18.6,
+          "max": 18.8,
+          "min": 14.5
+        },
+        "framesPerSecond": 60,
+        "stepsPerSecond": 60
+      }
+    },
+    {
+      "name": "4-phone-60hz",
+      "phoneCount": 4,
+      "phoneQuery": "bot=1&hz=60",
+      "measuredSeconds": 30,
+      "roomCode": "ANYJ",
+      "phones": [
+        {
+          "id": "p1",
+          "slot": 1,
+          "name": "bot1",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 32,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1637,
+            "p50": 9.45,
+            "p95": 29.15,
+            "p99": 33.35,
+            "max": 34.65,
+            "min": 0.7
+          },
+          "net": {
+            "n": 1800,
+            "p50": 0.75,
+            "p95": 2.7,
+            "p99": 3.55,
+            "max": 17.65,
+            "min": 0.05
+          },
+          "received": 1800,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 4.4,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 970.3999999761581,
+          "clockErrorSameMachineMs": 0.2,
+          "bytes": {
+            "rxPerSecond": 4560,
+            "txPerSecond": 1703
+          },
+          "stick": {
+            "x": -0.7559055118110236,
+            "y": 0.6535433070866141
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p2",
+          "slot": 2,
+          "name": "bot2",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 16,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1658,
+            "p50": 16.1,
+            "p95": 25.5,
+            "p99": 26.85,
+            "max": 29.9,
+            "min": 7.7
+          },
+          "net": {
+            "n": 1800,
+            "p50": 0.5,
+            "p95": 1.25,
+            "p99": 1.6,
+            "max": 26.35,
+            "min": -0.5
+          },
+          "received": 1801,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 4.1,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 1152.5999999940395,
+          "clockErrorSameMachineMs": 0.2,
+          "bytes": {
+            "rxPerSecond": 4564,
+            "txPerSecond": 1695
+          },
+          "stick": {
+            "x": -0.984251968503937,
+            "y": -0.18110236220472442
+          },
+          "buttons": 0
+        },
+        {
+          "id": "p3",
+          "slot": 3,
+          "name": "bot3",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 20,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1668,
+            "p50": 23.8,
+            "p95": 32.6,
+            "p99": 33.8,
+            "max": 46.3,
+            "min": 0.8
+          },
+          "net": {
+            "n": 1799,
+            "p50": 1,
+            "p95": 3,
+            "p99": 4.3,
+            "max": 28.6,
+            "min": 0.3
+          },
+          "received": 1800,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 5.5,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 1980.5500000417233,
+          "clockErrorSameMachineMs": -0.25,
+          "bytes": {
+            "rxPerSecond": 4564,
+            "txPerSecond": 1692
+          },
+          "stick": {
+            "x": -0.9921259842519685,
+            "y": 0.13385826771653545
+          },
+          "buttons": 0
+        },
+        {
+          "id": "p4",
+          "slot": 4,
+          "name": "bot4",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 37,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1643,
+            "p50": 21.7,
+            "p95": 31.1,
+            "p99": 32.6,
+            "max": 44.4,
+            "min": 14.95
+          },
+          "net": {
+            "n": 1800,
+            "p50": 1.5,
+            "p95": 3,
+            "p99": 4.15,
+            "max": 31.2,
+            "min": 0.4
+          },
+          "received": 1801,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 5.6,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 2229.199999988079,
+          "clockErrorSameMachineMs": -0.8,
+          "bytes": {
+            "rxPerSecond": 4564,
+            "txPerSecond": 1694
+          },
+          "stick": {
+            "x": -0.5905511811023622,
+            "y": 0.8110236220472441
+          },
+          "buttons": 0
+        }
+      ],
+      "all": {
+        "total": {
+          "n": 6606,
+          "p50": 18.75,
+          "p95": 30.8,
+          "p99": 33.3,
+          "max": 46.3,
+          "min": 0.7
+        },
+        "net": {
+          "n": 7199,
+          "p50": 0.9,
+          "p95": 2.75,
+          "p99": 3.8,
+          "max": 31.2,
+          "min": -0.5
+        }
+      },
+      "host": {
+        "seconds": 30,
+        "frameMs": {
+          "n": 1800,
+          "p50": 16.7,
+          "p95": 17,
+          "p99": 17.1,
+          "max": 18.8,
+          "min": 14.4
+        },
+        "framesPerSecond": 60,
+        "stepsPerSecond": 60
+      }
+    },
+    {
+      "name": "8-phone-60hz",
+      "phoneCount": 8,
+      "phoneQuery": "bot=1&hz=60",
+      "measuredSeconds": 30,
+      "roomCode": "YMLW",
+      "phones": [
+        {
+          "id": "p1",
+          "slot": 1,
+          "name": "bot1",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 22,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1672,
+            "p50": 11.8,
+            "p95": 20.75,
+            "p99": 22.6,
+            "max": 35.45,
+            "min": 3.45
+          },
+          "net": {
+            "n": 1800,
+            "p50": 0.5,
+            "p95": 1.2,
+            "p99": 2.55,
+            "max": 18.65,
+            "min": -0.55
+          },
+          "received": 1801,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 6.3,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 201.6500000655651,
+          "clockErrorSameMachineMs": 0.55,
+          "bytes": {
+            "rxPerSecond": 4561,
+            "txPerSecond": 1701
+          },
+          "stick": {
+            "x": -0.5590551181102362,
+            "y": -0.8267716535433071
+          },
+          "buttons": 0
+        },
+        {
+          "id": "p2",
+          "slot": 2,
+          "name": "bot2",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 20,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1616,
+            "p50": 19.35,
+            "p95": 28.25,
+            "p99": 29.45,
+            "max": 31.45,
+            "min": 10.55
+          },
+          "net": {
+            "n": 1800,
+            "p50": 0.55,
+            "p95": 1.55,
+            "p99": 2.55,
+            "max": 24.15,
+            "min": -0.05
+          },
+          "received": 1800,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 5.6,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 319.5500000715256,
+          "clockErrorSameMachineMs": 0.35,
+          "bytes": {
+            "rxPerSecond": 4565,
+            "txPerSecond": 1724
+          },
+          "stick": {
+            "x": 0.07086614173228346,
+            "y": -1
+          },
+          "buttons": 0
+        },
+        {
+          "id": "p3",
+          "slot": 3,
+          "name": "bot3",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 42,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1645,
+            "p50": 20.85,
+            "p95": 29.85,
+            "p99": 31.35,
+            "max": 33.65,
+            "min": 11.75
+          },
+          "net": {
+            "n": 1800,
+            "p50": 0.65,
+            "p95": 1.5,
+            "p99": 2.35,
+            "max": 27.15,
+            "min": -0.05
+          },
+          "received": 1800,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 5.2,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 430.05000001192093,
+          "clockErrorSameMachineMs": 0.05,
+          "bytes": {
+            "rxPerSecond": 4564,
+            "txPerSecond": 1699
+          },
+          "stick": {
+            "x": -0.8503937007874016,
+            "y": 0.5196850393700787
+          },
+          "buttons": 0
+        },
+        {
+          "id": "p4",
+          "slot": 4,
+          "name": "bot4",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 27,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1648,
+            "p50": 14.7,
+            "p95": 22.85,
+            "p99": 24.2,
+            "max": 38.1,
+            "min": 5.5
+          },
+          "net": {
+            "n": 1800,
+            "p50": 1.3,
+            "p95": 2.1,
+            "p99": 3.45,
+            "max": 20.1,
+            "min": 0.1
+          },
+          "received": 1800,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 5.3,
+          "icePairRttMs": 4,
+          "clockOffsetMs": 544,
+          "clockErrorSameMachineMs": -0.8,
+          "bytes": {
+            "rxPerSecond": 4565,
+            "txPerSecond": 1696
+          },
+          "stick": {
+            "x": 0.952755905511811,
+            "y": -0.2992125984251969
+          },
+          "buttons": 0
+        },
+        {
+          "id": "p5",
+          "slot": 5,
+          "name": "bot5",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 23,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1652,
+            "p50": 15.65,
+            "p95": 24.05,
+            "p99": 25.25,
+            "max": 41.35,
+            "min": 6.35
+          },
+          "net": {
+            "n": 1800,
+            "p50": 1.65,
+            "p95": 2.4,
+            "p99": 3.35,
+            "max": 21.95,
+            "min": 0.35
+          },
+          "received": 1800,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 7.3,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 655.7500000298023,
+          "clockErrorSameMachineMs": -1.35,
+          "bytes": {
+            "rxPerSecond": 4565,
+            "txPerSecond": 1726
+          },
+          "stick": {
+            "x": 0.1968503937007874,
+            "y": 0.984251968503937
+          },
+          "buttons": 0
+        },
+        {
+          "id": "p6",
+          "slot": 6,
+          "name": "bot6",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 26,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1664,
+            "p50": 18.3,
+            "p95": 27.65,
+            "p99": 29.5,
+            "max": 36.8,
+            "min": 11.45
+          },
+          "net": {
+            "n": 1800,
+            "p50": 1.8,
+            "p95": 3.25,
+            "p99": 4.05,
+            "max": 25,
+            "min": 0.05
+          },
+          "received": 1800,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 8.2,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 773,
+          "clockErrorSameMachineMs": -1.4,
+          "bytes": {
+            "rxPerSecond": 4565,
+            "txPerSecond": 1730
+          },
+          "stick": {
+            "x": -0.47244094488188976,
+            "y": -0.8818897637795275
+          },
+          "buttons": 0
+        },
+        {
+          "id": "p7",
+          "slot": 7,
+          "name": "bot7",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 29,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1672,
+            "p50": 19.65,
+            "p95": 28.8,
+            "p99": 30.65,
+            "max": 48.1,
+            "min": 10.9
+          },
+          "net": {
+            "n": 1800,
+            "p50": 2.65,
+            "p95": 4.15,
+            "p99": 5,
+            "max": 26.65,
+            "min": 0.1
+          },
+          "received": 1800,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 9.1,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 879.4500000178814,
+          "clockErrorSameMachineMs": -2.45,
+          "bytes": {
+            "rxPerSecond": 4566,
+            "txPerSecond": 1723
+          },
+          "stick": {
+            "x": -0.6377952755905512,
+            "y": -0.7716535433070866
+          },
+          "buttons": 0
+        },
+        {
+          "id": "p8",
+          "slot": 8,
+          "name": "bot8",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 22,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 30,
+          "ratePerSecond": 60,
+          "total": {
+            "n": 1659,
+            "p50": 17.65,
+            "p95": 26.4,
+            "p99": 28.1,
+            "max": 41.05,
+            "min": 7.75
+          },
+          "net": {
+            "n": 1800,
+            "p50": 3.3,
+            "p95": 4.15,
+            "p99": 5,
+            "max": 24.75,
+            "min": 0.3
+          },
+          "received": 1800,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 11,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 999.1500000059605,
+          "clockErrorSameMachineMs": -3.25,
+          "bytes": {
+            "rxPerSecond": 4565,
+            "txPerSecond": 1729
+          },
+          "stick": {
+            "x": 0.49606299212598426,
+            "y": 0.8661417322834646
+          },
+          "buttons": 0
+        }
+      ],
+      "all": {
+        "total": {
+          "n": 13228,
+          "p50": 17.35,
+          "p95": 27.35,
+          "p99": 29.95,
+          "max": 48.1,
+          "min": 3.45
+        },
+        "net": {
+          "n": 14400,
+          "p50": 0.95,
+          "p95": 3.8,
+          "p99": 4.4,
+          "max": 27.15,
+          "min": -0.55
+        }
+      },
+      "host": {
+        "seconds": 30,
+        "frameMs": {
+          "n": 1800,
+          "p50": 16.7,
+          "p95": 16.9,
+          "p99": 16.9,
+          "max": 17.2,
+          "min": 16.1
+        },
+        "framesPerSecond": 60,
+        "stepsPerSecond": 60
+      }
+    },
+    {
+      "name": "8-phone-30hz",
+      "phoneCount": 8,
+      "phoneQuery": "bot=1&hz=30",
+      "measuredSeconds": 15,
+      "roomCode": "WZBK",
+      "phones": [
+        {
+          "id": "p1",
+          "slot": 1,
+          "name": "bot1",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 21,
+          "settings": {
+            "hz": 30,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 30,
+          "total": {
+            "n": 450,
+            "p50": 13.6,
+            "p95": 24,
+            "p99": 27.05,
+            "max": 44.3,
+            "min": 3.3
+          },
+          "net": {
+            "n": 450,
+            "p50": 0.75,
+            "p95": 2,
+            "p99": 3.3,
+            "max": 29,
+            "min": -0.4
+          },
+          "received": 450,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 5.5,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 198.19999998807907,
+          "clockErrorSameMachineMs": 1,
+          "bytes": {
+            "rxPerSecond": 2348,
+            "txPerSecond": 955
+          },
+          "stick": {
+            "x": 0.5905511811023622,
+            "y": -0.8110236220472441
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p2",
+          "slot": 2,
+          "name": "bot2",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 48,
+          "settings": {
+            "hz": 30,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 30,
+          "total": {
+            "n": 450,
+            "p50": 13.55,
+            "p95": 25.6,
+            "p99": 28.15,
+            "max": 41.85,
+            "min": 4.85
+          },
+          "net": {
+            "n": 450,
+            "p50": 0.65,
+            "p95": 1.05,
+            "p99": 1.75,
+            "max": 35.85,
+            "min": 0
+          },
+          "received": 450,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 5.5,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 310,
+          "clockErrorSameMachineMs": 0.4,
+          "bytes": {
+            "rxPerSecond": 2345,
+            "txPerSecond": 948
+          },
+          "stick": {
+            "x": -0.9133858267716536,
+            "y": 0.4094488188976378
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p3",
+          "slot": 3,
+          "name": "bot3",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 40,
+          "settings": {
+            "hz": 30,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 30,
+          "total": {
+            "n": 450,
+            "p50": 12.75,
+            "p95": 24.05,
+            "p99": 27.65,
+            "max": 62.05,
+            "min": 4.45
+          },
+          "net": {
+            "n": 450,
+            "p50": 0.95,
+            "p95": 2.35,
+            "p99": 5.05,
+            "max": 49.15,
+            "min": 0.15
+          },
+          "received": 450,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 8.5,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 426.64999997615814,
+          "clockErrorSameMachineMs": -0.05,
+          "bytes": {
+            "rxPerSecond": 2351,
+            "txPerSecond": 961
+          },
+          "stick": {
+            "x": 0.6062992125984252,
+            "y": -0.7952755905511811
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p4",
+          "slot": 4,
+          "name": "bot4",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 38,
+          "settings": {
+            "hz": 30,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 30,
+          "total": {
+            "n": 450,
+            "p50": 16.1,
+            "p95": 27.3,
+            "p99": 29.3,
+            "max": 60.2,
+            "min": 9
+          },
+          "net": {
+            "n": 450,
+            "p50": 0.7,
+            "p95": 1.3,
+            "p99": 2.9,
+            "max": 38.8,
+            "min": -0.1
+          },
+          "received": 450,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 8.6,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 539.3999999761581,
+          "clockErrorSameMachineMs": 0,
+          "bytes": {
+            "rxPerSecond": 2345,
+            "txPerSecond": 944
+          },
+          "stick": {
+            "x": -0.9291338582677166,
+            "y": 0.3700787401574803
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p5",
+          "slot": 5,
+          "name": "bot5",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 27,
+          "settings": {
+            "hz": 30,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 30.1,
+          "total": {
+            "n": 450,
+            "p50": 20.75,
+            "p95": 31.7,
+            "p99": 34.7,
+            "max": 59.95,
+            "min": 11.85
+          },
+          "net": {
+            "n": 450,
+            "p50": 1.1,
+            "p95": 2.3,
+            "p99": 4.3,
+            "max": 40.85,
+            "min": 0.35
+          },
+          "received": 451,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 11.2,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 658.7999999523163,
+          "clockErrorSameMachineMs": -0.5,
+          "bytes": {
+            "rxPerSecond": 2345,
+            "txPerSecond": 945
+          },
+          "stick": {
+            "x": -0.937007874015748,
+            "y": 0.33858267716535434
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p6",
+          "slot": 6,
+          "name": "bot6",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 20,
+          "settings": {
+            "hz": 30,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 30,
+          "total": {
+            "n": 450,
+            "p50": 11.15,
+            "p95": 22.4,
+            "p99": 26.3,
+            "max": 45.3,
+            "min": 2.05
+          },
+          "net": {
+            "n": 450,
+            "p50": 0.8,
+            "p95": 2.35,
+            "p99": 3.05,
+            "max": 30.3,
+            "min": 0.25
+          },
+          "received": 450,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 11.1,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 768.5499999821186,
+          "clockErrorSameMachineMs": -1.55,
+          "bytes": {
+            "rxPerSecond": 2345,
+            "txPerSecond": 951
+          },
+          "stick": {
+            "x": -0.6456692913385826,
+            "y": 0.7637795275590551
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p7",
+          "slot": 7,
+          "name": "bot7",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 21,
+          "settings": {
+            "hz": 30,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 30.1,
+          "total": {
+            "n": 450,
+            "p50": 21.45,
+            "p95": 30.8,
+            "p99": 35,
+            "max": 48.4,
+            "min": 11.8
+          },
+          "net": {
+            "n": 450,
+            "p50": 1.05,
+            "p95": 4.75,
+            "p99": 7.4,
+            "max": 43.4,
+            "min": 0.35
+          },
+          "received": 451,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 12.1,
+          "icePairRttMs": 3,
+          "clockOffsetMs": 883.8499999940395,
+          "clockErrorSameMachineMs": -3.05,
+          "bytes": {
+            "rxPerSecond": 2351,
+            "txPerSecond": 954
+          },
+          "stick": {
+            "x": -0.968503937007874,
+            "y": 0.2440944881889764
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p8",
+          "slot": 8,
+          "name": "bot8",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 30,
+          "settings": {
+            "hz": 30,
+            "eager": false,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 30,
+          "total": {
+            "n": 450,
+            "p50": 18.4,
+            "p95": 29.1,
+            "p99": 32.6,
+            "max": 45.4,
+            "min": 9.6
+          },
+          "net": {
+            "n": 450,
+            "p50": 0.7,
+            "p95": 4.75,
+            "p99": 6.15,
+            "max": 40.5,
+            "min": 0.3
+          },
+          "received": 450,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 13,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 1004.3500000238419,
+          "clockErrorSameMachineMs": -3.85,
+          "bytes": {
+            "rxPerSecond": 2345,
+            "txPerSecond": 944
+          },
+          "stick": {
+            "x": -1,
+            "y": 0.047244094488188976
+          },
+          "buttons": 1
+        }
+      ],
+      "all": {
+        "total": {
+          "n": 3600,
+          "p50": 16.3,
+          "p95": 28.55,
+          "p99": 32.75,
+          "max": 62.05,
+          "min": 2.05
+        },
+        "net": {
+          "n": 3600,
+          "p50": 0.85,
+          "p95": 3,
+          "p99": 5.05,
+          "max": 49.15,
+          "min": -0.4
+        }
+      },
+      "host": {
+        "seconds": 15,
+        "frameMs": {
+          "n": 900,
+          "p50": 16.7,
+          "p95": 17.6,
+          "p99": 17.9,
+          "max": 18.1,
+          "min": 15.2
+        },
+        "framesPerSecond": 60,
+        "stepsPerSecond": 60
+      }
+    },
+    {
+      "name": "8-phone-60hz-eager",
+      "phoneCount": 8,
+      "phoneQuery": "bot=1&hz=60&eager=1",
+      "measuredSeconds": 15,
+      "roomCode": "QTCZ",
+      "phones": [
+        {
+          "id": "p1",
+          "slot": 1,
+          "name": "bot1",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 23,
+          "settings": {
+            "hz": 60,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 106.7,
+          "total": {
+            "n": 869,
+            "p50": 12,
+            "p95": 26,
+            "p99": 27.7,
+            "max": 59.1,
+            "min": 0.6
+          },
+          "net": {
+            "n": 1601,
+            "p50": 0.7,
+            "p95": 1.9,
+            "p99": 12.5,
+            "max": 31.8,
+            "min": -0.1
+          },
+          "received": 1601,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 2.4,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 194.30000001192093,
+          "clockErrorSameMachineMs": 0.4,
+          "bytes": {
+            "rxPerSecond": 8034,
+            "txPerSecond": 2873
+          },
+          "stick": {
+            "x": 0.4330708661417323,
+            "y": -0.905511811023622
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p2",
+          "slot": 2,
+          "name": "bot2",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 21,
+          "settings": {
+            "hz": 60,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 109.4,
+          "total": {
+            "n": 883,
+            "p50": 13.55,
+            "p95": 25,
+            "p99": 26.7,
+            "max": 44.15,
+            "min": 0.25
+          },
+          "net": {
+            "n": 1641,
+            "p50": 0.7,
+            "p95": 2.1,
+            "p99": 12.6,
+            "max": 32.1,
+            "min": -0.15
+          },
+          "received": 1641,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 3.1,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 300.05000001192093,
+          "clockErrorSameMachineMs": 0.35,
+          "bytes": {
+            "rxPerSecond": 8260,
+            "txPerSecond": 2951
+          },
+          "stick": {
+            "x": 0.8976377952755905,
+            "y": -0.4330708661417323
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p3",
+          "slot": 3,
+          "name": "bot3",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 47,
+          "settings": {
+            "hz": 60,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 108.4,
+          "total": {
+            "n": 861,
+            "p50": 11.5,
+            "p95": 22.2,
+            "p99": 35.2,
+            "max": 54.85,
+            "min": 0.5
+          },
+          "net": {
+            "n": 1627,
+            "p50": 0.75,
+            "p95": 1.85,
+            "p99": 13.95,
+            "max": 31.4,
+            "min": 0.1
+          },
+          "received": 1626,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 4.7,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 405.60000002384186,
+          "clockErrorSameMachineMs": 0.2,
+          "bytes": {
+            "rxPerSecond": 8202,
+            "txPerSecond": 2941
+          },
+          "stick": {
+            "x": -0.7952755905511811,
+            "y": 0.6062992125984252
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p4",
+          "slot": 4,
+          "name": "bot4",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 43,
+          "settings": {
+            "hz": 60,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 106.7,
+          "total": {
+            "n": 863,
+            "p50": 12.8,
+            "p95": 25.45,
+            "p99": 28.55,
+            "max": 59.05,
+            "min": 0.85
+          },
+          "net": {
+            "n": 1601,
+            "p50": 1.1,
+            "p95": 2.55,
+            "p99": 14.45,
+            "max": 29.3,
+            "min": 0.25
+          },
+          "received": 1601,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 6.5,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 523.25,
+          "clockErrorSameMachineMs": -0.55,
+          "bytes": {
+            "rxPerSecond": 8039,
+            "txPerSecond": 2887
+          },
+          "stick": {
+            "x": 0.9921259842519685,
+            "y": -0.09448818897637795
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p5",
+          "slot": 5,
+          "name": "bot5",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 26,
+          "settings": {
+            "hz": 60,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 108.3,
+          "total": {
+            "n": 877,
+            "p50": 12.65,
+            "p95": 24.25,
+            "p99": 27.25,
+            "max": 58.05,
+            "min": 0.75
+          },
+          "net": {
+            "n": 1625,
+            "p50": 1.15,
+            "p95": 2.55,
+            "p99": 10.45,
+            "max": 31.9,
+            "min": 0.3
+          },
+          "received": 1625,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 8,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 643.8499999642372,
+          "clockErrorSameMachineMs": -1.35,
+          "bytes": {
+            "rxPerSecond": 8146,
+            "txPerSecond": 2935
+          },
+          "stick": {
+            "x": -0.9921259842519685,
+            "y": -0.14960629921259844
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p6",
+          "slot": 6,
+          "name": "bot6",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 26,
+          "settings": {
+            "hz": 60,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 111.6,
+          "total": {
+            "n": 897,
+            "p50": 12.15,
+            "p95": 21.25,
+            "p99": 27.05,
+            "max": 46.5,
+            "min": 0.45
+          },
+          "net": {
+            "n": 1675,
+            "p50": 0.75,
+            "p95": 2.9,
+            "p99": 13.95,
+            "max": 31.4,
+            "min": 0.15
+          },
+          "received": 1675,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 7.9,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 752.6000000238419,
+          "clockErrorSameMachineMs": -2.1,
+          "bytes": {
+            "rxPerSecond": 8423,
+            "txPerSecond": 3016
+          },
+          "stick": {
+            "x": -0.15748031496062992,
+            "y": -0.984251968503937
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p7",
+          "slot": 7,
+          "name": "bot7",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 29,
+          "settings": {
+            "hz": 60,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 107.2,
+          "total": {
+            "n": 866,
+            "p50": 13.35,
+            "p95": 28.45,
+            "p99": 30,
+            "max": 62.3,
+            "min": 0.6
+          },
+          "net": {
+            "n": 1607,
+            "p50": 0.9,
+            "p95": 3.1,
+            "p99": 13.9,
+            "max": 32.4,
+            "min": 0.2
+          },
+          "received": 1609,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 9.1,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 883.0999999940395,
+          "clockErrorSameMachineMs": -2,
+          "bytes": {
+            "rxPerSecond": 8040,
+            "txPerSecond": 2894
+          },
+          "stick": {
+            "x": 0.984251968503937,
+            "y": 0.18110236220472442
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p8",
+          "slot": 8,
+          "name": "bot8",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 16,
+          "settings": {
+            "hz": 60,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 109,
+          "total": {
+            "n": 874,
+            "p50": 11.45,
+            "p95": 20.15,
+            "p99": 28.15,
+            "max": 53.55,
+            "min": 0.85
+          },
+          "net": {
+            "n": 1635,
+            "p50": 0.9,
+            "p95": 3.55,
+            "p99": 13.4,
+            "max": 32.95,
+            "min": 0.15
+          },
+          "received": 1635,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 10.4,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 994.7499999701977,
+          "clockErrorSameMachineMs": -2.65,
+          "bytes": {
+            "rxPerSecond": 8160,
+            "txPerSecond": 2928
+          },
+          "stick": {
+            "x": 0.6220472440944882,
+            "y": 0.7874015748031497
+          },
+          "buttons": 1
+        }
+      ],
+      "all": {
+        "total": {
+          "n": 6990,
+          "p50": 12.4,
+          "p95": 25.2,
+          "p99": 29.4,
+          "max": 62.3,
+          "min": 0.25
+        },
+        "net": {
+          "n": 13012,
+          "p50": 0.85,
+          "p95": 3,
+          "p99": 13.3,
+          "max": 32.95,
+          "min": -0.15
+        }
+      },
+      "host": {
+        "seconds": 15,
+        "frameMs": {
+          "n": 900,
+          "p50": 16.7,
+          "p95": 17,
+          "p99": 17.1,
+          "max": 17.2,
+          "min": 16.1
+        },
+        "framesPerSecond": 60,
+        "stepsPerSecond": 60
+      }
+    },
+    {
+      "name": "8-phone-30hz-eager",
+      "phoneCount": 8,
+      "phoneQuery": "bot=1&hz=30&eager=1",
+      "measuredSeconds": 15,
+      "roomCode": "QEKW",
+      "phones": [
+        {
+          "id": "p1",
+          "slot": 1,
+          "name": "bot1",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 19,
+          "settings": {
+            "hz": 30,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 88.2,
+          "total": {
+            "n": 872,
+            "p50": 8.25,
+            "p95": 17.3,
+            "p99": 30.25,
+            "max": 34.05,
+            "min": 0.4
+          },
+          "net": {
+            "n": 1322,
+            "p50": 0.65,
+            "p95": 1.6,
+            "p99": 3.5,
+            "max": 27.75,
+            "min": 0
+          },
+          "received": 1323,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 2.5,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 196.4000000655651,
+          "clockErrorSameMachineMs": -0.1,
+          "bytes": {
+            "rxPerSecond": 6660,
+            "txPerSecond": 2412
+          },
+          "stick": {
+            "x": -1,
+            "y": -0.08661417322834646
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p2",
+          "slot": 2,
+          "name": "bot2",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 33,
+          "settings": {
+            "hz": 30,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 86.2,
+          "total": {
+            "n": 843,
+            "p50": 8.4,
+            "p95": 17.1,
+            "p99": 29.3,
+            "max": 39.2,
+            "min": 0.2
+          },
+          "net": {
+            "n": 1293,
+            "p50": 0.6,
+            "p95": 1.5,
+            "p99": 5.4,
+            "max": 31,
+            "min": -0.2
+          },
+          "received": 1293,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 2.4,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 301.80000004172325,
+          "clockErrorSameMachineMs": 0.3,
+          "bytes": {
+            "rxPerSecond": 6505,
+            "txPerSecond": 2369
+          },
+          "stick": {
+            "x": -0.9448818897637795,
+            "y": 0.3228346456692913
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p3",
+          "slot": 3,
+          "name": "bot3",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 36,
+          "settings": {
+            "hz": 30,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 87.4,
+          "total": {
+            "n": 861,
+            "p50": 8.1,
+            "p95": 17.1,
+            "p99": 25.7,
+            "max": 30.7,
+            "min": 0.3
+          },
+          "net": {
+            "n": 1311,
+            "p50": 0.6,
+            "p95": 1.6,
+            "p99": 3,
+            "max": 30.7,
+            "min": 0
+          },
+          "received": 1312,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 3.4,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 417.30000001192093,
+          "clockErrorSameMachineMs": 0.1,
+          "bytes": {
+            "rxPerSecond": 6604,
+            "txPerSecond": 2394
+          },
+          "stick": {
+            "x": -0.9291338582677166,
+            "y": 0.36220472440944884
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p4",
+          "slot": 4,
+          "name": "bot4",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 28,
+          "settings": {
+            "hz": 30,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 87,
+          "total": {
+            "n": 855,
+            "p50": 10.25,
+            "p95": 17.3,
+            "p99": 27.85,
+            "max": 33.45,
+            "min": 0.45
+          },
+          "net": {
+            "n": 1305,
+            "p50": 0.65,
+            "p95": 1.6,
+            "p99": 2.75,
+            "max": 23.8,
+            "min": 0.05
+          },
+          "received": 1306,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 4.1,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 542.0500000119209,
+          "clockErrorSameMachineMs": -0.25,
+          "bytes": {
+            "rxPerSecond": 6557,
+            "txPerSecond": 2379
+          },
+          "stick": {
+            "x": 1,
+            "y": 0
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p5",
+          "slot": 5,
+          "name": "bot5",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 16,
+          "settings": {
+            "hz": 30,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 86.6,
+          "total": {
+            "n": 850,
+            "p50": 10.5,
+            "p95": 17.2,
+            "p99": 28.3,
+            "max": 43.05,
+            "min": 0.7
+          },
+          "net": {
+            "n": 1300,
+            "p50": 0.9,
+            "p95": 1.95,
+            "p99": 3.15,
+            "max": 26.65,
+            "min": 0.3
+          },
+          "received": 1300,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 4.7,
+          "icePairRttMs": 3,
+          "clockOffsetMs": 675.9500000476837,
+          "clockErrorSameMachineMs": -0.75,
+          "bytes": {
+            "rxPerSecond": 6547,
+            "txPerSecond": 2377
+          },
+          "stick": {
+            "x": 0.007874015748031496,
+            "y": 1
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p6",
+          "slot": 6,
+          "name": "bot6",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 58,
+          "settings": {
+            "hz": 30,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 90.3,
+          "total": {
+            "n": 906,
+            "p50": 12.1,
+            "p95": 17.6,
+            "p99": 28.5,
+            "max": 33.8,
+            "min": 0.5
+          },
+          "net": {
+            "n": 1356,
+            "p50": 1.1,
+            "p95": 2.15,
+            "p99": 3.4,
+            "max": 27.9,
+            "min": 0.3
+          },
+          "received": 1355,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 5.3,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 808.7500000298023,
+          "clockErrorSameMachineMs": -1.05,
+          "bytes": {
+            "rxPerSecond": 6802,
+            "txPerSecond": 2469
+          },
+          "stick": {
+            "x": 1,
+            "y": 0.023622047244094488
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p7",
+          "slot": 7,
+          "name": "bot7",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 29,
+          "settings": {
+            "hz": 30,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 87,
+          "total": {
+            "n": 854,
+            "p50": 11.35,
+            "p95": 17.6,
+            "p99": 29.45,
+            "max": 39.3,
+            "min": 0.6
+          },
+          "net": {
+            "n": 1304,
+            "p50": 0.85,
+            "p95": 2.4,
+            "p99": 3.8,
+            "max": 25.25,
+            "min": 0.2
+          },
+          "received": 1306,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 5.8,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 934.8000000119209,
+          "clockErrorSameMachineMs": -1.3,
+          "bytes": {
+            "rxPerSecond": 6584,
+            "txPerSecond": 2389
+          },
+          "stick": {
+            "x": -0.84251968503937,
+            "y": -0.5354330708661418
+          },
+          "buttons": 1
+        },
+        {
+          "id": "p8",
+          "slot": 8,
+          "name": "bot8",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 19,
+          "settings": {
+            "hz": 30,
+            "eager": true,
+            "bot": true,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 15,
+          "ratePerSecond": 87.2,
+          "total": {
+            "n": 859,
+            "p50": 9.85,
+            "p95": 17.65,
+            "p99": 30.85,
+            "max": 37.7,
+            "min": 0.6
+          },
+          "net": {
+            "n": 1309,
+            "p50": 0.8,
+            "p95": 2.75,
+            "p99": 3.55,
+            "max": 27.3,
+            "min": 0.25
+          },
+          "received": 1308,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 6.7,
+          "icePairRttMs": 1,
+          "clockOffsetMs": 1132.8499999940395,
+          "clockErrorSameMachineMs": -1.95,
+          "bytes": {
+            "rxPerSecond": 6604,
+            "txPerSecond": 2398
+          },
+          "stick": {
+            "x": -0.7716535433070866,
+            "y": -0.6377952755905512
+          },
+          "buttons": 1
+        }
+      ],
+      "all": {
+        "total": {
+          "n": 6900,
+          "p50": 9.8,
+          "p95": 17.35,
+          "p99": 28.3,
+          "max": 43.05,
+          "min": 0.2
+        },
+        "net": {
+          "n": 10500,
+          "p50": 0.75,
+          "p95": 2.15,
+          "p99": 3.5,
+          "max": 31,
+          "min": -0.2
+        }
+      },
+      "host": {
+        "seconds": 15,
+        "frameMs": {
+          "n": 900,
+          "p50": 16.7,
+          "p95": 17.6,
+          "p99": 17.7,
+          "max": 17.8,
+          "min": 15.5
+        },
+        "framesPerSecond": 60,
+        "stepsPerSecond": 60
+      }
+    },
+    {
+      "name": "1-phone-touch-60hz",
+      "phoneCount": 1,
+      "phoneQuery": "hz=60&name=touch (touch events from the DevTools protocol)",
+      "measuredSeconds": 10,
+      "touchEventToHandlerMs": {
+        "n": 510,
+        "p50": 18.8,
+        "p95": 34.7,
+        "max": 35.5
+      },
+      "roomCode": "QSAG",
+      "phones": [
+        {
+          "id": "p1",
+          "slot": 1,
+          "name": "touch",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 12,
+          "settings": {
+            "hz": 60,
+            "eager": false,
+            "bot": false,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 10,
+          "ratePerSecond": 59.9,
+          "total": {
+            "n": 506,
+            "p50": 38.35,
+            "p95": 54.35,
+            "p99": 54.85,
+            "max": 56.85,
+            "min": 22.15
+          },
+          "net": {
+            "n": 601,
+            "p50": 0.95,
+            "p95": 2.35,
+            "p99": 4.45,
+            "max": 16.75,
+            "min": 0.25
+          },
+          "received": 602,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 4.6,
+          "icePairRttMs": 2,
+          "clockOffsetMs": 266.7000000178814,
+          "clockErrorSameMachineMs": 0,
+          "bytes": {
+            "rxPerSecond": 4566,
+            "txPerSecond": 1700
+          },
+          "stick": {
+            "x": -0.29133858267716534,
+            "y": 0.6062992125984252
+          },
+          "buttons": 0
+        }
+      ],
+      "all": {
+        "total": {
+          "n": 506,
+          "p50": 38.35,
+          "p95": 54.35,
+          "p99": 54.85,
+          "max": 56.85,
+          "min": 22.15
+        },
+        "net": {
+          "n": 601,
+          "p50": 0.95,
+          "p95": 2.35,
+          "p99": 4.45,
+          "max": 16.75,
+          "min": 0.25
+        }
+      },
+      "host": {
+        "seconds": 10,
+        "frameMs": {
+          "n": 602,
+          "p50": 16.7,
+          "p95": 17.2,
+          "p99": 17.4,
+          "max": 17.6,
+          "min": 15.4
+        },
+        "framesPerSecond": 59.9,
+        "stepsPerSecond": 59.9
+      }
+    },
+    {
+      "name": "1-phone-touch-60hz-eager",
+      "phoneCount": 1,
+      "phoneQuery": "hz=60&eager=1&name=touch (touch events from the DevTools protocol)",
+      "measuredSeconds": 10,
+      "touchEventToHandlerMs": {
+        "n": 437,
+        "p50": 18.9,
+        "p95": 34,
+        "max": 34.6
+      },
+      "roomCode": "SFCT",
+      "phones": [
+        {
+          "id": "p1",
+          "slot": 1,
+          "name": "touch",
+          "path": "direct",
+          "candidateTypes": "host/host",
+          "connectionState": "connected",
+          "connectMs": 12,
+          "settings": {
+            "hz": 60,
+            "eager": true,
+            "bot": false,
+            "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36"
+          },
+          "seconds": 10,
+          "ratePerSecond": 96.8,
+          "total": {
+            "n": 435,
+            "p50": 29.2,
+            "p95": 58.6,
+            "p99": 60.8,
+            "max": 61.3,
+            "min": 9.2
+          },
+          "net": {
+            "n": 969,
+            "p50": 1.5,
+            "p95": 2.3,
+            "p99": 3.5,
+            "max": 6.1,
+            "min": 0.3
+          },
+          "received": 970,
+          "lost": 0,
+          "late": 0,
+          "pingMs": 6.2,
+          "icePairRttMs": 4,
+          "clockOffsetMs": 185.69999992847443,
+          "clockErrorSameMachineMs": -0.2,
+          "bytes": {
+            "rxPerSecond": 7343,
+            "txPerSecond": 2660
+          },
+          "stick": {
+            "x": -0.29133858267716534,
+            "y": 0.6062992125984252
+          },
+          "buttons": 0
+        }
+      ],
+      "all": {
+        "total": {
+          "n": 435,
+          "p50": 29.2,
+          "p95": 58.6,
+          "p99": 60.8,
+          "max": 61.3,
+          "min": 9.2
+        },
+        "net": {
+          "n": 969,
+          "p50": 1.5,
+          "p95": 2.3,
+          "p99": 3.5,
+          "max": 6.1,
+          "min": 0.3
+        }
+      },
+      "host": {
+        "seconds": 10,
+        "frameMs": {
+          "n": 601,
+          "p50": 16.7,
+          "p95": 18.2,
+          "p99": 18.5,
+          "max": 18.6,
+          "min": 14.7
+        },
+        "framesPerSecond": 60,
+        "stepsPerSecond": 60
+      }
+    }
+  ],
+  "checks": {
+    "ninthJoiner": {
+      "phoneSays": "Room is full (8 phones).",
+      "hostCount": 8,
+      "pass": true
+    },
+    "wrongCode": {
+      "phoneSays": "No room with the code ZZZZ.",
+      "pass": true
+    },
+    "phoneLeaves": {
+      "hostDroppedIt": true,
+      "afterMs": 23,
+      "pass": true,
+      "placeReusable": true
+    },
+    "releaseArrives": {
+      "stickAfterRelease": {
+        "x": 0,
+        "y": 0
+      },
+      "samplesWhileHeld": 506,
+      "pass": true
+    }
+  },
+  "signallingServer": {
+    "rooms": 8,
+    "joins": 40,
+    "refusedFull": 1,
+    "refusedNoRoom": 1,
+    "forwarded": 160,
+    "refusedPayload": 0
+  },
+  "pageErrors": []
+}

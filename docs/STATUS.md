@@ -21,6 +21,11 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   checkout and was shown to fail on a type error, a lint error, a design-lint finding, a failing
   test, a trace failure and an unregistered package. No game or screen code yet.
 
+- **Network spike (S-01, in progress):** `spikes/s01-network/` connects up to 8 phones to a host
+  page over WebRTC and measures input delay. Run on one Mac with emulated phones only: 8 scripted
+  phones p95 27 ms, no loss, host at 60 fps. Not yet tried on real phones, over real Wi-Fi or
+  through a relay; one touch-driven emulated phone was over budget (OQ-028). Not reviewed.
+
 ## Does not exist yet
 
 - Any application code: no host page, controller, pairing server or game (the packages are empty stubs).

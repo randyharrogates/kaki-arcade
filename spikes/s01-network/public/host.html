@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>S-01 network spike: host</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="host">
+      <header>
+        <h1>Network spike (S-01)</h1>
+        <div>Room code <span class="code" id="code">····</span></div>
+        <div class="join">Phones open <b id="joinurl">…</b></div>
+        <div class="join num" id="hoststats"></div>
+      </header>
+      <main>
+        <div class="arena-wrap"><canvas id="arena"></canvas></div>
+        <div class="panel">
+          <h2>Per phone, since the last reset. Delays in milliseconds. Budget: direct p95 ≤ 50, relayed p95 ≤ 120.</h2>
+          <table>
+            <thead>
+              <tr>
+                <th></th><th></th><th></th>
+                <th class="group" colspan="3">Touch → sim step</th>
+                <th class="group" colspan="3">Send → received</th>
+                <th></th><th></th><th></th><th></th>
+              </tr>
+              <tr>
+                <th>Phone</th><th>Path</th><th>Rate</th>
+                <th>p50</th><th>p95</th><th>p99</th>
+                <th>p50</th><th>p95</th><th>p99</th>
+                <th>Lost</th><th>Late</th><th>Ping</th><th>Budget</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+          <p class="foot">
+            "Touch → sim step" is the PERF-010/011 figure: from the touch event on the phone to the 60 Hz
+            simulation step on this page that applies it. "Send → received" is the network part alone.
+            Phone clocks are aligned by ping/pong, keeping the lowest round trip of the last 16.
+            Lost = sequence numbers never seen. Late = arrived after a newer one and were ignored.
+          </p>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="host.js"></script>
+  </body>
+</html>

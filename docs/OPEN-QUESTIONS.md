@@ -22,6 +22,19 @@ and says no other spacing values. The design lint (F-01) also allows 0, the next
 Claude is working to the wider set; say if you want it held strictly to §1. Needed by: first UI
 slice.
 
+**OQ-028 · Network spike (S-01): needs Randy's real phones, and a ruling on PERF-010.** On one Mac
+with emulated phones the network costs 1 to 4 ms and scripted input reaches the simulation in
+17 to 31 ms at the 95th percentile with 8 phones, inside the 50 ms budget. But the one emulated
+phone driven by real touch events measured **54 to 59 ms**, because the browser took up to 35 ms
+to hand the touch to the page; whether real phones do that is unknown. (1) Randy runs
+`spikes/s01-network/README.md` §2 with his iPhone and Android for about 10 minutes and sends the
+host table. (2) If real phones are also over, Randy decides: start the PERF-010 clock when the
+page receives the touch, or raise the figure, or accept a 120 Hz host step. (3) The HTTPS tunnel
+(§3) and the relay run for PERF-011 (§4) are prepared, not run: both are his call. (4) A phone
+held at 60 Hz measured about 22 MB an hour through a relay, against the 10 MB an hour assumed
+behind the 800 GB limit in NET-004; the send policy for C-04 (on touch plus a 30 Hz tick) roughly
+halves it. Needed by: C-04, S-04.
+
 **OQ-027 · Board 4 choices.** Tabao Rush buttons 1A or 1B; stick 2A fixed or 2B floating; button
 style 3A filled or 3B keycap; Peek Poker picker 4A or 4B; a yes or changes for the single-design
 phone screens. Needed by: the controller kit (K track) and every game's controller layouts.

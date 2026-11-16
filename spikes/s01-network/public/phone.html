@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>S-01 network spike: phone</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="phone" id="phone">
+      <div class="status">
+        <span><b id="who">Phone</b> · <span id="state">Starting…</span></span>
+        <span class="num" id="numbers"></span>
+      </div>
+      <form class="joinform" id="joinform" hidden>
+        <label for="roominput">Room code</label>
+        <input id="roominput" maxlength="4" autocomplete="off" autocapitalize="characters" />
+        <button type="submit">Join</button>
+      </form>
+      <div class="pads" id="pads">
+        <div class="pad" id="stick"><div class="ring"></div><div class="knob" id="knob"></div></div>
+        <div class="pad btn" id="button"><div class="face">A</div></div>
+      </div>
+    </div>
+    <script type="module" src="phone.js"></script>
+  </body>
+</html>

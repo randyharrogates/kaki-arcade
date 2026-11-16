@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — S-01: network spike, first half
+
+- `spikes/s01-network/`: host page, phone page, pairing server and an unattended run with 1, 4
+  and 8 emulated phones; evidence in `uat/evidence/S-01-network-spike/`. Loopback numbers only;
+  the real-phone and relay runs wait for Randy (OQ-028). (NN-3, PERF-010, PERF-011, NET-002,
+  NET-003: none met yet)
+
 ## 2026-11-16 — F-01: workspace and `pnpm verify`
 
 - pnpm workspace, strict TypeScript with project references, ESLint, Vitest, a workspace guard

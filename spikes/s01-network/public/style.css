@@ -1,0 +1,67 @@
+/* S-01 network spike. THROWAWAY diagnostic styling: packages/ui tokens do not exist yet.
+   Spacing still comes from the 5 · 8 · 13 · 21 · 34 · 55 · 89 scale. */
+:root {
+  --ink: #1d2433;
+  --ink-soft: #55607a;
+  --paper: #f4f1ea;
+  --card: #fffdf8;
+  --line: #d9d3c5;
+  --good: #2f7d4f;
+  --bad: #b3372e;
+  --warn: #9a6a00;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; }
+body {
+  font: 15px/1.4 ui-rounded, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--ink);
+  background-color: var(--paper);
+  /* one treatment for the page: a low-contrast square-dot grid */
+  background-image: radial-gradient(rgba(29, 36, 51, 0.09) 1px, transparent 1.5px);
+  background-size: 21px 21px;
+}
+.num { font-variant-numeric: tabular-nums; }
+
+/* ---- host ---- */
+.host { display: grid; grid-template-rows: auto 1fr; height: 100%; padding: 21px; gap: 21px; }
+.host header { display: flex; align-items: baseline; gap: 34px; flex-wrap: wrap; }
+.host h1 { margin: 0; font-size: 21px; }
+.code { font-size: 34px; font-weight: 700; letter-spacing: 5px; }
+.join { color: var(--ink-soft); }
+.join b { color: var(--ink); user-select: all; }
+.host main { display: grid; grid-template-columns: 1fr 1.618fr; gap: 21px; min-height: 0; }
+.arena-wrap, .panel { background: var(--card); border: 1px solid var(--line); border-radius: 13px; overflow: hidden; }
+.arena-wrap { position: relative; display: flex; align-items: center; justify-content: center; padding: 13px; }
+canvas#arena { width: 100%; aspect-ratio: 1.618 / 1; border-radius: 8px; }
+.panel { padding: 13px 21px; overflow: auto; }
+.panel h2 { margin: 0 0 8px; font-size: 15px; color: var(--ink-soft); font-weight: 600; }
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 8px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+th { font-weight: 600; color: var(--ink-soft); font-size: 13px; }
+th:first-child, td:first-child { text-align: left; }
+th.group { text-align: center; border-bottom: 0; padding-bottom: 0; }
+.swatch { display: inline-block; width: 13px; height: 13px; border-radius: 50%; margin-right: 8px; vertical-align: -1px; }
+.tag { display: inline-block; padding: 0 8px; border-radius: 999px; font-size: 13px; font-weight: 600; border: 1px solid currentColor; }
+.tag.direct { color: var(--good); }
+.tag.relayed { color: var(--warn); }
+.tag.unknown { color: var(--ink-soft); }
+.ok { color: var(--good); font-weight: 600; }
+.over { color: var(--bad); font-weight: 700; }
+.foot { margin-top: 13px; color: var(--ink-soft); font-size: 13px; }
+
+/* ---- phone ---- */
+.phone { height: 100%; display: grid; grid-template-rows: auto 1fr; touch-action: none; user-select: none; -webkit-user-select: none; overflow: hidden; }
+.phone .status { display: flex; justify-content: space-between; gap: 13px; padding: 8px 13px; font-size: 13px; color: var(--ink-soft); }
+.phone .status b { color: var(--ink); }
+.pads { display: grid; grid-template-columns: 1.618fr 1fr; gap: 13px; padding: 0 13px 13px; min-height: 0; }
+.pad { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 21px; touch-action: none; overflow: hidden; }
+.ring { position: absolute; left: 50%; top: 50%; width: 178px; height: 178px; margin: -89px 0 0 -89px; border-radius: 50%; border: 2px dashed var(--line); pointer-events: none; }
+.knob { position: absolute; left: 50%; top: 50%; width: 68px; height: 68px; margin: -34px 0 0 -34px; border-radius: 50%; background: var(--ink); opacity: 0.85; pointer-events: none; will-change: transform; }
+.btn { display: flex; align-items: center; justify-content: center; font-size: 21px; font-weight: 700; }
+.btn .face { width: 110px; height: 110px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--card); background: var(--ink); pointer-events: none; transition: transform 80ms ease-out; }
+.btn.down .face { transform: scale(0.97); filter: brightness(1.5); }
+.joinform { display: flex; gap: 13px; align-items: center; justify-content: center; padding: 34px; }
+.joinform input { font: inherit; font-size: 21px; width: 144px; padding: 8px 13px; text-transform: uppercase; letter-spacing: 5px; border: 1px solid var(--line); border-radius: 8px; }
+.joinform button { font: inherit; font-size: 21px; padding: 8px 21px; border-radius: 8px; border: 0; color: var(--card); background: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .btn .face { transition: none; } }

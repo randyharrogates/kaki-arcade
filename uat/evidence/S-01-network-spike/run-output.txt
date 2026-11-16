@@ -1,0 +1,21 @@
+[web] [web] listening on 127.0.0.1:4550
+[signal] [signal] listening on 127.0.0.1:4551
+[run] Chrome Chrome/157.0.8103.51
+[run] 1-phone-60hz: 1 phone(s), 30 s, bot=1&hz=60
+[run]   touch→step p50 14.7 p95 22.55 p99 24.2 max 39.25 ms (n=1655); send→received p95 2.35 ms; lost 0; paths direct; host 60 fps
+[run] 4-phone-60hz: 4 phone(s), 30 s, bot=1&hz=60
+[run]   touch→step p50 18.75 p95 30.8 p99 33.3 max 46.3 ms (n=6606); send→received p95 2.75 ms; lost 0; paths direct; host 60 fps
+[run] 8-phone-60hz: 8 phone(s), 30 s, bot=1&hz=60
+[run]   touch→step p50 17.35 p95 27.35 p99 29.95 max 48.1 ms (n=13228); send→received p95 3.8 ms; lost 0; paths direct; host 60 fps
+[run] 8-phone-30hz: 8 phone(s), 15 s, bot=1&hz=30
+[run]   touch→step p50 16.3 p95 28.55 p99 32.75 max 62.05 ms (n=3600); send→received p95 3 ms; lost 0; paths direct; host 60 fps
+[run] 8-phone-60hz-eager: 8 phone(s), 15 s, bot=1&hz=60&eager=1
+[run]   touch→step p50 12.4 p95 25.2 p99 29.4 max 62.3 ms (n=6990); send→received p95 3 ms; lost 0; paths direct; host 60 fps
+[run] 8-phone-30hz-eager: 8 phone(s), 15 s, bot=1&hz=30&eager=1
+[run]   touch→step p50 9.8 p95 17.35 p99 28.3 max 43.05 ms (n=6900); send→received p95 2.15 ms; lost 0; paths direct; host 60 fps
+[run] 1-phone-touch-60hz: real touch events for 10 s
+[run]   touch→step p50 38.35 p95 54.35 p99 54.85 ms (n=506); event→handler p50 18.8 p95 34.7 ms; stick after release {"x":0,"y":0}
+[run] 1-phone-touch-60hz-eager: real touch events for 10 s
+[run]   touch→step p50 29.2 p95 58.6 p99 60.8 ms (n=435); event→handler p50 18.9 p95 34 ms; stick after release {"x":0,"y":0}
+[run] wrote /Users/randy/projects/personal/web-apps/kaki-arcade-wt/S-01/uat/evidence/S-01-network-spike/results.json
+[run] checks: {"ninthJoiner":{"phoneSays":"Room is full (8 phones).","hostCount":8,"pass":true},"wrongCode":{"phoneSays":"No room with the code ZZZZ.","pass":true},"phoneLeaves":{"hostDroppedIt":true,"afterMs":23,"pass":true,"placeReusable":true},"releaseArrives":{"stickAfterRelease":{"x":0,"y":0},"samplesWhileHeld":506,"pass":true}}
