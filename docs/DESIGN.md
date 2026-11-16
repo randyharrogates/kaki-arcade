@@ -129,14 +129,23 @@ The kit's look, sizes and the layouts each game uses.
 
 Named durations and easings implementing §3.
 
-### 4.6 3D art style — *partly decided (board 1A done, board 1 pending)*
+### 4.6 3D art style — **decided** (boards 1A and 1)
 
 Decided on board 1A (Randy, 2026-11-16, D-037): **chunky toy** cooks about two heads tall,
 modelled and animated by script, **one shared body with at least 8 different heads**, colour
-carried by apron and cap. Still to choose on board 1: glossy against matte finish, lighting
-mood, camera tilt.
+carried by apron and cap.
 
 ---
+
+**Board 1: option C** (Randy, 2026-11-16, D-044). Reference frame: `b1_C_full` from
+`tools/blender/board1_style.py`.
+
+- **Finish: matte.** `kalib.STYLE = "matte"`: roughness 0.78, a trace of subsurface, no clear
+  coat on props.
+- **Light: day.** `kalib.lights()`; the same light in every level until Randy says otherwise.
+- **Camera: orthographic, tilted 60° down**, 120 px per tile at 1080p. Screen position of a
+  world point: `x = 960 + 120·X`, `y = 540 − ((Y − Y0)·0.866 + Z·0.5)·120`, with `Y0` the
+  level's look-at depth.
 
 ## 5. The design gate
 
@@ -151,7 +160,7 @@ golden-ratio variant, and says which proportions use it. The source of each boar
 | 0 | Art finish | Plain / flat vector / rich vector / Blender | **Done** — D chosen |
 | 0B | End-goal vision | Not a choice: one page showing the aim for every screen of the console, controller and three games, with rendered Tabao Rush kitchens. Source `design-gate/00b-end-goal-vision.html`, built by `tools/blender/vision_*.py` and `kalib.py` | Published 2026-11-16 |
 | 1A | Modelling approach | How stylised (toy / clay / realistic), where models come from (scripted / CC0 / paid AI), how many characters, with memory cost. Source `design-gate/01a-modelling-approach.html`, built by `tools/blender/board1a_*.py` | **Done** — A1 chunky toy, B1 scripted, C2 one body with 8 heads (D-037) |
-| 1 | 3D art style | Four looks of the same kitchen and eight cooks at true game size: finish (glossy or matte), lighting (day or evening), camera tilt (42°, 50°, 60°). Source `design-gate/01-art-style.html`, built by `tools/blender/board1_style.py` and `tools/boards/build_board1.py` | Published 2026-11-16, awaiting Randy |
+| 1 | 3D art style | Four looks of the same kitchen and eight cooks at true game size: finish (glossy or matte), lighting (day or evening), camera tilt (42°, 50°, 60°). Source `design-gate/01-art-style.html`, built by `tools/blender/board1_style.py` and `tools/boards/build_board1.py` | **Done** — C: matte, day, 60° (D-044) |
 | 2 | Visual identity | Three directions: palette, type pairing, surface treatment; plus where trivia photos come from. Source `design-gate/02-visual-identity.html`, built by `tools/boards/build_board2.py` | **Done** — C Marble table as the general rule; real photographs, Codex only as a fallback (D-042) |
 | 2B | A theme for each game | Three variants each for Rabakz, Peek Poker and Tabao Rush inside the Marble table console. Source `design-gate/02b-game-themes.html`, built by `tools/boards/build_board2b.py` | **Done** — R1 Bandung, K1 Green baize, T1 Order chit (D-043) |
 | 3 | Big-screen layouts | Lobby, picker, Tabao Rush HUD, Peek Poker table, results | Pending |
