@@ -29,10 +29,10 @@ Declared to the controller kit (CTRL-002):
 | Part | Action |
 |---|---|
 | Left stick | Move. 1:1 with the thumb, 8-direction facing. |
-| A | Pick up / put down / take from crate. |
-| B | Act: chop, stir, wash, put out a fire with the extinguisher (hold or tap as the station needs). |
-| X | Dash a short distance (cooldown). |
-| Y | Throw the held ingredient (TR-009). |
+| Cross (bottom) | Pick up / put down / take from crate. |
+| Circle (right) | Act: chop, stir, wash, put out a fire with the extinguisher (hold or tap as the station needs). |
+| Square (left) | Dash a short distance (cooldown). |
+| Triangle (top) | Throw the held ingredient (TR-009). |
 | Start | Pause. |
 | Shake (optional) | Wok toss: a shake finishes a wok dish faster. Button B always works instead (CTRL-007). |
 

@@ -35,10 +35,6 @@ held at 60 Hz measured about 22 MB an hour through a relay, against the 10 MB an
 behind the 800 GB limit in NET-004; the send policy for C-04 (on touch plus a 30 Hz tick) roughly
 halves it. Needed by: C-04, S-04.
 
-**OQ-027 · Board 4 choices.** Tabao Rush buttons 1A or 1B; stick 2A fixed or 2B floating; button
-style 3A filled or 3B keycap; Peek Poker picker 4A or 4B; a yes or changes for the single-design
-phone screens. Needed by: the controller kit (K track) and every game's controller layouts.
-
 **OQ-026 · Rabakz buzzer rules: Claude's readings to confirm.** (1) "Same time" means within
 0.25 s of the first correct answer. (2) An option answered wrongly is marked wrong on the TV for
 everyone. (3) In team mode the question's points go to the winner's team. (4) Solo: only the

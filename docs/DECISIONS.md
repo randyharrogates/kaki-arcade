@@ -32,3 +32,10 @@ to be confirmed (OQ-026): the same-time window is 0.25 s; wrong options are mark
 team mode gives the question to the winner's team; solo scores only a first answer; the streak
 counts questions won in a row. Closes OQ-019. Affects: `games/rabakz.md`, TR-058, DESIGN §4.3,
 R-01 onwards, PRD §1 wording.
+
+**D-047 · 2026-11-16 · Randy** — Board 4: Tabao Rush buttons **1A** (diamond of four equal
+buttons) "use playstation buttons instead of xbox", so the buttons carry cross, circle, square
+and triangle, not letters; stick **2B** floating; button style **3A** filled; Peek Poker picker
+**4B**. Claude's reading: the shapes sit where that layout puts them (triangle top, circle
+right, cross bottom, square left), drawn by us in the kit's colours, not copied artwork or
+that maker's colours (rule 7). The golden-ratio variant 1B was offered and not chosen.

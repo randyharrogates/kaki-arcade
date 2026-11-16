@@ -139,9 +139,17 @@ layout functions named below are in `tools/boards/board3_template.html`. Every s
   kitchen, one clock in the middle. Not explicitly confirmed by Randy; taken as accepted.
 - **Versus interaction:** all four forms, one or two per arena (TR-058).
 
-### 4.4 Phone controller — *pending (gate board 4)*
+### 4.4 Phone controller — **decided** (board 4, D-047)
 
-The kit's look, sizes and the layouts each game uses.
+- **Tabao Rush buttons: 1A**, a diamond of four equal buttons, marked with the four shapes
+  **cross, circle, square and triangle** in place of the letters A, B, X and Y. Cross (bottom)
+  picks up and puts down, circle (right) acts, square (left) dashes, triangle (top) throws. The
+  shapes are drawn by us in the kit's own colours.
+- **Stick: 2B**, floating: it appears where the left thumb lands, inside an outlined area.
+- **Button style: 3A**, filled colour; a press is shown by scale 0.97 and a vibration.
+- **Peek Poker picker: 4B**, grid in the centre with 89 px cells and a 144 px Lock in button
+  under the right thumb.
+- The single-design phone screens on board 4 stand as shown.
 
 ### 4.5 Motion tokens — *pending (gate board 5)*
 
