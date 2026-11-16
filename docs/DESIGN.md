@@ -135,8 +135,6 @@ Decided on board 1A (Randy, 2026-11-16, D-037): **chunky toy** cooks about two h
 modelled and animated by script, **one shared body with at least 8 different heads**, colour
 carried by apron and cap.
 
----
-
 **Board 1: option C** (Randy, 2026-11-16, D-044). Reference frame: `b1_C_full` from
 `tools/blender/board1_style.py`.
 
@@ -146,6 +144,8 @@ carried by apron and cap.
 - **Camera: orthographic, tilted 60° down**, 120 px per tile at 1080p. Screen position of a
   world point: `x = 960 + 120·X`, `y = 540 − ((Y − Y0)·0.866 + Z·0.5)·120`, with `Y0` the
   level's look-at depth.
+
+---
 
 ## 5. The design gate
 
