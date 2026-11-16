@@ -1,3 +1,4 @@
+import type { Kitchen, OrderEvent } from './orders';
 import type { ColourToken, PlayerInfo } from '@kaki/platform';
 import type { Rejection, ServiceEvent } from './recipes';
 import type { RngState } from '@kaki/sim-core';
@@ -20,6 +21,10 @@ export type Tile =
 
 export interface Level {
   readonly id: string;
+  /** T-06 level hooks; omitted means first introduced dish and the default round. */
+  readonly allowedDishes?: readonly string[];
+  readonly roundSeconds?: number;
+  readonly soloThresholds?: readonly [number, number, number];
   readonly width: number;
   readonly height: number;
   /** Row-major static data. Station behaviour belongs to T-03. */
@@ -34,6 +39,7 @@ export interface Level {
 export type Facing = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export interface Cook {
+  readonly kitchen?: string;
   readonly id: string;
   readonly x: number;
   readonly y: number;
@@ -87,6 +93,8 @@ export interface Item {
 }
 
 export interface TabaoState {
+  readonly kitchens?: readonly Kitchen[];
+  readonly orderEvents?: readonly OrderEvent[];
   readonly returns?: readonly { readonly due: number; readonly tile: number; readonly item: Item }[];
   readonly serviceEvents?: readonly ServiceEvent[];
   readonly fireSpreadClock?: number;
@@ -99,7 +107,7 @@ export interface TabaoState {
   readonly players: readonly Participant[];
   readonly cooks: readonly Cook[];
   readonly tick: number;
-  /** Interface scaffold only; T-05 replaces the round lifecycle and adds score/orders. */
+  /** Fixed round endpoint, in simulation steps. */
   readonly endTick: number;
 }
 

@@ -1,0 +1,49 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-05
+
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-005: "default 3 minutes 30 seconds"
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-005: "0 to 3 stars"
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-005: "0 to 3 stars"
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-006 D-091(d): 1 cooks
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-006 D-091(d): 2 cooks
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-006 D-091(d): 3 cooks
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-006 D-091(d): 4 cooks
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-006 D-091(d): 5 cooks
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-006 D-091(d): 6 cooks
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-006 D-091(d): 7 cooks
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-006 D-091(d): 8 cooks
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-004 D-091(a,b,c): kopi-teh points, patience, tips and expiry
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-004 D-091(a,b,c): laksa points, patience, tips and expiry
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-004 D-091(a,b,c): char-kway-teow points, patience, tips and expiry
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-004 D-091(a,b,c): chicken-rice points, patience, tips and expiry
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-004 D-091(a,b,c): satay points, patience, tips and expiry
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-004 D-091(a,b,c): kaya-toast points, patience, tips and expiry
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-004 D-091(a,b,c): rojak points, patience, tips and expiry
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-005 threshold boundaries give exactly 0, 1, 2 or 3 stars
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-001 same seed gives the same dish sequence; counts affect scheduling only
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-004 defect-first refusal preserves dishes; oldest order wins; seat resolves simultaneous service before expiry
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-001/004 patience warns at last quarter and expires with a clamped penalty
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-006 D-091: leave changes future arrival rate; stars retain elapsed crew history; joiners spectate
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-001/006 D-091(d): full queues skip draws; a smaller crew keeps oldest cards within the cap
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-001/004 step work never enumerates resting inventories, even with thousands of items
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-005 results at zero, during play and end; exact final step freezes all containers including transit
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-004 kitchens keep independent queues and score
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-001 TR-004 TR-005 TR-006 complete rounds > 1 cooks: real crate-to-serve journey then complete round, exact event arithmetic
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-001 TR-004 TR-005 TR-006 complete rounds > 2 cooks: real crate-to-serve journey then complete round, exact event arithmetic
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-001 TR-004 TR-005 TR-006 complete rounds > 4 cooks: real crate-to-serve journey then complete round, exact event arithmetic
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-001 TR-004 TR-005 TR-006 complete rounds > 8 cooks: real crate-to-serve journey then complete round, exact event arithmetic
+ ✓ games/tabao-rush/src/rules/orders.test.ts > TR-001 TR-004 TR-005 TR-006 complete rounds > conformance retains all scenarios: ordered service AND expiry at 1 and 8 cooks 34490ms
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-001 TR-004 TR-005 TR-006 complete rounds > 210 s aimed fuzz: conservation, score ledger, open/unique completions, bounds, reload and warm timings
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-006 D-091(e): cook-steps use the average at every step, interpolating the literal crew table
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-001 D-091(f): serving or expiry of the final card refills within three seconds without changing the stream
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-005 D-091(d): level solo threshold base scales, default remains 200/400/600
+ ↓ games/tabao-rush/src/rules/orders.test.ts > TR-005: final-step events clear on the first frozen step and later frozen states retain identity
+
+ Test Files  1 passed (1)
+      Tests  1 passed | 36 skipped (37)
+   Start at  04:28:30
+   Duration  35.06s (transform 341ms, setup 0ms, import 431ms, tests 34.49s, environment 0ms)
+
+real 35.58
+user 37.43
+sys 0.43

@@ -1,3 +1,4 @@
+import { ageOrders, arriveOrders, ensureOrders, resizeOrders, stars } from './orders';
 import { createRng } from '@kaki/sim-core';
 import { secondsToSteps } from '@kaki/platform';
 import type { ControllerLayout, GameModule, PlayerInfo } from '@kaki/platform';
@@ -10,6 +11,13 @@ import type { Cook, TabaoState } from './state';
 import { targetTile } from './target';
 
 export const ROUND_STEPS = secondsToSteps(210);
+/** Level data may override the default before the first step; the endpoint then stays fixed. */
+function endTick(state: TabaoState): number {
+  if (state.tick !== 0 || state.level.roundSeconds === undefined) return state.endTick;
+  const steps = secondsToSteps(state.level.roundSeconds);
+  if (!Number.isSafeInteger(steps) || steps < 1) throw new Error('Round length must be positive');
+  return steps;
+}
 const PLAY_LAYOUT: ControllerLayout = {
   revision: 0,
   controls: [
@@ -71,13 +79,18 @@ export const tabaoRush: GameModule<TabaoState> = {
     return state;
   },
   step(state, inputs) {
-    if (state.tick >= state.endTick) return state;
-    const interacted = advanceStations(interactItems(prepareStations(state.serviceEvents?.length ? { ...state, serviceEvents: [] } : state), inputs));
-    return landItems({
+    const end = endTick(state);
+    if (state.tick >= end) return state.orderEvents?.length || state.serviceEvents?.length
+      ? { ...state, orderEvents: [], serviceEvents: [] } : state;
+    if (end !== state.endTick) state = { ...state, endTick: end };
+    const ready = ensureOrders({ ...state, serviceEvents: [], orderEvents: [] });
+    const interacted = ageOrders(advanceStations(interactItems(prepareStations(ready), inputs)));
+    const next = landItems({
       ...interacted,
       tick: state.tick + 1,
       cooks: moveCooks(state.level, state.cooks, inputs, state.tick),
     });
+    return next.tick < next.endTick ? arriveOrders(next) : next;
   },
   join(state, player) {
     if (state.players.some((entry) => entry.id === player.id) || state.players.length >= 8) {
@@ -91,27 +104,33 @@ export const tabaoRush: GameModule<TabaoState> = {
   leave(state, id) {
     if (!state.players.some((entry) => entry.id === id)) return state;
     const dropped = dropLeaving(state, id);
-    return {
+    return resizeOrders({
       ...dropped,
       players: state.players.filter((entry) => entry.id !== id),
       cooks: state.cooks.filter((cook) => cook.id !== id),
-    };
+    });
   },
   publicView(state) {
-    const prepared = prepareStations(state);
+    const prepared = prepareStations(ensureOrders(state));
     const inTransit = new Set(prepared.returns?.map((r) => r.item.id));
     return {
       level: state.level,
       items: items(prepared).filter((item) => !inTransit.has(item.id)),
       stations: stationViews(prepared),
       serviceEvents: state.serviceEvents ?? [],
+      kitchens: (prepared.kitchens ?? []).map((k) => ({ id: k.id, orders: k.orders,
+        score: k.score, tips: k.tips, expired: k.expired, completed: k.completed,
+        cooks: k.cooks, maximum: k.maximum, targetMaximum: k.targetMaximum,
+        thresholds: k.thresholds, stars: stars(k) })),
+      orderEvents: state.orderEvents ?? [],
+      timer: { remaining: Math.max(0, endTick(state) - state.tick), total: endTick(state) },
       players: state.players,
       cooks: state.cooks.map((cook) => ({ ...cook,
         floorItem: floorPickup(state, cook)?.id ?? null,
         actions: actionPreview(prepared, cook),
       })),
       tick: state.tick,
-      endTick: state.endTick,
+      endTick: endTick(state),
     };
   },
   privateView: () => null,
@@ -121,14 +140,18 @@ export const tabaoRush: GameModule<TabaoState> = {
         ? STATION_LAYOUT : PLAY_LAYOUT
       : WATCH_LAYOUT;
   },
-  isOver: (state) => state.tick >= state.endTick,
-  results: (state) => ({
-    mode: 'coop',
-    score: 0,
-    players: state.players.map((player) => ({
-      id: player.id, place: 1, score: 0, joinedMidGame: player.joinedMidGame,
-    })),
-  }),
+  isOver: (state) => state.tick >= endTick(state),
+  results: (state) => {
+    const kitchens = ensureOrders(state).kitchens ?? [];
+    const score = kitchens.reduce((sum, k) => sum + k.score, 0);
+    return {
+      mode: 'coop', score,
+      ...(state.players.length ? { extras: { stars: kitchens[0] ? stars(kitchens[0]) : 0 } } : {}),
+      players: state.players.map((player) => ({
+        id: player.id, place: 1, score, joinedMidGame: player.joinedMidGame,
+      })),
+    };
+  },
   assets: () => [],
   secrets: () => [],
 };

@@ -1,0 +1,32 @@
+Conformance kit: tabao-rush (returns-new) PASSES
+    step ms: mean 0.0051, p95 0.0071, worst 0.1683; allocation counts unavailable (report only)
+  scenario "orders serve and expire 1": 1 player, 4801 steps, over at step 4800, final hash 51c77580b52d88e6
+    step ms: mean 0.0156, p95 0.0205, worst 2.8209; allocation counts unavailable (report only)
+  scenario "orders serve and expire 8": 8 players, 4801 steps, over at step 4800, final hash e4af05275b9b2ea9
+  membership replay "orders serve and expire 1": 4801 steps, over at step 4800
+  membership replay "orders serve and expire 8": 4801 steps, over at step 4800
+  pass  meta            Picker details are complete and consistent (applied 1 times)
+  pass  settings        The settings schema is sound and its defaults validate (applied 1 times)
+  pass  purity          The source has no clock, timer or unseeded randomness (applied 1 times)
+  pass  init            A match starts for every player count, with and without teams (applied 8 times)
+  pass  runs            init, step, hooks and views never throw (applied 332680 times)
+  pass  determinism     The same seed, players, settings and inputs give the same state at every step (applied 4 times)
+  pass  seed            A different seed gives a different run (applied 2 times)
+  pass  replay          A saved recording replays to the same hashes (sim-core recorder) (applied 4 times)
+  pass  reload          State survives encodeState and decodeState mid-run and the run goes on identically (applied 8 times)
+  pass  clone           step(cloneState(s)) equals step(s) (applied 19204 times)
+  pass  previous-state  A finished step is not changed by the next one (real, reused input buffer) (applied 38408 times)
+  pass  sharing         Non-trivial returns-new steps share objects with their input (applied 19115 times)
+   N/A  private-revision Private view revisions change whenever their content changes (not applicable: nothing to examine)
+  pass  state-contract  step treats its state and inputs as its stepMode promises (applied 19204 times)
+  pass  views-json      Views are plain JSON within the byte caps (applied 127374 times)
+  pass  views-pure      Views are pure: equal when called twice, and the state is untouched (applied 146950 times)
+  pass  layout          Layouts fit a phone at the decided sizes; a revision changes exactly when the taps on offer do (applied 53899 times)
+   N/A  repeat-taps     A tap the next layout would refuse does nothing if it arrives in the same step (not applicable: nothing to examine)
+   N/A  late-taps       A tap that arrives one step late is not dropped while the taps on offer are unchanged (not applicable: nothing to examine)
+  pass  secrets         No secret reaches the TV or another phone, plainly or in disguise (applied 19577 times)
+  pass  join-leave      Joining, dropping and leaving mid-match never throws and never changes a score (applied 89 times)
+  pass  min-players     A whole match is played at the fewest and the most players; leaving never throws, even to nobody (applied 103 times)
+  pass  pause           A pause changes nothing (applied 12 times)
+  pass  results         Results and saved data are complete and well ordered (applied 19577 times)
+  pass  assets          Nothing loads during play (applied 660 times)

@@ -6,6 +6,8 @@ export const CAPACITY: Readonly<Record<Container, number>> = { plate: 4, bowl: 2
 export interface Recipe {
   readonly id: string;
   readonly name: string;
+  readonly basePoints: number;
+  readonly patienceSeconds: number;
   readonly container: Container;
   readonly ingredients: readonly { readonly ingredient: string; readonly steps: readonly Process[] }[];
   readonly assembly: readonly Process[];
@@ -14,13 +16,13 @@ export interface Recipe {
 const part = (ingredient: string, ...steps: Process[]) => ({ ingredient, steps });
 /** D-085: step order is per ingredient, never across ingredients. Spec §4: one entry per launch dish; kopi and teh are alternatives within dish seven. */
 export const RECIPES: readonly Recipe[] = [
-  { id: 'chicken-rice', name: 'Chicken rice', container: 'plate', ingredients: [part('rice', 'rice'), part('chicken', 'chop'), part('cucumber', 'chop')], assembly: [] },
-  { id: 'char-kway-teow', name: 'Char kway teow', container: 'plate', ingredients: [part('kway-teow', 'chop', 'wok')], assembly: [] },
-  { id: 'satay', name: 'Satay', container: 'plate', ingredients: [part('satay', 'chop', 'grill'), part('cucumber', 'chop')], assembly: [] },
-  { id: 'laksa', potSequence: ['laksa-broth', 'noodles'], name: 'Laksa', container: 'bowl', ingredients: [part('laksa-broth', 'pot'), part('noodles', 'pot')], assembly: [] },
-  { id: 'rojak', name: 'Rojak', container: 'plate', ingredients: [part('pineapple', 'chop'), part('turnip', 'chop'), part('cucumber', 'chop')], assembly: ['mix'] },
-  { id: 'kaya-toast', name: 'Kaya toast set', container: 'plate', ingredients: [part('bread', 'grill', 'spread'), part('drink', 'drinks')], assembly: [] },
-  { id: 'kopi-teh', name: 'Kopi / teh', container: 'cup', ingredients: [part('drink', 'drinks')], assembly: [] },
+  { id: 'chicken-rice', basePoints: 100, patienceSeconds: 60, name: 'Chicken rice', container: 'plate', ingredients: [part('rice', 'rice'), part('chicken', 'chop'), part('cucumber', 'chop')], assembly: [] },
+  { id: 'char-kway-teow', basePoints: 80, patienceSeconds: 55, name: 'Char kway teow', container: 'plate', ingredients: [part('kway-teow', 'chop', 'wok')], assembly: [] },
+  { id: 'satay', basePoints: 100, patienceSeconds: 60, name: 'Satay', container: 'plate', ingredients: [part('satay', 'chop', 'grill'), part('cucumber', 'chop')], assembly: [] },
+  { id: 'laksa', basePoints: 80, patienceSeconds: 55, potSequence: ['laksa-broth', 'noodles'], name: 'Laksa', container: 'bowl', ingredients: [part('laksa-broth', 'pot'), part('noodles', 'pot')], assembly: [] },
+  { id: 'rojak', basePoints: 120, patienceSeconds: 75, name: 'Rojak', container: 'plate', ingredients: [part('pineapple', 'chop'), part('turnip', 'chop'), part('cucumber', 'chop')], assembly: ['mix'] },
+  { id: 'kaya-toast', basePoints: 120, patienceSeconds: 75, name: 'Kaya toast set', container: 'plate', ingredients: [part('bread', 'grill', 'spread'), part('drink', 'drinks')], assembly: [] },
+  { id: 'kopi-teh', basePoints: 40, patienceSeconds: 40, name: 'Kopi / teh', container: 'cup', ingredients: [part('drink', 'drinks')], assembly: [] },
 ];
 export type Rejection =
   | { readonly code: 'nothing-to-serve' | 'dirty' | 'wrong-container' | 'unknown-combination' | 'not-ordered' }

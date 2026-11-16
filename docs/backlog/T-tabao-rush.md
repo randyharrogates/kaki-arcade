@@ -16,7 +16,7 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 | T-02 | Items: carry one thing, crates, counters, passing, throwing and catching | TR-002, TR-009, TR-023 | T-01 | 1 | merged |
 | T-03 | Stations and timers: chop, wok, pot, grill, rice, drinks, plating, sink, bin; burning with a warning; fires that start, spread and are put out | TR-007, TR-008, TR-010, TR-030 | T-01 | 1 | merged |
 | T-04 | Recipes for the 7 dishes, plating, serving, rejection with a reason | TR-003, TR-004, TR-040 | T-02, T-03 | 1 | merged |
-| T-05 | Orders, patience, score and tips, stars, scaling by player count, round timer | TR-001, TR-004, TR-005, TR-006 | T-04 | 1 | doing (Codex) |
+| T-05 | Orders, patience, score and tips, stars, scaling by player count, round timer | TR-001, TR-004, TR-005, TR-006 | T-04 | 1 | merged |
 | T-06 | Level format and loader: collision map, station anchors, twists; a validator that every level fits the screen with no scrolling | TR-050, TR-057 | T-01 | 1 | todo |
 | T-07 | Big-screen renderer: baked background, sprites from atlases, body plus head, interpolation for everything not player-controlled, HUD and order cards | TR-001, TR-030, TR-031, TR-061, TR-062, PERF-001 | T-05, S-04, A-02, F-06 | 2 | todo |
 | T-08 | Controller layout: stick, A, B, X, Y, Start, optional shake for the wok | TR-020, CTRL-007 | T-01, K-06 | 2 | todo |
@@ -74,6 +74,14 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
   history when it goes dirty (it grows by one entry per wash). If the last fire goes out in the
   step a new one starts, the fire clock does not restart. All station timings are D-080 and
   provisional until seen on a screen.
+- **From T-05 (orders), for T-06:** set `allowedDishes`, `roundSeconds` and `soloThresholds`
+  per level; 8-cook levels need enough plates and chopping boards (4 plates cap a round near
+  34 to 46 plated dishes). **For T-07:** show up to 6 order cards; after a crew shrinks the
+  board can briefly hold more than the new cap; events last one step and are cleared when the
+  round ends; `refused.dish` can be null; the view carries queue, patience, warning, score,
+  tips, timer, stars and thresholds. **For T-14:** nothing assigns `Cook.kitchen` yet, so a
+  two-kitchen level scales each kitchen as solo: assign it at spawn or join and add a
+  two-kitchen scaling test that does not set it by hand. **For T-16:** OQ-032.
 - **From T-04 (recipes), for T-05:** `stationCross` calls `checkRecipe(held)` with no allowed
   list: pass in the open orders. "Not ordered" is checked last, so a dish that is both wrong
   and not ordered reports its defect. A served event names the drink and carries the step.

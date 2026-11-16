@@ -1,3 +1,4 @@
+import { withOrder } from './orders.fixture';
 import { required } from './review-fixture';
 import { expect, it } from 'vitest';
 import { secondsToSteps } from '@kaki/platform';
@@ -20,7 +21,9 @@ const press = (s: TabaoState, held = 0, pressed = held) => stepWith(s, new Map([
 const f = (id: number, ingredient: string, ...processes: NonNullable<Food['processes']>): Food => ({ id, ingredient, kind: processes.length ? 'cooked' : 'raw', processes });
 const plate = (contents: Food[], container: 'plate' | 'bowl' | 'cup' = 'plate'): Omit<Item, 'place'> => ({ id: 500, kind: contents.length ? 'dish' : 'plate', container, contents, processes: [] });
 function serve(item: Omit<Item, 'place'>) {
-    const s = aim(give(setup(1, 3, false), item), T('serving'));
+    let s = aim(give(setup(1, 3, false), item), T('serving'));
+    const checked = checkRecipe({ ...item, place: { kind: 'held', cook: 'p0' } });
+    if ('dish' in checked) s = withOrder(s, checked.dish);
     return { before: s, after: press(s, 0, cross) };
 }
 const reason = (item: Omit<Item, 'place'>) => serve(item).after.serviceEvents?.[0];
@@ -99,6 +102,7 @@ it('R9 toast needs a filled cup; service returns both identities dirty after fiv
     s = press(s, 0, cross);
     s = press(s, 0, cross);
     s = aim(s, T('serving'));
+    s = withOrder(s, 'kaya-toast');
     const step = s.tick;
     s = press(s, 0, cross);
     expect(s.serviceEvents?.[0]).toMatchObject({ type: 'served', dish: 'kaya-toast', drink: 'teh', step });

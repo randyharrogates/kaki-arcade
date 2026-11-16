@@ -1,3 +1,4 @@
+import { arriveOrders, completeOrder, kitchenId } from './orders';
 import { secondsToSteps } from '@kaki/platform';
 import type { Cook, Item, Station, StationType, TabaoState } from './state';
 import { floorTile, heldItem, relocate } from './items';
@@ -116,10 +117,13 @@ export function stationCross(state: TabaoState, cook: Cook): TabaoState {
   const station = state.stations?.[tile];
   if (!station || station.fire) return state;
   if (station.type === 'serving' && held) {
-    const result = checkRecipe(held);
+    state = state.kitchens ? state : arriveOrders(state);
+    const kitchen = kitchenId(station.kitchen);
+    const result = checkRecipe(held, state.kitchens?.find((k) => k.id === kitchen)?.orders.map((o) => o.dish) ?? []);
     const seat = state.players.find((p) => p.id === cook.id)?.seat ?? 0;
     const base = { cook: cook.id, seat, step: state.tick, counter: tile };
     if ('reason' in result) return { ...state,
+      orderEvents: [...(state.orderEvents ?? []), { type: 'refused', kitchen, ...base, dish: (() => { const candidate = checkRecipe(held); return 'dish' in candidate ? candidate.dish : null; })(), reason: result.reason }],
       serviceEvents: [...(state.serviceEvents ?? []), { ...base, type: 'rejected', reason: result.reason }],
       stations: { ...state.stations, [tile]: { ...station, rejection: { reason: result.reason, until: state.tick + REJECTION_STEPS } } } };
     const target = Object.values(state.stations ?? {}).find((s) => s.type === 'return-counter' && s.kitchen === station.kitchen);
@@ -127,6 +131,7 @@ export function stationCross(state: TabaoState, cook: Cook): TabaoState {
     const { cup, ...outer } = held;
     const containers = [outer, ...(cup ? [cup] : [])];
     const drink = food(held).find((f) => f.ingredient === 'kopi' || f.ingredient === 'teh')?.ingredient;
+    state = completeOrder(state, kitchen, result.dish, cook.id);
     return { ...state, serviceEvents: [...(state.serviceEvents ?? []), { ...base, type: 'served', dish: result.dish, ...(drink ? { drink } : {}) }],
       returns: [...(state.returns ?? []), ...containers.map((item) => ({ due: state.tick + RETURN_STEPS, tile: target.tile,
         item: { ...item, kind: 'dirty-plate' as const, contents: [], processes: [], place: { kind: 'counter' as const, tile: target.tile } } }))],

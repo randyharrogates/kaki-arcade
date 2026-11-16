@@ -163,6 +163,15 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   presses in a scripted test. No food or container lost or duplicated in the reviewed fuzz, no
   soft lock found. Orders, patience and scoring are T-05. Rules only: no screen yet. Built by
   Codex; three review rounds.
+- **Tabao Rush orders and scoring (T-05).** A seeded order queue per kitchen with patience and
+  a last-quarter warning; serving only against an open order; points by dish, a speed tip and
+  a loss for an expired order; a 3 minute 30 second round that ends exactly on time; 0 to 3
+  stars; order rate, queue size and star thresholds scaled by crew size, with stars based on
+  the average crew over the round so leaving cannot earn them. A full round runs at 1, 2, 4
+  and 8 cooks in tests. **Every number is provisional** (D-091): worked out by arithmetic,
+  not by play (OQ-032). A cook leaving never removes an order card. Players who join
+  mid-round watch and share the score. Rules only: no screen yet. Built by Codex; two review
+  rounds, the last must-fix confirmed by the integrator against the reviewer's test.
 
 ## Does not exist yet
 

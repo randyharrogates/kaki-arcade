@@ -1,3 +1,4 @@
+import { withOrder } from './orders.fixture';
 import * as fs from 'node:fs';
 import { performance } from 'node:perf_hooks';
 import { describe, expect, it } from 'vitest';
@@ -145,6 +146,8 @@ class Journey {
     expect(checkRecipe(required(this.state.inventory.held.p0))).toEqual({ dish: id });
   }
   serve() {
+    const result = checkRecipe(required(this.state.inventory.held.p0));
+    if ('dish' in result) this.state = withOrder(this.state, result.dish);
     this.walk(station('serving')); this.tick(cross);
     expect(this.state.serviceEvents?.[0]).toMatchObject({ type: 'served', cook: 'p0' });
     this.tick();
@@ -208,7 +211,7 @@ for (const recipe of RECIPES) {
       const expired = { ...next, tick: state.tick + REJECTION_STEPS + 1 };
       expect((tabaoRush.publicView(expired) as { stations: { type: string; rejection: unknown }[] }).stations.find((s) => s.type === 'serving')?.rejection).toBeNull();
     }
-    const accepted = step(withHand(aim(initial(), station('serving')), correct), cross);
+    const accepted = step(withOrder(withHand(aim(initial(), station('serving')), correct), recipe.id), cross);
     expect(accepted.serviceEvents?.[0]).toMatchObject({ type: 'served', dish: recipe.id, cook: 'p0', seat: 1, step: 0, counter: station('serving') });
     expect(accepted.inventory.held.p0).toBeUndefined();
   });

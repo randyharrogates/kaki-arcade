@@ -1,0 +1,24 @@
+All 13 ported reviewer attacks PASS in the full pnpm verify run (113/113 files passed).
+Raw T-05 attack output follows; full verification is in verify.txt.
+
+A1 orders created idle 12 serving 22 served score 2103
+B1 events [{"type":"refused","kitchen":"coop","cook":"p0","seat":1,"step":0,"counter":53,"dish":"chicken-rice","reason":{"code":"not-ordered"}},{"type":"served","kitchen":"coop","order":1,"dish":"satay","step":0,"cook":"p1","seat":2,"points":100,"tip":20,"delta":120}]
+D1 after serve on arrival boundary: orders [1,2] nextArrival 2880 tick 1440
+E1 {"type":"refused","kitchen":"coop","cook":"p0","seat":1,"step":0,"counter":53,"dish":null,"reason":{"code":"wrong-container"}} {"type":"refused","kitchen":"coop","cook":"p0","seat":1,"step":0,"counter":53,"dish":null,"reason":{"code":"missing-ingredient","ingredient":"cucumber"}} 1
+G1 1 {"served":19,"expired":0,"refused":96,"maxQ":1,"maxView":19215,"score":1864,"stale":0,"cooks":1,"thr":[200,400,600]}
+G1 2 {"served":7,"expired":2,"refused":80,"maxQ":2,"maxView":16288,"score":700,"stale":0,"cooks":1,"thr":[220,440,650]}
+G1 3 {"served":11,"expired":1,"refused":146,"maxQ":3,"maxView":16642,"score":1278,"stale":0,"cooks":1,"thr":[250,510,760]}
+G1 4 {"served":2,"expired":5,"refused":70,"maxQ":4,"maxView":14744,"score":86,"stale":0,"cooks":1,"thr":[310,610,920]}
+G1 5 {"served":10,"expired":2,"refused":169,"maxQ":5,"maxView":17009,"score":974,"stale":0,"cooks":1,"thr":[370,750,1120]}
+G1 6 {"served":8,"expired":4,"refused":111,"maxQ":6,"maxView":17274,"score":794,"stale":0,"cooks":1,"thr":[450,910,1360]}
+G1 7 {"served":9,"expired":8,"refused":123,"maxQ":6,"maxView":16438,"score":803,"stale":0,"cooks":1,"thr":[540,1090,1630]}
+G1 8 {"served":6,"expired":9,"refused":122,"maxQ":6,"maxView":16851,"score":470,"stale":0,"cooks":1,"thr":[650,1290,1940]}
+H1 orders created 18 expired 13
+I1 results end {"mode":"coop","score":120,"extras":{"stars":0},"players":[{"id":"p0","place":1,"score":120,"joinedMidGame":false}]} view orders 1 lingering events []
+J1 empty results {"mode":"coop","score":0,"players":[]}
+J2 thresholds after 7 leave [1060,2110,3170] stars 1 results {"stars":1}
+K1 [{"id":"blue","dish":"kaya-toast","cooks":3,"rng":{"a":393706149,"b":166977836,"c":3014791619,"d":14}},{"id":"red","dish":"chicken-rice","cooks":1,"rng":{"a":150560760,"b":148003555,"c":3355399269,"d":14}}]
+L1 run 1 mean 0.0137 p95 0.0163 p99 0.0224 worst 0.719 over1ms 0
+L1 run 2 mean 0.0131 p95 0.0149 p99 0.0197 worst 0.761 over1ms 0
+M1 view kitchen [{"id":"coop","orders":[],"score":120,"tips":20,"expired":0,"completed":1,"cooks":1,"maximum":2,"targetMaximum":2,"thresholds":[200,400,600],"stars":0}] {"remaining":12599,"total":12600} [{"type":"served","kitchen":"coop","order":1,"dish":"chicken-rice","step":0,"cook":"p0","seat":1,"points":100,"tip":20,"delta":120}]
+N1 order 0 expired during step index 3599 PATIENCE 3600 scaling1 {"interval":1440,"maximum":2,"thresholds":[200,400,600]}

@@ -1,3 +1,4 @@
+import { withOrder } from './orders.fixture';
 import { expect, it } from 'vitest';
 import { decodeState, encodeState, hashState } from '@kaki/sim-core';
 import { tabaoRush } from './game';
@@ -132,7 +133,10 @@ it('D plating progress after an assembly: next plate shows working', () => {
 
 it('E returns: conserved through leave, reload and round end; many dirty containers', () => {
   let s = setup(2, 3, true);
-  const serveOne = (st: TabaoState, item: Omit<Item, 'place'>) => press(aim(give(st, item), T('serving')), 0, cross);
+  const serveOne = (st: TabaoState, item: Omit<Item, 'place'>) => {
+    const checked = checkRecipe({ ...item, place: { kind: 'held', cook: 'p0' } });
+    return press(aim(give('dish' in checked ? withOrder(st, checked.dish) : st, item), T('serving')), 0, cross);
+  };
   const ids = items(s).filter((i) => containerOf(i)).map((i) => i.id);
   for (const [k, id] of ids.entries()) {
     const c = required(items(s).find((i) => i.id === id));
@@ -150,7 +154,7 @@ it('E returns: conserved through leave, reload and round end; many dirty contain
   expect(items(s).filter((i) => containerOf(i)).length).toBe(8);
   // round end mid transit
   let e = { ...setup(1, 3, false) }; e = { ...e, endTick: 5 };
-  e = press(aim(give(e, box([f(1, 'kway-teow', 'chop', 'wok')])), T('serving')), 0, cross);
+  e = press(aim(give(withOrder(e, 'char-kway-teow'), box([f(1, 'kway-teow', 'chop', 'wok')])), T('serving')), 0, cross);
   for (let i = 0; i < 10; i++) e = press(e);
   log('E round over mid-transit', { over: tabaoRush.isOver(e), inTransit: e.returns?.length, viewItems: (tabaoRush.publicView(e) as { items: unknown[] }).items.length });
 });

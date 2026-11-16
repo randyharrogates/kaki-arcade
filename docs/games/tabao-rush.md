@@ -119,3 +119,27 @@ the level list. These are tuning decisions made during M6 with playtests, not re
 - A wrong dish is refused, never consumed, with one reason shown for 3 s, checked in this
   order: nothing to serve, dirty, burnt, wrong container, not a dish we serve, missing
   ingredient, extra ingredient, missing step, extra step.
+
+## Orders and scoring (D-091; every number provisional until played, OQ-032)
+
+| Dish | Points | Patience |
+|---|---|---|
+| Kopi or teh | 40 | 40 s |
+| Laksa, char kway teow | 80 | 55 s |
+| Chicken rice, satay | 100 | 60 s |
+| Kaya toast set, rojak | 120 | 75 s |
+
+- Speed tip: up to 20% of the dish's points, in proportion to the patience left. An order
+  warns in its last quarter. An expired order loses a quarter of its points; the score never
+  goes below zero. No combos. No penalty for orders still open when the round ends.
+- Crew factor for 1 to 8 cooks: 1, 1.74, 2.41, 3.03, 3.62, 4.19, 4.74, 5.28. A new order
+  arrives every 24 s divided by the factor; the board holds one more card than there are
+  cooks, at most 6; star thresholds are the level's solo base (200, 400, 600 by default)
+  times the factor. Stars use the average crew over the round.
+- An empty board gets its next order within 3 s. The first order opens at once. Which dish
+  comes k-th depends only on the seed.
+- A cook leaving never removes a card: no new order arrives until the board drains to its
+  new size. Players who join mid-round watch and share the team score.
+- Serving takes the oldest matching order; a serve beats an expiry on the same step. Kopi
+  and teh are one order.
+

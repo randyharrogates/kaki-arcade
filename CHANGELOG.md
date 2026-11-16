@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — T-05: Tabao Rush orders, patience, scoring, stars and scaling
+
+- `games/tabao-rush/src/rules/orders.ts`; points and patience per dish in `recipes.ts`; the
+  game spec gains the provisional numbers (D-091, OQ-032). (TR-001, TR-004, TR-005, TR-006 in
+  progress)
+
 ## 2026-11-17 — T-04: Tabao Rush recipes, plating and serving
 
 - `games/tabao-rush/src/rules/recipes.ts` and station changes; rule details added to the game
