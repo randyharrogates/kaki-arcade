@@ -46,3 +46,8 @@ state that shares unchanged parts ("allow it, then measure"); Tabao Rush must pr
 performance harness. Closes OQ-030. (3) Rabakz: "same time" is within 0.25 s of the first
 correct answer, and a wrongly chosen option is marked wrong on the TV for everyone (RZ-005,
 RZ-006 stand as written).
+
+**D-049 · 2026-11-16 · Randy** — Rabakz: (1) **no true-or-false questions**; the bank is
+multiple choice and picture only (RZ-002 rewritten). (2) Team mode: a question's points go to
+the winner's team once (RZ-012 stands). (3) Nicknames: 12 visible characters (PLAT-004).
+(4) Singapore questions use romanised names only. Closes OQ-029 and OQ-026 items 3 and 6.

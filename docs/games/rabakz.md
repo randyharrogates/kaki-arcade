@@ -16,7 +16,7 @@ No betting, no wagering of points, no real-money element.
 | ID | Pri | Requirement |
 |---|---|---|
 | RZ-001 | MUST | A match is a fixed number of questions chosen by the leader: **10, 30 or 50** (default 10). The highest total score wins. |
-| RZ-002 | MUST | Three question types are mixed in a match: **multiple choice** (four options), **true or false** (two options) and **picture** (an image on the TV with four options). There is no type-the-answer question. |
+| RZ-002 | MUST | Two question types are mixed in a match: **multiple choice** (four options) and **picture** (an image on the TV with four options). There are no true-or-false questions (Randy, D-049: in a buzzer race one wrong press gives the answer away). There is no type-the-answer question. |
 | RZ-003 | MUST | The question and its options are shown on the big screen. Each phone shows one large button per option, carrying the same letter, shape and colour as the option on the TV, and the option's text. |
 | RZ-004 | MUST | There is **no answer timer**. Any player may answer at any moment after the question appears. A press is that player's answer for this turn and cannot be changed. |
 | RZ-005 | MUST | While a question is open the big screen shows **who** has answered (seat markers) and marks an option as wrong once someone has chosen it wrongly. No answer is sent to another phone. |
@@ -51,7 +51,7 @@ Declared to the controller kit (CTRL-002):
 | Phase | Phone shows |
 |---|---|
 | Setup (leader only) | D-pad and **A** to choose length, categories, difficulty and teams. Other phones show "The leader is setting up". |
-| Question | Four answer buttons on **A / B / X / Y** (two for true or false), each with its letter, shape, colour and option text. After pressing: "Locked in" and the chosen option. |
+| Question | Four answer buttons on **A / B / X / Y** each with its letter, shape, colour and option text. After pressing: "Locked in" and the chosen option. |
 | Reveal | Right or wrong, points gained, current streak and total. |
 | Scoreboard / end | The player's placing and total. Leader: **A** to continue. **Start** pauses at any time. |
 

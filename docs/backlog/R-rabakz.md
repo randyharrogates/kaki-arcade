@@ -37,7 +37,7 @@ Content work. It needs no code from other tracks and starts in Wave 0.
 
 - **R-01** shuffles the four options of a multiple-choice or picture question with the match
   seed, and its test checks that the correct position is uniform over many seeds on the real
-  bank (RZ-026). True-or-false stays in the order True, False.
+  bank (RZ-026). There are no true-or-false questions (D-049).
 - **R-02** steps a long option down from 34 px to 21 px on the phone button and wraps it to at
   most 3 lines; only `PublicQuestion` data is sent to a phone.
 - **R-03** steps a long option down from 55 px to 34 px on the TV, renders question text as text
@@ -51,3 +51,5 @@ Content work. It needs no code from other tracks and starts in Wave 0.
 - **R-12** writes Singapore names in romanised form (OQ-029).
 - **R-13** sets a target picture size; at the 150 KB cap about 10 pictures fit beside a full bank
   in one match, because the budget counts uncompressed bytes.
+- **D-049 follow-up (small, R track):** remove the true-or-false type from the `content/rabakz`
+  schema, validator, selector and tests once R-11 and R-12 have merged with none in the bank.

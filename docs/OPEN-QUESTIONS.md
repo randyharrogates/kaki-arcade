@@ -35,15 +35,10 @@ held at 60 Hz measured about 22 MB an hour through a relay, against the 10 MB an
 behind the 800 GB limit in NET-004; the send policy for C-04 (on touch plus a 30 Hz tick) roughly
 halves it. Needed by: C-04, S-04.
 
-**OQ-026 · Rabakz buzzer rules: Claude's readings to confirm.** (1) and (2) confirmed, D-048. (3) In team mode the question's points go to the winner's team. (4) Solo: only the
-first answer scores. (5) The streak counts questions won in a row. (6) True-or-false questions
-stay in: after one wrong answer the next player gets an easy point. (7) Question files are static, so a player who opens one in a browser can read the answers; this is accepted for a party game played in one room. Needed by: R-01.
-
-**OQ-029 · Two readings Claude is working to.** (1) PLAT-004's nickname limit of 12 characters is
-counted in visible characters, so Tamil names and emoji such as 🤷‍♀️ are not cut short by how they
-are stored. (2) The Singapore question pack (R-12) writes place and food names in romanised form
-only; Chinese or Tamil script on the question screen would need its widths measured first.
-Needed by: C-06, R-12.
+**OQ-026 · Rabakz buzzer rules: Claude's remaining readings.** (4) Solo: only the first answer
+scores. (5) The streak counts questions won in a row. (7) Question files are static, so a player
+who opens one in a browser can read the answers; accepted for a party game played in one room.
+The rest were confirmed in D-048 and D-049. Needed by: R-01.
 
 ## Assumptions Claude is working to (say if wrong)
 
