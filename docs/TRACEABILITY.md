@@ -172,7 +172,7 @@ requirement.
 | RZ-022 | MUST | Question schema and build-time validation of lengths | M4 | not started | — | — | — |
 | RZ-023 | MUST | Bank screened for a public, all-ages audience | M4 | not started | — | — | — |
 | RZ-024 | MUST | Launch size: 1,500 questions, 200 Singapore, 60 picture | M4 | not started | — | — | — |
-| RZ-025 | MUST | Picture images are original or openly licensed with credit | M4 | not started | — | — | — |
+| RZ-025 | MUST | Picture images are real photographs (free licence, credited) or Codex-generated and checked; no renders | M4 | not started | — | — | — |
 | RZ-026 | MUST | Option order shuffled from the seed; correct position uniform | M4 | not started | — | — | — |
 | RZ-030 | MUST | Question and options readable from 3 m; options differ by letter and shape | M4 | not started | — | — | — |
 | RZ-031 | MUST | Timer readable without colour; motion follows DESIGN.md §3 | M4 | not started | — | — | — |

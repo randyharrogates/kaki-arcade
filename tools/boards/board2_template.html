@@ -1,0 +1,246 @@
+<title>Kaki Arcade Board 2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Nunito+Sans:wght@400;600;800&display=swap">
+<style>
+/* Layout: three directions side by side, each skinning the same real screens; then one large
+   viewer to look closer. Screens are drawn at true pixel size and scaled to fit. */
+:root{
+  --bg:#EFE9DA; --dot:#D9D0BA; --card:#FBF8F0; --card2:#F3EEDF; --ink0:#26221C; --muted:#6B6355; --line:#D5CCB6;
+  --sage:#4F7A5C; --sage-soft:#DCE8DA; --pick:#B5371F;
+  --display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink0:#F1EBDC; --muted:#A79F8D; --line:#3B382E;
+  --sage:#8FBF9C; --sage-soft:#26342A; --pick:#F0806A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink0:#F1EBDC; --muted:#A79F8D; --line:#3B382E;
+  --sage:#8FBF9C; --sage-soft:#26342A; --pick:#F0806A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:21px 21px;
+  color:var(--ink0);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1440px;margin:0 auto;padding-block:34px 89px;display:flex;flex-direction:column;gap:55px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(34px,5vw,55px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(21px,3vw,34px);font-weight:800}
+h3{font-size:21px;font-weight:700}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage)}
+.muted{color:var(--muted)}
+.top{display:grid;grid-template-columns:1.618fr 1fr;gap:34px;align-items:end}
+.top>div{display:flex;flex-direction:column;gap:13px;min-width:0}
+.chit{border:1px dashed var(--line);border-radius:8px;padding:21px;background:linear-gradient(160deg,var(--card),var(--card2));display:flex;flex-direction:column;gap:8px}
+.chit ol{margin:0;padding-left:21px;display:flex;flex-direction:column;gap:5px}
+section{display:flex;flex-direction:column;gap:21px}
+.head{display:flex;flex-direction:column;gap:8px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:21px}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:21px}
+.pair{display:grid;grid-template-columns:1.618fr 1fr;gap:21px;align-items:start}
+.card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card .b{padding:21px;display:flex;flex-direction:column;gap:13px}
+.tagl{font-family:var(--mono);font-size:13px;color:var(--pick);letter-spacing:.06em}
+ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+li{padding-left:21px;position:relative}
+li::before{position:absolute;left:0;font-family:var(--mono)}
+li.pro::before{content:"+";color:var(--sage)} li.con::before{content:"−";color:var(--pick)}
+.rec{align-self:flex-start;font-family:var(--mono);font-size:13px;background:var(--sage-soft);color:var(--sage);border-radius:5px;padding:5px 8px}
+.sw{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+.sw i{display:block;aspect-ratio:1/1;border-radius:8px;border:1px solid var(--line)}
+.sw span{font-family:var(--mono);font-size:10px;color:var(--muted);text-align:center;display:block;margin-top:5px}
+.spec{border-radius:8px;padding:13px 21px;display:flex;flex-direction:column;gap:5px;background-color:var(--k-bg);background-image:var(--k-pat);background-size:var(--k-pats);color:var(--k-on)}
+.spec b{font-family:var(--k-fd);font-weight:var(--k-dw);font-size:34px;line-height:1.05}
+.spec span{font-family:var(--k-fb);font-size:16px}
+.players{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.players i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:#fff;font:800 13px var(--display);border:2px solid #fff;font-style:normal}
+.players em{font:700 12px var(--mono);font-style:normal;color:#fff;border-radius:13px;padding:3px 8px}
+.fit{position:relative;width:100%;overflow:hidden;background:#000}
+.fit.tv{aspect-ratio:16/9}.fit.ph{aspect-ratio:844/390}
+.fit.big{border-radius:13px;box-shadow:0 8px 34px rgba(0,0,0,.18)}
+.fit.big.tv{border:5px solid #1a1a1c}.fit.big.ph{border:8px solid #1a1a1c;border-radius:34px}
+.stage{position:absolute;left:0;top:0;transform-origin:0 0}
+.tv .stage{width:1920px;height:1080px}.ph .stage{width:844px;height:390px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tabs button{font:500 14px var(--body);color:var(--ink0);background:transparent;border:1px solid var(--line);border-radius:34px;padding:8px 13px;cursor:pointer;transition:transform 150ms ease-out,background 200ms ease-in-out}
+.tabs button:active{transform:scale(.97)}
+.tabs button[aria-pressed="true"]{background:var(--ink0);color:var(--bg);border-color:var(--ink0)}
+.tabs button:focus-visible{outline:2px solid var(--pick);outline-offset:2px}
+.cap{font-size:14px;color:var(--muted)}
+.card img{display:block;width:100%;height:auto}
+@media (max-width:900px){.top,.pair,.g3,.g2{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.tabs button{transition:none}}
+
+/* ---------- the three directions ---------- */
+.dA{--k-bg:#1F3D34;--k-pat:radial-gradient(#2A4F44 2.5px,transparent 3px);--k-pats:34px 34px;--k-on:#F6EFDC;--k-soft:#8FC3AE;
+  --k-p1:#F6EFDC;--k-p2:#EADFC4;--k-ink:#22201B;--k-sub:#5B5446;--k-acc:#F2B21B;--k-acci:#22201B;--k-chip:#3F8069;--k-rad:34px;--k-stroke:0 solid transparent;
+  --k-fd:"Bricolage Grotesque",system-ui,sans-serif;--k-dw:800;--k-fb:"Instrument Sans",system-ui,sans-serif;--k-t1:110px;--k-ls:-.02em;
+  --k-game:#5B2318;--k-gpat:radial-gradient(#6E2C1E 5px,transparent 5.5px);--k-gon:#F6EFDC}
+.dB{--k-bg:#1A1640;--k-pat:radial-gradient(#2B2470 7px,transparent 7.5px),radial-gradient(#2B2470 7px,transparent 7.5px);--k-pats:42px 42px;--k-on:#FFF4DC;--k-soft:#B7B0F2;
+  --k-p1:#FFF4DC;--k-p2:#FFE0A3;--k-ink:#1A1640;--k-sub:#5A4E7A;--k-acc:#FF4F8B;--k-acci:#FFFFFF;--k-chip:#5B49C9;--k-rad:55px;--k-stroke:0 solid transparent;
+  --k-fd:"Baloo 2",system-ui,sans-serif;--k-dw:800;--k-fb:"Nunito Sans",system-ui,sans-serif;--k-t1:120px;--k-ls:-.01em;
+  --k-game:#3B0F45;--k-gpat:radial-gradient(#521A5E 7px,transparent 7.5px);--k-gon:#FFF4DC}
+.dB.stage,.dB .stage,.dB.spec{background-position:0 0,21px 21px}
+.dC{--k-bg:#EFEAE2;--k-pat:radial-gradient(circle at 20% 30%,#D6CBBB 0 6px,transparent 6.5px),radial-gradient(circle at 72% 62%,#C7B6A2 0 4px,transparent 4.5px),radial-gradient(circle at 44% 86%,#B9C6B6 0 5px,transparent 5.5px);--k-pats:89px 89px;--k-on:#2B2118;--k-soft:#7A6A58;
+  --k-p1:#FFFFFF;--k-p2:#F6F1E7;--k-ink:#2B2118;--k-sub:#7A6A58;--k-acc:#B5371F;--k-acci:#FFFFFF;--k-chip:#6B4426;--k-rad:13px;--k-stroke:3px solid #D8CDBB;
+  --k-fd:"DM Serif Display",Georgia,serif;--k-dw:400;--k-fb:"DM Sans",system-ui,sans-serif;--k-t1:89px;--k-ls:0;
+  --k-game:#F3E3D3;--k-gpat:radial-gradient(circle at 30% 30%,#E6CFBA 0 6px,transparent 6.5px);--k-gon:#2B2118}
+
+/* ---------- inside the screens (true pixels, phi spacing) ---------- */
+.stage{font-family:var(--k-fb);color:var(--k-on);background-color:var(--k-bg);background-image:var(--k-pat);background-size:var(--k-pats)}
+.stage *{box-sizing:border-box}
+.D{font-family:var(--k-fd);font-weight:var(--k-dw);letter-spacing:var(--k-ls);line-height:1}
+.mono{font-family:var(--mono)}
+.panel{background:linear-gradient(165deg,var(--k-p1),var(--k-p2));color:var(--k-ink);border-radius:var(--k-rad);border:var(--k-stroke)}
+.badge{display:inline-grid;place-items:center;border-radius:50%;color:#fff;font-family:var(--k-fd);font-weight:800;border:5px solid #fff;flex:none}
+.chip{font-family:var(--mono);font-weight:700;border-radius:89px;padding:8px 21px;font-size:26px;background:var(--k-chip);color:#fff}
+.lobby{position:absolute;inset:0;padding:55px;display:grid;grid-template-columns:1.618fr 1fr;gap:34px}
+.lobby .l{display:flex;flex-direction:column;gap:34px}
+.join{flex:1;padding:55px;display:grid;grid-template-columns:377px 1fr;gap:55px;align-items:center}
+.qr{width:377px;height:377px;background:#fff;border-radius:21px;padding:21px;display:grid;grid-template-columns:repeat(25,1fr)}
+.qr i{background:#1c1a17}.qr i.o{background:transparent}
+.seats{display:flex;flex-direction:column;gap:13px}
+.seat{height:108px;padding:0 21px;display:flex;align-items:center;gap:21px;font-size:40px;font-weight:600;border-radius:min(var(--k-rad),34px)}
+.seat.empty{background:transparent;border:3px dashed var(--k-chip);color:var(--k-soft)}
+.bars{margin-left:auto;display:flex;align-items:flex-end;gap:5px;height:34px}
+.bars i{width:8px;background:var(--k-chip);border-radius:2px}.bars i.off{opacity:.25}
+.rz{position:absolute;inset:0;padding:55px;display:flex;flex-direction:column;gap:34px;background-color:var(--k-game);background-image:var(--k-gpat);background-size:34px 34px;color:var(--k-gon)}
+.rz .main{flex:1;display:grid;grid-template-columns:1fr 1.618fr;gap:34px;min-height:0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:21px}
+.opt{height:165px;border-radius:min(var(--k-rad),55px);display:flex;align-items:center;gap:21px;padding:0 34px;font-size:50px;font-weight:700;color:#fff}
+.shape{width:89px;height:89px;display:grid;place-items:center;background:rgba(255,255,255,.22);border-radius:21px;font-family:var(--k-fd);font-weight:800;font-size:48px;flex:none}
+.oA{background:#D9483B}.oB{background:#2F7FD6}.oX{background:#B87D0C}.oY{background:#2E9A5B}
+.oA .shape{clip-path:polygon(50% 4%,98% 96%,2% 96%);padding-top:21px}.oB .shape{border-radius:50%}.oY .shape{transform:rotate(45deg)}.oY .shape span{transform:rotate(-45deg)}
+.who{display:flex;gap:21px;align-items:center}
+.who .badge{width:76px;height:76px;font-size:36px}
+.who .badge.wait{background:transparent!important;border-style:dashed;border-color:var(--k-gon);color:var(--k-gon)}
+.idbar{position:absolute;left:13px;right:13px;top:8px;height:42px;display:flex;align-items:center;gap:13px;font-size:21px;font-weight:600}
+.idbar .badge{width:38px;height:38px;font-size:19px;border-width:3px}
+.stick{position:absolute;left:55px;top:110px;width:233px;height:233px;border-radius:50%;background:rgba(127,127,127,.18);border:5px solid var(--k-chip)}
+.stick i{position:absolute;left:112px;top:50px;width:100px;height:89px;border-radius:50%;background:var(--k-p1);border:var(--k-stroke);box-shadow:0 5px 13px rgba(0,0,0,.35)}
+.abxy{position:absolute;right:34px;top:76px;width:300px;height:300px}
+.fb{position:absolute;width:110px;height:110px;border-radius:50%;display:grid;place-items:center;color:#fff;text-align:center;font-family:var(--k-fd);font-weight:800;font-size:34px;line-height:.95;border:5px solid rgba(255,255,255,.85)}
+.fb small{display:block;font:600 15px var(--k-fb)}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div>
+      <span class="eyebrow">Design gate · board 2 · visual identity</span>
+      <h1>Colours, type and surface pattern</h1>
+      <p>Three directions, each applied to the same real screens: the TV lobby, a Rabakz question and the phone controller. Everything is live in the browser at true size, so what you see is what the build would use. The Tabao Rush kitchen keeps its own rendered look in all three; this board sets everything around it.</p>
+    </div>
+    <div class="chit">
+      <span class="eyebrow">Reply with</span>
+      <ol>
+        <li><strong>Direction:</strong> A, B or C</li>
+        <li><strong>Trivia photos:</strong> P1 or P2</li>
+      </ol>
+      <span class="muted">Mixing is fine, for example “A's colours with B's lettering”.</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="head"><span class="eyebrow">Choice 1</span><h2>Three directions</h2>
+      <p>None of them costs frame rate: every pattern is drawn by the browser from a few lines of CSS, with no image files and no blur. The only cost is the lettering, which the phone has to download; the controller page budget is 300 KB, so I will cut each font down to the characters used and measure it in the build.</p></div>
+    <div class="g3" id="dirs"></div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Look closer</span><h2>Any screen in any direction</h2>
+      <div class="tabs" id="vdir"><span class="muted">Direction</span><button aria-pressed="true" data-d="A">A Kopitiam mosaic</button><button aria-pressed="false" data-d="B">B Pasar malam</button><button aria-pressed="false" data-d="C">C Marble table</button></div>
+      <div class="tabs" id="vscr"><span class="muted">TV screen</span><button aria-pressed="true" data-s="lobby">Lobby</button><button aria-pressed="false" data-s="rz">Rabakz question</button></div></div>
+    <div class="pair">
+      <div class="fit tv big" id="vtv"></div>
+      <div style="display:flex;flex-direction:column;gap:13px;min-width:0">
+        <div class="fit ph big" id="vph"></div>
+        <span class="cap">The phone controller in the same direction. Face-button colours stay the same in all three, because players learn them: A red, B blue, X amber, Y green, each with its letter.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Choice 2</span><h2>Where trivia photos come from</h2>
+      <p>You asked for real photographs in Rabakz, not Blender renders. That is now the rule (RZ-025). The choice is how the 60 or more picture questions get their photos.</p></div>
+    <div class="g2">
+      <article class="card"><img src="{{photo_commons}}" alt="A real photograph of a bowl of Katong laksa in a red bowl">
+        <div class="b"><span class="tagl">P1</span><h3>Free real photographs</h3>
+          <p class="muted">Bowl of Katong Laksa, by JaventheAlderick, Wikimedia Commons, CC BY-SA 4.0.</p>
+          <ul><li class="pro">It is the real thing, which matters when the photo is the answer: a dish, a landmark, an animal.</li>
+            <li class="pro">Free. Thousands exist for Singapore subjects.</li>
+            <li class="con">Every photo needs its licence checked and its credit listed on the credits page.</li>
+            <li class="con">Quality and framing vary from photo to photo.</li></ul>
+          <span class="rec">Recommended for anything factual</span></div></article>
+      <article class="card" id="codexcard">
+        <div class="b"><span class="tagl">P2</span><h3>Generated with Codex</h3>
+          <p class="muted" id="codexnote"></p>
+          <ul><li class="pro">One consistent look and framing across every question.</li>
+            <li class="pro">No credits or licences to track.</li>
+            <li class="con">It is not a photograph of a real thing. A generated “laksa” or “Merlion” can be subtly wrong, and a wrong picture makes a wrong question.</li>
+            <li class="con">Every image needs a human check for accuracy.</li></ul></div></article>
+    </div>
+    <p class="cap">A mix is possible: real photographs wherever the picture is the fact, generated images only for generic subjects. Say “P1 with P2 for generic”.</p>
+  </section>
+
+  <section><p class="cap">Proportions on this board: all three directions use the 5 · 8 · 13 · 21 · 34 · 55 · 89 px spacing scale and 1.618 : 1 splits (lobby join panel to seats, Rabakz question to picture, TV to phone on this page). <b>C is the strict golden-ratio variant</b>: its type sizes are also on the scale (34, 55, 89, 144 px) and its corners are 13 px.</p></section>
+</div>
+
+<script>
+(function(){
+  var P=["#D9483B","#2F7FD6","#F2B21B","#39A85B","#8E5BD0","#F07C2A","#22A6A6","#D95C9A"];
+  var N=["Randy","Mei","Ah Boy","Siti","Raj","Jun","Aunty Lin"],Q=[3,3,2,3,1,3,2];
+  var PHOTO="{{photo_commons}}";
+  function b(i,cls,sz){return '<span class="badge '+(cls||"")+'" style="background:'+P[i]+(sz?";width:"+sz+"px;height:"+sz+"px;font-size:"+(sz/2)+"px":"")+'">'+(i+1)+"</span>";}
+  var seed;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
+  function qr(){seed=7;var h="";for(var y=0;y<25;y++)for(var x=0;x<25;x++){var on=rnd()>.52;
+    [[0,0],[18,0],[0,18]].forEach(function(c){var dx=x-c[0],dy=y-c[1];if(dx>=0&&dx<7&&dy>=0&&dy<7)on=(dx==0||dx==6||dy==0||dy==6||(dx>1&&dx<5&&dy>1&&dy<5));
+      if(dx>=-1&&dx<8&&dy>=-1&&dy<8&&!(dx>=0&&dx<7&&dy>=0&&dy<7))on=false;});h+='<i class="'+(on?"":"o")+'"></i>';}return h;}
+  function lobby(){var s="";for(var i=0;i<8;i++){if(i<7){var bars="";for(var k=0;k<3;k++)bars+='<i class="'+(k<Q[i]?"":"off")+'" style="height:'+(13+k*10)+'px"></i>';
+      s+='<div class="seat panel">'+b(i,"",68)+"<span>"+N[i]+"</span>"+(i==0?'<span class="chip" style="font-size:21px;padding:5px 13px">Leader</span>':"")+'<span class="bars">'+bars+'</span><span style="font-size:24px;font-weight:500;color:var(--k-sub)">'+(Q[i]==3?"Good":Q[i]==2?"Weak":"Relayed")+"</span></div>";}
+      else s+='<div class="seat empty">Seat 8 · scan to join</div>';}
+    return '<div class="lobby"><div class="l"><div style="display:flex;align-items:baseline;gap:34px"><span class="D" style="font-size:var(--k-t1)">Kaki Arcade</span><span class="chip">Lobby</span></div>'+
+      '<div class="panel join"><div class="qr">'+qr()+'</div><div style="display:flex;flex-direction:column;gap:21px"><span class="D" style="font-size:89px">Scan to join</span><span style="font-size:34px;font-weight:500">or go to <b>arcade.leeseidon.com</b> and enter</span><span class="mono" style="font-size:144px;font-weight:700;letter-spacing:.08em;line-height:1">H7KQ</span></div></div>'+
+      '<div style="font-size:34px;font-weight:600;display:flex;gap:34px;align-items:center"><span>7 of 8 players</span><span style="color:var(--k-soft)">Randy is the leader</span><span class="chip" style="background:var(--k-acc);color:var(--k-acci);margin-left:auto">Ⓐ Pick a game</span></div></div><div class="seats">'+s+"</div></div>";}
+  function rz(){var w="";[1,1,1,0,1,1,0].forEach(function(a,i){w+=b(i,a?"":"wait");});
+    return '<div class="rz"><div style="display:flex;align-items:center;gap:21px"><span class="D" style="font-size:55px">Question 7 of 10</span><span class="chip">Singapore food</span><span class="chip">Picture</span>'+
+      '<span style="margin-left:auto;display:flex;align-items:center;gap:13px;font-size:34px;font-weight:600">Time left<span class="badge" style="width:110px;height:110px;font-size:60px;background:var(--k-acc);color:var(--k-acci)">9</span></span></div>'+
+      '<div class="main"><div class="panel" style="padding:21px;display:grid;place-items:center;overflow:hidden"><img src="'+PHOTO+'" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:min(var(--k-rad),21px)"></div>'+
+      '<div style="display:flex;flex-direction:column;gap:34px;justify-content:center"><span class="D" style="font-size:76px">Which hawker dish is this?</span><div class="opts">'+
+      '<div class="opt oA"><span class="shape"><span>A</span></span>Laksa</div><div class="opt oB"><span class="shape"><span>B</span></span>Mee siam</div><div class="opt oX"><span class="shape"><span>X</span></span>Lor mee</div><div class="opt oY"><span class="shape"><span>Y</span></span>Mee rebus</div></div></div></div>'+
+      '<div class="who"><span style="font-size:34px;font-weight:600;margin-right:13px">Answered</span>'+w+"</div></div>";}
+  function phone(){return '<div class="idbar">'+b(0)+'<span>Randy</span><span style="margin-left:auto;color:var(--k-soft)">Connected</span><span class="chip" style="font-size:17px;padding:5px 13px">Start · pause</span></div><div class="stick"><i></i></div><div class="abxy">'+
+    '<div class="fb" style="left:95px;top:0;background:#2E9A5B">Y<small>Throw</small></div><div class="fb" style="left:0;top:95px;background:#B87D0C">X<small>Dash</small></div><div class="fb" style="left:190px;top:95px;background:#2F7FD6">B<small>Chop</small></div><div class="fb" style="left:95px;top:190px;background:#D9483B">A<small>Pick up</small></div></div>';}
+  function stage(d,html){return '<div class="stage d'+d+'">'+html+"</div>";}
+  function fit(){document.querySelectorAll(".fit").forEach(function(f){var s=f.querySelector(".stage");if(!s)return;s.style.transform="scale("+(f.clientWidth/(f.classList.contains("tv")?1920:844))+")";});}
+  window.addEventListener("resize",fit);
+
+  var DIR={A:{name:"Kopitiam mosaic",line:"Jade tile, cream enamel, kopi-cup yellow. Dark screen.",pat:"Square-dot mosaic grid",type:"Bricolage Grotesque with Instrument Sans",
+      sw:[["#1F3D34","Jade"],["#3F8069","Tile"],["#F6EFDC","Cream"],["#F2B21B","Kopi cup"],["#D9483B","Stool"],["#22201B","Ink"]],
+      pro:["Unmistakably a Singapore coffee shop, and it matches the rendered kitchen.","Dark screen is easy on the eyes in a living room at night."],con:["The most familiar of the three; less of a party feel."],rec:"Recommended"},
+    B:{name:"Pasar malam",line:"Night-market indigo, lantern gold, hot pink. Dark screen.",pat:"Halftone dots",type:"Baloo 2 with Nunito Sans",
+      sw:[["#1A1640","Night"],["#5B49C9","Neon"],["#FFF4DC","Lantern"],["#FFE0A3","Gold"],["#FF4F8B","Pink"],["#2B2470","Dot"]],
+      pro:["Loudest and most playful: reads as a party game at a glance.","Round lettering is friendly for all ages."],con:["Less tied to the hawker kitchen; Tabao Rush would look like a guest in its own console.","Pink on gold needs care to keep contrast."],rec:""},
+    C:{name:"Marble table",line:"White marble, kopi brown, red stool. Light screen.",pat:"Terrazzo speckle",type:"DM Serif Display with DM Sans",
+      sw:[["#EFEAE2","Marble"],["#FFFFFF","Table"],["#6B4426","Kopi"],["#B5371F","Stool"],["#B9C6B6","Speck"],["#2B2118","Ink"]],
+      pro:["Calm and grown-up; the strict golden-ratio variant.","Dark text on light is the easiest to read from 3 m."],con:["A bright full screen is harsh in a dark room, and it shows TV glare.","Serif lettering is thinner at small sizes on phones."],rec:"Golden-ratio variant"}};
+  var dirs=document.getElementById("dirs");
+  ["A","B","C"].forEach(function(d){var D=DIR[d],sw="",pl="";
+    D.sw.forEach(function(s){sw+='<div><i style="background:'+s[0]+'"></i><span>'+s[1]+"</span></div>";});
+    P.forEach(function(c,i){pl+='<i style="background:'+c+'">'+(i+1)+"</i>";});
+    var a=document.createElement("article");a.className="card";
+    a.innerHTML='<div class="fit tv">'+stage(d,lobby())+'</div><div class="fit ph">'+stage(d,phone())+'</div><div class="b"><span class="tagl">'+d+"</span><h3>"+D.name+'</h3><p class="muted">'+D.line+'</p>'+
+      '<div class="sw">'+sw+'</div><div class="spec d'+d+'"><b>Kaki Arcade</b><span>'+D.type+" · pattern: "+D.pat+'</span><div class="players">'+pl+'<em style="background:#D9483B">Red team</em><em style="background:#2F7FD6">Blue team</em></div></div>'+
+      "<ul>"+D.pro.map(function(x){return '<li class="pro">'+x+"</li>";}).join("")+D.con.map(function(x){return '<li class="con">'+x+"</li>";}).join("")+"</ul>"+(D.rec?'<span class="rec">'+D.rec+"</span>":"")+"</div>";
+    dirs.appendChild(a);});
+
+  var cur={d:"A",s:"lobby"};
+  function view(){document.getElementById("vtv").innerHTML=stage(cur.d,cur.s=="lobby"?lobby():rz());document.getElementById("vph").innerHTML=stage(cur.d,phone());fit();}
+  function wire(id,key,attr){document.getElementById(id).querySelectorAll("button").forEach(function(bt){bt.addEventListener("click",function(){cur[key]=bt.dataset[attr];
+    bt.parentNode.querySelectorAll("button").forEach(function(o){o.setAttribute("aria-pressed",o===bt);});view();});});}
+  wire("vdir","d","d");wire("vscr","s","s");view();
+
+  var cx="{{photo_codex}}",card=document.getElementById("codexcard"),note=document.getElementById("codexnote");
+  if("{{has_codex}}"==="yes"){var im=document.createElement("img");im.src=cx;im.alt="A Codex-generated image of a bowl of laksa";card.insertBefore(im,card.firstChild);note.textContent="Generated just now by Codex from a one-paragraph prompt. Compare it with the real photograph beside it.";}
+  else note.textContent="No sample: Codex did not return an image when I asked for one just now, so I cannot show this option honestly. If you want it, I will get image generation working and add a sample here.";
+})();
+</script>

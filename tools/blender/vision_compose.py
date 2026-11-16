@@ -1,11 +1,11 @@
 """Build the end-goal vision board from the renders made by vision_scenes.py.
 
-Run: python3 tools/blender/vision_compose.py <render dir> <out html>
+Run: python3 tools/blender/vision_compose.py <render dir> <out html> <trivia photo jpg>
 """
 import base64, io, os, sys
 from PIL import Image
 
-R, OUT = sys.argv[1], sys.argv[2]
+R, OUT, PHOTO = sys.argv[1], sys.argv[2], sys.argv[3]
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -26,6 +26,7 @@ images = {
     "tr_tile": uri(img("tr_coop").crop((420, 120, 1500, 788)).resize((647, 400), Image.LANCZOS), q=80),
     "heads8": uri(img("heads8")),
 }
+images["rz_photo"] = uri(Image.open(PHOTO).resize((720, 540), Image.LANCZOS), q=82)
 for d in ("chicken_rice", "ckt", "satay", "laksa", "rojak", "kaya_toast", "kopi"):
     im = img("dish_" + d).convert("RGBA").resize((220, 220), Image.LANCZOS)
     # drop the faint ambient shading the shadow catcher leaves across the cell
