@@ -371,3 +371,12 @@ socket, not in a first message: it offers the WebSocket subprotocols `kaki.v1` a
 `kaki.host.<secret>`; the server checks the secret before accepting and answers with `kaki.v1`.
 So no unproven connection can ever hold or block the host's place. Phones offer `kaki.v1` only.
 The protocol's `reopen` message is retired with `create` in F-02b.
+
+**D-067 · 2026-11-16 · Claude (under D-057)** — Nickname filter, final matching rule after four
+review rounds (refines D-064). A strong root blocks when it lies inside one word, or spans
+neighbouring words of which at least one has two letters or fewer (a split-up swear word);
+it does not block when it only appears by joining two ordinary words ("Habit Change", "Mother
+Fong", "Bit Chan"). `porn` and `phuk` match whole words only (Thai names, Phuket). A run of three
+or more single letters anywhere is checked as a word. A protected name excuses only its own
+match. Accepted: a filter of this kind is never complete; what it misses is a follow-up list,
+and names it wrongly blocks are fixed as they are found.
