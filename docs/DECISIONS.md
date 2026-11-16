@@ -402,3 +402,17 @@ saved only for a match that ended with one player and never admitted another.
 through the F-02b clean-up, although two socket messages were removed and an error code added:
 nothing is deployed and no client exists, so a bump would protect no one. Version 1 is frozen
 at the first deploy; any wire-visible change after that needs a version bump.
+
+**D-071 · 2026-11-16 · Claude (under D-057)** — Rabakz rule details the spec left open (review
+of R-01): (a) after a reveal the game moves on by itself after 4 seconds; the final-round
+announcement shows for 4 seconds; the leader continues only from the scoreboard (every 5
+questions) and the end, and a scoreboard continues by itself after 20 seconds so a match can
+never hang. (b) Disconnected players and players who joined during a question are not waited
+for. (c) The 30 seconds run from when the question appears; a wrong answer does not restart
+them. (d) When team-mates tie, the team receives the largest of their awards once. (e) A
+question skipped or revealed with no winner does not end a streak. (f) A player who leaves and
+rejoins is a new joiner and cannot win the question in progress; a joiner during the
+final-round announcement plays its first question. (g) Answers arriving in the same step as
+the leader's skip are counted before the skip. (h) If a multiplayer match falls to one player,
+solo rules apply from that question. (i) The game takes questions in the bank's own shape,
+including picture file, alt text and credit, so credits can be shown (RZ-025).
