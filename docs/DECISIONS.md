@@ -306,3 +306,8 @@ by its own recommendation without waiting, records each in this log, and still p
 design choices as artifacts for the record so Randy can overrule. Claude's reading: this does
 not lift the hard gates in `CLAUDE.md` rule 9 (spending money, publishing publicly, DNS,
 pushing the repository) or the real-device tests only Randy can do.
+
+**D-058 · 2026-11-16 · Claude (under D-057)** — Closes OQ-026 and OQ-032 by recommendation:
+the Rabakz streak counts questions won in a row; static question files that a determined player
+could read are accepted for a game played in one room; phones send 60 ticks a second always,
+including through the relay (a 30-a-second tick caused false releases in review).
