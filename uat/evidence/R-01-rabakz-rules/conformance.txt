@@ -1,0 +1,38 @@
+Conformance kit: rabakz (returns-new) PASSES
+    step ms: mean 0.0002, p95 0.0006, worst 0.0494; allocation counts unavailable (report only)
+  scenario "solo": 1 player, 5000 steps, over at step 2843, final hash 230e672759a20b4e
+    step ms: mean 0.0002, p95 0.0003, worst 0.0430; allocation counts unavailable (report only)
+  scenario "eight": 8 players, 5000 steps, over at step 2833, final hash 2297a825e6ab6bfd
+    step ms: mean 0.0002, p95 0.0009, worst 0.0282; allocation counts unavailable (report only)
+  scenario "two teams": 2 players in teams, 5000 steps, over at step 2981, final hash a0c2862bea615a74
+    step ms: mean 0.0002, p95 0.0005, worst 0.0477; allocation counts unavailable (report only)
+  scenario "eight teams": 8 players in teams, 5000 steps, over at step 2807, final hash 561e941f2ea6ed86
+  membership replay "solo": 5000 steps, over at step 3175
+  membership replay "eight": 5000 steps, over at step 2942
+  membership replay "two teams": 5000 steps, over at step 3167
+  membership replay "eight teams": 5000 steps, over at step 3128
+  pass  meta            Picker details are complete and consistent (applied 1 times)
+  pass  settings        The settings schema is sound and its defaults validate (applied 2 times)
+  pass  purity          The source has no clock, timer or unseeded randomness (applied 1 times)
+  pass  init            A match starts for every player count, with and without teams (applied 15 times)
+  pass  runs            init, step, hooks and views never throw (applied 753503 times)
+  pass  determinism     The same seed, players, settings and inputs give the same state at every step (applied 8 times)
+  pass  seed            A different seed gives a different run (applied 4 times)
+  pass  replay          A saved recording replays to the same hashes (sim-core recorder) (applied 8 times)
+  pass  reload          State survives encodeState and decodeState mid-run and the run goes on identically (applied 16 times)
+  pass  clone           step(cloneState(s)) equals step(s) (applied 40000 times)
+  pass  previous-state  A finished step is not changed by the next one (real, reused input buffer) (applied 80000 times)
+  pass  sharing         Non-trivial returns-new steps share objects with their input (applied 39638 times)
+  pass  private-revision Private view revisions change whenever their content changes (applied 124975 times)
+  pass  state-contract  step treats its state and inputs as its stepMode promises (applied 40000 times)
+  pass  views-json      Views are plain JSON within the byte caps (applied 295637 times)
+  pass  views-pure      Views are pure: equal when called twice, and the state is untouched (applied 336380 times)
+  pass  layout          Layouts fit a phone at the decided sizes; a revision changes exactly when the taps on offer do (applied 127447 times)
+  pass  repeat-taps     A tap the next layout would refuse does nothing if it arrives in the same step (applied 571 times)
+  pass  late-taps       A tap that arrives one step late is not dropped while the taps on offer are unchanged (applied 30801 times)
+  pass  secrets         No secret reaches the TV or another phone, plainly or in disguise (applied 40744 times)
+  pass  join-leave      Joining, dropping and leaving mid-match never throws and never changes a score (applied 178 times)
+  pass  min-players     A whole match is played at the fewest and the most players; leaving never throws, even to nobody (applied 234 times)
+  pass  pause           A pause changes nothing (applied 24 times)
+  pass  results         Results and saved data are complete and well ordered (applied 40744 times)
+  pass  assets          Nothing loads during play (applied 1415 times)

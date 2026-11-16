@@ -70,3 +70,21 @@ Declared to the controller kit (CTRL-002):
 It is the simplest of the three games and uses the controller's face buttons and private panel
 with no art pipeline, so it is a third and cheap proof of the game interface (PLAT-030 to
 PLAT-033) and a game the whole room can play in the first minute.
+
+## Rule details (D-071 and D-073, decided under D-057 on 2026-11-16)
+
+- After a reveal the game moves to the next question by itself after 4 seconds. The
+  final-round announcement shows for 4 seconds before its first question. The leader continues
+  only from the scoreboard (after every 5 questions), which also continues by itself after
+  20 seconds.
+- Players who are disconnected, or who joined during the question, are not waited for.
+- The 30 seconds run from when the question appears; a wrong answer does not restart them.
+- When team-mates tie, the team receives the largest of their awards once.
+- A question that is skipped or reveals with no winner does not end a streak.
+- A player who leaves and rejoins is a new joiner and cannot win the question in progress. A
+  player who joins before play starts plays question 1; one who joins during the final-round
+  announcement plays its first question.
+- Taps in a step are taken in the order received. A skip reveals at once and later taps in
+  that step do nothing. A skip has no effect once someone has answered correctly.
+- If a multiplayer match falls to one player, solo rules apply from that question.
+- Whether a match is played in teams is chosen in the lobby, not in the game's settings.

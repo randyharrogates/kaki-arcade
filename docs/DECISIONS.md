@@ -430,3 +430,7 @@ interface contract: taps in a step are taken in the order the host received them
 skip reveals at once and later taps in that step do nothing. Also (Tabao Rush, refining
 D-072): on the first press from rest a cook faces the nearest direction; the 8-degree hold
 applies only while the stick was already deflected.
+
+**D-074 · 2026-11-16 · Claude (under D-057)** — Adds to D-073: in Rabakz a leader's skip has
+no effect once someone has answered correctly, so the 0.25 s tie window always runs out
+(RZ-006).

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "food-0001",
+    "type": "multiple-choice",
+    "category": "general-knowledge",
+    "difficulty": "easy",
+    "region": "singapore",
+    "prompt": "At a kopitiam, what do you get when you order kopi o?",
+    "options": [
+      "Coffee with condensed milk",
+      "Black coffee with sugar",
+      "Coffee with evaporated milk",
+      "Iced milk tea"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "food-0003",
+    "type": "multiple-choice",
+    "category": "general-knowledge",
+    "difficulty": "medium",
+    "region": "general",
+    "prompt": "Which spice gives curry powder its yellow colour?",
+    "options": [
+      "Cumin",
+      "Turmeric",
+      "Paprika",
+      "Cardamom"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "food-0004",
+    "type": "multiple-choice",
+    "category": "general-knowledge",
+    "difficulty": "hard",
+    "region": "general",
+    "prompt": "Saffron comes from which part of the crocus flower?",
+    "options": [
+      "Petal",
+      "Stigma",
+      "Root",
+      "Seed"
+    ],
+    "correct": 1
+  },
+  {
+    "id": "otdb-004e4653e734",
+    "type": "multiple-choice",
+    "category": "general-knowledge",
+    "difficulty": "easy",
+    "region": "general",
+    "prompt": "What is the Zodiac symbol for Gemini?",
+    "options": [
+      "Twins",
+      "Fish",
+      "Scales",
+      "Maiden"
+    ],
+    "correct": 0
+  },
+  {
+    "id": "otdb-00c024e9b109",
+    "type": "multiple-choice",
+    "category": "general-knowledge",
+    "difficulty": "hard",
+    "region": "general",
+    "prompt": "Which of these anatomical terms refers to the tail end of the creature?",
+    "options": [
+      "Caudal",
+      "Ventral",
+      "Proximal",
+      "Coronal"
+    ],
+    "correct": 0
+  },
+  {
+    "id": "otdb-02914a392e2f",
+    "type": "multiple-choice",
+    "category": "general-knowledge",
+    "difficulty": "easy",
+    "region": "general",
+    "prompt": "Who was the 1st President of Mexico?",
+    "options": [
+      "Guadalupe Victoria",
+      "Benito Juárez",
+      "Miguel Hidalgo Y Costilla",
+      "Vicente Guerrero"
+    ],
+    "correct": 0
+  },
+  {
+    "id": "otdb-04c66bbcb280",
+    "type": "multiple-choice",
+    "category": "general-knowledge",
+    "difficulty": "medium",
+    "region": "general",
+    "prompt": "Astraphobia is the irrational fear of what?",
+    "options": [
+      "Thunder",
+      "Rain",
+      "Wind",
+      "Snow"
+    ],
+    "correct": 0
+  },
+  {
+    "id": "otdb-06ed8df42d7e",
+    "type": "multiple-choice",
+    "category": "general-knowledge",
+    "difficulty": "easy",
+    "region": "general",
+    "prompt": "In past times, what would a gentleman keep in his fob pocket?",
+    "options": [
+      "Watch",
+      "Money",
+      "Keys",
+      "Notebook"
+    ],
+    "correct": 0
+  },
+  {
+    "id": "otdb-09357cd0dc22",
+    "type": "multiple-choice",
+    "category": "general-knowledge",
+    "difficulty": "medium",
+    "region": "general",
+    "prompt": "Out of these four buildings, which one is the tallest, with a height of 2,717 ft (828 m)?",
+    "options": [
+      "Burj Khalifa, United Arab Emirates",
+      "Shanghai Tower, China",
+      "Lotte World Tower, South Korea",
+      "Ping An Finance Centre, China"
+    ],
+    "correct": 0
+  },
+  {
+    "id": "otdb-094f77851bd8",
+    "type": "multiple-choice",
+    "category": "general-knowledge",
+    "difficulty": "medium",
+    "region": "general",
+    "prompt": "Which of the following correctly describes Japanese word order?",
+    "options": [
+      "Subject Object Verb",
+      "Subject Verb Object",
+      "Verb Subject Object",
+      "Verb Object Subject"
+    ],
+    "correct": 0
+  }
+]

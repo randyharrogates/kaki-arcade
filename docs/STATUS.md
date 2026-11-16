@@ -101,6 +101,12 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   cannot be judged until there is a screen, and every constant is provisional. Built by Codex;
   three review rounds.
 
+- **Rabakz rules (R-01).** `games/rabakz/src/rules`: the untimed buzzer race with its 15-step
+  tie window, lock-out, skip and idle reveal, scoring with streaks and the doubled final round,
+  teams, scoreboard every 5 questions, joins and leaves. Takes questions in the bank's shape
+  with picture credits. Passes the conformance kit in four scenarios with skips. Rules only: no
+  screen yet. Built by Codex; three review rounds, last fix by the integrator.
+
 ## Does not exist yet
 
 - No host page, controller or game screen yet.

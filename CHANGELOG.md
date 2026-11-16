@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — R-01: Rabakz rules
+
+- `games/rabakz/src/rules`: pure rules against the game interface; rule details decided in
+  D-071, D-073 and D-074 and written into `docs/games/rabakz.md`.
+  (RZ-001, RZ-004, RZ-006 to RZ-009, RZ-012, RZ-014, RZ-016, RZ-026 in progress)
+
 ## 2026-11-16 — T-01: Tabao Rush state shape and movement
 
 - `games/tabao-rush/src/rules`: pure movement against the game interface (D-072, D-073).

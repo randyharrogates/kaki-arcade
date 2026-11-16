@@ -1,0 +1,149 @@
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 11 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 101 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-01
+
+ ❯ packages/platform/src/game/conformance-attacks.test.ts (25 tests | 1 failed) 79099ms
+   × round 2 repeat probes respect the original control audience 59269ms
+ ❯ packages/platform/src/game/conformance.test.ts (21 tests | 1 failed) 484377ms
+   × round 3 passes full round re-deal 464043ms
+ ❯ packages/protocol/src/input.test.ts (83 tests | 1 failed) 473218ms
+     × a long press: the simulation sees it exactly once 463056ms
+ ❯ packages/protocol/src/messages.test.ts (171 tests | 1 failed) 152493ms
+     × random values never make the validator throw 143202ms
+ ❯ packages/platform/src/room/invariants.test.ts (1 test | 1 failed) 5339ms
+   × PLAT-003 deterministic builds and golden hash 5338ms
+[sim-core overhead] clock + loop: 0.0106 µs per step (0.00006% of a 16.7 ms step)
+[sim-core overhead] clock + loop + 8-controller input buffer: 0.2544 µs per step (0.00153% of a 16.7 ms step)
+ ❯ packages/platform/src/room/filter.test.ts (590 tests | 1 failed) 179067ms
+   × PLAT-005 allows sh-it 178987ms
+ ❯ apps/signal/src/core/room.test.ts (34 tests | 1 failed) 179378ms
+     × NET-002 DATA-005 seeded event sequences preserve room and role invariants 179303ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/protocol/src/input.test.ts > a 50 ms break in the link, at any moment, never loses or doubles a tap > a long press: the simulation sees it exactly once
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/protocol/src/input.test.ts:1041:32
+    1039|   };
+    1040|
+    1041|   it.each(Object.entries(taps))('%s: the simulation sees it exactly on…
+       |                                ^
+    1042|     const cases = sweep(touches, (outcome, at) => {
+    1043|       expect(outcome.stepPresses[4], at).toBe(presses);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  packages/protocol/src/messages.test.ts > 'signalling: pairing server → host': seeded random garbage > random values never make the validator throw
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/protocol/src/messages.test.ts:944:3
+    942|   }
+    943|
+    944|   it('random values never make the validator throw', () => {
+       |   ^
+    945|     const random = seeded(0xf02_0001);
+    946|     for (let i = 0; i < 20_000; i += 1) {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  apps/signal/src/core/room.test.ts > C-01 > NET-002 DATA-005 seeded event sequences preserve room and role invariants
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ apps/signal/src/core/room.test.ts:174:5
+    172|         }
+    173|     });
+    174|     it('NET-002 DATA-005 seeded event sequences preserve room and role…
+       |     ^
+    175|         for (let seed = 1; seed <= 20; seed++) {
+    176|             let rng = seed;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  packages/platform/src/game/conformance-attacks.test.ts > round 2 repeat probes respect the original control audience
+Error: Test timed out in 15000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance-attacks.test.ts:444:1
+    442| });
+    443|
+    444| it('round 2 repeat probes respect the original control audience', { ti…
+       | ^
+    445|   const guarded: GameModule<PicksState, PicksSettings> = {
+    446|     ...picks,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  packages/platform/src/game/conformance.test.ts > round 3 passes full round re-deal
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/game/conformance.test.ts:215:12
+    213|   ['always-null private view', nullPrivateDots],
+    214|   ['full round re-deal', redealDots],
+    215| ] as const)('round 3 passes %s', (name, game) => {
+       |            ^
+    216|   const report = keep(`Dots ${name}`, runConformance(game,
+    217|     DOTS_SCENARIOS.filter((_, i) => i !== 1), { sources: DOTS_SOURCES,…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  packages/platform/src/room/filter.test.ts > PLAT-005 allows sh-it
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/room/filter.test.ts:473:3
+    471|   "屎",
+    472|   "ｃｂ",
+    473| ])('PLAT-005 allows %s', (name) => {
+       |   ^
+    474|   expect(hasBlockedWord(name)).toBe(false);
+    475| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  packages/platform/src/room/invariants.test.ts > PLAT-003 deterministic builds and golden hash
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/platform/src/room/invariants.test.ts:5:1
+      3| import { createRoom, applyPhoneEvent } from './room';
+      4| import { join, resume, host, identity, invariants } from './test-helpe…
+      5| it('PLAT-003 deterministic builds and golden hash', () => {
+       | ^
+      6|   const run = () => {
+      7|     let s = createRoom();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start forks worker for test files /Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-01/tools/assets/pipeline.test.ts.
+ ❯ node_modules/.pnpm/vitest@4.1.12_@types+node@24.19.2_vite@8.3.8_@types+node@24.19.2_esbuild@0.28.2_/node_modules/vitest/dist/chunks/cli-api.B0Pz1_R7.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:65:5
+ ❯ process.processTimers node:internal/timers:615:9
+ ❯ Pool.schedule node_modules/.pnpm/vitest@4.1.12_@types+node@24.19.2_vite@8.3.8_@types+node@24.19.2_esbuild@0.28.2_/node_modules/vitest/dist/chunks/cli-api.B0Pz1_R7.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> node_modules/.pnpm/vitest@4.1.12_@types+node@24.19.2_vite@8.3.8_@types+node@24.19.2_esbuild@0.28.2_/node_modules/vitest/dist/chunks/cli-api.B0Pz1_R7.js:3108:58
+ ❯ listOnTimeout node:internal/timers:685:17
+ ❯ process.processTimers node:internal/timers:618:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  7 failed | 42 passed (49)
+      Tests  7 failed | 1877 passed | 1 skipped (1885)
+     Errors  1 error
+   Start at  18:17:30
+   Duration  912.14s (transform 1.87s, setup 0ms, import 4.49s, tests 1669.67s, environment 3ms)
+
+[ELIFECYCLE] Test failed. See above for more details.
+[ELIFECYCLE] Command failed with exit code 1.
