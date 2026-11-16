@@ -257,13 +257,17 @@ export function buildBank(input: BuildInput): BuildResult {
       if (question.picture !== undefined) usedPictures.add(question.picture.file);
       if (question.source.kind === 'original') originalQuestions += 1;
       else {
-        const { dataset, licence, url } = question.source;
-        const key = `${dataset}\u0000${licence}\u0000${url ?? ''}`;
+        const { dataset, licence, licenceUrl, url, notice } = question.source;
+        const key = [dataset, licence, licenceUrl ?? '', url ?? '', notice ?? ''].join('\u0000');
         const entry = credits.get(key) ?? {
-          credit:
-            url === undefined
-              ? { dataset, licence, questions: 0 }
-              : { dataset, licence, url, questions: 0 },
+          credit: {
+            dataset,
+            licence,
+            ...(licenceUrl === undefined ? {} : { licenceUrl }),
+            ...(url === undefined ? {} : { url }),
+            ...(notice === undefined ? {} : { notice }),
+            questions: 0,
+          },
           questions: 0,
         };
         entry.questions += 1;

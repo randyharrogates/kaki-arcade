@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — R-11: Open Trivia Database import
+
+- 2,342 imported questions across ten categories with licence credit, an all-ages screen and
+  text corrections; hard questions added to games, comics and anime. Three review rounds.
+  (RZ-021, RZ-023, RZ-024 in progress)
+
 ## 2026-11-16 — F-06: design tokens and motion helpers
 
 - `packages/ui`: tokens, four themes, motion helpers, generated `tokens.css` and specimen page.

@@ -1,41 +1,15 @@
 {
   "category": "geography",
   "title": "Geography",
+  "defaultSource": {
+    "kind": "dataset",
+    "dataset": "Open Trivia Database",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "url": "https://opentdb.com",
+    "notice": "Questions from the Open Trivia Database (opentdb.com), licensed under CC BY-SA 4.0. Adapted for Kaki Arcade: selected, screened for an all-ages audience, regrouped and tidied. The adapted questions are offered under the same licence."
+  },
   "questions": [
-    {
-      "id": "geo-0001",
-      "type": "multiple-choice",
-      "prompt": "What is the capital city of Australia?",
-      "options": [
-        "Sydney",
-        "Canberra",
-        "Melbourne",
-        "Perth"
-      ],
-      "answer": "Canberra",
-      "difficulty": "easy",
-      "region": "general",
-      "source": {
-        "kind": "original",
-        "note": "Canberra has been the seat of Australia's government since 1927. Check: Encyclopaedia Britannica, 'Canberra'."
-      }
-    },
-    {
-      "id": "geo-0002",
-      "type": "true-false",
-      "prompt": "The Pacific is the largest ocean on Earth.",
-      "options": [
-        "True",
-        "False"
-      ],
-      "answer": "True",
-      "difficulty": "easy",
-      "region": "general",
-      "source": {
-        "kind": "original",
-        "note": "The Pacific covers about a third of the Earth's surface. Check: NOAA National Ocean Service, ocean facts."
-      }
-    },
     {
       "id": "geo-0003",
       "type": "multiple-choice",
@@ -89,6 +63,3534 @@
         "kind": "original",
         "note": "MacRitchie was completed in 1868 as the Impounding Reservoir. Check: PUB and National Parks Board pages on MacRitchie Reservoir."
       }
+    },
+    {
+      "id": "otdb-0015d5b31642",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of British Columbia, Canada?",
+      "options": [
+        "Victoria",
+        "Vancouver",
+        "Hope",
+        "Kelowna"
+      ],
+      "answer": "Victoria",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-011bfc9c5af5",
+      "type": "multiple-choice",
+      "prompt": "Bir Tawil, an uninhabited tract of land claimed by no country, is located along the border of which two countries?",
+      "options": [
+        "Egypt and Sudan",
+        "Israel and Jordan",
+        "Chad and Libya",
+        "Iraq and Saudi Arabia"
+      ],
+      "answer": "Egypt and Sudan",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-01d20a6d29a0",
+      "type": "multiple-choice",
+      "prompt": "Which of these is an official currency of the Cook Islands?",
+      "options": [
+        "New Zealand Dollar",
+        "United States Dollar",
+        "British Pound",
+        "Australian Dollar"
+      ],
+      "answer": "New Zealand Dollar",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0386da533e05",
+      "type": "multiple-choice",
+      "prompt": "The mountainous Khyber Pass connects which of the two following countries?",
+      "options": [
+        "Afghanistan and Pakistan",
+        "India and Nepal",
+        "Pakistan and India",
+        "Tajikistan and Kyrgyzstan"
+      ],
+      "answer": "Afghanistan and Pakistan",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-059c20b02176",
+      "type": "multiple-choice",
+      "prompt": "The longest shared border in the world can be found between which two nations?",
+      "options": [
+        "Canada and the United States",
+        "Chile and Argentina",
+        "Russia and China",
+        "India and Pakistan"
+      ],
+      "answer": "Canada and the United States",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-062549a01ab3",
+      "type": "multiple-choice",
+      "prompt": "The land mass of modern day Turkey is called what?",
+      "options": [
+        "Anatolia",
+        "Isthmus of Ottoma",
+        "Ottoma",
+        "Isthmus of Anatolia"
+      ],
+      "answer": "Anatolia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-071336e6887d",
+      "type": "multiple-choice",
+      "prompt": "Eritrea, which became the 182nd member of the UN in 1993, is in the continent of?",
+      "options": [
+        "Africa",
+        "Europe",
+        "Asia",
+        "South America"
+      ],
+      "answer": "Africa",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-079244ea378b",
+      "type": "multiple-choice",
+      "prompt": "How many counties in the Republic of Ireland.",
+      "options": [
+        "26",
+        "32",
+        "28",
+        "30"
+      ],
+      "answer": "26",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-07c4400663cb",
+      "type": "multiple-choice",
+      "prompt": "What is the capital city of the U.S. state of Texas?",
+      "options": [
+        "Austin",
+        "Dallas",
+        "Houston",
+        "San Antonio"
+      ],
+      "answer": "Austin",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-089c3bd25caa",
+      "type": "multiple-choice",
+      "prompt": "Which one of these countries borders with Poland?",
+      "options": [
+        "Lithuania",
+        "France",
+        "Norway",
+        "Netherlands"
+      ],
+      "answer": "Lithuania",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-090fa0c82834",
+      "type": "multiple-choice",
+      "prompt": "The Svalbard Archipelago is a dependency of which country?",
+      "options": [
+        "Norway",
+        "Denmark",
+        "Iceland",
+        "Russia"
+      ],
+      "answer": "Norway",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0aa1f046987b",
+      "type": "multiple-choice",
+      "prompt": "Gibraltar, located just south of the Iberian peninsula, is a territory of which West Europe country?",
+      "options": [
+        "United Kingdom",
+        "Spain",
+        "Portugal",
+        "France"
+      ],
+      "answer": "United Kingdom",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0aafdc12f389",
+      "type": "multiple-choice",
+      "prompt": "On which continent is the country of Angola located?",
+      "options": [
+        "Africa",
+        "South America",
+        "Europe",
+        "Asia"
+      ],
+      "answer": "Africa",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0c38c9ad0f9f",
+      "type": "multiple-choice",
+      "prompt": "Which country inside the United Kingdom does NOT appear on its flag, the Union Jack?",
+      "options": [
+        "Wales",
+        "Scotland",
+        "Ireland",
+        "Isle of Wight"
+      ],
+      "answer": "Wales",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0f422b8c143e",
+      "type": "multiple-choice",
+      "prompt": "Which of these island countries is located in the Caribbean?",
+      "options": [
+        "Barbados",
+        "Fiji",
+        "Maldives",
+        "Seychelles"
+      ],
+      "answer": "Barbados",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0fc930edd610",
+      "type": "multiple-choice",
+      "prompt": "The country of Belize borders which country?",
+      "options": [
+        "Guatemala",
+        "Laos",
+        "Perú",
+        "Kenya"
+      ],
+      "answer": "Guatemala",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-120f54c991ff",
+      "type": "multiple-choice",
+      "prompt": "Which one of these archipelagos are NOT a part of the United Kingdom?",
+      "options": [
+        "The Channel Islands",
+        "Orkney Islands",
+        "Isles of Scilly",
+        "Shetland Islands"
+      ],
+      "answer": "The Channel Islands",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-12b6e790d4ae",
+      "type": "multiple-choice",
+      "prompt": "What name was historically used for the Turkish city currently known as Istanbul?",
+      "options": [
+        "Constantinople",
+        "Hüdavendigar",
+        "Söğüt",
+        "Adrianople"
+      ],
+      "answer": "Constantinople",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-15314cc79261",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Romania?",
+      "options": [
+        "Bucharest",
+        "Bratislava",
+        "Belgrade",
+        "Budapest"
+      ],
+      "answer": "Bucharest",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-176a046763af",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Australia?",
+      "options": [
+        "Canberra",
+        "Sydney",
+        "Melbourne",
+        "Brisbane"
+      ],
+      "answer": "Canberra",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-17829b46a67f",
+      "type": "multiple-choice",
+      "prompt": "The land of Gotland is located in which European country?",
+      "options": [
+        "Sweden",
+        "Denmark",
+        "Norway",
+        "Germany"
+      ],
+      "answer": "Sweden",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-18166c75add9",
+      "type": "multiple-choice",
+      "prompt": "Which of these countries is not written in its native language?",
+      "options": [
+        "Slovaško",
+        "Suomi",
+        "Schweiz",
+        "Elláda"
+      ],
+      "answer": "Slovaško",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-18322563dbe9",
+      "type": "multiple-choice",
+      "prompt": "Which Canadian province has Charlottetown as its capital?",
+      "options": [
+        "Prince Edward Island",
+        "Saskatchewan",
+        "Northwest Territories",
+        "Ontario"
+      ],
+      "answer": "Prince Edward Island",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-18cc1d6979c6",
+      "type": "multiple-choice",
+      "prompt": "What is the Capital of the United States?",
+      "options": [
+        "Washington, D.C.",
+        "Los Angeles, CA",
+        "New York City, NY",
+        "Houston, TX"
+      ],
+      "answer": "Washington, D.C.",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1a4bbd3a9a75",
+      "type": "multiple-choice",
+      "prompt": "Which river was dammed to create Gatun Lake and the Panama Canal?",
+      "options": [
+        "Chagres River",
+        "Tuira River",
+        "Chucunaque River",
+        "Chepo River"
+      ],
+      "answer": "Chagres River",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1c39a15f10b6",
+      "type": "multiple-choice",
+      "prompt": "When does Finland celebrate their independence day?",
+      "options": [
+        "December 6th",
+        "January 2nd",
+        "November 12th",
+        "February 8th"
+      ],
+      "answer": "December 6th",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1cf404a97c11",
+      "type": "multiple-choice",
+      "prompt": "How many rivers are in Saudi Arabia?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answer": "0",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1e43fb80efb5",
+      "type": "multiple-choice",
+      "prompt": "What is the smallest country in the world?",
+      "options": [
+        "Vatican City",
+        "Maldives",
+        "Monaco",
+        "Malta"
+      ],
+      "answer": "Vatican City",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1ecdd2088cbd",
+      "type": "multiple-choice",
+      "prompt": "What was the original name of Ho Chi Minh City?",
+      "options": [
+        "Saigon",
+        "Hanoi",
+        "Dar Es Salaam",
+        "Angkor Wat"
+      ],
+      "answer": "Saigon",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1f50b4ca2b75",
+      "type": "multiple-choice",
+      "prompt": "What state is the largest state of the United States of America?",
+      "options": [
+        "Alaska",
+        "California",
+        "Texas",
+        "Washington"
+      ],
+      "answer": "Alaska",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1fa4b7dcc822",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the capital of Turkey?",
+      "options": [
+        "Ankara",
+        "Istanbul",
+        "Izmir",
+        "Bursa"
+      ],
+      "answer": "Ankara",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-20a3c8e8f864",
+      "type": "multiple-choice",
+      "prompt": "The Andaman and Nicobar Islands in South East Asia are controlled by which country?",
+      "options": [
+        "India",
+        "Vietnam",
+        "Thailand",
+        "Indonesia"
+      ],
+      "answer": "India",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2115f6372965",
+      "type": "multiple-choice",
+      "prompt": "Which country does Austria not border?",
+      "options": [
+        "France",
+        "Slovenia",
+        "Switzerland",
+        "Slovakia"
+      ],
+      "answer": "France",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-211e3883793f",
+      "type": "multiple-choice",
+      "prompt": "What is the name of New Zealand's indigenous people?",
+      "options": [
+        "Maori",
+        "Vikings",
+        "Polynesians",
+        "Samoans"
+      ],
+      "answer": "Maori",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2120e28f6c91",
+      "type": "multiple-choice",
+      "prompt": "What country is not a part of Scandinavia?",
+      "options": [
+        "Finland",
+        "Norway",
+        "Sweden",
+        "Denmark"
+      ],
+      "answer": "Finland",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-213af93d9b01",
+      "type": "multiple-choice",
+      "prompt": "What tiny principality lies between Spain and France?",
+      "options": [
+        "Andorra",
+        "Liechtenstein",
+        "Monaco",
+        "San Marino"
+      ],
+      "answer": "Andorra",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-21470f26326c",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Finland?",
+      "options": [
+        "Helsinki",
+        "Jabraltar",
+        "Macedonia",
+        "Oslo"
+      ],
+      "answer": "Helsinki",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-234f79447890",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Ecuador?",
+      "options": [
+        "Quito",
+        "Bogota",
+        "Santiago",
+        "Santa Fé"
+      ],
+      "answer": "Quito",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-243f24784292",
+      "type": "multiple-choice",
+      "prompt": "What is the capital city of New Zealand?",
+      "options": [
+        "Wellington",
+        "Auckland",
+        "Christchurch",
+        "Melbourne"
+      ],
+      "answer": "Wellington",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-26625e3df114",
+      "type": "multiple-choice",
+      "prompt": "In which English county is Stonehenge?",
+      "options": [
+        "Wiltshire",
+        "Somerset",
+        "Cumbria",
+        "Herefordshire"
+      ],
+      "answer": "Wiltshire",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-26d065f94e3d",
+      "type": "multiple-choice",
+      "prompt": "What is the right way to spell the capital of Hungary?",
+      "options": [
+        "Budapest",
+        "Boodapest",
+        "Bhudapest",
+        "Budapast"
+      ],
+      "answer": "Budapest",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-27025baae0f9",
+      "type": "multiple-choice",
+      "prompt": "What is Canada's smallest province?",
+      "options": [
+        "Prince Edward Island",
+        "New Brunswick",
+        "Nova Scotia",
+        "Yukon"
+      ],
+      "answer": "Prince Edward Island",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-296873c0b1c8",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Chile?",
+      "options": [
+        "Santiago",
+        "Valparaíso",
+        "Copiapó",
+        "Antofagasta"
+      ],
+      "answer": "Santiago",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2a01d55b094f",
+      "type": "multiple-choice",
+      "prompt": "Which stretch of water connects the Atlantic Ocean to the Mediterranean Sea?",
+      "options": [
+        "Strait of Gibraltar",
+        "Gibraltar Way",
+        "Spanish Straits",
+        "Channelle de Tangiers"
+      ],
+      "answer": "Strait of Gibraltar",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2dc8588133b1",
+      "type": "multiple-choice",
+      "prompt": "Which of these American cities has fewer than 1,000,000 people?",
+      "options": [
+        "San Francisco, California",
+        "Phoenix, Arizona",
+        "San Antonio, Texas",
+        "Philadelphia, Pennsylvania"
+      ],
+      "answer": "San Francisco, California",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2e95a269006e",
+      "type": "multiple-choice",
+      "prompt": "How many federal states does Germany have?",
+      "options": [
+        "16",
+        "13",
+        "32",
+        "25"
+      ],
+      "answer": "16",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3028a6f5490c",
+      "type": "multiple-choice",
+      "prompt": "How many countries share a land border with Russia? (Not including disputed territories)",
+      "options": [
+        "14",
+        "12",
+        "10",
+        "8"
+      ],
+      "answer": "14",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-32d143a8fc89",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT an island that is part of the Philippines?",
+      "options": [
+        "Java",
+        "Luzon",
+        "Mindanao",
+        "Palawan"
+      ],
+      "answer": "Java",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-35fadcfc6379",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Vietnam?",
+      "options": [
+        "Hanoi",
+        "Da Nang",
+        "Hai Phong",
+        "Ho Chi Minh City"
+      ],
+      "answer": "Hanoi",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-36cbfddf259c",
+      "type": "multiple-choice",
+      "prompt": "Where is the ancient city of Petra located?",
+      "options": [
+        "Jordan",
+        "Egypt",
+        "Israel",
+        "Italy"
+      ],
+      "answer": "Jordan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-36deaec6ae4f",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Seychelles?",
+      "options": [
+        "Victoria",
+        "Luanda",
+        "N'Djamena",
+        "Tripoli"
+      ],
+      "answer": "Victoria",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-37353c65d81d",
+      "type": "multiple-choice",
+      "prompt": "What is the busiest port in Europe?",
+      "options": [
+        "Port of Rotterdam",
+        "Port of Antwerp",
+        "Port of Hamburg",
+        "Port of Amsterdam"
+      ],
+      "answer": "Port of Rotterdam",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-375cb06b5b9b",
+      "type": "multiple-choice",
+      "prompt": "Which of these African countries displays a gun on their flag?",
+      "options": [
+        "Mozambique",
+        "Uganda",
+        "Ethiopia",
+        "Nigeria"
+      ],
+      "answer": "Mozambique",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3776afaca9b5",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Inuit languages was the FIRST to use a unique writing system not based on the Latin alphabet?",
+      "options": [
+        "Inuktitut",
+        "Inuinnaqtun",
+        "Greenlandic",
+        "Inupiat"
+      ],
+      "answer": "Inuktitut",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a98c6a2dbcc",
+      "type": "multiple-choice",
+      "prompt": "How many US states start with the letter K?",
+      "options": [
+        "Two",
+        "One",
+        "None",
+        "Three"
+      ],
+      "answer": "Two",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3ae1b722585a",
+      "type": "multiple-choice",
+      "prompt": "The Gambia is a nation found on which continent?",
+      "options": [
+        "Africa",
+        "Asia",
+        "South America",
+        "Europe"
+      ],
+      "answer": "Africa",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3b8e1feab36e",
+      "type": "multiple-choice",
+      "prompt": "Where was the ancient city of Pompeii?",
+      "options": [
+        "Italy",
+        "East Africa",
+        "South America",
+        "Pompilanus"
+      ],
+      "answer": "Italy",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3ce74f73a9fd",
+      "type": "multiple-choice",
+      "prompt": "Where is the city of Haarlem located?",
+      "options": [
+        "The Netherlands",
+        "Germany",
+        "United States",
+        "Switzerland"
+      ],
+      "answer": "The Netherlands",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3dabf86d9b8c",
+      "type": "multiple-choice",
+      "prompt": "What is Laos?",
+      "options": [
+        "Country",
+        "Region",
+        "River",
+        "City"
+      ],
+      "answer": "Country",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3dfb1b763acb",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Slovakia?",
+      "options": [
+        "Bratislava",
+        "Sofia",
+        "Ljubljana",
+        "Sarajevo"
+      ],
+      "answer": "Bratislava",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3e28d27fa474",
+      "type": "multiple-choice",
+      "prompt": "What is the official national language of Pakistan?",
+      "options": [
+        "Urdu",
+        "Indian",
+        "Punjabi",
+        "Pashto"
+      ],
+      "answer": "Urdu",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3e5935af64a4",
+      "type": "multiple-choice",
+      "prompt": "Which of these countries is not a United Nations member state?",
+      "options": [
+        "Niue",
+        "Tuvalu",
+        "South Sudan",
+        "Montenegro"
+      ],
+      "answer": "Niue",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3ee51abdfa9e",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a capital city?",
+      "options": [
+        "Sydney",
+        "Cairo",
+        "Moscow",
+        "Beijing"
+      ],
+      "answer": "Sydney",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3eef69397885",
+      "type": "multiple-choice",
+      "prompt": "The Maluku islands (informally known as the Spice Islands) belong to which country?",
+      "options": [
+        "Indonesia",
+        "Chile",
+        "New Zealand",
+        "Fiji"
+      ],
+      "answer": "Indonesia",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f0f28c1ea2b",
+      "type": "multiple-choice",
+      "prompt": "The formerly East-Prussian city of Königsberg is known as which Russian City today?",
+      "options": [
+        "Kaliningrad",
+        "Kazan",
+        "Kursk",
+        "Krasnodar"
+      ],
+      "answer": "Kaliningrad",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f456f1bead8",
+      "type": "multiple-choice",
+      "prompt": "What is the largest lake in the African continent?",
+      "options": [
+        "Lake Victoria",
+        "Lake Tanganyika",
+        "Lake Malawi",
+        "Lake Turkana"
+      ],
+      "answer": "Lake Victoria",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f76d68c0413",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of the State of Washington, United States?",
+      "options": [
+        "Olympia",
+        "Washington D.C.",
+        "Seattle",
+        "Yukon"
+      ],
+      "answer": "Olympia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3fe30fb908c7",
+      "type": "multiple-choice",
+      "prompt": "Which US state is also known as the \"Lone Star State\"?",
+      "options": [
+        "Texas",
+        "Alabama",
+        "Tennessee",
+        "Kentucky"
+      ],
+      "answer": "Texas",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4039822b9c10",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT an Australian state or territory?",
+      "options": [
+        "Alberta",
+        "New South Wales",
+        "Victoria",
+        "Queensland"
+      ],
+      "answer": "Alberta",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4401aedf1e7b",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of the American state of Arizona?",
+      "options": [
+        "Phoenix",
+        "Montgomery",
+        "Tallahassee",
+        "Raleigh"
+      ],
+      "answer": "Phoenix",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-44024ffc613c",
+      "type": "multiple-choice",
+      "prompt": "What is the largest country in the world?",
+      "options": [
+        "Russia",
+        "Canada",
+        "China",
+        "United States"
+      ],
+      "answer": "Russia",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-44e9b1845d23",
+      "type": "multiple-choice",
+      "prompt": "How many countries share a land border with Luxembourg?",
+      "options": [
+        "3",
+        "4",
+        "2",
+        "5"
+      ],
+      "answer": "3",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4572f49c6497",
+      "type": "multiple-choice",
+      "prompt": "Which of these cities has a 4° East longitude.",
+      "options": [
+        "Amsterdam",
+        "Rio de Janeiro",
+        "Toronto",
+        "Hong Kong"
+      ],
+      "answer": "Amsterdam",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-45ddaac2d326",
+      "type": "multiple-choice",
+      "prompt": "Which country has the abbreviation \"CH\"?",
+      "options": [
+        "Switzerland",
+        "China",
+        "Canada",
+        "No Country"
+      ],
+      "answer": "Switzerland",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-46b4c512bccc",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Greenland?",
+      "options": [
+        "Nuuk",
+        "Sisimiut",
+        "Narsaq",
+        "Maniitsoq"
+      ],
+      "answer": "Nuuk",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4835b96c2c87",
+      "type": "multiple-choice",
+      "prompt": "Which of the following landlocked countries is entirely contained within another country?",
+      "options": [
+        "Lesotho",
+        "Burkina Faso",
+        "Mongolia",
+        "Luxembourg"
+      ],
+      "answer": "Lesotho",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-49611945e9f0",
+      "type": "multiple-choice",
+      "prompt": "What is Canada's largest island?",
+      "options": [
+        "Baffin Island",
+        "Prince Edward Island",
+        "Vancouver Island",
+        "Newfoundland"
+      ],
+      "answer": "Baffin Island",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4bf8c90f9a13",
+      "type": "multiple-choice",
+      "prompt": "Which of these countries is NOT a part of the Asian continent?",
+      "options": [
+        "Suriname",
+        "Georgia",
+        "Russia",
+        "Singapore"
+      ],
+      "answer": "Suriname",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4c31aa444d26",
+      "type": "multiple-choice",
+      "prompt": "Santorini is an island belonging to what European Country?",
+      "options": [
+        "Greece",
+        "Italy",
+        "Spain",
+        "Turkey"
+      ],
+      "answer": "Greece",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4d093426f594",
+      "type": "multiple-choice",
+      "prompt": "What is the capital city of Slovenia?",
+      "options": [
+        "Ljubljana",
+        "Maribor",
+        "Velenje",
+        "Trbovlje"
+      ],
+      "answer": "Ljubljana",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4e8353da3e3a",
+      "type": "multiple-choice",
+      "prompt": "Which is the largest of these 4 islands?",
+      "options": [
+        "Borneo",
+        "Great Britain",
+        "Cuba",
+        "Madagascar"
+      ],
+      "answer": "Borneo",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4f7c5caf2481",
+      "type": "multiple-choice",
+      "prompt": "On a London Underground map, what colour is the Circle Line?",
+      "options": [
+        "Yellow",
+        "Red",
+        "Blue",
+        "Green"
+      ],
+      "answer": "Yellow",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4f82637d22a0",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the peninsula containing Spain and Portugal?",
+      "options": [
+        "Iberian Peninsula",
+        "European Peninsula",
+        "Peloponnesian Peninsula",
+        "Scandinavian Peninsula"
+      ],
+      "answer": "Iberian Peninsula",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4fbdf4d3f359",
+      "type": "multiple-choice",
+      "prompt": "All of the following are towns/villages in the Pacific Island nation of Kiribati EXCEPT:",
+      "options": [
+        "Urutora",
+        "Rungata",
+        "London",
+        "Washington"
+      ],
+      "answer": "Urutora",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-504baf955895",
+      "type": "multiple-choice",
+      "prompt": "The body of the Egyptian Sphinx was based on which animal?",
+      "options": [
+        "Lion",
+        "Bull",
+        "Horse",
+        "Dog"
+      ],
+      "answer": "Lion",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-50ded5a182d0",
+      "type": "multiple-choice",
+      "prompt": "Which of the following countries is within the Eurozone but outside of the Schengen Area?",
+      "options": [
+        "Cyprus",
+        "Malta",
+        "Greece",
+        "Portugal"
+      ],
+      "answer": "Cyprus",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-51d5613541f1",
+      "type": "multiple-choice",
+      "prompt": "How many states are in Australia?",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "5"
+      ],
+      "answer": "6",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-52d02cb96e2b",
+      "type": "multiple-choice",
+      "prompt": "In which ocean is the Réunion island?",
+      "options": [
+        "Indian Ocean",
+        "Atlantic Ocean",
+        "South Pacific Ocean",
+        "North Pacific Ocean"
+      ],
+      "answer": "Indian Ocean",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-531b2046ba8f",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the former country that was succeeded by countries such as Serbia, Croatia and Slovenia?",
+      "options": [
+        "Yugoslavia",
+        "Czechoslovakia",
+        "Abkhazia",
+        "South Ossetia"
+      ],
+      "answer": "Yugoslavia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-538e6a64f09a",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Brazil?",
+      "options": [
+        "Brasilia",
+        "Rio de Janeiro",
+        "Sao Paolo",
+        "Curitiba"
+      ],
+      "answer": "Brasilia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-540b91511889",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Arab countries does NOT have a flag containing only Pan-Arab colours?",
+      "options": [
+        "Qatar",
+        "Kuwait",
+        "United Arab Emirates",
+        "Jordan"
+      ],
+      "answer": "Qatar",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-550b26b4b24c",
+      "type": "multiple-choice",
+      "prompt": "Which ocean borders the west coast of the United States?",
+      "options": [
+        "Pacific",
+        "Atlantic",
+        "Indian",
+        "Arctic"
+      ],
+      "answer": "Pacific",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5637a67914aa",
+      "type": "multiple-choice",
+      "prompt": "Which country was NOT part of the Soviet Union?",
+      "options": [
+        "Romania",
+        "Turkmenistan",
+        "Belarus",
+        "Tajikistan"
+      ],
+      "answer": "Romania",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-56d24b816d0c",
+      "type": "multiple-choice",
+      "prompt": "Where would you find the \"Spanish Steps\"?",
+      "options": [
+        "Rome, Italy",
+        "Barcelona, Spain",
+        "Berlin, Germany",
+        "London, England"
+      ],
+      "answer": "Rome, Italy",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-575fc8db2953",
+      "type": "multiple-choice",
+      "prompt": "How many time zones are in Russia?",
+      "options": [
+        "11",
+        "8",
+        "5",
+        "2"
+      ],
+      "answer": "11",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5782790eb7d5",
+      "type": "multiple-choice",
+      "prompt": "What is the area of Vatican City?",
+      "options": [
+        "0.44km^2",
+        "0.10km^2",
+        "0.86km^2",
+        "12.00km^2"
+      ],
+      "answer": "0.44km^2",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-586efd884ecc",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Belarus?",
+      "options": [
+        "Minsk",
+        "Warsaw",
+        "Kiev",
+        "Vilnius"
+      ],
+      "answer": "Minsk",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-591457930e7f",
+      "type": "multiple-choice",
+      "prompt": "How many time zones does China have?",
+      "options": [
+        "1",
+        "3",
+        "4",
+        "2"
+      ],
+      "answer": "1",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-59bac92acba4",
+      "type": "multiple-choice",
+      "prompt": "What is the 15th letter of the Greek alphabet?",
+      "options": [
+        "Omicron (Ο)",
+        "Sigma (Σ)",
+        "Pi (Π)",
+        "Nu (Ν)"
+      ],
+      "answer": "Omicron (Ο)",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5a20b33430bc",
+      "type": "multiple-choice",
+      "prompt": "Where is the \"Sonoran Desert\" located?",
+      "options": [
+        "North America",
+        "South America",
+        "Asia",
+        "Africa"
+      ],
+      "answer": "North America",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5a346000fc27",
+      "type": "multiple-choice",
+      "prompt": "What is the highest mountain in the world?",
+      "options": [
+        "Mt. Everest",
+        "Mount Godwin Austen",
+        "Kangchenjunga",
+        "Annapurna"
+      ],
+      "answer": "Mt. Everest",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5b2e99e39d6e",
+      "type": "multiple-choice",
+      "prompt": "In Washington, D.C. what does the \"C\" stand for?",
+      "options": [
+        "Columbia",
+        "Caledonia",
+        "Corinthia",
+        "City"
+      ],
+      "answer": "Columbia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5df43d10a62c",
+      "type": "multiple-choice",
+      "prompt": "Which English county will you find the University of East Anglia?",
+      "options": [
+        "Norfolk",
+        "Suffolk",
+        "Essex",
+        "Cambridgeshire"
+      ],
+      "answer": "Norfolk",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5e2d574129d1",
+      "type": "multiple-choice",
+      "prompt": "How many countries border Kyrgyzstan?",
+      "options": [
+        "4",
+        "3",
+        "1",
+        "6"
+      ],
+      "answer": "4",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6228ed14b491",
+      "type": "multiple-choice",
+      "prompt": "The Alps are a mountain range on which continent?",
+      "options": [
+        "Europe",
+        "North America",
+        "Asia",
+        "Africa"
+      ],
+      "answer": "Europe",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-627ea2e36e09",
+      "type": "multiple-choice",
+      "prompt": "Kuala Lumpur is the capital of which country?",
+      "options": [
+        "Malaysia",
+        "Indonesia",
+        "Singapore",
+        "Thailand"
+      ],
+      "answer": "Malaysia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-62a5d6bdbac1",
+      "type": "multiple-choice",
+      "prompt": "How many countries are inside the United Kingdom?",
+      "options": [
+        "Four",
+        "Two",
+        "Three",
+        "One"
+      ],
+      "answer": "Four",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-62c0192f84e5",
+      "type": "multiple-choice",
+      "prompt": "How many stars are featured on New Zealand's flag?",
+      "options": [
+        "4",
+        "5",
+        "2",
+        "0"
+      ],
+      "answer": "4",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-62d13ac0dc68",
+      "type": "multiple-choice",
+      "prompt": "Which of these cities is NOT in England?",
+      "options": [
+        "Edinburgh",
+        "Oxford",
+        "Manchester",
+        "Southampton"
+      ],
+      "answer": "Edinburgh",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-638c1e92cb65",
+      "type": "multiple-choice",
+      "prompt": "Which of these Mediterranean islands is under the sovereign rule of France?",
+      "options": [
+        "Corsica",
+        "Majorca",
+        "Sardinia",
+        "Malta"
+      ],
+      "answer": "Corsica",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-638ddddd9b4c",
+      "type": "multiple-choice",
+      "prompt": "The Principality of Sealand is an unrecognized micronation off the coast of what country?",
+      "options": [
+        "The United Kingdom",
+        "Japan",
+        "Australia",
+        "Argentina"
+      ],
+      "answer": "The United Kingdom",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-64ecce69afb2",
+      "type": "multiple-choice",
+      "prompt": "Which country is the Taedong River in?",
+      "options": [
+        "North Korea",
+        "South Korea",
+        "Japan",
+        "China"
+      ],
+      "answer": "North Korea",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6651afaa4172",
+      "type": "multiple-choice",
+      "prompt": "Which of the following countries has a flag featuring a yellow lion wielding a sword on a dark red background?",
+      "options": [
+        "Sri Lanka",
+        "Kiribati",
+        "Scotland",
+        "Bhutan"
+      ],
+      "answer": "Sri Lanka",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6680fbb835f9",
+      "type": "multiple-choice",
+      "prompt": "The towns of Brugelette, Arlon and Ath are located in which country?",
+      "options": [
+        "Belgium",
+        "Andorra",
+        "France",
+        "Luxembourg"
+      ],
+      "answer": "Belgium",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-66a851b8fab8",
+      "type": "multiple-choice",
+      "prompt": "What is special about Lake Titicaca?",
+      "options": [
+        "Highest navigable lake",
+        "Longest lake in the world",
+        "Deepest lake in the world",
+        "Remains frozen all year round"
+      ],
+      "answer": "Highest navigable lake",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-671160e5750c",
+      "type": "multiple-choice",
+      "prompt": "Lake Titicaca is located between which two nations?",
+      "options": [
+        "Peru and Bolivia",
+        "Kenya and Uganda",
+        "Mexico and the United States",
+        "India and Bangladesh"
+      ],
+      "answer": "Peru and Bolivia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6971ac467a37",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Lithuania?",
+      "options": [
+        "Vilnius",
+        "Tallinn",
+        "Helsinki",
+        "Riga"
+      ],
+      "answer": "Vilnius",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6a3ae491f7ca",
+      "type": "multiple-choice",
+      "prompt": "The Japanese district Akihabara is also known by what nickname?",
+      "options": [
+        "Electric Town",
+        "Moon Walk River",
+        "Otaku Central",
+        "Big Eyes"
+      ],
+      "answer": "Electric Town",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6aaa72d3601d",
+      "type": "multiple-choice",
+      "prompt": "Which US state is furthest north east?",
+      "options": [
+        "Maine",
+        "New York",
+        "Georgia",
+        "Florida"
+      ],
+      "answer": "Maine",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6c7da7169043",
+      "type": "multiple-choice",
+      "prompt": "In which country is located the municipality of Arteijo?",
+      "options": [
+        "Spain",
+        "Morocco",
+        "France",
+        "Belgium"
+      ],
+      "answer": "Spain",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6c8dddfed3cc",
+      "type": "multiple-choice",
+      "prompt": "Which Borough is the farthest in the north of New York City?",
+      "options": [
+        "Bronx",
+        "Queens",
+        "Brooklyn",
+        "Manhattan"
+      ],
+      "answer": "Bronx",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6e06fd20a347",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT a real tectonic plate?",
+      "options": [
+        "Atlantic Plate",
+        "North American Plate",
+        "Eurasian Plate",
+        "Nazca Plate"
+      ],
+      "answer": "Atlantic Plate",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6e507d1e0c18",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the only remaining Grand Duchy in the world ?",
+      "options": [
+        "Luxembourg",
+        "Montenegro",
+        "Liechtenstein",
+        "Andorra"
+      ],
+      "answer": "Luxembourg",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-709fbf78ad9a",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of the US state Nevada?",
+      "options": [
+        "Carson City",
+        "Las Vegas",
+        "Henderson",
+        "Reno"
+      ],
+      "answer": "Carson City",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-70ad985023e6",
+      "type": "multiple-choice",
+      "prompt": "What is the official language of Bhutan?",
+      "options": [
+        "Dzongkha",
+        "Ladakhi",
+        "Karen",
+        "Groma"
+      ],
+      "answer": "Dzongkha",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7208c46ffec9",
+      "type": "multiple-choice",
+      "prompt": "What is the largest Muslim country in the world?",
+      "options": [
+        "Indonesia",
+        "Pakistan",
+        "Saudi Arabia",
+        "Iran"
+      ],
+      "answer": "Indonesia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-724bf4cd3b07",
+      "type": "multiple-choice",
+      "prompt": "What North American tourist attraction is served by the \"Maid of the Mist\" tour company?",
+      "options": [
+        "Niagara Falls",
+        "Whistler, British Columbia",
+        "Disney World",
+        "Yosemite National Park"
+      ],
+      "answer": "Niagara Falls",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-728d7f6e9314",
+      "type": "multiple-choice",
+      "prompt": "What's the first National Park designated in the United States?",
+      "options": [
+        "Yellowstone",
+        "Sequoia",
+        "Yosemite",
+        "Rocky Mountain"
+      ],
+      "answer": "Yellowstone",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-729d63704c4e",
+      "type": "multiple-choice",
+      "prompt": "Which of these countries is located the FURTHEST away from the South China Sea?",
+      "options": [
+        "Bangladesh",
+        "Malaysia",
+        "Vietnam",
+        "Philippines"
+      ],
+      "answer": "Bangladesh",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-73d5c0671857",
+      "type": "multiple-choice",
+      "prompt": "Which of these African countries list \"Spanish\" as an official language?",
+      "options": [
+        "Equatorial Guinea",
+        "Guinea",
+        "Cameroon",
+        "Angola"
+      ],
+      "answer": "Equatorial Guinea",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-76bc6fd7c359",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Estonia?",
+      "options": [
+        "Tallinn",
+        "Helsinki",
+        "Tartu",
+        "Riga"
+      ],
+      "answer": "Tallinn",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-76dcf4970b36",
+      "type": "multiple-choice",
+      "prompt": "The Suez Canal is located in which African country?",
+      "options": [
+        "Egypt",
+        "Libya",
+        "Ghana",
+        "Nigeria"
+      ],
+      "answer": "Egypt",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-77099e83a101",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of India?",
+      "options": [
+        "New Delhi",
+        "Beijing",
+        "Montreal",
+        "Tithi"
+      ],
+      "answer": "New Delhi",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-78ad2c7f63b8",
+      "type": "multiple-choice",
+      "prompt": "In which English county is the city of Portsmouth?",
+      "options": [
+        "Hampshire",
+        "Oxfordshire",
+        "Buckinghamshire",
+        "Surrey"
+      ],
+      "answer": "Hampshire",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-78ea776909c3",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Denmark?",
+      "options": [
+        "Copenhagen",
+        "Aarhus",
+        "Odense",
+        "Aalborg"
+      ],
+      "answer": "Copenhagen",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7a4452f6d25f",
+      "type": "multiple-choice",
+      "prompt": "Into which basin does the Jordan River flow into?",
+      "options": [
+        "Dead Sea",
+        "Aral Sea",
+        "Caspian Sea",
+        "Salton Sea"
+      ],
+      "answer": "Dead Sea",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7a45e6235ef6",
+      "type": "multiple-choice",
+      "prompt": "Broome is a town in which state of Australia?",
+      "options": [
+        "Western Australia",
+        "Northern Territory",
+        "South Australia",
+        "Tasmania"
+      ],
+      "answer": "Western Australia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7a54be64d62b",
+      "type": "multiple-choice",
+      "prompt": "Which of the following geographic features is a ring-shaped coral reef, island, or series of islets?",
+      "options": [
+        "Atoll",
+        "Peninsula",
+        "Isthmus",
+        "Delta"
+      ],
+      "answer": "Atoll",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7af899bde4ca",
+      "type": "multiple-choice",
+      "prompt": "The Hunua Ranges is located in...",
+      "options": [
+        "New Zealand",
+        "Nepal",
+        "China",
+        "Mexico"
+      ],
+      "answer": "New Zealand",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7c98ad606b7e",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT a city in India?",
+      "options": [
+        "Islamabad",
+        "Hyderabad",
+        "Ahmedabad",
+        "Ghaziabad"
+      ],
+      "answer": "Islamabad",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7d8b90bb3abc",
+      "type": "multiple-choice",
+      "prompt": "What is the Polish city known to Germans as Danzig?",
+      "options": [
+        "Gdańsk",
+        "Warsaw",
+        "Zakopane",
+        "Poznań"
+      ],
+      "answer": "Gdańsk",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7f7014363264",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is the longest river in Europe?",
+      "options": [
+        "Volga",
+        "Danube",
+        "Ural",
+        "Dnieper"
+      ],
+      "answer": "Volga",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7fcd90f2d08b",
+      "type": "multiple-choice",
+      "prompt": "Which of these African regions does *not* directly border the Democratic Republic of The Congo?",
+      "options": [
+        "Sudan",
+        "Central African Republic",
+        "Tanzania",
+        "Zambia"
+      ],
+      "answer": "Sudan",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7fe3836fe05f",
+      "type": "multiple-choice",
+      "prompt": "Which European city is known as the \"City of Light\"?",
+      "options": [
+        "Paris",
+        "Rome",
+        "London",
+        "Madrid"
+      ],
+      "answer": "Paris",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-80195b3bff77",
+      "type": "multiple-choice",
+      "prompt": "How many islands does Kuwait have?",
+      "options": [
+        "9",
+        "3",
+        "6",
+        "2"
+      ],
+      "answer": "9",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-82a8bbc75e2f",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Japanese islands is the biggest?",
+      "options": [
+        "Honshu",
+        "Hokkaido",
+        "Shikoku",
+        "Kyushu"
+      ],
+      "answer": "Honshu",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-85432570d5d2",
+      "type": "multiple-choice",
+      "prompt": "Which is not a country in Africa?",
+      "options": [
+        "Guyana",
+        "Senegal",
+        "Liberia",
+        "Somalia"
+      ],
+      "answer": "Guyana",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-85d1e28b7d04",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Indonesia?",
+      "options": [
+        "Jakarta",
+        "Bandung",
+        "Medan",
+        "Palembang"
+      ],
+      "answer": "Jakarta",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-85ed472e3444",
+      "type": "multiple-choice",
+      "prompt": "What are the four corner states of the US?",
+      "options": [
+        "Utah, Colorado, Arizona, New Mexico",
+        "Oregon, Idaho, Nevada, Utah",
+        "Kansas, Oklahoma, Arkansas, Louisiana",
+        "South Dakota, Minnesota, Nebraska, Iowa"
+      ],
+      "answer": "Utah, Colorado, Arizona, New Mexico",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8656361f2fa6",
+      "type": "multiple-choice",
+      "prompt": "What is the most common climbing route for the second highest mountain in the world, K2?",
+      "options": [
+        "Abruzzi Spur",
+        "Magic Line",
+        "Cesen Route",
+        "Polish Line"
+      ],
+      "answer": "Abruzzi Spur",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-86b87797907b",
+      "type": "multiple-choice",
+      "prompt": "Which of these countries is \"doubly landlocked\" (surrounded entirely by one or more landlocked countries)?",
+      "options": [
+        "Uzbekistan",
+        "Switzerland",
+        "Bolivia",
+        "Ethiopia"
+      ],
+      "answer": "Uzbekistan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-87066775597c",
+      "type": "multiple-choice",
+      "prompt": "Which area of Eastern Europe is famous for its association with vampires?",
+      "options": [
+        "Transylvania",
+        "Silesia",
+        "Macedonia",
+        "Slovakia"
+      ],
+      "answer": "Transylvania",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-876d16fa614a",
+      "type": "multiple-choice",
+      "prompt": "Which of the following countries is an island?",
+      "options": [
+        "Cyprus",
+        "Azerbaijan",
+        "El Salvador",
+        "Djibouti"
+      ],
+      "answer": "Cyprus",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-886c2570a23f",
+      "type": "multiple-choice",
+      "prompt": "How many countries does Mexico border?",
+      "options": [
+        "3",
+        "2",
+        "4",
+        "1"
+      ],
+      "answer": "3",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8afdef120ad6",
+      "type": "multiple-choice",
+      "prompt": "In which country is the city of Rio de Janeiro?",
+      "options": [
+        "Brazil",
+        "Peru",
+        "Chile",
+        "Venezuela"
+      ],
+      "answer": "Brazil",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8b7a59868b82",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not a megadiverse country - one that harbors a high number of the earth's endemic species?",
+      "options": [
+        "Thailand",
+        "Peru",
+        "Mexico",
+        "South Africa"
+      ],
+      "answer": "Thailand",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8d27cf95b639",
+      "type": "multiple-choice",
+      "prompt": "Which UK country features a dragon on their flag?",
+      "options": [
+        "Wales",
+        "England",
+        "North Ireland",
+        "Scotland"
+      ],
+      "answer": "Wales",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8d58e3e45d5a",
+      "type": "multiple-choice",
+      "prompt": "In which city is the Big Nickel located in Canada?",
+      "options": [
+        "Sudbury, Ontario",
+        "Calgary, Alberta",
+        "Halifax, Nova Scotia",
+        "Victoria, British Columbia"
+      ],
+      "answer": "Sudbury, Ontario",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8f53207b621c",
+      "type": "multiple-choice",
+      "prompt": "Which Oceanian nation is known in Māori as Aotearoa?",
+      "options": [
+        "New Zealand",
+        "Australia",
+        "Solomon Islands",
+        "New Caledonia"
+      ],
+      "answer": "New Zealand",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-90eb54b9a654",
+      "type": "multiple-choice",
+      "prompt": "Montreal is in which Canadian province?",
+      "options": [
+        "Quebec",
+        "Ontario",
+        "Nova Scotia",
+        "Alberta"
+      ],
+      "answer": "Quebec",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-91ad51202d9b",
+      "type": "multiple-choice",
+      "prompt": "How many countries does Spain have a land border with?",
+      "options": [
+        "5",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer": "5",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-922289c4a038",
+      "type": "multiple-choice",
+      "prompt": "How many provinces are in the Netherlands?",
+      "options": [
+        "12",
+        "14",
+        "10",
+        "13"
+      ],
+      "answer": "12",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-92948bc33ec3",
+      "type": "multiple-choice",
+      "prompt": "Which islands below have been claimed by both Japan and Russia?",
+      "options": [
+        "Kuril Islands",
+        "Paracel Islands",
+        "Chagos Islands",
+        "Spratly Islands"
+      ],
+      "answer": "Kuril Islands",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-92f4c42c45bb",
+      "type": "multiple-choice",
+      "prompt": "All of the following are classified as Finno-Ugric languages EXCEPT:",
+      "options": [
+        "Samoyedic",
+        "Hungarian",
+        "Finnish",
+        "Estonian"
+      ],
+      "answer": "Samoyedic",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-945122a9481f",
+      "type": "multiple-choice",
+      "prompt": "Bikini Atoll is in which country?",
+      "options": [
+        "Marshall Islands",
+        "Fiji",
+        "Christmas Islands",
+        "Bahamas"
+      ],
+      "answer": "Marshall Islands",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-977ff726d4d0",
+      "type": "multiple-choice",
+      "prompt": "The White Cliffs of Dover is located in which country?",
+      "options": [
+        "United Kingdom",
+        "United States",
+        "Netherlands",
+        "Sweden"
+      ],
+      "answer": "United Kingdom",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-98660b154ab7",
+      "type": "multiple-choice",
+      "prompt": "How many independent countries are there within the continent of South America?",
+      "options": [
+        "12",
+        "8",
+        "9",
+        "10"
+      ],
+      "answer": "12",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-989cc9d41154",
+      "type": "multiple-choice",
+      "prompt": "What is the Finnish word for \"Finland\"?",
+      "options": [
+        "Suomi",
+        "Eesti",
+        "Magyarország",
+        "Sverige"
+      ],
+      "answer": "Suomi",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-991430b8ea6a",
+      "type": "multiple-choice",
+      "prompt": "What is the name of rocky region that spans most of eastern Canada?",
+      "options": [
+        "Canadian Shield",
+        "Rocky Mountains",
+        "Appalachian Mountains",
+        "Himalayas"
+      ],
+      "answer": "Canadian Shield",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9a09628ac696",
+      "type": "multiple-choice",
+      "prompt": "On which continent does the Andes mountain range lie?",
+      "options": [
+        "South America",
+        "Europe",
+        "Asia",
+        "Africa"
+      ],
+      "answer": "South America",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9a7585681e77",
+      "type": "multiple-choice",
+      "prompt": "What is the fifth largest country by area?",
+      "options": [
+        "Brazil",
+        "United States",
+        "Australia",
+        "India"
+      ],
+      "answer": "Brazil",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9b71063c4c82",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Suriname?",
+      "options": [
+        "Paramaribo",
+        "Antananarivo",
+        "Tegucigalpa",
+        "Sucre"
+      ],
+      "answer": "Paramaribo",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9dcac6360bae",
+      "type": "multiple-choice",
+      "prompt": "What country has a horizontal bicolor red and white flag?",
+      "options": [
+        "Monaco",
+        "Bahrain",
+        "Malta",
+        "Liechtenstein"
+      ],
+      "answer": "Monaco",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9de2f0ad173d",
+      "type": "multiple-choice",
+      "prompt": "Which city is the capital of Switzerland?",
+      "options": [
+        "Bern",
+        "Zürich",
+        "Frankfurt",
+        "Wien"
+      ],
+      "answer": "Bern",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9e2cd8a67a87",
+      "type": "multiple-choice",
+      "prompt": "The historical city Timbuktu is located in which West African country?",
+      "options": [
+        "Mali",
+        "Senegal",
+        "Niger",
+        "Burkina Faso"
+      ],
+      "answer": "Mali",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9f64c0433e49",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the formerly rich fishing grounds off the island of Newfoundland, Canada?",
+      "options": [
+        "Grand Banks",
+        "Great Barrier Reef",
+        "Mariana Trench",
+        "Hudson Bay"
+      ],
+      "answer": "Grand Banks",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9f7e0264055f",
+      "type": "multiple-choice",
+      "prompt": "All of the following countries have official claims to territory in Antarctica EXCEPT:",
+      "options": [
+        "United States",
+        "Australia",
+        "Chile",
+        "Norway"
+      ],
+      "answer": "United States",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a130aa294a6a",
+      "type": "multiple-choice",
+      "prompt": "Which of the following European languages is classified as a \"language isolate?\"",
+      "options": [
+        "Basque",
+        "Galician",
+        "Maltese",
+        "Hungarian"
+      ],
+      "answer": "Basque",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a1923c4d6923",
+      "type": "multiple-choice",
+      "prompt": "Guyana is in which continent?",
+      "options": [
+        "South America",
+        "Africa",
+        "North America",
+        "Asia"
+      ],
+      "answer": "South America",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a281d516227d",
+      "type": "multiple-choice",
+      "prompt": "With which country does France share its largest land border",
+      "options": [
+        "Brazil",
+        "Germany",
+        "Spain",
+        "Canada"
+      ],
+      "answer": "Brazil",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a2b3038e18e8",
+      "type": "multiple-choice",
+      "prompt": "Harvard University is located in which city?",
+      "options": [
+        "Cambridge",
+        "Providence",
+        "New York",
+        "Washington D.C."
+      ],
+      "answer": "Cambridge",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a31dc058ec7b",
+      "type": "multiple-choice",
+      "prompt": "What is the largest hot desert in the world?",
+      "options": [
+        "Sahara",
+        "Gobi",
+        "Mojave",
+        "Kalahari"
+      ],
+      "answer": "Sahara",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a3610328300f",
+      "type": "multiple-choice",
+      "prompt": "What is the administrative centre and largest settlement on the Norwegian archipelago of Svalbard?",
+      "options": [
+        "Longyearbyen",
+        "Sveagruva",
+        "Ny-Ålesund",
+        "Barentsburg"
+      ],
+      "answer": "Longyearbyen",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a3aac6bb40b4",
+      "type": "multiple-choice",
+      "prompt": "Which country was NOT formerly part of Yugoslavia?",
+      "options": [
+        "Albania",
+        "Croatia",
+        "Serbia",
+        "Macedonia"
+      ],
+      "answer": "Albania",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a65e7db3b51d",
+      "type": "multiple-choice",
+      "prompt": "Which nation claims ownership of Antarctica?",
+      "options": [
+        "No one, but there are claims.",
+        "United States of America",
+        "United Nations",
+        "Australia"
+      ],
+      "answer": "No one, but there are claims.",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a7516acb397f",
+      "type": "multiple-choice",
+      "prompt": "Where is Hadrian's Wall located?",
+      "options": [
+        "Carlisle, England",
+        "Rome, Italy",
+        "Alexandria, Egypt",
+        "Dublin, Ireland"
+      ],
+      "answer": "Carlisle, England",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a84447e7a86b",
+      "type": "multiple-choice",
+      "prompt": "What is the nickname for the US state Delaware?",
+      "options": [
+        "The First State",
+        "The Fiftieth State",
+        "The Second State",
+        "The Sixteenth State"
+      ],
+      "answer": "The First State",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aa517f34e46b",
+      "type": "multiple-choice",
+      "prompt": "Which two modern-day countries used to be known as the region of Rhodesia between the 1890s and 1980?",
+      "options": [
+        "Zambia & Zimbabwe",
+        "Togo & Benin",
+        "Lesotho & Swaziland",
+        "Rwanda & Burundi"
+      ],
+      "answer": "Zambia & Zimbabwe",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ab7c7514e0a3",
+      "type": "multiple-choice",
+      "prompt": "What city is the Terracotta Army located in?",
+      "options": [
+        "Xi'an",
+        "Beijing",
+        "Shanghai",
+        "Hong Kong"
+      ],
+      "answer": "Xi'an",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-abd797a8d4a2",
+      "type": "multiple-choice",
+      "prompt": "Where is Fort Marlborough located?",
+      "options": [
+        "Bengkulu",
+        "Singapore",
+        "London",
+        "Dover"
+      ],
+      "answer": "Bengkulu",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ad8b26f31456",
+      "type": "multiple-choice",
+      "prompt": "What is the smallest country in South America by area?",
+      "options": [
+        "Suriname",
+        "Brazil",
+        "Uruguay",
+        "Chile"
+      ],
+      "answer": "Suriname",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ae8ac1009add",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of the US State of New York?",
+      "options": [
+        "Albany",
+        "Buffalo",
+        "New York",
+        "Rochester"
+      ],
+      "answer": "Albany",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aef1275d0747",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the ocean that Hawaii is located in?",
+      "options": [
+        "Pacific",
+        "Atlantic",
+        "Indian",
+        "Arctic"
+      ],
+      "answer": "Pacific",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-af30813a015e",
+      "type": "multiple-choice",
+      "prompt": "Which city is the biggest in Canada?",
+      "options": [
+        "Toronto",
+        "Montreal",
+        "Vancouver",
+        "Ottawa"
+      ],
+      "answer": "Toronto",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-afd70d592a05",
+      "type": "multiple-choice",
+      "prompt": "The emblem on the flag of the Republic of Tajikistan features a sunrise over mountains below what symbol?",
+      "options": [
+        "Crown",
+        "Bird",
+        "Sickle",
+        "Tree"
+      ],
+      "answer": "Crown",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b017c172c93d",
+      "type": "multiple-choice",
+      "prompt": "The following Spanish provinces are located in the northern area of Spain except:",
+      "options": [
+        "Murcia",
+        "Asturias",
+        "Navarre",
+        "León"
+      ],
+      "answer": "Murcia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b052aabd373f",
+      "type": "multiple-choice",
+      "prompt": "What African country has Portuguese as its official language?",
+      "options": [
+        "Mozambique",
+        "Botswana",
+        "Gabon",
+        "Togo"
+      ],
+      "answer": "Mozambique",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b164965b660f",
+      "type": "multiple-choice",
+      "prompt": "Which country features a maple leaf on its flag?",
+      "options": [
+        "Canada",
+        "Mexico",
+        "Brazil",
+        "India"
+      ],
+      "answer": "Canada",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b43519bd5d97",
+      "type": "multiple-choice",
+      "prompt": "Which German city is located on the River Isar?",
+      "options": [
+        "Munich",
+        "Berlin",
+        "Hamburg",
+        "Dortmund"
+      ],
+      "answer": "Munich",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b73e0477f490",
+      "type": "multiple-choice",
+      "prompt": "What is the state capital of South Dakota?",
+      "options": [
+        "Pierre",
+        "Sioux Falls",
+        "Rapid City",
+        "Watertown"
+      ],
+      "answer": "Pierre",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b9c8824f3b23",
+      "type": "multiple-choice",
+      "prompt": "What mountain range lines the border between Spain and France?",
+      "options": [
+        "Pyrenees",
+        "Alps",
+        "Carpathians",
+        "Urals"
+      ],
+      "answer": "Pyrenees",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bb2225ef29dc",
+      "type": "multiple-choice",
+      "prompt": "Where is the world's oldest still operational space launch facility located?",
+      "options": [
+        "Kazakhstan",
+        "Russia",
+        "Iran",
+        "United States"
+      ],
+      "answer": "Kazakhstan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-be623e48276f",
+      "type": "multiple-choice",
+      "prompt": "Which of these Japanese islands is the largest by area?",
+      "options": [
+        "Shikoku",
+        "Iki",
+        "Odaiba",
+        "Okinawa"
+      ],
+      "answer": "Shikoku",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bf76a9a53163",
+      "type": "multiple-choice",
+      "prompt": "The prefix Sino- (As in Sino-American) is used to refer to what nationality?",
+      "options": [
+        "Chinese",
+        "Japanese",
+        "Russian",
+        "Indian"
+      ],
+      "answer": "Chinese",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c05beee81b2e",
+      "type": "multiple-choice",
+      "prompt": "Which Russian oblast forms a border with Poland?",
+      "options": [
+        "Kaliningrad",
+        "Samara",
+        "Nizhny Novgorod",
+        "Omsk"
+      ],
+      "answer": "Kaliningrad",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c0c5408ae69a",
+      "type": "multiple-choice",
+      "prompt": "Which of the following languages does NOT use the Latin alphabet?",
+      "options": [
+        "Georgian",
+        "Turkish",
+        "Swahili",
+        "Vietnamese"
+      ],
+      "answer": "Georgian",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c3199c0faf87",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Burkina Faso?",
+      "options": [
+        "Ouagadougou",
+        "Yaoundé",
+        "Yamoussoukro",
+        "Abidjan"
+      ],
+      "answer": "Ouagadougou",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c33d3abaa886",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Laos?",
+      "options": [
+        "Vientiane",
+        "Tarawa",
+        "Vaduz",
+        "Tegucigalpa"
+      ],
+      "answer": "Vientiane",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c4e8965f4b8b",
+      "type": "multiple-choice",
+      "prompt": "Greenland is a part of which kingdom?",
+      "options": [
+        "Denmark",
+        "Sweden",
+        "Norway",
+        "United Kingdom"
+      ],
+      "answer": "Denmark",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c51e600da84c",
+      "type": "multiple-choice",
+      "prompt": "What is the capital city of Bermuda?",
+      "options": [
+        "Hamilton",
+        "Santo Domingo",
+        "San Juan",
+        "Havana"
+      ],
+      "answer": "Hamilton",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c521b6d5770c",
+      "type": "multiple-choice",
+      "prompt": "What country is the second largest in the world by area?",
+      "options": [
+        "Canada",
+        "Russia",
+        "China",
+        "United States of America"
+      ],
+      "answer": "Canada",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c5d95f71552c",
+      "type": "multiple-choice",
+      "prompt": "What is the land connecting North America and South America?",
+      "options": [
+        "Isthmus of Panama",
+        "Isthmus of Suez",
+        "Urals",
+        "Australasia"
+      ],
+      "answer": "Isthmus of Panama",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c915ffbd4b83",
+      "type": "multiple-choice",
+      "prompt": "How many stations does the Central Line have on the London Underground?",
+      "options": [
+        "49",
+        "51",
+        "43",
+        "47"
+      ],
+      "answer": "49",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c962af11dc0f",
+      "type": "multiple-choice",
+      "prompt": "Where is the Volga River?",
+      "options": [
+        "Russia",
+        "Bulgaria",
+        "India",
+        "Sweden"
+      ],
+      "answer": "Russia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c9700abf7be9",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Senegal?",
+      "options": [
+        "Dakar",
+        "Nouakchott",
+        "Conakry",
+        "Monrovia"
+      ],
+      "answer": "Dakar",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c97f0aef161b",
+      "type": "multiple-choice",
+      "prompt": "How many countries does the United States share a land border with?",
+      "options": [
+        "2",
+        "1",
+        "3",
+        "4"
+      ],
+      "answer": "2",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cb5f93fab783",
+      "type": "multiple-choice",
+      "prompt": "What is the official language in Liechtenstein?",
+      "options": [
+        "German",
+        "French",
+        "English",
+        "Italian"
+      ],
+      "answer": "German",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cbb3af540c4d",
+      "type": "multiple-choice",
+      "prompt": "Which of the following former Yugoslavian states is landlocked?",
+      "options": [
+        "Serbia",
+        "Bosnia and Herzegovina",
+        "Montenegro",
+        "Croatia"
+      ],
+      "answer": "Serbia",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cd6bc07a0589",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT a province in China?",
+      "options": [
+        "Yangtze",
+        "Fujian",
+        "Sichuan",
+        "Guangdong"
+      ],
+      "answer": "Yangtze",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cf6496331312",
+      "type": "multiple-choice",
+      "prompt": "Where are the Nazca Lines located?",
+      "options": [
+        "Peru",
+        "Brazil",
+        "Colombia",
+        "Ecuador"
+      ],
+      "answer": "Peru",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d1f05d82c729",
+      "type": "multiple-choice",
+      "prompt": "What European country is not a part of the EU?",
+      "options": [
+        "Norway",
+        "Lithuania",
+        "Ireland",
+        "Czechia"
+      ],
+      "answer": "Norway",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d20ce04f44a6",
+      "type": "multiple-choice",
+      "prompt": "Vatican City, the smallest country in the world, is fully enclosed by which country?",
+      "options": [
+        "Italy",
+        "France",
+        "Spain",
+        "Germany"
+      ],
+      "answer": "Italy",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d21843306138",
+      "type": "multiple-choice",
+      "prompt": "Which of the following cities is the capital of Latvia?",
+      "options": [
+        "Riga",
+        "Minsk",
+        "Tallinn",
+        "Vilnius"
+      ],
+      "answer": "Riga",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d346d5037ab4",
+      "type": "multiple-choice",
+      "prompt": "Which country has three capital cities?",
+      "options": [
+        "South Africa",
+        "Somalia",
+        "China",
+        "United Kingdom"
+      ],
+      "answer": "South Africa",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d564f5f70470",
+      "type": "multiple-choice",
+      "prompt": "The World Health Organization headquarters is located in which European country?",
+      "options": [
+        "Switzerland",
+        "United Kingdom",
+        "France",
+        "Belgium"
+      ],
+      "answer": "Switzerland",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d63dfb09d4c1",
+      "type": "multiple-choice",
+      "prompt": "What is the largest non-continental island in the world?",
+      "options": [
+        "Greenland",
+        "New Guinea",
+        "Borneo",
+        "Madagascar"
+      ],
+      "answer": "Greenland",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d796665ebd09",
+      "type": "multiple-choice",
+      "prompt": "What was the African nation of Zimbabwe formerly known as?",
+      "options": [
+        "Rhodesia",
+        "Zambia",
+        "Mozambique",
+        "Bulawayo"
+      ],
+      "answer": "Rhodesia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d7c9b8cacbfd",
+      "type": "multiple-choice",
+      "prompt": "What colour is the circle on the Japanese flag?",
+      "options": [
+        "Red",
+        "White",
+        "Yellow",
+        "Black"
+      ],
+      "answer": "Red",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d83de9241db7",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Bangladesh?",
+      "options": [
+        "Dhaka",
+        "Khulna",
+        "London",
+        "Lahore"
+      ],
+      "answer": "Dhaka",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d90011d6f1fb",
+      "type": "multiple-choice",
+      "prompt": "What is the largest freshwater lake by volume?",
+      "options": [
+        "Lake Baikal",
+        "Lake Superior",
+        "Lake Huron",
+        "Lake Michigan"
+      ],
+      "answer": "Lake Baikal",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d9437bb5fa3a",
+      "type": "multiple-choice",
+      "prompt": "The Space Needle is located in which city?",
+      "options": [
+        "Seattle",
+        "Los Angeles",
+        "Toronto",
+        "Vancouver"
+      ],
+      "answer": "Seattle",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d99a350e9157",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the Canadian national anthem?",
+      "options": [
+        "O Canada",
+        "O Red Maple",
+        "Leaf-Spangled Banner",
+        "March of the Puck Drop"
+      ],
+      "answer": "O Canada",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dad3954a0180",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Mauritius?",
+      "options": [
+        "Port Louis",
+        "Port Moresby",
+        "Port Vila",
+        "Port-au-Prince"
+      ],
+      "answer": "Port Louis",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e35f301617ad",
+      "type": "multiple-choice",
+      "prompt": "Which of these country's capitals starts with the letter B?",
+      "options": [
+        "Lebanon",
+        "Jordan",
+        "Kuwait",
+        "Qatar"
+      ],
+      "answer": "Lebanon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e3a4cc4935b6",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Jamaica?",
+      "options": [
+        "Kingston",
+        "San Juan",
+        "Port-au-Prince",
+        "Bridgetown"
+      ],
+      "answer": "Kingston",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e729af642d5f",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of South Korea?",
+      "options": [
+        "Seoul",
+        "Pyongyang",
+        "Taegu",
+        "Kitakyushu"
+      ],
+      "answer": "Seoul",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ece4b7fcd722",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Cyprus?",
+      "options": [
+        "Nicosia",
+        "Paphos",
+        "Limassol",
+        "Larnaca"
+      ],
+      "answer": "Nicosia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-edc9b10d3443",
+      "type": "multiple-choice",
+      "prompt": "What is the official German name of the Swiss Federal Railways?",
+      "options": [
+        "Schweizerische Bundesbahnen",
+        "Schweizerische Nationalbahnen",
+        "Bundesbahnen der Schweiz",
+        "Schweizerische Staatsbahnen"
+      ],
+      "answer": "Schweizerische Bundesbahnen",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ef1ec39164f9",
+      "type": "multiple-choice",
+      "prompt": "What is the official language of Costa Rica?",
+      "options": [
+        "Spanish",
+        "English",
+        "Portuguese",
+        "Creole"
+      ],
+      "answer": "Spanish",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f145f4dd0770",
+      "type": "multiple-choice",
+      "prompt": "Which is the largest freshwater lake in the world?",
+      "options": [
+        "Lake Superior",
+        "Caspian Sea",
+        "Lake Michigan",
+        "Lake Huron"
+      ],
+      "answer": "Lake Superior",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f1c7c1f86f8d",
+      "type": "multiple-choice",
+      "prompt": "Which country ranks first in the number of historically active volcanoes?",
+      "options": [
+        "Indonesia",
+        "Japan",
+        "USA",
+        "India"
+      ],
+      "answer": "Indonesia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f423cbbed1e0",
+      "type": "multiple-choice",
+      "prompt": "Which state of the United States is the smallest?",
+      "options": [
+        "Rhode Island",
+        "Maine",
+        "Vermont",
+        "Massachusetts"
+      ],
+      "answer": "Rhode Island",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f5eec172ccb6",
+      "type": "multiple-choice",
+      "prompt": "On which continent/s is the entire country of Spain specifically located when taking into account all of its territory?",
+      "options": [
+        "Europe and Africa",
+        "Europe, Africa and Asia",
+        "Europe",
+        "Europe and Asia"
+      ],
+      "answer": "Europe and Africa",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f79bdf069ba3",
+      "type": "multiple-choice",
+      "prompt": "What is the largest country, by area, that has only one time zone?",
+      "options": [
+        "China",
+        "Canada",
+        "India",
+        "Russia"
+      ],
+      "answer": "China",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fc86f7dc39a5",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT a city in Saudi Arabia?",
+      "options": [
+        "Dubai",
+        "Riyadh",
+        "Mecca",
+        "Medina"
+      ],
+      "answer": "Dubai",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fca587d0a312",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Peru?",
+      "options": [
+        "Lima",
+        "Santiago",
+        "Montevideo",
+        "Buenos Aires"
+      ],
+      "answer": "Lima",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fcecab36bb56",
+      "type": "multiple-choice",
+      "prompt": "In which Indian city can the Taj Mahal be found?",
+      "options": [
+        "Agra",
+        "Mumbai",
+        "Faridabad",
+        "Thane"
+      ],
+      "answer": "Agra",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fd594703e69a",
+      "type": "multiple-choice",
+      "prompt": "Which country claims ownership of the disputed state Kosovo?",
+      "options": [
+        "Serbia",
+        "Croatia",
+        "Albania",
+        "Macedonia"
+      ],
+      "answer": "Serbia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fdd7805ea3ee",
+      "type": "multiple-choice",
+      "prompt": "What is the tallest mountain in Canada?",
+      "options": [
+        "Mount Logan",
+        "Mont Tremblant",
+        "Whistler Mountain",
+        "Blue Mountain"
+      ],
+      "answer": "Mount Logan",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fe266353a745",
+      "type": "multiple-choice",
+      "prompt": "Which city is the capital of Michigan?",
+      "options": [
+        "Lansing",
+        "Kalamazoo",
+        "Ann Arbor",
+        "Detroit"
+      ],
+      "answer": "Lansing",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fe5874f96416",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Scotland?",
+      "options": [
+        "Edinburgh",
+        "Glasgow",
+        "Dundee",
+        "London"
+      ],
+      "answer": "Edinburgh",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ff009e822ff9",
+      "type": "multiple-choice",
+      "prompt": "What is the capital of Wisconsin, USA?",
+      "options": [
+        "Madison",
+        "Milwaukee",
+        "Wisconsin Dells",
+        "Green Bay"
+      ],
+      "answer": "Madison",
+      "difficulty": "hard",
+      "region": "general"
     }
   ]
 }

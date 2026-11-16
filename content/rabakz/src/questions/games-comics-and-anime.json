@@ -1,0 +1,3332 @@
+{
+  "category": "games-comics-and-anime",
+  "title": "Games, comics and anime",
+  "defaultSource": {
+    "kind": "dataset",
+    "dataset": "Open Trivia Database",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "url": "https://opentdb.com",
+    "notice": "Questions from the Open Trivia Database (opentdb.com), licensed under CC BY-SA 4.0. Adapted for Kaki Arcade: selected, screened for an all-ages audience, regrouped and tidied. The adapted questions are offered under the same licence."
+  },
+  "questions": [
+    {
+      "id": "otdb-019fb6519c2b",
+      "type": "multiple-choice",
+      "prompt": "In the popular MOBA League of Legends, which of the following champions is nicknamed \"the Virtuoso\"?",
+      "options": [
+        "Jhin",
+        "Kayle",
+        "Ezreal",
+        "Camille"
+      ],
+      "answer": "Jhin",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-01bf30c2abdc",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT a team available in the game Pokémon Go?",
+      "options": [
+        "Team Rocket",
+        "Team Instinct",
+        "Team Valor",
+        "Team Mystic"
+      ],
+      "answer": "Team Rocket",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0203de8b0c0a",
+      "type": "multiple-choice",
+      "prompt": "In Monster Hunter Generations, which of these hunter arts is exclusive to the Longsword?",
+      "options": [
+        "Unhinged Spirit",
+        "Shoryugeki",
+        "Provoke",
+        "Demon Riot"
+      ],
+      "answer": "Unhinged Spirit",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-035f2273b1c4",
+      "type": "multiple-choice",
+      "prompt": "Which \"Toy Story\" character was voiced by Don Rickles?",
+      "options": [
+        "Mr. Potato Head",
+        "Slinky Dog",
+        "Hamm",
+        "Rex"
+      ],
+      "answer": "Mr. Potato Head",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-04b21471e887",
+      "type": "multiple-choice",
+      "prompt": "Who voiced the Genie in Disney's \"Aladdin\"?",
+      "options": [
+        "Robin Williams",
+        "Billy Crystal",
+        "Adam Sandler",
+        "Jim Carrey"
+      ],
+      "answer": "Robin Williams",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-05b33374dcaa",
+      "type": "multiple-choice",
+      "prompt": "Which of these cities is NOT featured in the Pandemic board game?",
+      "options": [
+        "Berlin",
+        "Ho Chi Minh City",
+        "Lagos",
+        "Karachi"
+      ],
+      "answer": "Berlin",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-069c4a2457dc",
+      "type": "multiple-choice",
+      "prompt": "What is not a playable race in \"Final Fantasy XIV: A Realm Reborn\"?",
+      "options": [
+        "Hume",
+        "Miqo'te",
+        "Lalafell",
+        "Roegadyn"
+      ],
+      "answer": "Hume",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-076cb4152c32",
+      "type": "multiple-choice",
+      "prompt": "Who is the author of the manga series \"Astro Boy\"?",
+      "options": [
+        "Osamu Tezuka",
+        "Mitsuteri Yokoyama",
+        "Takao Saito",
+        "Yoshihiro Tatsumi"
+      ],
+      "answer": "Osamu Tezuka",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-07be2d992e14",
+      "type": "multiple-choice",
+      "prompt": "In the Nintendo Game Splatoon 2, what is Marina's screen name?",
+      "options": [
+        "DJ_Hyperfresh",
+        "MC.princess",
+        "Kidnotsquid123",
+        "I<30ffTh3H00k"
+      ],
+      "answer": "DJ_Hyperfresh",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-09c9dc3273cd",
+      "type": "multiple-choice",
+      "prompt": "How many Star Spirits do you rescue in the Nintendo 64 video game \"Paper Mario\"?",
+      "options": [
+        "7",
+        "5",
+        "10",
+        "12"
+      ],
+      "answer": "7",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0a352bdfb249",
+      "type": "multiple-choice",
+      "prompt": "In the 2014 Pokemon VGC Finals, which Pokemon was famous for bringing the winner to victory?",
+      "options": [
+        "Pachirisu",
+        "Garchomp",
+        "Lapras",
+        "Primal Groudon"
+      ],
+      "answer": "Pachirisu",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0a565a441094",
+      "type": "multiple-choice",
+      "prompt": "What was the development code name for the \"Urza's Destiny\" expansion for \"Magic: The Gathering\", released in 1999?",
+      "options": [
+        "Chimichanga",
+        "Burrito",
+        "Taquito",
+        "Enchilada"
+      ],
+      "answer": "Chimichanga",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0a8c8f912889",
+      "type": "multiple-choice",
+      "prompt": "In Dragon Ball Z, who was the first character to go Super Saiyan 2?",
+      "options": [
+        "Gohan",
+        "Goku",
+        "Vegeta",
+        "Trunks"
+      ],
+      "answer": "Gohan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0b69bd7493eb",
+      "type": "multiple-choice",
+      "prompt": "Which of these blocks in \"Minecraft\" has the lowest blast resistance?",
+      "options": [
+        "Sand",
+        "End Stone",
+        "Water",
+        "Wood Planks"
+      ],
+      "answer": "Sand",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0be464d8a438",
+      "type": "multiple-choice",
+      "prompt": "In the game Paper Mario for the Nintendo 64 the first partner you meet is a Goomba, what is its name?",
+      "options": [
+        "Goombario",
+        "Goombella",
+        "Goombarry",
+        "Goomby"
+      ],
+      "answer": "Goombario",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0c9a44feb321",
+      "type": "multiple-choice",
+      "prompt": "Who is the creator of the manga series \"One Piece\"?",
+      "options": [
+        "Eiichiro Oda",
+        "Yoshihiro Togashi",
+        "Hayao Miyazaki",
+        "Masashi Kishimoto"
+      ],
+      "answer": "Eiichiro Oda",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0cabdcc1d747",
+      "type": "multiple-choice",
+      "prompt": "Which of these is not a DLC vehicle in \"Mario Kart 8\"?",
+      "options": [
+        "Wild Wiggler",
+        "Bone Rattler",
+        "B Dasher",
+        "300 SL Roadster"
+      ],
+      "answer": "Wild Wiggler",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0ce4b5f46169",
+      "type": "multiple-choice",
+      "prompt": "What's the name of the main protagonist in the \"Legend of Zelda\" franchise?",
+      "options": [
+        "Link",
+        "Mario",
+        "Zelda",
+        "Pit"
+      ],
+      "answer": "Link",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0d6ea9183e0c",
+      "type": "multiple-choice",
+      "prompt": "What was the first video game in the Batman \"Arkham\" series?",
+      "options": [
+        "Arkham Asylum",
+        "Arkham Knight",
+        "Arkham City",
+        "Arkham Origins"
+      ],
+      "answer": "Arkham Asylum",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0dc042453088",
+      "type": "multiple-choice",
+      "prompt": "Which of these characters from \"SpongeBob SquarePants\" is not a squid?",
+      "options": [
+        "Gary",
+        "Orvillie",
+        "Squidward",
+        "Squidette"
+      ],
+      "answer": "Gary",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0f24f9b8c83d",
+      "type": "multiple-choice",
+      "prompt": "Which puzzle game was designed by a Russian programmer, featuring Russian buildings and music?",
+      "options": [
+        "Tetris",
+        "Jenga",
+        "Boulder Dash",
+        "Puzzled"
+      ],
+      "answer": "Tetris",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0f30043b778d",
+      "type": "multiple-choice",
+      "prompt": "What type of Pokémon is Charizard?",
+      "options": [
+        "Fire/Flying",
+        "Fire",
+        "Dragon",
+        "Fire/Dragon"
+      ],
+      "answer": "Fire/Flying",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0f677ee22844",
+      "type": "multiple-choice",
+      "prompt": "Which monster in \"Monster Hunter Tri\" was causing earthquakes in Moga Village?",
+      "options": [
+        "Ceadeus",
+        "Alatreon",
+        "Rathalos",
+        "Lagiacrus"
+      ],
+      "answer": "Ceadeus",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0fa0dd305068",
+      "type": "multiple-choice",
+      "prompt": "Which planet did Superman come from?",
+      "options": [
+        "Krypton",
+        "Avalon",
+        "Xolnar",
+        "Starhaven"
+      ],
+      "answer": "Krypton",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1059d8218113",
+      "type": "multiple-choice",
+      "prompt": "Which issue of the \"Sonic the Hedgehog\" comic did Scourge the Hedgehog make his first appearance?",
+      "options": [
+        "Sonic the Hedgehog #11",
+        "Sonic Universe #32",
+        "Sonic the Hedgehog #161",
+        "Sonic the Hedgehog #47"
+      ],
+      "answer": "Sonic the Hedgehog #11",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-11562accf5bd",
+      "type": "multiple-choice",
+      "prompt": "In 1978, Superman teamed up with what celebrity, to defeat an alien invasion?",
+      "options": [
+        "Muhammad Ali",
+        "Mike Tyson",
+        "Sylvester Stallone",
+        "Arnold Schwarzenegger"
+      ],
+      "answer": "Muhammad Ali",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-128d5dc60c81",
+      "type": "multiple-choice",
+      "prompt": "Which Batman sidekick is the son of Talia al Ghul?",
+      "options": [
+        "Damian Wayne",
+        "Dick Grayson",
+        "Tim Drake",
+        "Jason Todd"
+      ],
+      "answer": "Damian Wayne",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-129296498ecd",
+      "type": "multiple-choice",
+      "prompt": "When was Pokemon GO released in North America?",
+      "options": [
+        "July 6th, 2016",
+        "June 5th, 2016",
+        "May 24th, 2016",
+        "January 2nd, 2017"
+      ],
+      "answer": "July 6th, 2016",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-13567e3654fb",
+      "type": "multiple-choice",
+      "prompt": "The song 'Little April Shower' features in which Disney cartoon film?",
+      "options": [
+        "Bambi",
+        "Cinderella",
+        "Pinocchio",
+        "The Jungle Book"
+      ],
+      "answer": "Bambi",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1385afa6bc72",
+      "type": "multiple-choice",
+      "prompt": "In Minecraft, which two items must be combined to craft a torch?",
+      "options": [
+        "Stick and Coal",
+        "Stick and Fire",
+        "Wood and Coal",
+        "Wood and Fire"
+      ],
+      "answer": "Stick and Coal",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-13a425ff7695",
+      "type": "multiple-choice",
+      "prompt": "In the Lego Island trilogy, who taught Pepper Roni how to read?",
+      "options": [
+        "Officer Laura Brick",
+        "Papa Brickolini",
+        "Officer Nick Brick",
+        "Mama Brickolini"
+      ],
+      "answer": "Officer Laura Brick",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-14b46ad8e8a1",
+      "type": "multiple-choice",
+      "prompt": "Which of these cards from \"Magic: The Gathering\" has a flavor text that begins with \"Oi oi oi\"?",
+      "options": [
+        "Uthden Troll",
+        "Lotleth Troll",
+        "Albino Troll",
+        "Harvester Troll"
+      ],
+      "answer": "Uthden Troll",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-15871302b492",
+      "type": "multiple-choice",
+      "prompt": "Who created the pump \"F.L.U.D.D.\" Mario uses in Super Mario Sunshine?",
+      "options": [
+        "Elvin Gadd",
+        "Robert Fludd",
+        "Nirona",
+        "Crygor"
+      ],
+      "answer": "Elvin Gadd",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1604e92bf6d7",
+      "type": "multiple-choice",
+      "prompt": "In the game \"Sonic the Hedgehog (1991)\" how many chaos emeralds could you collect?",
+      "options": [
+        "6",
+        "8",
+        "7",
+        "9"
+      ],
+      "answer": "6",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-16a859499064",
+      "type": "multiple-choice",
+      "prompt": "Which water-type Pokémon starter was introduced in the 4th generation of the series?",
+      "options": [
+        "Piplup",
+        "Totodile",
+        "Oshawott",
+        "Mudkip"
+      ],
+      "answer": "Piplup",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-17ad0f3b8b62",
+      "type": "multiple-choice",
+      "prompt": "In which Mario game did the Mega Mushroom make its debut?",
+      "options": [
+        "Mario Party 4",
+        "New Super Mario Bros.",
+        "Mario Kart Wii",
+        "Super Mario 3D World"
+      ],
+      "answer": "Mario Party 4",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-17dcb672cdae",
+      "type": "multiple-choice",
+      "prompt": "\"Minecraft\" was released from beta in 2011 during a convention held in which city?",
+      "options": [
+        "Las Vegas",
+        "Paris",
+        "Bellevue",
+        "London"
+      ],
+      "answer": "Las Vegas",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-19ccc2ef98cb",
+      "type": "multiple-choice",
+      "prompt": "What name is the main character Chihiro given in the 2001 movie \"Spirited Away\"?",
+      "options": [
+        "Sen (Thousand)",
+        "Hyaku (Hundred)",
+        "Ichiman (Ten thousand)",
+        "Juu (Ten)"
+      ],
+      "answer": "Sen (Thousand)",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-19d258fba3ef",
+      "type": "multiple-choice",
+      "prompt": "Who was Tetris created by?",
+      "options": [
+        "Alexey Pajitnov",
+        "Toru Iwatani",
+        "Allan Alcorn",
+        "William Higinbotham"
+      ],
+      "answer": "Alexey Pajitnov",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1a8f0b10bd8c",
+      "type": "multiple-choice",
+      "prompt": "Which of the following games was not a launch title for the Nintendo Gamecube?",
+      "options": [
+        "Super Mario Sunshine",
+        "Luigi’s Mansion",
+        "Star Wars Rogue Squadron II",
+        "Disney’s Tarzan Untamed"
+      ],
+      "answer": "Super Mario Sunshine",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1a9019855919",
+      "type": "multiple-choice",
+      "prompt": "In \"The Witness\", how many lasers must be activated to get into the mountain area?",
+      "options": [
+        "7",
+        "8",
+        "5",
+        "12"
+      ],
+      "answer": "7",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1b0bdb350236",
+      "type": "multiple-choice",
+      "prompt": "Which universe crossover was introduced in the \"Sonic the Hedgehog\" comic issue #247?",
+      "options": [
+        "Mega Man",
+        "Super Mario Brothers",
+        "Alex Kidd",
+        "Super Monkey Ball"
+      ],
+      "answer": "Mega Man",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1c20c483f906",
+      "type": "multiple-choice",
+      "prompt": "One of the Nintendo Entertainment System voice channels supports playback of sound samples. Which one?",
+      "options": [
+        "DMC",
+        "Noise",
+        "Triangle",
+        "Square"
+      ],
+      "answer": "DMC",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1dfec393c83f",
+      "type": "multiple-choice",
+      "prompt": "In the Mario Kart games, Rosalina is in which weight class?",
+      "options": [
+        "Heavy",
+        "Medium",
+        "Light",
+        "Light-Medium"
+      ],
+      "answer": "Heavy",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1e500b57420e",
+      "type": "multiple-choice",
+      "prompt": "Who is the leader of Team Mystic in Pokémon Go?",
+      "options": [
+        "Blanche",
+        "Candela",
+        "Spark",
+        "Willow"
+      ],
+      "answer": "Blanche",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1ed9e3881fc5",
+      "type": "multiple-choice",
+      "prompt": "In the \"Sailor Moon\" series, what is Sailor Jupiter's civilian name?",
+      "options": [
+        "Makoto Kino",
+        "Minako Aino",
+        "Usagi Tsukino",
+        "Rei Hino"
+      ],
+      "answer": "Makoto Kino",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1f2b24b94c16",
+      "type": "multiple-choice",
+      "prompt": "The board game \"Ra\" was designed by which designer?",
+      "options": [
+        "Reiner Knizia",
+        "Bruno Cathala",
+        "Uwe Rosenberg",
+        "Allison Kline"
+      ],
+      "answer": "Reiner Knizia",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2033d128f17a",
+      "type": "multiple-choice",
+      "prompt": "What is Scooby Doo's full name?",
+      "options": [
+        "Scoobert Doo",
+        "Scooter Doo",
+        "Scooby Dooby Doo",
+        "Scoobity Doo"
+      ],
+      "answer": "Scoobert Doo",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-211f0fa5e487",
+      "type": "multiple-choice",
+      "prompt": "Which one of these characters was first introduced in Sonic Boom: Rise of Lyric?",
+      "options": [
+        "Sticks the Badger",
+        "Mighty the Armadillo",
+        "Espio the Chameleon",
+        "Rouge the Bat"
+      ],
+      "answer": "Sticks the Badger",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2164b86d9fc0",
+      "type": "multiple-choice",
+      "prompt": "In the second-generation Pokémon games, which Pokémon can you start with?",
+      "options": [
+        "Chikorita, Cyndaquil, and Totodile",
+        "Bulbasaur, Charmander, and Squirtle",
+        "Treecko,Torchic, and Mudkip",
+        "Grassy, Firey, and Watery"
+      ],
+      "answer": "Chikorita, Cyndaquil, and Totodile",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2284dd7cc522",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Mario Kart 8 Deluxe items will NOT make you invincible?",
+      "options": [
+        "Golden Mushroom",
+        "Star",
+        "Bullet Bill",
+        "Boo"
+      ],
+      "answer": "Golden Mushroom",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2388a8317d55",
+      "type": "multiple-choice",
+      "prompt": "What block in Minecraft has the highest blast resistance?",
+      "options": [
+        "Barrier",
+        "Obsidian",
+        "Bedrock",
+        "Block of Diamond"
+      ],
+      "answer": "Barrier",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-23893434998e",
+      "type": "multiple-choice",
+      "prompt": "In Super Mario Bros., who informs Mario that the princess is in another castle?",
+      "options": [
+        "Toad",
+        "Luigi",
+        "Yoshi",
+        "Bowser"
+      ],
+      "answer": "Toad",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-252832392d42",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the main character of the anime \"One-Punch Man\"?",
+      "options": [
+        "Saitama",
+        "Genos",
+        "Sonic",
+        "King"
+      ],
+      "answer": "Saitama",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-25b4e33e278e",
+      "type": "multiple-choice",
+      "prompt": "Which game was the first time Mario was voiced by Charles Martinet?",
+      "options": [
+        "Mario's Game Gallery",
+        "Super Mario 64",
+        "Mario Tennis",
+        "Dr. Mario 64"
+      ],
+      "answer": "Mario's Game Gallery",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-267300e89320",
+      "type": "multiple-choice",
+      "prompt": "Which of the following films was NOT directed by Hayao Miyazaki?",
+      "options": [
+        "Wolf Children",
+        "Princess Mononoke",
+        "Spirited Away",
+        "Kiki's Delivery Service"
+      ],
+      "answer": "Wolf Children",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-272cb8e6cbaa",
+      "type": "multiple-choice",
+      "prompt": "In the game Pokémon Conquest, how many kingdoms make up the region of Ransei?",
+      "options": [
+        "17",
+        "18",
+        "15",
+        "16"
+      ],
+      "answer": "17",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-27335b6a028e",
+      "type": "multiple-choice",
+      "prompt": "Which drive form was added into Kingdom Hearts II Final Mix?",
+      "options": [
+        "Limit Form",
+        "Valor Form",
+        "Wisdom Form",
+        "Anti Form"
+      ],
+      "answer": "Limit Form",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2740db283f10",
+      "type": "multiple-choice",
+      "prompt": "In Pokemon Red & Blue, what is the name of HM05?",
+      "options": [
+        "Flash",
+        "Strength",
+        "Cut",
+        "Fly"
+      ],
+      "answer": "Flash",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2743d602fc66",
+      "type": "multiple-choice",
+      "prompt": "In what year was Pokémon Diamond & Pearl released in Japan?",
+      "options": [
+        "2006",
+        "2009",
+        "2007",
+        "2008"
+      ],
+      "answer": "2006",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-27808d72972f",
+      "type": "multiple-choice",
+      "prompt": "What is the age of Ash Ketchum in Pokemon when he starts his journey?",
+      "options": [
+        "10",
+        "11",
+        "12",
+        "9"
+      ],
+      "answer": "10",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-282613b0f90b",
+      "type": "multiple-choice",
+      "prompt": "What's the name of the Halloween-related Sims 4 Stuff Pack released September 29th, 2015?",
+      "options": [
+        "Spooky Stuff",
+        "Ghosts n' Ghouls",
+        "Nerving Nights",
+        "Fearful Frights"
+      ],
+      "answer": "Spooky Stuff",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-286f52a47a3b",
+      "type": "multiple-choice",
+      "prompt": "In Calvin and Hobbes, what is the name of the principal at Calvin's school?",
+      "options": [
+        "Mr. Spittle",
+        "Mr. Boreman",
+        "Mr. Spitling",
+        "Mr. Moe"
+      ],
+      "answer": "Mr. Spittle",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-28cdabe4b8dd",
+      "type": "multiple-choice",
+      "prompt": "What do you declare in Rīchi Mahjong when you've drawn your winning tile?",
+      "options": [
+        "Tsumo",
+        "Ron",
+        "Rīchi",
+        "Kan"
+      ],
+      "answer": "Tsumo",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-29c7094f8aa4",
+      "type": "multiple-choice",
+      "prompt": "In chess, which is a characteristic of the King's Gambit?",
+      "options": [
+        "Sacrificing a pawn",
+        "Sacrificing the king for a queen",
+        "Castling kingside",
+        "Moving the king on the 2nd move"
+      ],
+      "answer": "Sacrificing a pawn",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2c15cbdd4ab7",
+      "type": "multiple-choice",
+      "prompt": "Which Mario spin-off game did Waluigi make his debut?",
+      "options": [
+        "Mario Tennis",
+        "Mario Party 3",
+        "Mario Kart: Double Dash!!",
+        "Mario Golf: Toadstool Tour"
+      ],
+      "answer": "Mario Tennis",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2c6acd860cae",
+      "type": "multiple-choice",
+      "prompt": "Blinky, Pinky, Inky and Clyde are characters from which classic video game?",
+      "options": [
+        "Pac-Man",
+        "Gauntlet",
+        "Space Invaders",
+        "Street Fighter"
+      ],
+      "answer": "Pac-Man",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ced084cf491",
+      "type": "multiple-choice",
+      "prompt": "This Marvel superhero is often called \"The man without fear\".",
+      "options": [
+        "Daredevil",
+        "Thor",
+        "Wolverine",
+        "Hulk"
+      ],
+      "answer": "Daredevil",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ede4acd3952",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Pokemon Types was present in the original games, Red and Blue?",
+      "options": [
+        "Ice",
+        "Steel",
+        "Dark",
+        "Fairy"
+      ],
+      "answer": "Ice",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-309178eef161",
+      "type": "multiple-choice",
+      "prompt": "Who was the first official world chess champion?",
+      "options": [
+        "Wilhelm Steinitz",
+        "José Raúl Capablanca",
+        "Emanuel Lasker",
+        "Bobby Fischer"
+      ],
+      "answer": "Wilhelm Steinitz",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-31ba2f594e81",
+      "type": "multiple-choice",
+      "prompt": "What company developed the Xbox line of video game consoles?",
+      "options": [
+        "Microsoft",
+        "Sony",
+        "Toshiba",
+        "IBM"
+      ],
+      "answer": "Microsoft",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-329c90d65ed1",
+      "type": "multiple-choice",
+      "prompt": "The board game Monopoly takes its street names from which real American city?",
+      "options": [
+        "Atlantic City, New Jersey",
+        "Las Vegas, Nevada",
+        "Duluth, Minnesota",
+        "Charleston, South Carolina"
+      ],
+      "answer": "Atlantic City, New Jersey",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-331c0e58d403",
+      "type": "multiple-choice",
+      "prompt": "In Pokemon Diamond, Pearl and Platinum, where can a Munchlax be found?",
+      "options": [
+        "Honey Trees",
+        "Trading with an NPC",
+        "Grass on Route 209",
+        "Wayward Cave"
+      ],
+      "answer": "Honey Trees",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-33f99252ab78",
+      "type": "multiple-choice",
+      "prompt": "Which episode of the Phantasy Star Online series is exclusive to the Nintendo Gamecube?",
+      "options": [
+        "Episode III",
+        "Episode I",
+        "Episode II",
+        "Episode IV"
+      ],
+      "answer": "Episode III",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3402c52b38cd",
+      "type": "multiple-choice",
+      "prompt": "How many differently shaped Tetris pieces are there?",
+      "options": [
+        "7",
+        "5",
+        "6",
+        "8"
+      ],
+      "answer": "7",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-34835ecb7148",
+      "type": "multiple-choice",
+      "prompt": "In Minecraft, what types of sound files are required for custom SFX to work in resource packs?",
+      "options": [
+        ".ogg",
+        ".wav",
+        ".mp3",
+        ".class"
+      ],
+      "answer": ".ogg",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-358e014ef7e1",
+      "type": "multiple-choice",
+      "prompt": "What is the name the location-based augmented reality game developed by Niantic before Pokémon GO?",
+      "options": [
+        "Ingress",
+        "Aggress",
+        "Regress",
+        "Digress"
+      ],
+      "answer": "Ingress",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-35ba83992fe5",
+      "type": "multiple-choice",
+      "prompt": "Kirito and Asuna are main characters from which anime?",
+      "options": [
+        "Sword Art Online",
+        "One Piece",
+        "Death Note",
+        "Fairy Tail"
+      ],
+      "answer": "Sword Art Online",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-36534fd857cf",
+      "type": "multiple-choice",
+      "prompt": "Which retro video game was released first?",
+      "options": [
+        "Space Invaders",
+        "Galaga",
+        "Pac-Man",
+        "Asteroids"
+      ],
+      "answer": "Space Invaders",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-367508e033eb",
+      "type": "multiple-choice",
+      "prompt": "In Pre-Super Genesis universe of \"Sonic the Hedgehog\" comic, what was the name of Sally Acorn's brother?",
+      "options": [
+        "Elias Acorn",
+        "Maximillian Acorn",
+        "Alexis Acorn",
+        "Frederick Acorn"
+      ],
+      "answer": "Elias Acorn",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-37942f25cd35",
+      "type": "multiple-choice",
+      "prompt": "Who was the Author of the manga Monster Hunter Orage?",
+      "options": [
+        "Hiro Mashima",
+        "Shin Yamamoto",
+        "Keiichi Hikami",
+        "Hirohiko Araki"
+      ],
+      "answer": "Hiro Mashima",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-38b5981fd5eb",
+      "type": "multiple-choice",
+      "prompt": "During the game's development, what was the first ever created Pokémon?",
+      "options": [
+        "Rhyhorn",
+        "Bulbasaur",
+        "Mew",
+        "Arceus"
+      ],
+      "answer": "Rhyhorn",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-38c9dbc5d04c",
+      "type": "multiple-choice",
+      "prompt": "Which of these is not a real character in the cartoon series My Little Pony: Friendship is Magic?",
+      "options": [
+        "Rose Marene",
+        "Pinkie Pie",
+        "Maud Pie",
+        "Rainbow Dash"
+      ],
+      "answer": "Rose Marene",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-38ca04f7111d",
+      "type": "multiple-choice",
+      "prompt": "According to their longtime nickname, what kind of \"duo\" are Batman & Robin?",
+      "options": [
+        "Dynamic",
+        "Dangerous",
+        "Dynastic",
+        "Delirious"
+      ],
+      "answer": "Dynamic",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-39a67e02220d",
+      "type": "multiple-choice",
+      "prompt": "How many stars are there to collect in Super Mario 64?",
+      "options": [
+        "120",
+        "60",
+        "80",
+        "100"
+      ],
+      "answer": "120",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-39c99a9eca19",
+      "type": "multiple-choice",
+      "prompt": "In the Super Mario Bros. Series, what is Yoshi's scientific name?",
+      "options": [
+        "T. Yoshisaur Munchakoopas",
+        "Yoshi",
+        "T. Yoshisotop Munchakoopas",
+        "Yossy"
+      ],
+      "answer": "T. Yoshisaur Munchakoopas",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a44e22171eb",
+      "type": "multiple-choice",
+      "prompt": "What is the original name of Final Fantasy XV?",
+      "options": [
+        "Final Fantasy Versus XIII",
+        "Final Fantasy: Reborn",
+        "Final Fantasy XVI",
+        "Final Fantasy XIII-3"
+      ],
+      "answer": "Final Fantasy Versus XIII",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3b22d0538f9d",
+      "type": "multiple-choice",
+      "prompt": "How many controllers could a Nintendo GameCube have plugged in at one time?",
+      "options": [
+        "4",
+        "8",
+        "6",
+        "2"
+      ],
+      "answer": "4",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3be60aef7204",
+      "type": "multiple-choice",
+      "prompt": "In the Street Fighter franchise, what's Ken's surname?",
+      "options": [
+        "Masters",
+        "Mitchell",
+        "Michaels",
+        "Morrison"
+      ],
+      "answer": "Masters",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3ca10f072d64",
+      "type": "multiple-choice",
+      "prompt": "What year was the first San Diego Comic-Con?",
+      "options": [
+        "1970",
+        "2000",
+        "1990",
+        "1985"
+      ],
+      "answer": "1970",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3cb316ac65e6",
+      "type": "multiple-choice",
+      "prompt": "What is the last name of the primary female protagonist of Final Fantasy VIII?",
+      "options": [
+        "Heartilly",
+        "Loire",
+        "Almasy",
+        "Trepe"
+      ],
+      "answer": "Heartilly",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3d398f7dbfe4",
+      "type": "multiple-choice",
+      "prompt": "In DC comics, what is Owlman's real name?",
+      "options": [
+        "Thomas Wayne Jr.",
+        "Thomas Wayne",
+        "Bruce Wayne",
+        "Joseph Chill"
+      ],
+      "answer": "Thomas Wayne Jr.",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3db12ab1894f",
+      "type": "multiple-choice",
+      "prompt": "What ingredients are required to make a cake in Minecraft?",
+      "options": [
+        "Milk, Sugar, Egg, and Wheat",
+        "Milk, Bread, Egg, and Wheat",
+        "Milk, Sugar Cane, Egg, and Wheat",
+        "Milk, Sugar, and Wheat"
+      ],
+      "answer": "Milk, Sugar, Egg, and Wheat",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3dde16583b4e",
+      "type": "multiple-choice",
+      "prompt": "Which franchise had a special event hosted in the popular MMORPG Final Fantasy XIV: A Realm Reborn?",
+      "options": [
+        "Yo-kai Watch",
+        "Pokémon",
+        "Yu-gi-oh",
+        "Buddyfight"
+      ],
+      "answer": "Yo-kai Watch",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f33b2609c26",
+      "type": "multiple-choice",
+      "prompt": "Which one of these cartoon characters is NOT voiced by Rob Paulsen?",
+      "options": [
+        "Max Tennyson (Ben 10)",
+        "Carl Wheezer (Jimmy Neutron)",
+        "Yakko Warner (Animaniacs)",
+        "The Mask (The Mask, TV Series)"
+      ],
+      "answer": "Max Tennyson (Ben 10)",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3fd3f8528db6",
+      "type": "multiple-choice",
+      "prompt": "What are tiny Thwomps called in Super Mario World?",
+      "options": [
+        "Thwimps",
+        "Little Thwomp",
+        "Mini Thwomp",
+        "Tiny Tims"
+      ],
+      "answer": "Thwimps",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-40639a1d278c",
+      "type": "multiple-choice",
+      "prompt": "In \"The Legend of Zelda: Ocarina of Time,\" what is the maximum amount of rupees that Link can carry?",
+      "options": [
+        "500",
+        "999",
+        "1000",
+        "5000"
+      ],
+      "answer": "500",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-40bc37523b8b",
+      "type": "multiple-choice",
+      "prompt": "What is the fastest speed possible in Trackmania²: Stadium?",
+      "options": [
+        "1000 km/h",
+        "500 km/h",
+        "320 km/h",
+        "100 km/h"
+      ],
+      "answer": "1000 km/h",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-41374243c53b",
+      "type": "multiple-choice",
+      "prompt": "Who authored The Adventures of Tintin?",
+      "options": [
+        "Hergé",
+        "E.P. Jacobs",
+        "Rin Tin Tin",
+        "Chic Young"
+      ],
+      "answer": "Hergé",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-41bb5bb76890",
+      "type": "multiple-choice",
+      "prompt": "The board game \"Monopoly\" is a variation of what board game?",
+      "options": [
+        "The Landlord's Game",
+        "Territorial Dispute",
+        "Property Feud",
+        "The Monopolist's Game"
+      ],
+      "answer": "The Landlord's Game",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4259837ab984",
+      "type": "multiple-choice",
+      "prompt": "Which Final Fantasy game consisted of a female-only cast of party members?",
+      "options": [
+        "Final Fantasy X-2",
+        "Final Fantasy IX",
+        "Final Fantasy V",
+        "Final Fantasy XIII-2"
+      ],
+      "answer": "Final Fantasy X-2",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-42faa55fdd6b",
+      "type": "multiple-choice",
+      "prompt": "The original mascot of the popular Nintendo game, \"Splatoon\" was going to be...",
+      "options": [
+        "Mario",
+        "Inklings",
+        "Octolings",
+        "Zelda"
+      ],
+      "answer": "Mario",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-442a38e70c90",
+      "type": "multiple-choice",
+      "prompt": "What was the code name for the \"Nintendo Gamecube\"?",
+      "options": [
+        "Dolphin",
+        "Nitro",
+        "Revolution",
+        "Atlantis"
+      ],
+      "answer": "Dolphin",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-44602ed529e6",
+      "type": "multiple-choice",
+      "prompt": "Who wrote and directed the animated movie \"Spirited Away\" (2001)?",
+      "options": [
+        "Hayao Miyazaki",
+        "Isao Takahata",
+        "Mamoru Hosoda",
+        "Hidetaka Miyazaki"
+      ],
+      "answer": "Hayao Miyazaki",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-45411f2adc19",
+      "type": "multiple-choice",
+      "prompt": "Which of these cartoons had a character named Heinz Doofenshmirtz?",
+      "options": [
+        "Phineas & Ferb",
+        "Ren & Stimpy",
+        "Ben 10",
+        "Batman: The Animated Series"
+      ],
+      "answer": "Phineas & Ferb",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-45dc9d780ad9",
+      "type": "multiple-choice",
+      "prompt": "Who was the villain of ''The Lion King''?",
+      "options": [
+        "Scar",
+        "Fred",
+        "Jafar",
+        "Vada"
+      ],
+      "answer": "Scar",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-469f9a18f521",
+      "type": "multiple-choice",
+      "prompt": "Townsend Coleman provided the voice for which turtle in the original 1987 series of \"Teenage Mutant Ninja Turtles\"?",
+      "options": [
+        "Michelangelo",
+        "Leonardo",
+        "Donatello",
+        "Raphael"
+      ],
+      "answer": "Michelangelo",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-46b6ddd00f00",
+      "type": "multiple-choice",
+      "prompt": "In the Animal Crossing series, which flower is erroneously called the \"Jacob's Ladder\"?",
+      "options": [
+        "Lily of the Valley",
+        "Hydrangea",
+        "Harebell",
+        "Yarrow"
+      ],
+      "answer": "Lily of the Valley",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-470286991e9b",
+      "type": "multiple-choice",
+      "prompt": "Which of these board games do NOT utilize standard 6-sided dice?",
+      "options": [
+        "The Game of Life",
+        "Monopoly",
+        "Risk",
+        "Snakes and Ladders"
+      ],
+      "answer": "The Game of Life",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-485ad87a45df",
+      "type": "multiple-choice",
+      "prompt": "In Marvel Comics, Taurus is the founder and leader of which criminal organization?",
+      "options": [
+        "Zodiac",
+        "Scorpio",
+        "Tiger Mafia",
+        "The Union"
+      ],
+      "answer": "Zodiac",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-48a2a87f8d5f",
+      "type": "multiple-choice",
+      "prompt": "Who was world chess champion between 1894 and 1921",
+      "options": [
+        "Emanuel Lasker",
+        "José Raúl Capablanca",
+        "Wilhelm Steinitz",
+        "Bobby Fischer"
+      ],
+      "answer": "Emanuel Lasker",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-48a6348f80ad",
+      "type": "multiple-choice",
+      "prompt": "Which franchise does the creature \"Slowpoke\" originate from?",
+      "options": [
+        "Pokemon",
+        "Dragon Ball",
+        "Sonic The Hedgehog",
+        "Yugioh"
+      ],
+      "answer": "Pokemon",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-48e5af9c4f7b",
+      "type": "multiple-choice",
+      "prompt": "How many times do you fight Gilgamesh in \"Final Fantasy 5\"?",
+      "options": [
+        "6",
+        "4",
+        "5",
+        "3"
+      ],
+      "answer": "6",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4a17b507a651",
+      "type": "multiple-choice",
+      "prompt": "When was Minecraft first released to the public?",
+      "options": [
+        "May 17th, 2009",
+        "September 17th, 2009",
+        "November 18th, 2011",
+        "October 7th, 2011"
+      ],
+      "answer": "May 17th, 2009",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4acd0616e3e1",
+      "type": "multiple-choice",
+      "prompt": "In World of Warcraft, which raid instance features a chess event?",
+      "options": [
+        "Karazhan",
+        "Zul'Aman",
+        "Blackwing Lair",
+        "Temple of Ahn'Qiraj"
+      ],
+      "answer": "Karazhan",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4af1e5866b77",
+      "type": "multiple-choice",
+      "prompt": "The walls of the Goldenrod City Gym in \"Pokémon Gold and Silver\" are arranged in the shape of which Pokémon?",
+      "options": [
+        "Clefairy",
+        "Bulbasaur",
+        "Pikachu",
+        "Pidgey"
+      ],
+      "answer": "Clefairy",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4c73af3986b7",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a Nintendo game console?",
+      "options": [
+        "Dreamcast",
+        "SNES",
+        "Wii",
+        "Switch"
+      ],
+      "answer": "Dreamcast",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4c9b25a1849d",
+      "type": "multiple-choice",
+      "prompt": "In \"Avatar: The Last Airbender\", which element does Aang begin to learn after being defrosted?",
+      "options": [
+        "Water",
+        "Air",
+        "Earth",
+        "Fire"
+      ],
+      "answer": "Water",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4cf59a746573",
+      "type": "multiple-choice",
+      "prompt": "How many points is the Z tile worth in Scrabble?",
+      "options": [
+        "10",
+        "8",
+        "5",
+        "6"
+      ],
+      "answer": "10",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4d5df2b6980c",
+      "type": "multiple-choice",
+      "prompt": "Bugs Bunny, Tony the Tiger, and other bipedal animal characters are known as what type of character?",
+      "options": [
+        "Anthropomorphic",
+        "Anthropolegic",
+        "Anthrologic",
+        "Anthrogenetic"
+      ],
+      "answer": "Anthropomorphic",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4de20e1c43aa",
+      "type": "multiple-choice",
+      "prompt": "What was the release date of the first episode of \"The Powerpuff Girls\"?",
+      "options": [
+        "November 18, 1998",
+        "June 25, 1999",
+        "July 28, 2000",
+        "April 14, 2001"
+      ],
+      "answer": "November 18, 1998",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4ecb1657c023",
+      "type": "multiple-choice",
+      "prompt": "Who was the mascot of SEGA before \"Sonic the Hedgehog\"?",
+      "options": [
+        "Alex Kidd",
+        "Opa Opa",
+        "NiGHTS",
+        "Ristar"
+      ],
+      "answer": "Alex Kidd",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4fc86265c17d",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Elite Four members from the 6th Generation of Pokémon was a member of Team Flare?",
+      "options": [
+        "Malva",
+        "Siebold",
+        "Wikstrom",
+        "Drasna"
+      ],
+      "answer": "Malva",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5259160f175f",
+      "type": "multiple-choice",
+      "prompt": "Which Overwatch character says the line \"Heroes never die!\"?",
+      "options": [
+        "Mercy",
+        "Reaper",
+        "Sonic",
+        "Ana"
+      ],
+      "answer": "Mercy",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-527511bc74a9",
+      "type": "multiple-choice",
+      "prompt": "In which game did the character \"Mario\" make his first appearance?",
+      "options": [
+        "Donkey Kong",
+        "Super Mario Bros.",
+        "Super Mario Land",
+        "Mario Bros."
+      ],
+      "answer": "Donkey Kong",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-53ad3efdca3e",
+      "type": "multiple-choice",
+      "prompt": "How many dice are used in the game of Yahtzee?",
+      "options": [
+        "Five",
+        "Four",
+        "Six",
+        "Eight"
+      ],
+      "answer": "Five",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-56b85f1750f9",
+      "type": "multiple-choice",
+      "prompt": "In the Marvel Universe, the planet of Svartalfheim is home to what race?",
+      "options": [
+        "Dark Elves",
+        "Frost Giants",
+        "Kronans",
+        "Skrulls"
+      ],
+      "answer": "Dark Elves",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-57aede100185",
+      "type": "multiple-choice",
+      "prompt": "Which cartoon family lives in 742 Evergreen Terrace, Springfield USA?",
+      "options": [
+        "The Simpsons",
+        "The Hills",
+        "The Flintstones",
+        "The Griffins"
+      ],
+      "answer": "The Simpsons",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-57cf566bf79a",
+      "type": "multiple-choice",
+      "prompt": "In The Simpsons, which war did Seymour Skinner serve in the USA Army as a Green Beret?",
+      "options": [
+        "Vietnam War",
+        "World War 2",
+        "World War 1",
+        "Cold War"
+      ],
+      "answer": "Vietnam War",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-590b42e29011",
+      "type": "multiple-choice",
+      "prompt": "During development of \"Super Mario World\", Yoshi's hard saddle was originally which of these?",
+      "options": [
+        "A shell",
+        "A slide of Gelatin",
+        "A poffin",
+        "A spike"
+      ],
+      "answer": "A shell",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5949190ff6ef",
+      "type": "multiple-choice",
+      "prompt": "Which of the following characters is not in the board game Clue?",
+      "options": [
+        "Mister Indigo",
+        "Colonel Mustard",
+        "Reverend Green",
+        "Miss Scarlet"
+      ],
+      "answer": "Mister Indigo",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5979976fb8bf",
+      "type": "multiple-choice",
+      "prompt": "What was the code name given to Sonic the Hedgehog 4 during its development?",
+      "options": [
+        "Project Needlemouse",
+        "Project Bluespike",
+        "Project Roboegg",
+        "Project Darksphere"
+      ],
+      "answer": "Project Needlemouse",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5bd11eb7f3b8",
+      "type": "multiple-choice",
+      "prompt": "What is the alter-ego of the DC comics character \"Superman\"?",
+      "options": [
+        "Clark Kent",
+        "Bruce Wayne",
+        "Arthur Curry",
+        "John Jones"
+      ],
+      "answer": "Clark Kent",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-603bacd31e9a",
+      "type": "multiple-choice",
+      "prompt": "Who is the leader of Team Instinct in Pokémon Go?",
+      "options": [
+        "Spark",
+        "Candela",
+        "Blanche",
+        "Willow"
+      ],
+      "answer": "Spark",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6777e0904a0c",
+      "type": "multiple-choice",
+      "prompt": "Which of these levels does NOT appear in the console/PC versions of the game \"Sonic Generations\"?",
+      "options": [
+        "Mushroom Hill",
+        "City Escape",
+        "Planet Wisp",
+        "Sky Sanctuary"
+      ],
+      "answer": "Mushroom Hill",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-67e87b45348d",
+      "type": "multiple-choice",
+      "prompt": "When was the Garfield comic first published?",
+      "options": [
+        "1978",
+        "1982",
+        "1973",
+        "1988"
+      ],
+      "answer": "1978",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6805f9a88ac3",
+      "type": "multiple-choice",
+      "prompt": "Which game did \"Sonic The Hedgehog\" make his first appearance in?",
+      "options": [
+        "Rad Mobile",
+        "Sonic The Hedgehog",
+        "Super Mario 64",
+        "Mega Man"
+      ],
+      "answer": "Rad Mobile",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-69cb8a64f216",
+      "type": "multiple-choice",
+      "prompt": "Which Pokemon is #39 in the National Pokedex?",
+      "options": [
+        "Jigglypuff",
+        "Pikachu",
+        "Psyduck",
+        "Fearow"
+      ],
+      "answer": "Jigglypuff",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6b079b4161f0",
+      "type": "multiple-choice",
+      "prompt": "In \"Pokémon Sun and Moon\", Team Skull took over which town?",
+      "options": [
+        "Po Town",
+        "Heahea City",
+        "Tapu Village",
+        "Iki Town"
+      ],
+      "answer": "Po Town",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6c6170dc3590",
+      "type": "multiple-choice",
+      "prompt": "Which Elite Four member from the first generation of Pokémon became the champion in the next generation?",
+      "options": [
+        "Lance",
+        "Agatha",
+        "Bruno",
+        "Lorelei"
+      ],
+      "answer": "Lance",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6c76a4ad84fc",
+      "type": "multiple-choice",
+      "prompt": "What is Gatomon's name in the original Japanese version of Digimon Adventure?",
+      "options": [
+        "Tailmon",
+        "Pawmon",
+        "Catmon",
+        "Nekomon"
+      ],
+      "answer": "Tailmon",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6d44be77936c",
+      "type": "multiple-choice",
+      "prompt": "In Pokemon, the ability Wonder Guard is exclusive to which Pokemon?",
+      "options": [
+        "Shedinja",
+        "Sableye",
+        "Spiritomb",
+        "Silvally"
+      ],
+      "answer": "Shedinja",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6d47ebacf617",
+      "type": "multiple-choice",
+      "prompt": "In Minecraft, in which update did foods like steak become stackable?",
+      "options": [
+        "Beta 1.8",
+        "Alpha 1.2.0",
+        "Release 1.12.1",
+        "Release 1.7.2"
+      ],
+      "answer": "Beta 1.8",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6d5021a06083",
+      "type": "multiple-choice",
+      "prompt": "In \"One Piece,\" what color is Tony Tony Chopper's nose?",
+      "options": [
+        "Blue",
+        "Black",
+        "Grey",
+        "Red"
+      ],
+      "answer": "Blue",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6ddca76f0a36",
+      "type": "multiple-choice",
+      "prompt": "Before Super Smash Bros. contained Nintendo characters, what was it known as internally?",
+      "options": [
+        "Dragon King: The Fighting Game",
+        "Contest of Champions",
+        "Smash and Pummel",
+        "Fighter of the Ages: Conquest"
+      ],
+      "answer": "Dragon King: The Fighting Game",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6e263fc2218f",
+      "type": "multiple-choice",
+      "prompt": "Which superhero is known for his super speed?",
+      "options": [
+        "Flash",
+        "Superman",
+        "Batman",
+        "Spiderman"
+      ],
+      "answer": "Flash",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6ec86c98e7bf",
+      "type": "multiple-choice",
+      "prompt": "In the Pixar film, \"Toy Story\" what was the name of the child who owned the toys?",
+      "options": [
+        "Andy",
+        "Edward",
+        "Danny",
+        "Matt"
+      ],
+      "answer": "Andy",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6fb874314760",
+      "type": "multiple-choice",
+      "prompt": "What was the world's first handheld game device?",
+      "options": [
+        "Mattel Auto Race",
+        "Game Boy",
+        "Microvision",
+        "Game & Watch"
+      ],
+      "answer": "Mattel Auto Race",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-701e55fb5f73",
+      "type": "multiple-choice",
+      "prompt": "What is the first Sony PlayStation console that runs on CD?",
+      "options": [
+        "PS",
+        "PS2",
+        "PS3",
+        "PS4"
+      ],
+      "answer": "PS",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-730e1a61a6a4",
+      "type": "multiple-choice",
+      "prompt": "Which of these anime have over 7,500 episodes?",
+      "options": [
+        "Sazae-san",
+        "Naruto",
+        "One Piece",
+        "Chibi Maruko-chan"
+      ],
+      "answer": "Sazae-san",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-733ec5756ed7",
+      "type": "multiple-choice",
+      "prompt": "In vanilla Minecraft, which of the following cannot be made into a block?",
+      "options": [
+        "Charcoal",
+        "Coal",
+        "Wheat",
+        "String"
+      ],
+      "answer": "Charcoal",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7477c4d1e807",
+      "type": "multiple-choice",
+      "prompt": "In the 1993 Disney animated series \"Bonkers\", what is the name of Bonker's second partner?",
+      "options": [
+        "Miranda Wright",
+        "Dick Tracy",
+        "Eddie Valiant",
+        "Dr. Ludwig von Drake"
+      ],
+      "answer": "Miranda Wright",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-74eaf87b7f67",
+      "type": "multiple-choice",
+      "prompt": "In the Marvel comic \"The Superior Spider-Man\", Peter Parker's body is taken over by which character?",
+      "options": [
+        "Otto Octavius",
+        "Norman Osborn",
+        "Mary Jane",
+        "Eddie Brock"
+      ],
+      "answer": "Otto Octavius",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-750aba7fd3f0",
+      "type": "multiple-choice",
+      "prompt": "Which car did not appear in the 2002 Lego Game: Drome Racers?",
+      "options": [
+        "Wasp",
+        "Raptor",
+        "Hornet",
+        "Behemoth"
+      ],
+      "answer": "Wasp",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-77c2c00ed72b",
+      "type": "multiple-choice",
+      "prompt": "How many spaces are there on a standard Monopoly board?",
+      "options": [
+        "40",
+        "28",
+        "55",
+        "36"
+      ],
+      "answer": "40",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7804b095251f",
+      "type": "multiple-choice",
+      "prompt": "In which year did the original Sims game release?",
+      "options": [
+        "2000",
+        "2001",
+        "1999",
+        "1998"
+      ],
+      "answer": "2000",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-79590cb2765a",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the sea witch in the 1989 Disney film \"The Little Mermaid\"?",
+      "options": [
+        "Ursula",
+        "Madam Mim",
+        "Maleficent",
+        "Lady Tremaine"
+      ],
+      "answer": "Ursula",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7bc90f5d76a2",
+      "type": "multiple-choice",
+      "prompt": "In the first episode of Yu-Gi-Oh: Duel Monsters, what book is Seto Kaiba seen reading at Domino High School?",
+      "options": [
+        "Thus Spoke Zarathustra",
+        "Beyond Good and Evil",
+        "The Republic",
+        "Meditations"
+      ],
+      "answer": "Thus Spoke Zarathustra",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7c1384cc6ee3",
+      "type": "multiple-choice",
+      "prompt": "What was Ash Ketchum's second Pokemon?",
+      "options": [
+        "Caterpie",
+        "Charmander",
+        "Pikachu",
+        "Pidgey"
+      ],
+      "answer": "Caterpie",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7c1c14dc32b8",
+      "type": "multiple-choice",
+      "prompt": "Which of these characters from Final Fantasy VIII primarily spoke in one word sentences?",
+      "options": [
+        "Fujin",
+        "Raijin",
+        "Seifer",
+        "Zell"
+      ],
+      "answer": "Fujin",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7d1d02049fa5",
+      "type": "multiple-choice",
+      "prompt": "Which of these characters live in a pineapple under the sea in the cartoon \"SpongeBob SquarePants\".",
+      "options": [
+        "SpongeBob SquarePants",
+        "Patrick Star",
+        "Squidward Tentacles",
+        "Mr. Krabs"
+      ],
+      "answer": "SpongeBob SquarePants",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7e088cf4422c",
+      "type": "multiple-choice",
+      "prompt": "What were the first two blocks in \"Minecraft\"?",
+      "options": [
+        "Grass and Cobblestone",
+        "Grass and Stone",
+        "Crafting Table and Cobblestone",
+        "Cobblestone and Stone"
+      ],
+      "answer": "Grass and Cobblestone",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7e7d01075b1d",
+      "type": "multiple-choice",
+      "prompt": "In Animal Crossing, who is the manager of the town shop?",
+      "options": [
+        "Tom Nook",
+        "Mr. Resetti",
+        "Gracie",
+        "K.K. Slider"
+      ],
+      "answer": "Tom Nook",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8068c0ab8aea",
+      "type": "multiple-choice",
+      "prompt": "Which Kirby game first introduced Copy Abilities?",
+      "options": [
+        "Kirby's Adventure",
+        "Kirby Super Star",
+        "Kirby's Dream Land 2",
+        "Kirby's Dream Land"
+      ],
+      "answer": "Kirby's Adventure",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-82454cc4b13c",
+      "type": "multiple-choice",
+      "prompt": "Which Pokémon can learn the move \"Secret Power\" by leveling up?",
+      "options": [
+        "Audino",
+        "Type:Null",
+        "Arceus",
+        "Silvally"
+      ],
+      "answer": "Audino",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-84b5073047e0",
+      "type": "multiple-choice",
+      "prompt": "What town was \"Springfield\" from \"The Simpsons\" originally named after?",
+      "options": [
+        "Springfield, Oregon",
+        "Springfield, Missouri",
+        "Springfield, Illinois",
+        "Springfield, Massachusetts"
+      ],
+      "answer": "Springfield, Oregon",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8a4de117005e",
+      "type": "multiple-choice",
+      "prompt": "What is the full first name of the babysitter in Calvin and Hobbes?",
+      "options": [
+        "Rosalyn",
+        "Rose",
+        "Ruby",
+        "Rachel"
+      ],
+      "answer": "Rosalyn",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8b71a2c5a9c7",
+      "type": "multiple-choice",
+      "prompt": "In a standard game of Monopoly, what colour are the two cheapest properties?",
+      "options": [
+        "Brown",
+        "Green",
+        "Yellow",
+        "Blue"
+      ],
+      "answer": "Brown",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-90517b567083",
+      "type": "multiple-choice",
+      "prompt": "Which of the following rings from the DC Comics' \"Lantern Corps\" are classified as Parasitic?",
+      "options": [
+        "Indigo (Compassion)",
+        "Green (Willpower)",
+        "White (Life)",
+        "Yellow (Fear)"
+      ],
+      "answer": "Indigo (Compassion)",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-90b77baffc9a",
+      "type": "multiple-choice",
+      "prompt": "What was Maggie Simpson's first canonical word, not including the Tracey Ullman shorts?",
+      "options": [
+        "Daddy.",
+        "Sequel?",
+        "Ja!",
+        "Rusty!"
+      ],
+      "answer": "Daddy.",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-90f3bdff8898",
+      "type": "multiple-choice",
+      "prompt": "Which of these Pokemon is NOT exclusively female?",
+      "options": [
+        "Clefairy",
+        "Salazzle",
+        "Mandibuzz",
+        "Illumise"
+      ],
+      "answer": "Clefairy",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-94890a27b79c",
+      "type": "multiple-choice",
+      "prompt": "Which of these is a type of monster found in Minecraft?",
+      "options": [
+        "Skeleton",
+        "Werewolf",
+        "Vampire",
+        "Minotaur"
+      ],
+      "answer": "Skeleton",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-94dbd53b4d7e",
+      "type": "multiple-choice",
+      "prompt": "Wendy O. Koopa appeared in the Super Mario DIC Cartoons, but what was she known as?",
+      "options": [
+        "Kootie Pie",
+        "Sweetie Pie",
+        "Wendy Pie",
+        "Honey Pie"
+      ],
+      "answer": "Kootie Pie",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-953c55b3ed93",
+      "type": "multiple-choice",
+      "prompt": "What ingredient is NOT used to craft a cake in Minecraft?",
+      "options": [
+        "Bread",
+        "Wheat",
+        "Milk",
+        "Egg"
+      ],
+      "answer": "Bread",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-95a9d1dbac81",
+      "type": "multiple-choice",
+      "prompt": "Which of these games was NOT developed by Markus Persson?",
+      "options": [
+        "Dwarf Fortress",
+        "Minecraft",
+        "Wurm Online",
+        "0x10c"
+      ],
+      "answer": "Dwarf Fortress",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9c6e1c9017e3",
+      "type": "multiple-choice",
+      "prompt": "How many voice channels does the Super Nintendo Entertainment System support?",
+      "options": [
+        "8",
+        "6",
+        "10",
+        "12"
+      ],
+      "answer": "8",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9d23e6d03483",
+      "type": "multiple-choice",
+      "prompt": "The main six year old protagonist in Calvin and Hobbes is named after what theologian?",
+      "options": [
+        "John Calvin",
+        "Calvin Klein",
+        "Calvin Coolidge",
+        "Phillip Calvin McGraw"
+      ],
+      "answer": "John Calvin",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9eec8196b8c2",
+      "type": "multiple-choice",
+      "prompt": "How many obsidian blocks are required to build a nether portal in Minecraft?",
+      "options": [
+        "10",
+        "14",
+        "13",
+        "16"
+      ],
+      "answer": "10",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9f10f97d8bcf",
+      "type": "multiple-choice",
+      "prompt": "Which Animal Crossing game was for the Nintendo Wii?",
+      "options": [
+        "Animal Crossing: City Folk",
+        "Animal Crossing: New Leaf",
+        "Animal Crossing: Wild World",
+        "Animal Crossing: Population Growing!"
+      ],
+      "answer": "Animal Crossing: City Folk",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9f47cecd3aad",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT a Disney cartoon character?",
+      "options": [
+        "Daffy Duck",
+        "Donald Duck",
+        "Daisy Duck",
+        "Scrooge McDuck"
+      ],
+      "answer": "Daffy Duck",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9fc2df9e679f",
+      "type": "multiple-choice",
+      "prompt": "What game mode was not in the original \"Wii Sports\"?",
+      "options": [
+        "Table Tennis",
+        "Boxing",
+        "Baseball",
+        "Bowling"
+      ],
+      "answer": "Table Tennis",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a091ae4d286e",
+      "type": "multiple-choice",
+      "prompt": "In My Little Pony, what is the name of Applejack's younger sister?",
+      "options": [
+        "Apple Bloom",
+        "Red Delicious",
+        "Apple Sweets",
+        "Apple Fritter"
+      ],
+      "answer": "Apple Bloom",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a0eba8e221bf",
+      "type": "multiple-choice",
+      "prompt": "In \"One Piece\", what does \"the Pirate King\" mean to the captain of the Straw Hat Pirates?",
+      "options": [
+        "Freedom",
+        "Promise",
+        "Adventure",
+        "Friendship"
+      ],
+      "answer": "Freedom",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a299abe1a2b1",
+      "type": "multiple-choice",
+      "prompt": "Some of the \"Fallen Empires\" cards from \"Magic: The Gathering\" were misprinted on the backs of which other card game?",
+      "options": [
+        "Wyvern",
+        "Pokemon",
+        "Dominion",
+        "Yu-Gi-Oh"
+      ],
+      "answer": "Wyvern",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a55f4dfb59ef",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Zelda games did not feature Ganon as a final boss?",
+      "options": [
+        "Majora's Mask",
+        "Ocarina of Time",
+        "Skyward Sword",
+        "Breath of the Wild"
+      ],
+      "answer": "Majora's Mask",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a5c11b0fdd29",
+      "type": "multiple-choice",
+      "prompt": "Which Nintendo 64 game did NOT have Luigi in it?",
+      "options": [
+        "Super Mario 64",
+        "Mario Party 2",
+        "Paper Mario",
+        "Super Smash Bros."
+      ],
+      "answer": "Super Mario 64",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a7366fada33e",
+      "type": "multiple-choice",
+      "prompt": "How do you tame a horse in Minecraft?",
+      "options": [
+        "By continually mounting it",
+        "By feeding it Wheat",
+        "By feeding it Sugar",
+        "By petting it"
+      ],
+      "answer": "By continually mounting it",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a86a3629eab9",
+      "type": "multiple-choice",
+      "prompt": "What Pokémon's Base Stat Total does not change when it evolves?",
+      "options": [
+        "Scyther",
+        "Pikachu",
+        "Sneasel",
+        "Larvesta"
+      ],
+      "answer": "Scyther",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aace7fa2b904",
+      "type": "multiple-choice",
+      "prompt": "How many voice channels does the Nintendo Entertainment System support natively?",
+      "options": [
+        "5",
+        "4",
+        "6",
+        "3"
+      ],
+      "answer": "5",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aaf2ca221f41",
+      "type": "multiple-choice",
+      "prompt": "Which of these Generation 1 Pokemon did NOT have an evolution in Generation 4?",
+      "options": [
+        "Jynx",
+        "Electabuzz",
+        "Magmar",
+        "Rhydon"
+      ],
+      "answer": "Jynx",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ad70370c662e",
+      "type": "multiple-choice",
+      "prompt": "In the game \"The Sims\", how many Simoleons does each family start with?",
+      "options": [
+        "20,000",
+        "10,000",
+        "15,000",
+        "25,000"
+      ],
+      "answer": "20,000",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b1635f715d15",
+      "type": "multiple-choice",
+      "prompt": "Pokémon Go is a location-based augmented reality game developed and published by which company?",
+      "options": [
+        "Niantic",
+        "Rovio",
+        "Zynga",
+        "Supercell"
+      ],
+      "answer": "Niantic",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b16b262d56a6",
+      "type": "multiple-choice",
+      "prompt": "Which Game Boy from the Game Boy series of portable video game consoles was released first?",
+      "options": [
+        "Game Boy Color",
+        "Game Boy Advance",
+        "Game Boy Micro",
+        "Game Boy Advance SP"
+      ],
+      "answer": "Game Boy Color",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b2b32fa61e1f",
+      "type": "multiple-choice",
+      "prompt": "In Animal Crossing: New Leaf, which of these paintings from Redd's Art Gallery is always genuine?",
+      "options": [
+        "Warm Painting",
+        "Jolly Painting",
+        "Neutral Painting",
+        "Wistful Painting"
+      ],
+      "answer": "Warm Painting",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b2e0c7f6c070",
+      "type": "multiple-choice",
+      "prompt": "What year was Super Mario Bros. released?",
+      "options": [
+        "1985",
+        "1983",
+        "1987",
+        "1986"
+      ],
+      "answer": "1985",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b37b83002d4f",
+      "type": "multiple-choice",
+      "prompt": "In the Batman comics, by what other name is the villain Dr. Jonathan Crane known?",
+      "options": [
+        "Scarecrow",
+        "Bane",
+        "Calendar Man",
+        "Clayface"
+      ],
+      "answer": "Scarecrow",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b3b6e362a4c9",
+      "type": "multiple-choice",
+      "prompt": "Which of these games includes the phrase \"Do not pass Go, do not collect $200\"?",
+      "options": [
+        "Monopoly",
+        "Pay Day",
+        "Cluedo",
+        "Coppit"
+      ],
+      "answer": "Monopoly",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b43a96285baf",
+      "type": "multiple-choice",
+      "prompt": "On a standard Monopoly board, how much do you have to pay for Tennessee Ave?",
+      "options": [
+        "$180",
+        "$200",
+        "$160",
+        "$220"
+      ],
+      "answer": "$180",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b6475228384b",
+      "type": "multiple-choice",
+      "prompt": "How many pieces are there on the board at the start of a game of chess?",
+      "options": [
+        "32",
+        "16",
+        "20",
+        "36"
+      ],
+      "answer": "32",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b9d4165c2170",
+      "type": "multiple-choice",
+      "prompt": "Which of these characters is the mascot of the video game company SEGA?",
+      "options": [
+        "Sonic the Hedgehog",
+        "Dynamite Headdy",
+        "Alex Kidd",
+        "Opa-Opa"
+      ],
+      "answer": "Sonic the Hedgehog",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bbb0c659657b",
+      "type": "multiple-choice",
+      "prompt": "Where are Terror Fiends more commonly found in the Nintendo game Miitopia?",
+      "options": [
+        "New Lumos",
+        "Peculia",
+        "The Sky Scraper",
+        "Otherworld"
+      ],
+      "answer": "New Lumos",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bc85f395e305",
+      "type": "multiple-choice",
+      "prompt": "Who created the Cartoon Network series \"Adventure Time\"?",
+      "options": [
+        "Pendleton Ward",
+        "J. G. Quintel",
+        "Ben Bocquelet",
+        "Rebecca Sugar"
+      ],
+      "answer": "Pendleton Ward",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bcbcba41a4c7",
+      "type": "multiple-choice",
+      "prompt": "When was Minecraft 1.0 released?",
+      "options": [
+        "November 18, 2011",
+        "May 17, 2009",
+        "December 10, 2014",
+        "September 13, 2012"
+      ],
+      "answer": "November 18, 2011",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bdd6dde9edbc",
+      "type": "multiple-choice",
+      "prompt": "What is the real name of \"Warhead\" in the Sega Genesis game \"Vectorman\"?",
+      "options": [
+        "Raster",
+        "Peacehead",
+        "Vectorkid",
+        "Bitmap"
+      ],
+      "answer": "Raster",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bef7f78859a8",
+      "type": "multiple-choice",
+      "prompt": "In what year did the manga \"Ping Pong\" begin serialization?",
+      "options": [
+        "1996",
+        "2014",
+        "2010",
+        "2003"
+      ],
+      "answer": "1996",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c1e41ea298c4",
+      "type": "multiple-choice",
+      "prompt": "Who created the 2011 Video Game \"Minecraft\"?",
+      "options": [
+        "Markus Persson",
+        "Jens Bergensten",
+        "Daniel Rosenfeld",
+        "Carl Manneh"
+      ],
+      "answer": "Markus Persson",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c3575b9829ca",
+      "type": "multiple-choice",
+      "prompt": "In the game Sonic Forces, which of the following was not from a previous game?",
+      "options": [
+        "Infinite",
+        "Metal Sonic",
+        "Zavok",
+        "Chaos"
+      ],
+      "answer": "Infinite",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c45aa49dbe90",
+      "type": "multiple-choice",
+      "prompt": "Which board game was first released on February 6th, 1935?",
+      "options": [
+        "Monopoly",
+        "Risk",
+        "Clue",
+        "Candy Land"
+      ],
+      "answer": "Monopoly",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c5f92ce32e39",
+      "type": "multiple-choice",
+      "prompt": "On a standard Monopoly board, which square is diagonally opposite 'Go'?",
+      "options": [
+        "Free Parking",
+        "Go to Jail",
+        "Jail",
+        "The Electric Company"
+      ],
+      "answer": "Free Parking",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c95e15c0114c",
+      "type": "multiple-choice",
+      "prompt": "In the 9th Pokemon movie, who is the Prince of the Sea?",
+      "options": [
+        "Manaphy",
+        "Ash",
+        "May",
+        "Phantom"
+      ],
+      "answer": "Manaphy",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c9b1c42644a4",
+      "type": "multiple-choice",
+      "prompt": "When was Marvel Comics founded?",
+      "options": [
+        "1939",
+        "1932",
+        "1951",
+        "1936"
+      ],
+      "answer": "1939",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ccc57a24cc92",
+      "type": "multiple-choice",
+      "prompt": "Benny, Brain, Fancy-Fancy, Spook and Choo-Choo were known associates of what Hanna Barbera cartoon character?",
+      "options": [
+        "Top Cat",
+        "Yogi Bear",
+        "Snagglepuss",
+        "Scooby-Doo"
+      ],
+      "answer": "Top Cat",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cd46b7646df6",
+      "type": "multiple-choice",
+      "prompt": "In Super Mario RPG: Legend of The Seven Stars, what is Geno's real name?",
+      "options": [
+        "♡♪!?",
+        "Geno",
+        "Exor",
+        "Smithy"
+      ],
+      "answer": "♡♪!?",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cf06d421ba75",
+      "type": "multiple-choice",
+      "prompt": "In the Pokémon series, what is Palkia's hidden ability?",
+      "options": [
+        "Telepathy",
+        "Pressure",
+        "Water Bubble",
+        "Hydration"
+      ],
+      "answer": "Telepathy",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cf78c42e54ca",
+      "type": "multiple-choice",
+      "prompt": "How many rooms are there, not including the hallways and the set of stairs, in the board game \"Clue\"?",
+      "options": [
+        "9",
+        "1",
+        "6",
+        "10"
+      ],
+      "answer": "9",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d2076f5f82fe",
+      "type": "multiple-choice",
+      "prompt": "What is the default alias that Princess Garnet goes by in Final Fantasy IX?",
+      "options": [
+        "Dagger",
+        "Dirk",
+        "Garnet",
+        "Quina"
+      ],
+      "answer": "Dagger",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d417b440f604",
+      "type": "multiple-choice",
+      "prompt": "How many Chaos Emeralds are there in the \"Sonic the Hedgehog\" universe?",
+      "options": [
+        "7",
+        "6",
+        "8",
+        "14"
+      ],
+      "answer": "7",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d64c62b8d9a1",
+      "type": "multiple-choice",
+      "prompt": "What was the name of Sonic the Hedgehog's original human girlfriend?",
+      "options": [
+        "Madonna",
+        "Celeste",
+        "Sierra",
+        "Nina"
+      ],
+      "answer": "Madonna",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d7b77b4d6713",
+      "type": "multiple-choice",
+      "prompt": "What programming language was \"Minecraft\" originally written in?",
+      "options": [
+        "Java",
+        "HTML 5",
+        "C++",
+        "Python"
+      ],
+      "answer": "Java",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d7fe8930204a",
+      "type": "multiple-choice",
+      "prompt": "Which of the following games in The Legend of Zelda franchise was released in Japan before North America?",
+      "options": [
+        "The Legend of Zelda: The Minish Cap",
+        "The Legend of Zelda: Twilight Princess",
+        "The Legend of Zelda: Spirit Tracks",
+        "The Legend of Zelda: Skyward Sword"
+      ],
+      "answer": "The Legend of Zelda: The Minish Cap",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dc5af7438ed3",
+      "type": "multiple-choice",
+      "prompt": "In 2004, which person(s) created \"Roblox\"?",
+      "options": [
+        "David Baszucki and Erik Cassel",
+        "Erik Cassel",
+        "Jonas Alto and Sarah Smith",
+        "James Kolein"
+      ],
+      "answer": "David Baszucki and Erik Cassel",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-de37e2d83a82",
+      "type": "multiple-choice",
+      "prompt": "How many games in the Crash Bandicoot series were released on the original Playstation?",
+      "options": [
+        "5",
+        "4",
+        "3",
+        "6"
+      ],
+      "answer": "5",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-de9c7d68591e",
+      "type": "multiple-choice",
+      "prompt": "In the Mario Kart series, which game introduced the \"Shield Drifting\" mechanic?",
+      "options": [
+        "Mario Kart Arcade GP DX",
+        "Mario Kart: Double Dash",
+        "Mario Kart Super Circuit",
+        "Mario Kart DS"
+      ],
+      "answer": "Mario Kart Arcade GP DX",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-df24263db3c3",
+      "type": "multiple-choice",
+      "prompt": "What is the main theme song of \"Sonic Adventure 2\"?",
+      "options": [
+        "Live and Learn",
+        "Open Your Heart",
+        "Can You Feel the Sunshine?",
+        "His World"
+      ],
+      "answer": "Live and Learn",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e200de17c54a",
+      "type": "multiple-choice",
+      "prompt": "In standard Monopoly, what's the rent if you land on Park Place with no houses?",
+      "options": [
+        "$35",
+        "$30",
+        "$50",
+        "$45"
+      ],
+      "answer": "$35",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e93cec00495e",
+      "type": "multiple-choice",
+      "prompt": "In Digimon, what is the Japanese name for the final evolutionary stage?",
+      "options": [
+        "Ultimate",
+        "Mega",
+        "Adult",
+        "Champion"
+      ],
+      "answer": "Ultimate",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eab648fc11a9",
+      "type": "multiple-choice",
+      "prompt": "In Final Fantasy XIV, what is the name of the Deep Dungeon that was introduced in the expansion pack, Heavensward?",
+      "options": [
+        "Palace of the Dead",
+        "Heaven on High",
+        "Aetherochemical Research Facility",
+        "Sunken Temple of Qarn"
+      ],
+      "answer": "Palace of the Dead",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eb90511791fc",
+      "type": "multiple-choice",
+      "prompt": "Which Pokemon generation did the fan-named \"Masuda Method\" first appear in?",
+      "options": [
+        "Diamond/Pearl",
+        "Ruby/Sapphire",
+        "Black/White",
+        "X/Y"
+      ],
+      "answer": "Diamond/Pearl",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ed0cdadca9fb",
+      "type": "multiple-choice",
+      "prompt": "In the \"Dragon Ball\" franchise, what is the name of Goku's brother?",
+      "options": [
+        "Raditz",
+        "Gohan",
+        "Vegeta",
+        "Bardock"
+      ],
+      "answer": "Raditz",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ef728ce79db9",
+      "type": "multiple-choice",
+      "prompt": "Prior to his appearance in Super Smash Bros. Ultimate, what was King K. Rool's last appearance in any game?",
+      "options": [
+        "Mario Super Sluggers",
+        "Donkey Kong 64",
+        "Donkey Kong Country 3",
+        "Donkey Kong: King Of Swing"
+      ],
+      "answer": "Mario Super Sluggers",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f0776808f631",
+      "type": "multiple-choice",
+      "prompt": "In \"Mario & Sonic at the Olympic Games\", characters are split into how many types?",
+      "options": [
+        "4",
+        "6",
+        "5",
+        "3"
+      ],
+      "answer": "4",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f0fc220b3fbd",
+      "type": "multiple-choice",
+      "prompt": "Who is Batman?",
+      "options": [
+        "Bruce Wayne",
+        "Clark Kent",
+        "Barry Allen",
+        "Tony Stark"
+      ],
+      "answer": "Bruce Wayne",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f1155aa690cf",
+      "type": "multiple-choice",
+      "prompt": "What is the Alien Race in the game \"Lego Racers 2\" known as?",
+      "options": [
+        "Ramas",
+        "Slizers",
+        "Roboriders",
+        "Turagas"
+      ],
+      "answer": "Ramas",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f58be243c0e7",
+      "type": "multiple-choice",
+      "prompt": "Which character in the \"Animal Crossing\" series uses the phrase \"zip zoom\" when talking to the player?",
+      "options": [
+        "Scoot",
+        "Drake",
+        "Bill",
+        "Mallary"
+      ],
+      "answer": "Scoot",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f7fe8cfa8e1f",
+      "type": "multiple-choice",
+      "prompt": "\"Silhouette\", a song performed by the group 'KANA-BOON' is featured as the sixteenth opening of which anime?",
+      "options": [
+        "Naruto: Shippūden",
+        "One Piece",
+        "Naruto",
+        "Gurren Lagann"
+      ],
+      "answer": "Naruto: Shippūden",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fcb80cd2f5cf",
+      "type": "multiple-choice",
+      "prompt": "How many partners can you obtain in Paper Mario: The Thousand-Year Door?",
+      "options": [
+        "7",
+        "6",
+        "9",
+        "10"
+      ],
+      "answer": "7",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ff41b0ac5966",
+      "type": "multiple-choice",
+      "prompt": "The “fairy” type made its debut in which generation of the Pokemon core series games?",
+      "options": [
+        "6th",
+        "2nd",
+        "7th",
+        "4th"
+      ],
+      "answer": "6th",
+      "difficulty": "easy",
+      "region": "general"
+    }
+  ]
+}

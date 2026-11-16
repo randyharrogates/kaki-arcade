@@ -40,7 +40,14 @@ function source(category: string, title: string, questions: unknown[]): TextFile
   return { name: `${category}.json`, text: JSON.stringify({ category, title, questions }) };
 }
 
-const OTDB = { kind: 'dataset', dataset: 'Open Trivia Database', licence: 'CC BY-SA 4.0' };
+const NOTICE =
+  'Adapted for Kaki Arcade. The adapted questions are offered under the same licence.';
+const OTDB = {
+  kind: 'dataset',
+  dataset: 'Open Trivia Database',
+  licence: 'CC BY-SA 4.0',
+  notice: NOTICE,
+};
 
 function picture(file: string): Record<string, string> {
   return {
@@ -191,9 +198,43 @@ describe('buildBank: output', () => {
 
   it('lists the datasets to credit and counts our own questions', () => {
     expect(output?.index.credits).toEqual([
-      { dataset: 'Open Trivia Database', licence: 'CC BY-SA 4.0', questions: 2 },
+      { dataset: 'Open Trivia Database', licence: 'CC BY-SA 4.0', notice: NOTICE, questions: 2 },
     ]);
     expect(output?.index.originalQuestions).toBe(4);
+  });
+
+  it('carries a dataset address and licence notice into the credits (RZ-021)', () => {
+    const credited = {
+      ...OTDB,
+      licenceUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+      url: 'https://opentdb.com',
+    };
+    const file = {
+      name: 'history.json',
+      text: JSON.stringify({
+        category: 'history',
+        title: 'History',
+        defaultSource: credited,
+        questions: [
+          { ...question({ id: 'his-1', prompt: 'Which year came first?' }), source: undefined },
+          { ...question({ id: 'his-2', prompt: 'Which year came second?' }), source: undefined },
+          question({ id: 'his-3', prompt: 'Which year came third?' }),
+        ],
+      }),
+    };
+    const result = buildBank(input([file]));
+    expect(result.problems).toEqual([]);
+    expect(result.output?.index.credits).toEqual([
+      {
+        dataset: 'Open Trivia Database',
+        licence: 'CC BY-SA 4.0',
+        licenceUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+        url: 'https://opentdb.com',
+        notice: NOTICE,
+        questions: 2,
+      },
+    ]);
+    expect(result.output?.index.originalQuestions).toBe(1);
   });
 });
 

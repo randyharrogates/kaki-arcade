@@ -2,8 +2,233 @@
 #
 # One term per line. A term is one word or a phrase. Matching ignores case, accents and
 # punctuation and only matches whole words, so "ass" does not match "class" or "bass".
+# There are no wildcards: every form of a word is listed.
 # Lines starting with # and blank lines are ignored.
 #
 # The build fails on any question whose prompt, options or picture alt text contains a term.
-# The list is filled by the Open Trivia Database import (R-11). It is a first screen, not the
-# whole of RZ-023: a person still reads the bank.
+# It applies to the whole bank: imported questions, the Singapore pack and picture questions.
+# It is a first screen, not the whole of RZ-023: a person still reads the bank.
+#
+# What is here: words that have no place on a family TV whatever the question is about.
+# What is not here, on purpose: words that are unsuitable only in some questions ("beer",
+# "kill", "drug", "war", "naked"). Those are screened where the questions come in
+# (scripts/otdb-screen.ts for the Open Trivia Database import), because a history or Singapore
+# question may need them. Also not here: names that only look rude ("Dick", "Virgin", "Dyke",
+# "Hell", "Uranus") or that are also ordinary names ("Gore" as in Al Gore, "sperm" as in sperm
+# whale, "coon" as in Maine Coon, "Negro" as in Rio Negro).
+
+# Swearing
+arse
+arsehole
+ass
+asses
+asshole
+assholes
+bastard
+bastards
+bitch
+bitches
+bollocks
+bullshit
+crap
+cunt
+cunts
+damn
+dammit
+goddamn
+dickhead
+douche
+douchebag
+fuck
+fucked
+fucker
+fuckers
+fucking
+fucks
+motherfucker
+motherfuckers
+motherfucking
+piss
+pissed
+pissing
+prick
+shit
+shits
+shitty
+slut
+sluts
+twat
+wank
+wanker
+wankers
+whore
+whores
+wtf
+
+# Sexual
+anal sex
+aphrodisiac
+blowjob
+bondage
+boner
+boob
+boobs
+brothel
+brothels
+condom
+condoms
+dildo
+ejaculate
+ejaculation
+erection
+erotic
+erotica
+fetish
+foreplay
+genital
+genitals
+genitalia
+hentai
+horny
+incest
+intercourse
+kinky
+masturbate
+masturbation
+nipple
+nipples
+nsfw
+nudist
+orgasm
+orgy
+penis
+phallus
+playboy
+porn
+porno
+pornographic
+pornography
+pornstar
+prostitute
+prostitutes
+prostitution
+pubic
+rape
+raped
+rapes
+raping
+rapist
+rapists
+scrotum
+semen
+sex
+sexier
+sexiest
+sexual
+sexuality
+sexually
+sexy
+striptease
+stripper
+strippers
+testicle
+testicles
+threesome
+topless
+vagina
+viagra
+vibrator
+vulva
+
+# Child abuse
+molest
+molested
+molester
+paedophile
+paedophilia
+pedophile
+pedophilia
+
+# Hateful: slurs
+chink
+chinks
+fag
+faggot
+faggots
+fags
+gook
+gooks
+kike
+kikes
+nigga
+niggas
+nigger
+niggers
+paki
+pakis
+retard
+retarded
+retards
+spic
+spics
+tranny
+wetback
+wetbacks
+white power
+white supremacist
+white supremacy
+
+# Graphic violence and self-harm
+beheaded
+beheading
+beheadings
+cannibal
+cannibalism
+cannibals
+castrate
+castrated
+castration
+decapitate
+decapitated
+decapitation
+disembowel
+disembowelled
+disemboweled
+dismember
+dismembered
+dismemberment
+eviscerated
+genocide
+gory
+lynched
+lynching
+mass shooting
+mutilate
+mutilated
+mutilation
+necrophilia
+school shooting
+self harm
+serial killer
+serial killers
+suicidal
+suicide
+suicides
+torture
+tortured
+tortures
+torturing
+
+# Hard drugs
+cocaine
+crack cocaine
+crystal meth
+ecstasy pills
+heroin
+lsd
+marijuana
+mdma
+meth
+methamphetamine
+overdose
+overdosed

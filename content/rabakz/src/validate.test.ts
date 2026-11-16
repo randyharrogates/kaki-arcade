@@ -129,7 +129,12 @@ describe('validateSourceFile: good questions', () => {
   });
 
   it('accepts a dataset source, with and without a url', () => {
-    const dataset = { kind: 'dataset', dataset: 'Open Trivia Database', licence: 'CC BY-SA 4.0' };
+    const dataset = {
+      kind: 'dataset',
+      dataset: 'Open Trivia Database',
+      licence: 'CC BY-SA 4.0',
+      notice: 'Adapted for Kaki Arcade. The adapted questions are offered under the same licence.',
+    };
     expect(errorRules(multipleChoice({ source: dataset }))).toEqual([]);
     const withUrl = { ...dataset, url: 'https://opentdb.com' };
     const result = validate(file([multipleChoice({ source: withUrl })]));
@@ -137,11 +142,64 @@ describe('validateSourceFile: good questions', () => {
     expect(result.questions[0]?.source).toEqual(withUrl);
   });
 
+  it('accepts a dataset source with the notice its licence asks for, and keeps it', () => {
+    const source = {
+      kind: 'dataset',
+      dataset: 'Open Trivia Database',
+      licence: 'CC BY-SA 4.0',
+      url: 'https://opentdb.com',
+      notice: 'Adapted for Kaki Arcade. The adapted questions are offered under the same licence.',
+    };
+    const result = validate(file([multipleChoice({ source })]));
+    expect(result.problems).toEqual([]);
+    expect(result.questions[0]?.source).toEqual(source);
+    expect(errorRules(multipleChoice({ source: { ...source, notice: 'Too short' } }))).toEqual([
+      'source',
+    ]);
+    expect(errorRules(multipleChoice({ source: { ...source, notice: 7 } }))).toEqual(['source']);
+    expect(
+      errorRules(multipleChoice({ source: { ...source, notice: 'x'.repeat(241) } })),
+    ).toEqual(['source']);
+  });
+
+  it('requires the notice when the licence is share-alike, and only then', () => {
+    const shareAlike = { kind: 'dataset', dataset: 'A dataset', licence: 'CC BY-SA 4.0' };
+    expect(errorRules(multipleChoice({ source: shareAlike }))).toEqual(['source']);
+    expect(validate(file([multipleChoice({ source: shareAlike })])).problems[0]?.message).toMatch(
+      /needs a notice: "CC BY-SA 4.0" is a share-alike licence/,
+    );
+    expect(errorRules(multipleChoice({ source: { ...shareAlike, licence: 'CC BY 4.0' } }))).toEqual(
+      [],
+    );
+    expect(errorRules(multipleChoice({ source: { ...shareAlike, licence: 'CC0 1.0' } }))).toEqual(
+      [],
+    );
+  });
+
+  it('accepts the address of the licence text, https only, and keeps it', () => {
+    const source = {
+      kind: 'dataset',
+      dataset: 'A dataset',
+      licence: 'CC BY 4.0',
+      licenceUrl: 'https://creativecommons.org/licenses/by/4.0/',
+    };
+    const result = validate(file([multipleChoice({ source })]));
+    expect(result.problems).toEqual([]);
+    expect(result.questions[0]?.source).toEqual(source);
+    expect(
+      errorRules(multipleChoice({ source: { ...source, licenceUrl: 'http://example.org/l' } })),
+    ).toEqual(['source']);
+    expect(errorRules(multipleChoice({ source: { ...source, licenceUrl: 4 } }))).toEqual([
+      'source',
+    ]);
+  });
+
   it('fills a missing source from the file default', () => {
     const defaultSource = {
       kind: 'dataset',
       dataset: 'Open Trivia Database',
       licence: 'CC BY-SA 4.0',
+      notice: 'Adapted for Kaki Arcade. The adapted questions are offered under the same licence.',
     };
     const result = validate(file([without(multipleChoice(), 'source')], { defaultSource }));
     expect(result.problems).toEqual([]);
@@ -434,7 +492,12 @@ describe('validateSourceFile: each question rule', () => {
   });
 
   it('source: a dataset needs its name and licence, and an https url if any', () => {
-    const dataset = { kind: 'dataset', dataset: 'Open Trivia Database', licence: 'CC BY-SA 4.0' };
+    const dataset = {
+      kind: 'dataset',
+      dataset: 'Open Trivia Database',
+      licence: 'CC BY-SA 4.0',
+      notice: 'Adapted for Kaki Arcade. The adapted questions are offered under the same licence.',
+    };
     expect(errorRules(multipleChoice({ source: without(dataset, 'licence') }))).toEqual(['source']);
     expect(errorRules(multipleChoice({ source: without(dataset, 'dataset') }))).toEqual(['source']);
     expect(

@@ -30,6 +30,10 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   wrap handled; `discardEdges` for resume, `reset` for a new connection), and snapshot, hash,
   freeze, encode and record-and-replay helpers. 200 tests. No game uses it yet. Known gap: a tap
   made in the last moments of a pause can still land as play restarts.
+- **Open Trivia import (R-11, merged 2026-11-16):** 2,342 questions in ten categories, credited
+  under CC BY-SA 4.0, screened for all ages by patterns and by three review rounds of reading
+  (last sampled fault rate 1.6%). The bank is 2,660 questions with the Singapore pack. Reproducible
+  offline from a committed cache. Built by a Claude agent, fixed by Codex.
 - **Singapore question pack (R-12, merged 2026-11-16):** 305 original four-option questions in
   six categories, each with a source note. Written and reviewed from memory with no web access:
   **no fact has been checked against a source**, and Randy's spot-check (R-14) is outstanding;

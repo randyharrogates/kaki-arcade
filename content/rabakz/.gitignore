@@ -1,2 +1,5 @@
 # Written by `pnpm --filter @kaki/content-rabakz build` from src/questions/. Never hand-edit.
 generated/
+
+# The Open Trivia Database download (scripts/import-otdb.ts). Fetched again on demand.
+.otdb-cache/

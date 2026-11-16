@@ -1,0 +1,20 @@
+PASS: two consecutive offline imports are byte-identical across all 16 category files, import-report.md and sample.md (seed 11).
+
+c4ed04c0c60c87032d9ce4ec41405d298f361784908517a14081d7ea36570f5f  content/rabakz/src/questions/arts-and-literature.json
+6c382c0a23315b87f9672637f3a3c020388d74935d10c30bf6e94308cc1e7545  content/rabakz/src/questions/film-and-tv.json
+b3aa9a9ee5236922bc156e8e1d23b98ae82de25a3b2f112f2c5d298ecea433e3  content/rabakz/src/questions/games-comics-and-anime.json
+0948a11caad34a11bdd85f21ca0a9138796fc0ae97e5cc684aaaa1a78dd3e833  content/rabakz/src/questions/general-knowledge.json
+69154a59090c60a1508128612361bbc65623a5c3f4fe8d9e3c6714072ca26f70  content/rabakz/src/questions/geography.json
+29272d98dca88df3031e644391609ed052dffe5063dcad0a2e482a6650337abe  content/rabakz/src/questions/history.json
+facd06cca50610ad4f19c89ab954b7754822d751d9d3b6b5c9c41f0e531e1776  content/rabakz/src/questions/music.json
+f9fff49b6baf7346b1f2276a617e6e61be05dd69c610dd8d1f04827a8b9e1afe  content/rabakz/src/questions/science-and-nature.json
+2445d45135325c70d876f5eb31deadf422ecb59535c744eff32944bf93c8cd06  content/rabakz/src/questions/singapore-arts-and-sport.json
+d275306a8d03c6134bd3e6f9b41419975d28729d2623206524fc9f8e41d42c9a  content/rabakz/src/questions/singapore-food.json
+ea93cb80f0770d684badfaea43ff551151490306d9463fd7ba5d9965528adf84  content/rabakz/src/questions/singapore-history.json
+8b158339d8b7a5d2cf9ad0c70bb58d594410a9fde6ee83fa53d5412d320f1ce6  content/rabakz/src/questions/singapore-life.json
+fc0b5af5e6c580b8a806ad639c87321366e45a797bfd8adc4d74d0c557d4713c  content/rabakz/src/questions/singapore-nature.json
+038335559ac47289c6202cab182ac4c0339275f007c4b6961d508ff0a95ec213  content/rabakz/src/questions/singapore-places.json
+7d3426a2cf8f46ba3ae58642e2392d15164f3ddba91f991c1dff531571af4440  content/rabakz/src/questions/sport.json
+8ec0a3a7cd11472ae86347bdd2f1531eb5c9805cd8da6a02cea406a95489c5d5  content/rabakz/src/questions/technology.json
+7c74c7fc17a2f732fae5ab79d9017e2cf3e12d7ad64980dd00f006257ec376de  uat/evidence/R-11-otdb-import/import-report.md
+c14a1533bd497670e3aa09d6cb7e02feb0c1ba88875ec2f6b33fcdf59707b73f  uat/evidence/R-11-otdb-import/sample.md

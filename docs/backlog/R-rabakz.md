@@ -28,7 +28,7 @@ Content work. It needs no code from other tracks and starts in Wave 0.
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
 | R-10 | Question schema, build and validation script, per-category chunks loaded before a match | RZ-020, RZ-022 | F-01 | 0 | merged |
-| R-11 | Import the Open Trivia Database: licence and attribution recorded, length filter, all-ages screen, difficulty mapped | RZ-021, RZ-023, RZ-024 | R-10 | 0 | doing |
+| R-11 | Import the Open Trivia Database: licence and attribution recorded, length filter, all-ages screen, difficulty mapped | RZ-021, RZ-023, RZ-024 | R-10 | 0 | merged |
 | R-12 | Singapore pack: at least 200 questions written by Claude, each with a source note | RZ-021, RZ-024 | R-10 | 1 | merged |
 | R-13 | Picture questions: at least 60, with real photographs under a free licence (licence and credit recorded per image); a Codex-generated image, checked for accuracy and logged in `DECISIONS.md`, only where no suitable photograph can be found (D-042) | RZ-002, RZ-024, RZ-025 | R-10, G-02 | 2 | todo |
 | R-14 | Randy spot-checks the Singapore pack and a sample of the rest | RZ-021, RZ-023 | R-11, R-12 | 3 | todo |
@@ -59,3 +59,10 @@ Content work. It needs no code from other tracks and starts in Wave 0.
   Singapore history prompts give away; a test that holds the pack to at least 200 questions and
   25 per Singapore category; decide whether six Singapore categories show as one group on the
   setup screen (a design choice for Randy, R-04).
+- **From the R-11 reviews:** Hard pools too small for long matches (sport 17, general knowledge
+  39); sport leans North American; about 20 hard games questions are deep fan trivia. R-01's
+  setup screen must handle `bank-too-small`. The validator's `same-options` warning should fire
+  only when the two prompts also share a third of their content words (all 34 current warnings
+  are different questions sharing a generic option set), so `build --strict` can pass. Imported
+  facts were checked from general knowledge, not against sources. `otdb-cd46b7646df6` uses the
+  characters ♡ and ♪: check the game font draws them (F-06b).

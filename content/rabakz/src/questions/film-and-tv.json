@@ -1,0 +1,3374 @@
+{
+  "category": "film-and-tv",
+  "title": "Film and television",
+  "defaultSource": {
+    "kind": "dataset",
+    "dataset": "Open Trivia Database",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "url": "https://opentdb.com",
+    "notice": "Questions from the Open Trivia Database (opentdb.com), licensed under CC BY-SA 4.0. Adapted for Kaki Arcade: selected, screened for an all-ages audience, regrouped and tidied. The adapted questions are offered under the same licence."
+  },
+  "questions": [
+    {
+      "id": "otdb-0093c9155ed2",
+      "type": "multiple-choice",
+      "prompt": "In the 1979 British film \"Quadrophenia\" what is the name of the seaside city the mods are visiting?",
+      "options": [
+        "Brighton",
+        "Eastbourne",
+        "Mousehole",
+        "Bridlington"
+      ],
+      "answer": "Brighton",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-01263e6758d2",
+      "type": "multiple-choice",
+      "prompt": "Which of the following movies was not based on a book?",
+      "options": [
+        "Citizen Kane",
+        "The Godfather",
+        "Forrest Gump",
+        "Jurassic Park"
+      ],
+      "answer": "Citizen Kane",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-014f4c9279f0",
+      "type": "multiple-choice",
+      "prompt": "What year did the James Cameron film \"Titanic\" come out in theaters?",
+      "options": [
+        "1997",
+        "1996",
+        "1998",
+        "1999"
+      ],
+      "answer": "1997",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0339604dfa5a",
+      "type": "multiple-choice",
+      "prompt": "In the film \"Harry Potter and the Order of The Phoenix\", why was Harry Potter's scream, after Sirius Black died, muted?",
+      "options": [
+        "Too Agonizing",
+        "Too Loud",
+        "Too Harsh",
+        "Too Violent"
+      ],
+      "answer": "Too Agonizing",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-036ae61fbcdd",
+      "type": "multiple-choice",
+      "prompt": "How many seasons did the Sci-Fi television show \"Stargate Universe\" have?",
+      "options": [
+        "2",
+        "10",
+        "5",
+        "3"
+      ],
+      "answer": "2",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-06683d00bb6e",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the the first episode of Doctor Who to air in 1963?",
+      "options": [
+        "An Unearthly Child",
+        "The Daleks",
+        "The Aztecs",
+        "The Edge of Destruction"
+      ],
+      "answer": "An Unearthly Child",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-07abe2deb033",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the main antagonists in Battlestar Galactica?",
+      "options": [
+        "The Cylons",
+        "The Collective",
+        "The Federation",
+        "The Rebels"
+      ],
+      "answer": "The Cylons",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-07b412fc68c7",
+      "type": "multiple-choice",
+      "prompt": "In the 1979 British film \"Quadrophenia\" what is the name of the main protagonist?",
+      "options": [
+        "Jimmy Cooper",
+        "Pete Townshend",
+        "Franc Roddam",
+        "Archie Bunker"
+      ],
+      "answer": "Jimmy Cooper",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0870f5b82cbc",
+      "type": "multiple-choice",
+      "prompt": "What was the date of original airing of the pilot episode of My Little Pony: Friendship is Magic?",
+      "options": [
+        "October 10th, 2010",
+        "November 6th, 2010",
+        "April 14th, 1984",
+        "May 18th, 2015"
+      ],
+      "answer": "October 10th, 2010",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-08f65be72d45",
+      "type": "multiple-choice",
+      "prompt": "On the NBC show Community, whose catch-phrase was \"Pop! Pop!\"?",
+      "options": [
+        "Magnitude",
+        "Star Burns",
+        "Leonard",
+        "Señor Chang"
+      ],
+      "answer": "Magnitude",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0a4099403718",
+      "type": "multiple-choice",
+      "prompt": "In which state of America was the Fresh Prince of Bel-Air born and raised in?",
+      "options": [
+        "Pennsylvania",
+        "Florida",
+        "California",
+        "New Jersey"
+      ],
+      "answer": "Pennsylvania",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0a5c56e15cf3",
+      "type": "multiple-choice",
+      "prompt": "In DuckTales, what is the name of the city where all the main characters live?",
+      "options": [
+        "Duckburg",
+        "Duckwing",
+        "Tailspin",
+        "Wingford"
+      ],
+      "answer": "Duckburg",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0a8384de2e19",
+      "type": "multiple-choice",
+      "prompt": "Who directed the movie \"Alien\"?",
+      "options": [
+        "Ridley Scott",
+        "Christopher Nolan",
+        "Michael Bay",
+        "James Cameron"
+      ],
+      "answer": "Ridley Scott",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0a8717228a7c",
+      "type": "multiple-choice",
+      "prompt": "The 1996 film 'Fargo' is primarily set in which US state?",
+      "options": [
+        "Minnesota",
+        "North Dakota",
+        "South Dakota",
+        "Wisconsin"
+      ],
+      "answer": "Minnesota",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0ab6a85a21fb",
+      "type": "multiple-choice",
+      "prompt": "Who directed the 2017 movie \"The Shape of Water\"?",
+      "options": [
+        "Guillermo del Toro",
+        "Steven Spielberg",
+        "James Cameron",
+        "Martin Scorsese"
+      ],
+      "answer": "Guillermo del Toro",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0ace2061c229",
+      "type": "multiple-choice",
+      "prompt": "Who was the winner of the 2016 WWE Royal Rumble?",
+      "options": [
+        "Triple H",
+        "Roman Reigns",
+        "AJ Styles",
+        "Dean Ambrose"
+      ],
+      "answer": "Triple H",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0aed010662ab",
+      "type": "multiple-choice",
+      "prompt": "Which musical artist had a prominent role in the 2017 film \"Kingsman: The Golden Circle\"?",
+      "options": [
+        "Elton John",
+        "Lady Gaga",
+        "Rihanna",
+        "Justin Bieber"
+      ],
+      "answer": "Elton John",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0b4d3c230bb8",
+      "type": "multiple-choice",
+      "prompt": "Who is the protagonist of the 2002 film \"Kung Pow! Enter the Fist\"?",
+      "options": [
+        "Chosen One",
+        "Dragon King",
+        "Iron Monkey",
+        "Master Tang"
+      ],
+      "answer": "Chosen One",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0cbafb7a7c26",
+      "type": "multiple-choice",
+      "prompt": "In \"The Big Bang Theory\", what is Howard Wolowitz's nickname in World of Warcraft?",
+      "options": [
+        "Wolowizard",
+        "Sheldor",
+        "Rajesh",
+        "Priya"
+      ],
+      "answer": "Wolowizard",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0e72826e0889",
+      "type": "multiple-choice",
+      "prompt": "Which 1994 film did Roger Ebert famously despise, saying \"I hated hated hated hated hated this movie\".",
+      "options": [
+        "North",
+        "3 Ninjas Kick Back",
+        "The Santa Clause",
+        "Richie Rich"
+      ],
+      "answer": "North",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-11c0e90ef80f",
+      "type": "multiple-choice",
+      "prompt": "In which movie does Robin Williams' character have to disguise themselves into a woman?",
+      "options": [
+        "Mrs. Doubtfire",
+        "Old Dogs",
+        "Jumanji",
+        "Awakenings"
+      ],
+      "answer": "Mrs. Doubtfire",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-136a36841701",
+      "type": "multiple-choice",
+      "prompt": "In the movie \"Cast Away\" the main protagonist's best friend while on the island is named",
+      "options": [
+        "Wilson",
+        "Carson",
+        "Jackson",
+        "Willy"
+      ],
+      "answer": "Wilson",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-15640abcb80e",
+      "type": "multiple-choice",
+      "prompt": "Which famous singer was portrayed by actor Kevin Spacey in the 2004 biographical film \"Beyond the Sea\"?",
+      "options": [
+        "Bobby Darin",
+        "Louis Armstrong",
+        "Frank Sinatra",
+        "Dean Martin"
+      ],
+      "answer": "Bobby Darin",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-15763201ce6f",
+      "type": "multiple-choice",
+      "prompt": "In the movie “The Iron Giant,” this character is the protagonist.",
+      "options": [
+        "Hogarth Hughes",
+        "Kent Mansley",
+        "Dean McCoppin",
+        "Annie Hughes"
+      ],
+      "answer": "Hogarth Hughes",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-17ec202c917f",
+      "type": "multiple-choice",
+      "prompt": "In the show Stranger Things, what is Eleven's favorite breakfast food?",
+      "options": [
+        "Eggo Waffles",
+        "Toast",
+        "Captain Crunch",
+        "Bacon and Eggs"
+      ],
+      "answer": "Eggo Waffles",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-180e436282c5",
+      "type": "multiple-choice",
+      "prompt": "What city did the monster attack in the film, \"Cloverfield\"?",
+      "options": [
+        "New York, New York",
+        "Las Vegas, Nevada",
+        "Chicago, Illinois",
+        "Orlando, Florida"
+      ],
+      "answer": "New York, New York",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-193a8540db5c",
+      "type": "multiple-choice",
+      "prompt": "7-Eleven stores were temporarily converted into Kwik E-marts to promote the release of what movie?",
+      "options": [
+        "The Simpsons Movie",
+        "Spider-Man 3",
+        "Shrek the Third",
+        "Ratatouille"
+      ],
+      "answer": "The Simpsons Movie",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1993a05275da",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the \"Flash\" and \"Arrow\" spinoff featuring a team of characters that have appeared on both shows?",
+      "options": [
+        "Legends of Tomorrow",
+        "Heroes of Tomorrow",
+        "The Justice Society of America",
+        "The Justice Society"
+      ],
+      "answer": "Legends of Tomorrow",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-199af087d4b8",
+      "type": "multiple-choice",
+      "prompt": "What movie starring Bruce Willis contains the line \"I see dead people\"?",
+      "options": [
+        "The Sixth Sense",
+        "The Fifth Element",
+        "Die Hard",
+        "Armageddon"
+      ],
+      "answer": "The Sixth Sense",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1c5d8aa4656a",
+      "type": "multiple-choice",
+      "prompt": "In the movie \"Spaceballs\", what are the Spaceballs attempting to steal from Planet Druidia?",
+      "options": [
+        "Air",
+        "The Schwartz",
+        "Princess Lonestar",
+        "Meatballs"
+      ],
+      "answer": "Air",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1f00433b6a6c",
+      "type": "multiple-choice",
+      "prompt": "Who is the main protagonist in, the 1985 film, Back to the Future?",
+      "options": [
+        "Marty McFly",
+        "Emmett \"Doc\" Brown",
+        "Biff Tannen",
+        "George McFly"
+      ],
+      "answer": "Marty McFly",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1f1d132fbf65",
+      "type": "multiple-choice",
+      "prompt": "In Star Trek: The Next Generation, what is the name of Data's cat?",
+      "options": [
+        "Spot",
+        "Mittens",
+        "Tom",
+        "Kitty"
+      ],
+      "answer": "Spot",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-20c9db1b0e1e",
+      "type": "multiple-choice",
+      "prompt": "In \"Jurassic World\", which company purchases InGen and creates Jurassic World?",
+      "options": [
+        "Masrani Global Corporation",
+        "Biology Synthetics Technologies",
+        "International Genetics Incorporated",
+        "International Genetic Technologies"
+      ],
+      "answer": "Masrani Global Corporation",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-20e1eb71f70b",
+      "type": "multiple-choice",
+      "prompt": "In the TV Show \"Donkey Kong Country\", which episode did the song \"Eddie, Let Me Go Back To My Home\" play in?",
+      "options": [
+        "It's a Wonderful Life",
+        "Message In A Bottle Show",
+        "To The Moon Baboon",
+        "Ape-Nesia"
+      ],
+      "answer": "It's a Wonderful Life",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-21f2b36d7a6e",
+      "type": "multiple-choice",
+      "prompt": "Which one of these action movies are shot entirely in one take?",
+      "options": [
+        "Victoria",
+        "Ip Man 2",
+        "The Bourne Legacy",
+        "Léon: The Professional"
+      ],
+      "answer": "Victoria",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-221edb0498ec",
+      "type": "multiple-choice",
+      "prompt": "Prior to working at Wizards of the Coast, \"Mark Rosewater\" was a writer for which show?",
+      "options": [
+        "Roseanne",
+        "Boy Meets World",
+        "The X-Files",
+        "NYPD Blue"
+      ],
+      "answer": "Roseanne",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-22225adaf038",
+      "type": "multiple-choice",
+      "prompt": "Who voiced the character Draco in the 1996 movie 'DragonHeart'?",
+      "options": [
+        "Sean Connery",
+        "Dennis Quaid",
+        "Pete Postlethwaite",
+        "Brian Thompson"
+      ],
+      "answer": "Sean Connery",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-238d02bc2a1b",
+      "type": "multiple-choice",
+      "prompt": "Who voices the main character Blu in the 2011 animated film \"Rio\"?",
+      "options": [
+        "Jesse Eisenberg",
+        "Michael Cera",
+        "Jonah Hill",
+        "Zach Galifianakis"
+      ],
+      "answer": "Jesse Eisenberg",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-239523d6f6bc",
+      "type": "multiple-choice",
+      "prompt": "What year was Netflix founded?",
+      "options": [
+        "1997",
+        "1999",
+        "2004",
+        "2001"
+      ],
+      "answer": "1997",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2468419a9f6b",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the fictional retro-mod band starring Austin Powers as the lead vocalist?",
+      "options": [
+        "Ming Tea",
+        "Cough Fi",
+        "Spear Mint",
+        "Mister E"
+      ],
+      "answer": "Ming Tea",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-259f3c29c6b4",
+      "type": "multiple-choice",
+      "prompt": "In the show \"Futurama\" what is Fry's full name?",
+      "options": [
+        "Philip J. Fry",
+        "Fry J. Philip",
+        "Fry Rodríguez",
+        "Fry Philip"
+      ],
+      "answer": "Philip J. Fry",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2630e844bdf4",
+      "type": "multiple-choice",
+      "prompt": "Which actor played the main character in the 1990 film \"Edward Scissorhands\"?",
+      "options": [
+        "Johnny Depp",
+        "Clint Eastwood",
+        "Leonardo DiCaprio",
+        "Ben Stiller"
+      ],
+      "answer": "Johnny Depp",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-288a396d58aa",
+      "type": "multiple-choice",
+      "prompt": "Velma Kelly and Roxie Hart are the protagonists of which Oscar winning movie?",
+      "options": [
+        "Chicago",
+        "Dreamgirls",
+        "Cabaret",
+        "All That Jazz"
+      ],
+      "answer": "Chicago",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2b305c56853e",
+      "type": "multiple-choice",
+      "prompt": "What is the correct spelling of the protagonist of the book in The NeverEnding Story (1984)?",
+      "options": [
+        "Atreyu",
+        "Atrayu",
+        "Atraiyu",
+        "Atraeyu"
+      ],
+      "answer": "Atreyu",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2b98ab6a5717",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the character Nicolas Cage plays in the movie \"National Treasure?\"",
+      "options": [
+        "Benjamin Franklin Gates",
+        "Thomas Jefferson Walker",
+        "George Washington Swanson",
+        "John Quincy Beckett"
+      ],
+      "answer": "Benjamin Franklin Gates",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2bccfad2961b",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the assassin in the first \"Hellboy\" movie?",
+      "options": [
+        "Karl Ruprecht Kroenen",
+        "Klaus Werner von Krupt",
+        "Grigori Efimovich Rasputin",
+        "Ilsa Haupstein"
+      ],
+      "answer": "Karl Ruprecht Kroenen",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2c4b0bb8e1fd",
+      "type": "multiple-choice",
+      "prompt": "In what year was the movie \"Police Academy\" released?",
+      "options": [
+        "1984",
+        "1986",
+        "1985",
+        "1983"
+      ],
+      "answer": "1984",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2cf1e2789a02",
+      "type": "multiple-choice",
+      "prompt": "What year did the movie \"Napoleon Dynamite\" come out?",
+      "options": [
+        "2004",
+        "2002",
+        "2003",
+        "2005"
+      ],
+      "answer": "2004",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2d78066b99e8",
+      "type": "multiple-choice",
+      "prompt": "Baron Silas Greenback is the arch nemesis of which cartoon hero?",
+      "options": [
+        "Danger Mouse",
+        "Bananaman",
+        "SuperTed",
+        "Captain Star"
+      ],
+      "answer": "Danger Mouse",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2df9224b5dc0",
+      "type": "multiple-choice",
+      "prompt": "What mutated animals act as monsters in the movie 'Night of the Lepus'?",
+      "options": [
+        "Rabbits",
+        "Dogs",
+        "Rats",
+        "Bats"
+      ],
+      "answer": "Rabbits",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ea48e324a45",
+      "type": "multiple-choice",
+      "prompt": "In the 1995 film \"Balto\", who are Steele's accomplices?",
+      "options": [
+        "Kaltag, Nikki, and Star",
+        "Dusty, Kirby, and Ralph",
+        "Nuk, Yak, and Sumac",
+        "Jenna, Sylvie, and Dixie"
+      ],
+      "answer": "Kaltag, Nikki, and Star",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2f929c4e3a3f",
+      "type": "multiple-choice",
+      "prompt": "In the 2014 film \"Birdman\", what is the primary instrument in the score?",
+      "options": [
+        "Drums",
+        "Saxophone",
+        "Violin",
+        "Actual Live Birds Singing"
+      ],
+      "answer": "Drums",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3077299f35a1",
+      "type": "multiple-choice",
+      "prompt": "In the 1984 movie \"The Terminator\", what model number is the Terminator portrayed by Arnold Schwarzenegger?",
+      "options": [
+        "T-800",
+        "I-950",
+        "T-888",
+        "T-1000"
+      ],
+      "answer": "T-800",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-307ff6cd67f3",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the police officer in the cartoon \"Top Cat\"?",
+      "options": [
+        "Dibble",
+        "Barbrady",
+        "Mahoney",
+        "Murphy"
+      ],
+      "answer": "Dibble",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-30e2f485dc40",
+      "type": "multiple-choice",
+      "prompt": "What were the Chilled Monkey Brains made from during Indiana Jones and the Temple of Doom?",
+      "options": [
+        "Custard and Raspberry Sauce",
+        "Strawberry Ice Cream",
+        "Cherry Yogurt",
+        "Raspberry Sorbet"
+      ],
+      "answer": "Custard and Raspberry Sauce",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-31cc845d9070",
+      "type": "multiple-choice",
+      "prompt": "Who directed the 1973 film \"American Graffiti\"?",
+      "options": [
+        "George Lucas",
+        "Ron Howard",
+        "Francis Ford Coppola",
+        "Steven Spielberg"
+      ],
+      "answer": "George Lucas",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-31da7c4ac41c",
+      "type": "multiple-choice",
+      "prompt": "What is the orange and white bot's name in \"Star Wars: The Force Awakens\"?",
+      "options": [
+        "BB-8",
+        "BB-3",
+        "AA-A",
+        "R2-D2"
+      ],
+      "answer": "BB-8",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-32940ddf309a",
+      "type": "multiple-choice",
+      "prompt": "Which actor was not a major character in TV Show Freaks and Geeks?",
+      "options": [
+        "Jonah Hill",
+        "Jason Segel",
+        "Seth Rogen",
+        "James Franco"
+      ],
+      "answer": "Jonah Hill",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3330652f9c8d",
+      "type": "multiple-choice",
+      "prompt": "In Mulan (1998), who is the leader of the Huns?",
+      "options": [
+        "Shan Yu",
+        "Chien-Po",
+        "Li Shang",
+        "Fa Zhou"
+      ],
+      "answer": "Shan Yu",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3449613a1a88",
+      "type": "multiple-choice",
+      "prompt": "Which actress portrayed Dr. Grace Augustine in the James Cameron movie \"Avatar\"?",
+      "options": [
+        "Sigourney Weaver",
+        "Jessica Chastain",
+        "Melissa Beckett",
+        "Alyssa Monroe"
+      ],
+      "answer": "Sigourney Weaver",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-34b95be0f4b7",
+      "type": "multiple-choice",
+      "prompt": "Peter Jackson's film series \"The Lord of the Rings\" was shot entirely in which country?",
+      "options": [
+        "New Zealand",
+        "Scotland",
+        "Canada",
+        "Iceland"
+      ],
+      "answer": "New Zealand",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-34ed643dfc2c",
+      "type": "multiple-choice",
+      "prompt": "Which was the first of Alfred Hitchcock's movies to be filmed in colour?",
+      "options": [
+        "Rope",
+        "Psycho",
+        "Vertigo",
+        "Rebecca"
+      ],
+      "answer": "Rope",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-358e54dc64bc",
+      "type": "multiple-choice",
+      "prompt": "Which actor auditioned for the role of Luke Skywalker?",
+      "options": [
+        "Kurt Russell",
+        "Christopher Lambert",
+        "Laurence Fishburne",
+        "James Remar"
+      ],
+      "answer": "Kurt Russell",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3660144290be",
+      "type": "multiple-choice",
+      "prompt": "Who directed the 2015 movie \"The Revenant\"?",
+      "options": [
+        "Alejandro G. Iñárritu",
+        "Christopher Nolan",
+        "David Fincher",
+        "Wes Anderson"
+      ],
+      "answer": "Alejandro G. Iñárritu",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-376462a35979",
+      "type": "multiple-choice",
+      "prompt": "Which director directed the movie \"Pan's Labyrinth\"?",
+      "options": [
+        "Guillermo Del Toro",
+        "Alfonso Cuarón",
+        "Alejandro González Iñárritu",
+        "Alejandro Jodorowsky"
+      ],
+      "answer": "Guillermo Del Toro",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-37f66c9fd6ca",
+      "type": "multiple-choice",
+      "prompt": "How many seasons did \"Stargate SG-1\" have?",
+      "options": [
+        "10",
+        "3",
+        "7",
+        "12"
+      ],
+      "answer": "10",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-37fde6e2ea13",
+      "type": "multiple-choice",
+      "prompt": "Who did the score to the original Blade Runner?",
+      "options": [
+        "Vangelis",
+        "Kitaro",
+        "Yanni",
+        "Enya"
+      ],
+      "answer": "Vangelis",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-38ba63ced339",
+      "type": "multiple-choice",
+      "prompt": "Which actor and martial artist starred as Colonel Guile in the 1994 action film adaptation of Street Fighter?",
+      "options": [
+        "Jean-Claude Van Damme",
+        "Chuck Norris",
+        "Steven Seagal",
+        "Scott Adkins"
+      ],
+      "answer": "Jean-Claude Van Damme",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a7c48079d43",
+      "type": "multiple-choice",
+      "prompt": "In the television show \"Lazy Town\", who is the actor of Robbie Rotten?",
+      "options": [
+        "Stefán Stefánsson",
+        "Adam Sandler",
+        "Magnús Scheving",
+        "Stephen Carl"
+      ],
+      "answer": "Stefán Stefánsson",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3b3f3350896b",
+      "type": "multiple-choice",
+      "prompt": "Who performed the opening theme song for the James Bond 007 movie \"Goldfinger\"?",
+      "options": [
+        "Shirley Bassey",
+        "Tom Jones",
+        "John Barry",
+        "Sheena Easton"
+      ],
+      "answer": "Shirley Bassey",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3b40a03e0a89",
+      "type": "multiple-choice",
+      "prompt": "Which movie includes a giant bunny-like spirit who has magic powers including growing trees?",
+      "options": [
+        "My Neighbor Totoro",
+        "Hop",
+        "Rise of the Guardians",
+        "Alice in Wonderland"
+      ],
+      "answer": "My Neighbor Totoro",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3cfc4acaae3e",
+      "type": "multiple-choice",
+      "prompt": "Daniel Radcliffe became a global star in the film industry due to his performance in which film franchise?",
+      "options": [
+        "Harry Potter",
+        "Ted",
+        "Spy Kids",
+        "Pirates of the Caribbean"
+      ],
+      "answer": "Harry Potter",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3d27c0d28102",
+      "type": "multiple-choice",
+      "prompt": "Which actor plays Obi-Wan Kenobi in Star Wars Episodes I-III?",
+      "options": [
+        "Ewan McGregor",
+        "Alec Guinness",
+        "Hayden Christensen",
+        "Liam Neeson"
+      ],
+      "answer": "Ewan McGregor",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3d7efd8d7db2",
+      "type": "multiple-choice",
+      "prompt": "Which town is the setting for the Disney movie The Love Bug (1968)?",
+      "options": [
+        "San Francisco",
+        "Los Angeles",
+        "Sacramento",
+        "San Jose"
+      ],
+      "answer": "San Francisco",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3db4b1f373e6",
+      "type": "multiple-choice",
+      "prompt": "In Naruto: Shippuden, which of the following elements is a \"Kekkei Tōta?\"",
+      "options": [
+        "Particle Style",
+        "Any Doujutsu",
+        "Shadow Style",
+        "Ice Style"
+      ],
+      "answer": "Particle Style",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3ddda70afc03",
+      "type": "multiple-choice",
+      "prompt": "Who plays protagonist Ethan Hunt in the \"Mission: Impossible\" film-series?",
+      "options": [
+        "Tom Cruise",
+        "Johnny Depp",
+        "Sean Connery",
+        "Pierce Brosnan"
+      ],
+      "answer": "Tom Cruise",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f0f4af690a5",
+      "type": "multiple-choice",
+      "prompt": "In the Mad Max franchise, what type of car is the Pursuit Special driven by Max?",
+      "options": [
+        "Ford Falcon",
+        "Holden Monaro",
+        "Chrysler Valiant Charger",
+        "Pontiac Firebird"
+      ],
+      "answer": "Ford Falcon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4037e26c5e7e",
+      "type": "multiple-choice",
+      "prompt": "The 1985 Toyota Corolla \"AE86\" was the hero car for what anime?",
+      "options": [
+        "Initial D",
+        "Wangan Midnight",
+        "Ghost MF",
+        "Ex Driver"
+      ],
+      "answer": "Initial D",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-42ad1b4b2766",
+      "type": "multiple-choice",
+      "prompt": "In Star Trek, what is the name of Spock's father?",
+      "options": [
+        "Sarek",
+        "Tuvok",
+        "T'Pal",
+        "Surak"
+      ],
+      "answer": "Sarek",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-456686178a1e",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the teenage witch played by Melissa Joan Hart who lives with her witch aunts Hilda and Zelda?",
+      "options": [
+        "Sabrina",
+        "Hermione",
+        "Dorothy",
+        "Dahlia"
+      ],
+      "answer": "Sabrina",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-473e9e3578df",
+      "type": "multiple-choice",
+      "prompt": "In which year did the British television series \"The Bill\" end?",
+      "options": [
+        "2010",
+        "2001",
+        "2007",
+        "2012"
+      ],
+      "answer": "2010",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-48b3ff4371f2",
+      "type": "multiple-choice",
+      "prompt": "In \"Star Trek\", what sauce is commonly used by Klingons on bregit lung?",
+      "options": [
+        "Grapok sauce",
+        "Gazorpazorp pudding",
+        "Sweet chili sauce",
+        "Grapork sauce"
+      ],
+      "answer": "Grapok sauce",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4a9af4292fb2",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the planet that the Doctor from television series \"Doctor Who\" comes from?",
+      "options": [
+        "Gallifrey",
+        "Sontar",
+        "Skaro",
+        "Mondas"
+      ],
+      "answer": "Gallifrey",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4b8b3f9061df",
+      "type": "multiple-choice",
+      "prompt": "What NBC sitcom once saw two of its characters try to pitch NBC on a sitcom about nothing?",
+      "options": [
+        "Seinfeld",
+        "Frasier",
+        "Becker",
+        "Friends"
+      ],
+      "answer": "Seinfeld",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4c6f1226c26a",
+      "type": "multiple-choice",
+      "prompt": "The Queen song 'A Kind Of Magic' is featured in which 1986 film?",
+      "options": [
+        "Highlander",
+        "Flash Gordon",
+        "Labyrinth",
+        "Howard the Duck"
+      ],
+      "answer": "Highlander",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4d3c00ba2e36",
+      "type": "multiple-choice",
+      "prompt": "In the \"Jurassic Park\" universe, when did \"Jurassic Park: San Diego\" begin construction?",
+      "options": [
+        "1985",
+        "1988",
+        "1986",
+        "1993"
+      ],
+      "answer": "1985",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4e1eaed8746f",
+      "type": "multiple-choice",
+      "prompt": "Which of the following James Bond villains is not affiliated with the SPECTRE organization?",
+      "options": [
+        "Auric Goldfinger",
+        "Dr. Julius No",
+        "Rosa Klebb",
+        "Emilio Largo"
+      ],
+      "answer": "Auric Goldfinger",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4e29024e0dfe",
+      "type": "multiple-choice",
+      "prompt": "What was the name of Ross' pet monkey on \"Friends\"?",
+      "options": [
+        "Marcel",
+        "Jojo",
+        "George",
+        "Champ"
+      ],
+      "answer": "Marcel",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4ed63906614d",
+      "type": "multiple-choice",
+      "prompt": "Who was the original voice actor of Shaggy Rogers in Scooby-Doo?",
+      "options": [
+        "Casey Kasem",
+        "Dante Basco",
+        "Billy West",
+        "Frank Welker"
+      ],
+      "answer": "Casey Kasem",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4f0fb215c6fe",
+      "type": "multiple-choice",
+      "prompt": "Who was the star of the TV series \"24\"?",
+      "options": [
+        "Kiefer Sutherland",
+        "Kevin Bacon",
+        "Hugh Laurie",
+        "Rob Lowe"
+      ],
+      "answer": "Kiefer Sutherland",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4fc8424062a8",
+      "type": "multiple-choice",
+      "prompt": "In the movie \"Blade Runner\", what is the term used for human-like androids ?",
+      "options": [
+        "Replicants",
+        "Cylons",
+        "Synthetics",
+        "Skinjobs"
+      ],
+      "answer": "Replicants",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-50ba621bae30",
+      "type": "multiple-choice",
+      "prompt": "In the 2012 film, \"The Lorax\", who is the antagonist?",
+      "options": [
+        "Aloysius O'Hare",
+        "Ted Wiggins",
+        "The Once-Ler",
+        "Grammy Norma"
+      ],
+      "answer": "Aloysius O'Hare",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-50cd36c45ada",
+      "type": "multiple-choice",
+      "prompt": "In \"Spongebob Squarepants,\" what is Mr. Krabs' full name?",
+      "options": [
+        "Eugene H. Krabs",
+        "Eugene G. Krabs",
+        "Eugene J. Krabs",
+        "Eugene D. Krabs"
+      ],
+      "answer": "Eugene H. Krabs",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-50d6ab437b02",
+      "type": "multiple-choice",
+      "prompt": "What does Bart sell his soul for in The Simpsons episode 'Bart Sells His Soul'?",
+      "options": [
+        "$5",
+        "A Copy of Bonestorm 2",
+        "$100",
+        "A Giant Gobstopper"
+      ],
+      "answer": "$5",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-52ed072f45bf",
+      "type": "multiple-choice",
+      "prompt": "In Tron: Legacy, Kevin Flynn wrote a program to create the perfect system. What was the program's name?",
+      "options": [
+        "Clu",
+        "Tron",
+        "MCP",
+        "Quorra"
+      ],
+      "answer": "Clu",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-54a03ad06684",
+      "type": "multiple-choice",
+      "prompt": "When does \"Rogue One: A Star Wars Story\" take place chronologically in the series?",
+      "options": [
+        "Between Episode 3 and 4",
+        "After Episode 6",
+        "Before Episode 1",
+        "Between Episode 4 and 5"
+      ],
+      "answer": "Between Episode 3 and 4",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-55428f36290d",
+      "type": "multiple-choice",
+      "prompt": "What does TIE stand for in reference to the TIE Fighter in \"Star Wars\"?",
+      "options": [
+        "Twin Ion Engine",
+        "Twin Iron Engine",
+        "Twin Intercepter Engine",
+        "Twin Inception Engine"
+      ],
+      "answer": "Twin Ion Engine",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-55685837c6e9",
+      "type": "multiple-choice",
+      "prompt": "In the 2002 film \"Kung Pow! Enter the Fist\", Master Pain changes his name to what?",
+      "options": [
+        "Betty",
+        "Sally",
+        "Amy",
+        "Kitty"
+      ],
+      "answer": "Betty",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-57c69687d139",
+      "type": "multiple-choice",
+      "prompt": "Which of the following actors portrayed the Ninth Doctor in the British television show \"Doctor Who\"?",
+      "options": [
+        "Christopher Eccleston",
+        "David Tennant",
+        "Matt Smith",
+        "Tom Baker"
+      ],
+      "answer": "Christopher Eccleston",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-57fe029d0669",
+      "type": "multiple-choice",
+      "prompt": "In the show 'Doctor Who', what is the name of the time-capsule model stolen by 'the Doctor'?",
+      "options": [
+        "TT Type 40, Mark 3 (TARDIS)",
+        "TT Type 1, Mark 3 (TARDIS)",
+        "TT Type 40, Mark 5 (TARDIS)",
+        "TT Type 1, Mark 5 (TARDIS)"
+      ],
+      "answer": "TT Type 40, Mark 3 (TARDIS)",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5aea7a4c5586",
+      "type": "multiple-choice",
+      "prompt": "In \"Star Trek: Voyager\", which episode did Voyager establish real-time communication with Starfleet Headquarters?",
+      "options": [
+        "Pathfinder",
+        "Message In A Bottle",
+        "Someone To Watch Over Me",
+        "Counterpoint"
+      ],
+      "answer": "Pathfinder",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5af7ab2be355",
+      "type": "multiple-choice",
+      "prompt": "Which race enjoys a glass of warm baghol in \"Star Trek\"?",
+      "options": [
+        "Klingon",
+        "Vulcan",
+        "Human",
+        "Botha"
+      ],
+      "answer": "Klingon",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5b0ed67e2baa",
+      "type": "multiple-choice",
+      "prompt": "The 2016 Disney animated film 'Moana' is based on which culture?",
+      "options": [
+        "Polynesian",
+        "Native American",
+        "Japanese",
+        "Nordic"
+      ],
+      "answer": "Polynesian",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5ca7913e2ce6",
+      "type": "multiple-choice",
+      "prompt": "According to \"Star Wars\" lore, which planet does Obi-Wan Kenobi come from?",
+      "options": [
+        "Stewjon",
+        "Alderaan",
+        "Tatooine",
+        "Naboo"
+      ],
+      "answer": "Stewjon",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5d369aad6f05",
+      "type": "multiple-choice",
+      "prompt": "What was the wifi password given to Stephen Strange in Doctor Strange?",
+      "options": [
+        "Shambala",
+        "Peace",
+        "Ancient",
+        "Chakra"
+      ],
+      "answer": "Shambala",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5f65e355bba0",
+      "type": "multiple-choice",
+      "prompt": "What is the birth name of Michael Keaton?",
+      "options": [
+        "Michael Douglas",
+        "Michael Fox",
+        "Michael Richards",
+        "Michael Kane"
+      ],
+      "answer": "Michael Douglas",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6003230753d8",
+      "type": "multiple-choice",
+      "prompt": "Who composed the theme song for The Simpsons?",
+      "options": [
+        "Danny Elfman",
+        "John Williams",
+        "Hans Zimmer",
+        "Ennio Morricone"
+      ],
+      "answer": "Danny Elfman",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-60dec94bbd94",
+      "type": "multiple-choice",
+      "prompt": "What breed of dog is \"Scooby Doo\"?",
+      "options": [
+        "Great Dane",
+        "Pit bull",
+        "Boxer",
+        "Doberman Pinscher"
+      ],
+      "answer": "Great Dane",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-616ce71386f0",
+      "type": "multiple-choice",
+      "prompt": "Who directed \"E.T. the Extra-Terrestrial\" (1982)?",
+      "options": [
+        "Steven Spielberg",
+        "Stanley Kubrick",
+        "James Cameron",
+        "Tim Burton"
+      ],
+      "answer": "Steven Spielberg",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-628bb0f3351e",
+      "type": "multiple-choice",
+      "prompt": "What was Nickelodeon's original name?",
+      "options": [
+        "Pinwheel",
+        "MTVKids",
+        "KidsTV",
+        "Splat!"
+      ],
+      "answer": "Pinwheel",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6451f6e8b14d",
+      "type": "multiple-choice",
+      "prompt": "In Finding Nemo, what was the name of Nemo's mom?",
+      "options": [
+        "Coral",
+        "Sandy",
+        "Pearl",
+        "Shelly"
+      ],
+      "answer": "Coral",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-646ecb7df419",
+      "type": "multiple-choice",
+      "prompt": "Which of these actors does NOT appear in the 1998 movie \"Saving Private Ryan\"?",
+      "options": [
+        "Ralph Fiennes",
+        "Tom Hanks",
+        "Vin Diesel",
+        "Matt Damon"
+      ],
+      "answer": "Ralph Fiennes",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-64de3826e440",
+      "type": "multiple-choice",
+      "prompt": "What is the make and model of the tour vehicles in \"Jurassic Park\" (1993)?",
+      "options": [
+        "1992 Ford Explorer XLT",
+        "1992 Toyota Land Cruiser",
+        "1992 Jeep Wrangler YJ Sahar",
+        "Mercedes M-Class"
+      ],
+      "answer": "1992 Ford Explorer XLT",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-65b903847c1c",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the supercomputer located in the control room in \"Jurassic Park\" (1993)?",
+      "options": [
+        "Thinking Machines CM-5",
+        "Cray X-MP",
+        "Cray XK7",
+        "IBM Blue Gene/Q"
+      ],
+      "answer": "Thinking Machines CM-5",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6634300da619",
+      "type": "multiple-choice",
+      "prompt": "The film Mad Max: Fury Road features the Dies Irae from which composer's requiem?",
+      "options": [
+        "Verdi",
+        "Mozart",
+        "Berlioz",
+        "Brahms"
+      ],
+      "answer": "Verdi",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-66346fd42d2e",
+      "type": "multiple-choice",
+      "prompt": "Leonardo Di Caprio won his first Best Actor Oscar for his performance in which film?",
+      "options": [
+        "The Revenant",
+        "The Wolf Of Wall Street",
+        "Shutter Island",
+        "Inception"
+      ],
+      "answer": "The Revenant",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-66cd30ba29ff",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the queen's pet in A Bug's Life?",
+      "options": [
+        "Aphie",
+        "Flik",
+        "Hopper",
+        "Dot"
+      ],
+      "answer": "Aphie",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-67c936152947",
+      "type": "multiple-choice",
+      "prompt": "In the 1971 film \"Willy Wonka & the Chocolate Factory\", who played Willy Wonka?",
+      "options": [
+        "Gene Wilder",
+        "Shia LeBouf",
+        "Peter Ostrum",
+        "Johnny Depp"
+      ],
+      "answer": "Gene Wilder",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-694941bc5a91",
+      "type": "multiple-choice",
+      "prompt": "What type of cheese, loved by Wallace and Gromit, had its sale prices rise after their successful short films?",
+      "options": [
+        "Wensleydale",
+        "Cheddar",
+        "Moon Cheese",
+        "Edam"
+      ],
+      "answer": "Wensleydale",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6cad460ca98b",
+      "type": "multiple-choice",
+      "prompt": "Which former Coronation Street actress was once a hostess on the British Game Show \"Double Your Money\"?",
+      "options": [
+        "Amanda Barrie",
+        "Sue Nicholls",
+        "Violet Carson",
+        "Jean Alexander"
+      ],
+      "answer": "Amanda Barrie",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6cc52a418be7",
+      "type": "multiple-choice",
+      "prompt": "Who voiced Metalbeard in \"The Lego Movie\"?",
+      "options": [
+        "Nick Offerman",
+        "Liam Neeson",
+        "Morgan Freeman",
+        "Will Arnett"
+      ],
+      "answer": "Nick Offerman",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6e0ebc59a28a",
+      "type": "multiple-choice",
+      "prompt": "The fictional movie 'Rochelle, Rochelle' features in which sitcom?",
+      "options": [
+        "Seinfeld",
+        "Frasier",
+        "Cheers",
+        "Friends"
+      ],
+      "answer": "Seinfeld",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6f75b7afcb91",
+      "type": "multiple-choice",
+      "prompt": "What was the first monster to appear alongside Godzilla?",
+      "options": [
+        "Anguirus",
+        "King Kong",
+        "Mothra",
+        "King Ghidorah"
+      ],
+      "answer": "Anguirus",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-70b7123e8b4f",
+      "type": "multiple-choice",
+      "prompt": "At the end of the 2001 film \"Rat Race\", whose concert do the contestants crash?",
+      "options": [
+        "Smash Mouth",
+        "Bowling for Soup",
+        "Sum 41",
+        "Linkin Park"
+      ],
+      "answer": "Smash Mouth",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-72d1de309bf2",
+      "type": "multiple-choice",
+      "prompt": "Who provided a majority of the songs and lyrics for \"Spirit: Stallion of the Cimarron\"?",
+      "options": [
+        "Bryan Adams",
+        "Smash Mouth",
+        "Oasis",
+        "Air Supply"
+      ],
+      "answer": "Bryan Adams",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-731893202c8d",
+      "type": "multiple-choice",
+      "prompt": "In the show \"The Office\" who does Michael Scott eventually end up with?",
+      "options": [
+        "Holly Flax",
+        "Angela Martin",
+        "Jan Levinson",
+        "Pam Beesly"
+      ],
+      "answer": "Holly Flax",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-739a86d81a60",
+      "type": "multiple-choice",
+      "prompt": "What breed of dog was Marley in the film \"Marley & Me\" (2008)?",
+      "options": [
+        "Labrador Retriever",
+        "Golden Retriever",
+        "Dalmatian",
+        "Shiba Inu"
+      ],
+      "answer": "Labrador Retriever",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-73f46eed1c62",
+      "type": "multiple-choice",
+      "prompt": "Which of these characters in \"Stranger Things\" has the power of Telekinesis?",
+      "options": [
+        "Eleven",
+        "Mike",
+        "Lucas",
+        "Karen"
+      ],
+      "answer": "Eleven",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-748d40d72f66",
+      "type": "multiple-choice",
+      "prompt": "In the Sci-Fi television show Doctor Who, who plays the Tenth Doctor?",
+      "options": [
+        "David Tennant",
+        "William Hartnell",
+        "Peter Capaldi",
+        "Peter Davison"
+      ],
+      "answer": "David Tennant",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-767129b4f79a",
+      "type": "multiple-choice",
+      "prompt": "In the TV show 'M*A*S*H', what was the nickname of Corporal Walter O'Reilly?",
+      "options": [
+        "Radar",
+        "Hawkeye",
+        "Hot Lips",
+        "Trapper"
+      ],
+      "answer": "Radar",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-76823e236238",
+      "type": "multiple-choice",
+      "prompt": "In the cartoon 'SpongeBob SquarePants', what did the acronym E.V.I.L stand for?",
+      "options": [
+        "Every Villain Is Lemons",
+        "Every Villain Is Lemonade",
+        "Every Villain Is Limes",
+        "Each Villain Is Lemonade"
+      ],
+      "answer": "Every Villain Is Lemons",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-770445c252ae",
+      "type": "multiple-choice",
+      "prompt": "Who was the first ever actor to play \"The Doctor\" on \"Doctor Who\"?",
+      "options": [
+        "William Hartnell",
+        "David Tennant",
+        "Peter Capaldi",
+        "Tom Baker"
+      ],
+      "answer": "William Hartnell",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-77ce1be12b45",
+      "type": "multiple-choice",
+      "prompt": "When was the movie 'Con Air' released?",
+      "options": [
+        "1997",
+        "1985",
+        "1999",
+        "1990"
+      ],
+      "answer": "1997",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-77f83a7af5d8",
+      "type": "multiple-choice",
+      "prompt": "Which Batman villain is Mark Hamill known for having voiced?",
+      "options": [
+        "The Joker",
+        "Two-Face",
+        "Bane",
+        "Hush"
+      ],
+      "answer": "The Joker",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-78a29be010ff",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the island that \"Jurassic Park\" is built on?",
+      "options": [
+        "Isla Nublar",
+        "Isla Sorna",
+        "Isla Muerta",
+        "Isla Pena"
+      ],
+      "answer": "Isla Nublar",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-78ff6234cfc9",
+      "type": "multiple-choice",
+      "prompt": "Which movie did NOT feature the late actor John Candy?",
+      "options": [
+        "Ghostbusters",
+        "Little Shop Of Horrors",
+        "Home Alone",
+        "Planes Trains and Automobiles"
+      ],
+      "answer": "Ghostbusters",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-791e8282e16d",
+      "type": "multiple-choice",
+      "prompt": "What did the first moving picture depict?",
+      "options": [
+        "A galloping horse",
+        "A woman in a dress",
+        "A man walking",
+        "A crackling fire"
+      ],
+      "answer": "A galloping horse",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7b5965beb925",
+      "type": "multiple-choice",
+      "prompt": "Who played the Waitress in the Spam sketch of \"Monty Python's Flying Circus\"?",
+      "options": [
+        "Terry Jones",
+        "Eric Idle",
+        "Graham Chapman",
+        "John Cleese"
+      ],
+      "answer": "Terry Jones",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7baf1635776b",
+      "type": "multiple-choice",
+      "prompt": "In what year did \"The Big Bang Theory\" debut on CBS?",
+      "options": [
+        "2007",
+        "2008",
+        "2006",
+        "2009"
+      ],
+      "answer": "2007",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7be263be95ee",
+      "type": "multiple-choice",
+      "prompt": "What is the name of Chris's brother in \"Everybody Hates Chris\"?",
+      "options": [
+        "Drew",
+        "Jerome",
+        "Greg",
+        "Joe"
+      ],
+      "answer": "Drew",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7df565c9576b",
+      "type": "multiple-choice",
+      "prompt": "Which animated film did Steven Lisberger direct in 1980 before going on to direct Tron?",
+      "options": [
+        "Animalympics",
+        "The Fox and the Hound",
+        "The Black Cauldron",
+        "The Great Mouse Detective"
+      ],
+      "answer": "Animalympics",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7e1db3870b75",
+      "type": "multiple-choice",
+      "prompt": "Which show is known for the songs \"You are a Pirate\", \"Cooking by the Book\" and \"We Are Number One\"?",
+      "options": [
+        "LazyTown",
+        "Sofia the First",
+        "DuckTales",
+        "Tom and Jerry"
+      ],
+      "answer": "LazyTown",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7f59c4510075",
+      "type": "multiple-choice",
+      "prompt": "Who played Agent Fox Mulder in the TV sci-fi drama \"The X-Files\"?",
+      "options": [
+        "David Duchovny",
+        "Gillian Anderson",
+        "Robert Patrick",
+        "Mitch Pileggi"
+      ],
+      "answer": "David Duchovny",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7f70b5ac34c7",
+      "type": "multiple-choice",
+      "prompt": "In Big Hero 6, what fictional city is the Big Hero 6 from?",
+      "options": [
+        "San Fransokyo",
+        "San Tokyo",
+        "Tokysisco",
+        "Sankyo"
+      ],
+      "answer": "San Fransokyo",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8023a7dc1e54",
+      "type": "multiple-choice",
+      "prompt": "Which WWF wrestler had the nickname \"The Ayatollah of Rock 'N' Rolla\"?",
+      "options": [
+        "Chris Jericho",
+        "Marty Jannetty",
+        "Scott Hall",
+        "Shawn Michaels"
+      ],
+      "answer": "Chris Jericho",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-811f8c2af74a",
+      "type": "multiple-choice",
+      "prompt": "How old was Laurence Fishburne when Francis Ford Coppola cast him in Apocalypse Now (1979)?",
+      "options": [
+        "14",
+        "16",
+        "18",
+        "20"
+      ],
+      "answer": "14",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8125a9869eb4",
+      "type": "multiple-choice",
+      "prompt": "Darth Vader's famous reveal to Luke is iconic. But which of these is the right one?",
+      "options": [
+        "\"No. I am your father.\"",
+        "\"Luke, I am your father.\"",
+        "\"You're wrong. I am your father.\"",
+        "\"The truth is that I am your father.\""
+      ],
+      "answer": "\"No. I am your father.\"",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-82312598813d",
+      "type": "multiple-choice",
+      "prompt": "In Star Wars, what's the name of the new Government created after the defeat of the Galactic Empire?",
+      "options": [
+        "The New Republic",
+        "The Rebel Alliance",
+        "The Crimson Dawn",
+        "The First Order"
+      ],
+      "answer": "The New Republic",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-82f185810117",
+      "type": "multiple-choice",
+      "prompt": "Who plays \"Bruce Wayne\" in the 2008 movie \"The Dark Knight\"?",
+      "options": [
+        "Christian Bale",
+        "Michael Caine",
+        "Ron Dean",
+        "Heath Ledger"
+      ],
+      "answer": "Christian Bale",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8561a621c31b",
+      "type": "multiple-choice",
+      "prompt": "In \"Star Trek\", who was the founder of the Klingon Empire and its philosophy?",
+      "options": [
+        "Kahless the Unforgettable",
+        "Lady Lukara of the Great Hall",
+        "Molor the Unforgiving",
+        "Dahar Master Kor"
+      ],
+      "answer": "Kahless the Unforgettable",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-85837df90e28",
+      "type": "multiple-choice",
+      "prompt": "Who played Thanos in Avengers: Infinity War and Avengers: End Game?",
+      "options": [
+        "Josh Brolin",
+        "Tom Hiddleston",
+        "Adam Sandler",
+        "Sean Gunn"
+      ],
+      "answer": "Josh Brolin",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-858fad5beefe",
+      "type": "multiple-choice",
+      "prompt": "In Back to the Future Part II, Marty and Dr. Emmett Brown go to which future date?",
+      "options": [
+        "October 21, 2015",
+        "August 28, 2015",
+        "July 20, 2015",
+        "January 25, 2015"
+      ],
+      "answer": "October 21, 2015",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-889c16d5a257",
+      "type": "multiple-choice",
+      "prompt": "Who plays Jack Burton in the movie \"Big Trouble in Little China?\"",
+      "options": [
+        "Kurt Russell",
+        "Patrick Swayze",
+        "John Cusack",
+        "Harrison Ford"
+      ],
+      "answer": "Kurt Russell",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8a07d75720c0",
+      "type": "multiple-choice",
+      "prompt": "What TV show featured older women named Blanche, Rose, Dorothy and Sophia?",
+      "options": [
+        "The Golden Girls",
+        "Cheers",
+        "The Wonder Years",
+        "Family Ties"
+      ],
+      "answer": "The Golden Girls",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8aa98fc4e5a9",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the planet in \"Aliens\"?",
+      "options": [
+        "LV-426",
+        "Weyland Yutani Corporation Base",
+        "FR-838",
+        "DI-621"
+      ],
+      "answer": "LV-426",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8d3f39ec2017",
+      "type": "multiple-choice",
+      "prompt": "In \"Star Trek Nemesis\", why was Praetor Shinzon created?",
+      "options": [
+        "To replace Picard as a Romulan Agent",
+        "To destroy the Enterprise",
+        "To become Picard's friend",
+        "To steal the Enterprise"
+      ],
+      "answer": "To replace Picard as a Romulan Agent",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8d5bbc71607d",
+      "type": "multiple-choice",
+      "prompt": "In the show \"Dragonball Z\", what is the name of Cell's most powerful attack?",
+      "options": [
+        "Solar Kamehameha",
+        "Super Kamehameha",
+        "Cell Kamehameha",
+        "Android Kamehameha"
+      ],
+      "answer": "Solar Kamehameha",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8f8c6856901e",
+      "type": "multiple-choice",
+      "prompt": "In the original Star Trek TV series, what was Captain James T. Kirk's middle name?",
+      "options": [
+        "Tiberius",
+        "Trevor",
+        "Travis",
+        "Tyrone"
+      ],
+      "answer": "Tiberius",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9041bcbb559e",
+      "type": "multiple-choice",
+      "prompt": "In the 1964 film \"Zulu\", what song does the British Army company sing before the final battle?",
+      "options": [
+        "Men of Harlech",
+        "Scotland the Brave",
+        "Colonel Bogey March",
+        "The British Grenadiers"
+      ],
+      "answer": "Men of Harlech",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-906f0342ab4c",
+      "type": "multiple-choice",
+      "prompt": "In what year does Jurassic World open in the \"Jurassic Park\" universe?",
+      "options": [
+        "2005",
+        "2007",
+        "2015",
+        "2020"
+      ],
+      "answer": "2005",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9248624ca809",
+      "type": "multiple-choice",
+      "prompt": "Which actor plays the role of the main antagonist in the 2011 movie \"Tower Heist\"?",
+      "options": [
+        "Alan Alda",
+        "Eddie Murphy",
+        "Alec Baldwin",
+        "Kevin Nealon"
+      ],
+      "answer": "Alan Alda",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9292fe61d787",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the Artificial Intelligence system in the 1983 film, \"WarGames\"?",
+      "options": [
+        "War Operation Plan Response",
+        "Self Evolving Thought Helix",
+        "Master Control Program",
+        "West Campus Analog Computer"
+      ],
+      "answer": "War Operation Plan Response",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-92e2e8a6588f",
+      "type": "multiple-choice",
+      "prompt": "In the 1986 film \"The Wraith\", what concept car is used for the Turbo Interceptor?",
+      "options": [
+        "Dodge M4S",
+        "Pontiac Banshee",
+        "General Motors Firebird",
+        "Dodge Copperhead"
+      ],
+      "answer": "Dodge M4S",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-930ec8d105aa",
+      "type": "multiple-choice",
+      "prompt": "Max Schreck, a famous German silent film actor, plays a famous monster in which 1922 film?",
+      "options": [
+        "Nosferatu",
+        "Frankenstein",
+        "The Headless Horseman",
+        "Häxan"
+      ],
+      "answer": "Nosferatu",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-93150bbcbda8",
+      "type": "multiple-choice",
+      "prompt": "What superhero has been played in film by actors Michael Keaton, Val Kilmer, George Clooney and Christian Bale?",
+      "options": [
+        "Batman",
+        "Superman",
+        "Iron Man",
+        "Spiderman"
+      ],
+      "answer": "Batman",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-935946671c6e",
+      "type": "multiple-choice",
+      "prompt": "What was the first James Bond film?",
+      "options": [
+        "Dr. No",
+        "Goldfinger",
+        "From Russia With Love",
+        "Thunderball"
+      ],
+      "answer": "Dr. No",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-94b661313e45",
+      "type": "multiple-choice",
+      "prompt": "Which James Bond film had the theme song written and performed by English singer-songwriter Adele?",
+      "options": [
+        "Skyfall",
+        "Casino Royale",
+        "Quantum Solace",
+        "Spectre"
+      ],
+      "answer": "Skyfall",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-94d921e73dc0",
+      "type": "multiple-choice",
+      "prompt": "What was the callsign of Commander William Adama in Battlestar Galactica (2004)?",
+      "options": [
+        "Husker",
+        "Starbuck",
+        "Apollo",
+        "Crashdown"
+      ],
+      "answer": "Husker",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-95b70085c0cf",
+      "type": "multiple-choice",
+      "prompt": "What was Humphrey Bogart's middle name?",
+      "options": [
+        "DeForest",
+        "DeWinter",
+        "Steven",
+        "Bryce"
+      ],
+      "answer": "DeForest",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9628a00fec76",
+      "type": "multiple-choice",
+      "prompt": "What is Lilo's last name from Lilo and Stitch?",
+      "options": [
+        "Pelekai",
+        "Anoaʻi",
+        "Kealoha",
+        "Kuʻulei"
+      ],
+      "answer": "Pelekai",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-96a1693f7818",
+      "type": "multiple-choice",
+      "prompt": "In which film does Humphrey Bogart say the famous line, \"Here's looking at you, kid\"?",
+      "options": [
+        "Casablanca",
+        "The Maltese Falcon",
+        "The Treasure of the Sierra Madre",
+        "Citizen Kane"
+      ],
+      "answer": "Casablanca",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-973b70824a40",
+      "type": "multiple-choice",
+      "prompt": "In Avengers: Infinity War, where was the Soul Stone located?",
+      "options": [
+        "Vormir",
+        "Xandar",
+        "Knowhere",
+        "Asgard"
+      ],
+      "answer": "Vormir",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-99ebbe939811",
+      "type": "multiple-choice",
+      "prompt": "In the Star Trek universe, what color is Vulcan blood?",
+      "options": [
+        "Green",
+        "Blue",
+        "Red",
+        "Purple"
+      ],
+      "answer": "Green",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9afceb194c21",
+      "type": "multiple-choice",
+      "prompt": "In Big Hero 6, what were Baymax's motions modeled after?",
+      "options": [
+        "Baby penguins",
+        "Baby monkeys",
+        "Baby ostriches",
+        "Baby bears"
+      ],
+      "answer": "Baby penguins",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9d4505b4e16c",
+      "type": "multiple-choice",
+      "prompt": "What was the UK \"Who Wants to be a Millionaire?\" cheating scandal known as?",
+      "options": [
+        "Major Fraud",
+        "Ingram Cheater",
+        "Coughing Major",
+        "Millionaire Crime"
+      ],
+      "answer": "Major Fraud",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9d881db85c60",
+      "type": "multiple-choice",
+      "prompt": "In the movie \"V for Vendetta,\" what is the date that masked vigilante \"V\" urges people to remember?",
+      "options": [
+        "November 5th",
+        "November 6th",
+        "November 4th",
+        "September 5th"
+      ],
+      "answer": "November 5th",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9ef980a5eb79",
+      "type": "multiple-choice",
+      "prompt": "What's Dr. Doofenshmirtz first name?",
+      "options": [
+        "Heinz",
+        "Hans",
+        "Hank",
+        "Heidi"
+      ],
+      "answer": "Heinz",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a1648737fdc4",
+      "type": "multiple-choice",
+      "prompt": "Who played Deputy Marshal Samuel Gerard in the 1993 film \"The Fugitive\"?",
+      "options": [
+        "Tommy Lee Jones",
+        "Harrison Ford",
+        "Harvey Keitel",
+        "Martin Landau"
+      ],
+      "answer": "Tommy Lee Jones",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a5fe0d1527f5",
+      "type": "multiple-choice",
+      "prompt": "Who wrote and directed the 1986 film 'Platoon'?",
+      "options": [
+        "Oliver Stone",
+        "Francis Ford Coppola",
+        "Stanley Kubrick",
+        "Michael Cimino"
+      ],
+      "answer": "Oliver Stone",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a825be9dd621",
+      "type": "multiple-choice",
+      "prompt": "What is the Klingon's afterlife called?",
+      "options": [
+        "Sto-vo-kor",
+        "Valhalla",
+        "Karon'gahk",
+        "New Jersey"
+      ],
+      "answer": "Sto-vo-kor",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a8ab282be410",
+      "type": "multiple-choice",
+      "prompt": "In the show, Doctor Who, what does T.A.R.D.I.S stand for?",
+      "options": [
+        "Time And Relative Dimensions In Space",
+        "Time And Resting Dimensions In Space",
+        "Time And Relative Dimensions In Style",
+        "Toilet Aid Rope Dog Is Soup"
+      ],
+      "answer": "Time And Relative Dimensions In Space",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aff50ed1ee11",
+      "type": "multiple-choice",
+      "prompt": "Which boxer was famous for striking the gong in the introduction to J. Arthur Rank films?",
+      "options": [
+        "Bombardier Billy Wells",
+        "Freddie Mills",
+        "Terry Spinks",
+        "Don Cockell"
+      ],
+      "answer": "Bombardier Billy Wells",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aff71a36a92d",
+      "type": "multiple-choice",
+      "prompt": "What was the first movie to ever use a Wilhelm Scream?",
+      "options": [
+        "Distant Drums",
+        "Treasure of the Sierra Madre",
+        "The Charge at Feather River",
+        "Indiana Jones"
+      ],
+      "answer": "Distant Drums",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b012318cd64d",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the main character in \"The Flash\" TV series?",
+      "options": [
+        "Barry Allen",
+        "Oliver Queen",
+        "Bart Allen",
+        "Bruce Wayne"
+      ],
+      "answer": "Barry Allen",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b07a469d532b",
+      "type": "multiple-choice",
+      "prompt": "In what Disney movie can you spot the character \"Pac-Man\" in if you look closely enough in some scenes?",
+      "options": [
+        "Tron",
+        "Big Hero 6",
+        "Fantasia",
+        "Monsters, Inc."
+      ],
+      "answer": "Tron",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b0fcc8985866",
+      "type": "multiple-choice",
+      "prompt": "In the Super Mario Bros. Movie (2023), who plays Toad?",
+      "options": [
+        "Keegan-Michael Key",
+        "Seth Rogen",
+        "Charlie Day",
+        "Jack Black"
+      ],
+      "answer": "Keegan-Michael Key",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b2ff5e00ad19",
+      "type": "multiple-choice",
+      "prompt": "In the film \"Interstellar\", how long did they spend on Miller's planet?",
+      "options": [
+        "23 years, 4 months, and 8 days",
+        "15 years, 2 months, and 15 days",
+        "10 months and 6 days",
+        "26 years, 4 months, and 10 days"
+      ],
+      "answer": "23 years, 4 months, and 8 days",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b6db25412f36",
+      "type": "multiple-choice",
+      "prompt": "In \"Star Trek\", what is the Klingon delicacy of \"gagh\" made from?",
+      "options": [
+        "Serpent worms",
+        "Earthworms",
+        "Spaghetti noodles",
+        "Klingworms"
+      ],
+      "answer": "Serpent worms",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b909e2b3fbc3",
+      "type": "multiple-choice",
+      "prompt": "What Nickelodeon game show featured a house on the set that the contestants would ransack to find hidden objects?",
+      "options": [
+        "Finders Keepers",
+        "Double Dare",
+        "Nickelodeon Guts",
+        "Nick Arcade"
+      ],
+      "answer": "Finders Keepers",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bb682386841b",
+      "type": "multiple-choice",
+      "prompt": "In \"Jurassic World\", what is the name of the dinosaur that is a genetic hybrid?",
+      "options": [
+        "Indominus Rex",
+        "Mosasaurus",
+        "Pteranodon",
+        "Tyrannosaurus Rex"
+      ],
+      "answer": "Indominus Rex",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bed4ded2132e",
+      "type": "multiple-choice",
+      "prompt": "How many seasons did the Sci-Fi television show \"Stargate Atlantis\" have?",
+      "options": [
+        "5",
+        "10",
+        "2",
+        "7"
+      ],
+      "answer": "5",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bf330640f8ac",
+      "type": "multiple-choice",
+      "prompt": "In the show \"Tengen Toppa Gurren Lagann\" what is the name of the character who force everyone to live underground?",
+      "options": [
+        "Lordgenome",
+        "Kingloname",
+        "Lord Genome",
+        "King Loname"
+      ],
+      "answer": "Lordgenome",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c03f0ce07752",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not the name of a \"Bond Girl\"?",
+      "options": [
+        "Vanessa Kensington",
+        "Pam Bouvier",
+        "Mary Goodnight",
+        "Wai Lin"
+      ],
+      "answer": "Vanessa Kensington",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c61c93e5fe34",
+      "type": "multiple-choice",
+      "prompt": "Which sci-fi cult films plot concerns aliens attempting to prevent humans from creating a doomsday weapon?",
+      "options": [
+        "Plan 9 from Outer Space",
+        "The Man from Planet X",
+        "It Came from Outer Space",
+        "The Day The Earth Stood Still"
+      ],
+      "answer": "Plan 9 from Outer Space",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c74b4a974902",
+      "type": "multiple-choice",
+      "prompt": "In Avengers: Infinity War, the Reality Stone (aka the Aether) was kept under safe possession by who?",
+      "options": [
+        "The Collector",
+        "Doctor Strange",
+        "The Grandmaster",
+        "Scarlet Witch"
+      ],
+      "answer": "The Collector",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c79236c79f70",
+      "type": "multiple-choice",
+      "prompt": "Which of these Disney shows is classified as an anime?",
+      "options": [
+        "Stitch!",
+        "Cory in the House",
+        "The Emperor's New School",
+        "Hannah Montana"
+      ],
+      "answer": "Stitch!",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c7e66a1ba6af",
+      "type": "multiple-choice",
+      "prompt": "Which of these Nickelodeon game shows aired first?",
+      "options": [
+        "Double Dare",
+        "Nick Arcade",
+        "Finders Keepers",
+        "Nickelodeon Guts"
+      ],
+      "answer": "Double Dare",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c7eaa7d682aa",
+      "type": "multiple-choice",
+      "prompt": "Which of the following won the first season of American Idol in 2002?",
+      "options": [
+        "Kelly Clarkson",
+        "Justin Guarini",
+        "Ruben Studdard",
+        "Chris Daughtry"
+      ],
+      "answer": "Kelly Clarkson",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c8a220155adf",
+      "type": "multiple-choice",
+      "prompt": "Who starred in the film 1973 movie \"Enter The Dragon\"?",
+      "options": [
+        "Bruce Lee",
+        "Jackie Chan",
+        "Jet Li",
+        "Yun-Fat Chow"
+      ],
+      "answer": "Bruce Lee",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cc86ffbfa4bb",
+      "type": "multiple-choice",
+      "prompt": "What was the first superhero film James Gunn was involved with?",
+      "options": [
+        "The Specials",
+        "Super",
+        "Guardians of the Galaxy",
+        "Brightburn"
+      ],
+      "answer": "The Specials",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cc8d327b8aea",
+      "type": "multiple-choice",
+      "prompt": "In what year was the first Indian movie submitted for an Oscar?",
+      "options": [
+        "1957",
+        "1962",
+        "1938",
+        "1954"
+      ],
+      "answer": "1957",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cca37abf07c9",
+      "type": "multiple-choice",
+      "prompt": "Grant Gustin plays which superhero on the CW show of the same name?",
+      "options": [
+        "The Flash",
+        "The Arrow",
+        "Black Canary",
+        "Daredevil"
+      ],
+      "answer": "The Flash",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cde01b251136",
+      "type": "multiple-choice",
+      "prompt": "What was Dorothy's surname in 'The Wizard Of Oz'?",
+      "options": [
+        "Gale",
+        "Perkins",
+        "Day",
+        "Parker"
+      ],
+      "answer": "Gale",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d0e8ce93c11c",
+      "type": "multiple-choice",
+      "prompt": "The theme for the popular science fiction series \"Doctor Who\" was composed by who?",
+      "options": [
+        "Ron Grainer",
+        "Murray Gold",
+        "Delia Derbyshire",
+        "Peter Howell"
+      ],
+      "answer": "Ron Grainer",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d1c5ee828eac",
+      "type": "multiple-choice",
+      "prompt": "In \"Donkey Kong Country\", why does Donkey Kong want to know the secret of the crystal coconut?",
+      "options": [
+        "He's the big kahuna.",
+        "To find out where all the bananas are.",
+        "Because Diddy Kong forced him.",
+        "He wants to punish brutes."
+      ],
+      "answer": "He's the big kahuna.",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d2db0f2ed92e",
+      "type": "multiple-choice",
+      "prompt": "This movie contains the quote, \"Houston, we have a problem.\"",
+      "options": [
+        "Apollo 13",
+        "The Right Stuff",
+        "Capricorn One",
+        "Marooned"
+      ],
+      "answer": "Apollo 13",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d34ff0ff79d6",
+      "type": "multiple-choice",
+      "prompt": "Who plays the character of Po in the Kung Fu Panda movies?",
+      "options": [
+        "Jack Black",
+        "Mirana Jonnes",
+        "McConahey Ramses",
+        "Jim Petersson"
+      ],
+      "answer": "Jack Black",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d5003c69fc7a",
+      "type": "multiple-choice",
+      "prompt": "Which of the following was not one of \"The Magnificent Seven\"?",
+      "options": [
+        "Clint Eastwood",
+        "Steve McQueen",
+        "Charles Bronson",
+        "Robert Vaughn"
+      ],
+      "answer": "Clint Eastwood",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d6d026325985",
+      "type": "multiple-choice",
+      "prompt": "Which of these films is NOT set in Los Angeles?",
+      "options": [
+        "RoboCop",
+        "Blade Runner",
+        "The Terminator",
+        "Predator 2"
+      ],
+      "answer": "RoboCop",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-da04791a19cb",
+      "type": "multiple-choice",
+      "prompt": "Who portrayed Han Solo in the Star Wars main film series?",
+      "options": [
+        "Harrison Ford",
+        "Peter Cushing",
+        "Mark Hamill",
+        "Alec Guinness"
+      ],
+      "answer": "Harrison Ford",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dbe38a03b4b3",
+      "type": "multiple-choice",
+      "prompt": "In which British seaside town was the BBC sitcom \"Fawlty Towers\" set?",
+      "options": [
+        "Torquay",
+        "Blackpool",
+        "Bournemouth",
+        "Great Yarmouth"
+      ],
+      "answer": "Torquay",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dfa70a57f18c",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the pirate that sings the intro to \"Spongebob Squarepants\"?",
+      "options": [
+        "Painty",
+        "Patchy",
+        "Lloyd",
+        "Larry"
+      ],
+      "answer": "Painty",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e1a213ce7ed1",
+      "type": "multiple-choice",
+      "prompt": "Who played the female lead in the 1933 film \"King Kong\"?",
+      "options": [
+        "Fay Wray",
+        "Jean Harlow",
+        "Vivien Leigh",
+        "Mae West"
+      ],
+      "answer": "Fay Wray",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e2862253b043",
+      "type": "multiple-choice",
+      "prompt": "In what year did Clint Eastwood star as Inspector Harry Callahan in the film \"Dirty Harry\"?",
+      "options": [
+        "1971",
+        "1975",
+        "1983",
+        "1969"
+      ],
+      "answer": "1971",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e347925bc75c",
+      "type": "multiple-choice",
+      "prompt": "Which of these actors have NOT played Spiderman in the movies?",
+      "options": [
+        "Michael Cera",
+        "Tobey Maguire",
+        "Andrew Garfield",
+        "Tom Holland"
+      ],
+      "answer": "Michael Cera",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e3885c322f52",
+      "type": "multiple-choice",
+      "prompt": "This movie contains the quote, \"Nobody puts Baby in a corner.\"",
+      "options": [
+        "Dirty Dancing",
+        "Three Men and a Baby",
+        "Ferris Bueller's Day Off",
+        "Pretty in Pink"
+      ],
+      "answer": "Dirty Dancing",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e3eb4c136dab",
+      "type": "multiple-choice",
+      "prompt": "Who is the main antagonist of Christopher Nolan's 2012 film \"The Dark Knight Rises\"?",
+      "options": [
+        "Bane",
+        "The Joker",
+        "CIA",
+        "The Riddler"
+      ],
+      "answer": "Bane",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e47ac42a52fe",
+      "type": "multiple-choice",
+      "prompt": "Who is the main character in the show \"Burn Notice\"?",
+      "options": [
+        "Michael Westen",
+        "Sam Axe",
+        "Fiona Glenanne",
+        "Madeline Westen"
+      ],
+      "answer": "Michael Westen",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e5f3a206f112",
+      "type": "multiple-choice",
+      "prompt": "Who played the sun baby in the original run of Teletubbies?",
+      "options": [
+        "Jessica Smith",
+        "Pui Fan Lee",
+        "Sue Monroe",
+        "Lisa Brockwell"
+      ],
+      "answer": "Jessica Smith",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e984d2fb19d6",
+      "type": "multiple-choice",
+      "prompt": "Which character was played by Dustin Diamond in the sitcom 'Saved by the Bell'?",
+      "options": [
+        "Screech",
+        "Zack",
+        "Mr. Belding",
+        "A.C. Slater"
+      ],
+      "answer": "Screech",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eabbed9a938d",
+      "type": "multiple-choice",
+      "prompt": "Which of these in the Star Trek series is NOT Klingon food?",
+      "options": [
+        "Hors d'oeuvre",
+        "Racht",
+        "Gagh",
+        "Bloodwine"
+      ],
+      "answer": "Hors d'oeuvre",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ead977535faa",
+      "type": "multiple-choice",
+      "prompt": "Which of these voices wasn't a choice for the House AI in \"The Simpsons Treehouse of Horror\" short, House of Whacks?",
+      "options": [
+        "George Clooney",
+        "Matthew Perry",
+        "Dennis Miller",
+        "Pierce Brosnan"
+      ],
+      "answer": "George Clooney",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eb19516435cd",
+      "type": "multiple-choice",
+      "prompt": "Which Star Trek race advances itself through assimilation?",
+      "options": [
+        "Borg",
+        "Vulcan",
+        "Betazoid",
+        "Klingon"
+      ],
+      "answer": "Borg",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ece4a62b41fc",
+      "type": "multiple-choice",
+      "prompt": "What was the first feature-length computer-animated movie?",
+      "options": [
+        "Toy Story",
+        "Tron",
+        "Lion king",
+        "101 Dalmatians"
+      ],
+      "answer": "Toy Story",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ee772ec4cf1f",
+      "type": "multiple-choice",
+      "prompt": "For the film \"Raiders of The Lost Ark\", what was Harrison Ford sick with during the filming of the Cairo chase?",
+      "options": [
+        "Dysentery",
+        "Anemia",
+        "Constipation",
+        "Acid Reflux"
+      ],
+      "answer": "Dysentery",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eeb875e56fb2",
+      "type": "multiple-choice",
+      "prompt": "Which movie released in 2016 features Superman and Batman fighting?",
+      "options": [
+        "Batman v Superman: Dawn of Justice",
+        "Batman v Superman: Superapocalypse",
+        "Batman v Superman: Black of Knight",
+        "Batman v Superman: Knightfall"
+      ],
+      "answer": "Batman v Superman: Dawn of Justice",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ef2085d3ff23",
+      "type": "multiple-choice",
+      "prompt": "Who is frozen at the end of the movie \"Goldeneye\"?",
+      "options": [
+        "Boris Grishenko",
+        "James Bond",
+        "Natalya Simonova",
+        "Alec Trevelyan"
+      ],
+      "answer": "Boris Grishenko",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eff5f52e9f12",
+      "type": "multiple-choice",
+      "prompt": "In the 1951 movie \"The Day The Earth Stood Still\" which US city did the alien spaceship land in?",
+      "options": [
+        "Washington D.C.",
+        "Los Angeles",
+        "New York",
+        "Philadelphia"
+      ],
+      "answer": "Washington D.C.",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f0617e2be4be",
+      "type": "multiple-choice",
+      "prompt": "In 2012, which movie won every category in the 32nd \"Golden Raspberry Awards\"?",
+      "options": [
+        "Jack and Jill",
+        "The Girl with the Dragon Tattoo",
+        "Thor",
+        "The King's Speech"
+      ],
+      "answer": "Jack and Jill",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f0d5a4fd0050",
+      "type": "multiple-choice",
+      "prompt": "In the TV show \"Cheers\", Sam Malone was a former relief pitcher for which baseball team?",
+      "options": [
+        "Boston Red Sox",
+        "New York Mets",
+        "Baltimore Orioles",
+        "Milwaukee Brewers"
+      ],
+      "answer": "Boston Red Sox",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f3bfc7865d6a",
+      "type": "multiple-choice",
+      "prompt": "What was the last Marx Brothers film to feature Zeppo?",
+      "options": [
+        "Duck Soup",
+        "A Night at the Opera",
+        "A Day at the Races",
+        "Monkey Business"
+      ],
+      "answer": "Duck Soup",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f3d12153aa6e",
+      "type": "multiple-choice",
+      "prompt": "Before \"Jurassic Park III\" was finalized and the Spinosaurus was chosen, which dinosaur was going to be the star?",
+      "options": [
+        "Baryonyx",
+        "Tyrannosaurus Rex",
+        "Velociraptor",
+        "Suchomimus"
+      ],
+      "answer": "Baryonyx",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f6fc94778a2e",
+      "type": "multiple-choice",
+      "prompt": "Which of these Movies was NOT released in 1996?",
+      "options": [
+        "Gladiator",
+        "Independence Day",
+        "The Rock",
+        "Mission: Impossible"
+      ],
+      "answer": "Gladiator",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f727d81e9bd0",
+      "type": "multiple-choice",
+      "prompt": "Which actor from The Young Ones also played Lord Flashheart in one episode of Blackadder II?",
+      "options": [
+        "Rik Mayall",
+        "Adrian Edmondson",
+        "Nigel Planer",
+        "Christopher Ryan"
+      ],
+      "answer": "Rik Mayall",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fa140f915f0e",
+      "type": "multiple-choice",
+      "prompt": "In the movie Gremlins, after what time of day should you not feed Mogwai?",
+      "options": [
+        "Midnight",
+        "Evening",
+        "Morning",
+        "Afternoon"
+      ],
+      "answer": "Midnight",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fac5e3fdfa07",
+      "type": "multiple-choice",
+      "prompt": "In \"ALF\", what was ALF's real name?",
+      "options": [
+        "Gordon Shumway",
+        "Gordon Milipp",
+        "Gordon Foster",
+        "Gordon von Gam"
+      ],
+      "answer": "Gordon Shumway",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fadde405f573",
+      "type": "multiple-choice",
+      "prompt": "In the \"Jurassic Park\" universe, what was the first dinosaur cloned by InGen in 1986?",
+      "options": [
+        "Velociraptor",
+        "Triceratops",
+        "Troodon",
+        "Brachiosaurus"
+      ],
+      "answer": "Velociraptor",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fd78c335c734",
+      "type": "multiple-choice",
+      "prompt": "In the Lord of the Rings: The Two Towers, where are the party of orcs taking the hobbits?",
+      "options": [
+        "Isengard",
+        "Rivendell",
+        "Mordor",
+        "Moria"
+      ],
+      "answer": "Isengard",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ff492316e389",
+      "type": "multiple-choice",
+      "prompt": "What name did Tom Hanks give to his volleyball companion in the film 'Cast Away'?",
+      "options": [
+        "Wilson",
+        "Friday",
+        "Jones",
+        "Billy"
+      ],
+      "answer": "Wilson",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ff8d44694d46",
+      "type": "multiple-choice",
+      "prompt": "Who directed Marvel's Avengers Endgame?",
+      "options": [
+        "The Russo Brothers",
+        "Zack Snyder",
+        "Joss Whedon",
+        "Kevin Feige"
+      ],
+      "answer": "The Russo Brothers",
+      "difficulty": "easy",
+      "region": "general"
+    }
+  ]
+}

@@ -1,6 +1,14 @@
 {
   "category": "science-and-nature",
   "title": "Science and nature",
+  "defaultSource": {
+    "kind": "dataset",
+    "dataset": "Open Trivia Database",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "url": "https://opentdb.com",
+    "notice": "Questions from the Open Trivia Database (opentdb.com), licensed under CC BY-SA 4.0. Adapted for Kaki Arcade: selected, screened for an all-ages audience, regrouped and tidied. The adapted questions are offered under the same licence."
+  },
   "questions": [
     {
       "id": "sci-0001",
@@ -18,22 +26,6 @@
       "source": {
         "kind": "original",
         "note": "Iron oxide dust gives Mars its red colour. Check: NASA Science, 'Mars facts'."
-      }
-    },
-    {
-      "id": "sci-0002",
-      "type": "true-false",
-      "prompt": "Sound travels faster than light.",
-      "options": [
-        "True",
-        "False"
-      ],
-      "answer": "False",
-      "difficulty": "easy",
-      "region": "general",
-      "source": {
-        "kind": "original",
-        "note": "Sound moves at about 343 m/s in air; light at about 300,000 km/s. Check: any school physics text."
       }
     },
     {
@@ -55,24 +47,6 @@
       }
     },
     {
-      "id": "sci-0004",
-      "type": "multiple-choice",
-      "prompt": "Which gas makes up most of the Earth's atmosphere?",
-      "options": [
-        "Oxygen",
-        "Nitrogen",
-        "Carbon dioxide",
-        "Argon"
-      ],
-      "answer": "Nitrogen",
-      "difficulty": "medium",
-      "region": "general",
-      "source": {
-        "kind": "original",
-        "note": "Dry air is about 78% nitrogen and 21% oxygen. Check: NASA Earth fact sheet."
-      }
-    },
-    {
       "id": "sci-0005",
       "type": "multiple-choice",
       "prompt": "Which element has the atomic number 26?",
@@ -91,20 +65,4302 @@
       }
     },
     {
-      "id": "sci-0006",
-      "type": "true-false",
-      "prompt": "Venus takes longer to spin once on its axis than to orbit the Sun.",
+      "id": "otdb-004aa3caf4fc",
+      "type": "multiple-choice",
+      "prompt": "Chronic Wasting Disease (CWD) exclusively infects members of which family of animals?",
       "options": [
-        "True",
-        "False"
+        "Cervids",
+        "Hominids",
+        "Felids",
+        "Canids"
       ],
-      "answer": "True",
+      "answer": "Cervids",
       "difficulty": "hard",
-      "region": "general",
-      "source": {
-        "kind": "original",
-        "note": "Venus rotates once in about 243 Earth days and orbits the Sun in about 225. Check: NASA Venus fact sheet."
-      }
+      "region": "general"
+    },
+    {
+      "id": "otdb-0079310befef",
+      "type": "multiple-choice",
+      "prompt": "What is the average lifespan of a domestic rabbit?",
+      "options": [
+        "8-12 years",
+        "1-2 years",
+        "4-7 years",
+        "14-20 years"
+      ],
+      "answer": "8-12 years",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-007aae7934fc",
+      "type": "multiple-choice",
+      "prompt": "Where is the Gluteus Maximus muscle located?",
+      "options": [
+        "Butt",
+        "Arm",
+        "Head",
+        "Torso"
+      ],
+      "answer": "Butt",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-00be80398847",
+      "type": "multiple-choice",
+      "prompt": "What cell organelle is known as \"the powerhouse of the cell?\"",
+      "options": [
+        "Mitochondria",
+        "Nucleus",
+        "Golgi apparatus",
+        "Endoplasmic reticulum"
+      ],
+      "answer": "Mitochondria",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-01250bb2392e",
+      "type": "multiple-choice",
+      "prompt": "Which of these animals is NOT a lizard?",
+      "options": [
+        "Tuatara",
+        "Komodo Dragon",
+        "Gila Monster",
+        "Green Iguana"
+      ],
+      "answer": "Tuatara",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-03ef2e62831a",
+      "type": "multiple-choice",
+      "prompt": "What is the unit of electrical resistance?",
+      "options": [
+        "Ohm",
+        "Mho",
+        "Tesla",
+        "Joule"
+      ],
+      "answer": "Ohm",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0448b2902907",
+      "type": "multiple-choice",
+      "prompt": "Which type of rock is created by intense heat AND pressure?",
+      "options": [
+        "Metamorphic",
+        "Sedimentary",
+        "Igneous",
+        "Diamond"
+      ],
+      "answer": "Metamorphic",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-044e0bd94398",
+      "type": "multiple-choice",
+      "prompt": "Which mathematician refused the Fields Medal?",
+      "options": [
+        "Grigori Perelman",
+        "Andrew Wiles",
+        "Terence Tao",
+        "Edward Witten"
+      ],
+      "answer": "Grigori Perelman",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-077639885a88",
+      "type": "multiple-choice",
+      "prompt": "The metric prefix \"atto-\" makes a measurement how much smaller than the base unit?",
+      "options": [
+        "One Quintillionth",
+        "One Billionth",
+        "One Quadrillionth",
+        "One Septillionth"
+      ],
+      "answer": "One Quintillionth",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-08de60eb6e09",
+      "type": "multiple-choice",
+      "prompt": "Which scientific unit is named after an Italian nobleman?",
+      "options": [
+        "Volt",
+        "Pascal",
+        "Ohm",
+        "Hertz"
+      ],
+      "answer": "Volt",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-093c499062ba",
+      "type": "multiple-choice",
+      "prompt": "What is the speed of light in a vacuum?",
+      "options": [
+        "299,792,458 m/s",
+        "50,461 m/s",
+        "308,215,043 m/s",
+        "751,665,014,151 m/s"
+      ],
+      "answer": "299,792,458 m/s",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0ab3cb5f8fdd",
+      "type": "multiple-choice",
+      "prompt": "What is radiation measured in?",
+      "options": [
+        "Gray",
+        "Watt",
+        "Decibel",
+        "Kelvin"
+      ],
+      "answer": "Gray",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0b9211a27b20",
+      "type": "multiple-choice",
+      "prompt": "What common name is given to the medial condition, tibial stress syndrome (MTSS)?",
+      "options": [
+        "Shin Splints",
+        "Tennis Elbow",
+        "Carpal Tunnel",
+        "Housemaid's Knee"
+      ],
+      "answer": "Shin Splints",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0bae5c7736ed",
+      "type": "multiple-choice",
+      "prompt": "Who developed the first successful polio vaccine in the 1950s?",
+      "options": [
+        "Jonas Salk",
+        "John F. Enders",
+        "Thomas Weller",
+        "Frederick Robbins"
+      ],
+      "answer": "Jonas Salk",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0c2791acb3c6",
+      "type": "multiple-choice",
+      "prompt": "How many legs is it biologically impossible for a centipede to have?",
+      "options": [
+        "100",
+        "26",
+        "50",
+        "74"
+      ],
+      "answer": "100",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0c57191d846c",
+      "type": "multiple-choice",
+      "prompt": "Hippocampus is the Latin name for which marine creature?",
+      "options": [
+        "Seahorse",
+        "Dolphin",
+        "Whale",
+        "Octopus"
+      ],
+      "answer": "Seahorse",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0ca7c13a4f68",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is a major muscle of the back?",
+      "options": [
+        "Trapezius",
+        "Trapezium",
+        "Trapezoid",
+        "Triquetrum"
+      ],
+      "answer": "Trapezius",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0d1bb5b28daf",
+      "type": "multiple-choice",
+      "prompt": "Which Landsat Satellite failed to reach orbit?",
+      "options": [
+        "Landsat 6",
+        "Landsat 5",
+        "Landsat 4",
+        "Landsat 3"
+      ],
+      "answer": "Landsat 6",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0da8855e7ef9",
+      "type": "multiple-choice",
+      "prompt": "This element, when overcome with extreme heat and pressure, creates diamonds.",
+      "options": [
+        "Carbon",
+        "Nitrogen",
+        "Oxygen",
+        "Hydrogen"
+      ],
+      "answer": "Carbon",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0e5cec43d564",
+      "type": "multiple-choice",
+      "prompt": "The medical term for the belly button is which of the following?",
+      "options": [
+        "Umbilicus",
+        "Nevus",
+        "Nares",
+        "Paxillus"
+      ],
+      "answer": "Umbilicus",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0fa325d84c2e",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a real element?",
+      "options": [
+        "Vitrainium",
+        "Praseodymium",
+        "Hassium",
+        "Lutetium"
+      ],
+      "answer": "Vitrainium",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-10af7cda5885",
+      "type": "multiple-choice",
+      "prompt": "Burning which of these metals will produce a bright white flame?",
+      "options": [
+        "Magnesium",
+        "Copper",
+        "Lithium",
+        "Lead"
+      ],
+      "answer": "Magnesium",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-114fdc6002fb",
+      "type": "multiple-choice",
+      "prompt": "What is the approximate value of mathematical constant e?",
+      "options": [
+        "2.72",
+        "3.14",
+        "1.62",
+        "1.41"
+      ],
+      "answer": "2.72",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-121e4b539230",
+      "type": "multiple-choice",
+      "prompt": "About what percentage of the Earth's surface is water?",
+      "options": [
+        "70%",
+        "30%",
+        "50%",
+        "90%"
+      ],
+      "answer": "70%",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-122746b8132a",
+      "type": "multiple-choice",
+      "prompt": "Where in the human body is the Pineal Gland located?",
+      "options": [
+        "Brain",
+        "Groin",
+        "Chest",
+        "Throat"
+      ],
+      "answer": "Brain",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-123701a22dec",
+      "type": "multiple-choice",
+      "prompt": "How many planets are in our Solar System?",
+      "options": [
+        "Eight",
+        "Nine",
+        "Seven",
+        "Ten"
+      ],
+      "answer": "Eight",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-12f2c0e33147",
+      "type": "multiple-choice",
+      "prompt": "A comet's gaseous envelope (which creates the tail) is called what?",
+      "options": [
+        "The coma",
+        "The wake",
+        "The backwash",
+        "The ablative"
+      ],
+      "answer": "The coma",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-14e42da2cb00",
+      "type": "multiple-choice",
+      "prompt": "Which of these bones is hardest to break?",
+      "options": [
+        "Femur",
+        "Cranium",
+        "Humerus",
+        "Tibia"
+      ],
+      "answer": "Femur",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-15ab4824d245",
+      "type": "multiple-choice",
+      "prompt": "How many moons does the Earth have?",
+      "options": [
+        "1",
+        "0",
+        "2",
+        "3"
+      ],
+      "answer": "1",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-19419a33d875",
+      "type": "multiple-choice",
+      "prompt": "Which is the national animal of India?",
+      "options": [
+        "Tiger",
+        "Lion",
+        "Horse",
+        "Camel"
+      ],
+      "answer": "Tiger",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1954e34622b9",
+      "type": "multiple-choice",
+      "prompt": "What is the molecular formula of the active component of chili peppers(Capsaicin)?",
+      "options": [
+        "C18H27NO3",
+        "C21H23NO3",
+        "C6H4Cl2",
+        "C13H25NO4"
+      ],
+      "answer": "C18H27NO3",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-199274feaf81",
+      "type": "multiple-choice",
+      "prompt": "Which of these animals belongs in class Chondrichthyes?",
+      "options": [
+        "Great white shark",
+        "Octopus",
+        "Killer whale",
+        "Catfish"
+      ],
+      "answer": "Great white shark",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-19d71d76e1d0",
+      "type": "multiple-choice",
+      "prompt": "What is the first element on the periodic table?",
+      "options": [
+        "Hydrogen",
+        "Helium",
+        "Oxygen",
+        "Lithium"
+      ],
+      "answer": "Hydrogen",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1a8d6de08ddf",
+      "type": "multiple-choice",
+      "prompt": "All the following metal elements are liquids at or near room temperature EXCEPT:",
+      "options": [
+        "Beryllium",
+        "Gallium",
+        "Caesium",
+        "Mercury"
+      ],
+      "answer": "Beryllium",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1ad76cebe394",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a passive electrical component?",
+      "options": [
+        "Transistor",
+        "Resistor",
+        "Capacitor",
+        "Inductor"
+      ],
+      "answer": "Transistor",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1b4f9a4a2e6a",
+      "type": "multiple-choice",
+      "prompt": "What causes the sound of a heartbeat?",
+      "options": [
+        "Closure of the heart valves",
+        "Contraction of the heart chambers",
+        "Blood exiting the heart",
+        "Relaxation of the heart chambers"
+      ],
+      "answer": "Closure of the heart valves",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1c2dac989d1d",
+      "type": "multiple-choice",
+      "prompt": "How many known living species of hyenas are there?",
+      "options": [
+        "4",
+        "8",
+        "2",
+        "6"
+      ],
+      "answer": "4",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1e1326a39382",
+      "type": "multiple-choice",
+      "prompt": "Which of the following blood vessels carries deoxygenated blood?",
+      "options": [
+        "Pulmonary Artery",
+        "Pulmonary Vein",
+        "Aorta",
+        "Coronary Artery"
+      ],
+      "answer": "Pulmonary Artery",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1fb4b97e923d",
+      "type": "multiple-choice",
+      "prompt": "What was the first living creature in space?",
+      "options": [
+        "Fruit Flies",
+        "Monkey",
+        "Dog",
+        "Mouse"
+      ],
+      "answer": "Fruit Flies",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-205b54037017",
+      "type": "multiple-choice",
+      "prompt": "What is the largest planet in the Solar System?",
+      "options": [
+        "Jupiter",
+        "Saturn",
+        "Earth",
+        "Mars"
+      ],
+      "answer": "Jupiter",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-21790826a2df",
+      "type": "multiple-choice",
+      "prompt": "At what depth should you make a decompression stop, or safety stop, on a typical scuba dive?",
+      "options": [
+        "15 Feet / 5 Meters",
+        "25 Feet / 7.5 Meters",
+        "50 Feet / 15 Meters",
+        "75 Feet / 23 Meters"
+      ],
+      "answer": "15 Feet / 5 Meters",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-22082543815c",
+      "type": "multiple-choice",
+      "prompt": "What is the molecular formula of Ozone?",
+      "options": [
+        "O3",
+        "C6H2O6",
+        "N2O",
+        "SO4"
+      ],
+      "answer": "O3",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-223bd0e1e4ec",
+      "type": "multiple-choice",
+      "prompt": "How much radiation does a banana emit?",
+      "options": [
+        "0.1 Microsievert",
+        "0.3 Microsievert",
+        "0.5 Microsievert",
+        "0.7 Microsievert"
+      ],
+      "answer": "0.1 Microsievert",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-22619a97f3be",
+      "type": "multiple-choice",
+      "prompt": "What causes Lyme disease?",
+      "options": [
+        "A bacteria",
+        "A virus",
+        "A parasitic worm",
+        "An amoeba"
+      ],
+      "answer": "A bacteria",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-22dacf2ad660",
+      "type": "multiple-choice",
+      "prompt": "Which horizon in a soil profile consists of bedrock?",
+      "options": [
+        "R",
+        "O",
+        "B",
+        "D"
+      ],
+      "answer": "R",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-241da6904d4d",
+      "type": "multiple-choice",
+      "prompt": "The element involved in making human blood red is which of the following?",
+      "options": [
+        "Iron",
+        "Copper",
+        "Iridium",
+        "Cobalt"
+      ],
+      "answer": "Iron",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-247a01776448",
+      "type": "multiple-choice",
+      "prompt": "What do you call a baby bat?",
+      "options": [
+        "Pup",
+        "Cub",
+        "Chick",
+        "Kid"
+      ],
+      "answer": "Pup",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-24ab2440913b",
+      "type": "multiple-choice",
+      "prompt": "What are rhino's horn made of?",
+      "options": [
+        "Keratin",
+        "Bone",
+        "Ivory",
+        "Skin"
+      ],
+      "answer": "Keratin",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-25a12d6d38d6",
+      "type": "multiple-choice",
+      "prompt": "What type of angle is greater than 90°?",
+      "options": [
+        "Obtuse",
+        "Acute",
+        "Right",
+        "Straight"
+      ],
+      "answer": "Obtuse",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-26026b33f153",
+      "type": "multiple-choice",
+      "prompt": "Approximately what percentage of Earth's atmosphere is Oxygen?",
+      "options": [
+        "21%",
+        "54%",
+        "78%",
+        "7%"
+      ],
+      "answer": "21%",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-264c024e7807",
+      "type": "multiple-choice",
+      "prompt": "How many objects are equivalent to one mole?",
+      "options": [
+        "6.022 x 10^23",
+        "6.002 x 10^22",
+        "6.022 x 10^22",
+        "6.002 x 10^23"
+      ],
+      "answer": "6.022 x 10^23",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-26b2ee65af60",
+      "type": "multiple-choice",
+      "prompt": "What is the standard SI unit for distance?",
+      "options": [
+        "Metre",
+        "Angstrom",
+        "Foot",
+        "Fathom"
+      ],
+      "answer": "Metre",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-26fc50be3ddb",
+      "type": "multiple-choice",
+      "prompt": "What genetic disease is caused by having an extra Y chromosome (XYY)?",
+      "options": [
+        "Jacob's Syndrome",
+        "Klinefelter's Syndrome",
+        "Turner's Syndrome",
+        "Down Syndrome"
+      ],
+      "answer": "Jacob's Syndrome",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-28b9c657ca59",
+      "type": "multiple-choice",
+      "prompt": "An organism described as \"heliotropic\" has a tendency to move towards which of these things?",
+      "options": [
+        "Light",
+        "Water",
+        "Trees",
+        "Pollen"
+      ],
+      "answer": "Light",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2aacf4cfb3cb",
+      "type": "multiple-choice",
+      "prompt": "By definition, where does an abyssopelagic animal live?",
+      "options": [
+        "At the bottom of the ocean",
+        "In the desert",
+        "On top of a mountain",
+        "Inside a tree"
+      ],
+      "answer": "At the bottom of the ocean",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2cbaeea253ed",
+      "type": "multiple-choice",
+      "prompt": "What is the chemical symbol for Helium?",
+      "options": [
+        "He",
+        "H",
+        "Hg",
+        "Hs"
+      ],
+      "answer": "He",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2da605e3bef2",
+      "type": "multiple-choice",
+      "prompt": "How many books are in Euclid's Elements of Geometry?",
+      "options": [
+        "13",
+        "8",
+        "10",
+        "17"
+      ],
+      "answer": "13",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2e04128947e5",
+      "type": "multiple-choice",
+      "prompt": "Which country first successfully farm-hatched and raised bluefin tuna in 1979?",
+      "options": [
+        "Japan",
+        "France",
+        "USA",
+        "Philippines"
+      ],
+      "answer": "Japan",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2f00cae0ef23",
+      "type": "multiple-choice",
+      "prompt": "What is the scientific name for the Bald Eagle?",
+      "options": [
+        "Haliaeetus Leucocephalus",
+        "Tyto Alba",
+        "Cyanocitta Cristata",
+        "Aquila Chrysaetos"
+      ],
+      "answer": "Haliaeetus Leucocephalus",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-30940ba1419f",
+      "type": "multiple-choice",
+      "prompt": "The Western Lowland Gorilla is scientifically known as?",
+      "options": [
+        "Gorilla Gorilla Gorilla",
+        "Gorilla Gorilla Diehli",
+        "Gorilla Beringei Graueri",
+        "Gorilla Beringei Beringei"
+      ],
+      "answer": "Gorilla Gorilla Gorilla",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-31a90f300354",
+      "type": "multiple-choice",
+      "prompt": "What Greek letter is used to signify summation?",
+      "options": [
+        "Sigma",
+        "Delta",
+        "Alpha",
+        "Omega"
+      ],
+      "answer": "Sigma",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-31d487e8ab4f",
+      "type": "multiple-choice",
+      "prompt": "The humerus, paired radius, and ulna come together to form what joint?",
+      "options": [
+        "Elbow",
+        "Knee",
+        "Shoulder",
+        "Ankle"
+      ],
+      "answer": "Elbow",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-32cbcb79b3ef",
+      "type": "multiple-choice",
+      "prompt": "What bird is born with claws on its wing digits?",
+      "options": [
+        "Hoatzin",
+        "Cormorant",
+        "Cassowary",
+        "Secretary bird"
+      ],
+      "answer": "Hoatzin",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-336d08e0efd4",
+      "type": "multiple-choice",
+      "prompt": "Coulrophobia is the irrational fear of what?",
+      "options": [
+        "Clowns",
+        "Cemeteries",
+        "Needles",
+        "Tunnels"
+      ],
+      "answer": "Clowns",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3637fdcceb51",
+      "type": "multiple-choice",
+      "prompt": "Which Apollo mission was the first one to land on the Moon?",
+      "options": [
+        "Apollo 11",
+        "Apollo 10",
+        "Apollo 9",
+        "Apollo 13"
+      ],
+      "answer": "Apollo 11",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-372d09d0ee4e",
+      "type": "multiple-choice",
+      "prompt": "How many legs do butterflies have?",
+      "options": [
+        "6",
+        "2",
+        "4",
+        "0"
+      ],
+      "answer": "6",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-379d11d2e0e8",
+      "type": "multiple-choice",
+      "prompt": "Which noble gas has the lowest atomic number?",
+      "options": [
+        "Helium",
+        "Neon",
+        "Argon",
+        "Krypton"
+      ],
+      "answer": "Helium",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-38fa74ce0106",
+      "type": "multiple-choice",
+      "prompt": "In a normal distribution, 95% of the data lies within how many standard deviations of the mean?",
+      "options": [
+        "2",
+        "1",
+        "3",
+        "4"
+      ],
+      "answer": "2",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-39c27f008662",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the Ethiopian Wolf before they knew it was related to wolves?",
+      "options": [
+        "Simien Jackal",
+        "Ethiopian Coyote",
+        "Amharic Fox",
+        "Canis Simiensis"
+      ],
+      "answer": "Simien Jackal",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a9eb52603d3",
+      "type": "multiple-choice",
+      "prompt": "What is the standard SI unit for time?",
+      "options": [
+        "Second",
+        "Minute",
+        "Hour",
+        "Day"
+      ],
+      "answer": "Second",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3b526b322af5",
+      "type": "multiple-choice",
+      "prompt": "What is the scientific name for the \"Polar Bear\"?",
+      "options": [
+        "Ursus Maritimus",
+        "Polar Bear",
+        "Ursus Spelaeus",
+        "Ursus Arctos"
+      ],
+      "answer": "Ursus Maritimus",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3b5a66de529b",
+      "type": "multiple-choice",
+      "prompt": "What lies at the center of our galaxy?",
+      "options": [
+        "A black hole",
+        "A wormhole",
+        "A supernova",
+        "A quasar"
+      ],
+      "answer": "A black hole",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3b62901abb6e",
+      "type": "multiple-choice",
+      "prompt": "What physics principle relates the net electric flux out of a closed surface to the charge enclosed by that surface?",
+      "options": [
+        "Gauss's Law",
+        "Faraday's Law",
+        "Ampere's Law",
+        "Biot-Savart Law"
+      ],
+      "answer": "Gauss's Law",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3bc0d34cfc6a",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a word used to describe an earthquake?",
+      "options": [
+        "Drop-slide",
+        "Foreshock",
+        "Strike-slip",
+        "Temblor"
+      ],
+      "answer": "Drop-slide",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3c4274aab890",
+      "type": "multiple-choice",
+      "prompt": "Which species of Brown Bear is not extinct?",
+      "options": [
+        "Syrian Brown Bear",
+        "California Grizzly Bear",
+        "Atlas Bear",
+        "Mexican Grizzly Bear"
+      ],
+      "answer": "Syrian Brown Bear",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3c7519f3a7bd",
+      "type": "multiple-choice",
+      "prompt": "The \"Tibia\" is found in which part of the body?",
+      "options": [
+        "Leg",
+        "Arm",
+        "Hand",
+        "Head"
+      ],
+      "answer": "Leg",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3cbbc48afda0",
+      "type": "multiple-choice",
+      "prompt": "What is the chemical formula for ammonia?",
+      "options": [
+        "NH3",
+        "CO2",
+        "NO3",
+        "CH4"
+      ],
+      "answer": "NH3",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3d0ec7aac84f",
+      "type": "multiple-choice",
+      "prompt": "What does CPR, the emergency procedure to assist someone who has suffered cardiac arrest, stand for?",
+      "options": [
+        "Cardiopulmonary resuscitation",
+        "Chronic pain relief",
+        "Cancer pain release",
+        "Cardiac pressure response"
+      ],
+      "answer": "Cardiopulmonary resuscitation",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3d6a46d4f825",
+      "type": "multiple-choice",
+      "prompt": "When the Falcon Heavy was launched on its test flight, what was the only part of the operation that failed?",
+      "options": [
+        "Center Core Landing",
+        "Side Booster Landing",
+        "Deployment of Starman",
+        "Ignition and Liftoff"
+      ],
+      "answer": "Center Core Landing",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3d6cbb848937",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the Supermassive Black Hole in the centre of the Milky Way?",
+      "options": [
+        "Sagittarius A*",
+        "Messier 87",
+        "Alpha Centauri",
+        "Andromeda"
+      ],
+      "answer": "Sagittarius A*",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3e9fa44af71d",
+      "type": "multiple-choice",
+      "prompt": "Which is the longest bone in the human body?",
+      "options": [
+        "Femur",
+        "Scapula",
+        "Fibula",
+        "Ulna"
+      ],
+      "answer": "Femur",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3fca5fcf5e4e",
+      "type": "multiple-choice",
+      "prompt": "Which constellation contains the center of the Milky Way?",
+      "options": [
+        "Sagittarius",
+        "Scorpius",
+        "Ophiuchus",
+        "Capricornus"
+      ],
+      "answer": "Sagittarius",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3fe6be095a9d",
+      "type": "multiple-choice",
+      "prompt": "Which of these is a type of stretch/deep tendon reflex?",
+      "options": [
+        "Ankle jerk reflex",
+        "Gag reflex",
+        "Pupillary light reflex",
+        "Scratch reflex"
+      ],
+      "answer": "Ankle jerk reflex",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-41bb56bb9c7b",
+      "type": "multiple-choice",
+      "prompt": "Which psychological term refers to the stress of holding contrasting beliefs?",
+      "options": [
+        "Cognitive Dissonance",
+        "Flip-Flop Syndrome",
+        "Split-Brain",
+        "Blind Sight"
+      ],
+      "answer": "Cognitive Dissonance",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4200d1c9df0e",
+      "type": "multiple-choice",
+      "prompt": "What comes after a Million, a Billion, and a Trillion?",
+      "options": [
+        "Quadrillion",
+        "Sextillion",
+        "Quintillion",
+        "Septillion"
+      ],
+      "answer": "Quadrillion",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4317a0b25723",
+      "type": "multiple-choice",
+      "prompt": "What produces the green colour of most plant leaves?",
+      "options": [
+        "Chlorophyll",
+        "Light refraction",
+        "Natural pigments",
+        "UV radiation"
+      ],
+      "answer": "Chlorophyll",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4398a8409a50",
+      "type": "multiple-choice",
+      "prompt": "Which of these chemical compounds is NOT found in gastric acid?",
+      "options": [
+        "Sulfuric acid",
+        "Hydrochloric acid",
+        "Potassium chloride",
+        "Sodium chloride"
+      ],
+      "answer": "Sulfuric acid",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-43fdf6fc5768",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the family that the domestic cat is a member of?",
+      "options": [
+        "Felidae",
+        "Felinae",
+        "Felis",
+        "Cat"
+      ],
+      "answer": "Felidae",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-44596d8fce8f",
+      "type": "multiple-choice",
+      "prompt": "What does the scientific name of the Cambrian-Period sea creature Anomalocaris mean?",
+      "options": [
+        "Abnormal Shrimp",
+        "Deformed Fish",
+        "Strange Crab",
+        "Anomalous Clam"
+      ],
+      "answer": "Abnormal Shrimp",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-455ea260ab1f",
+      "type": "multiple-choice",
+      "prompt": "What type of function is x²+2x+1?",
+      "options": [
+        "Quadratic",
+        "Rational",
+        "Linear",
+        "Exponential"
+      ],
+      "answer": "Quadratic",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-466a301cc3f1",
+      "type": "multiple-choice",
+      "prompt": "What is the fastest land animal?",
+      "options": [
+        "Cheetah",
+        "Lion",
+        "Thomson’s Gazelle",
+        "Pronghorn Antelope"
+      ],
+      "answer": "Cheetah",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-46f4eac342a2",
+      "type": "multiple-choice",
+      "prompt": "Who made the discovery of X-rays?",
+      "options": [
+        "Wilhelm Conrad Röntgen",
+        "Thomas Alva Edison",
+        "James Watt",
+        "Albert Einstein"
+      ],
+      "answer": "Wilhelm Conrad Röntgen",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4aed68bd109b",
+      "type": "multiple-choice",
+      "prompt": "How many officially recognized dwarf planets in the solar system are named after Polynesian deities?",
+      "options": [
+        "2",
+        "0",
+        "1",
+        "5"
+      ],
+      "answer": "2",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4b0988bcc9dc",
+      "type": "multiple-choice",
+      "prompt": "Which dog breed is named after a region in Croatia",
+      "options": [
+        "Dalmatian",
+        "Pekingnese",
+        "Chihuahua",
+        "Pomeranian"
+      ],
+      "answer": "Dalmatian",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4bfa89085d24",
+      "type": "multiple-choice",
+      "prompt": "What is the chemical symbol for lead?",
+      "options": [
+        "Pb",
+        "Ld",
+        "Le",
+        "Pm"
+      ],
+      "answer": "Pb",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4c8db8c503d5",
+      "type": "multiple-choice",
+      "prompt": "Snakes and lizards are known to flick their tongue, this behavior is to?",
+      "options": [
+        "Capture scent particles",
+        "Taste the sweet air",
+        "Threaten other species",
+        "Attract female mates"
+      ],
+      "answer": "Capture scent particles",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4e6faa15ac14",
+      "type": "multiple-choice",
+      "prompt": "About how old is Earth?",
+      "options": [
+        "4.5 Billion Years",
+        "3.5 Billion Years",
+        "2.5 Billion Years",
+        "5.5 Billion Years"
+      ],
+      "answer": "4.5 Billion Years",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4fec9f799aac",
+      "type": "multiple-choice",
+      "prompt": "Approximately how long is a year on Uranus?",
+      "options": [
+        "84 Earth years",
+        "47 Earth years",
+        "62 Earth years",
+        "109 Earth years"
+      ],
+      "answer": "84 Earth years",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-504c7759029c",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is the male pollen-producing reproductive part of a flower?",
+      "options": [
+        "Stamen",
+        "Sepal",
+        "Pistil",
+        "Petal"
+      ],
+      "answer": "Stamen",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-52502d3bb70e",
+      "type": "multiple-choice",
+      "prompt": "Wombats are native to which Country?",
+      "options": [
+        "Australia",
+        "New Zealand",
+        "Papua New Guinea",
+        "Palau"
+      ],
+      "answer": "Australia",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-52d39575a969",
+      "type": "multiple-choice",
+      "prompt": "In physics, conservation of energy and conservation of momentum are both consequences of which of the following?",
+      "options": [
+        "Noether's Theorem",
+        "Bell's Theorem",
+        "Wick's Theorem",
+        "Carnot's Theorem"
+      ],
+      "answer": "Noether's Theorem",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-52d401a7e181",
+      "type": "multiple-choice",
+      "prompt": "What's the square root of 49?",
+      "options": [
+        "7",
+        "4",
+        "12",
+        "9"
+      ],
+      "answer": "7",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-52dd3d3f2825",
+      "type": "multiple-choice",
+      "prompt": "About how much of their body weight in food do sea otters eat every day?",
+      "options": [
+        "25%",
+        "10%",
+        "80%",
+        "45%"
+      ],
+      "answer": "25%",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5330bc6a2cf5",
+      "type": "multiple-choice",
+      "prompt": "How long is a light-year?",
+      "options": [
+        "9.461 Trillion Kilometres",
+        "1 AU",
+        "105.40 Earth-years",
+        "501.2 Million Miles"
+      ],
+      "answer": "9.461 Trillion Kilometres",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5367e36aad86",
+      "type": "multiple-choice",
+      "prompt": "What is the least number of sides a polygon can have?",
+      "options": [
+        "3",
+        "1",
+        "2",
+        "7"
+      ],
+      "answer": "3",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-536e565d3fd2",
+      "type": "multiple-choice",
+      "prompt": "How many sides does a heptagon have?",
+      "options": [
+        "7",
+        "5",
+        "4",
+        "9"
+      ],
+      "answer": "7",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-541c1f077e91",
+      "type": "multiple-choice",
+      "prompt": "How many Millibars (mbar) to 1 Inch of Mercury (inHg)",
+      "options": [
+        "33.9",
+        "30.0",
+        "27.4",
+        "10.6"
+      ],
+      "answer": "33.9",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5463649494e2",
+      "type": "multiple-choice",
+      "prompt": "Along with Oxygen, which element is primarily responsible for the sky appearing blue?",
+      "options": [
+        "Nitrogen",
+        "Helium",
+        "Carbon",
+        "Hydrogen"
+      ],
+      "answer": "Nitrogen",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-56a094da2b6b",
+      "type": "multiple-choice",
+      "prompt": "What is the name of a rabbit's abode?",
+      "options": [
+        "Burrow",
+        "Nest",
+        "Den",
+        "Dray"
+      ],
+      "answer": "Burrow",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-594b9e008e2a",
+      "type": "multiple-choice",
+      "prompt": "What is the collective noun for vultures?",
+      "options": [
+        "Wake",
+        "Ambush",
+        "Building",
+        "Gaze"
+      ],
+      "answer": "Wake",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-595b923064a6",
+      "type": "multiple-choice",
+      "prompt": "What is the name for a male bee that comes from an unfertilized egg?",
+      "options": [
+        "Drone",
+        "Soldier",
+        "Worker",
+        "Male"
+      ],
+      "answer": "Drone",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-59632ef9e9d1",
+      "type": "multiple-choice",
+      "prompt": "What are human nails made of?",
+      "options": [
+        "Keratin",
+        "Bone",
+        "Chitin",
+        "Calcium"
+      ],
+      "answer": "Keratin",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-599a38b829af",
+      "type": "multiple-choice",
+      "prompt": "What is the scientific name of the Budgerigar?",
+      "options": [
+        "Melopsittacus undulatus",
+        "Nymphicus hollandicus",
+        "Pyrrhura molinae",
+        "Ara macao"
+      ],
+      "answer": "Melopsittacus undulatus",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5ab8e50dd434",
+      "type": "multiple-choice",
+      "prompt": "What is the world's longest venomous snake?",
+      "options": [
+        "King Cobra",
+        "Green Anaconda",
+        "Inland Taipan",
+        "Yellow Bellied Sea Snake"
+      ],
+      "answer": "King Cobra",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5cc15c273876",
+      "type": "multiple-choice",
+      "prompt": "How many hearts does an octopus have?",
+      "options": [
+        "Three",
+        "One",
+        "Two",
+        "Four"
+      ],
+      "answer": "Three",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5ee05ad725e1",
+      "type": "multiple-choice",
+      "prompt": "What is considered the rarest form of color blindness?",
+      "options": [
+        "Blue",
+        "Red",
+        "Green",
+        "Purple"
+      ],
+      "answer": "Blue",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5f460dc42bff",
+      "type": "multiple-choice",
+      "prompt": "What is the mathematician Euler's first name?",
+      "options": [
+        "Leonhard",
+        "Lionel",
+        "Andrin",
+        "Ajan"
+      ],
+      "answer": "Leonhard",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5f7257ac8754",
+      "type": "multiple-choice",
+      "prompt": "What scientific suborder does the family Hyaenidae belong to?",
+      "options": [
+        "Feliformia",
+        "Haplorhini",
+        "Caniformia",
+        "Ciconiiformes"
+      ],
+      "answer": "Feliformia",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-615377a93f93",
+      "type": "multiple-choice",
+      "prompt": "What polymer is used to make CDs, safety goggles and riot shields?",
+      "options": [
+        "Polycarbonate",
+        "Rubber",
+        "Nylon",
+        "Bakelite"
+      ],
+      "answer": "Polycarbonate",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6195e02d04c1",
+      "type": "multiple-choice",
+      "prompt": "Who proved Fermat's Last Theorem?",
+      "options": [
+        "Andrew Wiles",
+        "Leonhard Euler",
+        "Carl Friedrich Gauss",
+        "Srinivasa Ramanujan"
+      ],
+      "answer": "Andrew Wiles",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-62e77465da22",
+      "type": "multiple-choice",
+      "prompt": "Which of the following bones is not in the leg?",
+      "options": [
+        "Radius",
+        "Patella",
+        "Tibia",
+        "Fibula"
+      ],
+      "answer": "Radius",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-644f8c2e1ece",
+      "type": "multiple-choice",
+      "prompt": "What is the smallest number that can be expressed as the sum of two positive cubes in two different ways?",
+      "options": [
+        "1729",
+        "91",
+        "561",
+        "4104"
+      ],
+      "answer": "1729",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-669f8172ee62",
+      "type": "multiple-choice",
+      "prompt": "What are the smallest blood vessels in the human body?",
+      "options": [
+        "Capillaries",
+        "Arterioles",
+        "Veinules",
+        "Lymphatics"
+      ],
+      "answer": "Capillaries",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-66b9fa45831e",
+      "type": "multiple-choice",
+      "prompt": "Which is the most abundant element in the universe?",
+      "options": [
+        "Hydrogen",
+        "Helium",
+        "Lithium",
+        "Oxygen"
+      ],
+      "answer": "Hydrogen",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6793e7fe42ee",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not one of the seven Millennium Prize Problems?",
+      "options": [
+        "Naviér conjecture",
+        "Birch and Swinnerton-Dyer Conjecture",
+        "Riemann hypothesis",
+        "Poincaré conjecture"
+      ],
+      "answer": "Naviér conjecture",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-67a439ae5916",
+      "type": "multiple-choice",
+      "prompt": "How many types of quarks are there in the standard model of physics?",
+      "options": [
+        "6",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer": "6",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-67cba40a256e",
+      "type": "multiple-choice",
+      "prompt": "What is the medical term for low blood sugar?",
+      "options": [
+        "Hypoglycemia",
+        "Hypothyroidism",
+        "Hypothermia",
+        "Hypoxia"
+      ],
+      "answer": "Hypoglycemia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6880a20af12b",
+      "type": "multiple-choice",
+      "prompt": "How many sides does a pentagon have?",
+      "options": [
+        "5",
+        "9",
+        "6",
+        "4"
+      ],
+      "answer": "5",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-697ebf00b3fd",
+      "type": "multiple-choice",
+      "prompt": "What is the hottest planet in the solar system",
+      "options": [
+        "Venus",
+        "Jupiter",
+        "Mercury",
+        "Mars"
+      ],
+      "answer": "Venus",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6a429d50ae4d",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the first artificial Earth satellite, launched by the Soviet Union in 1957?",
+      "options": [
+        "Sputnik 1",
+        "Soyuz 7K-OK",
+        "Zenit-2",
+        "Voskhod 3KV"
+      ],
+      "answer": "Sputnik 1",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6a577d6b04a5",
+      "type": "multiple-choice",
+      "prompt": "In the hexadecimal system, what number comes after 9?",
+      "options": [
+        "The Letter A",
+        "10",
+        "The Number 0",
+        "16"
+      ],
+      "answer": "The Letter A",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6ab9f54feb4c",
+      "type": "multiple-choice",
+      "prompt": "What is the most potent toxin known?",
+      "options": [
+        "Botulinum toxin",
+        "Ricin",
+        "Cyanide",
+        "Asbestos"
+      ],
+      "answer": "Botulinum toxin",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6b9fd225a8cd",
+      "type": "multiple-choice",
+      "prompt": "What was the category of the 2005 hurricane, Hurricane Katrina, in the Saffir-Simpson hurricane wind scale?",
+      "options": [
+        "Category 5",
+        "Category 1",
+        "Category 4",
+        "Category 2"
+      ],
+      "answer": "Category 5",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6d7dd2e77010",
+      "type": "multiple-choice",
+      "prompt": "What is the collective noun for bears?",
+      "options": [
+        "Sloth",
+        "Drove",
+        "Tribe",
+        "Husk"
+      ],
+      "answer": "Sloth",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6dd1076a3fd8",
+      "type": "multiple-choice",
+      "prompt": "Autosomal-dominant Compelling Helio-Ophthalmic Outburst syndrome is the need to do what when seeing the Sun?",
+      "options": [
+        "Sneeze",
+        "Cough",
+        "Yawn",
+        "Hiccup"
+      ],
+      "answer": "Sneeze",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6ee953d3fd93",
+      "type": "multiple-choice",
+      "prompt": "Which of these probability distributions is NOT discrete?",
+      "options": [
+        "Normal",
+        "Binomial",
+        "Poisson",
+        "Hyper-geometric"
+      ],
+      "answer": "Normal",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6f10ec929ed1",
+      "type": "multiple-choice",
+      "prompt": "What did Gregory Mendel use to test genetic crossovers?",
+      "options": [
+        "Peas",
+        "Cats",
+        "Flowers",
+        "Parrots"
+      ],
+      "answer": "Peas",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-716e1d317151",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a venomous snake?",
+      "options": [
+        "Reticulated python",
+        "Malayan Krait",
+        "Yellow bellied sea snake",
+        "Black mamba"
+      ],
+      "answer": "Reticulated python",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-71abbf6a28e9",
+      "type": "multiple-choice",
+      "prompt": "What name is given to all baby marsupials?",
+      "options": [
+        "Joey",
+        "Calf",
+        "Pup",
+        "Cub"
+      ],
+      "answer": "Joey",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-728679e6acb3",
+      "type": "multiple-choice",
+      "prompt": "How old is the universe?",
+      "options": [
+        "13.8 Billion Years",
+        "4.5 Billion Years",
+        "7.9 Billion Years",
+        "16.2 Billion Years"
+      ],
+      "answer": "13.8 Billion Years",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-731f5cfae88e",
+      "type": "multiple-choice",
+      "prompt": "To the nearest whole number, how many radians are in a whole circle?",
+      "options": [
+        "6",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": "6",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-732d3b7ef667",
+      "type": "multiple-choice",
+      "prompt": "What is the first Mersenne prime exponent over 1000?",
+      "options": [
+        "1279",
+        "2203",
+        "1009",
+        "1069"
+      ],
+      "answer": "1279",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-74603aa45753",
+      "type": "multiple-choice",
+      "prompt": "An organic compound is considered an alcohol if it has what functional group?",
+      "options": [
+        "Hydroxyl",
+        "Carbonyl",
+        "Alkyl",
+        "Aldehyde"
+      ],
+      "answer": "Hydroxyl",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7516d31f01b4",
+      "type": "multiple-choice",
+      "prompt": "Which species is a \"mountain chicken\"?",
+      "options": [
+        "Frog",
+        "Chicken",
+        "Horse",
+        "Fly"
+      ],
+      "answer": "Frog",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7598f3de3edc",
+      "type": "multiple-choice",
+      "prompt": "What scientific family does the Aardwolf belong to?",
+      "options": [
+        "Hyaenidae",
+        "Canidae",
+        "Felidae",
+        "Eupleridae"
+      ],
+      "answer": "Hyaenidae",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-76439328d522",
+      "type": "multiple-choice",
+      "prompt": "What animal takes part in Schrödinger's most famous thought experiment?",
+      "options": [
+        "Cat",
+        "Dog",
+        "Bat",
+        "Butterfly"
+      ],
+      "answer": "Cat",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7657b9d74058",
+      "type": "multiple-choice",
+      "prompt": "Which class of animals are newts members of?",
+      "options": [
+        "Amphibian",
+        "Fish",
+        "Reptiles",
+        "Mammals"
+      ],
+      "answer": "Amphibian",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-77e0246b8e62",
+      "type": "multiple-choice",
+      "prompt": "Which of the following liquids is least viscous? Assume temperature is 25°C.",
+      "options": [
+        "Acetone",
+        "Water",
+        "Mercury",
+        "Benzene"
+      ],
+      "answer": "Acetone",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-783637ad0191",
+      "type": "multiple-choice",
+      "prompt": "What is the unit of electrical inductance?",
+      "options": [
+        "Henry",
+        "Weber",
+        "Coulomb",
+        "Mho"
+      ],
+      "answer": "Henry",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-787178f6171c",
+      "type": "multiple-choice",
+      "prompt": "What is the Linnean name of the domestic apple tree?",
+      "options": [
+        "Malus pumila",
+        "Malus americana",
+        "Pomus domestica",
+        "Appelus delectica"
+      ],
+      "answer": "Malus pumila",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7a8f4c3de4a9",
+      "type": "multiple-choice",
+      "prompt": "How many degrees make a full circle?",
+      "options": [
+        "360",
+        "180",
+        "90",
+        "720"
+      ],
+      "answer": "360",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7b7e76b29f5a",
+      "type": "multiple-choice",
+      "prompt": "How many baby/milk teeth does a human child have in total?",
+      "options": [
+        "20",
+        "10",
+        "15",
+        "25"
+      ],
+      "answer": "20",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7b9f7e309d1e",
+      "type": "multiple-choice",
+      "prompt": "What is the standard SI unit for mass?",
+      "options": [
+        "Kilogram",
+        "Tonne",
+        "Pound",
+        "Gram"
+      ],
+      "answer": "Kilogram",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7d6d03987cb0",
+      "type": "multiple-choice",
+      "prompt": "Which planet did the \"Viking 1\" spacecraft send surface images of, starting in 1976?",
+      "options": [
+        "Mars",
+        "Saturn",
+        "Jupiter",
+        "Venus"
+      ],
+      "answer": "Mars",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7db0b705ece4",
+      "type": "multiple-choice",
+      "prompt": "What is the atomic number of Uranium",
+      "options": [
+        "92",
+        "235",
+        "17",
+        "167"
+      ],
+      "answer": "92",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7e86357b172a",
+      "type": "multiple-choice",
+      "prompt": "\"Decapods\" are an order of ten-footed crustaceans. Which of these are NOT decapods?",
+      "options": [
+        "Krill",
+        "Lobsters",
+        "Shrimp",
+        "Crabs"
+      ],
+      "answer": "Krill",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7f078b7cbaaf",
+      "type": "multiple-choice",
+      "prompt": "Which of these Elements is a metalloid?",
+      "options": [
+        "Antimony",
+        "Tin",
+        "Bromine",
+        "Rubidium"
+      ],
+      "answer": "Antimony",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7f1b0b1e8def",
+      "type": "multiple-choice",
+      "prompt": "How many zeptometres are inside one femtometre?",
+      "options": [
+        "1,000,000",
+        "10",
+        "1,000,000,000",
+        "1000"
+      ],
+      "answer": "1,000,000",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-82275d94fcde",
+      "type": "multiple-choice",
+      "prompt": "A carnivorous animal eats flesh, what does a nucivorous animal eat?",
+      "options": [
+        "Nuts",
+        "Nothing",
+        "Fruit",
+        "Seaweed"
+      ],
+      "answer": "Nuts",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8386c7bfa790",
+      "type": "multiple-choice",
+      "prompt": "What is the unit of electrical capacitance?",
+      "options": [
+        "Farad",
+        "Gauss",
+        "Henry",
+        "Watt"
+      ],
+      "answer": "Farad",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-83fe6d21d435",
+      "type": "multiple-choice",
+      "prompt": "Au on the Periodic Table refers to which element?",
+      "options": [
+        "Gold",
+        "Silver",
+        "Oxygen",
+        "Nickel"
+      ],
+      "answer": "Gold",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-84c5bd65921b",
+      "type": "multiple-choice",
+      "prompt": "Ganymede is the largest moon of which planet?",
+      "options": [
+        "Jupiter",
+        "Uranus",
+        "Neptune",
+        "Mars"
+      ],
+      "answer": "Jupiter",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-85b88851f560",
+      "type": "multiple-choice",
+      "prompt": "Which chemical element has the lowest boiling point?",
+      "options": [
+        "Helium",
+        "Hydrogen",
+        "Neon",
+        "Nitrogen"
+      ],
+      "answer": "Helium",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-862523df7745",
+      "type": "multiple-choice",
+      "prompt": "What do you study if you are studying entomology?",
+      "options": [
+        "Insects",
+        "Humans",
+        "the Brain",
+        "Fish"
+      ],
+      "answer": "Insects",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-876458f7b909",
+      "type": "multiple-choice",
+      "prompt": "What part of the body produces insulin?",
+      "options": [
+        "Pancreas",
+        "Kidney",
+        "Liver",
+        "Stomach"
+      ],
+      "answer": "Pancreas",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-87ba8b3d5ac9",
+      "type": "multiple-choice",
+      "prompt": "How many square faces does a cube have?",
+      "options": [
+        "6",
+        "4",
+        "8",
+        "10"
+      ],
+      "answer": "6",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-88c31105da88",
+      "type": "multiple-choice",
+      "prompt": "How many degrees Fahrenheit is 100 degrees Celsius?",
+      "options": [
+        "212",
+        "326",
+        "100",
+        "451"
+      ],
+      "answer": "212",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8909c8dc7d9c",
+      "type": "multiple-choice",
+      "prompt": "In the complex plane, multiplying a given function by i rotates it anti-clockwise by how many degrees?",
+      "options": [
+        "90",
+        "180",
+        "270",
+        "0"
+      ],
+      "answer": "90",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8953f72b09c8",
+      "type": "multiple-choice",
+      "prompt": "After which Danish city is the 72nd element on the periodic table named?",
+      "options": [
+        "Copenhagen",
+        "Odense",
+        "Herning",
+        "Skagen"
+      ],
+      "answer": "Copenhagen",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8a0992303fed",
+      "type": "multiple-choice",
+      "prompt": "What is the standard SI unit for electric current?",
+      "options": [
+        "Ampere",
+        "Volt",
+        "Ohm",
+        "Watt"
+      ],
+      "answer": "Ampere",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8a1559ac0d27",
+      "type": "multiple-choice",
+      "prompt": "What are the scales on all snakes and most lizards are made of?",
+      "options": [
+        "Keratin",
+        "Ecdysis",
+        "Epidermis",
+        "Ankyloglossia"
+      ],
+      "answer": "Keratin",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8a4eb2ce67e4",
+      "type": "multiple-choice",
+      "prompt": "What is an alternative name for multiple personality disorder?",
+      "options": [
+        "Dissociative identity disorder",
+        "Body integrity identity disorder",
+        "Identity crisis",
+        "Schizophrenia"
+      ],
+      "answer": "Dissociative identity disorder",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8c04bf31fd02",
+      "type": "multiple-choice",
+      "prompt": "The human heart has how many chambers?",
+      "options": [
+        "4",
+        "2",
+        "6",
+        "3"
+      ],
+      "answer": "4",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8c249199d0da",
+      "type": "multiple-choice",
+      "prompt": "What type of creature is a Bonobo?",
+      "options": [
+        "Ape",
+        "Lion",
+        "Parrot",
+        "Wildcat"
+      ],
+      "answer": "Ape",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8d878a23f50e",
+      "type": "multiple-choice",
+      "prompt": "The word \"science\" stems from the word \"scire\" meaning what?",
+      "options": [
+        "To know",
+        "To measure",
+        "To live",
+        "To count"
+      ],
+      "answer": "To know",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8eb6b812f677",
+      "type": "multiple-choice",
+      "prompt": "How many laws of thermodynamics are there?",
+      "options": [
+        "Four",
+        "Three",
+        "Two",
+        "Five"
+      ],
+      "answer": "Four",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8ebfa643c720",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not one of the groups on the periodic table?",
+      "options": [
+        "Fluorines",
+        "Alkali Metals",
+        "Halogens",
+        "Noble Gases"
+      ],
+      "answer": "Fluorines",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8ef88e01d60b",
+      "type": "multiple-choice",
+      "prompt": "What is the largest animal currently on Earth?",
+      "options": [
+        "Blue Whale",
+        "Orca",
+        "Colossal Squid",
+        "Giraffe"
+      ],
+      "answer": "Blue Whale",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8f325fd28336",
+      "type": "multiple-choice",
+      "prompt": "Tetsuya Fujita was a scientist that developed the scale for which natural disaster?",
+      "options": [
+        "Tornadoes",
+        "Hurricanes",
+        "Earthquakes",
+        "Volcanoes"
+      ],
+      "answer": "Tornadoes",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-90a372432729",
+      "type": "multiple-choice",
+      "prompt": "What is the national bird of Bahrain?",
+      "options": [
+        "Bulbul",
+        "Hummingbird",
+        "Falcon",
+        "Sparrow"
+      ],
+      "answer": "Bulbul",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-91cf98095e14",
+      "type": "multiple-choice",
+      "prompt": "What is a polygon with eight sides called?",
+      "options": [
+        "Octagon",
+        "Hexagon",
+        "Nanagon",
+        "Heptagon"
+      ],
+      "answer": "Octagon",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-921e396be2e9",
+      "type": "multiple-choice",
+      "prompt": "What is the Roman numeral for 500?",
+      "options": [
+        "D",
+        "L",
+        "C",
+        "X"
+      ],
+      "answer": "D",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-95066a168a4b",
+      "type": "multiple-choice",
+      "prompt": "A mathematical constant, known as \"The Golden Ratio\", is most commonly represented by which greek letter?",
+      "options": [
+        "Φ (phi)",
+        "π (pi)",
+        "Ψ (psi)",
+        "Τ (tau)"
+      ],
+      "answer": "Φ (phi)",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-951bd6d83b51",
+      "type": "multiple-choice",
+      "prompt": "What is the plane curve proposed by Descartes to challenge Fermat's extremum-finding techniques called?",
+      "options": [
+        "Folium of Descartes",
+        "Elliptic Paraboloid of Descartes",
+        "Cartesian Coordinates",
+        "Descarte's Helicoid"
+      ],
+      "answer": "Folium of Descartes",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-95e9166cbf4b",
+      "type": "multiple-choice",
+      "prompt": "Which gas forms about 78% of the Earth’s atmosphere?",
+      "options": [
+        "Nitrogen",
+        "Oxygen",
+        "Argon",
+        "Carbon Dioxide"
+      ],
+      "answer": "Nitrogen",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-963c3f77c656",
+      "type": "multiple-choice",
+      "prompt": "The asteroid belt is located between which two planets?",
+      "options": [
+        "Mars and Jupiter",
+        "Jupiter and Saturn",
+        "Mercury and Venus",
+        "Earth and Mars"
+      ],
+      "answer": "Mars and Jupiter",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-96ce90127c31",
+      "type": "multiple-choice",
+      "prompt": "What color is a Steller's Jay?",
+      "options": [
+        "blue and black",
+        "blue and grey",
+        "blue and white",
+        "grey and black"
+      ],
+      "answer": "blue and black",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-96e387629e5d",
+      "type": "multiple-choice",
+      "prompt": "Rhinoplasty is a surgical procedure on what part of the human body?",
+      "options": [
+        "Nose",
+        "Ears",
+        "Chin",
+        "Neck"
+      ],
+      "answer": "Nose",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-99cc3f74629e",
+      "type": "multiple-choice",
+      "prompt": "How many protons are in an oxygen atom?",
+      "options": [
+        "Eight",
+        "Four",
+        "Two",
+        "Six"
+      ],
+      "answer": "Eight",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9bb67ca45dc5",
+      "type": "multiple-choice",
+      "prompt": "What is the common name of the chemical compound \"dihydrogen monoxide\"?",
+      "options": [
+        "Water",
+        "Methane",
+        "Ammonia",
+        "Laughing Gas"
+      ],
+      "answer": "Water",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9cf07e6fb174",
+      "type": "multiple-choice",
+      "prompt": "In aeronautics, flaps and slats are used to control what on an aircraft?",
+      "options": [
+        "Lift",
+        "Thrust",
+        "Drag",
+        "Weight"
+      ],
+      "answer": "Lift",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9d0774bd4f76",
+      "type": "multiple-choice",
+      "prompt": "Which of these choices is not one of the phases of mitosis?",
+      "options": [
+        "Diplophase",
+        "Metaphase",
+        "Anaphase",
+        "Telophase"
+      ],
+      "answer": "Diplophase",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9de73dad4964",
+      "type": "multiple-choice",
+      "prompt": "A positron is an antiparticle of a what?",
+      "options": [
+        "Electron",
+        "Neutron",
+        "Proton",
+        "Photon"
+      ],
+      "answer": "Electron",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a05e29520173",
+      "type": "multiple-choice",
+      "prompt": "Botanically speaking, which of these fruits is NOT a berry?",
+      "options": [
+        "Strawberry",
+        "Blueberry",
+        "Banana",
+        "Concord Grape"
+      ],
+      "answer": "Strawberry",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a0aa05322578",
+      "type": "multiple-choice",
+      "prompt": "Which animal was part of an Russian domestication experiment in 1959?",
+      "options": [
+        "Foxes",
+        "Pigeons",
+        "Bears",
+        "Alligators"
+      ],
+      "answer": "Foxes",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a0fa94ea1c0d",
+      "type": "multiple-choice",
+      "prompt": "Which is not a type of neuron?",
+      "options": [
+        "Perceptual Neuron",
+        "Sensory Neuron",
+        "Motor Neuron",
+        "Interneuron"
+      ],
+      "answer": "Perceptual Neuron",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a1cb2f21780a",
+      "type": "multiple-choice",
+      "prompt": "What is the alphanumeric representation of the imaginary number?",
+      "options": [
+        "i",
+        "e",
+        "n",
+        "x"
+      ],
+      "answer": "i",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a59386f86499",
+      "type": "multiple-choice",
+      "prompt": "The Kākāpō is a large, flightless, nocturnal parrot native to which country?",
+      "options": [
+        "New Zealand",
+        "South Africa",
+        "Australia",
+        "Madagascar"
+      ],
+      "answer": "New Zealand",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a671778a69d8",
+      "type": "multiple-choice",
+      "prompt": "What term is best associated with Sigmund Freud?",
+      "options": [
+        "Psychoanalysis",
+        "Cognitive-Behavioral Therapy",
+        "Theory of Gravity",
+        "Dialectical Behavior Therapy"
+      ],
+      "answer": "Psychoanalysis",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a6a9f6988f7c",
+      "type": "multiple-choice",
+      "prompt": "The medical condition osteoporosis affects which part of the body?",
+      "options": [
+        "Bones",
+        "Skin",
+        "Brain",
+        "Heart"
+      ],
+      "answer": "Bones",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a7a0797c35c4",
+      "type": "multiple-choice",
+      "prompt": "The moons, Miranda, Ariel, Umbriel, Titania and Oberon orbit which planet?",
+      "options": [
+        "Uranus",
+        "Jupiter",
+        "Venus",
+        "Neptune"
+      ],
+      "answer": "Uranus",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a7acceec1220",
+      "type": "multiple-choice",
+      "prompt": "What nucleotide pairs with guanine?",
+      "options": [
+        "Cytosine",
+        "Thymine",
+        "Adenine",
+        "Uracil"
+      ],
+      "answer": "Cytosine",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a855407e014a",
+      "type": "multiple-choice",
+      "prompt": "The dish Fugu, is made from what family of fish?",
+      "options": [
+        "Pufferfish",
+        "Bass",
+        "Salmon",
+        "Mackerel"
+      ],
+      "answer": "Pufferfish",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a90c165eab4e",
+      "type": "multiple-choice",
+      "prompt": "Dry ice is the solid form of what substance?",
+      "options": [
+        "Carbon dioxide",
+        "Nitrogen",
+        "Ammonia",
+        "Oxygen"
+      ],
+      "answer": "Carbon dioxide",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a9361567cd69",
+      "type": "multiple-choice",
+      "prompt": "What is the scientific name of the Common Chimpanzee?",
+      "options": [
+        "Pan troglodytes",
+        "Gorilla gorilla",
+        "Pan paniscus",
+        "Panthera leo"
+      ],
+      "answer": "Pan troglodytes",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ab117cc5d1a8",
+      "type": "multiple-choice",
+      "prompt": "At what temperature does temp in °C equal temp in °F?",
+      "options": [
+        "-40",
+        "+40",
+        "0",
+        "+100"
+      ],
+      "answer": "-40",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ab3d446ac1a2",
+      "type": "multiple-choice",
+      "prompt": "What is the standard SI unit for temperature?",
+      "options": [
+        "Kelvin",
+        "Fahrenheit",
+        "Celsius",
+        "Rankine"
+      ],
+      "answer": "Kelvin",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ade2e2cce7a0",
+      "type": "multiple-choice",
+      "prompt": "What are the first 6 digits of the number \"Pi\"?",
+      "options": [
+        "3.14159",
+        "3.14169",
+        "3.12423",
+        "3.25812"
+      ],
+      "answer": "3.14159",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ae1fe4190fb8",
+      "type": "multiple-choice",
+      "prompt": "How many sides does a Möbius strip have?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer": "1",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aea61c99a913",
+      "type": "multiple-choice",
+      "prompt": "What is an example of a bacterial pathogen?",
+      "options": [
+        "Cholera",
+        "Measles",
+        "AIDS",
+        "Ringworm"
+      ],
+      "answer": "Cholera",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aecd0d05a2e8",
+      "type": "multiple-choice",
+      "prompt": "Which of the following elements is typically used in the doping of the semiconductor silicon?",
+      "options": [
+        "Boron",
+        "Oxygen",
+        "Carbon",
+        "Iron"
+      ],
+      "answer": "Boron",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-afd50ffd004d",
+      "type": "multiple-choice",
+      "prompt": "What does the letter 'S' stand for in 'NASA'?",
+      "options": [
+        "Space",
+        "Science",
+        "Society",
+        "Star"
+      ],
+      "answer": "Space",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-afd978850857",
+      "type": "multiple-choice",
+      "prompt": "Where did the Great Storm of 1987 make landfall at, first?",
+      "options": [
+        "Cornwall",
+        "Surrey",
+        "Wales",
+        "The Midlands"
+      ],
+      "answer": "Cornwall",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b014109173c8",
+      "type": "multiple-choice",
+      "prompt": "Which major extinction event was caused by an asteroid collision and eliminated the majority of non-avian dinosaurs?",
+      "options": [
+        "Cretaceous-Paleogene",
+        "Triassic–Jurassic",
+        "Permian–Triassic",
+        "Ordovician–Silurian"
+      ],
+      "answer": "Cretaceous-Paleogene",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b0e19bf42d40",
+      "type": "multiple-choice",
+      "prompt": "What is the name for the auditory illusion of a note that seems to be rising infinitely?",
+      "options": [
+        "Shepard Tone",
+        "Glissandro Illusion",
+        "Fransen Effect",
+        "McGurck Effect"
+      ],
+      "answer": "Shepard Tone",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b109bb261409",
+      "type": "multiple-choice",
+      "prompt": "Which two men are credited with independently discovering differential calculus?",
+      "options": [
+        "Newton and Leibniz",
+        "Plato and Aristotle",
+        "Asimov and Rutherford",
+        "Dvorak and Smith"
+      ],
+      "answer": "Newton and Leibniz",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b30f8355f6a5",
+      "type": "multiple-choice",
+      "prompt": "Stars consist mainly of hydrogen and which other gas?",
+      "options": [
+        "Helium",
+        "Oxygen",
+        "Argon",
+        "Nitrogen"
+      ],
+      "answer": "Helium",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b3f9f36cc4f3",
+      "type": "multiple-choice",
+      "prompt": "The 'Islets of Langerhans' is found in which human organ?",
+      "options": [
+        "Pancreas",
+        "Kidney",
+        "Liver",
+        "Brain"
+      ],
+      "answer": "Pancreas",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b4758689b46e",
+      "type": "multiple-choice",
+      "prompt": "What prime number comes next after 19?",
+      "options": [
+        "23",
+        "25",
+        "21",
+        "27"
+      ],
+      "answer": "23",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b4dbb10a0955",
+      "type": "multiple-choice",
+      "prompt": "What shape does sin(x) or cos(x) make on a graph?",
+      "options": [
+        "Waves",
+        "A Parabola",
+        "A Straight Line",
+        "Zig-Zags"
+      ],
+      "answer": "Waves",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b5e59a5dd687",
+      "type": "multiple-choice",
+      "prompt": "What is the molecular formula of Glucose?",
+      "options": [
+        "C6H12O6",
+        "C2H4O2",
+        "K+",
+        "CH4"
+      ],
+      "answer": "C6H12O6",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b623aa354ea6",
+      "type": "multiple-choice",
+      "prompt": "Which element has the atomic number of 7?",
+      "options": [
+        "Nitrogen",
+        "Oxygen",
+        "Hydrogen",
+        "Neon"
+      ],
+      "answer": "Nitrogen",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b65d3922d5ee",
+      "type": "multiple-choice",
+      "prompt": "What is the thin, outermost layer of the Earth?",
+      "options": [
+        "Crust",
+        "Exosphere",
+        "Mantle",
+        "Outer Core"
+      ],
+      "answer": "Crust",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b86d19dcdfeb",
+      "type": "multiple-choice",
+      "prompt": "Cashmere is the wool from which kind of animal?",
+      "options": [
+        "Goat",
+        "Sheep",
+        "Camel",
+        "Llama"
+      ],
+      "answer": "Goat",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b87560224594",
+      "type": "multiple-choice",
+      "prompt": "What does \"hippopotamus\" mean and in what language?",
+      "options": [
+        "River Horse (Greek)",
+        "River Horse (Latin)",
+        "Fat Pig (Greek)",
+        "Fat Pig (Latin)"
+      ],
+      "answer": "River Horse (Greek)",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b90ac44614f4",
+      "type": "multiple-choice",
+      "prompt": "Which chemical element was originally known as Alabamine?",
+      "options": [
+        "Astatine",
+        "Selenium",
+        "Antimony",
+        "Molybdenum"
+      ],
+      "answer": "Astatine",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b95547150702",
+      "type": "multiple-choice",
+      "prompt": "In Chemistry, how many isomers does Butanol (C4H9OH) have?",
+      "options": [
+        "4",
+        "3",
+        "5",
+        "6"
+      ],
+      "answer": "4",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bacb3a332cc0",
+      "type": "multiple-choice",
+      "prompt": "What is the lowest layer of the Earth's atmosphere named?",
+      "options": [
+        "Troposphere",
+        "Stratosphere",
+        "Mesosphere",
+        "Thermosphere"
+      ],
+      "answer": "Troposphere",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bb1245348c33",
+      "type": "multiple-choice",
+      "prompt": "Which of the following famous mathematicians died in a duel at the age of 20?",
+      "options": [
+        "Galois",
+        "Abel",
+        "Euler",
+        "Gauss"
+      ],
+      "answer": "Galois",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bbccccd620de",
+      "type": "multiple-choice",
+      "prompt": "Which continent do sweet potatoes originally come from?",
+      "options": [
+        "South America",
+        "Asia",
+        "Africa",
+        "Europe"
+      ],
+      "answer": "South America",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bbd09a9e603b",
+      "type": "multiple-choice",
+      "prompt": "What is the derivative of Acceleration with respect to time?",
+      "options": [
+        "Jerk",
+        "Shift",
+        "Bump",
+        "Slide"
+      ],
+      "answer": "Jerk",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bc71619b202f",
+      "type": "multiple-choice",
+      "prompt": "Which breed of dog is traditionally associated with firefighters?",
+      "options": [
+        "Dalmatians",
+        "German Shepherd",
+        "Great Dane",
+        "Mastiff"
+      ],
+      "answer": "Dalmatians",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bc906ca666d2",
+      "type": "multiple-choice",
+      "prompt": "What is the average amount of chinchillas born into a single litter?",
+      "options": [
+        "2-3",
+        "10-15",
+        "5-8",
+        "15-18"
+      ],
+      "answer": "2-3",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bcd6f83e3a97",
+      "type": "multiple-choice",
+      "prompt": "What is the official name of the star located closest to the North Celestial Pole?",
+      "options": [
+        "Polaris",
+        "Eridanus",
+        "Gamma Cephei",
+        "Iota Cephei"
+      ],
+      "answer": "Polaris",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bce801c84244",
+      "type": "multiple-choice",
+      "prompt": "What is the scientific name of the red fox?",
+      "options": [
+        "Vulpes Vulpes",
+        "Vulpes Redus",
+        "Red Fox",
+        "Vulpes Vulpie"
+      ],
+      "answer": "Vulpes Vulpes",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bcfb8c38a2af",
+      "type": "multiple-choice",
+      "prompt": "What was the first organic compound to be synthesized from inorganic compounds?",
+      "options": [
+        "Urea",
+        "Propane",
+        "Ethanol",
+        "Formaldehyde"
+      ],
+      "answer": "Urea",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bdd91b5f7302",
+      "type": "multiple-choice",
+      "prompt": "On the periodic table of elements, what is the symbol for Tin?",
+      "options": [
+        "Sn",
+        "Ti",
+        "Ni",
+        "Na"
+      ],
+      "answer": "Sn",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bf15e2667f67",
+      "type": "multiple-choice",
+      "prompt": "The medial meniscus forms which part of what joint in the human body?",
+      "options": [
+        "Knee",
+        "Elbow",
+        "Ankle",
+        "Shoulder"
+      ],
+      "answer": "Knee",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bffa3a34b787",
+      "type": "multiple-choice",
+      "prompt": "What is the scientific name of the cheetah?",
+      "options": [
+        "Acinonyx jubatus",
+        "Panthera onca",
+        "Lynx rufus",
+        "Felis catus"
+      ],
+      "answer": "Acinonyx jubatus",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c069012b01de",
+      "type": "multiple-choice",
+      "prompt": "What is the study of the cells and tissues of plants and animals?",
+      "options": [
+        "Histology",
+        "Microbiology",
+        "Anatomy",
+        "Biochemistry"
+      ],
+      "answer": "Histology",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c186170d9345",
+      "type": "multiple-choice",
+      "prompt": "What is the atomic number of the element Strontium?",
+      "options": [
+        "38",
+        "73",
+        "47",
+        "11"
+      ],
+      "answer": "38",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c30abd9c48a9",
+      "type": "multiple-choice",
+      "prompt": "Which of these elements on the Periodic Table is a Noble Gas?",
+      "options": [
+        "Neon",
+        "Potassium",
+        "Iodine",
+        "Cobalt"
+      ],
+      "answer": "Neon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c43afcde9d4d",
+      "type": "multiple-choice",
+      "prompt": "To the nearest minute, how long does it take for light to travel from the Sun to the Earth?",
+      "options": [
+        "8 Minutes",
+        "6 Minutes",
+        "2 Minutes",
+        "12 Minutes"
+      ],
+      "answer": "8 Minutes",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c48ca4a4f1dc",
+      "type": "multiple-choice",
+      "prompt": "Where did the dog breed \"Chihuahua\" originate?",
+      "options": [
+        "Mexico",
+        "France",
+        "Spain",
+        "Russia"
+      ],
+      "answer": "Mexico",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c4e0acfdc532",
+      "type": "multiple-choice",
+      "prompt": "What numbers are in the 5th row of Pascal's Triangle?",
+      "options": [
+        "1 4 6 4 1",
+        "1 3 3 1",
+        "1 5 10 10 5 1",
+        "1 6 15 20 15 6 1"
+      ],
+      "answer": "1 4 6 4 1",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c65bba00710e",
+      "type": "multiple-choice",
+      "prompt": "What is the Gray Wolf's scientific name?",
+      "options": [
+        "Canis Lupus",
+        "Canis Aureus",
+        "Canis Latrans",
+        "Canis Lupus Lycaon"
+      ],
+      "answer": "Canis Lupus",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c76371179460",
+      "type": "multiple-choice",
+      "prompt": "What type of animal is a natterjack?",
+      "options": [
+        "Toad",
+        "Bird",
+        "Fish",
+        "Insect"
+      ],
+      "answer": "Toad",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c8c93c5ee413",
+      "type": "multiple-choice",
+      "prompt": "Which of these animals are not real?",
+      "options": [
+        "Nemean Lion",
+        "Sea Dragon",
+        "Tasmanian Devil",
+        "Giant Squid"
+      ],
+      "answer": "Nemean Lion",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c8ea1af423ce",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is considered classical conditioning?",
+      "options": [
+        "Pavlov's dog experiments",
+        "Skinner box experiment",
+        "Schrödinger's cat experiment",
+        "Harlow’s monkey experiments"
+      ],
+      "answer": "Pavlov's dog experiments",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c92a258e58de",
+      "type": "multiple-choice",
+      "prompt": "Which element has the chemical symbol 'Fe'?",
+      "options": [
+        "Iron",
+        "Gold",
+        "Silver",
+        "Tin"
+      ],
+      "answer": "Iron",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cab4c655e47d",
+      "type": "multiple-choice",
+      "prompt": "What is the scientific term for 'taste'?",
+      "options": [
+        "Gustatory Perception",
+        "Olfaction",
+        "Somatosensation",
+        "Auditory Perception"
+      ],
+      "answer": "Gustatory Perception",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cb1472987251",
+      "type": "multiple-choice",
+      "prompt": "Which of these is used to show that Earth spins on an axis?",
+      "options": [
+        "Foucault Pendulum",
+        "Polaris",
+        "Sundial",
+        "Tectonic Plates"
+      ],
+      "answer": "Foucault Pendulum",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cbd69d9ece6a",
+      "type": "multiple-choice",
+      "prompt": "What is the standard SI unit for luminous intensity?",
+      "options": [
+        "Candela",
+        "Lumen",
+        "Faraday",
+        "Coulomb"
+      ],
+      "answer": "Candela",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cf6d5f8c8467",
+      "type": "multiple-choice",
+      "prompt": "Folic acid is the synthetic form of which vitamin?",
+      "options": [
+        "Vitamin B",
+        "Vitamin A",
+        "Vitamin C",
+        "Vitamin D"
+      ],
+      "answer": "Vitamin B",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cfd99efa2b18",
+      "type": "multiple-choice",
+      "prompt": "Which of the following spacecraft never touched the moon?",
+      "options": [
+        "Mariner 4",
+        "Apollo 11",
+        "Luna 2",
+        "SMART-1"
+      ],
+      "answer": "Mariner 4",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cfea1cc1f6b6",
+      "type": "multiple-choice",
+      "prompt": "Integration is the reverse of what mathematical operation?",
+      "options": [
+        "Derivation",
+        "Division",
+        "Standard Deviation",
+        "Multiplication"
+      ],
+      "answer": "Derivation",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d0113dfdc058",
+      "type": "multiple-choice",
+      "prompt": "What stage of development do the majority of eukaryotic cells remain in for most of their life?",
+      "options": [
+        "Interphase",
+        "Prophase",
+        "Stasis",
+        "Telophase"
+      ],
+      "answer": "Interphase",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d03a22bf8e23",
+      "type": "multiple-choice",
+      "prompt": "What is the fourth digit of π?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "answer": "1",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d08f20999fcf",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT a part of the structure of a typical neuron?",
+      "options": [
+        "Islets of Langerhans",
+        "Node of Ranvier",
+        "Schwann cell",
+        "Myelin sheath"
+      ],
+      "answer": "Islets of Langerhans",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d1e17706b546",
+      "type": "multiple-choice",
+      "prompt": "What is the atomic mass of Carbon?",
+      "options": [
+        "12",
+        "14",
+        "16",
+        "10"
+      ],
+      "answer": "12",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d2bc9256a278",
+      "type": "multiple-choice",
+      "prompt": "What colour is the female blackbird?",
+      "options": [
+        "Brown",
+        "Black",
+        "White",
+        "Yellow"
+      ],
+      "answer": "Brown",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d35d65caa3f9",
+      "type": "multiple-choice",
+      "prompt": "Down Syndrome is usually caused by an extra copy of which chromosome?",
+      "options": [
+        "21",
+        "23",
+        "15",
+        "24"
+      ],
+      "answer": "21",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d543646b5e15",
+      "type": "multiple-choice",
+      "prompt": "Which of these numbers is closest to the total number of possible states for an army standard Enigma Machine?",
+      "options": [
+        "1.58 x 10^20",
+        "1.58 x 10^22",
+        "1.58 x 10^18",
+        "1.58 x 10^24"
+      ],
+      "answer": "1.58 x 10^20",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d57bbbe92fbf",
+      "type": "multiple-choice",
+      "prompt": "What is the derivative of sin(x)",
+      "options": [
+        "cos(x)",
+        "csc(x)",
+        "-cos(x)",
+        "-sin(x)"
+      ],
+      "answer": "cos(x)",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d8bdb09db67e",
+      "type": "multiple-choice",
+      "prompt": "In human biology, a circadian rhythm relates to a period of roughly how many hours?",
+      "options": [
+        "24",
+        "8",
+        "16",
+        "32"
+      ],
+      "answer": "24",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d9d0bc481d2e",
+      "type": "multiple-choice",
+      "prompt": "The decimal number 31 in hexadecimal would be what?",
+      "options": [
+        "1F",
+        "3D",
+        "2E",
+        "1B"
+      ],
+      "answer": "1F",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-db7e1adb8a0f",
+      "type": "multiple-choice",
+      "prompt": "Which part of the body does glaucoma affect?",
+      "options": [
+        "Eyes",
+        "Throat",
+        "Stomach",
+        "Blood"
+      ],
+      "answer": "Eyes",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dbfb80e27b97",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the copper-rich protein that creates the blue blood in the Antarctic octopus?",
+      "options": [
+        "Hemocyanin",
+        "Cytochrome",
+        "Iron",
+        "Methionine"
+      ],
+      "answer": "Hemocyanin",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-de1277d3a040",
+      "type": "multiple-choice",
+      "prompt": "What is the common term for bovine spongiform encephalopathy (BSE)?",
+      "options": [
+        "Mad Cow disease",
+        "Weil's disease",
+        "Milk fever",
+        "Foot-and-mouth disease"
+      ],
+      "answer": "Mad Cow disease",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-de7e0830bfb9",
+      "type": "multiple-choice",
+      "prompt": "Which of these species is not extinct?",
+      "options": [
+        "Komodo dragon",
+        "Japanese sea lion",
+        "Tasmanian tiger",
+        "Saudi gazelle"
+      ],
+      "answer": "Komodo dragon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-df495521185c",
+      "type": "multiple-choice",
+      "prompt": "For what reason would a spotted hyena \"laugh\"?",
+      "options": [
+        "Nervousness",
+        "Excitement",
+        "Aggression",
+        "Exhaustion"
+      ],
+      "answer": "Nervousness",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dfd20fc55288",
+      "type": "multiple-choice",
+      "prompt": "What is the fastest animal?",
+      "options": [
+        "Peregrine Falcon",
+        "Golden Eagle",
+        "Cheetah",
+        "Horsefly"
+      ],
+      "answer": "Peregrine Falcon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e09f878fec8d",
+      "type": "multiple-choice",
+      "prompt": "Muscle fiber is constructed of bundles small long organelles called what?",
+      "options": [
+        "Myofibrils",
+        "Epimysium",
+        "Myofilaments",
+        "Myocardium"
+      ],
+      "answer": "Myofibrils",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e27b467505cd",
+      "type": "multiple-choice",
+      "prompt": "Which of the following men does not have a chemical element named after him?",
+      "options": [
+        "Sir Isaac Newton",
+        "Albert Einstein",
+        "Niels Bohr",
+        "Enrico Fermi"
+      ],
+      "answer": "Sir Isaac Newton",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e35274de9ee6",
+      "type": "multiple-choice",
+      "prompt": "What is the mathematical formula of Ohm's law?",
+      "options": [
+        "V = I*R",
+        "I = V*R",
+        "R = V*I",
+        "V = I / R"
+      ],
+      "answer": "V = I*R",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e3ce5dc20dc3",
+      "type": "multiple-choice",
+      "prompt": "What is Hypernatremia?",
+      "options": [
+        "Increase in blood sodium",
+        "Decrease in blood potassium",
+        "Increase in blood glucose",
+        "Decrease in blood iron"
+      ],
+      "answer": "Increase in blood sodium",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e3ff442455f0",
+      "type": "multiple-choice",
+      "prompt": "Which of the following mathematicians made major contributions to game theory?",
+      "options": [
+        "John Von Neumann",
+        "Carl Friedrich Gauss",
+        "Leonhard Euler",
+        "Stefan Banach"
+      ],
+      "answer": "John Von Neumann",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e522c904ff16",
+      "type": "multiple-choice",
+      "prompt": "Which of these is a semiconductor amplifying device?",
+      "options": [
+        "transistor",
+        "tube",
+        "diode",
+        "P-N junction"
+      ],
+      "answer": "transistor",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e56ffdde8640",
+      "type": "multiple-choice",
+      "prompt": "What is the collective noun for rats?",
+      "options": [
+        "Mischief",
+        "Pack",
+        "Race",
+        "Drift"
+      ],
+      "answer": "Mischief",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e59012f7bfa1",
+      "type": "multiple-choice",
+      "prompt": "Who is the chemical element Curium named after?",
+      "options": [
+        "Marie & Pierre Curie",
+        "The Curiosity Rover",
+        "Curious George",
+        "Stephen Curry"
+      ],
+      "answer": "Marie & Pierre Curie",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e7819838dea2",
+      "type": "multiple-choice",
+      "prompt": "The now extinct species \"Thylacine\" was native to where?",
+      "options": [
+        "Tasmania, Australia",
+        "Baluchistan, Pakistan",
+        "Wallachia, Romania",
+        "Oregon, United States"
+      ],
+      "answer": "Tasmania, Australia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e7abea53c1d1",
+      "type": "multiple-choice",
+      "prompt": "When was the first mammal successfully cloned?",
+      "options": [
+        "1996",
+        "2009",
+        "1999",
+        "1985"
+      ],
+      "answer": "1996",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ea6bf34073d2",
+      "type": "multiple-choice",
+      "prompt": "What color/colour is a polar bear's skin?",
+      "options": [
+        "Black",
+        "White",
+        "Pink",
+        "Green"
+      ],
+      "answer": "Black",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ea9dc29db974",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT a bone found in the human arm?",
+      "options": [
+        "Tibia",
+        "Humerus",
+        "Ulna",
+        "Radius"
+      ],
+      "answer": "Tibia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ec027800f6a6",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is another name for the \"Poecilotheria Metallica Tarantula\"?",
+      "options": [
+        "Gooty",
+        "Hopper",
+        "Silver Stripe",
+        "Woebegone"
+      ],
+      "answer": "Gooty",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ed98c6a52d25",
+      "type": "multiple-choice",
+      "prompt": "Who discovered the Law of Gravity?",
+      "options": [
+        "Sir Isaac Newton",
+        "Galileo Galilei",
+        "Charles Darwin",
+        "Albert Einstein"
+      ],
+      "answer": "Sir Isaac Newton",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ededd69d9b2d",
+      "type": "multiple-choice",
+      "prompt": "Deuterium is an isotope of which element?",
+      "options": [
+        "Hydrogen",
+        "Nitrogen",
+        "Helium",
+        "Neon"
+      ],
+      "answer": "Hydrogen",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ef0eabb9abf8",
+      "type": "multiple-choice",
+      "prompt": "What is the name of a nine sided polygon?",
+      "options": [
+        "Nonagon",
+        "Hexagon",
+        "Octagon",
+        "Heptagon"
+      ],
+      "answer": "Nonagon",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f063c613036c",
+      "type": "multiple-choice",
+      "prompt": "Unlike on most salamanders, this part of a newt is flat?",
+      "options": [
+        "Tail",
+        "Head",
+        "Teeth",
+        "Feet"
+      ],
+      "answer": "Tail",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f096a5813f97",
+      "type": "multiple-choice",
+      "prompt": "What dog breed is one of the oldest breeds of dog and has flourished since before 400 BCE.",
+      "options": [
+        "Pugs",
+        "Bulldogs",
+        "Boxers",
+        "Chihuahua"
+      ],
+      "answer": "Pugs",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f2ed6dea203a",
+      "type": "multiple-choice",
+      "prompt": "How many zeros are there in a googol?",
+      "options": [
+        "100",
+        "10",
+        "1,000",
+        "1,000,000"
+      ],
+      "answer": "100",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f41556f26af4",
+      "type": "multiple-choice",
+      "prompt": "Naturally occurring uranium primarily consists of which isotope?",
+      "options": [
+        "238",
+        "235",
+        "239",
+        "233"
+      ],
+      "answer": "238",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f4a58c15d0f8",
+      "type": "multiple-choice",
+      "prompt": "Which Swiss psychologist is synonymous with the concepts of introvert and extrovert personalities?",
+      "options": [
+        "Carl Jung",
+        "Jean Piaget",
+        "Alice Miller",
+        "Hermann Rorschach"
+      ],
+      "answer": "Carl Jung",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f4e0c0f36911",
+      "type": "multiple-choice",
+      "prompt": "Which of the following dice is not a platonic solid?",
+      "options": [
+        "10-sided die",
+        "12-sided die",
+        "20-sided die",
+        "8-sided die"
+      ],
+      "answer": "10-sided die",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f503d7f4e473",
+      "type": "multiple-choice",
+      "prompt": "Alzheimer's disease primarily affects which part of the human body?",
+      "options": [
+        "Brain",
+        "Lungs",
+        "Skin",
+        "Heart"
+      ],
+      "answer": "Brain",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f54e8315ea98",
+      "type": "multiple-choice",
+      "prompt": "On the Beaufort Scale of wind force, what wind name is given to number 8?",
+      "options": [
+        "Gale",
+        "Storm",
+        "Hurricane",
+        "Breeze"
+      ],
+      "answer": "Gale",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f62674ed5a31",
+      "type": "multiple-choice",
+      "prompt": "In Roman Numerals, what does XL equate to?",
+      "options": [
+        "40",
+        "60",
+        "15",
+        "90"
+      ],
+      "answer": "40",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f7578fdc3fe1",
+      "type": "multiple-choice",
+      "prompt": "What is the scientific name of the knee cap?",
+      "options": [
+        "Patella",
+        "Femur",
+        "Foramen Magnum",
+        "Scapula"
+      ],
+      "answer": "Patella",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f8ac06601eee",
+      "type": "multiple-choice",
+      "prompt": "How many teeth does an adult rabbit have?",
+      "options": [
+        "28",
+        "30",
+        "26",
+        "24"
+      ],
+      "answer": "28",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fad709a13404",
+      "type": "multiple-choice",
+      "prompt": "How many bones are in the human body?",
+      "options": [
+        "206",
+        "203",
+        "209",
+        "200"
+      ],
+      "answer": "206",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-faf96c935fd9",
+      "type": "multiple-choice",
+      "prompt": "What is the colour of unoxidized blood?",
+      "options": [
+        "Red",
+        "Blue",
+        "Purple",
+        "Green"
+      ],
+      "answer": "Red",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fb1f86dae267",
+      "type": "multiple-choice",
+      "prompt": "What is the elemental symbol for mercury?",
+      "options": [
+        "Hg",
+        "Me",
+        "Mc",
+        "Hy"
+      ],
+      "answer": "Hg",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fbafe7453487",
+      "type": "multiple-choice",
+      "prompt": "How many sides does a trapezium have?",
+      "options": [
+        "4",
+        "3",
+        "5",
+        "6"
+      ],
+      "answer": "4",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fbba0b62029c",
+      "type": "multiple-choice",
+      "prompt": "The human right lung has how many lobes?",
+      "options": [
+        "3",
+        "4",
+        "2",
+        "1"
+      ],
+      "answer": "3",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fbef31a6de97",
+      "type": "multiple-choice",
+      "prompt": "How many moons does Pluto have?",
+      "options": [
+        "Five",
+        "Two",
+        "Three",
+        "One"
+      ],
+      "answer": "Five",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fe8df3ca9096",
+      "type": "multiple-choice",
+      "prompt": "To which biological phylum do all mammals, birds and reptiles belong?",
+      "options": [
+        "Chordata",
+        "Echinodermata",
+        "Annelida",
+        "Placazoa"
+      ],
+      "answer": "Chordata",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fefceb78482c",
+      "type": "multiple-choice",
+      "prompt": "What mineral has the lowest number on the Mohs scale?",
+      "options": [
+        "Talc",
+        "Quartz",
+        "Diamond",
+        "Gypsum"
+      ],
+      "answer": "Talc",
+      "difficulty": "medium",
+      "region": "general"
     }
   ]
 }

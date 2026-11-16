@@ -1,0 +1,3374 @@
+{
+  "category": "music",
+  "title": "Music",
+  "defaultSource": {
+    "kind": "dataset",
+    "dataset": "Open Trivia Database",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "url": "https://opentdb.com",
+    "notice": "Questions from the Open Trivia Database (opentdb.com), licensed under CC BY-SA 4.0. Adapted for Kaki Arcade: selected, screened for an all-ages audience, regrouped and tidied. The adapted questions are offered under the same licence."
+  },
+  "questions": [
+    {
+      "id": "otdb-007b416a0a2e",
+      "type": "multiple-choice",
+      "prompt": "What was the title of Sakamoto Kyu's song \"Ue o Muite Arukou\" (I Look Up As I Walk) changed to in the United States?",
+      "options": [
+        "Sukiyaki",
+        "Takoyaki",
+        "Sushi",
+        "Oden"
+      ],
+      "answer": "Sukiyaki",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-01004e099e9a",
+      "type": "multiple-choice",
+      "prompt": "The tuba is a part of which musical family?",
+      "options": [
+        "Brass",
+        "Percussion",
+        "Strings",
+        "Woodwind"
+      ],
+      "answer": "Brass",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-024d65a66890",
+      "type": "multiple-choice",
+      "prompt": "What is rapper Drake's real name?",
+      "options": [
+        "Aubrey Graham",
+        "Shaun Carter",
+        "Dwayne Carter",
+        "Andre Young"
+      ],
+      "answer": "Aubrey Graham",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-03477e571d06",
+      "type": "multiple-choice",
+      "prompt": "With his distinctive red hair, which Italian composer, born in 1678, was known as the 'Red Priest'?",
+      "options": [
+        "Vivaldi",
+        "Puccini",
+        "Verdi",
+        "Monteverdi"
+      ],
+      "answer": "Vivaldi",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-041e8d4f5773",
+      "type": "multiple-choice",
+      "prompt": "A piccolo is a smaller version of what instrument?",
+      "options": [
+        "Flute",
+        "Trumpet",
+        "Harp",
+        "Violin"
+      ],
+      "answer": "Flute",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-07489b74aef5",
+      "type": "multiple-choice",
+      "prompt": "Who had a US and UK number 1 hit in 1962 with the instrumental, 'Telstar'?",
+      "options": [
+        "The Tornados",
+        "The Ventures",
+        "The Spotnicks",
+        "The Tremeloes"
+      ],
+      "answer": "The Tornados",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0914ebcb3897",
+      "type": "multiple-choice",
+      "prompt": "In what film was the Michael Jackson song \"Will You Be There\" featured?",
+      "options": [
+        "Free Willy",
+        "Sleepless in Seattle",
+        "Men in Black",
+        "Bad Boys"
+      ],
+      "answer": "Free Willy",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-09427a8a4641",
+      "type": "multiple-choice",
+      "prompt": "Which of the following music bands is not from Finland?",
+      "options": [
+        "Sabaton",
+        "Apocalyptica",
+        "Waltari",
+        "Lordi"
+      ],
+      "answer": "Sabaton",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-094d58217cba",
+      "type": "multiple-choice",
+      "prompt": "What is the stage name of English female rapper Mathangi Arulpragasam, who is known for the song \"Paper Planes\"?",
+      "options": [
+        "M.I.A.",
+        "K.I.A.",
+        "C.I.A.",
+        "A.I.A."
+      ],
+      "answer": "M.I.A.",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0a1f53c740ec",
+      "type": "multiple-choice",
+      "prompt": "Which of these is not a song on the album Graduation by Kanye West?",
+      "options": [
+        "Waves",
+        "I Wonder",
+        "Big Brother",
+        "The Glory"
+      ],
+      "answer": "Waves",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0aa1b12b8ebc",
+      "type": "multiple-choice",
+      "prompt": "Which song is not by TheFatRat?",
+      "options": [
+        "Ascent",
+        "Monody",
+        "Windfall",
+        "Infinite Power!"
+      ],
+      "answer": "Ascent",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0ab0d8716f5e",
+      "type": "multiple-choice",
+      "prompt": "Who is the musical artist who released the hit song, \"Love Song,\" in 2007?",
+      "options": [
+        "Sara Bareilles",
+        "Taylor Swift",
+        "Katy Perry",
+        "Sarah Silverman"
+      ],
+      "answer": "Sara Bareilles",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0b26c2525266",
+      "type": "multiple-choice",
+      "prompt": "Who wrote the song \"You Know You Like It\"?",
+      "options": [
+        "AlunaGeorge",
+        "DJ Snake",
+        "Steve Aoki",
+        "Major Lazer"
+      ],
+      "answer": "AlunaGeorge",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0b293033f4d5",
+      "type": "multiple-choice",
+      "prompt": "How many semitones are in an octave?",
+      "options": [
+        "12",
+        "7",
+        "11",
+        "14"
+      ],
+      "answer": "12",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0e90c0e9743c",
+      "type": "multiple-choice",
+      "prompt": "Who designed the album cover for True Romance, an album by Estelle?",
+      "options": [
+        "Rebecca Sugar",
+        "Matt Burnett",
+        "Ian Jones Quartey",
+        "Ben Leven"
+      ],
+      "answer": "Rebecca Sugar",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0fa091090d39",
+      "type": "multiple-choice",
+      "prompt": "Which of the Beatles band members is barefoot on the front cover of the 'Abbey Road' album?",
+      "options": [
+        "Paul McCartney",
+        "Ringo Starr",
+        "George Harrison",
+        "John Lennon"
+      ],
+      "answer": "Paul McCartney",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-101011a89264",
+      "type": "multiple-choice",
+      "prompt": "Who is the lead singer of the British pop rock band Coldplay?",
+      "options": [
+        "Chris Martin",
+        "Jonny Buckland",
+        "Guy Berryman",
+        "Will Champion"
+      ],
+      "answer": "Chris Martin",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-11488ce4f3f8",
+      "type": "multiple-choice",
+      "prompt": "In music theory, how many notes are in a seventh chord?",
+      "options": [
+        "4",
+        "3",
+        "7",
+        "2"
+      ],
+      "answer": "4",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-11c917343d2e",
+      "type": "multiple-choice",
+      "prompt": "What was Rage Against the Machine's debut album?",
+      "options": [
+        "Rage Against the Machine",
+        "Evil Empire",
+        "Bombtrack",
+        "The Battle Of Los Angeles"
+      ],
+      "answer": "Rage Against the Machine",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1255453efd05",
+      "type": "multiple-choice",
+      "prompt": "Which rock band released the album \"The Bends\" in March 1995?",
+      "options": [
+        "Radiohead",
+        "Nirvana",
+        "Coldplay",
+        "U2"
+      ],
+      "answer": "Radiohead",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-12b977c7c57d",
+      "type": "multiple-choice",
+      "prompt": "The song \"Feel Good Inc.\" by British band Gorillaz features which hip hop group?",
+      "options": [
+        "De La Soul",
+        "Public Enemy",
+        "OutKast",
+        "Cypress Hill"
+      ],
+      "answer": "De La Soul",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-142cafcb10d3",
+      "type": "multiple-choice",
+      "prompt": "What was the title of ABBA's first UK hit single?",
+      "options": [
+        "Waterloo",
+        "Mamma Mia",
+        "Fernando",
+        "Dancing Queen"
+      ],
+      "answer": "Waterloo",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-14705db87d8e",
+      "type": "multiple-choice",
+      "prompt": "Which term best describes the connection of two sections of a musical piece through a transitional passage?",
+      "options": [
+        "Bridge",
+        "Coda",
+        "Capo",
+        "Binary Form"
+      ],
+      "answer": "Bridge",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-16964ba8504a",
+      "type": "multiple-choice",
+      "prompt": "'We Built This City' was a number one hit for which American rock band in 1985?",
+      "options": [
+        "Starship",
+        "Kansas",
+        "Jefferson Airplane",
+        "Aerosmith"
+      ],
+      "answer": "Starship",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1699c0f7e980",
+      "type": "multiple-choice",
+      "prompt": "Which Canadian reggae musician had a 1993 hit with the song 'Informer'?",
+      "options": [
+        "Snow",
+        "Rain",
+        "Hail",
+        "Sleet"
+      ],
+      "answer": "Snow",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-18b8ecf988bd",
+      "type": "multiple-choice",
+      "prompt": "Which one of these people has been in the band ''Metallica'' in the past?",
+      "options": [
+        "Dave Mustaine",
+        "Kurt Cobain",
+        "Joey Belladonna",
+        "Dave Lombardo"
+      ],
+      "answer": "Dave Mustaine",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-19bc540015ae",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT a song featured on Green Day's 21st Century Breakdown album?",
+      "options": [
+        "She's A Rebel",
+        "Know Your Enemy",
+        "¿Viva la Gloria? (Little Girl)",
+        "Before The Lobotomy"
+      ],
+      "answer": "She's A Rebel",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1b15f39172cf",
+      "type": "multiple-choice",
+      "prompt": "Which of the following guitarists recorded an album as a member of the Red Hot Chili Peppers?",
+      "options": [
+        "Dave Navarro",
+        "Tom Morello",
+        "Billy Corgan",
+        "Ed O'Brien"
+      ],
+      "answer": "Dave Navarro",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1bf21a5b6d87",
+      "type": "multiple-choice",
+      "prompt": "Which song made by MAN WITH A MISSION was used as the opening for the anime \"Log Horizon\"?",
+      "options": [
+        "\"Database\"",
+        "\"Dead End in Tokyo\"",
+        "\"Raise Your Flag\"",
+        "\"Out of Control\""
+      ],
+      "answer": "\"Database\"",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1c46f1842627",
+      "type": "multiple-choice",
+      "prompt": "Which of these songs is not on the \"untitled\" album by Led Zeppelin?",
+      "options": [
+        "Celebration Day",
+        "Stairway to Heaven",
+        "Black Dog",
+        "Rock and Roll"
+      ],
+      "answer": "Celebration Day",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1d70505e4374",
+      "type": "multiple-choice",
+      "prompt": "The song \"Twin Size Mattress\" was written by which band?",
+      "options": [
+        "The Front Bottoms",
+        "Twenty One Pilots",
+        "The Wonder Years",
+        "The Smith Street Band"
+      ],
+      "answer": "The Front Bottoms",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1d7a0abe9596",
+      "type": "multiple-choice",
+      "prompt": "Who is the singer for Fall Out Boy?",
+      "options": [
+        "Patrick Stump",
+        "Brendon Urie",
+        "Pete Wentz",
+        "Gary Lee Weinrib"
+      ],
+      "answer": "Patrick Stump",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1e0622bb7513",
+      "type": "multiple-choice",
+      "prompt": "Typically, how many keys are on a piano?",
+      "options": [
+        "88",
+        "24",
+        "12",
+        "96"
+      ],
+      "answer": "88",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1f8eb0cd82ef",
+      "type": "multiple-choice",
+      "prompt": "\"Make You Feel My Love\" was originally written and performed by which singer-songwriter?",
+      "options": [
+        "Bob Dylan",
+        "Elvis",
+        "Adele",
+        "Billy Joel"
+      ],
+      "answer": "Bob Dylan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2050a4024e11",
+      "type": "multiple-choice",
+      "prompt": "Where did the British Boy Band \"Bros\" come from?",
+      "options": [
+        "Camberley",
+        "Guildford",
+        "Aldershot",
+        "Bagshot"
+      ],
+      "answer": "Camberley",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-20ade79a3fa2",
+      "type": "multiple-choice",
+      "prompt": "Which year was the album \"Floral Shoppe\" by Macintosh Plus released?",
+      "options": [
+        "2011",
+        "2014",
+        "2013",
+        "2012"
+      ],
+      "answer": "2011",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-20c65f37672c",
+      "type": "multiple-choice",
+      "prompt": "Which genre of music is John Coltrane primarily associated with?",
+      "options": [
+        "Jazz",
+        "Rock and Roll",
+        "Death Metal",
+        "Folk"
+      ],
+      "answer": "Jazz",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-20df5da239d7",
+      "type": "multiple-choice",
+      "prompt": "In the Panic! At the Disco's song \"Northern Downpour\", which lyric follows 'I know the world's a broken bone'.",
+      "options": [
+        "\"So melt your headaches call it home\"",
+        "\"So sing your song until you're home\"",
+        "\"So let them know they're on their own\"",
+        "\"So start a fire in their cold stone\""
+      ],
+      "answer": "\"So melt your headaches call it home\"",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-21a69fab4285",
+      "type": "multiple-choice",
+      "prompt": "In the words of his 1973 song, Bob Dylan is \"knock, knock, knockin\" on which door?",
+      "options": [
+        "Heaven's",
+        "Opportunity's",
+        "Angie's",
+        "Eileen's"
+      ],
+      "answer": "Heaven's",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-224c31c0d309",
+      "type": "multiple-choice",
+      "prompt": "Who was the first Jazz Musician to win the Pulitzer Prize for Music",
+      "options": [
+        "Wynton Marsalis",
+        "Michael Brecker",
+        "Herbie Hancock",
+        "Joe Henderson"
+      ],
+      "answer": "Wynton Marsalis",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-227714fb9571",
+      "type": "multiple-choice",
+      "prompt": "What band featured Sting, Stewart Copeland and Andy Summers?",
+      "options": [
+        "The Police",
+        "Def Leppard",
+        "The Cure",
+        "Bon Jovi"
+      ],
+      "answer": "The Police",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-23080253c9a9",
+      "type": "multiple-choice",
+      "prompt": "'I'm never gonna dance again, guilty feet have got no rhythm' were lyrics from which Wham! hit single?",
+      "options": [
+        "Careless Whisper",
+        "Wake Me Up Before You Go-Go",
+        "Last Christmas",
+        "Everything She Wants"
+      ],
+      "answer": "Careless Whisper",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2338466ae6cb",
+      "type": "multiple-choice",
+      "prompt": "Who wrote the Sinead O'Connor hit 'Nothing Compares 2 U'?",
+      "options": [
+        "Prince",
+        "Michael Jackson",
+        "Cameo",
+        "Rick James"
+      ],
+      "answer": "Prince",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-23691f0ebcda",
+      "type": "multiple-choice",
+      "prompt": "Which of these artists did NOT feature in the fifth studio album \"Humanz\" by British virtual band Gorillaz?",
+      "options": [
+        "Snoop Dogg",
+        "Vince Staples",
+        "Pusha T",
+        "Danny Brown"
+      ],
+      "answer": "Snoop Dogg",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2466b7277ef3",
+      "type": "multiple-choice",
+      "prompt": "Who is a pioneer of \"Minimal Music\" in 1960s?",
+      "options": [
+        "Steve Reich",
+        "Wolfgang Amadeus Mozart",
+        "Brian Eno",
+        "Sigur Rós"
+      ],
+      "answer": "Steve Reich",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-246939521b7e",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the 2016 studio album by the French electronic music duo Justice?",
+      "options": [
+        "Woman",
+        "Randy",
+        "Safe and Sound",
+        "Pleasure"
+      ],
+      "answer": "Woman",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-246d826439dc",
+      "type": "multiple-choice",
+      "prompt": "Who is the lead singer of Green Day?",
+      "options": [
+        "Billie Joe Armstrong",
+        "Mike Dirnt",
+        "Sean Hughes",
+        "Tré Cool"
+      ],
+      "answer": "Billie Joe Armstrong",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-26b3d1596146",
+      "type": "multiple-choice",
+      "prompt": "Grand Theft Autumn/Where Is Your Boy is a song by which band?",
+      "options": [
+        "Fall Out Boy",
+        "Panic! At The Disco",
+        "Paramore",
+        "Blink-182"
+      ],
+      "answer": "Fall Out Boy",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-276548808357",
+      "type": "multiple-choice",
+      "prompt": "Which of the following bands is Tom DeLonge not a part of?",
+      "options": [
+        "+44",
+        "Box Car Racer",
+        "Blink-182",
+        "Angels & Airwaves"
+      ],
+      "answer": "+44",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-294820ae0193",
+      "type": "multiple-choice",
+      "prompt": "Which music publication is often abbreviated to NME?",
+      "options": [
+        "New Musical Express",
+        "New Metro Entertainment",
+        "Next Musical Enterprise",
+        "North Manchester Express"
+      ],
+      "answer": "New Musical Express",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-299e5c73f1a0",
+      "type": "multiple-choice",
+      "prompt": "Who was the lead singer and frontman of rock band R.E.M?",
+      "options": [
+        "Michael Stipe",
+        "Chris Martin",
+        "Thom Yorke",
+        "George Michael"
+      ],
+      "answer": "Michael Stipe",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-29cde579d5a2",
+      "type": "multiple-choice",
+      "prompt": "\"Lift Your Spirit\" is an album by which artist?",
+      "options": [
+        "Aloe Blacc",
+        "Lena Meyer-Landrut",
+        "Stevie Wonder",
+        "Taylor Swift"
+      ],
+      "answer": "Aloe Blacc",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2beed5cdaa69",
+      "type": "multiple-choice",
+      "prompt": "In Kendrick Lamar's 2012 album, \"Good Kid, M.A.A.D City\", the album's story takes place in which city?",
+      "options": [
+        "Compton",
+        "Detroit",
+        "New York",
+        "Baltimore"
+      ],
+      "answer": "Compton",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2c55234c9022",
+      "type": "multiple-choice",
+      "prompt": "Who recorded the album called \"Down to the Moon\" in 1986?",
+      "options": [
+        "Andreas Vollenweider",
+        "Jean-Michel Jarre",
+        "Bing Crosby",
+        "Enya"
+      ],
+      "answer": "Andreas Vollenweider",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2c7414c6778d",
+      "type": "multiple-choice",
+      "prompt": "Who is the bassist of the British rock band Queen?",
+      "options": [
+        "John Deacon",
+        "John Major",
+        "John Barrowman",
+        "John Mayer"
+      ],
+      "answer": "John Deacon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2f8f9c02907f",
+      "type": "multiple-choice",
+      "prompt": "Which country does the power metal band \"Sabaton\" originate from?",
+      "options": [
+        "Sweden",
+        "Germany",
+        "United States",
+        "Finland"
+      ],
+      "answer": "Sweden",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ffb24944d45",
+      "type": "multiple-choice",
+      "prompt": "Which country does the electronic music duo \"The Knife\" originate from?",
+      "options": [
+        "Sweden",
+        "Finland",
+        "Denmark",
+        "Norway"
+      ],
+      "answer": "Sweden",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-307740b3c04f",
+      "type": "multiple-choice",
+      "prompt": "According to a Beatles song, who kept her face in a jar by the door?",
+      "options": [
+        "Eleanor Rigby",
+        "Loretta Martin",
+        "Molly Jones",
+        "Lady Madonna"
+      ],
+      "answer": "Eleanor Rigby",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-308fe7d8f2f2",
+      "type": "multiple-choice",
+      "prompt": "What is Pink Floyd's first album?",
+      "options": [
+        "The Piper at the Gates of Dawn",
+        "The Dark Side of the Moon",
+        "Wish You Were Here",
+        "Meddle"
+      ],
+      "answer": "The Piper at the Gates of Dawn",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-30edd2170d13",
+      "type": "multiple-choice",
+      "prompt": "Which Beatle led the way across the zebra crossing on the Abbey Road album cover?",
+      "options": [
+        "John",
+        "Paul",
+        "George",
+        "Ringo"
+      ],
+      "answer": "John",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-314a03a23f8a",
+      "type": "multiple-choice",
+      "prompt": "Which of these is the name of a song by Tears for Fears?",
+      "options": [
+        "Shout",
+        "Scream",
+        "Yell",
+        "Shriek"
+      ],
+      "answer": "Shout",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-31896c9cb1d3",
+      "type": "multiple-choice",
+      "prompt": "Which of these artists was NOT a member of the electronic music supergroup Swedish House Mafia, which split up in 2013?",
+      "options": [
+        "Alesso",
+        "Steve Angello",
+        "Sebastian Ingrosso",
+        "Axwell"
+      ],
+      "answer": "Alesso",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-31a4513f3b43",
+      "type": "multiple-choice",
+      "prompt": "Which of Michael Jackson's albums sold the most copies?",
+      "options": [
+        "Thriller",
+        "Dangerous",
+        "Bad",
+        "Off the Wall"
+      ],
+      "answer": "Thriller",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-31b4c750e825",
+      "type": "multiple-choice",
+      "prompt": "Which member of \"The Beatles\" narrated episodes of \"Thomas the Tank Engine\"?",
+      "options": [
+        "Ringo Starr",
+        "George Harrison",
+        "John Lennon",
+        "Paul McCartney"
+      ],
+      "answer": "Ringo Starr",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-321fc8418ced",
+      "type": "multiple-choice",
+      "prompt": "What was George Michael's chart-topping 1987 debut studio album?",
+      "options": [
+        "Faith",
+        "Songs from the Last Century",
+        "Patience",
+        "Older"
+      ],
+      "answer": "Faith",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3237d0a36aef",
+      "type": "multiple-choice",
+      "prompt": "What is the first track on Kanye West's 808s & Heartbreak?",
+      "options": [
+        "Say You Will",
+        "Welcome to Heartbreak",
+        "Street Lights",
+        "Heartless"
+      ],
+      "answer": "Say You Will",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-327fc4dc36cd",
+      "type": "multiple-choice",
+      "prompt": "Which musical instrument is nicknamed 'the clown of the orchestra'?",
+      "options": [
+        "Bassoon",
+        "Piccolo",
+        "Tuba",
+        "Flute"
+      ],
+      "answer": "Bassoon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-33a43a014a23",
+      "type": "multiple-choice",
+      "prompt": "What is the real name of prominent electronic musician Aphex Twin?",
+      "options": [
+        "Richard D. James",
+        "Richard M. Hall",
+        "Richard W. Wright",
+        "Richard H. Blackmore"
+      ],
+      "answer": "Richard D. James",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-33bb89358194",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT a song featured on the Lockjaw EP released in 2013 by Flume & Chet Faker?",
+      "options": [
+        "Left Alone",
+        "What About Us",
+        "This Song Is Not About A Girl",
+        "Drop The Game"
+      ],
+      "answer": "Left Alone",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-33c2ac08c2b5",
+      "type": "multiple-choice",
+      "prompt": "Which band released songs such as \"Electric Feel\", \"Kids\", and \"Time to Pretend\"?",
+      "options": [
+        "MGMT",
+        "Passion Pit",
+        "Phoenix",
+        "Franz Ferdinand"
+      ],
+      "answer": "MGMT",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-346ba591b98b",
+      "type": "multiple-choice",
+      "prompt": "'Don't You Want Me?' was a number one hit in 1981 for which electropop band?",
+      "options": [
+        "Human League",
+        "Depeche Mode",
+        "Pet Shop Boys",
+        "Eurythmics"
+      ],
+      "answer": "Human League",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-358fdec44e68",
+      "type": "multiple-choice",
+      "prompt": "What was Bon Iver's debut album released in 2007?",
+      "options": [
+        "For Emma, Forever Ago",
+        "Bon Iver, Bon Iver",
+        "22, A Million",
+        "Blood Bank EP"
+      ],
+      "answer": "For Emma, Forever Ago",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-365055523b1d",
+      "type": "multiple-choice",
+      "prompt": "Which singer was featured in Swedish producer Avicii's song \"Wake Me Up\"?",
+      "options": [
+        "Aloe Blacc",
+        "John Legend",
+        "CeeLo Green",
+        "Pharrell Williams"
+      ],
+      "answer": "Aloe Blacc",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-36facb0be53b",
+      "type": "multiple-choice",
+      "prompt": "Which of the following stars was not mentioned in the lyrics of Madonna's \"Vogue\"?",
+      "options": [
+        "Mae West",
+        "Marlene Dietrich",
+        "Lana Turner",
+        "Grace Kelly"
+      ],
+      "answer": "Mae West",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-36fd991d9fae",
+      "type": "multiple-choice",
+      "prompt": "\"All the Boys\" by Panic! At the Disco was released as a bonus track on what album?",
+      "options": [
+        "Too Weird To Live, Too Rare To Die!",
+        "A Fever You Can't Sweat Out",
+        "Death Of A Bachelor",
+        "Vices & Virtues"
+      ],
+      "answer": "Too Weird To Live, Too Rare To Die!",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-377157d048d9",
+      "type": "multiple-choice",
+      "prompt": "Who released the song \"Photograph\" in 2005?",
+      "options": [
+        "Nickelback",
+        "Fall Out Boy",
+        "Coldplay",
+        "Green Day"
+      ],
+      "answer": "Nickelback",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3782ea8a4254",
+      "type": "multiple-choice",
+      "prompt": "Which city is the American singer \"Pitbull\" from?",
+      "options": [
+        "Miami",
+        "Kodiak",
+        "St. Louis",
+        "Boston"
+      ],
+      "answer": "Miami",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-37cbda7151bd",
+      "type": "multiple-choice",
+      "prompt": "When did Radiohead release their album \"OK Computer\"?",
+      "options": [
+        "1997",
+        "1995",
+        "2000",
+        "1993"
+      ],
+      "answer": "1997",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-38b6dccbd9ef",
+      "type": "multiple-choice",
+      "prompt": "Dallon Weekes, former touring bassist of Panic! At the Disco, created his own band in 2016 called...",
+      "options": [
+        "I Don't Know How But They Found Me",
+        "Cheats At Hide And Seek",
+        "Where Did You All Come From?",
+        "Run Away From The People"
+      ],
+      "answer": "I Don't Know How But They Found Me",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-39f06a71b3a2",
+      "type": "multiple-choice",
+      "prompt": "Which of these bands is the oldest?",
+      "options": [
+        "Pink Floyd",
+        "AC/DC",
+        "Metallica",
+        "Red Hot Chili Peppers"
+      ],
+      "answer": "Pink Floyd",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a392540cd0e",
+      "type": "multiple-choice",
+      "prompt": "How many strings are there on a cello?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "8"
+      ],
+      "answer": "4",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a694e57e1db",
+      "type": "multiple-choice",
+      "prompt": "Who is the vocalist and frontman of rock band \"Guns N' Roses\"?",
+      "options": [
+        "Axl Rose",
+        "Kurt Cobain",
+        "Slash",
+        "Bono"
+      ],
+      "answer": "Axl Rose",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3b2fba07de6f",
+      "type": "multiple-choice",
+      "prompt": "When did The Beatles release the LP \"Please Please Me\"?",
+      "options": [
+        "1963",
+        "1970",
+        "1960",
+        "1969"
+      ],
+      "answer": "1963",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3bbc707a9d65",
+      "type": "multiple-choice",
+      "prompt": "Which Queen song was covered by Brittany Murphy in the 2006 film \"Happy Feet\"?",
+      "options": [
+        "Somebody to Love",
+        "Under Pressure",
+        "Flash",
+        "Bohemian Rhapsody"
+      ],
+      "answer": "Somebody to Love",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3c75891c74f9",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the rock band that Nobuo Uematsu formed that played songs from various Final Fantasy games?",
+      "options": [
+        "The Black Mages",
+        "The Final Fantasies",
+        "The Espers",
+        "The Rock Summoners"
+      ],
+      "answer": "The Black Mages",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3d231d691ea8",
+      "type": "multiple-choice",
+      "prompt": "Where was Nicki Minaj born?",
+      "options": [
+        "Trinidad and Tobago",
+        "Haiti",
+        "Saint Lucia",
+        "Grenada"
+      ],
+      "answer": "Trinidad and Tobago",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3d967efbeb7d",
+      "type": "multiple-choice",
+      "prompt": "In what year was Avril Lavigne’s first studio album, “Let Go”, released?",
+      "options": [
+        "2002",
+        "2001",
+        "2004",
+        "2005"
+      ],
+      "answer": "2002",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3e57fd83d3eb",
+      "type": "multiple-choice",
+      "prompt": "From which album is the Gorillaz song, \"On Melancholy Hill\" featured in?",
+      "options": [
+        "Plastic Beach",
+        "Demon Days",
+        "Humanz",
+        "The Fall"
+      ],
+      "answer": "Plastic Beach",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3ecf45c9ca15",
+      "type": "multiple-choice",
+      "prompt": "Brian May was the guitarist for which band?",
+      "options": [
+        "Queen",
+        "Pink Floyd",
+        "Rolling Stones",
+        "The Doors"
+      ],
+      "answer": "Queen",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f0cddde3b9f",
+      "type": "multiple-choice",
+      "prompt": "What was Radiohead's first album?",
+      "options": [
+        "Pablo Honey",
+        "The Bends",
+        "Kid A",
+        "A Moon Shaped Pool"
+      ],
+      "answer": "Pablo Honey",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f6404317c8f",
+      "type": "multiple-choice",
+      "prompt": "What is the opening track on Lorde's Pure Heroine?",
+      "options": [
+        "Tennis Court",
+        "Team",
+        "Royals",
+        "400 Lux"
+      ],
+      "answer": "Tennis Court",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-40071297d5b2",
+      "type": "multiple-choice",
+      "prompt": "What is Fergie's debut album called?",
+      "options": [
+        "The Dutchess",
+        "Fergalicious",
+        "The Sweet Escape",
+        "Loose"
+      ],
+      "answer": "The Dutchess",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-40aaa3a011ad",
+      "type": "multiple-choice",
+      "prompt": "Who sang backup vocals on Rockwell's hit 1984 single 'Somebody's Watching Me'?",
+      "options": [
+        "Michael Jackson",
+        "Paul McCartney",
+        "Elton John",
+        "Prince"
+      ],
+      "answer": "Michael Jackson",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-40e756374a06",
+      "type": "multiple-choice",
+      "prompt": "Who is the lead singer of Pearl Jam?",
+      "options": [
+        "Eddie Vedder",
+        "Ozzy Osbourne",
+        "Stone Gossard",
+        "Kurt Cobain"
+      ],
+      "answer": "Eddie Vedder",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-413e2a10d300",
+      "type": "multiple-choice",
+      "prompt": "Which of these are NOT a Men at Work song?",
+      "options": [
+        "Basket Case",
+        "Dr. Heckyll and Mr. Jive",
+        "Who Can It Be Now?",
+        "Be Good Johnny"
+      ],
+      "answer": "Basket Case",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-41dca48e5aab",
+      "type": "multiple-choice",
+      "prompt": "\"The Singing Cowboy\" Gene Autry is credited with the first recording for all but which classic Christmas jingle?",
+      "options": [
+        "White Christmas",
+        "Frosty the Snowman",
+        "Rudolph the Red-Nosed Reindeer",
+        "Here Comes Santa Claus"
+      ],
+      "answer": "White Christmas",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-457d571a9200",
+      "type": "multiple-choice",
+      "prompt": "Which of the following songs was not originally released by Sir Elton John?",
+      "options": [
+        "You'll Be In My Heart",
+        "Crocodile Rock",
+        "Candle in the Wind",
+        "I Don't Wanna Go On With You Like That"
+      ],
+      "answer": "You'll Be In My Heart",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-460eb56ece6a",
+      "type": "multiple-choice",
+      "prompt": "Which song in Drake's \"Views\" features Future?",
+      "options": [
+        "Grammys",
+        "Too Good",
+        "Faithful",
+        "Pop Style"
+      ],
+      "answer": "Grammys",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4a643cf64b30",
+      "type": "multiple-choice",
+      "prompt": "A Caixa Malacacheta is what kind of musical instrument which is commonly used in Latin American music?",
+      "options": [
+        "Snare Drum",
+        "Cow Bell",
+        "Bass Drum",
+        "Maraca"
+      ],
+      "answer": "Snare Drum",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4ad53b5acd70",
+      "type": "multiple-choice",
+      "prompt": "What was Britney Spears' debut single?",
+      "options": [
+        "...Baby One More Time",
+        "Oops!... I Did It Again",
+        "(You Drive Me) Crazy",
+        "Toxic"
+      ],
+      "answer": "...Baby One More Time",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4b83689b6dbb",
+      "type": "multiple-choice",
+      "prompt": "Which country is singer Kyary Pamyu Pamyu from?",
+      "options": [
+        "Japan",
+        "South Korea",
+        "China",
+        "Vietnam"
+      ],
+      "answer": "Japan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4be00a17c514",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the 2016 mixtape released by Venezuelan electronic producer Arca?",
+      "options": [
+        "Entrañas",
+        "&&&&&&",
+        "Sheep",
+        "Xen"
+      ],
+      "answer": "Entrañas",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4c1f30099ee5",
+      "type": "multiple-choice",
+      "prompt": "The \"K\" in \"K-Pop\" stands for which word?",
+      "options": [
+        "Korean",
+        "Kenyan",
+        "Kazakhstan",
+        "Kuwaiti"
+      ],
+      "answer": "Korean",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4c34f089e3a3",
+      "type": "multiple-choice",
+      "prompt": "Which member of the Foo Fighters was previously the drummer for Nirvana?",
+      "options": [
+        "Dave Grohl",
+        "Taylor Hawkins",
+        "Nate Mendel",
+        "Chris Shiflett"
+      ],
+      "answer": "Dave Grohl",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4d4f2ce4371f",
+      "type": "multiple-choice",
+      "prompt": "What Led Zeppelin album contains \"Stairway to Heaven\"?",
+      "options": [
+        "Led Zeppelin IV",
+        "Houses of the Holy",
+        "Physical Graffiti",
+        "Led Zeppelin III"
+      ],
+      "answer": "Led Zeppelin IV",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4dc3550433fb",
+      "type": "multiple-choice",
+      "prompt": "Who was the oldest member of The Beatles?",
+      "options": [
+        "Ringo Starr",
+        "John Lennon",
+        "Paul McCartney",
+        "George Harrison"
+      ],
+      "answer": "Ringo Starr",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4e5089fd2718",
+      "type": "multiple-choice",
+      "prompt": "What was the progressive rock band Rush's first single?",
+      "options": [
+        "Not Fade Away",
+        "Tom Sawyer",
+        "Working Man",
+        "Owner of a Lonely Heart"
+      ],
+      "answer": "Not Fade Away",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4edd6a1c572a",
+      "type": "multiple-choice",
+      "prompt": "What is the relationship between the band members of American rock band Kings of Leon?",
+      "options": [
+        "Brothers & cousins",
+        "Childhood friends",
+        "Former classmates",
+        "Fraternity house members"
+      ],
+      "answer": "Brothers & cousins",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4f5bcfe30dc3",
+      "type": "multiple-choice",
+      "prompt": "What was the last Aphex Twin album released before his decade-long hiatus?",
+      "options": [
+        "Drukqs",
+        "Windowlicker",
+        "Syro",
+        "Collected Ambient Works 85-92"
+      ],
+      "answer": "Drukqs",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-509349db08a9",
+      "type": "multiple-choice",
+      "prompt": "What is the name of French electronic music producer Madeon's 2015 debut studio album?",
+      "options": [
+        "Adventure",
+        "The City",
+        "Icarus",
+        "Pop Culture"
+      ],
+      "answer": "Adventure",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-53c3ecb9aabf",
+      "type": "multiple-choice",
+      "prompt": "Electronic artists Boys Noize and Skrillex have collaborated and released tracks under what name?",
+      "options": [
+        "Dog Blood",
+        "Jack Ü",
+        "What So Not",
+        "Noisia"
+      ],
+      "answer": "Dog Blood",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-54ab75c0577a",
+      "type": "multiple-choice",
+      "prompt": "For which civil rights activist did Stevie Wonder write the song 'Happy Birthday' in 1980?",
+      "options": [
+        "Martin Luther King Jr",
+        "Rosa Parks",
+        "Nelson Mandela",
+        "Booker T. Washington"
+      ],
+      "answer": "Martin Luther King Jr",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-553403ab3d80",
+      "type": "multiple-choice",
+      "prompt": "EDM record label Monstercat is based in which country?",
+      "options": [
+        "Canada",
+        "United States",
+        "Australia",
+        "United Kingdom"
+      ],
+      "answer": "Canada",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5577175abd84",
+      "type": "multiple-choice",
+      "prompt": "Who had a 1981 hit with the song \"Japanese Boy\"?",
+      "options": [
+        "Aneka",
+        "Toyah",
+        "Sandra",
+        "Madonna"
+      ],
+      "answer": "Aneka",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-567f1a286b19",
+      "type": "multiple-choice",
+      "prompt": "What year was Red Hot Chili Peppers' album \"Californication\" released?",
+      "options": [
+        "1999",
+        "1997",
+        "2000",
+        "1992"
+      ],
+      "answer": "1999",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-56c30aac3f50",
+      "type": "multiple-choice",
+      "prompt": "Which of the music artists did NOT perform in the Live Aid concert in Wembley Stadium, London in 1985?",
+      "options": [
+        "The Rolling Stones",
+        "Queen",
+        "Elton John",
+        "David Bowie"
+      ],
+      "answer": "The Rolling Stones",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-579cec408fc7",
+      "type": "multiple-choice",
+      "prompt": "When was the Prince album \"Purple Rain\" released?",
+      "options": [
+        "1984",
+        "1979",
+        "1983",
+        "1981"
+      ],
+      "answer": "1984",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-57d43174b081",
+      "type": "multiple-choice",
+      "prompt": "Which classical composer wrote the \"Moonlight Sonata\"?",
+      "options": [
+        "Ludwig van Beethoven",
+        "Chief Keef",
+        "Wolfgang Amadeus Mozart",
+        "Johannes Brahms"
+      ],
+      "answer": "Ludwig van Beethoven",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-58efd00e44c4",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT the name of an album released by Miami-based producer DJ Khaled?",
+      "options": [
+        "Don't Ever Play Yourself",
+        "Major Key",
+        "Suffering From Success",
+        "I Changed A Lot"
+      ],
+      "answer": "Don't Ever Play Yourself",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-59060790851b",
+      "type": "multiple-choice",
+      "prompt": "Pearl Jam was originally named after which sports figure?",
+      "options": [
+        "Mookie Blaylock",
+        "Oil Can Boyd",
+        "Danger Fourpence",
+        "Blue Moon Odom"
+      ],
+      "answer": "Mookie Blaylock",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5944fc0cd2ac",
+      "type": "multiple-choice",
+      "prompt": "Saul Hudson (Slash) of the band Guns N' Roses is known for playing what type of guitar?",
+      "options": [
+        "Les Paul Standard",
+        "Fender Stratocaster",
+        "LsL Mongrel",
+        "Gretsch Falcon"
+      ],
+      "answer": "Les Paul Standard",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5a223b7cb1c0",
+      "type": "multiple-choice",
+      "prompt": "The letters in the name of the band \"TWRP\" stand for what?",
+      "options": [
+        "Tupperware Remix Party",
+        "Totally Wicked Robot Performers",
+        "Team Wild and the Radio Pirates",
+        "Taiwan Roleplay"
+      ],
+      "answer": "Tupperware Remix Party",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5af8580f1ae3",
+      "type": "multiple-choice",
+      "prompt": "What is the frontman's name of the metal band Megadeth?",
+      "options": [
+        "Dave Mustaine",
+        "Rob Halford",
+        "Vince Neil",
+        "James Hetfield"
+      ],
+      "answer": "Dave Mustaine",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5b63ca00ce61",
+      "type": "multiple-choice",
+      "prompt": "Which one of these songs did the group \"Men At Work\" NOT make?",
+      "options": [
+        "Safety Dance",
+        "Down Under",
+        "Who Can It Be Now?",
+        "It's a Mistake"
+      ],
+      "answer": "Safety Dance",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5d074518f924",
+      "type": "multiple-choice",
+      "prompt": "\"Drink the Sea\" is an album by which electronic music artist?",
+      "options": [
+        "The Glitch Mob",
+        "Avicii",
+        "XXYYXX",
+        "Flux Pavilion"
+      ],
+      "answer": "The Glitch Mob",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5d74b431131f",
+      "type": "multiple-choice",
+      "prompt": "What album is the song 'New Slang' by The Shins found on?",
+      "options": [
+        "Oh, Inverted World",
+        "Wincing The Night Away",
+        "Chutes Too Narrow",
+        "Port Of Morrow"
+      ],
+      "answer": "Oh, Inverted World",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5e3b9ffba772",
+      "type": "multiple-choice",
+      "prompt": "Who was the previous drummer of blink-182 before Travis Barker?",
+      "options": [
+        "Scott Raynor",
+        "Atom Willard",
+        "Ilan Rubin",
+        "Derek Grant"
+      ],
+      "answer": "Scott Raynor",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5f5c87925a4f",
+      "type": "multiple-choice",
+      "prompt": "Artis Leon Ivey Jr. is better known as which rap artist?",
+      "options": [
+        "Coolio",
+        "Dr Dre",
+        "Snoop Dogg",
+        "Ice T"
+      ],
+      "answer": "Coolio",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5f8e4b25a939",
+      "type": "multiple-choice",
+      "prompt": "How many albums did King Gizzard & the Lizard Wizard release in 2017?",
+      "options": [
+        "5",
+        "3",
+        "6",
+        "2"
+      ],
+      "answer": "5",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6059aa78644f",
+      "type": "multiple-choice",
+      "prompt": "In what year was Taylor Swift born?",
+      "options": [
+        "1989",
+        "1988",
+        "1987",
+        "1990"
+      ],
+      "answer": "1989",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-61230879c670",
+      "type": "multiple-choice",
+      "prompt": "Which of these artists has NOT been a member of dancehall group Major Lazer?",
+      "options": [
+        "Skrillex",
+        "Diplo",
+        "Jillionaire",
+        "Walshy Fire"
+      ],
+      "answer": "Skrillex",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-61904edef707",
+      "type": "multiple-choice",
+      "prompt": "Irish musician Hozier released a music track in 2013 titled, \"Take Me to ______\"",
+      "options": [
+        "Church",
+        "Mosque",
+        "Synagogue",
+        "Temple"
+      ],
+      "answer": "Church",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6216b617be0b",
+      "type": "multiple-choice",
+      "prompt": "Ellie Goulding's earliest album was named?",
+      "options": [
+        "Lights",
+        "Halcyon",
+        "Bright Lights",
+        "Halcyon Days"
+      ],
+      "answer": "Lights",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-636cb559eb9b",
+      "type": "multiple-choice",
+      "prompt": "What song by Tina Turner is the theme for Mad Max Beyond Thunderdome?",
+      "options": [
+        "We Don't Need Another Hero",
+        "Let's Stay Together",
+        "What's Love Got To Do With It",
+        "I Don't Wanna Lose You"
+      ],
+      "answer": "We Don't Need Another Hero",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-64059cf38960",
+      "type": "multiple-choice",
+      "prompt": "'74–'75 is a 1993 single from the album Ring by what American band?",
+      "options": [
+        "The Connells",
+        "R.E.M.",
+        "The Ocean Blue",
+        "The Bangles"
+      ],
+      "answer": "The Connells",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-651494b16813",
+      "type": "multiple-choice",
+      "prompt": "Kanye West at 2009 VMA's interrupted which celebrity?",
+      "options": [
+        "Taylor Swift",
+        "MF DOOM",
+        "Beyonce",
+        "Beck"
+      ],
+      "answer": "Taylor Swift",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-65701ec2d31f",
+      "type": "multiple-choice",
+      "prompt": "Who is the frontman of the band 30 Seconds to Mars?",
+      "options": [
+        "Jared Leto",
+        "Gerard Way",
+        "Matthew Bellamy",
+        "Mike Shinoda"
+      ],
+      "answer": "Jared Leto",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6621e47dbc77",
+      "type": "multiple-choice",
+      "prompt": "Which band, with Boy George on lead vocals, won the Brit Awards in 1984?",
+      "options": [
+        "Culture Club",
+        "Eurythmics",
+        "UB40",
+        "The Police"
+      ],
+      "answer": "Culture Club",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6733dfbccfcd",
+      "type": "multiple-choice",
+      "prompt": "Which English guitarist has the nickname \"Slowhand\"?",
+      "options": [
+        "Eric Clapton",
+        "Mark Knopfler",
+        "Jeff Beck",
+        "Jimmy Page"
+      ],
+      "answer": "Eric Clapton",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6772d38a9e3a",
+      "type": "multiple-choice",
+      "prompt": "Swedish DJ Tim Bergling, who produced songs such as \"Levels\" and \"Wake Me Up\", is better known under what alias?",
+      "options": [
+        "Avicii",
+        "deadmau5",
+        "Alesso",
+        "Skrillex"
+      ],
+      "answer": "Avicii",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-677e716bedf7",
+      "type": "multiple-choice",
+      "prompt": "Which of these songs from American Idiot: The Musical was a previously unreleased Green Day song?",
+      "options": [
+        "When It's Time",
+        "Are We The Waiting",
+        "Before The Lobotomy",
+        "Favorite Son"
+      ],
+      "answer": "When It's Time",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-67e5f0830239",
+      "type": "multiple-choice",
+      "prompt": "Which iconic album cover features the pulsar waves of CP 1919 placed in the center of the cover?",
+      "options": [
+        "Unknown Pleasures",
+        "The Dark Side of the Moon",
+        "London Calling",
+        "The Velvet Underground & Nico"
+      ],
+      "answer": "Unknown Pleasures",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-689be564dd71",
+      "type": "multiple-choice",
+      "prompt": "What year did Dire Straits's Song \"Money for Nothing\" release?",
+      "options": [
+        "1985",
+        "1973",
+        "1980",
+        "1991"
+      ],
+      "answer": "1985",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-68d09e702871",
+      "type": "multiple-choice",
+      "prompt": "What genre of EDM is the Dutch DJ, musician, and remixer Armin van Buuren most well-known for?",
+      "options": [
+        "Trance",
+        "House",
+        "Drum and Bass",
+        "Dubstep"
+      ],
+      "answer": "Trance",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-696dffbf8da0",
+      "type": "multiple-choice",
+      "prompt": "\"Some people call me the space cowboy\" is the first line from what song?",
+      "options": [
+        "The Joker",
+        "Fandango",
+        "Take The Money and Run",
+        "Fly Like an Eagle"
+      ],
+      "answer": "The Joker",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6973fde268f3",
+      "type": "multiple-choice",
+      "prompt": "The 'In the Flesh' tour was used in support of what Pink Floyd album?",
+      "options": [
+        "Animals",
+        "The Wall",
+        "Wish You Were Here",
+        "The Final Cut"
+      ],
+      "answer": "Animals",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6ae98f8882f6",
+      "type": "multiple-choice",
+      "prompt": "Which one of these artists appears in the album Deltron 3030?",
+      "options": [
+        "Dan the Automator",
+        "Lamarr Kendrick",
+        "Danger Mouse",
+        "CeeLo Green"
+      ],
+      "answer": "Dan the Automator",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6e482d98c237",
+      "type": "multiple-choice",
+      "prompt": "Which one of these Pink Floyd albums were also a movie?",
+      "options": [
+        "The Wall",
+        "The Dark Side of the Moon",
+        "Wish You Were Here",
+        "Animals"
+      ],
+      "answer": "The Wall",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6e56c784c146",
+      "type": "multiple-choice",
+      "prompt": "Pamina and Papageno are characters in what Mozart opera?",
+      "options": [
+        "The Magic Flute",
+        "The Marriage of Figaro",
+        "The Impresario",
+        "The Goose of Cairo"
+      ],
+      "answer": "The Magic Flute",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6e673449a24b",
+      "type": "multiple-choice",
+      "prompt": "Who was not in the band \"The Smiths\"?",
+      "options": [
+        "Martin Chambers",
+        "Morrissey",
+        "Andy Rourke",
+        "Mike Joyce"
+      ],
+      "answer": "Martin Chambers",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6e9c39c1ef1a",
+      "type": "multiple-choice",
+      "prompt": "What genre of music did the band Type O Negative play?",
+      "options": [
+        "Gothic Metal",
+        "Thrash Metal",
+        "Hard Rock",
+        "Pop Rock"
+      ],
+      "answer": "Gothic Metal",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6ff42f837fed",
+      "type": "multiple-choice",
+      "prompt": "From which country does the piano originate?",
+      "options": [
+        "Italy",
+        "Germany",
+        "Austria",
+        "France"
+      ],
+      "answer": "Italy",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-71cb57859bec",
+      "type": "multiple-choice",
+      "prompt": "Who is the lead singer of the Smashing Pumpkins?",
+      "options": [
+        "Billy Corgan",
+        "Brett Scallions",
+        "Eddie Vedder",
+        "Chino Moreno"
+      ],
+      "answer": "Billy Corgan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-725e97dd2e64",
+      "type": "multiple-choice",
+      "prompt": "Who is the lead singer of Foo Fighters?",
+      "options": [
+        "Dave Grohl",
+        "Dave Mustaine",
+        "James Hetfield",
+        "Little Red Riding Hood"
+      ],
+      "answer": "Dave Grohl",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-73c3d630d374",
+      "type": "multiple-choice",
+      "prompt": "Which song in rapper Kanye West's album \"The Life of Pablo\" features Rihanna?",
+      "options": [
+        "Famous",
+        "Wolves",
+        "Ultralight Beam",
+        "Highlights"
+      ],
+      "answer": "Famous",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-76ad233e0e2a",
+      "type": "multiple-choice",
+      "prompt": "Who had a 1976 hit with the song 'You Make Me Feel Like Dancing'?",
+      "options": [
+        "Leo Sayer",
+        "Elton John",
+        "Billy Joel",
+        "Andy Gibb"
+      ],
+      "answer": "Leo Sayer",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7818b163b333",
+      "type": "multiple-choice",
+      "prompt": "What are the first few words in the lyrics of A-Ha's 'Take On Me'?",
+      "options": [
+        "We're talking away",
+        "We're dreaming today",
+        "We're finding a way",
+        "We're blocking the way"
+      ],
+      "answer": "We're talking away",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-79f217c36e6b",
+      "type": "multiple-choice",
+      "prompt": "Which Disney character sings the song \"A Dream is a Wish Your Heart Makes\"?",
+      "options": [
+        "Cinderella",
+        "Belle",
+        "Snow White",
+        "Pocahontas"
+      ],
+      "answer": "Cinderella",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7afab1b142b4",
+      "type": "multiple-choice",
+      "prompt": "What kind of instrument is a \"Mandolin\"?",
+      "options": [
+        "String",
+        "Brass",
+        "Percussion",
+        "Woodwind"
+      ],
+      "answer": "String",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7c051837b2dd",
+      "type": "multiple-choice",
+      "prompt": "\"Doctor Jones\", \"Turn Back Time\" and \"Barbie Girl\" were UK number ones for which Eurodance group?",
+      "options": [
+        "Aqua",
+        "Vengaboys",
+        "Eiffel 65",
+        "Sash!"
+      ],
+      "answer": "Aqua",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7ca1395a6e92",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a real song from the band Thousand Foot Krutch?",
+      "options": [
+        "Limitless Fury",
+        "Let The Sparks Fly",
+        "Down",
+        "Give Up The Ghost"
+      ],
+      "answer": "Limitless Fury",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7d321937739f",
+      "type": "multiple-choice",
+      "prompt": "What is the official name of Prince's backing band?",
+      "options": [
+        "The Revolution",
+        "The Paupers",
+        "The Wailers",
+        "The Heartbreakers"
+      ],
+      "answer": "The Revolution",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7d7e0806ac09",
+      "type": "multiple-choice",
+      "prompt": "Björk's \"Unison\" contains a sample of which Oval song?",
+      "options": [
+        "Aero Deck",
+        "Textuell",
+        "Panorama",
+        "Do While"
+      ],
+      "answer": "Aero Deck",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7e2d27e9657f",
+      "type": "multiple-choice",
+      "prompt": "What is the name of Finnish DJ Darude's hit single released in October 1999?",
+      "options": [
+        "Sandstorm",
+        "Dust Devil",
+        "Sirocco",
+        "Khamsin"
+      ],
+      "answer": "Sandstorm",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-800fd2e6b65d",
+      "type": "multiple-choice",
+      "prompt": "Sting, the lead vocalist of The Police, primarily plays what instrument?",
+      "options": [
+        "Bass Guitar",
+        "Drums",
+        "Guitar",
+        "Keyboards"
+      ],
+      "answer": "Bass Guitar",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-80ab3284129c",
+      "type": "multiple-choice",
+      "prompt": "Which singer was featured in Jack Ü (Skrillex & Diplo)'s 2015 song 'Where Are Ü Now'?",
+      "options": [
+        "Justin Bieber",
+        "Selena Gomez",
+        "Ellie Goulding",
+        "The Weeknd"
+      ],
+      "answer": "Justin Bieber",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-81808436b095",
+      "type": "multiple-choice",
+      "prompt": "What is the real name of American rapper Eminem, also known as Slim Shady?",
+      "options": [
+        "Marshall Mathers",
+        "Calvin Broadus",
+        "Shawn Carter",
+        "Nasir Jones"
+      ],
+      "answer": "Marshall Mathers",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8222f8e65aab",
+      "type": "multiple-choice",
+      "prompt": "Kanye West's \"Gold Digger\" featured which Oscar-winning actor?",
+      "options": [
+        "Jamie Foxx",
+        "Alec Baldwin",
+        "Dwayne Johnson",
+        "Bruce Willis"
+      ],
+      "answer": "Jamie Foxx",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-86af4548b654",
+      "type": "multiple-choice",
+      "prompt": "\"Sleepyhead\" is the debut single from which Electronic band?",
+      "options": [
+        "Passion Pit",
+        "The Chemical Brothers",
+        "LadyTron",
+        "Kraftwerk"
+      ],
+      "answer": "Passion Pit",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8759e3f550fd",
+      "type": "multiple-choice",
+      "prompt": "Chino Moreno is the lead singer of which alternative metal band?",
+      "options": [
+        "Deftones",
+        "Tool",
+        "Korn",
+        "Type O Negative"
+      ],
+      "answer": "Deftones",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-882efc3db52e",
+      "type": "multiple-choice",
+      "prompt": "Which of these artists did NOT remix the song \"Faded\" by Alan Walker?",
+      "options": [
+        "Skrillex",
+        "Tiësto",
+        "Slushii",
+        "Dash Berlin"
+      ],
+      "answer": "Skrillex",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-89693291e2c6",
+      "type": "multiple-choice",
+      "prompt": "Which M83 album is the song \"Midnight City\" featured in?",
+      "options": [
+        "Hurry Up, We're Dreaming",
+        "Saturdays = Youth",
+        "Before the Dawn Heals Us",
+        "Junk"
+      ],
+      "answer": "Hurry Up, We're Dreaming",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8f9fc09d2c2f",
+      "type": "multiple-choice",
+      "prompt": "Who is the lead singer of Arctic Monkeys?",
+      "options": [
+        "Alex Turner",
+        "Jamie Cook",
+        "Matt Helders",
+        "Nick O'Malley"
+      ],
+      "answer": "Alex Turner",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-91e35cb35064",
+      "type": "multiple-choice",
+      "prompt": "A classic 1976 song by Blue Oyster Cult features the advice “Don’t Fear The” what?",
+      "options": [
+        "Reaper",
+        "Dark",
+        "Silence",
+        "Clowns"
+      ],
+      "answer": "Reaper",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-930c25bf292b",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT considered a woodwind instrument?",
+      "options": [
+        "Trombone",
+        "Oboe",
+        "Clarinet",
+        "Bassoon"
+      ],
+      "answer": "Trombone",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-953f5f504808",
+      "type": "multiple-choice",
+      "prompt": "Which British band won the first edition of the Brit Awards in 1977?",
+      "options": [
+        "The Beatles",
+        "Pink Floyd",
+        "The Rolling Stones",
+        "The Who"
+      ],
+      "answer": "The Beatles",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-95d40f2b297a",
+      "type": "multiple-choice",
+      "prompt": "Which Manchester nightclub was considered central to the 'Madchester' music scene in the late 80's?",
+      "options": [
+        "The Haçienda",
+        "The Warehouse Project",
+        "LIV",
+        "The Liar's Club"
+      ],
+      "answer": "The Haçienda",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-95d8c0bf0e15",
+      "type": "multiple-choice",
+      "prompt": "On which Beatles album would you find the song 'Eleanor Rigby'?",
+      "options": [
+        "Revolver",
+        "Help!",
+        "Rubber Soul",
+        "Abbey Road"
+      ],
+      "answer": "Revolver",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-964bf9b16594",
+      "type": "multiple-choice",
+      "prompt": "The four strings on a violin are the G string, D string, A string, and...",
+      "options": [
+        "E string",
+        "C string",
+        "B string",
+        "F string"
+      ],
+      "answer": "E string",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-96ff6c84983f",
+      "type": "multiple-choice",
+      "prompt": "Which of these songs is not by Tatsuro Yamashita?",
+      "options": [
+        "Lucky Lady Feel So Good",
+        "Merry-Go Round",
+        "Let's Dance Baby",
+        "Love Talkin'"
+      ],
+      "answer": "Lucky Lady Feel So Good",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9841db6dde90",
+      "type": "multiple-choice",
+      "prompt": "Ringo Starr of The Beatles mainly played what instrument?",
+      "options": [
+        "Drums",
+        "Bass",
+        "Guitar",
+        "Piano"
+      ],
+      "answer": "Drums",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9acdebd82632",
+      "type": "multiple-choice",
+      "prompt": "Which one of the following musical instruments is NOT a part of the Woodwind section?",
+      "options": [
+        "Trumpet",
+        "Clarinet",
+        "Oboe",
+        "Alto Saxophone"
+      ],
+      "answer": "Trumpet",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9af52496d2b2",
+      "type": "multiple-choice",
+      "prompt": "Which Daft Punk album is the song \"Harder, Better, Faster, Stronger\" from?",
+      "options": [
+        "Discovery",
+        "Homework",
+        "Random Access Memories",
+        "Human After All"
+      ],
+      "answer": "Discovery",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9b7b3d9266bd",
+      "type": "multiple-choice",
+      "prompt": "Which company did the animation for Peter Gabriel's Video Sledgehammer (1986)?",
+      "options": [
+        "Aardman Animations",
+        "HIT Entertainment",
+        "Illumination Entertainment",
+        "VIZ Media"
+      ],
+      "answer": "Aardman Animations",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9bb4db325c9d",
+      "type": "multiple-choice",
+      "prompt": "Who was featured in the song \"Words\" by Feint?",
+      "options": [
+        "Laura Brehm",
+        "Anna Yvette",
+        "Danyka Nadeau",
+        "Veela"
+      ],
+      "answer": "Laura Brehm",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9e194da236db",
+      "type": "multiple-choice",
+      "prompt": "What is not a wind instrument?",
+      "options": [
+        "Viola",
+        "Oboe",
+        "Trombone",
+        "Duduk"
+      ],
+      "answer": "Viola",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a4bd579e63d5",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not a studio album by the band Pink Floyd?",
+      "options": [
+        "Moving Pictures",
+        "The Dark Side of the Moon",
+        "Wish You Were Here",
+        "Animals"
+      ],
+      "answer": "Moving Pictures",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a502f0ad2f50",
+      "type": "multiple-choice",
+      "prompt": "Which song on Daft Punk's \"Random Access Memories\" features Pharrell Williams?",
+      "options": [
+        "Get Lucky",
+        "Doin' It Right",
+        "Instant Crush",
+        "The Game of Love"
+      ],
+      "answer": "Get Lucky",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a546475e8ea0",
+      "type": "multiple-choice",
+      "prompt": "What is the first Studio Album to be released on the Internet with a \"Pay-What-You-Want\" price?",
+      "options": [
+        "In Rainbows",
+        "The Help Album",
+        "Skrillex and Diplo Present Jack Ü",
+        "Blackstar"
+      ],
+      "answer": "In Rainbows",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a5cef00fae27",
+      "type": "multiple-choice",
+      "prompt": "Which of these is Daft Punk's debut single?",
+      "options": [
+        "The New Wave",
+        "Da Funk",
+        "Discovery",
+        "Around the World"
+      ],
+      "answer": "The New Wave",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a667e736acb4",
+      "type": "multiple-choice",
+      "prompt": "Which band released songs such as \"Rio\", \"Girls on Film\", and \"The Reflex\"?",
+      "options": [
+        "Duran Duran",
+        "The Cure",
+        "New Order",
+        "Depeche Mode"
+      ],
+      "answer": "Duran Duran",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a7df79d52d88",
+      "type": "multiple-choice",
+      "prompt": "What year was Min Yoongi from South Korea boy band \"BTS\" born in?",
+      "options": [
+        "1993",
+        "1992",
+        "1995",
+        "1994"
+      ],
+      "answer": "1993",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a9745b01b6de",
+      "type": "multiple-choice",
+      "prompt": "Which country does the band Rammstein hail from?",
+      "options": [
+        "Germany",
+        "Austria",
+        "Armenia",
+        "Belgium"
+      ],
+      "answer": "Germany",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aa5a1bec9fd1",
+      "type": "multiple-choice",
+      "prompt": "Whose signature guitar technique is called the \"windmill\"?",
+      "options": [
+        "Pete Townshend",
+        "Jimmy Page",
+        "Eddie Van Halen",
+        "Jimi Hendrix"
+      ],
+      "answer": "Pete Townshend",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aa834aad729d",
+      "type": "multiple-choice",
+      "prompt": "Which member of the English band \"The xx\" released their solo album \"In Colour\" in 2015?",
+      "options": [
+        "Jamie xx",
+        "Romy Madley Croft",
+        "Oliver Sim",
+        "Baria Qureshi"
+      ],
+      "answer": "Jamie xx",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aadb2288674d",
+      "type": "multiple-choice",
+      "prompt": "What album did Bon Iver release in 2016?",
+      "options": [
+        "22, A Million",
+        "Bon Iver, Bon Iver",
+        "Blood Bank EP",
+        "For Emma, Forever Ago"
+      ],
+      "answer": "22, A Million",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ac29aab3cf5f",
+      "type": "multiple-choice",
+      "prompt": "In the Rossini opera, what was the name of 'The Barber of Seville'?",
+      "options": [
+        "Figaro",
+        "Angelo",
+        "Fernando",
+        "Dave"
+      ],
+      "answer": "Figaro",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b0c9215c9cf1",
+      "type": "multiple-choice",
+      "prompt": "In 2006, which band released their debut album \"A Fever You Can't Sweat Out\"?",
+      "options": [
+        "Panic! At the Disco",
+        "Twenty One Pilots",
+        "My Chemical Romance",
+        "Fall Out Boy"
+      ],
+      "answer": "Panic! At the Disco",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b6032e2d730b",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the song by Beyoncé and Alejandro Fernández released in 2007?",
+      "options": [
+        "Amor Gitano",
+        "La ultima vez",
+        "Rocket",
+        "Hasta Dondes Estes"
+      ],
+      "answer": "Amor Gitano",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b7b0279e80a6",
+      "type": "multiple-choice",
+      "prompt": "What collaborative album was released by Kanye West and Jay-Z in 2011?",
+      "options": [
+        "Watch the Throne",
+        "Distant Relatives",
+        "What a Time to be Alive",
+        "Unfinished Business"
+      ],
+      "answer": "Watch the Throne",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b90b11d75873",
+      "type": "multiple-choice",
+      "prompt": "Which Beatles album does NOT feature any of the band members on its cover?",
+      "options": [
+        "The Beatles (White Album)",
+        "Rubber Soul",
+        "Abbey Road",
+        "Magical Mystery Tour"
+      ],
+      "answer": "The Beatles (White Album)",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bb64cfd3db9f",
+      "type": "multiple-choice",
+      "prompt": "Which artists' version of the song \"The Tide is High\" came first?",
+      "options": [
+        "The Paragons",
+        "Blondie",
+        "Kardinal Offishall",
+        "Atomic Kitten"
+      ],
+      "answer": "The Paragons",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bd2b540be15b",
+      "type": "multiple-choice",
+      "prompt": "Where does the Mac part of the name Fleetwood Mac come from?",
+      "options": [
+        "John McVie",
+        "Christine McVie",
+        "Mac McAnally",
+        "David Tennant"
+      ],
+      "answer": "John McVie",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-be9cd7aad127",
+      "type": "multiple-choice",
+      "prompt": "Which Elton John hit starts with the line \"When are you gonna come down\"?",
+      "options": [
+        "Goodbye Yellow Brick Road",
+        "Rocket Man",
+        "Bennie and the Jets",
+        "Crocodile Rock"
+      ],
+      "answer": "Goodbye Yellow Brick Road",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bfbbb111be6e",
+      "type": "multiple-choice",
+      "prompt": "What is the stage name of New Zealand singer Phillipa \"Pip\" Brown?",
+      "options": [
+        "Ladyhawke",
+        "Lorde",
+        "Kesha",
+        "Anika Moa"
+      ],
+      "answer": "Ladyhawke",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c30c09f82c1f",
+      "type": "multiple-choice",
+      "prompt": "Which group performs the song \"Crash into Me\"?",
+      "options": [
+        "Dave Matthews Band",
+        "Phish",
+        "The Grateful Dead",
+        "Destiny's Child"
+      ],
+      "answer": "Dave Matthews Band",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c4cd51511541",
+      "type": "multiple-choice",
+      "prompt": "In the metal band Slipknot, there are 9 members, which member labelled themselves number 6?",
+      "options": [
+        "Shawn Crahan (Clown)",
+        "Sid Wilson",
+        "Cory Taylor",
+        "Mick Thomson"
+      ],
+      "answer": "Shawn Crahan (Clown)",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c5b1f54168d1",
+      "type": "multiple-choice",
+      "prompt": "Which former boy-band star released hit solo single \"Angels\" in 1997?",
+      "options": [
+        "Robbie Williams",
+        "Justin Timberlake",
+        "Harry Styles",
+        "Gary Barlow"
+      ],
+      "answer": "Robbie Williams",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c7d68d571cd6",
+      "type": "multiple-choice",
+      "prompt": "Which band recorded the album \"Parallel Lines\"?",
+      "options": [
+        "Blondie",
+        "Paramore",
+        "Coldplay",
+        "The Police"
+      ],
+      "answer": "Blondie",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c833b7e73454",
+      "type": "multiple-choice",
+      "prompt": "From which country did the song \"Gangnam Style\" originate from?",
+      "options": [
+        "South Korea",
+        "Japan",
+        "North Korea",
+        "China"
+      ],
+      "answer": "South Korea",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c88780657ddb",
+      "type": "multiple-choice",
+      "prompt": "The heavy metal band Black Sabbath hail from which English city?",
+      "options": [
+        "Birmingham",
+        "Manchester",
+        "London",
+        "Newcastle-Upon-Tyne"
+      ],
+      "answer": "Birmingham",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c8d5a331b87a",
+      "type": "multiple-choice",
+      "prompt": "Who sings the rap song \"Secret Wars Part 1\"?",
+      "options": [
+        "The Last Emperor",
+        "MC Frontalot",
+        "Busdriver",
+        "MC Lars"
+      ],
+      "answer": "The Last Emperor",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ca44d107540b",
+      "type": "multiple-choice",
+      "prompt": "Who had a 1969 top 5 hit with the song, 'A Boy Named Sue'?",
+      "options": [
+        "Johnny Cash",
+        "Bob Dylan",
+        "Willie Nelson",
+        "Kris Kristofferson"
+      ],
+      "answer": "Johnny Cash",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cba9651815b1",
+      "type": "multiple-choice",
+      "prompt": "Who had a 1983 hit with the song 'Africa'?",
+      "options": [
+        "Toto",
+        "Foreigner",
+        "Steely Dan",
+        "Journey"
+      ],
+      "answer": "Toto",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cd3afddc2a98",
+      "type": "multiple-choice",
+      "prompt": "What song originally performed by The Bee Gees in 1978 had a cover version by Steps 20 years later?",
+      "options": [
+        "Tragedy",
+        "Night Fever",
+        "Stayin' Alive",
+        "You Should Be Dancing"
+      ],
+      "answer": "Tragedy",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cfff38fb7797",
+      "type": "multiple-choice",
+      "prompt": "\"Hallelujah\" is a song written by which Canadian recording artist?",
+      "options": [
+        "Leonard Cohen",
+        "Kory Lefkowits",
+        "Ryan Letourneau",
+        "Justin Bieber"
+      ],
+      "answer": "Leonard Cohen",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d2ee07d8d4a6",
+      "type": "multiple-choice",
+      "prompt": "Which song is NOT by singer Tom Jones?",
+      "options": [
+        "Never Gonna Give You Up",
+        "It's Not Unusual",
+        "What's New Pussycat",
+        "Delilah"
+      ],
+      "answer": "Never Gonna Give You Up",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d2f6ef4af17d",
+      "type": "multiple-choice",
+      "prompt": "The band Muse released their first album, Showbiz, in what year?",
+      "options": [
+        "1999",
+        "1998",
+        "2000",
+        "2001"
+      ],
+      "answer": "1999",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d4004322f6fd",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the album released in 2014 by American band Maroon 5?",
+      "options": [
+        "V",
+        "X",
+        "III",
+        "IV"
+      ],
+      "answer": "V",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d46147e1206f",
+      "type": "multiple-choice",
+      "prompt": "Pete Townshend collaborated with which famous guitarist for an event at Brixton Academy in 1985?",
+      "options": [
+        "David Gilmour",
+        "Jimmy Page",
+        "Mark Knopfler",
+        "Eric Clapton"
+      ],
+      "answer": "David Gilmour",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d6c196c9085a",
+      "type": "multiple-choice",
+      "prompt": "Which of these aliases has NOT been used by electronic musician Aphex Twin?",
+      "options": [
+        "Burial",
+        "Caustic Window",
+        "Bradley Strider",
+        "GAK"
+      ],
+      "answer": "Burial",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d9105022d530",
+      "type": "multiple-choice",
+      "prompt": "What was Daft Punk's first studio album?",
+      "options": [
+        "Homework",
+        "Discovery",
+        "Random Access Memories",
+        "Human After All"
+      ],
+      "answer": "Homework",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-da07c1122f59",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the hip hop group Kanye West was a member of in the late 90s?",
+      "options": [
+        "The Go-Getters",
+        "The Jumpers",
+        "The Kickstarters",
+        "The Beat-Busters"
+      ],
+      "answer": "The Go-Getters",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-db0cc63bb243",
+      "type": "multiple-choice",
+      "prompt": "What is Justin Bieber's debut Album?",
+      "options": [
+        "My World 2.0",
+        "U Smile",
+        "Baby",
+        "Purpose"
+      ],
+      "answer": "My World 2.0",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dc58d36e5004",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT the name of an album released by English singer-songwriter Adele?",
+      "options": [
+        "12",
+        "19",
+        "21",
+        "25"
+      ],
+      "answer": "12",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dc6de3056eb8",
+      "type": "multiple-choice",
+      "prompt": "Panic! At the Disco's sixth album \"Pray For The Wicked\" was released on which date?",
+      "options": [
+        "June 22, 2018",
+        "May 9, 2018",
+        "March 13, 2018",
+        "February 21, 2018"
+      ],
+      "answer": "June 22, 2018",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e09dae900d76",
+      "type": "multiple-choice",
+      "prompt": "Who recorded the 1975 album 'Captain Fantastic and the Brown Dirt Cowboy'?",
+      "options": [
+        "Elton John",
+        "John Denver",
+        "Billy Joel",
+        "Joe Cocker"
+      ],
+      "answer": "Elton John",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e655c43510a9",
+      "type": "multiple-choice",
+      "prompt": "According to a song by Belinda Carlisle, Heaven is a place on what?",
+      "options": [
+        "Earth",
+        "Venus",
+        "Mars",
+        "Uranus"
+      ],
+      "answer": "Earth",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e668a1f12db3",
+      "type": "multiple-choice",
+      "prompt": "Which 80s band is fronted by singer/guitarist Robert Smith?",
+      "options": [
+        "The Cure",
+        "The Smiths",
+        "Echo & the Bunnymen",
+        "New Order"
+      ],
+      "answer": "The Cure",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e729a573c1a9",
+      "type": "multiple-choice",
+      "prompt": "What was the name of singer Frank Ocean's second studio album, which was released on August 20, 2016?",
+      "options": [
+        "Blonde",
+        "Brunette",
+        "Black",
+        "Burgundy"
+      ],
+      "answer": "Blonde",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e8baeb15f95b",
+      "type": "multiple-choice",
+      "prompt": "What album did The Lumineers release in 2016?",
+      "options": [
+        "Cleopatra",
+        "Winter",
+        "The Lumineers",
+        "Tracks From The Attic"
+      ],
+      "answer": "Cleopatra",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ee289a4ec757",
+      "type": "multiple-choice",
+      "prompt": "Ozzy Osbourne was the lead singer for what metal band?",
+      "options": [
+        "Black Sabbath",
+        "AC/DC",
+        "Iron Maiden",
+        "Judas Priest"
+      ],
+      "answer": "Black Sabbath",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ee8359ab0e64",
+      "type": "multiple-choice",
+      "prompt": "The Rush song \"YYZ\" derives its name from the IATA airport identification code for which city?",
+      "options": [
+        "Toronto",
+        "Vancouver",
+        "Ottawa",
+        "Calgary"
+      ],
+      "answer": "Toronto",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ef9c92f2aff6",
+      "type": "multiple-choice",
+      "prompt": "The 2016 song \"Starboy\" by Canadian singer The Weeknd features which prominent electronic artist?",
+      "options": [
+        "Daft Punk",
+        "deadmau5",
+        "Disclosure",
+        "DJ Shadow"
+      ],
+      "answer": "Daft Punk",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f1508c039ee5",
+      "type": "multiple-choice",
+      "prompt": "What year was Huun Huur Tu's album Altai Sayan Tandy-Uula released?",
+      "options": [
+        "2004",
+        "1993",
+        "2006",
+        "2010"
+      ],
+      "answer": "2004",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f545fce89ee6",
+      "type": "multiple-choice",
+      "prompt": "What rock group is named after a gym teacher who taught at the original band members' high school?",
+      "options": [
+        "Lynyrd Skynyrd",
+        "Jefferson Airplane",
+        "Pink Floyd",
+        "The Byrds"
+      ],
+      "answer": "Lynyrd Skynyrd",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f5e814a56c56",
+      "type": "multiple-choice",
+      "prompt": "Of which 90s boy band was Justin Timberlake a member?",
+      "options": [
+        "*NSYNC",
+        "Backstreet Boys",
+        "Westlife",
+        "Boyzone"
+      ],
+      "answer": "*NSYNC",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fb8cf2c51920",
+      "type": "multiple-choice",
+      "prompt": "What is the first track on the Dave Matthews Band album \"Before These Crowded Streets\"?",
+      "options": [
+        "Pantala Naga Pampa",
+        "Stay (Wasting Time)",
+        "Rapunzel",
+        "Don't Drink The Water"
+      ],
+      "answer": "Pantala Naga Pampa",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fe578db482a1",
+      "type": "multiple-choice",
+      "prompt": "\"Grande Valse\" is a phrase from the song \"Gran Vals\". What is that song segment known as?",
+      "options": [
+        "Nokia Tune",
+        "Hello Moto [Motorola Ringtone]",
+        "Droid Ringtone",
+        "Microsoft Ringtone"
+      ],
+      "answer": "Nokia Tune",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ff97e53be99d",
+      "type": "multiple-choice",
+      "prompt": "Which famous rapper is featured in Jack Ü (Skrillex and Diplo)'s 2015 single called \"Febreze\"?",
+      "options": [
+        "2 Chainz",
+        "Kendrick Lamar",
+        "Future",
+        "Fatman Scoop"
+      ],
+      "answer": "2 Chainz",
+      "difficulty": "easy",
+      "region": "general"
+    }
+  ]
+}

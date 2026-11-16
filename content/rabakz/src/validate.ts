@@ -91,7 +91,7 @@ const QUESTION_FIELDS = [
   'source',
 ];
 const PICTURE_FIELDS = ['file', 'alt', 'credit', 'licence', 'sourceUrl'];
-const DATASET_FIELDS = ['kind', 'dataset', 'licence', 'url'];
+const DATASET_FIELDS = ['kind', 'dataset', 'licence', 'licenceUrl', 'url', 'notice'];
 const ORIGINAL_FIELDS = ['kind', 'note'];
 
 const FORMAT_OF_EXTENSION: Readonly<Record<string, ImageFormat>> = {
@@ -197,10 +197,46 @@ function checkSource(value: unknown, name: string, report: Report): QuestionSour
         report('source', `${name} url must be an https address`);
       }
     }
-    if (dataset === null || licence === null || urlBad || extra.length > 0) return null;
-    return url === undefined
-      ? { kind: 'dataset', dataset, licence }
-      : { kind: 'dataset', dataset, licence, url };
+    let licenceUrl: string | undefined;
+    if (value.licenceUrl !== undefined) {
+      if (typeof value.licenceUrl === 'string' && HTTPS_URL.test(value.licenceUrl)) {
+        licenceUrl = value.licenceUrl;
+      } else {
+        urlBad = true;
+        report('source', `${name} licenceUrl must be an https address`);
+      }
+    }
+    // A share-alike licence obliges us to say that the questions were adapted and under what
+    // licence the adaptation is offered (RZ-021).
+    if (value.notice === undefined && licence !== null && /\bSA\b/.test(licence)) {
+      urlBad = true;
+      report(
+        'source',
+        `${name} needs a notice: "${licence}" is a share-alike licence, so the credit must say the questions were adapted and are offered under the same licence`,
+      );
+    }
+    const notice =
+      value.notice === undefined
+        ? undefined
+        : checkText(
+            value.notice,
+            `${name} notice`,
+            'source',
+            report,
+            LIMITS.sourceNote,
+            LIMITS.sourceNoteMin,
+          );
+    if (dataset === null || licence === null || notice === null || urlBad || extra.length > 0) {
+      return null;
+    }
+    return {
+      kind: 'dataset',
+      dataset,
+      licence,
+      ...(licenceUrl === undefined ? {} : { licenceUrl }),
+      ...(url === undefined ? {} : { url }),
+      ...(notice === undefined ? {} : { notice }),
+    };
   }
   report('source', `${name} kind must be "dataset" or "original"`);
   return null;

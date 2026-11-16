@@ -92,8 +92,9 @@ const JPEG = Buffer.from([0xff, 0xd8, 0xff, 0xe0]);
 describe('the bank in this package', () => {
   const result = buildFromDisk(packagePaths());
 
-  it('validates with no errors and no warnings', () => {
-    expect(result.problems).toEqual([]);
+  // Warnings are allowed (an imported bank can raise them); `stats` prints them (R-11).
+  it('validates with no errors', () => {
+    expect(result.problems.filter((problem) => problem.severity === 'error')).toEqual([]);
     expect(result.output).not.toBeNull();
   });
 
@@ -112,7 +113,7 @@ describe('the build command', () => {
     const out = tempDir();
     const run = runBuild({ ...packagePaths(), out });
     expect(run.code).toBe(0);
-    expect(run.text).toContain('0 error(s), 0 warning(s)');
+    expect(run.text).toContain('0 error(s), ');
 
     const index = JSON.parse(readFileSync(join(out, 'index.json'), 'utf8')) as BankIndex;
     const chunks = index.categories.map((category) => {

@@ -1,0 +1,29 @@
+# Open Trivia Database questions a person read and cleared, which the word screen in
+# scripts/otdb-screen.ts would otherwise drop (R-11).
+#
+# One per line: the question's id, why it is fine, then " ## " and the question's prompt (see
+# otdb-removed.txt for why the prompt is there). An id here skips the screen only: the
+# validator, the blocklist and every later rule still apply. Add an id only after reading the
+# whole question, options included.
+
+# Review round 1: good questions the strict word screen dropped
+otdb-b93b9f297a0b  "wine" is the subject of a myth, not a drink to choose ## In Greek mythology, who is the god of wine?
+otdb-74603aa45753  "alcohol" is the chemistry term ## An organic compound is considered an alcohol if it has what functional group?
+otdb-3b68b139059e  Archimedes and "Eureka": the school story, told as it always is ## Which greek mathematician ran through the streets of Syracuse naked while shouting "Eureka" after discovering the principle of displacement?
+otdb-007aae7934fc  anatomy; the answer "Butt" is the plain word for it ## Where is the Gluteus Maximus muscle located?
+otdb-122746b8132a  anatomy; "Groin" is only a wrong option ## Where in the human body is the Pineal Gland located?
+otdb-c273ae8ba486  John Cage's silent piece; one wrong option is a joke ## The 1952 musical composition 4'33", composed by prolific American composer John Cage, is mainly comprised of what sound?
+otdb-333ec7e38fbf  "Corona Mountain" is a level in a Mario game ## In "Super Mario Sunshine", how do you unlock the "Corona Mountain" level?
+otdb-79fd6e88983f  "Dr. N. Gin" is a character in Crash Bandicoot ## What is the 4th boss in the 1997 video game "Crash Bandicoot 2: Cortex Strikes Back"?
+otdb-7d9eb9622584  "Gin" is a wrong option for a character's name ## In the anime, "Hunter X Hunter", what is the main protagonist's name?
+otdb-94b661313e45  "Casino Royale" is a James Bond film title among the options ## Which James Bond film had the theme song written and performed by English singer-songwriter Adele?
+otdb-64984c6e2b59  saffron has been the dearest spice for centuries ## What is the world's most expensive spice by weight?
+otdb-51d5613541f1  the number of Australian states does not change ## How many states are in Australia?
+otdb-62a5d6bdbac1  the countries of the United Kingdom do not change ## How many countries are inside the United Kingdom?
+otdb-8ef88e01d60b  the blue whale: "currently" here means "alive today" ## What is the largest animal currently on Earth?
+otdb-12b6e790d4ae  "currently known as Istanbul" is the settled modern name ## What name was historically used for the Turkish city currently known as Istanbul?
+otdb-9cf65347aa2f  the one surviving ancient wonder: a fixed fact ## In the Seven Wonders of the World, which wonder is the only that has survived to this day?
+
+# Review round 2: fixed historical sporting facts, all four options read
+otdb-139c1d0f0c42  Before 2018 is a fixed cutoff: Mazda won in 1991, Toyota first won in 2018 ## Prior to 2018, which car company is the only Japanese company which won the 24 Hours of Le Mans?
+otdb-ff964705c2ba  A completed tournament: James Rodríguez scored six at the 2014 World Cup ## Who was the top scorer of the 2014 FIFA World Cup?

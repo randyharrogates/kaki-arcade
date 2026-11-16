@@ -1,0 +1,73 @@
+$ node --import ./scripts/register.ts scripts/stats.ts
+Rabakz question bank
+
+Category                         easy     medium       hard    general  singapore    picture      total
+arts-and-literature                56         85         51        192          0          0        192
+film-and-tv                       107         79         54        240          0          0        240
+games-comics-and-anime            106         54         78        238          0          0        238
+general-knowledge                 134         99         40        272          1          0        273
+geography                          76        119         60        253          2          0        255
+history                            74        148         83        302          3          0        305
+music                              87         91         62        240          0          0        240
+science-and-nature                 90        133         87        310          0          0        310
+singapore-arts-and-sport            9         23         15          0         47          0         47
+singapore-food                     19         22         16          0         57          0         57
+singapore-history                  10         17         23          0         50          0         50
+singapore-life                     22         21          8          0         51          0         51
+singapore-nature                   12         19         15          0         46          0         46
+singapore-places                   18         19         17          0         54          0         54
+sport                              42         44         17        103          0          0        103
+technology                         60         85         55        200          0          0        200
+All                               922       1058        681       2350        311          0       2661
+
+By type: multiple choice 2661, true or false 0, picture 0
+Written for Kaki Arcade: 318. From datasets: 2343.
+  Open Trivia Database (CC BY-SA 4.0): 2343
+
+True-or-false answers: True 0, False 0 (shown in the fixed order True, False)
+Four-option answers by source position: 2421 / 77 / 90 / 73 (not a fault: the game shuffles these)
+Pictures: 0 file(s), 0 bytes, largest 0
+
+Launch sizes (RZ-024)
+  Questions in total     2661 of 1500  met
+  Singapore pack          311 of 200   met
+  Picture questions         0 of 60    short by 60
+
+All chunks together: 720486 bytes uncompressed, 36% of the 2 MB match budget (RZ-020) before pictures.
+The bank is not yet at launch size.
+
+Warnings: 34
+  warning  arts-and-literature.json otdb-4b981424556e  [same-options] has the same options and the same correct answer as arts-and-literature.json otdb-25ec80ba080a; check it is not the same question reworded
+  warning  games-comics-and-anime.json otdb-3402c52b38cd  [same-options] has the same options and the same correct answer as arts-and-literature.json otdb-25ec80ba080a; check it is not the same question reworded
+  warning  games-comics-and-anime.json otdb-de37e2d83a82  [same-options] has the same options and the same correct answer as games-comics-and-anime.json otdb-aace7fa2b904; check it is not the same question reworded
+  warning  general-knowledge.json otdb-7110fa7818c1  [same-options] has the same options and the same correct answer as games-comics-and-anime.json otdb-f0776808f631; check it is not the same question reworded
+  warning  general-knowledge.json otdb-73fd72d9361b  [same-options] has the same options and the same correct answer as general-knowledge.json otdb-3968167a7754; check it is not the same question reworded
+  warning  general-knowledge.json otdb-808724a5320e  [same-options] has the same options and the same correct answer as arts-and-literature.json otdb-8456f5396c1b; check it is not the same question reworded
+  warning  general-knowledge.json otdb-a20af116451e  [same-options] has the same options and the same correct answer as arts-and-literature.json otdb-a10c008955b0; check it is not the same question reworded
+  warning  geography.json otdb-0aafdc12f389  [same-options] has the same options and the same correct answer as geography.json otdb-071336e6887d; check it is not the same question reworded
+  warning  geography.json otdb-3ae1b722585a  [same-options] has the same options and the same correct answer as geography.json otdb-071336e6887d; check it is not the same question reworded
+  warning  geography.json otdb-4f7c5caf2481  [same-options] has the same options and the same correct answer as general-knowledge.json otdb-3968167a7754; check it is not the same question reworded
+  warning  geography.json otdb-aef1275d0747  [same-options] has the same options and the same correct answer as geography.json otdb-550b26b4b24c; check it is not the same question reworded
+  warning  history.json otdb-9ef8297eeb04  [same-options] has the same options and the same correct answer as geography.json otdb-c97f0aef161b; check it is not the same question reworded
+  warning  music.json otdb-4b83689b6dbb  [same-options] has the same options and the same correct answer as general-knowledge.json otdb-968421a9a705; check it is not the same question reworded
+  warning  music.json otdb-4dc3550433fb  [same-options] has the same options and the same correct answer as music.json otdb-31b4c750e825; check it is not the same question reworded
+  warning  science-and-nature.json otdb-1c2dac989d1d  [same-options] has the same options and the same correct answer as games-comics-and-anime.json otdb-3b22d0538f9d; check it is not the same question reworded
+  warning  science-and-nature.json otdb-38fa74ce0106  [same-options] has the same options and the same correct answer as geography.json otdb-c97f0aef161b; check it is not the same question reworded
+  warning  science-and-nature.json otdb-66b9fa45831e  [same-options] has the same options and the same correct answer as science-and-nature.json otdb-19d71d76e1d0; check it is not the same question reworded
+  warning  science-and-nature.json otdb-731f5cfae88e  [same-options] has the same options and the same correct answer as games-comics-and-anime.json otdb-48e5af9c4f7b; check it is not the same question reworded
+  warning  science-and-nature.json otdb-99cc3f74629e  [same-options] has the same options and the same correct answer as general-knowledge.json otdb-0a7518653276; check it is not the same question reworded
+  warning  science-and-nature.json otdb-9cf07e6fb174  [same-options] has the same options and the same correct answer as general-knowledge.json otdb-b20dba5cdb44; check it is not the same question reworded
+  warning  science-and-nature.json otdb-ae1fe4190fb8  [same-options] has the same options and the same correct answer as geography.json otdb-591457930e7f; check it is not the same question reworded
+  warning  science-and-nature.json otdb-b95547150702  [same-options] has the same options and the same correct answer as games-comics-and-anime.json otdb-f0776808f631; check it is not the same question reworded
+  warning  science-and-nature.json otdb-bbccccd620de  [same-options] has the same options and the same correct answer as geography.json otdb-9a09628ac696; check it is not the same question reworded
+  warning  science-and-nature.json otdb-d03a22bf8e23  [same-options] has the same options and the same correct answer as geography.json otdb-591457930e7f; check it is not the same question reworded
+  warning  science-and-nature.json otdb-d1e17706b546  [same-options] has the same options and the same correct answer as general-knowledge.json otdb-d225422d07ec; check it is not the same question reworded
+  warning  science-and-nature.json otdb-fbafe7453487  [same-options] has the same options and the same correct answer as games-comics-and-anime.json otdb-f0776808f631; check it is not the same question reworded
+  warning  science-and-nature.json otdb-fbba0b62029c  [same-options] has the same options and the same correct answer as geography.json otdb-886c2570a23f; check it is not the same question reworded
+  warning  singapore-life.json sg-life-0001  [same-options] has the same options and the same correct answer as science-and-nature.json otdb-8eb6b812f677; check it is not the same question reworded
+  warning  singapore-life.json sg-life-0006  [same-options] has the same options and the same correct answer as film-and-tv.json otdb-99ebbe939811; check it is not the same question reworded
+  warning  singapore-places.json sg-place-0010  [same-options] has the same options and the same correct answer as general-knowledge.json otdb-303267241af0; check it is not the same question reworded
+  warning  sport.json otdb-ac465ff63a87  [same-options] has the same options and the same correct answer as geography.json otdb-591457930e7f; check it is not the same question reworded
+  warning  sport.json otdb-de1fd215c2fb  [same-options] has the same options and the same correct answer as arts-and-literature.json otdb-8aab9a173e07; check it is not the same question reworded
+  warning  technology.json otdb-3e0f9b37a617  [same-options] has the same options and the same correct answer as arts-and-literature.json otdb-8456f5396c1b; check it is not the same question reworded
+  warning  technology.json otdb-62b37fbcb4ba  [same-options] has the same options and the same correct answer as games-comics-and-anime.json otdb-7804b095251f; check it is not the same question reworded

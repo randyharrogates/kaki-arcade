@@ -1,6 +1,14 @@
 {
   "category": "history",
   "title": "History",
+  "defaultSource": {
+    "kind": "dataset",
+    "dataset": "Open Trivia Database",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "url": "https://opentdb.com",
+    "notice": "Questions from the Open Trivia Database (opentdb.com), licensed under CC BY-SA 4.0. Adapted for Kaki Arcade: selected, screened for an all-ages audience, regrouped and tidied. The adapted questions are offered under the same licence."
+  },
   "questions": [
     {
       "id": "his-0001",
@@ -18,22 +26,6 @@
       "source": {
         "kind": "original",
         "note": "Singapore separated from Malaysia on 9 August 1965. Check: National Archives of Singapore; National Library Board Infopedia."
-      }
-    },
-    {
-      "id": "his-0002",
-      "type": "true-false",
-      "prompt": "The Berlin Wall came down in 1989.",
-      "options": [
-        "True",
-        "False"
-      ],
-      "answer": "True",
-      "difficulty": "medium",
-      "region": "general",
-      "source": {
-        "kind": "original",
-        "note": "The border was opened on 9 November 1989. Check: Britannica, 'Berlin Wall'."
       }
     },
     {
@@ -89,6 +81,4220 @@
         "kind": "original",
         "note": "The lighthouse stood on Pharos, off Alexandria in Egypt. Check: Britannica, 'Lighthouse of Alexandria'."
       }
+    },
+    {
+      "id": "otdb-003eb9da58cc",
+      "type": "multiple-choice",
+      "prompt": "From 1940 to 1942, what was the capital-in-exile of Free France ?",
+      "options": [
+        "Brazzaville",
+        "Algiers",
+        "Paris",
+        "Tunis"
+      ],
+      "answer": "Brazzaville",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-010c945dfcce",
+      "type": "multiple-choice",
+      "prompt": "In what year did the North American Video Game Crash occur?",
+      "options": [
+        "1983",
+        "1982",
+        "1993",
+        "1970"
+      ],
+      "answer": "1983",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-017aa2991db1",
+      "type": "multiple-choice",
+      "prompt": "Which of the following ancient peoples was NOT classified as Hellenic (Greek)?",
+      "options": [
+        "Illyrians",
+        "Dorians",
+        "Achaeans",
+        "Ionians"
+      ],
+      "answer": "Illyrians",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-02c0d11d9186",
+      "type": "multiple-choice",
+      "prompt": "In World War I, what was the name of the alliance of Germany, Austria-Hungary, the Ottoman Empire, and Bulgaria?",
+      "options": [
+        "The Central Powers",
+        "The Axis Powers",
+        "The Federation of Empires",
+        "Authoritarian Alliance"
+      ],
+      "answer": "The Central Powers",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-02f2404f9815",
+      "type": "multiple-choice",
+      "prompt": "Which city is the seat of government of the Netherlands?",
+      "options": [
+        "The Hague",
+        "Amsterdam",
+        "Utrecht",
+        "Rotterdam"
+      ],
+      "answer": "The Hague",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-048b564bd89a",
+      "type": "multiple-choice",
+      "prompt": "Who was the first president of Kenya?",
+      "options": [
+        "Jomo Kenyatta",
+        "Daniel Moi",
+        "Tom Mboya",
+        "Oginga Odinga"
+      ],
+      "answer": "Jomo Kenyatta",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-04d6f36c3dbf",
+      "type": "multiple-choice",
+      "prompt": "Who is attributed credit for recording the epic poem The Odyssey?",
+      "options": [
+        "Homer",
+        "Aristotle",
+        "Odysseus",
+        "Socrates"
+      ],
+      "answer": "Homer",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-04ece2cac7f6",
+      "type": "multiple-choice",
+      "prompt": "Who famously coined the phrase \"I think, therefore I am\"?",
+      "options": [
+        "Descartes",
+        "Plato",
+        "Aristotle",
+        "Shakespeare"
+      ],
+      "answer": "Descartes",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-05ded6599d50",
+      "type": "multiple-choice",
+      "prompt": "Who was elected leader of the UK Labour Party in September 2015?",
+      "options": [
+        "Jeremy Corbyn",
+        "Ed Miliband",
+        "David Cameron",
+        "Theresa May"
+      ],
+      "answer": "Jeremy Corbyn",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-067086ff1bbc",
+      "type": "multiple-choice",
+      "prompt": "How old was Lyndon B. Johnson when he assumed the role of President of the United States?",
+      "options": [
+        "55",
+        "50",
+        "60",
+        "54"
+      ],
+      "answer": "55",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-06ba61d5c6cd",
+      "type": "multiple-choice",
+      "prompt": "What was the original name of New York City?",
+      "options": [
+        "New Amsterdam",
+        "New London",
+        "New Paris",
+        "New Rome"
+      ],
+      "answer": "New Amsterdam",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-074ad2e81a2a",
+      "type": "multiple-choice",
+      "prompt": "What is the historical name of Sri Lanka?",
+      "options": [
+        "Ceylon",
+        "Myanmar",
+        "Colombo",
+        "Badulla"
+      ],
+      "answer": "Ceylon",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0b6822ec21bd",
+      "type": "multiple-choice",
+      "prompt": "After his loss at the Battle of Waterloo, Napoleon Bonaparte was exiled to which island?",
+      "options": [
+        "St. Helena",
+        "Elba",
+        "Corsica",
+        "Canary"
+      ],
+      "answer": "St. Helena",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0b85c29d67b7",
+      "type": "multiple-choice",
+      "prompt": "When did Norway become free from Sweden?",
+      "options": [
+        "1905",
+        "1925",
+        "1814",
+        "1834"
+      ],
+      "answer": "1905",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0c33ee4ed82f",
+      "type": "multiple-choice",
+      "prompt": "Which of the following countries was not an axis power during World War II?",
+      "options": [
+        "Soviet Union",
+        "Italy",
+        "Germany",
+        "Japan"
+      ],
+      "answer": "Soviet Union",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0cdab717f907",
+      "type": "multiple-choice",
+      "prompt": "On what street did the 1666 Great Fire of London start?",
+      "options": [
+        "Pudding Lane",
+        "Baker Street",
+        "Houses of Parliament",
+        "St Paul's Cathedral"
+      ],
+      "answer": "Pudding Lane",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0da5e407580e",
+      "type": "multiple-choice",
+      "prompt": "The ontological argument for the proof of God's existence is first attributed to whom?",
+      "options": [
+        "Anselm of Canterbury",
+        "René Descartes",
+        "Immanuel Kant",
+        "Aristotle"
+      ],
+      "answer": "Anselm of Canterbury",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-11dd14fd4e06",
+      "type": "multiple-choice",
+      "prompt": "When is the Ides of March?",
+      "options": [
+        "March 15",
+        "March 14",
+        "March 31",
+        "March 1"
+      ],
+      "answer": "March 15",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-12c1c2fa99b7",
+      "type": "multiple-choice",
+      "prompt": "On which day did the attempted coup d'etat of 1991 in the Soviet Union begin?",
+      "options": [
+        "August 19",
+        "August 21",
+        "December 26",
+        "December 24"
+      ],
+      "answer": "August 19",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1327ca044057",
+      "type": "multiple-choice",
+      "prompt": "On which day did construction start on \"The Pentagon\", the headquarters for the United States Department of Defense?",
+      "options": [
+        "September 11, 1941",
+        "June 15, 1947",
+        "January 15, 1943",
+        "September 2, 1962"
+      ],
+      "answer": "September 11, 1941",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-139bc700159c",
+      "type": "multiple-choice",
+      "prompt": "Which letter do you need to have on a European driver license in order to ride any motorbikes?",
+      "options": [
+        "A",
+        "X",
+        "D",
+        "B"
+      ],
+      "answer": "A",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1448e6165eb8",
+      "type": "multiple-choice",
+      "prompt": "When was the city of Rome, Italy founded?",
+      "options": [
+        "753 BCE",
+        "902 BCE",
+        "524 BCE",
+        "697 BCE"
+      ],
+      "answer": "753 BCE",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-17815ceb3c18",
+      "type": "multiple-choice",
+      "prompt": "Between 1973 to 1990, what country was ruled by dictator Augusto Pinochet?",
+      "options": [
+        "Chile",
+        "Ethiopia",
+        "Indonesia",
+        "Nicaragua"
+      ],
+      "answer": "Chile",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1c00c823fd77",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT classified as a Semitic language?",
+      "options": [
+        "Sumerian",
+        "Maltese",
+        "Akkadian",
+        "Mandaic"
+      ],
+      "answer": "Sumerian",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1cf9833c44f2",
+      "type": "multiple-choice",
+      "prompt": "Which British monarch was also known as \"William of Orange\"?",
+      "options": [
+        "William III",
+        "William I",
+        "William II",
+        "William IV"
+      ],
+      "answer": "William III",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1db456001679",
+      "type": "multiple-choice",
+      "prompt": "What country joined the EU in 2013?",
+      "options": [
+        "Croatia",
+        "Bulgaria",
+        "Slovenia",
+        "Turkey"
+      ],
+      "answer": "Croatia",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1df8d4e61e37",
+      "type": "multiple-choice",
+      "prompt": "What date was the first flight of the P-40 Warhawk?",
+      "options": [
+        "October 14 1938",
+        "August 21 1939",
+        "January 12 1940",
+        "June 1 1939"
+      ],
+      "answer": "October 14 1938",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1e8863e23864",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not in the Indo-European language family?",
+      "options": [
+        "Finnish",
+        "English",
+        "Hindi",
+        "Russian"
+      ],
+      "answer": "Finnish",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1f9496cd362e",
+      "type": "multiple-choice",
+      "prompt": "When did the United States formally declare war on Japan, entering World War II?",
+      "options": [
+        "December 8, 1941",
+        "June 6, 1944",
+        "June 22, 1941",
+        "September 1, 1939"
+      ],
+      "answer": "December 8, 1941",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1fd941724382",
+      "type": "multiple-choice",
+      "prompt": "In what year did the First World War end?",
+      "options": [
+        "1918",
+        "1914",
+        "1916",
+        "1912"
+      ],
+      "answer": "1918",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-213b006babdb",
+      "type": "multiple-choice",
+      "prompt": "Who was the first president of the United States?",
+      "options": [
+        "George Washington",
+        "James Madison",
+        "Thomas Jefferson",
+        "James K. Polk"
+      ],
+      "answer": "George Washington",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-213eedab0058",
+      "type": "multiple-choice",
+      "prompt": "Which of the following United States Presidents served the shortest term in office?",
+      "options": [
+        "William Henry Harrison",
+        "Zachary Taylor",
+        "James A. Garfield",
+        "Warren G. Harding"
+      ],
+      "answer": "William Henry Harrison",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-229dff240890",
+      "type": "multiple-choice",
+      "prompt": "What nationality was sultan Saladin?",
+      "options": [
+        "Kurdish",
+        "Arab",
+        "Egyptian",
+        "Syrian"
+      ],
+      "answer": "Kurdish",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-23a74b92749f",
+      "type": "multiple-choice",
+      "prompt": "Which Australian Prime Minister disappeared in 1967 and was never found?",
+      "options": [
+        "Harold Holt",
+        "Paul Keating",
+        "Edmund Barton",
+        "Scott Morrison"
+      ],
+      "answer": "Harold Holt",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-24ac71db4d3d",
+      "type": "multiple-choice",
+      "prompt": "When did Norway get its constitution?",
+      "options": [
+        "1814",
+        "1932",
+        "1905",
+        "1854"
+      ],
+      "answer": "1814",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-24cd955f658e",
+      "type": "multiple-choice",
+      "prompt": "In which year was Nelson Mandela released from prison",
+      "options": [
+        "1990",
+        "1994",
+        "1992",
+        "1980"
+      ],
+      "answer": "1990",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-24d80c1f7a53",
+      "type": "multiple-choice",
+      "prompt": "Which country was Josef Stalin born in?",
+      "options": [
+        "Georgia",
+        "Russia",
+        "Germany",
+        "Poland"
+      ],
+      "answer": "Georgia",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-255cf0625773",
+      "type": "multiple-choice",
+      "prompt": "Spain was formed in 1469 with the marriage of Isabella I of Castile and Ferdinand II of what other Iberian kingdom?",
+      "options": [
+        "Aragon",
+        "Galicia",
+        "León",
+        "Navarre"
+      ],
+      "answer": "Aragon",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-25923fcc01a8",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the chemical that was dropped on Vietnam during the Vietnam war?",
+      "options": [
+        "Agent Orange",
+        "Phosgene",
+        "Mustard Gas",
+        "Hydrogen Cyanide"
+      ],
+      "answer": "Agent Orange",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-25a47315a43b",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the African-American cultural explosion centered in upper Manhattan during the 1920s and 1930s?",
+      "options": [
+        "Harlem Renaissance",
+        "Inwood Renaissance",
+        "Bed-Stuy Renaissance",
+        "Upper East Renaissance"
+      ],
+      "answer": "Harlem Renaissance",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-25f2399086e4",
+      "type": "multiple-choice",
+      "prompt": "During the Mongolian invasions of Japan, what were the Mongol boats mostly stopped by?",
+      "options": [
+        "Typhoons",
+        "Tornados",
+        "Economic depression",
+        "Samurai"
+      ],
+      "answer": "Typhoons",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2696b43a2b9e",
+      "type": "multiple-choice",
+      "prompt": "In what year did the nuclear power plant in Chernobyl melt down?",
+      "options": [
+        "1986",
+        "1991",
+        "1975",
+        "1998"
+      ],
+      "answer": "1986",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-27ea889515f0",
+      "type": "multiple-choice",
+      "prompt": "When was Finland's 100th year of being independent?",
+      "options": [
+        "2017",
+        "2016",
+        "2018",
+        "2015"
+      ],
+      "answer": "2017",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-286aa29e77e8",
+      "type": "multiple-choice",
+      "prompt": "In which year did the First World War begin?",
+      "options": [
+        "1914",
+        "1930",
+        "1917",
+        "1939"
+      ],
+      "answer": "1914",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-287bdbffb2eb",
+      "type": "multiple-choice",
+      "prompt": "When did the British hand-over sovereignty of Hong Kong back to China?",
+      "options": [
+        "1997",
+        "1999",
+        "1841",
+        "1900"
+      ],
+      "answer": "1997",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-29abccd608ee",
+      "type": "multiple-choice",
+      "prompt": "The Bohemian Revolt (1618-1620) started after Protestants in Prague did what to their Catholic Lords Regents?",
+      "options": [
+        "Threw them out of a window",
+        "Insulted their mothers",
+        "Locked them in stockades",
+        "Hung them."
+      ],
+      "answer": "Threw them out of a window",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2c34480e1591",
+      "type": "multiple-choice",
+      "prompt": "When did Vesuvius destroy the city of Pompeii?",
+      "options": [
+        "79 AD",
+        "62 AD",
+        "31 BC",
+        "54 BC"
+      ],
+      "answer": "79 AD",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2caa23a5a115",
+      "type": "multiple-choice",
+      "prompt": "The Korean War started in what year?",
+      "options": [
+        "1950",
+        "1945",
+        "1960",
+        "1912"
+      ],
+      "answer": "1950",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ced0885c50e",
+      "type": "multiple-choice",
+      "prompt": "These two countries held a commonwealth from the 16th to 18th century.",
+      "options": [
+        "Poland and Lithuania",
+        "Hutu and Rwanda",
+        "North Korea and South Korea",
+        "Bangladesh and Bhutan"
+      ],
+      "answer": "Poland and Lithuania",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2d070e2d8d4e",
+      "type": "multiple-choice",
+      "prompt": "The Battle of Hastings was fought in which year?",
+      "options": [
+        "1066",
+        "911",
+        "1204",
+        "1420"
+      ],
+      "answer": "1066",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2e224bfbbbcb",
+      "type": "multiple-choice",
+      "prompt": "After the 1516 Battle of Marj Dabiq, the Ottoman Empire took control of Jerusalem from which sultanate?",
+      "options": [
+        "Mamluk",
+        "Ayyubid",
+        "Ummayyad",
+        "Seljuq"
+      ],
+      "answer": "Mamluk",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2e6dd9d6baf2",
+      "type": "multiple-choice",
+      "prompt": "Who was the first emperor of Rome?",
+      "options": [
+        "Augustus",
+        "Julius Caesar",
+        "Pompey Magnus",
+        "Claudius"
+      ],
+      "answer": "Augustus",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ec91d3b0ca9",
+      "type": "multiple-choice",
+      "prompt": "Who is one of the co-princes of Andorra?",
+      "options": [
+        "The president of France",
+        "The monarch of the UK",
+        "The Pope",
+        "No-one (the position is vacant)"
+      ],
+      "answer": "The president of France",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ecae27e3670",
+      "type": "multiple-choice",
+      "prompt": "How many years did the Hundred Years' War last?",
+      "options": [
+        "116",
+        "100",
+        "90",
+        "101"
+      ],
+      "answer": "116",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ed9403eaf15",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Argentinian presidents was elected in 2015?",
+      "options": [
+        "Mauricio Macri",
+        "Cristina Fernandez de Kirchner",
+        "Nestor Kirchner",
+        "Juan Domingo Peron"
+      ],
+      "answer": "Mauricio Macri",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2fbfb82a5423",
+      "type": "multiple-choice",
+      "prompt": "When did Lithuania declare independence from the Soviet Union?",
+      "options": [
+        "March 11th, 1990",
+        "December 25th, 1991",
+        "December 5th, 1991",
+        "April 20th, 1989"
+      ],
+      "answer": "March 11th, 1990",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-30324c8e74c7",
+      "type": "multiple-choice",
+      "prompt": "How long did the Warsaw Uprising during World War II last?",
+      "options": [
+        "63 Days",
+        "20 Days",
+        "55 Days",
+        "224 Days"
+      ],
+      "answer": "63 Days",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-30a1722eae59",
+      "type": "multiple-choice",
+      "prompt": "Which US state was the first to allow women to vote in 1869?",
+      "options": [
+        "Wyoming",
+        "California",
+        "Delaware",
+        "Virginia"
+      ],
+      "answer": "Wyoming",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-313357ba8afb",
+      "type": "multiple-choice",
+      "prompt": "Before 2016, in which other year did Donald Trump run for President?",
+      "options": [
+        "2000",
+        "2012",
+        "1988",
+        "2008"
+      ],
+      "answer": "2000",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-31de456e518e",
+      "type": "multiple-choice",
+      "prompt": "Which of these theoretical physicists first predicted the existence of antimatter?",
+      "options": [
+        "Paul Dirac",
+        "Niels Bohr",
+        "Albert Einstein",
+        "Werner Heisenberg"
+      ],
+      "answer": "Paul Dirac",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-31f1d03d17b1",
+      "type": "multiple-choice",
+      "prompt": "In 1720, England was in massive debt and became involved in the South Sea Bubble. Who was the main mastermind behind it?",
+      "options": [
+        "John Blunt",
+        "Daniel Defoe",
+        "Robert Harley",
+        "John Churchill"
+      ],
+      "answer": "John Blunt",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-323b453547ce",
+      "type": "multiple-choice",
+      "prompt": "Which building was set aflame on August 24th, 1812?",
+      "options": [
+        "The White House",
+        "Parliament Building",
+        "Grand National Assembly Building",
+        "Palace of the Nation"
+      ],
+      "answer": "The White House",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-34ac272cfa9f",
+      "type": "multiple-choice",
+      "prompt": "According to the United States Constitution, how old must a person be to be elected President of the United States?",
+      "options": [
+        "35",
+        "30",
+        "40",
+        "45"
+      ],
+      "answer": "35",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-35e427e644c2",
+      "type": "multiple-choice",
+      "prompt": "On what day did Germany invade Poland?",
+      "options": [
+        "September 1, 1939",
+        "December 7, 1941",
+        "June 22, 1941",
+        "July 7, 1937"
+      ],
+      "answer": "September 1, 1939",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-364e448aa7e0",
+      "type": "multiple-choice",
+      "prompt": "Who rode on horseback to warn the Minutemen that the British were coming during the U.S. Revolutionary War?",
+      "options": [
+        "Paul Revere",
+        "Thomas Paine",
+        "Henry Longfellow",
+        "Nathan Hale"
+      ],
+      "answer": "Paul Revere",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-376db1dc520f",
+      "type": "multiple-choice",
+      "prompt": "What was Napoleon Bonaparte's name before he changed it?",
+      "options": [
+        "Napoleone di Buonaparte",
+        "Naapolion van Bonijpaart",
+        "Napoleão do Boaparte",
+        "Napoleona de Buenoparte"
+      ],
+      "answer": "Napoleone di Buonaparte",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-37b57c179211",
+      "type": "multiple-choice",
+      "prompt": "Which of the following was Brazil was a former colony under?",
+      "options": [
+        "Portugal",
+        "Spain",
+        "The Netherlands",
+        "France"
+      ],
+      "answer": "Portugal",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a185988328c",
+      "type": "multiple-choice",
+      "prompt": "King Henry VIII was the second monarch of which European royal house?",
+      "options": [
+        "Tudor",
+        "York",
+        "Stuart",
+        "Lancaster"
+      ],
+      "answer": "Tudor",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a1c6954526a",
+      "type": "multiple-choice",
+      "prompt": "The Hagia Sophia was commissioned by which emperor of the Byzantine Empire?",
+      "options": [
+        "Justinian I",
+        "Constantine IV",
+        "Arcadius",
+        "Theodosius the Great"
+      ],
+      "answer": "Justinian I",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a91f81b6e62",
+      "type": "multiple-choice",
+      "prompt": "The 15th century conflicts between the Houses of York and Lancaster are known as the Wars of the what?",
+      "options": [
+        "Wars of the Roses",
+        "Wars of the Lillies",
+        "Wars of the Daffodils",
+        "Wars of the Tulips"
+      ],
+      "answer": "Wars of the Roses",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3bee20ec8f85",
+      "type": "multiple-choice",
+      "prompt": "Who was the first explorer to sail to North America?",
+      "options": [
+        "Leif Erikson",
+        "Christopher Columbus",
+        "Amerigo Vespucci",
+        "Ferdinand Magellan"
+      ],
+      "answer": "Leif Erikson",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3bee9a886b58",
+      "type": "multiple-choice",
+      "prompt": "Which of the following countries was the first to send an object into space?",
+      "options": [
+        "Germany",
+        "USA",
+        "Russia",
+        "China"
+      ],
+      "answer": "Germany",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3c6b45a8fb41",
+      "type": "multiple-choice",
+      "prompt": "The Battle of the Somme in World War I took place in which country?",
+      "options": [
+        "France",
+        "Germany",
+        "Italy",
+        "Austria"
+      ],
+      "answer": "France",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3cb29b7db7a9",
+      "type": "multiple-choice",
+      "prompt": "Who was the leader of Sweden in the Great Northern War?",
+      "options": [
+        "Charles XII",
+        "Per Albin Hansson",
+        "Peter the Great",
+        "Gustavus Adolphus"
+      ],
+      "answer": "Charles XII",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3e67b7afbb5b",
+      "type": "multiple-choice",
+      "prompt": "The \"Trail of Tears\" was a result of which United States President's Indian Removal Policy?",
+      "options": [
+        "Andrew Jackson",
+        "Harry S. Truman",
+        "Martin Van Buren",
+        "John Quincy Adams"
+      ],
+      "answer": "Andrew Jackson",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3e747e4e815e",
+      "type": "multiple-choice",
+      "prompt": "Which of these countries was NOT a part of the Soviet Union?",
+      "options": [
+        "Afghanistan",
+        "Turkmenistan",
+        "Kazakhstan",
+        "Uzbekistan"
+      ],
+      "answer": "Afghanistan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f284db86ac2",
+      "type": "multiple-choice",
+      "prompt": "What is former United States President Bill Clinton's full name?",
+      "options": [
+        "William Jefferson Clinton",
+        "William Roosevelt Clinton",
+        "William Truman Clinton",
+        "William Lincoln Clinton"
+      ],
+      "answer": "William Jefferson Clinton",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f5330ffd199",
+      "type": "multiple-choice",
+      "prompt": "Who is the creator of the soft drink, Dr. Pepper?",
+      "options": [
+        "Charles Alderton",
+        "James Wellington",
+        "Johnson Hinsin",
+        "Boris Heviltik"
+      ],
+      "answer": "Charles Alderton",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3fe2e33b4aa0",
+      "type": "multiple-choice",
+      "prompt": "On which day did ARPANET suffer a 4 hour long network crash?",
+      "options": [
+        "October 27, 1980",
+        "November 21, 1969",
+        "October 29, 1969",
+        "December 9, 1991"
+      ],
+      "answer": "October 27, 1980",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4045e1c090f9",
+      "type": "multiple-choice",
+      "prompt": "Who succeeded Joseph Stalin as General Secretary of the Communist Party of the Soviet Union?",
+      "options": [
+        "Nikita Khrushchev",
+        "Leonid Brezhnev",
+        "Mikhail Gorbachev",
+        "Boris Yeltsin"
+      ],
+      "answer": "Nikita Khrushchev",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-411209ab6afd",
+      "type": "multiple-choice",
+      "prompt": "Which Roman Emperor led the Roman Empire to reach its maximum territorial extent?",
+      "options": [
+        "Trajan",
+        "Julius Caesar",
+        "Claudius",
+        "Constantine the Great"
+      ],
+      "answer": "Trajan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-417f08ec5fd9",
+      "type": "multiple-choice",
+      "prompt": "The Little Entente was an alliance formed against which nation?",
+      "options": [
+        "Hungary",
+        "Germany",
+        "France",
+        "Prussia"
+      ],
+      "answer": "Hungary",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-41f43540659e",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the first permanent English settlement in America?",
+      "options": [
+        "Jamestown",
+        "New York",
+        "St. John's",
+        "Plymouth"
+      ],
+      "answer": "Jamestown",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-42133d3f53a7",
+      "type": "multiple-choice",
+      "prompt": "When did the Battle of the Somme begin?",
+      "options": [
+        "July 1st, 1916",
+        "August 1st, 1916",
+        "July 2nd, 1916",
+        "June 30th, 1916"
+      ],
+      "answer": "July 1st, 1916",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-430a070aa647",
+      "type": "multiple-choice",
+      "prompt": "Which King of England was faced with the Peasants' Revolt in 1381?",
+      "options": [
+        "Richard II",
+        "Edward III",
+        "Edward II",
+        "Henry IV"
+      ],
+      "answer": "Richard II",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-453b1e1bb90c",
+      "type": "multiple-choice",
+      "prompt": "During the Spanish Civil War (1936), Francisco Franco fought for which political faction?",
+      "options": [
+        "Nationalist Spain",
+        "Republican Spain",
+        "Popular Front",
+        "Papal State"
+      ],
+      "answer": "Nationalist Spain",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-456f6c7f7391",
+      "type": "multiple-choice",
+      "prompt": "Who crowned Charlemagne as Holy Roman Emperor on Christmas Day in 800?",
+      "options": [
+        "Pope Leo III",
+        "Pope Urban IV",
+        "Pope Stephen V",
+        "Pope Valentine"
+      ],
+      "answer": "Pope Leo III",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4a53fd5431aa",
+      "type": "multiple-choice",
+      "prompt": "Who was the 45th President of the United States?",
+      "options": [
+        "Donald Trump",
+        "Barack Obama",
+        "Bill Clinton",
+        "George Bush"
+      ],
+      "answer": "Donald Trump",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4a67ce520a97",
+      "type": "multiple-choice",
+      "prompt": "In which country was the Statue of Liberty built and exported to the United States of America?",
+      "options": [
+        "France",
+        "Germany",
+        "Spain",
+        "England"
+      ],
+      "answer": "France",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4a7061ca84c5",
+      "type": "multiple-choice",
+      "prompt": "Which one of these tanks was designed and operated by the United Kingdom?",
+      "options": [
+        "Tog II",
+        "M4 Sherman",
+        "Tiger H1",
+        "T-34"
+      ],
+      "answer": "Tog II",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4abd05773740",
+      "type": "multiple-choice",
+      "prompt": "The original Roman alphabet lacked the following letters EXCEPT:",
+      "options": [
+        "X",
+        "W",
+        "U",
+        "J"
+      ],
+      "answer": "X",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4cb6dd68c342",
+      "type": "multiple-choice",
+      "prompt": "Pol Pot was the former dictator of which country?",
+      "options": [
+        "Cambodia",
+        "Laos",
+        "North Korea",
+        "Vietnam"
+      ],
+      "answer": "Cambodia",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4ddcd55ac94c",
+      "type": "multiple-choice",
+      "prompt": "When was the Gregorian Calendar first adopted?",
+      "options": [
+        "1582",
+        "1623",
+        "1501",
+        "1555"
+      ],
+      "answer": "1582",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4e41df6fc993",
+      "type": "multiple-choice",
+      "prompt": "When was the Grand Patriotic War in the USSR concluded?",
+      "options": [
+        "May 9th, 1945",
+        "September 2nd, 1945",
+        "August 9th, 1945",
+        "December 11th, 1945"
+      ],
+      "answer": "May 9th, 1945",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4ee0e2fdd801",
+      "type": "multiple-choice",
+      "prompt": "What year did the Battle of Agincourt take place?",
+      "options": [
+        "1415",
+        "1463",
+        "1401",
+        "1422"
+      ],
+      "answer": "1415",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4f11118980a7",
+      "type": "multiple-choice",
+      "prompt": "When did the Byzantine Empire collapse?",
+      "options": [
+        "1453",
+        "1299",
+        "1353",
+        "1498"
+      ],
+      "answer": "1453",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4f12e66c2c24",
+      "type": "multiple-choice",
+      "prompt": "When was Adolf Hitler appointed as Chancellor of Germany?",
+      "options": [
+        "January 30, 1933",
+        "September 1, 1939",
+        "February 27, 1933",
+        "October 6, 1939"
+      ],
+      "answer": "January 30, 1933",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4f158cf13a56",
+      "type": "multiple-choice",
+      "prompt": "Which former US president was nicknamed \"Teddy\" after he refused to shoot a defenseless black bear?",
+      "options": [
+        "Theodore Roosevelt",
+        "Woodrow Wilson",
+        "James F. Fielder",
+        "Andrew Jackson"
+      ],
+      "answer": "Theodore Roosevelt",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4f472efe10d4",
+      "type": "multiple-choice",
+      "prompt": "When was \"The Gadget\", the first nuclear device to be detonated, tested?",
+      "options": [
+        "July 16, 1945",
+        "June 22, 1945",
+        "August 6, 1945",
+        "April 5, 1945"
+      ],
+      "answer": "July 16, 1945",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-50a97417b208",
+      "type": "multiple-choice",
+      "prompt": "Who led the Communist Revolution of Russia?",
+      "options": [
+        "Vladimir Lenin",
+        "Joseph Stalin",
+        "Vladimir Putin",
+        "Mikhail Gorbachev"
+      ],
+      "answer": "Vladimir Lenin",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-50b39b44021d",
+      "type": "multiple-choice",
+      "prompt": "Against which country did the Dutch Republic fight the Eighty Years' War?",
+      "options": [
+        "Spain",
+        "France",
+        "England",
+        "Portugal"
+      ],
+      "answer": "Spain",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5172d54cf970",
+      "type": "multiple-choice",
+      "prompt": "Which United Nations principal organ has been suspended since 1994?",
+      "options": [
+        "Trusteeship Council",
+        "Secretariat",
+        "General Assembly",
+        "Economic and Social Council"
+      ],
+      "answer": "Trusteeship Council",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-517f83eddebe",
+      "type": "multiple-choice",
+      "prompt": "Which of these 1900s tanks were designed and built BEFORE the others?",
+      "options": [
+        "Renault FT",
+        "M4 Sherman",
+        "Panzer IV",
+        "Cromwell"
+      ],
+      "answer": "Renault FT",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-521fae5b4ca1",
+      "type": "multiple-choice",
+      "prompt": "Who tutored Alexander the Great?",
+      "options": [
+        "Aristotle",
+        "Socrates",
+        "Plato",
+        "King Philip"
+      ],
+      "answer": "Aristotle",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-53b46c78efc9",
+      "type": "multiple-choice",
+      "prompt": "Hong Kong was a part of which country's territory before Britain regained it in 1945?",
+      "options": [
+        "Japan",
+        "China",
+        "Philippines",
+        "French Indonesia"
+      ],
+      "answer": "Japan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-56a25d2141f7",
+      "type": "multiple-choice",
+      "prompt": "The Fallingwater House, located in Pennsylvania, was designed by which architect?",
+      "options": [
+        "Frank Lloyd Wright",
+        "Antoni Gaudi",
+        "Frank Gehry",
+        "Le Corbusier"
+      ],
+      "answer": "Frank Lloyd Wright",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-58776b0b74aa",
+      "type": "multiple-choice",
+      "prompt": "The Arab Spring was a series of protests and rebellions that began in which of these Arab nations?",
+      "options": [
+        "Tunisia",
+        "Morocco",
+        "Syria",
+        "Egypt"
+      ],
+      "answer": "Tunisia",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5bc469718204",
+      "type": "multiple-choice",
+      "prompt": "During the Roman Triumvirate of 42 BCE, what region of the Roman Republic was given to Lepidus?",
+      "options": [
+        "Hispania",
+        "Italia",
+        "Gallia",
+        "Asia"
+      ],
+      "answer": "Hispania",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5ccd4e0c10bf",
+      "type": "multiple-choice",
+      "prompt": "Which U.S. President was in office when the Gulf War began?",
+      "options": [
+        "George H. W. Bush",
+        "Richard Nixon",
+        "George W. Bush",
+        "Ronald Reagan"
+      ],
+      "answer": "George H. W. Bush",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5d62856a8aa7",
+      "type": "multiple-choice",
+      "prompt": "How long did World War II last?",
+      "options": [
+        "6 years",
+        "4 years",
+        "5 years",
+        "7 years"
+      ],
+      "answer": "6 years",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5e67161e61c7",
+      "type": "multiple-choice",
+      "prompt": "Who was the first man to travel into outer space twice?",
+      "options": [
+        "Gus Grissom",
+        "Vladimir Komarov",
+        "Charles Conrad",
+        "Yuri Gagarin"
+      ],
+      "answer": "Gus Grissom",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5e75100628a5",
+      "type": "multiple-choice",
+      "prompt": "What did the abbreviation \"RMS\" stand for in the RMS Titanic in 1912?",
+      "options": [
+        "Royal Mail Ship",
+        "Royal Majesty Service",
+        "Regular Maritime Schedule",
+        "Regulated Maelstrom Sensor"
+      ],
+      "answer": "Royal Mail Ship",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5e7c7fe15e0e",
+      "type": "multiple-choice",
+      "prompt": "America's Strategic Defense System during the Cold War was nicknamed after this famous movie.",
+      "options": [
+        "Star Wars",
+        "Jaws",
+        "Blade Runner",
+        "Alien"
+      ],
+      "answer": "Star Wars",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5ec09ac58768",
+      "type": "multiple-choice",
+      "prompt": "Which nation joined NATO as its 29th member in 2017?",
+      "options": [
+        "Montenegro",
+        "Estonia",
+        "Andorra",
+        "Iceland"
+      ],
+      "answer": "Montenegro",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5f8ba8ffd189",
+      "type": "multiple-choice",
+      "prompt": "Which South American country fought Great Britain over the Falkland Islands in 1982?",
+      "options": [
+        "Argentina",
+        "Brazil",
+        "Chile",
+        "Venezuela"
+      ],
+      "answer": "Argentina",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6026c306b15a",
+      "type": "multiple-choice",
+      "prompt": "What year did the Vietnam War end?",
+      "options": [
+        "1975",
+        "1978",
+        "1967",
+        "1969"
+      ],
+      "answer": "1975",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6444adb45df2",
+      "type": "multiple-choice",
+      "prompt": "What year was the first Pizza Hut restaurant opened?",
+      "options": [
+        "1958",
+        "1976",
+        "1965",
+        "1942"
+      ],
+      "answer": "1958",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-64b2e95ce1b5",
+      "type": "multiple-choice",
+      "prompt": "Which U.S. president was said to have been too honest to lie to his father about chopping down a cherry tree?",
+      "options": [
+        "George Washington",
+        "Abraham Lincoln",
+        "Thomas Jefferson",
+        "James Monroe"
+      ],
+      "answer": "George Washington",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-66837d55f3be",
+      "type": "multiple-choice",
+      "prompt": "In which year did the Invasion of Kuwait by Iraq occur?",
+      "options": [
+        "1990",
+        "1992",
+        "1988",
+        "1986"
+      ],
+      "answer": "1990",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-66ed61de20c3",
+      "type": "multiple-choice",
+      "prompt": "Where was Napoleon Bonaparte born?",
+      "options": [
+        "Corsica",
+        "Normandy",
+        "Brittany",
+        "Paris"
+      ],
+      "answer": "Corsica",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-67799c7e1735",
+      "type": "multiple-choice",
+      "prompt": "The collapse of the Soviet Union took place in which year?",
+      "options": [
+        "1991",
+        "1992",
+        "1891",
+        "1990"
+      ],
+      "answer": "1991",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-67ebc0258555",
+      "type": "multiple-choice",
+      "prompt": "Which of the following battles is often considered as marking the beginning of the fall of the Western Roman Empire?",
+      "options": [
+        "Battle of Adrianople",
+        "Battle of Thessalonica",
+        "Battle of Pollentia",
+        "Battle of Constantinople"
+      ],
+      "answer": "Battle of Adrianople",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6aa48bb29437",
+      "type": "multiple-choice",
+      "prompt": "What was Genghis Khan's real name?",
+      "options": [
+        "Temüjin",
+        "Möngke",
+        "Ögedei",
+        "Temür"
+      ],
+      "answer": "Temüjin",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6ab0e9c84cb3",
+      "type": "multiple-choice",
+      "prompt": "In 1547 who became the 1st Tsar of Russia",
+      "options": [
+        "Ivan the Terrible",
+        "Alexis of Russia",
+        "Mikhail Romanov",
+        "Peter the Great"
+      ],
+      "answer": "Ivan the Terrible",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6baea2364752",
+      "type": "multiple-choice",
+      "prompt": "On which aircraft carrier did the Doolittle Raid launch from on April 18, 1942 during World War II?",
+      "options": [
+        "USS Hornet",
+        "USS Enterprise",
+        "USS Lexington",
+        "USS Saratoga"
+      ],
+      "answer": "USS Hornet",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6c293e8bff4e",
+      "type": "multiple-choice",
+      "prompt": "In what dialogue did Socrates defend himself to the court of Athens?",
+      "options": [
+        "The Apology",
+        "The Euthyphro",
+        "The Laws",
+        "The Republic"
+      ],
+      "answer": "The Apology",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6e673e978cc9",
+      "type": "multiple-choice",
+      "prompt": "The first Legoland park was opened in 1968 in which of these cities?",
+      "options": [
+        "Billund, Denmark",
+        "Carlsbad, California",
+        "Winter Haven, Florida",
+        "Nagoya, Japan"
+      ],
+      "answer": "Billund, Denmark",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6e9ed4c8a8f7",
+      "type": "multiple-choice",
+      "prompt": "The United States Army Air Corps became the United States Air Force on what date?",
+      "options": [
+        "September 18, 1947",
+        "December 14, 1946",
+        "October 27, 1945",
+        "November 08, 1944"
+      ],
+      "answer": "September 18, 1947",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6ea867d24b24",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Pacific Islander countries is ruled by a constitutional monarchy?",
+      "options": [
+        "Tonga",
+        "Palau",
+        "Fiji",
+        "Kiribati"
+      ],
+      "answer": "Tonga",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6fe9ede94cc4",
+      "type": "multiple-choice",
+      "prompt": "Which one of these countries was NOT in the Central Powers during WWI?",
+      "options": [
+        "Spain",
+        "Austria-Hungary",
+        "Turkey",
+        "Germany"
+      ],
+      "answer": "Spain",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-704ddf688b77",
+      "type": "multiple-choice",
+      "prompt": "Which of the following physicists did NOT work on the Manhattan project?",
+      "options": [
+        "Murray Gell-Mann",
+        "Richard Feynman",
+        "J. Robert Oppenheimer",
+        "John Von-Neumann"
+      ],
+      "answer": "Murray Gell-Mann",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-70a1cccfcaef",
+      "type": "multiple-choice",
+      "prompt": "What were the first states to break away from Yugoslavia?",
+      "options": [
+        "Slovenia, Croatia",
+        "Macedonia, Montenegro",
+        "Slovenia, Macedonia",
+        "Montenegro, Slovenia"
+      ],
+      "answer": "Slovenia, Croatia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7144899d4e47",
+      "type": "multiple-choice",
+      "prompt": "Which of the following ancient Near Eastern peoples still exists as a modern ethnic group?",
+      "options": [
+        "Assyrians",
+        "Babylonians",
+        "Hittites",
+        "Elamites"
+      ],
+      "answer": "Assyrians",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7191652df59d",
+      "type": "multiple-choice",
+      "prompt": "Who invented the \"Flying Shuttle\" in 1733; one of the key developments in the industrialization of weaving?",
+      "options": [
+        "John Kay",
+        "James Hargreaves",
+        "Richard Arkwright",
+        "John Deere"
+      ],
+      "answer": "John Kay",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-71f6fd00c2b2",
+      "type": "multiple-choice",
+      "prompt": "When did Spanish Peninsular War start?",
+      "options": [
+        "1808",
+        "1806",
+        "1810",
+        "1809"
+      ],
+      "answer": "1808",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7203b13822c4",
+      "type": "multiple-choice",
+      "prompt": "When was the SS or Schutzstaffel established?",
+      "options": [
+        "April 4th, 1925",
+        "September 1st, 1941",
+        "March 8th, 1935",
+        "February 21st, 1926"
+      ],
+      "answer": "April 4th, 1925",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-72d7dfa80584",
+      "type": "multiple-choice",
+      "prompt": "Which of the following years is commonly referred to as the \"Year Without a Summer\"?",
+      "options": [
+        "1816",
+        "1823",
+        "1813",
+        "1808"
+      ],
+      "answer": "1816",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-73278ac858f8",
+      "type": "multiple-choice",
+      "prompt": "Former United States President Bill Clinton famously played which instrument?",
+      "options": [
+        "Saxophone",
+        "Baritone horn",
+        "Piano",
+        "Violin"
+      ],
+      "answer": "Saxophone",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7387344776a4",
+      "type": "multiple-choice",
+      "prompt": "In what year was the last natural case of smallpox documented?",
+      "options": [
+        "1977",
+        "1982",
+        "1980",
+        "1990"
+      ],
+      "answer": "1977",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-755d9fb03bab",
+      "type": "multiple-choice",
+      "prompt": "List the following Iranic empires in chronological order:",
+      "options": [
+        "Median, Achaemenid, Parthian, Sassanid",
+        "Median, Achaemenid, Sassanid, Parthian",
+        "Achaemenid, Median, Parthian, Sassanid",
+        "Achaemenid, Median, Sassanid, Parthian"
+      ],
+      "answer": "Median, Achaemenid, Parthian, Sassanid",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-75b7f8b5e26a",
+      "type": "multiple-choice",
+      "prompt": "During World War I, which nation's monarchs were blood related?",
+      "options": [
+        "England, Germany, Russia",
+        "France, Russia, Germany",
+        "Serbia, Russia, Croatia",
+        "Germany, Spain, Austria"
+      ],
+      "answer": "England, Germany, Russia",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-764eb71e971e",
+      "type": "multiple-choice",
+      "prompt": "When was Napoleon Bonaparte crowned emperor of the French?",
+      "options": [
+        "December 2nd 1804",
+        "July 3rd 1802",
+        "March 8th 1803",
+        "October 15th 1804"
+      ],
+      "answer": "December 2nd 1804",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-76e76d3862c8",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the planned invasion of Japan towards the end of World War II?",
+      "options": [
+        "Operation Downfall",
+        "Operation Boarding Party",
+        "Operation Ironclad",
+        "Operation Aflame"
+      ],
+      "answer": "Operation Downfall",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7799e7257740",
+      "type": "multiple-choice",
+      "prompt": "Who led France during the \"Reign of Terror\" ?",
+      "options": [
+        "Maximilien Robespierre",
+        "Napoleon Bonaparte",
+        "Jean-Paul Marat",
+        "Louis XVI"
+      ],
+      "answer": "Maximilien Robespierre",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-78822dbe9ab1",
+      "type": "multiple-choice",
+      "prompt": "Which famous world leader is famed for the saying, \"Let them eat cake\", yet is rumored that he/she never said it at all?",
+      "options": [
+        "Marie Antoinette",
+        "Czar Nicholas II",
+        "Elizabeth I",
+        "Henry VIII"
+      ],
+      "answer": "Marie Antoinette",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7a144d20a953",
+      "type": "multiple-choice",
+      "prompt": "What was the name of one of the surviving palaces of Henry VIII located near Richmond, London?",
+      "options": [
+        "Hampton Court",
+        "St James's Palace",
+        "Buckingham Palace",
+        "Coughton Court"
+      ],
+      "answer": "Hampton Court",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7a9cac6ce9d2",
+      "type": "multiple-choice",
+      "prompt": "Who was the first ruler of Haiti after the country had gained its independence?",
+      "options": [
+        "Jean-Jacques Dessalines",
+        "Toussaint Louverture",
+        "Henri Christophe",
+        "Alexandre Petion"
+      ],
+      "answer": "Jean-Jacques Dessalines",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7ab4f007b9e5",
+      "type": "multiple-choice",
+      "prompt": "Who became Prime Minister of the United Kingdom in July 2016?",
+      "options": [
+        "Theresa May",
+        "Boris Johnson",
+        "David Cameron",
+        "Tony Blair"
+      ],
+      "answer": "Theresa May",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7abe020ef16e",
+      "type": "multiple-choice",
+      "prompt": "The Thirty Years War ended with which treaty?",
+      "options": [
+        "Peace of Westphalia",
+        "Treaty of Versailles",
+        "Treaty of Paris",
+        "Peace of Prague"
+      ],
+      "answer": "Peace of Westphalia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7b8d3c68b5ed",
+      "type": "multiple-choice",
+      "prompt": "Pianist Frédéric Chopin was a composer of which musical era?",
+      "options": [
+        "Romantic",
+        "Classic",
+        "Baroque",
+        "Renaissance"
+      ],
+      "answer": "Romantic",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7be63425d05b",
+      "type": "multiple-choice",
+      "prompt": "How many sonatas did Ludwig van Beethoven write?",
+      "options": [
+        "32",
+        "50",
+        "31",
+        "21"
+      ],
+      "answer": "32",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7c7cbd425924",
+      "type": "multiple-choice",
+      "prompt": "How old was Adolf Hitler when he died?",
+      "options": [
+        "56",
+        "43",
+        "65",
+        "47"
+      ],
+      "answer": "56",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7d22aca47313",
+      "type": "multiple-choice",
+      "prompt": "According to legend, the ancient Greeks constructed a huge wooden model of which animal to gain entrance to Troy?",
+      "options": [
+        "Horse",
+        "Goat",
+        "Elephant",
+        "Wolf"
+      ],
+      "answer": "Horse",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7eb44197ba51",
+      "type": "multiple-choice",
+      "prompt": "The ancient city of Chichén Itzá was built by which civilization?",
+      "options": [
+        "Mayans",
+        "Aztecs",
+        "Incas",
+        "Toltecs"
+      ],
+      "answer": "Mayans",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7edfb40ac998",
+      "type": "multiple-choice",
+      "prompt": "Which of these founding fathers of the United States of America later became president?",
+      "options": [
+        "James Monroe",
+        "Alexander Hamilton",
+        "Samuel Adams",
+        "Roger Sherman"
+      ],
+      "answer": "James Monroe",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-80e7018667ae",
+      "type": "multiple-choice",
+      "prompt": "Which of his six wives was Henry VIII married to the longest?",
+      "options": [
+        "Catherine of Aragon",
+        "Anne Boleyn",
+        "Jane Seymour",
+        "Catherine Parr"
+      ],
+      "answer": "Catherine of Aragon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8375d0a2771d",
+      "type": "multiple-choice",
+      "prompt": "Who was the Prime Minister of Japan when Japan declared war on the US?",
+      "options": [
+        "Hideki Tojo",
+        "Michinomiya Hirohito",
+        "Isoroku Yamamoto",
+        "Fumimaro Konoe"
+      ],
+      "answer": "Hideki Tojo",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-838dfd245d53",
+      "type": "multiple-choice",
+      "prompt": "In what year was the famous 45 foot tall Hollywood sign first erected?",
+      "options": [
+        "1923",
+        "1903",
+        "1913",
+        "1933"
+      ],
+      "answer": "1923",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-83972bf376f7",
+      "type": "multiple-choice",
+      "prompt": "Who was the British Prime Minister at the outbreak of the Second World War?",
+      "options": [
+        "Neville Chamberlain",
+        "Clement Attlee",
+        "Winston Churchill",
+        "Stanley Baldwin"
+      ],
+      "answer": "Neville Chamberlain",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-839fd70547a4",
+      "type": "multiple-choice",
+      "prompt": "What day did the Battle of Gettysburg begin?",
+      "options": [
+        "July 1, 1863",
+        "September 17, 1862",
+        "July 21, 1861",
+        "Apr 30, 1863"
+      ],
+      "answer": "July 1, 1863",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-84ffe88d7b19",
+      "type": "multiple-choice",
+      "prompt": "Who was the 40th President of the USA?",
+      "options": [
+        "Ronald Reagan",
+        "Jimmy Carter",
+        "Bill Clinton",
+        "Richard Nixon"
+      ],
+      "answer": "Ronald Reagan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8577050e15a1",
+      "type": "multiple-choice",
+      "prompt": "What year did Australia become a federation?",
+      "options": [
+        "1901",
+        "1910",
+        "1899",
+        "1911"
+      ],
+      "answer": "1901",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-86e715db06a7",
+      "type": "multiple-choice",
+      "prompt": "Starting from 2000, China banned manufacturing and sales of all video game consoles. On which year was this ban lifted?",
+      "options": [
+        "2015",
+        "2012",
+        "2008",
+        "2017"
+      ],
+      "answer": "2015",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-87c00992c6d2",
+      "type": "multiple-choice",
+      "prompt": "The Spitfire L.F. Mk IX had what engine?",
+      "options": [
+        "Merlin 66",
+        "Griffon 65",
+        "Merlin 50",
+        "Merlin X"
+      ],
+      "answer": "Merlin 66",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-87d8d2b6c1bb",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Assyrian kings did NOT rule during the Neo-Assyrian Empire?",
+      "options": [
+        "Shamshi-Adad III",
+        "Shalmaneser V",
+        "Esharhaddon",
+        "Ashur-nasir-pal II"
+      ],
+      "answer": "Shamshi-Adad III",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8951964877d5",
+      "type": "multiple-choice",
+      "prompt": "What is the name given to the series of confrontations between the UK and Iceland over North Atlantic fishing rights?",
+      "options": [
+        "The Cod Wars",
+        "The Lobster Wars",
+        "The Halibut Wars",
+        "The Mackerel Wars"
+      ],
+      "answer": "The Cod Wars",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8a21caf05fb2",
+      "type": "multiple-choice",
+      "prompt": "Which German field marshal was known as the 'Desert Fox'?",
+      "options": [
+        "Erwin Rommel",
+        "Ernst Busch",
+        "Wolfram Freiherr von Richthofen",
+        "Wilhelm List"
+      ],
+      "answer": "Erwin Rommel",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8ba2c351768b",
+      "type": "multiple-choice",
+      "prompt": "The creator of the Enigma Cypher and Machine was of what nationality?",
+      "options": [
+        "German",
+        "American",
+        "British",
+        "Polish"
+      ],
+      "answer": "German",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8bd44d73eab9",
+      "type": "multiple-choice",
+      "prompt": "What did Albert Einstein win the Nobel Prize for in 1921?",
+      "options": [
+        "Photoelectric Effect",
+        "Relativity",
+        "Wave-Particle Duality",
+        "Zero-Point Energy"
+      ],
+      "answer": "Photoelectric Effect",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8c387373d89f",
+      "type": "multiple-choice",
+      "prompt": "Who was the last Roman emperor in the Year of Four Emperors (69 AD)?",
+      "options": [
+        "Vespasian",
+        "Vitellius",
+        "Otho",
+        "Galba"
+      ],
+      "answer": "Vespasian",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8cc3422641d2",
+      "type": "multiple-choice",
+      "prompt": "In what year did Texas secede from Mexico?",
+      "options": [
+        "1836",
+        "1838",
+        "1845",
+        "1844"
+      ],
+      "answer": "1836",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8ea9e986bd53",
+      "type": "multiple-choice",
+      "prompt": "What year did Gerald Ford Become President?",
+      "options": [
+        "1974",
+        "1977",
+        "1973",
+        "1969"
+      ],
+      "answer": "1974",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8eb3fe15b295",
+      "type": "multiple-choice",
+      "prompt": "What was the name commonly given to the ancient trade routes that connected the East and West of Eurasia?",
+      "options": [
+        "Silk Road",
+        "Spice Road",
+        "Clay Road",
+        "Salt Road"
+      ],
+      "answer": "Silk Road",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9049e15e32f7",
+      "type": "multiple-choice",
+      "prompt": "Under which name was Rodrigo Borgia made Pope?",
+      "options": [
+        "Alexander VI",
+        "Rodrigo I",
+        "John Paul II",
+        "Pius VII"
+      ],
+      "answer": "Alexander VI",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-915fb154e8f5",
+      "type": "multiple-choice",
+      "prompt": "Who was the first wife of King Henry VIII?",
+      "options": [
+        "Catherine of Aragon",
+        "Jane Seymour",
+        "Anne Boleyn",
+        "Anne of Cleves"
+      ],
+      "answer": "Catherine of Aragon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-917f81297394",
+      "type": "multiple-choice",
+      "prompt": "Which English king was married to Eleanor of Aquitaine?",
+      "options": [
+        "Henry II",
+        "Richard I",
+        "Henry I",
+        "Henry V"
+      ],
+      "answer": "Henry II",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-91c829c8dcc5",
+      "type": "multiple-choice",
+      "prompt": "Who was the first man to travel into outer space?",
+      "options": [
+        "Yuri Gagarin",
+        "Virgil Ivan \"Gus\" Grissom",
+        "Neil Armstrong",
+        "Buzz Aldrin"
+      ],
+      "answer": "Yuri Gagarin",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-92717a7df4df",
+      "type": "multiple-choice",
+      "prompt": "Who was the Confederate general in the American Civil War?",
+      "options": [
+        "Robert E. Lee",
+        "George A. Custer",
+        "Ulysses S. Grant",
+        "George B. McClellan"
+      ],
+      "answer": "Robert E. Lee",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-928e0b1996d9",
+      "type": "multiple-choice",
+      "prompt": "What was the Canada's first capital?",
+      "options": [
+        "Kingston",
+        "Toronto",
+        "Ottawa",
+        "Montreal"
+      ],
+      "answer": "Kingston",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9323b8b5bed0",
+      "type": "multiple-choice",
+      "prompt": "Abolitionist John Brown raided the arsenal in which Virginia Town?",
+      "options": [
+        "Harper's Ferry",
+        "Richmond",
+        "Harrisonburg",
+        "Martinsburg"
+      ],
+      "answer": "Harper's Ferry",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-936e9c6ca0e6",
+      "type": "multiple-choice",
+      "prompt": "What are the first names of the first father and son pair that were both Prime Ministers of Canada?",
+      "options": [
+        "Justin and Pierre",
+        "John and Louis",
+        "Brian and Justin",
+        "Brian and Pierre"
+      ],
+      "answer": "Justin and Pierre",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-93cf3e57156e",
+      "type": "multiple-choice",
+      "prompt": "When was Google founded?",
+      "options": [
+        "September 4, 1998",
+        "October 9, 1997",
+        "December 12, 1989",
+        "February 7th, 2000"
+      ],
+      "answer": "September 4, 1998",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9410160c693d",
+      "type": "multiple-choice",
+      "prompt": "The term Luddite originally applied to disgruntled workers in which industry?",
+      "options": [
+        "Textile",
+        "Farming",
+        "Mining",
+        "Ceramics"
+      ],
+      "answer": "Textile",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-945741050fcb",
+      "type": "multiple-choice",
+      "prompt": "Which day did World War I begin?",
+      "options": [
+        "July 28",
+        "January 28",
+        "June 28",
+        "April 28"
+      ],
+      "answer": "July 28",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-947e1b03ad83",
+      "type": "multiple-choice",
+      "prompt": "Adolf Hitler was born on which date?",
+      "options": [
+        "April 20, 1889",
+        "June 12, 1889",
+        "February 6, 1889",
+        "April 16, 1889"
+      ],
+      "answer": "April 20, 1889",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-95dd16e48bfc",
+      "type": "multiple-choice",
+      "prompt": "When Christopher Columbus sailed to America, what was the first region he arrived in?",
+      "options": [
+        "The Bahamas Archipelago",
+        "Florida",
+        "Isthmus of Panama",
+        "Nicaragua"
+      ],
+      "answer": "The Bahamas Archipelago",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9712d46f25e5",
+      "type": "multiple-choice",
+      "prompt": "Which of the following was not one of Joseph Stalin's ten blows during World War II?",
+      "options": [
+        "Vistula-Oder Offensive",
+        "Crimean Offensive",
+        "Leningrad-Novgorod Offensive",
+        "Operation Bagration"
+      ],
+      "answer": "Vistula-Oder Offensive",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-982912c42cf3",
+      "type": "multiple-choice",
+      "prompt": "How did the Vikings call their short-lived colony in today's Canada?",
+      "options": [
+        "Vínland",
+        "Føroyar",
+        "Hålogaland",
+        "Skåne"
+      ],
+      "answer": "Vínland",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-98d1a091df2f",
+      "type": "multiple-choice",
+      "prompt": "What was the last colony the UK ceded marking the end of the British Empire?",
+      "options": [
+        "Hong Kong",
+        "India",
+        "Australia",
+        "Ireland"
+      ],
+      "answer": "Hong Kong",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9acdf666c85b",
+      "type": "multiple-choice",
+      "prompt": "What was the first sport to have been played on the moon?",
+      "options": [
+        "Golf",
+        "Football",
+        "Tennis",
+        "Soccer"
+      ],
+      "answer": "Golf",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9b2177342830",
+      "type": "multiple-choice",
+      "prompt": "When was the \"Siege of Leningrad\" lifted during World War II?",
+      "options": [
+        "January 1944",
+        "September 1943",
+        "November 1943",
+        "March 1944"
+      ],
+      "answer": "January 1944",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9b96a398b316",
+      "type": "multiple-choice",
+      "prompt": "Which major bank's collapse was notable as one of the causes of the Financial Crisis of 2008?",
+      "options": [
+        "Lehman Brothers",
+        "HSBC",
+        "Barclays",
+        "Lloyds"
+      ],
+      "answer": "Lehman Brothers",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9ba34289d062",
+      "type": "multiple-choice",
+      "prompt": "When did the French Revolution begin?",
+      "options": [
+        "1789",
+        "1823",
+        "1756",
+        "1799"
+      ],
+      "answer": "1789",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9c3427233102",
+      "type": "multiple-choice",
+      "prompt": "How many people are in the U.S. House of Representatives?",
+      "options": [
+        "435",
+        "260",
+        "415",
+        "50"
+      ],
+      "answer": "435",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9cdaba2298c3",
+      "type": "multiple-choice",
+      "prompt": "Which of these countries remained neutral during World War II?",
+      "options": [
+        "Switzerland",
+        "United Kingdom",
+        "France",
+        "Italy"
+      ],
+      "answer": "Switzerland",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9cebce99e92f",
+      "type": "multiple-choice",
+      "prompt": "When was the People's Republic of China founded?",
+      "options": [
+        "October 1, 1949",
+        "April 3, 1947",
+        "May 7, 1945",
+        "December 6, 1950"
+      ],
+      "answer": "October 1, 1949",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9cf65347aa2f",
+      "type": "multiple-choice",
+      "prompt": "In the Seven Wonders of the World, which wonder is the only that has survived to this day?",
+      "options": [
+        "Great Pyramid of Giza",
+        "Colossus of Rhodes",
+        "Lighthouse of Alexandria",
+        "Statue of Zeus at Olympia"
+      ],
+      "answer": "Great Pyramid of Giza",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9d7a0c3c79a3",
+      "type": "multiple-choice",
+      "prompt": "Whose 2016 presidential campaign slogan was \"Make America Great Again\"?",
+      "options": [
+        "Donald Trump",
+        "Ted Cruz",
+        "Marco Rubio",
+        "Bernie Sanders"
+      ],
+      "answer": "Donald Trump",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9e06be988c29",
+      "type": "multiple-choice",
+      "prompt": "What was the code name for the Allied invasion of Southern France on August 15th, 1944?",
+      "options": [
+        "Operation Dragoon",
+        "Operation Overlord",
+        "Operation Market Garden",
+        "Operation Torch"
+      ],
+      "answer": "Operation Dragoon",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9ef8297eeb04",
+      "type": "multiple-choice",
+      "prompt": "How many Sister Ships were related to the Titanic?",
+      "options": [
+        "2",
+        "4",
+        "3",
+        "1"
+      ],
+      "answer": "2",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9fb6e44d4d89",
+      "type": "multiple-choice",
+      "prompt": "The Second Boer War in 1899 was fought where?",
+      "options": [
+        "South Africa",
+        "Argentina",
+        "Nepal",
+        "Bulgaria"
+      ],
+      "answer": "South Africa",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a174c0396b93",
+      "type": "multiple-choice",
+      "prompt": "What was the code name for the German invasion of the Soviet Union in WW2?",
+      "options": [
+        "Operation Barbarossa",
+        "Operation Kaiserschlact",
+        "Operation Unthinkable",
+        "Operation Molotov"
+      ],
+      "answer": "Operation Barbarossa",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a1f7112e148d",
+      "type": "multiple-choice",
+      "prompt": "What year did the Titanic sink?",
+      "options": [
+        "1912",
+        "1930",
+        "1917",
+        "1941"
+      ],
+      "answer": "1912",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a23a4e10a343",
+      "type": "multiple-choice",
+      "prompt": "What year was the Italian firearms manufacturer Beretta founded?",
+      "options": [
+        "1526",
+        "1776",
+        "1923",
+        "1998"
+      ],
+      "answer": "1526",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a286d5c2a953",
+      "type": "multiple-choice",
+      "prompt": "In 1939, Britain and France declared war on Germany after it invaded which country?",
+      "options": [
+        "Poland",
+        "Czechoslovakia",
+        "Austria",
+        "Hungary"
+      ],
+      "answer": "Poland",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a33e23c99fe5",
+      "type": "multiple-choice",
+      "prompt": "Who was the first president born in the independent United States?",
+      "options": [
+        "Martin Van Buren",
+        "John Adams",
+        "George Washington",
+        "James Monroe"
+      ],
+      "answer": "Martin Van Buren",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a50045a60f51",
+      "type": "multiple-choice",
+      "prompt": "Which U.S. President was famously 'attacked' by a swimming rabbit?",
+      "options": [
+        "Jimmy Carter",
+        "Ronald Reagan",
+        "Lyndon B. Johnson",
+        "Gerald Ford"
+      ],
+      "answer": "Jimmy Carter",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a5b8ef7d86b2",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the US Navy spy ship which was attacked and captured by North Korean forces in 1968?",
+      "options": [
+        "USS Pueblo",
+        "USS North Carolina",
+        "USS Constitution",
+        "USS Indianapolis"
+      ],
+      "answer": "USS Pueblo",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a6611b633dfb",
+      "type": "multiple-choice",
+      "prompt": "Which Nation did NOT have a Colony in modern-day North America?",
+      "options": [
+        "Portugal",
+        "Spain",
+        "Sweden",
+        "Netherlands"
+      ],
+      "answer": "Portugal",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a7fcca087e7c",
+      "type": "multiple-choice",
+      "prompt": "How old was the famous King Tutankhamen (Tut) when he died?",
+      "options": [
+        "19",
+        "21",
+        "15",
+        "30"
+      ],
+      "answer": "19",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a8302fcef34b",
+      "type": "multiple-choice",
+      "prompt": "To what political party did Abraham Lincoln belong when elected POTUS?",
+      "options": [
+        "Republican",
+        "Democrat",
+        "Independent",
+        "Whig"
+      ],
+      "answer": "Republican",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a90c667b541c",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT one of Donald Trump's children?",
+      "options": [
+        "Julius",
+        "Donald Jr.",
+        "Ivanka",
+        "Eric"
+      ],
+      "answer": "Julius",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aa525838ce08",
+      "type": "multiple-choice",
+      "prompt": "In which one of these cities did the Great Stink of 1858 occur?",
+      "options": [
+        "London",
+        "Berlin",
+        "New York",
+        "Moscow"
+      ],
+      "answer": "London",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aad0c99d2489",
+      "type": "multiple-choice",
+      "prompt": "Which infamous European traitor was known as \"the last person to enter Parliament with honest intentions\"?",
+      "options": [
+        "Guy Fawkes",
+        "Robert Catesby",
+        "Francis Tresham",
+        "Everard Digby"
+      ],
+      "answer": "Guy Fawkes",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ab61a26eadb5",
+      "type": "multiple-choice",
+      "prompt": "When was the United States National Security Agency established?",
+      "options": [
+        "November 4, 1952",
+        "July 26, 1908",
+        "July 1, 1973",
+        "November 25, 2002"
+      ],
+      "answer": "November 4, 1952",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ae34209c8963",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Physicists aided Nazi Germany in their production of a nuclear weapon?",
+      "options": [
+        "Werner Heisenberg",
+        "John von Neumann",
+        "Albert Einstein",
+        "Max Planck"
+      ],
+      "answer": "Werner Heisenberg",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aeaa805ee189",
+      "type": "multiple-choice",
+      "prompt": "Who was the last emperor of Mexico?",
+      "options": [
+        "Ferdinand Maximilian",
+        "Andrés Manuel López Obrador",
+        "Napoleon III",
+        "Agustín de Iturbide"
+      ],
+      "answer": "Ferdinand Maximilian",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aeb0209505ba",
+      "type": "multiple-choice",
+      "prompt": "Which country attacked the USS Liberty on June 8, 1967?",
+      "options": [
+        "Israel",
+        "Syria",
+        "Saudi Arabia",
+        "Iran"
+      ],
+      "answer": "Israel",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-af098f21a126",
+      "type": "multiple-choice",
+      "prompt": "How many times was Albert Einstein married in his lifetime?",
+      "options": [
+        "Twice",
+        "Five",
+        "Thrice",
+        "Once"
+      ],
+      "answer": "Twice",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b0fea0866c73",
+      "type": "multiple-choice",
+      "prompt": "Who was the main developer of the Suez Canal?",
+      "options": [
+        "Ferdinand de Lesseps",
+        "Louis-Eugène Cavaignac",
+        "John Milton",
+        "Johann Lukas von Hildebrandt"
+      ],
+      "answer": "Ferdinand de Lesseps",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b195379f90c5",
+      "type": "multiple-choice",
+      "prompt": "What was the unofficial name for Germany between 1919 and 1933?",
+      "options": [
+        "Weimar Republic",
+        "German Democratic Republic",
+        "Federal Republic of Germany",
+        "Oesterreich"
+      ],
+      "answer": "Weimar Republic",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b1e06a9035c3",
+      "type": "multiple-choice",
+      "prompt": "Which one of these rulers did not belong to the Habsburg dynasty?",
+      "options": [
+        "Philip V",
+        "Charles V",
+        "Philip II",
+        "Francis Joseph"
+      ],
+      "answer": "Philip V",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b25997dedc75",
+      "type": "multiple-choice",
+      "prompt": "What was the real name of the Albanian national leader Skanderbeg?",
+      "options": [
+        "Gjergj Kastrioti",
+        "Diturak Zhulati",
+        "Iskander Bejko",
+        "Mirash Krasniki"
+      ],
+      "answer": "Gjergj Kastrioti",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b29bc7696d38",
+      "type": "multiple-choice",
+      "prompt": "Who was the first mammal successfully launched into Earth's orbit?",
+      "options": [
+        "Laika, the dog",
+        "Ham, the chimpanzee",
+        "Baker, the monkey",
+        "Belka, the dog"
+      ],
+      "answer": "Laika, the dog",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b2ea8afc5909",
+      "type": "multiple-choice",
+      "prompt": "Who is believed to have been the first European to 'discover' the land of New Zealand?",
+      "options": [
+        "Abel Tasman",
+        "Christopher Columbus",
+        "Jeanne Baré",
+        "John Cabot"
+      ],
+      "answer": "Abel Tasman",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b3ca9ef00b0f",
+      "type": "multiple-choice",
+      "prompt": "What was the official German currency until 2002?",
+      "options": [
+        "Mark",
+        "Frank",
+        "Pound sterling",
+        "Reichtoken"
+      ],
+      "answer": "Mark",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b3e91c0e236b",
+      "type": "multiple-choice",
+      "prompt": "A collection of Sanskrit hymns and verses known as the Vedas are sacred texts in what religion?",
+      "options": [
+        "Hinduism",
+        "Judaism",
+        "Islam",
+        "Buddhism"
+      ],
+      "answer": "Hinduism",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b4edc530d31c",
+      "type": "multiple-choice",
+      "prompt": "When did O, Canada officially become the national anthem?",
+      "options": [
+        "1980",
+        "1950",
+        "1920",
+        "1880"
+      ],
+      "answer": "1980",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b6a02b3f9ad8",
+      "type": "multiple-choice",
+      "prompt": "Which one of these was not a beach landing site in the Invasion of Normandy?",
+      "options": [
+        "Silver",
+        "Gold",
+        "Juno",
+        "Sword"
+      ],
+      "answer": "Silver",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b8f79b18fd07",
+      "type": "multiple-choice",
+      "prompt": "Which modern country is known as \"The Graveyard of Empires\"?",
+      "options": [
+        "Afghanistan",
+        "China",
+        "Iraq",
+        "Russia"
+      ],
+      "answer": "Afghanistan",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bc0b64a88cc4",
+      "type": "multiple-choice",
+      "prompt": "How many women joined the United States Armed Services during World War II?",
+      "options": [
+        "350,000",
+        "225,000",
+        "100,000",
+        "500,000"
+      ],
+      "answer": "350,000",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bd04c64a5bd9",
+      "type": "multiple-choice",
+      "prompt": "In what prison was Adolf Hitler held in 1924?",
+      "options": [
+        "Landsberg Prison",
+        "Spandau Prison",
+        "Ebrach Abbey",
+        "Hohenasperg"
+      ],
+      "answer": "Landsberg Prison",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bd37a9278131",
+      "type": "multiple-choice",
+      "prompt": "When did construction of the Suez Canal finish?",
+      "options": [
+        "1869",
+        "1859",
+        "1860",
+        "1850"
+      ],
+      "answer": "1869",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bea36625ca52",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the Boeing B-29 that dropped the 'Little Boy' atomic bomb on Hiroshima?",
+      "options": [
+        "Enola Gay",
+        "Necessary Evil",
+        "The Great Artiste",
+        "Full House"
+      ],
+      "answer": "Enola Gay",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c020ca5c85da",
+      "type": "multiple-choice",
+      "prompt": "The crown of the Empire State Building was originally built for what purpose?",
+      "options": [
+        "Airship Dock",
+        "Lightning Rod",
+        "Antennae",
+        "Flag Pole"
+      ],
+      "answer": "Airship Dock",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c03a3796ff4c",
+      "type": "multiple-choice",
+      "prompt": "What is widely considered to be the oldest civilization known to mankind?",
+      "options": [
+        "Sumeria",
+        "Babylon",
+        "Assyria",
+        "Phoenicia"
+      ],
+      "answer": "Sumeria",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c0705d51dd2f",
+      "type": "multiple-choice",
+      "prompt": "In what year did the Great Northern War, between Russia and Sweden, end?",
+      "options": [
+        "1721",
+        "1726",
+        "1727",
+        "1724"
+      ],
+      "answer": "1721",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c0c6995405f0",
+      "type": "multiple-choice",
+      "prompt": "Where and when was the first cardboard box made for industrial use?",
+      "options": [
+        "England, 1817",
+        "United States, 1817",
+        "England, 1917",
+        "United States, 1917"
+      ],
+      "answer": "England, 1817",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c32e5c86d053",
+      "type": "multiple-choice",
+      "prompt": "Which countries participated in the Lobster War?",
+      "options": [
+        "France and Brazil",
+        "Canada and Norway",
+        "Australia and New Zealand",
+        "United States and England"
+      ],
+      "answer": "France and Brazil",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c4de1ff677af",
+      "type": "multiple-choice",
+      "prompt": "Toussaint Louverture led a successful slave revolt in which country?",
+      "options": [
+        "Haiti",
+        "France",
+        "Cuba",
+        "United States"
+      ],
+      "answer": "Haiti",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c5eb82b03fc2",
+      "type": "multiple-choice",
+      "prompt": "What year was Canada founded in?",
+      "options": [
+        "1867",
+        "1798",
+        "1859",
+        "1668"
+      ],
+      "answer": "1867",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c842e08bf102",
+      "type": "multiple-choice",
+      "prompt": "During the Wars of the Roses (1455 - 1487) which Englishman was dubbed \"the Kingmaker\"?",
+      "options": [
+        "Richard Neville",
+        "Richard III",
+        "Henry V",
+        "Thomas Warwick"
+      ],
+      "answer": "Richard Neville",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c8452d003d48",
+      "type": "multiple-choice",
+      "prompt": "Who was a military strategist in the Eastern Zhou period?",
+      "options": [
+        "Sun Tzu",
+        "Lu Bu",
+        "Genghis Khan",
+        "Vlad The Impaler"
+      ],
+      "answer": "Sun Tzu",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c85e3f8fbeca",
+      "type": "multiple-choice",
+      "prompt": "What was found in 1946 by two young shepherds near a cave?",
+      "options": [
+        "Dead Sea Scrolls",
+        "The Blackbeard Chest",
+        "Sheep",
+        "The First Oaxaca Cave Sleeper"
+      ],
+      "answer": "Dead Sea Scrolls",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c88c28813034",
+      "type": "multiple-choice",
+      "prompt": "What was the capital of South Vietnam before the Vietnam War?",
+      "options": [
+        "Saigon",
+        "Ho Chi Minh City",
+        "Hanoi",
+        "Hue"
+      ],
+      "answer": "Saigon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c8b3f50f2639",
+      "type": "multiple-choice",
+      "prompt": "The idea of Socialism was articulated and advanced by whom?",
+      "options": [
+        "Karl Marx",
+        "Vladimir Lenin",
+        "Joseph Stalin",
+        "Vladimir Putin"
+      ],
+      "answer": "Karl Marx",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c953e44499d3",
+      "type": "multiple-choice",
+      "prompt": "Who was South Africa's first Black President?",
+      "options": [
+        "Nelson Mandela",
+        "Mangosuthu Buthelezi",
+        "Steve Biko",
+        "Bishop Tutu"
+      ],
+      "answer": "Nelson Mandela",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cc775e5817de",
+      "type": "multiple-choice",
+      "prompt": "In what year did Neil Armstrong and Buzz Aldrin land on the moon?",
+      "options": [
+        "1969",
+        "1965",
+        "1966",
+        "1973"
+      ],
+      "answer": "1969",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ccbbd2959c9d",
+      "type": "multiple-choice",
+      "prompt": "What was Manfred von Richthofen's nickname?",
+      "options": [
+        "The Red Baron",
+        "The High Flying Ace",
+        "The Blue Serpent",
+        "The Germany Gunner"
+      ],
+      "answer": "The Red Baron",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ce413079ebff",
+      "type": "multiple-choice",
+      "prompt": "What year did World War II end?",
+      "options": [
+        "1945",
+        "1943",
+        "1947",
+        "1950"
+      ],
+      "answer": "1945",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cfff7a8ff0ff",
+      "type": "multiple-choice",
+      "prompt": "The RMS Titanic sunk during her maiden voyage from Southampton, England to which American city?",
+      "options": [
+        "New York City",
+        "Boston",
+        "Philadelphia",
+        "Washington"
+      ],
+      "answer": "New York City",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d0d953f418ac",
+      "type": "multiple-choice",
+      "prompt": "With which Greek philosopher would you associate the phrase, \"I know that I know nothing\"?",
+      "options": [
+        "Socrates",
+        "Aristotle",
+        "Plato",
+        "Pythagoras"
+      ],
+      "answer": "Socrates",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d18197a963ee",
+      "type": "multiple-choice",
+      "prompt": "What disease crippled President Franklin D. Roosevelt and led him to help the nation find a cure?",
+      "options": [
+        "Polio",
+        "Cancer",
+        "Meningitis",
+        "HIV"
+      ],
+      "answer": "Polio",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d3f29fc560a9",
+      "type": "multiple-choice",
+      "prompt": "Which country had an \"Orange Revolution\" between 2004 and 2005?",
+      "options": [
+        "Ukraine",
+        "Belarus",
+        "Latvia",
+        "Lithuania"
+      ],
+      "answer": "Ukraine",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d4d71d43fdc9",
+      "type": "multiple-choice",
+      "prompt": "What battle was the longest in World War I, lasting approximately 303 days?",
+      "options": [
+        "Battle of Verdun",
+        "Battle of Passchendaele",
+        "Battle of Amiens",
+        "Battle of Stalingrad"
+      ],
+      "answer": "Battle of Verdun",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d4dff78cf635",
+      "type": "multiple-choice",
+      "prompt": "Which former US president used \"Let's Make America Great Again\" as his campaign slogan before Donald Trump's campaign?",
+      "options": [
+        "Ronald Reagan",
+        "Jimmy Carter",
+        "Gerald Ford",
+        "Richard Nixon"
+      ],
+      "answer": "Ronald Reagan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d68931851eb8",
+      "type": "multiple-choice",
+      "prompt": "Which modern day country is the region that was known as Phrygia in ancient times?",
+      "options": [
+        "Turkey",
+        "Syria",
+        "Greece",
+        "Egypt"
+      ],
+      "answer": "Turkey",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d869ea41a996",
+      "type": "multiple-choice",
+      "prompt": "When did Jamaica receive its independence from England?",
+      "options": [
+        "1962",
+        "1492",
+        "1963",
+        "1987"
+      ],
+      "answer": "1962",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d8a75710f656",
+      "type": "multiple-choice",
+      "prompt": "Who was the first prime minister of Canada?",
+      "options": [
+        "John Macdonald",
+        "John Abbott",
+        "Alexander Mackenzie",
+        "Robert Borden"
+      ],
+      "answer": "John Macdonald",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-daefbeb1ea70",
+      "type": "multiple-choice",
+      "prompt": "Who discovered Penicillin?",
+      "options": [
+        "Alexander Fleming",
+        "Marie Curie",
+        "Alfred Nobel",
+        "Louis Pasteur"
+      ],
+      "answer": "Alexander Fleming",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-db19831f1493",
+      "type": "multiple-choice",
+      "prompt": "Which naval battle was considered the turning point of the Pacific Ocean Theater during World War 2?",
+      "options": [
+        "Battle of Midway",
+        "Attack on Truk Island",
+        "Attack on Pearl Harbor",
+        "Battle of the Coral Sea"
+      ],
+      "answer": "Battle of Midway",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-db6e6c1d6c6a",
+      "type": "multiple-choice",
+      "prompt": "What age was King Henry V when he died?",
+      "options": [
+        "35",
+        "62",
+        "87",
+        "73"
+      ],
+      "answer": "35",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dc3ea2e60091",
+      "type": "multiple-choice",
+      "prompt": "In what year was the video game company Electronic Arts founded?",
+      "options": [
+        "1982",
+        "1999",
+        "1981",
+        "2005"
+      ],
+      "answer": "1982",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dd9208135dff",
+      "type": "multiple-choice",
+      "prompt": "Which president erased the national debt of the United States?",
+      "options": [
+        "Andrew Jackson",
+        "Ronald Reagan",
+        "John F. Kennedy",
+        "Franklin Roosevelt"
+      ],
+      "answer": "Andrew Jackson",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-de78f85d01b9",
+      "type": "multiple-choice",
+      "prompt": "During what war did the \"Cuban Missile Crisis\" occur?",
+      "options": [
+        "Cold War",
+        "World War I",
+        "World War II",
+        "Revolutionary War"
+      ],
+      "answer": "Cold War",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-df5ad2893ba8",
+      "type": "multiple-choice",
+      "prompt": "Which is the hull NO. of the Fletcher class destroyer Fletcher?",
+      "options": [
+        "DD-445",
+        "DD-992",
+        "DD-444",
+        "DD-446"
+      ],
+      "answer": "DD-445",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e015383d338e",
+      "type": "multiple-choice",
+      "prompt": "What event marked the start of World War II?",
+      "options": [
+        "Invasion of Poland (1939)",
+        "Invasion of Russia (1942)",
+        "Battle of Britain (1940)",
+        "Invasion of Normandy (1944)"
+      ],
+      "answer": "Invasion of Poland (1939)",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e043c846770e",
+      "type": "multiple-choice",
+      "prompt": "Who was the first President of the People's Republic of China?",
+      "options": [
+        "Mao Zedong",
+        "Liu Shaoqi",
+        "Dong Biwu",
+        "Li Xiannian"
+      ],
+      "answer": "Mao Zedong",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e09bc604b4bd",
+      "type": "multiple-choice",
+      "prompt": "What candidate won the 2012 US Presidential Election?",
+      "options": [
+        "Barack Obama",
+        "Mitt Romney",
+        "Bob Hope",
+        "Ross Perot"
+      ],
+      "answer": "Barack Obama",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e09d94c6d2b0",
+      "type": "multiple-choice",
+      "prompt": "What year was the United States Declaration of Independence signed?",
+      "options": [
+        "1776",
+        "1775",
+        "1774",
+        "1777"
+      ],
+      "answer": "1776",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e43ed403c644",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the German offensive operation in October 1941 to take Moscow before winter?",
+      "options": [
+        "Operation Typhoon",
+        "Operation Sunflower",
+        "Operation Barbarossa",
+        "Case Blue"
+      ],
+      "answer": "Operation Typhoon",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e477d07a3b2b",
+      "type": "multiple-choice",
+      "prompt": "Which country were potatoes originally grown?",
+      "options": [
+        "Peru",
+        "United States",
+        "Ireland",
+        "New Zealand"
+      ],
+      "answer": "Peru",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e521f73b4206",
+      "type": "multiple-choice",
+      "prompt": "Which of these positions did the astronomer and physicist Isaac Newton not hold?",
+      "options": [
+        "Surveyor to the City of London",
+        "Professor of Mathematics",
+        "Warden of the Royal Mint",
+        "Member of Parliament"
+      ],
+      "answer": "Surveyor to the City of London",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e5503acfde72",
+      "type": "multiple-choice",
+      "prompt": "Which of these was an official candidate in the 2017 British General Election?",
+      "options": [
+        "Lord Buckethead",
+        "James Francis",
+        "Robert Wimbledon",
+        "Sir Crumpetsby"
+      ],
+      "answer": "Lord Buckethead",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e6b8c511597e",
+      "type": "multiple-choice",
+      "prompt": "The seed drill was invented by which British inventor?",
+      "options": [
+        "Jethro Tull",
+        "Charles Babbage",
+        "Isaac Newton",
+        "J.J Thomson"
+      ],
+      "answer": "Jethro Tull",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e7529d31cc7a",
+      "type": "multiple-choice",
+      "prompt": "Who was the leader of the Communist Party of Yugoslavia ?",
+      "options": [
+        "Josip Broz Tito",
+        "Karadjordje Petrovic",
+        "Milos Obilic",
+        "Aleskandar Petrovic"
+      ],
+      "answer": "Josip Broz Tito",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e8d89b933159",
+      "type": "multiple-choice",
+      "prompt": "Which U.S. president took part in the Potsdam Conference, where the Allies reached a peace settlement with Germany?",
+      "options": [
+        "Harry S. Truman",
+        "Dwight D. Eisenhower",
+        "Franklin D. Roosevelt",
+        "Herbert Hoover"
+      ],
+      "answer": "Harry S. Truman",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e9bb49a8fbe5",
+      "type": "multiple-choice",
+      "prompt": "Which Louis was known as 'The Sun King of France'?",
+      "options": [
+        "Louis XIV",
+        "Louis XIII",
+        "Louis XV",
+        "Louis XVI"
+      ],
+      "answer": "Louis XIV",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eaee087b6ea0",
+      "type": "multiple-choice",
+      "prompt": "In which years did the Battle of Gallipoli take place?",
+      "options": [
+        "1915 - 1916",
+        "1914 - 1918",
+        "1914 - 1915",
+        "1915 - 1918"
+      ],
+      "answer": "1915 - 1916",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ec116e217305",
+      "type": "multiple-choice",
+      "prompt": "Which of these facilities was not present on the Titanic?",
+      "options": [
+        "Fainting room",
+        "Turkish bath",
+        "Kennel",
+        "Squash court"
+      ],
+      "answer": "Fainting room",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ec7aba91ba29",
+      "type": "multiple-choice",
+      "prompt": "Which of these landmarks is not included in the original 'Seven Wonders of the Ancient World'?",
+      "options": [
+        "Great Wall of China",
+        "Great Pyramid of Giza",
+        "Colossus of Rhodes",
+        "Hanging Gardens of Babylon"
+      ],
+      "answer": "Great Wall of China",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ec9f163be335",
+      "type": "multiple-choice",
+      "prompt": "In what year did the Wall Street Crash take place?",
+      "options": [
+        "1929",
+        "1932",
+        "1930",
+        "1925"
+      ],
+      "answer": "1929",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ed80de78fa4c",
+      "type": "multiple-choice",
+      "prompt": "In which year was Constantinople conquered by the Turks?",
+      "options": [
+        "1453",
+        "1435",
+        "1454",
+        "1440"
+      ],
+      "answer": "1453",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-edb31647277f",
+      "type": "multiple-choice",
+      "prompt": "Who was the Prime Minister of the United Kingdom for most of World War II?",
+      "options": [
+        "Winston Churchill",
+        "Neville Chamberlain",
+        "Harold Macmillan",
+        "Edward Heath"
+      ],
+      "answer": "Winston Churchill",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ee81a7132b03",
+      "type": "multiple-choice",
+      "prompt": "Joseph Smith was the founder of what religion?",
+      "options": [
+        "Mormonism",
+        "Buddhism",
+        "Christianity",
+        "Hinduism"
+      ],
+      "answer": "Mormonism",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eed74567ab52",
+      "type": "multiple-choice",
+      "prompt": "What was the total length of the Titanic?",
+      "options": [
+        "882 ft | 268.8 m",
+        "759 ft | 231.3 m",
+        "1042 ft | 317.6 m",
+        "825 ft | 251.5 m"
+      ],
+      "answer": "882 ft | 268.8 m",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f2c4355a98c0",
+      "type": "multiple-choice",
+      "prompt": "The main objective of the German operation \"Case Blue\" during World War II was originally to capture what?",
+      "options": [
+        "Caucasus",
+        "Stalingrad",
+        "Crimea",
+        "Voronezh"
+      ],
+      "answer": "Caucasus",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f300ad75f099",
+      "type": "multiple-choice",
+      "prompt": "What year were the Marian Reforms instituted in the Roman Republic?",
+      "options": [
+        "107 BCE",
+        "42 BCE",
+        "264 BCE",
+        "102 CE"
+      ],
+      "answer": "107 BCE",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f307f87ce83f",
+      "type": "multiple-choice",
+      "prompt": "When did the Battle of the Bulge end?",
+      "options": [
+        "January 25, 1945",
+        "August 6, 1945",
+        "December 7, 1941",
+        "December 16, 1944"
+      ],
+      "answer": "January 25, 1945",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f3de21c46787",
+      "type": "multiple-choice",
+      "prompt": "In what year did the Battle of Verdun take place?",
+      "options": [
+        "1916",
+        "1917",
+        "1915",
+        "1918"
+      ],
+      "answer": "1916",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f655f7103cd8",
+      "type": "multiple-choice",
+      "prompt": "Before the American colonies switched to the Gregorian calendar in 1752, on what date did their new year start?",
+      "options": [
+        "March 25th",
+        "June 1st",
+        "September 25th",
+        "December 1st"
+      ],
+      "answer": "March 25th",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f658b3a6e87d",
+      "type": "multiple-choice",
+      "prompt": "The Panama Canal was finished under the administration of which U.S. president?",
+      "options": [
+        "Woodrow Wilson",
+        "Franklin Delano Roosevelt",
+        "Herbert Hoover",
+        "Theodore Roosevelt"
+      ],
+      "answer": "Woodrow Wilson",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f787a2907197",
+      "type": "multiple-choice",
+      "prompt": "In what year did William the Conqueror take control of England?",
+      "options": [
+        "1066",
+        "1123",
+        "1205",
+        "901"
+      ],
+      "answer": "1066",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f82cc89d5c6b",
+      "type": "multiple-choice",
+      "prompt": "When did the Crisis of the Third Century begin?",
+      "options": [
+        "235 AD",
+        "235 BC",
+        "242 AD",
+        "210 AD"
+      ],
+      "answer": "235 AD",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f91496390276",
+      "type": "multiple-choice",
+      "prompt": "The Ottoman Empire was dissolved after their loss in which war?",
+      "options": [
+        "World War I",
+        "Crimean War",
+        "Serbian Revolution",
+        "Second Balkan War"
+      ],
+      "answer": "World War I",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fa31850dadd0",
+      "type": "multiple-choice",
+      "prompt": "Which Greek god was the god of the Sun?",
+      "options": [
+        "Helios",
+        "Zeus",
+        "Hades",
+        "Poseidon"
+      ],
+      "answer": "Helios",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fc3aa0fa204a",
+      "type": "multiple-choice",
+      "prompt": "What was William Frederick Cody better known as?",
+      "options": [
+        "Buffalo Bill",
+        "Billy the Kid",
+        "Wild Bill Hickok",
+        "Pawnee Bill"
+      ],
+      "answer": "Buffalo Bill",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fcc5d9831aaf",
+      "type": "multiple-choice",
+      "prompt": "Which Apollo mission was the last one in NASA's Apollo program?",
+      "options": [
+        "Apollo 17",
+        "Apollo 13",
+        "Apollo 11",
+        "Apollo 15"
+      ],
+      "answer": "Apollo 17",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fce669d94fc6",
+      "type": "multiple-choice",
+      "prompt": "In what year did the Berlin Wall fall?",
+      "options": [
+        "1989",
+        "1987",
+        "1991",
+        "1993"
+      ],
+      "answer": "1989",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fd497f83402a",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the famous Apache leader who died in 1909 at the age of 70?",
+      "options": [
+        "Geronimo",
+        "Sitting Bull",
+        "Red Cloud",
+        "Crazy Horse"
+      ],
+      "answer": "Geronimo",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ff4a2c3ed2b2",
+      "type": "multiple-choice",
+      "prompt": "What war did George Orwell famously volunteer for and nearly died in?",
+      "options": [
+        "Spanish Civil War",
+        "World War I",
+        "World War II",
+        "Russian Civil War"
+      ],
+      "answer": "Spanish Civil War",
+      "difficulty": "easy",
+      "region": "general"
     }
   ]
 }

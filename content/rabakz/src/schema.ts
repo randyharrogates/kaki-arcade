@@ -107,7 +107,16 @@ export interface DatasetSource {
   /** The dataset's name as it will appear on the credits page. */
   readonly dataset: string;
   readonly licence: string;
+  /** The address of the licence's own text, for the link on the credits page. */
+  readonly licenceUrl?: string;
   readonly url?: string;
+  /**
+   * What the licence requires us to say beside the credit: for a share-alike dataset, that the
+   * questions were adapted and that the adapted bank is offered under the same licence
+   * (RZ-021). Carried into the index for the credits page. Required when the licence is a
+   * share-alike one (its name contains "SA").
+   */
+  readonly notice?: string;
 }
 
 /** A question written for Kaki Arcade. The note says where the fact can be checked. */
@@ -251,7 +260,10 @@ export interface CategoryEntry {
 export interface SourceCredit {
   readonly dataset: string;
   readonly licence: string;
+  readonly licenceUrl?: string;
   readonly url?: string;
+  /** The adaptation and share-alike statement, when the dataset's licence asks for one. */
+  readonly notice?: string;
   readonly questions: number;
 }
 

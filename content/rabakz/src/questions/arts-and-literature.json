@@ -1,0 +1,2702 @@
+{
+  "category": "arts-and-literature",
+  "title": "Arts and literature",
+  "defaultSource": {
+    "kind": "dataset",
+    "dataset": "Open Trivia Database",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "url": "https://opentdb.com",
+    "notice": "Questions from the Open Trivia Database (opentdb.com), licensed under CC BY-SA 4.0. Adapted for Kaki Arcade: selected, screened for an all-ages audience, regrouped and tidied. The adapted questions are offered under the same licence."
+  },
+  "questions": [
+    {
+      "id": "otdb-02cf85bdbca8",
+      "type": "multiple-choice",
+      "prompt": "Who is the author of the series \"Malazan Book of the Fallen\"?",
+      "options": [
+        "Steven Erikson",
+        "Ian Cameron Esslemont",
+        "George R. R. Martin",
+        "J. R. R. Tolkien"
+      ],
+      "answer": "Steven Erikson",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0642e6067264",
+      "type": "multiple-choice",
+      "prompt": "How many plays is Shakespeare generally considered to have written?",
+      "options": [
+        "37",
+        "18",
+        "54",
+        "25"
+      ],
+      "answer": "37",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-085c71153571",
+      "type": "multiple-choice",
+      "prompt": "Which Shakespeare play inspired the musical 'West Side Story'?",
+      "options": [
+        "Romeo & Juliet",
+        "Hamlet",
+        "Macbeth",
+        "Othello"
+      ],
+      "answer": "Romeo & Juliet",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-09560c30aba4",
+      "type": "multiple-choice",
+      "prompt": "When was Salvador Dali's painting, \"The Persistence of Memory,\" completed?",
+      "options": [
+        "1931",
+        "1932",
+        "1929",
+        "1934"
+      ],
+      "answer": "1931",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0bff65e4029c",
+      "type": "multiple-choice",
+      "prompt": "What is the world's oldest known piece of fiction?",
+      "options": [
+        "Epic of Gilgamesh",
+        "Papyrus of Ani",
+        "Code of Hammurabi",
+        "Rosetta Stone"
+      ],
+      "answer": "Epic of Gilgamesh",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0cbd901fd7a1",
+      "type": "multiple-choice",
+      "prompt": "Which artist's style was to use small different colored dots to create a picture?",
+      "options": [
+        "Georges Seurat",
+        "Paul Cézanne",
+        "Vincent Van Gogh",
+        "Henri Rousseau"
+      ],
+      "answer": "Georges Seurat",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0d6882add0dd",
+      "type": "multiple-choice",
+      "prompt": "What is a fundamental element of the Gothic style of architecture?",
+      "options": [
+        "pointed arch",
+        "coffered ceilings",
+        "façades surmounted by a pediment",
+        "internal frescoes"
+      ],
+      "answer": "pointed arch",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0edc1d9de074",
+      "type": "multiple-choice",
+      "prompt": "In the novel \"Lord of the Rings\", how many rings of power were given to the race of man?",
+      "options": [
+        "9",
+        "5",
+        "11",
+        "13"
+      ],
+      "answer": "9",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-126a2567551e",
+      "type": "multiple-choice",
+      "prompt": "Which artist’s studio was known as 'The Factory'?",
+      "options": [
+        "Andy Warhol",
+        "Roy Lichtenstein",
+        "David Hockney",
+        "Peter Blake"
+      ],
+      "answer": "Andy Warhol",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-12bc4011a81f",
+      "type": "multiple-choice",
+      "prompt": "Who is the father of Icarus, who flew too close to the sun?",
+      "options": [
+        "Daedalus",
+        "Minos",
+        "Perseus",
+        "Zeus"
+      ],
+      "answer": "Daedalus",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-15e917a4f021",
+      "type": "multiple-choice",
+      "prompt": "Which author and poet famously wrote the line, \"The female of the species is more deadly than the male\"?",
+      "options": [
+        "Rudyard Kipling",
+        "Edgar Allan Poe",
+        "William Shakespeare",
+        "William Wordsworth"
+      ],
+      "answer": "Rudyard Kipling",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-16b831a71a79",
+      "type": "multiple-choice",
+      "prompt": "What nationality was the famous artist Van Gogh?",
+      "options": [
+        "Dutch",
+        "French",
+        "Russian",
+        "Polish"
+      ],
+      "answer": "Dutch",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-177acdf80dbf",
+      "type": "multiple-choice",
+      "prompt": "Which of these book series is by James Patterson?",
+      "options": [
+        "Maximum Ride",
+        "Harry Potter",
+        "The Legend of Xanth",
+        "The Bartemaeus Trilogy"
+      ],
+      "answer": "Maximum Ride",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-187590fbdda1",
+      "type": "multiple-choice",
+      "prompt": "In African mythology, Anansi is a trickster and storyteller who takes the shape of which animal?",
+      "options": [
+        "Spider",
+        "Wild dog",
+        "Monkey",
+        "Crocodile"
+      ],
+      "answer": "Spider",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-19a97b233033",
+      "type": "multiple-choice",
+      "prompt": "In the Lord of the Rings, who is the father of the dwarf Gimli?",
+      "options": [
+        "Gloin",
+        "Thorin Oakenshield",
+        "Bombur",
+        "Dwalin"
+      ],
+      "answer": "Gloin",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-21bfef075378",
+      "type": "multiple-choice",
+      "prompt": "Talos, the mythical giant bronze man, was the protector of which island?",
+      "options": [
+        "Crete",
+        "Sardinia",
+        "Sicily",
+        "Cyprus"
+      ],
+      "answer": "Crete",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-23da0be86842",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the Mysterious Island, in Jules Verne's \"The Mysterious Island\"?",
+      "options": [
+        "Lincoln Island",
+        "Vulcania Island",
+        "Prometheus Island",
+        "Neptune Island"
+      ],
+      "answer": "Lincoln Island",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-24223bae6eb1",
+      "type": "multiple-choice",
+      "prompt": "What was Sir Handel's original name in \"The Railway Series\" and its animated counterpart \"Thomas and Friends?\"",
+      "options": [
+        "Falcon",
+        "Eagle",
+        "Kyte",
+        "Swallow"
+      ],
+      "answer": "Falcon",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-246cc284a90f",
+      "type": "multiple-choice",
+      "prompt": "What weakpoint of Achilles was exploited by the Trojan prince, Paris?",
+      "options": [
+        "Heel",
+        "Neck",
+        "Back",
+        "Calf"
+      ],
+      "answer": "Heel",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-25591c7ce0fe",
+      "type": "multiple-choice",
+      "prompt": "Who was the only god from Greece who did not get a name change in Rome?",
+      "options": [
+        "Apollo",
+        "Demeter",
+        "Zeus",
+        "Athena"
+      ],
+      "answer": "Apollo",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-25d935c0a18b",
+      "type": "multiple-choice",
+      "prompt": "Who painted the Sistine Chapel?",
+      "options": [
+        "Michelangelo",
+        "Leonardo da Vinci",
+        "Pablo Picasso",
+        "Raphael"
+      ],
+      "answer": "Michelangelo",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-25ec80ba080a",
+      "type": "multiple-choice",
+      "prompt": "How many books are in the Chronicles of Narnia series?",
+      "options": [
+        "7",
+        "6",
+        "8",
+        "5"
+      ],
+      "answer": "7",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-27b575246734",
+      "type": "multiple-choice",
+      "prompt": "Who did Hippomenes defeat in a footrace?",
+      "options": [
+        "Atalanta",
+        "Peleus",
+        "Theseus",
+        "Jason"
+      ],
+      "answer": "Atalanta",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-281de2f0abaf",
+      "type": "multiple-choice",
+      "prompt": "By what nickname is Jack Dawkins known in the Charles Dickens novel, 'Oliver Twist'?",
+      "options": [
+        "The Artful Dodger",
+        "Fagin",
+        "Bull’s-eye",
+        "Mr. Fang"
+      ],
+      "answer": "The Artful Dodger",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-28bf54aa9705",
+      "type": "multiple-choice",
+      "prompt": "\"Doctor Who\" star David Tennant performed in a rendition of which Shakespearean play?",
+      "options": [
+        "Hamlet",
+        "The Tempest",
+        "Othello",
+        "The Taming of the Shrew"
+      ],
+      "answer": "Hamlet",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2d36af07c776",
+      "type": "multiple-choice",
+      "prompt": "The novel \"Of Mice And Men\" was written by what author?",
+      "options": [
+        "John Steinbeck",
+        "George Orwell",
+        "Mark Twain",
+        "Harper Lee"
+      ],
+      "answer": "John Steinbeck",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2d8d74d662c8",
+      "type": "multiple-choice",
+      "prompt": "According to The Hitchhiker's Guide to the Galaxy book, the answer to life, the universe and everything else is...",
+      "options": [
+        "42",
+        "Loving everyone around you",
+        "Chocolate",
+        "Death"
+      ],
+      "answer": "42",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2dbc383530b4",
+      "type": "multiple-choice",
+      "prompt": "Who painted the epic mural Guernica?",
+      "options": [
+        "Pablo Picasso",
+        "Francisco Goya",
+        "Leonardo da Vinci",
+        "Henri Matisse"
+      ],
+      "answer": "Pablo Picasso",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-30e693ef2857",
+      "type": "multiple-choice",
+      "prompt": "Which of these musicals won the Tony Award for Best Musical?",
+      "options": [
+        "Rent",
+        "The Color Purple",
+        "American Idiot",
+        "Newsies"
+      ],
+      "answer": "Rent",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-31b24b015afd",
+      "type": "multiple-choice",
+      "prompt": "In Terry Pratchett's Discworld novel 'Wyrd Sisters', which of these are not one of the three main witches?",
+      "options": [
+        "Winny Hathersham",
+        "Granny Weatherwax",
+        "Nanny Ogg",
+        "Magrat Garlick"
+      ],
+      "answer": "Winny Hathersham",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3523f0e7d459",
+      "type": "multiple-choice",
+      "prompt": "Which fictional English county was the setting for Thomas Hardy's novels?",
+      "options": [
+        "Wessex",
+        "Barsetshire",
+        "Fulchester",
+        "Ambridge"
+      ],
+      "answer": "Wessex",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-35f7d26c50db",
+      "type": "multiple-choice",
+      "prompt": "Who painted the painting \"Nighthawks\"?",
+      "options": [
+        "Edward Hopper",
+        "Johannes Vermeer",
+        "Vincent van Gogh",
+        "Salvador Dali"
+      ],
+      "answer": "Edward Hopper",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-361b46ba3db5",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a work done by Shakespeare?",
+      "options": [
+        "Trial of Temperance",
+        "Measure For Measure",
+        "Titus Andronicus",
+        "Cymbeline"
+      ],
+      "answer": "Trial of Temperance",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3755db0d591d",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the Japanese art of folding paper into decorative shapes and figures?",
+      "options": [
+        "Origami",
+        "Sumi-e",
+        "Ukiyo-e",
+        "Haiku"
+      ],
+      "answer": "Origami",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3775dbd5e501",
+      "type": "multiple-choice",
+      "prompt": "In Les Misérables, who is Prison Code 24601?",
+      "options": [
+        "Jean Valjean",
+        "Marius Pontmercy",
+        "Javert",
+        "Jean Claude Van Damme"
+      ],
+      "answer": "Jean Valjean",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-387f84778faa",
+      "type": "multiple-choice",
+      "prompt": "American illustrator and writer Maurice Sendak is most well-known for writing which children's book?",
+      "options": [
+        "Where The Wild Things Are",
+        "The Neverending Story",
+        "Charlie and the Chocolate Factory",
+        "The Cat in the Hat"
+      ],
+      "answer": "Where The Wild Things Are",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-38abc9e8d399",
+      "type": "multiple-choice",
+      "prompt": "According to Japanese folklore, what is the favorite food of the Kappa.",
+      "options": [
+        "Cucumbers",
+        "Kabocha",
+        "Nasu",
+        "Soba"
+      ],
+      "answer": "Cucumbers",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-38f904c0b389",
+      "type": "multiple-choice",
+      "prompt": "What is the title of the first Sherlock Holmes book by Arthur Conan Doyle?",
+      "options": [
+        "A Study in Scarlet",
+        "The Sign of the Four",
+        "A Case of Identity",
+        "The Doings of Raffles Haw"
+      ],
+      "answer": "A Study in Scarlet",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3946598fc9cd",
+      "type": "multiple-choice",
+      "prompt": "Which of the following authors was not born in England?",
+      "options": [
+        "Arthur Conan Doyle",
+        "Graham Greene",
+        "H G Wells",
+        "Arthur C Clarke"
+      ],
+      "answer": "Arthur Conan Doyle",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a1fbadf4d1f",
+      "type": "multiple-choice",
+      "prompt": "Who wrote \"Harry Potter\"?",
+      "options": [
+        "J.K. Rowling",
+        "J.R.R. Tolkien",
+        "Terry Pratchett",
+        "Daniel Radcliffe"
+      ],
+      "answer": "J.K. Rowling",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3b6200663468",
+      "type": "multiple-choice",
+      "prompt": "What was the pen name of novelist, Mary Ann Evans?",
+      "options": [
+        "George Eliot",
+        "George Orwell",
+        "George Bernard Shaw",
+        "George Saunders"
+      ],
+      "answer": "George Eliot",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3b9d186b3da1",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the fourth book in Stephen King's The Dark Tower series?",
+      "options": [
+        "Wizard and Glass",
+        "Wolves of the Calla",
+        "Hearts in Atlantis",
+        "The Dark Half"
+      ],
+      "answer": "Wizard and Glass",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3db46a1bc98d",
+      "type": "multiple-choice",
+      "prompt": "Which of these Roman gods doesn't have a counterpart in Greek mythology?",
+      "options": [
+        "Janus",
+        "Vulcan",
+        "Juno",
+        "Mars"
+      ],
+      "answer": "Janus",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3ec6cb7d66eb",
+      "type": "multiple-choice",
+      "prompt": "In the \"Harry Potter\" novels, what must a Hogwarts student do to enter the Ravenclaw Common Room?",
+      "options": [
+        "Answer a riddle",
+        "Rhythmically tap barrels with a wand",
+        "Speak a password",
+        "Knock in sequence"
+      ],
+      "answer": "Answer a riddle",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f2b9e0fdf24",
+      "type": "multiple-choice",
+      "prompt": "After England, more Shakespeare plays are set in this present day country than in any other.",
+      "options": [
+        "Italy",
+        "United States",
+        "Greece",
+        "France"
+      ],
+      "answer": "Italy",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4150ccc9e585",
+      "type": "multiple-choice",
+      "prompt": "Who painted \"The Starry Night\"?",
+      "options": [
+        "Vincent van Gogh",
+        "Edvard Munch",
+        "Pablo Picasso",
+        "Claude Monet"
+      ],
+      "answer": "Vincent van Gogh",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-42da46517bb1",
+      "type": "multiple-choice",
+      "prompt": "In the Magic: The Gathering universe, the Fallen Empires expansion takes place on which continent?",
+      "options": [
+        "Sarpadia",
+        "Otaria",
+        "Terisiare",
+        "Shiv"
+      ],
+      "answer": "Sarpadia",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-42f5873eb434",
+      "type": "multiple-choice",
+      "prompt": "Abel Magwitch is a character from which Charles Dickens novel?",
+      "options": [
+        "Great Expectations",
+        "The Pickwick Papers",
+        "Nicholas Nickleby",
+        "Oliver Twist"
+      ],
+      "answer": "Great Expectations",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-43f947463ef9",
+      "type": "multiple-choice",
+      "prompt": "The book \"The Little Prince\" was written by...",
+      "options": [
+        "Antoine de Saint-Exupéry",
+        "Miguel de Cervantes Saavedra",
+        "Jane Austen",
+        "F. Scott Fitzgerald"
+      ],
+      "answer": "Antoine de Saint-Exupéry",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-47c9f9508fc1",
+      "type": "multiple-choice",
+      "prompt": "In \"Last Supper\" by Leonardo Da Vinci, what two colors were the robes worn by Jesus?",
+      "options": [
+        "Red and Blue",
+        "Red and White",
+        "Red and Yellow",
+        "Red and Black"
+      ],
+      "answer": "Red and Blue",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-486d32c8ca91",
+      "type": "multiple-choice",
+      "prompt": "Albrecht Dürer's birthplace and place of death were in...",
+      "options": [
+        "Nürnberg",
+        "Augsburg",
+        "Bamberg",
+        "Berlin"
+      ],
+      "answer": "Nürnberg",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-490ede3e3031",
+      "type": "multiple-choice",
+      "prompt": "What position does Harry Potter play in Quidditch?",
+      "options": [
+        "Seeker",
+        "Beater",
+        "Chaser",
+        "Keeper"
+      ],
+      "answer": "Seeker",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4a74e132369f",
+      "type": "multiple-choice",
+      "prompt": "What play is the quote \"Hell is other people\" from?",
+      "options": [
+        "No Exit",
+        "The Devil and the Good Lord",
+        "The Condemned of Altona",
+        "The Flies"
+      ],
+      "answer": "No Exit",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4b981424556e",
+      "type": "multiple-choice",
+      "prompt": "How many Harry Potter books are there?",
+      "options": [
+        "7",
+        "8",
+        "5",
+        "6"
+      ],
+      "answer": "7",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4c2076a25d2b",
+      "type": "multiple-choice",
+      "prompt": "According to Bram Stoker's novel, in which British coastal town did Dracula come ashore?",
+      "options": [
+        "Whitby",
+        "Scarborough",
+        "Brighton",
+        "Portsmouth"
+      ],
+      "answer": "Whitby",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4d8592b3db06",
+      "type": "multiple-choice",
+      "prompt": "In Greek mythology, Persephone must return to the underworld because she had eaten what kind of seeds?",
+      "options": [
+        "Pomegranate",
+        "Sunflower",
+        "Orange",
+        "Fig"
+      ],
+      "answer": "Pomegranate",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4f2523f89b4b",
+      "type": "multiple-choice",
+      "prompt": "Which of these mythological creatures is said to be half-man and half-horse?",
+      "options": [
+        "Centaur",
+        "Minotaur",
+        "Pegasus",
+        "Gorgon"
+      ],
+      "answer": "Centaur",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4f6193d393fe",
+      "type": "multiple-choice",
+      "prompt": "\"Green Eggs And Ham\" is a book by which author?",
+      "options": [
+        "Dr. Seuss",
+        "Beatrix Potter",
+        "Roald Dahl",
+        "A.A. Milne"
+      ],
+      "answer": "Dr. Seuss",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5131f09ac341",
+      "type": "multiple-choice",
+      "prompt": "Who was the author of the 1954 novel, \"Lord of the Flies\"?",
+      "options": [
+        "William Golding",
+        "Stephen King",
+        "F. Scott Fitzgerald",
+        "Hunter Fox"
+      ],
+      "answer": "William Golding",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-51cd6cbe0fdb",
+      "type": "multiple-choice",
+      "prompt": "In the Harry Potter universe, who does Draco Malfoy end up marrying?",
+      "options": [
+        "Astoria Greengrass",
+        "Pansy Parkinson",
+        "Millicent Bulstrode",
+        "Hermione Granger"
+      ],
+      "answer": "Astoria Greengrass",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-529af0cec569",
+      "type": "multiple-choice",
+      "prompt": "The Norse god Odin has two pet crows named \"Huginn\" and \"Muninn\". What do their names mean?",
+      "options": [
+        "Thought & Memory",
+        "Power & Peace",
+        "War & Learning",
+        "Sleeping & Waking"
+      ],
+      "answer": "Thought & Memory",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-54391dc3d357",
+      "type": "multiple-choice",
+      "prompt": "Which Greek sculptor designed the Athena Parthenos statue inside the Parthenon?",
+      "options": [
+        "Phidias",
+        "Scopas",
+        "Hesiod",
+        "Praxiteles"
+      ],
+      "answer": "Phidias",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-550998a3fa4e",
+      "type": "multiple-choice",
+      "prompt": "Which novel by John Grisham was conceived on a road trip to Florida while thinking about stolen books with his wife?",
+      "options": [
+        "Camino Island",
+        "Rogue Lawyer",
+        "Gray Mountain",
+        "The Litigators"
+      ],
+      "answer": "Camino Island",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5668dc615b66",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not one of the Greek Fates?",
+      "options": [
+        "Narcissus",
+        "Clotho",
+        "Atropos",
+        "Lachesis"
+      ],
+      "answer": "Narcissus",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5988c8637573",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not a piece from the 1950's musical West Side Story?",
+      "options": [
+        "The Back Alley",
+        "Maria",
+        "Tonight",
+        "Mambo"
+      ],
+      "answer": "The Back Alley",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-59f7e0a11e0b",
+      "type": "multiple-choice",
+      "prompt": "In Greek Mythology, who was the daughter of King Minos?",
+      "options": [
+        "Ariadne",
+        "Athena",
+        "Ariel",
+        "Alana"
+      ],
+      "answer": "Ariadne",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5a021a545fc9",
+      "type": "multiple-choice",
+      "prompt": "In which classic novel is there a character named Homer Simpson?",
+      "options": [
+        "The Day of the Locust",
+        "Catch-22",
+        "Of Mice and Men",
+        "A Separate Peace"
+      ],
+      "answer": "The Day of the Locust",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5a607709bc99",
+      "type": "multiple-choice",
+      "prompt": "In the Beatrix Potter books, what type of animal is Tommy Brock?",
+      "options": [
+        "Badger",
+        "Fox",
+        "Frog",
+        "Rabbit"
+      ],
+      "answer": "Badger",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5b6f685a72c4",
+      "type": "multiple-choice",
+      "prompt": "What color is produced by mixing black and white?",
+      "options": [
+        "Grey",
+        "Black",
+        "Brown",
+        "White"
+      ],
+      "answer": "Grey",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5c0169d0e7ee",
+      "type": "multiple-choice",
+      "prompt": "Who is a minor god that is protector and creator of various arts, such as cheese making and bee keeping.",
+      "options": [
+        "Aristaeus",
+        "Autonoe",
+        "Carme",
+        "Cephisso"
+      ],
+      "answer": "Aristaeus",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5c4c6f43021e",
+      "type": "multiple-choice",
+      "prompt": "An Ankh is the Egyptian Hieroglyph for what?",
+      "options": [
+        "Life",
+        "Love",
+        "Hatred",
+        "Poison"
+      ],
+      "answer": "Life",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5dba0f93e6a7",
+      "type": "multiple-choice",
+      "prompt": "In Jeff Wayne's Musical Version of War of the Worlds, the chances of anything coming from Mars are...",
+      "options": [
+        "A million to one",
+        "A billion to one",
+        "A trillion to one",
+        "A hundred to one"
+      ],
+      "answer": "A million to one",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5e9578517ed2",
+      "type": "multiple-choice",
+      "prompt": "In most traditions, who was the wife of Zeus?",
+      "options": [
+        "Hera",
+        "Aphrodite",
+        "Athena",
+        "Hestia"
+      ],
+      "answer": "Hera",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6051bdf7933d",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the protagonist of J.D. Salinger's novel Catcher in the Rye?",
+      "options": [
+        "Holden Caulfield",
+        "Fletcher Christian",
+        "Jay Gatsby",
+        "Randall Flagg"
+      ],
+      "answer": "Holden Caulfield",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-60ee7a5da735",
+      "type": "multiple-choice",
+      "prompt": "Who painted \"American Gothic\"?",
+      "options": [
+        "Grant Wood",
+        "Anita Malfatti",
+        "Pablo Picasso",
+        "Marc Chagall"
+      ],
+      "answer": "Grant Wood",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-61a28176b41f",
+      "type": "multiple-choice",
+      "prompt": "What mythology did the god \"Apollo\" come from?",
+      "options": [
+        "Greek and Roman",
+        "Roman and Spanish",
+        "Greek and Chinese",
+        "Greek, Roman and Norse"
+      ],
+      "answer": "Greek and Roman",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-648afafa5e0b",
+      "type": "multiple-choice",
+      "prompt": "Who was the original author of Frankenstein?",
+      "options": [
+        "Mary Shelley",
+        "Edgar Allan Poe",
+        "Bram Stoker",
+        "H. P. Lovecraft"
+      ],
+      "answer": "Mary Shelley",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6624b1a8396d",
+      "type": "multiple-choice",
+      "prompt": "Neptune's greek name was...",
+      "options": [
+        "Poseidon",
+        "Ares",
+        "Zeus",
+        "Apollo"
+      ],
+      "answer": "Poseidon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-673131fc09c4",
+      "type": "multiple-choice",
+      "prompt": "Who wrote \"A Tale of Two Cities\"?",
+      "options": [
+        "Charles Dickens",
+        "Charles Darwin",
+        "Mark Twain",
+        "Roald Dahl"
+      ],
+      "answer": "Charles Dickens",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-67e016f80bcc",
+      "type": "multiple-choice",
+      "prompt": "What is the name of Broadway's first \"long-run\" musical?",
+      "options": [
+        "The Elves",
+        "Wicked",
+        "Hamilton",
+        "The Book of Mormon"
+      ],
+      "answer": "The Elves",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6bc0775906f9",
+      "type": "multiple-choice",
+      "prompt": "In the year 1818, novelist Mary Shelley is credited with writing a fiction novel and creating this infamous character.",
+      "options": [
+        "Frankenstein's monster",
+        "Dracula",
+        "The Thing",
+        "The Invisible Man"
+      ],
+      "answer": "Frankenstein's monster",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6cb6ebe22221",
+      "type": "multiple-choice",
+      "prompt": "In the Harry Potter universe, what is Cornelius Fudge's middle name?",
+      "options": [
+        "Oswald",
+        "James",
+        "Harold",
+        "Christopher"
+      ],
+      "answer": "Oswald",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6fffd1806210",
+      "type": "multiple-choice",
+      "prompt": "What is Hermione Granger's middle name?",
+      "options": [
+        "Jean",
+        "Jane",
+        "Emma",
+        "Jo"
+      ],
+      "answer": "Jean",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-70f31c4c6380",
+      "type": "multiple-choice",
+      "prompt": "What's Harry Potter's dad's name?",
+      "options": [
+        "James Potter",
+        "Joey Potter",
+        "Frank Potter",
+        "Hairy Potter Sr."
+      ],
+      "answer": "James Potter",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-711e55a65185",
+      "type": "multiple-choice",
+      "prompt": "In which Shakespeare play does the character Marcellus say, \"Something is rotten in the state of Denmark\"?",
+      "options": [
+        "Hamlet",
+        "Macbeth",
+        "King Lear",
+        "Twelfth Night"
+      ],
+      "answer": "Hamlet",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-74302293b3b8",
+      "type": "multiple-choice",
+      "prompt": "Who painted \"Swans Reflecting Elephants\", \"Sleep\", and \"The Persistence of Memory\"?",
+      "options": [
+        "Salvador Dali",
+        "Jackson Pollock",
+        "Vincent van Gogh",
+        "Edgar Degas"
+      ],
+      "answer": "Salvador Dali",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-76f26323a59d",
+      "type": "multiple-choice",
+      "prompt": "What was the first successful and commercially viable photographic technique?",
+      "options": [
+        "The Daguerreotype",
+        "Collodion process",
+        "The Turin Shroud",
+        "Kodachrome film"
+      ],
+      "answer": "The Daguerreotype",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-79859b1fbede",
+      "type": "multiple-choice",
+      "prompt": "Which of these does Charlie NOT read in The Perks of Being a Wallflower?",
+      "options": [
+        "The Grapes of Wrath",
+        "Hamlet",
+        "The Great Gatsby",
+        "Peter Pan"
+      ],
+      "answer": "The Grapes of Wrath",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-79cc23393543",
+      "type": "multiple-choice",
+      "prompt": "Which actor has NOT portrayed Billy Flynn in the musical \"Chicago\"?",
+      "options": [
+        "Christopher Walken",
+        "David Hasselhoff",
+        "Jerry Springer",
+        "Patrick Swayze"
+      ],
+      "answer": "Christopher Walken",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7bb005e516ad",
+      "type": "multiple-choice",
+      "prompt": "In Macbeth, the eyes of what animals were used in the Witches' cauldron?",
+      "options": [
+        "Newts",
+        "Humans",
+        "Sharks",
+        "Squids"
+      ],
+      "answer": "Newts",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7d1f6ca64621",
+      "type": "multiple-choice",
+      "prompt": "Who sculpted the statue of David?",
+      "options": [
+        "Michelangelo",
+        "Gian Lorenzo Bernini",
+        "Auguste Rodin",
+        "Donatello"
+      ],
+      "answer": "Michelangelo",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7dd309cfce9c",
+      "type": "multiple-choice",
+      "prompt": "What was the major distinction between the English and French Gothic styles of architecture?",
+      "options": [
+        "Fan vaulting",
+        "Pinnacles",
+        "Gargoyles",
+        "Hemispherical Domes"
+      ],
+      "answer": "Fan vaulting",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7f9493557a0c",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the Greek god of blacksmiths?",
+      "options": [
+        "Hephaestus",
+        "Dyntos",
+        "Vulcan",
+        "Artagatus"
+      ],
+      "answer": "Hephaestus",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-80cc0c8df738",
+      "type": "multiple-choice",
+      "prompt": "Which figure from Greek mythology traveled to the underworld to return his wife Eurydice to the land of the living?",
+      "options": [
+        "Orpheus",
+        "Hercules",
+        "Perseus",
+        "Daedalus"
+      ],
+      "answer": "Orpheus",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8102ba27e7a7",
+      "type": "multiple-choice",
+      "prompt": "What was Georges Bizet's last opera?",
+      "options": [
+        "Carmen",
+        "Don Rodrigue",
+        "Grisélidis",
+        "Les pêcheurs de perles"
+      ],
+      "answer": "Carmen",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-82a0f7a5cfdd",
+      "type": "multiple-choice",
+      "prompt": "What is another name for La Gioconda / La Joconde?",
+      "options": [
+        "The Mona Lisa",
+        "The Girl with a Pearl Earring",
+        "The Starry Night",
+        "Sunflowers"
+      ],
+      "answer": "The Mona Lisa",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-82ee8819dcb9",
+      "type": "multiple-choice",
+      "prompt": "In the Magic: The Gathering universe, the Antiquities, Ice Age, and Alliances expansions take place on which continent?",
+      "options": [
+        "Terisiare",
+        "Aerona",
+        "Shiv",
+        "Jamuraa"
+      ],
+      "answer": "Terisiare",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-840f49b09aea",
+      "type": "multiple-choice",
+      "prompt": "This Greek mythological figure is the god/goddess of battle strategy (among other things).",
+      "options": [
+        "Athena",
+        "Ares",
+        "Artemis",
+        "Apollo"
+      ],
+      "answer": "Athena",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-84192f528688",
+      "type": "multiple-choice",
+      "prompt": "The World Chess Championship in Chess, Act 1 is set in which Italian city?",
+      "options": [
+        "Merano",
+        "Venice",
+        "Milan",
+        "Rome"
+      ],
+      "answer": "Merano",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8454e24e896f",
+      "type": "multiple-choice",
+      "prompt": "Who wrote the award winning musical \"In The Heights\"?",
+      "options": [
+        "Lin-Manuel Miranda",
+        "Stephen Sondheim",
+        "Francis Scott Key",
+        "John Philip Sousa"
+      ],
+      "answer": "Lin-Manuel Miranda",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8456f5396c1b",
+      "type": "multiple-choice",
+      "prompt": "Which one of these colors are not featured in Mondrian's Broadway Boogie-Woogie?",
+      "options": [
+        "Green",
+        "Blue",
+        "Yellow",
+        "Red"
+      ],
+      "answer": "Green",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-850a0a2e7316",
+      "type": "multiple-choice",
+      "prompt": "The painting \"Guernica\" by Pablo Picasso expressed emotions of dread in response to which war?",
+      "options": [
+        "Spanish Civil War",
+        "World War I",
+        "The Crimean War",
+        "Spanish-American War"
+      ],
+      "answer": "Spanish Civil War",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-85529672eff1",
+      "type": "multiple-choice",
+      "prompt": "What mythological creatures have women's faces and vultures' bodies?",
+      "options": [
+        "Harpies",
+        "Mermaids",
+        "Nymph",
+        "Lilith"
+      ],
+      "answer": "Harpies",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8597f89ac4b9",
+      "type": "multiple-choice",
+      "prompt": "Which famous spy novelist wrote the childrens' story \"Chitty-Chitty-Bang-Bang\"?",
+      "options": [
+        "Ian Fleming",
+        "Joseph Conrad",
+        "John Buchan",
+        "Graham Greene"
+      ],
+      "answer": "Ian Fleming",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-873038fd322b",
+      "type": "multiple-choice",
+      "prompt": "What year did Albrecht Dürer create the painting \"The Young Hare\"?",
+      "options": [
+        "1502",
+        "1702",
+        "1402",
+        "1602"
+      ],
+      "answer": "1502",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-876ee23cd197",
+      "type": "multiple-choice",
+      "prompt": "Who wrote the musical \"Hamilton\"?",
+      "options": [
+        "Lin-Manuel Miranda",
+        "Andrew Lloyd Webber",
+        "Nell Benjamin",
+        "Tom Kitt"
+      ],
+      "answer": "Lin-Manuel Miranda",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-88b68b4038c9",
+      "type": "multiple-choice",
+      "prompt": "Who in Greek mythology, who led the Argonauts in search of the Golden Fleece?",
+      "options": [
+        "Jason",
+        "Castor",
+        "Daedalus",
+        "Odysseus"
+      ],
+      "answer": "Jason",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-89585eb1df09",
+      "type": "multiple-choice",
+      "prompt": "In \"The Lord of the Rings,\" who is the owner of Asfaloth, the horse which brings Frodo to Rivendell?",
+      "options": [
+        "Glorfindel",
+        "Arwen",
+        "Aragorn",
+        "Haldir"
+      ],
+      "answer": "Glorfindel",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-89a5d01dde0d",
+      "type": "multiple-choice",
+      "prompt": "A minotaur is half human half what?",
+      "options": [
+        "Bull",
+        "Cow",
+        "Horse",
+        "Eagle"
+      ],
+      "answer": "Bull",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8aab9a173e07",
+      "type": "multiple-choice",
+      "prompt": "How many paint and pastel versions of \"The Scream\" is Norwegian painter Edvard Munch believed to have produced?",
+      "options": [
+        "4",
+        "1",
+        "3",
+        "2"
+      ],
+      "answer": "4",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8c185c685146",
+      "type": "multiple-choice",
+      "prompt": "When was the play \"Macbeth\" written?",
+      "options": [
+        "1606",
+        "1605",
+        "1723",
+        "1628"
+      ],
+      "answer": "1606",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8c88cfcd78e1",
+      "type": "multiple-choice",
+      "prompt": "The book \"Fahrenheit 451\" was written by whom?",
+      "options": [
+        "Ray Bradbury",
+        "R. L. Stine",
+        "Wolfgang Amadeus Mozart",
+        "Stephen King"
+      ],
+      "answer": "Ray Bradbury",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8dfd68b708d8",
+      "type": "multiple-choice",
+      "prompt": "In Rudyard Kipling's \"The Jungle Book\", what type of snake was Kaa?",
+      "options": [
+        "Python",
+        "Cobra",
+        "Anaconda",
+        "Viper"
+      ],
+      "answer": "Python",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8ed97eace1b7",
+      "type": "multiple-choice",
+      "prompt": "Which greek god/goddess tossed a golden apple with the words \"for the fairest\" into the middle of the feast of the gods?",
+      "options": [
+        "Eris",
+        "Hades",
+        "Ares",
+        "Artemis"
+      ],
+      "answer": "Eris",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-92c516a498bb",
+      "type": "multiple-choice",
+      "prompt": "The Maori hold that which island nation was founded by Kupe, who discovered it under a long white cloud?",
+      "options": [
+        "New Zealand",
+        "Vanuatu",
+        "Fiji",
+        "Hawaii"
+      ],
+      "answer": "New Zealand",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9422b7962c6f",
+      "type": "multiple-choice",
+      "prompt": "The Nike apparel and footwear brand takes its name from the Greek goddess of what?",
+      "options": [
+        "Victory",
+        "Courage",
+        "Strength",
+        "Honor"
+      ],
+      "answer": "Victory",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9472c7e540ac",
+      "type": "multiple-choice",
+      "prompt": "In Norse Mythology, what is the name of the symbol commonly referred to as the \"Tree of Life\"?",
+      "options": [
+        "Yggdrasil",
+        "Ymir",
+        "Tree of the Earth",
+        "Odin's Roots"
+      ],
+      "answer": "Yggdrasil",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-94fbaadcf53a",
+      "type": "multiple-choice",
+      "prompt": "What book series published by Jim Butcher follows a wizard in modern day Chicago?",
+      "options": [
+        "The Dresden Files",
+        "A Hat in Time",
+        "The Cinder Spires",
+        "My Life as a Teenage Wizard"
+      ],
+      "answer": "The Dresden Files",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-97e738f67ed1",
+      "type": "multiple-choice",
+      "prompt": "The novel \"Jane Eyre\" was written by what author?",
+      "options": [
+        "Charlotte Brontë",
+        "Emily Brontë",
+        "Jane Austen",
+        "Louisa May Alcott"
+      ],
+      "answer": "Charlotte Brontë",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9ab9edb72356",
+      "type": "multiple-choice",
+      "prompt": "What is the name of Eragon's dragon in \"Eragon\"?",
+      "options": [
+        "Saphira",
+        "Glaedr",
+        "Thorn",
+        "Arya"
+      ],
+      "answer": "Saphira",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9be579d5451f",
+      "type": "multiple-choice",
+      "prompt": "Who wrote the children's story \"The Little Match Girl\"?",
+      "options": [
+        "Hans Christian Andersen",
+        "Charles Dickens",
+        "Lewis Carroll",
+        "Oscar Wilde"
+      ],
+      "answer": "Hans Christian Andersen",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9ce658127911",
+      "type": "multiple-choice",
+      "prompt": "What is Ron Weasley's middle name?",
+      "options": [
+        "Bilius",
+        "Arthur",
+        "John",
+        "Dominic"
+      ],
+      "answer": "Bilius",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a10c008955b0",
+      "type": "multiple-choice",
+      "prompt": "What nationality was the surrealist painter Salvador Dali?",
+      "options": [
+        "Spanish",
+        "Italian",
+        "French",
+        "Portuguese"
+      ],
+      "answer": "Spanish",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a1f553aadb0f",
+      "type": "multiple-choice",
+      "prompt": "In Alice in Wonderland, what is the name of Alice's kitten?",
+      "options": [
+        "Dinah",
+        "Oscar",
+        "Heath",
+        "Smokey"
+      ],
+      "answer": "Dinah",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a73cdd7a522a",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Mesopotamian mythological figures was NOT a deity?",
+      "options": [
+        "Enkidu",
+        "Enki",
+        "Enlil",
+        "Enkimdu"
+      ],
+      "answer": "Enkidu",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a78d1a2e7b57",
+      "type": "multiple-choice",
+      "prompt": "Which author co-wrote \"The Communist Manifesto\" alongside Karl Marx?",
+      "options": [
+        "Friedrich Engels",
+        "Robert Owen",
+        "Alexander Kerensky",
+        "Paul Lafargue"
+      ],
+      "answer": "Friedrich Engels",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a81e64ba75ce",
+      "type": "multiple-choice",
+      "prompt": "Which of these paintings did Johannes Vermeer not paint?",
+      "options": [
+        "Bacchus",
+        "Girl with a Pearl Earring",
+        "The Milkmaid",
+        "The Lacemaker"
+      ],
+      "answer": "Bacchus",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a87dd17ed62d",
+      "type": "multiple-choice",
+      "prompt": "In Shakespeare's play Julius Caesar, Caesar's last words were...",
+      "options": [
+        "Et tu, Brute?",
+        "Iacta alea est!",
+        "Vidi, vini, vici.",
+        "Aegri somnia vana."
+      ],
+      "answer": "Et tu, Brute?",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aa3c568b3cc7",
+      "type": "multiple-choice",
+      "prompt": "Who played Marquis de Lafayette and Thomas Jefferson in the original Broadway run of Hamilton?",
+      "options": [
+        "Daveed Diggs",
+        "Lin-Manuel Miranda",
+        "Javier Muñoz",
+        "Wayne Brady"
+      ],
+      "answer": "Daveed Diggs",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ab578e012de7",
+      "type": "multiple-choice",
+      "prompt": "Which painting was not made by Vincent Van Gogh?",
+      "options": [
+        "The Ninth Wave",
+        "Café Terrace at Night",
+        "Bedroom In Arles",
+        "Starry Night"
+      ],
+      "answer": "The Ninth Wave",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ab6f5fa1084c",
+      "type": "multiple-choice",
+      "prompt": "The greek god Poseidon was the god of what?",
+      "options": [
+        "The Sea",
+        "War",
+        "Sun",
+        "Fire"
+      ],
+      "answer": "The Sea",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ad08e5e78020",
+      "type": "multiple-choice",
+      "prompt": "In what Harry Potter book was a Horcrux first encountered?",
+      "options": [
+        "The Chamber of Secrets",
+        "The Half-Blood Prince",
+        "The Goblet of Fire",
+        "The Deathly Hallows"
+      ],
+      "answer": "The Chamber of Secrets",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ad7140d8fad6",
+      "type": "multiple-choice",
+      "prompt": "The Andrew Lloyd Webber musical \"Cats\" is based off a book of poems written by which author?",
+      "options": [
+        "T.S. Eliot",
+        "Andrew Lloyd Webber",
+        "Emily Dickinson",
+        "Robert Frost"
+      ],
+      "answer": "T.S. Eliot",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b11de771eaa3",
+      "type": "multiple-choice",
+      "prompt": "J.K. Rowling completed \"Harry Potter and the Deathly Hallows\" in which hotel in Edinburgh, Scotland?",
+      "options": [
+        "The Balmoral",
+        "The Dunstane Hotel",
+        "Hotel Novotel",
+        "Sheraton Grand Hotel & Spa"
+      ],
+      "answer": "The Balmoral",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b166973ad934",
+      "type": "multiple-choice",
+      "prompt": "Who serves as the speaker of the prologue in Shakespeare's Romeo and Juliet?",
+      "options": [
+        "Chorus",
+        "Montague",
+        "Refrain",
+        "Capulet"
+      ],
+      "answer": "Chorus",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b26f27486d3b",
+      "type": "multiple-choice",
+      "prompt": "In The Lies Of Locke Lamora, what does \"Lamora\" mean in Throne Therin?",
+      "options": [
+        "Shadow",
+        "Thievery",
+        "Justice",
+        "Chaos"
+      ],
+      "answer": "Shadow",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b3a7e5e5f023",
+      "type": "multiple-choice",
+      "prompt": "What was the name of Captain Nemo's submarine in \"20,000 Leagues Under the Sea\"?",
+      "options": [
+        "The Nautilus",
+        "The Neptune",
+        "The Poseidon",
+        "The Atlantis"
+      ],
+      "answer": "The Nautilus",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b56fef48edbd",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the Greek god of peaceful deaths?",
+      "options": [
+        "Thanatos",
+        "Tartarus",
+        "Hades",
+        "Moros"
+      ],
+      "answer": "Thanatos",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b85195bfb5d6",
+      "type": "multiple-choice",
+      "prompt": "In the children's book series, where is Paddington Bear originally from?",
+      "options": [
+        "Peru",
+        "India",
+        "Iceland",
+        "Canada"
+      ],
+      "answer": "Peru",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b8ebcaecf462",
+      "type": "multiple-choice",
+      "prompt": "Who painted \"The Scream\"?",
+      "options": [
+        "Edvard Munch",
+        "Vincent Van Gogh",
+        "Picasso",
+        "Henri Matisse"
+      ],
+      "answer": "Edvard Munch",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b911aaee6d37",
+      "type": "multiple-choice",
+      "prompt": "Which Van Gogh painting depicts the view from his asylum in Saint-Rémy-de-Provence in southern France?",
+      "options": [
+        "The Starry Night",
+        "Wheatfields with Crows",
+        "The Sower with Setting Sun",
+        "The Church at Auvers"
+      ],
+      "answer": "The Starry Night",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b93b9f297a0b",
+      "type": "multiple-choice",
+      "prompt": "In Greek mythology, who is the god of wine?",
+      "options": [
+        "Dionysus",
+        "Hephaestus",
+        "Demeter",
+        "Apollo"
+      ],
+      "answer": "Dionysus",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bb34b7ba087f",
+      "type": "multiple-choice",
+      "prompt": "Who wrote the novel \"Moby-Dick\"?",
+      "options": [
+        "Herman Melville",
+        "William Golding",
+        "William Shakespeare",
+        "J. R. R. Tolkien"
+      ],
+      "answer": "Herman Melville",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bc6af4a207fb",
+      "type": "multiple-choice",
+      "prompt": "Who is the musical director for the award winning musical \"Hamilton\"?",
+      "options": [
+        "Alex Lacamoire",
+        "Lin-Manuel Miranda",
+        "Renee Elise-Goldberry",
+        "Leslie Odom Jr."
+      ],
+      "answer": "Alex Lacamoire",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bdb91fafaf2b",
+      "type": "multiple-choice",
+      "prompt": "Which artist painted the late 15th century mural 'The Last Supper'?",
+      "options": [
+        "Leonardo da Vinci",
+        "Piero della Francesca",
+        "Paolo Uccello",
+        "Luca Pacioli"
+      ],
+      "answer": "Leonardo da Vinci",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-be59b75512aa",
+      "type": "multiple-choice",
+      "prompt": "Who designed the Chupa Chups logo?",
+      "options": [
+        "Salvador Dali",
+        "Pablo Picasso",
+        "Andy Warhol",
+        "Vincent van Gogh"
+      ],
+      "answer": "Salvador Dali",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bed04ca75ba7",
+      "type": "multiple-choice",
+      "prompt": "Who was the King of Gods in Ancient Greek mythology?",
+      "options": [
+        "Zeus",
+        "Apollo",
+        "Hermes",
+        "Poseidon"
+      ],
+      "answer": "Zeus",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c0a46d890c6b",
+      "type": "multiple-choice",
+      "prompt": "What is the fourth book of the Old Testament?",
+      "options": [
+        "Numbers",
+        "Genesis",
+        "Exodus",
+        "Leviticus"
+      ],
+      "answer": "Numbers",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c22a13cb588d",
+      "type": "multiple-choice",
+      "prompt": "Which is NOT a book in the Harry Potter Series?",
+      "options": [
+        "The House Elf",
+        "The Chamber of Secrets",
+        "The Prisoner of Azkaban",
+        "The Deathly Hallows"
+      ],
+      "answer": "The House Elf",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c23c283c40d0",
+      "type": "multiple-choice",
+      "prompt": "Which Russian author wrote the epic novel War and Peace?",
+      "options": [
+        "Leo Tolstoy",
+        "Fyodor Dostoyevsky",
+        "Alexander Pushkin",
+        "Vladimir Nabokov"
+      ],
+      "answer": "Leo Tolstoy",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c3628b4f2645",
+      "type": "multiple-choice",
+      "prompt": "Which art movement was Pablo Picasso known for co-founding?",
+      "options": [
+        "Cubism",
+        "Futurism",
+        "Expressionism",
+        "Impressionism"
+      ],
+      "answer": "Cubism",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c6a74022b896",
+      "type": "multiple-choice",
+      "prompt": "Which of these books was NOT written by the Czech author Karel Čapek?",
+      "options": [
+        "Journey to the Center of the Earth",
+        "The War with the Newts",
+        "R.U.R. (Rossum's Universal Robots)",
+        "Dashenka, or the Life of a Puppy"
+      ],
+      "answer": "Journey to the Center of the Earth",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c75ded44399e",
+      "type": "multiple-choice",
+      "prompt": "How many heads does Cerberus have?",
+      "options": [
+        "3",
+        "2",
+        "1",
+        "5"
+      ],
+      "answer": "3",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c862a3e0d8f4",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not a work authored by Fyodor Dostoevsky?",
+      "options": [
+        "Anna Karenina",
+        "Notes from the Underground",
+        "Crime and Punishment",
+        "The Brothers Karamazov"
+      ],
+      "answer": "Anna Karenina",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c9cfbce8871e",
+      "type": "multiple-choice",
+      "prompt": "Which of these is not an additional variation of the color purple?",
+      "options": [
+        "Kobicha",
+        "Byzantium",
+        "Pomp and Power",
+        "Palatinate"
+      ],
+      "answer": "Kobicha",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ca328f1756e0",
+      "type": "multiple-choice",
+      "prompt": "Who was the Roman god of fire?",
+      "options": [
+        "Vulcan",
+        "Apollo",
+        "Jupiter",
+        "Mercury"
+      ],
+      "answer": "Vulcan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cb5489c7a00e",
+      "type": "multiple-choice",
+      "prompt": "Hel was the daughter of which Norse Mythological figure?",
+      "options": [
+        "Loki",
+        "Thor",
+        "Odin",
+        "Balder"
+      ],
+      "answer": "Loki",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cc291a0ce41d",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the wildman that Gilgamesh befriends and goes on adventures with?",
+      "options": [
+        "Enkidu",
+        "Ishtar",
+        "Inanna",
+        "Agga"
+      ],
+      "answer": "Enkidu",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ccaeed0306b3",
+      "type": "multiple-choice",
+      "prompt": "In the novel 1984, written by George Orwell, what is the name of the totalitarian regime that controls Oceania?",
+      "options": [
+        "INGSOC",
+        "Neo-Bolshevism",
+        "Obliteration of the Self",
+        "Earth Alliance"
+      ],
+      "answer": "INGSOC",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cf59617b5561",
+      "type": "multiple-choice",
+      "prompt": "In the book \"The Martian\", how long was Mark Watney trapped on Mars (in Sols)?",
+      "options": [
+        "549 Days",
+        "765 Days",
+        "401 Days",
+        "324 Days"
+      ],
+      "answer": "549 Days",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cfd98a30665a",
+      "type": "multiple-choice",
+      "prompt": "In the \"Harry Potter\" series, what is Headmaster Dumbledore's full name?",
+      "options": [
+        "Albus Percival Wulfric Brian Dumbledore",
+        "Albus Valum Jetta Mobius Dumbledore",
+        "Albus James Lunae Otto Dumbledore",
+        "Albus Valencium Horatio Kul Dumbledore"
+      ],
+      "answer": "Albus Percival Wulfric Brian Dumbledore",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d050b3347383",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the gang that Ponyboy is a part of in the book, The Outsiders?",
+      "options": [
+        "The Greasers",
+        "The Outsiders",
+        "The Mafia",
+        "The Socs"
+      ],
+      "answer": "The Greasers",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d14ed0698b12",
+      "type": "multiple-choice",
+      "prompt": "Who painted the Mona Lisa?",
+      "options": [
+        "Leonardo da Vinci",
+        "Pablo Picasso",
+        "Claude Monet",
+        "Vincent van Gogh"
+      ],
+      "answer": "Leonardo da Vinci",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d371eb63ca4f",
+      "type": "multiple-choice",
+      "prompt": "In the Magic: The Gathering universe, which plane does the Homelands expansion take place in?",
+      "options": [
+        "Ulgrotha",
+        "Bant",
+        "Llanowar",
+        "Tazeem"
+      ],
+      "answer": "Ulgrotha",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d5d666141cb2",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the first human being in Norse mythology?",
+      "options": [
+        "Ask",
+        "Asmund",
+        "Ake",
+        "Asger"
+      ],
+      "answer": "Ask",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d990fc2bcbe8",
+      "type": "multiple-choice",
+      "prompt": "Hera is god of...",
+      "options": [
+        "Marriage",
+        "Agriculture",
+        "Sea",
+        "War"
+      ],
+      "answer": "Marriage",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dcbe8e293b28",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the three headed dog in Harry Potter and the Sorcerer's Stone?",
+      "options": [
+        "Fluffy",
+        "Spike",
+        "Poofy",
+        "Spot"
+      ],
+      "answer": "Fluffy",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-def0249d8102",
+      "type": "multiple-choice",
+      "prompt": "Which of these are the name of a famous marker brand?",
+      "options": [
+        "Copic",
+        "Dopix",
+        "Cofix",
+        "Marx"
+      ],
+      "answer": "Copic",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e1c376fcfa80",
+      "type": "multiple-choice",
+      "prompt": "Who wrote the young adult novel \"The Fault in Our Stars\"?",
+      "options": [
+        "John Green",
+        "Stephenie Meyer",
+        "Suzanne Collins",
+        "Stephen Chbosky"
+      ],
+      "answer": "John Green",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e392e144531e",
+      "type": "multiple-choice",
+      "prompt": "The musical \"Dirty Rotten Scoundrels\" is set in what country?",
+      "options": [
+        "France",
+        "USA",
+        "Germany",
+        "Sweden"
+      ],
+      "answer": "France",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e7f1b897da62",
+      "type": "multiple-choice",
+      "prompt": "Which time signature is commonly known as “Cut Time?”",
+      "options": [
+        "2/2",
+        "4/4",
+        "6/8",
+        "3/4"
+      ],
+      "answer": "2/2",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e88e85e3b40a",
+      "type": "multiple-choice",
+      "prompt": "By what name was the author Eric Blair better known?",
+      "options": [
+        "George Orwell",
+        "Aldous Huxley",
+        "Ernest Hemingway",
+        "Ray Bradbury"
+      ],
+      "answer": "George Orwell",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ea41a2c057e8",
+      "type": "multiple-choice",
+      "prompt": "In \"Little Women\", which of the March sisters married Laurie?",
+      "options": [
+        "Amy",
+        "Beth",
+        "Jo",
+        "Meg"
+      ],
+      "answer": "Amy",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ea4ce923d43a",
+      "type": "multiple-choice",
+      "prompt": "In Romance of the Three Kingdoms, who was not a member of the Peach Garden Oath?",
+      "options": [
+        "Zhao Yun",
+        "Liu Bei",
+        "Guan Yu",
+        "Zhang Fei"
+      ],
+      "answer": "Zhao Yun",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ea821edf6296",
+      "type": "multiple-choice",
+      "prompt": "What is the name of Sherlock Holmes's brother?",
+      "options": [
+        "Mycroft Holmes",
+        "Mederi Holmes",
+        "Martin Holmes",
+        "Herbie Hancock Holmes"
+      ],
+      "answer": "Mycroft Holmes",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-edc0920f1bc5",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the author of book series 'Percy Jackson'?",
+      "options": [
+        "Rick Riordan",
+        "J.K. Rowling",
+        "Sandra Bullock",
+        "Roald Dahl"
+      ],
+      "answer": "Rick Riordan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ee2a67cd6a1f",
+      "type": "multiple-choice",
+      "prompt": "Which American author was also a budding travel writer and wrote of his adventures with his dog Charley?",
+      "options": [
+        "John Steinbeck",
+        "F. Scott Fitzgerald",
+        "Ernest Hemingway",
+        "William Faulkner"
+      ],
+      "answer": "John Steinbeck",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-efb91500a2c2",
+      "type": "multiple-choice",
+      "prompt": "Who is the God Loki's son?",
+      "options": [
+        "Fenrir",
+        "Odin",
+        "Hel",
+        "Sigyn"
+      ],
+      "answer": "Fenrir",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-efd342985cf1",
+      "type": "multiple-choice",
+      "prompt": "What nationality was the famous artist Pablo Picasso?",
+      "options": [
+        "Spanish",
+        "French",
+        "Italian",
+        "German"
+      ],
+      "answer": "Spanish",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f1a5a9144d2a",
+      "type": "multiple-choice",
+      "prompt": "In The Lies of Locke Lamora, what title is Locke known by in the criminal world?",
+      "options": [
+        "The Thorn of Camorr",
+        "The Rose of the Marrows",
+        "The Thorn of Emberlain",
+        "The Thorn of the Marrows"
+      ],
+      "answer": "The Thorn of Camorr",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f3b66d1ac342",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the town in which Lily and James Potter are buried?",
+      "options": [
+        "Godric's Hollow",
+        "Hogsmeade",
+        "Ottery St. Catchpole",
+        "Little Hangleton"
+      ],
+      "answer": "Godric's Hollow",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f416ab2b19b6",
+      "type": "multiple-choice",
+      "prompt": "Who wrote \"The Scarlet Letter\", published in 1850?",
+      "options": [
+        "Nathaniel Hawthorne",
+        "Washington Irving",
+        "James Fenimore Cooper",
+        "Catherine Maria Sedgwick"
+      ],
+      "answer": "Nathaniel Hawthorne",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f491bd3b7b5f",
+      "type": "multiple-choice",
+      "prompt": "Painter Piet Mondrian (1872 - 1944) was a part of what movement?",
+      "options": [
+        "Neoplasticism",
+        "Precisionism",
+        "Cubism",
+        "Impressionism"
+      ],
+      "answer": "Neoplasticism",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f4aa862c75a2",
+      "type": "multiple-choice",
+      "prompt": "Nidhogg is a mythical creature from what mythology?",
+      "options": [
+        "Norse",
+        "Egyptian",
+        "Greek",
+        "Hindu"
+      ],
+      "answer": "Norse",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f55772d19429",
+      "type": "multiple-choice",
+      "prompt": "Who wrote the lyrics for Leonard Bernstein's 1957 Broadway musical West Side Story?",
+      "options": [
+        "Stephen Sondheim",
+        "Himself",
+        "Oscar Hammerstein",
+        "Richard Rodgers"
+      ],
+      "answer": "Stephen Sondheim",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f7c11438516e",
+      "type": "multiple-choice",
+      "prompt": "Who is the Egyptian god of reproduction and lettuce?",
+      "options": [
+        "Min",
+        "Menu",
+        "Mut",
+        "Meret"
+      ],
+      "answer": "Min",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fa0fa0c03db9",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a god in Norse Mythology.",
+      "options": [
+        "Jens",
+        "Loki",
+        "Tyr",
+        "Snotra"
+      ],
+      "answer": "Jens",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fa71eb00a060",
+      "type": "multiple-choice",
+      "prompt": "Who painted the biblical fresco The Creation of Adam?",
+      "options": [
+        "Michelangelo",
+        "Leonardo da Vinci",
+        "Caravaggio",
+        "Rembrandt"
+      ],
+      "answer": "Michelangelo",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fbe1efaba754",
+      "type": "multiple-choice",
+      "prompt": "Which Norse God has a horse named Sleipnir?",
+      "options": [
+        "Odin",
+        "Thor",
+        "Frigg",
+        "Balder"
+      ],
+      "answer": "Odin",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fe599f49d8ef",
+      "type": "multiple-choice",
+      "prompt": "Under what pseudonym did Stephen King publish five novels between 1977 and 1984?",
+      "options": [
+        "Richard Bachman",
+        "J. D. Robb",
+        "Mark Twain",
+        "Lewis Carroll"
+      ],
+      "answer": "Richard Bachman",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fecc4a724e3c",
+      "type": "multiple-choice",
+      "prompt": "The painting \"The Starry Night\" by Vincent van Gogh was part of which art movement?",
+      "options": [
+        "Post-Impressionism",
+        "Romanticism",
+        "Neoclassical",
+        "Impressionism"
+      ],
+      "answer": "Post-Impressionism",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ff072c32f12e",
+      "type": "multiple-choice",
+      "prompt": "Which artist painted “The Treachery of Images,” a painting of a pipe with the description \"this is not a pipe\"?",
+      "options": [
+        "Magritte",
+        "Matisse",
+        "Modigliani",
+        "Munch"
+      ],
+      "answer": "Magritte",
+      "difficulty": "medium",
+      "region": "general"
+    }
+  ]
+}

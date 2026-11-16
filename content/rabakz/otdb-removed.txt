@@ -1,0 +1,322 @@
+# Open Trivia Database questions taken out by a person after reading (R-11).
+#
+# One per line: the question's id, the reason, then " ## " and the question's prompt. The
+# prompt is there for the reader: an id is a hash of the question's words, so if the dataset
+# ever edits a question its id changes, and the prompt is how to find it again. The import
+# (scripts/import-otdb.ts) stops if an id here is not in the download, and says which entries
+# an earlier rule already covers.
+#
+# Only what no pattern can catch belongs here. A fault that is a pattern (a word, a title, a
+# kind of record) belongs in scripts/otdb-screen.ts.
+
+# Builder's read-throughs, first round (samples of 60)
+otdb-0e78f96fe111  "True Capitalist Radio": an obscure internet radio show filed under politics; not general knowledge ## Before 2011, "True Capitalist Radio" was known by a different name. What was that name?
+otdb-7b2c06ebcbb9  the correct option is written "H20" with a zero, so the answer shown is wrong ## What is the chemical makeup of water?
+otdb-4321ecaec0e6  the day the World Wide Web "went online" is disputed (December 1990 or August 1991) ## On which day did the World Wide Web go online?
+otdb-a52e36d97ff2  the answer is a lyric about undressing ("Take off all your clothes") ## According to the American rapper Nelly, what should you do when its hot in here?
+otdb-3ba75179754a  duplicate of otdb-575fc8db2953 (time zones in Russia) ## How many timezones does Russia have?
+otdb-b9b837d4fbdb  duplicate of otdb-832e3b6242f3 (lowest brass instrument) ## In an orchestra, what is the lowest member of the brass family?
+otdb-935d3ac499d9  duplicate of otdb-034f3fdc4973 (Big Brother season 10) ## Who was the winner of "Big Brother" Season 10?
+otdb-feec366e2e9d  duplicate of otdb-213af93d9b01 (the country between France and Spain) ## Which small country is located between the borders of France and Spain?
+otdb-ed73b663a9e6  duplicate of otdb-857f02e003f8 (Premier League 2015-16) ## Who won the premier league title in the 2015-2016 season following a fairy tale run?
+otdb-34aa05bab636  duplicate of otdb-248cbb5c2678 (what SSD stands for) ## What does SSD stand for in the context of computer storage?
+otdb-8023318a19ad  duplicate of otdb-938476ebd2bc (the author of Uzumaki) ## Who is the horror manga artist who made Uzumaki?
+otdb-76b1ddc3d476  duplicate of otdb-00be80398847 (the powerhouse of the cell) ## What is the "powerhouse" of the Eukaryotic animal cell?
+otdb-1f8dbf76559f  about a footballer kicking a spectator: an assault, not a sporting fact ## Which player "kung-fu kicked" a Crystal Palace fan in January 1995?
+otdb-212c9aab468e  "American Vampire": a horror comic for adult readers ## Who was the first American Vampire (Scott Snyder's American Vampire)?
+otdb-6a1737976f73  wrong: human body cells have 46 chromosomes (23 pairs); the answer given is 23 ## How many chromosomes are in your body cells?
+otdb-194c620569e3  a live political dispute (Hong Kong, 2014); not for a party game ## What was the aim of the "Umbrella Revolution" in Hong Kong in 2014?
+otdb-5c0e285cac7f  the premise is wrong: Canada was formed by Confederation in 1867, it did not "leave" one ## When did Canada leave the confederation to become their own nation?
+otdb-0ad96c5d94f6  ambiguous: the animated Transformers film is 1986, the live-action one 2007, and both are options ## In what year was the first Transformers movie released?
+
+# Review round 1, table A: unsuitable for a mixed-age room
+otdb-bee4a4aec331  Scream: who the killers are ## In the movie "Scream" who is Ghost Face?
+otdb-392a8a790e8c  MH370: a regional tragedy, close to home in Singapore ## What was the destination of the missing flight MH370?
+otdb-ec81b3a2c17d  when a rapper died (N.W.A) ## When did the rapper Eazy-E die?
+otdb-4772c3f2e7a5  distractor "No Pads, No Helmets...Just Balls" ## Which of the following is an album by punk rock band Anti-Flag?
+otdb-2b19b41a159c  rude joke names among the distractors ## What is the cartoon character, Andy Capp, known as in Germany?
+otdb-2d4a2873a7c8  a gag dub's religion joke ## In the ADV (English) Dub of the anime "Ghost Stories", which character is portrayed as a Pentacostal Christian?
+otdb-069a936dbc50  the answer is Bill Cosby ## Which of the following figures did NOT have a cameo on "The Drew Carey Show" (1995-2004)?
+otdb-a1688f367e59  a distractor is "sex" romanised from Korean ## What is the romanized Korean word for "heart"?
+
+# Review round 1: factual but adult topics. Dropped by the integrator's default; the owner may restore any of these by deleting its line
+otdb-383b7b3e6e58  Oscar Wilde "imprisoned for being gay" ## Which poet wrote "The Ballad of Reading Gaol" whilst imprisoned for being gay?
+otdb-449cc18beba3  the first lesbian rights organisation ## Where did first known lesbian rights organization in the United States, Daughters of Bilitis, start?
+otdb-39ae74798aba  Van Gogh's ear ## Which artist is famous for cutting off his ear?
+otdb-943bbf2cc672  the cancer Steve Jobs died of ## Apple co-founder Steve Jobs died from complications of which form of cancer?
+otdb-5efe695968b2  a banned Pokémon episode ## What was the reason for the banning of episode 35 of the "Pokémon Original Series" Anime?
+otdb-9c399d0e1517  poker odds ## What are the chances of being dealt a Royal Flush within Poker/Video Poker?
+
+# Review round 1, table B: wrong, out of date, ambiguous or broken
+otdb-163da458dd55  "not an Ed Sheeran album: −": that album came out in 2023 ## Which of these is not an Ed Sheeran album?
+otdb-394944a0ca08  largest known star: estimates were revised ## Which of these stars is the largest?
+otdb-1cfab00701f8  blue roses have been produced by genetic alteration ## Which color cannot be produced in Roses, even through genetic alteration?
+otdb-0d75dfc2b12f  the song "September" is from 1978, not 1971 ## What date is referenced in the 1971 song "September" by Earth, Wind & Fire?
+otdb-4db326185299  the year the Mona Lisa was finished is disputed ## What year was the Mona Lisa finished?
+otdb-94181c3e9b06  CDN: "Content Delivery" and "Content Distribution" are both used, and both are options ## What does the acronym CDN stand for in terms of networking?
+otdb-4a53193187a3  answer "Catholic" with "Christian" as a distractor ## "The Big Bang Theory" was first theorized by a priest of what religious ideology?
+otdb-33447c7e477c  "original drummer for The Beatles" with Pete Best as a distractor ## Who was the original drummer for The Beatles?
+otdb-4cbd8fa0ee70  "longest active band with no line-up changes": a contested record ## Which band is the longest active band in the world with no breaks or line-up changes?
+otdb-0143d602d226  longest river: Nile or Amazon is disputed, and both are options ## Which is the world's longest river?
+otdb-37c155dde93a  the prompt names its own answer (Naruto) ## Who is the main character with yellow hair in the anime Naruto?
+otdb-92d53f99706b  a joke question ("Which of the following is a castle?") ## Which of the following is a castle?
+otdb-b2d3719f607c  a joke entry ("Lil Fortnite") ## Which of these artists has Lil A collaborated with?
+otdb-093c179455ef  garbled figures in the prompt ## The core of the Sun can reach which temperature?
+otdb-470407596c0f  dubious and niche (Intel HD Graphics) ## The series of the Intel HD graphics generation succeeding that of the 5000 and 6000 series (Broadwell) is called:
+otdb-59559cedeca1  the Overwatch character was renamed in 2021 ## In the game "Overwatch," which quote does the hero "McCree" NOT say upon using his flashbang ability?
+otdb-94e1b0bdbd9c  a record ("biggest fashion group") and a village ## Where in La Coruña (Spain) is the headquarters of "Inditex", the biggest fashion group in the world?
+otdb-d02bb6467f6f  calories in a drink: varies by country ## How many calories are in a 355 ml can of Pepsi Cola?
+otdb-649629546ce2  a mobile-game statistic ## In "Battle Cats", what is Moneko / MISS Moneko's critical percentage rate?
+otdb-8f22d2f580d0  a YouTuber's book: an internet fad ## Which of the following was the author of "Username Evie"?
+otdb-58e0d1c03583  Homestar Runner: an internet fad ## What animated internet character is known to answer emails with his boxing gloves?
+otdb-4ef4c553db58  unanswerable outside the United States (Lagwagon Day) ## May 16th of every year is known as __________ Day, named after a punk band prominent in the 1990s.
+otdb-3d8180f5748a  unanswerable outside the United States (NPR hosts) ## Which of the following is not the host of a program on NPR?
+otdb-034f3fdc4973  unanswerable outside the United States (Big Brother, US season 10) ## Who won the 10th season of Big Brother in the United States?
+
+# Review round 1: duplicates the rules missed. The other of each pair stays
+otdb-95906d760d32  duplicate of otdb-2c15cbdd4ab7 (Waluigi's debut) ## Waluigi's first appearance was in what game?
+otdb-14d10d708f46  the reverse of otdb-c3199c0faf87 (Ouagadougou) ## Ouagadougou is the capital of which African country?
+otdb-fb1e651bce44  the reverse of otdb-76bc6fd7c359 (Tallinn) ## In which country is Tallinn located?
+otdb-988f8978d8fc  the reverse of otdb-3775dbd5e501 (prisoner 24601) ## What is Jean ValJean's first prisoner number?
+otdb-3e4f6480beb5  duplicate of otdb-1e500b57420e (Pokémon Go team leaders) ## Which of these is NOT the name of a team leader in Pokémon GO?
+otdb-1f416a7362e4  duplicate of otdb-1e500b57420e (Pokémon Go team leaders) ## Who is the leader of Team Valor in Pokémon Go?
+
+# Full read-through, arts-and-literature (200 read)
+otdb-44c01d9a360a  [unsuitable] an adult horror novel (Rosemary's Baby) ## Who wrote the 1967 horror novel "Rosemary's Baby"?
+otdb-5312995f6a3c  [unsuitable] a gory stage direction ("two heads and a hand") ## Which Shakespeare play features the stage direction "Enter a messenger, with two heads and a hand"?
+otdb-6e71857c24d3  [misspelt] the answer is spelt "Tony Kusher" (Kushner); the play is also an adult one ## Who wrote the play 'Angels in America'?
+otdb-8ae7817e1ed0  [wrong] Tahiti is not a country, and one wrong option is a town ## Paul Gauguin moved to which country in 1895?
+otdb-97a66fbfa8c9  [broken] the prompt does not parse ("what is ... real name is implied to be") ## In Margaret Atwood's "The Handmaid's Tale", what is Offred's real name is implied to be?
+
+# Full read-through, film-and-tv (240 read)
+otdb-05c64b16bf94  [unanswerable here] an American quiz-show streak ## How long was Ken Jennings' win streak on Jeopardy?
+otdb-140142ec16d6  [unsuitable] blood in a horror film's murder scene ## What did Alfred Hitchcock use as blood in the film "Psycho"?
+otdb-235c3dd98fa2  [unanswerable here] an American talk-show habit ## Which of these television shows makes everyone look under their chair?
+otdb-2fe5cf98aedf  [dated] "has only been in a ... film once" can change; the films are adult ones ## Which of the following actors has only been in a Quentin Tarantino directed film once?
+otdb-35b2ec6d84c4  [broken] the prompt does not parse ("what's is Sam's brothers name") ## In Supernatural, what's is Sam's brothers name?
+otdb-3623a2fe45c3  [unanswerable here] which American public TV station first aired a show ## Which PBS station was the first station to air "Monty Python's Flying Circus" (1969-1974) in the United States?
+otdb-6bf4231c6867  [given away] the host's first name is in the show's title ## Guy's Grocery Games is hosted by which presenter?
+otdb-889b7959818e  [wrong] Aladdin was not the first animated film with a celebrity voice ## Which animated movie was first to feature a celebrity as a voice actor?
+otdb-9c08565738be  [unanswerable here] the winner of one British reality-show season ## Who won Big Brother 2014 UK?
+otdb-d0e47da4f53c  [dated] awards two people do NOT have can change ## Which of the following awards do Matt Stone and Trey Parker NOT have?
+otdb-d4c39b2de641  [dated] who "has" the rights to a show changes ## Which company has exclusive rights to air episodes of the "The Grand Tour"?
+otdb-dbbe008647e5  [unanswerable here] the real name of a man known from an internet joke ## What is the real name of the famous spanish humorist, El Risitas?
+
+# Full read-through, games-comics-and-anime (240 read)
+otdb-67d6b083ae67  [unsuitable] a game rated for adults (Just Cause 3) ## Who is the main character in the video game "Just Cause 3"?
+otdb-8c1259c67ac9  [given away] the answer "Souls" is in the prompt; the series is rated for adults ## In which series of games do you collect souls to empower you and buy weaponry and armor with?
+otdb-c2112708c47b  [unsuitable] a game rated for adults (Batman: Arkham Knight); about fear gas ## What was the name of the device used by Scarecrow in Batman: Arkham Knight to cover Gotham in fear gas?
+otdb-dd12c7e9c23b  [unsuitable] the Pokémon episode that put children in hospital ## Which Pokémon and it's evolutions were banned from appearing in a main role after the Episode 38 Incident?
+otdb-2717868a04a2  [broken] the prompt does not parse ("What was the game ... was a sequel to?") ## What was the game "Galaga" was a sequel to?
+otdb-a360a2937249  [wrong] Tron, also a Disney film and one of the options, used computer graphics earlier ## What was the first Disney movie to use CGI?
+otdb-72cc02225f53  [ambiguous] Minecraft was public in 2009 and released in 2011; Terraria came between ## Which one of these games came out first?
+otdb-7932eb4dd808  [ambiguous] Mario was "Jumpman" on release, and that is one of the wrong options ## What name did "Mario", from "Super Mario Brothers", originally have?
+otdb-a06cabd08922  [dated] the films have since called their universe Earth-616, one of the wrong options ## What is the designation given to the Marvel Cinematic Universe?
+otdb-de869e8f9f7f  [unsuitable] a violent comic for adult readers (Invincible) ## Which one of these superhero teams appears in the Invincible comics?
+otdb-41dd28cf45fc  [given away] the answer "Sailor Moon" is in the prompt ## Who is the true moon princess in Sailor Moon?
+
+# Full read-through, general-knowledge (306 read)
+otdb-f7055f0f1847  [ambiguous] gives the Burj Khalifa as 2,722 ft with 2,717 ft as a wrong option; another question in the bank says 2,717 ft ## How tall is the Burj Khalifa?
+otdb-099e9d2ed532  [unanswerable here] American breakfast cereals of the 1970s ## Which of the General Mills Corporation's monster cereals was the last to be released in the 1970's?
+otdb-10e24e3f0229  [ambiguous] only a queen ant lives 15 years; workers live a year or two ## What is the average life span of a garden ant?
+otdb-1993b74d0b6b  [ambiguous] a trick: "four fingers" (and a thumb) with "five" as a wrong option ## How many fingers does a single human hand have?
+otdb-1a88ab1bc6fc  [wrong] glycolysis, one of the wrong options, also forms ATP ## What step in cellular respiration forms ATP?
+otdb-1b7108e80368  [dated] a dance craze of 2016 ## What is "dabbing"?
+otdb-28e92cc190ea  [unanswerable here] where the United States mints coins ## Which of these cities does NOT have a United States Minting location?
+otdb-2a40230cf8ac  [unanswerable here] an American sweet brand ## Red Vines is a brand of what type of candy?
+otdb-4547fada9401  [unanswerable here] an old American advertising slogan ## Which slogan did the fast food company, McDonald's, use before their "I'm Lovin' It" slogan?
+otdb-455b9cc6aec8  [given away] the founder's surname is in the name (Khan Academy) ## Who founded the Khan Academy?
+otdb-46698ce277a7  [dated] what one review website covers ## The website "Shut Up & Sit Down" reviews which form of media?
+otdb-5522796578ea  [dated] a country's share of world vanilla production changes ## What nation produces roughly 40% of the world’s vanilla?
+otdb-68813d7e6ebd  [unsuitable] a crude comedy for adults (The Dictator) ## Who played General Aladeen in The Dictator?
+otdb-7c9f11191ecd  [unanswerable here] an American university's mascot ## What type of dog is 'Handsome Dan', the mascot of Yale University?
+otdb-82c58f175385  [unanswerable here] an office building in Syracuse, New York ## Which of the following buildings is example of a structure primarily built in the Art Deco architectural style?
+otdb-9104c72b9c90  [unanswerable here] one American fast-food chain's milkshake ## In which fast food chain can you order a Jamocha Shake?
+otdb-93c15862fc93  [unanswerable here] Australian employment law, which also differs by state ## According to Fair Works Australia, how long do you have to work to get Long Service Leave?
+otdb-9434f8b0718f  [unanswerable here] an American university's motto ## Which of the following Ivy League universities has its official motto in Hebrew as well as in Latin?
+otdb-9653771a2a25  [unsuitable] a statistic built on a national stereotype ("Nigerian scams") ## In 2013 how much money was lost by Nigerian scams?
+otdb-9bc4dbd5fabc  [unanswerable here] American coin names; a wrong option is a rude joke number ## Five dollars is worth how many nickels?
+otdb-a52215e43082  [ambiguous] the "third country" with a McDonald's depends on how they are counted ## What was the third country to have a McDonald's restaurant?
+otdb-a6340cf585ed  [unanswerable here] which American sweets one company makes ## Which candy is NOT made by Mars?
+otdb-afddac0ec852  [dated] the job of a celebrity's mother ## What is the profession of Elon Musk's mom, Maye Musk?
+otdb-bbfc30eda40a  [unanswerable here] the layout of memorials in Washington ## Directly between the Washington Monument and the Reflecting Pool is a memorial to which war?
+otdb-bfaa1de32371  [dated] the most common pub name in the UK, by one survey ## According to the BBPA, what is the most common pub name in the UK?
+otdb-d7d8ecd951f2  [unanswerable here] the surname of an American pizza chain's founder ## What is the famous Papa John's last name?
+otdb-e4051702b5e3  [unanswerable here] who is on the American two-dollar note ## The likeness of which president is featured on the rare $2 bill of USA currency?
+otdb-e68a2bf39a75  [unsuitable] a submachine gun's nickname ## Which American manufactured submachine gun was informally known by the American soldiers that used it as "Grease Gun"?
+otdb-e7fe6120c3c0  [unanswerable here] minor characters of one theme-park ride ## Disney's Haunted Mansion is home to a trio of Hitchhiking Ghosts. Which of these is NOT one of them?
+otdb-f4370a286d42  [unanswerable here] which American cartoons began on one anthology show ## Which of these Nicktoons were NOT originally a short on Oh Yeah! Cartoons before becoming their own series?
+otdb-f47faeefafc1  [unsuitable] a parody religion ## Who invented Pastafarianism?
+otdb-f8c3dfb9f4c2  [unanswerable here] where an American bottled water comes from ## Where does water from Poland Spring water bottles come from?
+otdb-03640350a60a  [unsuitable] one wrong option is an obscure sexual term ## Which of these words means "idle spectator"?
+
+# Full read-through, geography (275 read)
+otdb-11bd718f199c  [dated] which country bans a kind of test is a matter of current law, and the answer is doubtful ## Which of the following countries banned the use of personal genetic ancestry tests?
+otdb-2b92868f775a  [unanswerable here] a bridge in an American local legend ## Colchester Overpass, otherwise known as "Bunny Man Bridge", is located where?
+otdb-3c7321cf6c76  [ambiguous] "most controversial" is an opinion ## Which of the following language families is the most controversial amongst modern linguists?
+otdb-5f9f33ba8555  [wrong] the United Nations has 193 member states, not 195 ## How many sovereign states are members of the United Nations?
+otdb-5fdf75709158  [given away] the answer "American football" is in the prompt ## If soccer is called football in England, what is American football called in England?
+otdb-71387109562e  [unanswerable here] a small American town's nickname ## Frankenmuth, a US city nicknamed "Little Bavaria", is located in what state?
+otdb-907cc1fc0241  [dated] which countries recognise another changes; this one has ## Which of the following countries does NOT recognize Armenia as an independent country?
+otdb-930e7db5f1d8  [unanswerable here] an American county seat ## What is the county seat of King County, Washington?
+otdb-9e96bb2b6416  [unanswerable here] an American baseball museum ## What national museum will you find in Cooperstown, New York?
+otdb-b1481bb842c4  [ambiguous] the claim that Birmingham has the most miles of canal is disputed ## Which European city has the highest mileage of canals in the world?
+otdb-c204dc17e6fb  [unanswerable here] the year on an American state flag ## What year is on the flag of the US state Wisconsin?
+otdb-d68fbb044dc3  [unanswerable here] a Texan city's nickname ## What Texas city is nicknamed "The Yellow Rose of Texas"?
+otdb-db13ac9af951  [dated] one country's rank in a 2016 index ## In the 2016 Global Peace Index poll, out of 163 countries, what was the United States of America ranked?
+otdb-e27d3b75b86d  [unanswerable here] an American town's nickname ## What city is known as the Rose Capital of the World?
+otdb-f685cbcbe43c  [ambiguous] a trick: every option is better known as a city elsewhere ## Which of these places is a location in Cornwall?
+otdb-f695a7f21914  [unanswerable here] where an American fast-food chain has its head office ## Where is the fast food chain "Panda Express" headquartered?
+otdb-fdb5a501aa2d  [ambiguous] calls Kashmir a region "with unknown leadership" ## What is the region conjoining Pakistan, India, and China with unknown leadership called?
+
+# Full read-through, history (324 read)
+otdb-1179f5afda45  [ambiguous] "oldest US state" can mean several things ## What is the oldest US state?
+otdb-276b45cd3263  [unanswerable here] which American town a bomber came down near ## In 1961, an American B-52 aircraft crashed and nearly detonated two 4mt nuclear bombs over which US city?
+otdb-9a35484f1412  [wrong] a German rocket reached space in 1944, as another question in the bank says ## What was the first recorded object to ever reach space?
+otdb-45a5d379a13d  [unanswerable here] the year one American state joined the union ## In what year did Kentucky become the 15th state to join the union?
+otdb-48560f6f5bee  [ambiguous] "is said to have had the longest beard" has no settled answer ## Which U.S. president is said to have had the longest beard?
+otdb-6983c7657f63  [duplicate] the same fact as the question on the last colony ceded (Hong Kong, 1997) ## What year is considered to be the year that the British Empire ended?
+otdb-704b06da7e38  [wrong] the Eureka Rebellion was in 1854, not 1856 ## Which country did the Eureka Rebellion, an 1856 battle against colonial rule, take place in?
+otdb-74d3995c5df8  [unsuitable] a very violent film for adults (The Raid 2) ## The 2014 movie "The Raid 2: Berandal" was mainly filmed in which Asian country?
+otdb-8399bfd0b7f5  [ambiguous] answer "any god they wanted"; the wrong options are Greek gods, not Roman ## The pantheon in Rome was used to worship what god?
+otdb-895fa53f9977  [unsuitable] loaded wording about a recent conflict ## In relation to the British Occupation in Ireland, what does the IRA stand for.
+otdb-9fcde8e18e83  [unanswerable here] an American campaign slogan of 2004 ## "Yes, America Can!" was this United States politician's de facto campaign slogan in 2004.
+otdb-9ebf02ade65b  [unsuitable] who destroyed the most tanks ## Which WWII tank ace is credited with having destroyed the most tanks?
+otdb-ae753b1c023f  [given away] the year is in the pistol's name ## In what year was the M1911 pistol designed?
+otdb-abc2884e9e6e  [duplicate] a second "When did the French Revolution begin?" ## When did the French Revolution begin?
+otdb-b402837d103b  [duplicate] a second "Desert Fox" question ## Which Nazi General was known as the "Desert Fox"?
+otdb-c78745aa067a  [unsuitable] a poison-gas attack on commuters ## In which year did the Tokyo Subway Sarin Attack occur?
+otdb-cd2ed4d4542f  [unanswerable here] a spy ring of the American Revolutionary War ## What was the name of the spy ring that helped the United States win the Revolutionary War?
+otdb-ce1325ced567  [unanswerable here] an American state governor's nickname ## What was the personal nickname of the 40th Governor of the US State Louisiana, Huey Long?
+otdb-d8b676bc3a44  [unanswerable here] the American president at a land purchase ## Who was the President of the United States during the signing of the Gadsden Purchase?
+otdb-ea663eafcfc0  [unsuitable] a gun designer's religion ## John Moses Browning, the designer of the M1918 BAR (Browning Automatic Rifle) was a part of which religion?
+otdb-edf8c03505b5  [unanswerable here] an American senator's filibuster ## Which of the following United States senators is known for performing a 24-hour long filibuster?
+otdb-fe52c12bf92a  [unanswerable here] an American school-standards programme ## What year did the effort to deploy the Common Core State Standards (CCSS) in the US begin?
+
+# Full read-through, music (240 read)
+otdb-c86aa3c1bf95  [unanswerable here] the winner of an American marching-band contest in 1989 ## Who won the 1989 Drum Corps International championships?
+otdb-ca278ff5d3d0  [broken] the prompt does not parse ("The key of sharps does the key of ... contain?") ## The key of sharps does the key of G# minor contain?
+otdb-f6121fce4768  [unsuitable] a crude album title in the prompt ## Whose albums included "Back in Black" and "Ballbreaker"?
+otdb-fa0d92a095eb  [unsuitable] the name of a musician's wife, a private person ## What is the name of Rivers Cuomo's wife?
+
+# Full read-through, science-and-nature (329 read)
+otdb-2516f960680d  [wrong] deionised water has ions removed, not iron ## Deionized water is water with which of the following removed?
+otdb-6a269b8d43b7  [unanswerable here] American medicine brand names ## What medication was once commonly used as rat poison?
+otdb-6de1b1a510cf  [ambiguous] the symbol for displacement depends on the textbook ## What is the symbol for Displacement?
+otdb-7739d24ef573  [wrong] gives the volume formula as the area of a sphere; the true area formula is a wrong option ## What is the equation for the area of a sphere?
+otdb-b3116e15d731  [ambiguous] the top of Maslow's pyramid is self-actualisation, which is not offered ## In Psychology, which need appears highest in the "Maslow's hierarchy of needs" pyramid?
+otdb-b4c6d103d642  [wrong] 32 teeth includes the wisdom teeth; 28, the right answer, is a wrong option ## How many teeth does the average adult mouth have (except for wisdom teeth)?
+otdb-e072896a681c  [wrong] gives an area in inches, not square inches ## What is the area of a circle with a diameter of 20 inches if π= 3.1415?
+otdb-e545176ba2e2  [wrong] ribosomes make proteins, not DNA ## What organelle aids in synthesis of DNA in cells?
+otdb-e6ef3480d056  [unanswerable here] the boiling point of water in Fahrenheit only ## At what temperature does water boil?
+otdb-ec3040bf6e0a  [dated] the real name of a cat known from an internet joke ## What is Grumpy Cat's real name?
+otdb-f54b57ef1e32  [ambiguous] carbon or tungsten, depending on pressure; both are options ## Which element has the highest melting point?
+otdb-d717ccabcf0e  [duplicate] a second "how many planets in our Solar System" ## How many planets make up our Solar System?
+otdb-85fc691cfa3a  [duplicate] a second question on where Celsius equals Fahrenheit ## What is the same in Celsius and Fahrenheit?
+otdb-ede26ef8768f  [duplicate] a second question on how much of Earth's surface is water ## 71% of the Earth's surface is made up of
+otdb-11d0d32c3710  [duplicate] the reverse of the "dihydrogen monoxide" question ## Which is the chemical name of H2O?
+otdb-f891a229de4b  [duplicate] the same fact as "stars consist mainly of hydrogen and ..." ## The Sun consists of mostly which two elements?
+otdb-ae41ac0e4909  [duplicate] the reverse of the question on the shuttle Columbia ## On which mission did the Space Shuttle Columbia break up upon re-entry?
+otdb-5727c6ad29b9  [duplicate] the reverse of "what is the atomic number of uranium" ## What element on the periodic table has 92 electrons?
+otdb-c9557507a52d  [unanswerable here] an American fire-safety sign ## What does the yellow diamond on the NFPA 704 fire diamond represent?
+
+# Full read-through, sport (111 read)
+otdb-0271bd66b4aa  [unsuitable] asked only because the athlete's name sounds rude in English ## In what sport does Fanny Chmelar compete for Germany?
+otdb-21c0eceba497  [unanswerable here] the winner of an American stock-car race in 1998 ## Who won the 1998 Daytona 500?
+otdb-39245494d04a  [dated] England's top scorer has changed since this was written ## Who was the topscorer for England national football team?
+otdb-9ef7ad89c375  [unanswerable here] the kit colours of one American city's teams ## Which city features all of their professional sports teams' jersey's with the same color scheme?
+otdb-bfeae6c37656  [ambiguous] "the first official international game" does not say of which sport ## When was the first official international game played?
+otdb-68a330641c32  [duplicate] a second question on the score of Brazil v Germany in 2014 ## In the 2014 FIFA World Cup, what was the final score in the match Brazil - Germany?
+otdb-d9aece7ead2c  [unanswerable here] the winner of the American soccer league in 2016 ## What team won the 2016 MLS Cup?
+otdb-eab03dc58ec5  [unanswerable here] an American baseball award for 2013 ## Which of the following pitchers was named National League Rookie of the Year for the 2013 season?
+otdb-fe4ce19b0789  [unsuitable] a boxer biting an opponent's ear ## Which boxer was banned for taking a bite out of Evander Holyfield's ear in 1997?
+
+# Full read-through, technology (216 read)
+otdb-0d1586acce04  [unanswerable here] an American engine's size in cubic inches ## The LS1 engine is how many cubic inches?
+otdb-4d4810ccb334  [unanswerable here] an American engine's size in cubic inches ## The LS2 engine is how many cubic inches?
+otdb-84a52f1ab9c8  [unanswerable here] an American engine's size in cubic inches ## The LS3 engine is how many cubic inches?
+otdb-e511ad371cd8  [unanswerable here] an American engine's size in cubic inches ## The LS7 engine is how many cubic inches?
+otdb-3ce9a9b0c6d8  [ambiguous] "rebadged the most" has no settled count ## Which of the following car models has been badge-engineered (rebadged) the most?
+otdb-6a53e5b92a11  [duplicate] a second "how many bits in a byte" ## What amount of bits commonly equals one byte?
+otdb-558f0b0b3500  [ambiguous] "most significant side venture" is an opinion; a firearms company ## What is the most significant side venture the popular firearms company, Remington, has pursued?
+otdb-5df286d98f70  [dated] which country bans dash cams is a matter of current law ## Which of the following countries has officially banned the civilian use of dash cams in cars?
+otdb-631be0025ce7  [dated] which car brands a group owns changes ## Which one of the following is NOT a sub-company of the Volkswagen Group?
+otdb-fa214225b5de  [duplicate] a second question on when the compact disc came out ## When did the CD begin to appear on the consumer market?
+otdb-74a7c3c089c3  [duplicate] the unit of resistance is also asked in science and nature ## What is the SI unit for resistance?
+otdb-7c5175358856  [dated] who "is the official tyre supplier" of an American racing series ## Which car tire manufacturer is famous for its "Eagle" brand of tires, and is the official tire supplier of NASCAR?
+otdb-c519cd0593ea  [ambiguous] one wrong option, the Class 43, does not go over 125 mph either ## What UK Train does NOT go over 125MPH?
+otdb-db8d157fb996  [ambiguous] "the most common way to iterate" in "any" language is an opinion ## In any programming language, what is the most common way to iterate through an array?
+otdb-c14e857e7817  [duplicate] the reverse of the general-knowledge question on what TCAS stands for ## Which of the following collision avoidance systems helps airplanes avoid colliding with each other?
+
+# Full read-through, the same fact asked twice, seen while reading
+otdb-c8139a0b17d2  [duplicate] the reverse of "what is the Roman numeral for 500" in science and nature ## What number does the Roman numeral "D" stand for?
+otdb-a6923a663c05  [duplicate] a second question on the lion on Sri Lanka's flag ## A lion brandishing a sword is depicted on the national flag of which country?
+otdb-c76c42fb7ecc  [duplicate] a second "where is Timbuktu" ## Where is Timbuktu located?
+otdb-ae865460dcc1  [duplicate] a second question on Lesotho being inside South Africa ## Which country is completely landlocked by South Africa?
+otdb-e864cb7b654a  [duplicate] the reverse of the question on the mountains between Spain and France ## The Pyrenees mountains are located on the border of which two countries?
+otdb-acfcbcbc7a3e  [duplicate] a second "which is not in ...: Suriname" ## Which of these countries is NOT located in Africa?
+otdb-b468f976d841  [duplicate] the height of One World Trade Center is given in a general-knowledge prompt ## How tall is One World Trade Center in New York City?
+otdb-e0ab269900e9  [duplicate] the president when the Panama Canal opened is also asked in history ## The Panama Canal was officially opened by which US president?
+otdb-8b7ca7fe6791  [duplicate] the number of keys on a piano is also asked in music ## How many notes are there on a standard grand piano?
+otdb-932033b3d173  [given away] "Galois is known for his work in: Galois Theory" ## The French mathematician Évariste Galois is primarily known for his work in which?
+
+# Full read-through, later passes over questions that entered after removals
+otdb-ec1f43f31174  [duplicate] a third "how many planets in the Solar System" ## How many planets are there in the Solar System?
+otdb-eae2cbabb3d5  [duplicate] a second "what was the first James Bond film" ## What was the title of the first Bond movie, released in 1962?
+otdb-5b25f4ba5111  [ambiguous] "shot entirely in one take": Birdman, a wrong option, is presented as one take too (first pass, film-and-tv) ## Which one of these films are shot entirely in one-take?
+
+# Review round 2
+otdb-57aa0c59b461  RZ-023: subject unsuitable for all ages ## What year did the Boxing Day earthquake & tsunami occur in the Indian Ocean?
+otdb-83baddd4f46c  RZ-023: subject unsuitable for all ages ## Which NASA Space Shuttle broke apart during atmospheric re-entry on February 1, 2003?
+otdb-80e2f8163317  RZ-023: subject unsuitable for all ages ## This movie contains the quote, "I love the smell of napalm in the morning!"
+otdb-ff51da089664  RZ-023: subject unsuitable for all ages ## Where does Stephen King's "IT" take place?
+otdb-69c927c48233  RZ-023: subject unsuitable for all ages ## Of the following, which Stephen King novel was published earliest?
+otdb-9cf4113ffccc  RZ-023: subject unsuitable for all ages ## Which of the following movies was not based on a novel by Stephen King?
+otdb-50d2bb192189  RZ-023: subject unsuitable for all ages ## Which movie of film director Stanley Kubrick is known to be an adaptation of a Stephen King novel?
+otdb-a882ae2d8f10  RZ-023: subject unsuitable for all ages ## Which singer is portrayed by Bruce Campbell in the 2002 film 'Bubba Ho-Tep'?
+otdb-df01c901d9ac  Review round 2: sampled factual or ambiguous question ## Which of the following is not a character in the Street Fighter series?
+otdb-006c44849802  Review round 2: sampled factual or ambiguous question ## Which of the following Copy Abilities was only featured in "Kirby & The Amazing Mirror"?
+otdb-4a7764530e76  Review round 2: sampled factual or ambiguous question ## What was the year of establishment of the Bari Italian Football Club?
+otdb-9ad1f3c793f1  Review round 2: unsuitable, ambiguous or faulty wording ## Which famous artist featured on Rowdy Rebel's 2015 song "Computers"?
+otdb-72c45dba4dbc  Review round 2: unsuitable, ambiguous or faulty wording ## Which one of these films did David Lynch direct, but not write?
+otdb-5c45f4bfd96a  Review round 2: unsuitable, ambiguous or faulty wording ## What is the species of the "Predator" in the 1987 movie "Predator"?
+otdb-6124f5aa2b80  Review round 2: unsuitable, ambiguous or faulty wording ## What is the make and model of the tour vehicles in "Jurassic Park" (1990)?
+otdb-5349939ea51e  Review round 2: unsuitable, ambiguous or faulty wording ## What is the standard atomic weight of a Plutonium nucleus?
+otdb-f53f16a79cc6  Review round 2: unsuitable, ambiguous or faulty wording ## Who was "Kung Fu Fighting" in 1974?
+otdb-d40e50832d37  Review round 2: unsuitable, ambiguous or faulty wording ## What is the main CPU is the Sega Mega Drive / Sega Genesis?
+
+# Review round 2: newly admitted candidates read in full
+otdb-831024a40814  adult violent exploitation film ## Before getting the shotgun, what did the titular hobo in 'Hobo with a Shotgun' want to purchase?
+otdb-8332f5bdcb80  adult horror series ## In the Netflix show, Stranger Things, what song would Will sing to himself as he was missing?
+otdb-85ecf5665e6a  adult war film among the named works ## Which star actor was in "Top Gun", "Jerry Maguire" and "Born on the Fourth of July"?
+otdb-316118c8fbd1  song about recreational drug use ## Who performed "I Took A Pill In Ibiza"?
+otdb-fc4a634a63f0  adult animated Family Guy series, identified by its address ## Which cartoon family lives in 31 Spooner Street, Quahog, Rhode Island USA?
+otdb-d6ed4a1b5942  first video game is disputed and Draughts is not a defensible unique answer ## What was the world's first video game?
+otdb-83eb04dbd78a  physical acceleration depends on the assumed scale and measurement ## In the original "Super Mario Bros.", what is the acceleration of Mario if he was in free fall?
+otdb-7dcd85994a45  surname not explicitly established for Tsunade in the manga ## In the Naruto manga, what is the last name of Tsunade?
+otdb-4a6a13bce4ac  both Roger and Whitebeard confirm the treasure exists ## In "One Piece", who confirms the existence of the legendary treasure, One Piece?
+otdb-5d89839f92d5  tile sum depends on the language edition of Scrabble ## What is the sum of all the tiles in a standard box of Scrabble?
+otdb-a2c4bc5b667c  3DS trophy total differs by region ## How many trophies are there in "Super Smash Bros. for Nintendo 3DS"?
+otdb-9e88553dd4aa  Surf compatibility changes between generations ## Which of these Pokémon cannot learn Surf?
+otdb-c068f1aaaa15  speed depends on equipment and level-up choices ## Given that all party members are maxed, who is the fastest party member in Super Mario RPG: Legend of The Seven Stars?
+otdb-ffbc6dd3c382  oldest board game claim is disputed ## What is the world's oldest board game?
+otdb-fac3a14e6b73  Gilgamesh is version-specific; omitted version makes prompt ambiguous ## In "Final Fantasy VI", what is the name of (summoned) Gilgamesh's weakest attack?
+otdb-d064cc52a383  unverifiable obscure alias without offline references ## When Batman trolls the online chat rooms, what alias does he use?
+otdb-8980e8fe85fd  ambiguous nickname: Pinhead Larry and Dirty Dan both occur ## In the episode of SpongeBob SquarePants, "Survival of the Idiots", Spongebob called Patrick which nickname?
+otdb-89865744c0f4  regional reality TV jargon and misspelt option ## Who was the first Big Brother US winner to win with a perfect game?
+otdb-907424d569d0  adult sexual comedy Trading Places ## In what movie does Eddie Murphy swap identities with Dan Aykroyd?
+otdb-0a67d01795a3  Medaka Box has sexual fanservice and mature themes ## Medaka Kurokami from "Medaka Box" has what abnormality?
+otdb-0d76eb132204  JoJo series contains graphic gore ## Which person from "JoJo's Bizarre Adventure" does NOT house a reference to a band, artist, or song earlier than 1980?
+otdb-0ff8b33385c3  assassins as the subject ## In "Hunter x Hunter", what are members in Killua's family known for being?
+otdb-17449879d7bd  Hellboy is an adult horror comic ## In the Hellboy universe, what was Abe Sapien's birth name?
+otdb-1f53bfb227d8  Papers Please includes adult sexual and drug themes ## Which day in "Papers, Please" does the man in red appear?
+otdb-15b9324788eb  writer versus story credit makes the film-credit question ambiguous ## Which of the following films was Don Bluth both the writer, director, and producer for?
+otdb-23a8b15f822e  supernatural horror xxxHolic ## Which animation studio produced the anime adaptation of "xxxHolic"?
+otdb-25dbd2167e95  Homestuck is a webcomic internet work, outside this screen policy ## What are the names of the two "Canon fan trolls" in "Homestuck"?
+otdb-2961e1883e85  Homestuck is a webcomic internet work, outside this screen policy ## In the Homestuck Series, what is the alternate name for the Kingdom of Lights?
+otdb-2f50bd654479  most challenging is subjective without saying challenge rating ## What is the most challenging monster in the Dungeons & Dragons 5th Edition Monster Manual?
+otdb-3c964bbc7fb3  One Punch Man depicts graphic gore ## In the superhero anime, "One Punch Man", what is the main protagonist's Hero name?
+otdb-7750de4515fb  misfiled as music: asks about Mickey Mouse cartoon debut ## Iconic cartoon character Mickey Mouse made his onscreen debut in what year?
+otdb-74efda3dcfb4  removed at review round 3 (two defensible answers); leave the hard games place vacant ## According to an interview with "Super Mario Land 2" game director Hiroji Kiyotake, what is Wario's favorite food?
+otdb-ebfb7382b6f4  removed at review round 3 (two defensible answers); leave the hard games place vacant ## What animal is on Link's pajamas in The Legend of Zelda: The Wind Waker?
+otdb-15646363b2a2  removed at review round 3 (51 at launch and 58 with downloads are both options); leave the hard games place vacant ## How many playable characters are there in Super Smash Bros. for Nintendo 3DS and Wii U?

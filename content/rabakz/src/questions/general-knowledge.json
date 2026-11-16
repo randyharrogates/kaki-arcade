@@ -1,0 +1,3848 @@
+{
+  "category": "general-knowledge",
+  "title": "General knowledge",
+  "defaultSource": {
+    "kind": "dataset",
+    "dataset": "Open Trivia Database",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "url": "https://opentdb.com",
+    "notice": "Questions from the Open Trivia Database (opentdb.com), licensed under CC BY-SA 4.0. Adapted for Kaki Arcade: selected, screened for an all-ages audience, regrouped and tidied. The adapted questions are offered under the same licence."
+  },
+  "questions": [
+    {
+      "id": "food-0001",
+      "type": "multiple-choice",
+      "prompt": "At a kopitiam, what do you get when you order kopi o?",
+      "options": [
+        "Coffee with condensed milk",
+        "Black coffee with sugar",
+        "Coffee with evaporated milk",
+        "Iced milk tea"
+      ],
+      "answer": "Black coffee with sugar",
+      "difficulty": "easy",
+      "region": "singapore",
+      "source": {
+        "kind": "original",
+        "note": "Kopi o is black coffee with sugar; kopi has condensed milk and kopi c evaporated milk. Check: National Library Board Infopedia, 'Kopitiam'."
+      }
+    },
+    {
+      "id": "food-0003",
+      "type": "multiple-choice",
+      "prompt": "Which spice gives curry powder its yellow colour?",
+      "options": [
+        "Cumin",
+        "Turmeric",
+        "Paprika",
+        "Cardamom"
+      ],
+      "answer": "Turmeric",
+      "difficulty": "medium",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Turmeric's pigment curcumin is bright yellow. Check: Britannica, 'turmeric'."
+      }
+    },
+    {
+      "id": "food-0004",
+      "type": "multiple-choice",
+      "prompt": "Saffron comes from which part of the crocus flower?",
+      "options": [
+        "Petal",
+        "Stigma",
+        "Root",
+        "Seed"
+      ],
+      "answer": "Stigma",
+      "difficulty": "hard",
+      "region": "general",
+      "source": {
+        "kind": "original",
+        "note": "Saffron is the dried stigmas of Crocus sativus. Check: Britannica, 'saffron'."
+      }
+    },
+    {
+      "id": "otdb-004e4653e734",
+      "type": "multiple-choice",
+      "prompt": "What is the Zodiac symbol for Gemini?",
+      "options": [
+        "Twins",
+        "Fish",
+        "Scales",
+        "Maiden"
+      ],
+      "answer": "Twins",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-00c024e9b109",
+      "type": "multiple-choice",
+      "prompt": "Which of these anatomical terms refers to the tail end of the creature?",
+      "options": [
+        "Caudal",
+        "Ventral",
+        "Proximal",
+        "Coronal"
+      ],
+      "answer": "Caudal",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-02914a392e2f",
+      "type": "multiple-choice",
+      "prompt": "Who was the 1st President of Mexico?",
+      "options": [
+        "Guadalupe Victoria",
+        "Benito Juárez",
+        "Miguel Hidalgo Y Costilla",
+        "Vicente Guerrero"
+      ],
+      "answer": "Guadalupe Victoria",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-04c66bbcb280",
+      "type": "multiple-choice",
+      "prompt": "Astraphobia is the irrational fear of what?",
+      "options": [
+        "Thunder",
+        "Rain",
+        "Wind",
+        "Snow"
+      ],
+      "answer": "Thunder",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-06ed8df42d7e",
+      "type": "multiple-choice",
+      "prompt": "In past times, what would a gentleman keep in his fob pocket?",
+      "options": [
+        "Watch",
+        "Money",
+        "Keys",
+        "Notebook"
+      ],
+      "answer": "Watch",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-09357cd0dc22",
+      "type": "multiple-choice",
+      "prompt": "Out of these four buildings, which one is the tallest, with a height of 2,717 ft (828 m)?",
+      "options": [
+        "Burj Khalifa, United Arab Emirates",
+        "Shanghai Tower, China",
+        "Lotte World Tower, South Korea",
+        "Ping An Finance Centre, China"
+      ],
+      "answer": "Burj Khalifa, United Arab Emirates",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-094f77851bd8",
+      "type": "multiple-choice",
+      "prompt": "Which of the following correctly describes Japanese word order?",
+      "options": [
+        "Subject Object Verb",
+        "Subject Verb Object",
+        "Verb Subject Object",
+        "Verb Object Subject"
+      ],
+      "answer": "Subject Object Verb",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0a7518653276",
+      "type": "multiple-choice",
+      "prompt": "How many furlongs are there in a mile?",
+      "options": [
+        "Eight",
+        "Two",
+        "Four",
+        "Six"
+      ],
+      "answer": "Eight",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0acade9a9ca5",
+      "type": "multiple-choice",
+      "prompt": "What is the romanized Japanese word for \"university\"?",
+      "options": [
+        "Daigaku",
+        "Toshokan",
+        "Jimusho",
+        "Shokudou"
+      ],
+      "answer": "Daigaku",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0b097c1c4044",
+      "type": "multiple-choice",
+      "prompt": "Where did the pineapple plant originate?",
+      "options": [
+        "South America",
+        "Hawaii",
+        "Europe",
+        "Asia"
+      ],
+      "answer": "South America",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0e05edeee418",
+      "type": "multiple-choice",
+      "prompt": "What is real haggis made of?",
+      "options": [
+        "Sheep's Heart, Liver and Lungs",
+        "Sheep's Heart, Kidneys and Lungs",
+        "Sheep's Liver, Kidneys and Eyes",
+        "Whole Sheep"
+      ],
+      "answer": "Sheep's Heart, Liver and Lungs",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0f37b8c85f47",
+      "type": "multiple-choice",
+      "prompt": "Which musician has collaborated with American producer Porter Robinson and released the 2016 song \"Shelter\"?",
+      "options": [
+        "Madeon",
+        "Mat Zo",
+        "deadmau5",
+        "Zedd"
+      ],
+      "answer": "Madeon",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0fabce639527",
+      "type": "multiple-choice",
+      "prompt": "What does the F stand for in the FBI?",
+      "options": [
+        "Federal",
+        "Foreign",
+        "Formal",
+        "First"
+      ],
+      "answer": "Federal",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0fdcd14da2bc",
+      "type": "multiple-choice",
+      "prompt": "The Swedish word \"Grunka\" means what in English?",
+      "options": [
+        "Thing",
+        "People",
+        "Place",
+        "Pineapple"
+      ],
+      "answer": "Thing",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-105919d880f8",
+      "type": "multiple-choice",
+      "prompt": "The Quadrangularis Reversum is best described as which of the following?",
+      "options": [
+        "A percussion instrument",
+        "A building in Oxford University",
+        "A chess move",
+        "A geometric theorem"
+      ],
+      "answer": "A percussion instrument",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1099080050cc",
+      "type": "multiple-choice",
+      "prompt": "What year was Queen Elizabeth II born?",
+      "options": [
+        "1926",
+        "1923",
+        "1929",
+        "1930"
+      ],
+      "answer": "1926",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-10a03f58fb57",
+      "type": "multiple-choice",
+      "prompt": "What is the defining characteristic of someone who is described as hirsute?",
+      "options": [
+        "Hairy",
+        "Rude",
+        "Funny",
+        "Tall"
+      ],
+      "answer": "Hairy",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-10ad6e6b8d95",
+      "type": "multiple-choice",
+      "prompt": "What is the French word for \"fish\"?",
+      "options": [
+        "poisson",
+        "fiche",
+        "escargot",
+        "mer"
+      ],
+      "answer": "poisson",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1145cda9d7a8",
+      "type": "multiple-choice",
+      "prompt": "What are the three starter Pokemon available in Pokemon Black and White?",
+      "options": [
+        "Snivy, Tepig, Oshawott",
+        "Snivy, Fennekin, Froakie",
+        "Chespin, Tepig, Froakie",
+        "Chespin, Fennekin, Oshawott"
+      ],
+      "answer": "Snivy, Tepig, Oshawott",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-144295c30738",
+      "type": "multiple-choice",
+      "prompt": "Which film star has his statue in Leicester Square?",
+      "options": [
+        "Charlie Chaplin",
+        "Paul Newman",
+        "Rowan Atkinson",
+        "Alfred Hitchcock"
+      ],
+      "answer": "Charlie Chaplin",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-151ae3812c61",
+      "type": "multiple-choice",
+      "prompt": "What does VR stand for?",
+      "options": [
+        "Virtual Reality",
+        "Very Real",
+        "Visual Recognition",
+        "Voice Recognition"
+      ],
+      "answer": "Virtual Reality",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-154000424ce2",
+      "type": "multiple-choice",
+      "prompt": "What was the name given to Japanese military dictators who ruled the country through the 12th and 19th Century?",
+      "options": [
+        "Shogun",
+        "Ninja",
+        "Samurai",
+        "Shinobi"
+      ],
+      "answer": "Shogun",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-15425994ba33",
+      "type": "multiple-choice",
+      "prompt": "Which of the following blood component forms a plug at the site of injuries?",
+      "options": [
+        "Platelets",
+        "Red blood cells",
+        "White blood cells",
+        "Blood plasma"
+      ],
+      "answer": "Platelets",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-155e28e3a5c9",
+      "type": "multiple-choice",
+      "prompt": "In linguistics, which of the following is not one of the Gricean Maxims under the Cooperative Principal?",
+      "options": [
+        "Length",
+        "Quality",
+        "Relation",
+        "Manner"
+      ],
+      "answer": "Length",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-15bcca647930",
+      "type": "multiple-choice",
+      "prompt": "In the video-game franchise Kingdom Hearts, the main protagonist, carries a weapon with what shape?",
+      "options": [
+        "Key",
+        "Sword",
+        "Pen",
+        "Cellphone"
+      ],
+      "answer": "Key",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-15fbaa433ff1",
+      "type": "multiple-choice",
+      "prompt": "What did the Spanish autonomous community of Catalonia ban in 2010, that took effect in 2012?",
+      "options": [
+        "Bullfighting",
+        "Fiestas",
+        "Flamenco",
+        "Mariachi"
+      ],
+      "answer": "Bullfighting",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-168d3d25e3d4",
+      "type": "multiple-choice",
+      "prompt": "Which mountain has the highest peak in Australia?",
+      "options": [
+        "Mount Kosciuszko, New South Wales",
+        "Mount Ossa, Tasmania",
+        "Mount Bartle Frere, Queensland",
+        "Mount Zeil, Northern Territory"
+      ],
+      "answer": "Mount Kosciuszko, New South Wales",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-17afed057c3f",
+      "type": "multiple-choice",
+      "prompt": "Where is Apple Inc. headquartered?",
+      "options": [
+        "Cupertino, California",
+        "Redwood City, California",
+        "Redmond, Washington",
+        "Santa Monica, CA"
+      ],
+      "answer": "Cupertino, California",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1bbbc4a04f3c",
+      "type": "multiple-choice",
+      "prompt": "What is the first book of the Old Testament?",
+      "options": [
+        "Genesis",
+        "Exodus",
+        "Leviticus",
+        "Numbers"
+      ],
+      "answer": "Genesis",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1bdf5033981c",
+      "type": "multiple-choice",
+      "prompt": "In \"Katamari Damacy\", you control a character known as:",
+      "options": [
+        "The Prince",
+        "Fujio",
+        "Ichigo",
+        "Foomin"
+      ],
+      "answer": "The Prince",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1c75c24b28a4",
+      "type": "multiple-choice",
+      "prompt": "Which American president appears on a one dollar bill?",
+      "options": [
+        "George Washington",
+        "Thomas Jefferson",
+        "Abraham Lincoln",
+        "Benjamin Franklin"
+      ],
+      "answer": "George Washington",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1e59371c51b8",
+      "type": "multiple-choice",
+      "prompt": "According to the nursery rhyme, what fruit did Little Jack Horner pull out of his Christmas pie?",
+      "options": [
+        "Plum",
+        "Apple",
+        "Peach",
+        "Pear"
+      ],
+      "answer": "Plum",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1e69525f1dc6",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is the IATA code for Manchester Airport?",
+      "options": [
+        "MAN",
+        "EGLL",
+        "LHR",
+        "EGCC"
+      ],
+      "answer": "MAN",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1f51508eb119",
+      "type": "multiple-choice",
+      "prompt": "What is the full title of the Prime Minister of the UK?",
+      "options": [
+        "First Lord of the Treasury",
+        "Duke of Cambridge",
+        "Her Majesty's Loyal Opposition",
+        "Manager of the Crown Estate"
+      ],
+      "answer": "First Lord of the Treasury",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-201ea3d617f2",
+      "type": "multiple-choice",
+      "prompt": "This Ghanaian entrepreneur is a pioneer of microlending.",
+      "options": [
+        "Esther Afua Ocloo",
+        "Farida Bedwei",
+        "Ama Ata Aido",
+        "Sionne Neely"
+      ],
+      "answer": "Esther Afua Ocloo",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-20f9a823c60b",
+      "type": "multiple-choice",
+      "prompt": "What is the unit of currency in Laos?",
+      "options": [
+        "Kip",
+        "Ruble",
+        "Konra",
+        "Dollar"
+      ],
+      "answer": "Kip",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-225aa7daeb35",
+      "type": "multiple-choice",
+      "prompt": "Out of these four buildings, which one is the tallest, with a height of 1,483 ft (451.9 m)?",
+      "options": [
+        "Petronas Twin Towers, Malaysia",
+        "Zifeng Tower, China",
+        "Trump Intl. Hotel & Tower, United States",
+        "Al Hamra Tower, Kuwait"
+      ],
+      "answer": "Petronas Twin Towers, Malaysia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-22b0e90782c9",
+      "type": "multiple-choice",
+      "prompt": "Which mountain has the highest peak in Europe?",
+      "options": [
+        "Mount Elbrus, Russia",
+        "Shkhara, Georgia",
+        "Mount Ararat, Turkey",
+        "Mont Blanc, France"
+      ],
+      "answer": "Mount Elbrus, Russia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-22d6d93899e4",
+      "type": "multiple-choice",
+      "prompt": "What is the most commonly used noun in the English language?",
+      "options": [
+        "Time",
+        "Home",
+        "Water",
+        "Man"
+      ],
+      "answer": "Time",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-237d9a148a21",
+      "type": "multiple-choice",
+      "prompt": "Which of the following British Monarchs never appeared on a circulated pound sterling coin?",
+      "options": [
+        "Edward VIII",
+        "Victoria",
+        "George VI",
+        "Charles II"
+      ],
+      "answer": "Edward VIII",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-253f8faf671b",
+      "type": "multiple-choice",
+      "prompt": "Who is the origin of the quote \"What doesn't kill you makes you stronger\"?",
+      "options": [
+        "Friedrich Nietzsche",
+        "G. Gordon Liddy",
+        "Kelly Clarkson",
+        "Christopher Hitchens"
+      ],
+      "answer": "Friedrich Nietzsche",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ade47e386b6",
+      "type": "multiple-choice",
+      "prompt": "In a 1994 CBS interview, Microsoft co-founder Bill Gates performed what unusual trick on camera?",
+      "options": [
+        "Jumping over an office chair",
+        "Jumping backwards over a desk",
+        "Standing on his head",
+        "Typing on a keyboard during a handstand"
+      ],
+      "answer": "Jumping over an office chair",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2e8e37db9ebf",
+      "type": "multiple-choice",
+      "prompt": "Bob and Mike Bryan were well known brothers in which sport?",
+      "options": [
+        "Tennis",
+        "Basketball",
+        "Football",
+        "Baseball"
+      ],
+      "answer": "Tennis",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ebba9c06d5a",
+      "type": "multiple-choice",
+      "prompt": "What does a funambulist walk on?",
+      "options": [
+        "A Tight Rope",
+        "Broken Glass",
+        "Balls",
+        "The Moon"
+      ],
+      "answer": "A Tight Rope",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ec6463f60c2",
+      "type": "multiple-choice",
+      "prompt": "When was Nintendo founded?",
+      "options": [
+        "September 23rd, 1889",
+        "October 19th, 1891",
+        "March 4th, 1887",
+        "December 27th, 1894"
+      ],
+      "answer": "September 23rd, 1889",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2f410239b3fb",
+      "type": "multiple-choice",
+      "prompt": "What do the letters of the fast food chain KFC stand for?",
+      "options": [
+        "Kentucky Fried Chicken",
+        "Kentucky Fresh Cheese",
+        "Kibbled Freaky Cow",
+        "Kiwi Food Cut"
+      ],
+      "answer": "Kentucky Fried Chicken",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2f7c057806e4",
+      "type": "multiple-choice",
+      "prompt": "What do sailors call the front of a boat?",
+      "options": [
+        "Bow",
+        "Stern",
+        "Port",
+        "Starboard"
+      ],
+      "answer": "Bow",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-300f247a7dd8",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not an Ivy League University?",
+      "options": [
+        "Stanford",
+        "University of Pennsylvania",
+        "Harvard",
+        "Princeton"
+      ],
+      "answer": "Stanford",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-30235b2f625f",
+      "type": "multiple-choice",
+      "prompt": "What is the perimeter of a circle more commonly known as?",
+      "options": [
+        "Circumference",
+        "Diameter",
+        "Radius",
+        "Arc"
+      ],
+      "answer": "Circumference",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-303267241af0",
+      "type": "multiple-choice",
+      "prompt": "In a standard Gregorian calendar, how many months begin with the letter 'J'?",
+      "options": [
+        "Three",
+        "Four",
+        "Five",
+        "Two"
+      ],
+      "answer": "Three",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3107b48c53e2",
+      "type": "multiple-choice",
+      "prompt": "The early part of which decade, did the Goth Subculture begin?",
+      "options": [
+        "1980s",
+        "1990s",
+        "2000s",
+        "1970s"
+      ],
+      "answer": "1980s",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-315146feb123",
+      "type": "multiple-choice",
+      "prompt": "What year was the RoboSapien toy robot released?",
+      "options": [
+        "2004",
+        "2000",
+        "2001",
+        "2006"
+      ],
+      "answer": "2004",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-32be28ec787b",
+      "type": "multiple-choice",
+      "prompt": "Death Valley's Badwater Basin is North America's point of lowest elevation at how many feet below sea level?",
+      "options": [
+        "282 feet",
+        "79 feet",
+        "1,640 feet",
+        "12,092 feet"
+      ],
+      "answer": "282 feet",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-34f57a2838ec",
+      "type": "multiple-choice",
+      "prompt": "The word \"dozen\" usually refers to a group of how many objects?",
+      "options": [
+        "12",
+        "6",
+        "20",
+        "10"
+      ],
+      "answer": "12",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-35f27443b0b4",
+      "type": "multiple-choice",
+      "prompt": "Out of these four buildings, which one is the tallest, with a height of 1,776 ft (541.3 m)?",
+      "options": [
+        "One World Trade Center, United States",
+        "Taipei 101, Taiwan",
+        "Willis Tower, United States",
+        "Jin Mao Tower, China"
+      ],
+      "answer": "One World Trade Center, United States",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-36d3ab769db4",
+      "type": "multiple-choice",
+      "prompt": "In which country was the Michelin tire company founded in 1889?",
+      "options": [
+        "France",
+        "United Kingdom",
+        "Italy",
+        "Germany"
+      ],
+      "answer": "France",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-38c67b91e040",
+      "type": "multiple-choice",
+      "prompt": "In which country was the 1992 Summer Olympics Games held?",
+      "options": [
+        "Spain",
+        "Russia",
+        "Korea",
+        "USA"
+      ],
+      "answer": "Spain",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-38e8df708e39",
+      "type": "multiple-choice",
+      "prompt": "Which mountain has the highest peak in Africa?",
+      "options": [
+        "Mount Kilimanjaro, Tanzania",
+        "Mount Kenya, Kenya",
+        "Mount Stanley, DR Congo/Uganda",
+        "Mount Speke, Uganda"
+      ],
+      "answer": "Mount Kilimanjaro, Tanzania",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3968167a7754",
+      "type": "multiple-choice",
+      "prompt": "Xanthophobia is the fear of what color?",
+      "options": [
+        "Yellow",
+        "Blue",
+        "Red",
+        "Green"
+      ],
+      "answer": "Yellow",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3d5d54af7435",
+      "type": "multiple-choice",
+      "prompt": "Which canal connects the Mediterranean Sea with the Red Sea?",
+      "options": [
+        "Suez Canal",
+        "Panama Canal",
+        "Sinai Canal",
+        "Qaraqum Canal"
+      ],
+      "answer": "Suez Canal",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3d75028244cc",
+      "type": "multiple-choice",
+      "prompt": "What is the last letter of the Greek alphabet?",
+      "options": [
+        "Omega",
+        "Mu",
+        "Epsilon",
+        "Kappa"
+      ],
+      "answer": "Omega",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3e5109cba096",
+      "type": "multiple-choice",
+      "prompt": "Named after the mallow flower, mauve is a shade of what?",
+      "options": [
+        "Purple",
+        "Red",
+        "Brown",
+        "Pink"
+      ],
+      "answer": "Purple",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3eadf723b0ac",
+      "type": "multiple-choice",
+      "prompt": "The New York Times slogan is, “All the News That’s Fit to…”",
+      "options": [
+        "Print",
+        "Digest",
+        "Look",
+        "Read"
+      ],
+      "answer": "Print",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3ee569cd80b4",
+      "type": "multiple-choice",
+      "prompt": "What is the airspeed velocity of an unladen swallow?",
+      "options": [
+        "24 MPH",
+        "15 MPH",
+        "20 MPH",
+        "200 MPH"
+      ],
+      "answer": "24 MPH",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f3d7a3fc016",
+      "type": "multiple-choice",
+      "prompt": "Computer manufacturer Compaq was acquired for $25 billion dollars in 2002 by which company?",
+      "options": [
+        "Hewlett-Packard",
+        "Toshiba",
+        "Asus",
+        "Dell"
+      ],
+      "answer": "Hewlett-Packard",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f7196967811",
+      "type": "multiple-choice",
+      "prompt": "What does a milliner make and sell?",
+      "options": [
+        "Hats",
+        "Shoes",
+        "Belts",
+        "Shirts"
+      ],
+      "answer": "Hats",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3ff52d072597",
+      "type": "multiple-choice",
+      "prompt": "Only 9% of US Households owned a television in",
+      "options": [
+        "1950",
+        "1965",
+        "1913",
+        "1969"
+      ],
+      "answer": "1950",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-40dbddcef059",
+      "type": "multiple-choice",
+      "prompt": "The Quran is the holy book of which Abrahamic religion?",
+      "options": [
+        "Islam",
+        "Christianity",
+        "Judaism",
+        "Rastafarianism"
+      ],
+      "answer": "Islam",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-41ebc791631f",
+      "type": "multiple-choice",
+      "prompt": "Originally another word for poppy, coquelicot is a shade of what?",
+      "options": [
+        "Red",
+        "Green",
+        "Blue",
+        "Pink"
+      ],
+      "answer": "Red",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4213f71c4bd4",
+      "type": "multiple-choice",
+      "prompt": "Which of the following landmarks is not located in New York City?",
+      "options": [
+        "Lincoln Memorial",
+        "Empire State Building",
+        "Times Square",
+        "Central Park"
+      ],
+      "answer": "Lincoln Memorial",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4232de08d202",
+      "type": "multiple-choice",
+      "prompt": "The Canadian $1 coin is colloquially known as a what?",
+      "options": [
+        "Loonie",
+        "Boolie",
+        "Foolie",
+        "Moodie"
+      ],
+      "answer": "Loonie",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-43560aa7488f",
+      "type": "multiple-choice",
+      "prompt": "What was the original name of the search engine \"Google\"?",
+      "options": [
+        "BackRub",
+        "CatMassage",
+        "SearchPro",
+        "Netscape Navigator"
+      ],
+      "answer": "BackRub",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-447954b0e167",
+      "type": "multiple-choice",
+      "prompt": "\"Gum arabic\" is a natural gum consisting of the hardened sap of which tree species?",
+      "options": [
+        "Acacia",
+        "Palm",
+        "Ficus",
+        "Eucalyptus"
+      ],
+      "answer": "Acacia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-448437d207d4",
+      "type": "multiple-choice",
+      "prompt": "To which language family does Kazakh belong?",
+      "options": [
+        "Turkic",
+        "Mongolic",
+        "Indo-European",
+        "Uralic"
+      ],
+      "answer": "Turkic",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-44b2a104e616",
+      "type": "multiple-choice",
+      "prompt": "What zodiac sign is represented by a pair of scales?",
+      "options": [
+        "Libra",
+        "Aries",
+        "Capricorn",
+        "Sagittarius"
+      ],
+      "answer": "Libra",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-44fc010f34d9",
+      "type": "multiple-choice",
+      "prompt": "Which of these holidays is NOT usually celebrated in the month of December?",
+      "options": [
+        "Thanksgiving",
+        "Christmas",
+        "Kwanzaa",
+        "Hanukkah"
+      ],
+      "answer": "Thanksgiving",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-45c21e2b663c",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not another name for the eggplant?",
+      "options": [
+        "Potimarron",
+        "Brinjal",
+        "Guinea Squash",
+        "Melongene"
+      ],
+      "answer": "Potimarron",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-45c79ea50e12",
+      "type": "multiple-choice",
+      "prompt": "Trypophobia is the fear of",
+      "options": [
+        "groups of holes",
+        "swimming in deep water",
+        "public speaking",
+        "eating too much"
+      ],
+      "answer": "groups of holes",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-46348b470486",
+      "type": "multiple-choice",
+      "prompt": "This field is sometimes known as “The Dismal Science.”",
+      "options": [
+        "Economics",
+        "Philosophy",
+        "Politics",
+        "Physics"
+      ],
+      "answer": "Economics",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-46bde8a38bcf",
+      "type": "multiple-choice",
+      "prompt": "What is the name of Poland in Polish?",
+      "options": [
+        "Polska",
+        "Pupcia",
+        "Polszka",
+        "Póland"
+      ],
+      "answer": "Polska",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-481a956cedc7",
+      "type": "multiple-choice",
+      "prompt": "What kind of aircraft was developed by Igor Sikorsky in the United States in 1942?",
+      "options": [
+        "Helicopter",
+        "Stealth Blimp",
+        "Jet",
+        "Space Capsule"
+      ],
+      "answer": "Helicopter",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-483208ff82dc",
+      "type": "multiple-choice",
+      "prompt": "The tale of Robin Hood originates from which country?",
+      "options": [
+        "England",
+        "France",
+        "Portugal",
+        "Scotland"
+      ],
+      "answer": "England",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4989ecb8a208",
+      "type": "multiple-choice",
+      "prompt": "Which famed architect, who died in 2019 aged 102, designed the glass pyramid at the Louvre museum in Paris?",
+      "options": [
+        "I. M. Pei",
+        "Pascale Guédot",
+        "Frank Gehry",
+        "Wang Shu"
+      ],
+      "answer": "I. M. Pei",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-498b079cd539",
+      "type": "multiple-choice",
+      "prompt": "The new One World Trade Center in Manhattan, New York City was designed by which architect?",
+      "options": [
+        "David Childs",
+        "Bjarke Ingels",
+        "Michael Arad",
+        "Fumihiko Maki"
+      ],
+      "answer": "David Childs",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4b9afc57e2e7",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is an existing family in \"The Sims\"?",
+      "options": [
+        "The Goth Family",
+        "The Family",
+        "The Simoleon Family",
+        "The Proud Family"
+      ],
+      "answer": "The Goth Family",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4bcb73da3c24",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the currency used in Ethiopia?",
+      "options": [
+        "Birr",
+        "Dirham",
+        "U.S. Dollar",
+        "Rand"
+      ],
+      "answer": "Birr",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4e1ad0df08b8",
+      "type": "multiple-choice",
+      "prompt": "According to the 2014-2015 Australian Bureau of Statistics, what percentage of Australians were born overseas?",
+      "options": [
+        "28%",
+        "13%",
+        "20%",
+        "7%"
+      ],
+      "answer": "28%",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4e1f3474065a",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the Jewish New Year?",
+      "options": [
+        "Rosh Hashanah",
+        "Elul",
+        "New Year",
+        "Succoss"
+      ],
+      "answer": "Rosh Hashanah",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-50dfbf2da04b",
+      "type": "multiple-choice",
+      "prompt": "What is the closest planet to our solar system's sun?",
+      "options": [
+        "Mercury",
+        "Mars",
+        "Jupiter",
+        "Earth"
+      ],
+      "answer": "Mercury",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-51285788af5a",
+      "type": "multiple-choice",
+      "prompt": "What is the currency of India and Pakistan as well as a few other Asian countries?",
+      "options": [
+        "Rupee",
+        "Riyal",
+        "Peso",
+        "Dinar"
+      ],
+      "answer": "Rupee",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-526d056c8a96",
+      "type": "multiple-choice",
+      "prompt": "On a dartboard, what number is directly opposite No. 1?",
+      "options": [
+        "19",
+        "20",
+        "12",
+        "15"
+      ],
+      "answer": "19",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5350945cb0a7",
+      "type": "multiple-choice",
+      "prompt": "In ancient Greece, if your job were a \"hippeus\" which of these would you own?",
+      "options": [
+        "Horse",
+        "Weave",
+        "Guitar",
+        "Boat"
+      ],
+      "answer": "Horse",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-547d79890b42",
+      "type": "multiple-choice",
+      "prompt": "The American company \"Campbell's\" is most well known for making what food product?",
+      "options": [
+        "Canned soups",
+        "Chocolate",
+        "Soft drinks",
+        "Sausages"
+      ],
+      "answer": "Canned soups",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-556677acd53b",
+      "type": "multiple-choice",
+      "prompt": "In which year did Ghana gain independence?",
+      "options": [
+        "1957",
+        "1947",
+        "1960",
+        "1958"
+      ],
+      "answer": "1957",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-569d20241bda",
+      "type": "multiple-choice",
+      "prompt": "How many syllables make up a haiku?",
+      "options": [
+        "17",
+        "15",
+        "10",
+        "21"
+      ],
+      "answer": "17",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-576268a3bfbe",
+      "type": "multiple-choice",
+      "prompt": "Which iconic Disneyland attraction was closed in 2017 to be remodeled as a \"Guardians of the Galaxy\" themed ride?",
+      "options": [
+        "Twilight Zone Tower of Terror",
+        "The Haunted Mansion",
+        "Pirates of the Caribbean",
+        "Peter Pan's Flight"
+      ],
+      "answer": "Twilight Zone Tower of Terror",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-57e490206b3c",
+      "type": "multiple-choice",
+      "prompt": "What organ of the body produces bile?",
+      "options": [
+        "Liver",
+        "Gallbladder",
+        "Pancreas",
+        "Stomach"
+      ],
+      "answer": "Liver",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-57e87030aeb9",
+      "type": "multiple-choice",
+      "prompt": "In what year did Halley's Comet, which will not appear again until the year 2061, previously approach Earth?",
+      "options": [
+        "1986",
+        "2001",
+        "1942",
+        "1909"
+      ],
+      "answer": "1986",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-58ace9b9f86f",
+      "type": "multiple-choice",
+      "prompt": "Which month is Black History Month in the US?",
+      "options": [
+        "February",
+        "May",
+        "November",
+        "August"
+      ],
+      "answer": "February",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5a02ba4c579b",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the poker hand containing three of a kind and a pair?",
+      "options": [
+        "Full House",
+        "Flush",
+        "Straight",
+        "High card"
+      ],
+      "answer": "Full House",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5a7940d8c0f3",
+      "type": "multiple-choice",
+      "prompt": "What country has had prime ministers named Eden, Major, Peel, Law, Brown and Heath?",
+      "options": [
+        "United Kingdom",
+        "Australia",
+        "New Zealand",
+        "Canada"
+      ],
+      "answer": "United Kingdom",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5b0250494a25",
+      "type": "multiple-choice",
+      "prompt": "Which of the following languages does NOT use gender as a part of its grammar?",
+      "options": [
+        "Turkish",
+        "German",
+        "Danish",
+        "Polish"
+      ],
+      "answer": "Turkish",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5b7f54fffd04",
+      "type": "multiple-choice",
+      "prompt": "Gouda cheese is from which European country?",
+      "options": [
+        "The Netherlands",
+        "Belgium",
+        "Germany",
+        "France"
+      ],
+      "answer": "The Netherlands",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5b9394ce7a57",
+      "type": "multiple-choice",
+      "prompt": "What word represents the letter 'T' in the NATO phonetic alphabet?",
+      "options": [
+        "Tango",
+        "Target",
+        "Taxi",
+        "Turkey"
+      ],
+      "answer": "Tango",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5bb877bdc39f",
+      "type": "multiple-choice",
+      "prompt": "What is the Italian word for \"tomato\"?",
+      "options": [
+        "Pomodoro",
+        "Aglio",
+        "Cipolla",
+        "Peperoncino"
+      ],
+      "answer": "Pomodoro",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5c3c890c55de",
+      "type": "multiple-choice",
+      "prompt": "What year was Walt Disney born?",
+      "options": [
+        "1901",
+        "1902",
+        "1903",
+        "1900"
+      ],
+      "answer": "1901",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5c4cfd6f3cba",
+      "type": "multiple-choice",
+      "prompt": "What is the currency of Poland?",
+      "options": [
+        "Złoty",
+        "Ruble",
+        "Euro",
+        "Krone"
+      ],
+      "answer": "Złoty",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5c58b0d9aece",
+      "type": "multiple-choice",
+      "prompt": "What do sailors call the right side of a boat?",
+      "options": [
+        "Starboard",
+        "Port",
+        "Stern",
+        "Bow"
+      ],
+      "answer": "Starboard",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5ca24bded222",
+      "type": "multiple-choice",
+      "prompt": "Who is the youngest person to receive a Nobel Prize?",
+      "options": [
+        "Malala Yousafzai",
+        "Lawrence Bragg",
+        "Werner Heisenberg",
+        "Yasser Arafat"
+      ],
+      "answer": "Malala Yousafzai",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5f0c0e0070e0",
+      "type": "multiple-choice",
+      "prompt": "What is the Spanish word for \"donkey\"?",
+      "options": [
+        "Burro",
+        "Caballo",
+        "Toro",
+        "Perro"
+      ],
+      "answer": "Burro",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5fa63650cdb3",
+      "type": "multiple-choice",
+      "prompt": "If you planted the seeds of Quercus robur, what would grow?",
+      "options": [
+        "Trees",
+        "Grains",
+        "Vegetables",
+        "Flowers"
+      ],
+      "answer": "Trees",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-63e6ea91a2fa",
+      "type": "multiple-choice",
+      "prompt": "Who is considered the \"Father of Modern Philosophy\"?",
+      "options": [
+        "René Descartes",
+        "Plato",
+        "Albert Einstein",
+        "Antoine Lavoisier"
+      ],
+      "answer": "René Descartes",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-64984c6e2b59",
+      "type": "multiple-choice",
+      "prompt": "What is the world's most expensive spice by weight?",
+      "options": [
+        "Saffron",
+        "Cinnamon",
+        "Cardamom",
+        "Vanilla"
+      ],
+      "answer": "Saffron",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6da4a44b4dfd",
+      "type": "multiple-choice",
+      "prompt": "How many letters are in the English alphabet?",
+      "options": [
+        "26",
+        "30",
+        "17",
+        "5"
+      ],
+      "answer": "26",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6dd829c81bc7",
+      "type": "multiple-choice",
+      "prompt": "What is the Swedish word for \"window\"?",
+      "options": [
+        "Fönster",
+        "Hål",
+        "Skärm",
+        "Ruta"
+      ],
+      "answer": "Fönster",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6e11aa41be40",
+      "type": "multiple-choice",
+      "prompt": "Earl Grey tea is black tea flavoured with what?",
+      "options": [
+        "Bergamot oil",
+        "Lavender",
+        "Vanilla",
+        "Honey"
+      ],
+      "answer": "Bergamot oil",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6f6525c0cc04",
+      "type": "multiple-choice",
+      "prompt": "What planet is not named after a Greek or Roman god?",
+      "options": [
+        "Earth",
+        "Jupiter",
+        "Mars",
+        "Mercury"
+      ],
+      "answer": "Earth",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6ffb079b3180",
+      "type": "multiple-choice",
+      "prompt": "In DC comics where does the Green Arrow (Oliver Queen) live?",
+      "options": [
+        "Star City",
+        "Central City",
+        "Gotham City",
+        "Metropolis"
+      ],
+      "answer": "Star City",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7110fa7818c1",
+      "type": "multiple-choice",
+      "prompt": "The Fields Medal, one of the most sought after awards in mathematics, is awarded every how many years?",
+      "options": [
+        "4",
+        "3",
+        "5",
+        "6"
+      ],
+      "answer": "4",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-711a126e58ef",
+      "type": "multiple-choice",
+      "prompt": "A doctor with a PhD is a doctor of what?",
+      "options": [
+        "Philosophy",
+        "Psychology",
+        "Phrenology",
+        "Physical Therapy"
+      ],
+      "answer": "Philosophy",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-71406a4ea894",
+      "type": "multiple-choice",
+      "prompt": "What name represents the letter \"M\" in the NATO phonetic alphabet?",
+      "options": [
+        "Mike",
+        "Matthew",
+        "Mark",
+        "Max"
+      ],
+      "answer": "Mike",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-72c300349aa1",
+      "type": "multiple-choice",
+      "prompt": "Which country drives on the left side of the road?",
+      "options": [
+        "Japan",
+        "Germany",
+        "Russia",
+        "China"
+      ],
+      "answer": "Japan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-734c4b48c9a7",
+      "type": "multiple-choice",
+      "prompt": "The architect known as Le Corbusier was an important figure in what style of architecture?",
+      "options": [
+        "Modernism",
+        "Neoclassical",
+        "Baroque",
+        "Gothic Revival"
+      ],
+      "answer": "Modernism",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-737c5cca7924",
+      "type": "multiple-choice",
+      "prompt": "What character was once considered to be the 27th letter of the alphabet?",
+      "options": [
+        "Ampersand",
+        "Interrobang",
+        "Tilde",
+        "Pilcrow"
+      ],
+      "answer": "Ampersand",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-73c34b886afd",
+      "type": "multiple-choice",
+      "prompt": "What does the 'S' stand for in the abbreviation SIM, as in SIM card?",
+      "options": [
+        "Subscriber",
+        "Single",
+        "Secure",
+        "Solid"
+      ],
+      "answer": "Subscriber",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-73fd72d9361b",
+      "type": "multiple-choice",
+      "prompt": "When someone is cowardly, they are said to have what color belly?",
+      "options": [
+        "Yellow",
+        "Green",
+        "Red",
+        "Blue"
+      ],
+      "answer": "Yellow",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-75ae3ed7f32c",
+      "type": "multiple-choice",
+      "prompt": "When was WhatsApp founded?",
+      "options": [
+        "2009",
+        "2007",
+        "2012",
+        "2010"
+      ],
+      "answer": "2009",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-769afd75be4c",
+      "type": "multiple-choice",
+      "prompt": "The term \"scientist\" was coined in which year?",
+      "options": [
+        "1833",
+        "1933",
+        "1942",
+        "1796"
+      ],
+      "answer": "1833",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-776b84377403",
+      "type": "multiple-choice",
+      "prompt": "Which language is most widely spoken in Switzerland?",
+      "options": [
+        "German",
+        "French",
+        "Italian",
+        "Swiss"
+      ],
+      "answer": "German",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-77f730fc24e6",
+      "type": "multiple-choice",
+      "prompt": "What is the full meaning of RAM?",
+      "options": [
+        "Random Access Memory",
+        "Random Assist Memory",
+        "Rand Assist Mandate",
+        "Ram"
+      ],
+      "answer": "Random Access Memory",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-782ca673fd6f",
+      "type": "multiple-choice",
+      "prompt": "Which of these colours is NOT featured in the logo for Google?",
+      "options": [
+        "Pink",
+        "Yellow",
+        "Blue",
+        "Green"
+      ],
+      "answer": "Pink",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7ae29def4a43",
+      "type": "multiple-choice",
+      "prompt": "Which of these is the name of a Japanese system of alternative medicine, literally meaning \"finger pressure\"?",
+      "options": [
+        "Shiatsu",
+        "Ukiyo",
+        "Majime",
+        "Ikigai"
+      ],
+      "answer": "Shiatsu",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7ba7619cc570",
+      "type": "multiple-choice",
+      "prompt": "Which of these banks are NOT authorized to issue currency notes in Hong Kong?",
+      "options": [
+        "OCBC",
+        "HSBC",
+        "Standard Chartered",
+        "Bank of China"
+      ],
+      "answer": "OCBC",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7c2b19e00918",
+      "type": "multiple-choice",
+      "prompt": "What do sailors call the back of a boat?",
+      "options": [
+        "Stern",
+        "Bow",
+        "Starboard",
+        "Port"
+      ],
+      "answer": "Stern",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7ca10aa5c9e5",
+      "type": "multiple-choice",
+      "prompt": "What is the shape of the toy invented by Hungarian professor Ernő Rubik?",
+      "options": [
+        "Cube",
+        "Sphere",
+        "Cylinder",
+        "Pyramid"
+      ],
+      "answer": "Cube",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7db17a436396",
+      "type": "multiple-choice",
+      "prompt": "Foie gras is a French delicacy typically made from what part of a duck or goose?",
+      "options": [
+        "Liver",
+        "Heart",
+        "Stomach",
+        "Intestines"
+      ],
+      "answer": "Liver",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7e488284afb6",
+      "type": "multiple-choice",
+      "prompt": "When was Hubba Bubba first introduced?",
+      "options": [
+        "1979",
+        "1984",
+        "1972",
+        "1980"
+      ],
+      "answer": "1979",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7f8272b225e8",
+      "type": "multiple-choice",
+      "prompt": "Which restaurant's mascot is a clown?",
+      "options": [
+        "McDonald's",
+        "Whataburger",
+        "Burger King",
+        "Sonic"
+      ],
+      "answer": "McDonald's",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-808724a5320e",
+      "type": "multiple-choice",
+      "prompt": "When someone is inexperienced they are said to be what color?",
+      "options": [
+        "Green",
+        "Red",
+        "Blue",
+        "Yellow"
+      ],
+      "answer": "Green",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8283982ddb9f",
+      "type": "multiple-choice",
+      "prompt": "Amsterdam Centraal station is twinned with what station?",
+      "options": [
+        "London Liverpool Street",
+        "Frankfurt (Main) Hauptbahnhof",
+        "Paris Gare du Nord",
+        "Brussels Midi"
+      ],
+      "answer": "London Liverpool Street",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-82d7cd228284",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT one of Aesop's fables?",
+      "options": [
+        "The Fox and the Hound",
+        "The Fox and the Grapes",
+        "The Tortoise and the Hare",
+        "The Frog and the Ox"
+      ],
+      "answer": "The Fox and the Hound",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-84ede9115380",
+      "type": "multiple-choice",
+      "prompt": "Which river flows through the Scottish city of Glasgow?",
+      "options": [
+        "Clyde",
+        "Tay",
+        "Dee",
+        "Tweed"
+      ],
+      "answer": "Clyde",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-856f26d76f89",
+      "type": "multiple-choice",
+      "prompt": "What do sailors call the left side of a boat?",
+      "options": [
+        "Port",
+        "Starboard",
+        "Bow",
+        "Stern"
+      ],
+      "answer": "Port",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-86722c7efc33",
+      "type": "multiple-choice",
+      "prompt": "Which of the following carbonated soft drinks were introduced first?",
+      "options": [
+        "Dr. Pepper",
+        "Coca-Cola",
+        "Sprite",
+        "Mountain Dew"
+      ],
+      "answer": "Dr. Pepper",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-86bbb3ed5c14",
+      "type": "multiple-choice",
+      "prompt": "How many colors are there in a rainbow?",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "answer": "7",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-87571b086791",
+      "type": "multiple-choice",
+      "prompt": "What is the largest rapid transit system in the world by number of stations, with 472 stations in operation?",
+      "options": [
+        "New York City Subway",
+        "Shanghai Metro",
+        "London Underground",
+        "Berlin U-Bahn"
+      ],
+      "answer": "New York City Subway",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-87a163642679",
+      "type": "multiple-choice",
+      "prompt": "What element has the chemical symbol Kr?",
+      "options": [
+        "Krypton",
+        "Kerosine",
+        "Kineticium",
+        "Curium"
+      ],
+      "answer": "Krypton",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-892b1b19220b",
+      "type": "multiple-choice",
+      "prompt": "Which of these Indian languages is not part of the Indo-European language family?",
+      "options": [
+        "Tamil",
+        "Hindi",
+        "Punjabi",
+        "Urdu"
+      ],
+      "answer": "Tamil",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-898203c90294",
+      "type": "multiple-choice",
+      "prompt": "If you are traveling at a speed of 80 mph, how long will it take you to drive 80 miles?",
+      "options": [
+        "60 minutes",
+        "90 minutes",
+        "30 minutes",
+        "50 minutes"
+      ],
+      "answer": "60 minutes",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8a161fe70bea",
+      "type": "multiple-choice",
+      "prompt": "When was the Playstation 3 released?",
+      "options": [
+        "November 11, 2006",
+        "January 8, 2007",
+        "December 25, 2007",
+        "July 16, 2006"
+      ],
+      "answer": "November 11, 2006",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8a2821a1fdaf",
+      "type": "multiple-choice",
+      "prompt": "Chartreuse is a color between yellow and what?",
+      "options": [
+        "Green",
+        "Red",
+        "Black",
+        "Purple"
+      ],
+      "answer": "Green",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8a5214ccd7d3",
+      "type": "multiple-choice",
+      "prompt": "\"Nephelococcygia\" is the practice of doing what?",
+      "options": [
+        "Finding shapes in clouds",
+        "Sleeping with your eyes open",
+        "Breaking glass with your voice",
+        "Swimming in freezing water"
+      ],
+      "answer": "Finding shapes in clouds",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8c3550ba4ced",
+      "type": "multiple-choice",
+      "prompt": "In what year did Canada stop producing the penny?",
+      "options": [
+        "2012",
+        "2013",
+        "2011",
+        "2010"
+      ],
+      "answer": "2012",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8d904aab995c",
+      "type": "multiple-choice",
+      "prompt": "Frank Lloyd Wright was the architect behind what famous building?",
+      "options": [
+        "The Guggenheim",
+        "Villa Savoye",
+        "Sydney Opera House",
+        "The Space Needle"
+      ],
+      "answer": "The Guggenheim",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8de80be5fc54",
+      "type": "multiple-choice",
+      "prompt": "Which is the capital of Spain?",
+      "options": [
+        "Madrid",
+        "Paris",
+        "Barcelona",
+        "Lisboa"
+      ],
+      "answer": "Madrid",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8e057efff9e8",
+      "type": "multiple-choice",
+      "prompt": "In the Morse code, which letter is indicated by 3 dots?",
+      "options": [
+        "S",
+        "O",
+        "A",
+        "C"
+      ],
+      "answer": "S",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8ed1e6bbd593",
+      "type": "multiple-choice",
+      "prompt": "What is the Portuguese word for \"Brazil\"?",
+      "options": [
+        "Brasil",
+        "Brazil",
+        "Brasilia",
+        "Brasíl"
+      ],
+      "answer": "Brasil",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8fb1bebc9077",
+      "type": "multiple-choice",
+      "prompt": "Before the 19th Century, the \"Living Room\" was originally called the...",
+      "options": [
+        "Parlor",
+        "Open Room",
+        "Sitting Room",
+        "Loft"
+      ],
+      "answer": "Parlor",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-90334ac4efb7",
+      "type": "multiple-choice",
+      "prompt": "In which cardinal direction does the Sun rise from?",
+      "options": [
+        "East",
+        "West",
+        "North",
+        "South"
+      ],
+      "answer": "East",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-903d56cf984c",
+      "type": "multiple-choice",
+      "prompt": "Which type of cutlery is most suited for eating soup?",
+      "options": [
+        "Spoon",
+        "Fork",
+        "Knife",
+        "Chopsticks"
+      ],
+      "answer": "Spoon",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-92282d95d0e2",
+      "type": "multiple-choice",
+      "prompt": "What was Bank of America originally established as?",
+      "options": [
+        "Bank of Italy",
+        "Bank of Long Island",
+        "Bank of Pennsylvania",
+        "Bank of Charlotte"
+      ],
+      "answer": "Bank of Italy",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-925bbe1e0d4e",
+      "type": "multiple-choice",
+      "prompt": "Rolex is a company that specializes in what type of product?",
+      "options": [
+        "Watches",
+        "Cars",
+        "Computers",
+        "Sports equipment"
+      ],
+      "answer": "Watches",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9300223c0291",
+      "type": "multiple-choice",
+      "prompt": "Coleslaw originated from which European country?",
+      "options": [
+        "The Netherlands",
+        "United Kingdom",
+        "Denmark",
+        "Germany"
+      ],
+      "answer": "The Netherlands",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9387630bd812",
+      "type": "multiple-choice",
+      "prompt": "If a person's hair is described as 'Titian', what colour is it?",
+      "options": [
+        "Red",
+        "Blonde",
+        "Brunette",
+        "Black"
+      ],
+      "answer": "Red",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9391d4b079f6",
+      "type": "multiple-choice",
+      "prompt": "Which is the second largest native language spoken in Spain by numbers of speakers?",
+      "options": [
+        "Catalan",
+        "Portuguese",
+        "Spanish",
+        "French"
+      ],
+      "answer": "Catalan",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9474008d2e66",
+      "type": "multiple-choice",
+      "prompt": "Going by the International Code of Signals, which single flag is interpreted as \"I require assistance (not distress)\"?",
+      "options": [
+        "Victor",
+        "Kilo",
+        "Papa",
+        "Delta"
+      ],
+      "answer": "Victor",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-94e2a2d07435",
+      "type": "multiple-choice",
+      "prompt": "All Souls and Merton are constituent colleges of what university?",
+      "options": [
+        "Oxford",
+        "Cambridge",
+        "Manchester",
+        "Leeds"
+      ],
+      "answer": "Oxford",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-961b4de09a41",
+      "type": "multiple-choice",
+      "prompt": "The buried remains of which English explorer of Australia were found in London in January 2019?",
+      "options": [
+        "Matthew Flinders",
+        "William Bourke",
+        "Abel Tasman",
+        "Dirk Hartog"
+      ],
+      "answer": "Matthew Flinders",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-962781d5af3d",
+      "type": "multiple-choice",
+      "prompt": "Which one of these is not a typical European sword design?",
+      "options": [
+        "Scimitar",
+        "Falchion",
+        "Ulfberht",
+        "Flamberge"
+      ],
+      "answer": "Scimitar",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-968421a9a705",
+      "type": "multiple-choice",
+      "prompt": "What country does sushi & karaoke come from?",
+      "options": [
+        "Japan",
+        "China",
+        "South Korea",
+        "Vietnam"
+      ],
+      "answer": "Japan",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-97dcfb19e845",
+      "type": "multiple-choice",
+      "prompt": "What do the Dutch call their language?",
+      "options": [
+        "Nederlands",
+        "Dansk",
+        "Deutsch",
+        "Hollander"
+      ],
+      "answer": "Nederlands",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9a944f27dddc",
+      "type": "multiple-choice",
+      "prompt": "In \"Shrek\", what comedic actor voices Donkey?",
+      "options": [
+        "Eddie Murphy",
+        "Chris Rock",
+        "Richard Pryor",
+        "Bernie Mac"
+      ],
+      "answer": "Eddie Murphy",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9abf8dadd33c",
+      "type": "multiple-choice",
+      "prompt": "The Hyundai Motor Company was founded in which country?",
+      "options": [
+        "South Korea",
+        "Russia",
+        "Japan",
+        "China"
+      ],
+      "answer": "South Korea",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9b78b13954f1",
+      "type": "multiple-choice",
+      "prompt": "What is the romanized Arabic word for \"moon\"?",
+      "options": [
+        "Qamar",
+        "Najma",
+        "Kawkab",
+        "Shams"
+      ],
+      "answer": "Qamar",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9b94c6d8609f",
+      "type": "multiple-choice",
+      "prompt": "What is the romanized Russian word for \"winter\"?",
+      "options": [
+        "Zima",
+        "Leto",
+        "Vesna",
+        "Osen'"
+      ],
+      "answer": "Zima",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9c30b2c5932c",
+      "type": "multiple-choice",
+      "prompt": "What is the largest living species of penguin?",
+      "options": [
+        "Emperor",
+        "King",
+        "Gentoo",
+        "Adele"
+      ],
+      "answer": "Emperor",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9ce71de21801",
+      "type": "multiple-choice",
+      "prompt": "What is a Burgee?",
+      "options": [
+        "A flag",
+        "A rope",
+        "A window",
+        "A type of food"
+      ],
+      "answer": "A flag",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9d08fbc3cb9c",
+      "type": "multiple-choice",
+      "prompt": "Which product did Nokia, the telecommunications company, originally sell?",
+      "options": [
+        "Paper",
+        "Phones",
+        "Computers",
+        "Processors"
+      ],
+      "answer": "Paper",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9ea02494743b",
+      "type": "multiple-choice",
+      "prompt": "What do the letters in the GMT time zone stand for?",
+      "options": [
+        "Greenwich Mean Time",
+        "Global Meridian Time",
+        "General Median Time",
+        "Glasgow Man Time"
+      ],
+      "answer": "Greenwich Mean Time",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9eaab851e905",
+      "type": "multiple-choice",
+      "prompt": "Which essential condiment is also known as Japanese horseradish?",
+      "options": [
+        "Wasabi",
+        "Mentsuyu",
+        "Karashi",
+        "Ponzu"
+      ],
+      "answer": "Wasabi",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9eed9597e042",
+      "type": "multiple-choice",
+      "prompt": "What is the romanized Chinese word for \"airplane\"?",
+      "options": [
+        "Feiji",
+        "Qiche",
+        "Zongxian",
+        "Huojian"
+      ],
+      "answer": "Feiji",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9f23f77f8bf8",
+      "type": "multiple-choice",
+      "prompt": "What was the soft drink Pepsi originally introduced as?",
+      "options": [
+        "Brad's Drink",
+        "Pepsin Pop",
+        "Carolina Cola",
+        "Pepsin Syrup"
+      ],
+      "answer": "Brad's Drink",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9fa4d6d079b7",
+      "type": "multiple-choice",
+      "prompt": "Which of these Marvel games was released on the Playstation 2?",
+      "options": [
+        "Spider-Man 2",
+        "Silver Surfer",
+        "Howard the Duck",
+        "Wolverine: Adamantium Rage"
+      ],
+      "answer": "Spider-Man 2",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a03a5c47db7e",
+      "type": "multiple-choice",
+      "prompt": "In what year was McDonald's founded?",
+      "options": [
+        "1955",
+        "1964",
+        "1951",
+        "1947"
+      ],
+      "answer": "1955",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a20af116451e",
+      "type": "multiple-choice",
+      "prompt": "What is Cuba's official, most widely spoken language?",
+      "options": [
+        "Spanish",
+        "Portuguese",
+        "French",
+        "Italian"
+      ],
+      "answer": "Spanish",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a23415d51902",
+      "type": "multiple-choice",
+      "prompt": "What are Panama hats made out of?",
+      "options": [
+        "Straw",
+        "Silk",
+        "Hemp",
+        "Flax"
+      ],
+      "answer": "Straw",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a244a20b295c",
+      "type": "multiple-choice",
+      "prompt": "What does the \"G\" mean in \"G-Man\"?",
+      "options": [
+        "Government",
+        "Going",
+        "Ghost",
+        "Geronimo"
+      ],
+      "answer": "Government",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a3be3aaaa0e8",
+      "type": "multiple-choice",
+      "prompt": "In flight systems, what does the initialism \"TCAS\" stand for?",
+      "options": [
+        "Traffic Collision Avoidance System",
+        "Traffic Communication Alert System",
+        "Traffic Configuration Alignment System",
+        "Traffic Call-sign Abbreviation System"
+      ],
+      "answer": "Traffic Collision Avoidance System",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a57c38a38d38",
+      "type": "multiple-choice",
+      "prompt": "What is the official language in Barcelona beside Spanish?",
+      "options": [
+        "Catalan",
+        "Galician",
+        "French",
+        "Basque"
+      ],
+      "answer": "Catalan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a590a5cc9efc",
+      "type": "multiple-choice",
+      "prompt": "What nuts are used in the production of marzipan?",
+      "options": [
+        "Almonds",
+        "Peanuts",
+        "Walnuts",
+        "Pistachios"
+      ],
+      "answer": "Almonds",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a611e65f7006",
+      "type": "multiple-choice",
+      "prompt": "Which sign of the zodiac is represented by the Crab?",
+      "options": [
+        "Cancer",
+        "Libra",
+        "Virgo",
+        "Sagittarius"
+      ],
+      "answer": "Cancer",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a6b3d8d22cbf",
+      "type": "multiple-choice",
+      "prompt": "After how many years would you celebrate your crystal anniversary?",
+      "options": [
+        "15",
+        "20",
+        "10",
+        "25"
+      ],
+      "answer": "15",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a77897c6d19c",
+      "type": "multiple-choice",
+      "prompt": "Terry Gilliam was an animator that worked with which British comedy group?",
+      "options": [
+        "Monty Python",
+        "The Goodies",
+        "The League of Gentlemen",
+        "The Penny Dreadfuls"
+      ],
+      "answer": "Monty Python",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a8906c244090",
+      "type": "multiple-choice",
+      "prompt": "What is the French word for \"hat\"?",
+      "options": [
+        "Chapeau",
+        "Bonnet",
+        "Écharpe",
+        "Casque"
+      ],
+      "answer": "Chapeau",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a8c386767cf6",
+      "type": "multiple-choice",
+      "prompt": "What geometric shape is generally used for stop signs?",
+      "options": [
+        "Octagon",
+        "Hexagon",
+        "Circle",
+        "Triangle"
+      ],
+      "answer": "Octagon",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a913612cd0ee",
+      "type": "multiple-choice",
+      "prompt": "Which sign of the zodiac comes between Virgo and Scorpio?",
+      "options": [
+        "Libra",
+        "Gemini",
+        "Taurus",
+        "Capricorn"
+      ],
+      "answer": "Libra",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aa02dfaf7269",
+      "type": "multiple-choice",
+      "prompt": "Which logical fallacy means to attack the character of your opponent rather than their arguments?",
+      "options": [
+        "Ad hominem",
+        "Post hoc ergo propter hoc",
+        "Tu quoque",
+        "Argumentum ad populum"
+      ],
+      "answer": "Ad hominem",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aa1a32db171a",
+      "type": "multiple-choice",
+      "prompt": "What is the nickname of the US state of California?",
+      "options": [
+        "Golden State",
+        "Sunshine State",
+        "Bay State",
+        "Treasure State"
+      ],
+      "answer": "Golden State",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ad642dcf94e1",
+      "type": "multiple-choice",
+      "prompt": "Which language is NOT Indo-European?",
+      "options": [
+        "Hungarian",
+        "Russian",
+        "Greek",
+        "Latvian"
+      ],
+      "answer": "Hungarian",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ae32013d5365",
+      "type": "multiple-choice",
+      "prompt": "Who is a co-founder of music streaming service Spotify?",
+      "options": [
+        "Daniel Ek",
+        "Sean Parker",
+        "Felix Miller",
+        "Michael Breidenbruecker"
+      ],
+      "answer": "Daniel Ek",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ae380a6af259",
+      "type": "multiple-choice",
+      "prompt": "What is the star sign of someone born on Valentines day?",
+      "options": [
+        "Aquarius",
+        "Pisces",
+        "Capricorn",
+        "Scorpio"
+      ],
+      "answer": "Aquarius",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ae9d3435757e",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the extra pedal on a manual or standard transmission car?",
+      "options": [
+        "Clutch",
+        "Shifter",
+        "Booster",
+        "Parking Brake"
+      ],
+      "answer": "Clutch",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-af02250e7ee1",
+      "type": "multiple-choice",
+      "prompt": "Which one of these Swedish companies was founded in 1943?",
+      "options": [
+        "IKEA",
+        "H & M",
+        "Lindex",
+        "Clas Ohlson"
+      ],
+      "answer": "IKEA",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b00893419e28",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the popular animatronic singing fish prop, singing such hits such as \"Don't Worry, Be Happy\"?",
+      "options": [
+        "Big Mouth Billy Bass",
+        "Big Billy Bass",
+        "Singing Fish",
+        "Sardeen"
+      ],
+      "answer": "Big Mouth Billy Bass",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b193ce2e3df7",
+      "type": "multiple-choice",
+      "prompt": "Who is the author of Jurassic Park?",
+      "options": [
+        "Michael Crichton",
+        "Peter Benchley",
+        "Chuck Palahniuk",
+        "Irvine Welsh"
+      ],
+      "answer": "Michael Crichton",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b20dba5cdb44",
+      "type": "multiple-choice",
+      "prompt": "In aerodynamics, which force pushes an object upwards?",
+      "options": [
+        "Lift",
+        "Drag",
+        "Weight",
+        "Thrust"
+      ],
+      "answer": "Lift",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b323786020e4",
+      "type": "multiple-choice",
+      "prompt": "When was the Declaration of Independence approved by the Second Continental Congress?",
+      "options": [
+        "July 4, 1776",
+        "May 4, 1776",
+        "June 4, 1776",
+        "July 2, 1776"
+      ],
+      "answer": "July 4, 1776",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b3b191abb4ee",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT considered to be a colour that makes up the rainbow?",
+      "options": [
+        "Pink",
+        "Blue",
+        "Violet",
+        "Orange"
+      ],
+      "answer": "Pink",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b45654080e62",
+      "type": "multiple-choice",
+      "prompt": "What is the shortest month of the year?",
+      "options": [
+        "February",
+        "December",
+        "April",
+        "September"
+      ],
+      "answer": "February",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b68db6a16ace",
+      "type": "multiple-choice",
+      "prompt": "What is the most frequently used letter in the english alphabet?",
+      "options": [
+        "E",
+        "A",
+        "I",
+        "O"
+      ],
+      "answer": "E",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b6e03c1e62f6",
+      "type": "multiple-choice",
+      "prompt": "What is the German word for \"spoon\"?",
+      "options": [
+        "Löffel",
+        "Gabel",
+        "Messer",
+        "Essstäbchen"
+      ],
+      "answer": "Löffel",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b6f8b2eb8178",
+      "type": "multiple-choice",
+      "prompt": "What is H2O?",
+      "options": [
+        "Water",
+        "Oxygen",
+        "Hydrogen",
+        "None"
+      ],
+      "answer": "Water",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b980ffe6dc3c",
+      "type": "multiple-choice",
+      "prompt": "Who is the founder of \"The Lego Group\"?",
+      "options": [
+        "Ole Kirk Christiansen",
+        "Jens Niels Christiansen",
+        "Kirstine Christiansen",
+        "Gerhardt Kirk Christiansen"
+      ],
+      "answer": "Ole Kirk Christiansen",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b992780c53ec",
+      "type": "multiple-choice",
+      "prompt": "Which of these words refers to something made, distributed, or sold illegally?",
+      "options": [
+        "Bootleg",
+        "Bootblack",
+        "Bootlace",
+        "Bootstrap"
+      ],
+      "answer": "Bootleg",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b9efed2dcd82",
+      "type": "multiple-choice",
+      "prompt": "Linus Pauling, one of the only winners of multiple Nobel Prizes, earned his Nobel Prizes in Chemistry and what?",
+      "options": [
+        "Peace",
+        "Physics",
+        "Economics",
+        "Physiology/Medicine"
+      ],
+      "answer": "Peace",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bbd662794fee",
+      "type": "multiple-choice",
+      "prompt": "In the English language, what is the name of the \"&\" character?",
+      "options": [
+        "Ampersand",
+        "Eightslash",
+        "And Sign",
+        "Obelus"
+      ],
+      "answer": "Ampersand",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bcd9f7b60788",
+      "type": "multiple-choice",
+      "prompt": "Area 51 is located in which US state?",
+      "options": [
+        "Nevada",
+        "Arizona",
+        "New Mexico",
+        "Utah"
+      ],
+      "answer": "Nevada",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c12bb6b86a72",
+      "type": "multiple-choice",
+      "prompt": "What was the first ever London Underground line to be built?",
+      "options": [
+        "Metropolitan Line",
+        "Circle Line",
+        "Bakerloo Line",
+        "Victoria Line"
+      ],
+      "answer": "Metropolitan Line",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c22181805b9b",
+      "type": "multiple-choice",
+      "prompt": "What year was the first Apple iPod introduced?",
+      "options": [
+        "2001",
+        "2000",
+        "1999",
+        "1998"
+      ],
+      "answer": "2001",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c24d8182b4a9",
+      "type": "multiple-choice",
+      "prompt": "\"A3\", \"B1\", and \"Legal\" are typical names of sizes for what object?",
+      "options": [
+        "Paper",
+        "Airplanes",
+        "Law books",
+        "Phone screens"
+      ],
+      "answer": "Paper",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c26faa3312cd",
+      "type": "multiple-choice",
+      "prompt": "What is the official language of Brazil?",
+      "options": [
+        "Portuguese",
+        "Brazilian",
+        "Spanish",
+        "English"
+      ],
+      "answer": "Portuguese",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c3c897f2a51e",
+      "type": "multiple-choice",
+      "prompt": "What was the name of Squidward's bad painting in the Spongebob episode \"Artist Unknown?\"",
+      "options": [
+        "Bold and Brash",
+        "Squidward en Repose",
+        "Rippy Bits",
+        "Tilted Perspectives"
+      ],
+      "answer": "Bold and Brash",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c5082ef68887",
+      "type": "multiple-choice",
+      "prompt": "Which Italian automobile manufacturer gained majority control of U.S. automobile manufacturer Chrysler in 2011?",
+      "options": [
+        "Fiat",
+        "Maserati",
+        "Alfa Romeo",
+        "Ferrari"
+      ],
+      "answer": "Fiat",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c59a596d629d",
+      "type": "multiple-choice",
+      "prompt": "How would one say goodbye in Spanish?",
+      "options": [
+        "Adiós",
+        "Hola",
+        "Au Revoir",
+        "Salir"
+      ],
+      "answer": "Adiós",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c613a843b994",
+      "type": "multiple-choice",
+      "prompt": "What is the largest organ of the human body?",
+      "options": [
+        "Skin",
+        "Heart",
+        "large Intestine",
+        "Liver"
+      ],
+      "answer": "Skin",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c67bd5912caa",
+      "type": "multiple-choice",
+      "prompt": "Who invented the first ever chocolate bar, in 1847?",
+      "options": [
+        "Joseph Fry",
+        "Andrew Johnson",
+        "John Cadbury",
+        "John Tyler"
+      ],
+      "answer": "Joseph Fry",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c72220353f8f",
+      "type": "multiple-choice",
+      "prompt": "What is the highest number of Michelin stars a restaurant can receive?",
+      "options": [
+        "Three",
+        "Four",
+        "Five",
+        "Six"
+      ],
+      "answer": "Three",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c72d1cef7d1f",
+      "type": "multiple-choice",
+      "prompt": "A statue of Charles Darwin sits in what London museum?",
+      "options": [
+        "Natural History Museum",
+        "Tate",
+        "British Museum",
+        "Science Museum"
+      ],
+      "answer": "Natural History Museum",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c7ca7ee08180",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the WWF professional wrestling tag team made up of the wrestlers Ax and Smash?",
+      "options": [
+        "Demolition",
+        "The Dream Team",
+        "The Bushwhackers",
+        "The British Bulldogs"
+      ],
+      "answer": "Demolition",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c813b0d64181",
+      "type": "multiple-choice",
+      "prompt": "What technology is named after a tenth-century ruler of Denmark and Norway?",
+      "options": [
+        "Bluetooth",
+        "Wi-Fi",
+        "GPS",
+        "Internet"
+      ],
+      "answer": "Bluetooth",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c8444d677bf0",
+      "type": "multiple-choice",
+      "prompt": "When was Pong released?",
+      "options": [
+        "November 29, 1972",
+        "March 29, 2017",
+        "November 29, 1970",
+        "December 14, 1974"
+      ],
+      "answer": "November 29, 1972",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c9b0c0dd85e7",
+      "type": "multiple-choice",
+      "prompt": "According to the Book of Genesis in the Old Testament, how many days did it take God to create the world?",
+      "options": [
+        "Six",
+        "Seven",
+        "One",
+        "Twelve"
+      ],
+      "answer": "Six",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ca96e7283b89",
+      "type": "multiple-choice",
+      "prompt": "Which of the following presidents is not on Mount Rushmore?",
+      "options": [
+        "John F. Kennedy",
+        "Theodore Roosevelt",
+        "Abraham Lincoln",
+        "Thomas Jefferson"
+      ],
+      "answer": "John F. Kennedy",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cb7ecd7c9152",
+      "type": "multiple-choice",
+      "prompt": "The file hosting service, \"Google Drive\" was launched on what day?",
+      "options": [
+        "April 24, 2012",
+        "January 12, 2014",
+        "November 14, 2008",
+        "January 20, 2010"
+      ],
+      "answer": "April 24, 2012",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cc5aca21626f",
+      "type": "multiple-choice",
+      "prompt": "Sciophobia is the fear of what?",
+      "options": [
+        "Shadows",
+        "Eating",
+        "Bright lights",
+        "Transportation"
+      ],
+      "answer": "Shadows",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cfd4daa9faac",
+      "type": "multiple-choice",
+      "prompt": "Which of the three astronauts of the Apollo 11 spaceflight did NOT walk on the moon?",
+      "options": [
+        "Michael Collins",
+        "Buzz Aldrin",
+        "Neil Armstrong",
+        "None of them"
+      ],
+      "answer": "Michael Collins",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d0b8be39b59b",
+      "type": "multiple-choice",
+      "prompt": "What is Cynophobia the fear of?",
+      "options": [
+        "Dogs",
+        "Birds",
+        "Flying",
+        "Germs"
+      ],
+      "answer": "Dogs",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d1699eb44259",
+      "type": "multiple-choice",
+      "prompt": "Who is depicted on the US hundred dollar bill?",
+      "options": [
+        "Benjamin Franklin",
+        "George Washington",
+        "Abraham Lincoln",
+        "Thomas Jefferson"
+      ],
+      "answer": "Benjamin Franklin",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d225422d07ec",
+      "type": "multiple-choice",
+      "prompt": "The Flag of the European Union has how many stars on it?",
+      "options": [
+        "12",
+        "10",
+        "14",
+        "16"
+      ],
+      "answer": "12",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d396881154ae",
+      "type": "multiple-choice",
+      "prompt": "What company developed the vocaloid Hatsune Miku?",
+      "options": [
+        "Crypton Future Media",
+        "Sega",
+        "Sony",
+        "Yamaha Corporation"
+      ],
+      "answer": "Crypton Future Media",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d3d4e4a0d3f4",
+      "type": "multiple-choice",
+      "prompt": "Which of these companies does NOT manufacture automobiles?",
+      "options": [
+        "Ducati",
+        "Nissan",
+        "GMC",
+        "Fiat"
+      ],
+      "answer": "Ducati",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d4da6b68a323",
+      "type": "multiple-choice",
+      "prompt": "What year was Apple Inc. founded?",
+      "options": [
+        "1976",
+        "1978",
+        "1980",
+        "1974"
+      ],
+      "answer": "1976",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d64908dac3f3",
+      "type": "multiple-choice",
+      "prompt": "According to Sherlock Holmes, \"If you eliminate the impossible, whatever remains, however improbable, must be the...\"",
+      "options": [
+        "Truth",
+        "Answer",
+        "Cause",
+        "Source"
+      ],
+      "answer": "Truth",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d7394986453a",
+      "type": "multiple-choice",
+      "prompt": "Which of these American singers and songwriters won a Nobel Prize in Literature?",
+      "options": [
+        "Bob Dylan",
+        "Buddy Holly",
+        "Johnny Cash",
+        "Alice Cooper"
+      ],
+      "answer": "Bob Dylan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d74651852e54",
+      "type": "multiple-choice",
+      "prompt": "Which chemical element, number 11 in the Periodic table, has the symbol Na?",
+      "options": [
+        "Sodium",
+        "Carbon",
+        "Lead",
+        "Nitrogen"
+      ],
+      "answer": "Sodium",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d8a380615dab",
+      "type": "multiple-choice",
+      "prompt": "What fruit is a traditional ingredient of a Black Forest Gateau?",
+      "options": [
+        "Cherries",
+        "Apricots",
+        "Raisins",
+        "Apples"
+      ],
+      "answer": "Cherries",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-db8276961077",
+      "type": "multiple-choice",
+      "prompt": "Which mountain has the highest peak in South America?",
+      "options": [
+        "Aconcagua, Argentina",
+        "Ojos del Salado, Argentina/Chile border",
+        "Monte Pissis, Argentina",
+        "Huascarán, Peru"
+      ],
+      "answer": "Aconcagua, Argentina",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e2bd4fe9f820",
+      "type": "multiple-choice",
+      "prompt": "Which of the following card games revolves around numbers and basic math?",
+      "options": [
+        "Uno",
+        "Go Fish",
+        "Twister",
+        "Munchkin"
+      ],
+      "answer": "Uno",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e5c339d08a36",
+      "type": "multiple-choice",
+      "prompt": "A criminal who has “cooked the books” has engaged in what kind of illegal behavior?",
+      "options": [
+        "Accounting Fraud",
+        "Money Laundering",
+        "Extortion",
+        "Blackmail"
+      ],
+      "answer": "Accounting Fraud",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e5d5bc06fa62",
+      "type": "multiple-choice",
+      "prompt": "Which item of clothing is usually worn by a Scotsman at a wedding?",
+      "options": [
+        "Kilt",
+        "Skirt",
+        "Dress",
+        "Rhobes"
+      ],
+      "answer": "Kilt",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e5eb7067884d",
+      "type": "multiple-choice",
+      "prompt": "Which country has the Union Jack in its flag?",
+      "options": [
+        "New Zealand",
+        "South Africa",
+        "Canada",
+        "Hong Kong"
+      ],
+      "answer": "New Zealand",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e63aeb1067b6",
+      "type": "multiple-choice",
+      "prompt": "How many cards are there in a standard deck of playing cards?",
+      "options": [
+        "52",
+        "32",
+        "40",
+        "64"
+      ],
+      "answer": "52",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e8931e4ac11f",
+      "type": "multiple-choice",
+      "prompt": "What is the name given to Indian food cooked over charcoal in a clay oven?",
+      "options": [
+        "Tandoori",
+        "Biryani",
+        "Pani puri",
+        "Tiki masala"
+      ],
+      "answer": "Tandoori",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e90aa48dfcfb",
+      "type": "multiple-choice",
+      "prompt": "The words \"bungalow\" and \"shampoo\" originate from the languages of which country?",
+      "options": [
+        "India",
+        "Papua New Guinea",
+        "Ethiopia",
+        "China"
+      ],
+      "answer": "India",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e9fb449d7fc8",
+      "type": "multiple-choice",
+      "prompt": "What does the Latin phrase \"Veni, vidi, vici\" translate into English?",
+      "options": [
+        "I came, I saw, I conquered",
+        "See no evil, hear no evil, speak no evil",
+        "Life, liberty, and happiness",
+        "Past, present, and future"
+      ],
+      "answer": "I came, I saw, I conquered",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eb539c3d4842",
+      "type": "multiple-choice",
+      "prompt": "Antibiotics are generally taken to combat what?",
+      "options": [
+        "Bacterial infections",
+        "Viruses",
+        "Migraines",
+        "Muscular pains"
+      ],
+      "answer": "Bacterial infections",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ec81cba3800c",
+      "type": "multiple-choice",
+      "prompt": "What direction does the Statue of Liberty face?",
+      "options": [
+        "Southeast",
+        "Southwest",
+        "Northwest",
+        "Northeast"
+      ],
+      "answer": "Southeast",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-edaf01bc5b2e",
+      "type": "multiple-choice",
+      "prompt": "Located in Chile, El Teniente is the world's largest underground mine for what metal?",
+      "options": [
+        "Copper",
+        "Iron",
+        "Nickel",
+        "Silver"
+      ],
+      "answer": "Copper",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eebd770e2dcf",
+      "type": "multiple-choice",
+      "prompt": "What company owns Outlook?",
+      "options": [
+        "Microsoft",
+        "Google",
+        "Apple",
+        "Yahoo"
+      ],
+      "answer": "Microsoft",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eeda64894012",
+      "type": "multiple-choice",
+      "prompt": "What was the nickname given to the Hughes H-4 Hercules, a heavy transport flying boat which achieved flight in 1947?",
+      "options": [
+        "Spruce Goose",
+        "Noah's Ark",
+        "Fat Man",
+        "Trojan Horse"
+      ],
+      "answer": "Spruce Goose",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f0029fb148de",
+      "type": "multiple-choice",
+      "prompt": "Earth is located in which galaxy?",
+      "options": [
+        "The Milky Way Galaxy",
+        "The Mars Galaxy",
+        "The Galaxy Note",
+        "The Black Hole"
+      ],
+      "answer": "The Milky Way Galaxy",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f4bd9fccffda",
+      "type": "multiple-choice",
+      "prompt": "Which mountain has the highest peak in North America?",
+      "options": [
+        "Denali, USA",
+        "Mount Saint Elias, US/Canada border",
+        "Mount Logan, Canada",
+        "Pico de Orizaba, Mexico"
+      ],
+      "answer": "Denali, USA",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f547b8a63e64",
+      "type": "multiple-choice",
+      "prompt": "Which of the following nations was NOT a belligerent in World War I?",
+      "options": [
+        "Denmark",
+        "Portugal",
+        "Greece",
+        "Romania"
+      ],
+      "answer": "Denmark",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f6955882cf9a",
+      "type": "multiple-choice",
+      "prompt": "What English word means to \"think deeply\"?",
+      "options": [
+        "Contemplate",
+        "Confiscate",
+        "Constipate",
+        "Condensate"
+      ],
+      "answer": "Contemplate",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f6e8a3fdc3e7",
+      "type": "multiple-choice",
+      "prompt": "Which company did Valve cooperate with in the creation of the Vive?",
+      "options": [
+        "HTC",
+        "Oculus",
+        "Google",
+        "Razer"
+      ],
+      "answer": "HTC",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f80521db3c37",
+      "type": "multiple-choice",
+      "prompt": "Which of these fast-food chains is NOT mainly known to sell pizza?",
+      "options": [
+        "Wendy's",
+        "Domino's",
+        "Little Caesars",
+        "Papa John's"
+      ],
+      "answer": "Wendy's",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fb56bc0b7bdd",
+      "type": "multiple-choice",
+      "prompt": "What is on display in the Madame Tussaud's museum in London?",
+      "options": [
+        "Wax sculptures",
+        "Designer clothing",
+        "Unreleased film reels",
+        "Vintage cars"
+      ],
+      "answer": "Wax sculptures",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fb5db0036148",
+      "type": "multiple-choice",
+      "prompt": "What Latin phrase roughly translates to \"seize the day\"?",
+      "options": [
+        "Carpe diem",
+        "Memento mori",
+        "Plus ultra",
+        "Sic semper tyrannis"
+      ],
+      "answer": "Carpe diem",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fe72d63f9a7e",
+      "type": "multiple-choice",
+      "prompt": "The phrase \"accident waiting to happen\" is an example of what type of figure of speech?",
+      "options": [
+        "Idiom",
+        "Simile",
+        "Metaphor",
+        "Analogy"
+      ],
+      "answer": "Idiom",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ff7a198fd754",
+      "type": "multiple-choice",
+      "prompt": "Which one of the following rhythm games was made by Harmonix?",
+      "options": [
+        "Rock Band",
+        "Meat Beat Mania",
+        "Guitar Hero Live",
+        "Dance Dance Revolution"
+      ],
+      "answer": "Rock Band",
+      "difficulty": "easy",
+      "region": "general"
+    }
+  ]
+}

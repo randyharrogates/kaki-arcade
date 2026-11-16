@@ -1,0 +1,2814 @@
+{
+  "category": "technology",
+  "title": "Technology and vehicles",
+  "defaultSource": {
+    "kind": "dataset",
+    "dataset": "Open Trivia Database",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "url": "https://opentdb.com",
+    "notice": "Questions from the Open Trivia Database (opentdb.com), licensed under CC BY-SA 4.0. Adapted for Kaki Arcade: selected, screened for an all-ages audience, regrouped and tidied. The adapted questions are offered under the same licence."
+  },
+  "questions": [
+    {
+      "id": "otdb-0039a07eaac4",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is a personal computer made by the Japanese company Fujitsu?",
+      "options": [
+        "FM-7",
+        "PC-9801",
+        "Xmillennium",
+        "MSX"
+      ],
+      "answer": "FM-7",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-008ab99abd74",
+      "type": "multiple-choice",
+      "prompt": "Which of the following FIA Rally cars was approved for use in the Group B class first?",
+      "options": [
+        "Porsche 911 Turbo",
+        "Audi Quattro A2",
+        "BMW M1",
+        "Lancia Rally 037"
+      ],
+      "answer": "Porsche 911 Turbo",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-03d6cccd1228",
+      "type": "multiple-choice",
+      "prompt": "The Electron computer was released in Britain during 1983 for the home computing market, by which company?",
+      "options": [
+        "Acorn Computers",
+        "Sinclair Research",
+        "Amstrad PLC",
+        "Commodore Business Machines"
+      ],
+      "answer": "Acorn Computers",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-03ed413a1031",
+      "type": "multiple-choice",
+      "prompt": "In computing terms, typically what does CLI stand for?",
+      "options": [
+        "Command Line Interface",
+        "Common Language Input",
+        "Control Line Interface",
+        "Common Language Interface"
+      ],
+      "answer": "Command Line Interface",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-05d264ba19a2",
+      "type": "multiple-choice",
+      "prompt": "Approximately how many Apple I personal computers were created?",
+      "options": [
+        "200",
+        "100",
+        "500",
+        "1000"
+      ],
+      "answer": "200",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-05fb60501829",
+      "type": "multiple-choice",
+      "prompt": "Which of the following computer components can be built using only NAND gates?",
+      "options": [
+        "ALU",
+        "CPU",
+        "RAM",
+        "Register"
+      ],
+      "answer": "ALU",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-06b767fbdb1b",
+      "type": "multiple-choice",
+      "prompt": "The acronym \"RIP\" stands for which of these?",
+      "options": [
+        "Routing Information Protocol",
+        "Runtime Instance Processes",
+        "Regular Interval Processes",
+        "Routine Inspection Protocol"
+      ],
+      "answer": "Routing Information Protocol",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0b2eb5784449",
+      "type": "multiple-choice",
+      "prompt": "Automobiles produced by Tesla Motors operate on which form of energy?",
+      "options": [
+        "Electricity",
+        "Gasoline",
+        "Diesel",
+        "Nuclear"
+      ],
+      "answer": "Electricity",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0cdb0ad94b9e",
+      "type": "multiple-choice",
+      "prompt": "The British Rail Class 700, Class 707 and the Class 717 are part of what train family?",
+      "options": [
+        "Desiro City",
+        "Networker",
+        "Aventra",
+        "Electrostar"
+      ],
+      "answer": "Desiro City",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0e919f8e2d9c",
+      "type": "multiple-choice",
+      "prompt": "Which data structure does FILO apply to?",
+      "options": [
+        "Stack",
+        "Queue",
+        "Heap",
+        "Tree"
+      ],
+      "answer": "Stack",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0f624b9f8a33",
+      "type": "multiple-choice",
+      "prompt": "The Harvard architecture for micro-controllers added which additional bus?",
+      "options": [
+        "Instruction",
+        "Address",
+        "Data",
+        "Control"
+      ],
+      "answer": "Instruction",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-0fdde6bb4233",
+      "type": "multiple-choice",
+      "prompt": "Which of these automotive brands originated in Sweden?",
+      "options": [
+        "Volvo",
+        "Mercedes",
+        "Acura",
+        "Lincoln"
+      ],
+      "answer": "Volvo",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1038456af722",
+      "type": "multiple-choice",
+      "prompt": "What are the base station trackers used for the HTC Vive called?",
+      "options": [
+        "Lighthouse",
+        "Motion",
+        "Constellation",
+        "Trackers"
+      ],
+      "answer": "Lighthouse",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1042a9266c7a",
+      "type": "multiple-choice",
+      "prompt": "Which RAID array type is associated with data mirroring?",
+      "options": [
+        "RAID 1",
+        "RAID 0",
+        "RAID 6",
+        "RAID 5"
+      ],
+      "answer": "RAID 1",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-11c0ecb4bfe4",
+      "type": "multiple-choice",
+      "prompt": "Laserjet and inkjet printers are both examples of what type of printer?",
+      "options": [
+        "Non-impact printer",
+        "Impact printer",
+        "Daisywheel printer",
+        "Dot matrix printer"
+      ],
+      "answer": "Non-impact printer",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-15bb86a5ac8a",
+      "type": "multiple-choice",
+      "prompt": "What is the most preferred image format used for logos in the Wikimedia database?",
+      "options": [
+        ".svg",
+        ".png",
+        ".jpeg",
+        ".gif"
+      ],
+      "answer": ".svg",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-191de76cfb1f",
+      "type": "multiple-choice",
+      "prompt": "The teapot often seen in many 3D modeling applications is called what?",
+      "options": [
+        "Utah Teapot",
+        "Pixar Teapot",
+        "3D Teapot",
+        "Tennessee Teapot"
+      ],
+      "answer": "Utah Teapot",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-191f42d00a0c",
+      "type": "multiple-choice",
+      "prompt": "Which of the following vehicles from Ford is named after a WW2 Fighter Plane?",
+      "options": [
+        "Mustang",
+        "Explorer",
+        "Ranger",
+        "Galaxy"
+      ],
+      "answer": "Mustang",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-19fe14baf6bd",
+      "type": "multiple-choice",
+      "prompt": "What five letter word is the motto of the IBM Computer company?",
+      "options": [
+        "Think",
+        "Click",
+        "Logic",
+        "Pixel"
+      ],
+      "answer": "Think",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1e15e39872df",
+      "type": "multiple-choice",
+      "prompt": "The internet domain .fm is the country-code top-level domain for which Pacific Ocean island nation?",
+      "options": [
+        "Micronesia",
+        "Fiji",
+        "Tuvalu",
+        "Marshall Islands"
+      ],
+      "answer": "Micronesia",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-1e1ca105921d",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the default theme that is installed with Windows XP?",
+      "options": [
+        "Luna",
+        "Neptune",
+        "Whistler",
+        "Bliss"
+      ],
+      "answer": "Luna",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-22df5f4335d8",
+      "type": "multiple-choice",
+      "prompt": "What does the term USB stand for?",
+      "options": [
+        "Universal Serial Bus",
+        "Universal Simtex Blot",
+        "Unified Signal Bus",
+        "Unityped Semtex Backer"
+      ],
+      "answer": "Universal Serial Bus",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-23ec9b96de60",
+      "type": "multiple-choice",
+      "prompt": "How many kilobytes in one gigabyte (in decimal)?",
+      "options": [
+        "1000000",
+        "1024",
+        "1000",
+        "1048576"
+      ],
+      "answer": "1000000",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-248cbb5c2678",
+      "type": "multiple-choice",
+      "prompt": "What does SSD stand for?",
+      "options": [
+        "Solid State Drive",
+        "Solution Source Disk",
+        "Super Speed Disk",
+        "Source Solution Drive"
+      ],
+      "answer": "Solid State Drive",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-24c634d6d7c2",
+      "type": "multiple-choice",
+      "prompt": "According to the International System of Units, how many bytes are in a kilobyte of RAM?",
+      "options": [
+        "1000",
+        "512",
+        "1024",
+        "500"
+      ],
+      "answer": "1000",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2662ba065926",
+      "type": "multiple-choice",
+      "prompt": "Which of these people was NOT a founder of Apple Inc?",
+      "options": [
+        "Jonathan Ive",
+        "Steve Jobs",
+        "Ronald Wayne",
+        "Steve Wozniak"
+      ],
+      "answer": "Jonathan Ive",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-274d765ea447",
+      "type": "multiple-choice",
+      "prompt": "Which car manufacturer created the \"Aventador\"?",
+      "options": [
+        "Lamborghini",
+        "Ferrari",
+        "Pagani",
+        "Bugatti"
+      ],
+      "answer": "Lamborghini",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-27cdd7a96e1d",
+      "type": "multiple-choice",
+      "prompt": "In programming, the ternary operator is mostly defined with what symbol(s)?",
+      "options": [
+        "?:",
+        "??",
+        "if then",
+        "?"
+      ],
+      "answer": "?:",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2ba5e21b0546",
+      "type": "multiple-choice",
+      "prompt": "The Windows OS was developed by which company?",
+      "options": [
+        "Microsoft",
+        "Apple",
+        "Nokia",
+        "IBM"
+      ],
+      "answer": "Microsoft",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-2eac2328c56e",
+      "type": "multiple-choice",
+      "prompt": "What was the first company to use the term \"Golden Master\"?",
+      "options": [
+        "Apple",
+        "IBM",
+        "Microsoft",
+        "Google"
+      ],
+      "answer": "Apple",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-370bf3324c08",
+      "type": "multiple-choice",
+      "prompt": "America Online (AOL) started out as which of these online service providers?",
+      "options": [
+        "Quantum Link",
+        "CompuServe",
+        "Prodigy",
+        "GEnie"
+      ],
+      "answer": "Quantum Link",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-371e7607c43e",
+      "type": "multiple-choice",
+      "prompt": "What was the name given to Android 4.3?",
+      "options": [
+        "Jelly Bean",
+        "Lollipop",
+        "Nutella",
+        "Froyo"
+      ],
+      "answer": "Jelly Bean",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-37a950be1e63",
+      "type": "multiple-choice",
+      "prompt": "Released in 2001, the first edition of Apple's Mac OS X operating system (version 10.0) was given what animal code name?",
+      "options": [
+        "Cheetah",
+        "Puma",
+        "Tiger",
+        "Leopard"
+      ],
+      "answer": "Cheetah",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-390ba7ade3d9",
+      "type": "multiple-choice",
+      "prompt": "Linus Torvalds created which of these?",
+      "options": [
+        "Linux",
+        "Microsoft Windows",
+        "Python",
+        "Wikipedia"
+      ],
+      "answer": "Linux",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a11f1f1935a",
+      "type": "multiple-choice",
+      "prompt": "What year did the Chevrolet LUV mini truck make its debut?",
+      "options": [
+        "1972",
+        "1982",
+        "1975",
+        "1973"
+      ],
+      "answer": "1972",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3a372a74e857",
+      "type": "multiple-choice",
+      "prompt": "The difference between the lengths of a Boeing 777-300ER and an Airbus A350-1000 is closest to:",
+      "options": [
+        "0.1m",
+        "1m",
+        "10m",
+        "100m"
+      ],
+      "answer": "0.1m",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3cc33622e15e",
+      "type": "multiple-choice",
+      "prompt": "How many bits make up the significand portion of a single precision floating point number?",
+      "options": [
+        "23",
+        "8",
+        "53",
+        "15"
+      ],
+      "answer": "23",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3dd2abdf0b73",
+      "type": "multiple-choice",
+      "prompt": "What does CPU stand for?",
+      "options": [
+        "Central Processing Unit",
+        "Central Process Unit",
+        "Computer Personal Unit",
+        "Central Processor Unit"
+      ],
+      "answer": "Central Processing Unit",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3df089c41e20",
+      "type": "multiple-choice",
+      "prompt": "Which programming language was developed by Sun Microsystems in 1995?",
+      "options": [
+        "Java",
+        "Python",
+        "Solaris OS",
+        "C++"
+      ],
+      "answer": "Java",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3e0f9b37a617",
+      "type": "multiple-choice",
+      "prompt": "In \"Hexadecimal\", what color would be displayed from the color code? \"#00FF00\"?",
+      "options": [
+        "Green",
+        "Red",
+        "Blue",
+        "Yellow"
+      ],
+      "answer": "Green",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3e1f8479a561",
+      "type": "multiple-choice",
+      "prompt": "Which car is the first mass-produced hybrid vehicle?",
+      "options": [
+        "Toyota Prius",
+        "Chevrolet Volt",
+        "Honda Fit",
+        "Peugeot 308 R HYbrid"
+      ],
+      "answer": "Toyota Prius",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-3f31f67380e4",
+      "type": "multiple-choice",
+      "prompt": "In programming, what do you call functions with the same name but different implementations?",
+      "options": [
+        "Overloading",
+        "Overriding",
+        "Abstracting",
+        "Inheriting"
+      ],
+      "answer": "Overloading",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-42171864720f",
+      "type": "multiple-choice",
+      "prompt": "What are the cylinder-like parts that pump up and down within the engine?",
+      "options": [
+        "Pistons",
+        "Leaf Springs",
+        "Radiators",
+        "ABS"
+      ],
+      "answer": "Pistons",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-42649dbbc1f7",
+      "type": "multiple-choice",
+      "prompt": "HTML is what type of language?",
+      "options": [
+        "Markup Language",
+        "Macro Language",
+        "Programming Language",
+        "Scripting Language"
+      ],
+      "answer": "Markup Language",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-42ee9b59807c",
+      "type": "multiple-choice",
+      "prompt": "What was the first Android version specifically optimized for tablets?",
+      "options": [
+        "Honeycomb",
+        "Eclair",
+        "Froyo",
+        "Marshmallow"
+      ],
+      "answer": "Honeycomb",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-43f8547bf58b",
+      "type": "multiple-choice",
+      "prompt": ".rs is the top-level domain for what country?",
+      "options": [
+        "Serbia",
+        "Romania",
+        "Russia",
+        "Rwanda"
+      ],
+      "answer": "Serbia",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-43fdb5b48d13",
+      "type": "multiple-choice",
+      "prompt": "When was Cadillac founded?",
+      "options": [
+        "1902",
+        "1964",
+        "1898",
+        "1985"
+      ],
+      "answer": "1902",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-441a53a67b68",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a computer science algorithm?",
+      "options": [
+        "Float Sort",
+        "Bubble Sort",
+        "Merge Sort",
+        "Quick Sort"
+      ],
+      "answer": "Float Sort",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-47a0379bb60f",
+      "type": "multiple-choice",
+      "prompt": "What programming language was GitHub written in?",
+      "options": [
+        "Ruby",
+        "JavaScript",
+        "Python",
+        "Lua"
+      ],
+      "answer": "Ruby",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-499ca2218fc9",
+      "type": "multiple-choice",
+      "prompt": "Which virtual assistant is developed by Amazon?",
+      "options": [
+        "Alexa",
+        "Google Assistant",
+        "Siri",
+        "Cortana"
+      ],
+      "answer": "Alexa",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4aa21a47184a",
+      "type": "multiple-choice",
+      "prompt": "What does LTS stand for in the software market?",
+      "options": [
+        "Long Term Support",
+        "Long Taco Service",
+        "Ludicrous Transfer Speed",
+        "Ludicrous Turbo Speed"
+      ],
+      "answer": "Long Term Support",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4c48126e37e3",
+      "type": "multiple-choice",
+      "prompt": "Which company manufactured the iconic TR-808 drum machine?",
+      "options": [
+        "Roland",
+        "Technics",
+        "Korg",
+        "Casio"
+      ],
+      "answer": "Roland",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4c7d82c5a795",
+      "type": "multiple-choice",
+      "prompt": "What is the codename of the eighth generation Intel Core micro-architecture launched in October 2017?",
+      "options": [
+        "Coffee Lake",
+        "Sandy Bridge",
+        "Skylake",
+        "Broadwell"
+      ],
+      "answer": "Coffee Lake",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4d8043c476cb",
+      "type": "multiple-choice",
+      "prompt": "The name of technology company HP stands for what?",
+      "options": [
+        "Hewlett-Packard",
+        "Howard Packmann",
+        "Husker-Pollosk",
+        "Hellman-Pohl"
+      ],
+      "answer": "Hewlett-Packard",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4e2cb56226a8",
+      "type": "multiple-choice",
+      "prompt": "Which one is NOT the function of engine oil in car engines?",
+      "options": [
+        "Combustion",
+        "Lubrication",
+        "Cooling",
+        "Reduce corrosion"
+      ],
+      "answer": "Combustion",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4e54f059e37e",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is not a type of computer mouse?",
+      "options": [
+        "Smoothie mouse",
+        "Drum mouse",
+        "Trackball mouse",
+        "Optical mouse"
+      ],
+      "answer": "Smoothie mouse",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-4edd0f56a41e",
+      "type": "multiple-choice",
+      "prompt": "Complete the following analogy: Audi is to Volkswagen as Infiniti is to ?",
+      "options": [
+        "Nissan",
+        "Honda",
+        "Hyundai",
+        "Subaru"
+      ],
+      "answer": "Nissan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-502dccf336cb",
+      "type": "multiple-choice",
+      "prompt": "Who invented the \"Spanning Tree Protocol\"?",
+      "options": [
+        "Radia Perlman",
+        "Paul Vixie",
+        "Vint Cerf",
+        "Michael Roberts"
+      ],
+      "answer": "Radia Perlman",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-50324f07bfbe",
+      "type": "multiple-choice",
+      "prompt": "When was the Tamagotchi digital pet released?",
+      "options": [
+        "1996",
+        "1989",
+        "1992",
+        "1990"
+      ],
+      "answer": "1996",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-52c3a5e8d50d",
+      "type": "multiple-choice",
+      "prompt": "What country is the Hussarya supercar, made by the car manufacturer \"Arrinera\", assembled in?",
+      "options": [
+        "Poland",
+        "China",
+        "Sweden",
+        "Italy"
+      ],
+      "answer": "Poland",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-53acfaf29d15",
+      "type": "multiple-choice",
+      "prompt": "Whistler was the codename of this Microsoft Operating System.",
+      "options": [
+        "Windows XP",
+        "Windows 2000",
+        "Windows 7",
+        "Windows 95"
+      ],
+      "answer": "Windows XP",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-53c2ba9c7d62",
+      "type": "multiple-choice",
+      "prompt": "According to DeMorgan's Theorem, the Boolean expression (AB)' is equivalent to:",
+      "options": [
+        "A' + B'",
+        "A'B + B'A",
+        "A'B'",
+        "AB' + AB"
+      ],
+      "answer": "A' + B'",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-53ce87c68ee1",
+      "type": "multiple-choice",
+      "prompt": "How many bits are commonly in a single byte?",
+      "options": [
+        "Eight bits",
+        "Six bits",
+        "Twelve bits",
+        "Fifteen bits"
+      ],
+      "answer": "Eight bits",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5507e3000460",
+      "type": "multiple-choice",
+      "prompt": "What internet protocol was documented in RFC 1459?",
+      "options": [
+        "IRC",
+        "HTTP",
+        "HTTPS",
+        "FTP"
+      ],
+      "answer": "IRC",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-55dcabcc105a",
+      "type": "multiple-choice",
+      "prompt": "How much horsepower is produced by the SD40-2 Locomotive?",
+      "options": [
+        "3,000",
+        "3,200",
+        "2,578",
+        "2,190"
+      ],
+      "answer": "3,000",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-55ee55e58b45",
+      "type": "multiple-choice",
+      "prompt": "Which of the following Union Pacific 'Big Boy' locomotives was restored to working order in 2019?",
+      "options": [
+        "4014",
+        "4012",
+        "4004",
+        "4000"
+      ],
+      "answer": "4014",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-585e70d9b97d",
+      "type": "multiple-choice",
+      "prompt": "In computing, what does LAN stand for?",
+      "options": [
+        "Local Area Network",
+        "Long Antenna Node",
+        "Light Access Node",
+        "Land Address Navigation"
+      ],
+      "answer": "Local Area Network",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-586bf8090fc4",
+      "type": "multiple-choice",
+      "prompt": "Which company developed the Hololens?",
+      "options": [
+        "Microsoft",
+        "HTC",
+        "Oculus",
+        "Tobii"
+      ],
+      "answer": "Microsoft",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-587800ca9719",
+      "type": "multiple-choice",
+      "prompt": "While Apple was formed in California, in which western state was Microsoft founded?",
+      "options": [
+        "New Mexico",
+        "Washington",
+        "Colorado",
+        "Arizona"
+      ],
+      "answer": "New Mexico",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-59dbc511ef2b",
+      "type": "multiple-choice",
+      "prompt": "Which operating system was released first?",
+      "options": [
+        "Mac OS",
+        "Windows",
+        "Linux",
+        "OS/2"
+      ],
+      "answer": "Mac OS",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5a33a0b9db14",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is the oldest of these computers by release date?",
+      "options": [
+        "TRS-80",
+        "Commodore 64",
+        "ZX Spectrum",
+        "Apple 3"
+      ],
+      "answer": "TRS-80",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5b1cdf0cda4d",
+      "type": "multiple-choice",
+      "prompt": "Lenovo acquired IBM's personal computer division, including the ThinkPad line of laptops and tablets, in what year?",
+      "options": [
+        "2005",
+        "1999",
+        "2002",
+        "2008"
+      ],
+      "answer": "2005",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5c11d7527810",
+      "type": "multiple-choice",
+      "prompt": "What does \"LCD\" stand for?",
+      "options": [
+        "Liquid Crystal Display",
+        "Language Control Design",
+        "Last Common Difference",
+        "Long Continuous Design"
+      ],
+      "answer": "Liquid Crystal Display",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5ca50c2c1880",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is NOT a Russian car manufacturer?",
+      "options": [
+        "BYD",
+        "Silant",
+        "Dragon",
+        "GAZ"
+      ],
+      "answer": "BYD",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5e20f93a2d9c",
+      "type": "multiple-choice",
+      "prompt": "Australia, Japan, and Southeast Asia are in which ITU Region?",
+      "options": [
+        "Region 3",
+        "Region 1",
+        "Region 2",
+        "Region 4"
+      ],
+      "answer": "Region 3",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5e705ad4eb6e",
+      "type": "multiple-choice",
+      "prompt": "Which country has the international vehicle registration letter 'A'?",
+      "options": [
+        "Austria",
+        "Afghanistan",
+        "Australia",
+        "Armenia"
+      ],
+      "answer": "Austria",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5e84baecb104",
+      "type": "multiple-choice",
+      "prompt": "Which of these cars is NOT considered one of the 5 Modern Supercars by Ferrari?",
+      "options": [
+        "Testarossa",
+        "Enzo Ferrari",
+        "F40",
+        "288 GTO"
+      ],
+      "answer": "Testarossa",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-5fccc0552a08",
+      "type": "multiple-choice",
+      "prompt": "Which of these Cherry MX mechanical keyboard switches is both tactile and clicky?",
+      "options": [
+        "Cherry MX Blue",
+        "Cherry MX Black",
+        "Cherry MX Red",
+        "Cherry MX Brown"
+      ],
+      "answer": "Cherry MX Blue",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-62b37fbcb4ba",
+      "type": "multiple-choice",
+      "prompt": "When was the programming language \"C#\" released?",
+      "options": [
+        "2000",
+        "1998",
+        "1999",
+        "2001"
+      ],
+      "answer": "2000",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-63d121a84dfe",
+      "type": "multiple-choice",
+      "prompt": "What was Bitcoin's block size limit in 2010?",
+      "options": [
+        "1 MB",
+        "1GB",
+        "1 KB",
+        "1 TB"
+      ],
+      "answer": "1 MB",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-675187f1b363",
+      "type": "multiple-choice",
+      "prompt": "Nvidia's headquarters are based in which Silicon Valley city?",
+      "options": [
+        "Santa Clara",
+        "Palo Alto",
+        "Cupertino",
+        "Mountain View"
+      ],
+      "answer": "Santa Clara",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6ac45d24b1c2",
+      "type": "multiple-choice",
+      "prompt": "When was the compact disc player first released?",
+      "options": [
+        "1982",
+        "1983",
+        "1981",
+        "1980"
+      ],
+      "answer": "1982",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6afbe63e53be",
+      "type": "multiple-choice",
+      "prompt": "How fast is USB 3.1 Gen 2 theoretically?",
+      "options": [
+        "10 Gb/s",
+        "5 Gb/s",
+        "8 Gb/s",
+        "1 Gb/s"
+      ],
+      "answer": "10 Gb/s",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6b559d7112ec",
+      "type": "multiple-choice",
+      "prompt": "Which programming language shares its name with an island in Indonesia?",
+      "options": [
+        "Java",
+        "Python",
+        "C",
+        "Jakarta"
+      ],
+      "answer": "Java",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6df305c933d4",
+      "type": "multiple-choice",
+      "prompt": "Which of these is not a key value of Agile software development?",
+      "options": [
+        "Comprehensive documentation",
+        "Individuals and interactions",
+        "Customer collaboration",
+        "Responding to change"
+      ],
+      "answer": "Comprehensive documentation",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-6fa013680d98",
+      "type": "multiple-choice",
+      "prompt": "Which of the following languages is used as a scripting language in the Unity 3D game engine?",
+      "options": [
+        "C#",
+        "Java",
+        "C++",
+        "Objective-C"
+      ],
+      "answer": "C#",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-70f0d7196c98",
+      "type": "multiple-choice",
+      "prompt": "What does the term MIME stand for, in regards to computing?",
+      "options": [
+        "Multipurpose Internet Mail Extensions",
+        "Mail Internet Mail Exchange",
+        "Multipurpose Interleave Mail Exchange",
+        "Mail Interleave Method Exchange"
+      ],
+      "answer": "Multipurpose Internet Mail Extensions",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-72cd05f31f2d",
+      "type": "multiple-choice",
+      "prompt": "What does AD stand for in relation to Windows Operating Systems?",
+      "options": [
+        "Active Directory",
+        "Alternative Drive",
+        "Automated Database",
+        "Active Department"
+      ],
+      "answer": "Active Directory",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-737288bc9118",
+      "type": "multiple-choice",
+      "prompt": "If you were to code software in this language you'd only be able to type 0's and 1's.",
+      "options": [
+        "Binary",
+        "JavaScript",
+        "C++",
+        "Python"
+      ],
+      "answer": "Binary",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-73f2ee89ae4b",
+      "type": "multiple-choice",
+      "prompt": "How many Hz does the video standard PAL support?",
+      "options": [
+        "50",
+        "59",
+        "60",
+        "25"
+      ],
+      "answer": "50",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7447b60a52b9",
+      "type": "multiple-choice",
+      "prompt": "When was Tesla founded?",
+      "options": [
+        "2003",
+        "2008",
+        "2005",
+        "2007"
+      ],
+      "answer": "2003",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-757f4261c7e1",
+      "type": "multiple-choice",
+      "prompt": "All of the following programs are classified as raster graphics editors EXCEPT:",
+      "options": [
+        "Inkscape",
+        "Paint.NET",
+        "GIMP",
+        "Adobe Photoshop"
+      ],
+      "answer": "Inkscape",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-761f593dac12",
+      "type": "multiple-choice",
+      "prompt": "Which Audi does not use Haldex based all wheel drive system?",
+      "options": [
+        "Audi A8",
+        "Audi TT",
+        "Audi S3",
+        "Audi A3"
+      ],
+      "answer": "Audi A8",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-76407ad9f478",
+      "type": "multiple-choice",
+      "prompt": "What model was the sports car gifted to Yuri Gagarin by the French government in 1965?",
+      "options": [
+        "Matra Djet",
+        "Porsche 911",
+        "Alpine A110",
+        "AC Cobra"
+      ],
+      "answer": "Matra Djet",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7692544282d4",
+      "type": "multiple-choice",
+      "prompt": "Color model CMYK stands for?",
+      "options": [
+        "Cyan, Magenta, Yellow, and Black",
+        "Cream, Maroon, Yellow, and Black",
+        "Cyan, Magenta, Yellow, and Khaki",
+        "Cream, Maroon, Yellow, and Khaki"
+      ],
+      "answer": "Cyan, Magenta, Yellow, and Black",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-77bac28b1023",
+      "type": "multiple-choice",
+      "prompt": "Which Italian city is home of the car manufacturer 'Fiat'?",
+      "options": [
+        "Turin",
+        "Maranello",
+        "Modena",
+        "Rome"
+      ],
+      "answer": "Turin",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-791c64502ec8",
+      "type": "multiple-choice",
+      "prompt": "What was the aircraft registration for the last Concorde built?",
+      "options": [
+        "G-BOAF",
+        "F-BTSC",
+        "G-BOAC",
+        "F-BVFF"
+      ],
+      "answer": "G-BOAF",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-79f306ffa9c2",
+      "type": "multiple-choice",
+      "prompt": "In computing, what does MIDI stand for?",
+      "options": [
+        "Musical Instrument Digital Interface",
+        "Musical Interface of Digital Instruments",
+        "Modular Interface of Digital Instruments",
+        "Musical Instrument Data Interface"
+      ],
+      "answer": "Musical Instrument Digital Interface",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7c35abf522bd",
+      "type": "multiple-choice",
+      "prompt": "Moore's law originally stated that the number of transistors on a microprocessor chip would double every...",
+      "options": [
+        "Year",
+        "Four Years",
+        "Two Years",
+        "Eight Years"
+      ],
+      "answer": "Year",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7ed03546679c",
+      "type": "multiple-choice",
+      "prompt": "What language does Node.js use?",
+      "options": [
+        "JavaScript",
+        "Java",
+        "Java Source",
+        "Joomla Source Code"
+      ],
+      "answer": "JavaScript",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7f039a31a67a",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the first front-wheel-drive car produced by Datsun (now Nissan)?",
+      "options": [
+        "Cherry",
+        "Sunny",
+        "Bluebird",
+        "Skyline"
+      ],
+      "answer": "Cherry",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7fdc74e1c8b9",
+      "type": "multiple-choice",
+      "prompt": "The term \"battery\" to describe an electrical storage device was coined by?",
+      "options": [
+        "Benjamin Franklin",
+        "Nikola Tesla",
+        "Luigi Galvani",
+        "Alessandro Volta"
+      ],
+      "answer": "Benjamin Franklin",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-7fee0e35d665",
+      "type": "multiple-choice",
+      "prompt": "What engine is in the Lexus SC400?",
+      "options": [
+        "1UZ-FE",
+        "2JZ-GTE",
+        "7M-GTE",
+        "5M-GE"
+      ],
+      "answer": "1UZ-FE",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8037b8fb79e7",
+      "type": "multiple-choice",
+      "prompt": "In CSS, which of these values CANNOT be used with the \"position\" property?",
+      "options": [
+        "center",
+        "static",
+        "absolute",
+        "relative"
+      ],
+      "answer": "center",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-807b2c568910",
+      "type": "multiple-choice",
+      "prompt": "How many cores does the Intel i7-6950X have?",
+      "options": [
+        "10",
+        "12",
+        "8",
+        "4"
+      ],
+      "answer": "10",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8273a0455fb1",
+      "type": "multiple-choice",
+      "prompt": ".at is the top-level domain for what country?",
+      "options": [
+        "Austria",
+        "Argentina",
+        "Australia",
+        "Angola"
+      ],
+      "answer": "Austria",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8296e426a734",
+      "type": "multiple-choice",
+      "prompt": "Which company designed the \"Betamax\" video cassette format?",
+      "options": [
+        "Sony",
+        "Panasonic",
+        "LG",
+        "Fujitsu"
+      ],
+      "answer": "Sony",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-836fe0a0dea8",
+      "type": "multiple-choice",
+      "prompt": "What is the name of Layer 7 of the OSI model?",
+      "options": [
+        "Application",
+        "Session",
+        "Network",
+        "Present"
+      ],
+      "answer": "Application",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8476a68c414f",
+      "type": "multiple-choice",
+      "prompt": "What country was the Trabant 601 manufactured in?",
+      "options": [
+        "East Germany",
+        "Soviet Union",
+        "Hungary",
+        "France"
+      ],
+      "answer": "East Germany",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-877aa22b8eca",
+      "type": "multiple-choice",
+      "prompt": "Which of the following car manufacturers had a war named after it?",
+      "options": [
+        "Toyota",
+        "Honda",
+        "Ford",
+        "Volkswagen"
+      ],
+      "answer": "Toyota",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-87af1c582c18",
+      "type": "multiple-choice",
+      "prompt": "Which computer language would you associate Django framework with?",
+      "options": [
+        "Python",
+        "C#",
+        "C++",
+        "Java"
+      ],
+      "answer": "Python",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8848e6d331f3",
+      "type": "multiple-choice",
+      "prompt": "Which of these is the name for the failed key escrow device introduced by the National Security Agency in 1993?",
+      "options": [
+        "Clipper Chip",
+        "Enigma Machine",
+        "Skipjack",
+        "Nautilus"
+      ],
+      "answer": "Clipper Chip",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-893982e761e7",
+      "type": "multiple-choice",
+      "prompt": "Which one of these chassis codes are used by BMW 3-series?",
+      "options": [
+        "E46",
+        "E39",
+        "E85",
+        "F10"
+      ],
+      "answer": "E46",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8adef0a59438",
+      "type": "multiple-choice",
+      "prompt": "In the server hosting industry IaaS stands for...",
+      "options": [
+        "Infrastructure as a Service",
+        "Internet as a Service",
+        "Internet and a Server",
+        "Infrastructure as a Server"
+      ],
+      "answer": "Infrastructure as a Service",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8ae8656c3b53",
+      "type": "multiple-choice",
+      "prompt": "Which car brand does NOT belong to General Motors?",
+      "options": [
+        "Ford",
+        "Buick",
+        "Cadillac",
+        "Chevrolet"
+      ],
+      "answer": "Ford",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8c7dab04ad95",
+      "type": "multiple-choice",
+      "prompt": "Which computer hardware device provides an interface for all other connected devices to communicate?",
+      "options": [
+        "Motherboard",
+        "Central Processing Unit",
+        "Hard Disk Drive",
+        "Random Access Memory"
+      ],
+      "answer": "Motherboard",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-8e02e91c40c8",
+      "type": "multiple-choice",
+      "prompt": "When was the DVD invented?",
+      "options": [
+        "1995",
+        "2000",
+        "1990",
+        "1980"
+      ],
+      "answer": "1995",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-910ba4bf4deb",
+      "type": "multiple-choice",
+      "prompt": "What is the correct term for the metal object in between the CPU and the CPU fan within a computer system?",
+      "options": [
+        "Heat Sink",
+        "CPU Vent",
+        "Temperature Decipator",
+        "Heat Vent"
+      ],
+      "answer": "Heat Sink",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-91a720d01c0c",
+      "type": "multiple-choice",
+      "prompt": "What is known as \"the brain\" of the Computer?",
+      "options": [
+        "Central Processing Unit",
+        "Motherboard",
+        "Graphics Processing Unit",
+        "Keyboard"
+      ],
+      "answer": "Central Processing Unit",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-91c9103c5de4",
+      "type": "multiple-choice",
+      "prompt": "Which buzzword did Apple Inc. use to describe their removal of the headphone jack?",
+      "options": [
+        "Courage",
+        "Innovation",
+        "Revolution",
+        "Bravery"
+      ],
+      "answer": "Courage",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-92fb546dc1d0",
+      "type": "multiple-choice",
+      "prompt": "The computer OEM manufacturer Clevo, known for its Sager notebook line, is based in which country?",
+      "options": [
+        "Taiwan",
+        "United States",
+        "Germany",
+        "China (People's Republic of)"
+      ],
+      "answer": "Taiwan",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-93b024b540e4",
+      "type": "multiple-choice",
+      "prompt": "Generally, which component of a computer draws the most power?",
+      "options": [
+        "Video Card",
+        "Hard Drive",
+        "Processor",
+        "Power Supply"
+      ],
+      "answer": "Video Card",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-93ff57e3a6fd",
+      "type": "multiple-choice",
+      "prompt": "Which internet company began life as an online bookstore called 'Cadabra'?",
+      "options": [
+        "Amazon",
+        "eBay",
+        "Overstock",
+        "Shopify"
+      ],
+      "answer": "Amazon",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-94a8db5ef162",
+      "type": "multiple-choice",
+      "prompt": "Enzo Ferrari was originally an auto racer for what manufacturer before founding his own car company?",
+      "options": [
+        "Alfa Romeo",
+        "Auto Union",
+        "Mercedes Benz",
+        "Bentley"
+      ],
+      "answer": "Alfa Romeo",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-95dacd51bf2f",
+      "type": "multiple-choice",
+      "prompt": "Which supercar company is from Sweden?",
+      "options": [
+        "Koenigsegg",
+        "Bugatti",
+        "Lamborghini",
+        "McLaren"
+      ],
+      "answer": "Koenigsegg",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-966e91927f45",
+      "type": "multiple-choice",
+      "prompt": "What is the domain name for the country Tuvalu?",
+      "options": [
+        ".tv",
+        ".tu",
+        ".tt",
+        ".tl"
+      ],
+      "answer": ".tv",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-98603ab886d8",
+      "type": "multiple-choice",
+      "prompt": "Which of these programming languages is a low-level language?",
+      "options": [
+        "Assembly",
+        "Python",
+        "C#",
+        "Pascal"
+      ],
+      "answer": "Assembly",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-98e44fcb13cb",
+      "type": "multiple-choice",
+      "prompt": "In networking, what does OSPF stand for?",
+      "options": [
+        "Open Shortest Path First",
+        "Order State Part First",
+        "Order Sense Ping Find",
+        "Open Signal Path Finder"
+      ],
+      "answer": "Open Shortest Path First",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-991d55c1d620",
+      "type": "multiple-choice",
+      "prompt": "What does the \"MP\" stand for in MP3?",
+      "options": [
+        "Moving Picture",
+        "Music Player",
+        "Multi Pass",
+        "Micro Point"
+      ],
+      "answer": "Moving Picture",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9ac28140dea2",
+      "type": "multiple-choice",
+      "prompt": "What is the number of keys on a standard Windows Keyboard?",
+      "options": [
+        "104",
+        "64",
+        "94",
+        "76"
+      ],
+      "answer": "104",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9b36b0d392df",
+      "type": "multiple-choice",
+      "prompt": "The Italian automaker Lamborghini uses what animal as its logo?",
+      "options": [
+        "Bull",
+        "Bat",
+        "Horse",
+        "Snake"
+      ],
+      "answer": "Bull",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9cbfc9f63afe",
+      "type": "multiple-choice",
+      "prompt": "Which car tire manufacturer is famous for its \"P Zero\" line?",
+      "options": [
+        "Pirelli",
+        "Goodyear",
+        "Bridgestone",
+        "Michelin"
+      ],
+      "answer": "Pirelli",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-9ff1869b7a23",
+      "type": "multiple-choice",
+      "prompt": "Who is the original author of the realtime physics engine called PhysX?",
+      "options": [
+        "NovodeX",
+        "Ageia",
+        "Nvidia",
+        "AMD"
+      ],
+      "answer": "NovodeX",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a02dd820e2e6",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the first Bulgarian personal computer?",
+      "options": [
+        "IMKO-1",
+        "Pravetz 82",
+        "Pravetz 8D",
+        "IZOT 1030"
+      ],
+      "answer": "IMKO-1",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a1a9a404f231",
+      "type": "multiple-choice",
+      "prompt": "Which Japanese company is the world's largest manufacturer of motorcycles?",
+      "options": [
+        "Honda",
+        "Yamaha",
+        "Suzuki",
+        "Kawasaki"
+      ],
+      "answer": "Honda",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a2815c8ec2ce",
+      "type": "multiple-choice",
+      "prompt": "Which of the following cellular device companies is NOT headquartered in Asia?",
+      "options": [
+        "Nokia",
+        "LG Electronics",
+        "Samsung",
+        "HTC"
+      ],
+      "answer": "Nokia",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a28e08d56cd3",
+      "type": "multiple-choice",
+      "prompt": "What was the first vehicle that came with air conditioning as a factory standard?",
+      "options": [
+        "Packard",
+        "Tucker",
+        "Ford",
+        "Hudson"
+      ],
+      "answer": "Packard",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a2cabfe03c96",
+      "type": "multiple-choice",
+      "prompt": "Which animal features on the logo for Abarth, the motorsport division of Fiat?",
+      "options": [
+        "Scorpion",
+        "Snake",
+        "Bull",
+        "Horse"
+      ],
+      "answer": "Scorpion",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a342b74a0d65",
+      "type": "multiple-choice",
+      "prompt": "The C programming language was created by this American computer scientist.",
+      "options": [
+        "Dennis Ritchie",
+        "Tim Berners Lee",
+        "al-Khwārizmī",
+        "Willis Ware"
+      ],
+      "answer": "Dennis Ritchie",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a3ca6d703626",
+      "type": "multiple-choice",
+      "prompt": "The programming language 'Swift' was created to replace what other programming language?",
+      "options": [
+        "Objective-C",
+        "C#",
+        "Ruby",
+        "C++"
+      ],
+      "answer": "Objective-C",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a42bbbfbaa31",
+      "type": "multiple-choice",
+      "prompt": "What is the code name for the mobile operating system Android 7.0?",
+      "options": [
+        "Nougat",
+        "Ice Cream Sandwich",
+        "Jelly Bean",
+        "Marshmallow"
+      ],
+      "answer": "Nougat",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a4d5fca0855d",
+      "type": "multiple-choice",
+      "prompt": "Which SQL keyword is used to fetch data from a database?",
+      "options": [
+        "SELECT",
+        "INDEX",
+        "VALUES",
+        "EXEC"
+      ],
+      "answer": "SELECT",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a644bff2dfab",
+      "type": "multiple-choice",
+      "prompt": "In 2014, over 6 million General Motors vehicles were recalled due to what critical flaw?",
+      "options": [
+        "Faulty ignition switch",
+        "Malfunctioning gas pedal",
+        "Breaking fuel lines",
+        "Faulty brake pads"
+      ],
+      "answer": "Faulty ignition switch",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a6b8c38e0553",
+      "type": "multiple-choice",
+      "prompt": "How many values can a single byte represent?",
+      "options": [
+        "256",
+        "8",
+        "1",
+        "1024"
+      ],
+      "answer": "256",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-a8f67a39469b",
+      "type": "multiple-choice",
+      "prompt": "Which of these names was an actual codename for a cancelled Microsoft project?",
+      "options": [
+        "Neptune",
+        "Enceladus",
+        "Pollux",
+        "Saturn"
+      ],
+      "answer": "Neptune",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-aad69a202f42",
+      "type": "multiple-choice",
+      "prompt": "Which of the following passenger jets is the longest?",
+      "options": [
+        "Boeing 747-8",
+        "Airbus A350-1000",
+        "Airbus A330-200",
+        "Boeing 787-10"
+      ],
+      "answer": "Boeing 747-8",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ab8e50b2a5c1",
+      "type": "multiple-choice",
+      "prompt": "Which of the following is the standard THX subwoofer crossover frequency?",
+      "options": [
+        "80 Hz",
+        "70 Hz",
+        "90 Hz",
+        "100 Hz"
+      ],
+      "answer": "80 Hz",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ac3dd7c94901",
+      "type": "multiple-choice",
+      "prompt": "On which computer hardware device is the BIOS chip located?",
+      "options": [
+        "Motherboard",
+        "Hard Disk Drive",
+        "Central Processing Unit",
+        "Graphics Processing Unit"
+      ],
+      "answer": "Motherboard",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-afb6e4af1511",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the security vulnerability found in Bash in 2014?",
+      "options": [
+        "Shellshock",
+        "Heartbleed",
+        "Bashbug",
+        "Stagefright"
+      ],
+      "answer": "Shellshock",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b313ccdb57ee",
+      "type": "multiple-choice",
+      "prompt": "What does the term GPU stand for?",
+      "options": [
+        "Graphics Processing Unit",
+        "Gaming Processor Unit",
+        "Graphite Producing Unit",
+        "Graphical Proprietary Unit"
+      ],
+      "answer": "Graphics Processing Unit",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b42d89ba46dd",
+      "type": "multiple-choice",
+      "prompt": "Which one of the following is not made by Ford?",
+      "options": [
+        "Camry",
+        "Fusion",
+        "Model A",
+        "F-150"
+      ],
+      "answer": "Camry",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b88c392ad282",
+      "type": "multiple-choice",
+      "prompt": "What is the name of the process that sends one qubit of information using two bits of classical information?",
+      "options": [
+        "Quantum Teleportation",
+        "Super Dense Coding",
+        "Quantum Entanglement",
+        "Quantum Programming"
+      ],
+      "answer": "Quantum Teleportation",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-b9847a879f5e",
+      "type": "multiple-choice",
+      "prompt": "Dutch computer scientist Mark Overmars is known for creating which game development engine?",
+      "options": [
+        "Game Maker",
+        "Stencyl",
+        "Construct",
+        "Torque 2D"
+      ],
+      "answer": "Game Maker",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bb830aa71871",
+      "type": "multiple-choice",
+      "prompt": "Which of these was the name of a bug found in April 2014 in the publicly available OpenSSL cryptography library?",
+      "options": [
+        "Heartbleed",
+        "Shellshock",
+        "Corrupted Blood",
+        "Shellscript"
+      ],
+      "answer": "Heartbleed",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bc5568b03abd",
+      "type": "multiple-choice",
+      "prompt": "What was the first commercially available computer processor?",
+      "options": [
+        "Intel 4004",
+        "Intel 486SX",
+        "TMS 1000",
+        "AMD AM386"
+      ],
+      "answer": "Intel 4004",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bea1594c95ee",
+      "type": "multiple-choice",
+      "prompt": "Volkswagen's legendary VR6 engine has cylinders positioned at what degree angle?",
+      "options": [
+        "15 Degree",
+        "30 Degree",
+        "45 Degree",
+        "90 Degree"
+      ],
+      "answer": "15 Degree",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-befb46312862",
+      "type": "multiple-choice",
+      "prompt": "What does GPS stand for?",
+      "options": [
+        "Global Positioning System",
+        "Global Personal System",
+        "General Positioning System",
+        "General Personal Satellite"
+      ],
+      "answer": "Global Positioning System",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-bf2372239929",
+      "type": "multiple-choice",
+      "prompt": "What is largely considered the precursor to the USB format?",
+      "options": [
+        "PS/2",
+        "SVGA",
+        "PCIe",
+        "FireWire"
+      ],
+      "answer": "PS/2",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c00b5b90785d",
+      "type": "multiple-choice",
+      "prompt": "What is the \"Mitsubishi Wakamaru\"?",
+      "options": [
+        "A robot",
+        "A pickup truck",
+        "An motorcycle",
+        "A motorboat"
+      ],
+      "answer": "A robot",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c0ad861bdaa2",
+      "type": "multiple-choice",
+      "prompt": "Who patented a steam engine that produced continuous rotary motion?",
+      "options": [
+        "James Watt",
+        "Nikola Tesla",
+        "Albert Einstein",
+        "Alessandro Volta"
+      ],
+      "answer": "James Watt",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c1f5f668524d",
+      "type": "multiple-choice",
+      "prompt": "What manufacturer made the car used in Back to the Future?",
+      "options": [
+        "DeLorean",
+        "Ford",
+        "Toyota",
+        "Daihatsu"
+      ],
+      "answer": "DeLorean",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c201c3d889b9",
+      "type": "multiple-choice",
+      "prompt": "Which of the following vehicles featured a full glass roof at base model?",
+      "options": [
+        "Renault Avantime",
+        "Chevy Volt",
+        "Mercedes-Benz A-Class",
+        "Honda Odyssey"
+      ],
+      "answer": "Renault Avantime",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c38d8955e262",
+      "type": "multiple-choice",
+      "prompt": "Which gaming console is developed by Sony?",
+      "options": [
+        "PlayStation",
+        "Xbox",
+        "Atari",
+        "Nintendo Switch"
+      ],
+      "answer": "PlayStation",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c44189dc246e",
+      "type": "multiple-choice",
+      "prompt": "When Gmail first launched, how much storage did it provide for your email?",
+      "options": [
+        "1GB",
+        "512MB",
+        "5GB",
+        "Unlimited"
+      ],
+      "answer": "1GB",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c634ec258352",
+      "type": "multiple-choice",
+      "prompt": "Which of these is NOT a car model produced by Malaysian car manufacturer Proton?",
+      "options": [
+        "Kelisa",
+        "Saga",
+        "Perdana",
+        "Inspira"
+      ],
+      "answer": "Kelisa",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c6f834c8cdd6",
+      "type": "multiple-choice",
+      "prompt": "What does the 'S' in the RSA encryption algorithm stand for?",
+      "options": [
+        "Shamir",
+        "Secure",
+        "Schottky",
+        "Stable"
+      ],
+      "answer": "Shamir",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-c825359c963f",
+      "type": "multiple-choice",
+      "prompt": "Where are the cars of the brand \"Ferrari\" manufactured?",
+      "options": [
+        "Italy",
+        "Romania",
+        "Germany",
+        "Russia"
+      ],
+      "answer": "Italy",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ca35ac059ad6",
+      "type": "multiple-choice",
+      "prompt": "In computing, how many bits are in a nibble?",
+      "options": [
+        "4",
+        "16",
+        "32",
+        "2"
+      ],
+      "answer": "4",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ca8eed60f2f3",
+      "type": "multiple-choice",
+      "prompt": "What is the name of a simple machine that is made up of a stiff arm that can move freely around a fixed point?",
+      "options": [
+        "Lever",
+        "Wedge",
+        "Screw",
+        "Pulley"
+      ],
+      "answer": "Lever",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-caeb07bf5478",
+      "type": "multiple-choice",
+      "prompt": "What port does HTTP run on?",
+      "options": [
+        "80",
+        "53",
+        "443",
+        "23"
+      ],
+      "answer": "80",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cb882efe085f",
+      "type": "multiple-choice",
+      "prompt": "When did the online streaming service \"Mixer\" launch?",
+      "options": [
+        "2016",
+        "2013",
+        "2009",
+        "2011"
+      ],
+      "answer": "2016",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ce4becffa25d",
+      "type": "multiple-choice",
+      "prompt": "What does GHz stand for?",
+      "options": [
+        "Gigahertz",
+        "Gigahotz",
+        "Gigahetz",
+        "Gigahatz"
+      ],
+      "answer": "Gigahertz",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-cf1d92b6f8cf",
+      "type": "multiple-choice",
+      "prompt": "What does the International System of Quantities refer 1024 bytes as?",
+      "options": [
+        "Kibibyte",
+        "Kylobyte",
+        "Kilobyte",
+        "Kelobyte"
+      ],
+      "answer": "Kibibyte",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d0a53df1df2c",
+      "type": "multiple-choice",
+      "prompt": "Who is the founder of Palantir?",
+      "options": [
+        "Peter Thiel",
+        "Mark Zuckerberg",
+        "Marc Benioff",
+        "Jack Dorsey"
+      ],
+      "answer": "Peter Thiel",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d3bcf9140193",
+      "type": "multiple-choice",
+      "prompt": "Which one of these is not an official development name for a Ubuntu release?",
+      "options": [
+        "Mystic Mansion",
+        "Trusty Tahr",
+        "Utopic Unicorn",
+        "Wily Werewolf"
+      ],
+      "answer": "Mystic Mansion",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d50b8e066ef2",
+      "type": "multiple-choice",
+      "prompt": "What is the commonly used keyboard shortcut for the 'Copy' function on Windows OS?",
+      "options": [
+        "Ctrl + C",
+        "Ctrl + X",
+        "Alt + C",
+        "Alt + X"
+      ],
+      "answer": "Ctrl + C",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-d85bf8f721c8",
+      "type": "multiple-choice",
+      "prompt": "This former Air Force and NASA engineer is the inventor of the Super Soaker water gun.",
+      "options": [
+        "Lonnie Johnson",
+        "Bruce D'Andrade",
+        "Frances Northcutt",
+        "Ashitey Trebi-Ollennu"
+      ],
+      "answer": "Lonnie Johnson",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-da811a9619b8",
+      "type": "multiple-choice",
+      "prompt": "How long is an IPv6 address?",
+      "options": [
+        "128 bits",
+        "32 bits",
+        "64 bits",
+        "128 bytes"
+      ],
+      "answer": "128 bits",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-db2ab6332b99",
+      "type": "multiple-choice",
+      "prompt": "When was the iPhone released?",
+      "options": [
+        "2007",
+        "2005",
+        "2006",
+        "2004"
+      ],
+      "answer": "2007",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dc8aa0c1c524",
+      "type": "multiple-choice",
+      "prompt": "On a standard American QWERTY keyboard, what symbol will you enter if you hold the shift key and press 1?",
+      "options": [
+        "Exclamation Mark",
+        "Dollar Sign",
+        "Percent Sign",
+        "Asterisk"
+      ],
+      "answer": "Exclamation Mark",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ddbe1ec63534",
+      "type": "multiple-choice",
+      "prompt": "How many wheels does a unicycle have?",
+      "options": [
+        "1",
+        "4",
+        "3",
+        "6"
+      ],
+      "answer": "1",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-de20b68ee84f",
+      "type": "multiple-choice",
+      "prompt": "Which kind of algorithm is Ron Rivest not famous for creating?",
+      "options": [
+        "Secret sharing scheme",
+        "Hashing algorithm",
+        "Asymmetric encryption",
+        "Stream cipher"
+      ],
+      "answer": "Secret sharing scheme",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-de7bc414b4e3",
+      "type": "multiple-choice",
+      "prompt": "What kind of memory is used on memory cache?",
+      "options": [
+        "SRAM",
+        "DRAM",
+        "ROM",
+        "Flash"
+      ],
+      "answer": "SRAM",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-dffc70d9b6bc",
+      "type": "multiple-choice",
+      "prompt": "What major programming language does Unreal Engine 4 use?",
+      "options": [
+        "C++",
+        "Assembly",
+        "C#",
+        "ECMAScript"
+      ],
+      "answer": "C++",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e1ce172ba9ac",
+      "type": "multiple-choice",
+      "prompt": "What type of sound chip does the Super Nintendo Entertainment System (SNES) have?",
+      "options": [
+        "ADPCM Sampler",
+        "FM Synthesizer",
+        "Programmable Sound Generator (PSG)",
+        "PCM Sampler"
+      ],
+      "answer": "ADPCM Sampler",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e4518e5f6b27",
+      "type": "multiple-choice",
+      "prompt": "What kind of train was Stepney, a train on the Bluebell Railway notable for his appearance in \"The Railway Series\"?",
+      "options": [
+        "LB&SCR A1X",
+        "LB&SCR E2",
+        "LB&SCR J1",
+        "LB&SCR D1"
+      ],
+      "answer": "LB&SCR A1X",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e7c6c09ce46a",
+      "type": "multiple-choice",
+      "prompt": "Apple's Voice Assistant, Siri, debuted on which iPhone?",
+      "options": [
+        "iPhone 4S",
+        "iPhone 6S",
+        "iPhone 3GS",
+        "iPhone 5S"
+      ],
+      "answer": "iPhone 4S",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e8f32d5b1cd1",
+      "type": "multiple-choice",
+      "prompt": "Which coding language was the #1 programming language in terms of usage on GitHub in 2015?",
+      "options": [
+        "JavaScript",
+        "C#",
+        "Python",
+        "PHP"
+      ],
+      "answer": "JavaScript",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e9199669a48e",
+      "type": "multiple-choice",
+      "prompt": "What is the name given to layer 4 of the Open Systems Interconnection (ISO) model?",
+      "options": [
+        "Transport",
+        "Session",
+        "Data link",
+        "Network"
+      ],
+      "answer": "Transport",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-e94704caed1a",
+      "type": "multiple-choice",
+      "prompt": "What car manufacturer gave away their patent for the seat-belt in the interest of saving lives?",
+      "options": [
+        "Volvo",
+        "Ferrari",
+        "Ford",
+        "Renault"
+      ],
+      "answer": "Volvo",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ea78e8789fda",
+      "type": "multiple-choice",
+      "prompt": "Which of these companies does NOT manufacture motorcycles?",
+      "options": [
+        "Toyota",
+        "Honda",
+        "Kawasaki",
+        "Yamaha"
+      ],
+      "answer": "Toyota",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-ec90d8c31ffb",
+      "type": "multiple-choice",
+      "prompt": "Which of these is not a layer in the OSI model for data communications?",
+      "options": [
+        "Connection Layer",
+        "Application Layer",
+        "Transport Layer",
+        "Physical Layer"
+      ],
+      "answer": "Connection Layer",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-eea155183f70",
+      "type": "multiple-choice",
+      "prompt": "What does the computer software acronym JVM stand for?",
+      "options": [
+        "Java Virtual Machine",
+        "Java Vendor Machine",
+        "Java Visual Machine",
+        "Just Virtual Machine"
+      ],
+      "answer": "Java Virtual Machine",
+      "difficulty": "easy",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f04162b7af64",
+      "type": "multiple-choice",
+      "prompt": "What does the DOS in Microsoft's first operating system \"MS-DOS\" stand for?",
+      "options": [
+        "Disk Operating System",
+        "Dumb Operating System",
+        "Driver Oriented System",
+        "Diskless Operating System"
+      ],
+      "answer": "Disk Operating System",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f467ea2e69f8",
+      "type": "multiple-choice",
+      "prompt": "Mobile hardware and software company \"Blackberry Limited\" was founded in which country?",
+      "options": [
+        "Canada",
+        "Norway",
+        "United States of America",
+        "United Kingdom"
+      ],
+      "answer": "Canada",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f49d782730c2",
+      "type": "multiple-choice",
+      "prompt": "What nickname was given to Air Canada Flight 143 after it ran out of fuel and glided to safety in 1983?",
+      "options": [
+        "Gimli Glider",
+        "Gimli Microlight",
+        "Gimli Chaser",
+        "Gimli Superb"
+      ],
+      "answer": "Gimli Glider",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f50bb6df723c",
+      "type": "multiple-choice",
+      "prompt": "What was the name of the image that features as the default background wallpaper for Windows XP?",
+      "options": [
+        "Bliss",
+        "Azul",
+        "Red moon desert",
+        "Tulips"
+      ],
+      "answer": "Bliss",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f53cc8a36475",
+      "type": "multiple-choice",
+      "prompt": "How does a centrifuge separate heavy and light particles?",
+      "options": [
+        "Spinning",
+        "Vibrating",
+        "Sifting",
+        "Ionizing"
+      ],
+      "answer": "Spinning",
+      "difficulty": "medium",
+      "region": "general"
+    },
+    {
+      "id": "otdb-f6d54d71971b",
+      "type": "multiple-choice",
+      "prompt": "Which Variable Valve Timing technology is used by BMW?",
+      "options": [
+        "VANOS",
+        "VVT-iw",
+        "VVEL",
+        "MultiAir"
+      ],
+      "answer": "VANOS",
+      "difficulty": "hard",
+      "region": "general"
+    },
+    {
+      "id": "otdb-fc70d50f1bdf",
+      "type": "multiple-choice",
+      "prompt": "Which of the following physical topologies are used with Ethernet Networks?",
+      "options": [
+        "Star",
+        "Ring",
+        "Mesh",
+        "Hex"
+      ],
+      "answer": "Star",
+      "difficulty": "hard",
+      "region": "general"
+    }
+  ]
+}
