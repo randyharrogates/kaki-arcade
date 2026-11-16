@@ -387,7 +387,7 @@ describe('round 2: new code under new faults', () => {
     const clock = new Clock(); const server = new RealServer(clock); const errs: string[] = []; const states: string[] = [];
     const host = await createHostTransport({ ...base(clock), socket: server.socket, credentials: { code: CODE, hostToken: SECRET }, fetch: () => { throw new Error('x'); },
       factory: () => new FakePC(clock), onRoom: noop, onPeer: noop, onError: (e) => errs.push(e), onPairingState: (s) => states.push(s),
-      upgradeStatus: () => Promise.resolve(server.room.expired || server.expiredUpgrade ? 404 : 426) });
+      upgradeStatus: () => Promise.resolve({ status: server.room.expired || server.expiredUpgrade ? 404 : 426, gone: true }) });
     await settle(clock);
     createPhonePairing({ clock, baseUrl: 'https://signal', socket: server.socket, code: CODE, onMessage: noop, onError: noop });
     await settle(clock, 100); expect(host.peers.size).toBe(1);
@@ -552,3 +552,79 @@ describe('round 2: new code under new faults', () => {
 interface IceConfigurationLike { iceServers: unknown[] }
 import { encodeInput as encodeInputReal } from '@kaki/protocol';
 function encodeInputLike(seq: number, buttons: number, history: number[]): Uint8Array { return encodeInputReal({ seq, buttons, history, stickX: 0, stickY: 0, tilt: null }); }
+
+describe('PLAT-009 open room recovery with shell pacing', () => {
+  it.each(['close', 'keep-alive'])('keeps open phone channels after %s, with five failed redials in the first minute', async fault => {
+    const clock = new Clock(); const server = new RealServer(clock);
+    const pcs: FakePC[] = []; let fail = false; let probes = 0; const attempts: number[] = []; const errors: string[] = [];
+    let online: (() => void) | undefined;
+    const host = await createHostTransport({ ...base(clock), credentials: { code: CODE, hostToken: SECRET },
+      externalRetry: true, retryDelay: n => Math.min(30000, 1000 * 2 ** Math.min(n, 5)),
+      online: { subscribe(cb) { online = cb; return noop; } },
+      socket: (url, protocols) => {
+        if (!fail) return server.socket(url, protocols);
+        attempts.push(clock.now()); const socket = new FakeSocket();
+        clock.schedule(() => socket.onerror?.(), 0); return socket;
+      },
+      upgradeStatus: () => { probes++; return Promise.resolve({ status: 503 }); },
+      fetch: () => { throw new Error('unexpected creation'); },
+      factory: () => { const pc = new FakePC(clock); pcs.push(pc); return pc; },
+      onRoom: noop, onPeer: noop, onError: error => errors.push(error),
+    });
+    await settle(clock);
+    const phones: FakePC[] = [];
+    const phone = createPhoneTransport({ ...base(clock), socket: server.socket, code: CODE,
+      factory: () => { const pc = new FakePC(clock); phones.push(pc); return pc; }, onJoined: noop, onPeer: noop, onError: noop });
+    await settle(clock, 100);
+    const hp = pcs[0]; const pp = phones[0];
+    if (!hp || !pp) throw new Error('Missing negotiated peers');
+    joinChannels(hp, pp);
+    fail = true;
+    const id = server.room.sockets.find(s => s.role === 'host')?.id ?? '';
+    if (fault === 'close') server.sever(id);
+    else {
+      const socket = server.live.get(id);
+      if (!socket) throw new Error('Missing socket');
+      socket.route = noop;
+      await settle(clock, 20000);
+    }
+    for (let second = 0; second < 60; second++) await settle(clock, 1000);
+    expect(attempts).toHaveLength(5); expect(probes).toBe(6);
+    expect(attempts.map(at => at - (attempts[0] ?? 0))).toEqual([0, 2000, 6000, 14000, 30000]);
+    expect(host.peers.size).toBe(1);
+    expect(hp.channels.every(channel => channel.readyState === 'open')).toBe(true);
+    expect(pp.channels.every(channel => channel.readyState === 'open')).toBe(true);
+    expect(errors).toEqual([]);
+    online?.(); await settle(clock); expect(attempts).toHaveLength(6);
+    fail = false; online?.(); await settle(clock);
+    expect(host.peers.size).toBe(1);
+    expect(hp.channels.every(channel => channel.readyState === 'open')).toBe(true);
+    fail = true;
+    const restoredId = server.room.sockets.find(socket => socket.role === 'host')?.id ?? '';
+    const count = attempts.length;
+    server.sever(restoredId); await settle(clock, 999); expect(attempts).toHaveLength(count);
+    await settle(clock, 1); expect(attempts).toHaveLength(count + 1);
+    host.stop(); phone.stop();
+  });
+});
+
+it('PLAT-009 in-place retries honour Retry-After across online events', async () => {
+  const clock = new Clock(); const server = new RealServer(clock); let fail = false; let attempts = 0;
+  let online: (() => void) | undefined;
+  const host = await createHostPairing({ ...base(clock), credentials: { code: CODE, hostToken: SECRET },
+    externalRetry: true, retryDelay: n => Math.min(30000, 1000 * 2 ** Math.min(n, 5)),
+    online: { subscribe(cb) { online = cb; return noop; } },
+    socket: (url, protocols) => {
+      if (!fail) return server.socket(url, protocols);
+      attempts++; const socket = new FakeSocket(); clock.schedule(() => socket.onerror?.(), 0); return socket;
+    },
+    upgradeStatus: () => Promise.resolve({ status: 429, retryAfterMs: 120000 }),
+    fetch: () => { throw new Error('unexpected creation'); }, onMessage: noop, onError: noop,
+  });
+  await settle(clock); fail = true;
+  server.sever(server.room.sockets.find(socket => socket.role === 'host')?.id ?? '');
+  await settle(clock); online?.(); await settle(clock, 60000); expect(attempts).toBe(0);
+  await settle(clock, 59999); expect(attempts).toBe(0);
+  await settle(clock, 1); expect(attempts).toBe(1);
+  host.stop();
+});

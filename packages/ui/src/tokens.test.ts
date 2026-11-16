@@ -75,8 +75,8 @@ describe('spacing, radii and the golden ratio (DESIGN §1)', () => {
 });
 
 describe('lettering (DESIGN §4.2)', () => {
-  it('has the five TV sizes and reads in play at 34 px or more', () => {
-    expect([...TV_TYPE_SIZES]).toEqual([21, 34, 55, 89, 144]);
+  it('has the six TV sizes and reads in play at 34 px or more', () => {
+    expect([...TV_TYPE_SIZES]).toEqual([21, 34, 55, 89, 144, 233]);
     expect(Object.values(tvType)).toEqual([...TV_TYPE_SIZES]);
     expect(tvType.body).toBe(34);
     expect([...PHONE_TYPE_SIZES]).toEqual([13, 21, 34, 55, 89]);

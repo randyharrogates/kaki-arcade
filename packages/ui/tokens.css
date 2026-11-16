@@ -26,6 +26,7 @@
   --ka-radius-corner: 13px;
   --ka-radius-large: 21px;
   --ka-radius-pill: 9999px;
+  --ka-opacity-ghost: 0.08;
   --ka-phi: 1.618;
   --ka-golden-columns: 1.618fr 1fr;
   --ka-golden-columns-reversed: 1fr 1.618fr;
@@ -48,6 +49,7 @@
   --ka-type-55: 55px;
   --ka-type-89: 89px;
   --ka-type-144: 144px;
+  --ka-type-233: 233px;
   --ka-phone-type-13: 13px;
   --ka-phone-type-21: 21px;
   --ka-phone-type-34: 34px;

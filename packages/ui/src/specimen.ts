@@ -295,6 +295,7 @@ function head(title: string): string {
 
 function sheetType(): string {
   const samples: Record<(typeof TV_TYPE_SIZES)[number], string> = {
+    233: '<p class="mono t233">BCDF 2345</p>',
     144: '<p class="display t144">Kaki Arcade</p>',
     89: '<p class="mono t89">K7QP <span class="secondary">89</span></p>',
     55: '<p class="display t55">Tabao Rush · Peek Poker · Rabakz</p>',

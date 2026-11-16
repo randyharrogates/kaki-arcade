@@ -100,7 +100,8 @@ golden-ratio variant. Source of the values: `design-gate/02-visual-identity.html
   `#6B4426`; accent red `#B5371F`.
 - Lettering: DM Serif Display for headings, DM Sans for everything else, JetBrains Mono for
   codes and numbers.
-- Type sizes on screen: 21, 34, 55, 89 and 144 px at true size. Corners 13 px. On the phone:
+- Type sizes on screen: 21, 34, 55, 89 and 144 px at true size, and 233 px for the room code
+  alone (§4.3, D-092 f). Corners 13 px. On the phone:
   13, 21, 34, 55 and 89 px (D-056); no 15 or 44.
 - Player colours 1 to 8: `#D9483B` `#2F7FD6` `#F2B21B` `#39A85B` `#8E5BD0` `#F07C2A` `#22A6A6`
   `#D95C9A`, always with the seat number. Team themes: red `#D9483B`, blue `#2F7FD6`.

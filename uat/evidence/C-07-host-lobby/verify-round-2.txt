@@ -1,0 +1,38 @@
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 12 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 216 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-07
+
+[sim-core overhead] clock + loop: 0.0153 µs per step (0.00009% of a 16.7 ms step)
+[sim-core overhead] clock + loop + 8-controller input buffer: 0.3394 µs per step (0.00204% of a 16.7 ms step)
+
+ Test Files  105 passed (105)
+      Tests  2550 passed | 1 skipped (2551)
+   Start at  04:09:23
+   Duration  155.15s (transform 1.23s, setup 0ms, import 4.57s, tests 296.68s, environment 6ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+$ vite build
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 77 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/.vite/manifest.json         0.18 kB │ gzip:  0.14 kB
+dist/index.html                  0.42 kB │ gzip:  0.29 kB
+dist/assets/index-BPiMU3Z3.css  10.80 kB │ gzip:  3.02 kB
+dist/assets/index-F66c6PaP.js   94.38 kB │ gzip: 35.46 kB
+
+✓ built in 55ms
+PERF-022 host: 105609 bytes raw, 38457 bytes gzip / 1500000
+PERF-022 deploy: 105609 bytes raw, 38457 bytes gzip / 1500000
+no asset sets in assets/src yet
+$ python3 tools/trace_check.py
+152 requirements; 68 in progress, 1 later, 83 not started
+trace check passed

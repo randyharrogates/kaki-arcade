@@ -1,0 +1,25 @@
+{
+  "name": "@kaki/web",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The console: host page on the big screen and controller page on phones",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@kaki/netcode": "workspace:*",
+    "@kaki/platform": "workspace:*",
+    "@kaki/protocol": "workspace:*",
+    "@kaki/sim-core": "workspace:*",
+    "@kaki/ui": "workspace:*",
+    "preact": "11.2.0",
+    "qrcode-generator": "2.0.4"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "2.10.6",
+    "vite": "8.3.8"
+  }
+}

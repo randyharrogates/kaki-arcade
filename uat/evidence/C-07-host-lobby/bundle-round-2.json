@@ -1,0 +1,44 @@
+{
+  "host": {
+    "raw": 105609,
+    "gzip": 38457,
+    "files": [
+      "index.html",
+      "assets/index-F66c6PaP.js",
+      "assets/index-BPiMU3Z3.css"
+    ]
+  },
+  "deploy": {
+    "raw": 105609,
+    "gzip": 38457,
+    "files": [
+      "assets/index-BPiMU3Z3.css",
+      "assets/index-F66c6PaP.js",
+      "index.html"
+    ]
+  },
+  "files": [
+    {
+      "file": "assets/index-BPiMU3Z3.css",
+      "raw": 10800,
+      "gzip": 3026
+    },
+    {
+      "file": "assets/index-F66c6PaP.js",
+      "raw": 94383,
+      "gzip": 35137
+    },
+    {
+      "file": "index.html",
+      "raw": 426,
+      "gzip": 294
+    }
+  ],
+  "budgetGzip": 1500000,
+  "checks": [
+    "No demo fixture names",
+    "No source maps",
+    "No tsbuildinfo",
+    "No localhost signalling default"
+  ]
+}

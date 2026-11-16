@@ -1,0 +1,21 @@
+{
+  "host": {
+    "raw": 107116,
+    "gzip": 38954,
+    "files": [
+      "index.html",
+      "assets/index-CHp5QtFj.js",
+      "assets/index-CVc854tk.css"
+    ]
+  },
+  "deploy": {
+    "raw": 107116,
+    "gzip": 38954,
+    "files": [
+      "assets/index-CHp5QtFj.js",
+      "assets/index-CVc854tk.css",
+      "index.html"
+    ]
+  },
+  "limitGzipBytes": 1500000
+}

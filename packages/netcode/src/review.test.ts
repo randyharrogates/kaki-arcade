@@ -465,7 +465,7 @@ describe('NET-002 NET-005 review lifecycle and limits', () => {
   it('stops retrying a 404 and emits gone; retry jitter uses the injected source', async () => {
     const clock = new Clock(); const sockets: FakeSocket[] = []; const states: string[] = [];
     const pairing = await createHostPairing({ ...base(clock), credentials: { code: CODE, hostToken: SECRET },
-      random: () => 1, upgradeStatus: () => Promise.resolve(404),
+      random: () => 1, upgradeStatus: () => Promise.resolve({ status: 404, gone: true }),
       fetch: () => { throw new Error('no fetch'); },
       socket: () => { const s = new FakeSocket(); sockets.push(s); return s; },
       onPairingState: (s) => states.push(s), onMessage: noop, onError: noop });

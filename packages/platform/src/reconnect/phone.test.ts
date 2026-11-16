@@ -46,6 +46,9 @@ describe('PLAT-007 bounded recovery and plain states', () => {
   it.each(['room-not-found', 'room-expired', 'room-closed'])('clears identity on %s', reason => {
     const r = unit(); r.dial.onError(reason);
     expect(r.driver.state).toBe('room-gone'); expect(r.store.read()).toBeNull();
+    r.clock.advance(60000); r.driver.wake(); r.driver.rejoin();
+    expect(r.attempts).toHaveLength(1);
+    expect(r.driver.state).toBe('room-gone');
     r.driver.stop();
   });
   it('reports full and waits for lobby after an expired seat, following PLAT-008', () => {

@@ -1,0 +1,58 @@
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 12 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 202 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-07
+
+[sim-core overhead] clock + loop: 0.0185 µs per step (0.00011% of a 16.7 ms step)
+[sim-core overhead] clock + loop + 8-controller input buffer: 0.4122 µs per step (0.00247% of a 16.7 ms step)
+ ❯ tools/assets/pipeline.test.ts (2 tests | 1 failed) 6556ms
+     × packs, reconstructs, downsamples, checks budgets and validates manifests 6555ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tools/assets/pipeline.test.ts > PERF-023/024 asset pipeline > packs, reconstructs, downsamples, checks budgets and validates manifests
+AssertionError: .............F
+======================================================================
+FAIL: test_verify_budget_hook (test_pipeline.PipelineTests.test_verify_budget_hook)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-07/tools/assets/test_pipeline.py", line 139, in test_verify_budget_hook
+    self.assertEqual(result.returncode, 0)
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 14 tests in 6.190s
+
+FAILED (failures=1)
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tools/assets/pipeline.test.ts:8:42
+      6|   it('packs, reconstructs, downsamples, checks budgets and validates m…
+      7|     const result = spawnSync('python3', ['-m', 'unittest', 'discover',…
+      8|     expect(result.status, result.stderr).toBe(0);
+       |                                          ^
+      9|     expect(result.stderr).toMatch(/Ran 14 tests/);
+     10|     expect(result.stderr).toContain('OK');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 100 passed (101)
+      Tests  1 failed | 2514 passed | 1 skipped (2516)
+   Start at  03:23:59
+   Duration  202.59s (transform 1.64s, setup 0ms, import 6.06s, tests 383.95s, environment 7ms)
+
+[ELIFECYCLE] Test failed. See above for more details.
+[ELIFECYCLE] Command failed with exit code 1.

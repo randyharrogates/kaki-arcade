@@ -1,0 +1,24 @@
+{
+  "requirement": "PERF-022",
+  "budgetGzipBytes": 1500000,
+  "raw": 101151,
+  "gzip": 36722,
+  "files": [
+    {
+      "file": "index.html",
+      "raw": 426,
+      "gzip": 295
+    },
+    {
+      "file": "assets/index-CLtnXr5Q.js",
+      "raw": 90354,
+      "gzip": 33519
+    },
+    {
+      "file": "assets/index-ByCN7u6W.css",
+      "raw": 10371,
+      "gzip": 2908
+    }
+  ],
+  "demoFixturesInEntry": false
+}

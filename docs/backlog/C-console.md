@@ -17,7 +17,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | C-03 | Rate limits on room creation and joins | DATA-005 | C-01 | 1 | merged |
 | C-04 | Netcode: WebRTC data channels, sequenced input state, repeated release, link-quality measurement | NET-001, NET-002, NET-005, PERF-010 | F-02 | 1 | merged |
 | C-06 | Room state (pure): seats, colours, nicknames with the blocked-words filter, leader and hand-over, capacity of 8, joining from the lobby | PLAT-003, PLAT-004, PLAT-005, PLAT-006, PLAT-008 | F-02 | 1 | merged |
-| C-07 | Host lobby screen: room code and QR, seated players, connection quality | PLAT-001, PLAT-004, PLAT-010, PERF-022 | C-04, C-06, F-06 | 2 | doing (Codex) |
+| C-07 | Host lobby screen: room code and QR, seated players, connection quality | PLAT-001, PLAT-004, PLAT-010, PERF-022 | C-04, C-06, F-06 | 2 | merged |
 | C-08 | Join page on the phone: scan or type the code, nickname, seat and colour, room-full message | PLAT-002, PLAT-003, PLAT-004, PERF-021 | C-04, C-06, F-06 | 2 | todo |
 
 ## Story C2 — We pick a game together and can always get back
@@ -107,3 +107,20 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   another client while the room's pool is full and is charged one failure: accepted in the
   third review (one failure against a budget of 16, only under attack; not charging would
   make holding a room's pool full free again). Revisit both at the staging probe.
+- **From C-07 (host lobby).** **For C-08:** the phone's probe adapter must return
+  `{status, gone, retryAfterMs}` with `gone` true only when the reply carries
+  `X-Kaki-Room: gone`; use `apps/web/src/join-link.ts` for the code and link; add a `/play`
+  route reading `?code=`; dev phones need a LAN-reachable `KAKI_SIGNAL_URL` (production
+  defaults to same origin); decide whether the controller shares the host entry against the
+  300 KB budget; add the root `pnpm dev` launcher (web, pairing server with its local secret
+  and allowed origin) and keep the command table in CLAUDE.md true; retake the lobby
+  evidence with real phones seated, including an outage with phones connected. **For C-09:**
+  `createHost` exposes only start and stop and `validateSelection` is fixed to false: it needs
+  room and leader input, selection and session hooks and an app-level screen state machine
+  with the 4A crossfade; `Overlap` can be reused with the surface kept outside it. **For
+  C-10/C-15:** OQ-033 (a room the server says is gone while phones are still linked).
+  **For C-13:** a place for the lobby benchmark. **Polish, optional:** reach the ghost
+  opacity sooner in the wipe; put the card edge on the list item; assert in the smoke that a
+  Worker-made 404 has no gone header; tidy the netcode test that passes `gone` with 426.
+  **Edge check (OQ-030):** the WebSocket pass-through in the CORS wrapper is proven only on
+  `wrangler dev`.

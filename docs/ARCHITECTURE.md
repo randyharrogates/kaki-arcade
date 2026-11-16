@@ -173,6 +173,14 @@ Rules:
   so an idle room costs nothing. A room is deleted 10 minutes after its last socket closes and
   at most 12 hours after creation. Clients treat the errors `not-allowed`, `bad-message` and `opening-timeout`
   as final and do not wait for a close event. Request headers are never logged.
+- **Replies and reconnecting (C-07, D-092):** one wrapper at the Worker's exit adds CORS
+  headers to every reply for an allowed origin, errors included, and exposes `Retry-After`
+  and `X-Kaki-Room`. A room the pairing server does not have, or has expired, answers 404
+  with `X-Kaki-Room: gone`; clients treat a room as gone only on that header, and any other
+  failure as unreachable. Until a room is open the host app paces its own attempts (1 s
+  doubling to 30 s, honouring `Retry-After`, at once when the browser comes online). Once
+  it is open, netcode reconnects the signalling socket in place at the same pace and never
+  closes a phone's data channel because signalling dropped.
 - **Limits (`apps/signal`, C-03, D-081 to D-089):** a Worker-side admission check runs before
   any room lookup. Clients are counted by IPv4 address or IPv6 /64, with second meters per /48,
   under a rotating HMAC so no address is stored; counters live in memory only, in 16 limiter

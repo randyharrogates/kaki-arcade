@@ -163,6 +163,21 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   presses in a scripted test. No food or container lost or duplicated in the reviewed fuzz, no
   soft lock found. Orders, patience and scoring are T-05. Rules only: no screen yet. Built by
   Codex; three review rounds.
+- **Host lobby (C-07): the first screen.** `apps/web` (Vite and Preact, D-088) serves `/host`:
+  it creates a room on the pairing server and shows the room code, a QR code of the join
+  link, eight seats with name, seat colour, connection quality, leader mark and a held seat's
+  countdown, and a screen each for creating, restoring, unreachable, expired and taken over
+  by another tab. Seen by the integrator in desktop Chromium at 720p, 1080p and 4K against a
+  real local pairing server: a room is created, a reload reopens the same room, a room the
+  server no longer has shows "This room has expired", and stopping the server while a room is
+  open keeps the room on screen and retries at a paced rate. **Not yet seen:** a phone
+  joining (no join page until C-08, so seats with players are demo data), phones staying
+  connected through an outage (netcode test only), a real TV, Safari, Firefox. The readings of
+  the chosen board are D-090 and D-092. `/` is a placeholder link. There is no single
+  `pnpm dev` command yet. Built by Codex over five fix rounds; three review rounds; the
+  integrator's browser checks found two faults the reviews had not (tiny names, an expired
+  room looping) and one of the integrator's own evidence claims was wrong and is withdrawn in
+  the report.
 - **Tabao Rush orders and scoring (T-05).** A seeded order queue per kitchen with patience and
   a last-quarter warning; serving only against an open order; points by dish, a speed tip and
   a loss for an expired order; a 3 minute 30 second round that ends exactly on time; 0 to 3

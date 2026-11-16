@@ -120,3 +120,6 @@ export const motionGeometry = {
   ringOpacity: 0.7, ringStart: 0.6, ringEnd: 1.8, pulsePeak: 0.4,
   cardHalf: 0.5, cardEdgeDegrees: 90, arcSegments: 12, edgeEpsilon: 1e-9,
 } as const;
+
+/** Outgoing content during a mask wipe (D-092). */
+export const GHOST_OPACITY = 0.08;

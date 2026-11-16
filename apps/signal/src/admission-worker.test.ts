@@ -138,7 +138,7 @@ describe('C-03 DATA-005 Worker and real room adapters', () => {
         const before = h.lookups();
         const refused = await h.request('/rooms');
         expect(refused.status).toBe(429); expect(refused.headers.get('Retry-After')).toBe('60');
-        expect(refused.headers.get('Access-Control-Expose-Headers')).toBe('Retry-After');
+        expect(refused.headers.get('Access-Control-Expose-Headers')).toBe('Retry-After, X-Kaki-Room');
         expect(h.lookups()).toBe(before);
         vi.setSystemTime(60000); await h.create();
         await h.create('192.0.2.2');

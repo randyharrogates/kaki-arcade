@@ -178,6 +178,7 @@ describe('C-01 Durable Object adapter review round 1', () => {
             headers: { Upgrade: 'websocket' },
         }));
         expect(response.status).toBe(404);
+        expect(response.headers.get('X-Kaki-Room')).toBe('gone');
         expect(empty.sockets).toHaveLength(0);
     });
     it('M2 reconciles dead phones after restart without replaying ghosts or retaining capacity', async () => {
@@ -308,4 +309,12 @@ describe('C-01 Durable Object adapter review round 1', () => {
         expect((h.ctx.records.get('room') as RoomState).sockets.filter((s) => s.role === 'phone'))
             .toHaveLength(8);
     });
+});
+
+it('PLAT-009 expired probes carry the authoritative gone header', async () => {
+    const h = await setup();
+    vi.setSystemTime(ABSOLUTE_MS + 1);
+    const response = await h.room.fetch(new Request('https://room/rooms/BCDF2345/host'));
+    expect(response.status).toBe(404);
+    expect(response.headers.get('X-Kaki-Room')).toBe('gone');
 });

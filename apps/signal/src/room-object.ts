@@ -69,7 +69,7 @@ export class RoomObject {
             await this.apply({ t: 'alarm' });
             const room = await this.load();
             if (!room || room.expired)
-                return new Response(null, { status: 404 });
+                return new Response(null, { status: 404, headers: { 'X-Kaki-Room': 'gone' } });
             if (request.headers.get('Upgrade')?.toLowerCase() !== 'websocket') {
                 return new Response(null, { status: 426 });
             }

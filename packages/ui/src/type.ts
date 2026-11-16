@@ -48,8 +48,9 @@ export const tvType = {
   display: 89,
   /** Room code, final score. */
   hero: 144,
+  roomCode: 233,
 } as const;
-export const TV_TYPE_SIZES = [21, 34, 55, 89, 144] as const;
+export const TV_TYPE_SIZES = [21, 34, 55, 89, 144, 233] as const;
 
 /** Phone type scale in px (D-056). */
 export const phoneType = {

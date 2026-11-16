@@ -154,6 +154,12 @@ function step(name, freshClient = true) {
     process.stdout.write(`STEP ${name}\n`);
 }
 try {
+    step('unknown host room CORS');
+    const unknown = await fetch(`http://127.0.0.1:${String(port)}/rooms/22222222/host`, { headers: { Origin: origin } });
+    assert.equal(unknown.status, 404);
+    assert.equal(unknown.headers.get('X-Kaki-Room'), 'gone');
+    assert.equal(unknown.headers.get('Access-Control-Allow-Origin'), origin);
+    process.stdout.write('PASS unknown host room CORS\n');
     step('create room');
     const response = await fetch(`http://127.0.0.1:${String(
       port)}/rooms`, { method: 'POST', headers: { Origin: origin, 'CF-Connecting-IP': clientAddress } });
@@ -344,7 +350,7 @@ try {
     });
     assert.equal(deniedCreate.status, 429);
     assert.ok(Number(deniedCreate.headers.get('Retry-After')) > 0);
-    assert.equal(deniedCreate.headers.get('Access-Control-Expose-Headers'), 'Retry-After');
+    assert.equal(deniedCreate.headers.get('Access-Control-Expose-Headers'), 'Retry-After, X-Kaki-Room');
     process.stdout.write('PASS C-03 creation burst 8, ninth 429 with Retry-After\n');
     step('C-03 failed malformed joins and back-off');
     const malformedRoom = await newRoom();

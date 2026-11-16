@@ -2,6 +2,15 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — C-07: host lobby, the first screen
+
+- `apps/web` (host route, lobby view-model, QR, motion, restore and retry), `tools/check_budgets.mjs`
+  counting every deployable file, tokens `--ka-type-233` and `--ka-opacity-ghost`.
+- Pairing server: every reply to an allowed origin carries CORS headers; an unknown or expired
+  room is marked `X-Kaki-Room: gone`. Netcode: after a room is open the host reconnects to the
+  pairing server in place and never closes phone links (D-092).
+- (PLAT-001, PLAT-004, PLAT-009, PLAT-010, PERF-022 in progress)
+
 ## 2026-11-17 — T-05: Tabao Rush orders, patience, scoring, stars and scaling
 
 - `games/tabao-rush/src/rules/orders.ts`; points and patience per dish in `recipes.ts`; the

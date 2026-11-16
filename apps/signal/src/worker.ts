@@ -12,23 +12,19 @@ interface Env extends AdmissionEnv {
     EDGE_LIMIT?: { limit(options: { key: string }): Promise<{ success: boolean }> };
 }
 const blocked = new WeakMap<object, Map<string, number>>();
-export default {
-    async fetch(request: Request, env: Env): Promise<Response> {
+async function route(request: Request, env: Env): Promise<Response> {
         const origin = request.headers.get('Origin');
         if (!allowedOrigin(origin, env.ALLOWED_ORIGINS))
-            return new Response(null, { status: 403 });
-        const headers = { 'Access-Control-Allow-Origin': origin ?? '', Vary: 'Origin',
-            'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Expose-Headers': 'Retry-After', 'Cache-Control': 'no-store' };
+            return new Response(null, { status: 403, headers: { Vary: 'Origin', 'Cache-Control': 'no-store' } });
         const url = new URL(request.url);
         if (request.method === 'OPTIONS')
-            return new Response(null, { status: 204, headers });
+            return new Response(null, { status: 204 });
         if (url.pathname !== '/rooms' && !url.pathname.startsWith('/rooms/'))
-            return new Response(null, { status: 404, headers });
+            return new Response(null, { status: 404 });
         const networks = clientNetworks(request.headers.get('CF-Connecting-IP'));
-        if (!networks) return new Response(null, { status: 400, headers });
+        if (!networks) return new Response(null, { status: 400 });
         if (!env.ADMISSION_SECRET || env.ADMISSION_SECRET.length < 32)
-            return new Response(null, { status: 503, headers: { ...headers, 'Retry-After': '5' } });
+            return new Response(null, { status: 503, headers: { 'Retry-After': '5' } });
         const now = Date.now();
         const key = await Promise.all([now, now + ROTATION_MS].map((at) =>
             clientKey(networks[0] ?? '', env.ADMISSION_SECRET, at)));
@@ -48,14 +44,14 @@ export default {
         const limited = (retry: number, global = false): Response => {
             const seconds = Math.min(url.pathname === '/rooms' ? 600 : 60, Math.max(1, retry));
             remember(global ? cacheKey : `${cacheKey}:${routeKey}`, now + seconds * 1000);
-            return new Response(null, { status: 429, headers: { ...headers, 'Retry-After': String(seconds) } });
+            return new Response(null, { status: 429, headers: { 'Retry-After': String(seconds) } });
         };
         const edgeCacheKey = `edge:${key.join(':')}`;
         const familyCacheKey = `${url.pathname === '/rooms' ? 'create' : 'join'}:${family.join(':')}`;
         const cached = Math.max(cache.get(edgeCacheKey) ?? 0, family.length ? cache.get(familyCacheKey) ?? 0 : 0, cache.get(cacheKey) ?? 0, cache.get(`${cacheKey}:${routeKey}`) ?? 0);
         if (cached && cached > now) return limited(Math.ceil((cached - now) / 1000));
         const unavailable = (): Response => new Response(null, { status: 503,
-            headers: { ...headers, 'Retry-After': '5' } });
+            headers: { 'Retry-After': '5' } });
         const check = async (operation: Parameters<typeof admission>[2]): Promise<number> => {
             for (const parts of [family, key]) {
                 if (!parts.length) continue;
@@ -81,7 +77,7 @@ export default {
             }
             if (url.pathname === '/rooms') {
                 if (request.method !== 'POST')
-                    return new Response(null, { status: 405, headers });
+                    return new Response(null, { status: 405 });
                 const retry = await check({ kind: 'create' });
                 if (retry) return limited(retry);
                 for (let attempt = 0; attempt < 8; attempt++) {
@@ -90,10 +86,9 @@ export default {
                     const response = await stub.fetch(`https://room/init?code=${code}`, { method: 'POST' });
                     if (response.status === 409)
                         continue;
-                    return new Response(response.body, { status: response.status, headers: { ...headers,
-                            'Content-Type': 'application/json' } });
+                    return response;
                 }
-                return new Response(null, { status: 503, headers: { ...headers, 'Retry-After': '5' } });
+                return new Response(null, { status: 503, headers: { 'Retry-After': '5' } });
             }
             const id = crypto.randomUUID();
             const kind = match?.[2] === 'host' ? 'host' :
@@ -109,7 +104,7 @@ export default {
             if (!/^[23456789BCDFGHJKMNPQRSTVWXYZ]{8}$/.test(code) || request.method !== 'GET') {
                 const failureRetry = await failed();
                 if (failureRetry) limited(failureRetry, true);
-                return new Response(null, { status: 404, headers });
+                return new Response(null, { status: 404 });
             }
             const forwarded = new Request(request.url, { method: request.method, headers: {
                 Origin: origin ?? '', Upgrade: request.headers.get('Upgrade') ?? '',
@@ -124,10 +119,29 @@ export default {
             if (response.status !== 101)
                 refusalRetry = await finish(id, [400, 401, 404].includes(response.status));
             if (response.status === 429) return new Response(null, { status: 429, headers: {
-                ...headers, 'Retry-After': response.headers.get('Retry-After') ?? '1',
+                'Retry-After': response.headers.get('Retry-After') ?? '1',
             } });
             if (refusalRetry) limited(refusalRetry, true);
             return response;
         } catch { return unavailable(); }
+}
+export default {
+    async fetch(request: Request, env: Env): Promise<Response> {
+        let response: Response;
+        try { response = await route(request, env); }
+        catch { response = new Response(null, { status: 503, headers: { 'Retry-After': '5' } }); }
+        const headers = new Headers(response.headers);
+        const vary = new Set((headers.get('Vary') ?? '').split(',').map(value => value.trim()).filter(value => value && value.toLowerCase() !== 'origin'));
+        vary.add('Origin'); headers.set('Vary', [...vary].join(', '));
+        headers.set('Cache-Control', 'no-store');
+        const origin = request.headers.get('Origin');
+        if (allowedOrigin(origin, env.ALLOWED_ORIGINS)) {
+            headers.set('Access-Control-Allow-Origin', origin ?? '');
+            headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+            headers.set('Access-Control-Allow-Headers', 'Content-Type');
+            headers.set('Access-Control-Expose-Headers', 'Retry-After, X-Kaki-Room');
+        }
+        return new Response(response.body, { status: response.status, statusText: response.statusText,
+            headers, ...(response.webSocket ? { webSocket: response.webSocket } : {}) });
     },
 } satisfies ExportedHandler<Env>;
