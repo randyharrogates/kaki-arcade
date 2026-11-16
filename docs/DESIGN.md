@@ -88,9 +88,25 @@ it obeys the same spirit: feet match ground speed, actions settle without oversh
 
 Standard: must look finished, not primitive; characters move correctly (PRD NN-4).
 
-### 4.2 Visual identity — *pending (gate board 2)*
+### 4.2 Visual identity — *general rule decided (board 2); per-game themes pending (board 2B)*
 
-Palette, typefaces, surface treatment per surface type.
+**General rule: direction C, Marble table** (Randy, 2026-11-16, D-042). It is the strict
+golden-ratio variant. Source of the values: `design-gate/02-visual-identity.html`.
+
+- Console surfaces: white marble `#EFEAE2` with a terrazzo speckle; panels `#FFFFFF` to
+  `#F6F1E7` with a 3 px `#D8CDBB` edge; ink `#2B2118`; secondary text `#7A6A58`; kopi brown
+  `#6B4426`; accent red `#B5371F`.
+- Lettering: DM Serif Display for headings, DM Sans for everything else, JetBrains Mono for
+  codes and numbers.
+- Type sizes on screen: 21, 34, 55, 89 and 144 px at true size. Corners 13 px.
+- Player colours 1 to 8: `#D9483B` `#2F7FD6` `#F2B21B` `#39A85B` `#8E5BD0` `#F07C2A` `#22A6A6`
+  `#D95C9A`, always with the seat number. Team themes: red `#D9483B`, blue `#2F7FD6`.
+- Answer and face-button colours are fixed everywhere: A red, B blue, X amber `#B87D0C`,
+  Y green `#2E9A5B`, each with its letter and its own shape.
+- **Each game has its own theme variant**: it keeps the lettering, corners, spacing and panel
+  style above and changes only colours and surface pattern. Variants are chosen on board 2B.
+- Trivia pictures are real photographs under a free licence; Codex-generated images only where
+  no suitable photograph can be found (D-042).
 
 ### 4.3 Big-screen layouts — *pending (gate board 3)*
 
@@ -127,7 +143,8 @@ golden-ratio variant, and says which proportions use it. The source of each boar
 | 0B | End-goal vision | Not a choice: one page showing the aim for every screen of the console, controller and three games, with rendered Tabao Rush kitchens. Source `design-gate/00b-end-goal-vision.html`, built by `tools/blender/vision_*.py` and `kalib.py` | Published 2026-11-16 |
 | 1A | Modelling approach | How stylised (toy / clay / realistic), where models come from (scripted / CC0 / paid AI), how many characters, with memory cost. Source `design-gate/01a-modelling-approach.html`, built by `tools/blender/board1a_*.py` | **Done** — A1 chunky toy, B1 scripted, C2 one body with 8 heads (D-037) |
 | 1 | 3D art style | Three Blender looks for the same stall and cook: character proportions, materials, lighting, camera tilt | Pending |
-| 2 | Visual identity | Three directions: palette, type pairing, surface treatment; plus where trivia photos come from. Source `design-gate/02-visual-identity.html`, built by `tools/boards/build_board2.py` | Published 2026-11-16, awaiting Randy |
+| 2 | Visual identity | Three directions: palette, type pairing, surface treatment; plus where trivia photos come from. Source `design-gate/02-visual-identity.html`, built by `tools/boards/build_board2.py` | **Done** — C Marble table as the general rule; real photographs, Codex only as a fallback (D-042) |
+| 2B | A theme for each game | Three variants each for Rabakz, Peek Poker and Tabao Rush inside the Marble table console. Source `design-gate/02b-game-themes.html`, built by `tools/boards/build_board2b.py` | Published 2026-11-16, awaiting Randy |
 | 3 | Big-screen layouts | Lobby, picker, Tabao Rush HUD, Peek Poker table, results | Pending |
 | 4 | Phone controller | Kit styling and both games' layouts at 390 × 844 landscape | Pending |
 | 5 | Motion | Live samples of the key transitions | Pending |

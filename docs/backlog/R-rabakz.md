@@ -30,5 +30,5 @@ Content work. It needs no code from other tracks and starts in Wave 0.
 | R-10 | Question schema, build and validation script, per-category chunks loaded before a match | RZ-020, RZ-022 | F-01 | 0 | todo |
 | R-11 | Import the Open Trivia Database: licence and attribution recorded, length filter, all-ages screen, difficulty mapped | RZ-021, RZ-023, RZ-024 | R-10 | 0 | todo |
 | R-12 | Singapore pack: at least 200 questions written by Claude, each with a source note | RZ-021, RZ-024 | R-10 | 1 | todo |
-| R-13 | Picture questions: at least 60, with real photographs under a free licence (licence and credit recorded per image) or Codex-generated images checked for accuracy, as Randy chooses on board 2; each Codex use logged in `DECISIONS.md` | RZ-002, RZ-024, RZ-025 | R-10, G-02 | 2 | todo |
+| R-13 | Picture questions: at least 60, with real photographs under a free licence (licence and credit recorded per image); a Codex-generated image, checked for accuracy and logged in `DECISIONS.md`, only where no suitable photograph can be found (D-042) | RZ-002, RZ-024, RZ-025 | R-10, G-02 | 2 | todo |
 | R-14 | Randy spot-checks the Singapore pack and a sample of the rest | RZ-021, RZ-023 | R-11, R-12 | 3 | todo |

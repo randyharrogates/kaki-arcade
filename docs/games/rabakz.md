@@ -39,7 +39,7 @@ No betting, no wagering of points, no real-money element.
 | RZ-022 | MUST | Every question has: category, difficulty, type, text, options, the correct option and a source. A build script validates the bank and rejects any question whose text is over 120 characters or whose options are over 40 characters, so everything fits the TV at reading size. |
 | RZ-023 | MUST | The bank is screened for a public, all-ages audience: no sexual, graphic, hateful or otherwise unsuitable questions. |
 | RZ-024 | MUST | Launch size: at least **1,500** questions in total, including at least **200** in the Singapore pack and at least **60** picture questions. |
-| RZ-025 | MUST | Picture-question images are real photographs or photorealistic images, never Blender renders or drawings: freely licensed photographs with the credit their licence requires, or images generated with Codex and checked by a person for accuracy. They are loaded before the match. |
+| RZ-025 | MUST | Picture-question images are real photographs or photorealistic images, never Blender renders or drawings: freely licensed photographs with the credit their licence requires; an image generated with Codex and checked by a person for accuracy is used only where no suitable photograph can be found. They are loaded before the match. |
 | RZ-026 | MUST | The order of options is shuffled from the match seed, and the correct option is equally likely in every position. |
 
 ## 3. Controls
