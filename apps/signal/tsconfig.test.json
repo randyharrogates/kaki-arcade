@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.test.base.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "types": [
+      "node",
+      "@cloudflare/workers-types"
+    ]
+  },
+  "include": [
+    "src/**/*.test.ts",
+    "scripts/*.mjs"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/protocol/tsconfig.lib.json"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "kaki-signal",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-11-16",
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "ROOMS",
+        "class_name": "RoomObject"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "RoomObject"
+      ]
+    }
+  ],
+  // Never log request headers: the host secret travels in Sec-WebSocket-Protocol.
+  "observability": {
+    "logs": { "enabled": false }
+  },
+  "env": {
+    "dev": {
+      "vars": {
+        "ALLOWED_ORIGINS": "http://localhost:5090,http://127.0.0.1:5090"
+      },
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "ROOMS",
+            "class_name": "RoomObject"
+          }
+        ]
+      }
+    }
+  }
+}

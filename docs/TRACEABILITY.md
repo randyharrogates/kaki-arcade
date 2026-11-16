@@ -28,7 +28,7 @@ requirement.
 
 | ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
 |---|---|---|---|---|---|---|---|
-| PLAT-001 | MUST | Opening the host page creates a room with a short room code and a QR code that encodes the join link | M3 | not started | — | — | — |
+| PLAT-001 | MUST | Opening the host page creates a room with a short room code and a QR code that encodes the join link | M3 | in progress | `apps/signal/src/worker.ts`, `core/codes.ts` (room creation and codes; the host page and QR are C-07) | `apps/signal/src/core/room.test.ts`, `worker.test.ts` | `uat/evidence/C-01-pairing-server/` |
 | PLAT-002 | MUST | A phone that scans the QR code (or types the code at the join page) lands in the lobby as a player, with… | M3 | not started | — | — | — |
 | PLAT-003 | MUST | A room holds 1 to 8 players | M3 | in progress | `packages/platform/src/room/room.ts` (pure state: 8 seats; no screen yet) | `room/seats-and-leader.test.ts`, `room/invariants.test.ts` | `uat/evidence/C-06-room-state/` |
 | PLAT-004 | MUST | Each player picks a nickname (max 12 characters) and is assigned a distinct colour and seat number shown… | M3 | in progress | `packages/platform/src/room/room.ts` (nickname check, uniqueness, seat and colour; no screen yet) | `room/names.test.ts` | `uat/evidence/C-06-room-state/` |
@@ -68,7 +68,7 @@ requirement.
 | ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
 |---|---|---|---|---|---|---|---|
 | NET-001 | MUST | The host browser is authoritative: it runs the simulation | M3 | in progress | `packages/protocol/src/channel.ts` (no host → phone message can carry state or another player's view; the host runner is C-10) | `packages/protocol/src/*.test.ts` | `uat/evidence/F-02-protocol/` |
-| NET-002 | MUST | Phones connect to the host directly (WebRTC data channels) | M3 | not started | — | — | — |
+| NET-002 | MUST | Phones connect to the host directly (WebRTC data channels) | M3 | in progress | `apps/signal/src/core/room.ts`, `room-object.ts` (signalling only, forwarding validated; the data channels are C-04) | `apps/signal/src/core/room.test.ts`, `room-object.test.ts` | `uat/evidence/C-01-pairing-server/` |
 | NET-003 | MUST | When a direct link is impossible, the connection falls back to a relay (Cloudflare TURN) automatically | M3 | not started | — | — | — |
 | NET-004 | MUST | The pairing server stops issuing relay access once monthly relay usage passes a configured limit (default… | M8 | not started | — | — | — |
 | NET-005 | MUST | Input messages are small, sequenced and tolerant of loss; a dropped packet never leaves a button stuck down | M3 | in progress | `packages/protocol/src/input.ts`, `packages/sim-core/src/input.ts` (netcode sender and receiver: C-04) | `packages/protocol/src/*.test.ts` | `uat/evidence/F-02-protocol/` |
@@ -79,11 +79,11 @@ requirement.
 
 | ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
 |---|---|---|---|---|---|---|---|
-| DATA-001 | MUST | No accounts, no email, no personal data collected in v1 | M8 | not started | — | — | — |
+| DATA-001 | MUST | No accounts, no email, no personal data collected in v1 | M8 | in progress | `apps/signal` stores only room code, host secret, socket ids, roles and timestamps (the rest of the product is later) | `apps/signal/src/room-object.test.ts` | `uat/evidence/C-01-pairing-server/` |
 | DATA-002 | MUST | Scores, stars and settings are saved on the host device only | M8 | not started | — | — | — |
 | DATA-003 | MUST | The only telemetry is anonymous error and performance counts with no nicknames, IPs or device identifiers… | M8 | not started | — | — | — |
 | DATA-004 | MUST | A short privacy page states the above in plain English | M8 | not started | — | — | — |
-| DATA-005 | MUST | Room codes are unguessable enough to prevent casual gate-crashing, rooms expire when idle, and the pairing… | M8 | not started | — | — | — |
+| DATA-005 | MUST | Room codes are unguessable enough to prevent casual gate-crashing, rooms expire when idle, and the pairing… | M8 | in progress | `apps/signal/src/core/codes.ts`, `core/room.ts` (8-character codes, idle and absolute expiry, per-socket limits; cross-client rate limits are C-03) | `apps/signal/src/core/room.test.ts`, `room-object.test.ts` | `uat/evidence/C-01-pairing-server/` |
 
 ## Public release
 

@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — C-01: pairing server
+
+- `apps/signal`: Worker, room Durable Object with hibernation, a pure room core, host
+  authentication at the upgrade, abuse caps, expiry, and a smoke script. Dev dependencies
+  wrangler and workers types (D-061). Rulings D-063, D-065, D-066. `ARCHITECTURE.md` §5 updated.
+  (PLAT-001, NET-002, DATA-001, DATA-005 in progress)
+
 ## 2026-11-16 — C-06: room state
 
 - `packages/platform/src/room`: pure room reducer (seats, colours, nicknames with a blocked-words

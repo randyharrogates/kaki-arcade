@@ -11,3 +11,9 @@ packages:
 # Refuse to install on a Node version outside "engines" in package.json. The same setting is in
 # .npmrc for tools that read it there.
 engineStrict: true
+
+# Packages allowed to run install scripts (each fetches its own platform binary). Anything not
+# listed is refused. D-061.
+allowBuilds:
+  esbuild: true
+  workerd: true

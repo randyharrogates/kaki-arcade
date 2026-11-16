@@ -63,9 +63,17 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   two-minute seat hold, host reload, and joining by phase. No screen or network uses it yet.
   Built by Codex; four review rounds, the last three on the nickname filter.
 
+- **Pairing server (C-01).** `apps/signal`: a Cloudflare Worker and one Durable Object per room.
+  Creates rooms with 8-character codes, authenticates the host at the socket upgrade, forwards
+  only signalling between a phone and its host, caps and times out silent sockets, throttles
+  floods, survives a restart with no ghost players, and expires idle rooms. Runs locally only
+  (`pnpm --filter @kaki/signal dev`); **not deployed**, no relay credentials (C-02) and no
+  cross-client rate limits (C-03) yet. Built by Codex; two review rounds against a real local
+  server; smoke test of 12 steps run by the integrator.
+
 ## Does not exist yet
 
-- Any application code: no host page, controller, pairing server or game (the packages are empty stubs).
+- No host page, controller or game yet.
 - `pnpm uat`, `pnpm perf`, `pnpm dev` (later issues).
 
 ## Design gate

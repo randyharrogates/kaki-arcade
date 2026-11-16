@@ -12,7 +12,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
-| C-01 | Pairing server: Worker and one Durable Object per room, unguessable codes, handshake forwarding, idle expiry, hibernation | PLAT-001, NET-002, DATA-005 | F-02 | 1 | doing (Codex) |
+| C-01 | Pairing server: Worker and one Durable Object per room, unguessable codes, handshake forwarding, idle expiry, hibernation | PLAT-001, NET-002, DATA-005 | F-02 | 1 | merged |
 | C-02 | Relay: short-lived TURN credentials, monthly usage tracking, cut-off at the limit with the same-Wi-Fi message | NET-003, NET-004 | C-01 | 1 | todo |
 | C-03 | Rate limits on room creation and joins | DATA-005 | C-01 | 1 | todo |
 | C-04 | Netcode: WebRTC data channels, sequenced input state, repeated release, link-quality measurement | NET-001, NET-002, NET-005, PERF-010 | F-02 | 1 | todo |
@@ -53,3 +53,12 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   name actually given (`name-suffixed`, `nameReplaced`).
 - **For C-10:** the phase event carries the game's mid-game join policy; joiners are marked
   `joinedMidGame`.
+- **From C-01:** C-02 swaps the single `iceGrant()` in `apps/signal/src/core/room.ts`. C-03 adds
+  admission at room creation in `worker.ts` and counts failed joins (404, wrong code, 429) per
+  client in the Worker before the room object is reached; shortening codes to 6 characters is
+  reconsidered then (D-065). C-04 offers both subprotocols, keeps the host socket open, and
+  does not depend on a close event after a host replacement or an opening deadline; check on
+  the real edge whether server-initiated closes complete. Before any deploy: confirm logging is
+  off and headers are not recorded (the host secret travels in `Sec-WebSocket-Protocol`).
+- **F-02b (protocol):** retire the socket messages `create` and `reopen`; rename the button
+  letters `a/b/x/y` to positions (D-062); add an error code for an opening timeout.

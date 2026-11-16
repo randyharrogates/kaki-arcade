@@ -3,6 +3,7 @@
   "references": [
     { "path": "./tsconfig.json" },
     { "path": "packages/protocol" },
+    { "path": "apps/signal" },
     { "path": "packages/sim-core" },
     { "path": "packages/platform" },
     { "path": "packages/netcode" },

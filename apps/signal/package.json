@@ -1,0 +1,17 @@
+{
+  "name": "@kaki/signal",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pairing server: introduces devices; carries no gameplay",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local --env dev"
+  },
+  "dependencies": {
+    "@kaki/protocol": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "4.20251014.0",
+    "wrangler": "4.162.0"
+  }
+}

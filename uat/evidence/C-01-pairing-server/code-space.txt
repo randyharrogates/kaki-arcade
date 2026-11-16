@@ -1,0 +1,5 @@
+Alphabet: 28; raw space: 377,801,998,336
+Accepted by current substring screen: 361,866,010,493
+Rejected: 15,935,987,843
+720 guesses at one chosen room: 1.98968673e-09
+720 guesses against 10,000 live rooms (union bound): 1.98968673e-05

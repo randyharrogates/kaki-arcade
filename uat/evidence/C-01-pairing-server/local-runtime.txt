@@ -1,0 +1,25 @@
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mProxy environment variables detected. We'll use your proxy for fetch requests.[0m
+
+
+
+ ⛅️ wrangler 4.162.0
+────────────────────
+Your Worker has access to the following bindings:
+Binding                                                               Resource                  Mode
+env.ROOMS (RoomObject)                                                Durable Object            local
+env.ALLOWED_ORIGINS ("http://localhost:5090,http://127.0.0....")      Environment Variable      local
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mFailed to bind to 127.0.0.1:9229: permission denied.[0m
+
+  This usually means a sandbox or security policy is preventing network access.
+  If you are running inside a restricted environment (container, VM, AI coding agent, etc.),
+  configure it to allow binding to loopback addresses.
+
+
+🪵  Logs were written to "/private/tmp/c01-wrangler.log"
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in /Users/randy/projects/personal/web-apps/
+  │ kaki-arcade-wt/C-01/apps/signal
+

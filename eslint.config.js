@@ -9,7 +9,7 @@ export default defineConfig(
       '**/dist/**',
       '**/coverage/**',
       '.claude/**',
-      '.wrangler/**',
+      '**/.wrangler/**',
       'assets/**',
       'docs/**',
       'playwright-report/**',

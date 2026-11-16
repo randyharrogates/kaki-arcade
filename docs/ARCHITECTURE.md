@@ -121,10 +121,16 @@ Rules:
   on connect. Relay credentials (ICE servers) arrive in the pairing server's `created` and
   `joined` replies.
 - **Host → phone:** the controller layout and private view, sent only when they change.
-- **Pairing:** the host opens a WebSocket to the room's Durable Object. A joining phone opens
-  one too, the object forwards offer/answer/candidates, and both sockets can close once the
-  data channel is up. The Durable Object uses WebSocket hibernation so an idle room costs
-  nothing.
+- **Pairing (`apps/signal`, C-01):** the host page creates a room with an HTTP POST, which
+  returns an 8-character room code and a host secret (D-063, D-065). The host then opens a
+  WebSocket to the room's Durable Object, proving the secret in the upgrade itself with the
+  subprotocols `kaki.v1` and `kaki.host.<secret>` (D-066), and keeps that socket open for the
+  whole life of the room. A joining phone opens a socket with `kaki.v1`; the object forwards
+  offer, answer and candidates between a phone and its own host only, and never gameplay. A
+  phone's socket can close once its data channel is up. The object uses WebSocket hibernation,
+  so an idle room costs nothing. A room is deleted 10 minutes after its last socket closes and
+  at most 12 hours after creation. Clients treat the errors `not-allowed` and `bad-message` as
+  final and do not wait for a close event. Request headers are never logged.
 - **Relay:** ICE tries direct paths first. The pairing server issues Cloudflare TURN credentials
   with a short lifetime, tracks monthly relay usage, and stops issuing them past the limit
   (NET-004).
