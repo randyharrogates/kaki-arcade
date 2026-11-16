@@ -2,6 +2,11 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — T-06: Tabao Rush level format, validator and loader
+
+- `games/tabao-rush/src/levels/` with two test kitchens; rules in D-093. (TR-050, TR-057 in
+  progress)
+
 ## 2026-11-17 — C-07: host lobby, the first screen
 
 - `apps/web` (host route, lobby view-model, QR, motion, restore and retry), `tools/check_budgets.mjs`

@@ -25,7 +25,7 @@ export const RECIPES: readonly Recipe[] = [
   { id: 'kopi-teh', basePoints: 40, patienceSeconds: 40, name: 'Kopi / teh', container: 'cup', ingredients: [part('drink', 'drinks')], assembly: [] },
 ];
 export type Rejection =
-  | { readonly code: 'nothing-to-serve' | 'dirty' | 'wrong-container' | 'unknown-combination' | 'not-ordered' }
+  | { readonly code: 'missing-return-counter' | 'nothing-to-serve' | 'dirty' | 'wrong-container' | 'unknown-combination' | 'not-ordered' }
   | { readonly code: 'missing-ingredient' | 'extra-ingredient' | 'burnt' | 'extra-step'; readonly ingredient: string }
   | { readonly code: 'missing-step'; readonly ingredient: string; readonly step: Process };
 export type ServiceEvent = { readonly cook: string; readonly seat: number; readonly step: number; readonly counter: number } &

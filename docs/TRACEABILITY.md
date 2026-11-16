@@ -202,14 +202,14 @@ requirement.
 | TR-031 | MUST | Progress and state are readable without colour alone (NFR-A11Y) | M5 | not started | — | — | — |
 | TR-040 | MUST | 7 dishes at launch, introduced gradually across levels | M6 | in progress | `games/tabao-rush/src/rules/recipes.ts`, `stations.ts` (the seven dishes exist as recipes; gradual introduction is T-06 and T-16) | `games/tabao-rush/src/rules/recipes.test.ts` | `uat/evidence/T-04-tabao-recipes/` |
 | TR-041 | MUST | Each dish is recognisable as itself at game size on a TV (checked at the design gate and in UAT) | M6 | not started | — | — | — |
-| TR-050 | MUST | 8 co-op levels across hawker-world venues, each a distinct layout and twist; fires from level 5 | M6 | not started | — | — | — |
+| TR-050 | MUST | 8 co-op levels across hawker-world venues, each a distinct layout and twist; fires from level 5 | M6 | in progress | `games/tabao-rush/src/levels/` (level format, validator, loader, two test kitchens; the 8 real levels, venues on screen and twist behaviour are T-11) | `games/tabao-rush/src/levels/levels.test.ts` | `uat/evidence/T-06-tabao-levels/` |
 | TR-051 | MUST | Co-op mode for 1 to 8 players | M5 | not started | — | — | — |
 | TR-052 | MUST | Team versus: two teams, mirrored kitchens side by side on one screen, team colour themes, 3 arenas | M7 | not started | — | — | — |
 | TR-053 | MUST | Solo and short-handed play can add bots to reach a chosen team size | M6 | not started | — | — | — |
 | TR-054 | MUST | Level select shows stars earned per level, saved on the host device (DATA-002) | M6 | not started | — | — | — |
 | TR-055 | MUST | A 60-second playable tutorial on first run teaches move, pick up, act and serve | M5 | not started | — | — | — |
 | TR-056 | MUST | A player who joins mid-round enters at the next round, and spectates until then | M5 | not started | — | — | — |
-| TR-057 | MUST | Every level and arena fits the whole screen; nothing scrolls | M5 | not started | — | — | — |
+| TR-057 | MUST | Every level and arena fits the whole screen; nothing scrolls | M5 | in progress | `games/tabao-rush/src/levels/validator.ts` (a level larger than 15 by 6 tiles is refused; to be confirmed on a rendered frame in T-07) | `games/tabao-rush/src/levels/levels.test.ts` | `uat/evidence/T-06-tabao-levels/` |
 | TR-058 | MUST | Mirrored versus kitchens interact; forms chosen on board 3 | M7 | not started | — | — | — |
 | TR-060 | MUST | Cooks animated in 8 directions (9 actions incl. throw and extinguish); one shared body, different heads | M5 | not started | — | — | — |
 | TR-061 | MUST | Every player identifiable by character head, colour (player or team) and seat number marker | M5 | not started | — | — | — |

@@ -48,8 +48,9 @@ function spawn(state: TabaoState, player: PlayerInfo): Cook {
     y: at.y,
     vx: 0,
     vy: 0,
-    facing: 2,
-    targetTile: targetTile(state.level, at.x, at.y, 2),
+    ...(at.kitchen ? { kitchen: at.kitchen } : {}),
+    facing: at.facing ?? 2,
+    targetTile: targetTile(state.level, at.x, at.y, at.facing ?? 2),
   };
 }
 

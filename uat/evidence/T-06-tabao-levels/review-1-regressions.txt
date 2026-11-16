@@ -1,0 +1,25 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T-06 validator 200x200 / 400 stations: 0.028ms
+T-06 validator valid x100: 61.008ms
+T-06 map kopitiam-first-shift
+XCCCCKRKDLX
+...........
+.12345678..
+...........
+...........
+XVTSB#####X
+T-06 map zi-char-test-kitchen
+XCCCCCCCCCCCKKX
+#.............#
+#12345678.....E
+#..............
+#..............
+XRKWGPLDVTSB##X
+
+ Test Files  1 passed (1)
+      Tests  22 passed (22)
+   Start at  05:42:11
+   Duration  926ms (transform 525ms, setup 0ms, import 635ms, tests 109ms, environment 0ms)
+

@@ -143,3 +143,16 @@ the level list. These are tuning decisions made during M6 with playtests, not re
 - Serving takes the oldest matching order; a serve beats an expiry on the same step. Kopi
   and teh are one order.
 
+## Level rules (D-093; provisional until levels are seen and played)
+
+- A kitchen is at most 15 by 6 tiles, so it fits a 1080p screen with room for the HUD.
+- One connected floor; every station reachable from every spawn; eight distinct spawns.
+- Each kitchen starts with at least one clean container of every kind its dishes need, at
+  least 6 clean plates when it serves plated dishes, a sink and a reachable return counter.
+- Enough chopping boards to cover the worst chop count of the orders that can arrive at
+  eight cooks.
+- Fires only from level 5, with an extinguisher within 15 steps of anything that can burn.
+- Rounds of 60 to 600 s (210 s by default); star base 200, 400, 600 unless a level says why.
+- Each level names its venue: kopitiam, hawker centre, pasar malam or zi char.
+- A twist counts only once its behaviour exists.
+

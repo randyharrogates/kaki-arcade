@@ -17,10 +17,15 @@ export type Tile =
   | { readonly kind: 'floor' }
   | { readonly kind: 'wall' }
   | { readonly kind: 'counter' }
-  | { readonly kind: 'station'; readonly stationId: string; readonly ingredient?: string; readonly kitchen?: string; readonly container?: Container; readonly stationType?: StationType };
+  | { readonly kind: 'station'; readonly stationId: string; readonly ingredient?: string; readonly kitchen?: string; readonly container?: Container; readonly stationType?: StationType; readonly stock?: number; readonly facing?: Facing };
 
 export interface Level {
+  readonly venue?: 'kopitiam' | 'hawker centre' | 'pasar malam' | 'zi char';
   readonly id: string;
+  readonly name?: string;
+  /** Inert hooks retained for later level behaviours. */
+  readonly twists?: readonly { readonly kind: string }[];
+  readonly kitchenIds?: readonly string[];
   /** T-06 level hooks; omitted means first introduced dish and the default round. */
   readonly allowedDishes?: readonly string[];
   readonly roundSeconds?: number;
@@ -32,7 +37,7 @@ export interface Level {
   readonly firesEnabled?: boolean;
   readonly extinguisherTile?: number;
   readonly fireNeighbours?: Readonly<Record<number, readonly number[]>>;
-  readonly spawns: readonly { readonly x: number; readonly y: number }[];
+  readonly spawns: readonly { readonly x: number; readonly y: number; readonly kitchen?: string; readonly facing?: Facing }[];
 }
 
 /** Clockwise, starting east. Facing retains an 8-degree margin beyond sector edges (D-072). */

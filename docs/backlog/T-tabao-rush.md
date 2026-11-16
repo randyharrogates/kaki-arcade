@@ -17,7 +17,7 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 | T-03 | Stations and timers: chop, wok, pot, grill, rice, drinks, plating, sink, bin; burning with a warning; fires that start, spread and are put out | TR-007, TR-008, TR-010, TR-030 | T-01 | 1 | merged |
 | T-04 | Recipes for the 7 dishes, plating, serving, rejection with a reason | TR-003, TR-004, TR-040 | T-02, T-03 | 1 | merged |
 | T-05 | Orders, patience, score and tips, stars, scaling by player count, round timer | TR-001, TR-004, TR-005, TR-006 | T-04 | 1 | merged |
-| T-06 | Level format and loader: collision map, station anchors, twists; a validator that every level fits the screen with no scrolling | TR-050, TR-057 | T-01 | 1 | doing (Codex) |
+| T-06 | Level format and loader: collision map, station anchors, twists; a validator that every level fits the screen with no scrolling | TR-050, TR-057 | T-01 | 1 | merged |
 | T-07 | Big-screen renderer: baked background, sprites from atlases, body plus head, interpolation for everything not player-controlled, HUD and order cards | TR-001, TR-030, TR-031, TR-061, TR-062, PERF-001 | T-05, S-04, A-02, F-06 | 2 | todo |
 | T-08 | Controller layout: stick, A, B, X, Y, Start, optional shake for the wok | TR-020, CTRL-007 | T-01, K-06 | 2 | todo |
 | T-09 | Cook picker before a round: 8 characters, no two players the same | TR-064 | T-07, A-03 | 2 | todo |
@@ -94,3 +94,17 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
   `relocate`. **For T-07:** fire hands a separated cup to whichever empty-handed cook is
   aiming at the station, which will look odd. All counts and timings are D-085 and D-087,
   provisional until seen on a screen.
+- **From T-06 (levels).** **For T-07:** confirm the 144 px HUD and 120 px prop reservation on
+  a rendered frame (15 tiles leaves 5 px margins); stations carry `facing`; give the
+  `missing-return-counter` reason player wording; the early size refusal hard-codes 15 and 6
+  instead of `SCREEN_FIT`. **For T-11:** the eight real levels with venues; twist behaviour
+  (the validator refuses every twist kind until then); layouts with enough chopping boards
+  and plating counters for eight cooks (D-093 j); a co-op split kitchen is one kitchen on two
+  floor regions, which the connected-floor rule forbids today; station ids unique ignoring
+  case. **For T-13:** never list the two test kitchens to players. **For T-14:** per-kitchen
+  connectivity and a kitchen-aware floor fallback; refuse a team value outside the two teams;
+  one or two interaction forms per arena. **For T-16:** the chopping floor hard-codes the
+  eight-cook crew factor and 24 s instead of calling the scaling function. **For T-17:** when
+  the game's `init` loads a real level the existing conformance test covers it; the kit was
+  run by the reviewer on both test kitchens at 1 and 8 cooks and passes, but is not in the
+  suite for them (8 s or more each).

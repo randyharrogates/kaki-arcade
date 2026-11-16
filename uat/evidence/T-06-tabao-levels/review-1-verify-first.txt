@@ -1,0 +1,147 @@
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 11 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 223 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T05 timings {"warmupSteps":600,"steps":12000,"meanMs":0.013386174416682176,"worstMs":0.8458329999994021}
+1 true {"c:plate:counter":99154,"c:plate:held":1646,"crate":61,"ev:rejected:nothing-to-serve":5,"ev:rejected:wrong-container":24,"maxFloor":26,"maxLive":49,"pv:bin":21,"pv:nothing":3821,"pv:pick":311,"pv:put":94,"pv:reject:":29,"pv:return":28,"pv:take":29,"pvc:chop":73,"pvc:drinks":21,"pvc:extinguish":693,"pvc:nothing":4362,"pvc:turn":6,"sink:bin":21,"sink:fire":2}
+1 false {"c:dish:counter":14978,"c:dish:held":2784,"c:plate:counter":80861,"c:plate:held":2177,"crate":72,"ev:rejected:missing-ingredient":23,"ev:rejected:not-ordered":2,"ev:rejected:nothing-to-serve":5,"ev:rejected:wrong-container":44,"maxFloor":28,"maxLive":48,"pv:add":11,"pv:bin":33,"pv:nothing":3393,"pv:pick":563,"pv:place":7,"pv:pour":5,"pv:put":171,"pv:reject:":74,"pv:return":47,"pv:take":52,"pvc:chop":111,"pvc:drinks":61,"pvc:nothing":4858,"pvc:turn":4,"sink:bin":34}
+2 true {"c:dish:counter":12247,"c:dish:held":401,"c:plate:counter":85413,"c:plate:held":2739,"crate":90,"ev:rejected:missing-ingredient":24,"ev:rejected:not-ordered":7,"ev:rejected:nothing-to-serve":6,"ev:rejected:wrong-container":62,"maxFloor":28,"maxLive":52,"pv:add":19,"pv:bin":41,"pv:nothing":3816,"pv:pick":565,"pv:place":1,"pv:put":164,"pv:reject:":80,"pv:return":37,"pv:take":39,"pvc:chop":105,"pvc:drinks":63,"pvc:nothing":5238,"pvc:turn":3,"sink:bin":53}
+2 false {"c:dish:counter":5004,"c:dish:held":2187,"c:plate:counter":90268,"c:plate:floor":14,"c:plate:held":3327,"crate":82,"ev:rejected:missing-ingredient":37,"ev:rejected:not-ordered":1,"ev:rejected:nothing-to-serve":7,"ev:rejected:wrong-container":45,"maxFloor":30,"maxLive":53,"pv:add":9,"pv:bin":32,"pv:nothing":3826,"pv:pick":544,"pv:place":3,"pv:pour":3,"pv:put":136,"pv:reject:":62,"pv:return":49,"pv:take":55,"pvc:chop":101,"pvc:drinks":81,"pvc:nothing":5307,"pvc:spread":2,"pvc:turn":4,"sink:bin":48}
+4 true {"c:dish:counter":14476,"c:dish:held":1774,"c:plate:counter":79158,"c:plate:floor":25,"c:plate:held":5367,"crate":136,"ev:rejected:missing-ingredient":54,"ev:rejected:not-ordered":10,"ev:rejected:nothing-to-serve":21,"ev:rejected:wrong-container":109,"maxFloor":32,"maxLive":62,"pv:add":13,"pv:bin":37,"pv:nothing":4477,"pv:pick":579,"pv:place":1,"pv:pour":3,"pv:put":177,"pv:reject:":92,"pv:return":45,"pv:take":41,"pvc:chop":120,"pvc:drinks":72,"pvc:nothing":6219,"pvc:spread":11,"pvc:turn":5,"sink:bin":99}
+4 false {"c:dish:counter":5260,"c:dish:held":421,"c:plate:counter":88913,"c:plate:held":6206,"crate":124,"ev:rejected:missing-ingredient":61,"ev:rejected:nothing-to-serve":21,"ev:rejected:wrong-container":77,"maxFloor":31,"maxLive":60,"pv:add":14,"pv:bin":32,"pv:nothing":4559,"pv:pick":571,"pv:pour":1,"pv:put":174,"pv:reject:":65,"pv:return":60,"pv:take":56,"pvc:chop":101,"pvc:drinks":84,"pvc:nothing":6179,"pvc:spread":11,"pvc:turn":5,"sink:bin":84}
+8 true {"c:dish:counter":12269,"c:dish:held":4192,"c:plate:counter":73266,"c:plate:held":11073,"crate":344,"ev:rejected:missing-ingredient":121,"ev:rejected:not-ordered":21,"ev:rejected:nothing-to-serve":37,"ev:rejected:wrong-container":334,"maxFloor":33,"maxLive":66,"pv:add":13,"pv:bin":45,"pv:nothing":4550,"pv:pick":528,"pv:place":5,"pv:pour":6,"pv:put":161,"pv:reject:":87,"pv:return":51,"pv:take":48,"pvc:chop":106,"pvc:drinks":76,"pvc:nothing":6547,"pvc:spread":4,"pvc:turn":5,"sink:bin":300}
+8 false {"c:dish:counter":10054,"c:dish:held":2260,"c:plate:counter":76624,"c:plate:floor":38,"c:plate:held":11824,"crate":316,"ev:rejected:missing-ingredient":169,"ev:rejected:not-ordered":13,"ev:rejected:nothing-to-serve":35,"ev:rejected:wrong-container":288,"maxFloor":37,"maxLive":66,"pv:add":16,"pv:bin":42,"pv:nothing":4783,"pv:pick":518,"pv:place":2,"pv:pour":3,"pv:put":137,"pv:reject:":124,"pv:return":43,"pv:take":38,"pvc:chop":86,"pvc:drinks":55,"pvc:nothing":6349,"pvc:spread":3,"pvc:turn":2,"sink:bin":271}
+A1 orders created idle 12 serving 22 served score 2103
+B1 events [{"type":"refused","kitchen":"coop","cook":"p0","seat":1,"step":0,"counter":53,"dish":"chicken-rice","reason":{"code":"not-ordered"}},{"type":"served","kitchen":"coop","order":1,"dish":"satay","step":0,"cook":"p1","seat":2,"points":100,"tip":20,"delta":120}]
+D1 after serve on arrival boundary: orders [1,2] nextArrival 2880 tick 1440
+E1 {"type":"refused","kitchen":"coop","cook":"p0","seat":1,"step":0,"counter":53,"dish":null,"reason":{"code":"wrong-container"}} {"type":"refused","kitchen":"coop","cook":"p0","seat":1,"step":0,"counter":53,"dish":null,"reason":{"code":"missing-ingredient","ingredient":"cucumber"}} 1
+G1 1 {"served":19,"expired":0,"refused":96,"maxQ":1,"maxView":19215,"score":1864,"stale":0,"cooks":1,"thr":[200,400,600]}
+G1 2 {"served":7,"expired":2,"refused":80,"maxQ":2,"maxView":16288,"score":700,"stale":0,"cooks":1,"thr":[220,440,650]}
+G1 3 {"served":12,"expired":1,"refused":155,"maxQ":3,"maxView":16886,"score":1370,"stale":0,"cooks":1,"thr":[250,510,760]}
+G1 4 {"served":2,"expired":6,"refused":70,"maxQ":4,"maxView":14744,"score":76,"stale":0,"cooks":1,"thr":[310,610,920]}
+G1 5 {"served":10,"expired":2,"refused":169,"maxQ":5,"maxView":17009,"score":974,"stale":0,"cooks":1,"thr":[370,750,1120]}
+1 true {"c:plate:counter":99154,"c:plate:held":1646,"crate":61,"ev:rejected:nothing-to-serve":5,"ev:rejected:wrong-container":24,"maxFloor":26,"maxLive":49,"pv:bin":21,"pv:nothing":3821,"pv:pick":311,"pv:put":94,"pv:reject:":29,"pv:return":28,"pv:take":29,"pvc:chop":73,"pvc:drinks":21,"pvc:extinguish":693,"pvc:nothing":4362,"pvc:turn":6,"sink:bin":21,"sink:fire":2}
+G1 6 {"served":8,"expired":5,"refused":112,"maxQ":6,"maxView":17238,"score":825,"stale":0,"cooks":1,"thr":[450,910,1360]}
+1 false {"c:dish:counter":9016,"c:dish:held":2719,"c:plate:counter":86253,"c:plate:held":2812,"crate":69,"ev:rejected:missing-ingredient":35,"ev:rejected:nothing-to-serve":14,"ev:rejected:wrong-container":38,"maxFloor":28,"maxLive":48,"pv:add":12,"pv:bin":33,"pv:nothing":3407,"pv:pick":526,"pv:place":4,"pv:pour":4,"pv:put":174,"pv:reject:":87,"pv:return":45,"pv:take":50,"pvc:chop":106,"pvc:drinks":64,"pvc:nothing":4884,"pvc:turn":5,"sink:bin":34}
+G1 7 {"served":9,"expired":8,"refused":123,"maxQ":6,"maxView":16438,"score":803,"stale":0,"cooks":1,"thr":[540,1090,1630]}
+2 true {"c:dish:counter":8920,"c:dish:held":364,"c:plate:counter":88556,"c:plate:held":2960,"crate":87,"ev:rejected:missing-ingredient":31,"ev:rejected:nothing-to-serve":6,"ev:rejected:wrong-container":74,"maxFloor":30,"maxLive":51,"pv:add":13,"pv:bin":37,"pv:nothing":3879,"pv:pick":519,"pv:put":155,"pv:reject:":87,"pv:return":46,"pv:take":50,"pvc:chop":101,"pvc:drinks":58,"pvc:nothing":5171,"pvc:spread":3,"pvc:turn":2,"sink:bin":49}
+G1 8 {"served":6,"expired":10,"refused":122,"maxQ":6,"maxView":16851,"score":450,"stale":0,"cooks":1,"thr":[650,1290,1940]}
+H1 orders created 18 expired 13
+I1 results end {"mode":"coop","score":120,"extras":{"stars":0},"players":[{"id":"p0","place":1,"score":120,"joinedMidGame":false}]} view orders 1 lingering events []
+J1 empty results {"mode":"coop","score":0,"players":[]}
+J2 thresholds after 7 leave [1060,2110,3170] stars 1 results {"stars":1}
+K1 [{"id":"blue","dish":"kaya-toast","cooks":3,"rng":{"a":393706149,"b":166977836,"c":3014791619,"d":14}},{"id":"red","dish":"chicken-rice","cooks":1,"rng":{"a":150560760,"b":148003555,"c":3355399269,"d":14}}]
+2 false {"c:dish:counter":2416,"c:dish:held":178,"c:plate:counter":94788,"c:plate:held":3418,"crate":73,"ev:rejected:missing-ingredient":17,"ev:rejected:not-ordered":1,"ev:rejected:nothing-to-serve":8,"ev:rejected:wrong-container":43,"maxFloor":30,"maxLive":49,"pv:add":4,"pv:bin":25,"pv:nothing":3960,"pv:pick":533,"pv:put":152,"pv:reject:":42,"pv:return":49,"pv:take":57,"pvc:chop":111,"pvc:drinks":72,"pvc:nothing":5225,"pvc:spread":1,"pvc:turn":2,"sink:bin":38}
+4 true {"c:dish:counter":5515,"c:dish:held":558,"c:plate:counter":89053,"c:plate:held":5674,"crate":117,"ev:rejected:missing-ingredient":49,"ev:rejected:nothing-to-serve":19,"ev:rejected:wrong-container":99,"maxFloor":31,"maxLive":55,"pv:add":14,"pv:bin":33,"pv:nothing":4535,"pv:pick":583,"pv:place":1,"pv:pour":1,"pv:put":177,"pv:reject:":62,"pv:return":43,"pv:take":57,"pvc:chop":117,"pvc:drinks":96,"pvc:nothing":6162,"pvc:spread":4,"pvc:turn":2,"sink:bin":80}
+L1 run 1 mean 0.0134 p95 0.0166 p99 0.0250 worst 0.769 over1ms 0
+4 false {"c:dish:counter":5787,"c:dish:held":849,"c:plate:counter":87668,"c:plate:held":6496,"crate":151,"ev:rejected:missing-ingredient":96,"ev:rejected:nothing-to-serve":24,"ev:rejected:wrong-container":134,"maxFloor":29,"maxLive":63,"pv:add":14,"pv:bin":49,"pv:nothing":4467,"pv:pick":616,"pv:place":1,"pv:pour":2,"pv:put":187,"pv:reject:":114,"pv:return":61,"pv:take":48,"pvc:chop":128,"pvc:drinks":95,"pvc:nothing":6103,"pvc:spread":1,"pvc:turn":2,"sink:bin":112}
+L1 run 2 mean 0.0117 p95 0.0139 p99 0.0222 worst 0.740 over1ms 0
+M1 view kitchen [{"id":"coop","orders":[],"score":120,"tips":20,"expired":0,"completed":1,"cooks":1,"maximum":2,"targetMaximum":2,"thresholds":[200,400,600],"stars":0}] {"remaining":12599,"total":12600} [{"type":"served","kitchen":"coop","order":1,"dish":"chicken-rice","step":0,"cook":"p0","seat":1,"points":100,"tip":20,"delta":120}]
+N1 order 0 expired during step index 3599 PATIENCE 3600 scaling1 {"interval":1440,"maximum":2,"thresholds":[200,400,600]}
+8 true {"c:dish:counter":7944,"c:dish:held":1766,"c:plate:counter":78392,"c:plate:held":12698,"crate":295,"ev:rejected:missing-ingredient":103,"ev:rejected:not-ordered":17,"ev:rejected:nothing-to-serve":46,"ev:rejected:wrong-container":301,"maxFloor":32,"maxLive":65,"pv:add":15,"pv:bin":39,"pv:nothing":4827,"pv:pick":450,"pv:place":1,"pv:pour":2,"pv:put":121,"pv:reject:":97,"pv:return":44,"pv:take":34,"pvc:chop":87,"pvc:drinks":70,"pvc:nothing":6462,"pvc:spread":1,"pvc:turn":3,"sink:bin":250}
+8 false {"c:dish:counter":7673,"c:dish:held":1675,"c:plate:counter":79261,"c:plate:floor":3,"c:plate:held":12188,"crate":275,"ev:rejected:missing-ingredient":179,"ev:rejected:not-ordered":19,"ev:rejected:nothing-to-serve":38,"ev:rejected:wrong-container":268,"maxFloor":33,"maxLive":63,"pv:add":15,"pv:bin":39,"pv:nothing":4781,"pv:pick":491,"pv:place":1,"pv:pour":4,"pv:put":158,"pv:reject:":89,"pv:return":39,"pv:take":38,"pvc:chop":116,"pvc:drinks":79,"pvc:nothing":6351,"pvc:spread":6,"pvc:turn":6,"sink:bin":229}
+R02 honest create status 200 Retry-After null
+R03 guesses from one /64: 300 sent, 283 refused
+R04 honest phone while pool held by 2 silent addresses: 101
+R05 honest household's own host reconnect after room-full 429s: 101
+R07 school burst: 155 of 240 admitted in 30 s (pacing alone would admit ~156)
+R09 limiter down: 503
+R10 join while limiter down: ok
+R11 retry after clock step back 1 h: 60 s
+R12 limiter DO calls: refused request 0; admitted wrong guess 4 + room 1
+R18 failed guesses in one hour from one address with concurrent bursts: 81
+COST IPv4: refused=0, wrong=4 limiter + 1 room, session=38 limiter + 10 room fetches + 8 join events, storage reads=0, writes=0
+COST IPv6: refused=0, wrong=8 limiter + 1 room, session=76 limiter + 10 room fetches + 8 join events, storage reads=0, writes=0
+[A] returns in transit=2 returned=68
+[A] steps delivering returns=68 mean=0.0202 p95=0.0530 worst=0.132 ms
+[A] steps>1ms=1 overlapping a GC=0 gcEvents=0
+[A] step mean=0.0160 p95=0.0204 p99=0.0329 worst=0.489 (all-worst 1.941@0) over1ms=0 top=1.941@0,0.520@81,0.489@2794,0.416@36,0.231@12223,0.209@134,0.208@1,0.172@241
+[A] view mean=0.0222 p95=0.0253 worst=0.690 bytes=30478 events=2
+[B] returns in transit=2 returned=68
+[B] steps delivering returns=68 mean=0.0139 p95=0.0161 worst=0.046 ms
+[B] steps>1ms=0 overlapping a GC=0 gcEvents=0
+[B] step mean=0.0135 p95=0.0156 p99=0.0177 worst=0.159 (all-worst 0.243@0) over1ms=0 top=0.243@0,0.159@1412,0.153@1194,0.126@769,0.124@8573,0.110@8701,0.108@9085,0.105@6771
+[B] view mean=0.0190 p95=0.0209 worst=0.211 bytes=30478 events=2
+[idle] mean=0.0056 p95=0.0060 worst=0.165
+E1 offender (17 failures) survives 2,048 churned unresolved guesses over 10 s: true
+E2 guesses/hour by one identity that never lets a miss resolve, churning 1,024 keys per cycle: 72
+E5 to block all 64 overflow buckets of one shard: 620 new keys, 10540 failures (plus 17,408 to block the 1,024 entries)
+E6 university /48 refusals: 0
+P3 housemate push-out of a 1 ms-old opening: true
+[sim-core overhead] clock + loop: 0.0154 µs per step (0.00009% of a 16.7 ms step)
+[sim-core overhead] clock + loop + 8-controller input buffer: 0.2987 µs per step (0.00179% of a 16.7 ms step)
+T-06 kopitiam-first-shift 1 cooks 3000 steps/reload: 17.8ms
+T-06 kopitiam-first-shift 8 cooks 3000 steps/reload: 36.2ms
+T-06 zi-char-test-kitchen 1 cooks 3000 steps/reload: 13.7ms
+T-06 zi-char-test-kitchen 8 cooks 3000 steps/reload: 30.0ms
+T-06 validator 200x200 / 400 stations: 0.011ms
+T-06 validator valid x100: 26.132ms
+T-06 map kopitiam-first-shift
+XCCCCKRKDLX
+...........
+.12345678..
+...........
+...........
+XVTSB#####X
+T-06 map zi-char-test-kitchen
+XCCCCCCCCCCCKKX
+#.............#
+#12345678.....E
+#..............
+#..............
+XRKWGPLDVTSB##X
+[A broth lifted before noodles] {"lifted":"laksa-broth","canReturnToPot":false,"preview":"pick up"}
+[A ruins] []
+[A preview mismatches] []
+[B after bin] {"kind":"plate"}
+[B plate rack preview] "return plate"
+[B cup rack preview] "nothing"
+[B after refill] {"contents":["bread","kopi"],"check":{"reason":{"code":"missing-ingredient","ingredient":"drink"}}}
+[B second cup] {"plateCup":502}
+[B empty-hand cross takes] {"held":502,"hasCup":false}
+[C toast only] {"reason":{"code":"missing-ingredient","ingredient":"drink"}}
+[C toast + loose kopi] {"reason":{"code":"missing-ingredient","ingredient":"drink"}}
+[C toast + empty cup] {"reason":{"code":"missing-ingredient","ingredient":"drink"}}
+[C unspread toast + cup] {"reason":{"code":"missing-step","ingredient":"bread","step":"spread"}}
+[C rojak unmixed] {"reason":{"code":"missing-step","ingredient":"rojak","step":"mix"}}
+[C raw rice in hand] {"reason":{"code":"wrong-container"}}
+[D] {"afterPickup":{"status":"empty","p":0,"t":0},"emptyPlate":{"status":"done","p":0,"t":0}}
+[D two cooks] 1
+[E events served] 8
+[E return counter] {"n":8,"kinds":["plate:dirty-plate","bowl:dirty-plate","cup:dirty-plate"],"inTransit":0,"containers":8}
+[E round over mid-transit] {"over":true,"inTransit":1,"viewItems":8}
+[F burnt laksa] {"kind":"burnt","contents":[{"id":92,"kind":"cooked","ingredient":"noodles","processes":["pot"]}]}
+[F binned] {"foods":0}
+[G] {"ok":{"dish":"char-kway-teow"},"notOrdered":{"reason":{"code":"not-ordered"}},"wrongButNotOrdered":{"reason":{"code":"missing-step","ingredient":"kway-teow","step":"wok"}}}
+ADDR ::192.0.2.1 -> ["0:0:0:0::/64","0:0:0::/48"]
+ADDR 2002:c000:0201::1 -> ["2002:c000:201:0::/64","2002:c000:201::/48"]
+ADDR 2002:c000:0201:ffff::1 -> ["2002:c000:201:ffff::/64","2002:c000:201::/48"]
+ADDR 2001:0:4136:e378:8000:63bf:3fff:fdd2 -> ["2001:0:4136:e378::/64","2001:0:4136::/48"]
+ADDR 2001:0:4136:e378:8000:63bf:1111:2222 -> ["2001:0:4136:e378::/64","2001:0:4136::/48"]
+ADDR 64:ff9b::192.0.2.1 -> ["64:ff9b:0:0::/64","64:ff9b:0::/48"]
+ADDR fe80::1%25en0 -> ["fe80:0:0:0::/64","fe80:0:0::/48"]
+ADDR FE80::1%ETH0 -> ["fe80:0:0:0::/64","fe80:0:0::/48"]
+G1 guess-path failed guesses/hour/client: 81
+G2 after 129 overflow failures: honest join retry=0; overflow creates before refusal=244; honest create retry=0
+G3 parallel unresolved guesses for one client on the overflow path: 17
+G4 create retry after churn eviction: 60
+P1 honest opening pushed out within 85 ms by 16 attacker upgrades: false
+
+ Test Files  116 passed (116)
+      Tests  2814 passed | 1 skipped (2815)
+   Start at  05:43:52
+   Duration  229.77s (transform 1.36s, setup 0ms, import 5.27s, tests 443.70s, environment 6ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+no bundles yet
+no asset sets in assets/src yet
+$ python3 tools/trace_check.py
+152 requirements; 74 in progress, 1 later, 77 not started
+trace check passed

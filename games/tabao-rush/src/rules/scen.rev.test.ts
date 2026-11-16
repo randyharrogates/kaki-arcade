@@ -119,7 +119,7 @@ it('R9 toast needs a filled cup; service returns both identities dirty after fiv
     s = press(s, 0, cross);
     expect(s.inventory.held.p0?.id).toBe(500);
     const invalid = setup(1, 3, false);
-    expect(() => stationViews({ ...invalid, stations: undefined, level: { ...invalid.level, tiles: invalid.level.tiles.map((t) => t.kind === 'station' && t.stationType === 'return-counter' ? { kind: 'wall' } : t) } } as unknown as TabaoState)).toThrow('return counter');
+    expect(() => stationViews({ ...invalid, stations: undefined, level: { ...invalid.level, tiles: invalid.level.tiles.map((t) => t.kind === 'station' && t.stationType === 'return-counter' ? { kind: 'wall' } : t) } } as unknown as TabaoState)).not.toThrow(); // T-06: validation owns missing counters.
 });
 it('R10 simultaneous service follows seat order and clears events next step', () => {
     let s = aim(aim(setup(2, 3, false), T('serving')), T('serving'), 'p1');

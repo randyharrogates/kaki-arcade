@@ -1,0 +1,63 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T-06 kopitiam-first-shift 1 cooks 3000 steps/reload: 15.2ms
+T-06 kopitiam-first-shift 8 cooks 3000 steps/reload: 30.1ms
+T-06 zi-char-test-kitchen 1 cooks 3000 steps/reload: 11.5ms
+T-06 zi-char-test-kitchen 8 cooks 3000 steps/reload: 26.7ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: object 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: name 2ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: dimensions 0ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: map 0ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: screen 0ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: kitchens 0ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: dishes 0ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: anchor shape 0ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: spawn shape 0ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: twist shape 0ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: round 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: threshold 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: fire ordinal 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: station id 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: station tile 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: blocked 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: station kitchen 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: crate ingredient 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: rack kind 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: rack bound 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: non rack stock 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: spawn duplicate 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: spawn blocked 0ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: disconnect 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: unreachable 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: needed station 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: return 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: sink 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: rack required 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: crate required 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: plates 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: boards 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: safe fire edge 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: extinguisher 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: crate station conflict 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: extinguisher distance 0ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 validator: twist reference 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 ids are unique across levels and malformed JSON never throws 3ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 'kopitiam-first-shift' JSON round-trip, initial equipment and deterministic loader 3ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 'zi-char-test-kitchen' JSON round-trip, initial equipment and deterministic loader 2ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-006 two kitchens assign cooks before order scaling 2ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 'kopitiam-first-shift' short round at 1 cooks: serve, return, expiry and reload 16ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 'kopitiam-first-shift' short round at 8 cooks: serve, return, expiry and reload 30ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 'zi-char-test-kitchen' short round at 1 cooks: serve, return, expiry and reload 12ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 TR-057 'zi-char-test-kitchen' short round at 8 cooks: serve, return, expiry and reload 27ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 invalid legacy kitchen remains inspectable without returns 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 validates all later twist reference shapes without implementing behaviour 6ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 rules and levels stay pure across their shared source root 23ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-050 missing legacy return retains the served container and awards no points 1ms
+ ✓ games/tabao-rush/src/levels/levels.test.ts > TR-051 loader refuses zero, too many or duplicate cooks 1ms
+
+ Test Files  1 passed (1)
+      Tests  50 passed (50)
+   Start at  05:48:43
+   Duration  537ms (transform 238ms, setup 0ms, import 294ms, tests 151ms, environment 0ms)
+

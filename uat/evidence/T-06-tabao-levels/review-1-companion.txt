@@ -1,0 +1,80 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T05 timings {"warmupSteps":600,"steps":12000,"meanMs":0.011934518000004573,"worstMs":0.5334579999980633}
+
+ Test Files  1 passed (1)
+      Tests  38 passed (38)
+   Start at  05:48:24
+   Duration  29.35s (transform 197ms, setup 0ms, import 244ms, tests 29.01s, environment 0ms)
+
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T05 timings {"warmupSteps":600,"steps":12000,"meanMs":0.015350618000001304,"worstMs":1.9247919999979786}
+
+ Test Files  1 passed (1)
+      Tests  38 passed (38)
+   Start at  05:48:53
+   Duration  33.86s (transform 172ms, setup 0ms, import 216ms, tests 33.56s, environment 0ms)
+
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T05 timings {"warmupSteps":600,"steps":12000,"meanMs":0.021450756666656162,"worstMs":0.8430829999997513}
+
+ Test Files  1 passed (1)
+      Tests  38 passed (38)
+   Start at  05:49:28
+   Duration  49.93s (transform 232ms, setup 0ms, import 289ms, tests 49.53s, environment 0ms)
+
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T05 timings {"warmupSteps":600,"steps":12000,"meanMs":0.018645579583283202,"worstMs":1.0623330000016722}
+
+ Test Files  1 passed (1)
+      Tests  38 passed (38)
+   Start at  05:50:18
+   Duration  50.53s (transform 268ms, setup 0ms, import 335ms, tests 50.08s, environment 0ms)
+
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T05 timings {"warmupSteps":600,"steps":12000,"meanMs":0.024807127166694046,"worstMs":0.813665999994555}
+
+ Test Files  1 passed (1)
+      Tests  38 passed (38)
+   Start at  05:51:09
+   Duration  53.19s (transform 264ms, setup 0ms, import 328ms, tests 52.75s, environment 0ms)
+
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T05 timings {"warmupSteps":600,"steps":12000,"meanMs":0.025580754166712724,"worstMs":0.7413749999977881}
+
+ Test Files  1 passed (1)
+      Tests  38 passed (38)
+   Start at  05:52:03
+   Duration  59.85s (transform 385ms, setup 0ms, import 478ms, tests 59.21s, environment 0ms)
+
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T05 timings {"warmupSteps":600,"steps":12000,"meanMs":0.026499394666662436,"worstMs":5.128209000002244}
+
+ Test Files  1 passed (1)
+      Tests  38 passed (38)
+   Start at  05:53:03
+   Duration  58.31s (transform 412ms, setup 0ms, import 509ms, tests 57.64s, environment 0ms)
+
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T05 timings {"warmupSteps":600,"steps":12000,"meanMs":0.018015430499963257,"worstMs":0.6412500000005821}
+
+ Test Files  1 passed (1)
+      Tests  38 passed (38)
+   Start at  05:54:02
+   Duration  45.75s (transform 419ms, setup 0ms, import 526ms, tests 45.08s, environment 0ms)
+

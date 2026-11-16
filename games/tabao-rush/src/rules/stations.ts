@@ -49,14 +49,14 @@ export function prepareStations(state: TabaoState): TabaoState {
     stations[at] = { ...station, neighbours: (state.level.fireNeighbours?.[at] ?? neighbours)
       .filter((tile) => !SAFE.has(station.type) && stations[tile] !== undefined && !SAFE.has(stations[tile].type)).slice().sort((a, b) => a - b) };
   }
-  if (!Object.values(stations).some((s) => s.type === 'return-counter')) throw new Error('Level requires a return counter');
-  for (const station of Object.values(stations)) if (station.type === 'serving' && Object.values(stations).filter((s) => s.type === 'return-counter' && s.kitchen === station.kitchen).length !== 1) throw new Error('Each kitchen requires one return counter');
   let next = { ...state, stations };
   for (const station of Object.values(stations)) if (station.type === 'dish-rack') {
     const supply: Item[] = [];
     const container = station.container;
     if (!container) throw new Error('Dish rack requires a container kind');
-    for (let i = 0; i < (container === 'plate' ? 4 : 2); i++) {
+    const tile = state.level.tiles[station.tile];
+    const stock = tile?.kind === 'station' ? tile.stock : undefined;
+    for (let i = 0; i < Math.max(0, Math.min(container === 'plate' ? 4 : 2, stock ?? (container === 'plate' ? 4 : 2))); i++) {
       supply.push({ id: next.nextItemId, kind: 'plate', container, contents: [], processes: [],
         place: { kind: 'counter', tile: station.tile } });
       next = { ...next, nextItemId: next.nextItemId + 1 };
@@ -127,7 +127,12 @@ export function stationCross(state: TabaoState, cook: Cook): TabaoState {
       serviceEvents: [...(state.serviceEvents ?? []), { ...base, type: 'rejected', reason: result.reason }],
       stations: { ...state.stations, [tile]: { ...station, rejection: { reason: result.reason, until: state.tick + REJECTION_STEPS } } } };
     const target = Object.values(state.stations ?? {}).find((s) => s.type === 'return-counter' && s.kitchen === station.kitchen);
-    if (!target) throw new Error('Level requires a return counter');
+    if (!target) {
+      const reason = { code: 'missing-return-counter' as const };
+      return { ...state, serviceEvents: [...(state.serviceEvents ?? []), { ...base, type: 'rejected', reason }],
+        orderEvents: [...(state.orderEvents ?? []), { type: 'refused', kitchen, ...base, dish: result.dish, reason }],
+        stations: { ...state.stations, [tile]: { ...station, rejection: { reason, until: state.tick + REJECTION_STEPS } } } };
+    }
     const { cup, ...outer } = held;
     const containers = [outer, ...(cup ? [cup] : [])];
     const drink = food(held).find((f) => f.ingredient === 'kopi' || f.ingredient === 'teh')?.ingredient;

@@ -1,0 +1,11 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-06
+
+T-06 legacy: mean=0.0089ms p95=0.0102ms max=2.019ms
+T-06 loaded: mean=0.0097ms p95=0.0110ms max=5.773ms
+
+ Test Files  1 passed (1)
+      Tests  47 passed | 2 skipped (49)
+   Start at  05:12:11
+   Duration  1.27s (transform 568ms, setup 0ms, import 693ms, tests 402ms, environment 0ms)
+

@@ -163,6 +163,14 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   presses in a scripted test. No food or container lost or duplicated in the reviewed fuzz, no
   soft lock found. Orders, patience and scoring are T-05. Rules only: no screen yet. Built by
   Codex; three review rounds.
+- **Tabao Rush levels (T-06).** A level format (grid, spawns for eight cooks, stations with
+  facing, racks and their stock, dishes, round length, star base, venue), a validator that
+  returns plainly worded problems and never throws, and a loader that validates before it
+  builds the starting state. Two **test kitchens**, not final levels: a small kopitiam
+  (chicken rice and kopi) and a zi char kitchen with all seven dishes and fires. Rules are
+  D-093 and provisional. Twists are refused until they have behaviour, so no level declares
+  one. The game itself still starts on the old fixture kitchen; real levels, twists and
+  layouts fair at eight cooks are T-11. Nothing drawn. Built by Codex; two review rounds.
 - **Host lobby (C-07): the first screen.** `apps/web` (Vite and Preact, D-088) serves `/host`:
   it creates a room on the pairing server and shows the room code, a QR code of the join
   link, eight seats with name, seat colour, connection quality, leader mark and a held seat's

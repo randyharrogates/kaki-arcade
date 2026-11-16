@@ -1,4 +1,5 @@
-import { BUTTON, createTick, EMPTY_SETUP, STEP_MS } from '@kaki/platform';
+import { initialLevelState } from './initial';
+import { BUTTON, createTick, STEP_MS } from '@kaki/platform';
 import { tabaoRush } from './game';
 import { checkRecipe, containerOf, RECIPES } from './recipes';
 import type { Recipe } from './recipes';
@@ -26,7 +27,7 @@ export const level: Level = { id: 'recipe-kitchen', width, height: 8,
   }),
 };
 export function initial(count = 1, seed = 73): TabaoState {
-  const base = tabaoRush.init(seed, players.slice(0, count), {}, EMPTY_SETUP);
+  const base = initialLevelState(level, seed, players.slice(0, count));
   return prepareStations({ ...base, level, cooks: base.cooks.map((c, i) => ({ ...c,
     ...level.spawns[i], facing: 6, targetTile: i === 0 ? crate('rice') : null })) });
 }
