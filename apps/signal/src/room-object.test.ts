@@ -129,10 +129,10 @@ describe('C-01 Durable Object adapter review round 1', () => {
         const count = result.ws.sent.length;
         await h.send(result.ws, { t: 'reopen', code: 'BCDF2345', hostToken: h.saved.hostToken });
         expect(result.ws.sent).toHaveLength(count + 1);
-        expect(messages(result.ws).at(-1)).toMatchObject({ code: 'not-allowed' });
+        expect(messages(result.ws).at(-1)).toMatchObject({ code: 'bad-message' });
         expect(result.ws.closed).toBe(false);
         await h.send(result.ws, { t: 'reopen', code: 'BCDF2345', hostToken: 'A'.repeat(32) });
-        expect(messages(result.ws).at(-1)).toMatchObject({ code: 'not-allowed' });
+        expect(messages(result.ws).at(-1)).toMatchObject({ code: 'bad-message' });
         expect(result.ws.closed).toBe(false);
         await h.send(result.ws, { t: 'ping' });
         expect(messages(result.ws).at(-1)).toMatchObject({ t: 'pong' });
@@ -221,7 +221,7 @@ describe('C-01 Durable Object adapter review round 1', () => {
         vi.setSystemTime(OPENING_MS);
         await h.room.alarm();
         expect(silent.closed).toBe(true);
-        expect(messages(silent)[0]).toMatchObject({ t: 'error', code: 'bad-message' });
+        expect(messages(silent)[0]).toMatchObject({ t: 'error', code: 'opening-timeout' });
         expect(h.ctx.alarmAt).toBe(OPENING_MS + IDLE_MS);
         const another = (await h.upgrade()).ws;
         vi.setSystemTime(OPENING_MS * 2);
@@ -236,14 +236,14 @@ describe('C-01 Durable Object adapter review round 1', () => {
         await h.host();
         expect(host.closeReason).toBe('replaced');
         expect(silent.closeReason).toBe('Signalling ended');
-        expect(messages(silent).at(-1)).toMatchObject({ code: 'bad-message' });
+        expect(messages(silent).at(-1)).toMatchObject({ code: 'opening-timeout' });
     });
     it('M4 rejects socket creation clearly and enforces route roles', async () => {
         const h = await setup();
         const first = (await h.upgrade('host')).ws;
         await h.send(first, { t: 'create' });
-        expect(messages(first).at(-1)).toMatchObject({ code: 'not-allowed' });
-        expect(first.closed).toBe(true);
+        expect(messages(first).at(-1)).toMatchObject({ code: 'bad-message' });
+        expect(first.closed).toBe(false);
         const second = (await h.upgrade('host')).ws;
         await h.send(second, { t: 'join', code: 'BCDF2345', roomToken: null });
         expect(messages(second).at(-1)).toMatchObject({ code: 'not-allowed' });

@@ -88,6 +88,12 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   the evaluator agreed with an independent one on 60,000 hands. Rules only: no screen yet.
   Built by Codex; two review rounds.
 
+- **Protocol clean-up (F-02b).** Face buttons are named by position everywhere (wire bits
+  unchanged, with a test tying the game-facing table to the protocol), the retired socket
+  `create` and `reopen` messages are gone, the host subprotocol helpers are strict, and a silent
+  socket gets `opening-timeout`. Protocol version stays 1 until the first deploy (D-070). One
+  review round; the pairing server's smoke test was rerun locally by the integrator.
+
 ## Does not exist yet
 
 - No host page, controller or game screen yet.

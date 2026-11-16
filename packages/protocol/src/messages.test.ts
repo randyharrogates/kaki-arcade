@@ -88,8 +88,6 @@ const ice: IceGrant = {
 };
 
 const openingSamples: Samples<OpeningSignal> = {
-  create: { v, t: 'create' },
-  reopen: { v, t: 'reopen', code: 'K4KI', hostToken: HOST_TOKEN },
   join: { v, t: 'join', code: 'K4KI', roomToken: ROOM_TOKEN },
 };
 
@@ -452,7 +450,7 @@ describe('signalling: field rules', () => {
     expect(errorOf(validateClientSignal({ v, t: 'join', code: 'k4ki', roomToken: null }))).toBe('bad-field:code');
     expect(errorOf(validateClientSignal({ v, t: 'join', code: 'K4KI-TOO-LONG', roomToken: null }))).toBe('too-large:code');
     expect(errorOf(validateClientSignal({ v, t: 'join', code: 'K4KI', roomToken: 'short' }))).toBe('bad-field:roomToken');
-    expect(errorOf(validateClientSignal({ v, t: 'reopen', code: 'K4KI', hostToken: 'has spaces in it!!' }))).toBe('bad-field:hostToken');
+    expect(errorOf(validateClientSignal({ v, t: 'reopen', code: 'K4KI', hostToken: 'has spaces in it!!' }))).toBe('unknown-type:t');
     expect(errorOf(validateClientSignal({ v, t: 'drop', peer: 'p 7', reason: 'room-full' }))).toBe('bad-field:peer');
     expect(errorOf(validateClientSignal({ v, t: 'drop', peer: 'p-7', reason: 'kicked' }))).toBe('bad-field:reason');
     expect(errorOf(validateClientSignal({ v, t: 'drop', peer: 'p-7', reason: 'bored' }))).toBe('bad-field:reason');
@@ -556,7 +554,6 @@ describe('signalling: field rules', () => {
     const biggestClient: ClientSignal[] = [
       { v, t: 'to-phone', peer, step: { kind: 'offer', sdp: widestSdp } },
       { v, t: 'to-host', step: { kind: 'answer', sdp: widestSdp } },
-      { v, t: 'reopen', code, hostToken: longToken },
     ];
     for (const message of biggestClient) {
       const text = encodeClientSignal(message);

@@ -89,6 +89,18 @@ describe('C-01', () => {
         expect(h.connect('h3', 'host').sends).toContainEqual({ id: 'h3', message: { v: 1, t:
           'peer-joined', peer: 'p' } });
     });
+    it.each(['create', 'reopen', 'unknown'])(
+        'NET-002 refuses invalid opening %s with bad-message and closes it', (t) => {
+            const h = harness();
+            h.run({ t: 'connect', id: 'invalid', roomToken: token, authenticatedHost: false });
+            const result = h.run(message('invalid', { t, code, hostToken: token }));
+            expect(result.sends).toContainEqual({ id: 'invalid', message: {
+                v: 1, t: 'error', code: 'bad-message', retryAfterS: null,
+            } });
+            expect(result.closes).toContain('invalid');
+            expect(result.state.sockets).toEqual([]);
+        },
+    );
     it('NET-002 forwards only role-correct signalling to the named peer', () => {
         const h = harness();
         h.connect('h', 'host');

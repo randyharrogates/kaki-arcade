@@ -6,19 +6,20 @@
 // host is a party to every handshake, so phone messages go "to host" and host messages name a
 // peer.
 //
-// Roles. A socket's first message decides what it is: `create` or `reopen` makes it a host
-// socket, `join` makes it a phone socket. There is one decoder per role and direction, and
-// each accepts only what that role may send, so the server cannot take `to-phone`, `drop` or
-// `close-room` from a phone by forgetting a check:
+// Rooms are created by HTTP POST. The host authenticates at WebSocket upgrade by offering
+// kaki.v1 and kaki.host.<secret>; the server selects kaki.v1 and sends created first, with
+// hostToken and reopened. The host keeps its socket open for the room's lifetime.
+// Phones offer only kaki.v1 and send join once as their opening message.
 //
-//   pairing server reads   first message on a socket      decodeOpeningSignal
-//                          later, on a host socket        decodeHostSignal
+//   pairing server reads   first message on a phone       decodeOpeningSignal
+//                          on an authenticated host       decodeHostSignal
 //                          later, on a phone socket       decodePhoneSignal
 //   host page reads        everything it is sent          decodeToHostSignal
 //   phone reads            everything it is sent          decodeToPhoneSignal
 //
-// A socket sends its opening message once. A second `create`, `reopen` or `join` on the same
-// socket is refused by the role decoders; a phone that wants another room opens a new socket.
+// Role decoders refuse messages outside that role, including a second join. A phone that
+// wants another room opens a new socket. Clients treat not-allowed, bad-message and
+// opening-timeout as terminal; they must not wait for a close event. Never log upgrade headers.
 //
 // Handshake rules:
 //   - The HOST always makes the offer, and creates both data channels (the unreliable one for
@@ -26,7 +27,7 @@
 //     when it is told `peer-joined`.
 //   - The PHONE only answers. So `to-phone` and `from-host` carry an offer or candidates, and
 //     `to-host` and `from-phone` carry an answer or candidates; the other way round is refused.
-//   - After `reopen` the pairing server sends the host `peer-joined` again for every phone
+//   - After host reattachment the pairing server sends the host `peer-joined` again for every phone
 //     still waiting, meaning every phone socket the server still holds open for that room.
 //
 // Ending a room: the host sends `close-room`. The server sends every phone socket `dropped`
@@ -34,7 +35,7 @@
 
 import { bool, boundedText, int, kinds, list, messageValidator, nullable, oneOf, record, text, textDecoder } from './check';
 import type { MessageShapes } from './check';
-import { peerId, roomCode, token } from './fields';
+import { peerId, roomCode, token, TOKEN_PATTERN } from './fields';
 import {
   MAX_CANDIDATE_BYTES,
   MAX_ICE_SERVERS,
@@ -45,6 +46,29 @@ import {
   PROTOCOL_VERSION,
 } from './limits';
 import type { Result } from './result';
+
+/** The selected WebSocket subprotocol, also offered by phones. */
+export const SIGNAL_SUBPROTOCOL = 'kaki.v1';
+/** Prefix of the credential offered by hosts. Never select or log this subprotocol. */
+export const HOST_SUBPROTOCOL_PREFIX = 'kaki.host.';
+
+/** Build the host's WebSocket subprotocol list; throws for an invalid token. */
+export function buildHostSubprotocols(secret: string): string[] {
+  if (!TOKEN_PATTERN.test(secret)) throw new TypeError('Invalid host token');
+  return [SIGNAL_SUBPROTOCOL, `${HOST_SUBPROTOCOL_PREFIX}${secret}`];
+}
+
+/**
+ * Require exactly one base protocol and one valid host token. Unrelated extra subprotocols
+ * are tolerated; authentication remains the server's job.
+ */
+export function parseHostSubprotocols(protocols: readonly string[]): string | null {
+  const credentials = protocols.filter((value) => value.startsWith(HOST_SUBPROTOCOL_PREFIX));
+  if (protocols.filter((value) => value === SIGNAL_SUBPROTOCOL).length !== 1 ||
+      credentials.length !== 1) return null;
+  const secret = credentials[0]?.slice(HOST_SUBPROTOCOL_PREFIX.length) ?? '';
+  return TOKEN_PATTERN.test(secret) ? secret : null;
+}
 
 // --- Shared parts -----------------------------------------------------------------------
 
@@ -112,6 +136,7 @@ export const SIGNAL_ERROR_CODES = [
   'rate-limited',
   'bad-token',
   'bad-message',
+  'opening-timeout',
   'unsupported-version',
   'not-allowed',
   'host-absent',
@@ -128,20 +153,6 @@ type V = typeof PROTOCOL_VERSION;
 
 // --- The first message on a socket -------------------------------------------------------
 
-/** Host: make a new room. Answered with `created`. */
-export interface CreateRoom {
-  readonly v: V;
-  readonly t: 'create';
-}
-
-/** Host: take back a room after the host page reloaded (PLAT-009). Answered with `created`. */
-export interface ReopenRoom {
-  readonly v: V;
-  readonly t: 'reopen';
-  readonly code: string;
-  readonly hostToken: string;
-}
-
 /**
  * Phone: enter a room by its code. A returning phone also sends the room token it was given,
  * so the server can tell a return from a new arrival. Answered with `joined`.
@@ -153,8 +164,8 @@ export interface JoinRoom {
   readonly roomToken: string | null;
 }
 
-/** The first message on a socket. It decides whether the socket is a host's or a phone's. */
-export type OpeningSignal = CreateRoom | ReopenRoom | JoinRoom;
+/** The first message on a phone socket. Hosts authenticate at upgrade. */
+export type OpeningSignal = JoinRoom;
 
 // --- Later messages, by role -------------------------------------------------------------
 
@@ -199,7 +210,7 @@ export interface SignalPing {
   readonly t: 'ping';
 }
 
-/** What a host socket may send after its opening message. */
+/** What an authenticated host socket may send. */
 export type HostSignal = HandshakeToPhone | RelayRequest | DropPeer | CloseRoom | SignalPing;
 
 /** What a phone socket may send after its opening message. */
@@ -207,13 +218,13 @@ export type PhoneSignal = HandshakeToHost | RelayRequest | SignalPing;
 
 // --- Pairing server → host or phone ------------------------------------------------------
 
-/** To the host: the room exists. `hostToken` proves ownership in a later `reopen`. */
+/** First reply to an authenticated host. `hostToken` proves ownership at later upgrades. */
 export interface RoomCreated {
   readonly v: V;
   readonly t: 'created';
   readonly code: string;
   readonly hostToken: string;
-  /** True when this answers `reopen`. */
+  /** True when a host has attached to this room before. */
   readonly reopened: boolean;
   readonly ice: IceGrant;
 }
@@ -232,8 +243,8 @@ export interface RoomJoined {
 }
 
 /**
- * To the host: a phone has entered and is waiting for an offer. Sent again after `reopen` for
- * every phone socket the server still holds.
+ * To the host: a phone has entered and is waiting for an offer. Sent again after host
+ * reattachment for every phone socket the server still holds.
  */
 export interface PeerJoined {
   readonly v: V;
@@ -364,8 +375,6 @@ const dropReason = oneOf(DROP_REASONS);
 const errorFields = { code: oneOf(SIGNAL_ERROR_CODES), retryAfterS: nullable(int(0, 86_400)) };
 
 const OPENING_SHAPES: MessageShapes<OpeningSignal> = {
-  create: {},
-  reopen: { code: roomCode, hostToken: token },
   join: { code: roomCode, roomToken: nullable(token) },
 };
 
@@ -406,7 +415,7 @@ const TO_PHONE_SHAPES: MessageShapes<ToPhoneSignal> = {
 type Validator<M> = (value: unknown) => Result<M>;
 type Decoder<M> = (data: unknown) => Result<M>;
 
-/** Pairing server: checks the first message on a socket. Never throws. */
+/** Pairing server: checks the first message on a phone socket. Never throws. */
 export const validateOpeningSignal: Validator<OpeningSignal> = messageValidator<OpeningSignal>(OPENING_SHAPES);
 /** Pairing server: checks a later message on a host socket. Never throws. */
 export const validateHostSignal: Validator<HostSignal> = messageValidator<HostSignal>(HOST_SHAPES);
@@ -417,7 +426,7 @@ export const validateToHostSignal: Validator<ToHostSignal> = messageValidator<To
 /** Phone: checks a message from the pairing server. Never throws. */
 export const validateToPhoneSignal: Validator<ToPhoneSignal> = messageValidator<ToPhoneSignal>(TO_PHONE_SHAPES);
 
-/** Pairing server: decodes the text of the first message on a socket. Never throws. */
+/** Pairing server: decodes the first message on a phone socket. Never throws. */
 export const decodeOpeningSignal: Decoder<OpeningSignal> = textDecoder(validateOpeningSignal, MAX_SIGNAL_BYTES);
 /** Pairing server: decodes the text of a later message on a host socket. Never throws. */
 export const decodeHostSignal: Decoder<HostSignal> = textDecoder(validateHostSignal, MAX_SIGNAL_BYTES);

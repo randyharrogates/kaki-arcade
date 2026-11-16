@@ -158,8 +158,8 @@ Rules:
   offer, answer and candidates between a phone and its own host only, and never gameplay. A
   phone's socket can close once its data channel is up. The object uses WebSocket hibernation,
   so an idle room costs nothing. A room is deleted 10 minutes after its last socket closes and
-  at most 12 hours after creation. Clients treat the errors `not-allowed` and `bad-message` as
-  final and do not wait for a close event. Request headers are never logged.
+  at most 12 hours after creation. Clients treat the errors `not-allowed`, `bad-message` and `opening-timeout`
+  as final and do not wait for a close event. Request headers are never logged.
 - **Relay:** ICE tries direct paths first. The pairing server issues Cloudflare TURN credentials
   with a short lifetime, tracks monthly relay usage, and stops issuing them past the limit
   (NET-004).

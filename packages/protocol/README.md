@@ -35,12 +35,15 @@ gets `bad-version` from any decoder, on any channel, treats that result as the e
 
 ### Signalling roles
 
-A socket's first message decides what it is: `create` or `reopen` makes it a host socket,
-`join` makes it a phone socket. The pairing server reads that first message with
-`decodeOpeningSignal`, and everything after it with `decodeHostSignal` or `decodePhoneSignal`
-according to the role. Each accepts only what that role may send, so `to-phone`, `drop` and
-`close-room` from a phone are refused by the decoder itself. The host page reads with
-`decodeToHostSignal`, a phone with `decodeToPhoneSignal`.
+Rooms are created by HTTP POST. Hosts offer `buildHostSubprotocols(hostToken)` at WebSocket
+upgrade: `kaki.v1` and `kaki.host.<secret>`. The server uses `parseHostSubprotocols` and checks
+that secret before accepting, selects only `SIGNAL_SUBPROTOCOL` (`kaki.v1`), then sends
+`created` with `hostToken` and `reopened`. Never log the credential or upgrade headers.
+The host keeps its socket open for the room's lifetime. Phones offer only `kaki.v1` and send
+`join` first, read with `decodeOpeningSignal`. Subsequent messages use `decodeHostSignal` or
+`decodePhoneSignal`; replies use `decodeToHostSignal` or `decodeToPhoneSignal`.
+Clients treat `not-allowed`, `bad-message` and `opening-timeout` as terminal and do not wait
+for a close event. `opening-timeout` means the phone missed its opening-message deadline.
 
 - A socket sends its opening message **once**. A phone may not send `join` twice on one
   socket; to enter another room, or to try again, it opens a new socket.
@@ -55,7 +58,7 @@ according to the role. Each accepts only what that role may send, so `to-phone`,
   `binaryType` to `'arraybuffer'`. The host starts when the pairing server sends `peer-joined`.
 - **The phone only answers.** `to-phone` and `from-host` carry an offer or candidates;
   `to-host` and `from-phone` carry an answer or candidates. The validators refuse the reverse.
-- **After `reopen`** (the host page reloaded) the pairing server sends the host `peer-joined`
+- **After host reattachment** (the host page reloaded) the server sends `peer-joined`
   again for every phone still waiting, meaning every phone socket the server still holds open
   for that room. A phone whose socket has closed opens a new one and sends `join`.
 - **Ending a room:** the host sends `close-room`. The server sends every phone `dropped` with
@@ -141,3 +144,6 @@ netcode; the protocol only carries the result (`link`).
 `layout`, `view` and the `data` of an `action` belong to the game interface. Here they are any
 JSON within a size and depth cap. An `action` carries the revision of the layout and of the
 private view the player was looking at, so the host can ignore one that arrives late.
+
+Button masks keep their bit order: up, down, left, right (0–3); faceBottom, faceRight,
+faceLeft, faceTop (4–7); l, r (8–9); start (10); shake (11).

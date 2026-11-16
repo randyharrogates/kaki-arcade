@@ -36,14 +36,14 @@ function seeded(seed: number): () => number {
   };
 }
 
-const A = BUTTON.a;
+const BOTTOM = BUTTON.faceBottom;
 const steady = (mask: number): number[] => Array.from({ length: INPUT_HISTORY }, () => mask);
 
-/** A held: the same mask in this tick and all eight before it. */
+/** Bottom held: the same mask in this tick and all eight before it. */
 const held: WireInput = {
   seq: 513,
-  buttons: A | BUTTON.r | BUTTON.up,
-  history: steady(A | BUTTON.r | BUTTON.up),
+  buttons: BOTTOM | BUTTON.r | BUTTON.up,
+  history: steady(BOTTOM | BUTTON.r | BUTTON.up),
   stickX: -127,
   stickY: 64,
   tilt: null,
@@ -53,7 +53,7 @@ const held: WireInput = {
 const tapped: WireInput = {
   seq: 7,
   buttons: 0,
-  history: [0, A, A, 0, 0, 0, 0, 0],
+  history: [0, BOTTOM, BOTTOM, 0, 0, 0, 0, 0],
   stickX: 0,
   stickY: 0,
   tilt: null,
@@ -104,7 +104,7 @@ describe('frame sizes', () => {
     expect([...encodeInput({ ...held, tilt: { x: 5, y: -5 } })]).toEqual([
       0x11, 0x02, 0x01, 0x81, 0x40, 0x05, 0xfb, 0x82, 0x11,
     ]);
-    // Newest first: two ticks released, two ticks of A (0x010), five ticks released.
+    // Newest first: two ticks released, two ticks of bottom (0x010), five ticks released.
     expect([...encodeInput(tapped)]).toEqual([0x10, 0x00, 0x07, 0x00, 0x00, 0x10, 0x00, 0x10, 0x10, 0x40, 0x00]);
     expect([...encodePing({ id: 0x0102, rttMs: 0x0304 })]).toEqual([0x12, 1, 2, 3, 4]);
     expect([...encodePing({ id: 0, rttMs: null })]).toEqual([0x12, 0, 0, 0xff, 0xff]);
@@ -121,7 +121,7 @@ describe('round trips', () => {
       { seq: 0, buttons: 0, history: steady(0), stickX: 0, stickY: 0, tilt: null },
       { seq: 40000, buttons: BUTTON.shake, history: [0, 0, 0, 0, 0, 0, 0, BUTTON.shake], stickX: 1, stickY: -1, tilt: { x: -127, y: 127 } },
       { seq: 7, buttons: 0, history: steady(0), stickX: 0, stickY: 0, tilt: { x: 0, y: 0 } },
-      { seq: 9, buttons: A, history: [1, 2, 4, 8, 16, 32, 64, 128], stickX: 0, stickY: 0, tilt: null },
+      { seq: 9, buttons: BOTTOM, history: [1, 2, 4, 8, 16, 32, 64, 128], stickX: 0, stickY: 0, tilt: null },
     ];
     for (const frame of frames) {
       expect(decodePhoneFrame(encodeInput(frame))).toEqual({
@@ -213,10 +213,10 @@ describe('encoders bring numbers into range', () => {
   });
 
   it('pads a short history with zeros and cuts a long one', () => {
-    const short = decodePhoneFrame(encodeInput({ ...tapped, buttons: A, history: [A] }));
-    expect(short.ok && short.value.kind === 'input' && short.value.input.history).toEqual([A, 0, 0, 0, 0, 0, 0, 0]);
-    const long = decodePhoneFrame(encodeInput({ ...tapped, buttons: A, history: Array.from({ length: 30 }, () => A) }));
-    expect(long.ok && long.value.kind === 'input' && long.value.input.history).toEqual(steady(A));
+    const short = decodePhoneFrame(encodeInput({ ...tapped, buttons: BOTTOM, history: [BOTTOM] }));
+    expect(short.ok && short.value.kind === 'input' && short.value.input.history).toEqual([BOTTOM, 0, 0, 0, 0, 0, 0, 0]);
+    const long = decodePhoneFrame(encodeInput({ ...tapped, buttons: BOTTOM, history: Array.from({ length: 30 }, () => BOTTOM) }));
+    expect(long.ok && long.value.kind === 'input' && long.value.input.history).toEqual(steady(BOTTOM));
   });
 
   it('survives numbers that are not numbers', () => {

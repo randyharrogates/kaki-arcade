@@ -1,4 +1,4 @@
-import { encodeSignal, PROTOCOL_VERSION, SIGNAL_PING_TEXT, SIGNAL_PONG_TEXT, } from '@kaki/protocol';
+import { encodeSignal, parseHostSubprotocols, PROTOCOL_VERSION, SIGNAL_PING_TEXT, SIGNAL_PONG_TEXT, SIGNAL_SUBPROTOCOL, } from '@kaki/protocol';
 import { generateToken } from './core/codes';
 import { BURST } from './core/bucket';
 import { handle, iceGrant, newRoom, MAX_UNIDENTIFIED, equalSecret } from './core/room';
@@ -72,12 +72,12 @@ export class RoomObject {
             const route = url.pathname.endsWith('/host') ? 'host' : 'phone';
             const protocols = (request.headers.get('Sec-WebSocket-Protocol') ?? '')
                 .split(',').map((value) => value.trim());
-            const credentials = protocols.filter((value) => value.startsWith('kaki.host.'));
-            const authenticatedHost = route === 'host' && credentials.length === 1 &&
-                equalSecret(credentials[0]?.slice('kaki.host.'.length) ?? '', room.hostToken);
-            if (route === 'host' && (!protocols.includes('kaki.v1') || !authenticatedHost))
+            const hostSecret = parseHostSubprotocols(protocols);
+            const authenticatedHost = route === 'host' && hostSecret !== null &&
+                equalSecret(hostSecret, room.hostToken);
+            if (route === 'host' && !authenticatedHost)
                 return new Response(null, { status: 401 });
-            if (route === 'phone' && (protocols.length !== 1 || protocols[0] !== 'kaki.v1'))
+            if (route === 'phone' && (protocols.length !== 1 || protocols[0] !== SIGNAL_SUBPROTOCOL))
                 return new Response(null, { status: 400 });
             if (!authenticatedHost && room.sockets.filter((s) => s.role === 'opening').length >=
                 MAX_UNIDENTIFIED)
@@ -90,7 +90,7 @@ export class RoomObject {
             this.ctx.acceptWebSocket(pair[1]);
             await this.apply({ t: 'connect', id, roomToken: generateToken(random), authenticatedHost });
             return new Response(null, { status: 101, webSocket: pair[0],
-                headers: { 'Sec-WebSocket-Protocol': 'kaki.v1' } });
+                headers: { 'Sec-WebSocket-Protocol': SIGNAL_SUBPROTOCOL } });
         });
     }
     async webSocketMessage(socket: WebSocket, data: string | ArrayBuffer): Promise<void> {

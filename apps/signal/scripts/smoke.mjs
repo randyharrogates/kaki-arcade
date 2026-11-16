@@ -192,15 +192,15 @@ try {
         assert.equal(upgrade.status, 403);
     }
     process.stdout.write('PASS origin table on HTTP and socket routes\n');
-    step('retired create and reopen; upgrade credentials');
+    step('retired create and reopen return bad-message and close; upgrade credentials');
     // Use a phone route so the refusal cannot replace the host under test.
     const createSocket = await open(`/rooms/${room.code}/phone`);
     createSocket.send({ t: 'create' });
-    assert.equal((await createSocket.receive()).code, 'not-allowed');
+    assert.equal((await createSocket.receive()).code, 'bad-message');
     assert.equal((await createSocket.receive()).closed, true);
     const reopenSocket = await open(`/rooms/${room.code}/phone`);
     reopenSocket.send({ t: 'reopen', code: room.code, hostToken: room.hostToken });
-    assert.equal((await reopenSocket.receive()).code, 'not-allowed');
+    assert.equal((await reopenSocket.receive()).code, 'bad-message');
     assert.equal((await reopenSocket.receive()).closed, true);
     await assert.rejects(open(`/rooms/${room.code}/host`), /401/);
     await assert.rejects(open(`/rooms/${room.code}/host`, 'A'.repeat(32)), /401/);
@@ -219,7 +219,7 @@ try {
         phone.send(data);
         assert.equal((await phone.receive()).code, 'bad-message');
     }
-    process.stdout.write('PASS socket create, bad secret, spoof, binary, malformed and oversized frames\n');
+    process.stdout.write('PASS retired create/reopen bad-message and close, bad secret, spoof, binary, malformed and oversized frames\n');
     step('silent saturation and deadline');
     // a2/a5/a6: all excess upgrades fail before 101; a host still gets in.
     const freshResponse = await fetch(`http://127.0.0.1:${String(port)}/rooms`, {
@@ -243,7 +243,7 @@ try {
     assert.ok(silent[0]);
     assert.ok(silent[1]);
     const deadlineStart = Date.now();
-    assert.equal((await (silent[1]).receive(13000)).code, 'bad-message');
+    assert.equal((await (silent[1]).receive(13000)).code, 'opening-timeout');
     assert.equal((await (silent[1]).receive()).closed, true);
     assert.ok(Date.now() - deadlineStart <= 13000);
     assert.ok(Date.now() - silentStarted >= 9000);

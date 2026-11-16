@@ -2,6 +2,11 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — F-02b: protocol clean-up
+
+- `packages/protocol`, `apps/signal`: buttons by position, socket `create`/`reopen` removed,
+  strict host subprotocol helpers, `opening-timeout` error code. Wire format unchanged (D-070).
+
 ## 2026-11-16 — P-01, P-02: Peek Poker rules and hand evaluator
 
 - `games/peek-poker/src/rules`: pure rules against the game interface, with rule details

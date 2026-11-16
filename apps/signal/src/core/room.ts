@@ -100,7 +100,7 @@ export function handle(input: RoomState, event: Event, now: number): Effects {
     }
     for (const socket of [...state.sockets]) {
         if (socket.role === 'opening' && now >= socket.openedAt + OPENING_MS) {
-            error(socket.id, 'bad-message');
+            error(socket.id, 'opening-timeout');
             out.closes.push(socket.id);
             remove(socket.id);
         }
@@ -196,12 +196,7 @@ function handleOpening(
     }
     else {
         const m = decoded.value;
-        if (m.t === 'create' || m.t === 'reopen') {
-            error(s.id, 'not-allowed');
-            out.closes.push(s.id);
-            remove(s.id);
-        }
-        else if (normalizeCode(m.code) !== state.code) {
+        if (normalizeCode(m.code) !== state.code) {
             error(s.id, 'room-not-found');
             out.closes.push(s.id);
             remove(s.id);
@@ -303,12 +298,10 @@ function handleMessage(context: Transition, event: Extract<Event, { t: 'message'
         else if (s.role === 'opening') {
             handleOpening(context, s, event);
         }
-        else if (retiredOpeningKind(event.data)) {
+        else if (isRepeatedJoin(event.data)) {
             error(s.id, 'not-allowed');
-            if (s.role !== 'host' || retiredOpeningKind(event.data) !== 'reopen') {
-                out.closes.push(s.id);
-                remove(s.id);
-            }
+            out.closes.push(s.id);
+            remove(s.id);
         }
         else {
             handleEstablished(context, s, event);
@@ -344,13 +337,12 @@ function normalizeOpening(data: unknown): unknown {
     return data;
 }
 
-function retiredOpeningKind(data: unknown): string | null {
+function isRepeatedJoin(data: unknown): boolean {
     if (typeof data !== 'string' || data.length > MAX_SIGNAL_BYTES)
-        return null;
+        return false;
     try {
         const value: unknown = JSON.parse(data);
-        return value && typeof value === 'object' && 't' in value &&
-            (value.t === 'create' || value.t === 'reopen' || value.t === 'join') ? value.t : null;
+        return !!value && typeof value === 'object' && 't' in value && value.t === 'join';
     }
-    catch { return null; }
+    catch { return false; }
 }

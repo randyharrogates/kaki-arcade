@@ -60,8 +60,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   does not depend on a close event after a host replacement or an opening deadline; check on
   the real edge whether server-initiated closes complete. Before any deploy: confirm logging is
   off and headers are not recorded (the host secret travels in `Sec-WebSocket-Protocol`).
-- **F-02b (protocol):** retire the socket messages `create` and `reopen`; rename the button
-  letters `a/b/x/y` to positions (D-062); add an error code for an opening timeout.
+- **F-02b (protocol):** merged 2026-11-16 (D-070).
 - **C-03 must also close this (security review of C-01):** anyone who knows a room code can
   keep the four unidentified phone slots full with silent sockets (each lasts 10 s) and so stop
   new phones joining; the host is unaffected. Count unidentified slots and connection attempts

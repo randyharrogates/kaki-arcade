@@ -222,7 +222,7 @@ export const PHONE = {
   inPlay: { width: 89, height: 68 },
   /** FLOOR (D-051): nothing tappable is under 55 px. */
   tappable: 55,
-  /** Board 4: the diamond of four face buttons is a 300 px square (`.abxy`). */
+  /** Board 4: the diamond of four face buttons is a 300 px square. */
   diamond: 300,
   /** Board 4: the floating stick is drawn 178 px across. A swipe area gets the same. */
   stick: 178,

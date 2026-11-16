@@ -28,7 +28,7 @@ import {
 import type { AnalogInput, InputSender, InputTick, WireInput } from './input';
 import { decodePhoneFrame, encodeInput } from './wire';
 
-/** A small seeded generator (mulberry32), so a failure can be repeated. */
+/** BOTTOM small seeded generator (mulberry32), so a failure can be repeated. */
 function seeded(seed: number): () => number {
   let a = seed >>> 0;
   return () => {
@@ -41,8 +41,8 @@ function seeded(seed: number): () => number {
 }
 
 const CENTRED: AnalogInput = { stickX: 0, stickY: 0, tilt: null };
-const A = BUTTON.a;
-const B = BUTTON.b;
+const BOTTOM = BUTTON.faceBottom;
+const RIGHT = BUTTON.faceRight;
 const STEP_MS = 1000 / 60;
 const MIN_TICK_MS = 1000 / INPUT_MAX_HZ;
 
@@ -65,7 +65,7 @@ function run(
 }
 
 /** One button's bit in each frame, as a string: `1` set, `0` clear, `.` nothing sent. */
-function trace(frames: (WireInput | null)[], bit: number = A): string {
+function trace(frames: (WireInput | null)[], bit: number = BOTTOM): string {
   return frames
     .map((frame) => (frame === null ? '.' : (frame.buttons & bit) !== 0 ? '1' : '0'))
     .join('');
@@ -100,7 +100,7 @@ describe('buttons and axes', () => {
 
   it('released means nothing at all is held', () => {
     expect(isReleased(RELEASED)).toBe(true);
-    expect(isReleased({ ...RELEASED, buttons: A })).toBe(false);
+    expect(isReleased({ ...RELEASED, buttons: BOTTOM })).toBe(false);
     expect(isReleased({ ...RELEASED, stickX: 1 })).toBe(false);
     expect(isReleased({ ...RELEASED, stickY: -1 })).toBe(false);
     expect(isReleased({ ...RELEASED, tilt: { x: 0, y: 0 } })).toBe(false);
@@ -147,7 +147,7 @@ describe('the send rule', () => {
   });
 
   it('a press is in the very next tick, and every tick after while held', () => {
-    const sender = pressButtons(createInputSender(), A);
+    const sender = pressButtons(createInputSender(), BOTTOM);
     const held = run(sender, 5);
     expect(trace(held.frames)).toBe('11111');
     expect(held.frames.map((frame) => frame?.seq)).toEqual([0, 1, 2, 3, 4]);
@@ -155,21 +155,21 @@ describe('the send rule', () => {
   });
 
   it('a release is in the very next tick, then repeated until it has gone out nine times', () => {
-    let sender = run(pressButtons(createInputSender(), A), 3).sender;
-    sender = releaseButtons(sender, A);
+    let sender = run(pressButtons(createInputSender(), BOTTOM), 3).sender;
+    sender = releaseButtons(sender, BOTTOM);
     const after = run(sender, INPUT_HISTORY + 3);
     expect(trace(after.frames)).toBe('0'.repeat(INPUT_HISTORY + 1) + '..');
     // Keep ticking until the last of them has gone.
     expect(after.more).toEqual([...Array.from({ length: INPUT_HISTORY }, () => true), false, false, false]);
     // Quiet ticks use no sequence numbers: the next press follows on.
-    const again = nextInputSend(pressButtons(after.sender, A), CENTRED);
+    const again = nextInputSend(pressButtons(after.sender, BOTTOM), CENTRED);
     expect(again.frame?.seq).toBe(3 + INPUT_HISTORY + 1);
   });
 
   it('every frame carries the eight ticks before it, newest first', () => {
     let sender = createInputSender();
     const sent: WireInput[] = [];
-    const script = [A, A | B, B, 0, 0, A, A, A, 0, B, B];
+    const script = [BOTTOM, BOTTOM | RIGHT, RIGHT, 0, 0, BOTTOM, BOTTOM, BOTTOM, 0, RIGHT, RIGHT];
     for (const mask of script) {
       sender = setButtons(sender, mask);
       const send = nextInputSend(sender, CENTRED);
@@ -188,17 +188,17 @@ describe('the send rule', () => {
 
   it('a tap shorter than a tick is one tick set, then clear', () => {
     let sender = createInputSender();
-    sender = pressButtons(sender, A);
-    sender = releaseButtons(sender, A);
+    sender = pressButtons(sender, BOTTOM);
+    sender = releaseButtons(sender, BOTTOM);
     expect(heldButtons(sender)).toBe(0);
     expect(trace(run(sender, 12).frames)).toBe('1' + '0'.repeat(INPUT_HISTORY + 1) + '..');
   });
 
   it('a gap shorter than a tick is one tick clear, then set', () => {
-    let sender = run(pressButtons(createInputSender(), A), 2).sender;
-    sender = releaseButtons(sender, A);
-    sender = pressButtons(sender, A);
-    expect(heldButtons(sender)).toBe(A);
+    let sender = run(pressButtons(createInputSender(), BOTTOM), 2).sender;
+    sender = releaseButtons(sender, BOTTOM);
+    sender = pressButtons(sender, BOTTOM);
+    expect(heldButtons(sender)).toBe(BOTTOM);
     expect(trace(run(sender, 4).frames)).toBe('0111');
   });
 
@@ -207,7 +207,7 @@ describe('the send rule', () => {
     const bits: string[] = [];
     // down, up, down, up: one change per tick.
     for (const down of [true, false, true, false]) {
-      sender = down ? pressButtons(sender, A) : releaseButtons(sender, A);
+      sender = down ? pressButtons(sender, BOTTOM) : releaseButtons(sender, BOTTOM);
       const send = nextInputSend(sender, CENTRED);
       sender = send.sender;
       bits.push(trace([send.frame]));
@@ -218,44 +218,44 @@ describe('the send rule', () => {
   it('three changes between two ticks: two cancel, and the button ends where the thumb is', () => {
     // down, up, down inside one tick: one press, still held.
     let sender = createInputSender();
-    sender = pressButtons(releaseButtons(pressButtons(sender, A), A), A);
-    expect(heldButtons(sender)).toBe(A);
+    sender = pressButtons(releaseButtons(pressButtons(sender, BOTTOM), BOTTOM), BOTTOM);
+    expect(heldButtons(sender)).toBe(BOTTOM);
     expect(trace(run(sender, 3).frames)).toBe('111');
     // Two whole taps inside one tick: one tap.
     sender = createInputSender();
-    sender = releaseButtons(pressButtons(releaseButtons(pressButtons(sender, A), A), A), A);
+    sender = releaseButtons(pressButtons(releaseButtons(pressButtons(sender, BOTTOM), BOTTOM), BOTTOM), BOTTOM);
     expect(heldButtons(sender)).toBe(0);
     expect(trace(run(sender, 3).frames)).toBe('100');
     // Fifty taps inside one tick: still one tap, and nothing left over.
     sender = createInputSender();
-    for (let i = 0; i < 50; i += 1) sender = releaseButtons(pressButtons(sender, A), A);
+    for (let i = 0; i < 50; i += 1) sender = releaseButtons(pressButtons(sender, BOTTOM), BOTTOM);
     expect(trace(run(sender, 12).frames)).toBe('1' + '0'.repeat(INPUT_HISTORY + 1) + '..');
   });
 
   it('each button is handled by itself', () => {
     let sender = createInputSender();
-    sender = pressButtons(sender, A | B);
-    sender = releaseButtons(sender, B);
+    sender = pressButtons(sender, BOTTOM | RIGHT);
+    sender = releaseButtons(sender, RIGHT);
     const frames = run(sender, 3).frames;
-    expect(trace(frames, A)).toBe('111');
-    expect(trace(frames, B)).toBe('100');
+    expect(trace(frames, BOTTOM)).toBe('111');
+    expect(trace(frames, RIGHT)).toBe('100');
   });
 
   it('pressing what is down, releasing what is up and undefined bits change nothing', () => {
-    const sender = pressButtons(createInputSender(), A);
-    expect(pressButtons(sender, A)).toBe(sender);
-    expect(releaseButtons(sender, B)).toBe(sender);
+    const sender = pressButtons(createInputSender(), BOTTOM);
+    expect(pressButtons(sender, BOTTOM)).toBe(sender);
+    expect(releaseButtons(sender, RIGHT)).toBe(sender);
     expect(pressButtons(sender, 0xf000)).toBe(sender);
     expect(pressButtons(sender, 0)).toBe(sender);
-    expect(heldButtons(sender)).toBe(A);
+    expect(heldButtons(sender)).toBe(BOTTOM);
   });
 
   it('setButtons presses and releases whatever differs', () => {
-    let sender = setButtons(createInputSender(), A | B);
-    expect(heldButtons(sender)).toBe(A | B);
-    sender = setButtons(sender, B | BUTTON.up);
-    expect(heldButtons(sender)).toBe(B | BUTTON.up);
-    expect(setButtons(sender, B | BUTTON.up)).toBe(sender);
+    let sender = setButtons(createInputSender(), BOTTOM | RIGHT);
+    expect(heldButtons(sender)).toBe(BOTTOM | RIGHT);
+    sender = setButtons(sender, RIGHT | BUTTON.up);
+    expect(heldButtons(sender)).toBe(RIGHT | BUTTON.up);
+    expect(setButtons(sender, RIGHT | BUTTON.up)).toBe(sender);
   });
 
   it('the stick is sent as it is at each tick, rounded to the wire', () => {
@@ -291,7 +291,7 @@ describe('the send rule', () => {
   });
 
   it('sequence numbers wrap without a gap', () => {
-    const sender = pressButtons({ ...createInputSender(), seq: 65534 }, A);
+    const sender = pressButtons({ ...createInputSender(), seq: 65534 }, BOTTOM);
     expect(run(sender, 4).frames.map((frame) => frame?.seq)).toEqual([65534, 65535, 0, 1]);
   });
 });
@@ -300,31 +300,31 @@ describe('expandInput', () => {
   it('gives the ticks a frame carries, oldest first, each with its own sequence number', () => {
     const frame: WireInput = {
       seq: 100,
-      buttons: A,
-      history: [B, 0, A | B, 0, 0, 0, 0, BUTTON.up],
+      buttons: BOTTOM,
+      history: [RIGHT, 0, BOTTOM | RIGHT, 0, 0, 0, 0, BUTTON.up],
       stickX: 5,
       stickY: -6,
       tilt: { x: 1, y: 2 },
     };
     const ticks = expandInput(frame);
     expect(ticks.map((tick) => tick.seq)).toEqual([92, 93, 94, 95, 96, 97, 98, 99, 100]);
-    expect(ticks.map((tick) => tick.buttons)).toEqual([BUTTON.up, 0, 0, 0, 0, A | B, 0, B, A]);
+    expect(ticks.map((tick) => tick.buttons)).toEqual([BUTTON.up, 0, 0, 0, 0, BOTTOM | RIGHT, 0, RIGHT, BOTTOM]);
     for (const tick of ticks) {
       expect(tick).toMatchObject({ stickX: 5, stickY: -6, tilt: { x: 1, y: 2 } });
     }
   });
 
   it('wraps the sequence numbers of history below zero', () => {
-    const frame: WireInput = { ...RELEASED, seq: 2, buttons: A, history: [A, A, 0, 0, 0, 0, 0, 0] };
+    const frame: WireInput = { ...RELEASED, seq: 2, buttons: BOTTOM, history: [BOTTOM, BOTTOM, 0, 0, 0, 0, 0, 0] };
     expect(expandInput(frame).map((tick) => tick.seq)).toEqual([65530, 65531, 65532, 65533, 65534, 65535, 0, 1, 2]);
   });
 
   it('keeps nothing between calls and treats a short history as zeros', () => {
-    const frame: WireInput = { ...RELEASED, seq: 9, buttons: A, history: [B] };
+    const frame: WireInput = { ...RELEASED, seq: 9, buttons: BOTTOM, history: [RIGHT] };
     const once = expandInput(frame);
     expect(expandInput(frame)).toEqual(once);
     expect(once.length).toBe(INPUT_HISTORY + 1);
-    expect(once.map((tick) => tick.buttons)).toEqual([0, 0, 0, 0, 0, 0, 0, B, A]);
+    expect(once.map((tick) => tick.buttons)).toEqual([0, 0, 0, 0, 0, 0, 0, RIGHT, BOTTOM]);
   });
 
   it('expanding every frame of a session gives back every tick, whichever frames are dropped', () => {
@@ -352,7 +352,7 @@ describe('expandInput', () => {
   });
 });
 
-// --- A reference receiver, for these tests only ----------------------------------------------
+// --- BOTTOM reference receiver, for these tests only ----------------------------------------------
 //
 // The host's real input buffer is `@kaki/sim-core`. This is a model of what it does: the
 // newest sequence number wins; a sequence number already seen is ignored; a press or release
@@ -467,7 +467,7 @@ interface Driver {
   start(fromMs: number, random: () => number): () => number;
 }
 
-/** A perfect 60-a-second clock. */
+/** BOTTOM perfect 60-a-second clock. */
 const ideal: Driver = {
   name: 'ideal 60 Hz',
   maxIntervalMs: STEP_MS,
@@ -512,7 +512,7 @@ const fastest: Driver = {
 
 const realistic: Driver[] = [ideal, truncatingTimeout, jitteredFrames];
 
-// --- A whole session: thumbs, phone, link, host -----------------------------------------------
+// --- BOTTOM whole session: thumbs, phone, link, host -----------------------------------------------
 
 interface Touch {
   readonly atMs: number;
@@ -525,7 +525,7 @@ interface Link {
   readonly loss: number;
   /** Never lose more than this many frames in a row; `null` for no such promise. */
   readonly maxRun: number | null;
-  /** A frame arrives up to this many ms late, so frames can overtake each other. */
+  /** BOTTOM frame arrives up to this many ms late, so frames can overtake each other. */
   readonly maxDelayMs: number;
   /** Chance that a frame arrives twice. */
   readonly duplicate: number;
@@ -631,7 +631,7 @@ function play(session: Session): Outcome {
 
   for (;;) {
     const touchAt = touches[touchIndex]?.atMs ?? Infinity;
-    // The cap is the caller's job: a tick due too soon is put off, never dropped. A frozen
+    // The cap is the caller's job: a tick due too soon is put off, never dropped. BOTTOM frozen
     // page runs its overdue ticks when it thaws.
     let tickAt = Math.max(Math.min(timerAt, forcedAt), lastTickAt + MIN_TICK_MS);
     if (stalled(tickAt)) tickAt = stallEnd;
@@ -699,7 +699,7 @@ function play(session: Session): Outcome {
       continue;
     }
 
-    // A simulation step on the host: take what has arrived, in the order it arrived.
+    // BOTTOM simulation step on the host: take what has arrived, in the order it arrived.
     stepAt += STEP_MS;
     const arrived = inFlight.filter((packet) => packet.due <= now).sort((a, b) => a.due - b.due || a.order - b.order);
     for (const packet of arrived) {
@@ -719,7 +719,7 @@ function play(session: Session): Outcome {
 const sum = (values: number[]): number => values.reduce((total, value) => total + value, 0);
 
 /** One tap of `downMs` starting at `atMs`. */
-function tap(atMs: number, downMs: number, bit: number = A): Touch[] {
+function tap(atMs: number, downMs: number, bit: number = BOTTOM): Touch[] {
   return [
     { atMs, press: true, bit },
     { atMs: atMs + downMs, press: false, bit },
@@ -773,7 +773,7 @@ describe.each(settings)('a perfect link, $label', ({ driver, immediate }) => {
       for (let i = 0; i < taps; i += 1) {
         const pressAt = start + i * period + (random() * 2 - 1);
         const releaseAt = start + i * period + downMs + (random() * 2 - 1);
-        touches.push({ atMs: pressAt, press: true, bit: A }, { atMs: releaseAt, press: false, bit: A });
+        touches.push({ atMs: pressAt, press: true, bit: BOTTOM }, { atMs: releaseAt, press: false, bit: BOTTOM });
         count += 1;
       }
       at = start + taps * period + 150;
@@ -784,7 +784,7 @@ describe.each(settings)('a perfect link, $label', ({ driver, immediate }) => {
     expect(outcome.latchedReleases[4]).toBe(count);
     expect(outcome.stepPresses[4]).toBe(count);
     expect(outcome.stepReleases[4]).toBe(count);
-    // A press waits one tick only when the release before it fell between the same two ticks.
+    // BOTTOM press waits one tick only when the release before it fell between the same two ticks.
     expect(outcome.pressDelays.length).toBe(count);
     expect(Math.max(...outcome.pressDelays)).toBeLessThanOrEqual(1);
     expect(outcome.finalHeld).toBe(0);
@@ -796,7 +796,7 @@ describe.each(settings)('a perfect link, $label', ({ driver, immediate }) => {
     const touches: Touch[] = [];
     const count = rate * 10;
     for (let i = 0; i < count; i += 1) {
-      // A human's thumb: down for 40% to 55% of the beat, a few ms off the beat either way.
+      // BOTTOM human's thumb: down for 40% to 55% of the beat, a few ms off the beat either way.
       const at = 100 + i * period + (random() * 6 - 3);
       touches.push(...tap(at, period * (0.4 + random() * 0.15)));
     }
@@ -819,10 +819,10 @@ describe.each(settings)('a perfect link, $label', ({ driver, immediate }) => {
 
 // --- Loss -------------------------------------------------------------------------------------
 
-const PLAYED = [BUTTON.a, BUTTON.b, BUTTON.up, BUTTON.shake];
+const PLAYED = [BUTTON.faceBottom, BUTTON.faceRight, BUTTON.up, BUTTON.shake];
 
 /**
- * A scripted player for `ms`: per button, a random mix of flicks, taps, holds, fast double and
+ * BOTTOM scripted player for `ms`: per button, a random mix of flicks, taps, holds, fast double and
  * triple taps and bursts of mashing. `gapMs` is the least time between two things on one
  * button.
  */
@@ -1136,13 +1136,13 @@ describe('a steady hold is not released by silence', () => {
   const TEN_MINUTES = 10 * 60 * 60;
 
   /**
-   * Holds A for `steps` simulation steps over a link that loses frames independently, the
+   * Holds the bottom button for `steps` simulation steps over a link that loses frames independently, the
    * phone ticking once every `everySteps` steps. Returns how many times the host let go.
    */
   function hold(seed: number, loss: number, everySteps: number, steps: number): number {
     const random = seeded(seed);
     const receiver = new Receiver();
-    let sender = pressButtons(createInputSender(), A);
+    let sender = pressButtons(createInputSender(), BOTTOM);
     let releases = 0;
     for (let step = 0; step < steps; step += 1) {
       if (step % everySteps === 0) {
@@ -1150,7 +1150,7 @@ describe('a steady hold is not released by silence', () => {
         sender = send.sender;
         if (send.frame !== null && random() >= loss) receiver.receiveFrame(send.frame);
       }
-      if ((receiver.sample().released & A) !== 0) releases += 1;
+      if ((receiver.sample().released & BOTTOM) !== 0) releases += 1;
     }
     return releases;
   }
@@ -1215,14 +1215,14 @@ describe('what it costs', () => {
     expect(outcome.maxFrameBytes).toBeLessThanOrEqual(15);
 
     // A steady hold: 7 bytes a frame.
-    const steady = run(pressButtons(createInputSender(), A), 40).frames.slice(INPUT_HISTORY);
+    const steady = run(pressButtons(createInputSender(), BOTTOM), 40).frames.slice(INPUT_HISTORY);
     for (const frame of steady) expect(frame === null ? 0 : encodeInput(frame).length).toBe(7);
 
     // The worst case: a button changing on every tick.
     let sender = createInputSender();
     let worst = 0;
     for (let i = 0; i < 30; i += 1) {
-      sender = setButtons(sender, i % 2 === 0 ? A : 0);
+      sender = setButtons(sender, i % 2 === 0 ? BOTTOM : 0);
       const send = nextInputSend(sender, CENTRED);
       sender = send.sender;
       if (send.frame !== null) worst = Math.max(worst, encodeInput(send.frame).length);
