@@ -386,3 +386,14 @@ waits at most 4 simulation steps (about 67 ms). After that the rest of the queue
 to its net state, keeping at most one press and one release per button. A tap lost after a long
 network stall is better than a burst of second-old taps replayed late, above all for the
 Rabakz buzzer.
+
+**D-069 · 2026-11-16 · Claude (under D-057)** — Peek Poker rule details the spec left open
+(review of P-01): (a) the +3 speed bonus goes only to the earliest player who pressed Lock in
+among those with the round's best hand; a best hand that was never locked in earns +1, and
+seat order never breaks a tie. The same rule applies to a lone best hand and to solo play.
+(b) Pick time is fixed at 20 seconds; there is no leader setting for it (no requirement asks
+for one). (c) Each swap takes 2 seconds, one after another, and the pick timer starts after
+the last. (d) The reveal lasts 8 seconds, then a scoreboard phase of 5 seconds before the next
+round or the end. (e) A player who joins before the first step plays round 1; later joiners
+wait for the next deal. (f) Grid faces are secret whenever face down. (g) A personal best is
+saved only for a match that ended with one player and never admitted another.
