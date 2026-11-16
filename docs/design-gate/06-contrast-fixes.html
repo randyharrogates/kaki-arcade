@@ -1,0 +1,121 @@
+<title>Kaki Arcade Contrast Fixes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: one section per choice; options side by side, each a real sample at true size with
+   its measured contrast ratio. Page shell as the gate boards. */
+:root{
+  --bg:#EFE9DA; --dot:#D9D0BA; --card:#FBF8F0; --card2:#F3EEDF; --ink0:#26221C; --muted:#6B6355; --line:#D5CCB6;
+  --sage:#4F7A5C; --sage-soft:#DCE8DA; --pick:#B5371F;
+  /* decided game colours (DESIGN.md §4.2); the same in light and dark */
+  --m-bg:#EFEAE2; --m-ink:#2B2118; --m-pan:#FFFFFF; --m-pan2:#F6F1E7; --m-edge:#D8CDBB; --m-brown:#6B4426;
+  --r-bg:#4A1F3D; --r-dot:#5C2A4D; --r-ink:#FFF1F4; --r-soft:#E9B7C8; --r-chip:#7A3563;
+  --k-bg:#1D5741; --k-ink:#F6EFE2; --k-soft:#BFE3D2; --k-chip:#14402F; --white:#FFFFFF; --red:#D9483B; --blue:#2F7FD6;
+  --display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --fd:"DM Serif Display",Georgia,serif; --fb:"DM Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink0:#F1EBDC; --muted:#A79F8D; --line:#3B382E;
+  --sage:#8FBF9C; --sage-soft:#26342A; --pick:#F0806A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink0:#F1EBDC; --muted:#A79F8D; --line:#3B382E;
+  --sage:#8FBF9C; --sage-soft:#26342A; --pick:#F0806A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:21px 21px;
+  color:var(--ink0);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1440px;margin:0 auto;padding-block:34px 89px;display:flex;flex-direction:column;gap:55px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(34px,5vw,55px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(21px,3vw,34px);font-weight:800}
+h3{font-size:21px;font-weight:700}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage)}
+.cap{color:var(--muted);font-size:14px}
+.top{display:grid;grid-template-columns:1.618fr 1fr;gap:34px;align-items:end}
+.top>div{display:flex;flex-direction:column;gap:13px;min-width:0}
+.chit{border:1px dashed var(--line);border-radius:8px;padding:21px;background:linear-gradient(160deg,var(--card),var(--card2));display:flex;flex-direction:column;gap:8px}
+section{display:flex;flex-direction:column;gap:21px}
+.head{display:flex;flex-direction:column;gap:8px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:21px}
+.card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card .b{padding:21px;display:flex;flex-direction:column;gap:8px}
+.tagl{font-family:var(--mono);font-size:13px;color:var(--pick);letter-spacing:.06em}
+.rec{align-self:flex-start;font-family:var(--mono);font-size:13px;background:var(--sage-soft);color:var(--sage);border-radius:5px;padding:5px 8px}
+.r{font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums}
+.r b.ok{color:var(--sage)} .r b.no{color:var(--pick)}
+/* samples */
+.st{padding:21px;display:flex;flex-wrap:wrap;gap:13px;align-items:center;min-height:144px;font-family:var(--fb);overflow-x:auto}
+.marble{background-color:var(--m-bg);color:var(--m-ink);background-image:radial-gradient(circle at 20% 30%,#D6CBBB 0 6px,transparent 6.5px),radial-gradient(circle at 72% 62%,#C7B6A2 0 4px,transparent 4.5px),radial-gradient(circle at 44% 86%,#B9C6B6 0 5px,transparent 5.5px);background-size:89px 89px}
+.plum{background-color:var(--r-bg);color:var(--r-ink);background-image:radial-gradient(var(--r-dot) 7px,transparent 7.5px),radial-gradient(var(--r-dot) 7px,transparent 7.5px);background-size:42px 42px;background-position:0 0,21px 21px}
+.felt{background-color:var(--k-bg);color:var(--k-ink);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 2px,transparent 2px 5px)}
+.seat{width:55px;height:55px;border-radius:50%;display:grid;place-items:center;font:700 34px var(--mono);border:3px solid var(--white);flex:none}
+.pan{background:linear-gradient(170deg,var(--m-pan),var(--m-pan2));border:3px solid var(--m-edge);border-radius:13px;padding:13px 21px;display:flex;flex-direction:column;gap:5px}
+.zone{width:233px;height:144px;border-radius:21px;border-width:3px;border-style:dashed;display:grid;place-items:center;font-size:13px;text-align:center;padding:13px}
+.team{border-radius:13px;padding:13px 21px;color:var(--white);display:flex;flex-direction:column;gap:5px;min-width:144px}
+.team b{font-size:34px;font-weight:700;line-height:1}
+.ph{width:340px;max-width:100%;border:5px solid #1a1a1c;border-radius:21px;padding:13px;display:flex;flex-direction:column;gap:8px}
+@media (max-width:900px){.top{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div>
+      <span class="eyebrow">After the design gate · found by the token review</span>
+      <h1>Seven small fixes to choose</h1>
+      <p>The review of the design tokens measured every text and background pair you chose. Most pass. These do not, and fixing them means touching colours or sizes that are now locked, so each is yours to decide. Every sample is drawn at true size with the measured contrast ratio; body text needs 4.5, large text and symbols need 3.</p>
+    </div>
+    <div class="chit">
+      <h3>How to reply</h3>
+      <p>One letter per number, for example <b>1B 2C 3B 4B 5B 6B 7A</b>, which is my recommendation. None of these has any performance cost except choice 7.</p>
+    </div>
+  </div>
+  <div id="out"></div>
+</div>
+
+<script>
+(function(){
+  function lum(h){var c=[1,3,5].map(function(i){var v=parseInt(h.substr(i,2),16)/255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]}
+  function ratio(a,b){var x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
+  function R(a,b,need){var v=ratio(a,b);return '<b class="'+(v>=need?"ok":"no")+'">'+v.toFixed(2)+"</b>"}
+  var SEATS=["#D9483B","#2F7FD6","#F2B21B","#39A85B","#8E5BD0","#F07C2A","#22A6A6","#D95C9A"], DARK="#2B2118", W="#FFFFFF";
+  function seats(rule){return '<div class="st marble">'+SEATS.map(function(c,i){var n=rule(i)?DARK:W;return '<div class="seat" style="background:'+c+";color:"+n+'">'+(i+1)+"</div>"}).join("")+"</div>"}
+  function seatR(rule){return SEATS.map(function(c,i){return (i+1)+": "+R(c,rule(i)?DARK:W,3)}).join(" · ")}
+  function marbleText(col){return '<div class="st marble" style="flex-direction:column;align-items:flex-start"><span style="font:400 34px var(--fd)">Waiting for players</span><span style="font-size:21px;color:'+col+'">Scan the code or go to the address on your phone</span><span style="font-size:21px;color:'+col+'">Up to 8 players. The first to join is the leader.</span></div>'}
+  function ppPanel(col){return '<div class="st felt"><div class="pan" style="color:#17352A"><span style="font:400 34px var(--fd)">Round 3 of 5</span><span style="font-size:21px;color:'+col+'">Memorise the cards. They flip in 12 seconds.</span></div></div>'}
+  function zone(cls,col,txt){return '<div class="st '+cls+'"><div class="zone" style="border-color:'+col+";color:"+txt+'">The stick appears where your thumb lands</div></div>'}
+  function teams(w,size){return '<div class="st marble"><div class="team" style="background:var(--red)"><b>Red team</b><span style="font-size:'+size+"px;font-weight:"+w+'">You are here</span></div><div class="team" style="background:var(--blue)"><b>Blue team</b><span style="font-size:'+size+"px;font-weight:"+w+'">Tap to switch</span></div></div>'}
+  function phone(sizes){return '<div class="st marble"><div class="ph" style="background:var(--m-bg)"><span style="font-size:'+sizes[0]+'px;color:#706151">Question 7 of 10 · small label</span><span style="font-size:21px;font-weight:500">Ordinary text at 21 px</span><span style="font:400 '+sizes[1]+'px var(--fd);line-height:1">Not that one</span><span style="font:700 '+sizes[2]+'px var(--mono);line-height:1">+150</span></div></div>'}
+  var all=function(){return true}, none=function(){return false};
+  var Q=[
+   {t:"1 · Seat numbers",d:"The white number is hard to read on the yellow, orange and teal seats. It shows on every phone header and every scoreboard.",o:[
+     ["A","Keep white on all eight",seats(none),seatR(none),"Fails on seats 3, 6 and 7."],
+     ["B","Dark number on seats 3, 6 and 7 only",seats(function(i){return i==2||i==5||i==6}),seatR(function(i){return i==2||i==5||i==6}),"Smallest change; white stays where it reads well.",1],
+     ["C","Dark number on all eight",seats(all),seatR(all),"Consistent, and all pass, but red, blue and purple look heavier."]]},
+   {t:"2 · Secondary text on the marble",d:"The brown used for secondary lines is just under the minimum on plain marble, and lower where a line crosses a terrazzo speck.",o:[
+     ["A","Keep #7A6A58",marbleText("#7A6A58"),"on marble "+R("#7A6A58","#EFEAE2",4.5)+" · over the darkest speck "+R("#7A6A58","#C7B6A2",3),"Fails both."],
+     ["B","#776756, a shade darker",marbleText("#776756"),"on marble "+R("#776756","#EFEAE2",4.5)+" · over the darkest speck "+R("#776756","#C7B6A2",3),"Passes on plain marble only."],
+     ["C","#706151, two shades darker",marbleText("#706151"),"on marble "+R("#706151","#EFEAE2",4.5)+" · over the darkest speck "+R("#706151","#C7B6A2",3),"Passes on marble and stays readable across specks. Still clearly secondary.",1]]},
+   {t:"3 · Secondary text on Peek Poker panels",d:"The grey-green secondary text on the white panels is under the minimum at the panel's darker end.",o:[
+     ["A","Keep #5E7A6E",ppPanel("#5E7A6E"),"on panel "+R("#5E7A6E","#F6F1E7",4.5),"Fails."],
+     ["B","#597469, a shade darker",ppPanel("#597469"),"on panel "+R("#597469","#F6F1E7",4.5),"Passes; hard to tell apart by eye.",1]]},
+   {t:"4 · Stick area outline on the dark themes",d:"The dashed outline that shows where the floating stick works uses the chip colour, which nearly vanishes on the Rabakz and Peek Poker backgrounds.",o:[
+     ["A","Keep the chip colour",zone("plum","#7A3563","#E9B7C8")+zone("felt","#14402F","#BFE3D2"),"Rabakz "+R("#7A3563","#4A1F3D",3)+" · Peek Poker "+R("#14402F","#1D5741",3),"Fails on both."],
+     ["B","Use each theme's secondary text colour",zone("plum","#E9B7C8","#E9B7C8")+zone("felt","#BFE3D2","#BFE3D2"),"Rabakz "+R("#E9B7C8","#4A1F3D",3)+" · Peek Poker "+R("#BFE3D2","#1D5741",3),"Clear on both; no new colour is introduced.",1]]},
+   {t:"5 · Small white text on the team colours",d:"The 21 px line under each team name is white on red or blue at ordinary weight, a little under the minimum for small text.",o:[
+     ["A","Keep 21 px regular",teams(400,21),"red "+R("#FFFFFF","#D9483B",4.5)+" · blue "+R("#FFFFFF","#2F7FD6",4.5),"Fails as small text."],
+     ["B","21 px bold",teams(700,21),"red "+R("#FFFFFF","#D9483B",3)+" · blue "+R("#FFFFFF","#2F7FD6",3)+" (bold text of this size needs 3)","Passes with no colour change.",1]]},
+   {t:"6 · Text sizes on the phone",d:"Board 4 used some sizes that are not on the golden scale (15, 44). The tokens use the scale strictly, which drops the big win number to 55.",o:[
+     ["A","13 · 21 · 34 · 55 only",phone([13,34,55]),"Strict golden scale; the biggest phone text is 55 px.","The '+150' moment is smaller than on board 4."],
+     ["B","13 · 21 · 34 · 55 · 89",phone([13,34,89]),"Golden-ratio variant: every size is a step of the scale, and 89 is allowed for one big number.","Keeps the big win moment; 15 px labels become 13 and 44 px lines become 34.",1],
+     ["C","As board 4: adds 15 and 44",phone([15,44,89]),"Two sizes off the scale.","Closest to what you saw on board 4, but breaks the spacing-scale rule for type."]]},
+   {t:"7 · Swapping icons: blur or no blur",d:"Your motion rule says icon swaps crossfade with a blur. The performance rules say no blur while a game runs, because blur is one of the few effects a TV cannot do cheaply.",o:[
+     ["A","Crossfade only, everywhere",'<div class="st marble"><span style="font-size:21px">Icons crossfade with no blur on the TV and on phones.</span></div>',"No performance cost.","One rule everywhere; the swap is a little plainer.",1],
+     ["B","Blur on phone icons up to 55 px, never on the TV",'<div class="st marble"><span style="font-size:21px">Small phone icons crossfade with blur; the TV never blurs.</span></div>',"Small cost on phones, not yet measured; none on the TV.","Keeps your rule where it is cheap; two behaviours to maintain."]]}
+  ];
+  document.getElementById("out").innerHTML=Q.map(function(q){return '<section style="margin-bottom:55px"><div class="head"><h2>'+q.t+'</h2><p>'+q.d+'</p></div><div class="opts">'+q.o.map(function(o){
+    return '<article class="card">'+o[2]+'<div class="b"><span class="tagl">'+q.t.charAt(0)+o[0]+"</span><h3>"+o[1]+'</h3><span class="r">'+o[3]+'</span><span class="cap">'+o[4]+"</span>"+(o[5]?'<span class="rec">Recommended</span>':"")+"</div></article>"}).join("")+"</div></section>"}).join("");
+})();
+</script>
