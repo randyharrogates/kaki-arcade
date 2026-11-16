@@ -40,8 +40,8 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   `uat/evidence/R-12-singapore-pack/questions.md` lists the 17 to check first.
 - **Rabakz question bank tooling (R-10, merged 2026-11-16):** `content/rabakz` holds the question
   schema, a validating build that writes one chunk per category, a seeded question selector and
-  a stats report. 20 sample questions only: the bank is short of its targets by 1,480 questions,
-  193 Singapore questions and all 60 picture questions (R-11 to R-13). Nothing reads it yet.
+  a stats report. The bank is filled by R-11 and R-12 above; the 60 picture questions (R-13)
+  do not exist yet. Nothing reads it yet.
 - **Network spike (S-01, in progress):** `spikes/s01-network/` connects up to 8 phones to a host
   page over WebRTC and measures input delay. Run on one Mac with emulated phones only: 8 scripted
   phones p95 27 ms, no loss, host at 60 fps. Not yet tried on real phones, over real Wi-Fi or
