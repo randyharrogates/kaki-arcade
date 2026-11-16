@@ -311,3 +311,7 @@ pushing the repository) or the real-device tests only Randy can do.
 the Rabakz streak counts questions won in a row; static question files that a determined player
 could read are accepted for a game played in one room; phones send 60 ticks a second always,
 including through the relay (a 30-a-second tick caused false releases in review).
+
+**D-059 · 2026-11-16 · Claude (under D-057)** — Dependency: Pillow 11.1.0 (with libwebp 1.5.0),
+pinned in `tools/assets/requirements.txt`, for packing and encoding atlases in `pnpm assets`.
+A build tool only; nothing ships to the browser.

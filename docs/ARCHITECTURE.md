@@ -42,10 +42,11 @@ content/
   rabakz/         question bank sources, build and validation script, generated chunks
 spikes/           throwaway M2 proofs; never imported by the product
 tools/
-  blender/        Scripts that render models to sprite atlases and baked backgrounds
+  blender/        Scripts that render models to sprite frames and baked backgrounds
+  assets/         `pnpm assets`: packs frames into atlases, writes the manifest, checks budgets
   perf/           Headless load harness: N scripted controllers, frame and latency capture
 assets/
-  src/            .blend sources (Git LFS)
+  src/            Asset set configs and small hand-made inputs (no .blend, no Git LFS: D-054)
   dist/           Generated atlases and backgrounds (built, not hand-edited)
 uat/
   specs/          Playwright UAT scripts, one per requirement group

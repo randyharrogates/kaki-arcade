@@ -1,0 +1,23 @@
+background-0: 1926×1086, waste 0.6%, 63786 bytes, 8366544 decoded
+cook-0-body: 2010×1760, waste 8.3%, 283066 bytes, 14150400 decoded
+cook-0-mask: 2010×1760, waste 8.3%, 5852 bytes, 14150400 decoded
+cook-1-body: 2010×1760, waste 8.3%, 270592 bytes, 14150400 decoded
+cook-1-mask: 2010×1760, waste 8.3%, 5852 bytes, 14150400 decoded
+cook-2-body: 2010×1760, waste 8.3%, 268400 bytes, 14150400 decoded
+cook-2-mask: 2010×1760, waste 8.3%, 5852 bytes, 14150400 decoded
+cook-3-body: 2010×1760, waste 8.3%, 266968 bytes, 14150400 decoded
+cook-3-mask: 2010×1760, waste 8.3%, 5852 bytes, 14150400 decoded
+cook-4-body: 1072×1600, waste 5.4%, 145602 bytes, 6860800 decoded
+cook-4-mask: 1072×1600, waste 5.4%, 4892 bytes, 6860800 decoded
+heads-0: 336×1344, waste 9.3%, 11844 bytes, 1806336 decoded
+stations-0: 608×1824, waste 2.6%, 3940 bytes, 4435968 decoded
+PERF-023/024 passed: 13 atlases; manifest 279405 bytes
+comparison-0: 1924×1084, waste 0.6%, 4598 bytes, 8342464 decoded
+PERF-023/024 passed: 1 atlases; manifest 1131 bytes
+comparison-0: 1924×1084, waste 0.6%, 63470 bytes, 8342464 decoded
+PERF-023/024 passed: 1 atlases; manifest 1132 bytes
+odd-0: 38×38, waste 19.9%, 38 bytes, 5776 decoded
+PERF-023/024 passed: 1 atlases; manifest 1021 bytes
+odd-0: 1926×1086, waste 0.6%, 130 bytes, 8366544 decoded
+PERF-023/024 passed: 1 atlases; manifest 1064 bytes
+{'previews': ['background-0-full.png', 'background-0-half.png', 'cook-0-body-full.png', 'cook-0-body-half.png', 'cook-0-mask-full.png', 'cook-0-mask-half.png', 'cook-1-body-full.png', 'cook-1-body-half.png', 'cook-1-mask-full.png', 'cook-1-mask-half.png', 'cook-2-body-full.png', 'cook-2-body-half.png', 'cook-2-mask-full.png', 'cook-2-mask-half.png', 'cook-3-body-full.png', 'cook-3-body-half.png', 'cook-3-mask-full.png', 'cook-3-mask-half.png', 'cook-4-body-full.png', 'cook-4-body-half.png', 'cook-4-mask-full.png', 'cook-4-mask-half.png', 'heads-0-full.png', 'heads-0-half.png', 'stations-0-full.png', 'stations-0-half.png'], 'background1920': {'lossless': {'full': {'bytes': 4598, 'gpuBytes': 8342464}, 'half': {'bytes': 1506, 'gpuBytes': 2085616}}, 'lossy': {'full': {'bytes': 63470, 'gpuBytes': 8342464}, 'half': {'bytes': 8642, 'gpuBytes': 2085616}}}, 'seams': [{'size': (33, 33), 'exactFullReconstruction': True, 'checks': {'full': {'alphaExtrema': (255, 255), 'lastColumn': (255, 255), 'lastRow': (255, 255)}, 'half': {'alphaExtrema': (255, 255), 'lastColumn': (255, 255), 'lastRow': (255, 255)}}}, {'size': (1921, 1081), 'exactFullReconstruction': True, 'checks': {'full': {'alphaExtrema': (255, 255), 'lastColumn': (255, 255), 'lastRow': (255, 255)}, 'half': {'alphaExtrema': (255, 255), 'lastColumn': (255, 255), 'lastRow': (255, 255)}}}], 'waste': {'background': 0.005752434936097895, 'cook': 0.07966922146026623, 'heads': 0.09297052154195007, 'stations': 0.026142659279778435}, 'rounds': {'level-01': {'full': {'transferBytes': 1630133, 'transferLimit': 8000000, 'gpuBytes': 141533648, 'gpuLimit': 256000000}, 'half': {'transferBytes': 526607, 'transferLimit': 8000000, 'gpuBytes': 35383412, 'gpuLimit': 256000000}}}}

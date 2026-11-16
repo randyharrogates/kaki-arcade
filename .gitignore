@@ -16,3 +16,4 @@ coverage/
 .pnpm-store/
 blob-report/
 playwright/.cache/
+assets/dist/

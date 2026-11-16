@@ -119,8 +119,8 @@ requirement.
 | PERF-020 | MUST | Controller page — ≤ 300 KB transferred; interactive ≤ 2 s on a mid-range phone on Wi-Fi | M2 on | not started | — | — | — |
 | PERF-021 | MUST | QR scan to seated in lobby — ≤ 5 s | M2 on | not started | — | — | — |
 | PERF-022 | MUST | Host shell (landing to lobby) — ≤ 1.5 MB transferred | M2 on | not started | — | — | — |
-| PERF-023 | MUST | One Tabao Rush level, all assets — ≤ 8 MB transferred; loaded before the round starts, never during it | M2 on | not started | — | — | — |
-| PERF-024 | MUST | Texture memory in a round — ≤ 256 MB decoded on the host | M2 on | not started | — | — | — |
+| PERF-023 | MUST | One Tabao Rush level, all assets — ≤ 8 MB transferred; loaded before the round starts, never during it | M2 on | in progress | `tools/assets/pipeline.py`, `tools/check_budgets.mjs` (packing and the size check in `pnpm verify`; the runtime loader is track T) | `tools/assets/test_pipeline.py`, `tools/assets/pipeline.test.ts` | `uat/evidence/A-01-asset-pipeline/` |
+| PERF-024 | MUST | Texture memory in a round — ≤ 256 MB decoded on the host | M2 on | in progress | `tools/assets/pipeline.py` (decoded bytes per round in the manifest, checked at build) | `tools/assets/test_pipeline.py` | `uat/evidence/A-01-asset-pipeline/` |
 | PERF-030 | MUST | 30-minute 8-player session: no crash, memory growth under 10%, no stuck input (NFR-REL) | M6, M8 | not started | — | — | — |
 
 ## Peek Poker

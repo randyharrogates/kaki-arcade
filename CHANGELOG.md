@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — A-01: asset pipeline
+
+- `tools/assets`: atlas packer, manifest and budget check behind `pnpm assets`; verify now packs
+  `assets/src` and fails over budget. Built by Codex, two Claude review rounds. Synthetic frames
+  only so far. (PERF-023, PERF-024 in progress)
+
 ## 2026-11-16 — F-02: protocol
 
 - `packages/protocol`: signalling, control-channel and input messages with validators; input

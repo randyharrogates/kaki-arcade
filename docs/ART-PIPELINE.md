@@ -60,10 +60,12 @@ See `PERFORMANCE.md` for the budgets these serve.
 
 ## 5. Build
 
-`pnpm assets` runs the Blender scripts for anything whose source changed, packs atlases, writes
-the asset manifest the game loads from, and prints the size of every atlas against
-PERF-023 and PERF-024. Rendering is slow compared with code, so it is not part of `pnpm verify`;
-the manifest's sizes are.
+`pnpm assets` (`tools/assets/pipeline.py`, A-01) packs rendered frames into atlases at full and
+half size, writes the asset manifest the game loads from, and prints every round's size against
+PERF-023 and PERF-024. Rendering is opt-in with `--render`, which runs the Blender scripts
+after a memory check; it is slow, so it is not part of `pnpm verify`. Verify packs whatever is
+in `assets/src` into a temporary folder and fails when a round is over budget. Needs Pillow
+11.1.0 (`tools/assets/requirements.txt`).
 
 ## 6. Where Codex comes in
 

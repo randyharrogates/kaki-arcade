@@ -43,10 +43,15 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   phones p95 27 ms, no loss, host at 60 fps. Not yet tried on real phones, over real Wi-Fi or
   through a relay; one touch-driven emulated phone was over budget (OQ-028). Not reviewed.
 
+- **Asset pipeline (A-01).** `pnpm assets` packs frames into atlases (2048 × 2048 at most, full
+  and half size, lossless sprites and lossy backgrounds), writes a manifest with anchors, layers
+  and per-round sizes, and fails when a round is over PERF-023 or PERF-024. Proven on synthetic
+  frames only: no real art exists yet. Two review rounds.
+
 ## Does not exist yet
 
 - Any application code: no host page, controller, pairing server or game (the packages are empty stubs).
-- `pnpm uat`, `pnpm perf`, `pnpm assets`, `pnpm dev` (later issues).
+- `pnpm uat`, `pnpm perf`, `pnpm dev` (later issues).
 - Design tokens: `DESIGN.md` §4 is decided and locked (gate closed 2026-11-16); `packages/ui` does not hold them yet.
 
 ## Design gate
