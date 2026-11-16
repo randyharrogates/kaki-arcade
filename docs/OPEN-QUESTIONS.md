@@ -9,18 +9,13 @@ entry.
 **OQ-001 · Names not checked.** Kaki Arcade, Tabao Rush, Peek Poker and Rabakz were not checked for
 trademarks or existing games of the same name. Check before public release (M8). Needed by: M8.
 
-**OQ-006 · Sound and music.** TR-063 is SHOULD. Sound effects can be synthesised in code;
-music needs a source (a licensed free track, or generated). Who chooses? Needed by: M6.
+**OQ-006 · Music source.** Randy wants effects and music in v1 (D-050). Effects are synthesised
+in code. Music needs a source: tracks under a free licence with credit, or loops composed in
+code. Claude will put two or three candidates per game to Randy to hear. Needed by: M6.
 
 **OQ-008 · Git LFS for `.blend` files.** GitHub's free LFS allowance is small. If sources grow
 past it, options are paying for LFS or keeping sources in Cloudflare R2. Decide when sizes are
 known. Needed by: M5.
-
-**OQ-025 · Spacing values beyond 5 to 89 px.** `DESIGN.md` §1 lists 5 · 8 · 13 · 21 · 34 · 55 · 89
-and says no other spacing values. The design lint (F-01) also allows 0, the next Fibonacci steps
-144 · 233 · 377 for large layout gaps, and 1 · 2 · 3 px plus full pills on corner radii only.
-Claude is working to the wider set; say if you want it held strictly to §1. Needed by: first UI
-slice.
 
 **OQ-028 · Network spike (S-01): needs Randy's real phones, and a ruling on PERF-010.** On one Mac
 with emulated phones the network costs 1 to 4 ms and scripted input reaches the simulation in
@@ -35,8 +30,7 @@ held at 60 Hz measured about 22 MB an hour through a relay, against the 10 MB an
 behind the 800 GB limit in NET-004; the send policy for C-04 (on touch plus a 30 Hz tick) roughly
 halves it. Needed by: C-04, S-04.
 
-**OQ-026 · Rabakz buzzer rules: Claude's remaining readings.** (4) Solo: only the first answer
-scores. (5) The streak counts questions won in a row. (7) Question files are static, so a player
+**OQ-026 · Rabakz buzzer rules: Claude's remaining readings.** (5) The streak counts questions won in a row. (7) Question files are static, so a player
 who opens one in a browser can read the answers; accepted for a party game played in one room.
 The rest were confirmed in D-048 and D-049. Needed by: R-01.
 

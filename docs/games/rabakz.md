@@ -51,7 +51,7 @@ Declared to the controller kit (CTRL-002):
 | Phase | Phone shows |
 |---|---|
 | Setup (leader only) | D-pad and **A** to choose length, categories, difficulty and teams. Other phones show "The leader is setting up". |
-| Question | Four answer buttons on **A / B / X / Y** each with its letter, shape, colour and option text. After pressing: "Locked in" and the chosen option. |
+| Question | Four answer buttons marked **cross, circle, square and triangle** (the same four shapes as the Tabao Rush buttons, D-050), each with its shape, colour and option text; no letters. After pressing: "Locked in" and the chosen option. |
 | Reveal | Right or wrong, points gained, current streak and total. |
 | Scoreboard / end | The player's placing and total. Leader: **A** to continue. **Start** pauses at any time. |
 

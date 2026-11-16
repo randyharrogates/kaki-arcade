@@ -14,7 +14,9 @@ Section 5 (the design gate) is **not yet complete**. Until it is, sections 4.x m
 ## 1. Golden ratio (1 : 1.618)
 
 - **Spacing scale**, in φ steps: **5 · 8 · 13 · 21 · 34 · 55 · 89 px**. Used for all padding, gaps,
-  row and field spacing. No other spacing values.
+  row and field spacing. Large layout gaps may continue the sequence: **144 · 233 · 377 px**
+  (Randy, D-050). 0 is allowed, and 1 · 2 · 3 px and full pills on corner radii only. No other
+  spacing values.
 - **Proportions:** primary : secondary panel splits are **1.618 : 1**. Media panels are 1.618 : 1.
 - **Artboards:** 1440 × 890 for design boards.
 - **Fixed device sizes** (a phone at 390 × 844, a TV at 1920 × 1080) stay as they are; apply the

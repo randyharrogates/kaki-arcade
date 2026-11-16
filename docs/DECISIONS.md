@@ -51,3 +51,11 @@ RZ-006 stand as written).
 multiple choice and picture only (RZ-002 rewritten). (2) Team mode: a question's points go to
 the winner's team once (RZ-012 stands). (3) Nicknames: 12 visible characters (PLAT-004).
 (4) Singapore questions use romanised names only. Closes OQ-029 and OQ-026 items 3 and 6.
+
+**D-050 · 2026-11-16 · Randy** — (1) Rabakz answers carry the same four shapes (cross, circle,
+square, triangle) with a colour each, no letters. (2) Sound for v1: **effects and music**
+(TR-063 and RZ-033 are to be built, not skipped); effects are synthesised in code; the music
+source is still to be chosen (OQ-006). (3) Spacing may also use 144, 233 and 377 px, plus 0,
+and 1 to 3 px on corner radii (closes OQ-025; `DESIGN.md` §1 updated). (4) Rabakz solo: only
+the first answer scores; a wrong answer reveals the correct one and the match moves on
+(RZ-013 stands).
