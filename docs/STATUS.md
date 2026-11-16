@@ -82,9 +82,15 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   delay spike cannot repeat a tap, and a stall never replays old taps late. Two review rounds
   with 16 attack sequences.
 
+- **Peek Poker rules (P-01, P-02).** `games/peek-poker/src/rules`: deal, memorise, swaps,
+  secret picks, lock in, random fill, hand evaluator, scoring with the speed bonus, reveal and
+  scoreboard phases, solo, joins and leaves. Passes the conformance kit at 1, 4 and 8 players;
+  the evaluator agreed with an independent one on 60,000 hands. Rules only: no screen yet.
+  Built by Codex; two review rounds.
+
 ## Does not exist yet
 
-- No host page, controller or game yet.
+- No host page, controller or game screen yet.
 - `pnpm uat`, `pnpm perf`, `pnpm dev` (later issues).
 
 ## Design gate

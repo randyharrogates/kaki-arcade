@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — P-01, P-02: Peek Poker rules and hand evaluator
+
+- `games/peek-poker/src/rules`: pure rules against the game interface, with rule details
+  decided in D-069 and written into `docs/games/peek-poker.md`.
+  (PP-001 to PP-007, PP-009 to PP-013, PP-022 in progress)
+
 ## 2026-11-16 — F-03b, F-03c: input buffer follow-ups
 
 - `packages/sim-core`: duplicate edges deferred to the next step, a four-step wait cap with a

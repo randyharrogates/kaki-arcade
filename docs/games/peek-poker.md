@@ -24,6 +24,19 @@ No betting, no chips, no real-money element.
 | PP-012 | MUST | 1 to 8 players. With 1 player the match is a score attack against a personal best saved on the host device. |
 | PP-013 | MUST | A player who joins mid-match enters at the next round with a score of 0. |
 
+### Rule details (D-069, decided under D-057 on 2026-11-16)
+
+- The +3 speed bonus goes only to the earliest player who pressed Lock in among those with the
+  round's best hand. A best hand that was never locked in earns +1. Seat order never breaks a
+  tie. The same applies to a lone best hand and to solo play.
+- Pick time is fixed at 20 seconds; there is no setting for it.
+- Each swap takes 2 seconds; swaps play one after another and the pick timer starts after the
+  last. The reveal lasts 8 seconds, then the scoreboard shows for 5 seconds.
+- A player who joins before play starts plays round 1.
+- Grid faces are secret whenever face down.
+- A personal best is saved only for a match that ended with one player and never admitted
+  another.
+
 ### Hand points (confirmed by Randy 2026-11-16, D-025)
 
 | Hand | Points |

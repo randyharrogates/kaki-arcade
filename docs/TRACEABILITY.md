@@ -127,22 +127,22 @@ requirement.
 
 | ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
 |---|---|---|---|---|---|---|---|
-| PP-001 | MUST | A match is 3, 5 or 7 rounds chosen by the leader (default 5) | M4 | not started | — | — | — |
-| PP-002 | MUST | Each round deals from one shuffled standard 52-card deck: 16 cards into a 4 × 4 grid and 3 shared cards | M4 | not started | — | — | — |
-| PP-003 | MUST | The 16 grid cards are shown face up on the big screen for the memorise time (20 seconds in round 1), then… | M4 | not started | — | — | — |
-| PP-004 | MUST | The 3 shared cards stay face up for the whole round | M4 | not started | — | — | — |
-| PP-005 | MUST | Each player secretly picks 2 grid positions on their own phone within the pick time (default 20 seconds) | M4 | not started | — | — | — |
-| PP-006 | MUST | Two or more players may pick the same card | M4 | not started | — | — | — |
-| PP-007 | MUST | A player's hand is their 2 picked cards plus the 3 shared cards | M4 | not started | — | — | — |
+| PP-001 | MUST | A match is 3, 5 or 7 rounds chosen by the leader (default 5) | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
+| PP-002 | MUST | Each round deals from one shuffled standard 52-card deck: 16 cards into a 4 × 4 grid and 3 shared cards | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
+| PP-003 | MUST | The 16 grid cards are shown face up on the big screen for the memorise time (20 seconds in round 1), then… | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
+| PP-004 | MUST | The 3 shared cards stay face up for the whole round | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
+| PP-005 | MUST | Each player secretly picks 2 grid positions on their own phone within the pick time (default 20 seconds) | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
+| PP-006 | MUST | Two or more players may pick the same card | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
+| PP-007 | MUST | A player's hand is their 2 picked cards plus the 3 shared cards | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
 | PP-008 | MUST | At the reveal, the grid flips face up, each player's picks are marked with their colour and seat number,… | M4 | not started | — | — | — |
-| PP-009 | MUST | Round scoring by hand rank plus best-hand bonus; fastest among tied best hands gets +3, others +1 | M4 | not started | — | — | — |
-| PP-010 | MUST | A player who has not picked 2 cards when time runs out has the missing picks chosen at random | M4 | not started | — | — | — |
-| PP-011 | MUST | Difficulty rises each round (table below) | M4 | not started | — | — | — |
-| PP-012 | MUST | 1 to 8 players | M4 | not started | — | — | — |
-| PP-013 | MUST | A player who joins mid-match enters at the next round with a score of 0 | M4 | not started | — | — | — |
+| PP-009 | MUST | Round scoring by hand rank plus best-hand bonus; fastest among tied best hands gets +3, others +1 | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
+| PP-010 | MUST | A player who has not picked 2 cards when time runs out has the missing picks chosen at random | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
+| PP-011 | MUST | Difficulty rises each round (table below) | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
+| PP-012 | MUST | 1 to 8 players | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
+| PP-013 | MUST | A player who joins mid-match enters at the next round with a score of 0 | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
 | PP-020 | MUST | Picks are never sent to other phones or drawn on the big screen before the reveal | M4 | not started | — | — | — |
 | PP-021 | MUST | The big screen shows who has locked in (seat markers only), not what they picked | M4 | not started | — | — | — |
-| PP-022 | MUST | When everyone has locked in, the round proceeds without waiting for the timer | M4 | not started | — | — | — |
+| PP-022 | MUST | When everyone has locked in, the round proceeds without waiting for the timer | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
 | PP-030 | MUST | Cards are large enough on a TV to read rank and suit from 3 m, and suits differ by shape and colour | M4 | not started | — | — | — |
 | PP-031 | MUST | Card flips, swaps and the reveal follow ../DESIGN.md §3 (masks for reveals, arcs for moving cards, no bounce) | M4 | not started | — | — | — |
 | PP-032 | MUST | A running scoreboard is visible between rounds and a final podium at match end | M4 | not started | — | — | — |
