@@ -467,3 +467,29 @@ the last free floor tile back along its path; (g) presses by several cooks in on
 by ascending seat, cross before triangle (buttons are never taps); (h) a leaving cook's item
 drops by rule (f) from where it stood; (i) plates and finished dishes cannot be thrown
 (TR-009); the conflict with the sabo "dirty plates thrown across" in TR-058 is OQ-029.
+
+**D-079 · 2026-11-16 · Claude (under D-057)** — Session runner (review of C-10), where the
+PRD and the game contract were silent or the first build was wrong:
+(a) **Layout delivery.** A game's layout revision covers only what a player can tap, so
+greying out or selecting must still reach the phone. The host keeps the last layout and private
+view sent to each phone and sends again whenever the content for that phone differs, found by
+an allocation-free structural comparison (not JSON text). Each phone has its own wire revision
+that goes up by one per layout sent; a tap's wire revision is translated back to the game
+revision it was drawn from, and the game contract's rule then applies unchanged. This amends
+"the host compares revisions, never JSON" in `ARCHITECTURE.md` §3.
+(b) **Pause and resume.** Any player can pause; only the connected leader resumes; quitting
+to the picker needs a second press to confirm (PLAT-023 says only who may pause and quit).
+Taps arriving while paused are dropped; on resume the input buffers discard their edges and
+play continues at once. No acknowledgement from the phone is waited for; a wire
+acknowledgement may tighten this later but must have a step-count timeout.
+(c) **Reconnect.** A returning phone's buffer is reset and it plays at once.
+(d) **Host is the authority on inputs.** Buttons and axes the phone's current layout does not
+draw are cleared before the game sees them. A disconnected player sends no frames, as the
+game contract says; the dev harness and the runner must agree on both.
+(e) **Short of players.** The match pauses. If the game's minimum is not restored within the
+two-minute seat hold, the match ends with results; the leader quitting while short also ends
+it with results.
+(f) **Teams.** In a team match a mid-match joiner is not seated in the game until the room
+has given them a team; the game's player details are rebuilt from the room on every update.
+(g) Recordings of a console match use the dev harness's event format and never contain seat
+tokens.
