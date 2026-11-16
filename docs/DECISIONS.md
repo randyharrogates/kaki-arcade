@@ -354,3 +354,9 @@ re-pairing always work; a room is deleted 10 minutes after its last socket close
 480 million), shown as two groups of three; the QR code is the main way in, and the join rate
 limit in C-03 is what makes guessing impractical. (4) Seat accept and refuse stay on the data
 channel; signalling gets no new messages.
+
+**D-064 · 2026-11-16 · Claude (under D-057)** — Refines D-060 (3): after a host reload the
+leader is kept, but if their phone has not come back 20 seconds after the first other phone
+returns, leadership passes on, so a lobby never waits two minutes for an absent leader. The
+nickname filter matches strong words anywhere in a name and across spaces and hyphens; short
+or ambiguous words only as whole words; protected names are checked per word.
