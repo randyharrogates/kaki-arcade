@@ -315,3 +315,12 @@ including through the relay (a 30-a-second tick caused false releases in review)
 **D-059 · 2026-11-16 · Claude (under D-057)** — Dependency: Pillow 11.1.0 (with libwebp 1.5.0),
 pinned in `tools/assets/requirements.txt`, for packing and encoding atlases in `pnpm assets`.
 A build tool only; nothing ships to the browser.
+
+**D-060 · 2026-11-16 · Claude (under D-057)** — Room state (C-06), where the PRD is silent:
+(1) the nickname filter is our own curated list in the repository (English, Singlish and
+Hokkien, Malay, romanised Tamil, pinyin and Chinese), not a third-party list, matched after
+normalising look-alike and invisible characters; common Singapore names (Kok, Fook, Sim, Wang,
+Dick Lee) must never be blocked, and `dick` is a known, accepted gap. (2) Leadership passes at
+once when the leader leaves, and after 10 seconds when the leader's phone drops; a returning
+ex-leader does not take it back. (3) A host reload keeps the same leader. (4) Names that look
+the same are treated as the same name.
