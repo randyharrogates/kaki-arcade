@@ -60,3 +60,10 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
   scaffolding for T-05, which must keep "no flight outlives the round". Cross label wording is
   T-08's. Plates in the versus sabo: OQ-029 (T-14). The solo convex-corner movement test was
   cut from 200 random maps to 32 to stop timeouts under load.
+- **For T-04 (from the T-03 review):** recipes need: a plate that holds several contents or a
+  combining rule (chicken rice, satay with cucumber, rojak, kaya toast with a drink); a pot
+  holding two ingredients in sequence and a bowl (laksa); a mix action (rojak) and a spread
+  action (kaya toast); a cup for kopi and teh; a clean-plate supply and dish rack, and a source
+  of dirty plates; rice portions; station filters by ingredient; a serving counter. Items carry
+  their process history (D-080 f). **For T-06:** forbid a crate tile with a station type;
+  require an extinguisher when fires are on; levels may state fire neighbours.

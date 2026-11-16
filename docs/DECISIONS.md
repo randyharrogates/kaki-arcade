@@ -493,3 +493,23 @@ it with results.
 has given them a team; the game's player details are rebuilt from the room on every update.
 (g) Recordings of a console match use the dev harness's event format and never contain seat
 tokens.
+
+**D-080 · 2026-11-16 · Claude (under D-057)** — Tabao Rush station rules the spec left open
+(review of T-03), all timings provisional until seen on a screen: (a) stations hold one item,
+no swapping; chopping, pulling a drink and washing take 3 s of circle with empty hands, and
+progress is kept when interrupted; cooking takes 5 s; the grill waits half-way for one turn;
+stirring doubles the wok's speed; a tap of circle counts as well as a hold. (b) Finished food
+warns for 2 s from 3 s after it is done, then is burnt; burnt food can only be binned; food
+left burnt for 5 more seconds sets its station on fire (TR-010 read as burnt plus 5 s). (c)
+While any fire burns, one more station catches fire every 6 seconds, on one clock for the
+whole kitchen, not one per fire: the lowest-numbered unlit neighbour of the oldest fire.
+Neighbours are typed stations on the same counter run with at most one plain counter between;
+crates never burn; T-06 lets a level state its fire neighbours. Fire destroys food and keeps
+plates. (d) A fire is put out by 1 s of circle with the extinguisher, restarting if let go.
+There is one extinguisher, kept on its rack; it cannot be thrown, binned or loaded, and its
+rack is not a place a throw can land. A level with fires must have an extinguisher. (e) The
+bin takes food only; plates cannot be binned and a plated dish leaves its plate. (f) An item
+records the steps done to it in order (chopped, grilled, and so on), so recipes can check
+order (TR-003). (g) Everything recipes need beyond this — plates that hold several things,
+pots with two ingredients, mixing, spreading, cups, a clean-plate supply, a serving counter —
+belongs to T-04.
