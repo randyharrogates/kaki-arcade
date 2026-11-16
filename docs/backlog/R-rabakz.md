@@ -32,3 +32,15 @@ Content work. It needs no code from other tracks and starts in Wave 0.
 | R-12 | Singapore pack: at least 200 questions written by Claude, each with a source note | RZ-021, RZ-024 | R-10 | 1 | todo |
 | R-13 | Picture questions: at least 60, with real photographs under a free licence (licence and credit recorded per image); a Codex-generated image, checked for accuracy and logged in `DECISIONS.md`, only where no suitable photograph can be found (D-042) | RZ-002, RZ-024, RZ-025 | R-10, G-02 | 2 | todo |
 | R-14 | Randy spot-checks the Singapore pack and a sample of the rest | RZ-021, RZ-023 | R-11, R-12 | 3 | todo |
+
+## Carried from reviews
+
+- **R-01** shuffles the four options of a multiple-choice or picture question with the match
+  seed, and its test checks that the correct position is uniform over many seeds on the real
+  bank (RZ-026). True-or-false stays in the order True, False.
+- **R-02** steps a long option down from 34 px to 21 px on the phone button and wraps it to at
+  most 3 lines; only `PublicQuestion` data is sent to a phone.
+- **R-03** steps a long option down from 55 px to 34 px on the TV, renders question text as text
+  nodes only, and screenshots a longest-allowed prompt with four longest-allowed options.
+- **R-08 or the app build** runs `pnpm --filter @kaki/content-rabakz build` before dev and
+  production builds, serves `content/rabakz/generated/`, and fails loudly if it is missing.

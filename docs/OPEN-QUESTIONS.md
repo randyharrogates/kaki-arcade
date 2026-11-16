@@ -43,7 +43,7 @@ phone screens. Needed by: the controller kit (K track) and every game's controll
 0.25 s of the first correct answer. (2) An option answered wrongly is marked wrong on the TV for
 everyone. (3) In team mode the question's points go to the winner's team. (4) Solo: only the
 first answer scores. (5) The streak counts questions won in a row. (6) True-or-false questions
-stay in: after one wrong answer the next player gets an easy point. Needed by: R-01.
+stay in: after one wrong answer the next player gets an easy point. (7) Question files are static, so a player who opens one in a browser can read the answers; this is accepted for a party game played in one room. Needed by: R-01.
 
 ## Assumptions Claude is working to (say if wrong)
 
