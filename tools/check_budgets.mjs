@@ -45,15 +45,30 @@ export function deployBundleSize(output) {
     }
   }
   walk('');
+  // Read server-only data here; none of it enters the browser dependency graph.
+  const source = readFileSync(new URL('../apps/signal/src/core/codes.ts', import.meta.url), 'utf8');
+  const words = [...(/RUDE_WORDS = \[([\s\S]*?)\]/.exec(source)?.[1] ?? '').matchAll(/'([^']+)'/g)].map(match => match[1] ?? '');
   let raw = 0; let gzip = 0;
   for (const file of files) {
     if (/\.map$|\.tsbuildinfo$/.test(file)) throw new Error(`Non-deployable build output: ${file}`);
     const bytes = readFileSync(resolve(output, file));
-    if (/Cloud Noodle|Pebble Puff|Mango Moon|Waffle Fern|Velvet Kite|Bumble Bean|Puddle Pip|Comet Crumb|demo-seat-/.test(bytes.toString())) throw new Error(`Demo fixture shipped: ${file}`);
+    if (file.endsWith('.css') && /(?:^|[;{])\s*(?!--)[-a-z]*(?:behaviour|colour|centre)[-a-z]*\s*:/.test(bytes.toString())) throw new Error(`Unknown CSS property: ${file}`);
+    if (/Cloud Noodle|Pebble Puff|Mango Moon|Waffle Fern|Velvet Kite|Bumble Bean|Puddle Pip|Comet Crumb|demo-seat-|Ah Boy|H7KQ9MXR/.test(bytes.toString())) throw new Error(`Demo fixture shipped: ${file}`);
+    const text = bytes.toString();
+    if (text.includes('RUDE_WORDS') || words.some(word => ['"', "'", '`'].some(quote => text.includes(quote + word + quote)))) throw new Error(`Server code filter shipped: ${file}`);
     raw += bytes.length; gzip += gzipSync(bytes).length;
   }
   return { raw, gzip, files };
 }
+/** PERF-020: decimal KB, as transferred. @param {number} gzip */
+export function withinControllerBudget(gzip) { return gzip <= 300_000; }
+
+/** Shared entry plus every copied public file: count the full deploy once.
+ * @param {string} output
+ * @param {Parameters<typeof hostBundleSize>[1]} manifest
+ */
+export function controllerBundleSize(output, manifest) { hostBundleSize(output, manifest); return deployBundleSize(output); }
+
 /** PERF-022: decimal MB, as transferred. @param {number} gzip */
 export function withinHostBudget(gzip) { return gzip <= 1_500_000; }
 
@@ -71,6 +86,9 @@ export function checkHostBundle() {
   const manifest = /** @type {Record<string, { file: string, css?: string[], assets?: string[], imports?: string[], dynamicImports?: string[] }>} */ (parsed);
   const size = hostBundleSize(output, manifest);
   console.log(`PERF-022 host: ${String(size.raw)} bytes raw, ${String(size.gzip)} bytes gzip / 1500000`);
+  const controller = controllerBundleSize(output, manifest);
+  console.log(`PERF-020 controller (shared entry): ${String(controller.raw)} bytes raw, ${String(controller.gzip)} bytes gzip / 300000`);
+  if (!withinControllerBudget(controller.gzip)) throw new Error('PERF-020 controller transfer budget exceeded');
   const deployed = deployBundleSize(output);
   console.log(`PERF-022 deploy: ${String(deployed.raw)} bytes raw, ${String(deployed.gzip)} bytes gzip / 1500000`);
   if (!withinHostBudget(deployed.gzip)) throw new Error('PERF-022 host transfer budget exceeded');

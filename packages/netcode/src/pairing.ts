@@ -154,7 +154,8 @@ function openPairing(
       const decoded = role === 'host' ? decodeToHostSignal(event.data) : decodeToPhoneSignal(event.data);
       if (!decoded.ok) { stop(); options.onError(decoded.error.code); return; }
       const message = decoded.value;
-      if (message.t === 'created') { failures = 0; roomOpened = true; }
+      // Both roles have acknowledged admission; subsequent socket loss is not a failed join.
+      if (message.t === 'created' || message.t === 'joined') { failures = 0; roomOpened = true; }
       if (message.t === 'error' && !['host-absent', 'peer-not-found', 'rate-limited', 'server-error'].includes(message.code)) {
         // These errors are final even when the edge never completes a close handshake.
         stop(); if (message.code === 'room-not-found' || message.code === 'room-expired') options.onPairingState?.('gone');

@@ -47,3 +47,11 @@ it('accepts Retry-After seconds and dates, with a safe fallback for invalid head
   expect(retryAfterDelay(null, 0)).toBe(60000);
   expect(retryAfterDelay('0', 0)).toBe(1000);
 });
+
+it.each(['nonsense', '2147484', '99999999999999999999999999'])('phone Retry-After safely bounds %s', value => {
+  expect(retryAfterDelay(value, 100000, 30000)).toBe(30000);
+});
+
+it.each([Infinity, 30000])('PLAT-009 past and zero Retry-After use the minimum with cap %s', cap => {
+  for (const value of ['0', '-1', 'Thu, 01 Jan 1970 00:00:00 GMT']) expect(retryAfterDelay(value, 100000, cap)).toBe(1000);
+});

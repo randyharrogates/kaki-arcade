@@ -25,14 +25,16 @@ export interface PhoneReconnectOptions {
   clock: ReconnectClock;
   /** Required for a fresh join; omitted on page load when the store supplies it. */
   initial?: { code: string; nickname: string | null };
+  /** Shell admission gate delay; negotiation timeout starts after that gate. */
+  attemptDelayMs?(): number;
   dial(options: PhoneReconnectDial): { stop(): void };
   state(state: PhoneReconnectState): void;
   message?(message: HostMessage): void;
   /** Shell maps pagehide to sleep, pageshow/online to wake; no DOM is used here. */
   lifecycle?: { subscribe(receive: (event: 'sleep' | 'wake') => void): () => void };
 }
-export const PHONE_RETRY_FIRST_MS = 250;
-export const PHONE_RETRY_MAX_MS = 8000;
+export const PHONE_RETRY_FIRST_MS = 1000;
+export const PHONE_RETRY_MAX_MS = 30000;
 export const PHONE_ATTEMPT_MS = 15000;
 export function createPhoneReconnect(o: PhoneReconnectOptions) {
   let clockFloor = 0;
@@ -60,11 +62,12 @@ export function createPhoneReconnect(o: PhoneReconnectOptions) {
   let awaiting: 'resume' | 'hello' | null = null;
   let hostPresent: boolean | null = null;
   let inSeat = false;
+  let channelOpen = false;
   function state(next: PhoneReconnectState): void { current = next; o.state(next); }
   function cancel(): void { o.clock.cancel(retry); o.clock.cancel(deadline); }
   function disconnect(): void {
     generation++;
-    const old = link; link = undefined; peer = null; inSeat = false;
+    const old = link; link = undefined; peer = null; inSeat = false; channelOpen = false;
     old?.stop();
   }
   function scheduleHold(): void {
@@ -104,8 +107,9 @@ export function createPhoneReconnect(o: PhoneReconnectOptions) {
   }
   function retryLater(): void {
     if (stopped || retry !== undefined) return;
+    const heldSeat = inSeat;
     rememberDrop(); disconnect(); o.clock.cancel(deadline);
-    state('connecting');
+    state(heldSeat ? 'host-disconnected' : 'connecting');
     const remaining = RECONNECT_WINDOW_MS - (now() - (droppedAt ?? now()));
     if (remaining < 0) { endHold(); return; }
     const delay = Math.min(PHONE_RETRY_MAX_MS, PHONE_RETRY_FIRST_MS * 2 ** failures++,
@@ -142,7 +146,7 @@ export function createPhoneReconnect(o: PhoneReconnectOptions) {
     cancel(); retry = undefined; disconnect(); state(droppedAt !== null && now() - droppedAt > RECONNECT_WINDOW_MS ? 'hold-over' : 'connecting');
     scheduleHold();
     const gen = generation;
-    deadline = o.clock.schedule(retryLater, PHONE_ATTEMPT_MS);
+    deadline = o.clock.schedule(retryLater, PHONE_ATTEMPT_MS + Math.max(0, o.attemptDelayMs?.() ?? 0));
     try {
       const created = o.dial({ code, roomToken,
         onJoined(message) {
@@ -157,16 +161,16 @@ export function createPhoneReconnect(o: PhoneReconnectOptions) {
         onControl(message) { if (generation === gen && !stopped) receive(message); },
         onState(next) {
           if (generation !== gen || stopped) return;
-          if (next === 'control-open') request();
+          if (next === 'control-open') { channelOpen = true; request(); }
           else if (['closed', 'failed', 'disconnected'].includes(next)) {
-            inSeat = false;
-            if (hostPresent === false) state('host-disconnected');
-            else retryLater();
+            channelOpen = false;
+            retryLater();
           }
         },
         onPeer(next) { if (generation === gen && !stopped) peer = next; },
         onError(reason) {
           if (generation !== gen || stopped) return;
+          if (channelOpen && ['room-not-found', 'room-expired', 'not-allowed'].includes(reason)) return;
           if (['room-not-found', 'room-expired', 'room-closed'].includes(reason))
             terminal('room-gone', true);
           else if (reason === 'room-full') terminal('room-full', false);
@@ -181,10 +185,11 @@ export function createPhoneReconnect(o: PhoneReconnectOptions) {
           if (generation !== gen || stopped) return;
           const wasAbsent = hostPresent === false;
           hostPresent = present;
+          // Signalling presence is advisory while the data channel still owns the seat.
+          if (inSeat) return;
           if (!present) {
             rememberDrop(); o.clock.cancel(deadline); state('host-disconnected');
-          } else if (inSeat) state('back-in-seat');
-          else if (wasAbsent) {
+          } else if (wasAbsent) {
             // Retain the original drop time while netcode supplies a replacement offer.
             droppedAt ??= now();
             if (saved) { saved = { ...saved, droppedAt }; o.store.write(saved); }

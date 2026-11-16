@@ -15,6 +15,14 @@ player's side: what is on the TV and what is on the phone.
   drag the stick along a path, multi-touch), so the kit itself is under test.
 - **Deterministic games:** UAT starts games with a fixed seed so screenshots are comparable
   between runs.
+- **Local stack by hand:** `pnpm dev` starts the web app and the local pairing server and
+  prints the Host, Phone and Pairing addresses. For phones on the same network run
+  `KAKI_HOST=<laptop LAN IP> pnpm dev`; `KAKI_HOST` must be an IP literal (hostnames are
+  refused), and with `0.0.0.0` the advertised address may be a VPN or Docker interface, so
+  pass the LAN IP. Ports: `KAKI_PORT_WEB`, `KAKI_PORT_SIGNAL`. To test a pairing-server
+  outage run `KAKI_DEV_KEEP=1 pnpm dev` and stop the printed Pairing process group with
+  `/bin/kill -TERM -- -<PID>`; the web app stays up. Plain HTTP on a LAN does not prove
+  secure-context features such as wake lock.
 
 ## 2. Evidence
 

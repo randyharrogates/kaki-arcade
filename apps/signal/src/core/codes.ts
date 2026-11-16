@@ -1,11 +1,11 @@
 // Vowels and ambiguous characters are excluded; reject rude words and common leetspeak.
-export const CODE_ALPHABET = '23456789BCDFGHJKMNPQRSTVWXYZ';
-export const CODE_LENGTH = 8;
+import { CODE_ALPHABET, CODE_LENGTH } from '@kaki/protocol';
+export { CODE_ALPHABET, CODE_LENGTH } from '@kaki/protocol';
 export type RandomBytes = (length: number) => Uint8Array;
 export function normalizeCode(code: string): string {
     return code.toUpperCase().replace(/[ -]/g, '');
 }
-const RUDE_WORDS = [
+export const RUDE_WORDS = [
     'FUCK',
     'SHIT',
     'CUNT',

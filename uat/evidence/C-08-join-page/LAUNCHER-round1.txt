@@ -1,0 +1,2 @@
+PASS: mocked pnpm children; KAKI_DEV_KEEP=1 preserved Web after Pairing group termination; launcher SIGINT removed both groups.
+No real server was started.

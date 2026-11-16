@@ -1,0 +1,37 @@
+VITEST_MAX_WORKERS=1 pnpm verify
+Exit: 0
+design lint passed: 252 file(s) scanned
+ Test Files  127 passed (127)
+      Tests  2924 passed | 1 skipped (2925)
+   Duration  468.33s (transform 1.13s, setup 0ms, import 4.41s, tests 455.04s, environment 5ms)
+
+Verify tail:
+   Start at  05:57:14
+   Duration  468.33s (transform 1.13s, setup 0ms, import 4.41s, tests 455.04s, environment 5ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+$ vite build
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 81 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/.vite/manifest.json          0.18 kB │ gzip:  0.14 kB
+dist/index.html                   0.48 kB │ gzip:  0.32 kB
+dist/assets/index-DgdBaYsa.css   14.81 kB │ gzip:  3.80 kB
+dist/assets/index-BReMWFz5.js   112.63 kB │ gzip: 41.04 kB
+
+✓ built in 90ms
+PERF-022 host: 127926 bytes raw, 44799 bytes gzip / 1500000
+PERF-020 controller (shared entry): 127926 bytes raw, 44799 bytes gzip / 300000
+PERF-022 deploy: 127926 bytes raw, 44799 bytes gzip / 1500000
+no asset sets in assets/src yet
+$ python3 tools/trace_check.py
+152 requirements; 76 in progress, 1 later, 75 not started
+trace check passed
+
+node --check tools/dev.mjs: passed
+git diff --check: passed
+Launcher mock lifecycle check: LAUNCHER-round1.txt
+
+The initial two-worker run hit the unchanged 120 s recipe conformance timeout (123.895 s) and an old phone test that treated signalling absence as channel loss. The phone test now asserts healthy signalling absence/presence stays in lobby, then closes the channel to test disconnect/recovery. The one-worker rerun passed all checks with no changed limits.

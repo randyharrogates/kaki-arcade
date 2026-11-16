@@ -100,7 +100,7 @@ Not all exist yet; they are created in M2 and M3. Keep this list true.
 
 | Command | Does |
 |---|---|
-| `pnpm dev` | Host, controller and local pairing server |
+| `pnpm dev` | Host, controller and local pairing server (works today; `KAKI_HOST=<LAN IP>` for phones) |
 | `pnpm verify` | Workspace check, typecheck, ESLint, design lint, unit tests, build, trace check (works today; size budgets and performance join with F-08) |
 | `pnpm uat -- <slice>` | Playwright UAT for a slice; screenshots to `uat/evidence/<slice>/` |
 | `pnpm perf` | Performance harness with scripted controllers |

@@ -1,0 +1,46 @@
+.phone-page { height: 100%; overflow: auto; overscroll-behavior: none; padding: max(var(--ka-space-21), env(safe-area-inset-top)) max(var(--ka-space-21), env(safe-area-inset-right)) max(var(--ka-space-21), env(safe-area-inset-bottom)) max(var(--ka-space-21), env(safe-area-inset-left)); font: var(--ka-phone-type-21)/var(--ka-line-body) var(--ka-font-body); scroll-padding: var(--ka-space-21); }
+.phone-page h1, .phone-page h2 { font-size: var(--ka-phone-type-55); overflow-wrap: anywhere; }
+.phone-page p { overflow-wrap: anywhere; }
+.phone-join, .phone-lobby { min-height: 100%; display: grid; grid-template-columns: var(--ka-golden-columns-reversed); gap: var(--ka-space-34); align-items: center; }
+.phone-intro { display: grid; gap: var(--ka-space-8); }
+.phone-intro p, .phone-help { color: var(--ka-panel-secondary); }
+.phone-fields { display: grid; gap: var(--ka-space-13); min-width: 0; }
+.phone-fields label { font-size: var(--ka-phone-type-13); font-weight: var(--ka-weight-bold); }
+.phone-page input { min-width: 0; width: 100%; min-height: var(--ka-space-55); padding: var(--ka-space-8) var(--ka-space-13); font: inherit; scroll-margin: var(--ka-space-21); }
+.phone-page input:focus-visible { outline: var(--ka-space-5) solid var(--ka-chip); outline-offset: var(--ka-space-5); }
+.phone-page button { min-height: var(--ka-space-55); padding: var(--ka-space-13) var(--ka-space-21); font: inherit; touch-action: manipulation; }
+.phone-page input.phone-code { min-height: var(--ka-button-in-play-height-floor); font-family: var(--ka-font-mono); font-size: var(--ka-phone-type-34); }
+.phone-name-row { display: flex; gap: var(--ka-space-13); }
+.phone-help { font-size: var(--ka-phone-type-13); }
+.phone-feedback { font-size: var(--ka-phone-type-21); }
+.phone-id { display: flex; gap: var(--ka-space-13); align-items: center; padding-bottom: var(--ka-space-13); flex-wrap: nowrap; }
+.phone-id strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.phone-connection { margin-left: auto; flex: none; display: inline-flex; align-items: center; gap: var(--ka-space-8); font-size: var(--ka-phone-type-21); }
+.phone-connection[data-connected="false"] { font-weight: var(--ka-weight-bold); text-decoration: underline; }
+.phone-join { padding: var(--ka-space-21); }
+.phone-lobby[data-seated="false"] { grid-template-columns: minmax(0, 1fr); }
+.phone-page > .overlap { min-height: 100%; }
+.phone-id + .overlap { min-height: calc(100% - var(--ka-space-89)); }
+.phone-badge { display: grid; place-items: center; flex: none; width: var(--ka-space-55); height: var(--ka-space-55); border-radius: var(--ka-radius-pill); color: var(--ka-seat-numeral); font: var(--ka-weight-bold) var(--ka-phone-type-34)/var(--ka-line-display) var(--ka-font-mono); }
+.phone-badge-large { width: var(--ka-button-face-floor); height: var(--ka-button-face-floor); font-size: var(--ka-phone-type-55); }
+.phone-seat { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--ka-space-8); padding: var(--ka-space-21); align-self: stretch; }
+.phone-message, .phone-status { display: grid; gap: var(--ka-space-13); min-width: 0; }
+.phone-actions { display: flex; gap: var(--ka-space-13); flex-wrap: wrap; }
+@media (orientation: portrait) { .phone-join, .phone-lobby { grid-template-columns: minmax(0, 1fr); gap: var(--ka-space-21); min-height: auto; } .phone-intro h1, .phone-page h2 { font-size: var(--ka-phone-type-34); } .phone-seat { padding: var(--ka-space-13); } }
+@media (max-height: 390px) { .phone-join { align-items: start; } }
+
+.phone-seat-content { display: flex; flex-direction: column; align-items: center; gap: var(--ka-space-8); }
+.phone-seat[data-connected="true"] .phone-badge-large { animation: phone-confirm var(--ka-duration-base) var(--ka-ease-out); }
+@keyframes phone-confirm { 0%, 100% { transform: scale(1); } 50% { transform: scale(var(--ka-pulse-scale)); } }
+
+.phone-lobby { gap: var(--ka-space-21); }
+
+.phone-live { position: absolute; width: 1px; height: 1px; padding: 0; border: 0; white-space: nowrap; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); }
+@media (orientation: landscape) and (max-height: 390px) {
+  .phone-fields { gap: var(--ka-space-5); }
+  .phone-page h1, .phone-page h2 { font-size: var(--ka-phone-type-34); }
+  .phone-join { min-height: auto; padding: var(--ka-space-13); gap: var(--ka-space-21); }
+  .phone-message, .phone-status { gap: var(--ka-space-5); }
+  .phone-seat { padding: var(--ka-space-8); }
+  .phone-badge-large { width: var(--ka-space-55); height: var(--ka-space-55); font-size: var(--ka-phone-type-34); }
+}

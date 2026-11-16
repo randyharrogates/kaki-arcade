@@ -38,8 +38,8 @@ export function lobbyView(input: LobbyInput, clock: { now(): number } = { now: (
         held, holdSeconds: held ? Math.max(0, Math.ceil((RECONNECT_WINDOW_MS - (clock.now() - player.disconnectedAt)) / 1000)) : null,
         number: token.seat, colour: token.colour, name: player?.name ?? `Seat ${String(token.seat)}`,
         occupied: player !== undefined, leader: player !== undefined && input.room.leader === token.seat,
-        connection: player && !active ? '' : !player ? (code ? 'Scan to join' : '') : held ? 'Seat held' : quality === 'relayed' ? 'Relayed' : quality === 'weak' ? 'Weak' : quality === 'good' ? 'Good' : 'Joining',
-        icon: player && !active ? '' : !player ? (code ? 'join' : '') : held ? 'held' : quality === 'relayed' ? 'relayed' : quality === 'weak' ? 'weak' : quality === 'good' ? 'good' : 'joining',
+        connection: player && !active ? '' : !player ? (code ? 'Scan to join' : '') : held ? 'Seat held' : quality === 'relayed' ? 'Relayed' : quality === 'weak' ? 'Weak' : quality === 'good' ? 'Good' : 'Connected',
+        icon: player && !active ? '' : !player ? (code ? 'join' : '') : held ? 'held' : quality === 'relayed' ? 'relayed' : quality === 'weak' ? 'weak' : quality === 'good' ? 'good' : '',
       };
     }),
   };

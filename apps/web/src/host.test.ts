@@ -73,7 +73,7 @@ describe('host wiring (PLAT-001, PLAT-004, PLAT-009, PLAT-010)', () => {
     const peer = f.peer(); f.callbacks.peer('returned', peer);
     f.callbacks.control('returned', { v, t: 'resume', seatToken });
     expect(peer.bindIdentity).toHaveBeenCalledWith(seatToken);
-    expect(f.views.at(-1)?.seats[0]?.connection).toBe('Joining');
+    expect(f.views.at(-1)?.seats[0]?.connection).toBe('Connected');
     restored.stop();
   });
   it('buffers peers and controls received during authenticated reopen', async () => {

@@ -5,7 +5,7 @@ import type { HostCredentials } from '@kaki/platform';
 import type { DialCallbacks, HostDependencies } from './host';
 
 // The browser's wider event/SDP interfaces are narrowed at this one adapter boundary.
-function peerConnection(configuration: RTCConfiguration): PeerConnection {
+export function peerConnection(configuration: RTCConfiguration): PeerConnection {
   const pc = new RTCPeerConnection(configuration);
   return {
     get connectionState() { return pc.connectionState; },
@@ -30,12 +30,11 @@ function peerConnection(configuration: RTCConfiguration): PeerConnection {
     close: () => { pc.close(); },
   };
 }
-export function retryAfterDelay(value: string | null, now: number): number {
-  if (!value) return 60000;
-  const seconds = Number(value);
-  if (Number.isFinite(seconds)) return Math.max(1000, seconds * 1000);
-  const date = Date.parse(value);
-  return Number.isFinite(date) ? Math.max(1000, date - now) : 60000;
+export function retryAfterDelay(value: string | null, now: number, cap = Infinity): number {
+  const seconds = value?.trim() ? Number(value) : NaN;
+  const delay = Number.isFinite(seconds) ? seconds * 1000 : Date.parse(value ?? '') - now;
+  const safe = Number.isFinite(delay) ? Math.max(1000, delay) : 60000;
+  return Math.min(cap, safe);
 }
 export function browserDependencies(baseUrl: string, transportFactory: typeof createHostTransport = createHostTransport): HostDependencies {
   const clock = {

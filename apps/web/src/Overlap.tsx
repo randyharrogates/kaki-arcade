@@ -1,10 +1,11 @@
 import type { ComponentChildren } from 'preact';
 import { useLayoutEffect, useRef, useState } from 'preact/hooks';
+import { enter, exit } from '@kaki/ui';
 import { lobbyMotion } from './lobby-motion';
 
 /** Finish each wipe before presenting a newer identity; interruptions coalesce to the latest. */
-export function Overlap({ identity, children, row, index = 0 }: {
-  identity: string; children: ComponentChildren; row?: boolean; index?: number;
+export function Overlap({ identity, children, row, index = 0, fade = false }: {
+  identity: string; children: ComponentChildren; row?: boolean; index?: number; fade?: boolean;
 }) {
   const [frames, setFrames] = useState({ identity, current: children, old: null as ComponentChildren });
   const latest = useRef(children);
@@ -20,7 +21,7 @@ export function Overlap({ identity, children, row, index = 0 }: {
     latest.current = frames.current;
     if (!element?.animate) { animating.current = false; setFrames(f => f.old ? { ...f, old: null } : f); return; }
     animating.current = true;
-    const { incoming: motion, outgoing: oldMotion } = lobbyMotion(row ?? false, index);
+    const { incoming: motion, outgoing: oldMotion } = fade ? { incoming: enter({ kind: 'fade', tempo: 'slow' }), outgoing: exit({ kind: 'fade', tempo: 'slow' }) } : lobbyMotion(row ?? false, index);
     const slow = import.meta.env.DEV ? Math.max(1, Number(new URLSearchParams(location.search).get('slow')) || 1) : 1;
     motion.options.duration = motion.options.duration * slow;
     oldMotion.options.duration = oldMotion.options.duration * slow;
@@ -33,7 +34,7 @@ export function Overlap({ identity, children, row, index = 0 }: {
     // Each identity owns its timing, even if a newer update arrives during its wipe.
   }, [frames.identity]);
   return <div class="overlap">
-    {frames.old && <div class="outgoing" ref={outgoing} aria-hidden="true">{frames.old}</div>}
+    {frames.old && <div class="outgoing" ref={outgoing} aria-hidden="true" inert>{frames.old}</div>}
     <div class="incoming" ref={incoming}>{frames.identity === identity ? children : latest.current}</div>
   </div>;
 }

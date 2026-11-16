@@ -148,7 +148,7 @@ export function createPhoneTransport(options: PhoneTransportOptions) {
     }
   }
   pairing = createPhonePairing({ ...options, onMessage: receivePhone,
-    onError(code) { options.onSignallingError?.(code); if (code === 'socket-closed' && peer?.connected) return; stopped = true; peer?.close(); options.onError(code); } });
+    onError(code) { options.onSignallingError?.(code); if (['socket-closed', 'room-not-found', 'room-expired', 'not-allowed'].includes(code) && peer?.connected) return; stopped = true; peer?.close(); options.onError(code); } });
   for (const item of pending) receivePhone(item);
   return {
     get peer(): Peer | null { return peer; },

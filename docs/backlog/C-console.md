@@ -18,7 +18,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | C-04 | Netcode: WebRTC data channels, sequenced input state, repeated release, link-quality measurement | NET-001, NET-002, NET-005, PERF-010 | F-02 | 1 | merged |
 | C-06 | Room state (pure): seats, colours, nicknames with the blocked-words filter, leader and hand-over, capacity of 8, joining from the lobby | PLAT-003, PLAT-004, PLAT-005, PLAT-006, PLAT-008 | F-02 | 1 | merged |
 | C-07 | Host lobby screen: room code and QR, seated players, connection quality | PLAT-001, PLAT-004, PLAT-010, PERF-022 | C-04, C-06, F-06 | 2 | merged |
-| C-08 | Join page on the phone: scan or type the code, nickname, seat and colour, room-full message | PLAT-002, PLAT-003, PLAT-004, PERF-021 | C-04, C-06, F-06 | 2 | doing (Codex) |
+| C-08 | Join page on the phone: scan or type the code, nickname, seat and colour, room-full message | PLAT-002, PLAT-003, PLAT-004, PERF-021 | C-04, C-06, F-06 | 2 | done |
 
 ## Story C2 — We pick a game together and can always get back
 
@@ -124,3 +124,15 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   Worker-made 404 has no gone header; tidy the netcode test that passes `gone` with 426.
   **Edge check (OQ-030):** the WebSocket pass-through in the CORS wrapper is proven only on
   `wrangler dev`.
+
+- **From C-08 (phone join page).** The controller shares the host's entry for now (45 KB gzip);
+  give it its own entry when a game's controller code would push it towards 300 KB.
+  **For C-09:** the leader's phone says the same waiting line as everyone until the picker
+  gives the leader something to do; "Watch the TV." is for a player a running game accepted.
+  **For C-10 and C-15:** the host side of D-095 f (a room reported gone keeps playing while
+  links are open, stops offering the code, offers a new room after the game); a grace period
+  before an ICE "disconnected" counts as loss; the mid-game controller layout. **For C-07
+  polish:** an empty seat's "Scan to join" wraps to two lines at 1080p and crowds the leader
+  mark. **For F-07:** a DOM render test for the phone route and the name component
+  (`phone-message.test.ts` matches source text today). Not done anywhere: real phones, a QR
+  scan, Safari, Firefox, the on-screen keyboard, a screen reader on the announcement region.

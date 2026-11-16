@@ -60,3 +60,5 @@ button:focus-visible, a:focus-visible { outline: var(--ka-space-5) solid var(--k
 .room-status p, .room-status button, .player-count, .join-copy p { font-size: var(--ka-type-34); }
 
 .seats[data-wrap="true"] .connection { min-height: calc(var(--ka-type-34) * 2); }
+
+.seat-content .connection { flex: none; height: calc(var(--ka-type-34) * var(--ka-line-body)); margin-top: var(--ka-space-5); }

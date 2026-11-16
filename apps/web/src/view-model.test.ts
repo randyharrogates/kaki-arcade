@@ -34,7 +34,7 @@ describe('host lobby projection (PLAT-001, PLAT-004, PLAT-010)', () => {
     expect(view.seats[0]?.leader).toBe(true);
     expect(view.seats[0]?.name).toBe('Cloud Noodle');
     const input = demoInput(1);
-    expect(lobbyView({ ...input, links: new Map(), origin }).seats[0]?.connection).toBe('Joining');
+    expect(lobbyView({ ...input, links: new Map(), origin }).seats[0]?.connection).toBe('Connected');
   });
   it('encodes exactly the public join link and groups the code in fours', () => {
     const view = lobbyView({ ...demoInput(1), origin });

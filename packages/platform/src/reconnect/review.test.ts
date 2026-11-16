@@ -165,7 +165,7 @@ describe('review: PLAT-007 boundaries', () => {
     const r = await rig(); const p = r.phones[0]; if (!p) throw new Error('x');
     r.server.offlinePhones = true; p.wire?.peer?.close(); await settle(r.clock);
     r.clock.advance(60000); r.server.offlinePhones = false;
-    r.clock.advance(9000); await settle(r.clock); r.clock.advance(1000); await settle(r.clock);
+    r.clock.advance(30000); await settle(r.clock); r.clock.advance(1000); await settle(r.clock);
     expect(p.driver.state).toBe('back-in-seat');
     r.stop();
   });

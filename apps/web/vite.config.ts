@@ -11,6 +11,7 @@ export default defineConfig(({ mode, command }) => {
   }
   return {
     plugins: [preact()],
+    clearScreen: false,
     server: { host: env.KAKI_HOST ?? process.env.KAKI_HOST ?? ((env.KAKI_JOIN_ORIGIN ?? process.env.KAKI_JOIN_ORIGIN) ? '0.0.0.0' : 'localhost'), port: Number(env.KAKI_PORT_WEB ?? process.env.KAKI_PORT_WEB ?? 5150), strictPort: true },
     define: {
       'import.meta.env.KAKI_SIGNAL_URL': JSON.stringify(signalUrl),

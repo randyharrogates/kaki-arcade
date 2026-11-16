@@ -2,6 +2,7 @@ import { installFavicon } from './favicon';
 import { render } from 'preact';
 import { useLayoutEffect } from 'preact/hooks';
 import { screenScale } from './viewport';
+import { PhonePage } from './phone-route';
 import { HostLobby } from './host-route';
 import { Landing } from './landing-route';
 import '@kaki/ui/tokens.css';
@@ -24,6 +25,7 @@ function App() {
     return () => { window.removeEventListener('resize', resize); };
   }, []);
   const path = location.pathname.replace(/\/$/, '') || '/';
+  if (path === '/play') return <PhonePage/>;
   if (path === '/host') return <HostLobby/>;
   if (path === '/') return <Landing/>;
   return <main class="screen room-status"><h1>This page has not been built yet.</h1><a href="/">Back to Kaki Arcade</a></main>;

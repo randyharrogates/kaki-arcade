@@ -576,3 +576,17 @@ describe('NET-005 absolute tick and wire encoding', () => {
     expect(times).toHaveLength(21); sender.stop();
   });
 });
+
+
+it.each(['room-not-found', 'room-expired', 'not-allowed'])('D-095 phone transport retains open channels on %s', async code => {
+  const h = await hostAndPhones(1); connectAll(h); await settle(h.clock);
+  const phoneId = h.server.room.sockets.find(s => s.role === 'phone')?.id ?? '';
+  const socket = h.server.live.get(phoneId);
+  expect(socket).toBeDefined();
+  socket?.receive(JSON.stringify({ v, t: 'error', code, retryAfterS: null }));
+  await settle(h.clock, 100);
+  expect(h.phoneErrors).toEqual([]);
+  expect(h.phonePeers[0]?.connected).toBe(true);
+  expect(h.phonePCs[0]?.connectionState).not.toBe('closed');
+  for (const phone of h.phones) phone.stop(); h.host.stop();
+});

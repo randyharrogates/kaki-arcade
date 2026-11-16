@@ -12,25 +12,28 @@ function QR({ payload }: { payload: string }) {
   const { path, size } = useMemo(() => qrPath(payload), [payload]);
   return <svg class="qr" viewBox={`0 0 ${String(size)} ${String(size)}`} role="img" aria-label={`Join at ${payload}. Room code ${new URL(payload).searchParams.get('code')?.split('').join(' ') ?? ''}`} shape-rendering="crispEdges"><path d={path}/></svg>;
 }
-function Seat({ seat, index }: { seat: LobbyView['seats'][number]; index: number }) {
+function Nickname({ value }: { value: string }) {
   const nameElement = useRef<HTMLSpanElement>(null);
-  const [name, setName] = useState(() => ({ lines: nameLines(seat.name), size: 34 }));
+  const [name, setName] = useState(() => ({ lines: nameLines(value), size: 34 }));
   useLayoutEffect(() => {
     const element = nameElement.current;
     const context = document.createElement('canvas').getContext('2d');
     if (!element || !context) return;
     const font = getComputedStyle(element).fontFamily;
-    setName(namePresentation(seat.name, element.clientWidth, (text, size) => {
+    setName(namePresentation(value, element.clientWidth, (text, size) => {
       context.font = `${String(size)}px ${font}`;
       return context.measureText(text).width;
     }));
-  }, [seat.name]);
+  }, [value]);
+  return <span ref={nameElement} class="nickname">{name.lines.map((line, index) => <span class="name-line" key={index}>{line}</span>)}</span>;
+}
+function Seat({ seat, index }: { seat: LobbyView['seats'][number]; index: number }) {
   return <li class="ka-panel seat" data-empty={!seat.occupied}>
     <Overlap identity={seatIdentity(seat)} row index={index}>
       <div class="seat-content" data-empty={!seat.occupied} data-held={seat.held} data-dimmed={seat.dimmed}>
         <span class="seat-number" style={{ backgroundColor: seat.held ? 'var(--ka-panel-to)' : seat.colour, borderColor: seat.colour }}>{seat.number}</span>
-        <span ref={nameElement} class="nickname">{name.lines.map((line, index) => <span class="name-line" key={index}>{line}</span>)}</span>
-        <span class="connection">{seat.connection && <><Icon kind={seat.icon}/><span>{seat.connection}</span></>}</span>
+        <Nickname value={seat.name}/>
+        <span class="connection">{seat.connection && <>{seat.icon && <Icon kind={seat.icon}/>}<span>{seat.connection}</span></>}</span>
         <span class="leader">{seat.held ? countdownLabel(seat.holdSeconds) : seat.leader ? <><Icon kind="leader"/> Leader</> : '\u00a0'}</span>
       </div>
     </Overlap>

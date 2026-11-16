@@ -212,8 +212,18 @@ Rules:
   `resume`; the host gives back the same seat, colour, name, team and score, sends its layout
   and private view at once and counts its first input (PLAT-007, D-079 c). The hold is 2
   minutes, inclusive; the newest connection presenting a seat token wins and the older one is
-  closed. Retries start at 250 ms and double to 8 s, each attempt abandoned after 15 s; after
-  the hold the phone shows a distinct state with a rejoin action and retries every 8 s. A newly
+  closed. Every phone retry starts at 1 second and doubles to a maximum of 30 seconds; after the
+  2-minute seat hold the phone shows a distinct state with a rejoin action and retries every
+  30 seconds. Retry-After can lengthen a wait, capped at 30 seconds; past or zero values mean
+  the 1-second minimum, and invalid values use the bounded fallback. Each attempt's 15-second
+  negotiation deadline starts after its admission wait, so the deadline cannot cancel a longer
+  retry wait. Signalling presence is advisory and ignored while the data channel holds the
+  seat. While the phone's data channel is open, in-band room-not-found, room-expired and
+  not-allowed from the pairing server do not tear down the channel, clear the stored seat or
+  change what the phone shows; only with no open data channel do they mean the room is gone or
+  the phone has been replaced (D-095 f). Known gap, carried to C-15: an ICE "disconnected"
+  state still counts as channel loss. Host handling of those reports while playing belongs to
+  C-10 and C-15. A newly
   entered valid room code wins over a stored seat. The host keeps its credentials, the room
   (seats, names, colours, teams, leader and each phone's original drop time), the last results
   and the game selection with its `save()` output in `sessionStorage`

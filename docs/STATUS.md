@@ -178,14 +178,31 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   by another tab. Seen by the integrator in desktop Chromium at 720p, 1080p and 4K against a
   real local pairing server: a room is created, a reload reopens the same room, a room the
   server no longer has shows "This room has expired", and stopping the server while a room is
-  open keeps the room on screen and retries at a paced rate. **Not yet seen:** a phone
-  joining (no join page until C-08, so seats with players are demo data), phones staying
-  connected through an outage (netcode test only), a real TV, Safari, Firefox. The readings of
-  the chosen board are D-090 and D-092. `/` is a placeholder link. There is no single
-  `pnpm dev` command yet. Built by Codex over five fix rounds; three review rounds; the
+  open keeps the room on screen and retries at a paced rate. **Not yet seen:** a real TV,
+  Safari, Firefox (phones joining and an outage were seen later, in C-08). The readings of
+  the chosen board are D-090 and D-092. `/` is a placeholder link. **A fault shipped
+  in this slice and was missed by the integrator and the review:** a player who joined after a
+  seat's wipe had finished showed as "Seat N" with no name (the committed reduced-motion
+  screenshot shows it). The UAT harness exposed it; fixed in C-08. Built by Codex over five fix rounds; three review rounds; the
   integrator's browser checks found two faults the reviews had not (tiny names, an expired
   room looping) and one of the integrator's own evidence claims was wrong and is withdrawn in
   the report.
+- **Phone join page (C-08).** `/play` on a phone: the room code typed, pasted, or carried by
+  the link; a name; then the lobby with the seat number, colour and name, a leader mark,
+  "Change name" on its own screen and "Leave". A screen each for a full room, a room not
+  found, a closed room, an unreachable room, the host disconnected, a seat taken over by
+  another tab, a hold that ended, an expired seat, a game in progress and an out-of-date
+  page. `pnpm dev` starts the web app and the local pairing server together. Seen by the
+  integrator in desktop Chromium against a real local pairing server with eight emulated
+  phones: all eight seated in under half a second each, a ninth told the room is full, a
+  duplicate name numbered, a phone reload returning to its seat, the host page closed and
+  reopened with all eight back, and the pairing server stopped for 22 seconds with every phone
+  still connected and a rename reaching the TV. The last fix round's flows were checked with
+  two phones, not eight. **Not seen:** a real phone or QR scan, Safari, Firefox, the on-screen
+  keyboard, a screen reader, a player joining mid-game (no game can start). Rulings in D-095.
+  Built by Codex over four fix rounds; three review rounds; the integrator's browser checks
+  found five faults the unit tests had not (names missing on the TV, an outage dropping every
+  phone, wrong lobby wording, a doubled notice, `localhost` refused by the dev pairing server).
 - **Tabao Rush orders and scoring (T-05).** A seeded order queue per kitchen with patience and
   a last-quarter warning; serving only against an open order; points by dish, a speed tip and
   a loss for an expired order; a 3 minute 30 second round that ends exactly on time; 0 to 3
@@ -198,8 +215,8 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 
 ## Does not exist yet
 
-- No host page, controller or game screen yet.
-- `pnpm uat`, `pnpm perf`, `pnpm dev` (later issues).
+- No game picker, controller or game screen yet.
+- `pnpm uat` (F-07, in review), `pnpm perf` (F-08).
 
 ## Design gate
 

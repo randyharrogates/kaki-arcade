@@ -1,0 +1,195 @@
+import { describe, expect, it } from 'vitest';
+import { createPhoneSeatStore } from '@kaki/platform';
+import type { PhoneReconnectDial } from '@kaki/platform';
+import { createPhone, phoneCopy, phoneView } from './phone';
+import type { PhoneDependencies, PhoneState, PhoneView } from './phone';
+import { normaliseJoinCode } from './phone';
+import { phoneDemo } from './phone-demo';
+import { Clock, MemoryStorage, CODE, SECRET } from './testing.fixture';
+function fixture(saved = false) {
+  const clock = new Clock(); const storage = new MemoryStorage();
+  if (saved) createPhoneSeatStore(storage).write({ code: CODE, nickname: 'Fern', seatToken: SECRET, roomToken: null, droppedAt: null });
+  let dial: PhoneReconnectDial | undefined;
+  let feedback: Parameters<PhoneDependencies['dial']>[1] | undefined;
+  let view = phoneView('entry');
+  let canSend = true;
+  const sent: unknown[] = []; const times: number[] = [];
+  const deps: PhoneDependencies = { clock, storage, dial(options, receive) {
+    dial = options; feedback = receive; times.push(clock.now());
+    options.onPeer({ sendPhone(message) { sent.push(message); return canSend; } });
+    return { stop: () => undefined };
+  } };
+  const phone = createPhone(deps, null, next => { view = next; });
+  return { phone, clock, storage, sent, times, deps, failSend() { canSend = false; },
+    get view() { return view; }, get dial() { if (!dial) throw new Error('No dial'); return dial; },
+    get feedback() { if (!feedback) throw new Error('No feedback'); return feedback; },
+    seat(name = 'Fern', replaced = false) { dial?.onControl({ v: 1, t: 'seat', seat: 3, colour: 2, name, nameReplaced: replaced, resumed: saved, seatToken: SECRET }); },
+  };
+}
+describe('C-08 phone view (PLAT-002 to PLAT-009, CTRL-008)', () => {
+  it.each(Object.keys(phoneCopy) as PhoneState[])('projects %s with plain copy and a deterministic demo', state => {
+    const view = phoneView(state);
+    expect(view.title).toBe(phoneCopy[state][0]); expect(view.detail).toBe(phoneCopy[state][1]);
+    expect(phoneDemo(state, new URLSearchParams()).state).toBe(state);
+    expect(JSON.stringify(view)).not.toContain(SECRET);
+  });
+  it.each([['h7kq 9mxr', 'H7KQ9MXR'], ['bcdf-2345', CODE], ['O1IL2345', ''], ['BCDF234', ''], ['ＢＣＤＦ２３４５', '']])('normalises only the permitted alphabet: %s', (code, expected) => {
+    expect(normaliseJoinCode(code)).toBe(expected);
+  });
+  it.each([['', 'blank'], ['abcdefghijklmn', 'too-long'], ['A\u202e', 'bad-characters']])('warns about nickname %s using shared rules', (name, state) => {
+    const f = fixture(); f.phone.join(CODE, name); expect(f.view.state).toBe(state); expect(f.times).toHaveLength(0); f.phone.stop();
+  });
+  it('accepts 12 graphemes and keeps secrets outside the view', () => {
+    const f = fixture(); const name = 'é'.repeat(12); f.phone.join('bcdf 2345', name); f.dial.onState('control-open');
+    expect(f.sent).toContainEqual({ v: 1, t: 'hello', name });
+    f.seat(name); f.dial.onControl({ v: 1, t: 'room', phase: 'lobby', players: 1, leader: true, team: null });
+    expect(f.view).toMatchObject({ state: 'lobby', name, seat: 3, colour: 'var(--ka-seat-3)', leader: true });
+    expect(JSON.stringify(f.view)).not.toContain(SECRET); f.phone.stop();
+  });
+  it('shows host name refusal, duplicate suffix and blocked-name replacement', () => {
+    const f = fixture(); f.phone.join(CODE, 'Fern'); f.dial.onControl({ v: 1, t: 'name-refused', reason: 'too-long' });
+    expect(f.view.state).toBe('too-long'); f.phone.join(CODE, 'Fern'); f.seat('Fern 2'); expect(f.view.notice).toContain('Name taken');
+    f.seat('Player 3', true); expect(f.view.notice).toContain('changed'); f.phone.stop();
+  });
+  it.each([['room-full', 'room-full'], ['room-not-found', 'room-not-found'], ['room-expired', 'room-not-found'], ['not-allowed', 'replaced'], ['bad-token', 'cannot-connect'], ['bad-message', 'cannot-connect'], ['opening-timeout', 'cannot-connect'], ['bad-version', 'out-of-date'], ['unsupported-version', 'out-of-date']])('maps %s to %s', (error, state) => {
+    const f = fixture(); f.phone.join(CODE, 'Fern'); f.dial.onError(error); expect(f.view.state).toBe(state); f.phone.stop();
+  });
+  it('shows full for the ninth join, then allows another room', () => {
+    const f = fixture(); f.phone.join(CODE, 'Fern'); f.dial.onControl({ v: 1, t: 'refused', reason: 'room-full' });
+    expect(f.view.title).toBe('This room is full'); expect(f.view.action).toBe('Join another room'); f.phone.edit(); expect(f.view.state).toBe('entry'); f.phone.stop();
+  });
+  it('automatically resumes after reload, host disconnect and host return', () => {
+    const f = fixture(true); f.dial.onState('control-open'); expect(f.sent).toContainEqual({ v: 1, t: 'resume', seatToken: SECRET });
+    f.seat(); f.dial.onHost(false); expect(f.view.state).toBe('lobby');
+    f.dial.onHost(true); expect(f.view.state).toBe('lobby');
+    f.dial.onState('closed'); expect(f.view.state).toBe('host-disconnected');
+    f.clock.advance(1000); f.dial.onHost(true); f.dial.onState('control-open'); f.seat();
+    expect(f.view).toMatchObject({ state: 'lobby', seat: 3, name: 'Fern' }); f.phone.stop();
+  });
+  it('paces unreachable attempts at 1, 2, 4 seconds and honours Retry-After', () => {
+    const f = fixture(); f.phone.join(CODE, 'Fern');
+    for (const delay of [1000, 2000, 4000]) {
+      f.feedback.unreachable(); f.dial.onError('socket-unavailable'); expect(f.view.state).toBe('unreachable');
+      f.clock.advance(delay - 1); expect(f.times.at(-1)).toBe(f.clock.now() - delay + 1); f.clock.advance(1);
+    }
+    expect(f.times).toEqual([1000, 2000, 4000, 8000]);
+    f.feedback.unreachable(); f.feedback.retryAfter(60000); f.dial.onError('socket-unavailable');
+    for (let i = 0; i < 29; i++) f.clock.advance(1000);
+    expect(f.times).toHaveLength(4); f.clock.advance(9000); expect(f.times).toHaveLength(5); f.phone.stop();
+  });
+  it('offers rejoin after the hold and waits for a running game to finish', () => {
+    const f = fixture(true); f.dial.onHost(false); f.clock.advance(120001); expect(f.view.state).toBe('hold-over');
+    expect(f.view.action).toBe('Join again'); f.phone.rejoin();
+    f.dial.onControl({ v: 1, t: 'refused', reason: 'game-running' }); expect(f.view.state).toBe('waiting-for-lobby');
+    f.phone.stop();
+  });
+  it('handles replaced, room closure, leave, invalid code and fresh code over saved seat', () => {
+    const f = fixture(true); f.seat(); f.dial.onControl({ v: 1, t: 'close', reason: 'replaced' }); expect(f.view.state).toBe('replaced');
+    f.phone.edit(); f.phone.join('no', 'Fern'); expect(f.view.state).toBe('invalid-code');
+    f.phone.join(CODE, 'Fern'); f.seat(); f.dial.onControl({ v: 1, t: 'close', reason: 'room-closed' }); expect(f.view.state).toBe('room-gone');
+    f.phone.edit(); f.phone.join(CODE, 'Fern'); f.seat(); f.phone.leave(); expect(f.view.state).toBe('left');
+    f.phone.stop();
+    const g = fixture(true); g.phone.stop(); let next: PhoneView | undefined;
+    const phone = createPhone(g.deps, 'H7KQ9MXR', view => { next = view; }); expect(next?.state).toBe('entry'); expect(createPhoneSeatStore(g.storage).read()).toBeNull(); phone.stop();
+  });
+});
+
+it('PLAT-004 changes a seated name, shows a host refusal, and retries the new name on the same seat', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat(); f.phone.changeName();
+  expect(f.view.renaming).toBe(true); f.phone.saveName('Pebble');
+  expect(f.sent.at(-1)).toEqual({ v: 1, t: 'set-name', name: 'Pebble' });
+  f.dial.onControl({ v: 1, t: 'name-refused', reason: 'bad-characters' });
+  expect(f.view.state).toBe('bad-characters'); f.phone.saveName('Mango');
+  expect(f.sent.at(-1)).toEqual({ v: 1, t: 'set-name', name: 'Mango' }); f.seat('Mango');
+  expect(f.view).toMatchObject({ state: 'lobby', seat: 3, name: 'Mango' }); f.phone.stop();
+});
+
+it('PLAT-007 sleeps and wakes without retyping or losing the saved token', () => {
+  const f = fixture(true); f.phone.stop(); let lifecycle: ((event: 'sleep' | 'wake') => void) | undefined;
+  const phone = createPhone({ ...f.deps, lifecycle: { subscribe(receive) { lifecycle = receive; return () => undefined; } } }, null, () => undefined);
+  f.dial.onState('control-open'); f.seat(); lifecycle?.('sleep'); f.clock.advance(30000); lifecycle?.('wake'); f.dial.onState('control-open');
+  expect(f.sent.at(-1)).toEqual({ v: 1, t: 'resume', seatToken: SECRET });
+  expect(createPhoneSeatStore(f.storage).read()?.nickname).toBe('Fern'); phone.stop();
+});
+
+it.each([['unsupported-version', 'out-of-date'], ['bad-message', 'cannot-connect'], ['replaced', 'replaced'], ['room-closed', 'room-gone']] as const)('maps trusted host close %s to %s and stops retrying', (reason, state) => {
+  const f = fixture(true); f.seat(); f.dial.onControl({ v: 1, t: 'close', reason });
+  expect(f.view.state).toBe(state); const count = f.times.length; f.clock.advance(180000); expect(f.times).toHaveLength(count); f.phone.stop();
+});
+
+it('PLAT-004 accepts twelve joined visible emoji without splitting them', () => {
+  const f = fixture(); const name = '👍🏽'.repeat(12); f.phone.join(CODE, name); f.dial.onState('control-open');
+  expect(f.sent.at(-1)).toEqual({ v: 1, t: 'hello', name }); f.seat(name);
+  expect(f.view.name).toBe(name); f.phone.stop();
+});
+
+it('PLAT-007 publishes seat expiry, then lets the authoritative host seat the returning player afresh', () => {
+  const f = fixture(true); f.dial.onState('control-open');
+  f.dial.onControl({ v: 1, t: 'refused', reason: 'seat-expired' });
+  expect(f.view).toMatchObject({ state: 'seat-expired', action: 'Join again' });
+  expect(f.sent.at(-1)).toEqual({ v: 1, t: 'hello', name: 'Fern' });
+  f.seat(); expect(f.view.state).toBe('lobby'); f.phone.stop();
+});
+
+it('PROBE B: rename cannot dial another room, cancel, validation and refusal retain the seat', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat();
+  const saved = createPhoneSeatStore(f.storage).read();
+  f.phone.changeName(); f.phone.join('BCDF2346', 'Dora');
+  f.phone.saveName(''); expect(f.view.renaming).toBe(true);
+  f.phone.cancelName(); expect(f.view.name).toBe('Fern');
+  f.phone.changeName(); f.phone.saveName('Dora');
+  f.dial.onControl({ v: 1, t: 'name-refused', reason: 'too-long' });
+  expect(f.view).toMatchObject({ renaming: true, title: 'Your name is too long', seat: 3 });
+  expect(f.times).toHaveLength(1); expect(createPhoneSeatStore(f.storage).read()).toEqual(saved);
+  expect(f.sent).toEqual([{ v: 1, t: 'set-name', name: 'Dora' }]); f.phone.stop();
+});
+it('reads a pasted full join URL', () => {
+  expect(normaliseJoinCode('https://arcade.example/play?code=bcdf-2345')).toBe(CODE);
+});
+
+it.each([false, true])('PLAT-002/006 lobby copy waits for the picker (leader=%s)', leader => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat();
+  f.dial.onControl({ v: 1, t: 'room', phase: 'lobby', players: 1, leader, team: null });
+  expect(f.view).toMatchObject({ title: 'You’re in.', detail: 'Waiting for the leader to pick a game.', leader });
+  f.phone.stop();
+});
+it('PLAT-008 accepted mid-game copy follows room phase back to the lobby', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat();
+  for (const phase of ['playing', 'paused', 'lobby'] as const) {
+    f.dial.onControl({ v: 1, t: 'room', phase, players: 1, leader: false, team: null });
+    expect(f.view.detail).toBe(phase === 'lobby' ? 'Waiting for the leader to pick a game.' : 'Watch the TV.');
+  }
+  f.phone.stop();
+});
+it('PLAT-008 refused mid-game keeps the waiting-for-lobby message', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern');
+  f.dial.onControl({ v: 1, t: 'room', phase: 'playing', players: 1, leader: false, team: null });
+  f.dial.onControl({ v: 1, t: 'refused', reason: 'game-running' });
+  expect(f.view).toMatchObject({ title: 'Waiting for the lobby', detail: 'You can join when the current game ends.', connected: false });
+  f.phone.stop();
+});
+
+it('PLAT-004/007 closes rename on channel loss and resumes the old name (probe C)', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat(); f.phone.changeName();
+  f.dial.onState('closed');
+  expect(f.view).toMatchObject({ state: 'host-disconnected', title: 'Host disconnected', renaming: false, connected: false });
+  f.phone.saveName('Ghost');
+  expect(f.sent).not.toContainEqual({ v: 1, t: 'set-name', name: 'Ghost' });
+  f.clock.advance(1000); f.dial.onHost(true); f.dial.onState('control-open'); f.seat();
+  expect(f.view).toMatchObject({ state: 'lobby', renaming: false, name: 'Fern' }); f.phone.stop();
+});
+it('PLAT-004 explains a failed rename send', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat(); f.phone.changeName(); f.failSend(); f.phone.saveName('Ghost');
+  expect(f.view).toMatchObject({ title: 'Your name could not be sent', detail: 'Try again when connected.', renaming: true }); f.phone.stop();
+});
+it.each(['seat-expired', 'room-gone', 'waiting-for-lobby', 'left'] as const)('PLAT-007/008 clears public seat identity for %s including demos', state => {
+  expect(phoneView(state, { seat: 3, colour: 'red', leader: true })).toMatchObject({ seat: null, colour: '', leader: false });
+  expect(phoneDemo(state, new URLSearchParams()).seat).toBeNull();
+});
+it.each(['hold-over', 'replaced', 'out-of-date', 'cannot-connect'] as const)('PLAT-007 retains possibly held seat in %s', state => {
+  expect(phoneView(state, { seat: 3 }).seat).toBe(3);
+});
+it('PLAT-009 uses separate unreachable title and detail and typographic apostrophes in phone copy', () => {
+  expect(phoneCopy.unreachable).toEqual(['Can’t reach the room', 'We’ll keep trying.']);
+  expect(Object.values(phoneCopy).flat().join(' ')).not.toContain("'");
+});

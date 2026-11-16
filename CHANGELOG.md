@@ -2,6 +2,17 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — C-08: phone join page; `pnpm dev`
+
+- `apps/web` phone route, view and demo states at `/play`; `tools/dev.mjs` behind `pnpm dev`
+  (web app and local pairing server; `KAKI_HOST` for a LAN address, `KAKI_DEV_KEEP=1` to stop
+  the pairing server alone).
+- A seated phone ignores room-gone reports and pairing outages while its link is open; phone
+  retries run 1 s to 30 s (D-095). The room-code alphabet moves to `@kaki/protocol`; the build
+  fails if the pairing server's word filter is bundled.
+- Fixes a C-07 fault: a player who joined after a seat's wipe ended showed as "Seat N".
+- (PLAT-002, PLAT-003, PLAT-004, PLAT-009, PERF-020, PERF-021 in progress)
+
 ## 2026-11-17 — T-06: Tabao Rush level format, validator and loader
 
 - `games/tabao-rush/src/levels/` with two test kitchens; rules in D-093. (TR-050, TR-057 in

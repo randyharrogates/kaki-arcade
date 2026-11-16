@@ -23,3 +23,5 @@ export * from './input';
 export * from './wire';
 export * from './signal';
 export * from './channel';
+
+export { CODE_ALPHABET, CODE_LENGTH } from './codes';
