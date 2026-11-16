@@ -106,6 +106,10 @@ Rules:
   competitive play they start at 0 (D-062). Bots live inside a game's own state.
 - The platform owns: joining, seats, teams, pause, reconnect, leaving, the picker and results
   chrome. Nothing in `packages/platform` knows about a particular game.
+- Games are driven in tests through the dev harness, `@kaki/platform/harness` (F-05): a
+  headless match runner over `driveStep`, scripts, bots, record and replay. Its command-line
+  entry lives in `packages/platform/scripts`, a Node-only project, so platform source still
+  cannot use timers or Node globals.
 - Every game passes the shared conformance kit, imported from `@kaki/platform/kit` so it never
   ships in the console bundle. It runs 25 checks (determinism, serialisable views, secrets,
   revisions, taps, joins and leaves across a whole match, phone size limits, a source scan for

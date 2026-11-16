@@ -119,6 +119,12 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   server's real room logic. **Simulated connections only: it has never run in a browser.**
   Built by Codex; three review rounds.
 
+- **Game dev harness (F-05).** `@kaki/platform/harness`: a headless match runner through the
+  same path the console will use, scripted controllers as plain data, seeded bots, record and
+  replay with checkpoints once a simulated second, text timelines and a command-line `play`
+  and `replay`. Each of the three games has a harness test playing whole matches. The bare dev
+  page with keyboard controls is F-05b. Built by Codex; two review rounds.
+
 ## Does not exist yet
 
 - No host page, controller or game screen yet.

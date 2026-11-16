@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — F-05: game dev harness
+
+- `packages/platform/src/harness` and `packages/platform/scripts`; shared fixtures moved to
+  `packages/platform/src/test-fixtures`; a harness test in each game (D-075).
+  (PLAT-030, NFR-TEST in progress)
+
 ## 2026-11-16 — C-04: netcode
 
 - `packages/netcode`: pairing clients, WebRTC transport, input sender and receiver, control

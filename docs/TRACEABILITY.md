@@ -104,7 +104,7 @@ requirement.
 | NFR-DES | MUST | Every screen passes the checklist in DESIGN.md §6 at review | M3 on | in progress | `packages/ui/src/contrast.ts`, `tools/design_lint` (tokens only; no screen exists yet) | `packages/ui/src/contrast.test.ts` | `uat/evidence/F-06-design-tokens/` |
 | NFR-A11Y | MUST | Colour is never the only way to tell players apart (colour plus shape or number) | M3 on | not started | — | — | — |
 | NFR-REL | MUST | A 30-minute 8-player session completes with no crash, no stuck input and no desync between the big screen… | M6, M8 | not started | — | — | — |
-| NFR-TEST | MUST | Game rules have unit tests on the deterministic simulation | M3 on | in progress | `vitest.config.ts` (runner only; no game rules yet) | — | `uat/evidence/F-01-workspace/` |
+| NFR-TEST | MUST | Game rules have unit tests on the deterministic simulation | M3 on | in progress | `vitest.config.ts`, `packages/platform/src/game/` (conformance kit), `packages/platform/src/harness/` (dev harness); rules tests in each game; UAT and performance harnesses are F-07 and F-08 | `packages/platform/src/harness/*.test.ts`, `games/*/src/**/harness.test.ts` | `uat/evidence/F-01-workspace/`, `uat/evidence/F-05-game-harness/` |
 | NFR-DOC | MUST | TRACEABILITY.md, STATUS.md and CHANGELOG.md are updated in the same loop as the change they describe | M0 on | in progress | — | — | — |
 
 ## Performance budgets

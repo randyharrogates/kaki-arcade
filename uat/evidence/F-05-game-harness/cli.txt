@@ -1,0 +1,21 @@
+     0  phase="prepare"
+     3  phase="pick"
+     9  phase="reveal"
+    12  phase="over"
+{
+  "mode": "players",
+  "players": [
+    {
+      "id": "p2",
+      "joinedMidGame": false,
+      "place": 1,
+      "score": 4
+    },
+    {
+      "id": "p1",
+      "joinedMidGame": false,
+      "place": 2,
+      "score": 0
+    }
+  ]
+}

@@ -10,7 +10,9 @@
   ],
   "exclude": [
     "src/**/*.test.ts",
-    "src/**/*.test.tsx"
+    "src/**/*.test.tsx",
+    "src/**/*.fixture.ts",
+    "src/harness/fixture.ts"
   ],
   "references": [
     {

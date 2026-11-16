@@ -6,7 +6,8 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./kit": "./src/game/kit.ts"
+    "./kit": "./src/game/kit.ts",
+    "./harness": "./src/harness/index.ts"
   },
   "dependencies": {
     "@kaki/protocol": "workspace:*",

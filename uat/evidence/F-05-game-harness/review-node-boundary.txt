@@ -1,0 +1,6 @@
+$ pnpm exec tsc -p packages/platform/tsconfig.lib.json --noEmit --tsBuildInfoFile /tmp/f05-node-probe.tsbuildinfo --pretty false
+packages/platform/src/__node_boundary_probe.ts(1,1): error TS2304: Cannot find name 'setTimeout'.
+packages/platform/src/__node_boundary_probe.ts(2,1): error TS2591: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
+
+Expected compile failure; exit 2
+Temporary probe removed. Automated regression: scripts/node-boundary.test.ts.

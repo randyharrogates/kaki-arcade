@@ -1,0 +1,33 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-05
+
+ ✓ packages/platform/src/harness/harness.test.ts > fixture game: Dots > moves a dot by its stick, the same distance straight or diagonally 1ms
+ ✓ packages/platform/src/harness/harness.test.ts > fixture game: Dots > shares what did not change and never touches the old state 1ms
+ ✓ packages/platform/src/harness/harness.test.ts > fixture game: Dots > scores the gem, moves it from the seed, and halves speed while the button is held 0ms
+ ✓ packages/platform/src/harness/harness.test.ts > fixture game: Dots > ends when time runs out and ranks ties together, teams by their totals 1ms
+ ✓ packages/platform/src/harness/harness.test.ts > fixture game: Picks > gives the round to the highest number nobody else picked, and reveals early when all have locked 1ms
+ ✓ packages/platform/src/harness/harness.test.ts > fixture game: Picks > adds the bonus, fills missing picks from the seed when time runs out, and plays the set number of rounds 1ms
+ ✓ packages/platform/src/harness/harness.test.ts > fixture game: Picks > seats a late joiner from the next round with nothing, and lets the leader cut the reveal short 1ms
+ ✓ packages/platform/src/harness/harness.test.ts > fixture game: Picks > shows no pick, bonus or seal on the TV until the reveal 0ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > phases, secrets and teams: whole scripted and bot matches at 1 seats 8ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > phases, secrets and teams: whole scripted and bot matches at 8 seats 7ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > existing Dots fixture: whole scripted and bot matches at 1 seats 51ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > existing Dots fixture: whole scripted and bot matches at 8 seats 133ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > existing Picks fixture: whole scripted and bot matches at 1 seats 43ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > existing Picks fixture: whole scripted and bot matches at 8 seats 155ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > team rosters and private panels retain secrets until reveal 1ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > bots honour audience, disabled controls and current held layout with zero or biased weights 4ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > scripts are saveable and concurrent, exact stick duration and press/release edges 0ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > refused taps explain absence, disabled, audience, stale revision; explicit refusal still goes through driver 1ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > pause freezes scripts and steps, calls hooks, strips the console button; events replay 0ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > join/leave applies while short of players; empty teams block steps; disconnect has no inputs 1ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > first divergent simulation step reports a public diff, including init-only divergence 1ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > seeded chaos records joins, leaves and connectivity deterministically, independent of batching 27ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > stable one-screen dumps sort keys, truncate arrays with counts and bound depth/width 1ms
+ ✓ packages/platform/src/harness/harness.test.ts > F-05 headless harness (PLAT-030, NFR-TEST) > invalid setup and unresolved waits fail promptly 0ms
+
+ Test Files  1 passed (1)
+      Tests  24 passed (24)
+   Start at  22:27:06
+   Duration  790ms (transform 198ms, setup 0ms, import 247ms, tests 439ms, environment 0ms)
+

@@ -1,0 +1,4 @@
+fixtures/dots.test.ts: complete describe block byte-identical to pre-round-1 source (ignoring trailing whitespace).
+fixtures/picks.test.ts: complete describe block byte-identical to pre-round-1 source (ignoring trailing whitespace).
+conformance.test.ts: only the first fixture import line differs.
+conformance-support.test.ts: scenario/helper code after source discovery is byte-identical; changes above it are fixture imports and moved-source discovery paths. Original dirname/HERE/ALL setup restored.

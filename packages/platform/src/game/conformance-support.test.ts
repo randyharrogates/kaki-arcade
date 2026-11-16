@@ -4,10 +4,10 @@ import * as fs from 'node:fs';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { cloneRng, cloneState, createRng } from '@kaki/sim-core';
-import { dots, dotsResults, dotsStep } from './fixtures/dots.test';
-import type { DotsSettings, DotsState } from './fixtures/dots.test';
-import { PICKS_DATA, picks, picksSecrets, picksStep } from './fixtures/picks.test';
-import type { PicksSettings, PicksState } from './fixtures/picks.test';
+import { dots, dotsResults, dotsStep } from '../test-fixtures/dots.fixture';
+import type { DotsSettings, DotsState } from '../test-fixtures/dots.fixture';
+import { PICKS_DATA, picks, picksSecrets, picksStep } from '../test-fixtures/picks.fixture';
+import type { PicksSettings, PicksState } from '../test-fixtures/picks.fixture';
 import {
   CONFORMANCE_CHECKS,
   settingsSchema,
@@ -32,8 +32,9 @@ export const keep = (title: string, report: ConformanceReport): ConformanceRepor
   return report;
 };
 const ALL = readSources(fs, HERE, { includeTests: true });
-export const DOTS_SOURCES = ALL.filter((file) => file.path === 'fixtures/dots.test.ts');
-export const PICKS_SOURCES = ALL.filter((file) => file.path === 'fixtures/picks.test.ts');
+const FIXTURES = readSources(fs, fileURLToPath(new URL('..', import.meta.url)));
+export const DOTS_SOURCES = FIXTURES.filter((file) => file.path === 'test-fixtures/dots.fixture.ts');
+export const PICKS_SOURCES = FIXTURES.filter((file) => file.path === 'test-fixtures/picks.fixture.ts');
 /** Everyone picks and locks at once, then the leader moves on: a script that plays to the end. */
 export const brisk: Script = ({ players, layout, leader }) => {
   const actions: {

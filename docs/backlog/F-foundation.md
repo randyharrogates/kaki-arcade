@@ -26,7 +26,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | F-02 | Protocol: every phone, host and pairing-server message with validators | NET-001, NET-005 | F-01 | 1 | merged |
 | F-03 | Simulation core: fixed timestep loop, seeded random numbers, snapshot helpers, input buffer | PLAT-032 | F-01 | 1 | merged |
 | F-04 | Game interface: `GameModule` types with settings schema, team support, controller layout schema and private view schema, plus the conformance kit every game must pass | PLAT-030, PLAT-031, PLAT-032, PLAT-025 | F-03 | 1 | merged |
-| F-05 | Game dev harness: run any `GameModule` headless or on a bare dev page with scripted or keyboard controllers, so games are built without the console | PLAT-030, NFR-TEST | F-04 | 1 | doing (Codex) |
+| F-05 | Game dev harness: run any `GameModule` headless or on a bare dev page with scripted or keyboard controllers, so games are built without the console | PLAT-030, NFR-TEST | F-04 | 1 | merged |
 | F-06 | Design tokens and motion helpers in `packages/ui`, taken from `DESIGN.md` §4 | NN-5, NFR-DES | G-06 | 2 | merged |
 
 ## Carried from reviews
@@ -53,3 +53,10 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   protocol's bit order.
 - **F-05b:** the bare dev page with keyboard controllers, once a game has a big-screen view
   (D-075).
+- **F-05c (from the F-05 review):** compact input encoding for recordings (a bot-driven
+  8-player Tabao Rush round is about 12 MB; steady inputs about 16 KB). Bisection with a
+  reference reports `exact: true` at the checkpoint end when the refined search finds no
+  difference (`match.ts` around 333-347). A disconnected leader stays leader in the harness;
+  the room hands over after its grace period. `evenIfRefused` on held inputs is cleaned at
+  step time and never reaches the game. `step()` refuses after the match is over although the
+  contract lets a game be stepped after the end.

@@ -1,4 +1,4 @@
-import { nullPrivateDots, redealDots } from './fixtures/dots.test';
+import { nullPrivateDots, redealDots } from '../test-fixtures/dots.fixture';
 import { describe, expect, it } from 'vitest';
 import {
   keep,
