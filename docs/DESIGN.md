@@ -182,7 +182,7 @@ golden-ratio variant, and says which proportions use it. The source of each boar
 | 2 | Visual identity | Three directions: palette, type pairing, surface treatment; plus where trivia photos come from. Source `design-gate/02-visual-identity.html`, built by `tools/boards/build_board2.py` | **Done** — C Marble table as the general rule; real photographs, Codex only as a fallback (D-042) |
 | 2B | A theme for each game | Three variants each for Rabakz, Peek Poker and Tabao Rush inside the Marble table console. Source `design-gate/02b-game-themes.html`, built by `tools/boards/build_board2b.py` | **Done** — R1 Bandung, K1 Green baize, T1 Order chit (D-043) |
 | 3 | Big-screen layouts | Landing, lobby, picker, team setup, Rabakz question and reveal, Peek Poker table, Tabao Rush HUD, versus and how the two kitchens interact, results. Source `design-gate/03-big-screen-layouts.html`, built by `tools/blender/board3_scenes.py` and `tools/boards/build_board3.py` | **Done** — 1B, 2A, 3A, 4B, 5A, all four versus interactions in rotation (D-046) |
-| 4 | Phone controller | Kit styling and both games' layouts at 390 × 844 landscape | Pending |
+| 4 | Phone controller | Joining, lobby, leader, team and cook pickers, Tabao Rush buttons and stick, button style, Rabakz buzzer states, Peek Poker picker and hand, paused and reconnecting, at 844 × 390. Source `design-gate/04-phone-controller.html`, built by `tools/blender/board4_scenes.py` and `tools/boards/build_board4.py` | Published 2026-11-16, awaiting Randy |
 | 5 | Motion | Live samples of the key transitions | Pending |
 
 **Any design or graphics choice, not only these boards, goes to Randy as an artifact** with real

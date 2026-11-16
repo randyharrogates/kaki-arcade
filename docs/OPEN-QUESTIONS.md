@@ -22,6 +22,10 @@ and says no other spacing values. The design lint (F-01) also allows 0, the next
 Claude is working to the wider set; say if you want it held strictly to §1. Needed by: first UI
 slice.
 
+**OQ-027 · Board 4 choices.** Tabao Rush buttons 1A or 1B; stick 2A fixed or 2B floating; button
+style 3A filled or 3B keycap; Peek Poker picker 4A or 4B; a yes or changes for the single-design
+phone screens. Needed by: the controller kit (K track) and every game's controller layouts.
+
 **OQ-026 · Rabakz buzzer rules: Claude's readings to confirm.** (1) "Same time" means within
 0.25 s of the first correct answer. (2) An option answered wrongly is marked wrong on the TV for
 everyone. (3) In team mode the question's points go to the winner's team. (4) Solo: only the

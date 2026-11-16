@@ -1,0 +1,281 @@
+<title>Kaki Arcade Board 4</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: the console look (decided) at the top, then one row per game with three theme
+   variants on the same real screens, then a large viewer. True pixel sizes, scaled to fit. */
+:root{
+  --bg:#EFE9DA; --dot:#D9D0BA; --card:#FBF8F0; --card2:#F3EEDF; --ink0:#26221C; --muted:#6B6355; --line:#D5CCB6;
+  --sage:#4F7A5C; --sage-soft:#DCE8DA; --pick:#B5371F;
+  --display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --fd:"DM Serif Display",Georgia,serif; --fb:"DM Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink0:#F1EBDC; --muted:#A79F8D; --line:#3B382E;
+  --sage:#8FBF9C; --sage-soft:#26342A; --pick:#F0806A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink0:#F1EBDC; --muted:#A79F8D; --line:#3B382E;
+  --sage:#8FBF9C; --sage-soft:#26342A; --pick:#F0806A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:21px 21px;
+  color:var(--ink0);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1440px;margin:0 auto;padding-block:34px 89px;display:flex;flex-direction:column;gap:55px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(34px,5vw,55px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(21px,3vw,34px);font-weight:800}
+h3{font-size:21px;font-weight:700}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage)}
+.muted{color:var(--muted)}
+.top{display:grid;grid-template-columns:1.618fr 1fr;gap:34px;align-items:end}
+.top>div{display:flex;flex-direction:column;gap:13px;min-width:0}
+.chit{border:1px dashed var(--line);border-radius:8px;padding:21px;background:linear-gradient(160deg,var(--card),var(--card2));display:flex;flex-direction:column;gap:8px}
+.chit ol{margin:0;padding-left:21px;display:flex;flex-direction:column;gap:5px}
+section{display:flex;flex-direction:column;gap:21px}
+.head{display:flex;flex-direction:column;gap:8px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:21px}
+.pair{display:grid;grid-template-columns:1.618fr 1fr;gap:21px;align-items:start}
+.card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card .b{padding:21px;display:flex;flex-direction:column;gap:13px}
+.tagl{font-family:var(--mono);font-size:13px;color:var(--pick);letter-spacing:.06em}
+ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+li{padding-left:21px;position:relative}
+li::before{position:absolute;left:0;font-family:var(--mono)}
+li.pro::before{content:"+";color:var(--sage)} li.con::before{content:"−";color:var(--pick)}
+.rec{align-self:flex-start;font-family:var(--mono);font-size:13px;background:var(--sage-soft);color:var(--sage);border-radius:5px;padding:5px 8px}
+.fit{position:relative;width:100%;overflow:hidden;background:#000}
+.fit.tv{aspect-ratio:16/9}.fit.ph{aspect-ratio:844/390}
+.fit.big{border-radius:13px;box-shadow:0 8px 34px rgba(0,0,0,.18)}
+.fit.big.tv{border:5px solid #1a1a1c}.fit.big.ph{border:8px solid #1a1a1c;border-radius:34px}
+.stage{position:absolute;left:0;top:0;transform-origin:0 0}
+.tv .stage{width:1920px;height:1080px}.ph .stage{width:844px;height:390px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tabs button{font:500 14px var(--body);color:var(--ink0);background:transparent;border:1px solid var(--line);border-radius:34px;padding:8px 13px;cursor:pointer;transition:transform 150ms ease-out,background 200ms ease-in-out}
+.tabs button:active{transform:scale(.97)}
+.tabs button[aria-pressed="true"]{background:var(--ink0);color:var(--bg);border-color:var(--ink0)}
+.tabs button:focus-visible{outline:2px solid var(--pick);outline-offset:2px}
+.cap{font-size:14px;color:var(--muted)}
+@media (max-width:900px){.top,.pair,.g3{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.tabs button{transition:none}}
+
+/* ---------- themes: the console, then three per game. Lettering, corners and spacing are shared. ---------- */
+.stage{--k-rad:13px;--k-cs:0 solid transparent;--k-pstroke:3px solid #D8CDBB;--k-back:#B5371F}
+.tC{--k-bg:#EFEAE2;--k-pat:radial-gradient(circle at 20% 30%,#D6CBBB 0 6px,transparent 6.5px),radial-gradient(circle at 72% 62%,#C7B6A2 0 4px,transparent 4.5px),radial-gradient(circle at 44% 86%,#B9C6B6 0 5px,transparent 5.5px);--k-pats:89px 89px;
+  --k-on:#2B2118;--k-soft:#7A6A58;--k-p1:#FFFFFF;--k-p2:#F6F1E7;--k-ink:#2B2118;--k-sub:#7A6A58;--k-acc:#B5371F;--k-acci:#FFFFFF;--k-chip:#6B4426}
+/* Rabakz */
+.tR1{--k-bg:#4A1F3D;--k-pat:radial-gradient(#5C2A4D 7px,transparent 7.5px),radial-gradient(#5C2A4D 7px,transparent 7.5px);--k-pats:42px 42px;--k-pos:0 0,21px 21px;
+  --k-on:#FFF1F4;--k-soft:#E9B7C8;--k-p1:#FFFFFF;--k-p2:#FBEFF2;--k-ink:#3A1730;--k-sub:#7D5670;--k-acc:#FF9DB8;--k-acci:#3A1730;--k-chip:#7A3563;--k-pstroke:3px solid #F2C9D6}
+.tR2{--k-bg:#2B1D14;--k-pat:radial-gradient(circle at 25% 25%,#3D2B1F 0 2px,transparent 2.5px),radial-gradient(circle at 70% 60%,#4A3526 0 1.5px,transparent 2px),radial-gradient(circle at 45% 85%,#372619 0 2.5px,transparent 3px);--k-pats:34px 34px;
+  --k-on:#F6EFE2;--k-soft:#D2B48C;--k-p1:#FFFFFF;--k-p2:#F6F1E7;--k-ink:#2B1D14;--k-sub:#7A6A58;--k-acc:#E0A63A;--k-acci:#2B1D14;--k-chip:#6B4426}
+.tR3{--k-bg:#F3E3D3;--k-pat:radial-gradient(circle at 20% 30%,#E6CFBA 0 6px,transparent 6.5px),radial-gradient(circle at 72% 62%,#DDBFA6 0 4px,transparent 4.5px),radial-gradient(circle at 44% 86%,#EAD9C6 0 5px,transparent 5.5px);--k-pats:89px 89px;
+  --k-on:#2B2118;--k-soft:#7A6A58;--k-p1:#FFFFFF;--k-p2:#FBF4EC;--k-ink:#2B2118;--k-sub:#7A6A58;--k-acc:#B5371F;--k-acci:#FFFFFF;--k-chip:#6B4426;--k-pstroke:3px solid #E3CDB8}
+/* Peek Poker */
+.tK1{--k-bg:#1D5741;--k-pat:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 2px,transparent 2px 5px);--k-pats:auto;
+  --k-on:#F6EFE2;--k-soft:#BFE3D2;--k-p1:#FFFFFF;--k-p2:#F6F1E7;--k-ink:#17352A;--k-sub:#5E7A6E;--k-acc:#E0A63A;--k-acci:#17352A;--k-chip:#14402F;--k-back:#B5371F;--k-pstroke:3px solid #CFE3D8}
+.tK2{--k-bg:#EFEAE2;--k-pat:radial-gradient(circle at 20% 30%,#D6CBBB 0 6px,transparent 6.5px),radial-gradient(circle at 72% 62%,#C7B6A2 0 4px,transparent 4.5px),radial-gradient(circle at 44% 86%,#B9C6B6 0 5px,transparent 5.5px);--k-pats:89px 89px;
+  --k-on:#2B2118;--k-soft:#5E7A6E;--k-p1:#FFFFFF;--k-p2:#F6F1E7;--k-ink:#2B2118;--k-sub:#7A6A58;--k-acc:#2F6B58;--k-acci:#FFFFFF;--k-chip:#2F6B58;--k-back:#2F6B58;--k-cs:3px solid #D8CDBB}
+.tK3{--k-bg:#14303A;--k-pat:repeating-radial-gradient(circle at 30% 20%,transparent 0 33px,rgba(224,166,58,.13) 33px 35px);--k-pats:auto;
+  --k-on:#F6EFE2;--k-soft:#A9CAD3;--k-p1:#FFFDF6;--k-p2:#F3EBDA;--k-ink:#14303A;--k-sub:#58727A;--k-acc:#E0A63A;--k-acci:#14303A;--k-chip:#1F4A58;--k-back:#C9952B;--k-pstroke:3px solid #E0A63A}
+/* Tabao Rush: skins the HUD and the phone; the kitchen keeps its rendered look */
+.tT1{--k-bg:#EFEAE2;--k-pat:radial-gradient(circle at 20% 30%,#D6CBBB 0 6px,transparent 6.5px),radial-gradient(circle at 72% 62%,#C7B6A2 0 4px,transparent 4.5px),radial-gradient(circle at 44% 86%,#B9C6B6 0 5px,transparent 5.5px);--k-pats:89px 89px;
+  --k-on:#2B2118;--k-soft:#7A6A58;--k-p1:#FFFFFF;--k-p2:#FBF7F0;--k-ink:#8E2A18;--k-sub:#8E2A18;--k-acc:#B5371F;--k-acci:#FFFFFF;--k-chip:#B5371F;--k-pstroke:3px dashed #B5371F}
+.tT2{--k-bg:#1F3D34;--k-pat:radial-gradient(#2A4F44 2.5px,transparent 3px);--k-pats:34px 34px;
+  --k-on:#F6EFDC;--k-soft:#8FC3AE;--k-p1:#2F6B58;--k-p2:#27594A;--k-ink:#FFF8E6;--k-sub:#CDE6DA;--k-acc:#F2B21B;--k-acci:#22201B;--k-chip:#3F8069;--k-pstroke:3px solid #FFF8E6}
+.tT3{--k-bg:#FBF6E9;--k-pat:repeating-linear-gradient(90deg,rgba(63,128,105,.10) 0 13px,transparent 13px 34px);--k-pats:auto;
+  --k-on:#2B2118;--k-soft:#3F8069;--k-p1:#FFFDF6;--k-p2:#F6EEDA;--k-ink:#2B2118;--k-sub:#5B5446;--k-acc:#3F8069;--k-acci:#FFFFFF;--k-chip:#3F8069;--k-pstroke:5px double #3F8069}
+
+/* ---------- inside the screens (true pixels; sizes from 13 21 34 55 89 144) ---------- */
+.stage{font-family:var(--fb);color:var(--k-on);background-color:var(--k-bg);background-image:var(--k-pat);background-size:var(--k-pats);background-position:var(--k-pos,0 0)}
+.stage *{box-sizing:border-box}
+.D{font-family:var(--fd);font-weight:400;line-height:1}
+.mono{font-family:var(--mono)}
+.panel{background:linear-gradient(165deg,var(--k-p1),var(--k-p2));color:var(--k-ink);border-radius:var(--k-rad);border:var(--k-pstroke)}
+.badge{display:inline-grid;place-items:center;border-radius:50%;color:#fff;font-family:var(--fb);font-weight:700;border:5px solid #fff;flex:none}
+.chip{font-family:var(--mono);font-weight:700;border-radius:89px;padding:8px 21px;font-size:21px;background:var(--k-chip);color:#fff}
+.full{position:absolute;inset:0;padding:55px}
+/* lobby */
+.lobby{display:grid;grid-template-columns:1.618fr 1fr;gap:34px}
+.lobby .l{display:flex;flex-direction:column;gap:34px}
+.join{flex:1;padding:55px;display:grid;grid-template-columns:377px 1fr;gap:55px;align-items:center}
+.qr{width:377px;height:377px;background:#fff;border-radius:13px;padding:21px;display:grid;grid-template-columns:repeat(25,1fr)}
+.qr i{background:#1c1a17}.qr i.o{background:transparent}
+.seats{display:flex;flex-direction:column;gap:13px}
+.seat{height:108px;padding:0 21px;display:flex;align-items:center;gap:21px;font-size:34px;font-weight:500}
+.seat.empty{background:transparent;border:3px dashed var(--k-chip);color:var(--k-soft);border-radius:13px}
+.bars{margin-left:auto;display:flex;align-items:flex-end;gap:5px;height:34px}
+.bars i{width:8px;background:var(--k-chip);border-radius:2px}.bars i.off{opacity:.25}
+/* rabakz */
+.rz{display:flex;flex-direction:column;gap:34px}
+.rz .main{flex:1;display:grid;grid-template-columns:1fr 1.618fr;gap:34px;min-height:0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:21px}
+.opt{height:144px;border-radius:13px;display:flex;align-items:center;gap:21px;padding:0 34px;font-size:55px;font-weight:700;color:#fff}
+.shape{width:89px;height:89px;display:grid;place-items:center;background:rgba(255,255,255,.22);border-radius:13px;font-weight:700;font-size:55px;flex:none}
+.oA{background:#D9483B}.oB{background:#2F7FD6}.oX{background:#B87D0C}.oY{background:#2E9A5B}
+.oA .shape{clip-path:polygon(50% 4%,98% 96%,2% 96%);padding-top:21px}.oB .shape{border-radius:50%}.oY .shape{transform:rotate(45deg)}.oY .shape span{transform:rotate(-45deg)}
+.who{display:flex;gap:21px;align-items:center}
+.who .badge{width:76px;height:76px;font-size:34px}
+.who .badge.wait{background:transparent!important;border-style:dashed;border-color:var(--k-on);color:var(--k-on)}
+.pbtns{position:absolute;inset:63px 13px 13px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:13px}
+.pbtn{border-radius:13px;display:flex;align-items:center;gap:13px;padding:0 21px;font-size:34px;font-weight:700;color:#fff}
+.pbtn .shape{width:55px;height:55px;font-size:34px;border-radius:8px}.pbtn.oA .shape{padding-top:13px}
+.idbar{position:absolute;left:13px;right:13px;top:8px;height:42px;display:flex;align-items:center;gap:13px;font-size:21px;font-weight:500}
+.idbar .badge{width:38px;height:38px;font-size:19px;border-width:3px}
+/* peek poker */
+.pp{display:grid;grid-template-columns:1.618fr 1fr;gap:55px}
+.grid4{display:grid;grid-template-columns:repeat(4,150px);gap:21px;justify-content:center;align-content:center}
+.pc{width:150px;height:205px;border-radius:13px;background:linear-gradient(170deg,#fff,#F3EEE3);color:#22201B;padding:8px 13px;font-family:var(--fd);font-size:55px;line-height:1;position:relative;border:var(--k-cs)}
+.pc .big{position:absolute;inset:0;display:grid;place-items:center;font-size:89px;padding-top:21px;font-family:var(--fb)}
+.pc.back{background:var(--k-back);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.16) 0 5px,transparent 5px 13px);border:8px solid #fff}
+.s-s{color:#22201B}.s-h{color:#D9483B}.s-d{color:#2F7FD6}.s-c{color:#2E9A5B}
+.pp .side{display:flex;flex-direction:column;gap:34px;justify-content:center}
+.pgrid{position:absolute;left:290px;top:76px;display:grid;grid-template-columns:repeat(4,58px);gap:8px}
+.pgrid i{width:58px;height:62px;border-radius:8px;background:var(--k-back);border:3px solid #fff}
+.pgrid i.on{outline:5px solid var(--k-acc);outline-offset:2px}
+/* tabao rush */
+.kitchen{position:absolute;inset:0;background-image:none;background-size:cover}
+.orders{position:absolute;left:21px;bottom:21px;display:flex;gap:13px}
+.order{width:233px;padding:13px;display:flex;flex-direction:column;gap:8px;box-shadow:0 5px 13px rgba(0,0,0,.25)}
+.order .r{display:flex;align-items:center;gap:8px}
+.order .ic{width:55px;height:55px;background-size:contain;background-repeat:no-repeat;flex:none}
+.ic.cr{background-image:none}.ic.lk{background-image:none}.ic.st{background-image:none}
+.order b{font-family:var(--fd);font-weight:400;font-size:34px;line-height:1}
+.steps{font-size:21px;font-weight:500;color:var(--k-sub)}
+.pat{height:13px;border-radius:8px;background:rgba(127,127,127,.3);overflow:hidden}.pat i{display:block;height:100%}
+.hud{position:absolute;right:21px;bottom:21px;display:flex;gap:13px;align-items:stretch}
+.hud .panel{padding:13px 34px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 5px 13px rgba(0,0,0,.25)}
+.hud small{font-size:21px;font-weight:500;color:var(--k-sub)}.hud .D{font-size:55px}
+.pin{position:absolute;transform:translate(-50%,-50%)}
+.pin.badge{width:50px;height:50px;font-size:25px;border-width:4px}
+.stick{position:absolute;left:55px;top:110px;width:233px;height:233px;border-radius:50%;background:rgba(127,127,127,.18);border:5px solid var(--k-chip)}
+.stick i{position:absolute;left:112px;top:50px;width:100px;height:89px;border-radius:50%;background:#fff;border:3px solid rgba(0,0,0,.12);box-shadow:0 5px 13px rgba(0,0,0,.35)}
+.abxy{position:absolute;right:34px;top:76px;width:300px;height:300px}
+.fb{position:absolute;width:110px;height:110px;border-radius:50%;display:grid;place-items:center;color:#fff;text-align:center;font-family:var(--fb);font-weight:700;font-size:34px;line-height:.95;border:5px solid rgba(255,255,255,.85)}
+.fb small{display:block;font:500 15px var(--fb)}
+
+/* ---------- board 4 additions (phone, 844 x 390) ---------- */
+.viewer{display:flex;flex-direction:column;gap:13px}
+.one{max-width:870px;width:100%;margin:0 auto}
+.g2p{display:grid;grid-template-columns:1fr 1fr;gap:21px}
+.g2p figure{margin:0;display:flex;flex-direction:column;gap:8px}
+.g2p figcaption{font-size:14px;color:var(--muted)}
+.note{display:grid;grid-template-columns:1.618fr 1fr;gap:21px;align-items:start}
+.note ul{font-size:15px}
+@media (max-width:900px){.note,.g2p{grid-template-columns:1fr}}
+.col{display:flex;flex-direction:column}.row{display:flex;align-items:center}
+.pb{position:absolute;inset:63px 21px 21px}
+.btn{white-space:nowrap;font-family:var(--fb);font-weight:700;border-radius:13px;padding:13px 34px;font-size:21px;background:var(--k-acc);color:var(--k-acci);display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn.ghost{background:transparent;color:var(--k-on);border:3px solid var(--k-chip)}
+.field{height:55px;border-radius:13px;border:3px solid var(--k-chip);background:#fff;color:#2B2118;display:flex;align-items:center;padding:0 21px;font-size:21px;font-weight:500}
+.codebox{width:55px;height:68px;border-radius:13px;border:3px solid var(--k-chip);background:#fff;color:#2B2118;display:grid;place-items:center;font:700 34px var(--mono)}
+.fbk{background:#fff!important;color:#22201B!important;border:5px solid var(--c)!important;box-shadow:0 8px 0 var(--c)}
+.fbk small{color:#5B5446}
+.zoneL{position:absolute;left:13px;top:63px;width:309px;bottom:13px;border:3px dashed var(--k-chip);border-radius:21px;display:flex;align-items:flex-end;justify-content:center;padding:13px;font-size:15px;color:var(--k-soft)}
+.cookc{border-radius:13px;border:3px solid #D8CDBB;background:linear-gradient(165deg,#fff,#F6F1E7);position:relative;overflow:hidden}
+.cookc img{position:absolute;left:50%;top:5%;height:90%;transform:translateX(-50%)}
+.cookc.taken img{opacity:.3}.cookc.mine{outline:5px solid var(--k-acc);outline-offset:2px}
+.cookc .badge{position:absolute;right:5px;top:5px;width:34px;height:34px;font-size:17px;border-width:3px}
+.pcell{border-radius:8px;background:var(--k-back);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.16) 0 5px,transparent 5px 13px);border:3px solid #fff}
+.pcell.on{outline:5px solid var(--k-acc);outline-offset:2px}
+.mini{width:68px;height:93px;border-radius:8px;background:linear-gradient(170deg,#fff,#F3EEE3);color:#22201B;font-family:var(--fd);font-size:34px;line-height:1;padding:5px 8px;position:relative}
+.mini span{position:absolute;inset:0;display:grid;place-items:center;font-size:44px;padding-top:13px;font-family:var(--fb)}
+.veil{position:absolute;inset:0;background:rgba(20,16,12,.72);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;color:#fff;text-align:center}
+.lockd{filter:grayscale(1);opacity:.4}
+</style>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <span class="eyebrow">Design gate · board 4 · phone controller</span>
+      <h1>What each player holds</h1>
+      <p>Every phone screen, in the looks you chose, at 844 × 390: an iPhone held sideways. On a laptop the frames are close to life size. The phone only ever shows controls and what is private to that player; everything else is on the TV. Open this on your phone, turn it sideways, and try reaching the buttons with your thumbs.</p>
+    </div>
+    <div class="chit">
+      <span class="eyebrow">Reply with</span>
+      <span>One letter for each numbered choice, for example <b>“1B 2B 3A 4B”</b>. The single-design screens need a yes, or what to change.</span>
+      <span class="muted">Nothing here costs frame rate: the phone draws a few fixed shapes and sends thumb positions.</span>
+    </div>
+  </div>
+  <div id="secs" style="display:flex;flex-direction:column;gap:55px"></div>
+  <section><p class="cap">Proportions on this board: in the options marked “golden ratio” the screen is split 1 : 1.618 (322 px to 522 px): stick side to button side, text to card grid. Spacing and sizes come from 5 · 8 · 13 · 21 · 34 · 55 · 89 · 144 px; corners are 13 px. Touch targets are at least 55 px, and the main action buttons are 110 px or more. The phone size is fixed; other phones scale the same layout to fit, never scroll.</p></section>
+</div>
+<script>
+(function(){
+  var P=["#D9483B","#2F7FD6","#F2B21B","#39A85B","#8E5BD0","#F07C2A","#22A6A6","#D95C9A"];
+  var H=["{{h0}}","{{h1}}","{{h2}}","{{h3}}","{{h4}}","{{h5}}","{{h6}}","{{h7}}"];
+  function b(i,cls,sz){return '<span class="badge '+(cls||"")+'" style="background:'+P[i]+(sz?";width:"+sz+"px;height:"+sz+"px;font-size:"+(sz/2)+"px":"")+'">'+(i+1)+"</span>";}
+  function id(i,name,right){return '<div class="idbar">'+b(i)+"<span>"+name+'</span><span style="margin-left:auto;display:flex;gap:13px;align-items:center">'+(right||'<span style="color:var(--k-soft)">Connected</span>')+"</span></div>";}
+  var MENU='<span class="chip" style="font-size:15px;padding:5px 13px">Menu</span>';
+
+  /* console */
+  function join(){return '<div class="pb" style="top:21px;display:grid;grid-template-columns:1fr 1.618fr;gap:34px;align-items:center"><div class="col" style="gap:8px"><span class="D" style="font-size:55px">Kaki Arcade</span><span style="font-size:21px;color:var(--k-soft)">Join the room on the TV</span></div><div class="col" style="gap:13px"><span style="font-size:15px;font-weight:700">Room code</span><div class="row" style="gap:8px">'+"H7KQ".split("").map(function(c){return '<span class="codebox">'+c+"</span>";}).join("")+'</div><span style="font-size:15px;font-weight:700">Your name</span><div class="row" style="gap:13px"><span class="field" style="flex:1">Ah Boy</span><span class="btn" style="height:55px">Join</span></div></div></div>';}
+  function rotate(){return '<div class="pb" style="top:21px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:21px;text-align:center"><div style="width:89px;height:144px;border:8px solid var(--k-on);border-radius:21px;transform:rotate(-90deg)"></div><span class="D" style="font-size:34px">Turn your phone sideways</span></div>';}
+  function seated(){return id(2,"Ah Boy")+'<div class="pb" style="display:grid;grid-template-columns:1fr 1.618fr;gap:21px"><div class="panel col" style="align-items:center;justify-content:center;gap:8px">'+b(2,"",110)+'<b style="font-size:21px">Seat 3</b></div><div class="col" style="justify-content:center;gap:13px"><span class="D" style="font-size:55px">You\'re in.</span><span style="font-size:21px">Watch the TV. Randy is picking the game.</span><div class="row" style="gap:13px"><span class="btn ghost">Change name</span><span class="btn ghost">Leave</span></div></div></div>';}
+  function stick(){return '<div class="stick"><i></i></div>';}
+  function fb(l,t,c,st,cls){return '<div class="fb '+(cls||"")+'" style="--c:'+c+";background:"+c+";"+st+'">'+l+"<small>"+t+"</small></div>";}
+  function leader(){return id(0,"Randy",'<span class="chip" style="font-size:15px;padding:5px 13px">Leader</span>')+stick()+'<div style="position:absolute;left:340px;top:140px;width:233px" class="col"><span class="D" style="font-size:34px">You choose the game</span><span style="font-size:21px;color:var(--k-soft);margin-top:8px">Watch the TV.</span></div>'+fb("A","Pick","#D9483B","right:55px;top:140px;width:144px;height:144px;font-size:55px")+fb("B","Back","#2F7FD6","right:220px;top:233px;width:89px;height:89px;font-size:28px");}
+  function team(){return id(6,"Aunty Lin")+'<div class="pb" style="display:grid;grid-template-columns:1fr 89px 1fr;gap:13px"><div class="col" style="border-radius:13px;background:#D9483B;color:#fff;align-items:center;justify-content:center;gap:8px;outline:8px solid #fff;outline-offset:-13px"><span class="D" style="font-size:55px">Red team</span><span style="font-size:21px">You are here</span></div><div class="col" style="align-items:center;justify-content:center;gap:13px">'+b(6,"",76)+'<span style="font-size:15px;text-align:center;color:var(--k-soft)">Tap a side</span></div><div class="col" style="border-radius:13px;background:#2F7FD6;color:#fff;align-items:center;justify-content:center;gap:8px;opacity:.55"><span class="D" style="font-size:55px">Blue team</span><span style="font-size:21px">Tap to switch</span></div></div>';}
+  function cooks(){var g="";for(var i=0;i<8;i++){var taken={0:0,3:1,5:3}[i];g+='<div class="cookc'+(taken!==undefined?" taken":"")+(i==2?" mine":"")+'"><img src="'+H[i]+'" alt="">'+(taken!==undefined?b(taken):"")+(i==2?b(2):"")+"</div>";}
+    return id(2,"Ah Boy",'<span style="color:var(--k-soft)">Pick your cook</span>')+'<div class="pb" style="display:grid;grid-template-columns:1.618fr 1fr;gap:21px"><div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:8px">'+g+'</div><div class="col" style="justify-content:center;gap:13px"><span class="D" style="font-size:34px">Tap a cook</span><span style="font-size:15px;color:var(--k-soft)">Faded ones are taken. Your apron stays your seat colour.</span><span class="btn">Ready</span></div></div>';}
+
+  /* Tabao Rush */
+  function trButtons(layout,style){var k=style=="K"?"fbk":"";
+    if(layout=="A")return '<div class="abxy">'+fb("Y","Throw","#2E9A5B","left:95px;top:0",k)+fb("X","Dash","#B87D0C","left:0;top:95px",k)+fb("B","Chop","#2F7FD6","left:190px;top:95px",k)+fb("A","Pick up","#D9483B","left:95px;top:190px",k)+"</div>";
+    return fb("A","Pick up","#D9483B","right:34px;top:212px;width:144px;height:144px;font-size:55px",k)+fb("B","Chop","#2F7FD6","right:199px;top:246px;width:110px;height:110px",k)+fb("Y","Throw","#2E9A5B","right:157px;top:123px;width:100px;height:100px;font-size:28px",k)+fb("X","Dash","#B87D0C","right:34px;top:89px;width:100px;height:100px;font-size:28px",k);}
+  function tr(layout,stk,style){return id(0,"Randy",MENU)+(stk=="float"?'<div class="zoneL">Touch anywhere on this side</div><div class="stick" style="left:89px;top:100px;width:178px;height:178px;border-style:solid;opacity:.9"><i style="left:76px;top:34px;width:76px;height:68px"></i></div>':stick())+trButtons(layout,style);}
+
+  /* Rabakz */
+  var OPT=[["A","Laksa"],["B","Mee siam"],["X","Lor mee"],["Y","Mee rebus"]];
+  function rzBtns(dim){return '<div class="pbtns">'+OPT.map(function(o,i){return '<div class="pbtn o'+o[0]+(dim&&dim.indexOf(i)>=0?" lockd":"")+'"><span class="shape"><span>'+o[0]+"</span></span>"+o[1]+"</div>";}).join("")+"</div>";}
+  function rzAnswer(){return id(2,"Ah Boy",'<span style="color:var(--k-soft)">Question 7 of 10</span>')+rzBtns();}
+  function rzLocked(){return id(2,"Ah Boy",'<span style="color:var(--k-soft)">Question 7 of 10</span>')+rzBtns([0,1,2,3])+'<div class="veil" style="top:55px"><span class="D" style="font-size:44px">Not that one</span><span style="font-size:21px">You can answer again when everyone has had a turn.</span></div>';}
+  function rzLeader(){return id(0,"Randy",'<span class="btn ghost" style="padding:5px 21px;font-size:15px">Skip question</span>')+rzBtns([1]);}
+  function rzWon(){return id(2,"Ah Boy",'<span style="color:var(--k-soft)">1,120 points</span>')+'<div class="pb col" style="align-items:center;justify-content:center;gap:13px"><span class="chip" style="background:#2E9A5B">Correct</span><span class="D" style="font-size:89px">+150</span><span style="font-size:21px">3 in a row: streak bonus</span></div>';}
+
+  /* Peek Poker */
+  function ppGrid(sz,gap){var g="";for(var i=0;i<16;i++)g+='<div class="pcell'+((i==1||i==10)?" on":"")+'" style="width:'+sz[0]+"px;height:"+sz[1]+'px"></div>';return '<div style="display:grid;grid-template-columns:repeat(4,'+sz[0]+"px);gap:"+gap+'px">'+g+"</div>";}
+  function ppA(){return id(1,"Mei",'<span>Pick 2 · 14 s</span>')+'<div class="pb" style="display:grid;grid-template-columns:1fr 1.618fr;gap:21px;align-items:center"><div class="col" style="gap:13px"><span class="D" style="font-size:34px">Your picks are secret</span><span style="font-size:21px;color:var(--k-soft)">Tap two cards.</span><span class="btn">Lock in</span></div><div style="justify-self:center">'+ppGrid([62,68],8)+"</div></div>";}
+  function ppB(){return id(1,"Mei",'<span>Pick 2 · 14 s</span>')+'<div class="pb" style="display:grid;grid-template-columns:1fr auto 1fr;gap:21px;align-items:center"><div class="col" style="gap:8px"><span class="D" style="font-size:28px">Your picks are secret</span><span style="font-size:15px;color:var(--k-soft)">Tap two cards. The grid matches the TV.</span></div>'+ppGrid([89,68],8)+'<div class="col" style="align-items:flex-end">'+fb("A","Lock in","#2E9A5B","position:static;width:144px;height:144px;font-size:55px")+"</div></div>";}
+  function mini(c){var S={s:"♠",h:"♥",d:"♦",c:"♣"},r=c.slice(0,-1),s=c.slice(-1);return '<div class="mini s-'+s+'">'+r+"<span>"+S[s]+"</span></div>";}
+  function ppHand(){return id(1,"Mei",'<span style="color:var(--k-soft)">Round 3 of 5</span>')+'<div class="pb col" style="justify-content:center;gap:13px;align-items:center"><span style="font-size:21px;color:var(--k-soft)">Your hand: your two picks and the shared cards</span><div class="row" style="gap:13px">'+mini("Qs")+mini("9s")+'<span style="width:21px"></span>'+mini("As")+mini("Ks")+mini("5s")+'</div><span class="D" style="font-size:44px">Flush</span></div>';}
+
+  /* shared states */
+  function paused(){return tr("B","fixed","")+'<div class="veil"><span class="D" style="font-size:55px">Paused</span><div class="row" style="gap:13px"><span class="btn">Resume</span><span class="btn ghost" style="color:#fff;border-color:#fff">Quit to lobby</span></div><span style="font-size:15px">Only the leader can quit.</span></div>';}
+  function lost(){return tr("B","fixed","")+'<div class="veil"><span class="D" style="font-size:55px">Reconnecting…</span><span style="font-size:21px">Your seat is kept for 2 minutes.</span></div>';}
+
+  var SECS=[
+   {n:"",t:"Joining",p:"A player scans the QR code on the TV. The code is already filled in; they type a name and join.",multi:[["C",join,"Join: code filled in from the QR, name, one button"],["C",rotate,"Held upright: the only thing shown"],["C",seated,"In the lobby"],["C",leader,"The leader steers the TV with the stick"]]},
+   {n:"",t:"Teams and cooks",p:"Shown only when the game needs them.",multi:[["C",team,"Team picker: tap a side"],["T1",cooks,"Cook picker (Tabao Rush): eight cooks, one each"]]},
+   {n:"1",t:"Tabao Rush: button layout",th:"T1",p:"Four actions: pick up or put down, chop or use a station, throw, dash. The first two are used constantly.",v:[
+     ["1A","Diamond of four equal buttons",function(){return tr("A","fixed","");},["Familiar from game pads."],["All four are the same size, though two are used ten times as often.","The lower button sits close to the phone's edge."]],
+     ["1B","Golden ratio: big Pick up, the rest around it",function(){return tr("B","fixed","");},["Stick side to button side is 1 : 1.618.","Pick up is 144 px under the thumb's resting place, so it is hard to miss without looking.","Chop is next to it; throw and dash are a short reach."],["Less familiar at first glance."],1]]},
+   {n:"2",t:"Tabao Rush: the stick",th:"T1",p:"Players look at the TV, not the phone, so the stick has to be found by feel.",v:[
+     ["2A","Fixed stick",function(){return tr("B","fixed","");},["Always in the same place."],["If your thumb lands off-centre without looking, the cook walks when you did not mean it."]],
+     ["2B","Floating stick",function(){return tr("B","float","");},["The stick appears wherever your left thumb lands, so it is always centred under it.","Works for any hand size."],["Nothing to see until you touch, apart from the outlined area."],1]]},
+   {n:"3",t:"Button style",th:"T1",p:"Applies to every game's action buttons.",v:[
+     ["3A","Filled colour",function(){return tr("B","float","");},["Strongest colour, matches the answer colours on the TV."],["Flat: the press is shown by scale and vibration only."],1],
+     ["3B","Keycap",function(){return tr("B","float","K");},["Looks pressable; the cap sinks when pressed."],["Less colour, so matching a button to the TV by colour is slower."]]]},
+   {n:"",t:"Rabakz",p:"Four buttons that match the TV by letter, shape, colour and position. There is no timer.",multi:[["R1",rzAnswer,"Answering"],["R1",rzLocked,"After a wrong answer: locked out until everyone has had a turn"],["R1",rzLeader,"The leader's phone adds Skip; an option already answered wrongly is faded"],["R1",rzWon,"You won the question"]]},
+   {n:"4",t:"Peek Poker: picking cards",th:"K1",p:"Each player secretly taps two positions in the same 4 × 4 grid that is on the TV.",v:[
+     ["4A","Golden ratio: text beside the grid",ppA,["Text to grid is 1 : 1.618."],["Cells are 62 px wide: tappable, but small."]],
+     ["4B","Grid in the centre, big Lock in",ppB,["Cells are 89 px wide, the easiest to hit.","Lock in is a 144 px button under the right thumb."],["Less room for instructions."],1]]},
+   {n:"",t:"Peek Poker: your hand",p:"After the reveal, only your phone shows what you made.",multi:[["K1",ppHand,"Your hand and its name"]]},
+   {n:"",t:"Shared states",p:"The same in every game.",multi:[["T1",paused,"Paused from the Menu button"],["T1",lost,"Connection lost"]]}
+  ];
+  function fit(){document.querySelectorAll(".fit").forEach(function(f){var s=f.querySelector(".stage");if(!s)return;s.style.transform="scale("+(f.clientWidth/844)+")";});}
+  window.addEventListener("resize",fit);
+  var host=document.getElementById("secs");
+  SECS.forEach(function(sec){var el=document.createElement("section");
+    var head='<div class="head"><span class="eyebrow">'+(sec.n?"Choice "+sec.n:"Single design")+"</span><h2>"+sec.t+"</h2><p>"+sec.p+"</p></div>";
+    if(sec.multi){el.innerHTML=head+'<div class="g2p">'+sec.multi.map(function(m){return '<figure><div class="fit ph big"><div class="stage t'+m[0]+'">'+m[1]()+"</div></div><figcaption>"+m[2]+"</figcaption></figure>";}).join("")+"</div>";host.appendChild(el);return;}
+    el.innerHTML=head+'<div class="viewer"><div class="tabs"></div><div class="one"><div class="fit ph big"></div></div><div class="note"></div></div>';host.appendChild(el);
+    var tabs=el.querySelector(".tabs"),fitEl=el.querySelector(".fit"),note=el.querySelector(".note");
+    function show(i){var v=sec.v[i];fitEl.innerHTML='<div class="stage t'+sec.th+'">'+v[2]()+"</div>";
+      note.innerHTML="<div><h3>"+v[0]+" · "+v[1]+"</h3>"+(v[5]?'<span class="rec" style="display:inline-block;margin-top:8px">Recommended</span>':"")+"</div><ul>"+v[3].map(function(x){return '<li class="pro">'+x+"</li>";}).join("")+v[4].map(function(x){return '<li class="con">'+x+"</li>";}).join("")+"</ul>";
+      tabs.querySelectorAll("button").forEach(function(o,k){o.setAttribute("aria-pressed",k==i);});fit();}
+    sec.v.forEach(function(v,i){var bt=document.createElement("button");bt.textContent=v[0]+" "+v[1].split(":")[0];bt.addEventListener("click",function(){show(i);});tabs.appendChild(bt);});
+    show(0);});
+  fit();
+})();
+</script>
