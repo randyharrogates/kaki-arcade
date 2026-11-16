@@ -1,4 +1,211 @@
+# Kaki Arcade — Decision Log
 
+Append-only. Newest at the bottom. A decision that changes a requirement is made by Randy;
+Claude records it here and then edits the affected doc.
+
+Format: **D-NNN · date · who decided** — decision. *Why.* Affects.
+
+---
+
+**D-001 · 2026-11-15 · Randy** — Build a browser games platform where phones are the
+controllers and one big screen shows the game. *Family and party play on the TV with no
+installs.* Affects: whole PRD.
+
+**D-002 · 2026-11-15 · Randy** — Public release, not family-only. Affects: REL, DATA, NET-004,
+PLAT-005.
+
+**D-003 · 2026-11-15 · Randy** — Up to 8 players. Affects: NN-2, PLAT-003, performance budgets.
+
+**D-004 · 2026-11-15 · Randy** — Remote players are wanted; ship them in phase 2 as
+single-device players, but design for them from the start. Affects: NET-007, PLAT-032,
+ARCHITECTURE §3.
+
+**D-005 · 2026-11-15 · Randy** — The host browser runs the simulation; phones connect by
+WebRTC through a small pairing server we own (not AirConsole, not a server-run game). *Near-zero
+running cost for a public game, lowest delay in the room, no third-party platform or
+subscription.* Trade-off accepted: a round is lost if the host tab closes. Affects: NET-001 to
+003, PLAT-009.
+
+**D-006 · 2026-11-15 · Randy** — The phone mimics a console controller built from a standard
+kit, so future games can be added. Each game declares the parts it uses. Affects: CTRL-001 to
+003.
+
+**D-007 · 2026-11-15 · Randy** — v1 is a platform with a game picker and two games: an original
+hawker-centre co-op cooking game and a memory poker game. Affects: PLAT-020, PLAT-033, both
+game specs.
+
+**D-008 · 2026-11-15 · Randy** — Hawker game modes at launch: co-op for 1 to 8, team versus,
+solo with bots. Launch size 8 co-op levels, 3 versus arenas, 7 dishes ("slightly more" than
+the 6 / 2 / 5 first proposed). Affects: TR-040, TR-050 to 053.
+
+**D-009 · 2026-11-15 · Randy** — Memory poker rules: 4 × 4 grid shown for 20 seconds then
+hidden; 3 shared face-up cards; each player secretly picks 2 from memory; best five-card hand
+wins; two players may pick the same card; a match is several rounds of rising difficulty with
+scores added up. Affects: PP-001 to 011. *The exact difficulty ramp and point values are
+Claude's proposal, see OQ-002 and OQ-003.*
+
+**D-010 · 2026-11-15 · Randy** — Art route D: Blender, pre-rendered. Must look finished, with
+correct character movement, and must not cause lag. *Chosen after comparing four finishes on
+the art samples board.* Affects: NN-4, ART-PIPELINE, PERFORMANCE §2.
+
+**D-011 · 2026-11-15 · Claude, following D-010** — Blender output is pre-rendered sprites and
+baked backgrounds, not live 3D in the browser. *Live 3D is the likeliest cause of stutter on a
+TV-class chip; flat sprites are the cheapest thing to draw.* Affects: ARCHITECTURE §4,
+ART-PIPELINE §3. To be confirmed by the M2 spike.
+
+**D-012 · 2026-11-15 · Randy** — Randy's design rules (golden ratio, motion, no flat
+backgrounds) are binding and are written into the repo rules. They apply to gameplay as well
+as the interface. Affects: NN-5, DESIGN §1 to §3, TR-062, PP-031.
+
+**D-013 · 2026-11-15 · Randy** — Design and art direction are decided at the start from
+artifact option boards he chooses from. Affects: NN-6, DESIGN §5, ROADMAP M1.
+
+**D-014 · 2026-11-15 · Randy** — Relay on. The pairing server stops issuing relay access at
+800 GB a month to stay inside Cloudflare's free 1,000 GB. *Prices checked the same day: first
+1,000 GB free then US$0.05/GB; Randy is on the US$5/month Workers plan.* Affects: NET-003,
+NET-004, REL-001.
+
+**D-015 · 2026-11-15 · Randy** — No accounts in v1; nickname only; scores on the host device;
+anonymous error counts only. Affects: DATA-001 to 004.
+
+**D-016 · 2026-11-15 · Randy** — Names: platform **Kaki Arcade**, hawker game **Tabao Rush**,
+memory game **Peek Poker**. *Trademark and domain availability not checked, see OQ-001.*
+
+**D-017 · 2026-11-15 · Randy** — English only in v1. Hosted on a subdomain of `leeseidon.com`.
+Supported devices: current Chrome, Edge and Safari on the big screen; phones from about the
+last four years; nothing older needed. Affects: REL-001, REL-004.
+
+**D-018 · 2026-11-15 · Randy** — Built entirely by Claude. Codex only for image generation or
+for something Claude cannot do. *This overrides Randy's usual Claude-plans, Codex-implements
+split, for this repo only.* Affects: NN-9, AGENTS.md.
+
+**D-019 · 2026-11-15 · Randy** — Work runs as a continuous loop of code, verify, test (UAT with
+screenshots), review, code, with implementation strictly tracked against the PRD in local repo
+docs. Affects: NN-7, NN-8, WORKFLOW, TRACEABILITY.
+
+**D-020 · 2026-11-15 · Claude** — Repository at `~/projects/personal/web-apps/kaki-arcade`,
+private on GitHub under `randyharrogates` (Randy chose location and visibility). pnpm
+workspace, TypeScript. Renderer PixiJS and shell Preact are provisional pending the M2 spike.
+Affects: ARCHITECTURE §2, §4.
+
+**D-021 · 2026-11-15 · Claude** — Peek Poker is built before Tabao Rush. *It is small, uses
+private phone screens, and proves the game interface cheaply.* Affects: ROADMAP. Randy can
+reverse this at the M3 demo.
+
+**D-022 · 2026-11-16 · Randy** — Every design or graphics choice is put to him as an artifact
+with real options, and each option states its performance cost (no lag is allowed). Written
+into `CLAUDE.md` rule 5 and `DESIGN.md` §5. Affects: NN-6, all later boards.
+
+**D-023 · 2026-11-16 · Randy** — Tabao Rush presentation: several different cook characters,
+not one cook in eight colours (how many is choice C on board 1A); no customer characters,
+orders are cards at a serving window; strictly no scrolling, every arena fits the screen,
+including team versus. Affects: TR-060, TR-061, TR-001, TR-050, TR-052, PERFORMANCE §2 ("one
+cook, eight colours"), ART-PIPELINE §2. *Doc edits pending, OQ-013.*
+
+**D-024 · 2026-11-16 · Randy** — Audience is any age. Affects: difficulty tuning, tutorial,
+text size.
+
+**D-025 · 2026-11-16 · Randy** — Peek Poker: the proposed difficulty ramp (20, 16, 12, 10, 8
+seconds; swaps from round 3) and hand points are confirmed, and the leader chooses 3, 5 or 7
+rounds (default 5). Closes OQ-002, OQ-003, OQ-007. Affects: PP-001, PP-009, PP-011. *Spec edit
+pending, OQ-013.*
+
+**D-026 · 2026-11-16 · Randy** — Two rule additions accepted in principle, details still to
+agree: Tabao Rush gets throwing items and kitchen fires in v1 (OQ-009); Peek Poker scoring
+counts speed (OQ-010). Affects: both game specs, CTRL layouts, ART-PIPELINE cook actions.
+
+**D-027 · 2026-11-16 · Randy** — Process: gate boards one at a time in order, mixing options
+allowed, then one confirmation render; no deadline; the TV's own browser is tried first, with
+this MacBook on HDMI as the fallback; real-phone HTTPS in development uses a Cloudflare quick
+tunnel that Claude sets up itself (closes OQ-005), with `arcade.leeseidon.com` going live only
+at M8 (DNS confirmed on Cloudflare by lookup, closes OQ-004); push to GitHub only when all is
+done; **no implementation starts until Randy confirms the plan.**
+
+**D-028 · 2026-11-16 · Claude** — Board 1A added ahead of board 1 to settle the modelling
+approach. It uses one third-party file for comparison only: Kenney "Mini Characters" 2.0
+(CC0), downloaded to a scratch folder, rendered once, not committed and not used in the game.
+
+**D-029 · 2026-11-16 · Randy** — Board 1A: "the ones that take least resources, and the
+cutest". Read by Claude as A1 chunky toy, B1 scripted by Claude, C2 one shared body with
+different heads (several characters at about the memory of one). *Reading to be confirmed by
+Randy; board 1 then refines the toy look.* Affects: DESIGN §4.6, TR-060, ART-PIPELINE §2.
+
+**D-030 · 2026-11-16 · Randy** — Tabao Rush v1 stays in the Singapore hawker world, with the
+venue varying by level (kopitiam, hawker centre, pasar malam, roadside zi char). Other worlds
+are later content. Affects: TR-050, board 2.
+
+**D-031 · 2026-11-16 · Randy** — Throwing (closes OQ-009): Y throws the held raw or chopped
+ingredient about 4 tiles on an arc in the facing direction; a teammate in its path catches it,
+otherwise it lands on a counter or the floor and can be picked up; plates and finished dishes
+cannot be thrown. Fires: food left burning 5 more seconds catches fire; fire spreads to a
+neighbouring station every 6 seconds; a burning station is unusable and its food is lost; any
+cook puts it out by holding B with the extinguisher, kept at a fixed spot in the level. Fires
+appear only in the more difficult levels. *Spec edit pending, OQ-013.*
+
+**D-032 · 2026-11-16 · Randy** — Peek Poker speed (closes OQ-010): among players tied for the
+round's best hand, the fastest to lock in gets +3 and the rest +1. Affects: PP-009.
+
+**D-033 · 2026-11-16 · Randy** — Players choose their cook in the lobby, with a default by
+seat. Push to GitHub only when the whole of v1 is done; commit locally along the way. The TV is
+confirmed as the TCL Q65. Eight real phones are only available at a UAT session with his other
+players, so Claude tests 8 players by emulation first.
+
+**D-034 · 2026-11-16 · Randy** — A third game joins v1: a simple trivia night game. *Rules,
+question source and name not yet agreed, OQ-015.* Affects: PRD §1, §5, ROADMAP, PLAT-033.
+
+**D-035 · 2026-11-16 · Randy** — The trivia game (closes OQ-015): named **Rabakz**; bundled
+question bank from the Open Trivia Database plus a Singapore pack written by Claude, no live
+generation; a mix of multiple choice, true or false and picture questions, no typed answers;
+correct plus speed scoring with a streak bonus and a double-points final round; 10, 30 or 50
+questions; all ages; free-for-all and teams; solo allowed; cook characters are not used
+outside Tabao Rush. *Point values, final-round lengths, bank size and the Easy / Mixed / Hard
+difficulty choice are Claude's proposals, OQ-020.* Affects: `games/rabakz.md`, PLAT-025.
+
+**D-036 · 2026-11-16 · Randy** — Build all three games, the controller and the console at
+once, with concurrent agents in git worktrees, in a continuous loop until the whole game is
+done; the work is documented as stories and issues. *Replaces D-021 (Peek Poker first).*
+Affects: `PLAN.md`, `backlog/`, ROADMAP, WORKFLOW.
+
+**D-037 · 2026-11-16 · Randy** — Confirms board 1A as A1 chunky toy, B1 scripted by Claude,
+C2 one shared body with different heads (closes OQ-017), with **at least 8 heads so every
+player has a unique character**, and **team colour themes** (for example red and blue) in team
+play. Versus uses two mirrored kitchens side by side, designed so the two kitchens interact.
+Randy has an iPhone and an Android phone and can test with up to 3 players for now. Affects:
+DESIGN §4.6, TR-052, TR-058, TR-060, TR-061, TR-064, PLAT-025, PERFORMANCE §2, ART-PIPELINE §2.
+
+**D-038 · 2026-11-16 · Claude** — PRD raised to v1.1 with the changes in D-023 to D-037: new
+IDs PLAT-025, TR-009, TR-010, TR-057, TR-058, TR-064 and RZ-001 to RZ-034; reworded PLAT-033,
+TR-001, TR-050, TR-052, TR-060, TR-061, PP-001, PP-009. 152 requirements tracked. Closes
+OQ-013.
+
+**D-039 · 2026-11-16 · Randy** — (1) Code that draws nothing may be written while the design
+gate is open; PRD NN-6 amended (closes OQ-018). (2) The proposed values for Rabakz, Peek Poker
+rounds 6 and 7, and fires from level 5 are accepted (closes OQ-020). (3) For concurrency, free
+memory is checked before every agent, UAT run, render or performance run is started; written
+into `PLAN.md` §5. (4) Before the build starts he wants an artifact showing what the games
+will look like and the end goal, as detailed and real as possible: published as board 0B.
+
+**D-040 · 2026-11-16 · Randy** — Rabakz picture questions use real photographs, not Blender
+renders: either freely licensed photos or images generated with Codex. RZ-025 reworded. Which
+source (or a mix) is choice 2 on board 2. He also asked that colour scheme, patterns and the
+like are put to him as an artifact with variations; board 2 was published ahead of board 1 for
+that. Affects: RZ-025, R-13, G-02.
+
+**D-041 · 2026-11-16 · Claude** — Codex used once for image generation (permitted by D-018),
+for a comparison sample on board 2 only; the image is not used in the game. Model
+`gpt-6.1-sol`, run in a scratch folder outside the repo. Prompt: "Generate one photorealistic
+photograph ... a bowl of Singapore Katong laksa on a hawker-centre table, seen from about 45
+degrees above, natural daylight, shallow depth of field, thick rice noodles in orange coconut
+curry broth with prawns, fishcake slices, cockles and laksa leaf. No text, no logos, no
+people. Landscape, about 1200x900 pixels." Output: 1200 × 900 PNG, embedded in
+`docs/design-gate/02-visual-identity.html`. The real-photo sample beside it is "Bowl of Katong
+Laksa" by JaventheAlderick, Wikimedia Commons, CC BY-SA 4.0.
+
+**D-042 · 2026-11-16 · Randy** — Board 2: direction **C, Marble table**, is the general rule,
+and **each game has its own theme variant** within it. Trivia photos: **P1, freely licensed
+real photographs; P2, Codex-generated, only when no photograph can be found.** He asked to see
+the per-game themes before anything else; published as board 2B. Closes OQ-022. Affects:
+DESIGN §4.2, RZ-025, R-13, G-02, G-03, G-04.
 
 **D-043 · 2026-11-16 · Randy** — Board 2B: Rabakz **R1 Bandung**, Peek Poker **K1 Green baize**,
 Tabao Rush **T1 Order chit** (closes OQ-023). **Go to start the build** (closes OQ-021), with
