@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — F-09: agent tooling
+
+- `issue-builder` agent, `/issue` integrator command, `tools/agents/worktree.sh` (worktree and
+  ports per issue) and `tools/agents/memcheck.sh` (memory check before any concurrent job).
+  No screen involved; checked by running both scripts. (NN-8)
+
 ## 2026-11-16 — Planning: PRD v1.1, third game, concurrent build plan
 
 - Design board 1A (modelling approach) published and decided: chunky toy cooks, scripted, one

@@ -104,6 +104,8 @@ Not all exist yet; they are created in M2 and M3. Keep this list true.
 | `pnpm perf` | Performance harness with scripted controllers |
 | `pnpm assets` | Render and pack art from Blender sources |
 | `python3 tools/trace_check.py` | Check the PRD against `docs/TRACEABILITY.md` (works today) |
+| `tools/agents/memcheck.sh <agent\|uat\|render\|perf>` | Check free memory before starting any concurrent job (works today) |
+| `tools/agents/worktree.sh <ID> <slug>` | Create an issue's git worktree and print its ports (works today) |
 
 ## Working conventions
 
