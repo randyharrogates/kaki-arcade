@@ -380,3 +380,9 @@ Fong", "Bit Chan"). `porn` and `phuk` match whole words only (Thai names, Phuket
 or more single letters anywhere is checked as a word. A protected name excuses only its own
 match. Accepted: a filter of this kind is never complete; what it misses is a follow-up list,
 and names it wrongly blocks are fixed as they are found.
+
+**D-068 · 2026-11-16 · Claude (under D-057)** — Input buffer (F-03b): a deferred button tick
+waits at most 4 simulation steps (about 67 ms). After that the rest of the queue is collapsed
+to its net state, keeping at most one press and one release per button. A tap lost after a long
+network stall is better than a burst of second-old taps replayed late, above all for the
+Rabakz buzzer.
