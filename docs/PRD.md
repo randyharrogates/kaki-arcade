@@ -1,6 +1,7 @@
 # Kaki Arcade — Product Requirements
 
-**Status:** v1.0 baseline, agreed with Randy on 2026-11-15.
+**Status:** v1.1, changed by Randy on 2026-11-16 (D-022 to D-037): a third game, teams, throwing,
+fires, several cook characters, no scrolling. v1.0 baseline was agreed on 2026-11-15.
 **Owner:** Randy. Only Randy changes a requirement. Claude proposes changes in
 `OPEN-QUESTIONS.md`; an accepted change is logged in `DECISIONS.md` and then edited here.
 
@@ -18,11 +19,13 @@ Kaki Arcade is a browser games platform for a room full of people. One **big scr
 driven by a laptop or by the TV itself) shows the game. Every player joins by scanning a QR code
 and their **phone becomes a console-style controller**. Nothing is installed.
 
-v1 ships with a game picker and two original games:
+v1 ships with a game picker and three original games:
 
 - **Tabao Rush** — a real-time co-op cooking game set in a Singapore hawker centre.
   Spec: `games/tabao-rush.md`.
 - **Peek Poker** — a turn-based memory game using poker hands. Spec: `games/peek-poker.md`.
+- **Rabakz** — a trivia night game where everyone answers at once on their phone.
+  Spec: `games/rabakz.md`.
 
 The platform exists so more games can be added later without rebuilding rooms, pairing or
 controllers.
@@ -38,6 +41,7 @@ controllers.
 Tabao Rush is an original game in the co-op cooking genre. It must not reuse the name,
 characters, art, music, levels or look of any existing game. Peek Poker uses standard playing
 cards and standard poker hand rankings only, with play scoring and no real-money element.
+Rabakz uses openly licensed and original questions only, credited as their licences require.
 
 ---
 
@@ -85,6 +89,7 @@ These came directly from Randy and override convenience.
 | PLAT-022 | MUST | After a game ends, the room returns to a results screen and then the picker, keeping the same players. |
 | PLAT-023 | MUST | The leader can pause a running game and quit to the picker. Any player can pause. |
 | PLAT-024 | SHOULD | The big screen can be driven without a phone for setup (keyboard) so the host is never stuck. |
+| PLAT-025 | MUST | A game may declare team play. Before such a game starts, players are split into two teams: balanced automatically by default, changeable by each player on their own phone and by the leader. Each team has a colour theme and a name (for example red and blue), shown on the big screen and on every phone. |
 
 ### 3.3 Game interface (extensibility)
 
@@ -93,7 +98,7 @@ These came directly from Randy and override convenience.
 | PLAT-030 | MUST | Games are modules behind one documented interface. Adding a game requires no change to room, pairing, controller transport or lobby code. |
 | PLAT-031 | MUST | The interface covers: metadata, player range, controller layout per player and game phase, simulation step, big-screen rendering, per-player private view for the phone, and results. |
 | PLAT-032 | MUST | Game simulation is a pure, deterministic function of state, inputs and a seed, with no access to rendering, network or wall-clock time. (This is what makes automated UAT, bots and phase 2 remote play possible.) |
-| PLAT-033 | MUST | Both v1 games use this interface with no private back doors. Peek Poker and Tabao Rush being different in kind (turn-based with secrets, real-time shared space) is the proof. |
+| PLAT-033 | MUST | All three v1 games use this interface with no private back doors. Peek Poker, Rabakz and Tabao Rush being different in kind (turn-based with secrets, simultaneous answers, real-time shared space) is the proof. |
 
 ### 3.4 Controller kit
 
@@ -163,9 +168,11 @@ Game rules live in the game specs and carry their own IDs:
 
 - `games/tabao-rush.md` — IDs `TR-xxx`.
 - `games/peek-poker.md` — IDs `PP-xxx`.
+- `games/rabakz.md` — IDs `RZ-xxx`.
 
-Launch size for Tabao Rush: **8 co-op levels, 3 versus arenas, 7 dishes**, with co-op (1 to 8),
-team versus, and solo with bots.
+Launch size for Tabao Rush: **8 co-op levels, 3 versus arenas, 7 dishes, 8 cook characters**,
+with co-op (1 to 8), team versus, and solo with bots. Launch size for Rabakz: at least 1,500
+questions (RZ-024).
 
 ---
 

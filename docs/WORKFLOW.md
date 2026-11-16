@@ -16,6 +16,12 @@ more than about ten files, it is too big.
 
 Start a slice with the `/slice` command (`.claude/commands/slice.md`).
 
+**Slices run concurrently.** A slice is one issue from `backlog/`, worked by one agent in its
+own git worktree. Steps 0 to 4 below happen in that worktree; step 5 is done by the integrator
+on `main`, who is the only one to merge and to edit the shared trackers. The rules that keep
+parallel slices from colliding are in `PLAN.md` §4 to §6 and override this file where they
+differ.
+
 ---
 
 ## 0. Plan

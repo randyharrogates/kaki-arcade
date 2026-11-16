@@ -43,10 +43,11 @@ requirement.
 | PLAT-022 | MUST | After a game ends, the room returns to a results screen and then the picker, keeping the same players | M3 | not started | — | — | — |
 | PLAT-023 | MUST | The leader can pause a running game and quit to the picker | M3 | not started | — | — | — |
 | PLAT-024 | SHOULD | The big screen can be driven without a phone for setup (keyboard) so the host is never stuck | M3 | not started | — | — | — |
+| PLAT-025 | MUST | Games may declare team play; two teams with colour themes, balanced by default, changeable on phones | M3 | not started | — | — | — |
 | PLAT-030 | MUST | Games are modules behind one documented interface | M3 | not started | — | — | — |
 | PLAT-031 | MUST | The interface covers: metadata, player range, controller layout per player and game phase, simulation… | M3 | not started | — | — | — |
 | PLAT-032 | MUST | Game simulation is a pure, deterministic function of state, inputs and a seed, with no access to… | M3 | not started | — | — | — |
-| PLAT-033 | MUST | Both v1 games use this interface with no private back doors | M3 | not started | — | — | — |
+| PLAT-033 | MUST | All three v1 games use this interface with no private back doors | M3 | not started | — | — | — |
 
 ## Controller kit
 
@@ -126,7 +127,7 @@ requirement.
 
 | ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
 |---|---|---|---|---|---|---|---|
-| PP-001 | MUST | A match is several rounds (default 5) | M4 | not started | — | — | — |
+| PP-001 | MUST | A match is 3, 5 or 7 rounds chosen by the leader (default 5) | M4 | not started | — | — | — |
 | PP-002 | MUST | Each round deals from one shuffled standard 52-card deck: 16 cards into a 4 × 4 grid and 3 shared cards | M4 | not started | — | — | — |
 | PP-003 | MUST | The 16 grid cards are shown face up on the big screen for the memorise time (20 seconds in round 1), then… | M4 | not started | — | — | — |
 | PP-004 | MUST | The 3 shared cards stay face up for the whole round | M4 | not started | — | — | — |
@@ -134,7 +135,7 @@ requirement.
 | PP-006 | MUST | Two or more players may pick the same card | M4 | not started | — | — | — |
 | PP-007 | MUST | A player's hand is their 2 picked cards plus the 3 shared cards | M4 | not started | — | — | — |
 | PP-008 | MUST | At the reveal, the grid flips face up, each player's picks are marked with their colour and seat number,… | M4 | not started | — | — | — |
-| PP-009 | MUST | Round scoring: points by hand rank (table below) plus a bonus for the best hand of the round | M4 | not started | — | — | — |
+| PP-009 | MUST | Round scoring by hand rank plus best-hand bonus; fastest among tied best hands gets +3, others +1 | M4 | not started | — | — | — |
 | PP-010 | MUST | A player who has not picked 2 cards when time runs out has the missing picks chosen at random | M4 | not started | — | — | — |
 | PP-011 | MUST | Difficulty rises each round (table below) | M4 | not started | — | — | — |
 | PP-012 | MUST | 1 to 8 players | M4 | not started | — | — | — |
@@ -146,11 +147,44 @@ requirement.
 | PP-031 | MUST | Card flips, swaps and the reveal follow ../DESIGN.md §3 (masks for reveals, arcs for moving cards, no bounce) | M4 | not started | — | — | — |
 | PP-032 | MUST | A running scoreboard is visible between rounds and a final podium at match end | M4 | not started | — | — | — |
 
+## Rabakz
+
+| ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
+|---|---|---|---|---|---|---|---|
+| RZ-001 | MUST | A match is 10, 30 or 50 questions chosen by the leader | M4 | not started | — | — | — |
+| RZ-002 | MUST | Multiple choice, true or false and picture questions; no typed answers | M4 | not started | — | — | — |
+| RZ-003 | MUST | Question and options on the big screen; matching answer buttons on each phone | M4 | not started | — | — | — |
+| RZ-004 | MUST | Everyone answers at once within the answer time; first press is final | M4 | not started | — | — | — |
+| RZ-005 | MUST | Before the reveal only who has answered is shown; answers stay private | M4 | not started | — | — | — |
+| RZ-006 | MUST | Question ends when all have answered or time runs out; reveal shows answer, counts and points | M4 | not started | — | — | — |
+| RZ-007 | MUST | Scoring: 100 for a correct answer plus a speed bonus up to 100; never negative | M4 | not started | — | — | — |
+| RZ-008 | MUST | Streak bonus from the third correct answer in a row | M4 | not started | — | — | — |
+| RZ-009 | MUST | Final round scores double | M4 | not started | — | — | — |
+| RZ-010 | MUST | Leader chooses categories or Mixed | M4 | not started | — | — | — |
+| RZ-011 | MUST | Leader chooses difficulty: Easy, Mixed or Hard | M4 | not started | — | — | — |
+| RZ-012 | MUST | Free-for-all for 1 to 8 and a two-team mode scored by team average | M4 | not started | — | — | — |
+| RZ-013 | MUST | Solo score attack against a personal best per match length | M4 | not started | — | — | — |
+| RZ-014 | MUST | Mid-match joiner enters at the next question with 0 | M4 | not started | — | — | — |
+| RZ-015 | MUST | No repeats within a match; recently seen questions avoided on this host | M4 | not started | — | — | — |
+| RZ-016 | MUST | Players level on points share the placing | M4 | not started | — | — | — |
+| RZ-020 | MUST | Bundled bank; everything for a match loaded before it starts, at most 2 MB | M4 | not started | — | — | — |
+| RZ-021 | MUST | Sources: Open Trivia Database (CC BY-SA 4.0, credited) and a Singapore pack spot-checked by Randy | M4 | not started | — | — | — |
+| RZ-022 | MUST | Question schema and build-time validation of lengths | M4 | not started | — | — | — |
+| RZ-023 | MUST | Bank screened for a public, all-ages audience | M4 | not started | — | — | — |
+| RZ-024 | MUST | Launch size: 1,500 questions, 200 Singapore, 60 picture | M4 | not started | — | — | — |
+| RZ-025 | MUST | Picture images are original or openly licensed with credit | M4 | not started | — | — | — |
+| RZ-026 | MUST | Option order shuffled from the seed; correct position uniform | M4 | not started | — | — | — |
+| RZ-030 | MUST | Question and options readable from 3 m; options differ by letter and shape | M4 | not started | — | — | — |
+| RZ-031 | MUST | Timer readable without colour; motion follows DESIGN.md §3 | M4 | not started | — | — | — |
+| RZ-032 | MUST | Scoreboard every 5 questions and a final podium; team totals first in team mode | M4 | not started | — | — | — |
+| RZ-033 | SHOULD | Sound effects with shared volume controls | M4 | not started | — | — | — |
+| RZ-034 | MUST | Players shown by seat number, colour and nickname; no cook characters | M4 | not started | — | — | — |
+
 ## Tabao Rush
 
 | ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
 |---|---|---|---|---|---|---|---|
-| TR-001 | MUST | Orders appear on an order board with the dish, its recipe steps as icons, and a patience timer | M5 | not started | — | — | — |
+| TR-001 | MUST | Orders appear as cards on an order board (dish, recipe icons, patience timer); no customer characters | M5 | not started | — | — | — |
 | TR-002 | MUST | Players move freely around the stall floor, carry one item at a time, and interact with the station they face | M5 | not started | — | — | — |
 | TR-003 | MUST | A dish is made by taking ingredients through stations in the recipe's order, then plating and delivering… | M5 | not started | — | — | — |
 | TR-004 | MUST | Correct orders score points plus a speed tip | M5 | not started | — | — | — |
@@ -158,6 +192,8 @@ requirement.
 | TR-006 | MUST | Score thresholds and order rate scale with the number of players so 1 player and 8 players both face a… | M5 | not started | — | — | — |
 | TR-007 | MUST | Cooking stations run on timers once loaded | M5 | not started | — | — | — |
 | TR-008 | MUST | Used plates return dirty and must be washed before reuse | M5 | not started | — | — | — |
+| TR-009 | MUST | Throwing a held raw or chopped ingredient on an arc; teammates catch | M5 | not started | — | — | — |
+| TR-010 | MUST | Fires: start, spread, burning station unusable, extinguisher; harder levels only | M6 | not started | — | — | — |
 | TR-020 | MUST | Movement responds on the next simulation step after input arrives, with no acceleration smoothing while… | M5 | not started | — | — | — |
 | TR-021 | MUST | The station a player would interact with is highlighted before they press, so a press never surprises | M5 | not started | — | — | — |
 | TR-022 | MUST | Players cannot walk through each other; collisions are soft enough that 8 players never deadlock in a corridor | M5 | not started | — | — | — |
@@ -166,14 +202,17 @@ requirement.
 | TR-031 | MUST | Progress and state are readable without colour alone (NFR-A11Y) | M5 | not started | — | — | — |
 | TR-040 | MUST | 7 dishes at launch, introduced gradually across levels | M6 | not started | — | — | — |
 | TR-041 | MUST | Each dish is recognisable as itself at game size on a TV (checked at the design gate and in UAT) | M6 | not started | — | — | — |
-| TR-050 | MUST | 8 co-op levels, each with a distinct layout and at least one twist (for example a split kitchen, a moving… | M6 | not started | — | — | — |
+| TR-050 | MUST | 8 co-op levels across hawker-world venues, each a distinct layout and twist; fires from level 5 | M6 | not started | — | — | — |
 | TR-051 | MUST | Co-op mode for 1 to 8 players | M5 | not started | — | — | — |
-| TR-052 | MUST | Team versus mode: two teams of up to 4 run mirrored stalls and compete on score | M7 | not started | — | — | — |
+| TR-052 | MUST | Team versus: two teams, mirrored kitchens side by side on one screen, team colour themes, 3 arenas | M7 | not started | — | — | — |
 | TR-053 | MUST | Solo and short-handed play can add bots to reach a chosen team size | M6 | not started | — | — | — |
 | TR-054 | MUST | Level select shows stars earned per level, saved on the host device (DATA-002) | M6 | not started | — | — | — |
 | TR-055 | MUST | A 60-second playable tutorial on first run teaches move, pick up, act and serve | M5 | not started | — | — | — |
 | TR-056 | MUST | A player who joins mid-round enters at the next round, and spectates until then | M5 | not started | — | — | — |
-| TR-060 | MUST | Cooks have animated idle, walk, carry-walk, chop, stir/toss, wash and serve actions in 8 facing… | M5 | not started | — | — | — |
-| TR-061 | MUST | Every player is identifiable by colour and a seat number marker above their cook | M5 | not started | — | — | — |
+| TR-057 | MUST | Every level and arena fits the whole screen; nothing scrolls | M5 | not started | — | — | — |
+| TR-058 | MUST | Mirrored versus kitchens interact; forms chosen on board 3 | M7 | not started | — | — | — |
+| TR-060 | MUST | Cooks animated in 8 directions (9 actions incl. throw and extinguish); one shared body, different heads | M5 | not started | — | — | — |
+| TR-061 | MUST | Every player identifiable by character head, colour (player or team) and seat number marker | M5 | not started | — | — | — |
 | TR-062 | MUST | Game motion follows ../DESIGN.md §3: no bounce or overshoot, ease-out entrances, a pulse to confirm a… | M5 | not started | — | — | — |
+| TR-064 | MUST | At least 8 cook characters; each player picks a unique one before a round | M5 | not started | — | — | — |
 | TR-063 | SHOULD | Sound effects for every action and one music loop per setting, with separate volume controls on the big screen | M6 | not started | — | — | — |

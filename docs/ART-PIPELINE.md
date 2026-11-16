@@ -20,14 +20,15 @@ design gate (board 1); this file is the process.
 
 | Asset | Source | Output |
 |---|---|---|
-| Cook | One rigged, animated model | Sprite frames: each action × 8 directions, plus a matching colour-mask frame for player tint |
+| Cook body | One rigged, animated model in the chunky toy style | Sprite frames: each action × 8 directions, a matching colour-mask frame for the player or team tint, and a head anchor point per frame |
+| Cook heads | 8 character heads | One sprite per head × 8 directions, drawn on the body's head anchor |
 | Dishes and ingredients | One model per item and state (raw, chopped, cooked, burnt, plated) | One sprite each, plus a small icon for order cards |
 | Stations | One model per station and state | Sprites for the changing parts; the static body is baked into the level background |
 | Levels | One scene per level | A baked background image, a collision map, and station anchor points exported as JSON |
 | Cards (Peek Poker) | One card model, generated faces | Card face sprites and a back; flip frames |
 | Effects | Small animated models | Short frame strips (steam, sparks, splash), baked soft shadows |
 
-Cook actions (TR-060): idle, walk, carry-walk, chop, stir/toss, wash, serve.
+Cook actions (TR-060): idle, walk, carry-walk, chop, stir/toss, wash, serve, throw, extinguish.
 
 ## 3. Rules that protect performance
 
@@ -39,8 +40,8 @@ See `PERFORMANCE.md` for the budgets these serve.
   128 px) and are packed into atlases no larger than 2048 × 2048.
 - Shadows and glows are rendered into the sprite or the background. Nothing is blurred or lit
   at runtime.
-- Player colour: render a neutral cook plus a mask of the tinted parts. The game multiplies the
-  mask by the player's colour.
+- Colour: render a neutral cook plus a mask of the tinted parts (apron and cap). The game
+  multiplies the mask by the player's colour in co-op and the team's colour in versus.
 - Outputs are WebP (lossy for backgrounds, lossless for sprites with hard edges), with
   half-resolution variants generated for lower-detail mode.
 - `assets/dist/` is generated. Never hand-edit it; change the source or the script and rebuild.

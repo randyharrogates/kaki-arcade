@@ -1,0 +1,265 @@
+<title>Kaki Arcade Board 1A</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a kopitiam order chit. Three decisions down the page, each a row of option cards;
+   board width 1440, text : aside splits 1.618 : 1, all spacing on the phi scale. */
+:root{
+  --bg:#EFE9DA; --dot:#D9D0BA; --card:#FBF8F0; --card2:#F3EEDF; --ink:#26221C; --muted:#6B6355;
+  --line:#D5CCB6; --sage:#4F7A5C; --sage-soft:#DCE8DA; --kopi:#7A4A2B; --pick:#B5371F; --warn:#9A5B00;
+  --s1:5px; --s2:8px; --s3:13px; --s4:21px; --s5:34px; --s6:55px; --s7:89px;
+  --display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink:#F1EBDC; --muted:#A79F8D;
+  --line:#3B382E; --sage:#8FBF9C; --sage-soft:#26342A; --kopi:#D9A27A; --pick:#F0806A; --warn:#E3A84A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink:#F1EBDC; --muted:#A79F8D;
+  --line:#3B382E; --sage:#8FBF9C; --sage-soft:#26342A; --kopi:#D9A27A; --pick:#F0806A; --warn:#E3A84A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:21px 21px;
+  color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1440px;margin:0 auto;padding-block:var(--s5) var(--s7);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:var(--s6)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+h1{font-size:clamp(34px,5vw,55px);font-weight:700;letter-spacing:-.02em}
+h2{font-size:clamp(21px,3vw,34px);font-weight:700}
+h3{font-size:21px;font-weight:700}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage)}
+.muted{color:var(--muted)}
+header{display:grid;grid-template-columns:1.618fr 1fr;gap:var(--s5);align-items:end}
+header>div{display:flex;flex-direction:column;gap:var(--s3);min-width:0}
+.chit{border:1px dashed var(--line);border-radius:var(--s2);padding:var(--s4);
+  background:linear-gradient(160deg,var(--card),var(--card2));display:flex;flex-direction:column;gap:var(--s2)}
+.chit ol{margin:0;padding-left:var(--s4);display:flex;flex-direction:column;gap:var(--s1)}
+section{display:flex;flex-direction:column;gap:var(--s4)}
+.head{display:flex;flex-direction:column;gap:var(--s2)}
+.grid{display:grid;gap:var(--s4)}
+.g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+.card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:var(--s3);
+  overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card img{display:block;width:100%;height:auto}
+.card .sq{aspect-ratio:1/1;object-fit:cover}
+.body{padding:var(--s4);display:flex;flex-direction:column;gap:var(--s3)}
+.tag{font-family:var(--mono);font-size:13px;color:var(--pick);letter-spacing:.06em}
+ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--s2)}
+li{padding-left:var(--s4);position:relative}
+li::before{position:absolute;left:0;font-family:var(--mono);font-weight:500}
+li.pro::before{content:"+";color:var(--sage)} li.con::before{content:"−";color:var(--pick)}
+.rec{align-self:flex-start;font-family:var(--mono);font-size:13px;background:var(--sage-soft);color:var(--sage);
+  border-radius:var(--s1);padding:var(--s1) var(--s2)}
+.viewer{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:var(--s3);
+  padding:var(--s3);display:flex;flex-direction:column;gap:var(--s3)}
+.tabs{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.tabs button{font:500 14px var(--body);color:var(--ink);background:transparent;border:1px solid var(--line);
+  border-radius:var(--s5);padding:var(--s2) var(--s3);cursor:pointer;transition:transform 150ms ease-out,background 200ms ease-in-out}
+.tabs button:active{transform:scale(.97)}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tabs button:focus-visible{outline:2px solid var(--pick);outline-offset:2px}
+.viewer img{width:100%;height:auto;border-radius:var(--s2);display:block;aspect-ratio:16/9}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:680px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:var(--s2) var(--s3);border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--muted);letter-spacing:.04em}
+td.n{font-family:var(--mono);white-space:nowrap}
+.ok{color:var(--sage)} .tight{color:var(--warn)} .over{color:var(--pick)}
+.note{border-left:3px solid var(--kopi);padding-left:var(--s3);color:var(--muted)}
+@media (max-width:900px){header{grid-template-columns:1fr}.g3,.g2{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.tabs button{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <span class="eyebrow">Design gate · board 1A · modelling approach</span>
+      <h1>How the cooks get made</h1>
+      <p>Three choices that come before the art style board. Every picture here is a real Blender render made by script on your Mac, or a real downloaded model. They are first-pass models to show the approach, not final art: the style board that follows adds faces, clothing detail, props and the stall.</p>
+    </div>
+    <div class="chit">
+      <span class="eyebrow">Reply with one from each</span>
+      <ol>
+        <li><strong>A</strong> How stylised: A1, A2 or A3</li>
+        <li><strong>B</strong> Where models come from: B1, B2 or B3</li>
+        <li><strong>C</strong> How many characters: C1, C2, C3 or C4</li>
+      </ol>
+      <span class="muted">Mixing is fine, for example “A1 heads on A2 bodies”.</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="head">
+      <span class="eyebrow">Choice A</span>
+      <h2>How stylised should the cooks be?</h2>
+      <p>The same cook (cap, yellow shirt, red apron) built three ways, in the same light, at the same scale. The look does not change frame rate: every option ends up as flat pre-rendered sprites, so all three draw at the same speed. What changes is how well a cook reads from the sofa and how reliably I can animate it.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card">
+        <img class="sq" src="{{close_toy}}" alt="Chunky toy cook: very large head, glossy finish, short limbs">
+        <div class="body">
+          <span class="tag">A1</span><h3>Chunky toy</h3>
+          <p class="muted">Two heads tall, glossy vinyl-toy finish.</p>
+          <ul>
+            <li class="pro">The head is half the sprite, so face, hair and hat read from 3 m.</li>
+            <li class="pro">Short limbs make walk cycles clean with no foot sliding.</li>
+            <li class="con">Arms are short, so chopping and carrying are less expressive.</li>
+            <li class="con">Gloss can look plasticky; it can be toned down.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card">
+        <img class="sq" src="{{close_clay}}" alt="Soft clay cook: matte finish, slightly longer limbs">
+        <div class="body">
+          <span class="tag">A2</span><h3>Soft clay</h3>
+          <p class="muted">Two and a half heads tall, matte hand-made finish.</p>
+          <ul>
+            <li class="pro">Longer arms and legs show chop, stir and carry clearly.</li>
+            <li class="pro">Matte clay suits a nostalgic kopitiam mood.</li>
+            <li class="con">The head is smaller on the TV than A1.</li>
+            <li class="con">Legs are long enough to need knees: a little more animation work.</li>
+          </ul>
+          <span class="rec">Recommended, or a mix of A1 and A2</span>
+        </div>
+      </article>
+      <article class="card">
+        <img class="sq" src="{{close_real}}" alt="Realistic-proportion cook: seven heads tall, mannequin-like">
+        <div class="body">
+          <span class="tag">A3</span><h3>Realistic proportions</h3>
+          <p class="muted">Seven heads tall, lightly textured cloth.</p>
+          <ul>
+            <li class="pro">Most grown-up look.</li>
+            <li class="con">At game size the head is about 20 px: you cannot tell who is who.</li>
+            <li class="con">Scripted anatomy reads as a mannequin. Faces and hands are where it shows.</li>
+            <li class="con">Realistic walking needs weight shift, knees and elbows: the highest risk to “correct movement”.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="viewer">
+      <div class="head">
+        <h3>At real game size</h3>
+        <p class="muted">A full 1920 × 1080 frame with 8 cooks, 120 px per floor tile, nothing scrolling. Open this page on the TV to judge it from the sofa. The kitchen is a grey placeholder.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Game-size frame">
+        <button role="tab" id="t-toy" aria-selected="true" data-f="toy">A1 Chunky toy</button>
+        <button role="tab" id="t-clay" aria-selected="false" data-f="clay">A2 Soft clay</button>
+        <button role="tab" id="t-real" aria-selected="false" data-f="real">A3 Realistic</button>
+        <button role="tab" id="t-cast" aria-selected="false" data-f="cast">Four characters (choice C)</button>
+      </div>
+      <img id="f-toy" src="{{frame_toy}}" alt="Eight chunky toy cooks on a 1080p kitchen frame">
+      <img id="f-clay" hidden src="{{frame_clay}}" alt="Eight soft clay cooks on a 1080p kitchen frame">
+      <img id="f-real" hidden src="{{frame_real}}" alt="Eight realistic-proportion cooks on a 1080p kitchen frame">
+      <img id="f-cast" hidden src="{{frame_cast}}" alt="Eight cooks drawn from four different characters on a 1080p kitchen frame">
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <span class="eyebrow">Choice B</span>
+      <h2>Where do the models come from?</h2>
+      <p>This is the fallback question: what I am allowed to reach for if scripted models do not meet your bar.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card">
+        <img class="sq" src="{{close_toy}}" alt="A cook modelled entirely by script">
+        <div class="body">
+          <span class="tag">B1</span><h3>Scripted by Claude</h3>
+          <p class="muted">Everything in choice A was made this way.</p>
+          <ul>
+            <li class="pro">Original: nobody else has these characters.</li>
+            <li class="pro">Free, and every asset rebuilds from a script.</li>
+            <li class="pro">I control the rig, so I can author chop, stir, wash and throw.</li>
+            <li class="con">Works for stylised looks only; fine sculpted detail is out of reach.</li>
+          </ul>
+          <span class="rec">Recommended</span>
+        </div>
+      </article>
+      <article class="card">
+        <img class="sq" src="{{close_cc0}}" alt="A blocky low-poly public-domain character">
+        <div class="body">
+          <span class="tag">B2</span><h3>Public-domain base models</h3>
+          <p class="muted">Kenney “Mini Characters” (CC0), shown as downloaded, in our lighting.</p>
+          <ul>
+            <li class="pro">Free. Comes rigged with walk, pick-up and holding animations.</li>
+            <li class="con">No chop, stir or wash: I would still author those.</li>
+            <li class="con">Other games use the same models, so the look is not ours. That sits badly with the originality rule.</li>
+            <li class="con">The blocky style is fixed; turning these into hawker cooks is real rework.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card">
+        <div class="body">
+          <span class="tag">B3</span><h3>Paid AI 3D generation</h3>
+          <p class="muted">No sample here: making one needs a paid account, and spending money is your call.</p>
+          <ul>
+            <li class="pro">Detailed, sculpted-looking meshes from a text prompt or a drawing.</li>
+            <li class="con">Messy geometry that is hard to rig, so animation quality is a gamble.</li>
+            <li class="con">Hard to keep several characters in one consistent style.</li>
+            <li class="con">A subscription cost, and not reproducible from a script.</li>
+          </ul>
+          <p class="note">If you want to see this before deciding, say so and I will check current prices first.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <span class="eyebrow">Choice C</span>
+      <h2>How many different characters?</h2>
+      <p>You asked for several. Each fully separate character needs its own complete set of animation frames, and those frames sit in the big screen’s memory for the whole round. The budget for a round is 256 MB (PERF-024), and your TV has far less to spare than the MacBook.</p>
+    </div>
+    <div class="grid g2">
+      <article class="card">
+        <img src="{{cast_full}}" alt="Four distinct characters: uncle with towel, auntie with permed hair, young cook with cap, makcik with tudung">
+        <div class="body">
+          <span class="tag">C3 / C4</span><h3>Fully distinct characters</h3>
+          <p class="muted">Different bodies, clothes and heads: uncle, auntie, young cook, makcik. The apron carries the player colour.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="{{cast_heads}}" alt="The same four heads on one shared body">
+        <div class="body">
+          <span class="tag">C2</span><h3>One body, different heads</h3>
+          <p class="muted">The same four heads on one shared body. Only the head is drawn per character, so memory barely grows.</p>
+        </div>
+      </article>
+    </div>
+    <div class="card"><div class="body">
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th>Option</th><th>What players see</th><th>Memory for cooks</th><th>Against 256 MB</th><th>Download</th></tr></thead>
+        <tbody>
+          <tr><td class="n">C1</td><td>One cook in 8 colours (the original plan)</td><td class="n">~26 MB</td><td class="ok">Comfortable</td><td class="n">~0.8 MB</td></tr>
+          <tr><td class="n">C2</td><td>One body, 4 to 8 different heads</td><td class="n">~28 MB</td><td class="ok">Comfortable</td><td class="n">~0.9 MB</td></tr>
+          <tr><td class="n">C3</td><td>4 fully distinct characters, each in 2 colours</td><td class="n">~105 MB</td><td class="tight">Fits, tight on the TV</td><td class="n">~3 MB</td></tr>
+          <tr><td class="n">C4</td><td>8 fully distinct characters</td><td class="n">~210 MB</td><td class="over">Leaves too little for the kitchen</td><td class="n">~6 MB</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">These are my estimates, not measurements: 9 actions (the 7 in the spec plus throw and put out a fire), about 51 frames each way, 128 × 160 px per frame, left-facing frames mirrored from right-facing ones. Frame rate is the same for every option; the risk is memory and loading time. The M2 spike measures the real figures on your TV. Lower-detail mode cuts each figure to a quarter.</p>
+      <span class="rec">Recommended: C3, falling back to C2 if the TV measurement says so</span>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="head">
+      <span class="eyebrow">Proportions used on this board</span>
+      <p class="muted">Board width 1440. Header text to reply box 1.618 : 1. All gaps and padding from the 5 · 8 · 13 · 21 · 34 · 55 · 89 scale. Game frames are fixed at 1920 × 1080, with cooks sized inside them.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.tabs button');
+  tabs.forEach(function(b){b.addEventListener('click',function(){
+    tabs.forEach(function(o){var on=o===b;o.setAttribute('aria-selected',on?'true':'false');
+      document.getElementById('f-'+o.dataset.f).hidden=!on;});
+  });});
+})();
+</script>

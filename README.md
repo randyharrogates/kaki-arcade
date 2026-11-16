@@ -4,10 +4,11 @@ A browser games platform for a room full of people. One big screen shows the gam
 player scans a QR code and their phone becomes a console-style controller. Up to 8 players,
 nothing to install.
 
-v1 ships two original games:
+v1 ships three original games:
 
 - **Tabao Rush** — real-time co-op cooking in a Singapore hawker centre.
 - **Peek Poker** — a memory game scored with poker hands.
+- **Rabakz** — a trivia night where everyone answers at once on their phone.
 
 **Status:** planning complete, no application code yet. See [`docs/STATUS.md`](docs/STATUS.md).
 
@@ -18,7 +19,7 @@ v1 ships two original games:
 | Picking this project up cold | [`docs/HANDOFF.md`](docs/HANDOFF.md) |
 | What is being built | [`docs/PRD.md`](docs/PRD.md), [`docs/games/`](docs/games/) |
 | What works today | [`docs/STATUS.md`](docs/STATUS.md) |
-| What comes next | [`docs/ROADMAP.md`](docs/ROADMAP.md) |
+| What comes next | [`docs/ROADMAP.md`](docs/ROADMAP.md), [`docs/PLAN.md`](docs/PLAN.md), [`docs/backlog/`](docs/backlog/) |
 | How work is done | [`docs/WORKFLOW.md`](docs/WORKFLOW.md), [`docs/UAT.md`](docs/UAT.md) |
 | Requirement by requirement progress | [`docs/TRACEABILITY.md`](docs/TRACEABILITY.md) |
 | The design rules | [`docs/DESIGN.md`](docs/DESIGN.md) |

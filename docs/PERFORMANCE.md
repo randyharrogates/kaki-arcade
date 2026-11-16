@@ -50,8 +50,9 @@ Measured from the touch event on the phone to the simulation step that applies i
   level. Only moving and changing things are sprites.
 - **Atlases.** All sprites for a level sit in a small number of texture atlases so the renderer
   batches draws. Target: under 20 draw calls a frame.
-- **One cook, eight colours.** Player colour is applied as a tint over a mask layer, so eight
-  cooks share one set of animation frames.
+- **One body, eight heads.** All cooks share one set of body animation frames; each character
+  is a small head sprite placed on a per-frame anchor (Randy, D-037). Player or team colour is
+  a tint over a mask layer on the apron and cap.
 - **No allocation in the frame loop.** Object pools for particles and order cards; no per-frame
   array or object creation in `step` or render.
 - **Fixed timestep.** Simulation cost is constant and independent of frame rate.

@@ -35,8 +35,12 @@ packages/
   controller-kit/ Stick, D-pad, buttons, shoulder, tilt/shake, private display panel
   ui/             Design tokens from DESIGN.md §4, shared shell components, motion helpers
 games/
+  rabakz/         rules (pure) · host view · controller layouts
   peek-poker/     rules (pure) · host view · controller layouts
   tabao-rush/     rules (pure) · host view · controller layouts · levels · bots
+content/
+  rabakz/         question bank sources, build and validation script, generated chunks
+spikes/           throwaway M2 proofs; never imported by the product
 tools/
   blender/        Scripts that render models to sprite atlases and baked backgrounds
   perf/           Headless load harness: N scripted controllers, frame and latency capture
@@ -55,7 +59,9 @@ Every game is a module exporting:
 
 ```ts
 interface GameModule<State, Input, Config> {
-  meta: { id: string; name: string; blurb: string; players: { min: number; max: number } };
+  meta: { id: string; name: string; blurb: string; players: { min: number; max: number };
+          teams?: "none" | "optional" | "required" };          // PLAT-025
+  settings: SettingsSchema<Config>;                            // what the leader chooses before play
   init(config: Config, players: PlayerInfo[], seed: number): State;
   step(state: State, inputs: Map<PlayerId, Input>, dtMs: number): State;   // pure, deterministic
   controllerLayout(state: State, player: PlayerId): ControllerLayout;      // kit parts for this phase
@@ -73,7 +79,11 @@ Rules:
   same snapshot can be sent to a remote player (NET-007) without touching game rules.
 - Secrets (Peek Poker picks) exist only in `State` on the host and in that player's
   `privateView`. They never appear in `publicView` before the rules reveal them (PP-020).
-- The platform owns: joining, seats, pause, reconnect, leaving, the picker and results chrome.
+- The platform owns: joining, seats, teams, pause, reconnect, leaving, the picker and results
+  chrome.
+- Every game passes the shared conformance kit (determinism, serialisable public view, no
+  private data in the public view). The exact types are published by issue F-04 and are then a
+  contract: changed only by the integrator (`PLAN.md` §2).
 
 ## 4. Simulation and rendering
 

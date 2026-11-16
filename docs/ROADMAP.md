@@ -1,7 +1,9 @@
 # Kaki Arcade — Roadmap
 
-Milestones in order. Each ends with a demo for Randy and a go or no-go (`WORKFLOW.md`, human
-gates). Inside a milestone, work runs as slices through the loop.
+Milestones are the points where Randy sees a demo and says go or no-go (`WORKFLOW.md`, human
+gates). They are **not** worked one after another: tracks run concurrently in git worktrees
+(`PLAN.md`), and a milestone is reached when the issues behind it have merged. The work itself
+is in `backlog/`.
 
 No dates are promised: sizes are honest only after the M2 spikes, and will be added then.
 
@@ -10,21 +12,23 @@ No dates are promised: sizes are honest only after the M2 spikes, and will be ad
 | **M0** | Repository and docs | This repo: PRD, design rules, architecture, loop, tracking | NN-7, NN-8 |
 | **M1** | Design gate | Five artifact boards; Randy's choices locked into `DESIGN.md` §4 | NN-5, NN-6 |
 | **M2** | Risk spikes | Three throwaway proofs with measured numbers: 8 phones driving dots on a screen with input delay shown; one rigged cook walking in 8 directions from the Blender pipeline; the same page running on the TCL Q65 | NN-3, NN-4, REL-005 |
-| **M3** | Platform shell | Host a room, scan to join, lobby with 8 players, game picker, controller kit, reconnect; a test game proves the interface | PLAT-001 to 033, CTRL-001 to 009, NET-001 to 006 |
-| **M4** | Peek Poker | A full match on the TV with secret picks on phones | PP-001 to 032 |
-| **M5** | Tabao Rush core | One level, one dish, co-op for 1 to 8, real art and animation, tutorial | TR-001 to 031, TR-051, TR-055, TR-060 to 062 |
-| **M6** | Tabao Rush content | 7 dishes, 8 co-op levels, scaling by player count, bots, stars, sound | TR-040 to 054, TR-063 |
-| **M7** | Team versus | 3 arenas, two teams, normalised scoring | TR-052 |
+| **M3** | Console and controller | Host a room, scan to join, lobby with 8 players, game picker, teams, controller kit, reconnect; a test game proves the interface | PLAT-001 to 033, CTRL-001 to 009, NET-001 to 006 |
+| **M4** | Rabakz and Peek Poker | A full trivia match and a full Peek Poker match on the TV, answers and picks private on phones | RZ-001 to 034, PP-001 to 032 |
+| **M5** | Tabao Rush core | One level, one dish, co-op for 1 to 8, real art and animation, 8 characters, throwing, tutorial | TR-001 to 031, TR-051, TR-055 to 057, TR-060 to 064 |
+| **M6** | Tabao Rush content | 7 dishes, 8 co-op levels across four venues, fires, scaling by player count, bots, stars, sound | TR-010, TR-040 to 054, TR-063 |
+| **M7** | Team versus | 3 arenas, two teams in mirrored kitchens that interact, team colours, normalised scoring | TR-052, TR-058 |
 | **M8** | Public release | Landing, help and privacy pages; relay limit; nickname filter; rate limits; error counts; browser matrix; live on the `leeseidon.com` subdomain | REL-001 to 006, DATA-001 to 005, NET-004, PLAT-005 |
 
 ## Why this order
 
 - **Design before code (M1)** because Randy chooses the direction up front (NN-6), and because
   the Blender style sets sprite sizes that the engine depends on.
-- **Spikes before the platform (M2)** because three risks could change the plan: eight phones
-  over WebRTC, the art pipeline's real cost, and the TV. Better to know in days than in weeks.
-- **Peek Poker before Tabao Rush (M4 before M5)** because it is small and exercises the whole
-  platform, including private phone screens. Problems in the game interface surface cheaply.
+- **Spikes early (M2)** because three risks could change the plan: eight phones over WebRTC,
+  the art pipeline's real cost, and the TV. They run alongside the design gate, and nothing a
+  spike could overturn starts before that spike reports (`PLAN.md` §3).
+- **All three games are built at the same time** (Randy, D-036), each against the game
+  interface and a dev harness, so none waits for the console or for another game. Rabakz and
+  Peek Poker are small and reach their demo (M4) first; that is expected, not a rule.
 - **Versus after content (M7)** because it reuses every dish and station and adds only arenas
   and scoring.
 

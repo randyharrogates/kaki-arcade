@@ -1,0 +1,29 @@
+# Track K — The controller
+
+The phone as a console-style controller, assembled from a standard kit. A game asks for parts through the layout schema (F-04); the kit draws them. The kit contains no game code.
+
+**Owns:** `packages/controller-kit`, the `/play` route shell in `apps/web`
+
+Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `doing` · `review` · `merged`.
+
+## Story K1 — My phone feels like a controller, not a web page
+
+
+
+| ID | Issue | Requirements | Depends on | Wave | Status |
+|---|---|---|---|---|---|
+| K-01 | Controller page shell: landscape, fills the screen, no scroll, zoom, selection or pull-to-refresh, screen stays awake; shows colour, seat, nickname and connection | CTRL-004, CTRL-008 | F-06, S-05 | 2 | todo |
+| K-02 | Left stick: tracks the thumb 1:1 with no smoothing, re-centres on release, multi-touch with buttons | CTRL-005, PERF-012 | K-01 | 2 | todo |
+| K-03 | D-pad, A/B/X/Y, L and R, Start: 55 px minimum targets, press scale and feedback within one frame, vibration where supported | CTRL-001, CTRL-005, CTRL-006, PERF-012 | K-01 | 2 | todo |
+| K-08 | Controller size and start-up budget check in verify | PERF-020 | K-02, K-03 | 2 | todo |
+
+## Story K2 — Each game gets exactly the controls it needs
+
+
+
+| ID | Issue | Requirements | Depends on | Wave | Status |
+|---|---|---|---|---|---|
+| K-04 | Layout engine: draws only the parts a game asks for in the current phase, and grows them to fill the space | CTRL-002 | K-02, K-03, F-04 | 2 | todo |
+| K-05 | Private display panel: text, cards, choices and a tappable grid, seen only on that phone | CTRL-003 | K-04 | 2 | todo |
+| K-06 | Tilt, shake and swipe parts, with the tap-to-enable step on iPhone and a button fallback | CTRL-003, CTRL-007 | K-04, S-05 | 2 | todo |
+| K-07 | Controller UAT on emulated phones and on Randy's real iPhone and Android | CTRL-001 to CTRL-008 | K-04 to K-06 | 3 | todo |

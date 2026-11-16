@@ -3,13 +3,15 @@
 What actually works today. Kept honest: if it has not been seen working in UAT, it is not
 listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5).
 
-**Last updated:** 2026-11-15 · **Milestone:** M0 complete, M1 (design gate) next.
+**Last updated:** 2026-11-16 · **Milestone:** M0 complete, M1 (design gate) in planning: board 1A published, plan being confirmed with Randy before implementation.
 
 ## Works
 
 - Repository, requirements, design rules, architecture, build loop and tracking docs.
 - `docs/HANDOFF.md`: full context from the planning conversation for the build session.
-- `python3 tools/trace_check.py`: 118 requirements tracked, check passes.
+- `python3 tools/trace_check.py`: 152 requirements tracked (PRD v1.1), check passes.
+- The build plan for concurrent agents (`PLAN.md`) and the backlog of 97 issues across 10
+  tracks (`backlog/`): written, **awaiting Randy's confirmation**.
 - Blender 5.2 LTS runs headlessly on the dev Mac; `tools/blender/sample_stall.py` renders the
   sample stall scene in about ten seconds.
 
@@ -24,7 +26,8 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 | Board | Status |
 |---|---|
 | 0 Art finish | Done: route D (Blender) |
-| 1 3D art style | Pending |
+| 1A Modelling approach | Done: chunky toy, scripted, one body with 8 heads (D-037) |
+| 1 3D art style | Pending (direction set by 1A) |
 | 2 Visual identity | Pending |
 | 3 Big-screen layouts | Pending |
 | 4 Phone controller | Pending |
@@ -46,4 +49,5 @@ None run yet (`UAT.md` §5).
 - Performance budgets are targets, not measurements, until M2.
 - Whether the TCL Q65's own browser can run the game is unknown (REL-005).
 - Names are not checked for trademarks (OQ-001).
-- `leeseidon.com` DNS provider not confirmed (OQ-004).
+- The plan is not confirmed and one rule question is open (OQ-018, OQ-021).
+- Several Rabakz, Peek Poker and Tabao Rush values are Claude's proposals (OQ-020).

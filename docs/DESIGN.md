@@ -104,9 +104,12 @@ The kit's look, sizes and the layouts each game uses.
 
 Named durations and easings implementing §3.
 
-### 4.6 3D art style — *pending (gate board 1)*
+### 4.6 3D art style — *partly decided (board 1A done, board 1 pending)*
 
-Character proportions, material look, lighting and camera angle within route D.
+Decided on board 1A (Randy, 2026-11-16, D-037): **chunky toy** cooks about two heads tall,
+modelled and animated by script, **one shared body with at least 8 different heads**, colour
+carried by apron and cap. Still to choose on board 1: glossy against matte finish, lighting
+mood, camera tilt.
 
 ---
 
@@ -120,11 +123,16 @@ golden-ratio variant, and says which proportions use it. The source of each boar
 | # | Board | Options to show | Status |
 |---|---|---|---|
 | 0 | Art finish | Plain / flat vector / rich vector / Blender | **Done** — D chosen |
+| 1A | Modelling approach | How stylised (toy / clay / realistic), where models come from (scripted / CC0 / paid AI), how many characters, with memory cost. Source `design-gate/01a-modelling-approach.html`, built by `tools/blender/board1a_*.py` | **Done** — A1 chunky toy, B1 scripted, C2 one body with 8 heads (D-037) |
 | 1 | 3D art style | Three Blender looks for the same stall and cook: character proportions, materials, lighting, camera tilt | Pending |
 | 2 | Visual identity | Three directions: palette, type pairing, surface treatment | Pending |
 | 3 | Big-screen layouts | Lobby, picker, Tabao Rush HUD, Peek Poker table, results | Pending |
 | 4 | Phone controller | Kit styling and both games' layouts at 390 × 844 landscape | Pending |
 | 5 | Motion | Live samples of the key transitions | Pending |
+
+**Any design or graphics choice, not only these boards, goes to Randy as an artifact** with real
+options to choose from (Randy, 2026-11-16, D-022). Each option states its cost against the
+budgets in `PERFORMANCE.md`; an option that cannot meet a budget is marked as such.
 
 When a board is decided: record the choice and date in `DECISIONS.md`, write the values into
 §4, and mark the board done here. After the gate closes, §4 is locked; changes go through

@@ -5,7 +5,8 @@ code, tests and evidence. Exit 1 on any problem. No dependencies."""
 import pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SOURCES = ["docs/PRD.md", "docs/games/tabao-rush.md", "docs/games/peek-poker.md", "docs/PERFORMANCE.md"]
+SOURCES = ["docs/PRD.md", "docs/games/tabao-rush.md", "docs/games/peek-poker.md",
+           "docs/games/rabakz.md", "docs/PERFORMANCE.md"]
 ID_ROW = re.compile(r"^\|\s*\**((?:NFR-[A-Z0-9]+)|(?:[A-Z]{2,4}-\d+))\**\s*\|")
 STATUSES = {"not started", "in progress", "partial", "done", "later", "not met"}
 

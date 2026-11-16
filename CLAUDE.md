@@ -1,13 +1,13 @@
 # CLAUDE.md — Kaki Arcade
 
 A browser games platform: one big screen shows the game, phones are the controllers, up to 8
-players. v1 ships two original games, **Tabao Rush** (co-op hawker-centre cooking) and
-**Peek Poker** (memory poker). Owner: Randy.
+players. v1 ships three original games, **Tabao Rush** (co-op hawker-centre cooking),
+**Peek Poker** (memory poker) and **Rabakz** (trivia night). Owner: Randy.
 
 **New to this repo? Read `docs/HANDOFF.md` first**: it carries the planning context, Randy's
 own words, environment facts and the first task.
 
-Read before any work: `docs/PRD.md`, `docs/WORKFLOW.md`, `docs/STATUS.md`. Read before any UI
+Read before any work: `docs/PRD.md`, `docs/WORKFLOW.md`, `docs/PLAN.md`, `docs/STATUS.md`. Read before any UI
 or art work: `docs/DESIGN.md`. This file is the short binding version; the docs hold the detail.
 
 ## Rules that never bend
@@ -25,12 +25,19 @@ or art work: `docs/DESIGN.md`. This file is the short binding version; the docs 
 5. **The design gate comes first.** No shell UI or game code until Randy has chosen from every
    board in `docs/DESIGN.md` §5. Boards are published as artifacts with options, including a
    golden-ratio variant.
+   **Every design or graphics choice is put to Randy as an artifact**, at the gate and at any
+   time after it: real rendered or built options side by side, never a description alone. Each
+   option states its cost against `docs/PERFORMANCE.md` (no lag is allowed), and an option that
+   cannot meet a budget is marked as such. Record the choice in `docs/DECISIONS.md`.
 6. **No lag.** The budgets in `docs/PERFORMANCE.md` are requirements. `pnpm verify` fails when
    one is exceeded. Fix the cause; never loosen a threshold.
 7. **Originality.** Tabao Rush is an original game. Do not copy the name, characters, art,
    music, levels or look of any existing game. Peek Poker has no betting or real-money element.
 8. **Claude builds this.** Do not hand implementation to Codex. Codex is only for image
    generation or a task Claude cannot do (`AGENTS.md`); log each use in `docs/DECISIONS.md`.
+   Work is done by concurrent Claude agents, one issue each, in git worktrees. If you are an
+   issue agent: stay inside the paths your issue owns, never edit the shared trackers, the PRD,
+   the contracts or the lockfile, and never merge (`docs/PLAN.md` §5).
 9. **Stop at human gates.** The design gate, the end of each milestone, anything that costs
    money, publishes publicly or touches DNS, and any spike result that contradicts the plan.
 
@@ -105,14 +112,16 @@ Not all exist yet; they are created in M2 and M3. Keep this list true.
 - British English in docs and UI copy. UI copy is plain and names things by what players see.
 - Prefer small, tested modules. No dependency is added without a line in `docs/DECISIONS.md`.
 - Private repo under `randyharrogates`. Do not make it public, deploy, or change DNS without
-  Randy saying so.
+  Randy saying so. Commit locally; **do not push until the whole of v1 is done** (D-033).
 
 ## Where things are
 
 | File | What |
 |---|---|
 | `docs/PRD.md` | Requirements with IDs (the scope) |
-| `docs/games/tabao-rush.md`, `docs/games/peek-poker.md` | Game rules with IDs |
+| `docs/games/tabao-rush.md`, `docs/games/peek-poker.md`, `docs/games/rabakz.md` | Game rules with IDs |
+| `docs/PLAN.md` | How concurrent agents and worktrees build v1: tracks, waves, roles, rules |
+| `docs/backlog/` | Stories and issues per track |
 | `docs/TRACEABILITY.md` | Requirement → status → code → tests → evidence |
 | `docs/STATUS.md` | What actually works today |
 | `docs/ROADMAP.md` | Milestones and their order |
