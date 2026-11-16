@@ -22,8 +22,9 @@ or art work: `docs/DESIGN.md`. This file is the short binding version; the docs 
    code until review is clean → close. Details in `docs/WORKFLOW.md`. Start with `/slice`.
 4. **Look, don't infer.** Open every UAT screenshot and frame strip before saying something
    works. A passing script is not a pass.
-5. **The design gate comes first.** No shell UI or game code until Randy has chosen from every
-   board in `docs/DESIGN.md` §5. Boards are published as artifacts with options, including a
+5. **The design gate comes first.** Nothing visible (shell UI, game screens, controller styling,
+   final art) until Randy has chosen from every board in `docs/DESIGN.md` §5; code that draws
+   nothing may proceed (PRD NN-6 as amended). Boards are published as artifacts with options, including a
    golden-ratio variant.
    **Every design or graphics choice is put to Randy as an artifact**, at the gate and at any
    time after it: real rendered or built options side by side, never a description alone. Each

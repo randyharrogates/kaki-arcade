@@ -26,6 +26,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 | Board | Status |
 |---|---|
 | 0 Art finish | Done: route D (Blender) |
+| 0B End-goal vision | Published 2026-11-16 for Randy to see before the build starts |
 | 1A Modelling approach | Done: chunky toy, scripted, one body with 8 heads (D-037) |
 | 1 3D art style | Pending (direction set by 1A) |
 | 2 Visual identity | Pending |
@@ -49,5 +50,4 @@ None run yet (`UAT.md` §5).
 - Performance budgets are targets, not measurements, until M2.
 - Whether the TCL Q65's own browser can run the game is unknown (REL-005).
 - Names are not checked for trademarks (OQ-001).
-- The plan is not confirmed and one rule question is open (OQ-018, OQ-021).
-- Several Rabakz, Peek Poker and Tabao Rush values are Claude's proposals (OQ-020).
+- The build has not started: it waits for Randy's go after the end-goal vision board (OQ-021).

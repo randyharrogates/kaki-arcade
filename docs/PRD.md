@@ -56,7 +56,7 @@ These came directly from Randy and override convenience.
 | **NN-3** | No perceptible lag in play. The budgets in `PERFORMANCE.md` are hard requirements, tested on every loop. |
 | **NN-4** | Art is produced through Blender (route D) and must look finished: not primitive, with correct character movement and animation. |
 | **NN-5** | The design rules in `DESIGN.md` (golden ratio, motion, no flat backgrounds) are binding for the interface **and** for gameplay. |
-| **NN-6** | Visual and art direction is chosen by Randy from artifact option boards **before** any game code is written (the design gate, `DESIGN.md` §5). |
+| **NN-6** | Visual and art direction is chosen by Randy from artifact option boards **before** anything visible is built: no shell UI, game screen, controller styling or final art until the design gate closes (`DESIGN.md` §5). Code that draws nothing (rules, protocol, netcode, pairing server, tooling) may be written while the gate is open (amended 2026-11-16, D-039). |
 | **NN-7** | Implementation is tracked against this PRD in local repo docs at all times (`TRACEABILITY.md`). |
 | **NN-8** | Work proceeds in the loop **code → verify → test (UAT with screenshots) → review → code** (`WORKFLOW.md`). |
 | **NN-9** | Built by Claude. Codex is used only for image generation or for a task Claude cannot do (`AGENTS.md`). |

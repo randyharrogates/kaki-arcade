@@ -1,0 +1,455 @@
+<title>Kaki Arcade End Goal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: a walk through one evening. Each stop pairs the TV (primary) with the phone (secondary)
+   at 1.618 : 1. TV and phone screens are drawn at their true pixel sizes and scaled to fit. */
+:root{
+  --bg:#EFE9DA; --dot:#D9D0BA; --card:#FBF8F0; --card2:#F3EEDF; --ink:#26221C; --muted:#6B6355; --line:#D5CCB6;
+  --sage:#4F7A5C; --sage-soft:#DCE8DA; --pick:#B5371F; --kopi:#7A4A2B;
+  --display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  /* the product's own (provisional) colours, fixed inside the screens */
+  --jade9:#16302A; --jade8:#1F3D34; --jade7:#2A4F44; --jade5:#3F8069; --jade3:#8FC3AE; --cream:#F6EFDC; --cream2:#EADFC4;
+  --kink:#22201B; --red:#D9483B; --yellow:#F2B21B; --blue:#2F7FD6;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink:#F1EBDC; --muted:#A79F8D; --line:#3B382E;
+  --sage:#8FBF9C; --sage-soft:#26342A; --pick:#F0806A; --kopi:#D9A27A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink:#F1EBDC; --muted:#A79F8D; --line:#3B382E;
+  --sage:#8FBF9C; --sage-soft:#26342A; --pick:#F0806A; --kopi:#D9A27A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:21px 21px;
+  color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1440px;margin:0 auto;padding-block:34px 89px;display:flex;flex-direction:column;gap:89px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.08;text-wrap:balance}
+h1{font-size:clamp(34px,6vw,89px);font-weight:800;letter-spacing:-.03em}
+h2{font-size:clamp(26px,3.4vw,55px);font-weight:800;letter-spacing:-.02em}
+h3{font-size:21px;font-weight:700}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage)}
+.muted{color:var(--muted)}
+.top{display:grid;grid-template-columns:1.618fr 1fr;gap:34px;align-items:end}
+.top>div{display:flex;flex-direction:column;gap:13px;min-width:0}
+.key{border:1px dashed var(--line);border-radius:8px;padding:21px;background:linear-gradient(160deg,var(--card),var(--card2));display:flex;flex-direction:column;gap:8px}
+.key b{font-family:var(--mono);font-size:13px}
+section{display:flex;flex-direction:column;gap:21px}
+.head{display:flex;flex-direction:column;gap:8px}
+.pair{display:grid;grid-template-columns:1.618fr 1fr;gap:21px;align-items:start}
+.col{display:flex;flex-direction:column;gap:13px;min-width:0}
+.cap{font-size:14px;color:var(--muted)}
+.cap b{color:var(--ink)}
+.fit{position:relative;width:100%;overflow:hidden;border-radius:13px;background:#000;box-shadow:0 8px 34px rgba(0,0,0,.18)}
+.fit.tv{aspect-ratio:16/9;border:5px solid #1a1a1c}
+.fit.ph{aspect-ratio:844/390;border:8px solid #1a1a1c;border-radius:34px}
+.stage{position:absolute;left:0;top:0;transform-origin:0 0;font-family:var(--body);color:var(--cream)}
+.tv .stage{width:1920px;height:1080px} .ph .stage{width:844px;height:390px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tabs button{font:500 14px var(--body);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:34px;padding:8px 13px;cursor:pointer;transition:transform 150ms ease-out,background 200ms ease-in-out}
+.tabs button:active{transform:scale(.97)}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tabs button:focus-visible{outline:2px solid var(--pick);outline-offset:2px}
+.strip{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.strip img{display:block;width:100%;height:auto}
+.strip .b{padding:21px;display:flex;flex-direction:column;gap:8px}
+.dishes{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;padding:13px 13px 0}
+.dishes figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:13px;text-align:center}
+.dishes img{width:100%;max-width:144px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--muted)}
+.tw{overflow-x:auto}.tw table{min-width:560px}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}
+.flow div{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:13px;padding:21px;display:flex;flex-direction:column;gap:5px}
+.flow b{font-family:var(--display);font-size:21px}
+@media (max-width:900px){.top,.pair{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.dishes{grid-template-columns:repeat(4,1fr)}}
+
+/* ============ inside the screens: true pixels, phi spacing (5 8 13 21 34 55 89) ============ */
+.stage *{box-sizing:border-box}
+.D{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1}
+.mono{font-family:var(--mono)}
+.jadebg{background:var(--jade8);background-image:radial-gradient(var(--jade7) 2.5px,transparent 3px);background-size:34px 34px}
+.panel{background:linear-gradient(165deg,var(--cream),var(--cream2));color:var(--kink);border-radius:34px}
+.badge{display:inline-grid;place-items:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:800;border:5px solid #fff;flex:none}
+.chip{font-family:var(--mono);font-weight:700;border-radius:89px;padding:8px 21px;font-size:26px}
+
+/* lobby */
+.lobby{position:absolute;inset:0;padding:55px;display:grid;grid-template-columns:1.618fr 1fr;gap:34px}
+.lobby .l{display:flex;flex-direction:column;gap:34px}
+.lobby .join{flex:1;padding:55px;display:grid;grid-template-columns:377px 1fr;gap:55px;align-items:center}
+.qr{width:377px;height:377px;background:#fff;border-radius:21px;padding:21px;display:grid;grid-template-columns:repeat(25,1fr)}
+.qr i{background:var(--kink)} .qr i.o{background:transparent}
+.seats{display:flex;flex-direction:column;gap:13px}
+.seat{height:108px;padding:0 21px;display:flex;align-items:center;gap:21px;border-radius:21px;font-size:40px;font-weight:600}
+.seat.empty{background:transparent;border:3px dashed var(--jade5);color:var(--jade3)}
+.bars{margin-left:auto;display:flex;align-items:flex-end;gap:5px;height:34px}
+.bars i{width:8px;background:var(--jade5);border-radius:2px}.bars i.off{background:#cfc6ad}
+
+/* picker */
+.picker{position:absolute;inset:0;padding:55px;display:flex;flex-direction:column;gap:34px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;flex:1}
+.tile{padding:21px;display:flex;flex-direction:column;gap:21px;opacity:.72;transform:scale(.95)}
+.tile.sel{opacity:1;transform:none;outline:13px solid var(--yellow);outline-offset:0}
+.tile .media{aspect-ratio:1.618/1;border-radius:21px;overflow:hidden;background-size:cover;background-position:center;position:relative}
+
+/* rabakz */
+.rz{position:absolute;inset:0;padding:55px;display:flex;flex-direction:column;gap:34px;background:#5B2318;
+  background-image:radial-gradient(#6E2C1E 5px,transparent 5.5px);background-size:34px 34px}
+.rz .main{flex:1;display:grid;grid-template-columns:1fr 1.618fr;gap:34px;min-height:0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:21px}
+.opt{height:165px;border-radius:34px;display:flex;align-items:center;gap:21px;padding:0 34px;font-size:50px;font-weight:700;color:#fff;position:relative;transition:opacity 200ms ease-out}
+.shape{width:89px;height:89px;display:grid;place-items:center;background:rgba(255,255,255,.22);border-radius:21px;font-family:var(--display);font-weight:800;font-size:48px;flex:none}
+.oA{background:#D9483B}.oB{background:#2F7FD6}.oX{background:#C98A12}.oY{background:#2E9A5B}
+.oA .shape{clip-path:polygon(50% 4%,98% 96%,2% 96%);padding-top:21px}.oB .shape{border-radius:50%}.oY .shape{transform:rotate(45deg)}.oY .shape span{transform:rotate(-45deg)}
+.count{margin-left:auto;font-family:var(--mono);font-size:30px;display:none}
+[data-rz="reveal"] .count{display:block}
+[data-rz="reveal"] .opt:not(.right){opacity:.38}
+[data-rz="reveal"] .opt.right{outline:13px solid #fff}
+.who{display:flex;gap:21px;align-items:center}
+.who .badge{width:76px;height:76px;font-size:36px;position:relative}
+.who .badge.wait{background:transparent!important;border-style:dashed;color:var(--cream)}
+.gain{position:absolute;top:-44px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-weight:700;font-size:26px;color:var(--yellow);white-space:nowrap;display:none}
+[data-rz="reveal"] .gain{display:block}
+[data-rz="reveal"] .q-only,[data-rz="question"] .r-only{display:none!important}
+.pbtns{position:absolute;inset:63px 13px 13px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:13px}
+.pbtn{border-radius:21px;display:flex;align-items:center;gap:13px;padding:0 21px;font-size:30px;font-weight:700;color:#fff}
+.pbtn .shape{width:55px;height:55px;font-size:30px;border-radius:13px}.pbtn.oA .shape{padding-top:13px}
+.idbar{position:absolute;left:13px;right:13px;top:8px;height:42px;display:flex;align-items:center;gap:13px;font-size:21px;font-weight:600}
+.idbar .badge{width:38px;height:38px;font-size:19px;border-width:3px}
+
+/* peek poker */
+.pp{position:absolute;inset:0;padding:55px;display:grid;grid-template-columns:1.618fr 1fr;gap:55px;background:#1D5741;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px)}
+.grid4{display:grid;grid-template-columns:repeat(4,150px);gap:21px;justify-content:center;align-content:center}
+.pc{width:150px;height:205px;perspective:900px;position:relative}
+.pc .in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 420ms ease-in-out;transition-delay:calc(var(--i)*30ms)}
+[data-pp="pick"] .grid4 .in{transform:rotateY(180deg)}
+.face,.back{position:absolute;inset:0;border-radius:13px;backface-visibility:hidden}
+.face{background:linear-gradient(170deg,#fff,#F1ECE0);color:var(--kink);padding:8px 13px;font-family:var(--display);font-weight:800;font-size:50px;line-height:1}
+.face .big{position:absolute;inset:0;display:grid;place-items:center;font-size:96px;padding-top:21px}
+.back{transform:rotateY(180deg);background:#B5371F;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.16) 0 5px,transparent 5px 13px);border:8px solid #fff}
+.s-s{color:#22201B}.s-h{color:#D9483B}.s-d{color:#2F7FD6}.s-c{color:#2E9A5B}
+.marks{position:absolute;left:0;right:0;bottom:-13px;display:none;justify-content:center;gap:5px}
+[data-pp="reveal"] .marks{display:flex}
+.marks .badge{width:42px;height:42px;font-size:21px;border-width:3px}
+.pp .side{display:flex;flex-direction:column;gap:34px;justify-content:center}
+.shared{display:flex;gap:21px}
+[data-pp] .st{display:none}[data-pp="memorise"] .st-m,[data-pp="pick"] .st-p,[data-pp="reveal"] .st-r{display:flex}
+.rank{display:flex;align-items:center;gap:13px;font-size:34px;font-weight:600}
+.rank .badge{width:55px;height:55px;font-size:26px;border-width:3px}
+.pgrid{position:absolute;left:290px;top:60px;display:grid;grid-template-columns:repeat(4,58px);gap:8px}
+._pg{}.pgrid i{width:58px;height:62px;border-radius:8px;background:#B5371F;border:3px solid #fff}
+.pgrid i.on{outline:5px solid var(--yellow);outline-offset:2px}
+
+/* tabao rush */
+.tr img.bgimg{position:absolute;inset:0;width:1920px;height:1080px}
+.pin{position:absolute;transform:translate(-50%,-50%)}
+.pin.badge{width:50px;height:50px;font-size:25px;border-width:4px}
+.bar{width:110px;height:21px;border-radius:13px;background:rgba(20,20,20,.72);border:3px solid #fff;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--yellow)}
+.tag{background:rgba(20,20,20,.82);color:#fff;border-radius:13px;padding:5px 13px;font-size:26px;font-weight:700;white-space:nowrap;border:3px solid #fff}
+.tag.warn{background:#D9483B}.tag.ok{background:#2E9A5B}
+.orders{position:absolute;left:21px;bottom:21px;display:flex;gap:13px}
+.order{width:233px;padding:13px;border-radius:21px;display:flex;flex-direction:column;gap:8px;box-shadow:0 5px 13px rgba(0,0,0,.25)}
+.order .r{display:flex;align-items:center;gap:8px}.order img{width:89px;height:89px}
+.order b{font-family:var(--display);font-size:28px;line-height:1.05}
+.steps{font-size:19px;font-weight:600;color:#5b5446}
+.pat{height:13px;border-radius:8px;background:#d9cfb4;overflow:hidden}.pat i{display:block;height:100%}
+.hud{position:absolute;right:21px;bottom:21px;display:flex;gap:13px;align-items:stretch}
+.hud .panel{padding:13px 34px;border-radius:21px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 5px 13px rgba(0,0,0,.25)}
+.hud small{font-size:21px;font-weight:600;color:#5b5446}.hud .D{font-size:55px}
+.stick{position:absolute;left:55px;top:110px;width:233px;height:233px;border-radius:50%;background:radial-gradient(circle,#2A4F44,#1F3D34);border:5px solid var(--jade5)}
+.stick i{position:absolute;left:112px;top:50px;width:100px;height:89px;border-radius:50%;background:var(--cream);box-shadow:0 5px 13px rgba(0,0,0,.4)}
+.abxy{position:absolute;right:34px;top:76px;width:300px;height:300px}
+.fb{position:absolute;width:110px;height:110px;border-radius:50%;display:grid;place-items:center;color:#fff;text-align:center;font-family:var(--display);font-weight:800;font-size:34px;line-height:.95;border:5px solid rgba(255,255,255,.85)}
+.fb small{display:block;font:600 15px var(--body)}
+@media (prefers-reduced-motion:reduce){.pc .in,.opt,.tabs button{transition:none}}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div>
+      <span class="eyebrow">Kaki Arcade · the end goal · before anything is built</span>
+      <h1>What you will have when v1 is done</h1>
+      <p>One TV, up to eight phones, three games. Every screen below is drawn at its true size: TV screens are 1920 × 1080 and phone screens are 844 × 390, scaled to fit this page. Open it on the TV to judge from the sofa.</p>
+    </div>
+    <div class="key">
+      <span class="eyebrow">What is real here</span>
+      <span><b>Rendered</b> — the Tabao Rush kitchens, cooks and dishes are real Blender renders from our script pipeline, first pass.</span>
+      <span><b>Mocked</b> — menus, HUD and phone screens are built in the browser in a provisional kopitiam look.</span>
+      <span><b>Still yours to choose</b> — colours, type, layouts, controller styling and motion, on boards 2 to 5. This page is the aim, not the decision.</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="head"><span class="eyebrow">One evening</span><h2>How a night goes</h2></div>
+    <div class="flow">
+      <div><b>Open</b><span class="muted">Someone opens the site on the TV. A room and a QR code appear.</span></div>
+      <div><b>Scan</b><span class="muted">Everyone scans. No app, no account. Their phone becomes a controller.</span></div>
+      <div><b>Pick</b><span class="muted">The leader picks a game with their phone. Teams if the game has them.</span></div>
+      <div><b>Play</b><span class="muted">The TV shows the game. Phones show only your controls and your secrets.</span></div>
+      <div><b>Again</b><span class="muted">Results, then back to the picker with the same players.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">The console</span><h2>Lobby and game picker</h2>
+      <p>The console is everything around the games: rooms, joining, seats, teams, pausing and getting back in after a phone sleeps.</p></div>
+    <div class="pair">
+      <div class="col">
+        <div class="fit tv"><div class="stage jadebg"><div class="lobby">
+          <div class="l">
+            <div style="display:flex;align-items:baseline;gap:34px"><span class="D" style="font-size:110px">Kaki Arcade</span><span class="chip" style="background:var(--jade5);color:#fff">Lobby</span></div>
+            <div class="panel join">
+              <div class="qr" id="qr" aria-label="Example QR code"></div>
+              <div style="display:flex;flex-direction:column;gap:21px">
+                <span class="D" style="font-size:89px">Scan to join</span>
+                <span style="font-size:36px;font-weight:500">or go to <b>arcade.leeseidon.com</b> and enter</span>
+                <span class="mono" style="font-size:144px;font-weight:700;letter-spacing:.08em;line-height:1">H7KQ</span>
+              </div>
+            </div>
+            <div style="font-size:38px;font-weight:600;display:flex;gap:34px;align-items:center"><span>7 of 8 players</span><span style="color:var(--jade3)">Randy is the leader</span><span class="chip" style="background:var(--yellow);color:var(--kink);margin-left:auto">Ⓐ Pick a game</span></div>
+          </div>
+          <div class="seats" id="seats"></div>
+        </div></div></div>
+        <span class="cap"><b>TV · lobby.</b> Join code and QR on the left, seats on the right (1.618 : 1). Each seat shows number, colour, name and link quality as bars, so colour is never the only cue.</span>
+      </div>
+      <div class="col">
+        <div class="fit ph"><div class="stage jadebg">
+          <div class="idbar"><span class="badge" style="background:#F2B21B">3</span><span>Ah Boy</span><span style="margin-left:auto;color:var(--jade3)">Connected</span></div>
+          <div style="position:absolute;inset:63px 21px 21px;display:grid;grid-template-columns:1fr 1.618fr;gap:21px">
+            <div class="panel" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-radius:21px"><span class="badge" style="background:#F2B21B;width:110px;height:110px;font-size:55px">3</span><b style="font-size:26px">Seat 3</b></div>
+            <div style="display:flex;flex-direction:column;justify-content:center;gap:13px">
+              <span class="D" style="font-size:44px">You're in.</span>
+              <span style="font-size:23px">Watch the TV. Randy is picking the game.</span>
+              <span class="chip" style="font-size:19px;background:var(--jade7);align-self:flex-start">Screen stays awake</span>
+            </div>
+          </div>
+        </div></div>
+        <span class="cap"><b>Phone · seated.</b> After scanning and typing a nickname, the phone shows the same seat number and colour as the TV.</span>
+        <div class="fit tv"><div class="stage jadebg"><div class="picker">
+          <div style="display:flex;align-items:baseline;gap:34px"><span class="D" style="font-size:89px">Pick a game</span><span style="font-size:36px;color:var(--jade3);font-weight:600">7 players ready</span></div>
+          <div class="tiles">
+            <div class="panel tile sel"><div class="media" id="tileTR"></div><span class="D" style="font-size:60px">Tabao Rush</span><span style="font-size:32px;font-weight:500">Cook and serve together before the orders run out.</span><span class="chip" style="background:var(--jade8);color:#fff;align-self:flex-start">1 to 8 · co-op or teams</span></div>
+            <div class="panel tile"><div class="media" style="background:#1D5741;display:grid;place-items:center"><span class="D" style="font-size:144px;color:#fff">A♠</span></div><span class="D" style="font-size:60px">Peek Poker</span><span style="font-size:32px;font-weight:500">Remember the cards. Pick two in secret. Best hand wins.</span><span class="chip" style="background:var(--jade8);color:#fff;align-self:flex-start">1 to 8</span></div>
+            <div class="panel tile"><div class="media" style="background:#5B2318;display:grid;place-items:center"><span class="D" style="font-size:180px;color:var(--yellow)">?</span></div><span class="D" style="font-size:60px">Rabakz</span><span style="font-size:32px;font-weight:500">Trivia night. Everyone answers at once. Fast and right wins.</span><span class="chip" style="background:var(--jade8);color:#fff;align-self:flex-start">1 to 8 · solo or teams</span></div>
+          </div>
+        </div></div></div>
+        <span class="cap"><b>TV · game picker.</b> The leader moves with the D-pad; the chosen tile grows into the game's start screen.</span>
+      </div>
+    </div>
+  </section>
+
+  <section data-rz="question" id="rz">
+    <div class="head"><span class="eyebrow">Game 1 · Rabakz</span><h2>Trivia night</h2>
+      <p>The question is on the TV. Each phone has the same four coloured, lettered shapes. Nobody sees what anyone chose until the reveal.</p>
+      <div class="tabs"><button aria-pressed="true" data-set="rz:question">Question</button><button aria-pressed="false" data-set="rz:reveal">Reveal</button></div></div>
+    <div class="pair">
+      <div class="col">
+        <div class="fit tv"><div class="stage"><div class="rz">
+          <div style="display:flex;align-items:center;gap:21px">
+            <span class="D" style="font-size:55px">Question 7 of 10</span><span class="chip" style="background:rgba(255,255,255,.16)">Singapore food</span><span class="chip" style="background:rgba(255,255,255,.16)">Picture</span>
+            <span class="q-only" style="margin-left:auto;display:flex;align-items:center;gap:13px;font-size:34px;font-weight:600">Time left<span class="badge" style="width:110px;height:110px;font-size:60px;background:var(--yellow);color:var(--kink)">9</span></span>
+            <span class="r-only chip" style="margin-left:auto;background:#2E9A5B;font-size:34px">✓ Laksa</span>
+          </div>
+          <div class="main">
+            <div class="panel" style="display:grid;place-items:center;padding:34px"><img src="{{dish_laksa}}" alt="A bowl of laksa" style="width:100%;max-width:520px"></div>
+            <div style="display:flex;flex-direction:column;gap:34px;justify-content:center">
+              <span class="D" style="font-size:76px">Which hawker dish is this?</span>
+              <div class="opts">
+                <div class="opt oA right"><span class="shape"><span>A</span></span>Laksa<span class="count">5 ✓</span></div>
+                <div class="opt oB"><span class="shape"><span>B</span></span>Mee siam<span class="count">1</span></div>
+                <div class="opt oX"><span class="shape"><span>X</span></span>Lor mee<span class="count">0</span></div>
+                <div class="opt oY"><span class="shape"><span>Y</span></span>Mee rebus<span class="count">1</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="who" id="rzwho"><span style="font-size:34px;font-weight:600;margin-right:13px"><span class="q-only">Answered</span><span class="r-only">This question</span></span></div>
+        </div></div></div>
+        <span class="cap"><b>TV · question and reveal.</b> Picture to question 1 : 1.618. Before the reveal the TV shows only who has locked in. After it: the right answer, how many chose each, and points with the speed bonus.</span>
+      </div>
+      <div class="col">
+        <div class="fit ph"><div class="stage" style="background:#5B2318">
+          <div class="idbar"><span class="badge" style="background:#F2B21B">3</span><span>Ah Boy</span><span class="q-only" style="margin-left:auto">9 s</span><span class="r-only" style="margin-left:auto;color:var(--yellow)">Streak 3 · 1,420</span></div>
+          <div class="pbtns q-only">
+            <div class="pbtn oA"><span class="shape"><span>A</span></span>Laksa</div><div class="pbtn oB"><span class="shape"><span>B</span></span>Mee siam</div>
+            <div class="pbtn oX"><span class="shape"><span>X</span></span>Lor mee</div><div class="pbtn oY"><span class="shape"><span>Y</span></span>Mee rebus</div>
+          </div>
+          <div class="r-only" style="position:absolute;inset:63px 13px 13px;border-radius:21px;background:#2E9A5B;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+            <span class="D" style="font-size:76px">Correct</span><span class="mono" style="font-size:34px;font-weight:700">+100 · speed +72 · streak +50</span>
+          </div>
+        </div></div>
+        <span class="cap"><b>Phone · answer buttons.</b> Four big targets on A / B / X / Y. First press locks in. Then your own result, privately.</span>
+        <div class="strip"><div class="b"><h3>What ships</h3>
+          <span class="muted">10, 30 or 50 questions · multiple choice, true or false and picture rounds · speed and streak bonuses · double-points final round · free-for-all, two teams, or solo against your best · 1,500+ questions including a Singapore pack.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-pp="memorise" id="pp">
+    <div class="head"><span class="eyebrow">Game 2 · Peek Poker</span><h2>Memory poker</h2>
+      <p>Sixteen cards are shown, then flipped. Everyone secretly picks two on their phone to go with the three shared cards. Best five-card hand wins the round; the fastest of the best gets the bigger bonus.</p>
+      <div class="tabs"><button aria-pressed="true" data-set="pp:memorise">Memorise</button><button aria-pressed="false" data-set="pp:pick">Pick</button><button aria-pressed="false" data-set="pp:reveal">Reveal</button></div></div>
+    <div class="pair">
+      <div class="col">
+        <div class="fit tv"><div class="stage"><div class="pp">
+          <div class="grid4" id="ppgrid"></div>
+          <div class="side">
+            <div style="display:flex;align-items:baseline;gap:21px"><span class="D" style="font-size:76px">Round 3 of 5</span></div>
+            <div style="display:flex;flex-direction:column;gap:13px"><span style="font-size:34px;font-weight:600;color:#BFE3D2">Shared cards</span><div class="shared" id="ppshared"></div></div>
+            <div class="st st-m" style="align-items:center;gap:21px;font-size:44px;font-weight:700"><span class="badge" style="width:110px;height:110px;font-size:60px;background:var(--yellow);color:var(--kink)">8</span>Memorise the grid</div>
+            <div class="st st-p" style="flex-direction:column;gap:21px"><span style="font-size:44px;font-weight:700">Pick 2 on your phone · 14 s</span><div class="who" id="ppwho"></div><span style="font-size:30px;color:#BFE3D2">5 of 7 locked in</span></div>
+            <div class="st st-r" style="flex-direction:column;gap:13px" id="pprank"></div>
+          </div>
+        </div></div></div>
+        <span class="cap"><b>TV · the table.</b> Grid to side panel 1.618 : 1. Cards flip with a 30 ms stagger and no bounce. Four suit colours as well as four shapes. From round 3, cards visibly swap places after they hide.</span>
+      </div>
+      <div class="col">
+        <div class="fit ph"><div class="stage" style="background:#1D5741">
+          <div class="idbar"><span class="badge" style="background:#2F7FD6">2</span><span>Mei</span><span style="margin-left:auto">Pick 2 · 14 s</span></div>
+          <div style="position:absolute;left:21px;top:76px;width:233px;display:flex;flex-direction:column;gap:13px"><span class="D" style="font-size:34px">Your picks are secret</span><span style="font-size:19px;color:#BFE3D2">Tap two cards, or move with the D-pad.</span></div>
+          <div class="pgrid" id="pgrid"></div>
+          <div class="fb" style="right:34px;top:140px;background:#2E9A5B">A<small>Lock in</small></div>
+        </div></div>
+        <span class="cap"><b>Phone · secret pick.</b> A face-down copy of the grid. Your picks never reach the TV or another phone before the reveal.</span>
+        <div class="strip"><div class="b"><h3>What ships</h3>
+          <span class="muted">3, 5 or 7 rounds that get harder (20 s down to 6 s, then swaps) · standard poker hands scored 1 to 13 · two players may pick the same card · solo score attack · no betting of any kind.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tr">
+    <div class="head"><span class="eyebrow">Game 3 · Tabao Rush</span><h2>Hawker-centre cooking</h2>
+      <p>Fetch, chop, cook, plate and serve before the orders run out. The whole kitchen fits the screen and never scrolls. Everything in these two frames except the labels is a Blender render.</p>
+      <div class="tabs"><button aria-pressed="true" data-show="trcoop">Co-op, 8 players</button><button aria-pressed="false" data-show="trvs">Team versus, 4 v 4</button></div></div>
+    <div class="fit tv tr" id="trcoop"><div class="stage">
+      <img class="bgimg" src="{{tr_coop}}" alt="A kopitiam kitchen seen from above with eight toy-like cooks at work">
+      <svg width="1920" height="1080" style="position:absolute;inset:0"><path d="M1356 728 Q1040 590 720 728" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="13 13" opacity=".85"/></svg>
+      <div class="orders" id="orders"></div>
+      <div class="hud"><div class="panel"><small>Time</small><span class="D">2:14</span></div><div class="panel"><small>Score</small><span class="D">1,240</span></div><div class="panel"><small>Stars</small><span class="D" style="color:#C98A12">★★<span style="color:#cfc6ad">★</span></span></div></div>
+      <div id="pins"></div>
+    </div></div>
+    <span class="cap"><b>TV · co-op.</b> Order cards bottom left with a patience bar, over the dining area so they never cover the kitchen. Each cook has their own head, their colour on the apron and a seat number. Stations show progress, done, or a burning warning without relying on colour. The dashed arc is a thrown cucumber on its way to seat 7.</span>
+    <div class="fit tv tr" id="trvs" hidden><div class="stage">
+      <img class="bgimg" src="{{tr_versus}}" alt="Two mirrored kitchens side by side, red team on the left and blue team on the right, with a shared counter between them">
+      <div class="hud" style="left:21px;right:21px;justify-content:space-between">
+        <div class="panel" style="background:#D9483B;color:#fff"><small style="color:#fff">Red team</small><span class="D">860</span></div>
+        <div class="panel"><small>Time</small><span class="D">1:32</span></div>
+        <div class="panel" style="background:#2F7FD6;color:#fff"><small style="color:#fff">Blue team</small><span class="D">910</span></div>
+      </div>
+      <div class="pin tag" data-w="0,1.2,2.2">Shared counter</div>
+    </div></div>
+    <span class="cap" id="vscap" hidden><b>TV · team versus.</b> Two mirrored kitchens on the one screen, cooks the same size as in co-op, team colour on aprons, caps and counter trim. The counter down the middle is where the kitchens interact; exactly how is one of the choices on board 3.</span>
+
+    <div class="pair">
+      <div class="col">
+        <div class="strip"><img src="{{heads8}}" alt="Eight cook characters: uncle, auntie, a young cook in a cap, a makcik in a tudung, a girl with a bun, a boy with glasses, an uncle in a turban and a pakcik in a songkok">
+          <div class="b"><h3>Eight cooks, one each</h3><span class="muted">Every player picks a different character on their phone before the round. All eight share one animated body, so they cost about the memory of one. Apron colour is the player's in co-op and the team's in versus.</span></div></div>
+        <div class="strip"><div class="dishes" id="dishes"></div>
+          <div class="b"><h3>Seven dishes</h3><span class="muted">Each has to be recognisable at game size from the sofa. These are first-pass models; board 1 refines them.</span></div></div>
+      </div>
+      <div class="col">
+        <div class="fit ph"><div class="stage jadebg">
+          <div class="idbar"><span class="badge" style="background:#D9483B">1</span><span>Randy</span><span style="margin-left:auto;color:var(--jade3)">Connected</span><span class="chip" style="font-size:17px;background:var(--jade7);padding:5px 13px">Start · pause</span></div>
+          <div class="stick"><i></i></div>
+          <div class="abxy">
+            <div class="fb" style="left:95px;top:0;background:#2E9A5B">Y<small>Throw</small></div>
+            <div class="fb" style="left:0;top:95px;background:#C98A12">X<small>Dash</small></div>
+            <div class="fb" style="left:190px;top:95px;background:#2F7FD6">B<small>Chop</small></div>
+            <div class="fb" style="left:95px;top:190px;background:#D9483B">A<small>Pick up</small></div>
+          </div>
+        </div></div>
+        <span class="cap"><b>Phone · controller.</b> Left stick follows your thumb exactly, with no smoothing. Buttons are 110 px (the rule is at least 55). Only the parts this game uses are drawn, and they grow to fill the space. Shaking the phone tosses the wok.</span>
+        <div class="strip"><div class="b"><h3>What ships</h3>
+          <span class="muted">8 co-op levels across kopitiam, hawker centre, pasar malam and roadside zi char · 3 versus arenas · 7 dishes · throwing · fires from level 5 · bots for solo play · stars saved on the TV's device · a one-minute tutorial.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">The finish line</span><h2>v1 is done when all of this is true</h2></div>
+    <div class="strip"><div class="b"><div class="tw"><table>
+      <thead><tr><th>Area</th><th>Done means</th></tr></thead>
+      <tbody>
+        <tr><td><b>Runs anywhere</b></td><td>Only a browser on the TV or laptop and on each phone. No installs, no accounts. iPhone and Android.</td></tr>
+        <tr><td><b>Eight players</b></td><td>Eight phones in one room for 30 minutes with no crash, no stuck button and no drift between TV and phones.</td></tr>
+        <tr><td><b>No lag</b></td><td>60 frames a second on the MacBook, at least 30 on the TV in lower-detail mode, and a press reaching the game within 50 ms on the same Wi-Fi. Measured on every loop, not assumed.</td></tr>
+        <tr><td><b>Three games</b></td><td>Rabakz, Peek Poker and Tabao Rush, each at the size listed above, all plugged into the console through the same interface.</td></tr>
+        <tr><td><b>Looks finished</b></td><td>Every screen in the look you choose on boards 1 to 5, following your golden-ratio, motion and no-flat-background rules.</td></tr>
+        <tr><td><b>Proven</b></td><td>All 152 requirements have code, an automated test, screenshots that were looked at, and a clean review. A session with your own players on real phones has passed.</td></tr>
+        <tr><td><b>Public</b></td><td>Live at arcade.leeseidon.com with landing, help and privacy pages, on your say-so.</td></tr>
+      </tbody></table></div></div></div>
+    <p class="cap">Proportions on this page: every TV-and-phone pair is 1.618 : 1; inside the screens, splits are 1.618 : 1 and all spacing is from 5 · 8 · 13 · 21 · 34 · 55 · 89 px at true screen size.</p>
+  </section>
+</div>
+
+<script>
+(function(){
+  var P=["#D9483B","#2F7FD6","#F2B21B","#39A85B","#8E5BD0","#F07C2A","#22A6A6","#D95C9A"];
+  var N=["Randy","Mei","Ah Boy","Siti","Raj","Jun","Aunty Lin"];
+  function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+  function badge(i,extra){var b=el("span","badge"+(extra?" "+extra:""),String(i+1));b.style.background=P[i];return b;}
+
+  // scale true-size stages to their frames
+  function fit(){document.querySelectorAll(".fit").forEach(function(f){var s=f.querySelector(".stage");if(!s)return;
+    var w=f.classList.contains("tv")?1920:844;s.style.transform="scale("+(f.clientWidth/w)+")";});}
+  window.addEventListener("resize",fit);
+
+  // example QR (pattern only, not scannable)
+  var qr=document.getElementById("qr"),seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
+  for(var y=0;y<25;y++)for(var x=0;x<25;x++){var on=rnd()>.52;
+    [[0,0],[18,0],[0,18]].forEach(function(c){var dx=x-c[0],dy=y-c[1];if(dx>=0&&dx<7&&dy>=0&&dy<7){on=(dx==0||dx==6||dy==0||dy==6||(dx>1&&dx<5&&dy>1&&dy<5));}
+      if(dx>=-1&&dx<8&&dy>=-1&&dy<8&&!(dx>=0&&dx<7&&dy>=0&&dy<7))on=false;});
+    qr.appendChild(el("i",on?"":"o"));}
+
+  // lobby seats
+  var seats=document.getElementById("seats"),q=[3,3,2,3,1,3,2];
+  for(var i=0;i<8;i++){ if(i<7){var r=el("div","seat panel");var b=badge(i);b.style.width="68px";b.style.height="68px";b.style.fontSize="34px";r.appendChild(b);
+      r.appendChild(el("span",null,N[i]+(i==0?' <span class="chip" style="font-size:21px;background:#22201B;color:#fff;padding:5px 13px">Leader</span>':"")));
+      var bars=el("span","bars");for(var k=0;k<3;k++){var bi=el("i",k<q[i]?"":"off");bi.style.height=(13+k*10)+"px";bars.appendChild(bi);}
+      r.appendChild(bars);r.appendChild(el("span",null,'<span style="font-size:24px;font-weight:500;color:#5b5446">'+(q[i]==3?"Good":q[i]==2?"Weak":"Relayed")+"</span>"));seats.appendChild(r);}
+    else seats.appendChild(el("div","seat empty","Seat 8 · scan to join"));}
+
+  // rabakz: who has answered
+  var who=document.getElementById("rzwho"),ans=[1,1,1,0,1,1,0],gain=["+187","+164","+222","0","+171","0","+140"];
+  for(i=0;i<7;i++){var w=badge(i,"q-only"+(ans[i]?"":" wait"));who.appendChild(w);}
+  for(i=0;i<7;i++){var w2=badge(i,"r-only");w2.appendChild(el("span","gain",gain[i]));who.appendChild(w2);}
+
+  // peek poker
+  var S={s:"♠",h:"♥",d:"♦",c:"♣"};
+  function card(code,i){var r=code.slice(0,-1),s=code.slice(-1);var c=el("div","pc");c.style.setProperty("--i",i||0);
+    c.innerHTML='<div class="in"><div class="face s-'+s+'">'+r+'<span class="big">'+S[s]+'</span></div><div class="back"></div></div>';return c;}
+  var G=["7h","Qs","3d","Kd","9c","2h","Js","5c","Ah","8d","9s","4c","6h","10d","3s","Kc"],picks={1:[0,1],6:[1,2],10:[0,1,4],8:[3],2:[2],3:[3,5],9:[5],14:[4],15:[6]};
+  var g=document.getElementById("ppgrid");G.forEach(function(c,i){var e=card(c,i);var m=el("div","marks");(picks[i]||[]).forEach(function(p){m.appendChild(badge(p));});e.appendChild(m);g.appendChild(e);});
+  var sh=document.getElementById("ppshared");["As","Ks","5s"].forEach(function(c){sh.appendChild(card(c));});
+  var pw=document.getElementById("ppwho");[1,1,0,1,1,0,1].forEach(function(a,i){pw.appendChild(badge(i,a?"":"wait"));});
+  var rk=document.getElementById("pprank");[[1,"Flush","+6 +3 fastest"],[0,"Flush","+6 +1"],[2,"Flush","+6 +1"],[4,"Pair of aces","+2"],[3,"Pair of kings","+2"]].forEach(function(r,n){
+    var d=el("div","rank");d.appendChild(el("span","mono",String(n+1)));d.appendChild(badge(r[0]));d.appendChild(el("span",null,N[r[0]]+" · "+r[1]));d.appendChild(el("span","mono",'<span style="margin-left:13px;color:#F2B21B">'+r[2]+"</span>"));rk.appendChild(d);});
+  var pg=document.getElementById("pgrid");for(i=0;i<16;i++)pg.appendChild(el("i",(i==1||i==10)?"on":""));
+
+  // tabao rush: place labels from world coordinates (same camera as the render)
+  function place(e,x,y,z){e.style.left=(960+120*x)+"px";e.style.top=(540-((y-.75)*.766+z*.643)*120)+"px";}
+  var pins=document.getElementById("pins");
+  [[-1.4,3.3],[-2.6,1.75],[5.3,-.4],[-6.4,-.2],[-4.6,2.7],[3.3,-2.3],[-2,-2.3],[6.4,3.3]].forEach(function(c,i){var b=badge(i,"pin");place(b,c[0],c[1],2.05);pins.appendChild(b);});
+  [[-1.4,4.4,'<div class="bar"><i style="width:62%"></i></div>'],[2.5,4.4,'<div class="bar"><i style="width:30%"></i></div>'],
+   [.6,4.4,'<div class="tag warn">! Burning</div>'],[-3.2,4.4,'<div class="tag ok">✓ Done</div>'],[6.9,.2,'<div class="tag">Serve here</div>']].forEach(function(s){
+     var d=el("div","pin",s[2]);place(d,s[0],s[1],s[0]>6?2.1:1.75);pins.appendChild(d);});
+  document.querySelectorAll(".pin[data-w]").forEach(function(e){var w=e.dataset.w.split(",").map(Number);place(e,w[0],w[1],w[2]);});
+  var O=[["{{dish_chicken_rice}}","Chicken rice","Rice · Chop · Plate",.7,"#2E9A5B"],["{{dish_laksa}}","Laksa","Pot · Noodles · Bowl",.45,"#C98A12"],["{{dish_satay}}","Satay","Chop · Grill · Plate",.18,"#D9483B"]];
+  var od=document.getElementById("orders");O.forEach(function(o){od.appendChild(el("div","order panel",'<div class="r"><img src="'+o[0]+'" alt=""><b>'+o[1]+'</b></div><span class="steps">'+o[2]+'</span><div class="pat"><i style="width:'+(o[3]*100)+'%;background:'+o[4]+'"></i></div>'));});
+  var DN=[["{{dish_chicken_rice}}","Chicken rice"],["{{dish_ckt}}","Char kway teow"],["{{dish_satay}}","Satay"],["{{dish_laksa}}","Laksa"],["{{dish_rojak}}","Rojak"],["{{dish_kaya_toast}}","Kaya toast set"],["{{dish_kopi}}","Kopi"]];
+  var ds=document.getElementById("dishes");DN.forEach(function(d){ds.appendChild(el("figure",null,'<img src="'+d[0]+'" alt="'+d[1]+'"><span>'+d[1]+"</span>"));});
+  document.getElementById("tileTR").style.backgroundImage="url({{tr_tile}})";
+
+  // state toggles
+  document.querySelectorAll("button[data-set]").forEach(function(b){b.addEventListener("click",function(){var p=b.dataset.set.split(":");
+    document.getElementById(p[0]).setAttribute("data-"+p[0],p[1]);b.parentNode.querySelectorAll("button").forEach(function(o){o.setAttribute("aria-pressed",o===b);});});});
+  document.querySelectorAll("button[data-show]").forEach(function(b){b.addEventListener("click",function(){var vs=b.dataset.show==="trvs";
+    document.getElementById("trcoop").hidden=vs;document.getElementById("trvs").hidden=!vs;document.getElementById("vscap").hidden=!vs;
+    b.parentNode.querySelectorAll("button").forEach(function(o){o.setAttribute("aria-pressed",o===b);});fit();});});
+  fit();
+})();
+</script>

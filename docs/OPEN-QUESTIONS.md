@@ -16,23 +16,11 @@ music needs a source (a licensed free track, or generated). Who chooses? Needed 
 past it, options are paying for LFS or keeping sources in Cloudflare R2. Decide when sizes are
 known. Needed by: M5.
 
-**OQ-018 · Non-visual code before the gate closes.** PRD NN-6 says no game code until every
-board is chosen. To build "all at once", `PLAN.md` Wave 1 starts work that draws nothing (game
-rules, protocol, netcode, pairing server, tooling) while boards are still being chosen. Allow
-that, or keep NN-6 as written and start those after the gate? Needed by: plan confirmation.
-
 **OQ-019 · How the two versus kitchens interact (TR-058).** To be chosen from options on design
 board 3. Needed by: board 3.
 
-**OQ-020 · Proposed values awaiting a yes.** Rabakz: 100 points plus up to 100 for speed; +50
-streak bonus from the third correct answer; double-points final round of 1, 3 or 5 questions;
-15-second answers (20 for pictures); first press is final; bank of 1,500 with 200 Singapore and
-60 picture questions; difficulty offered as Easy / Mixed / Hard. Peek Poker: rounds 6 and 7 of
-a 7-round match (7 s and 6 s, three swaps). Tabao Rush: fires from level 5. Needed by: the
-issue that builds each; all can be tuned at playtest.
-
-**OQ-021 · The plan itself.** `PLAN.md` and `backlog/` are proposed. No implementation starts
-until Randy confirms. Needed by: now.
+**OQ-021 · Go to start.** The plan is agreed. Randy asked to see the end-goal vision board
+(0B) first; Wave 0 starts on his go. Needed by: now.
 
 ## Assumptions Claude is working to (say if wrong)
 

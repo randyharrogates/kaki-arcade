@@ -42,7 +42,7 @@ No betting, no chips, no real-money element.
 ### Difficulty by round (confirmed by Randy 2026-11-16, D-025)
 
 A 3-round match uses rows 1, 3 and 5. A 7-round match uses rows 1 to 5 and then rows 6 and 7,
-which are Claude's proposal (OQ-020).
+proposed by Claude and accepted by Randy (D-039).
 
 | Round | Memorise time | Twist after the cards hide |
 |---|---|---|

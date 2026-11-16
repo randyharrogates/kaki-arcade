@@ -1,7 +1,7 @@
 # Kaki Arcade — Build Plan (concurrent agents, git worktrees)
 
-**Status: proposed 2026-11-16. Not yet confirmed by Randy. No implementation starts until he
-confirms it (D-027).**
+**Status: approach and waves agreed by Randy on 2026-11-16 (D-039). Implementation starts on
+his go after he has seen the end-goal vision board (`design-gate/00b-end-goal-vision.html`).**
 
 How v1 gets built: the three games, the controller and the console are broken into stories and
 issues in `docs/backlog/`, and several Claude agents work issues at the same time, each in its
@@ -59,10 +59,9 @@ A wave is a set of issues with no unmet dependencies. Issues inside a wave run c
 | **3 Whole-game integration** | Console M3 demo passed | Each game end to end in the real console (R-08, P-07, T-17) · T-11 to T-16 content, bots, versus · R-07, T-15 sound |
 | **4 Release** | All three games demonstrated | X-01 to X-09 |
 
-**Wave 1 needs one decision from Randy (OQ-018).** PRD NN-6 says no game code before the gate
-closes. Wave 1 as drawn starts rules, netcode and the pairing server, none of which draws
-anything, while the boards are still being chosen. If Randy prefers the rule as written, Wave 1
-shrinks to F-01 to F-09, the spikes and the question bank, and everything else waits for G-06.
+Wave 1 starts rules, netcode and the pairing server, none of which draws anything, while the
+boards are still being chosen. Randy allowed this on 2026-11-16 (D-039, PRD NN-6 as amended):
+the gate holds back everything visible, not code that draws nothing.
 
 The spikes can change the plan (renderer, TV route, art cost). Anything a spike could overturn
 is not started before that spike reports: T-07 waits for S-04, A-02 waits for S-02.
@@ -99,8 +98,14 @@ Per `CLAUDE.md` rule 8 every agent is Claude. Codex is used only for image gener
   time with nothing else running: frame-time numbers taken on a busy machine are not evidence.
   Per-issue UAT may run in parallel; the performance column in `STATUS.md` is filled only from
   the integrator's quiet-machine runs.
-- **How many at once.** Up to 4 issue agents on this Mac (M3, 16 GB), fewer while a render or a
-  performance run is going. More agents than that cost more in merge friction than they save.
+- **Check memory before every start (Randy, D-039).** Before launching an agent, a UAT run, a
+  render or a performance run, the integrator checks free memory (`memory_pressure` and
+  `vm_stat`). Start only when memory pressure is normal and there is room for the job: about
+  2 GB for a code agent with its dev servers, 3 GB for a UAT run with 9 browser contexts, 4 GB
+  for a Blender render. If there is not, wait for a running job to finish; never start anyway.
+- **How many at once.** Up to 4 issue agents on this Mac (M3, 16 GB) when memory allows, fewer
+  while a render or a performance run is going. More agents than that cost more in merge
+  friction than they save.
 
 ## 6. The loop, per issue
 

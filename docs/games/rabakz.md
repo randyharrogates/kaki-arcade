@@ -4,8 +4,8 @@ A trivia night game. A question appears on the TV, everyone answers at once on t
 and fast correct answers score most. "Rabak" is Singlish for wild or out of control.
 
 Added to v1 by Randy on 2026-11-16 (D-034, D-035). Requirements here are part of the PRD and
-are tracked in `../TRACEABILITY.md`. Values marked *proposed* are Claude's and are listed in
-`../OPEN-QUESTIONS.md` until Randy confirms them.
+are tracked in `../TRACEABILITY.md`. Point values, counts and sizes were proposed by Claude and
+accepted by Randy on 2026-11-16 (D-039); all can be tuned at playtest.
 
 No betting, no wagering of points, no real-money element.
 
@@ -19,9 +19,9 @@ No betting, no wagering of points, no real-money element.
 | RZ-004 | MUST | All players answer at the same time within the answer time (default 15 seconds; 20 seconds for a picture question). A player's first press is their answer and cannot be changed. |
 | RZ-005 | MUST | Until the reveal, the big screen shows only **who** has answered (seat markers), never what they chose, and no answer is sent to another phone. |
 | RZ-006 | MUST | A question ends when every player has answered or the time runs out. The reveal shows the correct option, how many players chose each option, and the points each player gained. |
-| RZ-007 | MUST | Scoring: a correct answer scores **100 points plus a speed bonus of up to 100**, falling evenly from 100 at the start of the answer time to 0 at the end. A wrong answer or no answer scores 0. Scores never go down. *(Values proposed.)* |
-| RZ-008 | MUST | Streak bonus: from a player's third correct answer in a row, each correct answer scores **50 extra** until they miss one. The phone and the big screen show the streak. *(Value proposed.)* |
-| RZ-009 | MUST | Final round: the last 1 question of a 10-question match, the last 3 of 30 and the last 5 of 50 score **double**, announced on the big screen before they start. *(Counts proposed.)* |
+| RZ-007 | MUST | Scoring: a correct answer scores **100 points plus a speed bonus of up to 100**, falling evenly from 100 at the start of the answer time to 0 at the end. A wrong answer or no answer scores 0. Scores never go down. |
+| RZ-008 | MUST | Streak bonus: from a player's third correct answer in a row, each correct answer scores **50 extra** until they miss one. The phone and the big screen show the streak. |
+| RZ-009 | MUST | Final round: the last 1 question of a 10-question match, the last 3 of 30 and the last 5 of 50 score **double**, announced on the big screen before they start. |
 | RZ-010 | MUST | Before a match the leader chooses categories: any set of the bank's categories, or Mixed (default). |
 | RZ-011 | MUST | Before a match the leader chooses difficulty: Easy, Mixed (default) or Hard. Easy is suitable for children. |
 | RZ-012 | MUST | Free-for-all for 1 to 8 players, and a team mode with two teams (PLAT-025). A team's score for a question is the **average** of its members' points, so uneven teams are fair. Individual scores are still shown. |
@@ -34,11 +34,11 @@ No betting, no wagering of points, no real-money element.
 
 | ID | Pri | Requirement |
 |---|---|---|
-| RZ-020 | MUST | The question bank ships with the game. Nothing is fetched during a match: every question and image for the match is loaded before the first question. A match's questions and images are at most 2 MB transferred. *(Size proposed.)* |
+| RZ-020 | MUST | The question bank ships with the game. Nothing is fetched during a match: every question and image for the match is loaded before the first question. A match's questions and images are at most 2 MB transferred. |
 | RZ-021 | MUST | Sources: the Open Trivia Database (CC BY-SA 4.0) for general knowledge, credited on the credits page with our adapted bank offered under the same licence; and a Singapore pack written by Claude, each question carrying a source note and spot-checked by Randy before release. No question is generated at play time. |
 | RZ-022 | MUST | Every question has: category, difficulty, type, text, options, the correct option and a source. A build script validates the bank and rejects any question whose text is over 120 characters or whose options are over 40 characters, so everything fits the TV at reading size. |
 | RZ-023 | MUST | The bank is screened for a public, all-ages audience: no sexual, graphic, hateful or otherwise unsuitable questions. |
-| RZ-024 | MUST | Launch size: at least **1,500** questions in total, including at least **200** in the Singapore pack and at least **60** picture questions. *(Counts proposed.)* |
+| RZ-024 | MUST | Launch size: at least **1,500** questions in total, including at least **200** in the Singapore pack and at least **60** picture questions. |
 | RZ-025 | MUST | Picture-question images are original (rendered or generated for this game) or openly licensed with credit, and are loaded before the match. |
 | RZ-026 | MUST | The order of options is shuffled from the match seed, and the correct option is equally likely in every position. |
 

@@ -115,14 +115,16 @@ mood, camera tilt.
 
 ## 5. The design gate
 
-No shell UI or game code is written until Randy has chosen from every board below
-(PRD NN-6). Each board is published as an artifact with two or three options, includes a
+Nothing visible is built until Randy has chosen from every board below: no shell UI, game
+screen, controller styling or final art. Code that draws nothing may proceed (PRD NN-6 as
+amended, D-039). Each board is published as an artifact with two or three options, includes a
 golden-ratio variant, and says which proportions use it. The source of each board is saved in
 `design-gate/`.
 
 | # | Board | Options to show | Status |
 |---|---|---|---|
 | 0 | Art finish | Plain / flat vector / rich vector / Blender | **Done** — D chosen |
+| 0B | End-goal vision | Not a choice: one page showing the aim for every screen of the console, controller and three games, with rendered Tabao Rush kitchens. Source `design-gate/00b-end-goal-vision.html`, built by `tools/blender/vision_*.py` and `kalib.py` | Published 2026-11-16 |
 | 1A | Modelling approach | How stylised (toy / clay / realistic), where models come from (scripted / CC0 / paid AI), how many characters, with memory cost. Source `design-gate/01a-modelling-approach.html`, built by `tools/blender/board1a_*.py` | **Done** — A1 chunky toy, B1 scripted, C2 one body with 8 heads (D-037) |
 | 1 | 3D art style | Three Blender looks for the same stall and cook: character proportions, materials, lighting, camera tilt | Pending |
 | 2 | Visual identity | Three directions: palette, type pairing, surface treatment | Pending |
