@@ -424,3 +424,9 @@ is not movement smoothing: position still follows the stick on the next step (TR
 steps aside only when another cook blocks it, never because of a wall. All movement constants
 (walk speed 3 tiles a second, dead zone 0.12, cook radius 0.20, reach 0.85 and the rest) are
 provisional until they can be judged on a screen and shown to Randy.
+
+**D-073 · 2026-11-16 · Claude (under D-057)** — Replaces D-071 (g), which broke the game
+interface contract: taps in a step are taken in the order the host received them; a leader's
+skip reveals at once and later taps in that step do nothing. Also (Tabao Rush, refining
+D-072): on the first press from rest a cook faces the nearest direction; the 8-degree hold
+applies only while the stick was already deflected.
