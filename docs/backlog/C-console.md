@@ -62,3 +62,9 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   off and headers are not recorded (the host secret travels in `Sec-WebSocket-Protocol`).
 - **F-02b (protocol):** retire the socket messages `create` and `reopen`; rename the button
   letters `a/b/x/y` to positions (D-062); add an error code for an opening timeout.
+- **C-03 must also close this (security review of C-01):** anyone who knows a room code can
+  keep the four unidentified phone slots full with silent sockets (each lasts 10 s) and so stop
+  new phones joining; the host is unaffected. Count unidentified slots and connection attempts
+  per client in the Worker (by `CF-Connecting-IP`) before the room object is reached, and back
+  off a client whose sockets are repeatedly closed without a `join`. The pairing server is not
+  to be deployed publicly before C-03 merges.
