@@ -26,6 +26,11 @@ held at 60 Hz measured about 22 MB an hour through a relay, against the 10 MB an
 behind the 800 GB limit in NET-004; the send policy for C-04 (on touch plus a 30 Hz tick) roughly
 halves it. Needed by: C-04, S-04.
 
+**OQ-029 · Tabao Rush: can dirty plates be thrown?** TR-009 says plates and finished dishes
+cannot be thrown; the versus sabo in TR-058 has "dirty plates thrown across". Claude builds to
+TR-009 for now (D-078 i) and will treat the sabo as plates arriving in the other kitchen by
+the game's own action, not by a player's throw, unless Randy says otherwise. Needed by: T-14.
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot

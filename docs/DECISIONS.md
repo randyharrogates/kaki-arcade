@@ -452,3 +452,18 @@ keep-alive ping.
 dependency on `@kaki/signal` (workspace link, no new external package) so its tests run
 against the pairing server's real room logic instead of a stand-in; the first build's
 stand-in hid five connection faults.
+
+**D-078 · 2026-11-16 · Claude (under D-057)** — Tabao Rush item rules the spec left open
+(review of T-02), all provisional until seen on a screen: (a) a crate gives one raw item per
+cross press to an empty-handed cook, never takes one back, and gives nothing while 24 items
+lie on the floor, so a round cannot grow without bound (PERF-001); (b) counters hold one item,
+no swapping; (c) cross never puts an item down on the floor; an empty-handed cook with nothing
+highlighted picks up the oldest item on its own tile, and the public view says which; (d) a
+throw flies for the `slow` motion token, 377 ms (23 steps, D-051), up to 4 tiles, passes over
+counters and stops at walls and stations; (e) a throw is never caught on the step it is
+thrown, so every throw is seen in flight; the thrower cannot catch its own throw; full hands
+let it pass; (f) an uncaught throw rests on its endpoint counter if that is free, otherwise on
+the last free floor tile back along its path; (g) presses by several cooks in one step resolve
+by ascending seat, cross before triangle (buttons are never taps); (h) a leaving cook's item
+drops by rule (f) from where it stood; (i) plates and finished dishes cannot be thrown
+(TR-009); the conflict with the sabo "dirty plates thrown across" in TR-058 is OQ-029.
