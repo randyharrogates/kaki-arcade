@@ -22,6 +22,12 @@ board 3. Needed by: board 3.
 **OQ-024 · Board 1 choice.** Finish, lighting and camera tilt: A, B, C, D or a mix. Needed by:
 S-02 and every art issue (A-02 onwards).
 
+**OQ-025 · Spacing values beyond 5 to 89 px.** `DESIGN.md` §1 lists 5 · 8 · 13 · 21 · 34 · 55 · 89
+and says no other spacing values. The design lint (F-01) also allows 0, the next Fibonacci steps
+144 · 233 · 377 for large layout gaps, and 1 · 2 · 3 px plus full pills on corner radii only.
+Claude is working to the wider set; say if you want it held strictly to §1. Needed by: first UI
+slice.
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot
