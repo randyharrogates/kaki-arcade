@@ -1,0 +1,308 @@
+<title>Kaki Arcade Board 5</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: the two global choices (tempo, easing) at the top, then a grid of live samples in
+   1.618 : 1 stages that replay with the chosen values, then the stick you can drag. */
+:root{
+  --bg:#EFE9DA; --dot:#D9D0BA; --card:#FBF8F0; --card2:#F3EEDF; --ink0:#26221C; --muted:#6B6355; --line:#D5CCB6;
+  --sage:#4F7A5C; --sage-soft:#DCE8DA; --pick:#B5371F;
+  /* the decided game look (boards 2 and 2B); the same in light and dark */
+  --m-bg:#EFEAE2; --m-ink:#2B2118; --m-sub:#7A6A58; --m-pan:#FFFFFF; --m-pan2:#F6F1E7; --m-edge:#D8CDBB; --m-red:#B5371F; --m-brown:#6B4426;
+  --r-bg:#4A1F3D; --r-dot:#5C2A4D; --r-ink:#FFF1F4; --r-acc:#FF9DB8; --k-felt:#1D5741; --k-gold:#E0A63A;
+  --p1:#D9483B; --p2:#2F7FD6; --p3:#F2B21B; --p4:#39A85B; --p5:#8E5BD0; --amber:#B87D0C; --green:#2E9A5B; --white:#FFFFFF;
+  --display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --fd:"DM Serif Display",Georgia,serif; --fb:"DM Sans",system-ui,sans-serif;
+  --fast:144ms; --base:233ms; --slow:377ms; --out:cubic-bezier(.16,1,.3,1); --io:cubic-bezier(.65,0,.35,1);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink0:#F1EBDC; --muted:#A79F8D; --line:#3B382E;
+  --sage:#8FBF9C; --sage-soft:#26342A; --pick:#F0806A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1B1A16; --dot:#2C2A23; --card:#25231D; --card2:#2C2A22; --ink0:#F1EBDC; --muted:#A79F8D; --line:#3B382E;
+  --sage:#8FBF9C; --sage-soft:#26342A; --pick:#F0806A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:21px 21px;
+  color:var(--ink0);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1440px;margin:0 auto;padding-block:34px 89px;display:flex;flex-direction:column;gap:55px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(34px,5vw,55px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(21px,3vw,34px);font-weight:800}
+h3{font-size:21px;font-weight:700}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage)}
+.muted,.cap{color:var(--muted)} .cap{font-size:14px}
+.top{display:grid;grid-template-columns:1.618fr 1fr;gap:34px;align-items:end}
+.top>div{display:flex;flex-direction:column;gap:13px;min-width:0}
+.chit{border:1px dashed var(--line);border-radius:8px;padding:21px;background:linear-gradient(160deg,var(--card),var(--card2));display:flex;flex-direction:column;gap:8px}
+.chit ol{margin:0;padding-left:21px;display:flex;flex-direction:column;gap:5px}
+section{display:flex;flex-direction:column;gap:21px}
+.head{display:flex;flex-direction:column;gap:8px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:21px}
+.g2{display:grid;grid-template-columns:1.618fr 1fr;gap:21px;align-items:start}
+.card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card .b{padding:21px;display:flex;flex-direction:column;gap:13px;align-items:flex-start}
+.tagl{font-family:var(--mono);font-size:13px;color:var(--pick);letter-spacing:.06em}
+ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+li{padding-left:21px;position:relative}
+li::before{position:absolute;left:0;font-family:var(--mono)}
+li.pro::before{content:"+";color:var(--sage)} li.con::before{content:"−";color:var(--pick)}
+.rec{font-family:var(--mono);font-size:13px;background:var(--sage-soft);color:var(--sage);border-radius:5px;padding:5px 8px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tabs button,.re{font:500 14px var(--body);color:var(--ink0);background:transparent;border:1px solid var(--line);border-radius:34px;padding:8px 13px;cursor:pointer;transition:transform 150ms ease-out,background 200ms ease-in-out}
+.tabs button:active,.re:active{transform:scale(.97)}
+.tabs button[aria-pressed="true"]{background:var(--ink0);color:var(--bg);border-color:var(--ink0)}
+button:focus-visible{outline:2px solid var(--pick);outline-offset:2px}
+.vals{font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums;display:flex;flex-wrap:wrap;gap:8px 21px}
+.vals b{color:var(--pick);font-weight:700}
+.opt{display:flex;flex-direction:column;gap:8px;padding:21px;border-top:1px solid var(--line)}
+.opt h3{font-size:16px;font-family:var(--body);font-weight:600}
+.note{border:1px solid var(--line);border-radius:8px;padding:13px 21px;display:flex;flex-wrap:wrap;gap:13px;align-items:center;background:var(--sage-soft)}
+@media (max-width:1000px){.top,.g3,.g2{grid-template-columns:1fr}}
+
+/* ---------- stages: the decided marble look, one terrazzo treatment per surface ---------- */
+.st{position:relative;aspect-ratio:1.618/1;max-width:100%;overflow:hidden;color:var(--m-ink);font-family:var(--fb);font-size:14px;
+  background-color:var(--m-bg);background-image:radial-gradient(circle at 20% 30%,#D6CBBB 0 3px,transparent 3.5px),radial-gradient(circle at 72% 62%,#C7B6A2 0 2px,transparent 2.5px),radial-gradient(circle at 44% 86%,#B9C6B6 0 2.5px,transparent 3px);background-size:55px 55px}
+.st>*{position:absolute}
+.pan{background:linear-gradient(170deg,var(--m-pan),var(--m-pan2));border:2px solid var(--m-edge);border-radius:13px}
+.btn{font:700 16px var(--fb);color:var(--white);background:var(--m-red);border:0;border-radius:13px;padding:13px 21px;cursor:pointer;transition:transform var(--fast) var(--out)}
+.btn:active{transform:scale(.97)}
+.ctr{left:50%;top:50%;translate:-50% -50%}
+.row{display:flex;align-items:center;gap:8px;padding:5px 13px;border-radius:8px;background:var(--m-pan);border:2px solid var(--m-edge);font-weight:500;white-space:nowrap}
+.seat{width:21px;height:21px;border-radius:50%;display:grid;place-items:center;color:var(--white);font:700 13px var(--mono)}
+.pop{left:13%;top:44%;width:55%;padding:8px;display:flex;flex-direction:column;gap:5px;transform-origin:21px 0}
+.pop div{padding:5px 8px;border-radius:5px}
+.pop div:first-child{background:var(--m-pan2)}
+.tile{top:30%;height:40%;width:27%;border-radius:13px;display:grid;place-items:center;font:400 21px var(--fd);color:var(--white)}
+.xp{inset:0;background-color:var(--r-bg);background-image:radial-gradient(var(--r-dot) 4px,transparent 4.5px);background-size:21px 21px;color:var(--r-ink);display:grid;place-items:center;clip-path:inset(30% 36.5% 30% 36.5% round 13px)}
+.xp b{font:400 21px var(--fd)} .xp i{position:absolute;bottom:13%;font-style:normal;background:var(--r-acc);color:var(--r-bg);font-weight:700;border-radius:13px;padding:8px 21px;opacity:0}
+.cook{width:34px;height:34px;border-radius:50%;background:var(--p2);border:3px solid var(--white);left:18%;top:60%}
+.wok{width:55px;height:21px;border-radius:0 0 34px 34px;background:var(--m-ink);left:72%;top:64%}
+.ing{width:13px;height:13px;border-radius:3px;background:var(--green);left:0;top:0}
+.ax{left:22%;top:58%}
+.ring{width:89px;height:89px;border-radius:50%;border:5px solid var(--green);opacity:0}
+.tick{padding:13px 21px;text-align:center;border:2px dashed var(--m-red);background:var(--m-pan);border-radius:8px;color:#8E2A18;font-weight:700}
+.score{font:700 55px var(--mono);font-variant-numeric:tabular-nums}
+.felt{inset:0;background-color:var(--k-felt);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 2px,transparent 2px 5px)}
+.pc{width:21%;aspect-ratio:150/205;border-radius:8px;perspective:600px}
+.pc span{position:absolute;inset:0;border-radius:8px;display:grid;place-items:center;font:400 34px var(--fd)}
+.pc .bk{background:var(--m-red);border:3px solid var(--white)}
+.pc .ft{background:var(--white);color:var(--p1);clip-path:inset(0 100% 0 0)}
+.scr{inset:0;display:grid;place-items:center;font:400 21px var(--fd)}
+.scr.new{background-color:var(--r-bg);background-image:radial-gradient(var(--r-dot) 4px,transparent 4.5px);background-size:21px 21px;color:var(--r-ink);opacity:0}
+.pad{inset:0;touch-action:none;cursor:grab}
+.zone{left:5%;top:13%;width:45%;height:74%;border:2px dashed var(--m-edge);border-radius:21px;display:grid;place-items:center;color:var(--m-sub);text-align:center;padding:13px}
+.base{width:110px;height:110px;border-radius:50%;border:3px solid var(--m-edge);background:rgba(255,255,255,.55);margin:-55px 0 0 -55px;opacity:0;pointer-events:none}
+.thumb{width:55px;height:55px;border-radius:50%;background:var(--m-brown);margin:-27.5px 0 0 -27.5px;opacity:0;pointer-events:none}
+.face{right:8%;top:50%;translate:0 -50%;width:144px;height:144px}
+.face button{position:absolute;width:55px;height:55px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;transition:transform var(--fast) var(--out)}
+.face button:active{transform:scale(.97)}
+.face svg{width:21px;height:21px;fill:none;stroke:var(--white);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div>
+      <span class="eyebrow">Design gate · board 5 of 5 · motion</span>
+      <h1>How things move</h1>
+      <p>Every sample below is live and follows your motion rules. Change the tempo and the easing at the top and all of them replay with the new values. Four choices are needed; this is the last board before building anything visible.</p>
+    </div>
+    <div class="chit">
+      <h3>How to reply</h3>
+      <ol>
+        <li>Tempo: 1A, 1B or 1C</li>
+        <li>Easing: 2A or 2B</li>
+        <li>Card reveal: 3A or 3B</li>
+        <li>Screen change: 4A or 4B</li>
+      </ol>
+      <p class="cap">For example "1B 2A 3A 4A". Those four are my recommendation.</p>
+    </div>
+  </div>
+
+  <div class="note" id="rm" hidden>
+    <span>Your device asks for reduced motion, so the samples only change state. The games will do the same.</span>
+    <button class="re" id="rmb" type="button">Show the motion anyway</button>
+  </div>
+
+  <section>
+    <div class="head"><span class="eyebrow">Choices 1 and 2 · apply to everything</span><h2>Tempo and easing</h2></div>
+    <div class="g2">
+      <div class="card">
+        <div class="b">
+          <h3>1 · Tempo</h3>
+          <div class="tabs" data-set="tempo">
+            <button type="button" data-v="A">1A Quick</button>
+            <button type="button" data-v="B">1B Golden</button>
+            <button type="button" data-v="C">1C Calm</button>
+          </div>
+          <div class="vals" id="vals"></div>
+          <ul id="tnotes"></ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="b">
+          <h3>2 · Easing</h3>
+          <div class="tabs" data-set="ease">
+            <button type="button" data-v="A">2A Soft landing</button>
+            <button type="button" data-v="B">2B Even</button>
+          </div>
+          <ul id="enotes"></ul>
+          <button class="re" type="button" id="all">Replay all samples</button>
+        </div>
+      </div>
+    </div>
+    <p class="cap">Cost of every option on this board except 4B: only position, scale and opacity change, which the TV's graphics chip handles without redrawing the page. None of it has been measured on a TV yet; the performance harness will check each one against the frame budget when it is built.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Live samples · console and lobby</span><h2>The shell</h2></div>
+    <div class="g3">
+      <article class="card"><div class="st"><button class="btn ctr" id="pb" type="button">Start game</button></div>
+        <div class="b"><h3>Press</h3><p class="cap">Scales to 0.97 while held and returns on release. Press it yourself.</p><button class="re" data-run="press" type="button">Replay</button></div></article>
+      <article class="card"><div class="st"><button class="btn" id="mt" type="button" style="left:13%;top:18%">Match length</button>
+          <div class="pan pop" id="mp" hidden><div>10 questions</div><div>30 questions</div><div>50 questions</div></div></div>
+        <div class="b"><h3>Menu</h3><p class="cap">Grows from its button, starting at scale 0.95. It closes back into the button 20% faster. Rows follow 30 ms apart.</p><button class="re" data-run="menu" type="button">Replay</button></div></article>
+      <article class="card"><div class="st" id="rows"></div>
+        <div class="b"><h3>Players joining</h3><p class="cap">Rows enter 30 ms apart and ease to a stop.</p><button class="re" data-run="stagger" type="button">Replay</button></div></article>
+      <article class="card"><div class="st">
+          <div class="tile" style="left:5%;background:var(--m-red)">Tabao Rush</div>
+          <div class="tile" style="left:68%;background:var(--k-felt)">Peek Poker</div>
+          <div class="xp" id="xp"><b>Rabakz</b><i>Start</i></div></div>
+        <div class="b"><h3>Game tile opens</h3><p class="cap">The chosen tile itself grows into the start screen and shrinks back. Nothing is swapped in.</p><button class="re" data-run="expand" type="button">Replay</button></div></article>
+      <article class="card"><div class="st"><div class="ring ctr" id="rg"></div><div class="tick ctr" id="tk">Order served<br>+100</div></div>
+        <div class="b"><h3>Success pulse</h3><p class="cap">One pulse for a served order, a locked-in pick or a won question. No wobble after it.</p><button class="re" data-run="pulse" type="button">Replay</button></div></article>
+      <article class="card"><div class="st"><div class="score ctr" id="sc">300</div></div>
+        <div class="b"><h3>Score counts up</h3><p class="cap">Fast at first, slows and stops exactly on the number.</p><button class="re" data-run="count" type="button">Replay</button></div></article>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Live samples · in the games</span><h2>Gameplay</h2></div>
+    <div class="g3">
+      <article class="card"><div class="st" id="arcst"><div class="cook"></div><div class="wok"></div><div class="ax" id="ax"><div class="ing" id="ay"></div></div></div>
+        <div class="b"><h3>Throw on an arc</h3><p class="cap">A thrown ingredient rises and falls on a curve. Dealt cards and served dishes travel the same way.</p><button class="re" data-run="arc" type="button">Replay</button></div></article>
+      <article class="card"><div class="st"><div class="felt"></div><div class="pc ctr" id="pc"><span class="bk"></span><span class="ft" id="ft">7♥</span></div></div>
+        <div class="b"><h3>3 · Card reveal</h3>
+          <div class="tabs" data-set="flip"><button type="button" data-v="A">3A Turn over</button><button type="button" data-v="B">3B Wipe</button></div>
+          <ul><li class="pro" id="fnote"></li></ul>
+          <button class="re" data-run="card" type="button">Replay</button></div></article>
+      <article class="card"><div class="st"><div class="scr">Lobby</div><div class="scr new" id="sn">Rabakz</div><button class="btn" id="go" type="button" style="left:50%;top:72%;translate:-50% -50%;padding:8px 21px">Start</button></div>
+        <div class="b"><h3>4 · Screen change</h3>
+          <div class="tabs" data-set="screen"><button type="button" data-v="A">4A Crossfade</button><button type="button" data-v="B">4B Grow from the button</button></div>
+          <ul><li id="snote"></li></ul>
+          <button class="re" data-run="screen" type="button">Replay</button></div></article>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="eyebrow">Try it · your board 4 choices in motion</span><h2>The floating stick</h2></div>
+    <div class="card">
+      <div class="st" style="aspect-ratio:844/390">
+        <div class="zone">Touch and drag anywhere here</div>
+        <div class="pad" id="pad"></div>
+        <div class="base" id="bs"></div><div class="thumb" id="th"></div>
+        <div class="face">
+          <button type="button" aria-label="Triangle: throw" style="left:44.5px;top:0;background:var(--green)"><svg viewBox="0 0 24 24"><path d="M12 4 21 20H3Z"/></svg></button>
+          <button type="button" aria-label="Square: dash" style="left:0;top:44.5px;background:var(--amber)"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg></button>
+          <button type="button" aria-label="Circle: act" style="left:89px;top:44.5px;background:var(--p2)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg></button>
+          <button type="button" aria-label="Cross: pick up" style="left:44.5px;top:89px;background:var(--p1)"><svg viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></svg></button>
+        </div>
+      </div>
+      <div class="b"><p class="cap">The stick appears where your thumb lands and follows it exactly, with no smoothing while held. The knob stretches about 12% in the direction of travel. On release it eases back and stops, with no bounce. The four buttons are the shapes you chose, in Kaki Arcade's own colours; this is not a choice on this board.</p></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)}, $$=function(s){return [].slice.call(document.querySelectorAll(s))};
+  var TEMPO={A:[89,144,233],B:[144,233,377],C:[233,377,610]};
+  var EASE={A:["cubic-bezier(.16,1,.3,1)","cubic-bezier(.65,0,.35,1)"],B:["cubic-bezier(0,0,.2,1)","cubic-bezier(.4,0,.2,1)"]};
+  var TN={A:[["pro","Feels instant; suits a fast game."],["con","Menus open in 144 ms, just under your 150 ms floor."],["con","On a big TV the tile opening is almost too quick to follow."]],
+          B:[["pro","Golden-ratio variant: each step is 1.618 times the last (144, 233, 377 ms)."],["pro","Menus open in 233 ms, inside your 150 to 250 ms rule."]],
+          C:[["pro","Easy to follow from across a room."],["con","Menus open in 377 ms, which breaks your 150 to 250 ms rule."],["con","Waiting 610 ms for each screen change slows a party down."]]};
+  var EN={A:[["pro","Starts fast and settles gently, so things feel responsive and land softly."],["pro","Reads well on a TV from a distance."]],
+          B:[["pro","Steadier speed throughout; plainer."],["con","Arrivals feel a little abrupt on large moves."]]};
+  var S={tempo:"B",ease:"A",flip:"A",screen:"A"}, force=false;
+  var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var timers={};
+  function d(ms){return (RM&&!force)?0:ms}
+  function T(i){return TEMPO[S.tempo][i]} function out(){return EASE[S.ease][0]} function io(){return EASE[S.ease][1]}
+  function A(el,kf,o){o.fill="both";o.duration=d(o.duration);o.delay=d(o.delay||0);return el.animate(kf,o)}
+  function stop(el){el.getAnimations().forEach(function(a){a.cancel()})}
+  function later(k,ms,f){clearTimeout(timers[k]);timers[k]=setTimeout(f,d(ms)+(d(1)?0:400))}
+  function li(list){return list.map(function(x){return '<li class="'+x[0]+'">'+x[1]+"</li>"}).join("")}
+
+  var rows=$("#rows"), names=["Mei Ling","Arjun","Siti","Wei Jie","Priya"], cols=["--p1","--p2","--p3","--p4","--p5"];
+  names.forEach(function(n,i){var r=document.createElement("div");r.className="row";r.style.left="13%";r.style.top=(8+i*17.5)+"%";
+    r.innerHTML='<span class="seat" style="background:var('+cols[i]+')">'+(i+1)+"</span>"+n;rows.appendChild(r)});
+
+  var RUN={
+    press:function(){var b=$("#pb");stop(b);A(b,[{scale:"1"},{scale:".97",offset:.3},{scale:".97",offset:.7},{scale:"1"}],{duration:T(0)*2+300,easing:out()})},
+    menu:function(){openMenu();later("menu",T(1)+1100,closeMenu)},
+    stagger:function(){$$("#rows .row").forEach(function(r,i){stop(r);A(r,[{opacity:0,transform:"translateY(13px)"},{opacity:1,transform:"none"}],{duration:T(1),delay:i*30,easing:out()})})},
+    expand:function(){var x=$("#xp"),s=x.querySelector("i"),a="inset(30% 36.5% 30% 36.5% round 13px)",b="inset(0% 0% 0% 0% round 0px)";stop(x);stop(s);
+      A(x,[{clipPath:a},{clipPath:b}],{duration:T(2),easing:io()});A(s,[{opacity:0},{opacity:1}],{duration:T(1),delay:T(2)*.6,easing:out()});
+      later("expand",T(2)+1200,function(){A(s,[{opacity:1},{opacity:0}],{duration:T(0),easing:io()});A(x,[{clipPath:b},{clipPath:a}],{duration:T(2)*.8,easing:io()})})},
+    pulse:function(){var r=$("#rg"),t=$("#tk");stop(r);stop(t);
+      A(r,[{opacity:.7,scale:".6"},{opacity:0,scale:"1.8"}],{duration:T(2)*1.2,easing:out()});A(t,[{scale:"1"},{scale:"1.05",offset:.4},{scale:"1"}],{duration:T(2),easing:io()})},
+    count:function(){var el=$("#sc"),t0=performance.now(),dur=d(T(2)*2.618);cancelAnimationFrame(timers.cnt);
+      (function f(now){var p=dur?Math.min(1,(now-t0)/dur):1,e=1-Math.pow(1-p,3);el.textContent=Math.round(300*e);if(p<1)timers.cnt=requestAnimationFrame(f)})(t0)},
+    arc:function(){var st=$("#arcst"),x=$("#ax"),y=$("#ay"),W=st.clientWidth*.52,H=st.clientHeight*.38;stop(x);stop(y);
+      A(x,[{transform:"translateX(0)"},{transform:"translateX("+W+"px)"}],{duration:T(2)*1.618,easing:"linear"});
+      A(y,[{transform:"translateY(0)",easing:"cubic-bezier(0,0,.4,1)"},{transform:"translateY(-"+H+"px)",easing:"cubic-bezier(.6,0,1,1)"},{transform:"translateY(13px)"}],{duration:T(2)*1.618})},
+    card:function(){var c=$("#pc"),f=$("#ft");stop(c);stop(f);
+      if(S.flip==="A"){var h=T(2)/2;A(f,[{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 100% 0 0)"}],{duration:1});
+        A(c,[{transform:"rotateY(0deg)"},{transform:"rotateY(90deg)"}],{duration:h,easing:"cubic-bezier(.6,0,1,1)"});
+        later("card",h,function(){stop(f);A(f,[{clipPath:"inset(0 0 0 0)"},{clipPath:"inset(0 0 0 0)"}],{duration:1});A(c,[{transform:"rotateY(-90deg)"},{transform:"rotateY(0deg)"}],{duration:h,easing:out()})})}
+      else{clearTimeout(timers.card);A(f,[{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0% 0 0)"}],{duration:T(2),easing:io()})}},
+    screen:function(){var n=$("#sn"),g=$("#go");stop(n);stop(g);
+      var kin=S.screen==="A"?[{opacity:0},{opacity:1}]:[{opacity:1,clipPath:"circle(0% at 50% 72%)"},{opacity:1,clipPath:"circle(120% at 50% 72%)"}];
+      A(n,kin,{duration:T(2),easing:io()});A(g,[{opacity:1},{opacity:0}],{duration:T(1),easing:io()});
+      later("screen",T(2)+1200,function(){A(n,kin.slice().reverse(),{duration:T(2)*.8,easing:io()});A(g,[{opacity:0},{opacity:1}],{duration:T(1),delay:T(2)*.4,easing:out()})})}
+  };
+  var mp=$("#mp"), open=false;
+  function openMenu(){open=true;mp.hidden=false;stop(mp);A(mp,[{opacity:0,transform:"scale(.95)"},{opacity:1,transform:"scale(1)"}],{duration:T(1),easing:out()});
+    [].forEach.call(mp.children,function(r,i){stop(r);A(r,[{opacity:0,transform:"translateY(-5px)"},{opacity:1,transform:"none"}],{duration:T(1),delay:i*30,easing:out()})})}
+  function closeMenu(){if(!open)return;open=false;var a=A(mp,[{opacity:1,transform:"scale(1)"},{opacity:0,transform:"scale(.95)"}],{duration:T(1)*.8,easing:io()});a.onfinish=function(){if(!open)mp.hidden=true}}
+  $("#mt").addEventListener("click",function(){clearTimeout(timers.menu);open?closeMenu():openMenu()});
+  $("#go").addEventListener("click",RUN.screen);
+
+  function paint(){
+    var r=document.documentElement.style,t=TEMPO[S.tempo];
+    r.setProperty("--fast",t[0]+"ms");r.setProperty("--base",t[1]+"ms");r.setProperty("--slow",t[2]+"ms");r.setProperty("--out",out());r.setProperty("--io",io());
+    $("#vals").innerHTML="<span>press, small changes <b>"+t[0]+" ms</b></span><span>menus, rows <b>"+t[1]+" ms</b></span><span>tiles, screens, throws <b>"+t[2]+" ms</b></span>";
+    $("#tnotes").innerHTML=li(TN[S.tempo])+(S.tempo==="B"?'<li class="pro"><span class="rec">Recommended</span></li>':"");
+    $("#enotes").innerHTML=li(EN[S.ease])+(S.ease==="A"?'<li class="pro"><span class="rec">Recommended</span></li>':"");
+    $("#fnote").innerHTML=S.flip==="A"?'Turns like a real card; the face changes while the card is edge-on, so there is no cut. Same cost as the wipe. <span class="rec">Recommended</span>':"The face is revealed by a mask moving across the card. Flatter, but reads clearly on a small phone screen.";
+    var sn=$("#snote");sn.className=S.screen==="A"?"pro":"con";
+    sn.innerHTML=S.screen==="A"?'Old and new screens overlap, so the TV never shows a blank frame. Cheapest possible change. <span class="rec">Recommended</span>':"The new screen grows from the button that was pressed. It redraws the whole 1920 × 1080 screen on every frame while it runs, so it is the one option here that may not meet the frame budget on a slow TV. Not measured yet.";
+    $$(".tabs").forEach(function(g){var k=g.dataset.set;[].forEach.call(g.children,function(b){b.setAttribute("aria-pressed",String(b.dataset.v===S[k]))})});
+  }
+  $$(".tabs button").forEach(function(b){b.addEventListener("click",function(){var k=b.parentNode.dataset.set;S[k]=b.dataset.v;paint();
+    if(k==="flip")RUN.card();else if(k==="screen")RUN.screen();else playAll()})});
+  $$("[data-run]").forEach(function(b){b.addEventListener("click",function(){RUN[b.dataset.run]()})});
+  function playAll(){Object.keys(RUN).forEach(function(k){RUN[k]()})}
+  $("#all").addEventListener("click",playAll);
+  if(RM){$("#rm").hidden=false;$("#rmb").addEventListener("click",function(){force=true;$("#rm").hidden=true;playAll()})}
+
+  /* floating stick: tracks the pointer 1:1 while held; eases back on release */
+  var pad=$("#pad"),bs=$("#bs"),th=$("#th"),o=null,R=55;
+  function place(el,x,y){el.style.left=x+"px";el.style.top=y+"px"}
+  pad.addEventListener("pointerdown",function(e){var r=pad.getBoundingClientRect();if(e.clientX-r.left>r.width*.55)return;
+    pad.setPointerCapture(e.pointerId);stop(th);stop(bs);o={x:e.clientX-r.left,y:e.clientY-r.top};place(bs,o.x,o.y);place(th,o.x,o.y);
+    bs.style.opacity=1;th.style.opacity=1;th.style.transform="none"});
+  pad.addEventListener("pointermove",function(e){if(!o)return;var r=pad.getBoundingClientRect(),dx=e.clientX-r.left-o.x,dy=e.clientY-r.top-o.y,l=Math.hypot(dx,dy);
+    if(l>R){dx*=R/l;dy*=R/l;l=R}var a=Math.atan2(dy,dx);
+    th.style.transform="translate("+dx+"px,"+dy+"px) rotate("+a+"rad) scaleX("+(1+.12*l/R)+")"});
+  function up(){if(!o)return;o=null;var from=th.style.transform;th.style.transform="none";
+    A(th,[{transform:from},{transform:"none"}],{duration:T(1),easing:out()}).onfinish=function(){if(o)return;
+      A(th,[{opacity:1},{opacity:0}],{duration:T(0),easing:io()});A(bs,[{opacity:1},{opacity:0}],{duration:T(0),easing:io()});th.style.opacity=0;bs.style.opacity=0}}
+  pad.addEventListener("pointerup",up);pad.addEventListener("pointercancel",up);
+
+  paint();
+})();
+</script>

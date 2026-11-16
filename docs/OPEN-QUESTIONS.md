@@ -34,6 +34,10 @@ halves it. Needed by: C-04, S-04.
 who opens one in a browser can read the answers; accepted for a party game played in one room.
 The rest were confirmed in D-048 and D-049. Needed by: R-01.
 
+**OQ-031 · Board 5 choices (motion).** Tempo 1A, 1B or 1C; easing 2A or 2B; card reveal 3A or
+3B; screen change 4A or 4B. Claude recommends 1B 2A 3A 4A. Needed by: closing the design gate
+(G-06) and every visible slice.
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot
