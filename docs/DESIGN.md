@@ -152,10 +152,22 @@ layout functions named below are in `tools/boards/board3_template.html`. Every s
 - **Peek Poker picker: 4B**, grid in the centre with 89 px cells and a 144 px Lock in button
   under the right thumb.
 - The single-design phone screens on board 4 stand as shown.
+- **Buttons must not be too small** (Randy, D-051). The four face buttons are at least the
+  110 px shown on board 4 at 844 × 390, and scale up with the phone; any other control a
+  player taps during play is at least 89 px, and nothing tappable anywhere is under 55 px.
 
-### 4.5 Motion tokens — *pending (gate board 5)*
+### 4.5 Motion tokens — **decided** (board 5, D-051)
 
-Named durations and easings implementing §3.
+Chosen by Randy on 2026-11-16. Source: `design-gate/05-motion.html`.
+
+- **Tempo 1B, golden:** `fast` 144 ms (press, small changes), `base` 233 ms (menus, rows),
+  `slow` 377 ms (tiles, screens, throws). Each step is 1.618 times the last. Exits run at 0.8
+  of the entrance.
+- **Easing 2A, soft landing:** entrances `cubic-bezier(.16,1,.3,1)`; moves
+  `cubic-bezier(.65,0,.35,1)`.
+- **Card reveal 3A:** the card turns over; the face changes while the card is edge-on.
+- **Screen change 4A:** crossfade with old and new overlapping, at `slow`.
+- Stagger 30 ms, press scale 0.97, popovers from 0.95, knob stretch 12%, as in §3.
 
 ### 4.6 3D art style — **decided** (boards 1A and 1)
 
@@ -177,6 +189,9 @@ carried by apron and cap.
 
 ## 5. The design gate
 
+**The gate closed on 2026-11-16 (D-051). Every board is decided and §4 is locked: changes go
+through Randy.** Visible work may now be built.
+
 Nothing visible is built until Randy has chosen from every board below: no shell UI, game
 screen, controller styling or final art. Code that draws nothing may proceed (PRD NN-6 as
 amended, D-039). Each board is published as an artifact with two or three options, includes a
@@ -192,8 +207,8 @@ golden-ratio variant, and says which proportions use it. The source of each boar
 | 2 | Visual identity | Three directions: palette, type pairing, surface treatment; plus where trivia photos come from. Source `design-gate/02-visual-identity.html`, built by `tools/boards/build_board2.py` | **Done** — C Marble table as the general rule; real photographs, Codex only as a fallback (D-042) |
 | 2B | A theme for each game | Three variants each for Rabakz, Peek Poker and Tabao Rush inside the Marble table console. Source `design-gate/02b-game-themes.html`, built by `tools/boards/build_board2b.py` | **Done** — R1 Bandung, K1 Green baize, T1 Order chit (D-043) |
 | 3 | Big-screen layouts | Landing, lobby, picker, team setup, Rabakz question and reveal, Peek Poker table, Tabao Rush HUD, versus and how the two kitchens interact, results. Source `design-gate/03-big-screen-layouts.html`, built by `tools/blender/board3_scenes.py` and `tools/boards/build_board3.py` | **Done** — 1B, 2A, 3A, 4B, 5A, all four versus interactions in rotation (D-046) |
-| 4 | Phone controller | Joining, lobby, leader, team and cook pickers, Tabao Rush buttons and stick, button style, Rabakz buzzer states, Peek Poker picker and hand, paused and reconnecting, at 844 × 390. Source `design-gate/04-phone-controller.html`, built by `tools/blender/board4_scenes.py` and `tools/boards/build_board4.py` | Published 2026-11-16, awaiting Randy |
-| 5 | Motion | Live samples of the key transitions | Pending |
+| 4 | Phone controller | Joining, lobby, leader, team and cook pickers, Tabao Rush buttons and stick, button style, Rabakz buzzer states, Peek Poker picker and hand, paused and reconnecting, at 844 × 390. Source `design-gate/04-phone-controller.html`, built by `tools/blender/board4_scenes.py` and `tools/boards/build_board4.py` | **Done** — 1A with shape buttons in our colours, 2B, 3A, 4B (D-047, D-048) |
+| 5 | Motion | Live samples of the key transitions, with tempo, easing, card reveal and screen change to choose. Source `design-gate/05-motion.html` | **Done** — 1B, 2A, 3A, 4A (D-051) |
 
 **Any design or graphics choice, not only these boards, goes to Randy as an artifact** with real
 options to choose from (Randy, 2026-11-16, D-022). Each option states its cost against the

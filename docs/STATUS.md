@@ -39,7 +39,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 
 - Any application code: no host page, controller, pairing server or game (the packages are empty stubs).
 - `pnpm uat`, `pnpm perf`, `pnpm assets`, `pnpm dev` (later issues).
-- Design tokens: `DESIGN.md` §4.2 to §4.6 are pending the design gate.
+- Design tokens: `DESIGN.md` §4 is decided and locked (gate closed 2026-11-16); `packages/ui` does not hold them yet.
 
 ## Design gate
 
@@ -52,8 +52,8 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 | 2 Visual identity | Done: C Marble table as the general rule (D-042) |
 | 2B A theme for each game | Done: R1 Bandung, K1 Green baize, T1 Order chit (D-043) |
 | 3 Big-screen layouts | Done: 1B, 2A, 3A, 4B, 5A; versus interactions rotate (D-046) |
-| 4 Phone controller | Published 2026-11-16, awaiting Randy's choice |
-| 5 Motion | Pending |
+| 4 Phone controller | Done: 1A with shape buttons in our colours, 2B, 3A, 4B (D-047, D-048) |
+| 5 Motion | Done: 1B, 2A, 3A, 4A (D-051). **Gate closed 2026-11-16.** |
 
 ## Performance numbers
 

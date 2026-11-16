@@ -59,3 +59,9 @@ source is still to be chosen (OQ-006). (3) Spacing may also use 144, 233 and 377
 and 1 to 3 px on corner radii (closes OQ-025; `DESIGN.md` §1 updated). (4) Rabakz solo: only
 the first answer scores; a wrong answer reveals the correct one and the match moves on
 (RZ-013 stands).
+
+**D-051 · 2026-11-16 · Randy** — Board 5: "go as recommended", so tempo **1B** (144, 233,
+377 ms), easing **2A**, card reveal **3A** (turn over), screen change **4A** (crossfade).
+"note the buttons just not be too small": Claude's reading is a floor of 110 px for the four
+face buttons at 844 × 390, 89 px for other in-play controls and 55 px for anything tappable
+(`DESIGN.md` §4.4). **The design gate is closed**; `DESIGN.md` §4 is locked.

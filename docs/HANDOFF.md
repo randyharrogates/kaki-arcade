@@ -1,5 +1,8 @@
 # Kaki Arcade — Handoff
 
+> **Historical (2026-11-16).** The design gate has closed and this file's content now lives in
+> the other docs. Read `CLAUDE.md`, `docs/STATUS.md` and `docs/PLAN.md` instead.
+
 Written 2026-11-15 at the end of the planning conversation, for the Claude Code session that
 will build this in this repo. That conversation happened in a different session (Randy's
 personal agent, "Jarvis"); **none of it is in your context.** Everything you need from it is in

@@ -2,6 +2,11 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — Design gate closed
+
+- Boards 4 (phone controller) and 5 (motion) decided; `DESIGN.md` §4 locked (D-047 to D-051).
+  Visible work may begin. (NN-6)
+
 ## 2026-11-16 — F-03: simulation core
 
 - `packages/sim-core`: seeded generator with pinned known answers, fixed-timestep driver with a
