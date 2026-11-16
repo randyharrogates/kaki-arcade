@@ -20,7 +20,8 @@ export const TEST_LEVEL: Level = {
     '##########',
   ].flatMap((row, y) => Array.from(row, (mark, x): Tile => {
     if (mark === '#') return WALL;
-    if (mark === 's') return { kind: 'station', stationId: `anchor-${String(y * 10 + x)}` };
+    if (mark === 's') return { kind: 'station', stationId: `anchor-${String(y * 10 + x)}`,
+      ...(x === 3 ? { ingredient: 'cucumber' } : {}) };
     if (mark === 'c') return COUNTER;
     return FLOOR;
   })),

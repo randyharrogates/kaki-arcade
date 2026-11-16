@@ -1,0 +1,245 @@
+{
+  "game": "tabao-rush",
+  "stepMode": "returns-new",
+  "ok": true,
+  "checks": [
+    {
+      "id": "meta",
+      "title": "Picker details are complete and consistent",
+      "status": "pass",
+      "applied": 1,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "settings",
+      "title": "The settings schema is sound and its defaults validate",
+      "status": "pass",
+      "applied": 1,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "purity",
+      "title": "The source has no clock, timer or unseeded randomness",
+      "status": "pass",
+      "applied": 1,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "init",
+      "title": "A match starts for every player count, with and without teams",
+      "status": "pass",
+      "applied": 8,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "runs",
+      "title": "init, step, hooks and views never throw",
+      "status": "pass",
+      "applied": 863200,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "determinism",
+      "title": "The same seed, players, settings and inputs give the same state at every step",
+      "status": "pass",
+      "applied": 4,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "seed",
+      "title": "A different seed gives a different run",
+      "status": "pass",
+      "applied": 2,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "replay",
+      "title": "A saved recording replays to the same hashes (sim-core recorder)",
+      "status": "pass",
+      "applied": 4,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "reload",
+      "title": "State survives encodeState and decodeState mid-run and the run goes on identically",
+      "status": "pass",
+      "applied": 8,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "clone",
+      "title": "step(cloneState(s)) equals step(s)",
+      "status": "pass",
+      "applied": 50404,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "previous-state",
+      "title": "A finished step is not changed by the next one (real, reused input buffer)",
+      "status": "pass",
+      "applied": 100808,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "sharing",
+      "title": "Non-trivial returns-new steps share objects with their input",
+      "status": "pass",
+      "applied": 50315,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "private-revision",
+      "title": "Private view revisions change whenever their content changes",
+      "status": "not-applicable",
+      "applied": 0,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "state-contract",
+      "title": "step treats its state and inputs as its stepMode promises",
+      "status": "pass",
+      "applied": 50404,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "views-json",
+      "title": "Views are plain JSON within the byte caps",
+      "status": "pass",
+      "applied": 330234,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "views-pure",
+      "title": "Views are pure: equal when called twice, and the state is untouched",
+      "status": "pass",
+      "applied": 381010,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "layout",
+      "title": "Layouts fit a phone at the decided sizes; a revision changes exactly when the taps on offer do",
+      "status": "pass",
+      "applied": 139729,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "repeat-taps",
+      "title": "A tap the next layout would refuse does nothing if it arrives in the same step",
+      "status": "not-applicable",
+      "applied": 0,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "late-taps",
+      "title": "A tap that arrives one step late is not dropped while the taps on offer are unchanged",
+      "status": "not-applicable",
+      "applied": 0,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "secrets",
+      "title": "No secret reaches the TV or another phone, plainly or in disguise",
+      "status": "pass",
+      "applied": 50777,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "join-leave",
+      "title": "Joining, dropping and leaving mid-match never throws and never changes a score",
+      "status": "pass",
+      "applied": 89,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "min-players",
+      "title": "A whole match is played at the fewest and the most players; leaving never throws, even to nobody",
+      "status": "pass",
+      "applied": 103,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "pause",
+      "title": "A pause changes nothing",
+      "status": "pass",
+      "applied": 12,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "results",
+      "title": "Results and saved data are complete and well ordered",
+      "status": "pass",
+      "applied": 50777,
+      "failures": [],
+      "failureCount": 0
+    },
+    {
+      "id": "assets",
+      "title": "Nothing loads during play",
+      "status": "pass",
+      "applied": 1700,
+      "failures": [],
+      "failureCount": 0
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "solo co-op",
+      "players": 1,
+      "teams": false,
+      "steps": 12601,
+      "overAtStep": 12600,
+      "complete": true,
+      "finalHash": "746083d9cf045e3f",
+      "stepTime": {
+        "mean": 0.0016043953654476981,
+        "worst": 0.048583000000007814,
+        "p95": 0.0027079999999841675
+      },
+      "membershipReplay": {
+        "steps": 12601,
+        "overAtStep": 12600
+      }
+    },
+    {
+      "name": "eight-cook co-op",
+      "players": 8,
+      "teams": false,
+      "steps": 12601,
+      "overAtStep": 12600,
+      "complete": true,
+      "finalHash": "be0262b0edfd845d",
+      "stepTime": {
+        "mean": 0.013103924609161002,
+        "worst": 0.6463340000009339,
+        "p95": 0.019916000001103384
+      },
+      "membershipReplay": {
+        "steps": 12601,
+        "overAtStep": 12600
+      }
+    }
+  ]
+}

@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — T-02: Tabao Rush items
+
+- `games/tabao-rush/src/rules`: carrying, crates, counters, throwing and catching (D-078).
+  Earlier movement tests no longer write evidence during verify.
+  (TR-002, TR-009, TR-023 in progress)
+
 ## 2026-11-16 — R-01: Rabakz rules
 
 - `games/rabakz/src/rules`: pure rules against the game interface; rule details decided in

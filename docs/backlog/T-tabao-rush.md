@@ -13,7 +13,7 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
 | T-01 | State shape, movement on the next step with no smoothing, 8-way facing, soft collisions that never deadlock, the station a cook would use | TR-002, TR-020, TR-021, TR-022 | F-04 | 1 | merged |
-| T-02 | Items: carry one thing, crates, counters, passing, throwing and catching | TR-002, TR-009, TR-023 | T-01 | 1 | doing (Codex) |
+| T-02 | Items: carry one thing, crates, counters, passing, throwing and catching | TR-002, TR-009, TR-023 | T-01 | 1 | merged |
 | T-03 | Stations and timers: chop, wok, pot, grill, rice, drinks, plating, sink, bin; burning with a warning; fires that start, spread and are put out | TR-007, TR-008, TR-010, TR-030 | T-01 | 1 | todo |
 | T-04 | Recipes for the 7 dishes, plating, serving, rejection with a reason | TR-003, TR-004, TR-040 | T-02, T-03 | 1 | todo |
 | T-05 | Orders, patience, score and tips, stars, scaling by player count, round timer | TR-001, TR-004, TR-005, TR-006 | T-04 | 1 | todo |
@@ -52,3 +52,11 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
   (D-072). The 210-second round counter is scaffolding for the conformance kit; T-05 replaces
   it. Measure a real browser round, including garbage-collection pauses, in `pnpm perf` (F-08).
   Add the reviewer's nine wall-lean variants to the movement tests when movement is next touched.
+- **From T-02:** item rules are D-078, all provisional until seen on a screen (catch radius
+  0.2, constant 23-step flight even for very short throws, the jump from flight end to resting
+  tile, how floor piles read). At most 127 items plus one per counter tile can exist. The
+  leave-drop and floor fallbacks pick the nearest floor tile with no reachability check: T-06's
+  level validator must cover split kitchens. The refusal to throw in a round's last 23 steps is
+  scaffolding for T-05, which must keep "no flight outlives the round". Cross label wording is
+  T-08's. Plates in the versus sabo: OQ-029 (T-14). The solo convex-corner movement test was
+  cut from 200 random maps to 32 to stop timeouts under load.

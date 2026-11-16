@@ -15,7 +15,7 @@ export type Tile =
   | { readonly kind: 'floor' }
   | { readonly kind: 'wall' }
   | { readonly kind: 'counter' }
-  | { readonly kind: 'station'; readonly stationId: string };
+  | { readonly kind: 'station'; readonly stationId: string; readonly ingredient?: string };
 
 export interface Level {
   readonly id: string;
@@ -51,7 +51,27 @@ export interface Participant {
   readonly spectating: boolean;
 }
 
+export interface Point { readonly x: number; readonly y: number }
+export type ItemLocation =
+  | { readonly kind: 'held'; readonly cook: string }
+  | { readonly kind: 'counter'; readonly tile: number }
+  | { readonly kind: 'floor'; readonly tile: number }
+  | { readonly kind: 'flight'; readonly start: Point; readonly end: Point;
+      readonly rest: { readonly kind: 'counter' | 'floor'; readonly tile: number };
+      readonly startStep: number; readonly duration: number; readonly thrower: string };
+
+/** Future processing replaces the item data; carrying only relocates an item. */
+export interface Item {
+  readonly id: number;
+  readonly kind: 'raw' | 'chopped' | 'plate' | 'dish' | 'extinguisher';
+  readonly ingredient?: string;
+  readonly place: ItemLocation;
+}
+
 export interface TabaoState {
+  readonly inventory: Inventory;
+  /** Monotonic crate issuance count and next item identity. */
+  readonly nextItemId: number;
   readonly rng: RngState;
   readonly level: Level;
   readonly players: readonly Participant[];
@@ -70,4 +90,38 @@ export function participant(player: PlayerInfo, tick: number): Participant {
     joinedMidGame: tick > 0,
     spectating: tick > 0,
   };
+}
+
+/** Location indexes are authoritative; flattening is only for publication and inspection. */
+export interface Inventory {
+  readonly held: Readonly<Record<string, Item | undefined>>;
+  readonly counters: Readonly<Record<number, Item | undefined>>;
+  readonly floor: Readonly<Record<number, readonly Item[] | undefined>>;
+  readonly flights: readonly Item[];
+  readonly floorCount: number;
+  readonly reserved: Readonly<Record<number, number | undefined>>;
+}
+
+export function items(state: TabaoState): readonly Item[] {
+  return [...Object.values(state.inventory.held).filter((i): i is Item => i !== undefined),
+    ...Object.values(state.inventory.counters).filter((i): i is Item => i !== undefined),
+    ...Object.values(state.inventory.floor).flatMap((pile) => pile ?? []),
+    ...state.inventory.flights].sort((a, b) => a.id - b.id);
+}
+
+export function inventory(entries: readonly Item[] = []): Inventory {
+  const held: Record<string, Item> = {};
+  const counters: Record<number, Item> = {};
+  const floor: Record<number, Item[]> = {};
+  const flights: Item[] = [];
+  let floorCount = 0;
+  const reserved: Record<number, number> = {};
+  for (const item of entries) {
+    const place = item.place;
+    if (place.kind === 'held') held[place.cook] = item;
+    else if (place.kind === 'counter') counters[place.tile] = item;
+    else if (place.kind === 'floor') { (floor[place.tile] ??= []).push(item); floorCount++; }
+    else { flights.push(item); reserved[place.rest.tile] = (reserved[place.rest.tile] ?? 0) + 1; }
+  }
+  return { held, counters, floor, flights, floorCount, reserved };
 }

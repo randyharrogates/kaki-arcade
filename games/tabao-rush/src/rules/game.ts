@@ -2,8 +2,9 @@ import { createRng } from '@kaki/sim-core';
 import { secondsToSteps } from '@kaki/platform';
 import type { ControllerLayout, GameModule, PlayerInfo } from '@kaki/platform';
 import { TEST_LEVEL } from './level';
+import { dropLeaving, floorPickup, interactItems, landItems } from './items';
 import { moveCooks } from './movement';
-import { participant, SOFT_SEPARATION } from './state';
+import { inventory, items, participant, SOFT_SEPARATION } from './state';
 import type { Cook, TabaoState } from './state';
 import { targetTile } from './target';
 
@@ -12,10 +13,10 @@ const PLAY_LAYOUT: ControllerLayout = {
   revision: 0,
   controls: [
     { kind: 'stick', id: 'move' },
-    { kind: 'button', id: 'cross', button: 'face-bottom', label: 'Pick up', disabled: true },
+    { kind: 'button', id: 'cross', button: 'face-bottom', label: 'Pick / place' },
     { kind: 'button', id: 'circle', button: 'face-right', label: 'Act', disabled: true },
     { kind: 'button', id: 'square', button: 'face-left', label: 'Dash', disabled: true },
-    { kind: 'button', id: 'triangle', button: 'face-top', label: 'Throw', disabled: true },
+    { kind: 'button', id: 'triangle', button: 'face-top', label: 'Throw' },
   ],
 };
 const WATCH_LAYOUT: ControllerLayout = {
@@ -51,6 +52,8 @@ export const tabaoRush: GameModule<TabaoState> = {
   settings: { fields: [] },
   init(seed, players) {
     let state: TabaoState = {
+      inventory: inventory(),
+      nextItemId: 0,
       rng: createRng(seed),
       level: TEST_LEVEL,
       players: [],
@@ -63,11 +66,12 @@ export const tabaoRush: GameModule<TabaoState> = {
   },
   step(state, inputs) {
     if (state.tick >= state.endTick) return state;
-    return {
-      ...state,
+    const interacted = interactItems(state, inputs);
+    return landItems({
+      ...interacted,
       tick: state.tick + 1,
       cooks: moveCooks(state.level, state.cooks, inputs, state.tick),
-    };
+    });
   },
   join(state, player) {
     if (state.players.some((entry) => entry.id === player.id) || state.players.length >= 8) {
@@ -80,8 +84,9 @@ export const tabaoRush: GameModule<TabaoState> = {
   },
   leave(state, id) {
     if (!state.players.some((entry) => entry.id === id)) return state;
+    const dropped = dropLeaving(state, id);
     return {
-      ...state,
+      ...dropped,
       players: state.players.filter((entry) => entry.id !== id),
       cooks: state.cooks.filter((cook) => cook.id !== id),
     };
@@ -89,8 +94,11 @@ export const tabaoRush: GameModule<TabaoState> = {
   publicView(state) {
     return {
       level: state.level,
+      items: items(state),
       players: state.players,
-      cooks: state.cooks,
+      cooks: state.cooks.map((cook) => ({ ...cook,
+        floorItem: floorPickup(state, cook)?.id ?? null,
+      })),
       tick: state.tick,
       endTick: state.endTick,
     };

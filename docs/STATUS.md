@@ -107,6 +107,11 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   with picture credits. Passes the conformance kit in four scenarios with skips. Rules only: no
   screen yet. Built by Codex; three review rounds, last fix by the integrator.
 
+- **Tabao Rush items (T-02).** Carrying one thing, endless crates with a floor cap, counters,
+  throwing on a 377 ms flight and catching, with the floor item a press would take shown in the
+  view. No item lost or duplicated in 586,000 reviewed cook-steps; step time stays flat through
+  a whole round of button-mashing. Rules only: no screen yet. Built by Codex; two review rounds.
+
 ## Does not exist yet
 
 - No host page, controller or game screen yet.

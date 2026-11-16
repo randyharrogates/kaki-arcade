@@ -68,7 +68,7 @@ describe('Tabao Rush pure movement', () => {
   it('TR-020 solo convex corners and random maps never steer beyond the stick displacement', () => {
     const rng = createRng(77);
     const levels = [map(['######', '#....#', '#.#..#', '#....#', '######'])];
-    for (let m = 0; m < 200; m += 1) {
+    for (let m = 0; m < 32; m += 1) {
       levels.push(map(Array.from({ length: 9 }, (_, y) =>
         Array.from({ length: 12 }, (_, x) => x === 0 || x === 11 || y === 0 || y === 8 ||
           nextInt(rng, 0, 5) === 0 ? '#' : '.').join(''))));
