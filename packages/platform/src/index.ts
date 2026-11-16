@@ -2,3 +2,5 @@
 // @kaki/platform/kit separately.
 export * from './game/index';
 export * from './room/room';
+
+export * from './session/index';

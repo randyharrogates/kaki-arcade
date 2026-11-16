@@ -40,8 +40,8 @@ requirement.
 | PLAT-010 | SHOULD | The big screen shows connection quality per player (good, weak, relayed) | M3 | not started | — | — | — |
 | PLAT-020 | MUST | The lobby shows a game picker listing every installed game with name, player range and a one-line description | M3 | not started | — | — | — |
 | PLAT-021 | MUST | Each game declares its supported player range | M3 | not started | — | — | — |
-| PLAT-022 | MUST | After a game ends, the room returns to a results screen and then the picker, keeping the same players | M3 | not started | — | — | — |
-| PLAT-023 | MUST | The leader can pause a running game and quit to the picker | M3 | not started | — | — | — |
+| PLAT-022 | MUST | After a game ends, the room returns to a results screen and then the picker, keeping the same players | M3 | in progress | `packages/platform/src/session/` (ends a match with results and returns to the picker with the same players; no screen yet) | `packages/platform/src/session/*.test.ts` | `uat/evidence/C-10-session-runner/` |
+| PLAT-023 | MUST | The leader can pause a running game and quit to the picker | M3 | in progress | `packages/platform/src/session/` (pause, leader resume, quit with a second press; no screen yet) | `packages/platform/src/session/*.test.ts` | `uat/evidence/C-10-session-runner/` |
 | PLAT-024 | SHOULD | The big screen can be driven without a phone for setup (keyboard) so the host is never stuck | M3 | not started | — | — | — |
 | PLAT-025 | MUST | Games may declare team play; two teams with colour themes, balanced by default, changeable on phones | M3 | in progress | `packages/platform/src/game/types.ts` (games declare teams; team setup is C-11) | `packages/platform/src/game/*.test.ts` | `uat/evidence/F-04-game-interface/` |
 | PLAT-030 | MUST | Games are modules behind one documented interface | M3 | in progress | `packages/platform/src/game/` (interface and conformance kit; no real game yet) | `packages/platform/src/game/*.test.ts` | `uat/evidence/F-04-game-interface/` |

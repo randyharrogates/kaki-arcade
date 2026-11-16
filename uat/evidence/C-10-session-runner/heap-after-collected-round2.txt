@@ -1,0 +1,6 @@
+8 phones, recordInput=false: 935.85 B/step net heap growth; 3.75 us/step
+8 phones, recordInput=true: 769.99 B/step net heap growth; 5.55 us/step
+tabao, recordInput=false: 847.49 B/step net heap growth; 43.75 us/step; layouts=8 views=8
+tabao, recordInput=true: 1093.81 B/step net heap growth; 41.04 us/step; layouts=8 views=8
+peek, recordInput=false: 605.21 B/step net heap growth; 22.03 us/step; layouts=56 views=392
+peek, recordInput=true: 567.29 B/step net heap growth; 18.86 us/step; layouts=56 views=392

@@ -2,6 +2,11 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — C-10: session runner
+
+- `packages/platform/src/session/` (D-079, D-082). (PLAT-022, PLAT-023 in progress; PLAT-030,
+  PLAT-031, PLAT-033, NET-001 advanced)
+
 ## 2026-11-17 — T-03: Tabao Rush stations, timers, burning and fire
 
 - `games/tabao-rush/src/rules/stations.ts` (D-080). (TR-007, TR-008, TR-010, TR-030 in progress)

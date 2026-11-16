@@ -1,0 +1,12 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-10
+
+C-10 eight-player advance mean: 82.0797333 us/step (fixture + recording + views included)
+C-10 runner + real buffer/loop, eight seats, no recorder: 9.69701583 us/step
+runner us/step 78.4,67.6,58.8  bare driveStep+views us/step 19.2,19.1,19.5
+
+ Test Files  2 passed (2)
+      Tests  22 passed (22)
+   Start at  00:11:45
+   Duration  5.46s (transform 698ms, setup 0ms, import 1.03s, tests 6.63s, environment 0ms)
+

@@ -92,7 +92,10 @@ Rules:
   Button bits follow the wire order in `packages/protocol` and are named by position
   (`FACE_BOTTOM`, `FACE_RIGHT`, `FACE_LEFT`, `FACE_TOP`), never by letter (D-047, D-062).
 - A layout names controls by position and carries a per-player revision that changes only when
-  what that player can tap changes; the host compares revisions, never JSON. At most the first
+  what that player can tap changes. The session runner keeps the last layout and private view
+  sent to each phone and sends again whenever the content for that phone differs, by a
+  shape-aware comparison that does not allocate; each phone has its own wire revision, which
+  is translated back to the game's revision for taps (D-079, D-082). At most the first
   accepted tap per player per control per step counts, and a tap the layout after the step
   refuses has no effect. Layouts must fit a 844 × 390 phone at the decided size floors
   (`PHONE_LIMITS`, `DESIGN.md` §4.4).
@@ -110,6 +113,12 @@ Rules:
   headless match runner over `driveStep`, scripts, bots, record and replay. Its command-line
   entry lives in `packages/platform/scripts`, a Node-only project, so platform source still
   cannot use timers or Node globals.
+- The session runner (`packages/platform/src/session`, C-10) is what the console uses to run a
+  match: it drives `driveStep` from the host loop, masks inputs a phone's layout does not draw,
+  pauses (any player; the connected leader resumes; taps while paused are dropped), holds a
+  match short of players and ends it after the two-minute seat hold, fixes teams for a match,
+  and records matches in the dev harness's format with no seat tokens. It steps the three real
+  games to the same state hash as the harness at every step.
 - Every game passes the shared conformance kit, imported from `@kaki/platform/kit` so it never
   ships in the console bundle. It runs 25 checks (determinism, serialisable views, secrets,
   revisions, taps, joins and leaves across a whole match, phone size limits, a source scan for

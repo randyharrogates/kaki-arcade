@@ -385,7 +385,9 @@ function strings(value: unknown): boolean { return Array.isArray(value) && value
 function action(value: unknown): boolean { return object(value) && typeof value.player === 'string' && typeof value.control === 'string' && integer(value.revision) && (value.value === undefined || typeof value.value === 'string' || typeof value.value === 'number' && Number.isFinite(value.value)); }
 function frame(value: unknown): boolean {
   if (!object(value) || !Array.isArray(value.axes) || value.axes.length !== AXIS_COUNT || !value.axes.every((v: unknown) => typeof v === 'number' && Number.isFinite(v) && v >= -1 && v <= 1)) return false;
-  return ['held', 'pressed', 'released', 'seq', 'age'].every((key) => integer(value[key]));
+  // sim-core uses the paired -1 sentinel before a connected seat's first packet.
+  return ['held', 'pressed', 'released'].every((key) => integer(value[key])) &&
+    (integer(value.seq) && integer(value.age) || value.seq === -1 && value.age === -1 && value.held === 0 && value.pressed === 0 && value.released === 0);
 }
 function validEvent(value: unknown): boolean {
   if (!object(value)) return false;

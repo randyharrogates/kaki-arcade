@@ -1,0 +1,37 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-10
+
+ ✓ packages/platform/src/session/netcode-adapter.test.ts > NET-001 PLAT-023 netcode peer and resume-fence types fit; delayed history cannot cross barrier 2ms
+stdout | packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 reports eight-player session call cost (diagnostic, no new budget)
+C-10 eight-player advance mean: 9.756458300000002 us/step (fixture + recording + views included)
+
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-022 PLAT-030 PLAT-031 PLAT-033 NET-001 whole match with 1 players 27ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-022 PLAT-030 PLAT-031 PLAT-033 NET-001 whole match with 8 players 3ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-031 NET-001 sends revisions only, filters audience and clears null views 1ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > NET-001 PLAT-031 seeded random matches never send another phone secrets or undeclared reveal 53ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 stale revision, unknown connection, duplicate controls and arrival order 1ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-023 any player pauses; only leader resumes or confirms quit; START never reaches rules 1ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-023 NET-001 resume discards paused taps and gates stale acknowledgement and held inputs 0ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 NET-001 disconnect and reconnect clear input, drop queued taps, resend views and fence identity 0ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-008 PLAT-030 join, leave, seat order, joinedMidGame results and leader change from real room reducer 1ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 pauses below minimum or with an empty team, and resumes only after membership is sufficient 0ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 contains a throwing step with seed, step and operation 1ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 contains a throwing join with seed, step and operation 0ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 contains a throwing leave with seed, step and operation 0ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 contains a throwing publicView with seed, step and operation 0ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 contains a throwing privateView with seed, step and operation 0ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 contains a throwing controllerLayout with seed, step and operation 0ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 multi-second stalls cap catch-up at six and freeze exactly at natural end 0ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 NET-001 same seed and borrowed per-step recording replay to identical hash 2ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 reports eight-player session call cost (diagnostic, no new budget) 99ms
+stdout | packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 measures runner overhead with an allocation-free game and recording disabled
+C-10 runner + real buffer/loop, eight seats, no recorder: 1.6440908300000001 us/step
+
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-030 measures runner overhead with an allocation-free game and recording disabled 169ms
+ ✓ packages/platform/src/session/session.test.ts > authoritative session > PLAT-023 disconnected leader cannot resume and PLAT-022 last departure ends the match 1ms
+
+ Test Files  2 passed (2)
+      Tests  22 passed (22)
+   Start at  23:34:04
+   Duration  678ms (transform 248ms, setup 0ms, import 345ms, tests 364ms, environment 0ms)
+

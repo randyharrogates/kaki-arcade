@@ -132,6 +132,14 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   Recipes, plates that hold several things and serving are T-04. Rules only: no screen yet.
   Built by Codex; two review rounds.
 
+- **Session runner (C-10).** `packages/platform/src/session`: runs any game in the host loop,
+  routes inputs and taps, sends each phone its layout and private view only when the content
+  changes, pause and resume, reconnect, shortage of players, teams fixed for a match, results
+  and back to the picker, recordings the dev harness can replay. Whole matches of all three
+  games match the harness step for step; privacy holds through reconnects, leader changes and
+  mid-match joins. Simulated transport only: no screen and no real network yet. Built by Codex;
+  three review rounds, last fix by the integrator.
+
 ## Does not exist yet
 
 - No host page, controller or game screen yet.

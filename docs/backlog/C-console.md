@@ -27,7 +27,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
 | C-09 | Game picker: every installed game with name, player range and blurb; unavailable games say why; the chosen tile expands into its start screen | PLAT-020, PLAT-021 | C-07 | 2 | todo |
-| C-10 | Session runner: runs a `GameModule` in the host loop, routes inputs, sends layouts and private views only when they change, pause and quit, results then back to the picker | PLAT-022, PLAT-023, PLAT-030, PLAT-031, PLAT-033, NET-001 | C-04, F-04 | 2 | doing (Codex) |
+| C-10 | Session runner: runs a `GameModule` in the host loop, routes inputs, sends layouts and private views only when they change, pause and quit, results then back to the picker | PLAT-022, PLAT-023, PLAT-030, PLAT-031, PLAT-033, NET-001 | C-04, F-04 | 2 | merged |
 | C-11 | Team setup: balanced split, players switch on their phones, team colour themes | PLAT-025 | C-10 | 2 | todo |
 | C-13 | Settings and host-device storage for scores and stars; the detail-mode benchmark on the lobby | DATA-002, PERF-002 | C-07 | 2 | todo |
 
@@ -74,3 +74,12 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   measures garbage, decide on an `expandInput` that fills a reused buffer. Offers take priority
   over candidates in the pacing queue; `take()` copies the queue per send (fine at signalling
   volumes).
+- **From C-10 (session runner):** the shell must send room expire events while paused, keep
+  frames advancing, check `Action.viewRev`, bind callbacks to the current authenticated
+  connection, preload assets and draw the pause, results, error and picker events. Open: an
+  optional resume-fence wire message (wording in `docs/slices/C-10-session-runner.md`); a
+  per-game mid-match join flag in `GameMeta`; a way for a game to learn a changed name or
+  colour mid-match. Tidy: `c10r2-replay.test.ts` imports two games by relative path from the
+  platform package (move it); a type-level check that `compare.ts` covers every layout field.
+  The per-step allocation of about 500 bytes sits in the input buffer and `drive.ts`: F-08
+  measures it.
