@@ -14,7 +14,7 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 |---|---|---|---|---|---|
 | T-01 | State shape, movement on the next step with no smoothing, 8-way facing, soft collisions that never deadlock, the station a cook would use | TR-002, TR-020, TR-021, TR-022 | F-04 | 1 | merged |
 | T-02 | Items: carry one thing, crates, counters, passing, throwing and catching | TR-002, TR-009, TR-023 | T-01 | 1 | merged |
-| T-03 | Stations and timers: chop, wok, pot, grill, rice, drinks, plating, sink, bin; burning with a warning; fires that start, spread and are put out | TR-007, TR-008, TR-010, TR-030 | T-01 | 1 | doing (Codex) |
+| T-03 | Stations and timers: chop, wok, pot, grill, rice, drinks, plating, sink, bin; burning with a warning; fires that start, spread and are put out | TR-007, TR-008, TR-010, TR-030 | T-01 | 1 | merged |
 | T-04 | Recipes for the 7 dishes, plating, serving, rejection with a reason | TR-003, TR-004, TR-040 | T-02, T-03 | 1 | todo |
 | T-05 | Orders, patience, score and tips, stars, scaling by player count, round timer | TR-001, TR-004, TR-005, TR-006 | T-04 | 1 | todo |
 | T-06 | Level format and loader: collision map, station anchors, twists; a validator that every level fits the screen with no scrolling | TR-050, TR-057 | T-01 | 1 | todo |
@@ -67,3 +67,10 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
   of dirty plates; rice portions; station filters by ingredient; a serving counter. Items carry
   their process history (D-080 f). **For T-06:** forbid a crate tile with a station type;
   require an extinguisher when fires are on; levels may state fire neighbours.
+- **From T-03 (round 2):** fire does not spread round the corner of an L-shaped counter run:
+  T-06 levels state `fireNeighbours` where that matters, and should check the extinguisher
+  rack is within about 15 tiles of every station. T-06's validator owns "fires need an
+  extinguisher" (today it is refused at the first step, not at init). T-04 clears a plate's
+  history when it goes dirty (it grows by one entry per wash). If the last fire goes out in the
+  step a new one starts, the fire clock does not restart. All station timings are D-080 and
+  provisional until seen on a screen.

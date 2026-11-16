@@ -1,0 +1,25 @@
+$ pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace
+$ node tools/check_workspace.mjs
+workspace check passed: 11 folder(s)
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+$ node tools/lint_design.mjs
+design lint passed: 143 file(s) scanned
+$ vitest run
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/T-03
+
+[sim-core overhead] clock + loop: 0.0248 µs per step (0.00015% of a 16.7 ms step)
+[sim-core overhead] clock + loop + 8-controller input buffer: 0.4184 µs per step (0.00251% of a 16.7 ms step)
+
+ Test Files  70 passed (70)
+      Tests  2285 passed | 1 skipped (2286)
+   Start at  00:14:50
+   Duration  229.55s (transform 1.70s, setup 0ms, import 5.07s, tests 445.25s, environment 5ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+no bundles yet
+no asset sets in assets/src yet
+$ python3 tools/trace_check.py
+152 requirements; 60 in progress, 1 later, 91 not started
+trace check passed

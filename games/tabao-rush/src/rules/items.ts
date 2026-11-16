@@ -4,6 +4,8 @@ import type { StepInputs } from '@kaki/platform';
 import { tileAt } from './level';
 import { COOK_RADIUS } from './state';
 import type { Cook, Item, ItemLocation, Point, TabaoState } from './state';
+import { stationAction, stationCross } from './stations';
+import { isHeld } from '@kaki/sim-core';
 import { FACING_X, FACING_Y } from './target';
 
 export const THROW_RANGE = 4;
@@ -16,20 +18,28 @@ export function heldItem(state: TabaoState, id: string): Item | undefined {
 }
 
 /** Copy only the affected location index, never the full item population. */
-function relocate(state: TabaoState, item: Item, place: ItemLocation): TabaoState {
+export function relocate(state: TabaoState, item: Item, place: ItemLocation): TabaoState {
   let index = state.inventory;
   const old = item.place;
   if (old.kind === 'held') index = { ...index, held: { ...index.held, [old.cook]: undefined } };
-  else if (old.kind === 'counter') index = { ...index, counters: { ...index.counters, [old.tile]: undefined } };
+  else if (old.kind === 'counter' && !state.stations?.[old.tile]) index = { ...index, counters: { ...index.counters, [old.tile]: undefined } };
   else if (old.kind === 'floor') index = { ...index, floorCount: index.floorCount - 1,
     floor: { ...index.floor, [old.tile]: index.floor[old.tile]?.filter((i) => i.id !== item.id) } };
+  else if (old.kind === 'counter') {
+    const station = state.stations?.[old.tile];
+    if (station) state = { ...state, stations: { ...state.stations, [old.tile]: { ...station, content: null, progress: 0, doneAge: 0, burntAge: 0, warning: false, turned: false } } };
+  }
   else index = { ...index, flights: index.flights.filter((i) => i.id !== item.id),
     reserved: { ...index.reserved, [old.rest.tile]: (index.reserved[old.rest.tile] ?? 1) - 1 } };
   const moved = { ...item, place };
   if (place.kind === 'held') index = { ...index, held: { ...index.held, [place.cook]: moved } };
-  else if (place.kind === 'counter') index = { ...index, counters: { ...index.counters, [place.tile]: moved } };
+  else if (place.kind === 'counter' && !state.stations?.[place.tile]) index = { ...index, counters: { ...index.counters, [place.tile]: moved } };
   else if (place.kind === 'floor') index = { ...index, floorCount: index.floorCount + 1,
     floor: { ...index.floor, [place.tile]: [...(index.floor[place.tile] ?? []), moved].sort((a, b) => a.id - b.id) } };
+  else if (place.kind === 'counter') {
+    const station = state.stations?.[place.tile];
+    if (station) state = { ...state, stations: { ...state.stations, [place.tile]: { ...station, content: moved, progress: 0, doneAge: 0, burntAge: 0, warning: false, turned: false } } };
+  }
   else index = { ...index, flights: [...index.flights, moved],
     reserved: { ...index.reserved, [place.rest.tile]: (index.reserved[place.rest.tile] ?? 0) + 1 } };
   return { ...state, inventory: index };
@@ -73,7 +83,7 @@ function pickPut(state: TabaoState, cook: Cook): TabaoState {
     }
     if (!held && target?.kind === 'station' && target.ingredient !== undefined &&
       state.inventory.floorCount < FLOOR_LIMIT) {
-      const item: Item = { id: state.nextItemId, kind: 'raw', ingredient: target.ingredient,
+      const item: Item = { id: state.nextItemId, kind: 'raw', processes: [], ingredient: target.ingredient,
         place: { kind: 'held', cook: cook.id } };
       return { ...state, nextItemId: state.nextItemId + 1, inventory: { ...state.inventory,
         held: { ...state.inventory.held, [cook.id]: item } } };
@@ -123,7 +133,7 @@ function resting(state: TabaoState, start: Point, end: Point): {
   end: Point; rest: { kind: 'counter' | 'floor'; tile: number };
 } {
   const endpoint = Math.floor(end.y) * state.level.width + Math.floor(end.x);
-  if (state.level.tiles[endpoint]?.kind === 'counter' && !state.inventory.counters[endpoint] && !state.inventory.reserved[endpoint]) {
+  if (endpoint !== state.level.extinguisherTile && state.level.tiles[endpoint]?.kind === 'counter' && !state.inventory.counters[endpoint] && !state.inventory.reserved[endpoint]) {
     return { end, rest: { kind: 'counter', tile: endpoint } };
   }
   // Tile-boundary parameters give exact traversal even for very short corner intersections.
@@ -164,7 +174,10 @@ function throwItem(state: TabaoState, cook: Cook): TabaoState {
 export function itemPress(state: TabaoState, id: string, control: string): TabaoState {
   const cook = state.cooks.find((entry) => entry.id === id);
   if (!cook) return state;
-  if (control === 'cross') return pickPut(state, cook);
+  if (control === 'cross') {
+    if (cook.targetTile !== null && (state.stations?.[cook.targetTile] || state.level.extinguisherTile === cook.targetTile)) return stationCross(state, cook);
+    return pickPut(state, cook);
+  }
   if (control === 'triangle') return throwItem(state, cook);
   return state;
 }
@@ -175,6 +188,7 @@ export function interactItems(state: TabaoState, inputs: StepInputs): TabaoState
     const frame = inputs.frames.get(player.id);
     if (!frame) continue;
     if (wasPressed(frame, BUTTON.FACE_BOTTOM)) next = itemPress(next, player.id, 'cross');
+    if (isHeld(frame, BUTTON.FACE_RIGHT) || wasPressed(frame, BUTTON.FACE_RIGHT)) next = stationAction(next, player.id);
     if (wasPressed(frame, BUTTON.FACE_TOP)) next = itemPress(next, player.id, 'triangle');
   }
   return next;

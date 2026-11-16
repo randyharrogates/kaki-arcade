@@ -1,6 +1,7 @@
 import { createRng } from '@kaki/sim-core';
 import { secondsToSteps } from '@kaki/platform';
 import type { ControllerLayout, GameModule, PlayerInfo } from '@kaki/platform';
+import { prepareStations, advanceStations, stationViews } from './stations';
 import { TEST_LEVEL } from './level';
 import { dropLeaving, floorPickup, interactItems, landItems } from './items';
 import { moveCooks } from './movement';
@@ -18,6 +19,11 @@ const PLAY_LAYOUT: ControllerLayout = {
     { kind: 'button', id: 'square', button: 'face-left', label: 'Dash', disabled: true },
     { kind: 'button', id: 'triangle', button: 'face-top', label: 'Throw' },
   ],
+};
+const STATION_LAYOUT: ControllerLayout = {
+  revision: 1,
+  controls: PLAY_LAYOUT.controls.map((control) => control.id === 'circle'
+    ? { kind: 'button', id: 'circle', button: 'face-right', label: 'Act' } : control),
 };
 const WATCH_LAYOUT: ControllerLayout = {
   revision: 0,
@@ -66,7 +72,7 @@ export const tabaoRush: GameModule<TabaoState> = {
   },
   step(state, inputs) {
     if (state.tick >= state.endTick) return state;
-    const interacted = interactItems(state, inputs);
+    const interacted = advanceStations(interactItems(prepareStations(state), inputs));
     return landItems({
       ...interacted,
       tick: state.tick + 1,
@@ -92,9 +98,11 @@ export const tabaoRush: GameModule<TabaoState> = {
     };
   },
   publicView(state) {
+    const prepared = prepareStations(state);
     return {
       level: state.level,
-      items: items(state),
+      items: items(prepared),
+      stations: stationViews(prepared),
       players: state.players,
       cooks: state.cooks.map((cook) => ({ ...cook,
         floorItem: floorPickup(state, cook)?.id ?? null,
@@ -106,7 +114,9 @@ export const tabaoRush: GameModule<TabaoState> = {
   privateView: () => null,
   controllerLayout(state, id) {
     return state.players.some((player) => player.id === id && !player.spectating)
-      ? PLAY_LAYOUT : WATCH_LAYOUT;
+      ? Object.keys(state.stations ?? {}).length > 0
+        ? STATION_LAYOUT : PLAY_LAYOUT
+      : WATCH_LAYOUT;
   },
   isOver: (state) => state.tick >= state.endTick,
   results: (state) => ({

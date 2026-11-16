@@ -2,6 +2,10 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — T-03: Tabao Rush stations, timers, burning and fire
+
+- `games/tabao-rush/src/rules/stations.ts` (D-080). (TR-007, TR-008, TR-010, TR-030 in progress)
+
 ## 2026-11-16 — F-05: game dev harness
 
 - `packages/platform/src/harness` and `packages/platform/scripts`; shared fixtures moved to

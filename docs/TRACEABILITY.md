@@ -190,15 +190,15 @@ requirement.
 | TR-004 | MUST | Correct orders score points plus a speed tip | M5 | not started | — | — | — |
 | TR-005 | MUST | A round lasts a fixed time (default 3 minutes 30 seconds) | M5 | not started | — | — | — |
 | TR-006 | MUST | Score thresholds and order rate scale with the number of players so 1 player and 8 players both face a… | M5 | not started | — | — | — |
-| TR-007 | MUST | Cooking stations run on timers once loaded | M5 | not started | — | — | — |
-| TR-008 | MUST | Used plates return dirty and must be washed before reuse | M5 | not started | — | — | — |
+| TR-007 | MUST | Cooking stations run on timers once loaded | M5 | in progress | `games/tabao-rush/src/rules/stations.ts` (rules only; no screen) | `games/tabao-rush/src/rules/stations.test.ts` | `uat/evidence/T-03-tabao-stations/` |
+| TR-008 | MUST | Used plates return dirty and must be washed before reuse | M5 | in progress | `games/tabao-rush/src/rules/stations.ts` (rules only; dirty plates have no source until T-04) | `games/tabao-rush/src/rules/stations.test.ts` | `uat/evidence/T-03-tabao-stations/` |
 | TR-009 | MUST | Throwing a held raw or chopped ingredient on an arc; teammates catch | M5 | in progress | `games/tabao-rush/src/rules/items.ts` (rules only; no screen) | `games/tabao-rush/src/rules/items.test.ts` | `uat/evidence/T-02-tabao-items/` |
-| TR-010 | MUST | Fires: start, spread, burning station unusable, extinguisher; harder levels only | M6 | not started | — | — | — |
+| TR-010 | MUST | Fires: start, spread, burning station unusable, extinguisher; harder levels only | M6 | in progress | `games/tabao-rush/src/rules/stations.ts` (rules only; no screen) | `games/tabao-rush/src/rules/stations.test.ts` | `uat/evidence/T-03-tabao-stations/` |
 | TR-020 | MUST | Movement responds on the next simulation step after input arrives, with no acceleration smoothing while… | M5 | in progress | `games/tabao-rush/src/rules/` (rules only; no screen) | `games/tabao-rush/src/rules/movement.test.ts` | `uat/evidence/T-01-tabao-movement/` |
 | TR-021 | MUST | The station a player would interact with is highlighted before they press, so a press never surprises | M5 | in progress | `games/tabao-rush/src/rules/` (rules only; no screen) | `games/tabao-rush/src/rules/movement.test.ts` | `uat/evidence/T-01-tabao-movement/` |
 | TR-022 | MUST | Players cannot walk through each other; collisions are soft enough that 8 players never deadlock in a corridor | M5 | in progress | `games/tabao-rush/src/rules/` (rules only; no screen) | `games/tabao-rush/src/rules/movement.test.ts` | `uat/evidence/T-01-tabao-movement/` |
 | TR-023 | MUST | Players can pass items by placing them on counters | M5 | in progress | `games/tabao-rush/src/rules/items.ts` (rules only; no screen) | `games/tabao-rush/src/rules/items.test.ts` | `uat/evidence/T-02-tabao-items/` |
-| TR-030 | MUST | Every station shows its state at a glance from 3 m: empty, working (with progress), done, burning | M5 | not started | — | — | — |
+| TR-030 | MUST | Every station shows its state at a glance from 3 m: empty, working (with progress), done, burning | M5 | in progress | `games/tabao-rush/src/rules/stations.ts` (view data only; nothing is drawn) | `games/tabao-rush/src/rules/stations.test.ts` | `uat/evidence/T-03-tabao-stations/` |
 | TR-031 | MUST | Progress and state are readable without colour alone (NFR-A11Y) | M5 | not started | — | — | — |
 | TR-040 | MUST | 7 dishes at launch, introduced gradually across levels | M6 | not started | — | — | — |
 | TR-041 | MUST | Each dish is recognisable as itself at game size on a TV (checked at the design gate and in UAT) | M6 | not started | — | — | — |

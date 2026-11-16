@@ -125,6 +125,13 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   and `replay`. Each of the three games has a harness test playing whole matches. The bare dev
   page with keyboard controls is F-05b. Built by Codex; two review rounds.
 
+- **Tabao Rush stations (T-03).** Chop, wok, pot, grill, rice, drinks, plating, sink and bin
+  as mechanisms; burning with a warning; fire on one kitchen clock with a single extinguisher;
+  items that record what was done to them. No item lost or duplicated in 1.17 million reviewed
+  cook-steps; a busy-kitchen step stays under a hundredth of a millisecond after warm-up.
+  Recipes, plates that hold several things and serving are T-04. Rules only: no screen yet.
+  Built by Codex; two review rounds.
+
 ## Does not exist yet
 
 - No host page, controller or game screen yet.

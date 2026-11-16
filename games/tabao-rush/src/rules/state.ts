@@ -15,7 +15,7 @@ export type Tile =
   | { readonly kind: 'floor' }
   | { readonly kind: 'wall' }
   | { readonly kind: 'counter' }
-  | { readonly kind: 'station'; readonly stationId: string; readonly ingredient?: string };
+  | { readonly kind: 'station'; readonly stationId: string; readonly ingredient?: string; readonly stationType?: StationType };
 
 export interface Level {
   readonly id: string;
@@ -23,6 +23,9 @@ export interface Level {
   readonly height: number;
   /** Row-major static data. Station behaviour belongs to T-03. */
   readonly tiles: readonly Tile[];
+  readonly firesEnabled?: boolean;
+  readonly extinguisherTile?: number;
+  readonly fireNeighbours?: Readonly<Record<number, readonly number[]>>;
   readonly spawns: readonly { readonly x: number; readonly y: number }[];
 }
 
@@ -60,17 +63,21 @@ export type ItemLocation =
       readonly rest: { readonly kind: 'counter' | 'floor'; readonly tile: number };
       readonly startStep: number; readonly duration: number; readonly thrower: string };
 
-/** Future processing replaces the item data; carrying only relocates an item. */
+/** Processing replaces kind in place, preserving identity and ingredient; carrying relocates. */
 export interface Item {
   readonly id: number;
-  readonly kind: 'raw' | 'chopped' | 'plate' | 'dish' | 'extinguisher';
+  readonly kind: 'raw' | 'chopped' | 'cooked' | 'burnt' | 'dirty-plate' | 'plate' | 'dish' | 'extinguisher';
   readonly ingredient?: string;
+  /** Ordered completed processes; omitted on older/fixture items means no recorded steps. */
+  readonly processes?: readonly StationType[];
   readonly place: ItemLocation;
 }
 
 export interface TabaoState {
+  readonly fireSpreadClock?: number;
+  readonly stations?: Readonly<Record<number, Station>>;
   readonly inventory: Inventory;
-  /** Monotonic crate issuance count and next item identity. */
+  /** Monotonic issuance count (crates plus initial equipment) and next item identity. */
   readonly nextItemId: number;
   readonly rng: RngState;
   readonly level: Level;
@@ -106,7 +113,8 @@ export function items(state: TabaoState): readonly Item[] {
   return [...Object.values(state.inventory.held).filter((i): i is Item => i !== undefined),
     ...Object.values(state.inventory.counters).filter((i): i is Item => i !== undefined),
     ...Object.values(state.inventory.floor).flatMap((pile) => pile ?? []),
-    ...state.inventory.flights].sort((a, b) => a.id - b.id);
+    ...state.inventory.flights,
+    ...Object.values(state.stations ?? {}).flatMap((s) => s.content ? [s.content] : [])].sort((a, b) => a.id - b.id);
 }
 
 export function inventory(entries: readonly Item[] = []): Inventory {
@@ -124,4 +132,24 @@ export function inventory(entries: readonly Item[] = []): Inventory {
     else { flights.push(item); reserved[place.rest.tile] = (reserved[place.rest.tile] ?? 0) + 1; }
   }
   return { held, counters, floor, flights, floorCount, reserved };
+}
+
+export type StationType = 'chop' | 'wok' | 'pot' | 'grill' | 'rice' | 'drinks' | 'plating' | 'sink' | 'bin';
+export interface Station {
+  readonly tile: number;
+  readonly id: string;
+  readonly type: StationType;
+  readonly neighbours: readonly number[];
+  readonly content: Item | null;
+  readonly progress: number;
+  readonly total: number;
+  readonly doneAge: number;
+  readonly burntAge: number;
+  readonly warning: boolean;
+  readonly fire: boolean;
+  readonly fireAge: number;
+  readonly extinguish: number;
+  readonly workedAt: number;
+  readonly worker?: number | null;
+  readonly turned: boolean;
 }

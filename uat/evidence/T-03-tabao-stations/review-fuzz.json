@@ -1,0 +1,20 @@
+{
+  "cookSteps": 512363,
+  "maxItems": 30,
+  "x:sink:plate": 4,
+  "issued": 196,
+  "binned": 4,
+  "x:pot:cooked": 4,
+  "x:pot:burnt": 3,
+  "burned": 5,
+  "ignitions": 12,
+  "ignitedByBurn": 5,
+  "spread": 7,
+  "x:chop:chopped": 5,
+  "x:rice:cooked": 3,
+  "x:rice:burnt": 1,
+  "x:drinks:cooked": 3,
+  "x:grill:cooked": 1,
+  "x:grill:burnt": 1,
+  "x:wok:cooked": 1
+}
