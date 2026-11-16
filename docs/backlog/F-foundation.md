@@ -23,8 +23,20 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
-| F-02 | Protocol: every phone, host and pairing-server message with validators | NET-001, NET-005 | F-01 | 1 | doing |
+| F-02 | Protocol: every phone, host and pairing-server message with validators | NET-001, NET-005 | F-01 | 1 | merged |
 | F-03 | Simulation core: fixed timestep loop, seeded random numbers, snapshot helpers, input buffer | PLAT-032 | F-01 | 1 | merged |
 | F-04 | Game interface: `GameModule` types with settings schema, team support, controller layout schema and private view schema, plus the conformance kit every game must pass | PLAT-030, PLAT-031, PLAT-032, PLAT-025 | F-03 | 1 | doing |
 | F-05 | Game dev harness: run any `GameModule` headless or on a bare dev page with scripted or keyboard controllers, so games are built without the console | PLAT-030, NFR-TEST | F-04 | 1 | todo |
 | F-06 | Design tokens and motion helpers in `packages/ui`, taken from `DESIGN.md` §4 | NN-5, NFR-DES | G-06 | 2 | doing |
+
+## Carried from reviews
+
+- **F-03b (small, sim-core):** when a tick would latch a press or release already pending for
+  that button in this step, defer that tick and the rest of the slot's ticks until after the
+  next `sample()`, so two fast taps delivered together after a loss both count (F-02 review 3).
+- **F-03c (small, sim-core or C-04):** after a silence release, do not raise `pressed` for a
+  button until a tick shows it up, so a link delay spike cannot repeat a tap (F-02 review 3).
+- **Resume barrier (C-04):** ignore input frames after a pause until one sent after the phone
+  acknowledged the resume (F-03 review 3).
+- **Root lint:** purity restrictions for `packages/sim-core` and game rules folders; durations
+  and easings only from tokens outside `packages/ui`.

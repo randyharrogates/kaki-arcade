@@ -21,6 +21,10 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   checkout and was shown to fail on a type error, a lint error, a design-lint finding, a failing
   test, a trace failure and an unregistered package. No game or screen code yet.
 
+- **Protocol (F-02, merged 2026-11-16):** `packages/protocol` defines every pairing, control and
+  input message with validators that never throw, role-split signalling decoders, nickname
+  rules (12 visible characters) and the input frame with 8 ticks of history. Tested end to end
+  against the real input buffer in review, not yet over a real network: no netcode uses it yet.
 - **Simulation core (F-03, merged 2026-11-16):** `packages/sim-core` has a seeded random number
   generator, a fixed-timestep loop, the host's input buffer (loss, reordering and the 16-bit
   wrap handled; `discardEdges` for resume, `reset` for a new connection), and snapshot, hash,

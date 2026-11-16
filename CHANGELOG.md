@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-16 — F-02: protocol
+
+- `packages/protocol`: signalling, control-channel and input messages with validators; input
+  frames carry recent button history instead of timed repeats (no added delay; 21 ms thumb to
+  simulation step at the 95th percentile in review); nickname rules; data-channel constants.
+  Three review rounds. `ARCHITECTURE.md` §5 rewritten to match. (NET-001, NET-005 in progress)
+
 ## 2026-11-16 — R-12: Singapore question pack
 
 - 305 original Singapore questions (food, places, history, life, nature, arts and sport), all

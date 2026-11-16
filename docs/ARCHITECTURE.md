@@ -101,12 +101,24 @@ Rules:
 
 ## 5. Networking
 
-- **Transport:** one WebRTC data channel per phone, unordered and unreliable for input state,
-  plus one reliable ordered channel for events (join, lock-in, pause).
-- **Input model:** phones send their full current input state (stick vector and button bitmask)
-  with a sequence number at up to 60 Hz while anything is held, and a final "all released"
-  message repeated three times. Loss therefore self-heals and a button can never stick
-  (NET-005).
+- **Transport:** two WebRTC data channels per phone, both created by the host, which always
+  makes the offer: `kaki-input`, unordered and unreliable, for input state, and `kaki-control`,
+  reliable and ordered, for everything else (join, taps, layouts, views, pause). Message
+  shapes, sizes and validators live in `packages/protocol` (F-02).
+- **Input model:** the phone sends one small binary frame per tick: a 16-bit sequence number,
+  the stick, optional tilt, the current button mask and the masks of the previous 8 ticks,
+  run-length encoded (7 bytes when nothing changes, 25 at most). It ticks 60 times a second
+  while anything is held, **and must also tick at once on every touch**, capped at 120 a
+  second (a capped tick is deferred, never dropped). After a release it keeps sending until
+  the released state has gone out nine times. The host expands each frame with `expandInput`
+  and feeds the ticks to the simulation core's input buffer, which ignores what it has seen.
+  A tap is lost only if every frame carrying it is lost, there is no added delay, and a button
+  cannot stick: silence for 15 steps releases it (NET-005). Known limits are in
+  `docs/slices/F-02-protocol.md`: two presses of one button that arrive inside one simulation
+  step count as one, and a link delay spike of 250 ms or more can repeat a tap.
+- **Link checks:** binary ping and pong on the input channel, one a second and a burst of 12
+  on connect. Relay credentials (ICE servers) arrive in the pairing server's `created` and
+  `joined` replies.
 - **Host → phone:** the controller layout and private view, sent only when they change.
 - **Pairing:** the host opens a WebSocket to the room's Durable Object. A joining phone opens
   one too, the object forwards offer/answer/candidates, and both sockets can close once the

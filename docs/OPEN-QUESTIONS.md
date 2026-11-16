@@ -34,6 +34,12 @@ halves it. Needed by: C-04, S-04.
 who opens one in a browser can read the answers; accepted for a party game played in one room.
 The rest were confirmed in D-048 and D-049. Needed by: R-01.
 
+**OQ-032 · Send rate when relayed.** Phones tick 60 times a second. Halving to 30 when a phone
+is on the relay would roughly halve relay data (see OQ-028), but eight lost frames then span
+267 ms, past the 250 ms silence limit: in review a held button was falsely released 9 times in
+360 ten-second runs at 5% loss in runs. Claude's default: 60 always, until the real-phone test
+shows how much relay data matters. Needed by: C-04.
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot

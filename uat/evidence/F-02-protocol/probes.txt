@@ -1,0 +1,211 @@
+Each probe applies one deliberate fault in the worktree, runs the check named, and restores the file.
+Run for review round 3, on the tree rebased onto main, before verify.txt and tests.txt were produced.
+
+### Probe: a message type with no field checks does not compile
+$ pnpm run typecheck
+packages/protocol/src/channel.ts(263,7): error TS2741: Property 'leave' is missing in type '{ hello: { name: Check<string | null>; }; resume: { seatToken: Check<string>; }; 'set-name': { name: Check<string>; }; action: { rev: Check<number>; viewRev: Check<number | null>; data: Check<...>; }; control
+[ELIFECYCLE] Command failed with exit code 2.
+exit code 2 (non-zero expected; edit undone)
+
+### Probe: a field with no check does not compile
+$ pnpm run typecheck
+packages/protocol/src/channel.ts(264,3): error TS2741: Property 'name' is missing in type '{}' but required in type 'FieldChecks<Omit<Hello, "t" | "v">>'.
+[ELIFECYCLE] Command failed with exit code 2.
+exit code 2 (non-zero expected; edit undone)
+
+### Probe: a check that returns the wrong type does not compile
+$ pnpm run typecheck
+packages/protocol/src/channel.ts(265,13): error TS2322: Type 'Check<number>' is not assignable to type 'Check<string>'.
+[ELIFECYCLE] Command failed with exit code 2.
+exit code 2 (non-zero expected; edit undone)
+
+### Probe: a message type with no sample does not compile
+$ pnpm run typecheck
+packages/protocol/src/messages.test.ts(155,7): error TS2741: Property 'leave' is missing in type '{ hello: { v: 1; t: "hello"; name: string; }; resume: { v: 1; t: "resume"; seatToken: string; }; 'set-name': { v: 1; t: "set-name"; name: string; }; action: { v: 1; t: "action"; rev: number; viewRev: nu
+[ELIFECYCLE] Command failed with exit code 2.
+exit code 2 (non-zero expected; edit undone)
+
+### Probe: a host-only message in the phone's table does not compile
+$ pnpm run typecheck
+packages/protocol/src/signal.ts(381,3): error TS2353: Object literal may only specify known properties, and ''close-room'' does not exist in type 'MessageShapes<PhoneSignal>'.
+[ELIFECYCLE] Command failed with exit code 2.
+exit code 2 (non-zero expected; edit undone)
+
+### Probe: DOM or Node globals in library code do not compile
+$ pnpm run typecheck
+packages/protocol/src/wire.ts(81,3): error TS2584: Cannot find name 'console'. Do you need to change your target library? Try changing the 'lib' compiler option to include 'dom'.
+packages/protocol/src/wire.ts(81,19): error TS2304: Cannot find name 'TextEncoder'.
+packages/protocol/src/wire.ts(81,34): error TS2584: Cannot find name 'document'. Do you need to change your target library? Try changing the 'lib' compiler option to include 'dom'.
+[ELIFECYCLE] Command failed with exit code 2.
+exit code 2 (non-zero expected; edit undone)
+
+### Probe: a history too short to cover a 50 ms break is caught
+$ pnpm exec vitest run packages/protocol/src/input.test.ts
+ ❯ packages/protocol/src/input.test.ts (83 tests | 15 failed) 2864ms
+ Test Files  1 failed (1)
+      Tests  15 failed | 68 passed (83)
+⎯⎯⎯⎯⎯⎯ Failed Tests 15 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/input.test.ts > buttons and axes > the published constants, and the history covers a 50 ms break at the fastest tick
+AssertionError: expected 2 to be 8 // Object.is equality
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: forgetting a tap that starts and ends between two ticks is caught
+$ pnpm exec vitest run packages/protocol/src/input.test.ts
+ ❯ packages/protocol/src/input.test.ts (83 tests | 36 failed) 3472ms
+ Test Files  1 failed (1)
+      Tests  36 failed | 47 passed (83)
+⎯⎯⎯⎯⎯⎯ Failed Tests 36 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/input.test.ts > the send rule > a tap shorter than a tick is one tick set, then clear
+AssertionError: expected '............' to be '1000000000..' // Object.is equality
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: going quiet before the release has been repeated is caught
+$ pnpm exec vitest run packages/protocol/src/input.test.ts
+ ❯ packages/protocol/src/input.test.ts (83 tests | 14 failed) 3657ms
+ Test Files  1 failed (1)
+      Tests  14 failed | 69 passed (83)
+⎯⎯⎯⎯⎯⎯ Failed Tests 14 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/input.test.ts > the send rule > a release is in the very next tick, then repeated until it has gone out nine times
+AssertionError: expected '0..........' to be '000000000..' // Object.is equality
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: history sequence numbers that do not wrap are caught
+$ pnpm exec vitest run packages/protocol/src/input.test.ts
+ ❯ packages/protocol/src/input.test.ts (83 tests | 1 failed) 4975ms
+ Test Files  1 failed (1)
+      Tests  1 failed | 82 passed (83)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/input.test.ts > expandInput > wraps the sequence numbers of history below zero
+AssertionError: expected [ -6, -5, -4, -3, -2, -1, +0, 1, 2 ] to deeply equal [ 65530, 65531, 65532, 65533, …(5) ]
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: history given in the wrong order is caught
+$ pnpm exec vitest run packages/protocol/src/input.test.ts
+ ❯ packages/protocol/src/input.test.ts (83 tests | 30 failed) 3115ms
+ Test Files  1 failed (1)
+      Tests  30 failed | 53 passed (83)
+⎯⎯⎯⎯⎯⎯ Failed Tests 30 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/input.test.ts > expandInput > gives the ticks a frame carries, oldest first, each with its own sequence number
+AssertionError: expected [ 32, +0, 48, +0, +0, +0, +0, 1, 16 ] to deeply equal [ 1, +0, +0, +0, +0, 48, +0, 32, 16 ]
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: a stick that is not rounded keeping the stream alive is caught
+$ pnpm exec vitest run packages/protocol/src/input.test.ts
+ ❯ packages/protocol/src/input.test.ts (83 tests | 2 failed) 5191ms
+ Test Files  1 failed (1)
+      Tests  2 failed | 81 passed (83)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/input.test.ts > the send rule > the stick is sent as it is at each tick, rounded to the wire
+AssertionError: expected { buttons: +0, stickX: 1, …(4) } to match object { buttons: +0, stickX: 127, …(3) }
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: treating an older sequence number as newer is caught
+$ pnpm exec vitest run packages/protocol/src/input.test.ts
+ ❯ packages/protocol/src/input.test.ts (83 tests | 56 failed) 4398ms
+ Test Files  1 failed (1)
+      Tests  56 failed | 27 passed (83)
+⎯⎯⎯⎯⎯⎯ Failed Tests 56 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/input.test.ts > sequence numbers > newer is decided across the wrap
+AssertionError: expected true to be false // Object.is equality
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: a decoder that lets a hostile object throw is caught
+$ pnpm exec vitest run packages/protocol/src/wire.test.ts
+ ❯ packages/protocol/src/wire.test.ts (23 tests | 1 failed) 109ms
+ Test Files  1 failed (1)
+      Tests  1 failed | 22 passed (23)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/wire.test.ts > rejections > refuses, without throwing, bytes and objects that throw when looked at
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: accepting two encodings of the same input is caught
+$ pnpm exec vitest run packages/protocol/src/wire.test.ts
+ ❯ packages/protocol/src/wire.test.ts (23 tests | 1 failed) 88ms
+ Test Files  1 failed (1)
+      Tests  1 failed | 22 passed (23)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/wire.test.ts > rejections > refuses runs that do not add up to nine ticks, and two runs alike side by side
+AssertionError: expected { ok: true, …(1) } to deeply equal { ok: false, error: { …(2) } }
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: letting a phone send the offer is caught
+$ pnpm exec vitest run packages/protocol/src/messages.test.ts
+ ❯ packages/protocol/src/messages.test.ts (171 tests | 9 failed) 3920ms
+ Test Files  1 failed (1)
+      Tests  9 failed | 162 passed (171)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > to-host round-trips
+AssertionError: expected { ok: false, error: { …(2) } } to deeply equal { ok: true, value: { v: 1, …(2) } }
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: letting a joiner sit anywhere is caught
+$ pnpm exec vitest run packages/protocol/src/names.test.ts
+ ❯ packages/protocol/src/names.test.ts (18 tests | 3 failed) 17ms
+ Test Files  1 failed (1)
+      Tests  3 failed | 15 passed (18)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/names.test.ts > checkNickname > a joiner between emoji builds one emoji
+AssertionError: expected 'ok' to be 'bad-characters' // Object.is equality
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: letting tag characters follow any emoji is caught
+$ pnpm exec vitest run packages/protocol/src/names.test.ts
+ ❯ packages/protocol/src/names.test.ts (18 tests | 1 failed) 18ms
+ Test Files  1 failed (1)
+      Tests  1 failed | 17 passed (18)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/names.test.ts > checkNickname > tag characters are allowed only as a flag: straight after the black flag, ending properly
+AssertionError: expected 'ok' to be 'bad-characters' // Object.is equality
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: refusing a joiner after a virama is caught
+$ pnpm exec vitest run packages/protocol/src/names.test.ts
+ ❯ packages/protocol/src/names.test.ts (18 tests | 1 failed) 15ms
+ Test Files  1 failed (1)
+      Tests  1 failed | 17 passed (18)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/names.test.ts > checkNickname > a joiner or non-joiner between letters, or after a virama, is how some scripts are written
+AssertionError: Sinhala "Sri": a joiner after the virama: expected 'bad-characters' to be 'ok' // Object.is equality
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: counting code points instead of visible characters is caught
+$ pnpm exec vitest run packages/protocol/src/names.test.ts
+ ❯ packages/protocol/src/names.test.ts (18 tests | 6 failed) 16ms
+ Test Files  1 failed (1)
+      Tests  6 failed | 12 passed (18)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/names.test.ts > checkNickname > counts characters as a player sees them: Tamil names of 13 and 14 code points pass
+AssertionError: expected 'too-long' to be 'ok' // Object.is equality
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: letting a name of fillers through is caught
+$ pnpm exec vitest run packages/protocol/src/names.test.ts
+ ❯ packages/protocol/src/names.test.ts (18 tests | 1 failed) 16ms
+ Test Files  1 failed (1)
+      Tests  1 failed | 17 passed (18)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/names.test.ts > checkNickname > refuses a name with nothing that shows
+AssertionError: U+3164: expected 'ok' to be 'blank' // Object.is equality
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: a phone counting the characters of a name its host sent is caught
+$ pnpm exec vitest run packages/protocol/src/messages.test.ts
+ ❯ packages/protocol/src/messages.test.ts (171 tests | 1 failed) 3854ms
+ Test Files  1 failed (1)
+      Tests  1 failed | 170 passed (171)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/messages.test.ts > data channel: field rules > the name in a seat is checked for content only: the host has already counted it
+AssertionError: expected 'too-large:name' to be 'accepted' // Object.is equality
+exit code 1 (non-zero expected; edit undone)
+
+### Probe: an ICE grant that could outgrow the message cap is caught
+$ pnpm exec vitest run packages/protocol/src/messages.test.ts
+ ❯ packages/protocol/src/messages.test.ts (171 tests | 1 failed) 3838ms
+ Test Files  1 failed (1)
+      Tests  1 failed | 170 passed (171)
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  packages/protocol/src/messages.test.ts > signalling: field rules > every message at its largest fits the message cap
+AssertionError: created: expected 49620 to be less than or equal to 16384
+exit code 1 (non-zero expected; edit undone)
+
+23 of 23 probes failed as they should.

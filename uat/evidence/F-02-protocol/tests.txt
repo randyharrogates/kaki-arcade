@@ -1,0 +1,319 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-02
+
+ ✓ packages/protocol/src/names.test.ts > checkNickname > accepts ordinary names in many scripts 13ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > counts characters as a player sees them: Tamil names of 13 and 14 code points pass 0ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > accepts emoji built from joined parts, with skin tones, and flags 1ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > is at most 12 visible characters and 48 code points 0ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > refuses a name with nothing that shows 0ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > refuses control characters and characters that change the direction of text 1ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > tag characters are allowed only as a flag: straight after the black flag, ending properly 0ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > a joiner between emoji builds one emoji 0ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > a joiner or non-joiner between letters, or after a virama, is how some scripts are written 1ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > a joiner anywhere else is refused 0ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > caps stacked accents at three in a row 0ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > a name that passes is still only text 0ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > takes anything at all without throwing 0ms
+ ✓ packages/protocol/src/names.test.ts > checkNickname > team names follow the same rules with a limit of 24 0ms
+ ✓ packages/protocol/src/names.test.ts > checkNameContent: the same rules without the count > does not count visible characters, only code points 0ms
+ ✓ packages/protocol/src/names.test.ts > checkNameContent: the same rules without the count > whatever the host accepts as a nickname, every phone accepts as content 0ms
+ ✓ packages/protocol/src/names.test.ts > without Intl.Segmenter > the rough count is never lower than the real one, so no longer name gets through 0ms
+ ✓ packages/protocol/src/names.test.ts > without Intl.Segmenter > the required names still pass, and the rules still hold 0ms
+ ✓ packages/protocol/src/input.test.ts > buttons and axes > every button has its own bit and the mask covers them all 2ms
+ ✓ packages/protocol/src/input.test.ts > buttons and axes > axes convert both ways and clamp 4ms
+ ✓ packages/protocol/src/input.test.ts > buttons and axes > released means nothing at all is held 0ms
+ ✓ packages/protocol/src/input.test.ts > buttons and axes > the published constants, and the history covers a 50 ms break at the fastest tick 0ms
+ ✓ packages/protocol/src/input.test.ts > sequence numbers > count up and wrap at 16 bits 0ms
+ ✓ packages/protocol/src/input.test.ts > sequence numbers > newer is decided across the wrap 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > stays quiet, and uses no sequence number, while nothing has been held 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > a press is in the very next tick, and every tick after while held 1ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > a release is in the very next tick, then repeated until it has gone out nine times 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > every frame carries the eight ticks before it, newest first 1ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > a tap shorter than a tick is one tick set, then clear 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > a gap shorter than a tick is one tick clear, then set 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > a double tap one tick apart is two presses 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > three changes between two ticks: two cancel, and the button ends where the thumb is 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > each button is handled by itself 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > pressing what is down, releasing what is up and undefined bits change nothing 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > setButtons presses and releases whatever differs 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > the stick is sent as it is at each tick, rounded to the wire 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > a stick a hair off centre, or one that is not a number, does not keep the stream alive 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > tilt counts as held, so a tilting phone never goes quiet 0ms
+ ✓ packages/protocol/src/input.test.ts > the send rule > sequence numbers wrap without a gap 0ms
+ ✓ packages/protocol/src/input.test.ts > expandInput > gives the ticks a frame carries, oldest first, each with its own sequence number 0ms
+ ✓ packages/protocol/src/input.test.ts > expandInput > wraps the sequence numbers of history below zero 0ms
+ ✓ packages/protocol/src/input.test.ts > expandInput > keeps nothing between calls and treats a short history as zeros 0ms
+ ✓ packages/protocol/src/input.test.ts > expandInput > expanding every frame of a session gives back every tick, whichever frames are dropped 6ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'ideal 60 Hz' > every tap of any length is seen exactly once, with no added delay 36ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'ideal 60 Hz' > double and triple taps as fast as one per two ticks are each seen 14ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'ideal 60 Hz' > mashing at 10 taps a second for 10 s: every tap seen, none late 10ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'ideal 60 Hz' > mashing at 15 taps a second for 10 s: every tap seen, none late 8ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'ideal 60 Hz + a tick on every touch' > every tap of any length is seen exactly once, with no added delay 45ms
+ ✓ packages/protocol/src/check.test.ts > utf8Length > matches a real encoder, lone surrogates included 1ms
+ ✓ packages/protocol/src/check.test.ts > simple checks > int takes whole numbers in range only 0ms
+ ✓ packages/protocol/src/check.test.ts > simple checks > text tells too long from wrong 0ms
+ ✓ packages/protocol/src/check.test.ts > simple checks > oneOf, nullable and list 1ms
+ ✓ packages/protocol/src/check.test.ts > simple checks > boundedText counts bytes as they sit in a JSON message 0ms
+ ✓ packages/protocol/src/check.test.ts > simple checks > record keeps only the named fields 0ms
+ ✓ packages/protocol/src/check.test.ts > simple checks > kinds refuses an unknown kind, including names every object has 0ms
+ ✓ packages/protocol/src/check.test.ts > identifiers and names > room codes, tokens and peer ids 0ms
+ ✓ packages/protocol/src/check.test.ts > identifiers and names > a name the host sends is checked for content, not for its count of visible characters 1ms
+ ✓ packages/protocol/src/check.test.ts > json > measures a payload exactly as compact UTF-8 JSON 1ms
+ ✓ packages/protocol/src/check.test.ts > json > returns a copy, not the value it was given 0ms
+ ✓ packages/protocol/src/check.test.ts > json > refuses what JSON cannot carry 0ms
+ ✓ packages/protocol/src/check.test.ts > json > accepts an object with no prototype 0ms
+ ✓ packages/protocol/src/check.test.ts > json > stops at the depth cap, and at a value that contains itself 0ms
+ ✓ packages/protocol/src/wire.test.ts > frame sizes > the protocol version fits the four bits a frame gives it 1ms
+ ✓ packages/protocol/src/wire.test.ts > frame sizes > an input frame is 7 bytes while nothing changes, 11 for a tap, 23 at most; tilt adds 2 0ms
+ ✓ packages/protocol/src/wire.test.ts > frame sizes > a ping is 5 bytes and a pong is 3 0ms
+ ✓ packages/protocol/src/wire.test.ts > frame sizes > the bytes are as documented 0ms
+ ✓ packages/protocol/src/wire.test.ts > round trips > input frames, with and without tilt, at the edges of every field 0ms
+ ✓ packages/protocol/src/wire.test.ts > round trips > every button by itself, now and at every place in the history 2ms
+ ✓ packages/protocol/src/wire.test.ts > round trips > random histories 175ms
+ ✓ packages/protocol/src/wire.test.ts > round trips > ping and pong 1ms
+ ✓ packages/protocol/src/wire.test.ts > round trips > decodes from an ArrayBuffer, a Uint8Array inside a larger buffer and a DataView 0ms
+ ✓ packages/protocol/src/wire.test.ts > encoders bring numbers into range > wraps sequence numbers, clears undefined buttons and clamps axes 0ms
+ ✓ packages/protocol/src/wire.test.ts > encoders bring numbers into range > pads a short history with zeros and cuts a long one 0ms
+ ✓ packages/protocol/src/wire.test.ts > encoders bring numbers into range > survives numbers that are not numbers 0ms
+ ✓ packages/protocol/src/wire.test.ts > encoders bring numbers into range > caps a reported round trip and keeps "unknown" distinct 0ms
+ ✓ packages/protocol/src/wire.test.ts > rejections > refuses things that are not bytes, and empty frames 0ms
+ ✓ packages/protocol/src/wire.test.ts > rejections > refuses, without throwing, bytes and objects that throw when looked at 0ms
+ ✓ packages/protocol/src/wire.test.ts > rejections > refuses a frame over the largest size 0ms
+ ✓ packages/protocol/src/wire.test.ts > rejections > refuses another protocol version 0ms
+ ✓ packages/protocol/src/wire.test.ts > rejections > refuses an unknown kind, and a kind sent in the wrong direction 0ms
+ ✓ packages/protocol/src/wire.test.ts > rejections > refuses a frame of the wrong length for its kind 0ms
+ ✓ packages/protocol/src/wire.test.ts > rejections > refuses runs that do not add up to nine ticks, and two runs alike side by side 0ms
+ ✓ packages/protocol/src/wire.test.ts > rejections > refuses the axis value no encoder writes 0ms
+ ✓ packages/protocol/src/wire.test.ts > random bytes > never make a decoder throw, and whatever decodes re-encodes to the same bytes 40ms
+ ✓ packages/protocol/src/wire.test.ts > the two data channels > have fixed labels and options 1ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'ideal 60 Hz + a tick on every touch' > double and triple taps as fast as one per two ticks are each seen 14ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'ideal 60 Hz + a tick on every touch' > mashing at 10 taps a second for 10 s: every tap seen, none late 2ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'ideal 60 Hz + a tick on every touch' > mashing at 15 taps a second for 10 s: every tap seen, none late 2ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'truncating setTimeout' > every tap of any length is seen exactly once, with no added delay 22ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'truncating setTimeout' > double and triple taps as fast as one per two ticks are each seen 19ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'truncating setTimeout' > mashing at 10 taps a second for 10 s: every tap seen, none late 2ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'truncating setTimeout' > mashing at 15 taps a second for 10 s: every tap seen, none late 55ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'truncating setTimeout + a tick on eve…' > every tap of any length is seen exactly once, with no added delay 14ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'truncating setTimeout + a tick on eve…' > double and triple taps as fast as one per two ticks are each seen 29ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'truncating setTimeout + a tick on eve…' > mashing at 10 taps a second for 10 s: every tap seen, none late 9ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'truncating setTimeout + a tick on eve…' > mashing at 15 taps a second for 10 s: every tap seen, none late 2ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'jittered rAF' > every tap of any length is seen exactly once, with no added delay 45ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'jittered rAF' > double and triple taps as fast as one per two ticks are each seen 14ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > create round-trips 2ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > reopen round-trips 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > join round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > join round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > returns a copy and drops fields the type does not define 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > refuses a wrong or missing version 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > refuses an unknown or missing type 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > refuses things that are not message objects 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > refuses text that is not JSON, and data that is not text 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > refuses a message over the size cap, measured in bytes 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > refuses a message when any one field is removed or given the wrong kind of value 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…' > survives an object that throws when read 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > to-phone round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > relay round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > drop round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > close-room round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > ping round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > to-phone round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > to-phone round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > drop round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > returns a copy and drops fields the type does not define 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > refuses a wrong or missing version 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > refuses an unknown or missing type 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > refuses things that are not message objects 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > refuses text that is not JSON, and data that is not text 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > refuses a message over the size cap, measured in bytes 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > refuses a message when any one field is removed or given the wrong kind of value 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server' > survives an object that throws when read 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > to-host round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > relay round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > ping round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > to-host round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > to-host round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > returns a copy and drops fields the type does not define 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > refuses a wrong or missing version 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > refuses an unknown or missing type 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > refuses things that are not message objects 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > refuses text that is not JSON, and data that is not text 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > refuses a message over the size cap, measured in bytes 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > refuses a message when any one field is removed or given the wrong kind of value 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server' > survives an object that throws when read 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > created round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > peer-joined round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > peer-left round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > from-phone round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > ice round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > error round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > pong round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > created round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > error round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > from-phone round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > returns a copy and drops fields the type does not define 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > refuses a wrong or missing version 2ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > refuses an unknown or missing type 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > refuses things that are not message objects 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > refuses text that is not JSON, and data that is not text 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > refuses a message over the size cap, measured in bytes 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > refuses a message when any one field is removed or given the wrong kind of value 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host' > survives an object that throws when read 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > joined round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > host round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > from-host round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > ice round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > dropped round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > error round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > pong round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > host round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > from-host round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > dropped round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > returns a copy and drops fields the type does not define 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > refuses a wrong or missing version 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > refuses an unknown or missing type 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > refuses things that are not message objects 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > refuses text that is not JSON, and data that is not text 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > refuses a message over the size cap, measured in bytes 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > refuses a message when any one field is removed or given the wrong kind of value 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone' > survives an object that throws when read 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > hello round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > resume round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > set-name round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > action round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > control round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > leave round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > hello round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > hello round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > action round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > action round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > returns a copy and drops fields the type does not define 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > refuses a wrong or missing version 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > refuses an unknown or missing type 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > refuses things that are not message objects 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > refuses text that is not JSON, and data that is not text 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > refuses a message over the size cap, measured in bytes 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > refuses a message when any one field is removed or given the wrong kind of value 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host' > survives an object that throws when read 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > seat round-trips 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > refused round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > name-refused round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > room round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > layout round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > view round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > link round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > close round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > room round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > room round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > name-refused round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > name-refused round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > view round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > link round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > layout round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > view round-trips 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > returns a copy and drops fields the type does not define 4ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > refuses a wrong or missing version 2ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > refuses an unknown or missing type 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > refuses things that are not message objects 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > refuses text that is not JSON, and data that is not text 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > refuses a message over the size cap, measured in bytes 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > refuses a message when any one field is removed or given the wrong kind of value 1ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone' > survives an object that throws when read 0ms
+ ✓ packages/protocol/src/messages.test.ts > signalling: field rules > room codes, tokens and peer ids must have their shape 0ms
+ ✓ packages/protocol/src/messages.test.ts > signalling: field rules > handshake steps are bounded and of a known kind 0ms
+ ✓ packages/protocol/src/messages.test.ts > signalling: field rules > a session description is capped in bytes as sent, not in characters 0ms
+ ✓ packages/protocol/src/messages.test.ts > signalling: field rules > the host offers and the phone answers: the other way round is refused 0ms
+ ✓ packages/protocol/src/messages.test.ts > signalling: field rules > an ICE grant is bounded 0ms
+ ✓ packages/protocol/src/messages.test.ts > signalling: field rules > every message at its largest fits the message cap 1ms
+ ✓ packages/protocol/src/messages.test.ts > signalling: field rules > a server error carries a known code 0ms
+ ✓ packages/protocol/src/messages.test.ts > signalling: field rules > each role is allowed only its own messages 1ms
+ ✓ packages/protocol/src/messages.test.ts > signalling: field rules > a phone socket cannot do what only a host may 0ms
+ ✓ packages/protocol/src/messages.test.ts > signalling: field rules > the opening message is sent once: the role decoders refuse a second 0ms
+ ✓ packages/protocol/src/messages.test.ts > signalling: field rules > the keep-alive texts are fixed and decode for both roles 0ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > a name a phone asks for is only checked for size, so the host can say why it will not do 8ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > the name in a seat is checked for content only: the host has already counted it 1ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > the host tells a phone why its name was refused 0ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > a seat is 1 to 8 with a colour 0 to 7 and a token 0ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > room state is bounded 0ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > layout, private view and action payloads are capped by size 0ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > payloads are capped by depth, and a missing payload is not a null one 0ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > revisions are whole numbers from 0 to 2^32 - 1 0ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > an action names the layout and the private view it was made on 0ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > nothing asks a phone to vibrate, and nobody is kicked 0ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > refused with game-running: the phone waits for a phase that takes players, then asks again 0ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > enumerated fields take only their listed values 0ms
+ ✓ packages/protocol/src/messages.test.ts > data channel: field rules > a message for one direction is refused in the other (NET-001) 0ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…': seeded random garbage > random values never make the validator throw 256ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'jittered rAF' > mashing at 10 taps a second for 10 s: every tap seen, none late 2ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'jittered rAF' > mashing at 15 taps a second for 10 s: every tap seen, none late 9ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'jittered rAF + a tick on every touch' > every tap of any length is seen exactly once, with no added delay 37ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'jittered rAF + a tick on every touch' > double and triple taps as fast as one per two ticks are each seen 17ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'jittered rAF + a tick on every touch' > mashing at 10 taps a second for 10 s: every tap seen, none late 2ms
+ ✓ packages/protocol/src/input.test.ts > a perfect link, 'jittered rAF + a tick on every touch' > mashing at 15 taps a second for 10 s: every tap seen, none late 2ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > loss 0.05 in runs of up to 8, up to +0 ms late, duplicates +0: every press and release reaches the host's buffer exactly once 132ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > loss 0.05 in runs of up to 8, up to 40 ms late, duplicates 0.1: every press and release reaches the host's buffer exactly once 172ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…': seeded random garbage > random values under a valid version and type never make it throw 288ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > loss 0.15 in runs of up to 8, up to 25 ms late, duplicates 0.2: every press and release reaches the host's buffer exactly once 87ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > loss 0.3 in runs of up to 8, up to +0 ms late, duplicates +0: every press and release reaches the host's buffer exactly once 70ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…': seeded random garbage > valid messages with one part replaced never make it throw 180ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > loss 0.3 in runs of up to 8, up to 40 ms late, duplicates 0.3: every press and release reaches the host's buffer exactly once 67ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > loss 0.05 in runs of up to 8, up to +0 ms late, duplicates +0: taps at least a history apart are each seen by the simulation exactly once 64ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > loss 0.05 in runs of up to 8, up to 40 ms late, duplicates 0.1: taps at least a history apart are each seen by the simulation exactly once 66ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > loss 0.15 in runs of up to 8, up to 25 ms late, duplicates 0.2: taps at least a history apart are each seen by the simulation exactly once 60ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: the first message on a so…': seeded random garbage > random and damaged text never makes the decoder throw 260ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > loss 0.3 in runs of up to 8, up to +0 ms late, duplicates +0: taps at least a history apart are each seen by the simulation exactly once 48ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > loss 0.3 in runs of up to 8, up to 40 ms late, duplicates 0.3: taps at least a history apart are each seen by the simulation exactly once 60ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server': seeded random garbage > random values never make the validator throw 118ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > the limit: after a run of lost frames, fast taps of one button can reach the simulation as one 58ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > independent loss of 0.3: a tap is missed about loss^9 of the time (0.000019682999999999994), never doubled, never stuck 112ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server': seeded random garbage > random values under a valid version and type never make it throw 149ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > independent loss of 0.5: a tap is missed about loss^9 of the time (0.001953125), never doubled, never stuck 107ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server': seeded random garbage > valid messages with one part replaced never make it throw 121ms
+ ✓ packages/protocol/src/input.test.ts > lossy links (NET-005) > independent loss of 0.7: a tap is missed about loss^9 of the time (0.04035360699999998), never doubled, never stuck 101ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: host → pairing server': seeded random garbage > random and damaged text never makes the decoder throw 231ms
+ ✓ packages/protocol/src/input.test.ts > a 50 ms break in the link, at any moment, never loses or doubles a tap > a flick shorter than a tick: the simulation sees it exactly once 202ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server': seeded random garbage > random values never make the validator throw 107ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server': seeded random garbage > random values under a valid version and type never make it throw 121ms
+ ✓ packages/protocol/src/input.test.ts > a 50 ms break in the link, at any moment, never loses or doubles a tap > a three-tick tap (the case the review reproduced): the simulation sees it exactly once 199ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server': seeded random garbage > valid messages with one part replaced never make it throw 110ms
+ ✓ packages/protocol/src/input.test.ts > a 50 ms break in the link, at any moment, never loses or doubles a tap > a long press: the simulation sees it exactly once 241ms
+ ✓ packages/protocol/src/input.test.ts > a 50 ms break in the link, at any moment, never loses or doubles a tap > a double tap, 100 ms from press to press: the simulation sees it exactly once 261ms
+ ✓ packages/protocol/src/input.test.ts > a 50 ms break in the link, at any moment, never loses or doubles a tap > a double tap, 80 ms from press to press: both presses always reach the buffer 237ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: phone → pairing server': seeded random garbage > random and damaged text never makes the decoder throw 651ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host': seeded random garbage > random values never make the validator throw 113ms
+ ✓ packages/protocol/src/input.test.ts > a 50 ms break in the link, at any moment, never loses or doubles a tap > a double tap, 66 ms from press to press (mashing at 15 a second): both presses always reach the buffer 232ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host': seeded random garbage > random values under a valid version and type never make it throw 121ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host': seeded random garbage > valid messages with one part replaced never make it throw 116ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → host': seeded random garbage > random and damaged text never makes the decoder throw 217ms
+ ✓ packages/protocol/src/input.test.ts > a 50 ms break in the link, at any moment, never loses or doubles a tap > the limit: taps closer than 100 ms can reach the simulation as one after a break 380ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone': seeded random garbage > random values never make the validator throw 104ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone': seeded random garbage > random values under a valid version and type never make it throw 109ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone': seeded random garbage > valid messages with one part replaced never make it throw 112ms
+ ✓ packages/protocol/src/input.test.ts > a 300 ms freeze of the phone, at any moment around a tap > a 3 ms tap is one press and one release 332ms
+ ✓ packages/protocol/src/messages.test.ts > 'signalling: pairing server → phone': seeded random garbage > random and damaged text never makes the decoder throw 229ms
+ ✓ packages/protocol/src/input.test.ts > a 300 ms freeze of the phone, at any moment around a tap > a 60 ms tap is one press and one release 293ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host': seeded random garbage > random values never make the validator throw 106ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host': seeded random garbage > random values under a valid version and type never make it throw 124ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host': seeded random garbage > valid messages with one part replaced never make it throw 115ms
+ ✓ packages/protocol/src/input.test.ts > a 300 ms freeze of the phone, at any moment around a tap > a 120 ms tap is one press and one release 302ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: phone → host': seeded random garbage > random and damaged text never makes the decoder throw 228ms
+ ✓ packages/protocol/src/input.test.ts > a 300 ms freeze of the phone, at any moment around a tap > the limit: a button still held when the freeze ends is pressed again 0ms
+ ✓ packages/protocol/src/input.test.ts > a steady hold is not released by silence > ticking 60 times a second, 0.05 loss never releases a ten-minute hold 266ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone': seeded random garbage > random values never make the validator throw 104ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone': seeded random garbage > random values under a valid version and type never make it throw 104ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone': seeded random garbage > valid messages with one part replaced never make it throw 121ms
+ ✓ packages/protocol/src/input.test.ts > a steady hold is not released by silence > ticking 60 times a second, 0.1 loss never releases a ten-minute hold 255ms
+ ✓ packages/protocol/src/input.test.ts > a steady hold is not released by silence > ticking 60 times a second, 0.2 loss never releases a ten-minute hold 237ms
+ ✓ packages/protocol/src/messages.test.ts > 'data channel: host → phone': seeded random garbage > random and damaged text never makes the decoder throw 418ms
+ ✓ packages/protocol/src/input.test.ts > a steady hold is not released by silence > ticking 60 times a second, 0.3 loss never releases a ten-minute hold 222ms
+ ✓ packages/protocol/src/input.test.ts > a steady hold is not released by silence > the keep-alive is two steps, so seven in a row must be lost to reach the silence limit 0ms
+ ✓ packages/protocol/src/input.test.ts > a steady hold is not released by silence > ticking only at the keep-alive rate, 5% and 10% loss never release a ten-minute hold 243ms
+ ✓ packages/protocol/src/input.test.ts > a steady hold is not released by silence > the limit: ticking only at the keep-alive rate, 20% loss releases a hold about twice an hour 445ms
+ ✓ packages/protocol/src/input.test.ts > a steady hold is not released by silence > the limit: ticking only at the keep-alive rate, 30% loss releases a hold about three times in ten minutes 408ms
+ ✓ packages/protocol/src/input.test.ts > what it costs > a frame is 7 bytes while nothing changes and 23 at the very most 2ms
+
+ Test Files  5 passed (5)
+      Tests  309 passed (309)
+   Start at  14:58:46
+   Duration  6.67s (transform 712ms, setup 0ms, import 979ms, tests 11.75s, environment 0ms)
+
+exit code 0
