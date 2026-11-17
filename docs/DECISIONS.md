@@ -1360,3 +1360,9 @@ other parts. When an option label would still not fit 3 lines at 21 px, the gap 
 190 px at 667 × 375, where 107 real bank options cannot fit; at its own width they are about
 276 px and none fails (R-02 planner's measurement with the kit's own placement, to be confirmed).
 
+**D-161 · 2026-11-18 · Claude** (under D-142; C-16b review) — While a game is playing or paused, a
+Tabao Rush phone uses the `tabao-rush` token block (console marble with red accents: red stick
+outline, chip and dashed edge), which is what DESIGN §4.2 describes, not the plain `console` block.
+Every controller-kit surface drawn on a panel (targets, kit buttons, cards, grid cells) uses
+`--ka-panel-ink`, so text stays dark on light in every game theme.
+
