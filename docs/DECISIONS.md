@@ -1079,3 +1079,7 @@ same table height: 127 vs 150 px wide at 1080p). Board: https://claude.ai/artifa
 (Blender renders from tools/blender/board_cards.py in the A-08 branch). Cost: one 2048² atlas page,
 about 1.2 MB lossless WebP estimated, within budget. Randy may overrule; until then A-08 stage 2
 builds the 52 faces in style B.
+*Amended 2026-11-17:* the stage 2 court cards add a small original badge under the suit (Jack a
+pennant, Queen a crown, King a battlement), not shown on the options board. Final rendered deck,
+with a greyscale check, the back and the flip frames: https://claude.ai/artifact/NTj5G1mnDyevGiVNeF9RRX.
+Measured cost: one atlas 1926 × 1100, 958 KB; 8.5 MB decoded plus 2.1 MB half size.
