@@ -299,7 +299,8 @@ function save(name: string, value: string) {
   if (process.env.T04_EVIDENCE === '1') fs.writeFileSync(new URL(name, evidence), value);
 }
 
-describe('TR-003 TR-004 TR-040 full recipe matches', { timeout: 120000 }, () => {
+// The kit must play 1 and 8 cooks in one run (about 90 s of work), so 120 s timed out under load (D-146).
+describe('TR-003 TR-004 TR-040 full recipe matches', { timeout: 240000 }, () => {
   it('passes the unchanged conformance kit at 1 and 8 cooks with cooking and serving inputs', () => {
     const driver = new Journey(); driver.dish('chicken-rice'); driver.serve();
     // Keep the recorded cooking/service journey; omit unused mechanisms from this kit fixture.

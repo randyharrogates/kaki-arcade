@@ -1202,3 +1202,9 @@ rojak not yet a mixed heap; chopped turnip reading as white shards; chicken in c
 as pegs at 1×; broth on a bare plate drawn as a puddle; food in a cup barely legible at 0.36
 scale; the new manifest fields (servedComposition, contentCompositions, portionScales) to be
 documented in ART-PIPELINE.md and read by the game (track T); and a 1× evidence sheet.
+
+**D-146 · 2026-11-18 · Claude** (under D-057) — The Tabao Rush recipe conformance test
+(`games/tabao-rush/src/rules/recipes.test.ts`) runs the kit at 1 and 8 cooks in one run, which the
+kit requires (its min-players rule fails if the two counts are split), and takes about 90 s of
+work. At a 120 s test-runner timeout it failed under load (121.5 s), so its timeout is now 240 s.
+This is the test runner's limit, not a performance budget in PERFORMANCE.md; no budget changes.
