@@ -6,13 +6,16 @@ import { join, resolve } from 'node:path';
 import { setTimeout as pause } from 'node:timers/promises';
 import { expect, it } from 'vitest';
 
+/** The launcher honours the KAKI_PORT_* variables; drop any the caller's shell set, so the defaults are tested. */
+const cleanEnv = () => Object.fromEntries(Object.entries(process.env).filter(([key]) => !key.startsWith('KAKI_PORT_')));
+
 it.each(['127.0.0.1', '192.168.1.23', '0.0.0.0'])('launcher binds exactly %s and cleans child groups after a kept pairing exit', async host => {
   const temp = mkdtempSync(join(tmpdir(), 'kaki-launcher-'));
   const log = join(temp, 'children.jsonl');
   const executable = join(temp, 'pnpm');
   writeFileSync(executable, `#!${process.execPath}\nimport { appendFileSync } from 'node:fs';\nappendFileSync(process.env.TEST_LOG, JSON.stringify({ args: process.argv.slice(2), host: process.env.KAKI_HOST, pid: process.pid }) + '\\n');\nsetInterval(() => {}, 1000);\n`);
   chmodSync(executable, 0o755);
-  const child = spawn(process.execPath, [resolve('tools/dev.mjs')], { env: { ...process.env, PATH: `${temp}:${process.env.PATH ?? ''}`, KAKI_HOST: host, KAKI_DEV_KEEP: '1', TEST_LOG: log }, stdio: ['ignore', 'pipe', 'pipe'] });
+  const child = spawn(process.execPath, [resolve('tools/dev.mjs')], { env: { ...cleanEnv(), PATH: `${temp}:${process.env.PATH ?? ''}`, KAKI_HOST: host, KAKI_DEV_KEEP: '1', TEST_LOG: log }, stdio: ['ignore', 'pipe', 'pipe'] });
   let output = ''; child.stdout.on('data', data => { output += String(data); });
   const exited = once(child, 'exit');
   let pids: number[] = [];
@@ -43,7 +46,7 @@ it.each(['127.0.0.1', '192.168.1.23', '0.0.0.0'])('launcher binds exactly %s and
 }, 10000);
 
 it.each(['localhost', 'arcade.example'])('refuses hostname %s with a clear message', async host => {
-  const child = spawn(process.execPath, [resolve('tools/dev.mjs')], { env: { ...process.env, KAKI_HOST: host }, stdio: ['ignore', 'pipe', 'pipe'] });
+  const child = spawn(process.execPath, [resolve('tools/dev.mjs')], { env: { ...cleanEnv(), KAKI_HOST: host }, stdio: ['ignore', 'pipe', 'pipe'] });
   let error = ''; child.stderr.on('data', data => { error += String(data); });
   const result: unknown[] = await once(child, 'exit');
   expect(result[0]).toBe(1); expect(error).toContain('KAKI_HOST must be an IP literal');
