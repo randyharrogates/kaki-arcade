@@ -760,3 +760,20 @@ does (D-092 e); no full-frame crossfade, so old and new text are never both legi
 picture stays on screen at the reveal, which follows from (b). (e) RZ-031's "a correct answer
 pulses once" means the correct option's card pulses once after its mark is revealed; the
 outcome sentence does not pulse.
+
+**D-098 · 2026-11-17 · Claude under D-057** — Game picker, readings after the C-09 review; the
+start-screen board with real screenshots of each option goes to Randy so he can overrule.
+(a) Start screen: "Who's in" is a seat strip along the bottom of the grown tile, as the lobby
+does, with the picture and the game text above it split 1.618 : 1 (option B). Options A
+(picture and text 1.618 : "Who's in" 1 at the side) and C (picture fills the tile, text on a
+panel) are built behind a demo parameter only so the board can show them. Cost of all three:
+DOM only; the per-game picture counts against PERF-022 and is preloaded with the host shell.
+(b) The tile grows and shrinks by a clip mask at its final layout, as board 5 shows, never by
+scaling its text; focus moves shift the surface by transform and crossfade the text. The mask's
+frame time on the TV is unmeasured until PERF-002 is run on the set. (c) The other tiles stay
+visible under the growing tile and are hidden when it finishes. (d) The picker and start
+headers are 89 px, as board 3. (e) The leader's phone keeps four buttons (Previous, Next,
+Select, Back) until the K track builds board 4's stick with Pick and Back; this is interim.
+(f) With nobody seated the TV returns to the lobby, so the join code is always on screen.
+(g) The picker's state machine lives in `packages/platform`, as ARCHITECTURE says.
+(h) PLAT-020 is read as: the picker is opened from the lobby by the leader.
