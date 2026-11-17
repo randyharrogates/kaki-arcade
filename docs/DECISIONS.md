@@ -746,3 +746,17 @@ folders (`uat/evidence/<slice>/auto/`) are regenerable and are not tracked in gi
 person has looked at is copied or kept in a named folder beside them. (c) `@kaki/game-rabakz`
 depends on `preact` (the version the web app uses) and `@kaki/ui` for its big-screen view; games
 draw their own host views (ARCHITECTURE §2).
+
+**D-097 · 2026-11-17 · Claude under D-057** — Rabakz big screen, four design readings after the
+R-03 review; a board with real screenshots of each goes to Randy so he can overrule. (a) No
+clock-like icon beside "Thinking": a quarter-filled clock face reads as a countdown, and RZ-031
+says no timer. Three dots are used. (b) The reveal does not re-lay the screen out. The options
+stay in their 2 × 2 grid and the players strip stays where it is; each seat in the strip gains
+its result (a tick and "+100", then its total). Nothing is unmounted and re-entered, which is
+the "same object" rule, and it costs no layout work at the reveal. This replaces the
+single-column options with a separate awards column. (c) Between questions the surfaces stay
+and only their contents change, each with the outgoing copy ghosted and masked as the lobby
+does (D-092 e); no full-frame crossfade, so old and new text are never both legible. (d) A
+picture stays on screen at the reveal, which follows from (b). (e) RZ-031's "a correct answer
+pulses once" means the correct option's card pulses once after its mark is revealed; the
+outcome sentence does not pulse.
