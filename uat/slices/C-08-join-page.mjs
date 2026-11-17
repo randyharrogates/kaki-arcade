@@ -29,11 +29,11 @@ export default async function join(h) {
   });
   await h.step('Closed host disconnects phones; reopened host restores all eight', async () => {
     await h.closeHost();
-    for (const phone of h.phones.slice(0, 8)) await phone.locator('header').getByText(/^Disconnected$/).waitFor({ timeout: 30000 });
+    for (const phone of h.phones.slice(0, 8)) await phone.locator('header').getByRole('img', { name: 'Disconnected', exact: true }).waitFor({ timeout: 30000 });
     await h.shot('host-disconnected', first); await h.reopenHost();
     for (const [index, name] of names.entries()) {
       const phone = h.phones[index]; assert.ok(phone);
-      await phone.locator('header').getByText(/^Connected$/).waitFor({ timeout: 30000 });
+      await phone.locator('header').getByRole('img', { name: 'Connected', exact: true }).waitFor({ timeout: 30000 });
       await h.waitSeated(phone, name);
     }
     await h.shot('all-eight-returned');
@@ -43,7 +43,7 @@ export default async function join(h) {
     h.expectSignalError(/^(Failed to load resource: net::ERR_CONNECTION_(REFUSED|RESET)|net::ERR_CONNECTION_(REFUSED|RESET))$/, 'host');
     await h.hostSeatContent().getByText(/^(Good|Weak|Relayed)$/).first().waitFor();
     await h.network.stopSignal(); await first.waitForTimeout(25000);
-    for (const phone of h.phones.slice(0, 8)) await phone.locator('header').getByText(/^Connected$/).waitFor();
+    for (const phone of h.phones.slice(0, 8)) await phone.locator('header').getByRole('img', { name: 'Connected', exact: true }).waitFor();
     // Tolerate inline rename and the upcoming dedicated screen.
     await first.getByRole('button', { name: /^(Change name|Rename)$/i }).click();
     const cancel = first.getByRole('button', { name: /^Cancel$/ });

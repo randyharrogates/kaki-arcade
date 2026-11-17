@@ -1,0 +1,390 @@
+{
+  "slice": "C-08-join-page",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- C-08-join-page --phones 8 --out main-joincheck",
+  "commit": "2a706a74811d54653dec6babf7e80a4a5d9d4e8b",
+  "viewports": [
+    "844×390",
+    "1920×1080",
+    "390×844"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1295.036542,
+      "status": "completed"
+    },
+    {
+      "name": "Join Mango",
+      "ms": 302.6294170000001,
+      "status": "completed"
+    },
+    {
+      "name": "Join Pebble",
+      "ms": 242.82045800000014,
+      "status": "completed"
+    },
+    {
+      "name": "Join Fern",
+      "ms": 243.27845799999977,
+      "status": "completed"
+    },
+    {
+      "name": "Join Comet",
+      "ms": 221.6112920000005,
+      "status": "completed"
+    },
+    {
+      "name": "Join Noodle",
+      "ms": 245.6768749999992,
+      "status": "completed"
+    },
+    {
+      "name": "Join Waffle",
+      "ms": 223.2191670000002,
+      "status": "completed"
+    },
+    {
+      "name": "Join Puddle",
+      "ms": 221.19845800000076,
+      "status": "completed"
+    },
+    {
+      "name": "Join Kite",
+      "ms": 224.30912499999977,
+      "status": "completed"
+    },
+    {
+      "name": "Ninth phone sees room full",
+      "ms": 695.518250000001,
+      "status": "completed"
+    },
+    {
+      "name": "Phone reload keeps its seat",
+      "ms": 592.4839580000007,
+      "status": "completed"
+    },
+    {
+      "name": "Closed host disconnects phones; reopened host restores all eight",
+      "ms": 9037.036000000002,
+      "status": "completed"
+    },
+    {
+      "name": "Pairing alone stopped for 25 seconds; rename still reaches host",
+      "ms": 27479.44275,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced motion rename reaches final host state within one frame",
+      "ms": 170.60079199999745,
+      "status": "completed"
+    }
+  ],
+  "joins": [
+    {
+      "name": "Mango",
+      "ms": 154.2128749999997
+    },
+    {
+      "name": "Pebble",
+      "ms": 122.08441599999969
+    },
+    {
+      "name": "Fern",
+      "ms": 110.47970900000018
+    },
+    {
+      "name": "Comet",
+      "ms": 112.29141600000003
+    },
+    {
+      "name": "Noodle",
+      "ms": 117.26833299999998
+    },
+    {
+      "name": "Waffle",
+      "ms": 115.24125000000004
+    },
+    {
+      "name": "Puddle",
+      "ms": 117.12308399999984
+    },
+    {
+      "name": "Kite",
+      "ms": 115.70029199999954
+    }
+  ],
+  "errors": [
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5194/rooms/2XGDDCRC/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5194/rooms/2XGDDCRC/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "WebSocket connection to 'ws://127.0.0.1:5194/rooms/2XGDDCRC/host' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5193/src/browser.ts",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5194/rooms/2XGDDCRC/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5194/rooms/2XGDDCRC/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "WebSocket connection to 'ws://127.0.0.1:5194/rooms/2XGDDCRC/host' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5193/src/browser.ts",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5194/rooms/2XGDDCRC/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5194/rooms/2XGDDCRC/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "WebSocket connection to 'ws://127.0.0.1:5194/rooms/2XGDDCRC/host' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5193/src/browser.ts",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5194/rooms/2XGDDCRC/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5194/rooms/2XGDDCRC/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "WebSocket connection to 'ws://127.0.0.1:5194/rooms/2XGDDCRC/host' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5193/src/browser.ts",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5194/rooms/2XGDDCRC/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5194/rooms/2XGDDCRC/host",
+      "expected": true
+    }
+  ],
+  "shotStates": [
+    {
+      "file": "01-phone1-seated-Mango.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-one-player.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone2-seated-Pebble.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone3-seated-Fern.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone4-seated-Comet.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone5-seated-Noodle.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone6-seated-Waffle.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone7-seated-Puddle.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone8-seated-Kite.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-eight-players.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone9-room-full.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-phone-reloaded.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-host-disconnected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-all-eight-returned.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-rename-during-pairing-outage.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone1-phone-during-pairing-outage.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-real-rename-reduced-motion-final-within-one-frame.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-seated-Mango.jpg",
+    "02-host-one-player.jpg",
+    "03-phone2-seated-Pebble.jpg",
+    "04-phone3-seated-Fern.jpg",
+    "05-phone4-seated-Comet.jpg",
+    "06-phone5-seated-Noodle.jpg",
+    "07-phone6-seated-Waffle.jpg",
+    "08-phone7-seated-Puddle.jpg",
+    "09-phone8-seated-Kite.jpg",
+    "10-host-eight-players.jpg",
+    "11-phone9-room-full.jpg",
+    "12-phone1-phone-reloaded.jpg",
+    "13-phone1-host-disconnected.jpg",
+    "14-host-all-eight-returned.jpg",
+    "15-host-rename-during-pairing-outage.jpg",
+    "16-phone1-phone-during-pairing-outage.jpg",
+    "17-host-real-rename-reduced-motion-final-within-one-frame.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-seated-Mango.jpg",
+      "bytes": 129844
+    },
+    {
+      "file": "02-host-one-player.jpg",
+      "bytes": 254474
+    },
+    {
+      "file": "03-phone2-seated-Pebble.jpg",
+      "bytes": 112399
+    },
+    {
+      "file": "04-phone3-seated-Fern.jpg",
+      "bytes": 110398
+    },
+    {
+      "file": "05-phone4-seated-Comet.jpg",
+      "bytes": 111502
+    },
+    {
+      "file": "06-phone5-seated-Noodle.jpg",
+      "bytes": 111735
+    },
+    {
+      "file": "07-phone6-seated-Waffle.jpg",
+      "bytes": 112506
+    },
+    {
+      "file": "08-phone7-seated-Puddle.jpg",
+      "bytes": 111607
+    },
+    {
+      "file": "09-phone8-seated-Kite.jpg",
+      "bytes": 110941
+    },
+    {
+      "file": "10-host-eight-players.jpg",
+      "bytes": 212057
+    },
+    {
+      "file": "11-phone9-room-full.jpg",
+      "bytes": 107206
+    },
+    {
+      "file": "12-phone1-phone-reloaded.jpg",
+      "bytes": 129844
+    },
+    {
+      "file": "13-phone1-host-disconnected.jpg",
+      "bytes": 123403
+    },
+    {
+      "file": "14-host-all-eight-returned.jpg",
+      "bytes": 213201
+    },
+    {
+      "file": "15-host-rename-during-pairing-outage.jpg",
+      "bytes": 214815
+    },
+    {
+      "file": "16-phone1-phone-during-pairing-outage.jpg",
+      "bytes": 132080
+    },
+    {
+      "file": "17-host-real-rename-reduced-motion-final-within-one-frame.jpg",
+      "bytes": 215109
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2947
+    },
+    {
+      "file": "run.json",
+      "bytes": 9475
+    }
+  ],
+  "totalBytes": 2525580,
+  "maxBytes": 12582912
+}
