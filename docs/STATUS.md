@@ -187,6 +187,16 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   integrator's browser checks found two faults the reviews had not (tiny names, an expired
   room looping) and one of the integrator's own evidence claims was wrong and is withdrawn in
   the report.
+- **Performance harness (F-08).** `pnpm perf` runs every installed game at 1, 4 and 8 players
+  with seeded bots and reports step time, allocation and garbage-collection pauses;
+  `pnpm perf -- lobby-8 --phones 8` pairs eight real phone contexts in a visible browser and
+  records host frame times, long tasks, the display's refresh rate and whether each link is
+  direct. Both ran on the dev Mac (exit 0). **No performance budget has been assessed by it:**
+  the only screens are the lobby, the join page and the picker, so PERF-001, PERF-010,
+  PERF-012 and PERF-030 all read "not assessed". Built by Codex over two fix rounds with two
+  reviews; the browser layer failed on its first real start (an import hook rewrote paths
+  inside Playwright) and the integrator fixed it. **Not proven:** 1 and 4 phones, headless,
+  a production build, a quiet machine, anything on a TV or a real phone.
 - **UAT harness (F-07).** `pnpm uat -- <slice>` starts the web app and a local pairing server,
   drives one host and up to eight phone browser contexts, takes settled screenshots and
   transition strips, fails on unexpected browser errors, enforces step and run deadlines and a
@@ -228,7 +238,6 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 ## Does not exist yet
 
 - No game picker, controller or game screen yet.
-- `pnpm perf` (F-08).
 
 ## Design gate
 
@@ -246,7 +255,11 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 
 ## Performance numbers
 
-None measured yet. First numbers come from the M2 spikes.
+No budget has been assessed yet. Diagnostics from `pnpm perf` on the dev Mac (Apple M3,
+2026-11-17, other jobs running, so rough): simulation step at eight players, 95th percentile
+0.008 ms for Tabao Rush and under 0.001 ms for Peek Poker and Rabakz; game-only allocation
+per step at eight players about 27 KB (Tabao Rush), 10 KB (Peek Poker), 10 KB (Rabakz); lobby
+with eight phones on a 75 Hz display, frame time 95th percentile 14.1 ms, worst frame 120 ms.
 
 | Date | Slice | Players | Frame p95 (laptop) | Frame p95 (TV) | Input p95 (direct) |
 |---|---|---|---|---|---|

@@ -1,0 +1,1113 @@
+{
+  "schemaVersion": 1,
+  "layer": "simulation",
+  "scenario": "installed-games",
+  "machine": {
+    "platform": "darwin",
+    "release": "27.0.0",
+    "cpu": "Apple M3",
+    "cores": 8,
+    "totalMemoryBytes": 17179869184,
+    "node": "v24.21.0",
+    "loadAverageStart": [
+      3.7734375,
+      3.9970703125,
+      5.16064453125
+    ],
+    "contention": "unknown (load average cannot establish a quiet machine)",
+    "runtime": "Node accelerated simulation",
+    "browser": null,
+    "browserVersion": null,
+    "headed": false,
+    "viewport": null,
+    "deviceScaleFactor": null
+  },
+  "measurements": [
+    {
+      "game": "peek-poker",
+      "players": 1,
+      "steps": 8486,
+      "simulatedSeconds": 141.43333333333334,
+      "elapsedMs": 30.444834000000014,
+      "complete": true,
+      "hash": "0bf683c46a01a5ba",
+      "stepMs": {
+        "count": 8486,
+        "median": 0.00008300000001781882,
+        "p95": 0.00020799999998644125,
+        "p99": 0.00037500000001955414,
+        "max": 0.028291999999993322,
+        "over50": 0
+      },
+      "driverMs": {
+        "count": 8486,
+        "median": 0.0026249999999947704,
+        "p95": 0.00870899999998187,
+        "p99": 0.013083999999992102,
+        "max": 0.3186670000000049,
+        "over50": 0
+      },
+      "clockTickMs": 0.00004099999998175008,
+      "timingResolution": {
+        "stepMs": {
+          "median": "below resolution",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "driverMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "gcMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        }
+      },
+      "allocation": {
+        "sourceBytesPerStep": {
+          "(V8/native/unknown)": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 50.39924581663917,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 386.6443554089088,
+          "node:internal/perf/performance": 9.672401602639642,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 2067.1656846570822,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 2.694320056563752,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 1984.7702097572471,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 42.38321942022154,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/views.ts": 1503.261843035588,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 165.3452745698798,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/game.ts": 171.69078482205987,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/round.ts": 137.8241810040066,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/evaluator.ts": 3.517322649069055,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 225.11713410322884,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/cards.ts": 489.41503653075654,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/rng.ts": 6.288003770916804,
+          "node:inspector": 4.314871553146359
+        },
+        "source95ErrorBytesPerStep": {
+          "node:inspector": 3.362905128809097,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 27.0505811022215,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 60.997837991677706,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 62.219012094306464,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/views.ts": 53.157144324743854,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 17.630338700850913,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/cards.ts": 30.139495178597123,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/round.ts": 15.9989719911915,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/game.ts": 18.01959053794696,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 20.48290641537723,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/evaluator.ts": 2.5449524509234367,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 9.103203970768252,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 9.708720498143908,
+          "node:internal/perf/performance": 4.247380293664649,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/rng.ts": 3.4243474682568382,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 2.532411611900181
+        },
+        "gameBytesPerStep": 2701.3358472778696,
+        "game95ErrorBytesPerStep": 71.2116134869397,
+        "method": "V8 HeapProfiler sampling, 4096-byte interval; collected objects included; built-ins attributed to nearest JS caller",
+        "bytesPerStep": 7255.424935187368,
+        "samples": 14882,
+        "approximate95PercentRelativeError": 1.6066653264782993,
+        "caveat": "Statistical error only; systematic sampling bias unknown",
+        "deterministic": true
+      },
+      "gc": {
+        "method": "Node PerformanceObserver gc; measured time pass only; forced pre-run GC excluded",
+        "exposedGC": true,
+        "pausesMs": [
+          0.25495898723602295,
+          0.13729196786880493,
+          0.06966698169708252,
+          0.05891597270965576,
+          0.06133300065994263,
+          0.06820803880691528,
+          0.08558303117752075,
+          0.05991595983505249,
+          0.049665987491607666,
+          0.08037501573562622,
+          0.048708975315093994,
+          0.06270802021026611,
+          0.09587502479553223,
+          0.078125,
+          0.06491601467132568,
+          0.05162501335144043,
+          0.076541006565094
+        ],
+        "count": 17,
+        "median": 0.06820803880691528,
+        "p95": 0.25495898723602295,
+        "p99": 0.25495898723602295,
+        "max": 0.25495898723602295,
+        "over50": 0
+      }
+    },
+    {
+      "game": "peek-poker",
+      "players": 4,
+      "steps": 8551,
+      "simulatedSeconds": 142.51666666666668,
+      "elapsedMs": 104.64270800000003,
+      "complete": true,
+      "hash": "7a12f795e64b6bd7",
+      "stepMs": {
+        "count": 8551,
+        "median": 0.00004200000000764703,
+        "p95": 0.00016700000003311288,
+        "p99": 0.0010000000000331966,
+        "max": 3.6232080000000337,
+        "over50": 0
+      },
+      "driverMs": {
+        "count": 8551,
+        "median": 0.00570799999997007,
+        "p95": 0.01870800000000372,
+        "p99": 0.057708999999988464,
+        "max": 5.07445899999999,
+        "over50": 0
+      },
+      "clockTickMs": 0.00004099999995332837,
+      "timingResolution": {
+        "stepMs": {
+          "median": "below resolution",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "driverMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "gcMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        }
+      },
+      "allocation": {
+        "sourceBytesPerStep": {
+          "(V8/native/unknown)": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 0.975792304993568,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 954.1770553151678,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 5542.631271196351,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 6.344988890188282,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/views.ts": 3527.1991579932173,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/game.ts": 170.88246988656297,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/round.ts": 321.57268155771254,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 3253.098818851596,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 90.24067360542627,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 293.4627528943983,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/evaluator.ts": 14.258917085720968,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 152.04210033914163,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/cards.ts": 655.7633025377149,
+          "node:inspector": 0,
+          "node:internal/errors": 0.4827505554905859
+        },
+        "source95ErrorBytesPerStep": {
+          "node:inspector": 3.65273769149807,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 42.36883919328813,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 101.09751684023114,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/views.ts": 80.89699114464631,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 78.21245497182456,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/cards.ts": 34.7546438740875,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/game.ts": 17.91603896703727,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 23.48787704497222,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 16.770861605095526,
+          "node:internal/errors": 0.9461910887615483,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/evaluator.ts": 5.131953448267537,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/round.ts": 24.0373578180074,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 13.003823766172959,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 1.3524095948202348,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 4.041358067230479
+        },
+        "gameBytesPerStep": 5650.198573266284,
+        "game95ErrorBytesPerStep": 102.41472318968796,
+        "method": "V8 HeapProfiler sampling, 4096-byte interval; collected objects included; built-ins attributed to nearest JS caller",
+        "bytesPerStep": 14940.6871710911,
+        "samples": 30824,
+        "approximate95PercentRelativeError": 1.1163787812306072,
+        "caveat": "Statistical error only; systematic sampling bias unknown",
+        "deterministic": true
+      },
+      "gc": {
+        "method": "Node PerformanceObserver gc; measured time pass only; forced pre-run GC excluded",
+        "exposedGC": true,
+        "pausesMs": [
+          0.12741702795028687,
+          0.296875,
+          1.062041997909546,
+          0.6643330454826355,
+          0.07633399963378906,
+          0.10679197311401367,
+          0.1609169840812683,
+          0.13966703414916992,
+          0.0679999589920044,
+          0.051708996295928955,
+          1.3908329606056213,
+          2.6211659908294678,
+          0.08929198980331421,
+          0.2309170365333557,
+          0.08062499761581421,
+          0.15587502717971802,
+          0.04587501287460327,
+          0.11387497186660767,
+          0.05358302593231201,
+          0.29450005292892456,
+          0.1345829963684082,
+          0.5424579977989197,
+          0.06658297777175903,
+          0.16358399391174316,
+          0.2504160404205322,
+          1.7143749594688416,
+          0.12262499332427979,
+          0.07670903205871582,
+          0.1608339548110962
+        ],
+        "count": 29,
+        "median": 0.13966703414916992,
+        "p95": 1.7143749594688416,
+        "p99": 2.6211659908294678,
+        "max": 2.6211659908294678,
+        "over50": 0
+      }
+    },
+    {
+      "game": "peek-poker",
+      "players": 8,
+      "steps": 8742,
+      "simulatedSeconds": 145.7,
+      "elapsedMs": 104.55687499999999,
+      "complete": true,
+      "hash": "d86582eafe2477d0",
+      "stepMs": {
+        "count": 8742,
+        "median": 0.00004200000000764703,
+        "p95": 0.00033400000006622577,
+        "p99": 0.0014160000000629225,
+        "max": 0.04704200000003311,
+        "over50": 0
+      },
+      "driverMs": {
+        "count": 8742,
+        "median": 0.009542000000010376,
+        "p95": 0.022917000000006738,
+        "p99": 0.053332999999952335,
+        "max": 0.24833399999999983,
+        "over50": 0
+      },
+      "clockTickMs": 0.00004099999989648495,
+      "timingResolution": {
+        "stepMs": {
+          "median": "below resolution",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "driverMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "gcMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        }
+      },
+      "allocation": {
+        "sourceBytesPerStep": {
+          "(V8/native/unknown)": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 0.4804392587508579,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 1710.904598490048,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 10214.8075955159,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/settings.ts": 1.414779226721574,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 11.670555936856555,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/game.ts": 219.64859299931365,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/state.ts": 0.48226950354609927,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/round.ts": 6.680393502630977,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/cards.ts": 802.1633493479753,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/rng.ts": 0.9398307023564402,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 6328.692747654999,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 263.79775795012586,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/views.ts": 6819.754747197438,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 554.7755662319835,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/evaluator.ts": 17.725920841912608,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 73.3406543125143,
+          "node:inspector": 0.9453214367421643
+        },
+        "source95ErrorBytesPerStep": {
+          "node:inspector": 1.3101787489318306,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 56.12962723592016,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 135.6431499980851,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/cards.ts": 38.01704763660806,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/views.ts": 111.28360722598954,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 107.7805634062801,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 31.950315557419422,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/game.ts": 20.078793921198734,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 21.990751973024487,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 11.525301950850885,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 5.345983663741562,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/settings.ts": 1.600986134822895,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/evaluator.ts": 5.608506613501907,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/round.ts": 3.506725638107629,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/rng.ts": 1.3025395165704468,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/peek-poker/src/rules/state.ts": 0.9452482269503547,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 0.9416609471516816
+        },
+        "gameBytesPerStep": 9589.970258522077,
+        "game95ErrorBytesPerStep": 132.12854454309328,
+        "method": "V8 HeapProfiler sampling, 4096-byte interval; collected objects included; built-ins attributed to nearest JS caller",
+        "bytesPerStep": 26962.231983527796,
+        "samples": 56872,
+        "approximate95PercentRelativeError": 0.8218769881524378,
+        "caveat": "Statistical error only; systematic sampling bias unknown",
+        "deterministic": true
+      },
+      "gc": {
+        "method": "Node PerformanceObserver gc; measured time pass only; forced pre-run GC excluded",
+        "exposedGC": true,
+        "pausesMs": [
+          0.17129194736480713,
+          0.1504579782485962,
+          0.0766250491142273,
+          0.05624997615814209,
+          0.10399997234344482,
+          0.08820801973342896,
+          0.08229100704193115,
+          0.14441698789596558,
+          0.11854100227355957,
+          0.11870801448822021,
+          0.06366699934005737,
+          0.12220901250839233,
+          0.09608298540115356,
+          0.06979101896286011,
+          0.05591696500778198,
+          0.06179201602935791,
+          0.10454100370407104,
+          0.09900003671646118,
+          0.12004101276397705,
+          0.06691598892211914,
+          0.05170798301696777,
+          0.05404198169708252,
+          0.05162501335144043,
+          0.05933302640914917,
+          0.06812500953674316,
+          0.10620802640914917,
+          0.06616705656051636,
+          0.05745899677276611,
+          0.09183299541473389,
+          0.06791704893112183,
+          0.05416595935821533
+        ],
+        "count": 31,
+        "median": 0.0766250491142273,
+        "p95": 0.1504579782485962,
+        "p99": 0.17129194736480713,
+        "max": 0.17129194736480713,
+        "over50": 0
+      }
+    },
+    {
+      "game": "rabakz",
+      "players": 1,
+      "steps": 2669,
+      "simulatedSeconds": 44.483333333333334,
+      "elapsedMs": 9.176416000000017,
+      "complete": true,
+      "hash": "f55bfdbcfbe879a5",
+      "stepMs": {
+        "count": 2669,
+        "median": 0.00008400000001529406,
+        "p95": 0.00012500000002546585,
+        "p99": 0.00041699999997035775,
+        "max": 0.011500000000069122,
+        "over50": 0
+      },
+      "driverMs": {
+        "count": 2669,
+        "median": 0.0028330000000096334,
+        "p95": 0.004541999999901236,
+        "p99": 0.012124999999969077,
+        "max": 0.04850000000010368,
+        "over50": 0
+      },
+      "clockTickMs": 0.00004099999978279811,
+      "timingResolution": {
+        "stepMs": {
+          "median": "below resolution",
+          "p95": "below resolution",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "driverMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "gcMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        }
+      },
+      "allocation": {
+        "sourceBytesPerStep": {
+          "(V8/native/unknown)": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 366.93293368302733,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/hash.ts": 13.841888347695766,
+          "node:internal/perf/performance": 26.1431247658299,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 1075.626826526789,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/index.ts": 6.180591982015736,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/settings.ts": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 6.234544773323342,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/views.ts": 1385.4986886474335,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 1404.8137879355563,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 98.8325215436493,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 391.53840389659047,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/flow.ts": 192.11090295991008,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 589.9437991757212
+        },
+        "source95ErrorBytesPerStep": {
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 46.96892742326494,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/hash.ts": 9.059033345822407,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 48.3738153570074,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 91.51026242674469,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/views.ts": 90.76647771640732,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 80.45392527605617,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 59.09159053012371,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/flow.ts": 34.018966298903194,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 24.291166554143484,
+          "node:internal/perf/performance": 12.450450450272779,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 7.464096270624374,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/index.ts": 6.057017180658625
+        },
+        "gameBytesPerStep": 1970.7995503934058,
+        "game95ErrorBytesPerStep": 108.51907649720198,
+        "method": "V8 HeapProfiler sampling, 4096-byte interval; collected objects included; built-ins attributed to nearest JS caller",
+        "bytesPerStep": 5567.973023604346,
+        "samples": 3590,
+        "approximate95PercentRelativeError": 3.2712131777975126,
+        "caveat": "Statistical error only; systematic sampling bias unknown",
+        "deterministic": true
+      },
+      "gc": {
+        "method": "Node PerformanceObserver gc; measured time pass only; forced pre-run GC excluded",
+        "exposedGC": true,
+        "pausesMs": [
+          0.14937502145767212
+        ],
+        "count": 1,
+        "median": 0.14937502145767212,
+        "p95": 0.14937502145767212,
+        "p99": 0.14937502145767212,
+        "max": 0.14937502145767212,
+        "over50": 0
+      }
+    },
+    {
+      "game": "rabakz",
+      "players": 4,
+      "steps": 2787,
+      "simulatedSeconds": 46.45,
+      "elapsedMs": 28.90337499999987,
+      "complete": true,
+      "hash": "f39bf0dde0a228ce",
+      "stepMs": {
+        "count": 2787,
+        "median": 0.00008400000001529406,
+        "p95": 0.00029200000017226557,
+        "p99": 0.0017089999998916028,
+        "max": 0.010041000000001077,
+        "over50": 0
+      },
+      "driverMs": {
+        "count": 2787,
+        "median": 0.005875000000060027,
+        "p95": 0.02250000000003638,
+        "p99": 0.04708400000004076,
+        "max": 0.6503750000001673,
+        "over50": 0
+      },
+      "clockTickMs": 0.00004099999978279811,
+      "timingResolution": {
+        "stepMs": {
+          "median": "below resolution",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "driverMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "gcMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        }
+      },
+      "allocation": {
+        "sourceBytesPerStep": {
+          "(V8/native/unknown)": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 7.454610692500897,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 984.1779691424471,
+          "node:internal/perf/performance": 11.780409041980624,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 1608.152134912092,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/index.ts": 2.950843200574094,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/model.ts": 2.970936490850377,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/settings.ts": 1.4782920703265159,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 25.346250448510943,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/views.ts": 4519.13598851812,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 4133.479727305346,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 345.90886257624686,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 352.67743092931465,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/flow.ts": 189.24147829207033,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 669.2931467527808
+        },
+        "source95ErrorBytesPerStep": {
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 6.534368693797831,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 75.33489059027616,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/views.ts": 160.45831345038175,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 96.48327418941842,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/flow.ts": 32.95727484241075,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 61.55481413411453,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 153.56291696263037,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 45.133697291872004,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 44.49544488752635,
+          "node:internal/perf/performance": 8.179320050389096,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 14.123805710887742,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/model.ts": 4.1771819323485175,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/settings.ts": 2.897452457839971,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/index.ts": 4.105573099222543
+        },
+        "gameBytesPerStep": 5723.823466092573,
+        "game95ErrorBytesPerStep": 180.9480160923461,
+        "method": "V8 HeapProfiler sampling, 4096-byte interval; collected objects included; built-ins attributed to nearest JS caller",
+        "bytesPerStep": 12868.314316469321,
+        "samples": 8661,
+        "approximate95PercentRelativeError": 2.106066363955466,
+        "caveat": "Statistical error only; systematic sampling bias unknown",
+        "deterministic": true
+      },
+      "gc": {
+        "method": "Node PerformanceObserver gc; measured time pass only; forced pre-run GC excluded",
+        "exposedGC": true,
+        "pausesMs": [
+          0.18291699886322021,
+          0.17387503385543823
+        ],
+        "count": 2,
+        "median": 0.17387503385543823,
+        "p95": 0.18291699886322021,
+        "p99": 0.18291699886322021,
+        "max": 0.18291699886322021,
+        "over50": 0
+      }
+    },
+    {
+      "game": "rabakz",
+      "players": 8,
+      "steps": 2813,
+      "simulatedSeconds": 46.88333333333333,
+      "elapsedMs": 40.38370899999995,
+      "complete": true,
+      "hash": "69f33b1cf55049a5",
+      "stepMs": {
+        "count": 2813,
+        "median": 0.00004200000012133387,
+        "p95": 0.00012500000002546585,
+        "p99": 0.0027500000001055014,
+        "max": 0.06454099999996288,
+        "over50": 0
+      },
+      "driverMs": {
+        "count": 2813,
+        "median": 0.008166999999957625,
+        "p95": 0.022917000000006738,
+        "p99": 0.060791999999992186,
+        "max": 1.30337499999996,
+        "over50": 0
+      },
+      "clockTickMs": 0.000041999999893960194,
+      "timingResolution": {
+        "stepMs": {
+          "median": "below resolution",
+          "p95": "below resolution",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "driverMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "gcMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        }
+      },
+      "allocation": {
+        "sourceBytesPerStep": {
+          "(V8/native/unknown)": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 106.71596160682546,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 1813.1475293281194,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 2135.4795591894776,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/index.ts": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/model.ts": 1.4930678990401707,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 45.184500533238534,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 6045.491645929613,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/rng.ts": 2.920725204408105,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 247.0472804834696,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/views.ts": 8385.882687522218,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 547.3785993601138,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/flow.ts": 225.9054390330608,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 121.25133309633843,
+          "node:inspector": 0,
+          "node:internal/errors": 1.4674724493423392
+        },
+        "source95ErrorBytesPerStep": {
+          "node:internal/errors": 2.8762460007109847,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 101.82910457934038,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 185.1672545683635,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 109.9334672842464,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/views.ts": 217.68797954205598,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 55.98015359491465,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 24.541411584591188,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/flow.ts": 35.84019861516521,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/text.ts": 26.099319302819577,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/layout.ts": 37.3911980092428,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 18.297655424462274,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/rng.ts": 4.047920531055402,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/rabakz/src/rules/model.ts": 2.9264130821187346
+        },
+        "gameBytesPerStep": 10474.533949520086,
+        "game95ErrorBytesPerStep": 243.7242223528318,
+        "method": "V8 HeapProfiler sampling, 4096-byte interval; collected objects included; built-ins attributed to nearest JS caller",
+        "bytesPerStep": 19690.787060078208,
+        "samples": 13355,
+        "approximate95PercentRelativeError": 1.6960323245225999,
+        "caveat": "Statistical error only; systematic sampling bias unknown",
+        "deterministic": true
+      },
+      "gc": {
+        "method": "Node PerformanceObserver gc; measured time pass only; forced pre-run GC excluded",
+        "exposedGC": true,
+        "pausesMs": [
+          0.2332090139389038,
+          0.2058749794960022,
+          0.10441601276397705
+        ],
+        "count": 3,
+        "median": 0.2058749794960022,
+        "p95": 0.2332090139389038,
+        "p99": 0.2332090139389038,
+        "max": 0.2332090139389038,
+        "over50": 0
+      }
+    },
+    {
+      "game": "tabao-rush",
+      "players": 1,
+      "steps": 12600,
+      "simulatedSeconds": 210,
+      "elapsedMs": 120.91200000000003,
+      "complete": true,
+      "hash": "abf34b9ea783d260",
+      "stepMs": {
+        "count": 12600,
+        "median": 0.0010419999998703133,
+        "p95": 0.0019170000000485743,
+        "p99": 0.003708999999844309,
+        "max": 3.983249999999998,
+        "over50": 0
+      },
+      "driverMs": {
+        "count": 12600,
+        "median": 0.005292000000054031,
+        "p95": 0.011833000000024185,
+        "p99": 0.017875000000003638,
+        "max": 7.666375000000016,
+        "over50": 0
+      },
+      "clockTickMs": 0.00004099999978279811,
+      "timingResolution": {
+        "stepMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "driverMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "gcMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        }
+      },
+      "allocation": {
+        "sourceBytesPerStep": {
+          "(V8/native/unknown)": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 82.57142857142857,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 360.11301587301585,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 827.1288888888889,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 9.133968253968254,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/game.ts": 2912.5415873015872,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/rng.ts": 8.795555555555556,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 2385.052698412698,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 72.73142857142857,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/orders.ts": 1024.52126984127,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/stations.ts": 1382.1479365079365,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/items.ts": 84.04190476190476,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/movement.ts": 235.62603174603174,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/state.ts": 2640.415873015873,
+          "node:inspector": 1.5612698412698414
+        },
+        "source95ErrorBytesPerStep": {
+          "node:inspector": 1.5338225821718257,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 21.429381644028652,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/state.ts": 58.30394629017325,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/orders.ts": 35.91776363023638,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/stations.ts": 41.63443999833922,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 54.99911557092712,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/game.ts": 60.457888428039595,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 32.4550254361514,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 10.198509678004218,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/movement.ts": 17.210586222998312,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 9.641738401730644,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 3.508518613071848,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/items.ts": 10.514980002657937,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/rng.ts": 3.3234507605837478
+        },
+        "gameBytesPerStep": 8657.337142857143,
+        "game95ErrorBytesPerStep": 104.72517019520576,
+        "method": "V8 HeapProfiler sampling, 4096-byte interval; collected objects included; built-ins attributed to nearest JS caller",
+        "bytesPerStep": 12004.795555555556,
+        "samples": 36349,
+        "approximate95PercentRelativeError": 1.0280395849960244,
+        "caveat": "Statistical error only; systematic sampling bias unknown",
+        "deterministic": true
+      },
+      "gc": {
+        "method": "Node PerformanceObserver gc; measured time pass only; forced pre-run GC excluded",
+        "exposedGC": true,
+        "pausesMs": [
+          1.0872079730033875,
+          1.5328330397605896,
+          0.1318340301513672,
+          0.14087504148483276,
+          0.12604200839996338,
+          0.10412496328353882,
+          0.18112504482269287,
+          0.1347920298576355,
+          0.2108750343322754,
+          0.1607089638710022,
+          0.12166601419448853
+        ],
+        "count": 11,
+        "median": 0.14087504148483276,
+        "p95": 1.5328330397605896,
+        "p99": 1.5328330397605896,
+        "max": 1.5328330397605896,
+        "over50": 0
+      }
+    },
+    {
+      "game": "tabao-rush",
+      "players": 4,
+      "steps": 12600,
+      "simulatedSeconds": 210,
+      "elapsedMs": 325.64745800000037,
+      "complete": true,
+      "hash": "417eeea65def0070",
+      "stepMs": {
+        "count": 12600,
+        "median": 0.002541000000292115,
+        "p95": 0.006374999999934516,
+        "p99": 0.014208000000053289,
+        "max": 7.25912500000004,
+        "over50": 0
+      },
+      "driverMs": {
+        "count": 12600,
+        "median": 0.01708299999972951,
+        "p95": 0.035750000000007276,
+        "p99": 0.08016700000007404,
+        "max": 7.310500000000047,
+        "over50": 0
+      },
+      "clockTickMs": 0.00004099999978279811,
+      "timingResolution": {
+        "stepMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "driverMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "gcMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        }
+      },
+      "allocation": {
+        "sourceBytesPerStep": {
+          "(V8/native/unknown)": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 79.96444444444444,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 937.2501587301588,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 1347.9892063492064,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 48.91555555555556,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/game.ts": 7078.528253968254,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/stations.ts": 1617.0431746031745,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/rng.ts": 2.606984126984127,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 8983.137142857142,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 260.46476190476193,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/orders.ts": 703.8698412698412,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/items.ts": 3420.9485714285715,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/movement.ts": 1505.216507936508,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/state.ts": 4498.417142857143,
+          "node:inspector": 0.326984126984127
+        },
+        "source95ErrorBytesPerStep": {
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 34.5819371757091,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/state.ts": 74.91826681398771,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 106.61721764194851,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/game.ts": 94.28291746393464,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/movement.ts": 43.4952627669318,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/stations.ts": 45.066395748648766,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/orders.ts": 29.677895066285142,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 41.351076896135645,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/items.ts": 64.81994468834799,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 10.035005785157681,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 18.245779461238374,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 7.972703661994174,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/rng.ts": 1.809187696859874,
+          "node:inspector": 0.6408888888888888
+        },
+        "gameBytesPerStep": 19812.79619047619,
+        "game95ErrorBytesPerStep": 157.38482571218958,
+        "method": "V8 HeapProfiler sampling, 4096-byte interval; collected objects included; built-ins attributed to nearest JS caller",
+        "bytesPerStep": 30236.786031746033,
+        "samples": 91768,
+        "approximate95PercentRelativeError": 0.647009173057114,
+        "caveat": "Statistical error only; systematic sampling bias unknown",
+        "deterministic": true
+      },
+      "gc": {
+        "method": "Node PerformanceObserver gc; measured time pass only; forced pre-run GC excluded",
+        "exposedGC": true,
+        "pausesMs": [
+          1.809874951839447,
+          0.8640000224113464,
+          0.13600003719329834,
+          0.5361250042915344,
+          0.1482909917831421,
+          0.8699169754981995,
+          0.1137080192565918,
+          0.18474996089935303,
+          0.13099998235702515,
+          0.12958300113677979,
+          0.15070796012878418,
+          0.7844580411911011,
+          0.15879201889038086,
+          0.13654100894927979,
+          0.12145799398422241,
+          0.08816701173782349,
+          0.1067500114440918,
+          0.1999579668045044,
+          0.12695801258087158,
+          0.1141660213470459,
+          0.20904099941253662,
+          0.15745896100997925,
+          0.18004101514816284,
+          0.11145800352096558,
+          0.11833304166793823
+        ],
+        "count": 25,
+        "median": 0.1482909917831421,
+        "p95": 0.8699169754981995,
+        "p99": 1.809874951839447,
+        "max": 1.809874951839447,
+        "over50": 0
+      }
+    },
+    {
+      "game": "tabao-rush",
+      "players": 8,
+      "steps": 12600,
+      "simulatedSeconds": 210,
+      "elapsedMs": 417.3691660000004,
+      "complete": true,
+      "hash": "4d1f0f3f35f6ea77",
+      "stepMs": {
+        "count": 12600,
+        "median": 0.004667000000154076,
+        "p95": 0.007875000000240107,
+        "p99": 0.011750000000120053,
+        "max": 0.24495900000010806,
+        "over50": 0
+      },
+      "driverMs": {
+        "count": 12600,
+        "median": 0.030542000000423286,
+        "p95": 0.05062499999985448,
+        "p99": 0.06433300000026065,
+        "max": 0.32570799999984956,
+        "over50": 0
+      },
+      "clockTickMs": 0.00004099999978279811,
+      "timingResolution": {
+        "stepMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "driverMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        },
+        "gcMs": {
+          "median": "resolved",
+          "p95": "resolved",
+          "p99": "resolved",
+          "max": "resolved"
+        }
+      },
+      "allocation": {
+        "sourceBytesPerStep": {
+          "(V8/native/unknown)": 0,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 97.26095238095238,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/metrics.ts": 0.3288888888888889,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 1665.727619047619,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 2057.630476190476,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/settings.ts": 0.326984126984127,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 77.53079365079365,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/game.ts": 11255.961904761905,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/orders.ts": 780.2755555555556,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 17858.526984126984,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 529.1174603174603,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/stations.ts": 1214.6215873015874,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/items.ts": 3422.7257142857143,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/movement.ts": 4582.08,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/state.ts": 4118.320634920635
+        },
+        "source95ErrorBytesPerStep": {
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/metrics.ts": 0.6446222222222222,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/snapshot.ts": 46.12453958817621,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/bots.ts": 150.29847186757553,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/state.ts": 72.00449070022998,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/stations.ts": 38.99431952330278,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/game.ts": 118.62622416189286,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/harness/match.ts": 51.01937549131654,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/movement.ts": 75.88693186651173,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/orders.ts": 31.226849453366405,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/games/tabao-rush/src/rules/items.ts": 65.59340348791105,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/drive.ts": 26.005494728025894,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/sim-core/src/input.ts": 10.030243297468898,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/tools/perf/headless.ts": 11.068298276509257,
+          "file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08/packages/platform/src/game/settings.ts": 0.6408888888888888
+        },
+        "gameBytesPerStep": 27117.24380952381,
+        "game95ErrorBytesPerStep": 184.50447356051816,
+        "method": "V8 HeapProfiler sampling, 4096-byte interval; collected objects included; built-ins attributed to nearest JS caller",
+        "bytesPerStep": 47489.3853968254,
+        "samples": 144340,
+        "approximate95PercentRelativeError": 0.5158966655679526,
+        "caveat": "Statistical error only; systematic sampling bias unknown",
+        "deterministic": true
+      },
+      "gc": {
+        "method": "Node PerformanceObserver gc; measured time pass only; forced pre-run GC excluded",
+        "exposedGC": true,
+        "pausesMs": [
+          0.22408300638198853,
+          0.2658330202102661,
+          0.16979199647903442,
+          0.17562496662139893,
+          0.17833298444747925,
+          0.13433301448822021,
+          0.21083301305770874,
+          0.18150001764297485,
+          0.14841699600219727,
+          0.13499999046325684,
+          0.16083300113677979,
+          0.19170796871185303,
+          0.10954195261001587,
+          0.1762080192565918,
+          0.17983299493789673,
+          0.16608399152755737,
+          0.12033295631408691,
+          0.11929202079772949
+        ],
+        "count": 18,
+        "median": 0.16979199647903442,
+        "p95": 0.2658330202102661,
+        "p99": 0.2658330202102661,
+        "max": 0.2658330202102661,
+        "over50": 0
+      }
+    }
+  ],
+  "assessments": [
+    {
+      "id": "PERF-001",
+      "status": "not assessed",
+      "reason": "Node simulation is not browser rendering, touch delay or a 30-minute session; no simulation time/allocation budget is stated"
+    },
+    {
+      "id": "PERF-010",
+      "status": "not assessed",
+      "reason": "Node simulation is not browser rendering, touch delay or a 30-minute session; no simulation time/allocation budget is stated"
+    },
+    {
+      "id": "PERF-012",
+      "status": "not assessed",
+      "reason": "Node simulation is not browser rendering, touch delay or a 30-minute session; no simulation time/allocation budget is stated"
+    },
+    {
+      "id": "PERF-030",
+      "status": "not assessed",
+      "reason": "Node simulation is not browser rendering, touch delay or a 30-minute session; no simulation time/allocation budget is stated"
+    }
+  ],
+  "notes": [
+    "memory: 54% free (about 8 of 16 GB), pressure level 1; perf needs 4 GB\nok to start\n",
+    "Command: node --expose-gc tools/perf/run.mjs ",
+    "Warm-up: one full unmeasured pass before each timing run. Tabao Rush round length is conformance scaffolding until T-05.",
+    "Fixed 60 Hz; seed 808; default game settings, seeded bots, full match until isOver (safety cap 216000 steps). Module defaults may not be the heaviest level. Rabakz uses a synthetic default-length bank.",
+    "Step timing covers only GameModule.step. Driver timing and allocation include bots, input buffer, driveStep, layout checks, public views and harness bookkeeping. Timings are accelerated CPU runs, not real-time display frames.",
+    "Allocation: V8 statistical heap sampling includes collected objects in a separate deterministic run. Approximate 95% relative sampling error is 1.96/sqrt(N); systematic error is unknown. No exact allocation counter exists here. Node GC pauses do not prove browser GC behaviour."
+  ]
+}

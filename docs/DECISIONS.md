@@ -818,3 +818,27 @@ changes between questions animate transform only, with boxes laid out at their f
 and size differences shown by a clip; nothing animates width, height or grid tracks, so the
 cost on the TV is compositor work (still to be measured for PERF-002).
 
+
+**D-103 · 2026-11-17 · Claude under D-057** — Performance harness readings (F-08). The
+simulation layer measures complete default matches with seeded bots; this is repeatable
+diagnostic coverage, not a claim that defaults or random bots exercise the busiest level. The
+timing hook is opt-in and absent from production; game, controller and shell code may import
+it only behind `import.meta.env.DEV`, and it adds no bytes to the wire. Frame budgets are
+assessed only in a visible browser; headless frame timing is unproven. A run under detected
+contention never reports a pass. The harness's bot driver bypasses `expandInput`, so its
+allocation figures cannot justify a reused input buffer; that is decided from a real session.
+
+**D-104 · 2026-11-17 · Claude under D-057** — Game picker, readings after the second C-09
+review. (a) Picker and start headers are 89 px, or 55 px when 89 does not fit; never a size
+between the two. (b) Content inside a tile changes with the lobby's timing (D-092 e): both
+masks start together on one boundary, the outgoing copy starts at full ink, and a tile whose
+content does not change does not wipe. (c) The host accepts one picker press per `fast`
+duration; presses inside the window are kept as a bounded count of Previous/Next plus the
+latest of Select, Back and Start, and applied in order when it ends. (d) A failed game load
+is an explicit flag in `picker-state`, not read from the message text. (e) The host event
+that set the leader directly is removed; leadership passes on only through the existing
+election when the leader leaves (PLAT-006). (f) The leader's lobby phone reads "Pick a game
+when everyone's in."; other phones read "Waiting for the leader to pick a game."
+(g) The `picker-input` and `picker-state` messages on the control channel are accepted as
+part of the protocol contract; ARCHITECTURE §5 records them when C-09 merges.
+

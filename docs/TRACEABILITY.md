@@ -100,7 +100,7 @@ requirement.
 
 | ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
 |---|---|---|---|---|---|---|---|
-| NFR-PERF | MUST | All budgets in PERFORMANCE.md are met and tested automatically | M2 on | not started | — | — | — |
+| NFR-PERF | MUST | All budgets in PERFORMANCE.md are met and tested automatically | M2 on | in progress | `tools/perf/`, `uat/perf/lobby-8.mjs`, `packages/platform/src/harness/perf-timing.ts`, `tools/check_budgets.mjs` | `tools/perf/*.test.ts` | `uat/evidence/F-08-perf-harness/` (harness works; no budget beyond transfer size assessed yet: no game screen exists) |
 | NFR-DES | MUST | Every screen passes the checklist in DESIGN.md §6 at review | M3 on | in progress | `packages/ui/src/contrast.ts`, `tools/design_lint` (tokens only; no screen exists yet) | `packages/ui/src/contrast.test.ts` | `uat/evidence/F-06-design-tokens/` |
 | NFR-A11Y | MUST | Colour is never the only way to tell players apart (colour plus shape or number) | M3 on | not started | — | — | — |
 | NFR-REL | MUST | A 30-minute 8-player session completes with no crash, no stuck input and no desync between the big screen… | M6, M8 | not started | — | — | — |

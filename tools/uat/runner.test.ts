@@ -1,22 +1,23 @@
+import { execFileSync } from 'node:child_process';
 import type * as Core from './core.js';
 import { EventEmitter } from 'node:events';
 import { it, expect, vi, beforeEach } from 'vitest';
 
-const state = vi.hoisted(() => ({ refuse: '', events: [] as string[], launchAbort: false, kept: false, closed: 0, saved: [] as string[], exitServer: false, children: [] as EventEmitter[] }));
+const state = vi.hoisted(() => ({ servers: [] as string[][], headless: undefined as boolean | undefined, refuse: '', events: [] as string[], launchAbort: false, kept: false, closed: 0, saved: [] as string[], exitServer: false, children: [] as EventEmitter[] }));
 vi.mock('node:fs/promises', () => ({
   access: (path: string) => path.endsWith('.wrangler') && state.refuse === 'wrangler' ? Promise.resolve() : path.endsWith('.wrangler') ? Promise.reject(Object.assign(new Error('missing'), { code: 'ENOENT' })) : Promise.resolve(),
   mkdtemp: () => Promise.resolve('/tmp/fake-uat'), readFile: () => Promise.resolve('"main": "src/worker.ts"'),
   writeFile: () => Promise.resolve(), rm: () => Promise.resolve(),
 }));
-vi.mock('node:child_process', () => ({ execFileSync: () => 'commit' }));
-vi.mock('playwright', () => ({ chromium: { launch: () => { if (state.launchAbort) process.emit('SIGINT'); return Promise.resolve({ close: () => { state.closed++; return Promise.resolve(); } }); } } }));
+vi.mock('node:child_process', () => ({ execFileSync: vi.fn(() => 'commit') }));
+vi.mock('playwright', () => ({ chromium: { launch: (options: { headless: boolean }) => { state.headless = options.headless; if (state.launchAbort) process.emit('SIGINT'); return Promise.resolve({ close: () => { state.closed++; return Promise.resolve(); } }); } } }));
 vi.mock('./core.js', async importOriginal => {
   const original = await importOriginal<typeof Core>();
   return { ...original,
     memoryGate: () => { state.events.push('memory'); if (state.refuse === 'memory') throw new Error('memory refusal'); },
     assertPortFree: () => { state.events.push('port'); return state.refuse === 'port' ? Promise.reject(new Error('port refusal')) : Promise.resolve(); },
     prepareEvidence: () => { state.events.push('prepare'); return Promise.resolve('/tmp/fake-evidence'); },
-    startGroup: () => { const child = Object.assign(new EventEmitter(), { pid: 999999 }); state.children.push(child); return { child, check() { /* Mock server alive. */ } }; },
+    startGroup: (_command: string, args: string[]) => { state.servers.push(args); const child = Object.assign(new EventEmitter(), { pid: 999999 }); state.children.push(child); return { child, check() { /* Mock server alive. */ } }; },
     stopGroup: () => { state.events.push('stop'); return Promise.resolve(); }, ready: () => Promise.resolve(),
   };
 });
@@ -67,4 +68,23 @@ it('names a server that exits mid-run and cleans its groups (NFR-TEST)', async (
     expect(stderr.mock.calls.map(call => String(call[0])).join('')).toContain('Web server exited');
     expect(state.events).toContain('stop');
   } finally { stderr.mockRestore(); process.exitCode = 0; }
+});
+
+it('runs an injected scenario through the same lifecycle and cleanup (NFR-PERF)', async () => {
+  let executed = false;
+  await run(['F-08', '--out', 'perf'], { headed: true, script: '/tmp/perf-scenario.mjs', execute: () => { executed = true; return Promise.resolve(); } });
+  expect(executed).toBe(true);
+  expect(state.headless).toBe(false);
+  expect(state.saved).toEqual(['completed-awaiting-visual-review']);
+  expect(state.closed).toBeGreaterThan(0);
+  expect(state.events).toContain('stop');
+});
+
+it('explicit headless override wins over headed arguments and production uses build then preview (NFR-PERF)', async () => {
+  state.servers = [];
+  vi.mocked(execFileSync).mockClear();
+  await run(['F-08', '--headed'], { headed: false, production: true, command: 'perf real command', script: '/tmp/perf-scenario.mjs', execute: () => Promise.resolve() });
+  expect(state.headless).toBe(true);
+  expect(vi.mocked(execFileSync).mock.calls[0]?.slice(0, 2)).toEqual(['pnpm', ['--dir', 'apps/web', 'exec', 'vite', 'build']]);
+  expect(state.servers.some(args => args.includes('preview'))).toBe(true);
 });

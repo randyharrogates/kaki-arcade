@@ -1,0 +1,28 @@
+Command: VITEST_MAX_WORKERS=1 pnpm verify
+Exit: 0
+
+ Test Files  138 passed (138)
+      Tests  3132 passed | 1 skipped (3133)
+   Start at  09:57:20
+   Duration  475.61s (transform 1.94s, setup 0ms, import 7.14s, tests 454.37s, environment 9ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+$ vite build
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 82 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/.vite/manifest.json          0.18 kB │ gzip:  0.14 kB
+dist/index.html                   0.48 kB │ gzip:  0.32 kB
+dist/assets/index-BPIRmN5K.css   15.53 kB │ gzip:  3.91 kB
+dist/assets/index-tRffVSyx.js   114.30 kB │ gzip: 41.53 kB
+
+✓ built in 96ms
+PERF-022 host: 130315 bytes raw, 45415 bytes gzip / 1500000
+PERF-020 controller (shared entry): 130315 bytes raw, 45415 bytes gzip / 300000
+PERF-022 deploy: 130315 bytes raw, 45415 bytes gzip / 1500000
+no asset sets in assets/src yet
+$ python3 tools/trace_check.py
+152 requirements; 81 in progress, 1 later, 70 not started
+trace check passed

@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — F-08: performance harness; `pnpm perf`
+
+- `tools/perf/` (simulation layer, browser scenario runner, budget evaluator, versioned
+  reports), `uat/perf/lobby-8.mjs`, a dev-only timing hook in
+  `packages/platform/src/harness/perf-timing.ts` that is absent from production builds.
+  Verify keeps the transfer-size budgets and gains a short smoke; browser budgets are checked
+  by `pnpm perf` before a slice with a game screen closes (D-100). Run folders are untracked.
+  `docs/PERFORMANCE.md` §4 and `docs/UAT.md` rewritten to match.
+- (NFR-PERF in progress; no frame-time or input-delay budget assessed yet)
+
 ## 2026-11-17 — F-07: UAT harness; `pnpm uat`
 
 - `tools/uat/` (runner, harness, thumb helper), `uat/slices/` for the host lobby and the join

@@ -79,9 +79,29 @@ Stated on the help page (REL-003):
 
 ## 4. Measurement
 
-- `pnpm perf` starts a headless host with scripted controllers at 1, 4 and 8 players on the
-  heaviest level and writes `uat/evidence/<slice>/perf.json` with frame-time and input-delay
-  percentiles.
+- `pnpm perf` runs every installed game at 1, 4 and 8 players with seeded bots at the fixed
+  timestep until the match ends, and reports step time, allocation per step (whole run and
+  game only) and observed garbage-collection pauses. These are diagnostics: no simulation
+  budget has been set (OQ-034). The heaviest level remains the aim; default settings are what
+  is measured until T-05.
+- `pnpm perf -- <scenario> [--phones 1|4|8]` uses the local pairing stack, one 1920 × 1080
+  host and separate phone contexts in a visible browser (Playwright Chromium, not branded
+  Chrome). It records host frame times, frames over 50 ms, long tasks, the display's refresh
+  rate, whether every phone link is direct (read from the host's WebRTC statistics for the
+  local and remote candidates of every selected pair) and, where a game screen is
+  instrumented, touch-to-apply and touch-to-feedback times. Timing hooks exist only in
+  development builds, so production runs assess frames only. Contexts on one machine do not
+  prove real phone or Wi-Fi delay.
+- A budget is assessed only where it applies. PERF-001 needs a marked round of at least 180 s
+  with at least 600 visible frames; PERF-010 and PERF-012 need 100 observations each. Fewer is
+  "insufficient samples"; a budget that does not apply is "not assessed"; neither is a pass.
+  A run under detected contention never reports a pass. These minima are measurement-validity
+  rules, not budgets (D-100).
+- `pnpm verify` enforces the transfer-size budgets and runs a short smoke of the harness.
+  `pnpm perf` is run by the integrator on a quiet machine before any slice that draws a game
+  screen is closed, and a failure there blocks the slice (D-100).
+- Reports (`perf.json`, schema in `tools/perf/README.md`, and `PERF.md`) go to marked run
+  folders that each run replaces; a reviewed run is copied to an unmarked folder to keep it.
 - Each closed slice records its numbers in `STATUS.md` so a regression is visible as a trend,
   not just a pass or fail.
 - TV numbers (PERF-002) come from a manual run on the real set at each milestone, recorded the

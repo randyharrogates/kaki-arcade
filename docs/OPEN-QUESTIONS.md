@@ -91,7 +91,11 @@ set, not decided: (a) a simulation budget (Codex proposes 95th percentile at mos
 99th at most 3.34 ms per step at eight players; measured today about 0.005 ms, so it would
 catch only gross regressions); (b) a game-only allocation guard for Tabao Rush (about 19 KB
 per step measured, about 1.1 MB a second); (c) whether frame time is accepted on a production
-build or the dev build. Needed by: T-07, the first game screen.
+build or the dev build (the timing hooks exist only in development builds, so a production
+run can assess frames but not input delay); (d) which display rate is the reference for
+PERF-001: the dev Mac's main display runs at 75 Hz, where a frame is 13.3 ms, not 16.7 ms;
+(e) PERF-001 says Chrome and the harness runs Playwright's Chromium: accept that, or run real
+Chrome. Needed by: T-07, the first game screen.
 
 **OQ-035 · Rabakz: does the TV show that someone has answered correctly before the reveal?**
 RZ-005 says the big screen shows "who has answered". A correct answer ends the question within

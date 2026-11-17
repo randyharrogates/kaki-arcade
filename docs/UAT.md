@@ -45,7 +45,7 @@ dashes) and `--help`.
 | Numbered `strip-<name>.jpg` contact sheets | Animation samples; individual frames only with `--frames` |
 | `run.json` | Steps, join-to-seat timings, expected and unexpected errors, the screenshot list, per-shot unsettled flags and sizes |
 | `REPORT.md` | Generated image index, timings and expected errors; UNSETTLED marks a capture that missed settling; visual findings and acceptance await a person |
-| `perf.json` | Frame-time and input-delay percentiles, when F-08 supplies them |
+| `perf.json`, `PERF.md` | Written by `pnpm perf` into its own marked run folder (`simulation/perf`, `<scenario>/perf-<phones>`, or `--slice`/`--out`); replaced each run, ignored by git; copy a reviewed run to an unmarked folder such as `integrator-run-1/` to keep it |
 | `.uat-run` | The harness's ownership marker |
 
 Expected browser errors are registered inside a step, before the action, scoped to the page and

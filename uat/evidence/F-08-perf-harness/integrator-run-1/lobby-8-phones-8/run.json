@@ -1,0 +1,218 @@
+{
+  "slice": "lobby-8",
+  "status": "completed-awaiting-visual-review",
+  "command": "node --expose-gc tools/perf/run.mjs -- lobby-8 --phones 8",
+  "commit": "cc75c375545602b8c6d525684b3f4c05ccfa07f1",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1805.19225,
+      "status": "completed"
+    },
+    {
+      "name": "Join Perf 1",
+      "ms": 2952.398083,
+      "status": "completed"
+    },
+    {
+      "name": "Join Perf 2",
+      "ms": 1499.2685419999998,
+      "status": "completed"
+    },
+    {
+      "name": "Join Perf 3",
+      "ms": 959.1780420000014,
+      "status": "completed"
+    },
+    {
+      "name": "Join Perf 4",
+      "ms": 878.4759999999987,
+      "status": "completed"
+    },
+    {
+      "name": "Join Perf 5",
+      "ms": 846.5705000000016,
+      "status": "completed"
+    },
+    {
+      "name": "Join Perf 6",
+      "ms": 1000.2305000000015,
+      "status": "completed"
+    },
+    {
+      "name": "Join Perf 7",
+      "ms": 880.3966250000012,
+      "status": "completed"
+    },
+    {
+      "name": "Join Perf 8",
+      "ms": 978.1914169999982,
+      "status": "completed"
+    },
+    {
+      "name": "Rename phone 1",
+      "ms": 128.0786670000016,
+      "status": "completed"
+    },
+    {
+      "name": "Leave and return phone 1",
+      "ms": 841.9722920000022,
+      "status": "completed"
+    },
+    {
+      "name": "Rename phone 2",
+      "ms": 68.58470800000214,
+      "status": "completed"
+    },
+    {
+      "name": "Leave and return phone 2",
+      "ms": 1744.4517919999998,
+      "status": "completed"
+    },
+    {
+      "name": "Rename phone 3",
+      "ms": 79.56187499999942,
+      "status": "completed"
+    },
+    {
+      "name": "Leave and return phone 3",
+      "ms": 1299.0057080000006,
+      "status": "completed"
+    },
+    {
+      "name": "Rename phone 4",
+      "ms": 97.43158400000175,
+      "status": "completed"
+    },
+    {
+      "name": "Leave and return phone 4",
+      "ms": 1808.5552499999976,
+      "status": "completed"
+    },
+    {
+      "name": "Rename phone 5",
+      "ms": 68.02070800000001,
+      "status": "completed"
+    },
+    {
+      "name": "Leave and return phone 5",
+      "ms": 1731.8559589999968,
+      "status": "completed"
+    },
+    {
+      "name": "Rename phone 6",
+      "ms": 80.72741700000188,
+      "status": "completed"
+    },
+    {
+      "name": "Leave and return phone 6",
+      "ms": 1744.4268340000017,
+      "status": "completed"
+    },
+    {
+      "name": "Rename phone 7",
+      "ms": 69.4366250000021,
+      "status": "completed"
+    },
+    {
+      "name": "Leave and return phone 7",
+      "ms": 1757.5084580000002,
+      "status": "completed"
+    },
+    {
+      "name": "Rename phone 8",
+      "ms": 102.81929200000013,
+      "status": "completed"
+    },
+    {
+      "name": "Leave and return phone 8",
+      "ms": 1275.7366660000043,
+      "status": "completed"
+    }
+  ],
+  "joins": [
+    {
+      "name": "Perf 1",
+      "ms": 1692.8694169999999
+    },
+    {
+      "name": "Perf 2",
+      "ms": 387.6943749999991
+    },
+    {
+      "name": "Perf 3",
+      "ms": 383.2949579999986
+    },
+    {
+      "name": "Perf 4",
+      "ms": 382.6526670000021
+    },
+    {
+      "name": "Perf 5",
+      "ms": 374.5640000000021
+    },
+    {
+      "name": "Perf 6",
+      "ms": 395.4243749999987
+    },
+    {
+      "name": "Perf 7",
+      "ms": 382.9332080000022
+    },
+    {
+      "name": "Perf 8",
+      "ms": 381.0372500000012
+    }
+  ],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-perf-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-perf-phone.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-perf-host.jpg",
+    "02-phone1-perf-phone.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-perf-host.jpg",
+      "bytes": 218578
+    },
+    {
+      "file": "02-phone1-perf-phone.jpg",
+      "bytes": 144855
+    },
+    {
+      "file": "PERF.md",
+      "bytes": 2203
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1871
+    },
+    {
+      "file": "perf.json",
+      "bytes": 53516
+    },
+    {
+      "file": "run.json",
+      "bytes": 4286
+    }
+  ],
+  "totalBytes": 425346,
+  "maxBytes": 12582912
+}

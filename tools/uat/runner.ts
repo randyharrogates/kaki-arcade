@@ -10,13 +10,13 @@ import { errorMessage, prepareEvidence, parseArgs, selectPorts, memoryGate, asse
 import { Harness } from './harness.js';
 import { builtInSlices } from './slices.js';
 
-export async function run(args = process.argv.slice(2)) {
+export async function run(args = process.argv.slice(2), extension?: { production?: boolean; command?: string; headed?: boolean; script: string; execute: (harness: Harness) => Promise<void> }) {
   if (args.filter(a => a !== '--').includes('--help')) {
     process.stdout.write('Usage: pnpm uat -- <slice> [--out name] [--max-mb 12] [--timeout-min 10] [--phones 1..8] [--headed] [--keep] [--frames]\nSlices: ' + Object.keys(builtInSlices).join(', ') + '\n');
     return;
   }
-  const options = parseArgs(args); const root = process.cwd();
-  const script = resolve(root, 'uat/slices', `${options.slice}.mjs`); await access(script);
+  const options = parseArgs(args); options.headed = extension?.headed ?? options.headed; const root = process.cwd();
+  const script = extension?.script ?? resolve(root, 'uat/slices', `${options.slice}.mjs`); await access(script);
   const ports = selectPorts(process.env, basename(root));
   const origin = `http://127.0.0.1:${String(ports.web)}`; const signalUrl = `http://127.0.0.1:${String(ports.signal)}`;
   const wranglerState = join(root, 'apps/signal/.wrangler');
@@ -73,7 +73,8 @@ export async function run(args = process.argv.slice(2)) {
         await recordWrangler();
       };
       await startSignal(); controller.signal.throwIfAborted();
-      web = startGroup('pnpm', ['--dir', 'apps/web', 'exec', 'vite', '--host', '127.0.0.1', '--port', String(ports.web), '--strictPort'], { cwd: root, env: { ...process.env, KAKI_SIGNAL_URL: signalUrl, KAKI_JOIN_ORIGIN: origin, KAKI_PORT_WEB: String(ports.web) } });
+      if (extension?.production) execFileSync('pnpm', ['--dir', 'apps/web', 'exec', 'vite', 'build'], { cwd: root, env: { ...process.env, KAKI_SIGNAL_URL: signalUrl, KAKI_JOIN_ORIGIN: origin }, stdio: 'pipe' });
+      web = startGroup('pnpm', ['--dir', 'apps/web', 'exec', 'vite', ...(extension?.production ? ['preview'] : []), '--host', '127.0.0.1', '--port', String(ports.web), '--strictPort'], { cwd: root, env: { ...process.env, KAKI_SIGNAL_URL: signalUrl, KAKI_JOIN_ORIGIN: origin, KAKI_PORT_WEB: String(ports.web) } });
       watch(web, 'Web');
       await ready(origin, web.check, controller.signal, 60000, async response => response.ok && (await response.text()).includes('<title>Kaki Arcade</title>'));
       browser = await chromium.launch({ headless: !options.headed }); if (controller.signal.aborted) { await browser.close(); controller.signal.throwIfAborted(); }
@@ -81,10 +82,10 @@ export async function run(args = process.argv.slice(2)) {
         async resetSignal() { await stopSignal(); await rm(join(tempDir, 'state'), { recursive: true, force: true }); await startSignal(); } });
       harness.keepFrames = options.frames; harness.signalOrigin = signalUrl;
       harness.maxBytes = options.maxMb * 1024 * 1024;
-      harness.command = ['node tools/uat/run.mjs', ...args].join(' ');
+      harness.command = extension?.command ?? ['node tools/uat/run.mjs', ...args].join(' ');
       harness.commit = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
       await harness.init();
-      const slice = builtInSlices[options.slice] ?? (await import(pathToFileURL(script).href) as { default: (harness: Harness) => Promise<void> }).default;
+      const slice = extension?.execute ?? builtInSlices[options.slice] ?? (await import(pathToFileURL(script).href) as { default: (harness: Harness) => Promise<void> }).default;
       await slice(harness); controller.signal.throwIfAborted(); harness.assertNoUnexpectedErrors();
       await harness.assertSize('completed-awaiting-visual-review');
       completed = true;

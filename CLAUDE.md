@@ -101,9 +101,9 @@ Not all exist yet; they are created in M2 and M3. Keep this list true.
 | Command | Does |
 |---|---|
 | `pnpm dev` | Host, controller and local pairing server (works today; `KAKI_HOST=<LAN IP>` for phones) |
-| `pnpm verify` | Workspace check, typecheck, ESLint, design lint, unit tests, build, trace check (works today; size budgets and performance join with F-08) |
+| `pnpm verify` | Workspace check, typecheck, ESLint, design lint, unit tests (including the performance-harness smoke), build with transfer-size budgets, trace check (works today; D-100) |
 | `pnpm uat -- <slice>` | Playwright UAT (works today); output in `uat/evidence/<slice>/auto/` or `--out <name>`; replaces marked run folders only; automated completion awaits visual review |
-| `pnpm perf` | Performance harness with scripted controllers |
+| `pnpm perf` | Performance harness (works today). Bare: seeded-bot simulations of every installed game at 1, 4 and 8 players (diagnostic; no simulation budget yet, OQ-034). `pnpm perf -- <scenario> [--phones 1\|4\|8] [--headless] [--build production] [--slice <name>] [--out <name>]` runs a browser scenario from `uat/perf/` (headed by default). Output in marked run folders `uat/evidence/simulation/perf/` or `uat/evidence/<scenario>/perf-<phones>/`. Run on a quiet machine before any slice that draws a game screen closes; a failure blocks the slice (D-100) |
 | `pnpm assets` | Render and pack art from Blender sources |
 | `python3 tools/trace_check.py` | Check the PRD against `docs/TRACEABILITY.md` (works today) |
 | `tools/agents/memcheck.sh <agent\|uat\|render\|perf>` | Check free memory before starting any concurrent job (works today) |

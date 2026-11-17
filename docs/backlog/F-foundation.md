@@ -15,7 +15,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | F-01 | pnpm workspace, strict TypeScript, lint (including the φ-scale spacing rule and no raw colours outside `packages/ui`), Vitest, and `pnpm verify` with the trace check wired in | NN-7, NN-8, NFR-TEST | — | 0 | merged |
 | F-09 | Agent tooling: an issue-builder agent definition, an `/issue` command, and a helper that creates the worktree and prints its ports | NN-8 | — | 0 | merged |
 | F-07 | UAT harness: Playwright host plus N phone contexts with real pairing, scripted thumbs, screenshot and frame-strip helpers, `pnpm uat` | NFR-TEST | F-01 | 1 | merged |
-| F-08 | Performance harness: scripted controllers at 1, 4 and 8 players, frame-time and input-delay percentiles, budget check, `pnpm perf` | NFR-PERF, PERF-001, PERF-010 | F-01, F-03 | 1 | doing (Codex) |
+| F-08 | Performance harness: scripted controllers at 1, 4 and 8 players, frame-time and input-delay percentiles, budget check, `pnpm perf` | NFR-PERF, PERF-001, PERF-010 | F-01, F-03 | 1 | done (harness; budgets assessed from T-07 on) |
 
 ## Story F2 — Tracks meet at contracts, not at each other's code
 
@@ -61,6 +61,16 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   step time and never reaches the game. `step()` refuses after the match is over although the
   contract lets a game be stepped after the end.
 
+- **From F-08 (performance harness), due before T-07.** Launch the host in its own browser
+  instance for frame-budget runs (the first phone opening in the same Chromium is the prime
+  suspect for a 1,027 ms first frame in the integrator's first lobby run; it did not recur).
+  A module-provided performance data fixture to replace the Rabakz import in
+  `tools/perf/headless.ts`. Offer real Chrome (`channel: 'chrome'`): PERF-001 says Chrome.
+  Each T-, P-, R- and K-track screen adds a scenario in `uat/perf/` and wires the dev-only
+  timing hook (touch, receipt, applied, visible feedback). A real Tabao Rush browser round
+  needs garbage-collection tracing; long tasks are not proof. Not run yet: 1 and 4 phones,
+  `--headless`, `--build production`, a quiet-machine repeat. Still open from F-04, C-04 and
+  C-10: the input buffer's bytes per step under a real session (bots bypass `expandInput`).
 - **From F-07 (UAT harness).** Every later slice gets a script in `uat/slices/`. Not proven:
   `--headed`, `--keep`, `--frames` and the thumb helper in a real browser (K-07 is the first
   user of thumbs). A dev-only `&changeAfter=<ms>` on the host demo would let strips load already

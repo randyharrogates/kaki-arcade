@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "node tools/dev.mjs",
     "uat": "node tools/uat/run.mjs",
+    "perf": "node --expose-gc tools/perf/run.mjs",
     "check:workspace": "node tools/check_workspace.mjs",
     "typecheck": "tsc -b tsconfig.build.json",
     "lint": "eslint . --max-warnings 0",

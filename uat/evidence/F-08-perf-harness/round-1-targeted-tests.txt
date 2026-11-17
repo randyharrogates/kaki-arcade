@@ -1,0 +1,13 @@
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08
+
+Evidence captured. Keeping browsers and servers until Ctrl-C (configured overall timeout still applies).
+Evidence captured. Keeping browsers and servers until Ctrl-C (configured overall timeout still applies).
+test memory gate
+test memory gate
+
+ Test Files  5 passed (5)
+      Tests  27 passed (27)
+   Start at  11:36:12
+   Duration  376ms (transform 474ms, setup 0ms, import 647ms, tests 122ms, environment 0ms)
+

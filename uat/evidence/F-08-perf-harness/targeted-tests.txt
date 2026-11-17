@@ -1,0 +1,13 @@
+Command: VITEST_MAX_WORKERS=2 pnpm exec vitest run tools/perf tools/uat
+Exit: 0
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/F-08
+
+Evidence captured. Keeping browsers and servers until Ctrl-C (configured overall timeout still applies).
+Evidence captured. Keeping browsers and servers until Ctrl-C (configured overall timeout still applies).
+
+ Test Files  6 passed (6)
+      Tests  34 passed (34)
+   Start at  09:17:50
+   Duration  973ms (transform 301ms, setup 0ms, import 406ms, tests 858ms, environment 0ms)
+

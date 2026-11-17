@@ -1,0 +1,40 @@
+ADDR 2001:0:4136:e378:8000:63bf:3fff:fdd2 -> ["2001:0:4136:e378::/64","2001:0:4136::/48"]
+ADDR 2001:0:4136:e378:8000:63bf:1111:2222 -> ["2001:0:4136:e378::/64","2001:0:4136::/48"]
+ADDR 64:ff9b::192.0.2.1 -> ["64:ff9b:0:0::/64","64:ff9b:0::/48"]
+ADDR fe80::1%25en0 -> ["fe80:0:0:0::/64","fe80:0:0::/48"]
+ADDR FE80::1%ETH0 -> ["fe80:0:0:0::/64","fe80:0:0::/48"]
+G1 guess-path failed guesses/hour/client: 81
+G2 after 129 overflow failures: honest join retry=0; overflow creates before refusal=244; honest create retry=0
+G3 parallel unresolved guesses for one client on the overflow path: 17
+G4 create retry after churn eviction: 60
+P1 honest opening pushed out within 85 ms by 16 attacker upgrades: false
+test memory gate
+test memory gate
+Evidence captured. Keeping browsers and servers until Ctrl-C (configured overall timeout still applies).
+Evidence captured. Keeping browsers and servers until Ctrl-C (configured overall timeout still applies).
+
+ Test Files  140 passed (140)
+      Tests  3142 passed | 1 skipped (3143)
+   Start at  11:36:34
+   Duration  385.37s (transform 2.52s, setup 0ms, import 9.10s, tests 744.56s, environment 10ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+$ vite build
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 82 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/.vite/manifest.json          0.18 kB │ gzip:  0.14 kB
+dist/index.html                   0.48 kB │ gzip:  0.32 kB
+dist/assets/index-BPIRmN5K.css   15.53 kB │ gzip:  3.91 kB
+dist/assets/index-tRffVSyx.js   114.30 kB │ gzip: 41.53 kB
+
+✓ built in 86ms
+PERF-022 host: 130315 bytes raw, 45415 bytes gzip / 1500000
+PERF-020 controller (shared entry): 130315 bytes raw, 45415 bytes gzip / 300000
+PERF-022 deploy: 130315 bytes raw, 45415 bytes gzip / 1500000
+no asset sets in assets/src yet
+$ python3 tools/trace_check.py
+152 requirements; 81 in progress, 1 later, 70 not started
+trace check passed
