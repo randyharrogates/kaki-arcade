@@ -1,0 +1,412 @@
+{
+  "slice": "P-04-table",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- P-04-table --out round3 --max-mb 16",
+  "commit": "1f1c4895c1a05b546573a33c6a288eba369c4d79",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "1 seats: memorise",
+      "ms": 110.26529200000004,
+      "status": "completed"
+    },
+    {
+      "name": "1 seats: picking",
+      "ms": 98.72745799999984,
+      "status": "completed"
+    },
+    {
+      "name": "1 seats: locked",
+      "ms": 497.5357079999999,
+      "status": "completed"
+    },
+    {
+      "name": "1 seats: swap",
+      "ms": 100.63529100000005,
+      "status": "completed"
+    },
+    {
+      "name": "1 seats: reveal",
+      "ms": 98.09841700000015,
+      "status": "completed"
+    },
+    {
+      "name": "4 seats: memorise",
+      "ms": 96.62658300000021,
+      "status": "completed"
+    },
+    {
+      "name": "4 seats: picking",
+      "ms": 99.83645800000022,
+      "status": "completed"
+    },
+    {
+      "name": "4 seats: locked",
+      "ms": 499.55083300000024,
+      "status": "completed"
+    },
+    {
+      "name": "4 seats: swap",
+      "ms": 98.44079099999999,
+      "status": "completed"
+    },
+    {
+      "name": "4 seats: reveal",
+      "ms": 99.18579099999988,
+      "status": "completed"
+    },
+    {
+      "name": "8 seats: memorise",
+      "ms": 119.10308400000031,
+      "status": "completed"
+    },
+    {
+      "name": "8 seats: picking",
+      "ms": 93.38850000000002,
+      "status": "completed"
+    },
+    {
+      "name": "8 seats: locked",
+      "ms": 499.0217499999999,
+      "status": "completed"
+    },
+    {
+      "name": "8 seats: swap",
+      "ms": 100.33691700000054,
+      "status": "completed"
+    },
+    {
+      "name": "8 seats: reveal",
+      "ms": 100.15645900000072,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-1-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-1-picking.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-1-locked.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-1-swap.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-1-reveal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-4-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-4-picking.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-4-locked.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-4-swap.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-4-reveal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-8-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-8-picking.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-8-locked.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-8-swap.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-8-reveal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-flip-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-flip-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-flip-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-flip-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-flip-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-flip-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-swap-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-swap-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-swap-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-swap-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-host-swap-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-reveal-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-host-reveal-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-host-reveal-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-reveal-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-host-reveal-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-host-reveal-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-host-round-4-row-swap-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-host-round-4-row-swap-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-host-round-4-row-swap-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-host-round-4-row-swap-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-host-round-4-row-swap-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-host-lock-in-pulse-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-host-lock-in-pulse-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-host-lock-in-pulse-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-host-lock-in-pulse-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-host-lock-in-pulse-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "48-host-reduced-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "49-host-reduced-swap.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "50-host-reduced-locked.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "51-host-reduced-reveal.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-1-memorise.jpg",
+    "02-host-1-picking.jpg",
+    "03-host-1-locked.jpg",
+    "04-host-1-swap.jpg",
+    "05-host-1-reveal.jpg",
+    "06-host-4-memorise.jpg",
+    "07-host-4-picking.jpg",
+    "08-host-4-locked.jpg",
+    "09-host-4-swap.jpg",
+    "10-host-4-reveal.jpg",
+    "11-host-8-memorise.jpg",
+    "12-host-8-picking.jpg",
+    "13-host-8-locked.jpg",
+    "14-host-8-swap.jpg",
+    "15-host-8-reveal.jpg",
+    "22-strip-flip.jpg",
+    "28-strip-swap.jpg",
+    "35-strip-reveal.jpg",
+    "41-strip-round-4-row-swap.jpg",
+    "47-strip-lock-in-pulse.jpg",
+    "48-host-reduced-memorise.jpg",
+    "49-host-reduced-swap.jpg",
+    "50-host-reduced-locked.jpg",
+    "51-host-reduced-reveal.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-1-memorise.jpg",
+      "bytes": 325805
+    },
+    {
+      "file": "02-host-1-picking.jpg",
+      "bytes": 379164
+    },
+    {
+      "file": "03-host-1-locked.jpg",
+      "bytes": 378916
+    },
+    {
+      "file": "04-host-1-swap.jpg",
+      "bytes": 376590
+    },
+    {
+      "file": "05-host-1-reveal.jpg",
+      "bytes": 328662
+    },
+    {
+      "file": "06-host-4-memorise.jpg",
+      "bytes": 329477
+    },
+    {
+      "file": "07-host-4-picking.jpg",
+      "bytes": 389057
+    },
+    {
+      "file": "08-host-4-locked.jpg",
+      "bytes": 388690
+    },
+    {
+      "file": "09-host-4-swap.jpg",
+      "bytes": 380820
+    },
+    {
+      "file": "10-host-4-reveal.jpg",
+      "bytes": 347903
+    },
+    {
+      "file": "11-host-8-memorise.jpg",
+      "bytes": 332286
+    },
+    {
+      "file": "12-host-8-picking.jpg",
+      "bytes": 399342
+    },
+    {
+      "file": "13-host-8-locked.jpg",
+      "bytes": 398772
+    },
+    {
+      "file": "14-host-8-swap.jpg",
+      "bytes": 383634
+    },
+    {
+      "file": "15-host-8-reveal.jpg",
+      "bytes": 367834
+    },
+    {
+      "file": "22-strip-flip.jpg",
+      "bytes": 891093
+    },
+    {
+      "file": "28-strip-swap.jpg",
+      "bytes": 839244
+    },
+    {
+      "file": "35-strip-reveal.jpg",
+      "bytes": 831216
+    },
+    {
+      "file": "41-strip-round-4-row-swap.jpg",
+      "bytes": 1870524
+    },
+    {
+      "file": "47-strip-lock-in-pulse.jpg",
+      "bytes": 2003146
+    },
+    {
+      "file": "48-host-reduced-memorise.jpg",
+      "bytes": 332286
+    },
+    {
+      "file": "49-host-reduced-swap.jpg",
+      "bytes": 387590
+    },
+    {
+      "file": "50-host-reduced-locked.jpg",
+      "bytes": 398838
+    },
+    {
+      "file": "51-host-reduced-reveal.jpg",
+      "bytes": 367718
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2508
+    },
+    {
+      "file": "run.json",
+      "bytes": 8413
+    }
+  ],
+  "totalBytes": 13439565,
+  "maxBytes": 16777216
+}

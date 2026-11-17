@@ -133,7 +133,11 @@ Rules:
   controlled cook is drawn at its latest simulated position (design rule: no tween while held).
 - **Renderer (spike):** PixiJS (WebGL) for game scenes on the host. Sprites come from texture
   atlases; a level's static kitchen is one baked background image. Shell screens (landing,
-  lobby, picker, results) are DOM with CSS and the Web Animations API.
+  lobby, picker, results) are DOM with CSS and the Web Animations API. Peek Poker's table
+  (P-04) draws its cards on one 2D canvas from the card atlas, with the seat list and hands
+  list in DOM beside it; everything it draws is decoded and warmed before the table reports
+  ready, so the first flip, swap or lock-in costs no frame (one 350 ms first-use frame was
+  measured and removed in P-04).
 - **Controller rendering:** DOM and Pointer Events, no canvas, so the controller page stays
   small and starts fast. Touch handling is `touch-action: none` with pointer capture.
 - **Shell framework (spike):** Preact, chosen for size on a slow TV. Shell motion uses the

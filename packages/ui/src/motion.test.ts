@@ -468,3 +468,18 @@ it('D-140 exit-only crossfade fades out with the shorter exit duration', () => {
   expect(crossfade({ exitOnly:true,reduced:false }).outgoing.keyframes.at(-1)).toEqual({ opacity:0 });
   expect(crossfade({ reduced:false }).outgoing.keyframes.at(-1)).toEqual({ opacity:1 });
 });
+
+it('perpendicular arcs reverse their normal when endpoints reverse and clamp progress', async () => {
+  const { perpendicularArcPoint } = await import('./motion');
+  const a={x:0,y:0}, b={x:0,y:100};
+  expect(perpendicularArcPoint(a,b,0.5,34)).toEqual({x:-34,y:50});
+  expect(perpendicularArcPoint(b,a,0.5,34)).toEqual({x:34,y:50});
+  expect(perpendicularArcPoint(a,b,-1,34)).toEqual(a);
+  expect(perpendicularArcPoint(a,b,2,34)).toEqual(b);
+});
+
+it('perpendicular arcs use caller progress linearly along the path',async()=>{
+ const {perpendicularArcPoint,cardLift}=await import('./index');
+ for(let i=0;i<=100;i++) expect(perpendicularArcPoint({x:0,y:0},{x:0,y:100},i/100,34).y).toBeCloseTo(i,9);
+ expect(cardLift.scale).toBe(1.05);expect(cardLift.shadowScale).toBeGreaterThan(1);expect(cardLift.shadowAlpha).toBeLessThan(0.2);expect(cardLift.shadowY).toBe(8);
+});

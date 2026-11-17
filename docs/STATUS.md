@@ -368,6 +368,15 @@ dishes are built from their parts (kaya toast with kopi or teh in a side cup); c
 portion inside its container and visible. Evidence: `uat/evidence/A-04-dishes/round9`, `round11`,
 `round12`. Not yet drawn in a game; polish (rojak heap, chopped turnip and chicken at 1×) is A-10.
 
+### Peek Poker table on the TV (P-04)
+A development page (`games/peek-poker/dev/`) draws the TV table for 1 to 8 players: the 16-card
+grid and 3 shared cards, the memorise countdown, swaps of two cards or two rows on arcs (one ease,
+rows staggered with the upper one lifted, D-155, D-158), seat markers as players lock in (never
+what they picked), and the reveal turning every card over with each player's picks marked by
+seat colour and number, then the ranked hands list wiping in. Reduced motion shows the end state
+with a "Swapped" outline. With 8 players the frame time stays at 16.7 ms median and 18.7 ms worst
+(`uat/evidence/P-04-table/perf-8-r5/`). It is not yet loaded by the console (C-10/C-15).
+
 ### Playing cards (A-08)
 The full Peek Poker deck exists as art: 52 faces, the back and five flip frames, rendered in
 Blender from `tools/blender/cards.py`. Ranks are DM Sans Bold (D-150) at one shared height, so the

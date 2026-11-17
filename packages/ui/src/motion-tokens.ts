@@ -123,3 +123,6 @@ export const motionGeometry = {
 
 /** Outgoing content during a mask wipe (D-092). */
 export const GHOST_OPACITY = 0.08;
+
+/** Raised cards retain a soft, deeper second shadow throughout their move. */
+export const cardLift = { scale: 1.05, shadowAlpha: 0.12, shadowScale: 1.05, shadowY: 8 } as const;

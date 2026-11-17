@@ -5,7 +5,8 @@
   "description": "Peek Poker memory poker game",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./host": "./host/index.ts"
   },
   "dependencies": {
     "@kaki/platform": "workspace:*",

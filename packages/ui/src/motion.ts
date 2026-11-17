@@ -285,6 +285,20 @@ export function arcPoint(from: Point, to: Point, progress: number, height: numbe
   return out;
 }
 
+/** Arc normal to the path. Reversing endpoints bows to the opposite side.
+ * The projection along the path stays monotonic and within the endpoints. */
+export function perpendicularArcPoint(from: Point, to: Point, progress: number, height: number = arcHeight(from, to), out = { x: 0, y: 0 }): Point {
+  const t = Math.min(1, Math.max(0, progress));
+  const dx = to.x - from.x, dy = to.y - from.y;
+  const length = Math.hypot(dx, dy);
+  // An elliptical half-turn leaves room beside neighbouring cards before crossing.
+  const along = t;
+  const offset = t === 0 || t === 1 ? 0 : height * Math.sin(Math.PI * t);
+  out.x = from.x + dx * along - (length ? dy / length : 0) * offset;
+  out.y = from.y + dy * along + (length ? dx / length : 0) * offset;
+  return out;
+}
+
 export interface ArcOptions extends ReducedOption {
   /** How high above the straight line the path peaks, in px. */
   readonly height?: number;

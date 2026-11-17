@@ -1,0 +1,38 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist/host",
+    "tsBuildInfoFile": "dist/.host.tsbuildinfo",
+    "lib": [
+      "ES2023",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  },
+  "include": [
+    "host"
+  ],
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "host/**/*.test.ts",
+    "host/**/*.test.tsx"
+  ],
+  "references": [
+    {
+      "path": "../../packages/platform/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/sim-core/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/ui/tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ]
+}

@@ -55,13 +55,13 @@ export function publicView(state: State) {
   const revealed = state.phase === 'reveal' || state.phase === 'scoreboard' || state.phase === 'over';
   const faceUp = revealed || (state.phase === 'memorise' && !state.paused);
   return {
-    phase: state.phase, round: state.round,
+    phase: state.phase, round: state.round, totalRounds: state.settings.rounds,
     seconds: Math.ceil(state.left / STEPS_PER_SECOND),
     grid: faceUp ? state.grid.map(cardCode) : null,
     shared: state.shared.map(cardCode),
     swap: state.phase === 'swap' ? state.swaps[state.swapIndex] ?? null : null,
     players: state.players.map((p) => ({
-      id: p.info.id, seat: p.info.seat, colour: p.info.colour, score: p.score,
+      id: p.info.id, name: p.info.name, seat: p.info.seat, colour: p.info.colour, score: p.score,
       waiting: p.waiting, locked: p.locked,
       picks: revealed && !p.waiting ? p.picks : null,
     })),

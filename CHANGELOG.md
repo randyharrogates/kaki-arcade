@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — P-04: Peek Poker table on the TV
+
+- `games/peek-poker/host/`: canvas table with grid, shared cards, flips with masks, swaps on arcs
+  (rows staggered and lifted, D-155, D-158), lock-in markers, and the reveal with picks marked and
+  a ranked hands list; reduced motion keeps every state change. Everything is warmed before
+  ready (a 350 ms first-use frame removed). PP-003, PP-004, PP-008, PP-021, PP-031 (in progress:
+  console wiring is C-10/C-15). Evidence `uat/evidence/P-04-table/round5/`, `perf-8-r5/`.
+
 ## 2026-11-18 — C-11b: team setup polish
 
 - The leader's "Move players" grid: Red and Blue halves with headings and a divider, columns by

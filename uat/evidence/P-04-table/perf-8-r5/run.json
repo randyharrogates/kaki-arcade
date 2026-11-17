@@ -1,0 +1,162 @@
+{
+  "slice": "P-04-table",
+  "status": "completed-awaiting-visual-review",
+  "command": "node --expose-gc tools/perf/run.mjs peek-poker-table --phones 8 --slice P-04-table --out perf-8-r5",
+  "commit": "3903e1f5900aaf95eb802f6cbfa8819172ac116f",
+  "viewports": [],
+  "steps": [
+    {
+      "name": "Cycle 1: memorise",
+      "ms": 2152.422125,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: swap",
+      "ms": 2162.4753329999994,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: picking",
+      "ms": 2164.538791000001,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: locked",
+      "ms": 2158.5301660000005,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: reveal",
+      "ms": 2164.079042000001,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: memorise",
+      "ms": 2166.052708000001,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: swap",
+      "ms": 2159.4457089999996,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: picking",
+      "ms": 2165.3839160000025,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: locked",
+      "ms": 2164.298583,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: reveal",
+      "ms": 2164.8355420000007,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: memorise",
+      "ms": 2164.405332999999,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: swap",
+      "ms": 2162.1512089999997,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: picking",
+      "ms": 2167.7763750000013,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: locked",
+      "ms": 2158.9879999999976,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: reveal",
+      "ms": 2165.9931249999936,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: memorise",
+      "ms": 2158.417916999999,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: swap",
+      "ms": 2159.3027500000026,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: picking",
+      "ms": 2160.469333000001,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: locked",
+      "ms": 2159.3889169999966,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: reveal",
+      "ms": 2164.3662079999995,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: memorise",
+      "ms": 2165.230958,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: swap",
+      "ms": 2161.545999999995,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: picking",
+      "ms": 2164.3874579999974,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: locked",
+      "ms": 2160.238124999996,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: reveal",
+      "ms": 2157.8910419999957,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [],
+  "screenshots": [],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "PERF.md",
+      "bytes": 2553
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1456
+    },
+    {
+      "file": "perf.json",
+      "bytes": 99940
+    },
+    {
+      "file": "run.json",
+      "bytes": 3341
+    }
+  ],
+  "totalBytes": 107327,
+  "maxBytes": 12582912
+}

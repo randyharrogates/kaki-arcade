@@ -6,7 +6,8 @@ import { compareHands, evaluate, HAND_POINTS } from './evaluator';
 import type { State, Swap } from './state';
 
 export const MEMORISE_SECONDS = [20, 16, 12, 10, 8, 7, 6] as const;
-export const SWAP_STEPS = secondsToSteps(2);
+export const SWAP_SECONDS = 2;
+export const SWAP_STEPS = secondsToSteps(SWAP_SECONDS);
 export const REVEAL_STEPS = secondsToSteps(8);
 export const SCOREBOARD_STEPS = secondsToSteps(5);
 export function difficulty(round: number, rounds: number): number {

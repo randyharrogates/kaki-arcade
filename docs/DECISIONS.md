@@ -1337,3 +1337,8 @@ accepted, and Start is then disabled with the reason until the match can be fill
 per game in host memory for the room's life, not in the host snapshot. Contract additions (by the
 integrator before Codex): `MultiField.noneLabel` and `ChoiceOption.group`. Randy may overrule.
 
+**D-158 · 2026-11-18 · Claude** (under D-155; P-04 review) — A row swap's peak speed may be up to
+3.5 times its average (card swaps stay at 3): each row moves over 0.8 of the swap with the 20%
+stagger, which measures 3.43 times. The lifted row's shadow uses the ink colour, not the panel
+edge.
+
