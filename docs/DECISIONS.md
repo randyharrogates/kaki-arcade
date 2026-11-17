@@ -1183,3 +1183,13 @@ Comparison: https://claude.ai/artifact/8zURC9EUKPeTs6Ajaxz5t6.
 field split down the middle by a line, red on the left and blue on the right, players standing on
 their side; the phone shows two big team buttons in equal halves, the current team ticked. Board:
 https://claude.ai/artifact/DdL2wQo2WGzNH6aFnfHCZw (Claude had recommended B; Randy chose C).
+
+**D-144 · 2026-11-18 · Claude** (correcting D-142's numbers after the S-02 re-review) — The cook
+storage comparison was first encoded with Pillow's default exact=False, which the pipeline never
+uses (`tools/assets/pipeline.py` emits WebP with exact=True so the edge padding under transparent
+pixels survives). With the pipeline's settings, all cook animations project to about 7.3 MB stored
+lossless as packed today (not 6.3 MB) and about 2.8 MB at lossy quality 90 (not 2.0 MB); quality 95
+is 3.4 MB and quality 85 is 2.5 MB. Option C, lossy quality 90 with exact colour and alpha quality
+100, still stands. "Outlines exact" was an overclaim: transparency, masks and anchors are exact, but
+opaque edge pixels may change by up to 44 levels. The comparison page now shows images made with
+the pipeline's settings: https://claude.ai/artifact/8zURC9EUKPeTs6Ajaxz5t6.
