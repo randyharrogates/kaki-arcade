@@ -1,3 +1,4 @@
+import { viewChannel } from './view-channel';
 import { createSessionAdapter, animationFrames } from './session-adapter';
 import type { SessionDisplay } from './session-adapter';
 import type { SessionEvent } from '@kaki/platform';
@@ -85,6 +86,7 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
       };
     } },
     dial: (credentials: HostCredentials | undefined, callbacks: DialCallbacks, registerStop) => new Promise((resolve, reject) => {
+      const channels = new Map<string, ReturnType<typeof viewChannel>>();
       let transport: Awaited<ReturnType<typeof createHostTransport>> | undefined;
       let acknowledgement: { code: string; hostToken: string; reopened: boolean } | undefined;
       let cancelled = false;
@@ -124,12 +126,16 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
             ...(response.status === 429 ? { retryAfterMs: retryAfterDelay(response.headers.get('Retry-After'), Date.now()) } : {}) };
         },
         onRoom: message => { acknowledgement = { code: message.code, hostToken: message.hostToken, reopened: message.reopened }; finish(); },
-        onPeer: (id, peer) => { links.peer(id, peer); callbacks.peer(id, peer); },
-        onControl: (message, _identity, id) => { callbacks.control(id, message); },
+        onPeer: (id, peer) => {
+          const channel = viewChannel(); channels.set(id, channel);
+          const wrapped = { ...peer, sendHost: (message: Parameters<typeof peer.sendHost>[0]) => channel.send(message, m => peer.sendHost(m)) };
+          links.peer(id, wrapped); callbacks.peer(id, wrapped);
+        },
+        onControl: (message, _identity, id) => { callbacks.control(id, channels.get(id)?.receive(message) ?? null); },
         onState: (state, id) => {
           // A disconnected peer must re-authenticate on a new connection before using its held seat.
           if (state === 'disconnected') transport?.peers.get(id)?.close();
-          if (state === 'closed') callbacks.dropped(id);
+          if (state === 'closed') { channels.delete(id); callbacks.dropped(id); }
         },
         onLink: (quality, id) => { callbacks.quality(id, quality); },
         onPairingState: state => {

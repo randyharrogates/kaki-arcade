@@ -9,9 +9,9 @@ export async function loadSessionGame(id: string, loader: typeof loadGame = load
   return { game: game as unknown as LoadedGame, finalScreen: sessionRegistrations[id]?.finalScreen ?? false, ...(Screen ? { Screen } : {}), ...(viewKey ? { viewKey } : {}) };
 }
 /** Resolve the module's declared preload keys before and after its settings are known. */
-export async function prepareSession(game: LoadedGame, seed: number) {
+export async function prepareSession(game: LoadedGame, seed: number, teams = false) {
   const data: Record<string, JsonValue> = {};
-  const context: InitContext = { data, saved: null, teams: false };
+  const context: InitContext = { data, saved: null, teams };
   async function resolve(settings: object | null) {
     for (const item of game.preload?.(settings) ?? []) {
       const resolver = sessionRegistrations[game.meta.id]?.data[item.key];

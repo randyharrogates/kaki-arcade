@@ -1,6 +1,11 @@
+import '../../../packages/controller-kit/src/layout.css';
+import '../../../packages/controller-kit/src/buttons.css';
+import '../../../packages/controller-kit/src/stick.css';
+import { PhoneTeams } from './team-setup-route';
 import { ChoiceShape } from './choice-shape';
 import { pageWake, shellAfterWake } from './phone-wake';
-import { ControllerShell } from '@kaki/controller-kit';
+import type { LayoutOutput } from '@kaki/controller-kit';
+import { ControllerShell, LayoutEngine } from '@kaki/controller-kit';
 import '@kaki/controller-kit/shell.css';
 import { pickerAnnouncement } from './picker-announcement';
 import { duration } from '@kaki/ui';
@@ -61,14 +66,17 @@ export function PhonePage() {
   }, [!controller && view.connected, controller !== null]);
   const results = view.connected && view.phase === 'results';
   const picker = view.connected && !view.renaming && !results ? view.picker : null;
+  const ownTeam = view.teamSetup?.screen === 'teams' ? view.teamSetup.players.find(p => p.seat === view.seat)?.team : undefined;
   const announcement = pickerAnnouncement(view);
+  const teamAnnouncement = ownTeam === undefined ? '' : ` Your team is ${ownTeam === 0 ? 'Red' : 'Blue'}. ${view.teamSetup?.notice ?? ''}`;
   const form = view.action === 'Join' && !view.renaming;
   const feedback = (): void => { if ('vibrate' in navigator) navigator.vibrate(duration.fast); };
-  if (controller && wakeReady) return <ControllerShell {...controller}/>;
+  const teamChoice = view.leader && view.teamSetup?.screen === 'choice' ? <button class="ka-panel ka-pressable phone-teams-choice" aria-pressed={view.teamSetup.enabled} onClick={() => { phone.current?.teamInput('teams-toggle'); }}>Teams {view.teamSetup.enabled ? 'on' : 'off'}</button> : null;
+  if (controller && wakeReady) return <GameController controller={controller} view={view} send={output => { phone.current?.controllerInput(output); }}/>;
   return <main ref={page} class="phone-page" data-seated={view.seat !== null} data-theme="console" aria-label="Phone lobby">
-    <div class="phone-live" role="status" aria-live="polite" aria-atomic="true">{announcement}</div>
-    {view.seat !== null && <header class="phone-id"><span class="phone-badge" style={{ backgroundColor: view.colour }}>{view.seat}</span><strong>{view.name}</strong><span class="phone-connection" role="img" aria-label={view.connected ? 'Connected' : 'Disconnected'} data-connected={view.connected}><Icon kind={view.connected ? 'good' : 'weak'}/><span aria-hidden="true">{view.connected ? 'Connected' : 'Disconnected'}</span></span><button class="phone-leave ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button></header>}
-    <Overlap fade identity={results ? 'results' : picker && picker.screen !== 'lobby' ? 'picker' : view.renaming ? 'rename' : form ? 'form' : 'lobby'}>{view.renaming ? <section class="phone-join ka-panel">
+    <div class="phone-live" role="status" aria-live="polite" aria-atomic="true">{announcement}<span>{teamAnnouncement}</span></div>
+    {view.seat !== null && <header class="phone-id"><span class="phone-badge" style={{ backgroundColor: view.colour }}>{view.seat}</span><strong>{view.name}</strong><span class="phone-connection" role="img" aria-label={view.connected ? 'Connected' : 'Disconnected'} data-connected={view.connected}><Icon kind={view.connected ? 'good' : 'weak'}/><span aria-hidden="true">{view.connected ? 'Connected' : 'Disconnected'}{ownTeam === undefined ? '' : ` · on ${ownTeam === 0 ? 'Red' : 'Blue'}`}</span></span><button class="phone-leave ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button></header>}
+    <Overlap fade identity={view.teamSetup?.screen === 'teams' ? 'teams' : results ? 'results' : picker && picker.screen !== 'lobby' ? 'picker' : view.renaming ? 'rename' : form ? 'form' : 'lobby'}>{view.connected && view.teamSetup?.screen === 'teams' ? <PhoneTeams setup={view.teamSetup} seat={view.seat} leader={view.leader} send={(control, value) => { feedback(); phone.current?.teamInput(control, value); }}/> : view.renaming ? <section class="phone-join ka-panel">
       <div class="phone-intro"><h1>Change your name</h1></div>
       <form class="phone-fields" onSubmit={event => { event.preventDefault(); feedback(); phone.current?.saveName(name); }}>
         <label for="rename">Your name</label>
@@ -81,11 +89,12 @@ export function PhonePage() {
       </form>
     </section> : picker && picker.screen !== 'lobby' ? <section class="phone-picker">
       <div class="phone-status picker-status"><h2>{picker.screen === 'starting' ? `Starting ${picker.game?.name ?? 'the game'}` : view.leader ? picker.screen === 'start' ? 'Ready to start?' : 'You choose the game' : picker.screen === 'start' ? `${picker.leaderName ?? 'The leader'} starts the game` : `${picker.leaderName ?? 'The leader'} is choosing`}</h2><p>Watch the TV.</p><strong>{picker.screen !== 'starting' && !picker.failed && picker.game?.name}{picker.reason && <span class="phone-picker-reason"><Icon kind="weak"/>{picker.reason}</span>}</strong></div>
+      {teamChoice}
       {view.leader && picker.screen !== 'starting' && <div class="phone-picker-controls">
         {picker.screen === 'picker' ? <><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('previous'); }}><span aria-hidden="true">← </span>Previous</button><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('next'); }}>Next<span aria-hidden="true"> →</span></button><button class="ka-panel ka-pressable picker-primary" disabled={picker.reason !== null && !picker.failed} onClick={() => { feedback(); phone.current?.pickerInput('select'); }}>Select</button></> : <button class="ka-panel ka-pressable picker-primary" disabled={picker.reason !== null && !picker.failed} onClick={() => { feedback(); phone.current?.pickerInput('start'); }}>Start</button>}
         <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('back'); }}>Back</button>
       </div>}
-    </section> : results ? <section class="phone-picker"><div class="phone-status phone-results"><h2>Results</h2><p>Watch the TV.</p></div>{view.leader && (view.picker?.screen === 'starting' ? <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('select'); }}><ChoiceShape/>Continue</button> : <><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('start'); }}><ChoiceShape/>Play again</button><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('open'); }}><ChoiceShape circle/>Back to game picker</button></>)}</section> : form ? <section class="phone-join ka-panel">
+    </section> : results ? <section class="phone-picker"><div class="phone-status phone-results"><h2>Results</h2><p>Watch the TV.</p></div>{teamChoice}{view.leader && (view.picker?.screen === 'starting' ? <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('select'); }}><ChoiceShape/>Continue</button> : <><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('start'); }}><ChoiceShape/>Play again</button><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('open'); }}><ChoiceShape circle/>Back to game picker</button></>)}</section> : form ? <section class="phone-join ka-panel">
       <div class="phone-intro"><h1>Kaki Arcade</h1><p>Join the room on the TV</p></div>
       <form class="phone-fields" onSubmit={event => { event.preventDefault(); feedback(); phone.current?.join(code, name); }}>
         <label for="room-code">Room code</label>
@@ -107,4 +116,18 @@ export function PhonePage() {
       </div>
     </section>}</Overlap>
   </main>;
+}
+
+function GameController({ controller, view, send }: { controller: NonNullable<ReturnType<typeof phoneController>>; view: PhoneView; send: (output: LayoutOutput) => void }) {
+  const [area, setArea] = useState<{ width: number; height: number; viewport: { width: number; height: number } } | null>(null);
+  useEffect(() => {
+    const board = document.querySelector('.ka-controller-play');
+    if (!board) return;
+    const observer = new ResizeObserver(([entry]) => {
+      if (entry) setArea({ width: entry.contentRect.width, height: entry.contentRect.height, viewport: { width: innerWidth, height: innerHeight } });
+    });
+    observer.observe(board);
+    return () => { observer.disconnect(); };
+  }, []);
+  return <ControllerShell {...controller}>{area && view.gameLayout && <LayoutEngine layout={view.gameLayout} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={send}/>}</ControllerShell>;
 }

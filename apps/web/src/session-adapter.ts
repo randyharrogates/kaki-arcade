@@ -11,7 +11,7 @@ export interface SessionDisplay { gameId: string; view: unknown; Screen?: HostSc
 export function hostScreen(display: SessionDisplay | null, lobby: boolean): string { return display ? display.results ? display.finalScreen ? 'game' : 'results' : 'game' : lobby ? 'lobby' : 'picker'; }
 export interface AdapterOptions {
   load(id: string): Promise<{ game: LoadedGame; Screen?: HostScreen; viewKey?: (view: unknown) => unknown; finalScreen?: boolean }>;
-  prepare(game: LoadedGame, seed: number): Promise<{ context: InitContext; settings: object }>;
+  prepare(game: LoadedGame, seed: number, teams?: boolean): Promise<{ context: InitContext; settings: object }>;
   assets(game: LoadedGame, state: unknown): Promise<void>;
   transport: SessionTransport;
   frames: SessionFrames;
@@ -44,7 +44,7 @@ export function createSessionAdapter(o: AdapterOptions) {
       stop(); latestRoom = room; const current = generation;
       const loaded = await prefetch(gameId);
       const seed = o.seed();
-      const prepared = await o.prepare(loaded.game, seed);
+      const prepared = await o.prepare(loaded.game, seed, loaded.game.meta.teams === 'required' || (loaded.game.meta.teams === 'optional' && room.players.length > 1 && room.players.every(p => p.team !== null)));
       if (current !== generation) throw new Error('Cancelled');
       const setup = { failed: false };
       const isFailed = (): boolean => setup.failed;

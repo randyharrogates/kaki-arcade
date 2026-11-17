@@ -1,5 +1,6 @@
 import { normaliseCode, joinLink } from './join-link';
 export { normaliseCode, joinLink } from './join-link';
+import type { TeamSetupView } from './team-setup';
 import type { LinkSnapshot } from '@kaki/netcode';
 import { RECONNECT_WINDOW_MS } from '@kaki/platform';
 import type { RoomState } from '@kaki/platform';
@@ -8,6 +9,7 @@ import { PLAYER_COLOURS } from '@kaki/ui';
 export type PairingState = 'creating' | 'restoring' | 'ready' | 'reconnecting' | 'unreachable' | 'expired' | 'replaced';
 import type { PickerModel } from '@kaki/platform';
 export interface LobbyInput {
+  teamSetup?: TeamSetupView | null;
   picker?: PickerModel;
   room: RoomState;
   links: ReadonlyMap<string, LinkSnapshot>;

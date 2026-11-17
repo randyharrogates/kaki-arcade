@@ -1,0 +1,40 @@
+.team-screen { display: grid; grid-template-rows: auto 1fr auto; gap: var(--ka-space-34); }
+.team-screen header, .team-screen footer { display: flex; justify-content: space-between; align-items: center; gap: var(--ka-space-21); }
+.team-screen h1 { font: var(--ka-type-89)/1 var(--ka-font-display); margin: 0; }
+.team-screen p { font-size: var(--ka-type-34); margin: 0; }
+.team-screen button { font-size: var(--ka-type-34); padding: var(--ka-space-21) var(--ka-space-55); }
+.team-field { background: var(--ka-panel-to); position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: var(--ka-space-55); grid-auto-rows: auto; align-content: center; gap: var(--ka-space-13) var(--ka-space-89); padding: var(--ka-space-21) var(--ka-space-55); border: var(--ka-panel-edge); border-radius: var(--ka-radius-corner); min-height: 0; }
+.team-half { opacity: var(--ka-opacity-ghost); position: absolute; top: 0; bottom: 0; width: 50%; z-index: 0; }
+.team-red { left: 0; background: linear-gradient(90deg, var(--ka-team-red), var(--ka-panel-to)); border-radius: var(--ka-radius-corner) 0 0 var(--ka-radius-corner); }
+.team-blue { right: 0; background: linear-gradient(-90deg, var(--ka-team-blue), var(--ka-panel-to)); border-radius: 0 var(--ka-radius-corner) var(--ka-radius-corner) 0; }
+.team-label { position: relative; grid-row: 1; z-index: 1; font: var(--ka-type-55)/1 var(--ka-font-display); margin: 0; }
+.team-red-label { grid-column: 1; color: var(--ka-team-red); }
+.team-blue-label { grid-column: 2; color: var(--ka-team-blue); text-align: right; }
+.team-line { position: absolute; left: 50%; top: var(--ka-space-21); bottom: var(--ka-space-21); width: var(--ka-space-5); background: var(--ka-ink); }
+.team-player { position: relative; z-index: 1; display: flex; align-items: center; gap: var(--ka-space-13); padding: var(--ka-space-5) var(--ka-space-21); max-width: 100%; min-width: 0; width: max-content; justify-self: start; align-self: center; border-radius: var(--ka-radius-corner); }
+.team-player[data-team='0'] { justify-self: end; }
+.team-player-name { font-size: var(--ka-type-34); white-space: nowrap; flex: 0 1 auto; min-width: 0; }
+.team-player .seat-number { flex-shrink: 0; width: var(--ka-space-55); height: var(--ka-space-55); font-size: var(--ka-type-34); color: var(--ka-ink); }
+.team-leader { flex-shrink: 0; font-size: var(--ka-type-34); color: var(--ka-panel-secondary); }
+.phone-teams { min-height: 0; overflow: hidden; padding: var(--ka-space-13) var(--ka-space-21); display: grid; gap: var(--ka-space-8); align-content: center; }
+.phone-team-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: var(--ka-space-21); }
+.phone-team-buttons button { min-height: var(--ka-space-144); font-size: var(--ka-phone-type-34); font-weight: var(--ka-team-text-weight); color: var(--ka-ink); border: var(--ka-panel-edge); border-radius: var(--ka-radius-corner); }
+.phone-team-red { background: var(--ka-team-red); }
+.phone-team-blue { background: var(--ka-team-blue); }
+.phone-teams p { margin: 0; font-size: var(--ka-phone-type-13); }
+.phone-teams .phone-picker-reason { font-size: var(--ka-phone-type-21); }
+.phone-team-moves { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ka-space-8); }
+.phone-teams button, .phone-teams-choice { min-height: var(--ka-space-55); padding: var(--ka-space-8) var(--ka-space-13); font-weight: var(--ka-team-text-weight); }
+.phone-team-moves button { overflow-wrap: anywhere; font-size: var(--ka-phone-type-21); }
+.phone-team-actions { display: flex; justify-content: space-between; gap: var(--ka-space-13); }
+
+.phone-page .phone-team-buttons button { min-height: var(--ka-space-144); font-size: var(--ka-phone-type-34); font-weight: var(--ka-team-text-weight); }
+
+/* Keep the full roster in a dedicated view: two rows of four 55px targets. */
+.phone-page[data-seated="true"]:has(.phone-teams) { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: var(--ka-space-8); overflow: hidden; padding: var(--ka-space-13); }
+.phone-page[data-seated="true"]:has(.phone-teams) > .overlap { min-height: 0; }
+.phone-page .phone-team-moves button { min-width: 0; padding: var(--ka-space-5); font-size: var(--ka-phone-type-13); }
+.phone-page .phone-team-actions button { padding: var(--ka-space-5) var(--ka-space-8); }
+/* D-151: Start uses the console primary, never a team colour. */
+.team-screen .picker-primary, .phone-teams .picker-primary { background-image: none; background-color: var(--ka-chip); color: var(--ka-chip-ink); border-color: var(--ka-chip); font-weight: var(--ka-weight-bold); }
+.phone-teams p[role="status"] strong { font-size: var(--ka-phone-type-21); }

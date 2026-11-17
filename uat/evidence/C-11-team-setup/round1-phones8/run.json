@@ -1,0 +1,193 @@
+{
+  "slice": "C-11-team-setup",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- C-11-team-setup --phones 8 --out phones8",
+  "commit": "2e372feec76af7268119e1222f1bc5935a5c8fe3",
+  "viewports": [
+    "1920×1080",
+    "844×390",
+    "667×375"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1686.986042,
+      "status": "completed"
+    },
+    {
+      "name": "Optional teams default off; balanced automatic split",
+      "ms": 1217.706000000001,
+      "status": "completed"
+    },
+    {
+      "name": "Switch and refusal, then leader move",
+      "ms": 1926.475042,
+      "status": "completed"
+    },
+    {
+      "name": "Leave and join during setup",
+      "ms": 516.584334000001,
+      "status": "completed"
+    },
+    {
+      "name": "Both phone sizes, including the leader move list",
+      "ms": 591.381625,
+      "status": "completed"
+    },
+    {
+      "name": "Start Rabakz with teams",
+      "ms": 1464.4980410000007,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-automatic-split.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone2-refused-full.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-switch-arc-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-switch-arc-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-switch-arc-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-switch-arc-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-switch-arc-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-switch-arc-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-leader-move.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-leave-during-setup.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-join-during-setup.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-teams-667-leader.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-teams-844-leader.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone2-teams-667-player.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone2-teams-844-player.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-rabakz-team-game.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-rabakz-team-controller.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-automatic-split.jpg",
+    "02-phone2-refused-full.jpg",
+    "09-strip-switch-arc.jpg",
+    "10-host-leader-move.jpg",
+    "11-host-leave-during-setup.jpg",
+    "12-host-join-during-setup.jpg",
+    "13-phone1-teams-667-leader.jpg",
+    "14-phone1-teams-844-leader.jpg",
+    "15-phone2-teams-667-player.jpg",
+    "16-phone2-teams-844-player.jpg",
+    "17-host-rabakz-team-game.jpg",
+    "18-phone1-rabakz-team-controller.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-automatic-split.jpg",
+      "bytes": 137444
+    },
+    {
+      "file": "02-phone2-refused-full.jpg",
+      "bytes": 122950
+    },
+    {
+      "file": "09-strip-switch-arc.jpg",
+      "bytes": 813175
+    },
+    {
+      "file": "10-host-leader-move.jpg",
+      "bytes": 132919
+    },
+    {
+      "file": "11-host-leave-during-setup.jpg",
+      "bytes": 132919
+    },
+    {
+      "file": "12-host-join-during-setup.jpg",
+      "bytes": 138312
+    },
+    {
+      "file": "13-phone1-teams-667-leader.jpg",
+      "bytes": 134945
+    },
+    {
+      "file": "14-phone1-teams-844-leader.jpg",
+      "bytes": 160347
+    },
+    {
+      "file": "15-phone2-teams-667-player.jpg",
+      "bytes": 112604
+    },
+    {
+      "file": "16-phone2-teams-844-player.jpg",
+      "bytes": 136457
+    },
+    {
+      "file": "17-host-rabakz-team-game.jpg",
+      "bytes": 248100
+    },
+    {
+      "file": "18-phone1-rabakz-team-controller.jpg",
+      "bytes": 77936
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1797
+    },
+    {
+      "file": "run.json",
+      "bytes": 4228
+    }
+  ],
+  "totalBytes": 2354170,
+  "maxBytes": 12582912
+}

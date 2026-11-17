@@ -1,3 +1,5 @@
+import { TeamSetup } from './team-setup-route';
+import type { TeamSetupView } from './team-setup';
 import { GameFinalHint } from './game-final-hint';
 import { Results } from './results';
 import { hostScreen } from './session-adapter';
@@ -56,6 +58,7 @@ export function HostLobby() {
   const [view, setView] = useState(() => lobbyView({ room: createRoom(), links: new Map(), code: '', pairing: hasSavedRoom() ? 'restoring' : 'creating', origin: location.origin }));
   const displays = useMemo(sessionDisplayStore, []);
   const [picker, setPicker] = useState(initialPicker(gameMetas));
+  const [teamSetup, setTeamSetup] = useState<TeamSetupView | null>(null);
   const [room, setRoom] = useState<RoomState>(createRoom());
   const focusedState = useRef('');
   const action = (element: HTMLButtonElement | null): void => {
@@ -85,7 +88,7 @@ export function HostLobby() {
     const clock = { now: () => Date.now() };
     let demoClock = false;
     const present = (input: Parameters<typeof lobbyView>[0]): void => {
-      if (alive) { setPicker(input.picker ?? initialPicker(gameMetas)); setRoom(input.room); }
+      if (alive) { setPicker(input.picker ?? initialPicker(gameMetas)); setRoom(input.room); setTeamSetup(input.teamSetup ?? null); }
       latest = { ...input, origin: location.origin, joinOrigin: String(import.meta.env.KAKI_JOIN_ORIGIN) };
       if (alive) setView(lobbyView(latest, demoClock ? { now: () => performance.now() - demoStart } : clock));
     };
@@ -130,9 +133,12 @@ export function HostLobby() {
     <div class="announcements" aria-live="polite" aria-atomic="true">{announcement.current}</div>
     <ol class="seats" data-wrap={view.seats.some(seat => seat.connection === 'Scan to join' || seat.connection === 'Seat held')} aria-label="Player seats">{view.seats.map((seat, index) => <Seat key={seat.number} seat={seat} index={changedSeats > 1 ? index : 0}/>)}</ol>
   </main>;
-  return <SessionSurface displays={displays} room={room} picker={picker} lobby={lobby} back={() => { host.current?.returnToPicker(); }} again={() => { host.current?.playAgain(); }} continued={() => { host.current?.continueResults(); }}/>;
+  return <SessionSurface displays={displays} room={room} picker={picker} lobby={lobby} teamSetup={teamSetup}
+    startTeams={() => { const leader = room.players.find(p => p.seat === room.leader); if (leader) host.current?.teamInput(leader.connectionId, 'teams-start'); }}
+    back={() => { host.current?.returnToPicker(); }} again={() => { host.current?.playAgain(); }} continued={() => { host.current?.continueResults(); }}/>;
 }
-function SessionSurface({ displays, room, picker, lobby, back, again, continued }: {
+function SessionSurface({ displays, room, picker, lobby, teamSetup, startTeams, back, again, continued }: {
+  teamSetup: TeamSetupView | null; startTeams: () => void;
   displays: ReturnType<typeof sessionDisplayStore>; room: RoomState; picker: ReturnType<typeof initialPicker>; lobby: ComponentChildren; back: () => void; again: () => void; continued: () => void;
 }) {
   const [session, setSession] = useState(() => displays.get());
@@ -147,5 +153,5 @@ function SessionSurface({ displays, room, picker, lobby, back, again, continued 
     const key = (event: KeyboardEvent): void => { setKeyboard(true); if (event.key === 'Enter' && !event.repeat) { event.preventDefault(); continued(); } };
     window.addEventListener('keydown', key); return () => { window.removeEventListener('keydown', key); };
   }, [session?.finalScreen, continued]);
-  return <div class="host-shell"><Overlap fade surface identity={hostScreen(session, picker.screen === 'lobby')}>{active => session ? session.results && !session.finalScreen ? <Results active={active} session={session} room={room} back={back} again={again} keyboard={keyboard}/> : Screen ? <><Screen view={session.view as never} width={size.width} height={size.height}/>{session.finalScreen && <GameFinalHint theme={sessionRegistrations[session.gameId]?.finalHintTheme} keyboard={keyboard}/>}</> : <main class="screen room-status session-placeholder" aria-label="Game screen"><h1>This game’s screen is not built yet</h1><ol class="picker-players" aria-label="Players">{room.players.map(p => <li class="ka-panel" key={p.seat}><span class="seat-number" style={{ backgroundColor: `var(--ka-seat-${String(p.seat)})` }}>{p.seat}</span>{p.name}</li>)}</ol></main> : picker.screen === 'lobby' ? lobby : <GamePicker state={picker} room={room}/>}</Overlap></div>;
+  return <div class="host-shell"><Overlap fade surface identity={teamSetup?.screen === 'teams' ? 'teams' : hostScreen(session, picker.screen === 'lobby')}>{active => teamSetup?.screen === 'teams' ? <TeamSetup setup={teamSetup} room={room} game={gameMetas.find(g => g.id === picker.focus)?.name ?? ''} start={() => { if (active) startTeams(); }}/> : session ? session.results && !session.finalScreen ? <Results active={active} session={session} room={room} back={back} again={again} keyboard={keyboard}/> : Screen ? <><Screen view={session.view as never} width={size.width} height={size.height}/>{session.finalScreen && <GameFinalHint theme={sessionRegistrations[session.gameId]?.finalHintTheme} keyboard={keyboard}/>}</> : <main class="screen room-status session-placeholder" aria-label="Game screen"><h1>This game’s screen is not built yet</h1><ol class="picker-players" aria-label="Players">{room.players.map(p => <li class="ka-panel" key={p.seat}><span class="seat-number" style={{ backgroundColor: `var(--ka-seat-${String(p.seat)})` }}>{p.seat}</span>{p.name}</li>)}</ol></main> : picker.screen === 'lobby' ? lobby : <GamePicker state={picker} room={room}/>}</Overlap></div>;
 }

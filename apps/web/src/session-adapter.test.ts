@@ -105,3 +105,19 @@ it('PLAT-022 a game-owned final view stays first until the leader continues to c
   f.adapter.continueResults(); expect(f.display?.finalScreen).toBe(false); expect(hostScreen(f.display, false)).toBe('results');
   f.adapter.stop(); f.adapter.continueResults(); expect(f.display).toBeNull();
 });
+
+it('PLAT-025 passes an optional team split and context to game init', async () => {
+  const f = fixture(); const init = vi.spyOn(f.game, 'init');
+  const game = { ...f.game, meta: { ...f.game.meta, teams: 'optional' as const } };
+  const p = f.room.players[0]; if (!p) throw new Error('Missing fixture seat');
+  const room = { ...f.room, players: [{ ...p, team: 'red' as const }, { ...p, seat: 2, deviceId: 'second', connectionId: 'second', seatToken: '2'.repeat(32), team: 'blue' as const }] };
+  // The actual preparation boundary receives teams before it resolves settings/data.
+  const adapter = createSessionAdapter({ load: () => Promise.resolve({ game }),
+    prepare: (_game, _seed, teams) => Promise.resolve({ context: { data: {}, saved: null, teams: teams ?? false }, settings: {} }),
+    assets: () => Promise.resolve(), seed: () => 7, display: () => undefined, event: () => undefined,
+    frames: { subscribe: () => () => undefined },
+    transport: { sendLayout: () => true, sendPrivateView: () => true, fence: () => undefined, status: () => undefined, subscribe: () => () => undefined } });
+  await adapter.start('test', room);
+  expect(init.mock.calls[0]?.[1].map(p => p.team)).toEqual([0, 1]);
+  expect(init.mock.calls[0]?.[3].teams).toBe(true); adapter.stop();
+});

@@ -38,3 +38,10 @@ it('validated selection honours Mixed quotas before init', async () => {
   expect(checked.questions.filter(q => q.difficulty === 'hard')).toHaveLength(3);
   expect(game.assets(state)).toEqual([]);
 });
+
+it('PLAT-025 prepares Rabakz team data/settings with the selected team context', async () => {
+  const game = await loadGame('rabakz') as unknown as LoadedGame;
+  const ready = await prepareSession(game, 7, true);
+  expect(ready.context.teams).toBe(true);
+  expect(ready.context.data['selected-questions.json']).toHaveLength(10);
+});

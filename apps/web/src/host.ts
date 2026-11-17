@@ -1,3 +1,7 @@
+import { wireJson } from './session-adapter';
+import { splitTeams, reconcileTeams, switchTeam } from '@kaki/platform';
+import { roomPlayers } from './team-setup';
+import type { TeamSetupView } from './team-setup';
 import { duration } from '@kaki/ui';
 import { validatePhoneMessage } from '@kaki/protocol';
 import type { PickerInput } from '@kaki/protocol';
@@ -32,6 +36,11 @@ export interface HostDependencies {
 export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyInput, 'origin'>) => void) {
   const store = createHostSnapshotStore({ storage: deps.storage, clock: deps.clock, validateSelection: validGameSelection });
   let picker = initialPicker(gameMetas);
+  let teamSetup: TeamSetupView | null = null;
+  let teamRevision = 0;
+  let savedTeams: TeamSetupView | null = null;
+  const teamNotices = new Map<number, { notice: string; refused: boolean }>();
+  let confirmingTeams = false;
   const peers = new Map<string, ReconnectHostPeer>();
   let pairing: PairingState = 'creating';
   let code = '';
@@ -56,7 +65,58 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
   }
   const unsubscribeOnline = deps.online?.subscribe(() => { if (pairing === 'unreachable') void start(); });
   function publish(): void {
-    if (!stopped) changed({ room: roomAdapter?.room ?? createRoom(), links, pairing, code, picker });
+    if (!stopped) changed({ room: roomAdapter?.room ?? createRoom(), links, pairing, code, picker, teamSetup });
+  }
+  function sendTeams(): void {
+    if (!roomAdapter) return;
+    for (const p of roomAdapter.room.players) if (p.disconnectedAt === null) peers.get(p.connectionId)?.sendHost({ v: 1, t: 'view', rev: teamRevision,
+      view: wireJson(teamSetup ? { ...teamSetup, error: null, ...teamNotices.get(p.seat) } : null) });
+  }
+  function reviseTeams(): void {
+    if (!teamSetup) return;
+    teamSetup = { ...teamSetup, revision: ++teamRevision }; sendTeams(); publish();
+  }
+  function teamInput(id: string, message: unknown): void {
+    const checked = validatePhoneMessage(message);
+    if (!roomAdapter || !teamSetup || !checked.ok || checked.value.t !== 'action' || checked.value.viewRev !== teamSetup.revision) return;
+    const actor = roomAdapter.room.players.find(p => p.connectionId === id && p.disconnectedAt === null);
+    const data = checked.value.data;
+    if (!actor || !data || typeof data !== 'object' || Array.isArray(data)) return;
+    const leader = actor.seat === roomAdapter.room.leader;
+    teamNotices.delete(actor.seat);
+    if (data.control === 'teams-dismiss') { teamSetup = { ...teamSetup, error: null }; reviseTeams(); return; }
+    if (data.control === 'teams-toggle' && leader && teamSetup.screen === 'choice') {
+      teamSetup = { ...teamSetup, enabled: !teamSetup.enabled };
+      if (savedTeams) savedTeams = { ...savedTeams, enabled: teamSetup.enabled };
+      reviseTeams();
+    } else if (teamSetup.screen === 'teams') {
+      if (data.control === 'teams-back' && leader) {
+        savedTeams = null; teamNotices.clear();
+        teamSetup = null; teamRevision++; picker = { ...picker, screen: 'picker', revision: picker.revision + 1 }; sendTeams(); sendPicker(); publish();
+      } else if (data.control === 'teams-start' && leader && teamSetup.players.length >= 2) {
+        const game = gameMetas.find(g => g.id === picker.focus);
+        if (!game || teamSetup.players.length < game.players.min || teamSetup.players.length > game.players.max) return;
+        savedTeams = { ...teamSetup, error: null };
+        teamNotices.clear();
+        confirmingTeams = true;
+        for (const p of teamSetup.players) roomAdapter.host({ type: 'team', seat: p.seat, team: p.team === 0 ? 'red' : 'blue' });
+        teamSetup = null; teamRevision++; sendTeams();
+        picker = { ...picker, screen: 'start' }; acceptedAt = -Infinity;
+        input(id, { v: 1, t: 'picker-input', revision: picker.revision, input: 'start' });
+        confirmingTeams = false;
+      } else if (data.control === 'teams-switch' || (data.control === 'teams-move' && leader)) {
+        const target = data.control === 'teams-switch' ? `seat-${String(actor.seat)}` : typeof data.value === 'string' ? data.value : '';
+        const p = teamSetup.players.find(p => p.id === target);
+        const game = gameMetas.find(g => g.id === picker.focus);
+        if (!p || !game) return;
+        const result = switchTeam(teamSetup.players, target, p.team === 0 ? 1 : 0);
+        const team = p.team === 0 ? 'Red' : 'Blue';
+        if (result.reason) teamNotices.set(actor.seat, { notice: result.reason, refused: true });
+        else if (data.control === 'teams-move' && p.seat !== actor.seat) teamNotices.set(p.seat, {
+          notice: `${actor.name} moved you to ${p.team === 0 ? 'Blue' : 'Red'}.`, refused: false });
+        teamSetup = { ...teamSetup, players: [...result.players], error: result.reason ? `${p.name} can't leave ${team}: it needs at least one player.` : null }; reviseTeams();
+      }
+    }
   }
   function sendPicker(): void {
     if (!roomAdapter) return;
@@ -104,25 +164,46 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       return;
     }
     deps.clock.cancel(trailing); trailing = undefined; queued = undefined;
+    if (teamSetup?.screen === 'teams' && !confirmingTeams) return;
+    const game = gameMetas.find(g => g.id === picker.focus);
+    if (!confirmingTeams && picker.screen === 'start' && checked.value.input === 'start' && game &&
+      (game.teams === 'required' || teamSetup?.enabled)) {
+      if (room.players.length < Math.max(2, game.players.min) || room.players.length > game.players.max) return;
+      teamSetup = { kind: 'team-setup', revision: ++teamRevision, screen: 'teams', enabled: true,
+        players: savedTeams ? reconcileTeams(savedTeams.players, roomPlayers(room), room.leader) : splitTeams(roomPlayers(room), room.leader), error: null }; sendTeams(); publish(); return;
+    }
     const before = picker;
     picker = pickerInput(picker, roomAdapter.room, gameMetas, id, checked.value.input, checked.value.revision);
     if (picker === before) return;
+    if (picker.screen === 'picker') savedTeams = null;
     if (before.screen === 'starting' && picker.screen !== 'starting') { loadAttempt++; deps.session?.stop?.(); }
-    acceptedAt = deps.clock.now(); acceptedLeader = roomAdapter.room.leader;
+    if (picker.screen === 'start' && before.screen === 'picker' && gameMetas.find(g => g.id === picker.focus)?.teams === 'optional') {
+      savedTeams = null; teamNotices.clear();
+      teamSetup = { kind: 'team-setup', revision: ++teamRevision, screen: 'choice', enabled: false, players: [], error: null }; sendTeams();
+    } else if (teamSetup && picker.screen !== 'start') { teamSetup = null; teamRevision++; sendTeams(); }
+    // Draining queued presses must not start another throttle window.
+    if (!flushing) acceptedAt = deps.clock.now();
+    acceptedLeader = roomAdapter.room.leader;
     if (!flushing) { sendPicker(); publish(); }
     if (before.screen === 'picker' && picker.screen === 'start') void deps.session?.prefetch?.(picker.focus).catch(() => undefined);
     if (picker.screen === 'starting') {
+      if (!confirmingTeams) for (const p of roomAdapter.room.players) if (p.team !== null) roomAdapter.host({ type: 'team', seat: p.seat, team: null });
       const loading = ++loadAttempt; const gameId = picker.focus;
       void deps.session?.start(picker.focus, roomAdapter.room).then(() => {
         if (!stopped && loading === loadAttempt && picker.screen === 'starting' && roomAdapter?.room.phase === 'lobby') roomAdapter.host({ type: 'phase', phase: 'playing', allowRunningJoin: false });
       }).catch(() => {
         if (stopped || loading !== loadAttempt || picker.screen !== 'starting' || picker.focus !== gameId) return;
-        picker = pickerFailed(picker, gameMetas); sendPicker(); publish();
+        picker = pickerFailed(picker, gameMetas);
+        if (gameMetas.find(g => g.id === gameId)?.teams === 'optional') {
+          teamSetup = { kind: 'team-setup', revision: ++teamRevision, screen: 'choice', enabled: roomAdapter?.room.players.every(p => p.team !== null) ?? false, players: [], error: null }; sendTeams();
+        }
+        sendPicker(); publish();
       });
     }
   }
   function terminal(): boolean { return pairing === 'replaced' || pairing === 'expired'; }
   function retire(): void {
+    teamSetup = null;
     deps.clock.cancel(trailing); trailing = undefined; queued = undefined;
     if (picker.screen === 'starting') picker = pickerFailed(picker, gameMetas);
     loadAttempt++; acceptedAt = -Infinity; acceptedLeader = null;
@@ -152,7 +233,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     const callbacks: DialCallbacks = {
       retryAfter: ms => { if (current() && Number.isFinite(ms)) retryAfter = Math.max(retryAfter, deps.clock.now() + ms); },
       peer: (id, peer) => { run(() => { peers.set(id, peer); roomAdapter?.attach(id, peer); }); },
-      control: (id, message) => { run(() => { input(id, message); roomAdapter?.receive(id, message); deps.session?.control?.(id, message); }); },
+      control: (id, message) => { run(() => { teamInput(id, message); input(id, message); roomAdapter?.receive(id, message); deps.session?.control?.(id, message); }); },
       dropped: id => { run(() => { deps.session?.dropped?.(id); peers.delete(id); links.delete(id); qualityRuns.delete(id); roomAdapter?.dropped(id); }); },
       quality: (id, quality) => { run(() => {
         const previous = links.get(id);
@@ -207,7 +288,14 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       const captured = snapshot;
       let previousRoom = captured.room;
       roomAdapter = createReconnectRoom({ room: captured.room, clock: deps.clock, mintToken: () => deps.mintToken(),
-        changed: room => { const wasStarting = picker.screen === 'starting'; picker = pickerRoom(picker, room, previousRoom); if (wasStarting && picker.screen !== 'starting') { loadAttempt++; deps.session?.stop?.(); } previousRoom = room; deps.session?.updateRoom?.(room); checkpoints?.checkpoint(); sendPicker(); publish(); } });
+        changed: room => {
+          if (!room.players.length) { savedTeams = null; teamNotices.clear(); teamSetup = null; teamRevision++; sendTeams(); }
+          if (savedTeams && !confirmingTeams) savedTeams = { ...savedTeams, players: reconcileTeams(savedTeams.players, roomPlayers(room), room.leader) };
+          if (teamSetup?.screen === 'teams') {
+            teamNotices.clear();
+            teamSetup = { ...teamSetup, players: reconcileTeams(teamSetup.players, roomPlayers(room), room.leader), error: null, revision: ++teamRevision };
+          }
+          const wasStarting = picker.screen === 'starting'; picker = pickerRoom(picker, room, previousRoom); if (wasStarting && picker.screen !== 'starting') { loadAttempt++; deps.session?.stop?.(); } previousRoom = room; deps.session?.updateRoom?.(room); checkpoints?.checkpoint(); sendPicker(); if (teamSetup) sendTeams(); publish(); } });
       checkpoints = createHostCheckpoints({ store, clock: deps.clock,
         capture: () => ({ ...captured, room: roomAdapter?.room ?? captured.room }),
         ...(deps.lifecycle ? { lifecycle: deps.lifecycle } : {}) });
@@ -224,24 +312,38 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       }
     }
   }
+  function restoreTeamChoice(): void {
+    if (teamSetup?.screen === 'choice') return;
+    if (gameMetas.find(g => g.id === picker.focus)?.teams !== 'optional') return;
+    teamSetup = { kind: 'team-setup', revision: ++teamRevision, screen: 'choice', enabled: savedTeams?.enabled ?? false, players: [], error: null };
+    teamNotices.clear(); sendTeams();
+  }
   function continueResults(): void {
     if (roomAdapter?.room.phase !== 'results' || picker.screen !== 'starting') return;
     deps.session?.continueResults?.();
-    picker = { ...picker, screen: 'start', revision: picker.revision + 1 }; sendPicker(); publish();
+    picker = { ...picker, screen: 'start', revision: picker.revision + 1 }; restoreTeamChoice(); sendPicker(); publish();
   }
   function playAgain(): void {
     if (roomAdapter?.room.phase !== 'results') return;
     deps.session?.stop?.();
     roomAdapter.host({ type: 'phase', phase: 'lobby', allowRunningJoin: false });
     picker = { ...picker, screen: 'start', revision: picker.revision + 1 };
+    restoreTeamChoice();
     acceptedAt = -Infinity;
     const leader = roomAdapter.room.players.find(p => p.seat === roomAdapter?.room.leader);
     if (leader) input(leader.connectionId, { v: 1, t: 'picker-input', input: 'start', revision: picker.revision });
   }
+  function discardTeams(): void {
+    savedTeams = null; teamNotices.clear(); teamSetup = null;
+    if (!roomAdapter) return;
+    for (const p of roomAdapter.room.players) if (p.team !== null) roomAdapter.host({ type: 'team', seat: p.seat, team: null });
+  }
   // Fence any unresolved start completion before stopping the results session and reopening the picker.
-  function returnToPicker(): void { if (roomAdapter?.room.phase !== 'results') return; loadAttempt++; deps.session?.stop?.(); roomAdapter.host({ type: 'phase', phase: 'lobby', allowRunningJoin: false }); picker = { ...picker, screen: 'picker', revision: picker.revision + 1 }; sendPicker(); publish(); }
+  function returnToPicker(): void { if (roomAdapter?.room.phase !== 'results') return; loadAttempt++; deps.session?.stop?.(); discardTeams(); roomAdapter.host({ type: 'phase', phase: 'lobby', allowRunningJoin: false }); picker = { ...picker, screen: 'picker', revision: picker.revision + 1 }; sendPicker(); publish(); }
   return {
     start, playAgain, continueResults,
+    teamInput(id: string, control: string, value?: string): void { teamInput(id, { v: 1, t: 'action', rev: 0, viewRev: teamSetup?.revision ?? 0, data: { control, ...(value === undefined ? {} : { value }) } }); },
+    get teamSetup() { return teamSetup; },
     get picker() { return picker; },
     get room() { return roomAdapter?.room ?? createRoom(); },
     leaderInput(connection: string, action: PickerInput, revision = picker.revision): void { input(connection, { v: 1, t: 'picker-input', input: action, revision }); },
@@ -250,10 +352,10 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       if (event.type === 'paused') roomAdapter?.host({ type: 'phase', phase: event.paused ? 'paused' : 'playing', allowRunningJoin: false });
       else if (event.type === 'results') {
         picker = { ...picker, screen: sessionRegistrations[picker.focus]?.finalScreen ? 'starting' : 'start', revision: picker.revision + 1 };
-        roomAdapter?.host({ type: 'phase', phase: 'results', allowRunningJoin: false }); sendPicker(); publish();
+        roomAdapter?.host({ type: 'phase', phase: 'results', allowRunningJoin: false }); restoreTeamChoice(); sendPicker(); publish();
       }
       else {
-        deps.session?.stop?.();
+        deps.session?.stop?.(); discardTeams();
         roomAdapter?.host({ type: 'phase', phase: 'lobby', allowRunningJoin: false });
         picker = event.type === 'error' ? pickerFailed(picker, gameMetas) : { ...picker, screen: 'picker', revision: picker.revision + 1 };
         sendPicker(); publish();

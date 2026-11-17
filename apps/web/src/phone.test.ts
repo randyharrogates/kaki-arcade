@@ -218,3 +218,26 @@ it('C-16 a late start failure clears a previously delivered controller layout', 
   f.dial.onControl({ v: 1, t: 'picker-state', revision: 1, screen: 'start', game: null, leaderName: 'Fern', reason: null, failed: true });
   expect(phoneController(f.view)).toBeNull(); f.phone.stop();
 });
+
+it('PLAT-025 phone sends the authoritative setup view revision and clears setup on game views', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat();
+  f.dial.onControl({ v: 1, t: 'view', rev: 12, view: { kind: 'team-setup', revision: 2, screen: 'teams', enabled: true, players: [], error: null } });
+  expect(f.view.teamSetup?.revision).toBe(12);
+  f.phone.teamInput('teams-switch');
+  expect(f.sent.at(-1)).toEqual({ v: 1, t: 'action', rev: 0, viewRev: 12, data: { control: 'teams-switch' } });
+  f.dial.onControl({ v: 1, t: 'view', rev: 13, view: null }); expect(f.view.teamSetup).toBeNull(); f.phone.stop();
+});
+
+it('PLAT-025 preserves the game layout after teams and sends an answer with wire revisions', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat();
+  f.dial.onControl({ v: 1, t: 'view', rev: 12, view: { kind: 'team-setup', revision: 2, screen: 'teams', enabled: true, players: [], error: null } });
+  const layout = { revision: 4, controls: [{ kind: 'options', id: 'answer', options: [{ id: '0', label: 'Tokyo' }, { id: '1', label: 'Seoul' }] }] };
+  f.dial.onControl({ v: 1, t: 'layout', rev: 4, layout });
+  expect(phoneController(f.view)).toBeNull();
+  f.dial.onControl({ v: 1, t: 'view', rev: 13, view: null });
+  expect(f.view.gameLayout).toEqual(layout);
+  expect(phoneController(f.view)).not.toBeNull();
+  f.phone.controllerInput({ control: 'answer', revision: 4, phase: 'choose', value: '1' });
+  expect(f.sent.at(-1)).toEqual({ v: 1, t: 'action', rev: 4, viewRev: 13, data: { control: 'answer', value: '1' } });
+  f.phone.stop();
+});

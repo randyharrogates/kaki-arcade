@@ -89,3 +89,6 @@
 .phone-picker button .result-shape { width: var(--ka-space-34); height: var(--ka-space-34); vertical-align: middle; margin-right: var(--ka-space-13); fill: none; stroke-width: 3; }
 .phone-picker .cross { stroke: var(--ka-seat-1); }
 .phone-picker .circle { stroke: var(--ka-seat-2); }
+
+.phone-picker > .phone-teams-choice { grid-column: 1; }
+.phone-picker:has(> .phone-teams-choice) > .phone-picker-controls { grid-column: 2; grid-row: 1 / 3; }

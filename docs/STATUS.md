@@ -353,6 +353,16 @@ seat numbers only when a name cannot fit. UAT: `uat/evidence/C-16-start-game/rou
 | 4 Phone controller | Done: 1A with shape buttons in our colours, 2B, 3A, 4B (D-047, D-048) |
 | 5 Motion | Done: 1B, 2A, 3A, 4A (D-051). **Gate closed 2026-11-16.** |
 
+### Team setup (C-11)
+For a game with teams, the leader turns Teams on, and the TV shows two sides split by a centre line
+(D-143), balanced by seat. Each player taps Red or Blue on their phone; the leader can also move
+anyone across. Teams may be uneven but each keeps at least one player (D-149). A chip that changes
+team travels on an arc; a refusal shows only on the phone that tapped, and the TV names who was
+refused. Team mode and the last split carry over to Play again. Evidence:
+`uat/evidence/C-11-team-setup/round4-phones4`, `round4-phones8`, `round5-phones8`. Teams are not
+yet shown during play (the games' own issues); grid label wrap and the toggle's pressed style are
+C-11b.
+
 ### Controller size and start-up check (K-08)
 `pnpm verify` fails when the controller page and everything it loads passes 300,000 B gzip
 (73,837 B today). `pnpm perf -- controller` builds for production, opens the controller page five

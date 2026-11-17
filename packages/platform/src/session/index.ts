@@ -225,6 +225,11 @@ export function createSession<State, Settings extends object, View>(o: SessionOp
     if (loop) { if (seats.length === 0) { finish(); return; } if (!enough()) { shortSince ??= elapsed; setPaused(true); } else shortSince = null; output(); }
   }
   guard(() => {
+    // Setup must hand over a complete split; never initialise a partial team match.
+    if ((o.game.meta.teams === 'required' && !o.context.teams) || (o.context.teams &&
+      (room.players.some(p => p.team === null) || !room.players.some(p => p.team === 'red') || !room.players.some(p => p.team === 'blue')))) {
+      operation = 'teams'; throw new Error('Invalid team setup');
+    }
     sync(room);
     const schema = settingsSchema(o.game, o.context);
     const checked = validateSettings(schema, mergeSettings(schema, o.settings));

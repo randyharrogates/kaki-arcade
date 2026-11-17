@@ -133,3 +133,12 @@ it.each<PairingState>(['creating', 'restoring', 'unreachable', 'expired', 'repla
   expect(view.seats.every(seat => seat.name === `Seat ${String(seat.number)}`)).toBe(true);
   expect(view.seats.every(seat => seat.connection === (view.qrPayload ? 'Scan to join' : ''))).toBe(true);
 });
+
+it('PLAT-025 fits team names on one line and preserves every grapheme', () => {
+  const measure = (text: string, size: number) => text.length * size;
+  for (const name of ['Player 4', 'Cloud Noodle', 'WWWWWWWWWWWW']) {
+    const fitted = namePresentation(name, 181, measure, true);
+    expect(fitted.lines).toEqual([name]);
+    expect(measure(name, fitted.size)).toBeLessThanOrEqual(181);
+  }
+});

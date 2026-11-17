@@ -2,6 +2,15 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — C-11: team setup
+
+- `packages/platform/src/teams.ts` and the session guard: balanced split by seat, switches and leader
+  moves, each team keeps at least one player, no size cap (D-149). PLAT-025.
+- `apps/web/src/team-setup*`: the TV's two sides across a centre line (D-143), team chips on arcs,
+  private refusals with an attributed TV line, moved-player notices, Start in the console primary
+  (D-151); team mode survives Play again and Continue. Evidence `uat/evidence/C-11-team-setup/`.
+  PLAT-025 stays in progress until teams show during play.
+
 ## 2026-11-18 — K-08: controller size and start-up check
 
 - `tools/check_budgets.mjs` checks the controller entry and everything it loads in `pnpm verify`

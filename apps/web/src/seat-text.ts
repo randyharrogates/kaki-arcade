@@ -8,10 +8,11 @@ export function nameLines(name: string): string[] {
 export function countdownLabel(seconds: number | null): string { return `${String(seconds ?? 0)} s left`; }
 
 /** Prefer two balanced lines, then three, always at the reading size. */
-export function namePresentation(name: string, width: number, measure: (text: string, size: number) => number) {
+export function namePresentation(name: string, width: number, measure: (text: string, size: number) => number, singleLine = false) {
   const parts = Array.from(new Intl.Segmenter(undefined, { granularity: 'grapheme' }).segment(name), part => part.segment);
   const size = tvType.body;
   if (measure(name, size) <= width) return { lines: [name], size };
+  if (singleLine) return { lines: [name], size: size * Math.min(1, width / measure(name, size)) };
   for (const count of [2, 3]) {
     const candidates: string[][] = [];
     for (let i = 1; i < parts.length; i++) {
