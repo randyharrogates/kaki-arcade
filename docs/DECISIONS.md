@@ -983,3 +983,11 @@ After that, D-119 applies. A shared account-wide meter stays a later choice. Why
 re-review showed that under D-119 alone every new room's host got a one-hour relay credential
 even when the account was far over the limit, so any room shorter than an hour bypassed
 NET-004.
+
+**D-122 · 2026-11-17 · Randy** — Phones are for controls only; the main play area is on the big
+screen (as designed). On phones narrower than 844 px, face buttons scale down with the phone
+but never below 89 px; at 844 px and wider the 110 px floor of D-051 holds. Peek Poker keeps
+its private pick grid on the phone (PP-005): it is a control, only private. Asked because
+board 4's square diamond with 110 px faces needs 316 px of height and a 667 × 375 phone's play
+area is 307 px (K-04). C-16 and R-05, past three review rounds, continue to a final review
+(Randy's answer to the WORKFLOW §4 stop).
