@@ -777,3 +777,10 @@ Select, Back) until the K track builds board 4's stick with Pick and Back; this 
 (f) With nobody seated the TV returns to the lobby, so the join code is always on screen.
 (g) The picker's state machine lives in `packages/platform`, as ARCHITECTURE says.
 (h) PLAT-020 is read as: the picker is opened from the lobby by the leader.
+
+**D-099 · 2026-11-17 · Randy** — "go as recommended" on OQ-033. When the pairing server says a
+room is gone while a game is running over working phone links (after an outage longer than
+the ten-minute idle limit, or at the twelve-hour room limit), the host keeps the game and its
+links, stops accepting new joins, and offers a new room after the game. This confirms
+D-095 (f). The host does not yet do this: today it ends the room. It is built with C-10 and
+C-15, where the session is wired to the host.

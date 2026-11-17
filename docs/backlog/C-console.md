@@ -118,7 +118,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   `createHost` exposes only start and stop and `validateSelection` is fixed to false: it needs
   room and leader input, selection and session hooks and an app-level screen state machine
   with the 4A crossfade; `Overlap` can be reused with the surface kept outside it. **For
-  C-10/C-15:** OQ-033 (a room the server says is gone while phones are still linked).
+  C-10/C-15:** D-099, ruled by Randy: when the server says the room is gone while phones are still linked, keep the game and its links, refuse new joins, offer a new room after the game.
   **For C-13:** a place for the lobby benchmark. **Polish, optional:** reach the ghost
   opacity sooner in the wipe; put the card edge on the list item; assert in the smoke that a
   Worker-made 404 has no gone header; tidy the netcode test that passes `gone` with 426.
