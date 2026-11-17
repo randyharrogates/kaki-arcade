@@ -134,7 +134,7 @@ print('ok')
   });
   it('keeps the real committed source folder exactly equal to the manifest', () => {
     expect(readdirSync(new URL('../assets/src/tabao-rush/items/', import.meta.url)).sort())
-      .toEqual([...frames.map((frame) => `${frame.id}.png`), 'render-validation.json'].sort());
+      .toEqual([...frames.map((frame) => `${frame.id}.png`), 'render-validation.json', '.items.render-stamp.json'].sort());
   });
   it('keeps the Blender model table exactly equal to the independently derived states', () => {
     const group = (pattern: RegExp): string => {

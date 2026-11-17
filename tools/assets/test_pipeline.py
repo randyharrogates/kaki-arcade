@@ -223,6 +223,10 @@ class PipelineTests(unittest.TestCase):
         cfg['sets'][0]['quality']=75
         (self.out/'old-0-full.0123456789abcdef.webp').write_bytes(b'old')
         (self.out/'keep.txt').write_text('keep')
+        with self.assertRaisesRegex(ValueError, 'single-frame page'):
+            p.pack(cfg,self.source,self.out)
+        cfg['sets'][0]['frames'] = cfg['sets'][0]['frames'][:1]
+        cfg['sets'][0]['animations'] = []
         result=p.pack(cfg,self.source,self.out)
         self.assertEqual(result['sets']['diagnostic-walk']['encoding'],'lossy')
         self.assertFalse((self.out/'old-0-full.0123456789abcdef.webp').exists())
@@ -231,14 +235,86 @@ class PipelineTests(unittest.TestCase):
     def test_render_refusal_and_timeout(self):
         inp=self.source/'input.blend'
         inp.write_bytes(b'x')
-        cfg={'renders':[dict(script='sample_stall.py',inputs=[str(inp)],outputs=[str(self.source/'missing.png')])]}
+        cfg={'renders':[dict(id='sample', script='sample_stall.py',inputs=[str(inp)],outputs=[str(self.source/'missing.png')])]}
         with patch.object(p.subprocess,'run',return_value=p.subprocess.CompletedProcess([],1)) as run:
             with self.assertRaisesRegex(ValueError,'wait'):
                 p.render(cfg)
             self.assertEqual(run.call_count,1)
-        with patch.object(p.subprocess,'run',side_effect=[p.subprocess.CompletedProcess([],0),p.subprocess.TimeoutExpired('blender',300)]):
-            with self.assertRaises(p.subprocess.TimeoutExpired):
+        with patch.object(p.subprocess, 'run', return_value=p.subprocess.CompletedProcess([], 0)), patch.object(p, 'run_blender', side_effect=p.subprocess.TimeoutExpired('blender', 300)):
+            with self.assertRaisesRegex(ValueError, r'\(sample_stall\.py\).*300 seconds'):
                 p.render(cfg)
+
+    def test_interrupt_kills_process_group(self):
+        from unittest.mock import MagicMock
+        process = MagicMock()
+        process.pid = 123
+        process.wait.side_effect = [KeyboardInterrupt(), 0]
+        process.__enter__.return_value = process
+        with patch.object(p.subprocess, 'Popen', return_value=process) as launch, patch.object(p.os, 'killpg') as kill:
+            with self.assertRaises(KeyboardInterrupt):
+                p.run_blender(['blender'], cwd=self.source, check=True, timeout=1)
+            kill.assert_called_once_with(123, p.signal.SIGKILL)
+            self.assertEqual(process.wait.call_count, 2)
+            self.assertTrue(launch.call_args.kwargs['start_new_session'])
+
+    def test_render_stamp_regressions(self):
+        inp = self.source / 'input.txt'
+        output = self.source / 'output.png'
+        inp.write_bytes(b'initial')
+        job = dict(id='sample', script='sample_stall.py', inputs=[str(inp)], outputs=[str(output)])
+        config = {'renders': [job]}
+        def publish(*args, **kwargs):
+            output.write_bytes(b'output')
+            inp.write_bytes(inp.read_bytes() + b'published metadata')
+        with patch.object(p.subprocess, 'run', return_value=p.subprocess.CompletedProcess([], 0)), patch.object(p, 'run_blender', side_effect=publish):
+            p.render(config)
+            _, outputs, stamp, digest, _ = p.render_job(job, self.source)
+            self.assertIsNone(p.stale_reason(outputs, stamp, digest))
+            renamed = inp.with_name('renamed.txt')
+            renamed.write_bytes(inp.read_bytes())
+            job['inputs'] = [str(renamed)]
+            self.assertIsNotNone(p.stale_reason(*p.render_job(job, self.source)[1:4]))
+            job['inputs'] = [str(inp)]
+        for error in (p.subprocess.CalledProcessError(1, 'blender'), p.subprocess.TimeoutExpired('blender', 300)):
+            with self.subTest(error=type(error).__name__), patch.object(p.subprocess, 'run', return_value=p.subprocess.CompletedProcess([], 0)):
+                with patch.object(p, 'run_blender', side_effect=publish):
+                    p.render(config)
+                self.assertTrue(stamp.is_file())
+                inp.write_bytes(inp.read_bytes() + b'changed')
+                with patch.object(p, 'run_blender', side_effect=error):
+                    with self.assertRaises((ValueError, p.subprocess.CalledProcessError)):
+                        p.render(config)
+                self.assertFalse(stamp.exists())
+
+    def test_job_ids_and_stale_exit(self):
+        inp = self.source / 'input.txt'
+        inp.write_bytes(b'input')
+        job = dict(id='one', script='sample_stall.py', inputs=[str(inp)], outputs=[str(self.source / 'out.png')])
+        with self.assertRaisesRegex(ValueError, 'Duplicate'):
+            p.render({'renders': [job, job]}, self.source, check_stale=True)
+        missing = dict(job)
+        del missing['id']
+        with self.assertRaises(KeyError):
+            p.render({'renders': [missing]}, self.source, check_stale=True)
+        with self.assertRaisesRegex(ValueError, 'valid jobs: one'):
+            p.render({'renders': [job]}, self.source, only='nope', check_stale=True)
+        other = dict(job, id='two')
+        record = p.render_job(job, self.source)
+        with patch.object(p, 'render_job', return_value=record):
+            with self.assertRaisesRegex(ValueError, 'stamps collide'):
+                p.render({'renders': [job, other]}, self.source, check_stale=True)
+        # Distinct jobs using the same script and directory have separate stamps.
+        self.assertNotEqual(record[2], p.render_job(other, self.source)[2])
+        config = self.source / 'jobs.json'
+        p.write_json(config, {'renders': [job]})
+        command = ['python3', str(p.ROOT / 'tools/assets/pipeline.py'), '--config', str(config), '--check-stale']
+        result = p.subprocess.run(command, capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('one: stale:', result.stdout)
+        result = p.subprocess.run(command + ['--render'], capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('not allowed with argument', result.stderr)
+        self.assertNotIn('Traceback', result.stderr)
 
     def test_items_staging_and_guards(self):
         import importlib.util
@@ -425,7 +501,8 @@ class PipelineTests(unittest.TestCase):
                     target.parent.mkdir(parents=True, exist_ok=True)
                     target.write_bytes(b'validated')
             return p.subprocess.CompletedProcess(args, 0)
-        with patch.object(p.subprocess, 'run', side_effect=stub):
+        # A-01b: Blender runs through run_blender (own process group); memcheck still uses subprocess.run.
+        with patch.object(p.subprocess, 'run', side_effect=stub), patch.object(p, 'run_blender', side_effect=stub):
             p.render({'renders': [job]}, self.source)
         self.assertEqual(len(calls), 1)
         args, kwargs = calls[0]
@@ -473,7 +550,7 @@ class PipelineTests(unittest.TestCase):
             return p.subprocess.CompletedProcess(args, 0)
         for item in inputs:
             os.utime(item, ns=(100, 100))
-        with patch.object(p, 'ROOT', root), patch.object(p.subprocess, 'run', side_effect=stub) as run:
+        with patch.object(p, 'ROOT', root), patch.object(p, 'run_blender', side_effect=lambda *a, **kw: p.subprocess.run(*a, **kw)), patch.object(p.subprocess, 'run', side_effect=stub) as run:
             p.render(config, source)
             p.render(config, source)
             self.assertEqual(run.call_count, 2)
@@ -485,7 +562,7 @@ class PipelineTests(unittest.TestCase):
                 self.assertEqual(run.call_count, before+2)
             # Each shared source must invalidate an otherwise current job.
             for item in inputs:
-                os.utime(item, ns=(300, 300))
+                item.write_text(item.read_text() + 'changed')
                 before = run.call_count
                 p.render(config, source)
                 self.assertEqual(run.call_count, before+2)
@@ -495,14 +572,14 @@ class PipelineTests(unittest.TestCase):
         script_input = self.source / 'input.blend'
         script_input.write_bytes(b'diagnostic')
         output = self.source / 'render.png'
-        job = dict(script='sample_stall.py', inputs=[str(script_input)], outputs=[str(output)])
+        job = dict(id='sample', script='sample_stall.py', inputs=[str(script_input)], outputs=[str(output)])
         config = {'renders': [job]}
         # No rendering is run: test the orchestration with a stub process.
         def stub(args, **kwargs):
             if 'blender' == args[0]:
                 output.write_bytes(b'ok')
             return p.subprocess.CompletedProcess(args, 0)
-        with patch.object(p.subprocess, 'run', side_effect=stub) as run:
+        with patch.object(p, 'run_blender', side_effect=lambda *a, **kw: p.subprocess.run(*a, **kw)), patch.object(p.subprocess, 'run', side_effect=stub) as run:
             p.render(config)
             p.render(config)
             self.assertEqual(run.call_count, 2)
@@ -585,7 +662,7 @@ class PipelineTests(unittest.TestCase):
                     path.parent.mkdir(parents=True, exist_ok=True)
                     path.write_bytes(b'stub output')
             return p.subprocess.CompletedProcess(args, 0)
-        with patch.object(p.subprocess, 'run', side_effect=cook_stub) as run:
+        with patch.object(p, 'run_blender', side_effect=lambda *a, **kw: p.subprocess.run(*a, **kw)), patch.object(p.subprocess, 'run', side_effect=cook_stub) as run:
             p.render({'renders': [cook]}, self.source)
             p.render({'renders': [cook]}, self.source)
             self.assertEqual(run.call_count, 2)

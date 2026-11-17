@@ -1,0 +1,82 @@
+......................
+----------------------------------------------------------------------
+Ran 22 tests in 5.074s
+
+OK
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 64×64, waste 59.4%, 280 bytes, 16384 decoded
+diagnostic-walk-1: 64×64, waste 53.1%, 204 bytes, 16384 decoded
+diagnostic-walk-2: 64×64, waste 62.5%, 274 bytes, 16384 decoded
+diagnostic-walk-3: 64×64, waste 62.5%, 282 bytes, 16384 decoded
+diagnostic-walk-4: 64×64, waste 62.5%, 256 bytes, 16384 decoded
+diagnostic-walk-5: 64×64, waste 57.8%, 232 bytes, 16384 decoded
+diagnostic-walk-6: 64×64, waste 62.5%, 286 bytes, 16384 decoded
+diagnostic-walk-7: 64×64, waste 57.8%, 206 bytes, 16384 decoded
+PERF-023/024 passed: 8 atlases; manifest 7608 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 32×32, waste 59.4%, 336 bytes, 4096 decoded
+PERF-023/024 passed: 1 atlases; manifest 1122 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+solid-0: 12×12, waste 55.6%, 38 bytes, 576 decoded
+PERF-023/024 passed: 1 atlases; manifest 1024 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+edges-0: 8×16, waste 75.0%, 62 bytes, 512 decoded
+PERF-023/024 passed: 1 atlases; manifest 1108 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 64×64, waste 59.4%, 280 bytes, 16384 decoded
+diagnostic-walk-1: 64×64, waste 53.1%, 204 bytes, 16384 decoded
+diagnostic-walk-2: 64×64, waste 62.5%, 274 bytes, 16384 decoded
+diagnostic-walk-3: 64×64, waste 62.5%, 282 bytes, 16384 decoded
+diagnostic-walk-4: 64×64, waste 62.5%, 256 bytes, 16384 decoded
+diagnostic-walk-5: 64×64, waste 57.8%, 232 bytes, 16384 decoded
+diagnostic-walk-6: 64×64, waste 62.5%, 286 bytes, 16384 decoded
+diagnostic-walk-7: 64×64, waste 57.8%, 206 bytes, 16384 decoded
+PERF-023/024 passed: 8 atlases; manifest 7608 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+cook-0-body: 30×600, waste 24.9%, 76 bytes, 72000 decoded
+cook-0-mask: 30×600, waste 24.9%, 72 bytes, 72000 decoded
+PERF-023/024 passed: 2 atlases; manifest 6820 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+odd-0: 38×38, waste 19.9%, 38 bytes, 5776 decoded
+PERF-023/024 passed: 1 atlases; manifest 1021 bytes
+odd-0: 1926×1086, waste 0.6%, 130 bytes, 8366544 decoded
+PERF-023/024 passed: 1 atlases; manifest 1064 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+tiles-0: 336×1344, waste 9.3%, 62 bytes, 1806336 decoded
+PERF-023/024 passed: 1 atlases; manifest 7817 bytes
+tiles-0: 608×1824, waste 2.6%, 88 bytes, 4435968 decoded
+PERF-023/024 passed: 1 atlases; manifest 2286 bytes
+tiles-0: 912×912, waste 13.4%, 132 bytes, 3326976 decoded
+tiles-1: 608×608, waste 2.6%, 60 bytes, 1478656 decoded
+PERF-023/024 passed: 2 atlases; manifest 2795 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes

@@ -69,6 +69,40 @@ after a memory check; it is slow, so it is not part of `pnpm verify`. Verify pac
 in `assets/src` into a temporary folder and fails when a round is over budget. Needs Pillow
 11.1.0 (`tools/assets/requirements.txt`).
 
+Commands (from the repository root):
+
+- `python3 tools/assets/pipeline.py --render` renders stale jobs, then packs every set.
+- `python3 tools/assets/pipeline.py --render --only cards` renders only that job if
+  stale, then still packs every set. Unknown job ids fail and list valid ids.
+- `python3 tools/assets/pipeline.py --check-stale` reports each job as fresh or stale with
+  its reason, without rendering or packing; it exits non-zero if any selected job is stale.
+  Combining `--render` and `--check-stale` is refused. Add `--only cards` to inspect one job.
+
+Each render job may set `timeoutSeconds` to a positive integer (default 300). On timeout or
+interruption, the pipeline kills the Blender process group, waits and propagates the failure.
+Timeout and missing-output errors name the job id, its script and the limit.
+Choose a limit from a representative measured frame time × total frames (including masks),
+plus scene setup, file publication and a margin for machine load. A-02's nine cook actions ×
+eight directions will need a measured larger limit or separate jobs. Each job requires a unique
+`id` and its own declared outputs; multiple jobs may use the same script. 300 seconds is not a
+target for the whole body render.
+
+Freshness uses SHA-256 of the script, every declared input and extra input (paths and bytes),
+and arguments, rather than modification times. A small JSON stamp named
+`.<id>.render-stamp.json` sits beside the first declared output (for example
+`assets/src/peek-poker/cards/.cards.render-stamp.json`). Commit it with the rendered
+sources. It is written only after successful rendering and presence of every declared output;
+post-render input bytes are hashed because cook publishes anchor metadata to its config.
+Missing outputs, missing/invalid stamps or differing hashes make a job stale. Existing outputs
+without stamps rerender once; checkouts that only change timestamps do not invalidate stamps.
+All declared inputs remain significant, including the full pipeline config when declared.
+A job declaring the whole `pipeline.json` becomes stale whenever any art issue edits that file.
+Duplicate ids and colliding stamp paths are rejected before rendering.
+
+Lossy WebP is accepted only for pages containing a single frame (backgrounds). Multi-frame
+pages must use lossless encoding to prevent neighbour bleed; this is checked per packed page,
+including when a set spans several pages.
+
 ## 6. Where Codex comes in
 
 Per PRD NN-9, Codex is used only where Claude cannot do the job. Expected cases: generated

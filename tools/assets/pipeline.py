@@ -4,6 +4,8 @@ import hashlib
 import io
 import json
 import math
+import os
+import signal
 from pathlib import Path
 import re
 import subprocess
@@ -283,6 +285,8 @@ def pack(config, source, output):
         page = 0
         while pending:
             placed, remaining = layout_page(pending, batches)
+            if encoding == 'lossy' and len(placed) > 1:
+                raise ValueError(f'{name}/{page}: lossy encoding requires a single-frame page')
             width = max(px + f[3].width + 2 for f, px, py in placed)
             height = max(py + f[3].height + 2 for f, px, py in placed)
             if config.get('powerOfTwo', False):
@@ -455,47 +459,127 @@ def check(path):
     print(f'PERF-023/024 passed: {len(atlases)} atlases; manifest {manifest_bytes} bytes')
 
 
-def render(config, source=ROOT):
+def render_job(job, source):
+    ident = safe_name(job['id'])
+    script = (ROOT / 'tools/blender' / job['script']).resolve()
+    if not script.is_relative_to((ROOT / 'tools/blender').resolve()) or not script.is_file():
+        raise ValueError('Render script must exist under tools/blender')
+    limit = job.get('timeoutSeconds', 300)
+    if type(limit) is not int or limit <= 0:
+        raise ValueError(f"{job['script']}: timeoutSeconds must be a positive integer")
+    inputs = [script] + [source_path(ROOT, p) if p.startswith('tools/blender/') else source_path(source, p)
+                         for p in job['inputs']]
+    inputs.extend(source_path(ROOT, p) for p in job.get('extraInputs', []))
+    outputs = [source_path(source, p) for p in job['outputs']]
+    if not outputs or not all(p.is_file() for p in inputs):
+        raise ValueError('Render job needs existing inputs and declared outputs')
+    # Length-framed records distinguish paths and bytes without delimiter ambiguity.
+    digest = hashlib.sha256()
+    for value in [json.dumps(job.get('args', []), separators=(',', ':')).encode()]:
+        digest.update(len(value).to_bytes(8, 'big') + value)
+    for path in inputs:
+        base = ROOT.resolve() if path.is_relative_to(ROOT.resolve()) else source.resolve()
+        for value in (path.relative_to(base).as_posix().encode(), path.read_bytes()):
+            digest.update(len(value).to_bytes(8, 'big') + value)
+    stamp = outputs[0].parent / ('.' + ident + '.render-stamp.json')
+    return script, outputs, stamp, digest.hexdigest(), limit
+
+
+def stale_reason(outputs, stamp, digest):
+    missing = next((p for p in outputs if not p.is_file()), None)
+    if missing:
+        return f'missing output {missing.name}'
+    if not stamp.is_file():
+        return 'missing content stamp'
+    try:
+        if read_json(stamp) != {'sha256': digest}:
+            return 'content stamp differs'
+    except (ValueError, OSError):
+        return 'invalid content stamp'
+    return None
+
+
+def run_blender(command, *, cwd, check, timeout):
+    with subprocess.Popen(command, cwd=cwd, start_new_session=True) as process:
+        try:
+            code = process.wait(timeout=timeout)
+        except BaseException:
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            process.wait()
+            raise
+        if check and code:
+            raise subprocess.CalledProcessError(code, command)
+
+
+def render(config, source=ROOT, only=None, check_stale=False):
     jobs = list(config.get('renders', []))
+    names = [safe_name(job['id']) for job in jobs]
+    if len(names) != len(set(names)):
+        raise ValueError('Duplicate render job ids')
+    prepared = [render_job(job, source) for job in jobs]
+    stamps = [record[2].resolve() for record in prepared]
+    if len(stamps) != len(set(stamps)):
+        raise ValueError('Render job stamps collide')
+    stale = False
+    if only is not None and only not in names:
+        raise ValueError(f'Unknown render job {only!r}; valid jobs: {", ".join(names)}')
     for job in jobs:
-        script = (ROOT / 'tools/blender' / job['script']).resolve()
-        if not script.is_relative_to((ROOT / 'tools/blender').resolve()) or not script.is_file():
-            raise ValueError('Render script must exist under tools/blender')
-        inputs = [source_path(ROOT, p) if p.startswith('tools/blender/') else source_path(source, p)
-                  for p in job['inputs']] + [script]
-        inputs.extend(source_path(ROOT, p) for p in job.get('extraInputs', []))
-        outputs = [source_path(source, p) for p in job['outputs']]
-        if not outputs or not all(p.is_file() for p in inputs):
-            raise ValueError('Render job needs existing inputs and declared outputs')
-        if all(p.exists() for p in outputs) and max(p.stat().st_mtime_ns for p in inputs) <= min(p.stat().st_mtime_ns for p in outputs):
+        if only is not None and job['id'] != only:
+            continue
+        script, outputs, stamp, digest, limit = render_job(job, source)
+        reason = stale_reason(outputs, stamp, digest)
+        if check_stale:
+            stale |= reason is not None
+            print(f'{job["id"]}: stale: {reason}' if reason else f'{job["id"]}: fresh: content stamp matches and all outputs exist')
+            continue
+        if reason is None:
             continue
         guard = subprocess.run([str(ROOT / 'tools/agents/memcheck.sh'), 'render'], capture_output=True, text=True, timeout=30)
         if guard.returncode:
             raise ValueError('Render memory check says wait; retry after running jobs finish')
-        subprocess.run(['blender', '-b', '--factory-startup', '-P', str(script), '--', *job.get('args', [])], cwd=source, check=True, timeout=300)
+        # A failed rerender must never leave a previously valid stamp behind.
+        stamp.unlink(missing_ok=True)
+        try:
+            run_blender(['blender', '-b', '--factory-startup', '-P', str(script), '--', *job.get('args', [])], cwd=source, check=True, timeout=limit)
+        except subprocess.TimeoutExpired as error:
+            raise ValueError(f'{job["id"]} ({job["script"]}): render timed out after {limit} seconds; process group killed') from error
         if not all(p.is_file() for p in outputs):
-            raise ValueError('Render script did not produce declared outputs')
+            raise ValueError(f'{job["id"]} ({job["script"]}): render script did not produce declared outputs')
+        # Scripts such as cook.py publish anchor metadata into an input config.
+        digest = render_job(job, source)[3]
+        write_json(stamp, {'sha256': digest})
+    return stale
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', type=Path, default=ROOT / 'assets/src/pipeline.json')
     parser.add_argument('--output', type=Path, default=ROOT / 'assets/dist')
-    parser.add_argument('--render', action='store_true')
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--render', action='store_true')
     parser.add_argument('--check', type=Path)
+    parser.add_argument('--only')
+    mode.add_argument('--check-stale', action='store_true')
     args = parser.parse_args()
+    if args.only and not (args.render or args.check_stale):
+        parser.error('--only requires --render or --check-stale')
     if args.check:
         check(args.check)
     else:
         config = read_json(args.config)
-        if args.render:
-            render(config, args.config.parent)
+        if args.render or args.check_stale:
+            stale = render(config, args.config.parent, args.only, args.check_stale)
+        if args.check_stale:
+            return int(stale)
         pack(config, args.config.parent, args.output)
 
 
 if __name__ == '__main__':
     try:
-        main()
+        sys.exit(main())
     except (ValueError, KeyError, TypeError, OSError, subprocess.SubprocessError) as error:
         message = f'missing required field {error}' if isinstance(error, KeyError) else str(error)
         print('Asset pipeline failed: ' + message.replace('\n', ' '), file=sys.stderr)

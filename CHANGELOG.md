@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — A-01b, A-01d: render jobs
+
+- `tools/assets/pipeline.py`: render jobs with ids, content stamps instead of file times,
+  `--only <id>`, `--check-stale` (non-zero when stale), per-job `timeoutSeconds`, Blender's process
+  group killed on timeout or interrupt; lossy encoding only for single-frame pages. Supports NN-4,
+  PERF-023, PERF-024. Evidence `uat/evidence/A-01b-render-jobs/`.
+
 ## 2026-11-18 — A-04: dishes and ingredients
 
 - `tools/blender/items.py` renders ingredients, containers, the seven dishes in each state and

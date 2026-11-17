@@ -1,0 +1,3 @@
+cook-spike: fresh: content stamp matches and all outputs exist
+cards: fresh: content stamp matches and all outputs exist
+items: fresh: content stamp matches and all outputs exist

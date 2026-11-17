@@ -353,6 +353,14 @@ seat numbers only when a name cannot fit. UAT: `uat/evidence/C-16-start-game/rou
 | 4 Phone controller | Done: 1A with shape buttons in our colours, 2B, 3A, 4B (D-047, D-048) |
 | 5 Motion | Done: 1B, 2A, 3A, 4A (D-051). **Gate closed 2026-11-16.** |
 
+### Render jobs (A-01b, A-01d)
+`pnpm assets --render` re-renders a job only when its content changes: each job has an id and a
+committed stamp of its script, inputs and arguments, so merges no longer re-render other issues'
+art. `--only <id>` renders one job, `--check-stale` lists stale jobs and fails if any are stale,
+each job may set `timeoutSeconds`, and an interrupt or timeout kills Blender's whole process group
+(checked with a real 5 s limit). Lossy encoding is refused for pages with more than one frame.
+Evidence: `uat/evidence/A-01b-render-jobs/`.
+
 ### Dishes and ingredients (A-04)
 Tabao Rush's ingredients, containers, the seven dishes in each state and their order-card icons
 are rendered in Blender (`tools/blender/items.py`) into one atlas (254 × 940, 234,944 B). Served

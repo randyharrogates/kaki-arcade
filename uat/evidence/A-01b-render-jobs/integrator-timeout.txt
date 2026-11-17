@@ -1,0 +1,10 @@
+/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-01b/tools/blender/cards.py:72: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat and mat.use_nodes and any(n.type == 'BSDF_TRANSPARENT'
+00:02.151  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-01b/assets/src/peek-poker/cards/card-as.png'
+00:02.494  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-01b/assets/src/peek-poker/cards/card-2s.png'
+00:02.845  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-01b/assets/src/peek-poker/cards/card-3s.png'
+00:03.204  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-01b/assets/src/peek-poker/cards/card-4s.png'
+00:03.561  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-01b/assets/src/peek-poker/cards/card-5s.png'
+00:03.932  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-01b/assets/src/peek-poker/cards/card-6s.png'
+00:04.386  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-01b/assets/src/peek-poker/cards/card-7s.png'
+Asset pipeline failed: cards.py: render timed out after 5 seconds; process group killed
