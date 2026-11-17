@@ -931,3 +931,13 @@ It does not follow host-only dynamic imports (game modules, the TV game screens,
 question bank). Why: counting the whole deploy put the controller at 291 KB when a phone
 downloads 67 KB (C-16 review), and would fail as the bank grows. The whole deploy stays
 measured against PERF-022.
+
+**D-116 · 2026-11-17 · Claude (under D-057)** — The floating stick near the edge of its
+area. The base is drawn where the thumb lands but kept wholly inside the area (inset by the
+outline), so it never spills off the phone or over the header. The knob is always under the
+thumb, from the first frame: a landing near the edge, where the base had to be moved inward,
+reads at once as a push toward that edge, and every later move is measured from the same
+base. Why: K-02's re-review found that measuring from the moved base but starting at zero made
+the first 1 px move jump from nothing to nearly full speed, which breaks "tracks the thumb
+1:1" (CTRL-005). The other choice, not moving the base, puts part of it off the phone for a
+thumb within 42 px of the edge and cannot reach full deflection toward that edge.
