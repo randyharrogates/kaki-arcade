@@ -842,3 +842,12 @@ when everyone's in."; other phones read "Waiting for the leader to pick a game."
 (g) The `picker-input` and `picker-state` messages on the control channel are accepted as
 part of the protocol contract; ARCHITECTURE §5 records them when C-09 merges.
 
+**D-105 · 2026-11-17 · Claude under D-057** — Rabakz big screen, after the round-7 browser
+check. (a) When the layout differs between two questions (picture to no picture, or a
+different text size), nothing travels: the whole question block (picture, prompt, four
+answers) changes by one mask boundary, old wiped out and new wiped in together, at final
+layout. This replaces the transform-only rule in D-102 for layout changes; D-102's size rule
+stands. (b) The success pulse is one pulse of the whole correct card's edge that ends
+invisible; nothing is left drawn on the card. (c) A winner's tick sits after the name, so the
+name does not move when it appears.
+
