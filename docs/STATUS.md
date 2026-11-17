@@ -226,6 +226,15 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   a hidden page or losing focus releases everything. Tested in Chromium phone emulation at
   667, 844 and 932 wide. Not proven: real phones and vibration on hardware (K-07); frame
   timing (PERF-012); the per-game layouts (K-04).
+- **Layout engine (K-04), development page only.** `/play?demo=controller&layout=<name>` draws
+  only the parts a layout asks for (stick, D-pad, shape buttons, L and R, options, a tappable
+  grid with an action, cards, text) and grows them to fill the play area, with 13 px margins and
+  gaps falling to 8 and 5 only where needed (D-117, D-118). Face buttons are 110 px at 844 wide and
+  above and scale down to 89 on narrower phones (D-122). Labels that do not fit at 34 px step to
+  21 px (D-127); disabled controls are an opaque grey with dark ink (D-125); face-down cards show
+  the striped back. Changes crossfade without a blank frame. Tested in Chromium phone emulation
+  at 667, 844 and 932 wide. Not proven: real phones (K-07); the games' own layouts (R-02, P-03,
+  T-08); long action labels and web-font loading (follow-ups in K-05).
 - **Rabakz TV screen (R-03), development page only.** The question, four options with letter
   and shape, who has answered, lock-outs and wrong options marked without colour alone, and
   the reveal, at reading size for 720p to 4K with eight players. A correct option pulses once

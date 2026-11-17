@@ -1,0 +1,346 @@
+{
+  "slice": "K-04-layout-engine",
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    [\n+     'throw',\n-     'pick',\n      'press',\n      true,\n      1\n    ],\n    [\n+     'throw',\n-     'pick',\n      'release',\n      false,\n      1\n    ]\n  ]\n\n    at file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:34:12\n    at async deadline (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/core.ts:181:16)\n    at async Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/harness.ts:95:26)\n    at async layoutEngine (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:32:3)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- K-04-layout-engine --phones 1",
+  "commit": "9e1f622fb025ead316f205d3a1ceb7b6aef32ef9",
+  "viewports": [
+    "667×375",
+    "844×390",
+    "932×430"
+  ],
+  "steps": [
+    {
+      "name": "tabao-667x375",
+      "ms": 472.82654099999945,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-667x375",
+      "ms": 225.54925000000003,
+      "status": "completed"
+    },
+    {
+      "name": "poker-667x375",
+      "ms": 191.45979100000022,
+      "status": "completed"
+    },
+    {
+      "name": "dpad-only-667x375",
+      "ms": 176.58558300000004,
+      "status": "completed"
+    },
+    {
+      "name": "text-only-667x375",
+      "ms": 174.81362499999977,
+      "status": "completed"
+    },
+    {
+      "name": "cards-667x375",
+      "ms": 173.52900000000045,
+      "status": "completed"
+    },
+    {
+      "name": "every-667x375",
+      "ms": 258.6419159999996,
+      "status": "completed"
+    },
+    {
+      "name": "tabao-844x390",
+      "ms": 230.40554100000008,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-844x390",
+      "ms": 247.67045899999994,
+      "status": "completed"
+    },
+    {
+      "name": "poker-844x390",
+      "ms": 263.3866250000001,
+      "status": "completed"
+    },
+    {
+      "name": "dpad-only-844x390",
+      "ms": 246.62320799999998,
+      "status": "completed"
+    },
+    {
+      "name": "text-only-844x390",
+      "ms": 195.47783299999992,
+      "status": "completed"
+    },
+    {
+      "name": "cards-844x390",
+      "ms": 194.1979999999994,
+      "status": "completed"
+    },
+    {
+      "name": "every-844x390",
+      "ms": 198.57558300000073,
+      "status": "completed"
+    },
+    {
+      "name": "tabao-932x430",
+      "ms": 195.81045900000026,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-932x430",
+      "ms": 196.40516699999898,
+      "status": "completed"
+    },
+    {
+      "name": "poker-932x430",
+      "ms": 213.56925000000047,
+      "status": "completed"
+    },
+    {
+      "name": "dpad-only-932x430",
+      "ms": 248.4885830000003,
+      "status": "completed"
+    },
+    {
+      "name": "text-only-932x430",
+      "ms": 198.69225000000006,
+      "status": "completed"
+    },
+    {
+      "name": "cards-932x430",
+      "ms": 198.316291000001,
+      "status": "completed"
+    },
+    {
+      "name": "every-932x430",
+      "ms": 200.19504199999938,
+      "status": "completed"
+    },
+    {
+      "name": "held face emits press and release with revision",
+      "ms": 131.26450000000114,
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    [\n+     'throw',\n-     'pick',\n      'press',\n      true,\n      1\n    ],\n    [\n+     'throw',\n-     'pick',\n      'release',\n      false,\n      1\n    ]\n  ]\n\n    at file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:34:12\n    at async deadline (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/core.ts:181:16)\n    at async Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/harness.ts:95:26)\n    at async layoutEngine (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:32:3)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/run.mjs:15:1"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-tabao-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-rabakz-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-poker-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-dpad-only-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-text-only-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-cards-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-every-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-tabao-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-rabakz-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-poker-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-dpad-only-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-text-only-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-cards-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-every-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-tabao-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone1-rabakz-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-poker-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-dpad-only-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-text-only-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone1-cards-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone1-every-932.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-tabao-667.jpg",
+    "02-phone1-rabakz-667.jpg",
+    "03-phone1-poker-667.jpg",
+    "04-phone1-dpad-only-667.jpg",
+    "05-phone1-text-only-667.jpg",
+    "06-phone1-cards-667.jpg",
+    "07-phone1-every-667.jpg",
+    "08-phone1-tabao-844.jpg",
+    "09-phone1-rabakz-844.jpg",
+    "10-phone1-poker-844.jpg",
+    "11-phone1-dpad-only-844.jpg",
+    "12-phone1-text-only-844.jpg",
+    "13-phone1-cards-844.jpg",
+    "14-phone1-every-844.jpg",
+    "15-phone1-tabao-932.jpg",
+    "16-phone1-rabakz-932.jpg",
+    "17-phone1-poker-932.jpg",
+    "18-phone1-dpad-only-932.jpg",
+    "19-phone1-text-only-932.jpg",
+    "20-phone1-cards-932.jpg",
+    "21-phone1-every-932.jpg",
+    "22-host-failure.png",
+    "23-phone1-failure.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-tabao-667.jpg",
+      "bytes": 71904
+    },
+    {
+      "file": "02-phone1-rabakz-667.jpg",
+      "bytes": 120693
+    },
+    {
+      "file": "03-phone1-poker-667.jpg",
+      "bytes": 104181
+    },
+    {
+      "file": "04-phone1-dpad-only-667.jpg",
+      "bytes": 78438
+    },
+    {
+      "file": "05-phone1-text-only-667.jpg",
+      "bytes": 73219
+    },
+    {
+      "file": "06-phone1-cards-667.jpg",
+      "bytes": 73400
+    },
+    {
+      "file": "07-phone1-every-667.jpg",
+      "bytes": 155992
+    },
+    {
+      "file": "08-phone1-tabao-844.jpg",
+      "bytes": 87470
+    },
+    {
+      "file": "09-phone1-rabakz-844.jpg",
+      "bytes": 137119
+    },
+    {
+      "file": "10-phone1-poker-844.jpg",
+      "bytes": 125939
+    },
+    {
+      "file": "11-phone1-dpad-only-844.jpg",
+      "bytes": 94048
+    },
+    {
+      "file": "12-phone1-text-only-844.jpg",
+      "bytes": 88723
+    },
+    {
+      "file": "13-phone1-cards-844.jpg",
+      "bytes": 88801
+    },
+    {
+      "file": "14-phone1-every-844.jpg",
+      "bytes": 177919
+    },
+    {
+      "file": "15-phone1-tabao-932.jpg",
+      "bytes": 99124
+    },
+    {
+      "file": "16-phone1-rabakz-932.jpg",
+      "bytes": 149698
+    },
+    {
+      "file": "17-phone1-poker-932.jpg",
+      "bytes": 142238
+    },
+    {
+      "file": "18-phone1-dpad-only-932.jpg",
+      "bytes": 105837
+    },
+    {
+      "file": "19-phone1-text-only-932.jpg",
+      "bytes": 100477
+    },
+    {
+      "file": "20-phone1-cards-932.jpg",
+      "bytes": 100631
+    },
+    {
+      "file": "21-phone1-every-932.jpg",
+      "bytes": 194701
+    },
+    {
+      "file": "22-host-failure.png",
+      "bytes": 8512
+    },
+    {
+      "file": "23-phone1-failure.png",
+      "bytes": 159747
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2810
+    },
+    {
+      "file": "run.json",
+      "bytes": 9352
+    }
+  ],
+  "totalBytes": 2551010,
+  "maxBytes": 12582912
+}

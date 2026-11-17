@@ -1,0 +1,740 @@
+{
+  "slice": "K-04-layout-engine",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- K-04-layout-engine --phones 1",
+  "commit": "798dbf89486321b19b4f99eb92c6ff8331db8e0f",
+  "viewports": [
+    "667×375",
+    "844×390",
+    "932×430"
+  ],
+  "steps": [
+    {
+      "name": "stick-faces-667x375",
+      "ms": 533.71075,
+      "status": "completed"
+    },
+    {
+      "name": "options-667x375",
+      "ms": 239.38237500000014,
+      "status": "completed"
+    },
+    {
+      "name": "picker-667x375",
+      "ms": 188.29820800000016,
+      "status": "completed"
+    },
+    {
+      "name": "dpad-only-667x375",
+      "ms": 238.25141699999995,
+      "status": "completed"
+    },
+    {
+      "name": "text-only-667x375",
+      "ms": 238.03787499999999,
+      "status": "completed"
+    },
+    {
+      "name": "cards-667x375",
+      "ms": 186.42691600000035,
+      "status": "completed"
+    },
+    {
+      "name": "hidden-cards-667x375",
+      "ms": 236.85483399999976,
+      "status": "completed"
+    },
+    {
+      "name": "long-answer-667x375",
+      "ms": 338.69687499999964,
+      "status": "completed"
+    },
+    {
+      "name": "shoulders-667x375",
+      "ms": 205.318084,
+      "status": "completed"
+    },
+    {
+      "name": "disabled-options-667x375",
+      "ms": 238.33904099999972,
+      "status": "completed"
+    },
+    {
+      "name": "disabled-faces-667x375",
+      "ms": 186.43033300000025,
+      "status": "completed"
+    },
+    {
+      "name": "every-667x375",
+      "ms": 203.68579200000022,
+      "status": "completed"
+    },
+    {
+      "name": "stick-faces-844x390",
+      "ms": 190.72591600000032,
+      "status": "completed"
+    },
+    {
+      "name": "options-844x390",
+      "ms": 239.74387500000012,
+      "status": "completed"
+    },
+    {
+      "name": "picker-844x390",
+      "ms": 191.0375409999997,
+      "status": "completed"
+    },
+    {
+      "name": "dpad-only-844x390",
+      "ms": 239.70474999999988,
+      "status": "completed"
+    },
+    {
+      "name": "text-only-844x390",
+      "ms": 240.31525000000056,
+      "status": "completed"
+    },
+    {
+      "name": "cards-844x390",
+      "ms": 188.33570899999995,
+      "status": "completed"
+    },
+    {
+      "name": "hidden-cards-844x390",
+      "ms": 192.280084,
+      "status": "completed"
+    },
+    {
+      "name": "long-answer-844x390",
+      "ms": 241.03704199999993,
+      "status": "completed"
+    },
+    {
+      "name": "shoulders-844x390",
+      "ms": 240.6025410000002,
+      "status": "completed"
+    },
+    {
+      "name": "disabled-options-844x390",
+      "ms": 241.59920799999963,
+      "status": "completed"
+    },
+    {
+      "name": "disabled-faces-844x390",
+      "ms": 189.89991699999973,
+      "status": "completed"
+    },
+    {
+      "name": "every-844x390",
+      "ms": 189.65312499999982,
+      "status": "completed"
+    },
+    {
+      "name": "stick-faces-932x430",
+      "ms": 192.84308299999975,
+      "status": "completed"
+    },
+    {
+      "name": "options-932x430",
+      "ms": 245.37529200000063,
+      "status": "completed"
+    },
+    {
+      "name": "picker-932x430",
+      "ms": 209.91779099999985,
+      "status": "completed"
+    },
+    {
+      "name": "dpad-only-932x430",
+      "ms": 192.66062499999953,
+      "status": "completed"
+    },
+    {
+      "name": "text-only-932x430",
+      "ms": 244.83458400000018,
+      "status": "completed"
+    },
+    {
+      "name": "cards-932x430",
+      "ms": 191.68225000000075,
+      "status": "completed"
+    },
+    {
+      "name": "hidden-cards-932x430",
+      "ms": 276.77800000000025,
+      "status": "completed"
+    },
+    {
+      "name": "long-answer-932x430",
+      "ms": 245.1279999999988,
+      "status": "completed"
+    },
+    {
+      "name": "shoulders-932x430",
+      "ms": 193.8513750000002,
+      "status": "completed"
+    },
+    {
+      "name": "disabled-options-932x430",
+      "ms": 244.66412499999933,
+      "status": "completed"
+    },
+    {
+      "name": "disabled-faces-932x430",
+      "ms": 245.30733300000065,
+      "status": "completed"
+    },
+    {
+      "name": "every-932x430",
+      "ms": 244.46579200000087,
+      "status": "completed"
+    },
+    {
+      "name": "held face emits press and release with revision",
+      "ms": 144.92616599999928,
+      "status": "completed"
+    },
+    {
+      "name": "stick vector and neutral carry revision",
+      "ms": 28.793374999999287,
+      "status": "completed"
+    },
+    {
+      "name": "removed held control releases at its original revision",
+      "ms": 551.2554170000003,
+      "status": "completed"
+    },
+    {
+      "name": "surviving disabled face retains press revision across layout change",
+      "ms": 646.182499999999,
+      "status": "completed"
+    },
+    {
+      "name": "state-only grid update advances the wire revision",
+      "ms": 144.1135830000003,
+      "status": "completed"
+    },
+    {
+      "name": "grid index and Lock in id",
+      "ms": 175.33183400000053,
+      "status": "completed"
+    },
+    {
+      "name": "D-pad direction press and release",
+      "ms": 93.66020800000115,
+      "status": "completed"
+    },
+    {
+      "name": "card id and disabled card",
+      "ms": 131.80433300000004,
+      "status": "completed"
+    },
+    {
+      "name": "answer choice transitions to Watch the TV without a blank frame",
+      "ms": 2559.3335000000006,
+      "status": "completed"
+    },
+    {
+      "name": "reduced motion keeps state changes and omits transition animations",
+      "ms": 363.04112499999974,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-stick-faces-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-options-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-picker-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-dpad-only-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-text-only-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-cards-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-hidden-cards-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-long-answer-667-label.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-long-answer-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-shoulders-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-disabled-options-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-disabled-faces-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-every-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-stick-faces-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-options-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone1-picker-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-dpad-only-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-text-only-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-cards-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone1-hidden-cards-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone1-long-answer-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone1-shoulders-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone1-disabled-options-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone1-disabled-faces-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone1-every-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-stick-faces-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone1-options-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone1-picker-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-phone1-dpad-only-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-phone1-text-only-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-phone1-cards-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-phone1-hidden-cards-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-phone1-long-answer-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone1-shoulders-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-phone1-disabled-options-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-phone1-disabled-faces-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-phone1-every-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-phone1-removed-mid-hold.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-phone1-disabled-face-feedback.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-phone1-answer-transition-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-phone1-answer-transition-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-phone1-answer-transition-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-phone1-answer-transition-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-phone1-answer-transition-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-phone1-answer-transition-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-phone1-answer-transition-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-phone1-answer-transition-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "48-phone1-answer-transition-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "49-phone1-answer-transition-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "50-phone1-answer-transition-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "51-phone1-answer-transition-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "53-phone1-answer-return-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "54-phone1-answer-return-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "55-phone1-answer-return-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "56-phone1-answer-return-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "57-phone1-answer-return-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "58-phone1-answer-return-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "59-phone1-answer-return-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "60-phone1-answer-return-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "61-phone1-answer-return-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "62-phone1-answer-return-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "63-phone1-answer-return-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "64-phone1-answer-return-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "66-phone1-reduced-motion-watch.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "67-phone1-reduced-motion.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-stick-faces-667.jpg",
+    "02-phone1-options-667.jpg",
+    "03-phone1-picker-667.jpg",
+    "04-phone1-dpad-only-667.jpg",
+    "05-phone1-text-only-667.jpg",
+    "06-phone1-cards-667.jpg",
+    "07-phone1-hidden-cards-667.jpg",
+    "08-phone1-long-answer-667-label.jpg",
+    "09-phone1-long-answer-667.jpg",
+    "10-phone1-shoulders-667.jpg",
+    "11-phone1-disabled-options-667.jpg",
+    "12-phone1-disabled-faces-667.jpg",
+    "13-phone1-every-667.jpg",
+    "14-phone1-stick-faces-844.jpg",
+    "15-phone1-options-844.jpg",
+    "16-phone1-picker-844.jpg",
+    "17-phone1-dpad-only-844.jpg",
+    "18-phone1-text-only-844.jpg",
+    "19-phone1-cards-844.jpg",
+    "20-phone1-hidden-cards-844.jpg",
+    "21-phone1-long-answer-844.jpg",
+    "22-phone1-shoulders-844.jpg",
+    "23-phone1-disabled-options-844.jpg",
+    "24-phone1-disabled-faces-844.jpg",
+    "25-phone1-every-844.jpg",
+    "26-phone1-stick-faces-932.jpg",
+    "27-phone1-options-932.jpg",
+    "28-phone1-picker-932.jpg",
+    "29-phone1-dpad-only-932.jpg",
+    "30-phone1-text-only-932.jpg",
+    "31-phone1-cards-932.jpg",
+    "32-phone1-hidden-cards-932.jpg",
+    "33-phone1-long-answer-932.jpg",
+    "34-phone1-shoulders-932.jpg",
+    "35-phone1-disabled-options-932.jpg",
+    "36-phone1-disabled-faces-932.jpg",
+    "37-phone1-every-932.jpg",
+    "38-phone1-removed-mid-hold.jpg",
+    "39-phone1-disabled-face-feedback.jpg",
+    "52-strip-answer-transition.jpg",
+    "65-strip-answer-return.jpg",
+    "66-phone1-reduced-motion-watch.jpg",
+    "67-phone1-reduced-motion.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-stick-faces-667.jpg",
+      "bytes": 132755
+    },
+    {
+      "file": "02-phone1-options-667.jpg",
+      "bytes": 149314
+    },
+    {
+      "file": "03-phone1-picker-667.jpg",
+      "bytes": 136697
+    },
+    {
+      "file": "04-phone1-dpad-only-667.jpg",
+      "bytes": 78853
+    },
+    {
+      "file": "05-phone1-text-only-667.jpg",
+      "bytes": 72892
+    },
+    {
+      "file": "06-phone1-cards-667.jpg",
+      "bytes": 74199
+    },
+    {
+      "file": "07-phone1-hidden-cards-667.jpg",
+      "bytes": 142835
+    },
+    {
+      "file": "08-phone1-long-answer-667-label.jpg",
+      "bytes": 179157
+    },
+    {
+      "file": "09-phone1-long-answer-667.jpg",
+      "bytes": 179157
+    },
+    {
+      "file": "10-phone1-shoulders-667.jpg",
+      "bytes": 136553
+    },
+    {
+      "file": "11-phone1-disabled-options-667.jpg",
+      "bytes": 122337
+    },
+    {
+      "file": "12-phone1-disabled-faces-667.jpg",
+      "bytes": 101956
+    },
+    {
+      "file": "13-phone1-every-667.jpg",
+      "bytes": 100492
+    },
+    {
+      "file": "14-phone1-stick-faces-844.jpg",
+      "bytes": 161844
+    },
+    {
+      "file": "15-phone1-options-844.jpg",
+      "bytes": 160462
+    },
+    {
+      "file": "16-phone1-picker-844.jpg",
+      "bytes": 150537
+    },
+    {
+      "file": "17-phone1-dpad-only-844.jpg",
+      "bytes": 95248
+    },
+    {
+      "file": "18-phone1-text-only-844.jpg",
+      "bytes": 88911
+    },
+    {
+      "file": "19-phone1-cards-844.jpg",
+      "bytes": 87079
+    },
+    {
+      "file": "20-phone1-hidden-cards-844.jpg",
+      "bytes": 162558
+    },
+    {
+      "file": "21-phone1-long-answer-844.jpg",
+      "bytes": 191896
+    },
+    {
+      "file": "22-phone1-shoulders-844.jpg",
+      "bytes": 164796
+    },
+    {
+      "file": "23-phone1-disabled-options-844.jpg",
+      "bytes": 134432
+    },
+    {
+      "file": "24-phone1-disabled-faces-844.jpg",
+      "bytes": 119819
+    },
+    {
+      "file": "25-phone1-every-844.jpg",
+      "bytes": 156963
+    },
+    {
+      "file": "26-phone1-stick-faces-932.jpg",
+      "bytes": 180680
+    },
+    {
+      "file": "27-phone1-options-932.jpg",
+      "bytes": 174621
+    },
+    {
+      "file": "28-phone1-picker-932.jpg",
+      "bytes": 163587
+    },
+    {
+      "file": "29-phone1-dpad-only-932.jpg",
+      "bytes": 107277
+    },
+    {
+      "file": "30-phone1-text-only-932.jpg",
+      "bytes": 100340
+    },
+    {
+      "file": "31-phone1-cards-932.jpg",
+      "bytes": 97787
+    },
+    {
+      "file": "32-phone1-hidden-cards-932.jpg",
+      "bytes": 200926
+    },
+    {
+      "file": "33-phone1-long-answer-932.jpg",
+      "bytes": 205913
+    },
+    {
+      "file": "34-phone1-shoulders-932.jpg",
+      "bytes": 182036
+    },
+    {
+      "file": "35-phone1-disabled-options-932.jpg",
+      "bytes": 146872
+    },
+    {
+      "file": "36-phone1-disabled-faces-932.jpg",
+      "bytes": 136522
+    },
+    {
+      "file": "37-phone1-every-932.jpg",
+      "bytes": 191319
+    },
+    {
+      "file": "38-phone1-removed-mid-hold.jpg",
+      "bytes": 100319
+    },
+    {
+      "file": "39-phone1-disabled-face-feedback.jpg",
+      "bytes": 136901
+    },
+    {
+      "file": "52-strip-answer-transition.jpg",
+      "bytes": 1616489
+    },
+    {
+      "file": "65-strip-answer-return.jpg",
+      "bytes": 2136050
+    },
+    {
+      "file": "66-phone1-reduced-motion-watch.jpg",
+      "bytes": 100340
+    },
+    {
+      "file": "67-phone1-reduced-motion.jpg",
+      "bytes": 174621
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 5833
+    },
+    {
+      "file": "run.json",
+      "bytes": 16584
+    }
+  ],
+  "totalBytes": 9456796,
+  "maxBytes": 12582912
+}

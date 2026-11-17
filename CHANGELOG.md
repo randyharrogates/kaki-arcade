@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — K-04: layout engine
+
+- `packages/controller-kit/src`: `layout-renderer.ts` (draws the declared parts, revision guard,
+  crossfade on a change of tap meaning, held and disabled feedback), `layout-placement.ts`
+  (packs and grows parts, D-117/D-118 spacing fallbacks, `fits` only when nothing overlaps),
+  `layout-label.ts` (natural-width measurement and the D-127 34 to 21 px step), `layout.css`
+  (D-125 disabled fill, card backs); `packages/ui` `faceFloor` (D-122) and disabled tokens;
+  demo fixtures behind `?demo=controller&layout=`.
+- (CTRL-002 in progress)
+
 ## 2026-11-17 — K-03: D-pad, shape buttons, L, R and Start
 
 - `packages/controller-kit/src`: `buttons.ts` (D-pad, shape diamond from the shared shape

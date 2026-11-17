@@ -1,0 +1,78 @@
+{
+  "slice": "K-04-layout-engine",
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: poker: fits\n\n'false' !== 'true'\n\n    at file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:40:14\n    at async deadline (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/core.ts:181:16)\n    at async Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/harness.ts:95:26)\n    at async layoutEngine (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:15:31)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- K-04-layout-engine --phones 1",
+  "commit": "037f2189c536a27b18af20dd0187912889a36f4a",
+  "viewports": [
+    "667×375"
+  ],
+  "steps": [
+    {
+      "name": "tabao-667x375",
+      "ms": 907.382083,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-667x375",
+      "ms": 266.627833,
+      "status": "completed"
+    },
+    {
+      "name": "poker-667x375",
+      "ms": 99.9900830000006,
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: poker: fits\n\n'false' !== 'true'\n\n    at file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:40:14\n    at async deadline (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/core.ts:181:16)\n    at async Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/harness.ts:95:26)\n    at async layoutEngine (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:15:31)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/run.mjs:15:1"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-tabao-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-rabakz-667.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-tabao-667.jpg",
+    "02-phone1-rabakz-667.jpg",
+    "03-host-failure.png",
+    "04-phone1-failure.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-tabao-667.jpg",
+      "bytes": 135463
+    },
+    {
+      "file": "02-phone1-rabakz-667.jpg",
+      "bytes": 149314
+    },
+    {
+      "file": "03-host-failure.png",
+      "bytes": 8512
+    },
+    {
+      "file": "04-phone1-failure.png",
+      "bytes": 402192
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 816
+    },
+    {
+      "file": "run.json",
+      "bytes": 3245
+    }
+  ],
+  "totalBytes": 699579,
+  "maxBytes": 12582912
+}

@@ -1,0 +1,148 @@
+{
+  "slice": "K-04-layout-engine",
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: long-answer: answers:a label overflows its button\n    at file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:80:16\n    at async deadline (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/core.ts:181:16)\n    at async Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/harness.ts:95:26)\n    at async layoutEngine (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:18:31)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- K-04-layout-engine --phones 1",
+  "commit": "6f3c6355366535bb34ef7a054ed03275d7a2aba7",
+  "viewports": [
+    "667×375"
+  ],
+  "steps": [
+    {
+      "name": "stick-faces-667x375",
+      "ms": 353.96616700000027,
+      "status": "completed"
+    },
+    {
+      "name": "options-667x375",
+      "ms": 240.5939169999997,
+      "status": "completed"
+    },
+    {
+      "name": "picker-667x375",
+      "ms": 207.639541,
+      "status": "completed"
+    },
+    {
+      "name": "dpad-only-667x375",
+      "ms": 188.56729099999984,
+      "status": "completed"
+    },
+    {
+      "name": "text-only-667x375",
+      "ms": 188.58470799999986,
+      "status": "completed"
+    },
+    {
+      "name": "cards-667x375",
+      "ms": 186.89941700000008,
+      "status": "completed"
+    },
+    {
+      "name": "hidden-cards-667x375",
+      "ms": 240.41674999999987,
+      "status": "completed"
+    },
+    {
+      "name": "long-answer-667x375",
+      "ms": 122.135041,
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: long-answer: answers:a label overflows its button\n    at file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:80:16\n    at async deadline (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/core.ts:181:16)\n    at async Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/harness.ts:95:26)\n    at async layoutEngine (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/uat/slices/K-04-layout-engine.mjs:18:31)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/K-04/tools/uat/run.mjs:15:1"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-stick-faces-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-options-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-picker-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-dpad-only-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-text-only-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-cards-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-hidden-cards-667.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-stick-faces-667.jpg",
+    "02-phone1-options-667.jpg",
+    "03-phone1-picker-667.jpg",
+    "04-phone1-dpad-only-667.jpg",
+    "05-phone1-text-only-667.jpg",
+    "06-phone1-cards-667.jpg",
+    "07-phone1-hidden-cards-667.jpg",
+    "08-host-failure.png",
+    "09-phone1-failure.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-stick-faces-667.jpg",
+      "bytes": 132755
+    },
+    {
+      "file": "02-phone1-options-667.jpg",
+      "bytes": 149314
+    },
+    {
+      "file": "03-phone1-picker-667.jpg",
+      "bytes": 136697
+    },
+    {
+      "file": "04-phone1-dpad-only-667.jpg",
+      "bytes": 78853
+    },
+    {
+      "file": "05-phone1-text-only-667.jpg",
+      "bytes": 72892
+    },
+    {
+      "file": "06-phone1-cards-667.jpg",
+      "bytes": 74199
+    },
+    {
+      "file": "07-phone1-hidden-cards-667.jpg",
+      "bytes": 142835
+    },
+    {
+      "file": "08-host-failure.png",
+      "bytes": 8512
+    },
+    {
+      "file": "09-phone1-failure.png",
+      "bytes": 183018
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1381
+    },
+    {
+      "file": "run.json",
+      "bytes": 4820
+    }
+  ],
+  "totalBytes": 985313,
+  "maxBytes": 12582912
+}

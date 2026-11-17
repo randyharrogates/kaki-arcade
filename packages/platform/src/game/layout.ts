@@ -155,15 +155,10 @@ export type LayoutControl =
   | TextControl;
 export interface ControllerLayout {
   /**
-   * A whole number, PER PLAYER, that never goes down during a match. It goes UP when what
-   * this player can tap changes (a new question, a new phase, different options) and ONLY
-   * then: a tap made against an older revision is dropped, so a bump for any other reason
-   * (another player's answer, a countdown, an option greyed out) would throw away a press
-   * that was still good. The kit fails a revision that changes while `tapSignature` does not, unless
-   * the
-   * previous layout offered no tappable control (nothing could have been in flight).
-   * Text-only transitions may bump revision; once taps exist, keep it stable until their
-   * meaning changes. Disabled-state changes alone do not change a tap's meaning.
+   * A whole number per player that never decreases during a match. Advance it when tap
+   * meaning changes; presentation and disabled-state updates may also advance it.
+   * The kit accepts a revision bump with an unchanged tap signature. The session decides
+   * whether an output from an older revision is stale and should be dropped.
    */
   readonly revision: number;
   readonly controls: readonly LayoutControl[];

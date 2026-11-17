@@ -13,3 +13,8 @@ export { Stick } from './stick';
 export type { StickProps } from './stick';
 export { stickModel, routeStick } from './stick-model';
 export type { Vector, StickArea, StickPointer, StickEvent } from './stick-model';
+export { LayoutEngine } from './layout-renderer';
+export type { LayoutEngineProps } from './layout-renderer';
+export { placeLayout, diamondSpan } from './layout-placement';
+export { revisionProblem, layoutOutput } from './layout-types';
+export type { Layout, LayoutPart, LayoutOutput, LayoutValue } from './layout-types';

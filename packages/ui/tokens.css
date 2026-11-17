@@ -56,6 +56,11 @@
   --ka-phone-type-55: 55px;
   --ka-phone-type-89: 89px;
   --ka-on-colour: #FFFFFF;
+  --ka-disabled-fill: #B8B8B8;
+  --ka-disabled-ink: #3F3F3F;
+  --ka-disabled-border: #E0E0E0;
+  --ka-disabled-panel-treatment: linear-gradient(165deg, #B8B8B8, #ADADAD);
+  --ka-disabled-card-back-treatment: repeating-linear-gradient(45deg, #C3C3C3 0 5px, transparent 5px 13px);
   --ka-seat-numeral: #2B2118;
   --ka-team-text-weight: 700;
   --ka-seat-1: #D9483B;

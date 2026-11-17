@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { ControllerShell, FaceButtons, DPad, ShoulderButton, StartButton, Stick, controlSizes } from '../../../packages/controller-kit/src/index';
+import { ControllerShell, FaceButtons, DPad, ShoulderButton, StartButton, Stick, controlSizes, LayoutEngine } from '../../../packages/controller-kit/src/index';
+import type { Layout, LayoutOutput } from '../../../packages/controller-kit/src/index';
+import { layoutFixtures, nextWireLayout } from './layout-fixtures';
+import '../../../packages/controller-kit/src/layout.css';
 import type { LinkState } from '../../../packages/controller-kit/src/index';
 import type { SeatNumber } from '@kaki/ui';
 import '../../../packages/controller-kit/src/shell.css';
@@ -9,6 +12,21 @@ import './controller-demo.css';
 // Development page: the stick (K-02) by default, the buttons (K-03) with ?controls=buttons.
 // The real layouts come from the layout engine (K-04).
 export function ControllerDemo() {
+  const layoutName = new URLSearchParams(location.search).get('layout');
+  const [fixture, setFixture] = useState<Layout | null>(layoutName ? layoutFixtures[layoutName] ?? null : null);
+  const outputs = useRef<LayoutOutput[]>([]);
+  const layoutReadout = useRef<HTMLOutputElement>(null);
+  useEffect(() => {
+    const change = (event: Event) => {
+      const detail: unknown = (event as CustomEvent<unknown>).detail;
+      if (typeof detail === 'string' && layoutFixtures[detail]) {
+        const next = layoutFixtures[detail];
+        setFixture(old => nextWireLayout(old,next));
+      }
+    };
+    window.addEventListener('controller-demo-layout',change);
+    return () => { window.removeEventListener('controller-demo-layout',change); };
+  }, []);
   const buttons = new URLSearchParams(location.search).get('controls') === 'buttons';
   const readout = useRef<HTMLOutputElement>(null);
   const showVector = (vector: { x: number; y: number }) => {
@@ -47,6 +65,14 @@ export function ControllerDemo() {
     };
   }, [cycle]);
   if (!mounted) return null;
+  if (fixture) return <ControllerShell seat={seat} name={params.get('name') ?? 'Player'} link={link}>
+    {area && <LayoutEngine layout={fixture} area={area} viewport={area.viewport} isLeader={params.get('leader') === '1'} onOutput={output => {
+      outputs.current.push(output);
+      if (layoutReadout.current) { layoutReadout.current.dataset.outputs = JSON.stringify(outputs.current); layoutReadout.current.textContent = `${output.control} · ${output.phase} · r${String(output.revision)}`; }
+      if (layoutName === 'options' && output.phase === 'choose') setFixture(old => layoutFixtures.watch ? nextWireLayout(old,layoutFixtures.watch) : null);
+    }}/>}
+    <output ref={layoutReadout} class="ka-layout-readout" hidden={params.get('debug') !== '1'} aria-label="Layout outputs" data-outputs="[]"/>
+  </ControllerShell>;
   if (buttons) return <ControllerShell seat={seat} name={params.get('name') ?? 'Player'} link={link}>
     {sizes && <div class="ka-buttons-demo" data-sizes={JSON.stringify(sizes)} style={{ '--in-play-width': `${String(sizes.inPlayWidth)}px` }}>
       <div class="ka-buttons-demo-l"><ShoulderButton {...callbacks} id="L" size={sizes.inPlayWidth} height={sizes.inPlayHeight}/></div><div class="ka-buttons-demo-r"><ShoulderButton {...callbacks} id="R" size={sizes.inPlayWidth} height={sizes.inPlayHeight}/></div>

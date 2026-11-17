@@ -18,10 +18,15 @@ export const BUTTON_FLOOR = {
 } as const;
 export type ButtonKind = keyof typeof BUTTON_FLOOR;
 
+/** D-122: faces on narrow phones use the viewport long side, down to 89 px. */
+export function faceFloor(viewport: Size): number {
+  return Math.max(BUTTON_FLOOR.inPlayWidth, BUTTON_FLOOR.face * Math.min(1, Math.max(viewport.width, viewport.height) / phone.width));
+}
+
 /**
  * How much larger than the reference phone a screen is: the smaller of its width and height
  * ratios, so a control scaled by it still fits. Never below 1: a smaller phone keeps the
- * floors, it does not shrink them. The controller is landscape-only; portrait sizes are read as landscape.
+ * reference sizes here; layout faces use the D-122 faceFloor exception. The controller is landscape-only; portrait sizes are read as landscape.
  */
 export function phoneScale(viewport: Size): number {
   const long = Math.max(viewport.width, viewport.height);

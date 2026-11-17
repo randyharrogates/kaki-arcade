@@ -1,0 +1,475 @@
+{
+  "slice": "K-04-layout-engine",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- K-04-layout-engine --phones 1",
+  "commit": "a4a7bbac8bc58ecfaa490b00f1c8337eee73a194",
+  "viewports": [
+    "667×375",
+    "844×390",
+    "932×430"
+  ],
+  "steps": [
+    {
+      "name": "tabao-667x375",
+      "ms": 1042.8890420000002,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-667x375",
+      "ms": 261.30337499999996,
+      "status": "completed"
+    },
+    {
+      "name": "poker-667x375",
+      "ms": 189.15504199999987,
+      "status": "completed"
+    },
+    {
+      "name": "dpad-only-667x375",
+      "ms": 189.1379160000006,
+      "status": "completed"
+    },
+    {
+      "name": "text-only-667x375",
+      "ms": 205.1219999999994,
+      "status": "completed"
+    },
+    {
+      "name": "cards-667x375",
+      "ms": 188.31108399999994,
+      "status": "completed"
+    },
+    {
+      "name": "every-667x375",
+      "ms": 120.97933399999965,
+      "status": "completed"
+    },
+    {
+      "name": "tabao-844x390",
+      "ms": 192.72525000000041,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-844x390",
+      "ms": 248.17233399999986,
+      "status": "completed"
+    },
+    {
+      "name": "poker-844x390",
+      "ms": 260.373791,
+      "status": "completed"
+    },
+    {
+      "name": "dpad-only-844x390",
+      "ms": 193.73016700000062,
+      "status": "completed"
+    },
+    {
+      "name": "text-only-844x390",
+      "ms": 241.50029199999972,
+      "status": "completed"
+    },
+    {
+      "name": "cards-844x390",
+      "ms": 239.67445899999984,
+      "status": "completed"
+    },
+    {
+      "name": "every-844x390",
+      "ms": 72.7885409999999,
+      "status": "completed"
+    },
+    {
+      "name": "tabao-932x430",
+      "ms": 211.43574999999964,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-932x430",
+      "ms": 245.68758400000024,
+      "status": "completed"
+    },
+    {
+      "name": "poker-932x430",
+      "ms": 246.5063340000006,
+      "status": "completed"
+    },
+    {
+      "name": "dpad-only-932x430",
+      "ms": 194.92774999999983,
+      "status": "completed"
+    },
+    {
+      "name": "text-only-932x430",
+      "ms": 244.7372919999998,
+      "status": "completed"
+    },
+    {
+      "name": "cards-932x430",
+      "ms": 247.8082089999998,
+      "status": "completed"
+    },
+    {
+      "name": "every-932x430",
+      "ms": 74.5997499999994,
+      "status": "completed"
+    },
+    {
+      "name": "held face emits press and release with revision",
+      "ms": 163.23862499999996,
+      "status": "completed"
+    },
+    {
+      "name": "stick vector and neutral carry revision",
+      "ms": 28.93187499999931,
+      "status": "completed"
+    },
+    {
+      "name": "removed held control releases at its original revision",
+      "ms": 555.6786659999989,
+      "status": "completed"
+    },
+    {
+      "name": "grid index and Lock in id",
+      "ms": 178.63120799999888,
+      "status": "completed"
+    },
+    {
+      "name": "D-pad direction press and release",
+      "ms": 141.4242919999997,
+      "status": "completed"
+    },
+    {
+      "name": "card id and disabled card",
+      "ms": 127.15491699999984,
+      "status": "completed"
+    },
+    {
+      "name": "answer choice transitions to Watch the TV without a blank frame",
+      "ms": 2710.3645419999993,
+      "status": "completed"
+    },
+    {
+      "name": "reduced motion keeps state changes and omits transition animations",
+      "ms": 352.29675000000134,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-tabao-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-rabakz-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-poker-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-dpad-only-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-text-only-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-cards-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-tabao-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-rabakz-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-poker-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-dpad-only-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-text-only-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-cards-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-tabao-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-rabakz-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-poker-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone1-dpad-only-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-text-only-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-cards-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-removed-mid-hold.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone1-answer-transition-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone1-answer-transition-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone1-answer-transition-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone1-answer-transition-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone1-answer-transition-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone1-answer-transition-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-answer-transition-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone1-answer-transition-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone1-answer-transition-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-phone1-answer-transition-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-phone1-answer-transition-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-phone1-answer-transition-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-phone1-answer-return-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone1-answer-return-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-phone1-answer-return-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-phone1-answer-return-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-phone1-answer-return-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-phone1-answer-return-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-phone1-answer-return-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-phone1-answer-return-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-phone1-answer-return-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-phone1-answer-return-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-phone1-answer-return-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-phone1-answer-return-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-phone1-reduced-motion-watch.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-phone1-reduced-motion.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-tabao-667.jpg",
+    "02-phone1-rabakz-667.jpg",
+    "03-phone1-poker-667.jpg",
+    "04-phone1-dpad-only-667.jpg",
+    "05-phone1-text-only-667.jpg",
+    "06-phone1-cards-667.jpg",
+    "07-phone1-tabao-844.jpg",
+    "08-phone1-rabakz-844.jpg",
+    "09-phone1-poker-844.jpg",
+    "10-phone1-dpad-only-844.jpg",
+    "11-phone1-text-only-844.jpg",
+    "12-phone1-cards-844.jpg",
+    "13-phone1-tabao-932.jpg",
+    "14-phone1-rabakz-932.jpg",
+    "15-phone1-poker-932.jpg",
+    "16-phone1-dpad-only-932.jpg",
+    "17-phone1-text-only-932.jpg",
+    "18-phone1-cards-932.jpg",
+    "19-phone1-removed-mid-hold.jpg",
+    "32-strip-answer-transition.jpg",
+    "45-strip-answer-return.jpg",
+    "46-phone1-reduced-motion-watch.jpg",
+    "47-phone1-reduced-motion.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-tabao-667.jpg",
+      "bytes": 135463
+    },
+    {
+      "file": "02-phone1-rabakz-667.jpg",
+      "bytes": 149314
+    },
+    {
+      "file": "03-phone1-poker-667.jpg",
+      "bytes": 136697
+    },
+    {
+      "file": "04-phone1-dpad-only-667.jpg",
+      "bytes": 78887
+    },
+    {
+      "file": "05-phone1-text-only-667.jpg",
+      "bytes": 72892
+    },
+    {
+      "file": "06-phone1-cards-667.jpg",
+      "bytes": 76124
+    },
+    {
+      "file": "07-phone1-tabao-844.jpg",
+      "bytes": 158701
+    },
+    {
+      "file": "08-phone1-rabakz-844.jpg",
+      "bytes": 160462
+    },
+    {
+      "file": "09-phone1-poker-844.jpg",
+      "bytes": 150537
+    },
+    {
+      "file": "10-phone1-dpad-only-844.jpg",
+      "bytes": 95781
+    },
+    {
+      "file": "11-phone1-text-only-844.jpg",
+      "bytes": 88911
+    },
+    {
+      "file": "12-phone1-cards-844.jpg",
+      "bytes": 93696
+    },
+    {
+      "file": "13-phone1-tabao-932.jpg",
+      "bytes": 177531
+    },
+    {
+      "file": "14-phone1-rabakz-932.jpg",
+      "bytes": 174621
+    },
+    {
+      "file": "15-phone1-poker-932.jpg",
+      "bytes": 163587
+    },
+    {
+      "file": "16-phone1-dpad-only-932.jpg",
+      "bytes": 107509
+    },
+    {
+      "file": "17-phone1-text-only-932.jpg",
+      "bytes": 100340
+    },
+    {
+      "file": "18-phone1-cards-932.jpg",
+      "bytes": 107041
+    },
+    {
+      "file": "19-phone1-removed-mid-hold.jpg",
+      "bytes": 100319
+    },
+    {
+      "file": "32-strip-answer-transition.jpg",
+      "bytes": 1614337
+    },
+    {
+      "file": "45-strip-answer-return.jpg",
+      "bytes": 2122001
+    },
+    {
+      "file": "46-phone1-reduced-motion-watch.jpg",
+      "bytes": 100340
+    },
+    {
+      "file": "47-phone1-reduced-motion.jpg",
+      "bytes": 174621
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 3442
+    },
+    {
+      "file": "run.json",
+      "bytes": 10406
+    }
+  ],
+  "totalBytes": 6353597,
+  "maxBytes": 12582912
+}

@@ -38,7 +38,18 @@ lock on iPhone Safari and pull-to-refresh on Android Chrome.
 
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
-| K-04 | Layout engine: draws only the parts a game asks for in the current phase, and grows them to fill the space | CTRL-002 | K-02, K-03, F-04 | 2 | todo |
+| K-04 | Layout engine: draws only the parts a game asks for in the current phase, and grows them to fill the space | CTRL-002 | K-02, K-03, F-04 | 2 | merged |
 | K-05 | Private display panel: text, cards, choices and a tappable grid, seen only on that phone | CTRL-003 | K-04 | 2 | todo |
 | K-06 | Tilt, shake and swipe parts, with the tap-to-enable step on iPhone and a button fallback | CTRL-003, CTRL-007 | K-04, S-05 | 2 | todo |
 | K-07 | Controller UAT on emulated phones and on Randy's real iPhone and Android | CTRL-001 to CTRL-008 | K-04 to K-06 | 3 | todo |
+
+### K-04 follow-ups for K-05 (from the final review, 2026-11-17)
+1. D-127 never applies to a long action label: the action's width is its full 34 px label width,
+   so a long label widens the part and the layout reports fits=false (`layout-placement.ts:42`,
+   `layout-renderer.ts:117`). Cap the action at the space beside the other parts so it steps.
+2. At 21 px the glyph moves to the left edge (`layout.css`, `[data-label-step="21"] > span
+   { flex: 1 1 0 }`); keep glyph and text centred as a group.
+3. A label steps whenever it would wrap at 34 px, even if two 34 px lines fit (for example "Ho Chi
+   Minh City"), so one question mixes 34 and 21 px answers. Decide: test the wrapped height at
+   34 px first, or keep the current reading of D-127 and say so.
+4. The label step is not re-measured when a web font finishes loading; handle it when fonts ship.

@@ -1,0 +1,101 @@
+import { BUTTON_FLOOR as floor, faceFloor, space } from '@kaki/ui';
+import type { Rect, Size } from '@kaki/ui';
+import { visibleParts } from './layout-types';
+import type { Layout, LayoutPart } from './layout-types';
+export interface PlacedPart extends Rect { readonly control: LayoutPart }
+export interface Placement { readonly parts: readonly PlacedPart[]; readonly fits: boolean; readonly margin: 13 | 8; readonly gap: 13 | 8 | 5; readonly required: Size }
+
+/** Board 4 1A: equal 95 px centre steps for 110 px circular faces. */
+export function diamondSpan(size: number): number { return size * (1 + 2 * 95 / 110); }
+/** Pure packing. Never compress floors. Impossible combinations return fits:false and their
+ * required canvas; the caller must supply a simpler layout or a larger play area. */
+export function placeLayout(layout: Layout, area: Size, leader: boolean, optionWidths: Readonly<Record<string, number>>, viewport: Size): Placement {
+  const preferred = packLayout(layout, area, leader, optionWidths, space[13], space[13], viewport);
+  if (preferred.fits) return preferred;
+  const compact = packLayout(layout, area, leader, optionWidths, space[8], space[8], viewport);
+  return compact.fits ? compact : packLayout(layout, area, leader, optionWidths, space[8], space[5], viewport);
+}
+function packLayout(layout: Layout, area: Size, leader: boolean, optionWidths: Readonly<Record<string, number>>, margin: 13 | 8, gap: 13 | 8 | 5 = space[13], viewport: Size = area): Placement {
+  const gridGap = gap === space[5] ? gap : space[8];
+  const controls = visibleParts(layout, leader);
+  const parts: PlacedPart[] = [];
+  const put = (control: LayoutPart, left: number, top: number, width: number, height: number) => { parts.push({ control, left, top, width, height }); };
+  const w = Math.max(0, area.width - 2 * margin), h = Math.max(0, area.height - 2 * margin);
+  const faces = controls.filter(c => c.kind === 'button' && c.button.startsWith('face'));
+  const shoulders = controls.filter(c => c.kind === 'button' && c.button.startsWith('shoulder'));
+  const moving = controls.filter(c => c.kind === 'stick' || c.kind === 'dpad' || c.kind === 'swipe');
+  const panels = controls.filter(c => ['options', 'grid', 'cards', 'text'].includes(c.kind));
+  const header = 0;
+  const shoulderWidth = shoulders.length ? floor.inPlayWidth + gap : 0;
+  const bodyH = h - header;
+  const movingMin = moving.map(c => c.kind === 'dpad' ? 3 * floor.inPlayWidth + 2 * gap : 2 * floor.inPlayWidth);
+  const panelMin = panels.map(c => c.kind === 'grid' ? c.cols * floor.inPlayWidth + (c.cols - 1) * gridGap : c.kind === 'options' ? Math.min(2, c.options.length) * space[144] + gap : c.kind === 'cards' ? c.cards.length * floor.inPlayWidth + Math.max(0, c.cards.length - 1) * gap : space[144]);
+  const columnCount = moving.length + panels.length + (faces.length ? 1 : 0);
+  const availableFaceWidth = w - shoulderWidth - movingMin.reduce((a,b) => a+b,0) - panelMin.reduce((a,b) => a+b,0) - Math.max(0,columnCount-1)*gap;
+  const faceSize = Math.max(faceFloor(viewport), Math.min(space[144], bodyH/(1+2*95/110), availableFaceWidth/(1+2*95/110)));
+  const span = faces.length ? diamondSpan(faceSize) : 0;
+  const grid = panels.find(c => c.kind === 'grid');
+  const action = panels.find(c => c.kind === 'options' && c.options.length === 1);
+  if (grid?.kind === 'grid' && action?.kind === 'options' && controls.length === 2) {
+    const gw = grid.cols*floor.inPlayWidth+(grid.cols-1)*gridGap;
+    const gh = grid.rows*floor.inPlayHeight+(grid.rows-1)*gridGap;
+    const bw = Math.max(space[144], optionWidths[action.id] ?? 0), bh = action.size === 'large' ? space[144] : floor.inPlayHeight;
+    const gx = Math.max(margin,Math.min((area.width-gw)/2,area.width-margin-bw-gap-gw));
+    // Keep the fixed grid clear of the note even when the surrounding margins cannot fit.
+    // `required` still reports the missing margin, so this never claims a false fit.
+    const gy = Math.max(0,Math.min(margin+Math.max(0,(h-gh)/2),area.height-gh));
+    put(grid,gx,gy,gw,gh);
+    put(action,Math.max(gx+gw+gap,area.width-margin-bw),margin+Math.max(0,(h-bh)/2),bw,bh);
+    const required = { width:Math.max(...parts.map(p => p.left+p.width+margin)),height:Math.max(...parts.map(p => p.top+p.height+margin)) };
+    return { parts,required,margin,gap,fits:required.width <= area.width && required.height <= area.height && parts.every(p => p.top >= margin && p.left >= margin) };
+  }
+  if (controls.length && controls.every(c => c.kind === 'text')) {
+    const textH = (c: LayoutPart) => c.kind === 'text' ? (optionWidths[c.id] ?? Math.ceil(c.text.length / Math.max(1,Math.floor(w / 17))) * ({ title:55,body:34,note:21 }[c.tone ?? 'body'])) : 0;
+    const total = controls.reduce((sum,c) => sum+textH(c),0) + (controls.length - 1) * gap;
+    const ordered = [...controls].sort((a,b) => {
+      const rank = (c: LayoutPart) => c.kind === 'text' ? ({ title:0,body:1,note:2 }[c.tone ?? 'body']) : 0;
+      return rank(a)-rank(b);
+    });
+    let y = margin+(h-total)/2;
+    ordered.forEach(c => { const height = textH(c); put(c,margin,y,w,height); y += height+gap; });
+    return { parts,margin,gap,required:{ width:area.width,height:total+2*margin },fits:total <= h };
+  }
+  const columns = moving.length + (faces.length ? 1 : 0) + panels.length;
+  const minimum = movingMin.reduce((a,b) => a+b,0) + panelMin.reduce((a,b) => a+b,0) + span + shoulderWidth + Math.max(0, columns - 1) * gap;
+  const extra = Math.max(0, w - minimum) / Math.max(1, moving.length + panels.length);
+  let x: number = margin;
+  for (const [i, c] of moving.entries()) {
+    const width = (movingMin[i] ?? 0) + extra;
+    if (c.kind === 'dpad') {
+      const scale = Math.max(1,Math.min((width-2*gap)/(3*floor.inPlayWidth),(bodyH-2*gap)/(3*floor.inPlayHeight)));
+      const cellW = floor.inPlayWidth*scale, cellH = floor.inPlayHeight*scale;
+      const dw = 3 * cellW + 2 * gap, dh = 3 * cellH + 2 * gap;
+      put(c, x + (width-dw)/2, margin + header + (bodyH-dh)/2, dw, dh);
+    } else put(c, x, margin + header, width, Math.max(2 * floor.inPlayWidth, bodyH));
+    x += width + gap;
+  }
+  for (const [i, c] of panels.entries()) {
+    const width = (panelMin[i] ?? 0) + extra;
+    let height = bodyH;
+    if (c.kind === 'grid') height = c.rows * floor.inPlayHeight + (c.rows-1) * gridGap;
+    if (c.kind === 'options') height = c.options.length > 1 ? Math.max(bodyH,Math.ceil(c.options.length/2)*floor.inPlayHeight+(Math.ceil(c.options.length/2)-1)*gap) : c.size === 'large' ? space[144] : floor.inPlayHeight;
+    if (c.kind === 'cards') height = Math.max(c.tappable ? 122 : 93,((width-Math.max(0,c.cards.length-1)*gap)/Math.max(1,c.cards.length))*(c.tappable ? 122/89 : 93/68)); // Board 4 card aspect, not spacing.
+    if (c.kind === 'cards') height = Math.max(c.tappable ? 122 : 93,Math.min(height,bodyH));
+    const actualW = c.kind === 'grid' ? (panelMin[i] ?? width) : c.kind === 'cards' ? c.cards.length*height*(c.tappable ? 89/122 : 68/93)+Math.max(0,c.cards.length-1)*gap : width;
+    put(c, x + (width-actualW)/2, margin + header + Math.max(0,(bodyH-height)/2), actualW, height);
+    x += width + gap;
+  }
+  if (faces.length && moving.length === 0 && panels.length === 0) x = Math.max(margin,area.width-margin-span-shoulderWidth);
+  for (const c of faces) {
+    if (c.kind !== 'button') continue;
+    const step = faceSize * 95/110;
+    const diamondH = diamondSpan(faceSize);
+    const offset = { 'face-top': [step,0], 'face-left': [0,step], 'face-right': [2*step,step], 'face-bottom': [step,2*step] }[c.button as 'face-top' | 'face-left' | 'face-right' | 'face-bottom'];
+    put(c, x + (offset[0] ?? 0), margin + header + Math.max(0,(bodyH-diamondH)/2) + (offset[1] ?? 0), faceSize, faceSize);
+  }
+  for (const c of shoulders) {
+    if (c.kind === 'button') put(c, Math.max(x + (faces.length ? span + gap : 0), area.width-margin-floor.inPlayWidth), margin + (c.button === 'shoulder-right' ? floor.inPlayHeight+gap : 0), floor.inPlayWidth, floor.inPlayHeight);
+  }
+  const required = { width: Math.max(2*margin, ...parts.map(p => p.left+p.width+margin)), height: Math.max(2*margin,...parts.map(p => p.top+p.height+margin)) };
+  return { parts, required, margin, gap, fits: minimum <= w + 0.001 && required.width <= area.width + 0.001 && required.height <= area.height + 0.001 && parts.every(p => p.top >= margin && p.left >= margin) };
+}

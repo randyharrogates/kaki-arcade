@@ -149,3 +149,7 @@ export function seatToken(seat: SeatNumber): ColourTokenName {
 export function playerColour(seat: SeatNumber): string {
   return COLOUR_TOKENS[seatToken(seat)];
 }
+
+/** D-125: opaque grey disabled controls with readable, reduced-contrast ink. */
+export const DISABLED_FILL = '#B8B8B8';
+export const DISABLED_INK = '#3F3F3F';

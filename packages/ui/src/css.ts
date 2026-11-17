@@ -4,7 +4,7 @@
 
 import { BUTTON_FLOOR, buttonSizeCss } from './buttons';
 import type { ButtonKind } from './buttons';
-import { COLOUR_TOKEN_NAMES, COLOUR_TOKENS, colourTokenProperty, ON_COLOUR, SEAT_NUMERAL } from './colour';
+import { DISABLED_FILL, DISABLED_INK, COLOUR_TOKEN_NAMES, COLOUR_TOKENS, colourTokenProperty, ON_COLOUR, SEAT_NUMERAL } from './colour';
 import {
   GHOST_OPACITY,
   derivedDuration,
@@ -69,6 +69,11 @@ export function sharedDeclarations(): Declaration[] {
     ...TV_TYPE_SIZES.map((size): Declaration => [`--ka-type-${String(size)}`, px(size)]),
     ...PHONE_TYPE_SIZES.map((size): Declaration => [`--ka-phone-type-${String(size)}`, px(size)]),
     ['--ka-on-colour', ON_COLOUR],
+    ['--ka-disabled-fill', DISABLED_FILL],
+    ['--ka-disabled-ink', DISABLED_INK],
+    ['--ka-disabled-border', '#E0E0E0'],
+    ['--ka-disabled-panel-treatment', 'linear-gradient(165deg, #B8B8B8, #ADADAD)'],
+    ['--ka-disabled-card-back-treatment', 'repeating-linear-gradient(45deg, #C3C3C3 0 5px, transparent 5px 13px)'],
     ['--ka-seat-numeral', SEAT_NUMERAL],
     ['--ka-team-text-weight', String(TEAM_TEXT_WEIGHT)],
     ...COLOUR_TOKEN_NAMES.map((name): Declaration => [colourTokenProperty(name), COLOUR_TOKENS[name]]),
