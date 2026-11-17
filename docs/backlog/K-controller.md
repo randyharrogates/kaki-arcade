@@ -43,6 +43,14 @@ lock on iPhone Safari and pull-to-refresh on Android Chrome.
 | K-06 | Tilt, shake and swipe parts, with the tap-to-enable step on iPhone and a button fallback | CTRL-003, CTRL-007 | K-04, S-05 | 2 | todo |
 | K-07 | Controller UAT on emulated phones and on Randy's real iPhone and Android | CTRL-001 to CTRL-008 | K-04 to K-06 | 3 | todo |
 
+### K-05 follow-up for C-15 (from the K-05 review, 2026-11-17)
+
+K-05's privacy is covered by the session unit test (a private view goes only to its own
+player's connection, never into the public view). Its UAT cannot check a real room, because the
+phone route does not yet mount the layout engine or handle private views. C-15 must join two
+phones to a real room running a game with a private view (the session fixture or Rabakz) and
+assert phone A's private text is in A's DOM and absent from B's DOM and the host's (CTRL-003).
+
 ### K-04 follow-ups for K-05 (from the final review, 2026-11-17)
 1. D-127 never applies to a long action label: the action's width is its full 34 px label width,
    so a long label widens the part and the layout reports fits=false (`layout-placement.ts:42`,
