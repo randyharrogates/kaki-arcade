@@ -1,4 +1,4 @@
-import { tvType } from '@kaki/ui';
+import { phoneType, tvType } from '@kaki/ui';
 /** Explicit grapheme boundaries keep compound emoji and combining marks together. */
 export function nameLines(name: string): string[] {
   const graphemes = Array.from(new Intl.Segmenter(undefined, { granularity: 'grapheme' }).segment(name), part => part.segment);
@@ -24,4 +24,15 @@ export function namePresentation(name: string, width: number, measure: (text: st
     if (fits[0]) return { lines: fits[0], size };
   }
   return { lines: nameLines(name), size };
+}
+
+/** Each phone control keeps the 21px reading floor and truncates at grapheme boundaries. */
+export function phoneGridNamePresentations(labels: { name: string; width: number }[], measure: (text: string, size: number) => number) {
+  const size = phoneType.body;
+  return labels.map(({ name, width }) => {
+  if (measure(name, size) <= width) return { lines: [name], size };
+  const parts = Array.from(new Intl.Segmenter(undefined, { granularity: 'grapheme' }).segment(name), part => part.segment);
+  while (parts.length && measure(parts.join('') + '…', size) > width) parts.pop();
+  return { lines: [parts.join('') + '…'], size };
+  });
 }

@@ -382,8 +382,15 @@ anyone across. Teams may be uneven but each keeps at least one player (D-149). A
 team travels on an arc; a refusal shows only on the phone that tapped, and the TV names who was
 refused. Team mode and the last split carry over to Play again. Evidence:
 `uat/evidence/C-11-team-setup/round4-phones4`, `round4-phones8`, `round5-phones8`. Teams are not
-yet shown during play (the games' own issues); grid label wrap and the toggle's pressed style are
-C-11b.
+yet shown during play (the games' own issues).
+
+C-11b polished the leader's "Move players" grid (D-152, D-153): two halves headed Red and Blue
+across a divider, columns sized by each side, every ordinary name on one line at 21 px or more (a
+name too long is truncated, never shrunk), Done, Back and Start in one bottom row, every button at
+least 55 px and inside the phone at 667 × 375 with 8 players in any split. A refusal on the
+leader's phone takes the heading row for 3 seconds without moving anything, and shows again if
+repeated. The Teams toggle is one button named "Teams" with a pressed state (tick, stronger border).
+Evidence: `uat/evidence/C-11-team-setup/c11b-r8-phones8` (and the 4-phone run).
 
 ### Controller size and start-up check (K-08)
 `pnpm verify` fails when the controller page and everything it loads passes 300,000 B gzip

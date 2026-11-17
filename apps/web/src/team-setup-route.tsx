@@ -1,8 +1,8 @@
-import { useLayoutEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks';
 import { arc, duration, easing, reducedMotion, space } from '@kaki/ui';
 import type { RoomState } from '@kaki/platform';
 import type { TeamSetupView } from './team-setup';
-import { namePresentation } from './seat-text';
+import { phoneGridNamePresentations, namePresentation } from './seat-text';
 import './team-setup.css';
 import { Icon } from './icons';
 let nameCanvas: HTMLCanvasElement | undefined;
@@ -19,7 +19,8 @@ function TeamName({ name }: { name: string }) {
       const context = nameCanvas.getContext('2d');
       if (!context) return;
       const font = getComputedStyle(el).fontFamily;
-      const fitted = namePresentation(name, el.clientWidth, (text, size) => { context.font = `${String(size)}px ${font}`; return context.measureText(text).width; }, true);
+      const measure = (text: string, size: number) => { context.font = `${String(size)}px ${font}`; return context.measureText(text).width; };
+      const fitted = namePresentation(name, el.clientWidth, measure, true);
       // Measure one line; the full name remains available to pointer and assistive users.
       el.textContent = fitted.lines.join('');
       el.style.fontSize = `${String(fitted.size)}px`;
@@ -81,10 +82,70 @@ export function TeamSetup({ setup, room, game, start }: { setup: TeamSetupView; 
 }
 export function PhoneTeams({ setup, seat, leader, send }: { setup: TeamSetupView; seat: number | null; leader: boolean; send: (control: string, value?: string) => void }) {
   const [moving, setMoving] = useState(false);
+  const lastRefusal = useRef('');
+  const [headingRefusal, setHeadingRefusal] = useState<string | null>(null);
+  const pendingMoveRevision = useRef<number | null>(null);
+  const previousNotice = useRef<string | null>(null);
+  const refusalTimer = useRef<number | undefined>(undefined);
+  useEffect(() => {
+    const notice = setup.refused && setup.notice ? setup.notice : null;
+    const appeared = notice !== null && notice !== previousNotice.current;
+    previousNotice.current = notice;
+    const moveReply = pendingMoveRevision.current !== null && setup.revision > pendingMoveRevision.current;
+    if (moveReply || !moving) pendingMoveRevision.current = null;
+    if (!moving || !notice) {
+      window.clearTimeout(refusalTimer.current);
+      setHeadingRefusal(null);
+      return;
+    }
+    if (!appeared && !moveReply) return;
+    window.clearTimeout(refusalTimer.current);
+    lastRefusal.current = notice;
+    setHeadingRefusal(notice);
+    refusalTimer.current = window.setTimeout(() => { setHeadingRefusal(null); }, 3000);
+  }, [moving, setup.notice, setup.refused, setup.revision]);
+  useEffect(() => () => { window.clearTimeout(refusalTimer.current); }, []);
   const own = setup.players.find(p => p.seat === seat);
-  return <section class="phone-teams" data-moving={moving} aria-label="Pick a side">
+  const grid = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const el = grid.current;
+    if (!el) return;
+    let active = true;
+    const fit = () => {
+      if (!active) return;
+      nameCanvas ??= document.createElement('canvas');
+      const context = nameCanvas.getContext('2d');
+      if (!context) return;
+      const labels = Array.from(el.querySelectorAll<HTMLElement>('.team-player-name'));
+      const font = getComputedStyle(el).fontFamily;
+      const fitted = phoneGridNamePresentations(labels.map(label => ({ name: label.title, width: label.clientWidth })), (text, size) => {
+        context.font = `${getComputedStyle(el).fontWeight} ${String(size)}px ${font}`;
+        return context.measureText(text).width;
+      });
+      labels.forEach((label, index) => {
+        const presentation = fitted[index];
+        if (!presentation) return;
+        label.textContent = presentation.lines.join('');
+        label.style.fontSize = `var(--ka-phone-type-${String(presentation.size)})`;
+      });
+    };
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(el);
+    void document.fonts.ready.then(fit);
+    return () => { active = false; observer.disconnect(); };
+  }, [moving, setup.players]);
+  return <section class="phone-teams" data-moving={moving} data-refused={Boolean(setup.notice && setup.refused)} aria-label="Pick a side">
     {!moving && <div class="phone-team-buttons">{(['Red', 'Blue'] as const).map((name, team) => <button class={`ka-pressable phone-team-${name.toLowerCase()}`} aria-pressed={own?.team === team} onClick={() => { send(own?.team === team ? 'teams-dismiss' : 'teams-switch'); }}>{name}{own?.team === team ? ' ✓' : ''}</button>)}</div>}
-    <p role="status">{setup.notice ? <strong class={setup.refused ? 'phone-picker-reason' : undefined}>{setup.refused && <Icon kind="weak"/>}{setup.notice}</strong> : (leader ? moving ? 'Tap a player to move them across.' : 'Choose your side or move players.' : 'The leader starts when everyone is ready.')}</p>
-    {leader && <>{moving ? <div class="phone-team-moves" aria-label="Move players">{setup.players.map(p => <button class="ka-panel ka-pressable" key={p.id} onClick={() => { send('teams-move', p.id); }}>{p.seat} · {p.name} · {p.team === 0 ? 'Red' : 'Blue'}</button>)}</div> : null}<div class="phone-team-actions">{!moving && <button class="ka-panel ka-pressable" onClick={() => { setMoving(true); send('teams-dismiss'); }}>Move players</button>}{moving && <button class="ka-panel ka-pressable" onClick={() => { setMoving(false); send('teams-dismiss'); }}>Done</button>}<button class="ka-panel ka-pressable" onClick={() => { send('teams-back'); }}>Back to game picker</button><button class="ka-panel ka-pressable picker-primary" disabled={setup.players.length < 2} onClick={() => { send('teams-start'); }}>Start</button></div></>}
+    <p role="status" class={moving ? 'phone-live' : undefined}>{setup.notice ? <strong class={setup.refused ? 'phone-picker-reason' : undefined}>{setup.refused && <Icon kind="weak"/>}{setup.notice}</strong> : (leader ? moving ? '' : 'Choose your side or move players.' : 'The leader starts when everyone is ready.')}</p>
+    {leader && <>{moving ? <div class="phone-team-moves" data-heading-refused={Boolean(headingRefusal)} ref={grid} aria-label="Move players" style={{ gridTemplateColumns: `repeat(${String([0, 1].reduce((sum, team) => sum + Math.max(1, Math.ceil(setup.players.filter(p => p.team === team).length / 3)), 0))}, minmax(0, 1fr))` }}>{(['Red', 'Blue'] as const).map((teamName, team) => <section class="phone-team-half" aria-label={teamName} key={teamName} style={{ '--team-columns': Math.max(1, Math.ceil(setup.players.filter(p => p.team === team).length / 3)), gridColumn: `span ${String(Math.max(1, Math.ceil(setup.players.filter(p => p.team === team).length / 3)))}` }}><h2>{teamName}</h2><div class="phone-team-roster">{setup.players.filter(p => p.team === team).map(p => <button class="ka-panel ka-pressable" key={p.id} aria-label={`Seat ${String(p.seat)}, ${p.name}, ${teamName} team. Move to ${team === 0 ? 'Blue' : 'Red'}.`} onClick={() => { window.clearTimeout(refusalTimer.current); setHeadingRefusal(null); pendingMoveRevision.current = setup.revision; send('teams-move', p.id); }}><span class="phone-team-mark" aria-hidden="true" style={{ backgroundColor: `var(--ka-team-${team === 0 ? 'red' : 'blue'})` }}>{p.seat}</span><span class="team-player-name" title={p.name}>{p.name}</span></button>)}</div></section>)}<div class="phone-team-heading-refusal phone-picker-reason" aria-hidden="true"><Icon kind="weak"/>{headingRefusal ?? lastRefusal.current}</div></div> : null}<div class="phone-team-actions">{!moving && <button class="ka-panel ka-pressable" onClick={() => { setMoving(true); send('teams-dismiss'); }}>Move players</button>}{moving && <button class="ka-panel ka-pressable" onClick={() => { setMoving(false); send('teams-dismiss'); }}>Done</button>}<button class="ka-panel ka-pressable" onClick={() => { send('teams-back'); }}>Back to game picker</button><button class="ka-panel ka-pressable picker-primary" disabled={setup.players.length < 2} onClick={() => { send('teams-start'); }}>Start</button></div></>}
   </section>;
+}
+
+/** Text and the stronger border share the same motion timing. */
+export function TeamsToggle({ enabled, toggle }: { enabled: boolean; toggle: () => void }) {
+  return <button class="ka-panel ka-pressable phone-teams-choice" aria-label="Teams" aria-pressed={enabled} onClick={toggle}>
+    <span class="phone-teams-state" data-visible={!enabled} aria-hidden="true">Teams off</span>
+    <span class="phone-teams-state" data-visible={enabled} aria-hidden="true">Teams on ✓</span>
+  </button>;
 }

@@ -2,6 +2,15 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — C-11b: team setup polish
+
+- The leader's "Move players" grid: Red and Blue halves with headings and a divider, columns by
+  side size, names on one line at 21 px or more, one action row, every target 55 px inside the
+  phone at 667 × 375 with 8 players (D-152). A refusal takes the heading row without moving
+  anything and shows again when repeated (D-153). The Teams toggle is one button with a pressed
+  state. Browser tests check targets against every clipping parent. PLAT-025 (in progress: teams
+  during play are the games' issues). Evidence `uat/evidence/C-11-team-setup/c11b-r8-phones8`.
+
 ## 2026-11-18 — A-01b, A-01d: render jobs
 
 - `tools/assets/pipeline.py`: render jobs with ids, content stamps instead of file times,

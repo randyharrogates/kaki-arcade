@@ -23,18 +23,42 @@
 .phone-team-blue { background: var(--ka-team-blue); }
 .phone-teams p { margin: 0; font-size: var(--ka-phone-type-13); }
 .phone-teams .phone-picker-reason { font-size: var(--ka-phone-type-21); }
-.phone-team-moves { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ka-space-8); }
+.phone-team-moves { position: relative; font-weight: var(--ka-team-text-weight); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ka-space-8); }
 .phone-teams button, .phone-teams-choice { min-height: var(--ka-space-55); padding: var(--ka-space-8) var(--ka-space-13); font-weight: var(--ka-team-text-weight); }
-.phone-team-moves button { overflow-wrap: anywhere; font-size: var(--ka-phone-type-21); }
 .phone-team-actions { display: flex; justify-content: space-between; gap: var(--ka-space-13); }
 
 .phone-page .phone-team-buttons button { min-height: var(--ka-space-144); font-size: var(--ka-phone-type-34); font-weight: var(--ka-team-text-weight); }
 
-/* Keep the full roster in a dedicated view: two rows of four 55px targets. */
+/* Each headed half receives one equal-width column per three players. */
 .phone-page[data-seated="true"]:has(.phone-teams) { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: var(--ka-space-8); overflow: hidden; padding: var(--ka-space-13); }
 .phone-page[data-seated="true"]:has(.phone-teams) > .overlap { min-height: 0; }
-.phone-page .phone-team-moves button { min-width: 0; padding: var(--ka-space-5); font-size: var(--ka-phone-type-13); }
+.phone-page .phone-team-moves button { display: grid; justify-items: center; align-content: center; gap: 0; min-width: 0; padding: 0 var(--ka-space-5); font-size: var(--ka-phone-type-21); line-height: 1; }
+.phone-team-moves .team-player-name { width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: var(--ka-phone-type-21); }
+.phone-team-mark { display: grid; place-items: center; flex-shrink: 0; width: var(--ka-space-21); height: var(--ka-space-21); border-radius: var(--ka-radius-pill); color: var(--ka-ink); font-size: var(--ka-phone-type-21); font-weight: var(--ka-team-text-weight); }
+.phone-teams-choice { display: grid; padding: 0; overflow: hidden; transition: border-color var(--ka-duration-base) var(--ka-ease-in-out), transform var(--ka-duration-fast) var(--ka-ease-out); }
+.phone-teams-choice[aria-pressed="true"] { border-color: var(--ka-panel-secondary); }
+.phone-teams-state { grid-area: 1 / 1; padding: var(--ka-space-8) var(--ka-space-13); opacity: 0; transition: opacity var(--ka-duration-base) var(--ka-ease-in-out); }
+.phone-teams-state[data-visible="true"] { opacity: 1; }
+.phone-team-half { min-width: 0; }
+.phone-page[data-seated="true"] .phone-team-half h2 { font-size: var(--ka-phone-type-21); line-height: 1; margin: 0 0 var(--ka-space-5); }
+.phone-team-half + .phone-team-half { position: relative; }
+.phone-team-half + .phone-team-half::before { content: ""; position: absolute; top: calc(var(--ka-space-21) + var(--ka-space-5)); bottom: 0; left: calc(0px - var(--ka-space-5)); border-left: var(--ka-panel-edge); }
+.phone-team-roster { display: grid; grid-template-columns: repeat(var(--team-columns), minmax(0, 1fr)); gap: var(--ka-space-8); align-content: start; }
+.phone-teams[data-moving="true"] { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0; }
+
+.phone-teams[data-moving="true"] .phone-team-moves { grid-row: 1; }
+.phone-teams[data-moving="true"] .phone-team-actions { flex-direction: row; gap: var(--ka-space-8); }
 .phone-page .phone-team-actions button { padding: var(--ka-space-5) var(--ka-space-8); }
 /* D-151: Start uses the console primary, never a team colour. */
 .team-screen .picker-primary, .phone-teams .picker-primary { background-image: none; background-color: var(--ka-chip); color: var(--ka-chip-ink); border-color: var(--ka-chip); font-weight: var(--ka-weight-bold); }
 .phone-teams p[role="status"] strong { font-size: var(--ka-phone-type-21); }
+
+.phone-teams[data-moving="true"] > p .icon { width: var(--ka-phone-type-21); height: var(--ka-phone-type-21); }
+
+/* D-153: refusal and team headings share one fixed-height row. */
+.phone-team-half h2, .phone-team-heading-refusal { opacity: 1; transition: opacity var(--ka-duration-base) var(--ka-ease-in-out); }
+.phone-team-heading-refusal { position: absolute; inset: 0 0 auto; height: var(--ka-phone-type-21); line-height: 1; white-space: nowrap; opacity: 0; pointer-events: none; }
+.phone-team-heading-refusal .icon { width: var(--ka-phone-type-21); height: var(--ka-phone-type-21); }
+.phone-team-moves[data-heading-refused="true"] h2 { opacity: 0; transition-duration: var(--ka-duration-base-exit); }
+.phone-team-moves[data-heading-refused="true"] .phone-team-heading-refusal { opacity: 1; }
+.phone-team-moves[data-heading-refused="false"] .phone-team-heading-refusal { transition-duration: var(--ka-duration-base-exit); }

@@ -1,7 +1,7 @@
 import '../../../packages/controller-kit/src/layout.css';
 import '../../../packages/controller-kit/src/buttons.css';
 import '../../../packages/controller-kit/src/stick.css';
-import { PhoneTeams } from './team-setup-route';
+import { PhoneTeams, TeamsToggle } from './team-setup-route';
 import { ChoiceShape } from './choice-shape';
 import { pageWake, shellAfterWake } from './phone-wake';
 import type { LayoutOutput } from '@kaki/controller-kit';
@@ -71,7 +71,7 @@ export function PhonePage() {
   const teamAnnouncement = ownTeam === undefined ? '' : ` Your team is ${ownTeam === 0 ? 'Red' : 'Blue'}. ${view.teamSetup?.notice ?? ''}`;
   const form = view.action === 'Join' && !view.renaming;
   const feedback = (): void => { if ('vibrate' in navigator) navigator.vibrate(duration.fast); };
-  const teamChoice = view.leader && view.teamSetup?.screen === 'choice' ? <button class="ka-panel ka-pressable phone-teams-choice" aria-pressed={view.teamSetup.enabled} onClick={() => { phone.current?.teamInput('teams-toggle'); }}>Teams {view.teamSetup.enabled ? 'on' : 'off'}</button> : null;
+  const teamChoice = view.leader && view.teamSetup?.screen === 'choice' ? <TeamsToggle enabled={view.teamSetup.enabled} toggle={() => { phone.current?.teamInput('teams-toggle'); }}/> : null;
   if (controller && wakeReady) return <GameController controller={controller} view={view} send={output => { phone.current?.controllerInput(output); }}/>;
   return <main ref={page} class="phone-page" data-seated={view.seat !== null} data-theme="console" aria-label="Phone lobby">
     <div class="phone-live" role="status" aria-live="polite" aria-atomic="true">{announcement}<span>{teamAnnouncement}</span></div>
