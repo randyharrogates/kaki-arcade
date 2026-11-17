@@ -1237,3 +1237,13 @@ its rest position. (3) The TV screen uses the TV type and spacing tokens at true
 naming the team, with the picker's refusal style; the TV names who was refused. Showing team names
 and colours during play is for the games' own issues (Rabakz R-04/R-08, Tabao Rush versus), so
 PLAT-025 stays in progress after C-11.
+
+**D-150 · 2026-11-18 · Claude** (under D-142; replaces D-147's face) — Peek Poker card ranks are
+drawn in **DM Sans Bold** (DESIGN §4.2, "DM Sans for everything else"), not JetBrains Mono Bold.
+The re-review of the JetBrains render measured the cost: bold monospaced glyphs are width-limited,
+so central ranks fell from 49 to 40 px cap height (33–36 px for the 10s) and the 10's corner index
+fell to 8 px, unreadable; the dotted zero also read as a code font. DM Sans is narrower, is the face
+the phone already uses for card text, and has a plain zero. Source asset:
+`assets/src/fonts/dm-sans/DMSans-Bold.ttf` from the official googlefonts/dm-fonts repository with
+its `OFL.txt` (SIL Open Font License 1.1); the JetBrains files are removed from A-08. Indices are
+fitted to one shared cap height and central ranks to another, the 10 included.
