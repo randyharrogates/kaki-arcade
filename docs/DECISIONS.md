@@ -1151,3 +1151,12 @@ as a lazy chunk when Tabao Rush starts; that chunk is a plan for T-07, not built
 corrected: the frame columns in D-137 are animation-callback intervals, p95 was 18.6 to 18.7 ms in
 every run (OQ-038), and the lower-detail rows did not hold 30 fps (the cap rendered about 26 fps; to
 be fixed before S-03b).
+
+**D-140 · 2026-11-18 · Claude** (D-057) — K-05 gets a seventh round, past the three-round limit: the
+round-6 re-review found that a second private-view change during a crossfade leaves a stray copy of
+the dotted background on live blocks for good (236 of 624 live transitions), a visible defect on
+every phone. Two smaller choices decided by recommendation: (1) the labels in one private grid step
+down together, to the largest size that fits every label, so peers keep one size (today "Dumplings"
+drops to 13 px beside five labels at 34 px); option buttons keep stepping one by one, since each is
+its own control. (2) A card-perspective token of 610 px joins `@kaki/ui`, matching the approved
+specimen, and replaces the one-off value in the private panel.
