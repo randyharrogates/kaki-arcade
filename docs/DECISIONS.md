@@ -1384,3 +1384,14 @@ short-legged cook; all three cost the same atlas and memory. Randy may overrule.
 JPG contact sheets at 1× (UAT.md), not full PNG strips, to limit repository growth while cook frames are
 lossless.
 
+**D-164 · 2026-11-18 · Claude** (under D-142; P-03 plan) — Peek Poker's phone (P-03). (1) Grid cells
+may be drawn face down: `GridCell.faceDown?: boolean` joins the layout contract and its checker; a
+face-down cell carries no label or mark, is named "Card N" (row by row, 1–16) for assistive tech, and
+its selected outline must reach 3 : 1 against both the card back and the felt at 667 × 375. (2) A large
+lone option (Lock in) keeps at least the 144 × 144 large-button size (DESIGN §4.4) under D-160's lone-
+option sizing. (3) There is no D-pad cursor on the pick grid (D-062(5)); the backlog wording "tap and
+D-pad" is corrected to "tap". (4) Seconds show on the phone only while memorising; a one-line note at
+the reveal says when picks were filled at random; locked, scoreboard and over states read "Locked in /
+Watch the TV for the reveal", "Scores on the TV" and "Match over", never "Your hand". (5) Whether Lock
+in carries the cross shape is put to Randy as an artifact at P-03's first render; until then, no shape.
+
