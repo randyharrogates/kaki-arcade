@@ -1053,3 +1053,11 @@ cannot squeeze the winner column. The winner column shows at most 4 player badge
 more tied it shows 3 badges and a "+N" badge. The keyboard hint reads "Enter: play again · Esc:
 game picker". Found by C-16's round 8 review with valid wide-script names (for example Tamil
 conjuncts) at the 12-character limit.
+
+**D-131 · 2026-11-17 · Claude** (under D-057, D-128) — Amends D-126. If the console results
+headline does not fit at 55 px with the names in it, it drops the names: a tie reads "N players
+share first" (team ties "Both teams share first" stays as is if it fits) and a single winner reads
+"Player N wins!" with their seat number, stepping 144 → 89 → 55 again for that text. The names
+are always in the ranking list beside it. This bounds the column for any valid name, whatever
+the script. The "+N" badge for 5 or more tied players uses the chip's brown surface, not the
+accent, so it never reads as a seat colour, and is announced as "N more players".
