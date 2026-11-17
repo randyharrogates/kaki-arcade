@@ -1096,3 +1096,12 @@ order card 5A shows one 55 px dish icon with the steps as 21 px text, and step i
 Randy's word; (2) partly built dishes are drawn by the renderer from container sprites plus
 smaller portion sprites placed on named slot anchors per container in the asset manifest, so
 every reachable partial plate can be shown (T-07 consumes them).
+
+**D-136 · 2026-11-18 · Claude** (Randy asked why the renderer could not be unblocked with his
+laptop) — S-03 is split. PERF-001 (MUST) is measured on the dev Mac in Chrome at 1080p; the TV's
+own browser is REL-005 (SHOULD), and a laptop on HDMI is its supported fallback (PRD REL-005). So
+the renderer decision (S-04) needs only the laptop numbers: S-03a builds the sprite stress page and
+runs it on the dev Mac now; S-03b runs the same page on the TCL Q65 when Randy is at the TV and
+decides only whether the TV can run the host without the laptop. Dependency for the spike:
+`pixi.js` 8.22.0 (exact, released 2026-10-01, more than two weeks old), a root dev dependency
+until S-04 decides where the renderer lives.
