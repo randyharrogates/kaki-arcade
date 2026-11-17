@@ -257,6 +257,14 @@ Rules:
   recording is stored. A snapshot older than 12 hours, from another room, of another version,
   or more than 5 s ahead of the clock is discarded. `sessionStorage` survives a reload and
   reopening a closed tab, not a new tab.
+- **Host-device storage** (DATA-002, C-13): scores, stars and settings live behind injected,
+  versioned codecs in `packages/platform/src/storage`, in the TV browser's `localStorage`. Only
+  the host shell opens that store, at explicit between-round or idle-settings save points,
+  never through phone or server transports. A record newer than the running code is ignored
+  on read and never overwritten. Each schema sets its own size cap (16 KiB by default). The
+  lower-detail benchmark (`benchmark.ts`, D-111, D-113) judges dropped frames under an
+  injected workload and keys its cached verdict on the user-agent hash, the screen and the
+  idle refresh rate; with no workload yet it answers "full" (OQ-036).
 
 ## 6. Hosting
 

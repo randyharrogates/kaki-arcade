@@ -80,7 +80,7 @@ requirement.
 | ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
 |---|---|---|---|---|---|---|---|
 | DATA-001 | MUST | No accounts, no email, no personal data collected in v1 | M8 | in progress | `apps/signal` stores only room code, host secret, socket ids, roles and timestamps (the rest of the product is later) | `apps/signal/src/room-object.test.ts` | `uat/evidence/C-01-pairing-server/` |
-| DATA-002 | MUST | Scores, stars and settings are saved on the host device only | M8 | not started | — | — | — |
+| DATA-002 | MUST | Scores, stars and settings are saved on the host device only | M8 | in progress | `packages/platform/src/storage/{host-store.ts,settings.ts}` (part 1: store, settings model; no UI or game adapters yet) | `packages/platform/src/storage/storage.test.ts` | — (no visible UI yet) |
 | DATA-003 | MUST | The only telemetry is anonymous error and performance counts with no nicknames, IPs or device identifiers… | M8 | not started | — | — | — |
 | DATA-004 | MUST | A short privacy page states the above in plain English | M8 | not started | — | — | — |
 | DATA-005 | MUST | Room codes are unguessable enough to prevent casual gate-crashing, rooms expire when idle, and the pairing… | M8 | in progress | `apps/signal/src/core/codes.ts`, `core/room.ts` (8-character codes, idle and absolute expiry, per-socket limits), `apps/signal/src/core/admission.ts`, `core/address.ts`, `admission-object.ts` (limits per client and per network on creation, attempts, failed guesses and silent sockets; local runtime only, not deployed) | `apps/signal/src/core/room.test.ts`, `room-object.test.ts` | `uat/evidence/C-01-pairing-server/` |
@@ -112,7 +112,7 @@ requirement.
 | ID | Pri | Requirement | Milestone | Status | Code | Tests | Evidence |
 |---|---|---|---|---|---|---|---|
 | PERF-001 | MUST | Reference laptop (the dev Mac, Chrome, 1080p output) — 95th-percentile frame time ≤ 16.7 ms (60 fps); no… | M2 on | not started | — | — | — |
-| PERF-002 | MUST | TV-class device (the TCL Q65's browser) — 95th-percentile frame time ≤ 33.3 ms (30 fps) in lower-detail… | M2, M8 | not started | — | — | — |
+| PERF-002 | MUST | TV-class device (the TCL Q65's browser) — 95th-percentile frame time ≤ 33.3 ms (30 fps) in lower-detail… | M2, M8 | in progress | `packages/platform/src/storage/benchmark.ts` (D-111, D-113; part 1, no workload until T-07, OQ-036: auto means full) | `packages/platform/src/storage/benchmark.test.ts` | — |
 | PERF-010 | MUST | Direct, same Wi-Fi — 95th percentile ≤ 50 ms | M2 on | not started | — | — | — |
 | PERF-011 | MUST | Relayed — 95th percentile ≤ 120 ms; the big screen marks the player as relayed (PLAT-010) | M2 on | not started | — | — | — |
 | PERF-012 | MUST | Phone feedback — The controller shows the press within one frame of the touch, independent of the network | M2 on | in progress | `packages/ui/src/motion.ts` `press`, `.ka-pressable` (press-down is instant; the controller is K-01) | `packages/ui/src/motion.test.ts` | — |

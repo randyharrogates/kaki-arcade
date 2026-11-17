@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — C-13 part 1: host-device storage and detail benchmark
+
+- `packages/platform/src/storage`: `host-store.ts` (versioned, validated, size-capped records;
+  newer records kept), `settings.ts` (detail setting, cache keyed on the user-agent hash,
+  screen and idle refresh rate), `benchmark.ts` (dropped-frame verdict under an injected
+  workload, idle cadence probe). D-111, D-113, OQ-036.
+- (DATA-002, PERF-002 in progress)
+
 ## 2026-11-17 — C-14: message for unsupported browsers
 
 - `apps/web/index.html`: ES5 preflight (floor `AbortSignal.timeout`, above the bundle's ES2022

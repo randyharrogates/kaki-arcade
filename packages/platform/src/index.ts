@@ -8,3 +8,5 @@ export * from './session/index';
 export * from './reconnect/index';
 
 export * from './picker';
+
+export * from './storage/index';

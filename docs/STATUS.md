@@ -187,6 +187,12 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   integrator's browser checks found two faults the reviews had not (tiny names, an expired
   room looping) and one of the integrator's own evidence claims was wrong and is withdrawn in
   the report.
+- **Saving on the TV, and the detail benchmark (C-13 part 1), code only.** A store for scores,
+  stars and settings on the TV's browser, safe against corrupt, foreign, oversized and newer
+  records, and a benchmark that judges dropped frames (D-111, D-113). Nothing visible yet: the
+  settings screen and running the benchmark on the lobby are part 2, and the benchmark has no
+  real workload until the game renderer exists (OQ-036), so "auto" means full detail today.
+  Tested by unit tests only. Two review rounds.
 - **Message for browsers that can't run it (C-14).** A browser missing something the game needs
   sees "This browser can't run Kaki Arcade", the line for its device (computer, or the join
   link on a phone) and what is missing in plain words, instead of a broken page. Browsers too
