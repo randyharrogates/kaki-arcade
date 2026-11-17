@@ -1342,3 +1342,13 @@ integrator before Codex): `MultiField.noneLabel` and `ChoiceOption.group`. Randy
 stagger, which measures 3.43 times. The lifted row's shadow uses the ink colour, not the panel
 edge.
 
+**D-159 · 2026-11-18 · Claude** (under D-142; amends D-156; C-12 review) — The host keyboard adds no
+buttons to the lobby or picker: the board-3 layouts (D-046) stay as decided. In the lobby, Enter
+opens the picker once a player is in (hint "Enter: pick a game · J: join from this keyboard", which
+becomes "L: leave" once the keyboard player has joined, and "Start on a game pad: join"). In the
+picker, Left and Right move between games, Enter selects and then starts, Escape goes back (hint
+"Left and Right: choose · Enter: select · Esc: back"). Team setup, results and the pause panel keep
+their focusable controls; there, Enter or Space runs the focused control, and a screen-wide Enter
+acts only when nothing is focused. Quit keeps the keyboard player's seat and leadership, as it does
+for phones. Reason: round 4 added a lobby button and a picker button row that no board covers.
+
