@@ -251,6 +251,12 @@ importers:
       '@kaki/sim-core':
         specifier: workspace:*
         version: link:../../packages/sim-core
+      '@kaki/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      preact:
+        specifier: 11.2.0
+        version: 11.2.0
 
   games/tabao-rush:
     dependencies:

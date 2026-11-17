@@ -102,7 +102,7 @@ requirement.
 |---|---|---|---|---|---|---|---|
 | NFR-PERF | MUST | All budgets in PERFORMANCE.md are met and tested automatically | M2 on | in progress | `tools/perf/`, `uat/perf/lobby-8.mjs`, `packages/platform/src/harness/perf-timing.ts`, `tools/check_budgets.mjs` | `tools/perf/*.test.ts` | `uat/evidence/F-08-perf-harness/` (harness works; no budget beyond transfer size assessed yet: no game screen exists) |
 | NFR-DES | MUST | Every screen passes the checklist in DESIGN.md §6 at review | M3 on | in progress | `packages/ui/src/contrast.ts`, `tools/design_lint` (tokens only; no screen exists yet) | `packages/ui/src/contrast.test.ts` | `uat/evidence/F-06-design-tokens/` |
-| NFR-A11Y | MUST | Colour is never the only way to tell players apart (colour plus shape or number) | M3 on | not started | — | — | — |
+| NFR-A11Y | MUST | Colour is never the only way to tell players apart (colour plus shape or number) | M3 on | in progress | Rabakz TV: seat number, colour and name; options by letter and shape; lock-out by mark, not colour alone (`games/rabakz/host/` (Screen, view-model; dev page only, not wired into the console)) | `games/rabakz/host/screen.test.ts`, `tools/perf/rabakz-screen.test.ts` | `uat/evidence/R-03-rabakz-screen/` |
 | NFR-REL | MUST | A 30-minute 8-player session completes with no crash, no stuck input and no desync between the big screen… | M6, M8 | not started | — | — | — |
 | NFR-TEST | MUST | Game rules have unit tests on the deterministic simulation | M3 on | in progress | `vitest.config.ts`, `packages/platform/src/game/` (conformance kit), `packages/platform/src/harness/` (dev harness); rules tests in each game; `tools/uat/` and `uat/slices/` (UAT harness behind `pnpm uat`: host plus eight phone contexts against a real local pairing server; two slice scripts run green); the performance harness is F-08 | `packages/platform/src/harness/*.test.ts`, `games/*/src/**/harness.test.ts`, `tools/uat/*.test.ts` | `uat/evidence/F-01-workspace/`, `uat/evidence/F-05-game-harness/`, `uat/evidence/F-07-uat-harness/` |
 | NFR-DOC | MUST | TRACEABILITY.md, STATUS.md and CHANGELOG.md are updated in the same loop as the change they describe | M0 on | in progress | — | — | — |
@@ -153,10 +153,10 @@ requirement.
 |---|---|---|---|---|---|---|---|
 | RZ-001 | MUST | A match is 10, 30 or 50 questions chosen by the leader | M4 | in progress | `games/rabakz/src/rules/` (rules only; no screen) | `games/rabakz/src/rules/rules.test.ts` | `uat/evidence/R-01-rabakz-rules/` |
 | RZ-002 | MUST | Multiple choice, true or false and picture questions; no typed answers | M4 | not started | — | — | — |
-| RZ-003 | MUST | Question and options on the big screen; matching answer buttons on each phone | M4 | not started | — | — | — |
+| RZ-003 | MUST | Question and options on the big screen; matching answer buttons on each phone | M4 | in progress | `games/rabakz/host/` (Screen, view-model; dev page only, not wired into the console) (TV half; the phone buttons are another issue) | `games/rabakz/host/screen.test.ts`, `tools/perf/rabakz-screen.test.ts` | `uat/evidence/R-03-rabakz-screen/` |
 | RZ-004 | MUST | No timer; any player answers at any moment; a press is final for that turn | M4 | in progress | `games/rabakz/src/rules/` (rules only; no screen) | `games/rabakz/src/rules/rules.test.ts` | `uat/evidence/R-01-rabakz-rules/` |
-| RZ-005 | MUST | TV shows who answered and which options were wrong; nothing sent to other phones | M4 | not started | — | — | — |
-| RZ-006 | MUST | First correct answer ends the question; 0.25 s tie window; wrong = locked until all have had a turn; leader skip; auto-skip at 30 s | M4 | in progress | `games/rabakz/src/rules/` (rules only; no screen) | `games/rabakz/src/rules/rules.test.ts` | `uat/evidence/R-01-rabakz-rules/` |
+| RZ-005 | MUST | TV shows who answered and which options were wrong; nothing sent to other phones | M4 | in progress | `games/rabakz/host/` (Screen, view-model; dev page only, not wired into the console) | `games/rabakz/host/screen.test.ts`, `tools/perf/rabakz-screen.test.ts` | `uat/evidence/R-03-rabakz-screen/` |
+| RZ-006 | MUST | First correct answer ends the question; 0.25 s tie window; wrong = locked until all have had a turn; leader skip; auto-skip at 30 s | M4 | in progress | `games/rabakz/src/rules/`; TV marks wrong options, lock-out and the winner’s tick in `games/rabakz/host/` (Screen, view-model; dev page only, not wired into the console) | `games/rabakz/host/screen.test.ts`, `games/rabakz/src/rules/rules.test.ts` | `uat/evidence/R-01-rabakz-rules/` |
 | RZ-007 | MUST | Correct answer scores 100; no speed bonus; scores never go down | M4 | in progress | `games/rabakz/src/rules/` (rules only; no screen) | `games/rabakz/src/rules/rules.test.ts` | `uat/evidence/R-01-rabakz-rules/` |
 | RZ-008 | MUST | Streak: +50 from the third question won in a row | M4 | in progress | `games/rabakz/src/rules/` (rules only; no screen) | `games/rabakz/src/rules/rules.test.ts` | `uat/evidence/R-01-rabakz-rules/` |
 | RZ-009 | MUST | Final round scores double | M4 | in progress | `games/rabakz/src/rules/` (rules only; no screen) | `games/rabakz/src/rules/rules.test.ts` | `uat/evidence/R-01-rabakz-rules/` |
@@ -174,11 +174,11 @@ requirement.
 | RZ-024 | MUST | Launch size: 1,500 questions, 200 Singapore, 60 picture | M4 | in progress | `content/rabakz/src/questions/` (Singapore 312 of 200 met; total and pictures outstanding: R-11, R-13) | `content/rabakz/scripts/build.test.ts` | `uat/evidence/R-12-singapore-pack/` |
 | RZ-025 | MUST | Picture images are real photographs (free licence, credited) or Codex-generated and checked; no renders | M4 | not started | — | — | — |
 | RZ-026 | MUST | Option order shuffled from the seed; correct position uniform | M4 | in progress | `games/rabakz/src/rules/` (rules only; no screen) | `games/rabakz/src/rules/rules.test.ts` | `uat/evidence/R-01-rabakz-rules/` |
-| RZ-030 | MUST | Question and options readable from 3 m; options differ by letter and shape | M4 | not started | — | — | — |
-| RZ-031 | MUST | No timer shown; lock-out marked without colour alone; motion rules | M4 | not started | — | — | — |
+| RZ-030 | MUST | Question and options readable from 3 m; options differ by letter and shape | M4 | in progress | `games/rabakz/host/` (Screen, view-model; dev page only, not wired into the console) | `games/rabakz/host/screen.test.ts`, `tools/perf/rabakz-screen.test.ts` | `uat/evidence/R-03-rabakz-screen/` |
+| RZ-031 | MUST | No timer shown; lock-out marked without colour alone; motion rules | M4 | in progress | `games/rabakz/host/` (Screen, view-model; dev page only, not wired into the console) | `games/rabakz/host/screen.test.ts`, `tools/perf/rabakz-screen.test.ts` | `uat/evidence/R-03-rabakz-screen/` |
 | RZ-032 | MUST | Scoreboard every 5 questions and a final podium; team totals first in team mode | M4 | not started | — | — | — |
 | RZ-033 | SHOULD | Sounds for answer, correct, wrong, unlock | M4 | not started | — | — | — |
-| RZ-034 | MUST | Players shown by seat number, colour and nickname; no cook characters | M4 | not started | — | — | — |
+| RZ-034 | MUST | Players shown by seat number, colour and nickname; no cook characters | M4 | in progress | `games/rabakz/host/` (Screen, view-model; dev page only, not wired into the console) | `games/rabakz/host/screen.test.ts`, `tools/perf/rabakz-screen.test.ts` | `uat/evidence/R-03-rabakz-screen/` |
 
 ## Tabao Rush
 

@@ -1,0 +1,11 @@
+$ tsc -b tsconfig.build.json
+$ eslint . --max-warnings 0
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-03
+
+
+ Test Files  1 passed (1)
+      Tests  25 passed (25)
+   Start at  08:53:44
+   Duration  647ms (transform 371ms, setup 0ms, import 462ms, tests 43ms, environment 0ms)
+

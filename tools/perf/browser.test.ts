@@ -3,7 +3,7 @@ import { machine } from './metrics.js';
 import { expect, it, vi } from 'vitest';
 import type { Harness } from '../uat/harness.js';
 import type { Report } from './report.js';
-import { browserScenario } from './browser.js';
+import { openHost, browserScenario } from './browser.js';
 import type { Capture, Scenario } from './browser.js';
 vi.mock('./metrics.js', async original => ({ ...await original<typeof Metrics>(), machine: vi.fn(() => ({ contention: 'unknown', loadAverageStart: [0, 0, 0] })) }));
 const saved = vi.hoisted(() => ({ report: undefined as Report | undefined }));
@@ -94,5 +94,19 @@ it('contention at either endpoint revokes passes but preserves failures (PERF-00
     }, 600, true, fail ? { inputReason: '' } : {})).rejects.toThrow();
     if (fail) expect(saved.report?.assessments[1]?.status).toBe('fail');
     if (!fail) expect(saved.report?.assessments[0]).toMatchObject({ status: 'not assessed', reason: 'contention' });
+  }
+});
+
+it('custom host pages navigate locally without room creation or phones (NFR-PERF)', async () => {
+  const goto = vi.fn(() => Promise.resolve());
+  const createRoom = vi.fn(() => Promise.resolve());
+  const h = { origin: 'http://127.0.0.1:5150', host: { goto }, createRoom } as unknown as Harness;
+  await openHost(h, { name: 'custom', hostPage: '/@fs/work/games/rabakz/dev/index.html', run: () => Promise.resolve() });
+  expect(goto).toHaveBeenCalledWith('http://127.0.0.1:5150/@fs/work/games/rabakz/dev/index.html');
+  expect(createRoom).not.toHaveBeenCalled();
+  await openHost(h, { name: 'lobby', run: () => Promise.resolve() });
+  expect(createRoom).toHaveBeenCalledOnce();
+  for (const hostPage of ['https://example.com', '//example.com/page', 'relative']) {
+    await expect(openHost(h, { name: 'bad', hostPage, run: () => Promise.resolve() })).rejects.toThrow('local absolute path');
   }
 });

@@ -92,6 +92,9 @@ Stated on the help page (REL-003):
   instrumented, touch-to-apply and touch-to-feedback times. Timing hooks exist only in
   development builds, so production runs assess frames only. Contexts on one machine do not
   prove real phone or Wi-Fi delay.
+- A scenario may set `hostPage` to open a local development page instead of a room, with no
+  phones (`uat/perf/rabakz-screen.mjs`). It runs only against development builds, reports zero
+  phones, still lands in `perf-<phones>` (default `perf-8`) and assesses no budget.
 - A budget is assessed only where it applies. PERF-001 needs a marked round of at least 180 s
   with at least 600 visible frames; PERF-010 and PERF-012 need 100 observations each. Fewer is
   "insufficient samples"; a budget that does not apply is "not assessed"; neither is a pass.

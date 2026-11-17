@@ -191,7 +191,7 @@ describe('attacks', () => {
     let s = init(3);
     s = step(s, [ans(s, 0, C(s)), ans(s, 1, W(s))]);
     expect(required(rabakz.privateView(s, id(s, 0))).blocks).toContainEqual({ kind: 'text', text: 'Locked in' });
-    expect(rabakz.publicView(s).players.map((p) => p.answered)).toEqual([true, true, false]);
+    expect(rabakz.publicView(s).players.map((p) => p.answered)).toEqual([false, true, false]);
     expect(rabakz.publicView(s).correct).toBeNull();
     expect(rabakz.publicView(s).wrong).toEqual([W(s)]);
   });

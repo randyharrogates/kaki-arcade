@@ -5,10 +5,13 @@
   "description": "Rabakz trivia game",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./host": "./host/index.ts"
   },
   "dependencies": {
     "@kaki/platform": "workspace:*",
-    "@kaki/sim-core": "workspace:*"
+    "@kaki/sim-core": "workspace:*",
+    "@kaki/ui": "workspace:*",
+    "preact": "11.2.0"
   }
 }

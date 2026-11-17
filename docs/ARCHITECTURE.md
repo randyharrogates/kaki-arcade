@@ -35,7 +35,7 @@ packages/
   controller-kit/ Stick, D-pad, buttons, shoulder, tilt/shake, private display panel
   ui/             Design tokens from DESIGN.md §4, shared shell components, motion helpers
 games/
-  rabakz/         rules (pure) · host view · controller layouts
+  rabakz/         rules (pure) · host view (host/: view-model, Screen) · controller layouts
   peek-poker/     rules (pure) · host view · controller layouts
   tabao-rush/     rules (pure) · host view · controller layouts · levels · bots
 content/
@@ -141,6 +141,10 @@ Rules:
   cancelled); content inside a tile and the TV heading change by two masks that meet at one
   boundary (D-092 e, D-107, D-108). The cost of animating tile width and height and of the
   masks on the TV is not measured yet (PERF-001, PERF-002).
+- **Game host views (R-03 first):** a game's TV screen lives in `games/<game>/host/`, exported
+  as `"./host"`. A pure `view-model` turns the game's `publicView` (and nothing else) into
+  what the `Screen` draws, so a secret cannot reach the TV by mistake. Text is fitted by
+  measurement; layout changes between questions use one block mask (D-105, D-106).
 - **Picker state:** `packages/platform/src/picker.ts` is the pure picker state machine (no
   game knowledge); `apps/web/src/game-registry.ts` is the only list of installed games. A
   game's index module is fetched when it is selected and loaded at Start.

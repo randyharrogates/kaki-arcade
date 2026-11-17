@@ -14,7 +14,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 |---|---|---|---|---|---|
 | R-01 | Rules (pure): match flow as a buzzer race with no timer, first correct answer wins, 0.25 s same-time window, lock-out until everyone has had a turn, leader skip and 30 s auto-skip, scoring in hundreds with streak and double final round, team scoring, mid-match join, ties | RZ-001, RZ-004, RZ-006 to RZ-009, RZ-012, RZ-014, RZ-016, RZ-026 | F-04 | 1 | merged |
 | R-02 | Controller layouts and private views: setup, answer buttons, locked out, leader skip, reveal | RZ-003, RZ-005 | R-01, K-05 | 2 | todo |
-| R-03 | Big-screen question and reveal views: text at reading size, option shapes, no timer, who has answered and who is locked out, options marked wrong | RZ-003, RZ-005, RZ-006, RZ-030, RZ-031, RZ-034 | R-01, F-06 | 2 | doing (Codex) |
+| R-03 | Big-screen question and reveal views: text at reading size, option shapes, no timer, who has answered and who is locked out, options marked wrong | RZ-003, RZ-005, RZ-006, RZ-030, RZ-031, RZ-034 | R-01, F-06 | 2 | merged |
 | R-04 | Setup screen: length, categories, difficulty, free-for-all or teams | RZ-001, RZ-010, RZ-011, RZ-012 | R-03 | 2 | todo |
 | R-05 | Scoreboard every 5 questions, podium, team totals | RZ-032 | R-03 | 2 | todo |
 | R-06 | Solo best per length and recently-seen questions on the host device | RZ-013, RZ-015 | R-01, C-13 | 2 | todo |
@@ -53,6 +53,17 @@ Content work. It needs no code from other tracks and starts in Wave 0.
   in one match, because the budget counts uncompressed bytes.
 - **D-049 follow-up (small, R track):** remove the true-or-false type from the `content/rabakz`
   schema, validator, selector and tests once R-11 and R-12 have merged with none in the bank.
+- **From R-03 (TV views), merged 2026-11-17 after eight Codex fix rounds and five reviews.**
+  The screen is a dev page (`games/rabakz/host/`), not yet in the console: C-10/C-15 must load
+  it from `"./host"` and feed it `publicView`. **For C-15 (motion polish):** a reveal arriving
+  during a wipe is drawn revealed inside the incoming block, then the veil and "✓ Correct"
+  snap back and play again; seat chips mounted during a wipe never play their entrance; the
+  "✓ Correct" mark and the pulse start loosely ordered. **Tooling:** add a test that
+  `pnpm perf` rejects a production build for a `hostPage` scenario, and check that `hostPage`
+  resolves inside the repository instead of relying on Vite's `server.fs.strict`. **Evidence
+  gaps:** no frame for reduced motion switched on mid-wipe or a reveal during a wipe; the two
+  integrator fixes at merge are unit-tested only. **Performance:** one unexplained 217 ms
+  frame in the first run, not reproduced; recheck in the PERF-001 round scenario.
 - **From R-12's review:** add a "do not co-select" topic group to the schema and selector so
   same-topic questions cannot meet in one match (groups listed in
   `docs/slices/R-12-singapore-pack.md`, Request 7); drop the R-10 sample `his-0003`, which three

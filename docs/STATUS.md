@@ -187,6 +187,14 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   integrator's browser checks found two faults the reviews had not (tiny names, an expired
   room looping) and one of the integrator's own evidence claims was wrong and is withdrawn in
   the report.
+- **Rabakz TV screen (R-03), development page only.** The question, four options with letter
+  and shape, who has answered, lock-outs and wrong options marked without colour alone, and
+  the reveal, at reading size for 720p to 4K with eight players. A correct option pulses once
+  in its own colour; between questions with a different layout the block changes by one
+  mask; the winner's tick keeps its place after the name. Opened by the integrator in a
+  browser across rounds 7 to 9. Not in the console yet (C-10/C-15), not on a TV, no real
+  pictures or fonts. Performance run (`pnpm perf -- rabakz-screen`) is diagnostic only:
+  median 16.7 ms frames, one unexplained 217 ms frame in the first run that did not repeat.
 - **Game picker (C-09).** From the lobby the leader opens a picker on the TV listing all three
   games with name, player range and blurb; games that cannot be played with the players in the
   room say why. The leader's phone moves the focus (Previous, Next), selects, goes back and

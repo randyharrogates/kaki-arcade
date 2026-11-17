@@ -9,6 +9,8 @@ import type { Timing } from './metrics.js';
 import { writeReport } from './report.js';
 export interface Scenario {
   name: string;
+  /** Development page on the harness origin; skips room creation and phone pairing. */
+  hostPage?: string;
   frameReason?: string;
   busiestRound?: boolean;
   inputReason?: string;
@@ -53,7 +55,7 @@ export async function browserScenario(h: Harness, scenario: Scenario, headed: bo
     const Original = RTCPeerConnection;
     Object.assign(globalThis, { RTCPeerConnection: class extends Original { constructor(config?: RTCConfiguration) { super(config); peers.push(this); } }, __kakiPerfPeers: peers });
   });
-  await h.createRoom();
+  await openHost(h, scenario);
   const refresh = await h.host.evaluate(async () => {
     const intervals: number[] = [];
     let previous = await new Promise<number>(resolve => requestAnimationFrame(resolve));
@@ -134,7 +136,7 @@ export async function browserScenario(h: Harness, scenario: Scenario, headed: bo
   const requiredAssessments = nonempty(scenario.feedbackReason) ? [] : ['PERF-012'];
   const exit = await writeReport(process.cwd(), scenario.name, { schemaVersion: 1, layer: 'browser', scenario: scenario.name, machine: { ...environment, memoryGate, loadAverageEnd: endEnvironment.loadAverageStart, contentionEnd: endEnvironment.contention }, assessments, requiredAssessments,
     notes: [`Command: ${command}`, `Build: ${build}`, 'Each observed context is calibrated by the lowest of five Node round trips; uncertainty is half that round trip plus clock precision. Ordering tolerates 2 ms and clamps only those small negative deltas. Larger inversions remain invalid. This measures local browser scheduling and WebRTC, not real Wi-Fi, phone hardware or display scan-out.', 'Headless rAF representativeness is unproven. Headed run required for PERF-001. Long tasks are not GC attribution; real-round GC tracing remains required when game screens exist.'],
-    measurements: [{ browser: 'Playwright Chromium (not branded Chrome)', refresh: { ...refresh, osRefreshHz }, steps, hostClock: 'performance.now() milliseconds relative to host page timeOrigin', browserVersion: h.browser.version(), headed, viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1, phoneViewport: { width: 844, height: 390 }, phoneDeviceScaleFactor: 3, phones: h.maxPhones, build, command, clocks, direct, seconds, roundSeconds, nodeClockTickMs: tick, clockTickMs: raw.clockTickMs, timingResolution: { framesMs: resolution(summary(raw.frames), raw.clockTickMs), inputMs: resolution(summary(delays), Math.max(tick, ...clocks.map(c => c.clockTickMs))), longTasksMs: resolution(summary(raw.longTasks), raw.clockTickMs) }, minimumFrames: 600, minimumInputs: 100, frameSampleStatus: raw.frames.length < 600 || !roundRaw || roundSeconds < 180 ? 'insufficient samples' : 'sufficient samples', framesMs: summary(raw.frames), longTasksMs: summary(raw.longTasks), longTasksSupported: raw.longTasksSupported, inputMs: summary(delays), feedbackFrames: summary(feedback), raw, inputs, timingEvents: events, incompleteInputs: correlated.incomplete }],
+    measurements: [{ browser: 'Playwright Chromium (not branded Chrome)', refresh: { ...refresh, osRefreshHz }, steps, hostClock: 'performance.now() milliseconds relative to host page timeOrigin', browserVersion: h.browser.version(), headed, viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1, phoneViewport: { width: 844, height: 390 }, phoneDeviceScaleFactor: 3, phones: scenario.hostPage ? 0 : h.maxPhones, build, command, clocks, direct, seconds, roundSeconds, nodeClockTickMs: tick, clockTickMs: raw.clockTickMs, timingResolution: { framesMs: resolution(summary(raw.frames), raw.clockTickMs), inputMs: resolution(summary(delays), Math.max(tick, ...clocks.map(c => c.clockTickMs))), longTasksMs: resolution(summary(raw.longTasks), raw.clockTickMs) }, minimumFrames: 600, minimumInputs: 100, frameSampleStatus: raw.frames.length < 600 || !roundRaw || roundSeconds < 180 ? 'insufficient samples' : 'sufficient samples', framesMs: summary(raw.frames), longTasksMs: summary(raw.longTasks), longTasksSupported: raw.longTasksSupported, inputMs: summary(delays), feedbackFrames: summary(feedback), raw, inputs, timingEvents: events, incompleteInputs: correlated.incomplete }],
   }, h.evidence);
   if (exit || contention || assessments.some(a => a.status === 'not assessed' && (a.reason === 'contention' || requiredAssessments.includes(a.id)))) throw new Error(assessments.some(a => a.status === 'fail') ? 'Performance budget exceeded; see perf.json' : assessments.some(a => a.status === 'insufficient samples') ? 'Performance: insufficient samples; see perf.json' : 'Performance not assessed; see perf.json');
 }
@@ -144,3 +146,11 @@ async function stopFrames(page: Page) {
 }
 
 function nonempty(reason: string | undefined) { return reason?.trim() ? reason : undefined; }
+
+/** Keep custom pages on the local stack; external URLs are not scenario pages. */
+export async function openHost(h: Harness, scenario: Scenario) {
+  if (!scenario.hostPage) { await h.createRoom(); return; }
+  const url = new URL(scenario.hostPage, h.origin);
+  if (url.origin !== h.origin || !scenario.hostPage.startsWith('/') || scenario.hostPage.startsWith('//')) throw new Error('Scenario hostPage must be a local absolute path');
+  await h.host.goto(url.href);
+}

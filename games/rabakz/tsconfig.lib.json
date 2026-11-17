@@ -1,16 +1,23 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "rootDir": "src",
+    "rootDir": ".",
     "outDir": "dist",
-    "tsBuildInfoFile": "dist/.tsbuildinfo"
+    "tsBuildInfoFile": "dist/.tsbuildinfo",
+    "lib": [
+      "ES2023"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   },
   "include": [
     "src"
   ],
   "exclude": [
     "src/**/*.test.ts",
-    "src/**/*.test.tsx"
+    "src/**/*.test.tsx",
+    "host/**/*.test.ts",
+    "host/**/*.test.tsx"
   ],
   "references": [
     {
@@ -18,6 +25,9 @@
     },
     {
       "path": "../../packages/sim-core/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/ui/tsconfig.lib.json"
     }
   ]
 }

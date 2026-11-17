@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — R-03: Rabakz TV screen
+
+- `games/rabakz/host/` (view-model, Screen, dev page), exported as `"./host"`; success pulse
+  in the option's colour and one block mask between questions (D-105, D-106); `uat/perf/
+  rabakz-screen.mjs` and `Scenario.hostPage` in `tools/perf`. `games/rabakz` now declares
+  `@kaki/ui` and `preact`.
+- (RZ-003, RZ-005, RZ-006, RZ-030, RZ-031, RZ-034, NFR-A11Y in progress)
+
 ## 2026-11-17 — C-09: game picker
 
 - `packages/platform/src/picker.ts` (pure picker state), the TV picker and start screen in

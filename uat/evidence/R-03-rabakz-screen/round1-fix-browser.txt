@@ -1,0 +1,6 @@
+Attempted: pnpm --filter @kaki/web exec vite ../../games/rabakz --host 127.0.0.1 --port 5230 --strictPort
+Result: listen EPERM: operation not permitted 127.0.0.1:5230
+Fresh browser captures could not be taken within this sandbox.
+Inspected existing round1 images: r03-10-open-1080.jpg,
+r03-10-reveal-one-winner-1080.jpg, r03-10-longest-text-1080.jpg.
+These show the old faults; they are not evidence of the revised screen.

@@ -42,6 +42,7 @@ export async function main(args: string[]) {
   } else {
     const { loadScenario } = await import('./registry.js');
     const scenario = await loadScenario(root, options.scenario);
+    if (scenario.hostPage && options.build === 'production') throw new Error('Custom development pages require --build development');
     const { run } = await import('../uat/runner.js');
     const { browserScenario } = await import('./browser.js');
     await run([options.slice, '--out', options.out, '--phones', String(options.phones), ...(options.headed ? ['--headed'] : [])], { production: options.build === 'production', command: command, headed: options.headed, script: resolve(root, 'uat/perf', `${scenario.name}.mjs`), execute: h => browserScenario(h, scenario, options.headed, command, options.build, gate) });

@@ -62,6 +62,15 @@ host `getStats()` transport-selected ICE candidates of type host or srflx on bot
 every press must be visible within one frame. Sample minima are harness validity rules,
 not new performance budgets. Any stated budget failure or applicable budget with insufficient samples exits non-zero. Not-assessed results do not claim acceptance.
 
+A development-only host scenario may set `hostPage` to a local absolute path
+on the harness origin (including Vite's workspace `/@fs/` paths). The harness
+navigates there instead of creating a room; the scenario must not join phones.
+Reports record zero phones. External URLs and production builds are rejected.
+`pnpm perf -- rabakz-screen` uses this for the Rabakz dev page: five cycles of
+open, eight-seat reveal, same-layout next question and picture layout change,
+waiting 800 presentation callbacks. This is diagnostic and does not declare a
+180-second round or assess PERF-001.
+
 ### Timing integration for future screens
 
 The explicit opt-in hook is `packages/platform/src/harness/perf-timing.ts`. It is absent

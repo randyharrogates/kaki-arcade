@@ -1,0 +1,17 @@
+error when starting dev server:
+Error: listen EPERM: operation not permitted 127.0.0.1:5230
+    at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+    at listenInCluster (node:net:2437:12)
+    at node:net:2666:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EPERM',
+  errno: -1,
+  syscall: 'listen',
+  address: '127.0.0.1',
+  port: 5230
+}
+Error: ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL
+
+  × "pnpm recursive exec" failed in /Users/randy/projects/personal/web-apps/
+  │ kaki-arcade-wt/R-03/apps/web
+
