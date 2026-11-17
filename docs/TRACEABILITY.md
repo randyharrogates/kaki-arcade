@@ -94,7 +94,7 @@ requirement.
 | REL-003 | MUST | A "how to put this on your TV" help page: laptop over HDMI (recommended, with Game Mode), and the TV's own… | M8 | not started | — | — | — |
 | REL-004 | MUST | Supported big screens: current Chrome, Edge and Safari on a laptop or desktop | M8 | not started | — | — | — |
 | REL-005 | SHOULD | Runs in a browser on Randy's TCL Q65 (Google TV) | M2, M8 | not started | — | — | — |
-| REL-006 | MUST | Unsupported browsers get a clear message, not a broken page | M8 | not started | — | — | — |
+| REL-006 | MUST | Unsupported browsers get a clear message, not a broken page | M8 | in progress | `apps/web/index.html` (ES5 preflight, static message, noscript), `apps/web/vite.config.ts` (entry loader and error backstop), `apps/web/src/{support.ts,BrowserNotSupported.tsx,unsupported.css,main.tsx}` | `apps/web/src/support.test.ts`; `uat/slices/C-14-unsupported-browser.mjs` (dev and `--production`) | `uat/evidence/C-14-unsupported-browser/round4/`, `round5/` (Chromium only; WebKit and Firefox at X-05) |
 
 ## Quality
 

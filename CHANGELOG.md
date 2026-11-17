@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — C-14: message for unsupported browsers
+
+- `apps/web/index.html`: ES5 preflight (floor `AbortSignal.timeout`, above the bundle's ES2022
+  parse floor), a static message that fills the screen, `<noscript>`; `vite.config.ts`: entry
+  loader with error and entry-ran backstops; `apps/web/src/support.ts`,
+  `BrowserNotSupported.tsx`: the in-app message with plain feature names; demo names kept out
+  of production by the build scanner; `uat/slices/C-14-unsupported-browser.mjs` with a
+  `--production` mode.
+- (REL-006 in progress)
+
 ## 2026-11-17 — K-01: phone controller shell
 
 - `packages/controller-kit`: `ControllerShell`, a reference-counted page lock, a wake-lock helper

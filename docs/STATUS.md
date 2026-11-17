@@ -187,6 +187,15 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   integrator's browser checks found two faults the reviews had not (tiny names, an expired
   room looping) and one of the integrator's own evidence claims was wrong and is withdrawn in
   the report.
+- **Message for browsers that can't run it (C-14).** A browser missing something the game needs
+  sees "This browser can't run Kaki Arcade", the line for its device (computer, or the join
+  link on a phone) and what is missing in plain words, instead of a broken page. Browsers too
+  old to load the app at all (no modules, a failed early check, code they can't read) get a
+  plain version of the same message, and so does a browser with JavaScript off. Seen working
+  in Chromium on the development and production builds, at 320 to 1280 px wide; every normal
+  page still loads. Not proven: a real old Safari or Android, WebKit and Firefox engines (X-05).
+  Built by Codex over four fix rounds; two review rounds. The integrator's browser checks
+  found that the round-3 backstop showed the message in a working browser (fixed in round 4).
 - **Phone controller shell (K-01), development page only.** `/play?demo=controller` shows the
   landscape controller frame: a one-line header with the seat number in its colour, the name
   (cut with an ellipsis when long) and the link state as icon plus word, an empty play area,

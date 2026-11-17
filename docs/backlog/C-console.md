@@ -39,7 +39,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 |---|---|---|---|---|---|
 | C-05 | Reconnect: a phone returns to its seat within 2 minutes; the host page reloads and the room, players and scores come back | PLAT-007, PLAT-009 | C-04, C-06 | 1 | merged |
 | C-12 | Keyboard on the host for setup, and a keyboard or gamepad as one extra player | PLAT-024, CTRL-009 | C-10 | 2 | todo |
-| C-14 | Unsupported-browser message | REL-006 | C-07 | 2 | todo |
+| C-14 | Unsupported-browser message | REL-006 | C-07 | 2 | merged |
 | C-16 | Start a game from the picker: Start loads the chosen game's module, runs it in the session runner, shows its TV screen and sends phones their controller; quit and results return to the picker | PLAT-022, PLAT-023 | C-09, C-10, R-03, K-01 | 2 | todo |
 | C-15 | Console end to end with a test game: 8 emulated phones join, pick, play, pause, a phone reloads, the host reloads | PLAT-030, PLAT-033, NN-1, NN-2 | C-05 to C-14, C-16, K-08 | 3 | todo |
 
