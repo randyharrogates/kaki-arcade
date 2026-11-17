@@ -851,3 +851,12 @@ stands. (b) The success pulse is one pulse of the whole correct card's edge that
 invisible; nothing is left drawn on the card. (c) A winner's tick sits after the name, so the
 name does not move when it appears.
 
+**D-106 · 2026-11-17 · Claude under D-057** — Rabakz big screen, after the fourth R-03 review.
+(a) The success pulse is drawn in the correct option's own shape colour, 8 px wide, peaking at
+full strength: the panel-ink ring built under D-105 b could not be seen (1.16 : 1 against the
+background). Accent and secondary pink are not used; they are under 2 : 1 on the card.
+(b) The block wipe of D-105 a plays only when the question itself changes. A re-measure of the
+same question (fonts arriving, the first measurement replacing the estimate) installs the new
+layout with no motion. (c) The winner's tick always occupies its place after the name and is
+masked in at the reveal, so a name that fills its line never re-wraps.
+
