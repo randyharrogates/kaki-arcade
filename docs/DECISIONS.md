@@ -1265,3 +1265,11 @@ and indices 24–27 → 19 px, both above PP-030 and the 34 px rule.
 **D-133 cost note · 2026-11-18 · Claude** — D-133's "958 KB" was an earlier render. The merged deck
 (A-08, DM Sans, D-150): one atlas 1926 × 1100, 915,460 B full and 235,742 B half transferred;
 8,474,400 + 2,118,600 B decoded. PERF-023/024 pass.
+
+**D-152 · 2026-11-18 · Claude** (under D-142; C-11b review) — The leader's "Move players" grid on
+the phone is split into two labelled halves, Red and Blue, mirroring the TV's centre line (D-143),
+so a player's team reads without colour (DESIGN §6). Each grid button fits its own label, as D-140
+says for option buttons, and never goes below 21 px: a name that does not fit at 21 px is truncated
+with an ellipsis (the full name is in its accessible label and on the TV). The pressed Teams toggle
+does not use the console-primary fill (that reads as a second Start); it shows a tick with the
+panel's pressed style.
