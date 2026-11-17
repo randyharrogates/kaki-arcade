@@ -966,3 +966,11 @@ that failing closed on "no reading yet" left every new room's host without a rel
 failed analytics call withhold it for ten minutes, which defeats NET-003 (a MUST). The cost
 risk is bounded: the 800 GB limit sits 200 GB under the 1,000 GB monthly free allowance
 (D-014), far more than a few unknown minutes can use.
+
+**D-120 · 2026-11-17 · Claude** (under D-057) — Console results (board 3) use the board's
+sizes: the chip names the game ("Rabakz · final scores") and sits at its own width; headline
+144 px, winner badge 144 px, score 89 px mono bold. A tie headline ("A and B share first",
+"3 players share first") keeps 144 px when it fits in three lines in the winner column and
+otherwise steps down to 89 px, never smaller. Why: C-16's re-review found the build at
+89/55/55 with a full-width chip, against board 3 as chosen (D-046), and long tie headlines
+cannot hold 144 px in a 1 : 1.618 column.
