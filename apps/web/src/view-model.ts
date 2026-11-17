@@ -6,7 +6,9 @@ import type { RoomState } from '@kaki/platform';
 import { PLAYER_COLOURS } from '@kaki/ui';
 
 export type PairingState = 'creating' | 'restoring' | 'ready' | 'reconnecting' | 'unreachable' | 'expired' | 'replaced';
+import type { PickerModel } from '@kaki/platform';
 export interface LobbyInput {
+  picker?: PickerModel;
   room: RoomState;
   links: ReadonlyMap<string, LinkSnapshot>;
   pairing: PairingState;

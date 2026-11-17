@@ -1,0 +1,152 @@
+{
+  "slice": "C-09-game-picker",
+  "status": "failed",
+  "error": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-game][data-focused=\"true\"][data-expanded=\"true\"]').getByRole('heading', { name: 'Peek Poker', exact: true }) to be visible\u001b[22m\n\n    at follows (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/uat/slices/C-09-game-picker.mjs:42:160)\n    at /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/uat/slices/C-09-game-picker.mjs:60:43\n    at async deadline (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/core.ts:181:16)\n    at async Harness.step (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/harness.ts:95:26)\n    at async picker (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/uat/slices/C-09-game-picker.mjs:45:3)\n    at async work (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/runner.ts:88:7)\n    at async Module.run (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/runner.ts:96:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- C-09-game-picker --phones 2",
+  "commit": "1f5fdde04b79caca7696804f0ee8a56261e11c24",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 987.0555829999998,
+      "status": "completed"
+    },
+    {
+      "name": "Join Cloud Noodle",
+      "ms": 506.0128329999998,
+      "status": "completed"
+    },
+    {
+      "name": "Join Pebble Puff",
+      "ms": 931.8731660000003,
+      "status": "completed"
+    },
+    {
+      "name": "Real leader and watcher follow focus, expand, collapse and start",
+      "ms": 17198.883625,
+      "status": "failed",
+      "error": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-game][data-focused=\"true\"][data-expanded=\"true\"]').getByRole('heading', { name: 'Peek Poker', exact: true }) to be visible\u001b[22m\n\n    at follows (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/uat/slices/C-09-game-picker.mjs:42:160)\n    at /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/uat/slices/C-09-game-picker.mjs:60:43\n    at async deadline (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/core.ts:181:16)\n    at async Harness.step (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/harness.ts:95:26)\n    at async picker (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/uat/slices/C-09-game-picker.mjs:45:3)\n    at async work (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/runner.ts:88:7)\n    at async Module.run (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/runner.ts:96:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/run.mjs:15:1"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-real-picker.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-real-picker.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone2-real-picker.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-real-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-real-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone2-real-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-real-selected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-real-selected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone2-real-selected.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-real-picker.jpg",
+    "02-phone1-real-picker.jpg",
+    "03-phone2-real-picker.jpg",
+    "04-host-real-focus.jpg",
+    "05-phone1-real-focus.jpg",
+    "06-phone2-real-focus.jpg",
+    "07-host-real-selected.jpg",
+    "08-phone1-real-selected.jpg",
+    "09-phone2-real-selected.jpg",
+    "10-host-failure.png",
+    "12-phone2-failure.png",
+    "11-phone1-failure.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-real-picker.jpg",
+      "bytes": 186442
+    },
+    {
+      "file": "02-phone1-real-picker.jpg",
+      "bytes": 146760
+    },
+    {
+      "file": "03-phone2-real-picker.jpg",
+      "bytes": 120728
+    },
+    {
+      "file": "04-host-real-focus.jpg",
+      "bytes": 185687
+    },
+    {
+      "file": "05-phone1-real-focus.jpg",
+      "bytes": 146817
+    },
+    {
+      "file": "06-phone2-real-focus.jpg",
+      "bytes": 120671
+    },
+    {
+      "file": "07-host-real-selected.jpg",
+      "bytes": 158480
+    },
+    {
+      "file": "08-phone1-real-selected.jpg",
+      "bytes": 123797
+    },
+    {
+      "file": "09-phone2-real-selected.jpg",
+      "bytes": 124348
+    },
+    {
+      "file": "10-host-failure.png",
+      "bytes": 296267
+    },
+    {
+      "file": "11-phone1-failure.png",
+      "bytes": 320969
+    },
+    {
+      "file": "12-phone2-failure.png",
+      "bytes": 124811
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1441
+    },
+    {
+      "file": "run.json",
+      "bytes": 5356
+    }
+  ],
+  "totalBytes": 2062611,
+  "maxBytes": 12582912
+}

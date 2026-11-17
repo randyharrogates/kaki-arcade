@@ -1,7 +1,7 @@
 import { createPhoneReconnect, createPhoneSeatStore } from '@kaki/platform';
 import type { PhoneReconnectDial, PhoneReconnectOptions, PhoneReconnectState, ReconnectClock, ReconnectStorage } from '@kaki/platform';
 import { CODE_ALPHABET, CODE_LENGTH, checkNickname } from '@kaki/protocol';
-import type { HostMessage, PhoneMessage, RoomPhase } from '@kaki/protocol';
+import type { HostMessage, PhoneMessage, RoomPhase, PickerState, PickerInput } from '@kaki/protocol';
 import { normaliseCode } from './join-link';
 
 /** The host helper also accepts legacy wire codes; new phone joins use C-01's alphabet. */
@@ -39,14 +39,14 @@ export const phoneCopy = {
 } as const;
 export type PhoneState = keyof typeof phoneCopy;
 export interface PhoneView {
-  phase: RoomPhase; state: PhoneState; title: string; detail: string; code: string; name: string;
+  picker: PickerState | null; phase: RoomPhase; state: PhoneState; title: string; detail: string; code: string; name: string;
   seat: number | null; colour: string; leader: boolean; connected: boolean;
   notice: string; renaming: boolean; action: 'Join' | 'Join another room' | 'Join again' | 'Reload' | null;
 }
 export function phoneView(state: PhoneState, input: Partial<Pick<PhoneView, 'code' | 'name' | 'seat' | 'colour' | 'leader' | 'notice' | 'phase'>> = {}): PhoneView {
   if (['seat-expired', 'room-gone', 'waiting-for-lobby', 'left'].includes(state)) input = { ...input, seat: null, colour: '', leader: false };
-  return { phase: 'lobby', renaming: state === 'rename', code: '', name: '', seat: null, colour: '', leader: false, notice: '', ...input,
-    state, title: phoneCopy[state][0], detail: state === 'lobby' && (input.phase === 'playing' || input.phase === 'paused') ? 'Watch the TV.' : phoneCopy[state][1], connected: state === 'lobby' || state === 'name-taken' || state === 'name-replaced' || (input.seat !== null && input.seat !== undefined && ['entry', 'invalid-code', 'blank', 'too-long', 'bad-characters', 'rename', 'name-not-sent'].includes(state)),
+  return { picker: null, phase: 'lobby', renaming: state === 'rename', code: '', name: '', seat: null, colour: '', leader: false, notice: '', ...input,
+    state, title: phoneCopy[state][0], detail: state === 'lobby' && (input.phase === 'playing' || input.phase === 'paused') ? 'Watch the TV.' : state === 'lobby' && input.leader ? "Pick a game when everyone’s in." : phoneCopy[state][1], connected: state === 'lobby' || state === 'name-taken' || state === 'name-replaced' || (input.seat !== null && input.seat !== undefined && ['entry', 'invalid-code', 'blank', 'too-long', 'bad-characters', 'rename', 'name-not-sent'].includes(state)),
     action: ['entry', 'invalid-code', 'blank', 'too-long', 'bad-characters', 'left'].includes(state) ? 'Join'
       : ['room-full', 'room-not-found', 'room-gone', 'cannot-connect'].includes(state) ? 'Join another room'
       : state === 'hold-over' || state === 'seat-expired' ? 'Join again' : state === 'out-of-date' ? 'Reload' : null };
@@ -74,14 +74,15 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     if (stopped) return;
     const next = phoneView(state, { ...view, ...input });
     if (!next.connected) naming = false;
-    view = { ...next, renaming: naming }; changed(view);
+    view = { ...next, picker: next.connected ? (input.picker ?? view.picker) : null, renaming: naming }; changed(view);
   }
   function message(message: HostMessage): void {
     if (message.t === 'seat') {
       naming = false; everSeated = true; failures = 0; allowedAt = 0; unavailable = false;
       const notice = message.nameReplaced ? 'Your name was changed by the room.' : !message.resumed && message.name !== requestedName ? 'Name taken. The room added a number to your name.' : '';
       publish(message.nameReplaced ? 'name-replaced' : notice ? 'name-taken' : 'lobby', { seat: message.seat, colour: `var(--ka-seat-${String(message.colour + 1)})`, name: message.name, notice });
-    } else if (message.t === 'room') publish(view.state, { leader: message.leader, phase: message.phase });
+    } else if (message.t === 'picker-state') publish(view.state, { picker: message });
+    else if (message.t === 'room') publish(view.state, { leader: message.leader, phase: message.phase });
     else if (message.t === 'name-refused') {
       if (view.seat === null) { generation++; driver?.stop(); } else naming = true;
       publish(message.reason);
@@ -129,6 +130,9 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     publish(codeQuery !== null && !query ? 'invalid-code' : 'entry', { code: query || (codeQuery ?? '') });
   }
   return {
+    pickerInput(input: PickerInput): void {
+      if (view.connected && view.leader && view.picker && !naming) peer?.sendPhone({ v: 1, t: 'picker-input', revision: view.picker.revision, input });
+    },
     join(code: string, name: string): void {
       if (naming) return;
       const clean = normaliseJoinCode(code);

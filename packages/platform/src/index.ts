@@ -6,3 +6,5 @@ export * from './room/room';
 export * from './session/index';
 
 export * from './reconnect/index';
+
+export * from './picker';

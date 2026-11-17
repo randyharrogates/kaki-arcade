@@ -1,0 +1,41 @@
+VITEST_MAX_WORKERS=1 pnpm verify
+Exit: 0
+
+ADDR 64:ff9b::192.0.2.1 -> ["64:ff9b:0:0::/64","64:ff9b:0::/48"]
+ADDR fe80::1%25en0 -> ["fe80:0:0:0::/64","fe80:0:0::/48"]
+ADDR FE80::1%ETH0 -> ["fe80:0:0:0::/64","fe80:0:0::/48"]
+G1 guess-path failed guesses/hour/client: 81
+G2 after 129 overflow failures: honest join retry=0; overflow creates before refusal=244; honest create retry=0
+G3 parallel unresolved guesses for one client on the overflow path: 17
+G4 create retry after churn eviction: 60
+P1 honest opening pushed out within 85 ms by 16 attacker upgrades: false
+
+ Test Files  142 passed (142)
+      Tests  3160 passed | 1 skipped (3161)
+   Start at  10:34:51
+   Duration  367.38s (transform 1.27s, setup 0ms, import 5.13s, tests 351.32s, environment 7ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+$ vite build
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 118 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.48 kB │ gzip:  0.32 kB
+dist/.vite/manifest.json          1.17 kB │ gzip:  0.31 kB
+dist/assets/index-DbkY3IBG.css   20.24 kB │ gzip:  4.66 kB
+dist/assets/rng-BnDbXcro.js       2.11 kB │ gzip:  1.08 kB
+dist/assets/src-hZav6zrt.js       7.96 kB │ gzip:  2.95 kB
+dist/assets/src-BEqpZy9a.js       9.14 kB │ gzip:  3.57 kB
+dist/assets/src-BfmiIUGC.js      37.01 kB │ gzip: 11.73 kB
+dist/assets/index-CjnRkU60.js   130.40 kB │ gzip: 46.99 kB
+
+✓ built in 80ms
+PERF-022 host: 207365 bytes raw, 70880 bytes gzip / 1500000
+PERF-020 controller (shared entry): 207365 bytes raw, 70880 bytes gzip / 300000
+PERF-022 deploy: 207365 bytes raw, 70880 bytes gzip / 1500000
+no asset sets in assets/src yet
+$ python3 tools/trace_check.py
+152 requirements; 81 in progress, 1 later, 70 not started
+trace check passed

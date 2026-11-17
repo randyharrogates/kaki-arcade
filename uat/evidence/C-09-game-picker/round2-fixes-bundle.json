@@ -1,0 +1,111 @@
+{
+  "initial": {
+    "raw": 151132,
+    "gzip": 51623,
+    "files": [
+      "index.html",
+      "assets/index-CjnRkU60.js",
+      "assets/index-DbkY3IBG.css"
+    ]
+  },
+  "host": {
+    "raw": 207365,
+    "gzip": 70880,
+    "files": [
+      "index.html",
+      "assets/index-CjnRkU60.js",
+      "assets/index-DbkY3IBG.css",
+      "assets/src-BfmiIUGC.js",
+      "assets/rng-BnDbXcro.js",
+      "assets/src-BEqpZy9a.js",
+      "assets/src-hZav6zrt.js"
+    ]
+  },
+  "controller": {
+    "raw": 207365,
+    "gzip": 70880,
+    "files": [
+      "assets/index-CjnRkU60.js",
+      "assets/index-DbkY3IBG.css",
+      "assets/rng-BnDbXcro.js",
+      "assets/src-BEqpZy9a.js",
+      "assets/src-BfmiIUGC.js",
+      "assets/src-hZav6zrt.js",
+      "index.html"
+    ]
+  },
+  "deploy": {
+    "raw": 207365,
+    "gzip": 70880,
+    "files": [
+      "assets/index-CjnRkU60.js",
+      "assets/index-DbkY3IBG.css",
+      "assets/rng-BnDbXcro.js",
+      "assets/src-BEqpZy9a.js",
+      "assets/src-BfmiIUGC.js",
+      "assets/src-hZav6zrt.js",
+      "index.html"
+    ]
+  },
+  "productionScan": {
+    "patterns": [
+      "/pickerDemo/",
+      "/picker-demo-change/",
+      "/picker-leader|picker-watcher/",
+      "/\\[data-layout=[\"']?[ac][\"']?\\]/",
+      "/\\[data-art=[\"']?placeholder[\"']?\\]/",
+      "/repeating-linear-gradient\\(135deg/"
+    ],
+    "hits": []
+  },
+  "manifest": {
+    "../../games/peek-poker/src/index.ts": {
+      "file": "assets/src-BEqpZy9a.js",
+      "name": "src",
+      "src": "../../games/peek-poker/src/index.ts",
+      "isDynamicEntry": true,
+      "imports": [
+        "index.html",
+        "_rng-BnDbXcro.js"
+      ]
+    },
+    "../../games/rabakz/src/index.ts": {
+      "file": "assets/src-hZav6zrt.js",
+      "name": "src",
+      "src": "../../games/rabakz/src/index.ts",
+      "isDynamicEntry": true,
+      "imports": [
+        "index.html",
+        "_rng-BnDbXcro.js"
+      ]
+    },
+    "../../games/tabao-rush/src/index.ts": {
+      "file": "assets/src-BfmiIUGC.js",
+      "name": "src",
+      "src": "../../games/tabao-rush/src/index.ts",
+      "isDynamicEntry": true,
+      "imports": [
+        "index.html",
+        "_rng-BnDbXcro.js"
+      ]
+    },
+    "_rng-BnDbXcro.js": {
+      "file": "assets/rng-BnDbXcro.js",
+      "name": "rng"
+    },
+    "index.html": {
+      "file": "assets/index-CjnRkU60.js",
+      "name": "index",
+      "src": "index.html",
+      "isEntry": true,
+      "dynamicImports": [
+        "../../games/tabao-rush/src/index.ts",
+        "../../games/peek-poker/src/index.ts",
+        "../../games/rabakz/src/index.ts"
+      ],
+      "css": [
+        "assets/index-DbkY3IBG.css"
+      ]
+    }
+  }
+}

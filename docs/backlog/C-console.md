@@ -26,7 +26,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
-| C-09 | Game picker: every installed game with name, player range and blurb; unavailable games say why; the chosen tile expands into its start screen | PLAT-020, PLAT-021 | C-07 | 2 | doing (Codex) |
+| C-09 | Game picker: every installed game with name, player range and blurb; unavailable games say why; the chosen tile expands into its start screen | PLAT-020, PLAT-021 | C-07 | 2 | merged |
 | C-10 | Session runner: runs a `GameModule` in the host loop, routes inputs, sends layouts and private views only when they change, pause and quit, results then back to the picker | PLAT-022, PLAT-023, PLAT-030, PLAT-031, PLAT-033, NET-001 | C-04, F-04 | 2 | merged |
 | C-11 | Team setup: balanced split, players switch on their phones, team colour themes | PLAT-025 | C-10 | 2 | todo |
 | C-13 | Settings and host-device storage for scores and stars; the detail-mode benchmark on the lobby | DATA-002, PERF-002 | C-07 | 2 | todo |
@@ -107,6 +107,28 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   another client while the room's pool is full and is charged one failure: accepted in the
   third review (one failure against a budget of 16, only under attack; not charging would
   make holding a room's pool full free again). Revisit both at the staging probe.
+- **From C-09 (game picker), merged 2026-11-17 after ten Codex fix rounds, four reviews and
+  two integrator fixes found in a browser.** **For C-10:** a successful Start still stops at
+  "Starting…" (no input is accepted in `starting` and there is no timeout); use the loaded
+  module, await preload and setup, wire `returnToPicker` and settings (PLAT-022, PLAT-023).
+  **Start screen is layout B (D-109):** remove the development-only options A and C
+  (`apps/web/src/picker-demo.css`, the `layout` demo parameter) in C-15.
+  **For C-15 (motion polish):** focus moves travel in straight lines (DESIGN §3 asks for arcs);
+  during expand and collapse half-glyphs of the two header sentences abut at the mask edge and
+  the focus ring loses its right side, snapping back at the end of collapse; the outgoing
+  heading dims before the incoming one shows (collapse frame 3); the status line is revealed
+  last; still 04 clips the focused tile's blurb mid-move; add a UAT check that the focus ring's
+  `::after` box-shadow is drawn (round 8 passed with the ring missing); assert the interrupt
+  step read some animations; `--picker-heading-size` is written but no longer read.
+  **For the K track:** the leader's phone keeps four buttons (Previous, Next, Select, Back)
+  until the stick and Pick/Back exist (D-098). **For A-09:** picture slots are not 1.618 : 1
+  (the primary about 2.05 : 1, expanded about 2.36 : 1, side slots collapse when a reason
+  shows); pictures must be preloaded. **For the F follow-up (packages/ui):** make
+  `GOLDEN_COLUMNS` and `GOLDEN_COLUMNS_REVERSED` `minmax(0, …)` so `.picker-stage` can use the
+  token again (D-107 b); other users are `style.css` (expanded tile grid) and `phone.css`.
+  **Measure (PERF-001, PERF-002):** 20 focus moves, expands and collapses at 1080p on the Mac
+  and on the TV: tile width and height animate every frame and the masks repaint about 1.7
+  megapixels. There is no picker `pnpm perf` scenario yet.
 - **From C-07 (host lobby).** **For C-08:** the phone's probe adapter must return
   `{status, gone, retryAfterMs}` with `gone` true only when the reply carries
   `X-Kaki-Room: gone`; use `apps/web/src/join-link.ts` for the code and link; add a `/play`

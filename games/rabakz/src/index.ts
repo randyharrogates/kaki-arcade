@@ -1,3 +1,4 @@
+import { meta } from './meta';
 import type { GameModule, JsonValue, SettingsSchema } from '@kaki/platform';
 import { teamsInUse } from '@kaki/platform';
 import { createRng, shuffled } from '@kaki/sim-core';
@@ -11,8 +12,7 @@ export type { Question, Settings, State } from './rules/model';
 export { CATEGORY_DATA, QUESTION_DATA, DEFAULT_SETTINGS } from './rules/model';
 
 export const rabakz: GameModule<State, Settings, ReturnType<typeof publicView>> = {
-  meta: { id: 'rabakz', name: 'Rabakz', blurb: 'Race to the right answer.',
-    players: { min: 1, max: 8 }, teams: 'optional', coop: false, solo: true },
+  meta,
   settings(context): SettingsSchema<Settings> {
     const categories = context.data[CATEGORY_DATA];
     const values = Array.isArray(categories) ? categories.flatMap((value) =>
@@ -71,3 +71,5 @@ export const rabakz: GameModule<State, Settings, ReturnType<typeof publicView>> 
 export function questionData(questions: readonly Question[]): JsonValue {
   return questions as unknown as JsonValue;
 }
+
+export { meta } from './meta';

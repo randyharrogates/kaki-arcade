@@ -1,3 +1,7 @@
+import { GamePicker } from './picker-route';
+import { initialPicker } from '@kaki/platform';
+import { gameMetas } from './game-registry';
+import type { RoomState } from '@kaki/platform';
 import { nameLines, namePresentation, countdownLabel } from './seat-text';
 import { useLayoutEffect, useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { createRoom, HOST_STORAGE_KEY } from '@kaki/platform';
@@ -45,6 +49,8 @@ function hasSavedRoom(): boolean {
 }
 export function HostLobby() {
   const [view, setView] = useState(() => lobbyView({ room: createRoom(), links: new Map(), code: '', pairing: hasSavedRoom() ? 'restoring' : 'creating', origin: location.origin }));
+  const [picker, setPicker] = useState(initialPicker(gameMetas));
+  const [room, setRoom] = useState<RoomState>(createRoom());
   const focusedState = useRef('');
   const action = (element: HTMLButtonElement | null): void => {
     if (element && focusedState.current !== view.pairing) {
@@ -68,17 +74,25 @@ export function HostLobby() {
   const host = useRef<ReturnType<typeof createHost>>(null);
   useEffect(() => {
     let alive = true;
+    const demoEvents = new AbortController();
     let latest: Parameters<typeof lobbyView>[0] | undefined;
     const clock = { now: () => Date.now() };
     let demoClock = false;
     const present = (input: Parameters<typeof lobbyView>[0]): void => {
+      if (alive) { setPicker(input.picker ?? initialPicker(gameMetas)); setRoom(input.room); }
       latest = { ...input, origin: location.origin, joinOrigin: String(import.meta.env.KAKI_JOIN_ORIGIN) };
       if (alive) setView(lobbyView(latest, demoClock ? { now: () => performance.now() - demoStart } : clock));
     };
     const demoStart = performance.now();
     const tick = window.setInterval(() => { if (latest?.room.players.some(player => player.disconnectedAt !== null)) present(latest); }, 1000);
-    const demo = new URLSearchParams(location.search).get('demo');
-    if (import.meta.env.DEV && demo !== null && /^[0-8]$/.test(demo)) {
+    const demo = import.meta.env.DEV ? new URLSearchParams(location.search).get('demo') : null;
+    if (import.meta.env.DEV && demo === 'picker') {
+      void import('./picker-demo').then(({ pickerDemo, pickerDemoChange }) => {
+        const params = new URLSearchParams(location.search);
+        const input = pickerDemo(params); present({ ...input, origin: location.origin });
+        window.addEventListener('picker-demo-change', () => { if (alive) present({ ...pickerDemoChange(latest ?? input, params), origin: location.origin }); }, { signal: demoEvents.signal });
+      });
+    } else if (import.meta.env.DEV && demo !== null && /^[0-8]$/.test(demo)) {
       demoClock = true;
       void import('./demo').then(({ demoInput, demoChange }) => {
         const params = new URLSearchParams(location.search);
@@ -89,9 +103,9 @@ export function HostLobby() {
       const controller = createHost(browserDependencies(String(import.meta.env.KAKI_SIGNAL_URL)), input => { present({ ...input, origin: location.origin }); });
       host.current = controller; void controller.start();
     }
-    return () => { alive = false; window.clearInterval(tick); host.current?.stop(); };
+    return () => { alive = false; demoEvents.abort(); window.clearInterval(tick); host.current?.stop(); };
   }, []);
-  return <main class="screen lobby" aria-label="Host lobby">
+  const lobby = <main class="screen lobby" aria-label="Host lobby">
     <header><h1>Kaki Arcade</h1><span class="ka-chip" role="status">{view.pairing === 'reconnecting' ? 'Reconnecting' : 'Lobby'}</span><span class="player-count">{view.count}</span></header>
     <section class="ka-panel join-panel" aria-label="Join the room">
       <Overlap identity={view.pairing + view.joinLink}>
@@ -110,4 +124,5 @@ export function HostLobby() {
     <div class="announcements" aria-live="polite" aria-atomic="true">{announcement.current}</div>
     <ol class="seats" data-wrap={view.seats.some(seat => seat.connection === 'Scan to join' || seat.connection === 'Seat held')} aria-label="Player seats">{view.seats.map((seat, index) => <Seat key={seat.number} seat={seat} index={changedSeats > 1 ? index : 0}/>)}</ol>
   </main>;
+  return <div class="host-shell"><Overlap fade identity={picker.screen === 'lobby' ? 'lobby' : 'picker'}>{picker.screen === 'lobby' ? lobby : <GamePicker state={picker} room={room}/>}</Overlap></div>;
 }

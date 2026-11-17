@@ -1,3 +1,4 @@
+import { loadGame } from './game-registry';
 import { createHostTransport } from '@kaki/netcode';
 import type { Channel, PeerConnection, Socket, Stat } from '@kaki/netcode';
 import { HOST_REOPEN_TIMEOUT_MS } from '@kaki/platform';
@@ -36,14 +37,24 @@ export function retryAfterDelay(value: string | null, now: number, cap = Infinit
   const safe = Number.isFinite(delay) ? Math.max(1000, delay) : 60000;
   return Math.min(cap, safe);
 }
-export function browserDependencies(baseUrl: string, transportFactory: typeof createHostTransport = createHostTransport): HostDependencies {
+export function browserDependencies(baseUrl: string, transportFactory: typeof createHostTransport = createHostTransport, loader: typeof loadGame = loadGame): HostDependencies {
   const clock = {
     now: () => Date.now(),
     schedule: (callback: () => void, delay: number) => window.setTimeout(callback, delay),
     cancel: (handle: unknown) => { if (typeof handle === 'number') window.clearTimeout(handle); },
   };
+  const pending = new Map<string, ReturnType<typeof loadGame>>();
+  const preload = (id: string): ReturnType<typeof loadGame> => {
+    let promise = pending.get(id);
+    if (!promise) {
+      promise = loader(id).catch((error: unknown) => { pending.delete(id); throw error; });
+      pending.set(id, promise);
+    }
+    return promise;
+  };
   return {
     clock,
+    session: { prefetch: preload, start: preload },
     online: { subscribe(callback) { window.addEventListener('online', callback); return () => { window.removeEventListener('online', callback); }; } },
     storage: {
       getItem: key => window.sessionStorage.getItem(key),

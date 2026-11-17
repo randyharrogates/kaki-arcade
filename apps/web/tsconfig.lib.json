@@ -37,6 +37,15 @@
     },
     {
       "path": "../../packages/ui/tsconfig.lib.json"
+    },
+    {
+      "path": "../../games/tabao-rush/tsconfig.lib.json"
+    },
+    {
+      "path": "../../games/peek-poker/tsconfig.lib.json"
+    },
+    {
+      "path": "../../games/rabakz/tsconfig.lib.json"
     }
   ]
 }

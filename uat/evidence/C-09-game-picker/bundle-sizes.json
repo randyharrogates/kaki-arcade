@@ -1,0 +1,7 @@
+{
+  "measurement": "Existing hostBundleSize, controllerBundleSize and deployBundleSize over the production build",
+  "host": { "raw": 199049, "gzip": 67052, "gzipLimit": 1500000 },
+  "controller": { "raw": 199049, "gzip": 67052, "gzipLimit": 300000 },
+  "deploy": { "raw": 199049, "gzip": 67052, "gzipLimit": 1500000 },
+  "browserMeasurements": false
+}

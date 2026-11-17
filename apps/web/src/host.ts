@@ -1,3 +1,9 @@
+import { duration } from '@kaki/ui';
+import { validatePhoneMessage } from '@kaki/protocol';
+import type { PickerInput } from '@kaki/protocol';
+import type { HostEvent, RoomState } from '@kaki/platform';
+import { gameMetas, validGameSelection } from './game-registry';
+import { initialPicker, pickerInput, pickerRoom, pickerView, pickerFailed } from '@kaki/platform';
 import { createHostCheckpoints, createHostSnapshotStore, createReconnectRoom, createRoom, restoreHost } from '@kaki/platform';
 import type { HostCredentials, HostSnapshotInput, ReconnectClock, ReconnectHostPeer, ReconnectStorage } from '@kaki/platform';
 import type { LinkSnapshot } from '@kaki/netcode';
@@ -18,12 +24,15 @@ export interface HostDependencies {
   mintToken(): string;
   dial(credentials: HostCredentials | undefined, callbacks: DialCallbacks,
     registerStop: (stop: () => void) => void): Promise<HostLink & { reopened: boolean }>;
+  session?: { start(gameId: string, room: RoomState): Promise<unknown>; prefetch?(gameId: string): Promise<unknown>; updateRoom?(room: RoomState): void; stop?(): void };
   online?: { subscribe(callback: () => void): () => void };
   lifecycle?: { subscribe(callback: (event?: 'pageshow' | 'pagehide' | 'hidden') => void): () => void };
 }
 /** All credentials and peers remain inside this closure; subscribers receive a projection later. */
 export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyInput, 'origin'>) => void) {
-  const store = createHostSnapshotStore({ storage: deps.storage, clock: deps.clock, validateSelection: () => false });
+  const store = createHostSnapshotStore({ storage: deps.storage, clock: deps.clock, validateSelection: validGameSelection });
+  let picker = initialPicker(gameMetas);
+  const peers = new Map<string, ReconnectHostPeer>();
   let pairing: PairingState = 'creating';
   let code = '';
   let stopped = false;
@@ -47,15 +56,71 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
   }
   const unsubscribeOnline = deps.online?.subscribe(() => { if (pairing === 'unreachable') void start(); });
   function publish(): void {
-    if (!stopped) changed({ room: roomAdapter?.room ?? createRoom(), links, pairing, code });
+    if (!stopped) changed({ room: roomAdapter?.room ?? createRoom(), links, pairing, code, picker });
+  }
+  function sendPicker(): void {
+    if (!roomAdapter) return;
+    const message = pickerView(picker, roomAdapter.room, gameMetas);
+    for (const player of roomAdapter.room.players) if (player.disconnectedAt === null) peers.get(player.connectionId)?.sendHost(message);
+  }
+  let loadAttempt = 0;
+  let acceptedAt = -Infinity;
+  let acceptedLeader: number | null = null;
+  let queued: { id: string; revision: number; moves: number; beforeAction: number; action?: PickerInput } | undefined;
+  let flushing = false;
+  let trailing: unknown;
+  function input(id: string, message: unknown): void {
+    const checked = validatePhoneMessage(message);
+    if (stopped || !roomAdapter || !checked.ok || checked.value.t !== 'picker-input') return;
+    const room = roomAdapter.room;
+    // Validate now to prevent an unauthorised/stale packet replacing a deliberate press.
+    if (checked.value.revision !== picker.revision || !room.players.some(player =>
+      player.connectionId === id && player.seat === room.leader && player.disconnectedAt === null)) return;
+    if (!flushing && acceptedLeader === roomAdapter.room.leader && deps.clock.now() - acceptedAt < duration.fast) {
+      queued ??= { id, revision: checked.value.revision, moves: 0, beforeAction: 0 };
+      if (checked.value.input === 'next' || checked.value.input === 'previous') {
+        queued.moves = (queued.moves + (checked.value.input === 'next' ? 1 : -1)) % gameMetas.length;
+      } else {
+        queued.action = checked.value.input;
+        queued.beforeAction = (queued.beforeAction + queued.moves) % gameMetas.length; queued.moves = 0;
+      }
+      if (trailing === undefined) trailing = deps.clock.schedule(() => {
+        trailing = undefined;
+        const pending = queued; queued = undefined;
+        if (pending?.revision !== picker.revision) return;
+        const navigation = (count: number): PickerInput[] => Array.from({ length: Math.abs(count) }, () => count > 0 ? 'next' : 'previous');
+        const actions: PickerInput[] = [...navigation(pending.beforeAction), ...(pending.action ? [pending.action] : []), ...navigation(pending.moves)];
+        flushing = true;
+        try { for (const action of actions) input(pending.id, { v: 1, t: 'picker-input', revision: picker.revision, input: action }); }
+        finally { flushing = false; }
+        sendPicker(); publish();
+      }, duration.fast - (deps.clock.now() - acceptedAt));
+      return;
+    }
+    deps.clock.cancel(trailing); trailing = undefined; queued = undefined;
+    const before = picker;
+    picker = pickerInput(picker, roomAdapter.room, gameMetas, id, checked.value.input, checked.value.revision);
+    if (picker === before) return;
+    acceptedAt = deps.clock.now(); acceptedLeader = roomAdapter.room.leader;
+    if (!flushing) { sendPicker(); publish(); }
+    if (before.screen === 'picker' && picker.screen === 'start') void deps.session?.prefetch?.(picker.focus).catch(() => undefined);
+    if (picker.screen === 'starting') {
+      const loading = ++loadAttempt; const gameId = picker.focus;
+      void deps.session?.start(picker.focus, roomAdapter.room).catch(() => {
+        if (stopped || loading !== loadAttempt || picker.screen !== 'starting' || picker.focus !== gameId) return;
+        picker = pickerFailed(picker, gameMetas); sendPicker(); publish();
+      });
+    }
   }
   function terminal(): boolean { return pairing === 'replaced' || pairing === 'expired'; }
   function retire(): void {
+    deps.clock.cancel(trailing); trailing = undefined; queued = undefined;
+    loadAttempt++; acceptedAt = -Infinity; acceptedLeader = null;
     checkpoints?.stop(); checkpoints = undefined;
     roomAdapter?.stop(); roomAdapter = undefined;
     link?.stop(); link = undefined;
     stopDial?.(); stopDial = undefined;
-    links.clear(); qualityRuns.clear();
+    links.clear(); qualityRuns.clear(); peers.clear(); deps.session?.stop?.();
   }
   async function start(fresh = false): Promise<void> {
     if (stopped) return;
@@ -65,6 +130,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     const generation = ++attempt;
     // Preserve the latest room before a manual retry.
     checkpoints?.flush(); retire();
+    picker = initialPicker(gameMetas);
     if (fresh) store.clear();
     pairing = store.read() && !fresh ? 'restoring' : 'creating'; code = ''; publish();
     const pending: (() => void)[] = [];
@@ -75,9 +141,9 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     };
     const callbacks: DialCallbacks = {
       retryAfter: ms => { if (current() && Number.isFinite(ms)) retryAfter = Math.max(retryAfter, deps.clock.now() + ms); },
-      peer: (id, peer) => { run(() => { roomAdapter?.attach(id, peer); }); },
-      control: (id, message) => { run(() => { roomAdapter?.receive(id, message); }); },
-      dropped: id => { run(() => { links.delete(id); qualityRuns.delete(id); roomAdapter?.dropped(id); }); },
+      peer: (id, peer) => { run(() => { peers.set(id, peer); roomAdapter?.attach(id, peer); }); },
+      control: (id, message) => { run(() => { input(id, message); roomAdapter?.receive(id, message); }); },
+      dropped: id => { run(() => { peers.delete(id); links.delete(id); qualityRuns.delete(id); roomAdapter?.dropped(id); }); },
       quality: (id, quality) => { run(() => {
         const previous = links.get(id);
         if (previous?.quality === quality.quality) { qualityRuns.delete(id); return; }
@@ -129,8 +195,9 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       if (terminal()) { retire(); return; }
       code = link.credentials.code;
       const captured = snapshot;
+      let previousRoom = captured.room;
       roomAdapter = createReconnectRoom({ room: captured.room, clock: deps.clock, mintToken: () => deps.mintToken(),
-        changed: () => { checkpoints?.checkpoint(); publish(); } });
+        changed: room => { picker = pickerRoom(picker, room, previousRoom); previousRoom = room; deps.session?.updateRoom?.(room); checkpoints?.checkpoint(); sendPicker(); publish(); } });
       checkpoints = createHostCheckpoints({ store, clock: deps.clock,
         capture: () => ({ ...captured, room: roomAdapter?.room ?? captured.room }),
         ...(deps.lifecycle ? { lifecycle: deps.lifecycle } : {}) });
@@ -149,6 +216,11 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
   }
   return {
     start,
+    get picker() { return picker; },
+    get room() { return roomAdapter?.room ?? createRoom(); },
+    leaderInput(connection: string, action: PickerInput, revision = picker.revision): void { input(connection, { v: 1, t: 'picker-input', input: action, revision }); },
+    roomInput(event: HostEvent): void { roomAdapter?.host(event); },
+    returnToPicker(): void { picker = { ...picker, screen: 'picker', revision: picker.revision + 1 }; sendPicker(); publish(); },
     stop(): void { stopped = true; deps.clock.cancel(retry); unsubscribeOnline?.(); attempt++; checkpoints?.flush(); retire(); },
   };
 }

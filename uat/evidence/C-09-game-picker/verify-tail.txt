@@ -1,0 +1,30 @@
+Command: VITEST_MAX_WORKERS=1 pnpm verify
+Exit: 0
+
+ Test Files  136 passed (136)
+      Tests  3129 passed | 1 skipped (3130)
+   Start at  08:10:24
+   Duration  621.64s (transform 1.94s, setup 0ms, import 6.83s, tests 601.69s, environment 8ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+$ vite build
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 112 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/.vite/manifest.json          0.18 kB │ gzip:  0.14 kB
+dist/index.html                   0.48 kB │ gzip:  0.32 kB
+dist/assets/index-BravVzaq.css   18.00 kB │ gzip:  4.31 kB
+dist/assets/index-DX87BQQS.js   180.56 kB │ gzip: 62.95 kB
+
+✓ built in 92ms
+PERF-022 host: 199049 bytes raw, 67052 bytes gzip / 1500000
+PERF-020 controller (shared entry): 199049 bytes raw, 67052 bytes gzip / 300000
+PERF-022 deploy: 199049 bytes raw, 67052 bytes gzip / 1500000
+no asset sets in assets/src yet
+$ python3 tools/trace_check.py
+152 requirements; 81 in progress, 1 later, 70 not started
+trace check passed
+
+Post-edit ESLint (phone route) and design lint also passed; git diff --check passed.

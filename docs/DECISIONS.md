@@ -878,3 +878,10 @@ move check does not depend on frame time: pause, read the rectangles, send the i
 change, seek the new animations to their start, and require the rectangles to match within
 2 px.
 
+
+**D-109 · 2026-11-17 · Randy** — Picker start screen: layout **B** ("go with B", chosen from the board) (picture on
+the left, name, blurb and range beside it sharing its bottom edge, picture : text 1.618 : 1,
+seats in one row of cards along the bottom). Options A (seat list first; as built its picture
+does not show) and C (full-width picture under a text panel) stay in the development build
+only. Board: https://claude.ai/artifact/AXvSn8hMfRUDRa6g1A67E8. Why: B keeps the picker tile's
+reading order, so nothing jumps during the grow, and it is the golden-ratio variant. None of the three is measured for frame time yet (PERF-001, PERF-002).

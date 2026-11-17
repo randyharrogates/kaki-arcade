@@ -16,7 +16,7 @@
 // seated phones. The phone waits, and sends `hello` again when `canAskToJoin` says the phase
 // allows it. The host may still refuse.
 
-import { bool, int, json, messageValidator, nullable, oneOf, record, textDecoder } from './check';
+import { BAD, isFault, bool, int, json, messageValidator, nullable, oneOf, record, text, textDecoder } from './check';
 import type { Json, MessageShapes } from './check';
 import { acceptedName, colourIndex, counter, requestedName, seatNumber, token } from './fields';
 import {
@@ -100,7 +100,16 @@ export interface Leave {
   readonly t: 'leave';
 }
 
-export type PhoneMessage = Hello | Resume | SetName | Action | Control | Leave;
+export const PICKER_INPUTS = ['open', 'previous', 'next', 'select', 'back', 'start'] as const;
+export type PickerInput = (typeof PICKER_INPUTS)[number];
+/** Room input, bound to the transport connection; revision fences delayed selections. */
+export interface LeaderPickerInput {
+  readonly v: V;
+  readonly t: 'picker-input';
+  readonly revision: number;
+  readonly input: PickerInput;
+}
+export type PhoneMessage = Hello | Resume | SetName | Action | Control | Leave | LeaderPickerInput;
 
 // --- Host → phone -----------------------------------------------------------------------
 
@@ -248,7 +257,22 @@ export interface Close {
   readonly reason: CloseReason;
 }
 
+export const PICKER_SCREENS = ['lobby', 'picker', 'start', 'starting'] as const;
+export type PickerScreen = (typeof PICKER_SCREENS)[number];
+/** Public shell state only: no seat tokens, settings or game secrets. */
+export interface PickerState {
+  readonly v: V;
+  readonly t: 'picker-state';
+  readonly revision: number;
+  readonly screen: PickerScreen;
+  readonly leaderName: string | null;
+  readonly game: { readonly id: string; readonly name: string; readonly blurb: string;
+    readonly min: number; readonly max: number } | null;
+  readonly reason: string | null;
+  readonly failed: boolean;
+}
 export type HostMessage =
+  | PickerState
   | Seat
   | Refused
   | NameRefused
@@ -261,6 +285,7 @@ export type HostMessage =
 // --- Validators -------------------------------------------------------------------------
 
 const PHONE_SHAPES: MessageShapes<PhoneMessage> = {
+  'picker-input': { revision: counter, input: oneOf(PICKER_INPUTS) },
   hello: { name: nullable(requestedName) },
   resume: { seatToken: token },
   'set-name': { name: requestedName },
@@ -269,7 +294,20 @@ const PHONE_SHAPES: MessageShapes<PhoneMessage> = {
   leave: {},
 };
 
+const pickerGameShape = record<NonNullable<PickerState['game']>>({
+  id: text(1, 89, /^[a-z0-9-]+$/), name: text(1, 89), blurb: text(1, 89),
+  min: int(1, 8), max: int(1, 8),
+});
+function pickerGame(value: unknown) {
+  const game = pickerGameShape(value);
+  return isFault(game) ? game : game.min <= game.max ? game : BAD;
+}
 const HOST_SHAPES: MessageShapes<HostMessage> = {
+  'picker-state': {
+    revision: counter, screen: oneOf(PICKER_SCREENS), leaderName: nullable(acceptedName),
+    game: nullable(pickerGame),
+    reason: nullable(text(1, 144)), failed: bool,
+  },
   seat: {
     seat: seatNumber,
     colour: colourIndex,

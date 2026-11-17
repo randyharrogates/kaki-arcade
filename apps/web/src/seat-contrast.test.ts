@@ -17,3 +17,9 @@ it('CTRL-008 phone heading and small helper text contrast against every join pan
     expect(contrastRatio(panel.secondary, paint)).toBeGreaterThanOrEqual(4.5);
   }
 });
+
+it('PLAT-020 disabled Select and Start secondary ink contrasts on both gradient ends', () => {
+  const panel = THEMES.console.panel;
+  for (const paint of [panel.from, panel.to])
+    expect(contrastRatio(panel.secondary, paint)).toBeGreaterThanOrEqual(4.5);
+});

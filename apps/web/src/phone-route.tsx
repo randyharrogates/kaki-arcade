@@ -1,3 +1,4 @@
+import { pickerAnnouncement } from './picker-announcement';
 import { duration } from '@kaki/ui';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { createPhone, phoneView } from './phone';
@@ -49,12 +50,14 @@ export function PhonePage() {
     acquire(); document.addEventListener('visibilitychange', acquire);
     return () => { active = false; document.removeEventListener('visibilitychange', acquire); void lock?.release(); };
   }, [view.connected]);
+  const picker = view.connected && !view.renaming ? view.picker : null;
+  const announcement = pickerAnnouncement(view);
   const form = view.action === 'Join' && !view.renaming;
   const feedback = (): void => { if ('vibrate' in navigator) navigator.vibrate(duration.fast); };
-  return <main ref={page} class="phone-page" data-theme="console" aria-label="Phone lobby">
-    <div class="phone-live" role="status" aria-live="polite" aria-atomic="true">{`${view.title} ${view.detail}`}</div>
-    {view.seat !== null && <header class="phone-id"><span class="phone-badge" style={{ backgroundColor: view.colour }}>{view.seat}</span><strong>{view.name}</strong><span class="phone-connection" data-connected={view.connected}><Icon kind={view.connected ? 'good' : 'weak'}/>{view.connected ? 'Connected' : 'Disconnected'}</span></header>}
-    <Overlap fade identity={view.renaming ? 'rename' : form ? 'form' : 'lobby'}>{view.renaming ? <section class="phone-join ka-panel">
+  return <main ref={page} class="phone-page" data-seated={view.seat !== null} data-theme="console" aria-label="Phone lobby">
+    <div class="phone-live" role="status" aria-live="polite" aria-atomic="true">{announcement}</div>
+    {view.seat !== null && <header class="phone-id"><span class="phone-badge" style={{ backgroundColor: view.colour }}>{view.seat}</span><strong>{view.name}</strong><span class="phone-connection" role="img" aria-label={view.connected ? 'Connected' : 'Disconnected'} data-connected={view.connected}><Icon kind={view.connected ? 'good' : 'weak'}/><span aria-hidden="true">{view.connected ? 'Connected' : 'Disconnected'}</span></span><button class="phone-leave ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button></header>}
+    <Overlap fade identity={picker && picker.screen !== 'lobby' ? 'picker' : view.renaming ? 'rename' : form ? 'form' : 'lobby'}>{view.renaming ? <section class="phone-join ka-panel">
       <div class="phone-intro"><h1>Change your name</h1></div>
       <form class="phone-fields" onSubmit={event => { event.preventDefault(); feedback(); phone.current?.saveName(name); }}>
         <label for="rename">Your name</label>
@@ -65,6 +68,12 @@ export function PhonePage() {
         </div>
         {view.state !== 'rename' && <p>{view.title}. {view.detail}</p>}
       </form>
+    </section> : picker && picker.screen !== 'lobby' ? <section class="phone-picker">
+      <div class="phone-status picker-status"><h2>{picker.screen === 'starting' ? `Starting ${picker.game?.name ?? 'the game'}` : view.leader ? picker.screen === 'start' ? 'Ready to start?' : 'You choose the game' : picker.screen === 'start' ? `${picker.leaderName ?? 'The leader'} starts the game` : `${picker.leaderName ?? 'The leader'} is choosing`}</h2><p>Watch the TV.</p><strong>{picker.screen !== 'starting' && !picker.failed && picker.game?.name}{picker.reason && <span class="phone-picker-reason"><Icon kind="weak"/>{picker.reason}</span>}</strong></div>
+      {view.leader && picker.screen !== 'starting' && <div class="phone-picker-controls">
+        {picker.screen === 'picker' ? <><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('previous'); }}><span aria-hidden="true">← </span>Previous</button><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('next'); }}>Next<span aria-hidden="true"> →</span></button><button class="ka-panel ka-pressable picker-primary" disabled={picker.reason !== null && !picker.failed} onClick={() => { feedback(); phone.current?.pickerInput('select'); }}>Select</button></> : <button class="ka-panel ka-pressable picker-primary" disabled={picker.reason !== null && !picker.failed} onClick={() => { feedback(); phone.current?.pickerInput('start'); }}>Start</button>}
+        <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('back'); }}>Back</button>
+      </div>}
     </section> : form ? <section class="phone-join ka-panel">
       <div class="phone-intro"><h1>Kaki Arcade</h1><p>Join the room on the TV</p></div>
       <form class="phone-fields" onSubmit={event => { event.preventDefault(); feedback(); phone.current?.join(code, name); }}>
@@ -77,9 +86,9 @@ export function PhonePage() {
         <div class="phone-feedback">{view.state !== 'entry' && <><strong>{view.title}</strong><p>{view.detail}</p></>}</div>
       </form>
     </section> : <section class="phone-lobby" data-seated={view.seat !== null}>
-      {view.seat !== null && <div class="phone-seat ka-panel" data-connected={view.connected}><Overlap fade identity={String(view.seat) + view.colour}><div class="phone-seat-content"><span class="phone-badge phone-badge-large" style={{ backgroundColor: view.colour || 'var(--ka-panel-to)' }}>{view.seat}</span><strong>{`Seat ${String(view.seat)}`}</strong><strong>{view.name}</strong>{view.leader && <strong>You’re the leader</strong>}</div></Overlap></div>}
-      <div class="phone-message"><Overlap fade identity={view.state}><div class="phone-status"><h2>{view.title}</h2><p>{view.detail}</p></div></Overlap>
-        {(view.connected || ['waiting-for-lobby', 'hold-over'].includes(view.state)) && <div class="phone-actions">{view.connected && <button class="ka-panel ka-pressable" onClick={() => { setName(view.name); feedback(); phone.current?.changeName(); }}>Change name</button>}<button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button></div>}
+      <div class="phone-message">{view.leader && <strong class="phone-leader">You’re the leader</strong>}<Overlap fade identity={view.state}><div class="phone-status"><h2>{view.title}</h2><p>{view.detail}</p></div></Overlap>
+        {view.connected && view.leader && picker?.screen === 'lobby' && <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('open'); }}>Pick a game</button>}
+        {(view.connected || ['waiting-for-lobby', 'hold-over'].includes(view.state)) && <div class="phone-actions">{view.connected && <button class="ka-panel ka-pressable" onClick={() => { setName(view.name); feedback(); phone.current?.changeName(); }}>Change name</button>}{view.seat === null && <button class="ka-panel ka-pressable phone-leave" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button>}</div>}
         {view.action && <button class="ka-panel ka-pressable" onClick={() => { feedback(); if (view.action === 'Reload') location.reload(); else if (view.action === 'Join again') phone.current?.rejoin(); else phone.current?.edit(); }}>{view.action}</button>}
       </div>
     </section>}</Overlap>

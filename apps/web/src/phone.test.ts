@@ -150,7 +150,7 @@ it('reads a pasted full join URL', () => {
 it.each([false, true])('PLAT-002/006 lobby copy waits for the picker (leader=%s)', leader => {
   const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat();
   f.dial.onControl({ v: 1, t: 'room', phase: 'lobby', players: 1, leader, team: null });
-  expect(f.view).toMatchObject({ title: 'You’re in.', detail: 'Waiting for the leader to pick a game.', leader });
+  expect(f.view).toMatchObject({ title: 'You’re in.', detail: leader ? "Pick a game when everyone’s in." : 'Waiting for the leader to pick a game.', leader });
   f.phone.stop();
 });
 it('PLAT-008 accepted mid-game copy follows room phase back to the lobby', () => {
@@ -191,5 +191,11 @@ it.each(['hold-over', 'replaced', 'out-of-date', 'cannot-connect'] as const)('PL
 });
 it('PLAT-009 uses separate unreachable title and detail and typographic apostrophes in phone copy', () => {
   expect(phoneCopy.unreachable).toEqual(['Can’t reach the room', 'We’ll keep trying.']);
+  expect(phoneView('lobby', { leader: true }).detail).not.toContain("'");
   expect(Object.values(phoneCopy).flat().join(' ')).not.toContain("'");
+});
+
+it('PLAT-006 gives the lobby leader an invitation and watchers waiting copy', () => {
+  expect(phoneView('lobby', { leader: true }).detail).toBe("Pick a game when everyone’s in.");
+  expect(phoneView('lobby', { leader: false }).detail).toBe('Waiting for the leader to pick a game.');
 });

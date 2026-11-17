@@ -7,3 +7,5 @@ export type { Anchor, LevelDefinition, Twist } from './levels/format';
 export { loadLevel } from './levels/loader';
 export { validateLevel, validateLevels, validateCatalogue, SCREEN_FIT, MAX_EXTINGUISHER_WALK } from './levels/validator';
 export { FIRST_KITCHEN, FULL_KITCHEN, LEVELS } from './levels/catalogue';
+
+export { meta } from './meta';

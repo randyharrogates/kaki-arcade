@@ -187,6 +187,19 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   integrator's browser checks found two faults the reviews had not (tiny names, an expired
   room looping) and one of the integrator's own evidence claims was wrong and is withdrawn in
   the report.
+- **Game picker (C-09).** From the lobby the leader opens a picker on the TV listing all three
+  games with name, player range and blurb; games that cannot be played with the players in the
+  room say why. The leader's phone moves the focus (Previous, Next), selects, goes back and
+  starts; other phones show who is choosing. The chosen tile grows into its start screen with
+  the seats along the bottom. A failed game load shows a warning on TV and phone and Start can
+  be pressed again; an empty room returns the TV to the lobby with its join code; the leader
+  leaving hands the picker to the next leader. Tested with two real phone contexts in Chromium
+  (all checks pass) and opened by the integrator. **Not proven:** a TV, real phones, Safari;
+  frame time of the tile moves on the TV; a successful Start does nothing yet (C-10). The
+  start-screen layout awaits Randy's choice on the design board. Built by Codex over ten fix
+  rounds with four reviews; the integrator's browser runs found two one-line faults the unit
+  tests could not (the stage grid's columns grew while a tile resized; a mask was paused) and
+  one regression (the focus ring hidden at rest), all fixed.
 - **Performance harness (F-08).** `pnpm perf` runs every installed game at 1, 4 and 8 players
   with seeded bots and reports step time, allocation and garbage-collection pauses;
   `pnpm perf -- lobby-8 --phones 8` pairs eight real phone contexts in a visible browser and
@@ -237,7 +250,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 
 ## Does not exist yet
 
-- No game picker, controller or game screen yet.
+- No controller or game screen yet; the picker stops at "Starting…" until C-10 wires the session.
 
 ## Design gate
 

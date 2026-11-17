@@ -1,3 +1,5 @@
+import { createRoom } from '@kaki/platform';
+import type { loadGame } from './game-registry';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { createHostTransport } from '@kaki/netcode';
 import { browserDependencies, retryAfterDelay } from './browser';
@@ -54,4 +56,15 @@ it.each(['nonsense', '2147484', '99999999999999999999999999'])('phone Retry-Afte
 
 it.each([Infinity, 30000])('PLAT-009 past and zero Retry-After use the minimum with cap %s', cap => {
   for (const value of ['0', '-1', 'Thu, 01 Jan 1970 00:00:00 GMT']) expect(retryAfterDelay(value, 100000, cap)).toBe(1000);
+});
+
+it('PLAT-020 prefetches once on Select, shares the pending load with Start, and retries rejection', async () => {
+  const loader = vi.fn<typeof loadGame>().mockRejectedValue(new Error('offline'));
+  const session = browserDependencies('', undefined, loader).session;
+  const pending = session?.prefetch?.('rabakz');
+  const starting = session?.start('rabakz', createRoom());
+  expect(starting).toBe(pending);
+  await expect(starting).rejects.toThrow('offline');
+  await expect(session?.start('rabakz', createRoom())).rejects.toThrow('offline');
+  expect(loader).toHaveBeenCalledTimes(2);
 });

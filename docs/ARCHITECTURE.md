@@ -134,9 +134,16 @@ Rules:
   lobby, picker, results) are DOM with CSS and the Web Animations API.
 - **Controller rendering:** DOM and Pointer Events, no canvas, so the controller page stays
   small and starts fast. Touch handling is `touch-action: none` with pointer capture.
-- **Shell framework (spike):** Preact, chosen for size on a slow TV. Shared-element
-  transitions (design rule: expand the same object) use the View Transitions API with a
-  FLIP fallback.
+- **Shell framework (spike):** Preact, chosen for size on a slow TV. Shell motion uses the
+  Web Animations API, not the View Transitions API. The picker (C-09) expands the chosen tile
+  into its start screen by a clip-path mask at final layout; a focus move animates the tile's
+  translate, width and height from its painted rectangle (read before any animation is
+  cancelled); content inside a tile and the TV heading change by two masks that meet at one
+  boundary (D-092 e, D-107, D-108). The cost of animating tile width and height and of the
+  masks on the TV is not measured yet (PERF-001, PERF-002).
+- **Picker state:** `packages/platform/src/picker.ts` is the pure picker state machine (no
+  game knowledge); `apps/web/src/game-registry.ts` is the only list of installed games. A
+  game's index module is fetched when it is selected and loaded at Start.
 
 ## 5. Networking
 
@@ -163,6 +170,15 @@ Rules:
   on connect. Relay credentials (ICE servers) arrive in the pairing server's `created` and
   `joined` replies.
 - **Host → phone:** the controller layout and private view, sent only when they change.
+- **Picker messages (C-09, D-104 g):** `picker-input` (phone → host on `kaki-control`: a
+  revision and one of open, previous, next, select, back, start) and `picker-state` (host →
+  every connected phone: revision, screen, leader name, the focused game's id, name, blurb and
+  player range, a reason of at most 144 characters and a required `failed` flag). Unlike game
+  views, `picker-state` is sent on every room change. The host accepts picker input from the
+  leader only, drops input carrying an old revision, accepts one press per `fast` duration and
+  keeps the presses inside that window as a count of Previous and Next (modulo the number of
+  games) plus the latest of Select, Back and Start, applied in order (D-108 c). Leadership
+  changes only through the room's election when the leader leaves (PLAT-006).
 - **Pairing (`apps/signal`, C-01):** the host page creates a room with an HTTP POST, which
   returns an 8-character room code and a host secret (D-063, D-065). The host then opens a
   WebSocket to the room's Durable Object, proving the secret in the upgrade itself with the

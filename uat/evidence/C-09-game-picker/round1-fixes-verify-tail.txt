@@ -1,0 +1,38 @@
+VITEST_MAX_WORKERS=2 pnpm verify — exit 0
+Workspace, typecheck, ESLint: passed
+Design lint: passed, 275 files, no new exemptions
+ Test Files  141 passed (141)
+      Tests  3153 passed | 1 skipped (3154)
+   Start at  08:47:59
+   Duration  343.53s (transform 3.00s, setup 0ms, import 11.87s, tests 653.75s, environment 13ms)
+
+$ tsc -b tsconfig.build.json && node tools/check_budgets.mjs
+$ vite build
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 116 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.48 kB │ gzip:  0.32 kB
+dist/.vite/manifest.json          1.17 kB │ gzip:  0.32 kB
+dist/assets/index-BI7VkmcU.css   19.15 kB │ gzip:  4.51 kB
+dist/assets/rng-BnDbXcro.js       2.11 kB │ gzip:  1.08 kB
+dist/assets/src-ZQhRFeBH.js       8.06 kB │ gzip:  3.00 kB
+dist/assets/src-DTHFlKPc.js       9.28 kB │ gzip:  3.65 kB
+dist/assets/src-C1aVa60g.js      37.14 kB │ gzip: 11.84 kB
+dist/assets/index-DW9Hje0F.js   127.38 kB │ gzip: 46.21 kB
+
+✓ built in 138ms
+PERF-022 host: 203635 bytes raw, 70155 bytes gzip / 1500000
+PERF-020 controller (shared entry): 203635 bytes raw, 70155 bytes gzip / 300000
+PERF-022 deploy: 203635 bytes raw, 70155 bytes gzip / 1500000
+no asset sets in assets/src yet
+$ python3 tools/trace_check.py
+152 requirements; 81 in progress, 1 later, 70 not started
+trace check passed
+
+Final UAT-script ESLint: exit 0
+Final CSS design lint: exit 0
+node --check uat/slices/C-09-game-picker.mjs: exit 0
+git diff --check: exit 0
+Browser UAT: not run (integrator request)

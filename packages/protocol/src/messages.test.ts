@@ -151,6 +151,7 @@ const layout: Json = { parts: ['stick', 'a', 'b', 'start'], panel: null };
 const view: Json = { kind: 'cards', cards: ['7♠', 'K♥'], prompt: 'Pick two' };
 
 const phoneSamples: Samples<PhoneMessage> = {
+  'picker-input': { v, t: 'picker-input', revision: 0, input: 'open' },
   hello: { v, t: 'hello', name: 'Ah Beng' },
   resume: { v, t: 'resume', seatToken: SEAT_TOKEN },
   'set-name': { v, t: 'set-name', name: 'Mei 🍜' },
@@ -160,6 +161,7 @@ const phoneSamples: Samples<PhoneMessage> = {
 };
 
 const hostSamples: Samples<HostMessage> = {
+  'picker-state': { v, t: 'picker-state', revision: 0, screen: 'lobby', leaderName: null, game: null, reason: null, failed: false },
   seat: {
     v,
     t: 'seat',
@@ -872,7 +874,7 @@ const INTERESTING: unknown[] = [
 const KEYS = [
   'v', 't', 'code', 'hostToken', 'roomToken', 'peer', 'step', 'kind', 'sdp', 'candidate', 'mid',
   'mLineIndex', 'ice', 'servers', 'urls', 'ttlS', 'relay', 'reason', 'name', 'seatToken', 'rev',
-  'data', 'layout', 'view', 'viewRev', 'phase', 'players', 'leader', 'team', 'id', 'quality',
+  'failed', 'data', 'layout', 'view', 'viewRev', 'phase', 'players', 'leader', 'team', 'id', 'quality',
   'rttMs', 'seat', 'colour', 'request', 'present', 'toString', '', 'x',
 ];
 

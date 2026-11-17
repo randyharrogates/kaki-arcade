@@ -1,0 +1,87 @@
+{
+  "initial": {
+    "raw": 147026,
+    "gzip": 50673,
+    "files": [
+      "index.html",
+      "assets/index-DW9Hje0F.js",
+      "assets/index-BI7VkmcU.css"
+    ]
+  },
+  "includingDynamic": {
+    "raw": 203635,
+    "gzip": 70155,
+    "files": [
+      "index.html",
+      "assets/index-DW9Hje0F.js",
+      "assets/index-BI7VkmcU.css",
+      "assets/src-C1aVa60g.js",
+      "assets/rng-BnDbXcro.js",
+      "assets/src-DTHFlKPc.js",
+      "assets/src-ZQhRFeBH.js"
+    ]
+  },
+  "deploy": {
+    "raw": 203635,
+    "gzip": 70155,
+    "files": [
+      "assets/index-BI7VkmcU.css",
+      "assets/index-DW9Hje0F.js",
+      "assets/rng-BnDbXcro.js",
+      "assets/src-C1aVa60g.js",
+      "assets/src-DTHFlKPc.js",
+      "assets/src-ZQhRFeBH.js",
+      "index.html"
+    ]
+  },
+  "manifest": {
+    "../../games/peek-poker/src/index.ts": {
+      "file": "assets/src-DTHFlKPc.js",
+      "name": "src",
+      "src": "../../games/peek-poker/src/index.ts",
+      "isDynamicEntry": true,
+      "imports": [
+        "index.html",
+        "_rng-BnDbXcro.js"
+      ]
+    },
+    "../../games/rabakz/src/index.ts": {
+      "file": "assets/src-ZQhRFeBH.js",
+      "name": "src",
+      "src": "../../games/rabakz/src/index.ts",
+      "isDynamicEntry": true,
+      "imports": [
+        "index.html",
+        "_rng-BnDbXcro.js"
+      ]
+    },
+    "../../games/tabao-rush/src/index.ts": {
+      "file": "assets/src-C1aVa60g.js",
+      "name": "src",
+      "src": "../../games/tabao-rush/src/index.ts",
+      "isDynamicEntry": true,
+      "imports": [
+        "_rng-BnDbXcro.js",
+        "index.html"
+      ]
+    },
+    "_rng-BnDbXcro.js": {
+      "file": "assets/rng-BnDbXcro.js",
+      "name": "rng"
+    },
+    "index.html": {
+      "file": "assets/index-DW9Hje0F.js",
+      "name": "index",
+      "src": "index.html",
+      "isEntry": true,
+      "dynamicImports": [
+        "../../games/tabao-rush/src/index.ts",
+        "../../games/peek-poker/src/index.ts",
+        "../../games/rabakz/src/index.ts"
+      ],
+      "css": [
+        "assets/index-BI7VkmcU.css"
+      ]
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { meta } from './meta';
 import { STEPS_PER_SECOND, secondsToSteps } from '@kaki/platform';
 import type { GameModule, StepInputs } from '@kaki/platform';
 import { createRng } from '@kaki/sim-core';
@@ -91,11 +92,7 @@ export function step(state: State, inputs: StepInputs): State {
 }
 
 export const peekPoker: GameModule<State, Settings, ReturnType<typeof publicView>> = {
-  meta: {
-    id: 'peek-poker', name: 'Peek Poker',
-    blurb: 'Memorise the grid, then pick two cards to make the best hand.',
-    players: { min: 1, max: 8 }, teams: 'none', coop: false, solo: true,
-  },
+  meta,
   settings: { fields: [
     { kind: 'choice', id: 'rounds', label: 'Rounds', default: 5, options: [
       { value: 3, label: '3' }, { value: 5, label: '5' }, { value: 7, label: '7' },

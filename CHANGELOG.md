@@ -2,6 +2,15 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — C-09: game picker
+
+- `packages/platform/src/picker.ts` (pure picker state), the TV picker and start screen in
+  `apps/web` (`picker-route.tsx`, `picker-animation.ts`, `picker-content.ts`), leader controls
+  and watcher view on the phone, `picker-input` and `picker-state` in `packages/protocol`,
+  each game's `meta.ts`, `uat/slices/C-09-game-picker.mjs`. Rulings D-098, D-104, D-107,
+  D-108. `docs/ARCHITECTURE.md` §4 and §5 updated.
+- (PLAT-020, PLAT-021 in progress; PLAT-006 extended)
+
 ## 2026-11-17 — F-08: performance harness; `pnpm perf`
 
 - `tools/perf/` (simulation layer, browser scenario runner, budget evaluator, versioned

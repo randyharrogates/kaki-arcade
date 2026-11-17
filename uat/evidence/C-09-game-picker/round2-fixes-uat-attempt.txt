@@ -1,0 +1,14 @@
+$ node tools/uat/run.mjs -- C-09-game-picker --phones 2 --out round2-fixes
+file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/core.ts:51
+  if (result.status !== 0) throw new Error(`Memory gate refused: ${result.stdout}${result.stderr}`);
+                                 ^
+
+Error: Memory gate refused: sysctl: sysctl fmt -1 1024 1: Operation not permitted
+tools/agents/memcheck.sh: line 7: / 1073741824 : syntax error: operand expected (error token is "/ 1073741824 ")
+
+    at memoryGate (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/core.ts:51:34)
+    at Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/runner.ts:25:3)
+    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-09/tools/uat/run.mjs:15:1
+
+Node.js v24.21.0
+[ELIFECYCLE] Command failed with exit code 1.

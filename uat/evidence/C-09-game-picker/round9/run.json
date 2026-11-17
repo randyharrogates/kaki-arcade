@@ -1,0 +1,685 @@
+{
+  "slice": "C-09-game-picker",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- C-09-game-picker --phones 2 --max-mb 24",
+  "commit": "014a48b53996302082dfdb9fcf100b365aede345",
+  "viewports": [
+    "1920×1080",
+    "844×390",
+    "1280×720",
+    "3840×2160",
+    "390×844",
+    "320×568",
+    "932×430"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 980.6928329999998,
+      "status": "completed"
+    },
+    {
+      "name": "Join Cloud Noodle",
+      "ms": 1011.0649579999999,
+      "status": "completed"
+    },
+    {
+      "name": "Join Pebble Puff",
+      "ms": 953.5075420000003,
+      "status": "completed"
+    },
+    {
+      "name": "Real leader and watcher follow focus, expand, collapse and start",
+      "ms": 3722.6762499999995,
+      "status": "completed"
+    },
+    {
+      "name": "Host reload during picker restores lobby; leader departure transfers controls",
+      "ms": 4989.790999999999,
+      "status": "completed"
+    },
+    {
+      "name": "Demo 720p players=0",
+      "ms": 917.308167000001,
+      "status": "completed"
+    },
+    {
+      "name": "Demo 720p players=8&state=start",
+      "ms": 917.3049580000006,
+      "status": "completed"
+    },
+    {
+      "name": "Demo 1080p players=0",
+      "ms": 922.2357919999995,
+      "status": "completed"
+    },
+    {
+      "name": "Demo 1080p players=8&state=start",
+      "ms": 924.627540999998,
+      "status": "completed"
+    },
+    {
+      "name": "Demo 1080p players=1&state=start",
+      "ms": 943.580791999997,
+      "status": "completed"
+    },
+    {
+      "name": "Demo 4K players=0",
+      "ms": 1222.309083,
+      "status": "completed"
+    },
+    {
+      "name": "Demo 4K players=8&state=start",
+      "ms": 1244.1105829999979,
+      "status": "completed"
+    },
+    {
+      "name": "Stable stage band 720p with wide names",
+      "ms": 1672.5088749999995,
+      "status": "completed"
+    },
+    {
+      "name": "Stable stage band 1080p with wide names",
+      "ms": 1663.3449999999975,
+      "status": "completed"
+    },
+    {
+      "name": "Same-node focus slow10 strip",
+      "ms": 4918.578083,
+      "status": "completed"
+    },
+    {
+      "name": "Same-node expand slow10 strip",
+      "ms": 4902.754040999978,
+      "status": "completed"
+    },
+    {
+      "name": "Same-node collapse slow10 strip",
+      "ms": 4747.5028340000135,
+      "status": "completed"
+    },
+    {
+      "name": "Interrupted focus at 60 ms preserves every rectangle",
+      "ms": 1317.304833000002,
+      "status": "completed"
+    },
+    {
+      "name": "Interrupted focus at 144 ms preserves every rectangle",
+      "ms": 1405.0049160000053,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced motion retains final state without tile animation",
+      "ms": 1010.9423749999842,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-real-picker.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-real-picker.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone2-real-picker.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-real-focus-150ms.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-real-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-real-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone2-real-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-real-selected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-real-selected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone2-real-selected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-real-reload-lobby.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-real-reload-lobby.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone2-real-reload-lobby.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-real-leader-left.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-real-leader-left.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone2-real-leader-left.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-real-empty-lobby-code.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-demo-720p-players-0.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-demo-720p-players-8-state-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-demo-1080p-players-0.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-demo-1080p-players-8-state-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-demo-1080p-players-1-state-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-demo-4K-players-0.png",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-demo-4K-players-8-state-start.png",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone1-demo-390x844-picker.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-demo-390x844-state-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone1-demo-390x844-state-starting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone1-demo-390x844-players-0.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-phone1-demo-390x844-state-start-players-0.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-phone1-demo-390x844-state-start-failure-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-phone2-demo-390x844-picker.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-phone2-demo-390x844-state-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-phone2-demo-390x844-state-starting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone2-demo-390x844-players-0.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-phone2-demo-390x844-state-start-players-0.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-phone2-demo-390x844-state-start-failure-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-phone1-phone-lobby-leave-320x568-wide.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-phone1-phone-rename-leave-320x568-wide.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-host-load-failure.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-host-demo-focus-slow10-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-host-demo-focus-slow10-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-host-demo-focus-slow10-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-host-demo-focus-slow10-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-host-demo-focus-slow10-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-host-demo-focus-slow10-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-host-demo-focus-slow10-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-host-demo-focus-slow10-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "48-host-demo-focus-slow10-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "50-host-demo-focus-settled.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "51-host-demo-expand-slow10-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "52-host-demo-expand-slow10-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "53-host-demo-expand-slow10-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "54-host-demo-expand-slow10-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "55-host-demo-expand-slow10-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "56-host-demo-expand-slow10-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "57-host-demo-expand-slow10-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "58-host-demo-expand-slow10-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "59-host-demo-expand-slow10-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "61-host-demo-expand-settled.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "62-host-demo-collapse-slow10-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "63-host-demo-collapse-slow10-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "64-host-demo-collapse-slow10-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "65-host-demo-collapse-slow10-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "66-host-demo-collapse-slow10-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "67-host-demo-collapse-slow10-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "68-host-demo-collapse-slow10-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "69-host-demo-collapse-slow10-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "70-host-demo-collapse-slow10-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "72-host-demo-collapse-settled.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "73-host-demo-reduced-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "74-host-demo-reduced-expand.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "75-host-demo-reduced-collapse.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "76-phone1-demo-reduced-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "77-phone2-demo-reduced-start.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-real-picker.jpg",
+    "02-phone1-real-picker.jpg",
+    "03-phone2-real-picker.jpg",
+    "04-host-real-focus-150ms.jpg",
+    "05-host-real-focus.jpg",
+    "06-phone1-real-focus.jpg",
+    "07-phone2-real-focus.jpg",
+    "08-host-real-selected.jpg",
+    "09-phone1-real-selected.jpg",
+    "10-phone2-real-selected.jpg",
+    "11-host-real-reload-lobby.jpg",
+    "12-phone1-real-reload-lobby.jpg",
+    "13-phone2-real-reload-lobby.jpg",
+    "14-host-real-leader-left.jpg",
+    "15-phone1-real-leader-left.jpg",
+    "16-phone2-real-leader-left.jpg",
+    "17-host-real-empty-lobby-code.jpg",
+    "18-host-demo-720p-players-0.jpg",
+    "19-host-demo-720p-players-8-state-start.jpg",
+    "20-host-demo-1080p-players-0.jpg",
+    "21-host-demo-1080p-players-8-state-start.jpg",
+    "22-host-demo-1080p-players-1-state-start.jpg",
+    "23-host-demo-4K-players-0.png",
+    "24-host-demo-4K-players-8-state-start.png",
+    "25-phone1-demo-390x844-picker.jpg",
+    "26-phone1-demo-390x844-state-start.jpg",
+    "27-phone1-demo-390x844-state-starting.jpg",
+    "28-phone1-demo-390x844-players-0.jpg",
+    "29-phone1-demo-390x844-state-start-players-0.jpg",
+    "30-phone1-demo-390x844-state-start-failure-1.jpg",
+    "31-phone2-demo-390x844-picker.jpg",
+    "32-phone2-demo-390x844-state-start.jpg",
+    "33-phone2-demo-390x844-state-starting.jpg",
+    "34-phone2-demo-390x844-players-0.jpg",
+    "35-phone2-demo-390x844-state-start-players-0.jpg",
+    "36-phone2-demo-390x844-state-start-failure-1.jpg",
+    "37-phone1-phone-lobby-leave-320x568-wide.jpg",
+    "38-phone1-phone-rename-leave-320x568-wide.jpg",
+    "39-host-load-failure.jpg",
+    "49-strip-demo-focus-slow10.jpg",
+    "50-host-demo-focus-settled.jpg",
+    "60-strip-demo-expand-slow10.jpg",
+    "61-host-demo-expand-settled.jpg",
+    "71-strip-demo-collapse-slow10.jpg",
+    "72-host-demo-collapse-settled.jpg",
+    "73-host-demo-reduced-focus.jpg",
+    "74-host-demo-reduced-expand.jpg",
+    "75-host-demo-reduced-collapse.jpg",
+    "76-phone1-demo-reduced-start.jpg",
+    "77-phone2-demo-reduced-start.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-real-picker.jpg",
+      "bytes": 177505
+    },
+    {
+      "file": "02-phone1-real-picker.jpg",
+      "bytes": 143733
+    },
+    {
+      "file": "03-phone2-real-picker.jpg",
+      "bytes": 114177
+    },
+    {
+      "file": "04-host-real-focus-150ms.jpg",
+      "bytes": 170907
+    },
+    {
+      "file": "05-host-real-focus.jpg",
+      "bytes": 176795
+    },
+    {
+      "file": "06-phone1-real-focus.jpg",
+      "bytes": 143746
+    },
+    {
+      "file": "07-phone2-real-focus.jpg",
+      "bytes": 114269
+    },
+    {
+      "file": "08-host-real-selected.jpg",
+      "bytes": 148843
+    },
+    {
+      "file": "09-phone1-real-selected.jpg",
+      "bytes": 117272
+    },
+    {
+      "file": "10-phone2-real-selected.jpg",
+      "bytes": 117866
+    },
+    {
+      "file": "11-host-real-reload-lobby.jpg",
+      "bytes": 245653
+    },
+    {
+      "file": "12-phone1-real-reload-lobby.jpg",
+      "bytes": 133518
+    },
+    {
+      "file": "13-phone2-real-reload-lobby.jpg",
+      "bytes": 114726
+    },
+    {
+      "file": "14-host-real-leader-left.jpg",
+      "bytes": 176058
+    },
+    {
+      "file": "15-phone1-real-leader-left.jpg",
+      "bytes": 159620
+    },
+    {
+      "file": "16-phone2-real-leader-left.jpg",
+      "bytes": 143003
+    },
+    {
+      "file": "17-host-real-empty-lobby-code.jpg",
+      "bytes": 250230
+    },
+    {
+      "file": "18-host-demo-720p-players-0.jpg",
+      "bytes": 103307
+    },
+    {
+      "file": "19-host-demo-720p-players-8-state-start.jpg",
+      "bytes": 110697
+    },
+    {
+      "file": "20-host-demo-1080p-players-0.jpg",
+      "bytes": 190237
+    },
+    {
+      "file": "21-host-demo-1080p-players-8-state-start.jpg",
+      "bytes": 213419
+    },
+    {
+      "file": "22-host-demo-1080p-players-1-state-start.jpg",
+      "bytes": 140962
+    },
+    {
+      "file": "23-host-demo-4K-players-0.png",
+      "bytes": 963776
+    },
+    {
+      "file": "24-host-demo-4K-players-8-state-start.png",
+      "bytes": 937557
+    },
+    {
+      "file": "25-phone1-demo-390x844-picker.jpg",
+      "bytes": 143969
+    },
+    {
+      "file": "26-phone1-demo-390x844-state-start.jpg",
+      "bytes": 123258
+    },
+    {
+      "file": "27-phone1-demo-390x844-state-starting.jpg",
+      "bytes": 109718
+    },
+    {
+      "file": "28-phone1-demo-390x844-players-0.jpg",
+      "bytes": 168606
+    },
+    {
+      "file": "29-phone1-demo-390x844-state-start-players-0.jpg",
+      "bytes": 143836
+    },
+    {
+      "file": "30-phone1-demo-390x844-state-start-failure-1.jpg",
+      "bytes": 139747
+    },
+    {
+      "file": "31-phone2-demo-390x844-picker.jpg",
+      "bytes": 120196
+    },
+    {
+      "file": "32-phone2-demo-390x844-state-start.jpg",
+      "bytes": 123991
+    },
+    {
+      "file": "33-phone2-demo-390x844-state-starting.jpg",
+      "bytes": 108953
+    },
+    {
+      "file": "34-phone2-demo-390x844-players-0.jpg",
+      "bytes": 131312
+    },
+    {
+      "file": "35-phone2-demo-390x844-state-start-players-0.jpg",
+      "bytes": 135050
+    },
+    {
+      "file": "36-phone2-demo-390x844-state-start-failure-1.jpg",
+      "bytes": 140678
+    },
+    {
+      "file": "37-phone1-phone-lobby-leave-320x568-wide.jpg",
+      "bytes": 109931
+    },
+    {
+      "file": "38-phone1-phone-rename-leave-320x568-wide.jpg",
+      "bytes": 132721
+    },
+    {
+      "file": "39-host-load-failure.jpg",
+      "bytes": 167397
+    },
+    {
+      "file": "49-strip-demo-focus-slow10.jpg",
+      "bytes": 831907
+    },
+    {
+      "file": "50-host-demo-focus-settled.jpg",
+      "bytes": 94931
+    },
+    {
+      "file": "60-strip-demo-expand-slow10.jpg",
+      "bytes": 838488
+    },
+    {
+      "file": "61-host-demo-expand-settled.jpg",
+      "bytes": 82598
+    },
+    {
+      "file": "71-strip-demo-collapse-slow10.jpg",
+      "bytes": 765846
+    },
+    {
+      "file": "72-host-demo-collapse-settled.jpg",
+      "bytes": 95291
+    },
+    {
+      "file": "73-host-demo-reduced-focus.jpg",
+      "bytes": 176673
+    },
+    {
+      "file": "74-host-demo-reduced-expand.jpg",
+      "bytes": 158834
+    },
+    {
+      "file": "75-host-demo-reduced-collapse.jpg",
+      "bytes": 177424
+    },
+    {
+      "file": "76-phone1-demo-reduced-start.jpg",
+      "bytes": 131449
+    },
+    {
+      "file": "77-phone2-demo-reduced-start.jpg",
+      "bytes": 130136
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 6112
+    },
+    {
+      "file": "run.json",
+      "bytes": 16349
+    }
+  ],
+  "totalBytes": 10813314,
+  "maxBytes": 25165824
+}

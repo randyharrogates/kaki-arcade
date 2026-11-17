@@ -1,3 +1,4 @@
+import { meta } from './meta';
 import { ageOrders, arriveOrders, ensureOrders, resizeOrders, stars } from './orders';
 import { createRng } from '@kaki/sim-core';
 import { secondsToSteps } from '@kaki/platform';
@@ -55,15 +56,7 @@ function spawn(state: TabaoState, player: PlayerInfo): Cook {
 }
 
 export const tabaoRush: GameModule<TabaoState> = {
-  meta: {
-    id: 'tabao-rush',
-    name: 'Tabao Rush',
-    blurb: 'Move together around a Singapore hawker stall.',
-    players: { min: 1, max: 8 },
-    teams: 'none',
-    coop: true,
-    solo: true,
-  },
+  meta,
   settings: { fields: [] },
   init(seed, players) {
     let state: TabaoState = {
