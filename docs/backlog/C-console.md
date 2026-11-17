@@ -13,7 +13,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
 | C-01 | Pairing server: Worker and one Durable Object per room, unguessable codes, handshake forwarding, idle expiry, hibernation | PLAT-001, NET-002, DATA-005 | F-02 | 1 | merged |
-| C-02 | Relay: short-lived TURN credentials, monthly usage tracking, cut-off at the limit with the same-Wi-Fi message | NET-003, NET-004 | C-01 | 1 | todo |
+| C-02 | Relay: short-lived TURN credentials, monthly usage tracking, cut-off at the limit with the same-Wi-Fi message | NET-003, NET-004 | C-01 | 1 | parked (D-128): branch `issue/C-02` kept; resume before M8 |
 | C-03 | Rate limits on room creation and joins | DATA-005 | C-01 | 1 | merged |
 | C-04 | Netcode: WebRTC data channels, sequenced input state, repeated release, link-quality measurement | NET-001, NET-002, NET-005, PERF-010 | F-02 | 1 | merged |
 | C-06 | Room state (pure): seats, colours, nicknames with the blocked-words filter, leader and hand-over, capacity of 8, joining from the lobby | PLAT-003, PLAT-004, PLAT-005, PLAT-006, PLAT-008 | F-02 | 1 | merged |
@@ -159,3 +159,17 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   mark. **For F-07:** a DOM render test for the phone route and the name component
   (`phone-message.test.ts` matches source text today). Not done anywhere: real phones, a QR
   scan, Safari, Firefox, the on-screen keyboard, a screen reader on the announcement region.
+### C-02 parked (2026-11-17, D-128)
+Four review rounds did not converge, so C-02 is parked with its branch `issue/C-02` and worktree
+kept (round 4 is commit 9c6153a). Resume before release (M8); the relay only matters for phones
+that cannot reach the host directly. The fourth review's open items, to brief on resuming:
+- **M1:** the join's fallback grant (`room-object.ts:150`, STUN only, ttlS 60) is not refreshed
+  before the host's first offer (`netcode/src/transport.ts:131, :141` refresh only 30 s before
+  expiry), so a phone that needs TURN times out at 15 s and every redial falls back again while
+  the provider is slower than 500 ms. Use a fallback TTL of 30 s or less, or refresh on the first
+  offer when relay is off; add an end-to-end test that the peer is rebuilt with TURN servers.
+- **S1:** test 60 back-to-back relay messages all get `ice` (the `bucketReserved: false` mutant
+  survives). **S2:** test grants equal the messages the bucket allowed. **S3:** reuse one grant
+  per room for a short window (also closes the redial gap). **S4:** slice note is stale (round 4
+  commit exists; `*.log` evidence is git-ignored).
+- Still needs Randy's real Cloudflare check before NET-003 and NET-004 can be done.
