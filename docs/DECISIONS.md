@@ -1216,3 +1216,13 @@ A-08 review found was an unrecorded one-off. Source asset, not a code dependency
 release, with its `OFL.txt` (SIL Open Font License 1.1) beside it; the file is identical to the one
 installed on the build Mac. D-133 is settled under D-142 (no longer pending Randy). Randy may
 overrule after seeing the re-rendered deck.
+
+**D-148 · 2026-11-18 · Claude** (under D-142; amends D-129, keeps D-100) — PERF-020's start-up half
+(median of 5 throttled cold loads of the join page, K-08) runs as a **blocking `pnpm perf` check**
+(`pnpm perf -- controller`), not inside `pnpm verify`. Reasons from the K-08 review: verify must
+stay browser-free under D-100; Chromium cannot launch in the Codex sandbox, so a browser step in
+verify would fail every issue agent's verify; and a fixed port and the 3 GB browser memory gate
+would make verify fail for reasons unrelated to the budget. PERF-020's size half (transfer size of
+the phone closure, D-115) stays in verify. Like other browser budgets, the start-up check must
+pass before any slice that changes the phone's entry or controller closes; the budget itself is
+unchanged.
