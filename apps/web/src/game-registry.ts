@@ -1,9 +1,13 @@
+import { THEMES } from '@kaki/ui';
+import { createRng, nextFloat } from '@kaki/sim-core';
 import { settingsSchema, validateSettings } from '@kaki/platform';
-import type { GameModule, JsonValue } from '@kaki/platform';
+import type { GameModule, JsonValue, InitContext } from '@kaki/platform';
 // The registry is the sole app-level knowledge of installed modules (PLAT-020).
 import { meta as tabaoRush } from '../../../games/tabao-rush/src/meta';
 import { meta as peekPoker } from '../../../games/peek-poker/src/meta';
+// Metadata has no package subpath yet; retain the existing metadata-only picker import.
 import { meta as rabakz } from '../../../games/rabakz/src/meta';
+import type { HostScreen } from './session-adapter';
 export const gameMetas = [tabaoRush, peekPoker, rabakz];
 const selectionChecks = new Map<string, (id: string, settings: JsonValue) => boolean>();
 /** Called only by the host start adapter; phones and the picker import metadata alone. */
@@ -11,7 +15,10 @@ export async function loadGame(id: string) {
   switch (id) {
     case 'tabao-rush': return register((await import('../../../games/tabao-rush/src/index')).tabaoRush);
     case 'peek-poker': return register((await import('../../../games/peek-poker/src/index')).peekPoker);
-    case 'rabakz': return register((await import('../../../games/rabakz/src/index')).rabakz);
+    case 'rabakz': {
+      const module = await import('@kaki/game-rabakz');
+      return register(module.rabakz);
+    }
     default: throw new Error('Unknown game');
   }
 }
@@ -31,3 +38,33 @@ function selectionCheck<State, Settings extends object, View>(game: GameModule<S
 export function validGameSelection(id: string, settings: JsonValue): boolean {
   return selectionChecks.get(id)?.(id, settings) ?? false;
 }
+
+interface SessionRegistration {
+  finalHintTheme?: typeof THEMES.console;
+  finalScreen?: boolean;
+  screen?: () => Promise<HostScreen>;
+  viewKey?: () => Promise<(view: unknown) => unknown>;
+  data: Record<string, (context: InitContext, settings: object | null, seed: number) => Promise<JsonValue>>;
+}
+/** Only the registry knows each game's host renderer and declared preload resolvers. */
+export const sessionRegistrations: Record<string, SessionRegistration> = {
+  'tabao-rush': { finalHintTheme: THEMES['tabao-rush'], data: {} },
+  'peek-poker': { finalHintTheme: THEMES['peek-poker'], data: {} },
+  rabakz: {
+    finalHintTheme: THEMES.rabakz,
+    finalScreen: true,
+    viewKey: async () => { const { publicViewKey } = await import('@kaki/game-rabakz/host'); return view => publicViewKey(view as Parameters<typeof publicViewKey>[0]); },
+    screen: async () => (await import('@kaki/game-rabakz/host')).RabakzScreen,
+    data: {
+      'categories.json': async () => (await import('@kaki/content-rabakz/session')).categories(),
+      'selected-questions.json': async (context, settings, seed) => {
+        const { rabakz, questionData } = await import('@kaki/game-rabakz');
+        const checked = validateSettings(settingsSchema(rabakz, context), settings);
+        if (!checked.ok) throw new Error('Invalid Rabakz settings');
+        const { length, categories, difficulty } = checked.settings;
+        const rng = createRng(seed);
+        return questionData((await import('@kaki/content-rabakz/session')).questions({ count: length, categories: categories?.length ? categories : 'mixed', difficulty, region: 'mixed' }, () => nextFloat(rng)));
+      },
+    },
+  },
+};

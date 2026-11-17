@@ -61,9 +61,11 @@ it('PLAT-020/021/006/009 real host and two phones pick, watch, back, start, hand
   await act('back'); expect(host.picker.screen).toBe('picker');
   await act('select'); await act('start'); expect(host.picker.screen).toBe('starting');
   expect(session.start).toHaveBeenCalledTimes(1);
-  expect(session.start).toHaveBeenLastCalledWith(host.picker.focus, host.room);
+  expect(session.start).toHaveBeenLastCalledWith(host.picker.focus, expect.objectContaining({ players: host.room.players, phase: 'lobby' }));
+  expect(host.room.phase).toBe('playing');
   await reloadLeader();
   await act('start'); expect(session.start).toHaveBeenCalledTimes(1);
+  host.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } });
   host.returnToPicker(); await settle(clock);
   // Real departure transfers authority; the departed phone cannot select.
   phones[0]?.leave(); await settle(clock);

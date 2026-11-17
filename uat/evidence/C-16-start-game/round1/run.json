@@ -1,0 +1,218 @@
+{
+  "slice": "C-16-start-game",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- C-16-start-game --phones 2",
+  "commit": "a08eabfd747371c68572b7d129149842e83323da",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1170.3524159999997,
+      "status": "completed"
+    },
+    {
+      "name": "Seat two phones for rabakz",
+      "ms": 1455.4294999999993,
+      "status": "completed"
+    },
+    {
+      "name": "Leader starts rabakz; TV and both shells follow",
+      "ms": 5033.741541,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 881.4912080000013,
+      "status": "completed"
+    },
+    {
+      "name": "Seat two phones for tabao-rush",
+      "ms": 1764.076916,
+      "status": "completed"
+    },
+    {
+      "name": "Leader starts tabao-rush; TV and both shells follow",
+      "ms": 4825.353249999998,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-rabakz-before-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-rabakz-start-mask-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-rabakz-start-mask-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-rabakz-start-mask-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-rabakz-start-mask-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-rabakz-start-mask-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-rabakz-start-mask-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-rabakz-start-mask-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-rabakz-start-mask-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-rabakz-start-mask-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-rabakz-controller-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone2-rabakz-controller-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-rabakz-running.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-tabao-rush-before-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-tabao-rush-start-mask-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-tabao-rush-start-mask-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-tabao-rush-start-mask-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-tabao-rush-start-mask-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-tabao-rush-start-mask-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-tabao-rush-start-mask-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-tabao-rush-start-mask-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-tabao-rush-start-mask-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-tabao-rush-start-mask-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-tabao-rush-controller-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone2-tabao-rush-controller-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-host-tabao-rush-running.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-rabakz-before-start.jpg",
+    "11-strip-rabakz-start-mask.jpg",
+    "12-phone1-rabakz-controller-1.jpg",
+    "13-phone2-rabakz-controller-2.jpg",
+    "14-host-rabakz-running.jpg",
+    "15-host-tabao-rush-before-start.jpg",
+    "25-strip-tabao-rush-start-mask.jpg",
+    "26-phone1-tabao-rush-controller-1.jpg",
+    "27-phone2-tabao-rush-controller-2.jpg",
+    "28-host-tabao-rush-running.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-rabakz-before-start.jpg",
+      "bytes": 138081
+    },
+    {
+      "file": "11-strip-rabakz-start-mask.jpg",
+      "bytes": 1381748
+    },
+    {
+      "file": "12-phone1-rabakz-controller-1.jpg",
+      "bytes": 77936
+    },
+    {
+      "file": "13-phone2-rabakz-controller-2.jpg",
+      "bytes": 77719
+    },
+    {
+      "file": "14-host-rabakz-running.jpg",
+      "bytes": 217481
+    },
+    {
+      "file": "15-host-tabao-rush-before-start.jpg",
+      "bytes": 145666
+    },
+    {
+      "file": "25-strip-tabao-rush-start-mask.jpg",
+      "bytes": 1144359
+    },
+    {
+      "file": "26-phone1-tabao-rush-controller-1.jpg",
+      "bytes": 77936
+    },
+    {
+      "file": "27-phone2-tabao-rush-controller-2.jpg",
+      "bytes": 77719
+    },
+    {
+      "file": "28-host-tabao-rush-running.jpg",
+      "bytes": 136513
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1711
+    },
+    {
+      "file": "run.json",
+      "bytes": 5018
+    }
+  ],
+  "totalBytes": 3481924,
+  "maxBytes": 12582912
+}

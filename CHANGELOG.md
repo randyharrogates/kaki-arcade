@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — C-16: start a game from the picker
+
+- `apps/web/src/`: Start loads the chosen game's module (`session-loading.ts`, before `init`; the
+  Rabakz bank in its own chunk), runs it in the session runner (`session-adapter.ts`), shows its TV
+  screen and sends phones their controller (`session-links.ts`); pause and quit return to the picker.
+- `results.tsx`: the results screen names the winners or the tie; the headline takes the largest
+  size whose rendered ink fits (measured from line boxes without changing the page) and falls back
+  to "Player N wins!" or "N players share first" only when no named size fits (D-131).
+- (PLAT-022, PLAT-023 in progress: real phones and the C-15 end-to-end run remain.)
+
 ## 2026-11-17 — R-05: Rabakz scoreboard and podium
 
 - `games/rabakz/host/`: standings (scoreboard every 5 questions, final podium, team totals first

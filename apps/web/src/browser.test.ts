@@ -63,7 +63,7 @@ it('PLAT-020 prefetches once on Select, shares the pending load with Start, and 
   const session = browserDependencies('', undefined, loader).session;
   const pending = session?.prefetch?.('rabakz');
   const starting = session?.start('rabakz', createRoom());
-  expect(starting).toBe(pending);
+  await expect(pending).rejects.toThrow('offline');
   await expect(starting).rejects.toThrow('offline');
   await expect(session?.start('rabakz', createRoom())).rejects.toThrow('offline');
   expect(loader).toHaveBeenCalledTimes(2);

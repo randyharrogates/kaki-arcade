@@ -228,3 +228,68 @@ it('does not publish quality for an unseated or held connection', async () => {
   f.callbacks.dropped('a'); count = f.views.length;
   f.callbacks.quality('a', report); expect(f.views).toHaveLength(count); host.stop();
 });
+
+it('C-16 start rejection uses picker failure, results and picker retain the room players (PLAT-022)', async () => {
+  const f = fixture(); f.deps.session = { start: vi.fn().mockRejectedValue(new Error('offline')), stop: vi.fn() };
+  const host = f.make(); await host.start(); f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v: 1, t: 'hello', name: 'Fern' });
+  for (const input of ['open', 'select', 'start'] as const) { f.advance(200); host.leaderInput('a', input); }
+  await Promise.resolve(); await Promise.resolve();
+  expect(host.picker.screen).toBe('start'); expect(host.picker.error).toContain('Could not load');
+  const players = host.room.players;
+  host.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } }); expect(host.room.phase).toBe('results');
+  host.sessionEvent({ type: 'picker' }); expect(host.picker.screen).toBe('picker'); expect(host.room.players).toEqual(players); expect(host.room.phase).toBe('lobby'); host.stop();
+});
+
+it('PLAT-022 only a current seated leader can return from results at the current picker revision', async () => {
+  const f = fixture(); const stop = vi.fn(); f.deps.session = { start: vi.fn().mockResolvedValue(undefined), stop };
+  const host = f.make(); await host.start();
+  for (const id of ['a', 'b']) { f.callbacks.peer(id, f.peer()); f.callbacks.control(id, { v, t: 'hello', name: id }); }
+  for (const input of ['open', 'select', 'start'] as const) { f.advance(200); host.leaderInput('a', input); }
+  await Promise.resolve(); const players = host.room.players;
+  host.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } });
+  host.leaderInput('b', 'open'); host.leaderInput('stranger', 'open'); host.leaderInput('a', 'open', host.picker.revision - 1);
+  expect(host.room.phase).toBe('results');
+  host.leaderInput('a', 'open'); expect(host.room.phase).toBe('lobby'); expect(host.picker.screen).toBe('picker');
+  expect(host.room.players).toEqual(players); expect(stop).toHaveBeenCalled(); host.stop();
+});
+it('retiring a pending start clears starting and ignores its late completion', async () => {
+  const f = fixture(); let finish: () => void = () => undefined;
+  f.deps.session = { start: () => new Promise<void>(resolve => { finish = resolve; }), stop: vi.fn() };
+  const host = f.make(); await host.start(); f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v, t: 'hello', name: 'Fern' });
+  for (const input of ['open', 'select', 'start'] as const) { f.advance(200); host.leaderInput('a', input); }
+  expect(host.picker.screen).toBe('starting'); f.callbacks.state('expired');
+  expect(host.picker.screen).toBe('start'); finish(); await Promise.resolve(); expect(host.room.phase).toBe('lobby'); host.stop();
+});
+
+it.each(['previous', 'next', 'select', 'back'] as const)('PLAT-022 results input %s cannot return to picker', async input => {
+  const f = fixture(); f.deps.session = { start: vi.fn().mockResolvedValue(undefined), stop: vi.fn() };
+  const host = f.make(); await host.start(); f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v, t: 'hello', name: 'Fern' });
+  for (const action of ['open', 'select', 'start'] as const) { f.advance(200); host.leaderInput('a', action); }
+  await Promise.resolve(); host.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } });
+  host.leaderInput('a', input); expect(host.room.phase).toBe('results'); expect(host.picker.screen).not.toBe('picker'); host.stop();
+});
+it('PLAT-022 play again starts the same game with the same room players', async () => {
+  const f = fixture(); const start = vi.fn().mockResolvedValue(undefined); f.deps.session = { start, stop: vi.fn() };
+  const host = f.make(); await host.start(); f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v, t: 'hello', name: 'Fern' });
+  for (const action of ['open', 'select', 'start'] as const) { f.advance(200); host.leaderInput('a', action); }
+  await Promise.resolve(); const players = host.room.players;
+  host.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } }); host.leaderInput('a', 'start');
+  await Promise.resolve(); expect(start).toHaveBeenCalledTimes(2);
+  expect(start.mock.calls[1]?.[0]).toBe(start.mock.calls[0]?.[0]); expect(host.room.players).toEqual(players); expect(host.room.phase).toBe('playing'); host.stop();
+});
+it('PLAT-022 leaving starting when the last seat leaves cancels the pending session', async () => {
+  const f = fixture(); let finish: () => void = () => undefined; const stop = vi.fn();
+  f.deps.session = { start: () => new Promise<void>(resolve => { finish = resolve; }), stop };
+  const host = f.make(); await host.start(); f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v, t: 'hello', name: 'Fern' });
+  for (const action of ['open', 'select', 'start'] as const) { f.advance(200); host.leaderInput('a', action); }
+  stop.mockClear(); f.callbacks.dropped('a'); f.advance(120001); expect(host.picker.screen).toBe('lobby'); expect(stop).toHaveBeenCalled();
+  finish(); await Promise.resolve(); expect(host.room.phase).toBe('lobby'); host.stop();
+});
+
+it('PLAT-024 stale results back action cannot interrupt a new start', async () => {
+  const f = fixture(); const stop = vi.fn();
+  f.deps.session = { start: () => new Promise(() => undefined), stop };
+  const host = f.make(); await host.start(); f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v, t: 'hello', name: 'Fern' });
+  for (const action of ['open', 'select', 'start'] as const) { f.advance(200); host.leaderInput('a', action); }
+  stop.mockClear(); host.returnToPicker(); expect(stop).not.toHaveBeenCalled(); expect(host.picker.screen).toBe('starting'); host.stop();
+});

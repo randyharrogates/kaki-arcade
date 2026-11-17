@@ -1,3 +1,4 @@
+import { rabakzBank } from '@kaki/content-rabakz/vite';
 import { defineConfig, loadEnv } from 'vite';
 import preact from '@preact/preset-vite';
 export default defineConfig(({ mode, command }) => {
@@ -10,7 +11,7 @@ export default defineConfig(({ mode, command }) => {
     } catch { throw new Error('KAKI_SIGNAL_URL must be an absolute HTTP(S) URL; omit it for same-origin production signalling.'); }
   }
   return {
-    plugins: [preact(), {
+    plugins: [preact(), rabakzBank(), {
       // REL-006: Vite hoists the entry into head. Load it only after the ES5 preflight.
       name: 'unsupported-entry-guard',
       transformIndexHtml: {

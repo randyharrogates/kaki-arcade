@@ -5,7 +5,8 @@
   "description": "Phone controller kit parts",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./shell.css": "./src/shell.css"
   },
   "dependencies": {
     "@kaki/protocol": "workspace:*",

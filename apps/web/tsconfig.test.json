@@ -5,7 +5,9 @@
       "ES2023",
       "DOM"
     ],
-    "tsBuildInfoFile": ".tsbuild/test.tsbuildinfo"
+    "tsBuildInfoFile": ".tsbuild/test.tsbuildinfo",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   },
   "include": [
     "src/**/*.test.ts"

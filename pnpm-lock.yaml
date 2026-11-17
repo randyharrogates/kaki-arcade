@@ -203,6 +203,15 @@ importers:
 
   apps/web:
     dependencies:
+      '@kaki/content-rabakz':
+        specifier: workspace:*
+        version: link:../../content/rabakz
+      '@kaki/controller-kit':
+        specifier: workspace:*
+        version: link:../../packages/controller-kit
+      '@kaki/game-rabakz':
+        specifier: workspace:*
+        version: link:../../games/rabakz
       '@kaki/netcode':
         specifier: workspace:*
         version: link:../../packages/netcode

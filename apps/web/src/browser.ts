@@ -1,3 +1,8 @@
+import { createSessionAdapter, animationFrames } from './session-adapter';
+import type { SessionDisplay } from './session-adapter';
+import type { SessionEvent } from '@kaki/platform';
+import { loadSessionGame, prepareSession, loadSessionAssets } from './session-loading';
+import { sessionLinks } from './session-links';
 import { loadGame } from './game-registry';
 import { createHostTransport } from '@kaki/netcode';
 import type { Channel, PeerConnection, Socket, Stat } from '@kaki/netcode';
@@ -37,24 +42,30 @@ export function retryAfterDelay(value: string | null, now: number, cap = Infinit
   const safe = Number.isFinite(delay) ? Math.max(1000, delay) : 60000;
   return Math.min(cap, safe);
 }
-export function browserDependencies(baseUrl: string, transportFactory: typeof createHostTransport = createHostTransport, loader: typeof loadGame = loadGame): HostDependencies {
+export function browserDependencies(baseUrl: string, transportFactory: typeof createHostTransport = createHostTransport, loader: typeof loadGame = loadGame, present: (display: SessionDisplay | null) => void = () => undefined, event: (event: SessionEvent) => void = () => undefined): HostDependencies {
   const clock = {
     now: () => Date.now(),
     schedule: (callback: () => void, delay: number) => window.setTimeout(callback, delay),
     cancel: (handle: unknown) => { if (typeof handle === 'number') window.clearTimeout(handle); },
   };
-  const pending = new Map<string, ReturnType<typeof loadGame>>();
-  const preload = (id: string): ReturnType<typeof loadGame> => {
-    let promise = pending.get(id);
-    if (!promise) {
-      promise = loader(id).catch((error: unknown) => { pending.delete(id); throw error; });
-      pending.set(id, promise);
-    }
-    return promise;
-  };
+  const links = sessionLinks();
+  const session = createSessionAdapter({
+    load: id => loadSessionGame(id, loader), prepare: prepareSession, assets: loadSessionAssets,
+    transport: links.transport,
+    frames: animationFrames(callback => requestAnimationFrame(callback), handle => { cancelAnimationFrame(handle); }),
+    seed: () => crypto.getRandomValues(new Uint32Array(1))[0] ?? 0,
+    display: present, event,
+  });
   return {
     clock,
-    session: { prefetch: preload, start: preload },
+    session: {
+      continueResults: () => { session.continueResults(); },
+      prefetch: session.prefetch,
+      async start(id, room) { links.setup(room, session.buffer); await session.start(id, room); },
+      updateRoom(room) { links.updateRoom(room); session.updateRoom(room); },
+      control: (id, message) => { links.control(id, message); }, dropped: id => { links.dropped(id); },
+      stop() { session.stop(); },
+    },
     online: { subscribe(callback) { window.addEventListener('online', callback); return () => { window.removeEventListener('online', callback); }; } },
     storage: {
       getItem: key => window.sessionStorage.getItem(key),
@@ -77,7 +88,7 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
       let transport: Awaited<ReturnType<typeof createHostTransport>> | undefined;
       let acknowledgement: { code: string; hostToken: string; reopened: boolean } | undefined;
       let cancelled = false;
-      const stop = (): void => { cancelled = true; transport?.stop(); reject(new Error('cancelled')); };
+      const stop = (): void => { cancelled = true; transport?.stop(); links.stop(); reject(new Error('cancelled')); };
       registerStop(stop);
       const finish = (): void => {
         if (!transport || !acknowledgement || cancelled) return;
@@ -113,7 +124,7 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
             ...(response.status === 429 ? { retryAfterMs: retryAfterDelay(response.headers.get('Retry-After'), Date.now()) } : {}) };
         },
         onRoom: message => { acknowledgement = { code: message.code, hostToken: message.hostToken, reopened: message.reopened }; finish(); },
-        onPeer: (id, peer) => { callbacks.peer(id, peer); },
+        onPeer: (id, peer) => { links.peer(id, peer); callbacks.peer(id, peer); },
         onControl: (message, _identity, id) => { callbacks.control(id, message); },
         onState: (state, id) => {
           // A disconnected peer must re-authenticate on a new connection before using its held seat.

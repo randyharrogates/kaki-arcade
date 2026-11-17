@@ -1,10 +1,11 @@
+import { retainOutgoing } from './fade-layers';
 import type { ComponentChildren } from 'preact';
 import { useLayoutEffect, useRef, useState } from 'preact/hooks';
-import { enter, exit } from '@kaki/ui';
+import { crossfade, enter, exit } from '@kaki/ui';
 import { lobbyMotion } from './lobby-motion';
 
-/** Finish each wipe before presenting a newer identity; interruptions coalesce to the latest. */
-export function Overlap({ identity, children, row, index = 0, fade = false }: {
+/** Wipes coalesce; crossfades present the latest state immediately, retaining outgoing ink. */
+function MaskOverlap({ identity, children, row, index = 0, fade = false }: {
   identity: string; children: ComponentChildren; row?: boolean; index?: number; fade?: boolean;
 }) {
   const [frames, setFrames] = useState({ identity, current: children, old: null as ComponentChildren });
@@ -14,12 +15,12 @@ export function Overlap({ identity, children, row, index = 0, fade = false }: {
   const outgoing = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     if (frames.identity === identity) latest.current = children;
-    else if (!animating.current) setFrames({ identity, current: children, old: latest.current });
-  }, [identity, children, frames]);
+    else if (fade || !animating.current) setFrames({ identity, current: children, old: latest.current });
+  }, [identity, children, frames, fade]);
   useLayoutEffect(() => {
     const element = incoming.current;
     latest.current = frames.current;
-    if (!element?.animate) { animating.current = false; setFrames(f => f.old ? { ...f, old: null } : f); return; }
+    if ((fade && !frames.old) || !element?.animate) { animating.current = false; setFrames(f => f.old ? { ...f, old: null } : f); return; }
     animating.current = true;
     const { incoming: motion, outgoing: oldMotion } = fade ? { incoming: enter({ kind: 'fade', tempo: 'slow' }), outgoing: exit({ kind: 'fade', tempo: 'slow' }) } : lobbyMotion(row ?? false, index);
     const slow = import.meta.env.DEV ? Math.max(1, Number(new URLSearchParams(location.search).get('slow')) || 1) : 1;
@@ -37,4 +38,40 @@ export function Overlap({ identity, children, row, index = 0, fade = false }: {
     {frames.old && <div class="outgoing" ref={outgoing} aria-hidden="true" inert>{frames.old}</div>}
     <div class="incoming" ref={incoming}>{frames.identity === identity ? children : latest.current}</div>
   </div>;
+}
+
+/** Each outgoing layer owns its exit, including when another heading arrives mid-fade. */
+export function Overlap(props: Omit<Parameters<typeof MaskOverlap>[0], 'children'> & { children: ComponentChildren | ((active: boolean) => ComponentChildren); surface?: boolean }) {
+  return props.fade ? <FadeOverlap identity={props.identity} surface={props.surface ?? false}>{props.children}</FadeOverlap> : <MaskOverlap identity={props.identity} row={props.row ?? false} index={props.index ?? 0} children={renderLayer(props.children, true)}/>;
+}
+function renderLayer(content: LayerContent, active: boolean): ComponentChildren {
+  return typeof content === 'function' ? (content as (active: boolean) => ComponentChildren)(active) : content;
+}
+type LayerContent = ComponentChildren | ((active: boolean) => ComponentChildren);
+function FadeOverlap({ identity, children, surface = false }: { identity: string; children: LayerContent; surface?: boolean }) {
+  const [layers, setLayers] = useState<{ id: number; content: LayerContent }[]>([]);
+  const current = useRef({ identity, children, id: 0 });
+  if (current.current.identity !== identity) {
+    const previous = current.current;
+    setLayers(old => retainOutgoing(old, { id: previous.id, content: previous.children }));
+    current.current = { identity, children, id: previous.id + 1 };
+  } else current.current.children = children;
+  return <div class="overlap">
+    {[...layers.map(layer => <FadeLayer key={layer.id} surface={surface} outgoing done={() => { setLayers(old => old.filter(item => item.id !== layer.id)); }}>{layer.content}</FadeLayer>),
+      <FadeLayer key={current.current.id} surface={surface} initial={current.current.id === 0}>{children}</FadeLayer>] }
+  </div>;
+}
+function FadeLayer({ children, outgoing = false, initial = false, surface = false, done }: { children: LayerContent; surface?: boolean; outgoing?: boolean; initial?: boolean; done?: () => void }) {
+  const element = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    if (initial && !outgoing) return;
+    if (!element.current?.animate) { done?.(); return; }
+    const motion = surface ? crossfade()[outgoing ? 'outgoing' : 'incoming'] : (outgoing ? exit : enter)({ kind: 'fade', tempo: 'slow' });
+    const slow = import.meta.env.DEV ? Math.max(1, Number(new URLSearchParams(location.search).get('slow')) || 1) : 1;
+    motion.options.duration *= slow;
+    const animation = element.current.animate(motion.keyframes, motion.options);
+    animation.onfinish = () => { done?.(); };
+    return () => { animation.cancel(); };
+  }, [outgoing]);
+  return <div ref={element} class={`${outgoing ? 'outgoing' : 'incoming'}${surface ? ' ka-surface' : ''}`} aria-hidden={outgoing || undefined} inert={outgoing || undefined}>{renderLayer(children, !outgoing)}</div>;
 }

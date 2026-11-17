@@ -86,3 +86,6 @@
 @media (max-width: 360px) {
   .phone-picker-controls button { min-height: var(--ka-space-55); min-width: 0; padding: var(--ka-space-8); }
 }
+.phone-picker button .result-shape { width: var(--ka-space-34); height: var(--ka-space-34); vertical-align: middle; margin-right: var(--ka-space-13); fill: none; stroke-width: 3; }
+.phone-picker .cross { stroke: var(--ka-seat-1); }
+.phone-picker .circle { stroke: var(--ka-seat-2); }

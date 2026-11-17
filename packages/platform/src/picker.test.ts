@@ -28,6 +28,7 @@ describe('PLAT-020/021 picker state machine', () => {
     input('select'); expect(state.screen).toBe('start'); inert(['open', 'next', 'previous', 'select']);
     input('back'); expect(state.screen).toBe('picker'); input('select'); input('start'); expect(state.screen).toBe('starting');
     inert(PICKER_INPUTS);
+    expect(pickerInput(state, { ...room, phase: 'playing' }, gameMetas, 'p0', 'back', state.revision)).toBe(state);
     expect(pickerInput(state, room, gameMetas, 'p0', 'back', state.revision - 1)).toBe(state);
   });
   it('keeps unavailable games focused, refuses selection and start, and updates the reason with seated count', () => {

@@ -1,0 +1,536 @@
+{
+  "slice": "C-16-start-game",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- C-16-start-game --phones 2",
+  "commit": "a45703833c590dcb822717e7873a57f88b1079f8",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 868.0771249999998,
+      "status": "completed"
+    },
+    {
+      "name": "Seat two phones for rabakz",
+      "ms": 444.2342920000001,
+      "status": "completed"
+    },
+    {
+      "name": "Leader starts rabakz; TV and both shells follow",
+      "ms": 120651.152375,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 867.8887090000062,
+      "status": "completed"
+    },
+    {
+      "name": "Seat two phones for tabao-rush",
+      "ms": 334.5077089999977,
+      "status": "completed"
+    },
+    {
+      "name": "Leader starts tabao-rush; TV and both shells follow",
+      "ms": 9556.600375000009,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-page-results-fit-long-winner.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-page-results-fit-long-winner-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-page-results-fit-single-word-winner.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-page-results-fit-team-result.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-page-results-fit-two-way-tie-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-page-results-fit-wide-tie.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-page-results-fit-wide-tie-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-page-results-fit-team-tie-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-page-results-fit-eight-player-teams.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-page-results-fit-three-way-tie.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-rabakz-header-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-rabakz-header-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-rabakz-header-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-rabakz-header-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-rabakz-header-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-rabakz-header-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-rabakz-header-crossfade-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-rabakz-header-crossfade-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-rabakz-header-crossfade-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-rabakz-header-crossfade-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-rabakz-header-crossfade-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-rabakz-header-crossfade-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-rabakz-before-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-rabakz-start-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-rabakz-start-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-host-rabakz-start-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-host-rabakz-start-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-rabakz-start-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-host-rabakz-start-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-host-rabakz-start-crossfade-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-rabakz-start-crossfade-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-host-rabakz-start-crossfade-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-phone1-rabakz-controller-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-phone2-rabakz-controller-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-host-rabakz-running.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-host-rabakz-game-final.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-host-rabakz-results-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-host-rabakz-results-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-host-rabakz-results-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-host-rabakz-results-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-host-rabakz-results-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-host-rabakz-results-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-host-rabakz-results-crossfade-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-host-rabakz-results-crossfade-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-host-rabakz-results-crossfade-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "49-host-rabakz-results-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "50-phone1-rabakz-results-leader.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "51-phone2-rabakz-results-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "52-host-rabakz-returned-picker.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "53-phone1-rabakz-returned-picker-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "54-phone2-rabakz-returned-picker-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "55-phone1-rabakz-restarted-controller-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "56-phone2-rabakz-restarted-controller-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "57-host-tabao-rush-header-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "58-host-tabao-rush-header-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "59-host-tabao-rush-header-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "60-host-tabao-rush-header-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "61-host-tabao-rush-header-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "62-host-tabao-rush-header-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "63-host-tabao-rush-header-crossfade-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "64-host-tabao-rush-header-crossfade-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "65-host-tabao-rush-header-crossfade-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "66-host-tabao-rush-header-crossfade-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "67-host-tabao-rush-header-crossfade-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "68-host-tabao-rush-header-crossfade-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "70-host-tabao-rush-before-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "71-host-tabao-rush-start-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "72-host-tabao-rush-start-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "73-host-tabao-rush-start-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "74-host-tabao-rush-start-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "75-host-tabao-rush-start-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "76-host-tabao-rush-start-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "77-host-tabao-rush-start-crossfade-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "78-host-tabao-rush-start-crossfade-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "79-host-tabao-rush-start-crossfade-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "81-phone1-tabao-rush-controller-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "82-phone2-tabao-rush-controller-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "83-host-tabao-rush-running.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-page-results-fit-long-winner.jpg",
+    "02-page-results-fit-long-winner-keyboard.jpg",
+    "03-page-results-fit-single-word-winner.jpg",
+    "04-page-results-fit-team-result.jpg",
+    "05-page-results-fit-two-way-tie-keyboard.jpg",
+    "06-page-results-fit-wide-tie.jpg",
+    "07-page-results-fit-wide-tie-keyboard.jpg",
+    "08-page-results-fit-team-tie-keyboard.jpg",
+    "09-page-results-fit-eight-player-teams.jpg",
+    "10-page-results-fit-three-way-tie.jpg",
+    "23-strip-rabakz-header-crossfade.jpg",
+    "24-host-rabakz-before-start.jpg",
+    "34-strip-rabakz-start-crossfade.jpg",
+    "35-phone1-rabakz-controller-1.jpg",
+    "36-phone2-rabakz-controller-2.jpg",
+    "37-host-rabakz-running.jpg",
+    "38-host-rabakz-game-final.jpg",
+    "48-strip-rabakz-results-crossfade.jpg",
+    "49-host-rabakz-results-tv.jpg",
+    "50-phone1-rabakz-results-leader.jpg",
+    "51-phone2-rabakz-results-phone2.jpg",
+    "52-host-rabakz-returned-picker.jpg",
+    "53-phone1-rabakz-returned-picker-phone1.jpg",
+    "54-phone2-rabakz-returned-picker-phone2.jpg",
+    "55-phone1-rabakz-restarted-controller-1.jpg",
+    "56-phone2-rabakz-restarted-controller-2.jpg",
+    "69-strip-tabao-rush-header-crossfade.jpg",
+    "70-host-tabao-rush-before-start.jpg",
+    "80-strip-tabao-rush-start-crossfade.jpg",
+    "81-phone1-tabao-rush-controller-1.jpg",
+    "82-phone2-tabao-rush-controller-2.jpg",
+    "83-host-tabao-rush-running.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-page-results-fit-long-winner.jpg",
+      "bytes": 168308
+    },
+    {
+      "file": "02-page-results-fit-long-winner-keyboard.jpg",
+      "bytes": 174501
+    },
+    {
+      "file": "03-page-results-fit-single-word-winner.jpg",
+      "bytes": 178393
+    },
+    {
+      "file": "04-page-results-fit-team-result.jpg",
+      "bytes": 180845
+    },
+    {
+      "file": "05-page-results-fit-two-way-tie-keyboard.jpg",
+      "bytes": 188533
+    },
+    {
+      "file": "06-page-results-fit-wide-tie.jpg",
+      "bytes": 199999
+    },
+    {
+      "file": "07-page-results-fit-wide-tie-keyboard.jpg",
+      "bytes": 204360
+    },
+    {
+      "file": "08-page-results-fit-team-tie-keyboard.jpg",
+      "bytes": 197340
+    },
+    {
+      "file": "09-page-results-fit-eight-player-teams.jpg",
+      "bytes": 214142
+    },
+    {
+      "file": "10-page-results-fit-three-way-tie.jpg",
+      "bytes": 184879
+    },
+    {
+      "file": "23-strip-rabakz-header-crossfade.jpg",
+      "bytes": 623901
+    },
+    {
+      "file": "24-host-rabakz-before-start.jpg",
+      "bytes": 138048
+    },
+    {
+      "file": "34-strip-rabakz-start-crossfade.jpg",
+      "bytes": 1945740
+    },
+    {
+      "file": "35-phone1-rabakz-controller-1.jpg",
+      "bytes": 77936
+    },
+    {
+      "file": "36-phone2-rabakz-controller-2.jpg",
+      "bytes": 77719
+    },
+    {
+      "file": "37-host-rabakz-running.jpg",
+      "bytes": 237919
+    },
+    {
+      "file": "38-host-rabakz-game-final.jpg",
+      "bytes": 280207
+    },
+    {
+      "file": "48-strip-rabakz-results-crossfade.jpg",
+      "bytes": 2216633
+    },
+    {
+      "file": "49-host-rabakz-results-tv.jpg",
+      "bytes": 180720
+    },
+    {
+      "file": "50-phone1-rabakz-results-leader.jpg",
+      "bytes": 124511
+    },
+    {
+      "file": "51-phone2-rabakz-results-phone2.jpg",
+      "bytes": 88883
+    },
+    {
+      "file": "52-host-rabakz-returned-picker.jpg",
+      "bytes": 174749
+    },
+    {
+      "file": "53-phone1-rabakz-returned-picker-phone1.jpg",
+      "bytes": 142166
+    },
+    {
+      "file": "54-phone2-rabakz-returned-picker-phone2.jpg",
+      "bytes": 112584
+    },
+    {
+      "file": "55-phone1-rabakz-restarted-controller-1.jpg",
+      "bytes": 77936
+    },
+    {
+      "file": "56-phone2-rabakz-restarted-controller-2.jpg",
+      "bytes": 77719
+    },
+    {
+      "file": "69-strip-tabao-rush-header-crossfade.jpg",
+      "bytes": 631991
+    },
+    {
+      "file": "70-host-tabao-rush-before-start.jpg",
+      "bytes": 145668
+    },
+    {
+      "file": "80-strip-tabao-rush-start-crossfade.jpg",
+      "bytes": 1416764
+    },
+    {
+      "file": "81-phone1-tabao-rush-controller-1.jpg",
+      "bytes": 77936
+    },
+    {
+      "file": "82-phone2-tabao-rush-controller-2.jpg",
+      "bytes": 77719
+    },
+    {
+      "file": "83-host-tabao-rush-running.jpg",
+      "bytes": 136513
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 3718
+    },
+    {
+      "file": "run.json",
+      "bytes": 13271
+    }
+  ],
+  "totalBytes": 10972288,
+  "maxBytes": 12582912
+}

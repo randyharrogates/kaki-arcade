@@ -310,6 +310,12 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   mid-round watch and share the score. Rules only: no screen yet. Built by Codex; two review
   rounds, the last must-fix confirmed by the integrator against the reviewer's test.
 
+### Start a game from the picker (C-16)
+Start loads the chosen game (Rabakz's question bank only when Rabakz is picked), runs it, shows its
+TV screen and sends each phone its controller; pause and quit go back to the picker with the same
+players. The results screen names winners and ties at the largest size that fits and falls back to
+seat numbers only when a name cannot fit. UAT: `uat/evidence/C-16-start-game/round14/`.
+
 ## Does not exist yet
 
 - No controller or game screen yet; the picker stops at "Starting…" until C-10 wires the session.

@@ -124,3 +124,27 @@ button:focus-visible, a:focus-visible { outline: var(--ka-space-5) solid var(--k
 /* Equal copy bands keep the lobby mask boundary in the same header coordinates. */
 .picker-screen header > .overlap { height: calc(var(--ka-type-89) * var(--ka-line-display) + var(--ka-type-34) * var(--ka-line-body) + var(--ka-space-8)); }
 .picker-screen header .incoming, .picker-screen header .outgoing { height: 100%; grid-template-rows: calc(var(--ka-type-89) * var(--ka-line-display)) auto; row-gap: var(--ka-space-8); align-items: start; }
+
+.session-placeholder .picker-players { position: absolute; bottom: var(--ka-space-55); left: var(--ka-space-55); right: var(--ka-space-55); }
+.console-results { display: grid; grid-template-rows: minmax(0, 1fr); grid-template-columns: minmax(0, 1fr) minmax(0, 1.618fr); gap: var(--ka-space-55); font-size: var(--ka-type-34); }
+.results-winner { min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--ka-space-34); min-width: 0; }
+.results-winner > * { flex-shrink: 0; }
+.results-winner h1 { overflow: visible; clip-path: inset(0); overflow-wrap: anywhere; font-family: var(--ka-font-display); font-size: var(--ka-type-144); line-height: var(--ka-line-display); }
+.results-winner .ka-chip { align-self: flex-start; }
+.results-winner p { font-size: var(--ka-type-34); }
+.winner-score { display: flex; align-items: center; gap: var(--ka-space-21); flex-wrap: wrap; font-size: var(--ka-type-55); }
+.winner-score strong { font-family: var(--ka-font-mono); font-size: var(--ka-type-89); font-weight: var(--ka-weight-bold); }
+.winner-badges { display: flex; align-items: center; gap: var(--ka-space-13); }
+.winner-score .seat-number { flex-shrink: 0; width: var(--ka-space-144); height: var(--ka-space-144); font-size: var(--ka-type-89); }
+.results-hints { display: flex; gap: var(--ka-space-21); }
+.results-keyboard { white-space: nowrap; }
+.results-hints span { display: flex; align-items: center; gap: var(--ka-space-13); }
+.result-shape { width: var(--ka-space-55); height: var(--ka-space-55); fill: none; flex-shrink: 0; }
+.result-shape.cross { stroke: var(--ka-seat-1); }
+.result-shape.circle { stroke: var(--ka-seat-2); }
+.results-ranking { display: flex; flex-direction: column; justify-content: center; min-width: 0; min-height: 0; gap: var(--ka-space-8); padding: 0; list-style: none; }
+.results-ranking li { display: grid; grid-template-columns: var(--ka-space-34) var(--ka-space-55) minmax(0, 1fr) auto; gap: var(--ka-space-21); align-items: center; padding: var(--ka-space-13) var(--ka-space-21); }
+.results-ranking .seat-number { width: var(--ka-space-55); height: var(--ka-space-55); font-size: var(--ka-type-34); }
+.game-final-hint { position: absolute; bottom: var(--ka-space-55); left: var(--ka-space-55); font-size: var(--ka-type-34); }
+
+.results-ranking .ranking-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

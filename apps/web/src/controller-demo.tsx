@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { ControllerShell, FaceButtons, DPad, ShoulderButton, StartButton, Stick, controlSizes, LayoutEngine } from '../../../packages/controller-kit/src/index';
-import type { Layout, LayoutOutput } from '../../../packages/controller-kit/src/index';
+import { ControllerShell, FaceButtons, DPad, ShoulderButton, StartButton, Stick, controlSizes, LayoutEngine } from '@kaki/controller-kit';
+import type { Layout, LayoutOutput, LinkState } from '@kaki/controller-kit';
 import { layoutFixtures, nextWireLayout } from './layout-fixtures';
 import '../../../packages/controller-kit/src/layout.css';
-import type { LinkState } from '../../../packages/controller-kit/src/index';
 import type { SeatNumber } from '@kaki/ui';
-import '../../../packages/controller-kit/src/shell.css';
+import '@kaki/controller-kit/shell.css';
 import '../../../packages/controller-kit/src/buttons.css';
 import '../../../packages/controller-kit/src/stick.css';
 import './controller-demo.css';

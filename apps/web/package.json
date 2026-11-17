@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kaki/content-rabakz": "workspace:*",
+    "@kaki/controller-kit": "workspace:*",
+    "@kaki/game-rabakz": "workspace:*",
     "@kaki/netcode": "workspace:*",
     "@kaki/platform": "workspace:*",
     "@kaki/protocol": "workspace:*",

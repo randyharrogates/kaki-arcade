@@ -69,12 +69,13 @@ it.each(['entry.js.map', 'lib.tsbuildinfo', 'fixture.js'])('rejects non-deployab
   } finally { rmSync(output, { recursive: true, force: true }); }
 });
 
-it('counts copied public files against the 300 KB controller budget', () => {
+it('counts CSS referenced public files against the 300 KB controller budget', () => {
   const output = mkdtempSync(join(tmpdir(), 'kaki-controller-public-'));
   try {
     writeFileSync(join(output, 'index.html'), ''); writeFileSync(join(output, 'entry.js'), '');
     writeFileSync(join(output, 'public.bin'), randomBytes(301000));
-    expect(withinControllerBudget(controllerBundleSize(output, { 'index.html': { file: 'entry.js' } }).gzip)).toBe(false);
+    writeFileSync(join(output, 'style.css'), 'body{background:url(/public.bin)}');
+    expect(withinControllerBudget(controllerBundleSize(output, { 'index.html': { file: 'entry.js', css: ['style.css'] } }).gzip)).toBe(false);
   } finally { rmSync(output, { recursive: true, force: true }); }
 });
 it.each(['overscroll-behaviour', 'background-colour', 'text-centre'])('rejects unknown built CSS property %s', property => {
@@ -84,7 +85,7 @@ it.each(['overscroll-behaviour', 'background-colour', 'text-centre'])('rejects u
     expect(() => deployBundleSize(output)).toThrow('Unknown CSS property');
   } finally { rmSync(output, { recursive: true, force: true }); }
 });
-it.each(['Ah Boy', 'H7KQ9MXR'])('rejects phone demo marker %s', marker => {
+it.each(['Ah Boy', 'Ah Boyz', 'H7KQ9MXR'])('rejects phone demo marker %s', marker => {
   const output = mkdtempSync(join(tmpdir(), 'kaki-demo-'));
   try { writeFileSync(join(output, 'entry.js'), marker); expect(() => deployBundleSize(output)).toThrow('Demo fixture'); }
   finally { rmSync(output, { recursive: true, force: true }); }
@@ -98,8 +99,31 @@ it('permits British spellings in custom properties and CSS values', () => {
   } finally { rmSync(output, { recursive: true, force: true }); }
 });
 
-it.each(['RUDE_WORDS', ...RUDE_WORDS.map(word => JSON.stringify(word))])('rejects server filter literal %s in production output', literal => {
+it.each(['RUDE_WORDS', JSON.stringify(RUDE_WORDS), JSON.stringify(RUDE_WORDS.slice(0, 3))])('rejects server filter literal %s in production output', literal => {
   const output = mkdtempSync(join(tmpdir(), 'kaki-server-filter-'));
   try { writeFileSync(join(output, 'entry.js'), literal); expect(() => deployBundleSize(output)).toThrow('Server code filter shipped'); }
   finally { rmSync(output, { recursive: true, force: true }); }
+});
+
+it.each(['"69"', '"Ah Boys to Men"'])('permits legitimate single answer %s', literal => {
+  const output = mkdtempSync(join(tmpdir(), 'kaki-answer-'));
+  try { writeFileSync(join(output, 'entry.js'), literal); expect(() => deployBundleSize(output)).not.toThrow(); }
+  finally { rmSync(output, { recursive: true, force: true }); }
+});
+it('D-115 walks static cycles, lazy phone routes and CSS public URLs, excluding host dynamic imports', () => {
+  const output = mkdtempSync(join(tmpdir(), 'kaki-phone-closure-'));
+  try {
+    mkdirSync(join(output, 'assets'));
+    const files = ['index.html', 'assets/entry.js', 'assets/shared.js', 'assets/phone.js', 'assets/phone-control.js', 'assets/style.css', 'assets/icon.svg', 'font.woff2'];
+    for (const file of files) writeFileSync(join(output, file), file.endsWith('.css') ? '@font-face{src:url(/font.woff2)}body{background:url(./icon.svg)}' : file);
+    const size = controllerBundleSize(output, {
+      'index.html': { file: 'assets/entry.js', imports: ['shared'], dynamicImports: ['host', 'src/phone-route.tsx'] },
+      shared: { file: 'assets/shared.js', imports: ['index.html'], css: ['assets/style.css'], assets: ['assets/icon.svg'] },
+      'src/phone-route.tsx': { file: 'assets/phone.js', imports: ['shared'], dynamicImports: ['phone-control'] },
+      'phone-control': { file: 'assets/phone-control.js', imports: ['shared'] },
+      host: { file: 'missing-host-only.js', dynamicImports: ['bank'] },
+    });
+    expect(size.files.sort()).toEqual(files.sort());
+    expect(size.gzip).toBe(files.reduce((sum, file) => sum + gzipSync(file.endsWith('.css') ? '@font-face{src:url(/font.woff2)}body{background:url(./icon.svg)}' : file).length, 0));
+  } finally { rmSync(output, { recursive: true, force: true }); }
 });

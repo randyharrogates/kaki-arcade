@@ -1,6 +1,11 @@
+import { GameFinalHint } from './game-final-hint';
+import { Results } from './results';
+import { hostScreen } from './session-adapter';
+import { sessionDisplayStore } from './session-display';
+import type { ComponentChildren } from 'preact';
 import { GamePicker } from './picker-route';
 import { initialPicker } from '@kaki/platform';
-import { gameMetas } from './game-registry';
+import { gameMetas, sessionRegistrations } from './game-registry';
 import type { RoomState } from '@kaki/platform';
 import { nameLines, namePresentation, countdownLabel } from './seat-text';
 import { useLayoutEffect, useEffect, useMemo, useRef, useState } from 'preact/hooks';
@@ -49,6 +54,7 @@ function hasSavedRoom(): boolean {
 }
 export function HostLobby() {
   const [view, setView] = useState(() => lobbyView({ room: createRoom(), links: new Map(), code: '', pairing: hasSavedRoom() ? 'restoring' : 'creating', origin: location.origin }));
+  const displays = useMemo(sessionDisplayStore, []);
   const [picker, setPicker] = useState(initialPicker(gameMetas));
   const [room, setRoom] = useState<RoomState>(createRoom());
   const focusedState = useRef('');
@@ -100,7 +106,7 @@ export function HostLobby() {
         window.setTimeout(() => { if (alive && params.has('change')) present({ ...demoChange(input, params.get('change') ?? ''), origin: location.origin }); }, 2000);
       });
     } else {
-      const controller = createHost(browserDependencies(String(import.meta.env.KAKI_SIGNAL_URL)), input => { present({ ...input, origin: location.origin }); });
+      const controller = createHost(browserDependencies(String(import.meta.env.KAKI_SIGNAL_URL), undefined, undefined, value => { if (alive) displays.publish(value); }, event => { host.current?.sessionEvent(event); }), input => { present({ ...input, origin: location.origin }); });
       host.current = controller; void controller.start();
     }
     return () => { alive = false; demoEvents.abort(); window.clearInterval(tick); host.current?.stop(); };
@@ -124,5 +130,22 @@ export function HostLobby() {
     <div class="announcements" aria-live="polite" aria-atomic="true">{announcement.current}</div>
     <ol class="seats" data-wrap={view.seats.some(seat => seat.connection === 'Scan to join' || seat.connection === 'Seat held')} aria-label="Player seats">{view.seats.map((seat, index) => <Seat key={seat.number} seat={seat} index={changedSeats > 1 ? index : 0}/>)}</ol>
   </main>;
-  return <div class="host-shell"><Overlap fade identity={picker.screen === 'lobby' ? 'lobby' : 'picker'}>{picker.screen === 'lobby' ? lobby : <GamePicker state={picker} room={room}/>}</Overlap></div>;
+  return <SessionSurface displays={displays} room={room} picker={picker} lobby={lobby} back={() => { host.current?.returnToPicker(); }} again={() => { host.current?.playAgain(); }} continued={() => { host.current?.continueResults(); }}/>;
+}
+function SessionSurface({ displays, room, picker, lobby, back, again, continued }: {
+  displays: ReturnType<typeof sessionDisplayStore>; room: RoomState; picker: ReturnType<typeof initialPicker>; lobby: ComponentChildren; back: () => void; again: () => void; continued: () => void;
+}) {
+  const [session, setSession] = useState(() => displays.get());
+  const [size, setSize] = useState({ width: innerWidth, height: innerHeight });
+  useEffect(() => displays.subscribe(setSession), [displays]);
+  useEffect(() => { const resize = (): void => { setSize({ width: innerWidth, height: innerHeight }); }; window.addEventListener('resize', resize); return () => { window.removeEventListener('resize', resize); }; }, []);
+  const Screen = session?.Screen;
+  const [keyboard, setKeyboard] = useState(false);
+  useEffect(() => { const used = (): void => { setKeyboard(true); }; window.addEventListener('keydown', used); return () => { window.removeEventListener('keydown', used); }; }, []);
+  useEffect(() => {
+    if (!session?.finalScreen) return;
+    const key = (event: KeyboardEvent): void => { setKeyboard(true); if (event.key === 'Enter' && !event.repeat) { event.preventDefault(); continued(); } };
+    window.addEventListener('keydown', key); return () => { window.removeEventListener('keydown', key); };
+  }, [session?.finalScreen, continued]);
+  return <div class="host-shell"><Overlap fade surface identity={hostScreen(session, picker.screen === 'lobby')}>{active => session ? session.results && !session.finalScreen ? <Results active={active} session={session} room={room} back={back} again={again} keyboard={keyboard}/> : Screen ? <><Screen view={session.view as never} width={size.width} height={size.height}/>{session.finalScreen && <GameFinalHint theme={sessionRegistrations[session.gameId]?.finalHintTheme} keyboard={keyboard}/>}</> : <main class="screen room-status session-placeholder" aria-label="Game screen"><h1>This game’s screen is not built yet</h1><ol class="picker-players" aria-label="Players">{room.players.map(p => <li class="ka-panel" key={p.seat}><span class="seat-number" style={{ backgroundColor: `var(--ka-seat-${String(p.seat)})` }}>{p.seat}</span>{p.name}</li>)}</ol></main> : picker.screen === 'lobby' ? lobby : <GamePicker state={picker} room={room}/>}</Overlap></div>;
 }

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createPhoneSeatStore } from '@kaki/platform';
 import type { PhoneReconnectDial } from '@kaki/platform';
-import { createPhone, phoneCopy, phoneView } from './phone';
+import { createPhone, phoneCopy, phoneView, phoneController } from './phone';
 import type { PhoneDependencies, PhoneState, PhoneView } from './phone';
 import { normaliseJoinCode } from './phone';
 import { phoneDemo } from './phone-demo';
@@ -198,4 +198,23 @@ it('PLAT-009 uses separate unreachable title and detail and typographic apostrop
 it('PLAT-006 gives the lobby leader an invitation and watchers waiting copy', () => {
   expect(phoneView('lobby', { leader: true }).detail).toBe("Pick a game when everyone’s in.");
   expect(phoneView('lobby', { leader: false }).detail).toBe('Waiting for the leader to pick a game.');
+});
+
+it('C-16 layout mounts the controller decision and session end restores picker (PLAT-031)', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.dial.onState('control-open'); f.seat();
+  expect(phoneController(f.view)).toBeNull();
+  f.dial.onControl({ v: 1, t: 'layout', rev: 0, layout: { revision: 0, controls: [] } });
+  expect(phoneController(f.view)).toEqual({ seat: 3, name: 'Fern', theme: 'console', link: 'connected' });
+  f.dial.onState('closed'); expect(phoneController(f.view)?.link).toBe('reconnecting');
+  f.clock.advance(1000); f.dial.onState('control-open'); f.seat();
+  f.dial.onControl({ v: 1, t: 'room', phase: 'results', players: 1, leader: true, team: null });
+  expect(phoneController(f.view)).toBeNull(); f.phone.stop();
+});
+
+it('C-16 a late start failure clears a previously delivered controller layout', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat();
+  f.dial.onControl({ v: 1, t: 'layout', rev: 0, layout: { revision: 0, controls: [] } });
+  expect(phoneController(f.view)).not.toBeNull();
+  f.dial.onControl({ v: 1, t: 'picker-state', revision: 1, screen: 'start', game: null, leaderName: 'Fern', reason: null, failed: true });
+  expect(phoneController(f.view)).toBeNull(); f.phone.stop();
 });

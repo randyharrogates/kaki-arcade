@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { existsSync, readdirSync, readFileSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
-import { resolve, relative, isAbsolute } from 'node:path';
+import { resolve, relative, isAbsolute, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 /** Sum only the host entry's transitive files, counting shared files once.
@@ -53,9 +53,11 @@ export function deployBundleSize(output) {
     if (/\.map$|\.tsbuildinfo$/.test(file)) throw new Error(`Non-deployable build output: ${file}`);
     const bytes = readFileSync(resolve(output, file));
     if (file.endsWith('.css') && /(?:^|[;{])\s*(?!--)[-a-z]*(?:behaviour|colour|centre)[-a-z]*\s*:/.test(bytes.toString())) throw new Error(`Unknown CSS property: ${file}`);
-    if (/unsupportedDemo|unsupported-demo|Cloud Noodle|Pebble Puff|Mango Moon|Waffle Fern|Velvet Kite|Bumble Bean|Puddle Pip|Comet Crumb|demo-seat-|Ah Boy|H7KQ9MXR/.test(bytes.toString())) throw new Error(`Demo fixture shipped: ${file}`);
+    if (/unsupportedDemo|unsupported-demo|Cloud Noodle|Pebble Puff|Mango Moon|Waffle Fern|Velvet Kite|Bumble Bean|Puddle Pip|Comet Crumb|demo-seat-|Ah Boy\b|Ah Boyz\b|H7KQ9MXR/.test(bytes.toString())) throw new Error(`Demo fixture shipped: ${file}`);
     const text = bytes.toString();
-    if (text.includes('RUDE_WORDS') || words.some(word => ['"', "'", '`'].some(quote => text.includes(quote + word + quote)))) throw new Error(`Server code filter shipped: ${file}`);
+    // The filter list, not one word of it: quiz answers can match a single entry (a "69" answer did).
+    const quoted = words.filter(word => ['"', "'", '`'].some(quote => text.includes(quote + word + quote)));
+    if (text.includes('RUDE_WORDS') || quoted.length >= 3) throw new Error(`Server code filter shipped: ${file}`);
     raw += bytes.length; gzip += gzipSync(bytes).length;
   }
   return { raw, gzip, files };
@@ -63,11 +65,48 @@ export function deployBundleSize(output) {
 /** PERF-020: decimal KB, as transferred. @param {number} gzip */
 export function withinControllerBudget(gzip) { return gzip <= 300_000; }
 
-/** Shared entry plus every copied public file: count the full deploy once.
+/** D-115: phone entry and static closure, plus explicitly lazy phone routes.
  * @param {string} output
  * @param {Parameters<typeof hostBundleSize>[1]} manifest
  */
-export function controllerBundleSize(output, manifest) { hostBundleSize(output, manifest); return deployBundleSize(output); }
+export function controllerBundleSize(output, manifest) {
+  const files = new Set(['index.html']);
+  const visited = new Set();
+  /** @param {string} file */
+  function add(file) {
+    if (files.has(file)) return;
+    const target = resolve(output, file);
+    const path = relative(resolve(output), target);
+    if (path.startsWith('..') || isAbsolute(path)) throw new Error('Bundle file outside output');
+    files.add(file);
+    if (file.endsWith('.css')) {
+      const css = readFileSync(target, 'utf8');
+      for (const match of css.matchAll(/url\(\s*['"]?([^'"\s)]+)['"]?\s*\)|@import\s+['"]([^'"]+)['"]/g)) {
+        const url = match[1] ?? match[2];
+        if (!url || /^(?:data:|https?:|#|\/\/)/.test(url)) continue;
+        const clean = decodeURIComponent(url.split(/[?#]/)[0] ?? '');
+        add(clean.startsWith('/') ? clean.slice(1) : relative(resolve(output), resolve(output, dirname(file), clean)));
+      }
+    }
+  }
+  /** @param {string} key @param {boolean} phone */
+  function visit(key, phone = false) {
+    phone = key !== 'index.html' && (phone || /(?:^|\/)phone-route\.tsx$/.test(key));
+    const visitKey = `${String(phone)}:${key}`;
+    if (visited.has(visitKey)) return;
+    visited.add(visitKey);
+    const entry = manifest[key];
+    if (!entry) throw new Error(`Missing controller manifest entry: ${key}`);
+    for (const file of [entry.file, ...(entry.css ?? []), ...(entry.assets ?? [])]) add(file);
+    for (const imported of [...(entry.imports ?? []), ...(phone ? entry.dynamicImports ?? [] : [])]) visit(imported, phone);
+  }
+  visit('index.html');
+  // PhonePage is currently static. If split into a lazy route, include its static graph too.
+  for (const key of Object.keys(manifest)) if (/(?:^|\/)phone-route\.tsx$/.test(key)) visit(key, true);
+  let raw = 0; let gzip = 0;
+  for (const file of files) { const bytes = readFileSync(resolve(output, file)); raw += bytes.length; gzip += gzipSync(bytes).length; }
+  return { raw, gzip, files: [...files] };
+}
 
 /** PERF-022: decimal MB, as transferred. @param {number} gzip */
 export function withinHostBudget(gzip) { return gzip <= 1_500_000; }

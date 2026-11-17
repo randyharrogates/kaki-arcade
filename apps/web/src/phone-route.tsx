@@ -1,7 +1,11 @@
+import { ChoiceShape } from './choice-shape';
+import { pageWake, shellAfterWake } from './phone-wake';
+import { ControllerShell } from '@kaki/controller-kit';
+import '@kaki/controller-kit/shell.css';
 import { pickerAnnouncement } from './picker-announcement';
 import { duration } from '@kaki/ui';
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { createPhone, phoneView } from './phone';
+import { createPhone, phoneView, phoneController } from './phone';
 import type { PhoneView } from './phone';
 import { phoneBrowserDependencies } from './phone-browser';
 import { Icon } from './icons';
@@ -39,25 +43,32 @@ export function PhonePage() {
     resize(); viewport?.addEventListener('resize', resize);
     return () => { viewport?.removeEventListener('resize', resize); };
   }, []);
+  const controller = phoneController(view);
+  const [wakeReady, setWakeReady] = useState(false);
+  const releaseWake = useRef<Promise<void>>(Promise.resolve());
   // Reacquire on foreground; releasing on cleanup prevents a stale page keeping it alive.
   useEffect(() => {
-    let lock: WakeLockSentinel | undefined; let active = true;
-    const acquire = (): void => {
-      if (view.connected && !document.hidden && ('wakeLock' in navigator)) void navigator.wakeLock.request('screen').then(next => {
-        if (active) lock = next; else void next.release();
-      }).catch(() => undefined);
-    };
+    if (controller) {
+      const cancel = shellAfterWake(releaseWake.current, () => { setWakeReady(true); });
+      return () => { cancel(); setWakeReady(false); };
+    }
+    setWakeReady(false);
+    const wake = pageWake(navigator, () => view.connected && !document.hidden);
+    // The shell's unmount cleanup runs before this passive effect reacquires for the page.
+    const acquire = (): void => { wake.acquire(); };
     acquire(); document.addEventListener('visibilitychange', acquire);
-    return () => { active = false; document.removeEventListener('visibilitychange', acquire); void lock?.release(); };
-  }, [view.connected]);
-  const picker = view.connected && !view.renaming ? view.picker : null;
+    return () => { document.removeEventListener('visibilitychange', acquire); releaseWake.current = wake.stop(); };
+  }, [!controller && view.connected, controller !== null]);
+  const results = view.connected && view.phase === 'results';
+  const picker = view.connected && !view.renaming && !results ? view.picker : null;
   const announcement = pickerAnnouncement(view);
   const form = view.action === 'Join' && !view.renaming;
   const feedback = (): void => { if ('vibrate' in navigator) navigator.vibrate(duration.fast); };
+  if (controller && wakeReady) return <ControllerShell {...controller}/>;
   return <main ref={page} class="phone-page" data-seated={view.seat !== null} data-theme="console" aria-label="Phone lobby">
     <div class="phone-live" role="status" aria-live="polite" aria-atomic="true">{announcement}</div>
     {view.seat !== null && <header class="phone-id"><span class="phone-badge" style={{ backgroundColor: view.colour }}>{view.seat}</span><strong>{view.name}</strong><span class="phone-connection" role="img" aria-label={view.connected ? 'Connected' : 'Disconnected'} data-connected={view.connected}><Icon kind={view.connected ? 'good' : 'weak'}/><span aria-hidden="true">{view.connected ? 'Connected' : 'Disconnected'}</span></span><button class="phone-leave ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button></header>}
-    <Overlap fade identity={picker && picker.screen !== 'lobby' ? 'picker' : view.renaming ? 'rename' : form ? 'form' : 'lobby'}>{view.renaming ? <section class="phone-join ka-panel">
+    <Overlap fade identity={results ? 'results' : picker && picker.screen !== 'lobby' ? 'picker' : view.renaming ? 'rename' : form ? 'form' : 'lobby'}>{view.renaming ? <section class="phone-join ka-panel">
       <div class="phone-intro"><h1>Change your name</h1></div>
       <form class="phone-fields" onSubmit={event => { event.preventDefault(); feedback(); phone.current?.saveName(name); }}>
         <label for="rename">Your name</label>
@@ -74,7 +85,7 @@ export function PhonePage() {
         {picker.screen === 'picker' ? <><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('previous'); }}><span aria-hidden="true">← </span>Previous</button><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('next'); }}>Next<span aria-hidden="true"> →</span></button><button class="ka-panel ka-pressable picker-primary" disabled={picker.reason !== null && !picker.failed} onClick={() => { feedback(); phone.current?.pickerInput('select'); }}>Select</button></> : <button class="ka-panel ka-pressable picker-primary" disabled={picker.reason !== null && !picker.failed} onClick={() => { feedback(); phone.current?.pickerInput('start'); }}>Start</button>}
         <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('back'); }}>Back</button>
       </div>}
-    </section> : form ? <section class="phone-join ka-panel">
+    </section> : results ? <section class="phone-picker"><div class="phone-status phone-results"><h2>Results</h2><p>Watch the TV.</p></div>{view.leader && (view.picker?.screen === 'starting' ? <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('select'); }}><ChoiceShape/>Continue</button> : <><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('start'); }}><ChoiceShape/>Play again</button><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('open'); }}><ChoiceShape circle/>Back to game picker</button></>)}</section> : form ? <section class="phone-join ka-panel">
       <div class="phone-intro"><h1>Kaki Arcade</h1><p>Join the room on the TV</p></div>
       <form class="phone-fields" onSubmit={event => { event.preventDefault(); feedback(); phone.current?.join(code, name); }}>
         <label for="room-code">Room code</label>

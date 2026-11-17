@@ -24,6 +24,9 @@
   ],
   "references": [
     {
+      "path": "../../packages/controller-kit/tsconfig.lib.json"
+    },
+    {
       "path": "../../packages/netcode/tsconfig.lib.json"
     },
     {
@@ -48,7 +51,7 @@
       "path": "../../games/rabakz/tsconfig.lib.json"
     },
     {
-      "path": "../../packages/controller-kit/tsconfig.lib.json"
+      "path": "../../content/rabakz/tsconfig.lib.json"
     }
   ]
 }
