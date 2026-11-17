@@ -1273,3 +1273,12 @@ says for option buttons, and never goes below 21 px: a name that does not fit at
 with an ellipsis (the full name is in its accessible label and on the TV). The pressed Teams toggle
 does not use the console-primary fill (that reads as a second Start); it shows a tick with the
 panel's pressed style.
+
+**D-153 · 2026-11-18 · Claude** (under D-142; C-11b review) — A refusal in the leader's "Move
+players" grid takes the heading row. At 667 × 375 with 8 players in a 7-1 split the grid needs
+three rows, so a refusal line between the grid and the action row pushed Done, Back and Start past
+the phone's clipped edge (C-11b rounds 5 and 6). While a refusal shows it replaces the "Red" and
+"Blue" heading row at the same height, so the grid and the action row never move; the headings
+return 3 seconds later or at the next tap. Each button still names its team in its accessible
+label and carries the team colour on its seat disc. Crossfade with the motion tokens; reduced
+motion swaps instantly. Randy may overrule.
