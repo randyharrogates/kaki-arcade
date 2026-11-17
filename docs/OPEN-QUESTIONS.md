@@ -93,3 +93,11 @@ catch only gross regressions); (b) a game-only allocation guard for Tabao Rush (
 per step measured, about 1.1 MB a second); (c) whether frame time is accepted on a production
 build or the dev build. Needed by: T-07, the first game screen.
 
+**OQ-035 · Rabakz: does the TV show that someone has answered correctly before the reveal?**
+RZ-005 says the big screen shows "who has answered". A correct answer ends the question within
+0.25 s (RZ-006), and showing "Answered" for it names the winner before the reveal. Decided by
+Claude under D-057 as D-101 (d): a correct answerer's seat keeps reading "Thinking" until the
+reveal; only a wrong answer changes a seat, to "Locked out". This reads RZ-005 narrowly; only
+Randy changes the game spec, so its wording is left as it is until he confirms or overrules.
+Needed by: R-03 (built this way), R-04 (the phone's own feedback).
+

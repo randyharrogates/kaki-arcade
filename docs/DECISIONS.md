@@ -810,3 +810,11 @@ the others. (f) When the layout differs between two questions (a picture appears
 sizes change) the picture is masked in or out and the boxes move and resize with an
 ease-in-out move over `duration.slow`; nothing cuts.
 
+**D-102 · 2026-11-17 · Claude under D-057** — Rabakz answer size, replacing D-101 (b) after
+the third R-03 review. Answers take the largest step of the TV type scale that fits, never
+larger than the prompt and never more than one step below it (89/55, 55/55, 55/34, 34/34).
+D-101 (b) alone left 34 px answers in 212 px cards beside a picture, which read small. Layout
+changes between questions animate transform only, with boxes laid out at their final geometry
+and size differences shown by a clip; nothing animates width, height or grid tracks, so the
+cost on the TV is compositor work (still to be measured for PERF-002).
+
