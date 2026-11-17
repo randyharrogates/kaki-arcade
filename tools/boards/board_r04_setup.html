@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rabakz Setup Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+/* Tokens copied from packages/ui/tokens.css (console theme, marble table). */
+:root{
+  --ka-bg:#EFEAE2;--ka-ink:#2B2118;--ka-secondary:#706151;
+  --ka-panel-from:#FFFFFF;--ka-panel-to:#F6F1E7;--ka-panel-edge-colour:#D8CDBB;
+  --ka-accent:#B5371F;--ka-accent-ink:#FFFFFF;--ka-chip:#6B4426;--ka-chip-ink:#FFFFFF;
+  --ka-font-display:"DM Serif Display",Georgia,serif;--ka-font-body:"DM Sans",system-ui,sans-serif;
+  --s5:5px;--s8:8px;--s13:13px;--s21:21px;--s34:34px;--s55:55px;--s89:89px;
+  --page:#E6E0D6;--page-ink:#2B2118;--page-soft:#706151;--note:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--page:#1E1915;--page-ink:#F3ECE2;--page-soft:#BFB2A2;--note:#2A231D}
+}
+:root[data-theme="dark"]{--page:#1E1915;--page-ink:#F3ECE2;--page-soft:#BFB2A2;--note:#2A231D}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--page-ink);font-family:var(--ka-font-body);
+  background-image:radial-gradient(color-mix(in srgb,var(--page-ink) 9%,transparent) 1.2px,transparent 1.6px);background-size:21px 21px}
+main{max-width:1440px;margin:0 auto;padding:var(--s34) 16px var(--s89)}
+header.top h1{font:400 55px/1.05 var(--ka-font-display);margin:0 0 var(--s13)}
+header.top p{font-size:21px;line-height:1.45;max-width:890px;margin:0 0 var(--s8);color:var(--page-soft)}
+.eyebrow{font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--page-soft)}
+section.opt{margin-top:var(--s55);padding-top:var(--s34);border-top:2px solid color-mix(in srgb,var(--page-ink) 15%,transparent)}
+section.opt h2{font:400 34px/1.1 var(--ka-font-display);margin:0 0 var(--s8)}
+.badge{display:inline-block;font-size:13px;font-weight:700;padding:var(--s5) var(--s13);border-radius:89px;background:var(--ka-accent);color:#fff;vertical-align:middle;margin-left:var(--s13)}
+.badge.alt{background:var(--ka-chip)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--s21);margin:var(--s21) 0;font-size:16px;line-height:1.5}
+.facts div{background:var(--note);border-radius:13px;padding:var(--s13) var(--s21)}
+.facts b{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--page-soft);margin-bottom:var(--s5)}
+.row{display:flex;flex-wrap:wrap;gap:var(--s34);align-items:flex-start}
+.frame{display:flex;flex-direction:column;gap:var(--s8)}
+.frame .cap{font-size:14px;color:var(--page-soft)}
+.scaler{overflow:hidden;border-radius:21px;box-shadow:0 13px 34px rgba(0,0,0,.18)}
+/* ---------- the phone screen, at real CSS size ---------- */
+.phone .ph-head .btn{margin-left:auto}
+.phone{position:relative;background:var(--ka-bg);color:var(--ka-ink);
+  background-image:radial-gradient(circle at 20% 30%,#D6CBBB 0 6px,transparent 6.5px),radial-gradient(circle at 72% 64%,#E0D7C9 0 4px,transparent 4.5px);background-size:89px 89px;
+  display:grid;grid-template-rows:auto 1fr auto;padding:var(--s13) var(--s21);gap:var(--s8);font-family:var(--ka-font-body)}
+.phone.w667{width:667px;height:375px}.phone.w844{width:844px;height:390px}
+.ph-head{display:flex;justify-content:space-between;align-items:center;min-height:34px;gap:var(--s13)}
+.ph-head h3{margin:0;font:400 34px/1 var(--ka-font-display);white-space:nowrap}
+.ph-head .refuse{font-size:21px;color:var(--ka-accent);font-weight:600}
+.panel{background:linear-gradient(165deg,var(--ka-panel-from),var(--ka-panel-to));border:3px solid var(--ka-panel-edge-colour);border-radius:21px;padding:var(--s8) var(--s13);min-height:0;overflow:hidden}
+.tabs{display:flex;gap:var(--s8);margin-bottom:var(--s8)}
+.tab{font-size:21px;font-weight:600;padding:var(--s5) var(--s13);border-radius:13px;border:3px solid transparent;min-height:42px;display:flex;align-items:center;gap:var(--s5)}
+.tab.on{border-color:var(--ka-ink);background:#fff}
+.grid{display:grid;gap:var(--s8)}
+.chip{min-height:55px;font-size:21px;border-radius:13px;border:3px solid var(--ka-panel-edge-colour);background:#fff;font-size:21px;font-weight:600;
+  display:flex;align-items:center;gap:var(--s5);padding:3px var(--s8);overflow:hidden;line-height:1.05}
+.chip .tick{flex:0 0 auto;width:21px;text-align:center}
+.chip .lab{min-width:0;overflow-wrap:normal;hyphens:none}
+.chip.on{border-color:var(--ka-ink);background:#FFF7EA}
+.chip.no{color:var(--ka-secondary);text-decoration:line-through;border-style:dashed}
+.chip.group{background:var(--ka-chip);color:var(--ka-chip-ink);border-color:var(--ka-chip)}
+.chip small{font-size:13px;font-weight:400;color:var(--ka-secondary);margin-left:auto}
+.ph-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s13)}
+.btn{min-height:55px;padding:0 var(--s21);border-radius:13px;font-size:21px;font-weight:700;display:flex;align-items:center;border:3px solid var(--ka-ink);background:#fff}
+.btn.primary{background:var(--ka-accent);border-color:var(--ka-accent);color:var(--ka-accent-ink)}
+.scrollhint{position:absolute;right:var(--s21);bottom:72px;font-size:13px;color:var(--ka-secondary);background:#fff;padding:2px var(--s8);border-radius:8px}
+.golden{display:grid;grid-template-columns:1.618fr 1fr;gap:var(--s13);min-height:0}
+.side{display:flex;flex-direction:column;gap:var(--s8);justify-content:center}
+.side .sum{background:#fff;border-radius:13px;padding:var(--s8) var(--s13);font-size:21px;line-height:1.3;border:3px solid var(--ka-panel-edge-colour)}
+.side .sum span{display:block;font-size:13px;color:var(--ka-secondary)}
+/* TV slot */
+.tv{width:890px;height:300px;background:var(--ka-bg);border-radius:21px;padding:var(--s34) var(--s55);color:var(--ka-ink);
+  background-image:radial-gradient(circle at 20% 30%,#D6CBBB 0 6px,transparent 6.5px);background-size:89px 89px}
+.tv h4{font:400 55px/1 var(--ka-font-display);margin:0 0 var(--s21)}
+.tvrows{display:grid;grid-template-columns:auto 1fr;gap:var(--s13) var(--s34);font-size:34px}
+.tvrows dt{color:var(--ka-secondary)}.tvrows dd{margin:0;font-weight:600}
+.verdict{background:var(--note);border-left:8px solid var(--ka-accent);padding:var(--s21) var(--s34);border-radius:13px;font-size:18px;line-height:1.55;margin-top:var(--s34)}
+@media (max-width:900px){.scaler{max-width:100%;overflow-x:auto}}
+</style>
+</head>
+<body>
+<main>
+<header class="top">
+  <span class="eyebrow">Design choice · R-04 · Rabakz setup on the leader's phone</span>
+  <h1>Choosing categories: three layouts</h1>
+  <p>The leader sets questions, categories, difficulty and teams on their phone, and the TV mirrors the choices. The hard part is categories: there are 16, and six are Singapore ones with long names. Each option is drawn below at real size on the two phone sizes we test (667 × 375 and 844 × 390), using the console's own colours, type and spacing.</p>
+  <p>Every option is plain page elements: no images, nothing that costs frame rate. Each adds roughly 1–3 KB to the phone page, well inside its 300 KB budget (PERF-020).</p>
+</header>
+
+<section class="opt" id="b">
+  <h2>B · Two groups: “Around the world” and “Singapore”<span class="badge">Recommended</span></h2>
+  <div class="facts">
+    <div><b>Fits</b>No scrolling at either size, measured: at most 11 buttons per group, 3 across at 667 and 4 across at 844, every button 55 px or taller with 21 px text. Done sits in the heading row; choices apply as they are tapped.</div>
+    <div><b>Names</b>Inside the Singapore group the word “Singapore” is dropped: “Food”, “Life”, “Places”.</div>
+    <div><b>RZ-010 “any set”</b>Met. The group button ticks or clears all six at once; each can still be picked alone.</div>
+    <div><b>Cost</b>A small addition to the game settings contract (an option can name its group). No frame-rate cost.</div>
+  </div>
+  <div class="row" id="rowB"></div>
+</section>
+
+<section class="opt" id="bg">
+  <h2>B, golden-ratio variant<span class="badge alt">Golden ratio</span></h2>
+  <div class="facts">
+    <div><b>Proportions</b>Choices panel to summary column split 1.618 : 1. The summary shows the other settings, so the leader sees everything before Start.</div>
+    <div><b>Fits</b><strong>Does not fit at 667 × 375:</strong> at 3 across, “Around the world” needs 4 rows and the last 2 buttons fall below the panel. Fine at 844 × 390.</div>
+  </div>
+  <div class="row" id="rowBG"></div>
+</section>
+
+<section class="opt" id="a">
+  <h2>A · One flat list of all 16</h2>
+  <div class="facts">
+    <div><b>Fits</b><strong>Does not fit</strong> at 667 × 375 without scrolling: 17 buttons need 5 rows; about 3 fit.</div>
+    <div><b>Names</b>“Singapore arts and sport” wraps to two lines at 21 px.</div>
+    <div><b>RZ-010</b>Met.</div>
+    <div><b>Cost</b>No contract change.</div>
+  </div>
+  <div class="row" id="rowA"></div>
+</section>
+
+<section class="opt" id="c">
+  <h2>C · One “Singapore” button for all six</h2>
+  <div class="facts">
+    <div><b>Fits</b>Yes, with Done in the heading row as in B: 12 buttons, 3 across, 4 rows.</div>
+    <div><b>RZ-010</b><strong>Bent:</strong> nobody can choose “Singapore food” on its own.</div>
+    <div><b>Cost</b>No contract change; Rabakz expands the one value to six categories.</div>
+  </div>
+  <div class="row" id="rowC"></div>
+</section>
+
+<section class="opt">
+  <h2>What the TV shows (all options)</h2>
+  <div class="facts"><div><b>Rule</b>One row per setting at 34 px, read from across the room. A whole group reads “Singapore (all)”. A choice that cannot fill the match is refused on the phone with the reason, and the TV keeps the last valid value.</div></div>
+  <div class="row"><div class="tv"><h4>Rabakz</h4><dl class="tvrows"><dt>Questions</dt><dd>10</dd><dt>Categories</dt><dd>Singapore (all), History, Music</dd><dt>Difficulty</dt><dd>Mixed</dd><dt>Teams</dt><dd>Off</dd></dl></div></div>
+</section>
+
+<div class="verdict"><strong>Decision (D-157, under D-142):</strong> B. It is the only layout that fits the smaller phone without scrolling and keeps “any set” literal. The refusal shown on the 667 frames is real: the bank has 8 hard “Singapore life” questions, so Hard is refused for a 10-question match until another category is added. Randy may overrule.</div>
+</main>
+<script>
+const WORLD=["Arts and literature","Film and television","Games, comics and anime","General knowledge","Geography","History","Music","Science and nature","Sport","Technology and vehicles"];
+const SG=["Arts and sport","Food","History","Life","Nature","Places"];
+const chip=(t,o={})=>`<div class="chip${o.on?' on':''}${o.no?' no':''}${o.group?' group':''}">${o.no||o.on?`<span class="tick">${o.no?'✕':'✓'}</span>`:''}<span class="lab">${t}</span>${o.n?`<small>${o.n}</small>`:''}</div>`;
+const head=(t,r)=>`<div class="ph-head"><h3>${t}</h3>${r?`<span class="refuse">${r}</span>`:''}</div>`;
+const foot=`<div class="ph-foot"><div class="btn">Back</div><div class="btn primary">Done</div></div>`;
+function phone(w,inner,cap){return `<div class="frame"><div class="scaler"><div class="phone w${w}">${inner}</div></div><span class="cap">${cap}</span></div>`;}
+const doneHead=(tabs,r)=>`<div class="ph-head"><div class="tabs" style="margin:0">${tabs}</div>${r?`<span class="refuse">${r}</span>`:''}<div class="btn primary">Done</div></div>`;
+function bWorld(cols){return `<div class="grid" style="grid-template-columns:repeat(${cols},1fr)">${chip('Mixed')}${WORLD.map((t,i)=>chip(t.replace('Technology and vehicles','Tech and vehicles').replace('Games, comics and anime','Games and anime'),{on:i==5||i==6})).join('')}</div>`;}
+function bSg(cols){return `<div class="grid" style="grid-template-columns:repeat(${cols},1fr)">${chip('All of Singapore',{group:true})}${SG.map((t,i)=>chip(t,{on:i==1||i==3})).join('')}</div>`;}
+function bSgRefused(cols){return `<div class="grid" style="grid-template-columns:repeat(${cols},1fr)">${chip('All of Singapore',{group:true})}${SG.map((t,i)=>chip(t,{on:i==3})).join('')}</div>`;}
+const TW='<div class="tab on">Around the world</div><div class="tab">Singapore · 2</div>', TS='<div class="tab">Around the world · 2</div><div class="tab on">Singapore</div>';
+document.getElementById('rowB').innerHTML=
+  phone(667,doneHead(TW)+`<div class="panel">${bWorld(3)}</div>`,'667 × 375 · 3 across; History and Music chosen')+
+  phone(667,doneHead('<div class="tab on">Singapore</div>','Only 8 hard Life questions')+`<div class="panel">${bSgRefused(3)}</div>`,'667 × 375 · a refusal takes the heading row (D-153 pattern)')+
+  phone(844,doneHead(TS)+`<div class="panel">${bSg(4)}</div>`,'844 × 390 · Singapore group; the dark button ticks all six');
+function golden(w,body,tabs){return doneHead(tabs)+`<div class="golden"><div class="panel">${body}</div><div class="side"><div class="sum"><span>Questions</span>10</div><div class="sum"><span>Difficulty</span>Mixed</div><div class="sum"><span>Teams</span>Off</div></div></div>`;}
+document.getElementById('rowBG').innerHTML=
+  phone(667,golden(667,bWorld(3),TW),'667 × 375 · 3 across, 4 rows')+
+  phone(844,golden(844,bSg(3),TS),'844 × 390 · Singapore group');
+const ALL=[...WORLD,...SG.map(s=>'Singapore '+s.toLowerCase())];
+document.getElementById('rowA').innerHTML=
+  phone(667,head('Categories')+`<div class="panel" style="position:relative"><div class="grid" style="grid-template-columns:repeat(4,1fr)">${chip('Mixed',{on:true})}${ALL.map(t=>chip(t)).join('')}</div></div>`+foot+`<span class="scrollhint">5 rows: scroll needed</span>`,'667 × 375 · rows cut off; scrolling needed')+
+  phone(844,head('Categories')+`<div class="panel"><div class="grid" style="grid-template-columns:repeat(5,1fr)">${chip('Mixed',{on:true})}${ALL.map(t=>chip(t)).join('')}</div></div>`+foot,'844 × 390 · still 4 rows; long names wrap');
+document.getElementById('rowC').innerHTML=
+  phone(667,doneHead('<div class="tab on">Categories</div>')+`<div class="panel"><div class="grid" style="grid-template-columns:repeat(3,1fr)">${chip('Mixed')}${WORLD.map(t=>chip(t.replace('Technology and vehicles','Tech and vehicles').replace('Games, comics and anime','Games and anime'))).join('')}${chip('Singapore',{on:true})}</div></div>`,'667 × 375 · 12 buttons in 4 rows')+
+  phone(844,doneHead('<div class="tab on">Categories</div>')+`<div class="panel"><div class="grid" style="grid-template-columns:repeat(4,1fr)">${chip('Mixed')}${WORLD.map(t=>chip(t)).join('')}${chip('Singapore',{on:true})}</div></div>`,'844 × 390');
+</script>
+</body>
+</html>

@@ -1321,3 +1321,19 @@ results never need a connected leader. Reason: the review found the round-3 bar 
 margin, over seat cards, with 21 px text during play, and new UI without a choice. The rendered
 screens go to Randy as an artifact after the round; Randy may overrule.
 
+**D-157 · 2026-11-18 · Claude** (under D-142; R-04 plan) — Rabakz setup is chosen on the leader's
+phone and mirrored read-only on the TV's setup slot (one row per setting at 34 px); other phones
+read "<leader> is setting up". There is no setup phase or setup controller layout in the game: the
+console draws a generic settings form from `settingsSchema` before `init`, which also makes Peek
+Poker's Rounds (PP-001) reachable. Categories use layout B of board
+https://claude.ai/artifact/8ayoa7P7swXm9oJbWdqiuK (`tools/boards/board_r04_setup.html`): two tabs,
+"Around the world" (10, with Mixed) and "Singapore" (6, short names, an "All of Singapore" button
+that ticks or clears all six), 3 across at 667 × 375 and 4 across at 844 × 390, Done in the heading
+row (choices apply as tapped), every button at least 55 px with 21 px text, measured with nothing
+cut off. Layout A needs scrolling at 667; C bends RZ-010; the golden-ratio variant (choices to
+summary 1.618 : 1) loses two buttons at 667, so it is not used. A choice that would leave too few
+questions is refused with the reason in the heading row (D-153 pattern); a category change is always
+accepted, and Start is then disabled with the reason until the match can be filled. Settings are kept
+per game in host memory for the room's life, not in the host snapshot. Contract additions (by the
+integrator before Codex): `MultiField.noneLabel` and `ChoiceOption.group`. Randy may overrule.
+
