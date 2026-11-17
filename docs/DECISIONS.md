@@ -1069,3 +1069,13 @@ the engine does (cards up to their natural size, text at 34 px); when space is s
 steps 34 → 21 → 13 px and wraps, and cards scale down to a 55 px-wide floor. A layout plus private
 view that still cannot fit at a 667 × 307 play area fails the game conformance check, so a game can
 never send it, and the engine never draws a clipped panel.
+
+**D-133 · 2026-11-17 · Claude** (under D-057, pending Randy) — Peek Poker card faces (A-08,
+PP-030, PP-031): **B "TV first"**: one large central rank over a large suit, small two-way
+corner indices, standard card proportions, on the K1 baize with the decided red back and the 3A
+flip (face changes edge-on). Chosen over A "Classic" (small pips and indices read poorly at 3 m)
+and C "Golden ratio" (the 1 : 1.618 card is narrower on the table, so its rank is smaller at the
+same table height: 127 vs 150 px wide at 1080p). Board: https://claude.ai/artifact/8TSLSGhH5LdE2EvdxfyjQy
+(Blender renders from tools/blender/board_cards.py in the A-08 branch). Cost: one 2048² atlas page,
+about 1.2 MB lossless WebP estimated, within budget. Randy may overrule; until then A-08 stage 2
+builds the 52 faces in style B.
