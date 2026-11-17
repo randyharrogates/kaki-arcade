@@ -13,6 +13,14 @@ def hexc(h):
     return tuple((int(h[i:i + 2], 16) / 255) ** 2.2 for i in (0, 2, 4))
 
 
+def srgb_hexc(h):
+    """Exact sRGB token to scene-linear RGB; legacy hexc stays unchanged."""
+    h = h.lstrip('#')
+    values = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+    return tuple(v / 12.92 if v <= .04045 else ((v + .055) / 1.055) ** 2.4
+                 for v in values)
+
+
 # ---------------------------------------------------------------- materials
 def mat(col, kind="hard"):
     """kind: skin | cloth | hard | gloss | hair. The finish depends on the board option."""

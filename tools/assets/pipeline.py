@@ -436,11 +436,13 @@ def check(path):
 
 
 def render(config, source=ROOT):
-    for job in config.get('renders', []):
+    jobs = list(config.get('renders', []))
+    for job in jobs:
         script = (ROOT / 'tools/blender' / job['script']).resolve()
         if not script.is_relative_to((ROOT / 'tools/blender').resolve()) or not script.is_file():
             raise ValueError('Render script must exist under tools/blender')
         inputs = [source_path(source, p) for p in job['inputs']] + [script]
+        inputs.extend(source_path(ROOT, p) for p in job.get('extraInputs', []))
         outputs = [source_path(source, p) for p in job['outputs']]
         if not outputs or not all(p.is_file() for p in inputs):
             raise ValueError('Render job needs existing inputs and declared outputs')

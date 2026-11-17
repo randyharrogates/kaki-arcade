@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — A-08: playing cards
+
+- `tools/blender/cards.py` renders 52 faces, the back and five flip frames as a declared render job
+  with token colours and pixel checks; ranks in DM Sans Bold with shared heights (D-147, D-150).
+  PP-030; PP-031 frames (runtime in P-04). Evidence `uat/evidence/A-08-cards/round4/`.
+
 ## 2026-11-18 — C-11: team setup
 
 - `packages/platform/src/teams.ts` and the session guard: balanced split by seat, switches and leader

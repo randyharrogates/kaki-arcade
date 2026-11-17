@@ -1,0 +1,126 @@
+/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/tools/blender/cards.py:72: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat and mat.use_nodes and any(n.type == 'BSDF_TRANSPARENT'
+00:02.289  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-as.png'
+00:02.669  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-2s.png'
+00:03.111  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-3s.png'
+00:03.470  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-4s.png'
+00:03.826  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-5s.png'
+00:04.230  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-6s.png'
+00:04.617  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-7s.png'
+00:04.981  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-8s.png'
+00:05.339  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-9s.png'
+00:05.702  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-10s.png'
+00:06.062  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-js.png'
+00:06.421  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-qs.png'
+00:06.782  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-ks.png'
+00:07.129  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-ah.png'
+00:07.526  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-2h.png'
+00:07.886  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-3h.png'
+00:08.236  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-4h.png'
+00:08.582  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-5h.png'
+00:08.924  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-6h.png'
+00:09.265  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-7h.png'
+00:09.608  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-8h.png'
+00:09.951  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-9h.png'
+00:10.298  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-10h.png'
+00:10.674  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-jh.png'
+00:11.025  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-qh.png'
+00:11.371  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-kh.png'
+00:11.797  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-ad.png'
+00:12.170  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-2d.png'
+00:12.525  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-3d.png'
+00:12.869  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-4d.png'
+00:13.209  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-5d.png'
+00:13.555  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-6d.png'
+00:13.898  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-7d.png'
+00:14.247  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-8d.png'
+00:14.619  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-9d.png'
+00:15.054  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-10d.png'
+00:15.397  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-jd.png'
+00:15.745  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-qd.png'
+00:16.090  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-kd.png'
+00:16.484  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-ac.png'
+00:16.883  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-2c.png'
+00:17.309  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-3c.png'
+00:17.723  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-4c.png'
+00:18.144  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-5c.png'
+00:18.541  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-6c.png'
+00:18.966  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-7c.png'
+00:19.363  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-8c.png'
+00:19.756  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-9c.png'
+00:20.152  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-10c.png'
+00:20.551  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-jc.png'
+00:20.945  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-qc.png'
+00:21.339  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-kc.png'
+00:21.692  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-back.png'
+00:22.092  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-flip-0.png'
+00:22.502  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-flip-1.png'
+00:22.744  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-flip-2.png'
+00:23.113  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-flip-3.png'
+00:23.507  render           | Saved: '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/assets/src/peek-poker/cards/card-flip-4.png'
+CARDS CHECK: 52 faces validated; no ink overlaps; corner clearance >= 0.050000 card units.
+CARDS CHECK: flip geometry widths (px): 150.000, 108.718, 3.750, 108.718, 150.000
+FACE CHECK card-as.png: coverage=0.738 mean=0.876 std=0.253
+FACE CHECK card-2s.png: coverage=0.738 mean=0.883 std=0.245
+FACE CHECK card-3s.png: coverage=0.738 mean=0.885 std=0.243
+FACE CHECK card-4s.png: coverage=0.738 mean=0.882 std=0.246
+FACE CHECK card-5s.png: coverage=0.738 mean=0.883 std=0.246
+FACE CHECK card-6s.png: coverage=0.738 mean=0.880 std=0.249
+FACE CHECK card-7s.png: coverage=0.738 mean=0.888 std=0.239
+FACE CHECK card-8s.png: coverage=0.738 mean=0.871 std=0.260
+FACE CHECK card-9s.png: coverage=0.738 mean=0.880 std=0.249
+FACE CHECK card-10s.png: coverage=0.738 mean=0.866 std=0.264
+FACE CHECK card-js.png: coverage=0.738 mean=0.888 std=0.240
+FACE CHECK card-qs.png: coverage=0.738 mean=0.865 std=0.265
+FACE CHECK card-ks.png: coverage=0.738 mean=0.860 std=0.272
+FACE CHECK card-ah.png: coverage=0.738 mean=0.900 std=0.179
+FACE CHECK card-2h.png: coverage=0.738 mean=0.905 std=0.174
+FACE CHECK card-3h.png: coverage=0.738 mean=0.906 std=0.173
+FACE CHECK card-4h.png: coverage=0.738 mean=0.904 std=0.175
+FACE CHECK card-5h.png: coverage=0.738 mean=0.904 std=0.174
+FACE CHECK card-6h.png: coverage=0.738 mean=0.903 std=0.177
+FACE CHECK card-7h.png: coverage=0.738 mean=0.908 std=0.170
+FACE CHECK card-8h.png: coverage=0.738 mean=0.896 std=0.183
+FACE CHECK card-9h.png: coverage=0.738 mean=0.902 std=0.177
+FACE CHECK card-10h.png: coverage=0.738 mean=0.893 std=0.186
+FACE CHECK card-jh.png: coverage=0.738 mean=0.908 std=0.171
+FACE CHECK card-qh.png: coverage=0.738 mean=0.892 std=0.187
+FACE CHECK card-kh.png: coverage=0.738 mean=0.889 std=0.191
+FACE CHECK card-ad.png: coverage=0.738 mean=0.924 std=0.139
+FACE CHECK card-2d.png: coverage=0.738 mean=0.928 std=0.133
+FACE CHECK card-3d.png: coverage=0.738 mean=0.929 std=0.132
+FACE CHECK card-4d.png: coverage=0.738 mean=0.927 std=0.134
+FACE CHECK card-5d.png: coverage=0.738 mean=0.928 std=0.134
+FACE CHECK card-6d.png: coverage=0.738 mean=0.926 std=0.136
+FACE CHECK card-7d.png: coverage=0.738 mean=0.931 std=0.129
+FACE CHECK card-8d.png: coverage=0.738 mean=0.920 std=0.144
+FACE CHECK card-9d.png: coverage=0.738 mean=0.926 std=0.136
+FACE CHECK card-10d.png: coverage=0.738 mean=0.917 std=0.147
+FACE CHECK card-jd.png: coverage=0.738 mean=0.931 std=0.129
+FACE CHECK card-qd.png: coverage=0.738 mean=0.917 std=0.148
+FACE CHECK card-kd.png: coverage=0.738 mean=0.913 std=0.153
+FACE CHECK card-ac.png: coverage=0.738 mean=0.915 std=0.145
+FACE CHECK card-2c.png: coverage=0.738 mean=0.919 std=0.140
+FACE CHECK card-3c.png: coverage=0.738 mean=0.920 std=0.139
+FACE CHECK card-4c.png: coverage=0.738 mean=0.918 std=0.141
+FACE CHECK card-5c.png: coverage=0.738 mean=0.918 std=0.141
+FACE CHECK card-6c.png: coverage=0.738 mean=0.917 std=0.143
+FACE CHECK card-7c.png: coverage=0.738 mean=0.921 std=0.137
+FACE CHECK card-8c.png: coverage=0.738 mean=0.911 std=0.149
+FACE CHECK card-9c.png: coverage=0.738 mean=0.917 std=0.143
+FACE CHECK card-10c.png: coverage=0.738 mean=0.909 std=0.151
+FACE CHECK card-jc.png: coverage=0.738 mean=0.922 std=0.138
+FACE CHECK card-qc.png: coverage=0.738 mean=0.908 std=0.152
+FACE CHECK card-kc.png: coverage=0.738 mean=0.905 std=0.156
+FACE CHECK card-back.png: coverage=0.738 mean=0.425 std=0.199
+FACE CHECK card-flip-0.png: coverage=0.738 mean=0.968 std=0.016
+FACE CHECK card-flip-1.png: coverage=0.536 mean=0.968 std=0.016
+FACE CHECK card-flip-2.png: coverage=0.010 mean=0.974 std=0.016
+FACE CHECK card-flip-3.png: coverage=0.536 mean=0.429 std=0.202
+FACE CHECK card-flip-4.png: coverage=0.738 mean=0.425 std=0.199
+CARDS: 58 renders validated; ready for atlas packing.
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit
+peek-poker-cards-0: 1926×1100, waste 7.8%, 948708 bytes, 8474400 decoded
+PERF-023/024 passed: 1 atlases; manifest 9350 bytes

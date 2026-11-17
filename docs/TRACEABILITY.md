@@ -143,8 +143,8 @@ requirement.
 | PP-020 | MUST | Picks are never sent to other phones or drawn on the big screen before the reveal | M4 | not started | — | — | — |
 | PP-021 | MUST | The big screen shows who has locked in (seat markers only), not what they picked | M4 | not started | — | — | — |
 | PP-022 | MUST | When everyone has locked in, the round proceeds without waiting for the timer | M4 | in progress | `games/peek-poker/src/rules/` (rules only; no screen) | `games/peek-poker/src/rules/*.test.ts` | `uat/evidence/P-01-peek-poker-rules/` |
-| PP-030 | MUST | Cards are large enough on a TV to read rank and suit from 3 m, and suits differ by shape and colour | M4 | not started | — | — | — |
-| PP-031 | MUST | Card flips, swaps and the reveal follow ../DESIGN.md §3 (masks for reveals, arcs for moving cards, no bounce) | M4 | not started | — | — | — |
+| PP-030 | MUST | Cards are large enough on a TV to read rank and suit from 3 m, and suits differ by shape and colour | M4 | done | `tools/blender/cards.py`, `board_cards.py`, `card_checks.py`; `assets/src/peek-poker/cards/` (52 faces, back, 5 flip frames; ranks in DM Sans Bold, D-150: central 49 px and indices 19 px cap height at 1080p; four suit shapes in four colours, distinct in greyscale) | `tools/blender/test_card_checks.py`, `tools/assets/test_*.py`, `tools/assets/pipeline.test.ts` | `uat/evidence/A-08-cards/round4/` |
+| PP-031 | MUST | Card flips, swaps and the reveal follow ../DESIGN.md §3 (masks for reveals, arcs for moving cards, no bounce) | M4 | in progress | Flip frames and the drawing contract (A-08, `docs/slices/A-08-cards.md`); flips, swaps and the reveal at runtime are P-04 | `tools/blender/test_card_checks.py` (flip widths) | `uat/evidence/A-08-cards/round4/` |
 | PP-032 | MUST | A running scoreboard is visible between rounds and a final podium at match end | M4 | not started | — | — | — |
 
 ## Rabakz

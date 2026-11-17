@@ -1,0 +1,8 @@
+/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08/tools/blender/cards.py:72: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat and mat.use_nodes and any(n.type == 'BSDF_TRANSPARENT'
+CARDS CHECK: 52 faces validated; no ink overlaps; corner clearance >= 0.050000 card units.
+CARDS CHECK: flip geometry widths (px): 150.000, 108.718, 3.750, 108.718, 150.000
+CARDS CHECK: check-only complete; no frames rendered or files written.
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

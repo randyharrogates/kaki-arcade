@@ -240,6 +240,57 @@ class PipelineTests(unittest.TestCase):
             with self.assertRaises(p.subprocess.TimeoutExpired):
                 p.render(cfg)
 
+    def test_production_card_job(self):
+        import os
+        config = p.read_json(p.ROOT / 'assets/src/pipeline.json')
+        frames = next(group['frames'] for group in config['sets']
+                      if group['id'] == 'peek-poker-cards')
+        expected = {frame['file'] for frame in frames} | {'peek-poker/cards/render_validation.json'}
+        self.assertEqual(len(frames), 58)
+        config['renders'] = [job for job in config['renders'] if job['script'] == 'cards.py']
+        root = self.root / 'repo'
+        source = root / 'assets/src'
+        scripts = root / 'tools/blender'
+        scripts.mkdir(parents=True)
+        source.mkdir(parents=True)
+        inputs = [scripts / 'cards.py'] + [root / name for name in config['renders'][0]['extraInputs']]
+        for item in inputs:
+            item.parent.mkdir(parents=True, exist_ok=True)
+            item.write_text('stub')
+        def stub(args, **kwargs):
+            if args[0] == 'blender':
+                self.assertEqual(Path(args[args.index('-P')+1]), scripts / 'cards.py')
+                self.assertEqual((kwargs['cwd'] / args[args.index('--out')+1]).resolve(),
+                                 (source / 'peek-poker/cards').resolve())
+                for name in expected:
+                    output = source / name
+                    output.parent.mkdir(parents=True, exist_ok=True)
+                    output.write_bytes(b'stub')
+                # Deterministic timestamps avoid filesystem resolution races.
+                for output in source.rglob('*'):
+                    if output.is_file():
+                        os.utime(output, ns=(200, 200))
+            return p.subprocess.CompletedProcess(args, 0)
+        for item in inputs:
+            os.utime(item, ns=(100, 100))
+        with patch.object(p, 'ROOT', root), patch.object(p.subprocess, 'run', side_effect=stub) as run:
+            p.render(config, source)
+            p.render(config, source)
+            self.assertEqual(run.call_count, 2)
+            # Each declared output is necessary, including the validation pass.
+            for name in expected:
+                (source / name).unlink()
+                before = run.call_count
+                p.render(config, source)
+                self.assertEqual(run.call_count, before+2)
+            # Each shared source must invalidate an otherwise current job.
+            for item in inputs:
+                os.utime(item, ns=(300, 300))
+                before = run.call_count
+                p.render(config, source)
+                self.assertEqual(run.call_count, before+2)
+                os.utime(item, ns=(100, 100))
+
     def test_render_incremental(self):
         script_input = self.source / 'input.blend'
         script_input.write_bytes(b'diagnostic')

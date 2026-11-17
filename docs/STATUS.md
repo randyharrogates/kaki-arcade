@@ -353,6 +353,13 @@ seat numbers only when a name cannot fit. UAT: `uat/evidence/C-16-start-game/rou
 | 4 Phone controller | Done: 1A with shape buttons in our colours, 2B, 3A, 4B (D-047, D-048) |
 | 5 Motion | Done: 1B, 2A, 3A, 4A (D-051). **Gate closed 2026-11-16.** |
 
+### Playing cards (A-08)
+The full Peek Poker deck exists as art: 52 faces, the back and five flip frames, rendered in
+Blender from `tools/blender/cards.py`. Ranks are DM Sans Bold (D-150) at one shared height, so the
+10 reads like the rest; suits differ by shape and colour and stay distinct in greyscale. One atlas,
+915,460 B. Evidence: `uat/evidence/A-08-cards/round4/`. Cards are not yet drawn in a game; flips,
+swaps and the reveal at runtime are P-04.
+
 ### Team setup (C-11)
 For a game with teams, the leader turns Teams on, and the TV shows two sides split by a centre line
 (D-143), balanced by seat. Each player taps Red or Blue on their phone; the leader can also move

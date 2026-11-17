@@ -1,6 +1,827 @@
 {
   "sets": [
     {
+      "id": "peek-poker-cards",
+      "encoding": "lossless",
+      "anchors": [
+        "centre"
+      ],
+      "frames": [
+        {
+          "id": "card-as",
+          "file": "peek-poker/cards/card-as.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-2s",
+          "file": "peek-poker/cards/card-2s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-3s",
+          "file": "peek-poker/cards/card-3s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-4s",
+          "file": "peek-poker/cards/card-4s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-5s",
+          "file": "peek-poker/cards/card-5s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-6s",
+          "file": "peek-poker/cards/card-6s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-7s",
+          "file": "peek-poker/cards/card-7s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-8s",
+          "file": "peek-poker/cards/card-8s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-9s",
+          "file": "peek-poker/cards/card-9s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-10s",
+          "file": "peek-poker/cards/card-10s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-js",
+          "file": "peek-poker/cards/card-js.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-qs",
+          "file": "peek-poker/cards/card-qs.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-ks",
+          "file": "peek-poker/cards/card-ks.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-ah",
+          "file": "peek-poker/cards/card-ah.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-2h",
+          "file": "peek-poker/cards/card-2h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-3h",
+          "file": "peek-poker/cards/card-3h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-4h",
+          "file": "peek-poker/cards/card-4h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-5h",
+          "file": "peek-poker/cards/card-5h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-6h",
+          "file": "peek-poker/cards/card-6h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-7h",
+          "file": "peek-poker/cards/card-7h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-8h",
+          "file": "peek-poker/cards/card-8h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-9h",
+          "file": "peek-poker/cards/card-9h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-10h",
+          "file": "peek-poker/cards/card-10h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-jh",
+          "file": "peek-poker/cards/card-jh.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-qh",
+          "file": "peek-poker/cards/card-qh.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-kh",
+          "file": "peek-poker/cards/card-kh.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-ad",
+          "file": "peek-poker/cards/card-ad.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-2d",
+          "file": "peek-poker/cards/card-2d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-3d",
+          "file": "peek-poker/cards/card-3d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-4d",
+          "file": "peek-poker/cards/card-4d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-5d",
+          "file": "peek-poker/cards/card-5d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-6d",
+          "file": "peek-poker/cards/card-6d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-7d",
+          "file": "peek-poker/cards/card-7d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-8d",
+          "file": "peek-poker/cards/card-8d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-9d",
+          "file": "peek-poker/cards/card-9d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-10d",
+          "file": "peek-poker/cards/card-10d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-jd",
+          "file": "peek-poker/cards/card-jd.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-qd",
+          "file": "peek-poker/cards/card-qd.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-kd",
+          "file": "peek-poker/cards/card-kd.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-ac",
+          "file": "peek-poker/cards/card-ac.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-2c",
+          "file": "peek-poker/cards/card-2c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-3c",
+          "file": "peek-poker/cards/card-3c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-4c",
+          "file": "peek-poker/cards/card-4c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-5c",
+          "file": "peek-poker/cards/card-5c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-6c",
+          "file": "peek-poker/cards/card-6c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-7c",
+          "file": "peek-poker/cards/card-7c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-8c",
+          "file": "peek-poker/cards/card-8c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-9c",
+          "file": "peek-poker/cards/card-9c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-10c",
+          "file": "peek-poker/cards/card-10c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-jc",
+          "file": "peek-poker/cards/card-jc.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-qc",
+          "file": "peek-poker/cards/card-qc.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-kc",
+          "file": "peek-poker/cards/card-kc.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-back",
+          "file": "peek-poker/cards/card-back.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-flip-0",
+          "file": "peek-poker/cards/card-flip-0.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-flip-1",
+          "file": "peek-poker/cards/card-flip-1.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-flip-2",
+          "file": "peek-poker/cards/card-flip-2.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-flip-3",
+          "file": "peek-poker/cards/card-flip-3.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-flip-4",
+          "file": "peek-poker/cards/card-flip-4.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        }
+      ]
+    },
+    {
       "id": "tabao-rush-cook-spike",
       "encoding": "lossless",
       "frames": [
@@ -1957,6 +2778,9 @@
     "empty": [],
     "tabao-rush-cook-spike": [
       "tabao-rush-cook-spike"
+    ],
+    "peek-poker": [
+      "peek-poker-cards"
     ]
   },
   "powerOfTwo": false,
@@ -2180,6 +3004,83 @@
         "tabao-rush/cook-spike/head-7.png",
         "tabao-rush/cook-spike/head-mask-7.png",
         "tabao-rush/cook-spike/render-validation.json"
+      ]
+    },
+    {
+      "script": "cards.py",
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/board_cards.py",
+        "tools/blender/kalib.py",
+        "tools/blender/card_checks.py",
+        "tools/blender/card_tokens.py",
+        "packages/ui/src/themes.ts",
+        "assets/src/fonts/dm-sans/DMSans-Bold.ttf"
+      ],
+      "outputs": [
+        "peek-poker/cards/card-as.png",
+        "peek-poker/cards/card-2s.png",
+        "peek-poker/cards/card-3s.png",
+        "peek-poker/cards/card-4s.png",
+        "peek-poker/cards/card-5s.png",
+        "peek-poker/cards/card-6s.png",
+        "peek-poker/cards/card-7s.png",
+        "peek-poker/cards/card-8s.png",
+        "peek-poker/cards/card-9s.png",
+        "peek-poker/cards/card-10s.png",
+        "peek-poker/cards/card-js.png",
+        "peek-poker/cards/card-qs.png",
+        "peek-poker/cards/card-ks.png",
+        "peek-poker/cards/card-ah.png",
+        "peek-poker/cards/card-2h.png",
+        "peek-poker/cards/card-3h.png",
+        "peek-poker/cards/card-4h.png",
+        "peek-poker/cards/card-5h.png",
+        "peek-poker/cards/card-6h.png",
+        "peek-poker/cards/card-7h.png",
+        "peek-poker/cards/card-8h.png",
+        "peek-poker/cards/card-9h.png",
+        "peek-poker/cards/card-10h.png",
+        "peek-poker/cards/card-jh.png",
+        "peek-poker/cards/card-qh.png",
+        "peek-poker/cards/card-kh.png",
+        "peek-poker/cards/card-ad.png",
+        "peek-poker/cards/card-2d.png",
+        "peek-poker/cards/card-3d.png",
+        "peek-poker/cards/card-4d.png",
+        "peek-poker/cards/card-5d.png",
+        "peek-poker/cards/card-6d.png",
+        "peek-poker/cards/card-7d.png",
+        "peek-poker/cards/card-8d.png",
+        "peek-poker/cards/card-9d.png",
+        "peek-poker/cards/card-10d.png",
+        "peek-poker/cards/card-jd.png",
+        "peek-poker/cards/card-qd.png",
+        "peek-poker/cards/card-kd.png",
+        "peek-poker/cards/card-ac.png",
+        "peek-poker/cards/card-2c.png",
+        "peek-poker/cards/card-3c.png",
+        "peek-poker/cards/card-4c.png",
+        "peek-poker/cards/card-5c.png",
+        "peek-poker/cards/card-6c.png",
+        "peek-poker/cards/card-7c.png",
+        "peek-poker/cards/card-8c.png",
+        "peek-poker/cards/card-9c.png",
+        "peek-poker/cards/card-10c.png",
+        "peek-poker/cards/card-jc.png",
+        "peek-poker/cards/card-qc.png",
+        "peek-poker/cards/card-kc.png",
+        "peek-poker/cards/card-back.png",
+        "peek-poker/cards/card-flip-0.png",
+        "peek-poker/cards/card-flip-1.png",
+        "peek-poker/cards/card-flip-2.png",
+        "peek-poker/cards/card-flip-3.png",
+        "peek-poker/cards/card-flip-4.png",
+        "peek-poker/cards/render_validation.json"
+      ],
+      "args": [
+        "--out",
+        "peek-poker/cards"
       ]
     }
   ]

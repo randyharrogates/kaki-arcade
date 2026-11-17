@@ -22,4 +22,5 @@ uat/evidence/*/auto/
 uat/evidence/**/.uat-run
 uat/evidence/*/perf/
 uat/evidence/*/perf-[148]/
+tools/boards/out/
 uat/evidence/*/perf-controller*/

@@ -1261,3 +1261,7 @@ Measured by ink runs at 1080p: round 2 (Blender's default font) central ranks 56
 7 px); DM Sans central 49 px and indices 19 px for every rank. The decision stands (one shared
 height, a readable 10 index, a plain zero, the phone's face); its cost is central ranks 56 → 49 px
 and indices 24–27 → 19 px, both above PP-030 and the 34 px rule.
+
+**D-133 cost note · 2026-11-18 · Claude** — D-133's "958 KB" was an earlier render. The merged deck
+(A-08, DM Sans, D-150): one atlas 1926 × 1100, 915,460 B full and 235,742 B half transferred;
+8,474,400 + 2,118,600 B decoded. PERF-023/024 pass.

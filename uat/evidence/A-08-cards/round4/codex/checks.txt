@@ -1,0 +1,128 @@
+2:42  4 users, load averages: 7.89 8.92 7.68
+$ python3 -m py_compile tools/blender/cards.py tools/blender/board_cards.py tools/blender/card_checks.py tools/assets/pipeline.py
+
+EXIT 0
+
+2:43  4 users, load averages: 7.29 8.65 7.68
+$ python3 -m unittest discover -s tools/assets -p "test_*.py"
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 7.378s
+
+OK
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 64×64, waste 59.4%, 280 bytes, 16384 decoded
+diagnostic-walk-1: 64×64, waste 53.1%, 204 bytes, 16384 decoded
+diagnostic-walk-2: 64×64, waste 62.5%, 274 bytes, 16384 decoded
+diagnostic-walk-3: 64×64, waste 62.5%, 282 bytes, 16384 decoded
+diagnostic-walk-4: 64×64, waste 62.5%, 256 bytes, 16384 decoded
+diagnostic-walk-5: 64×64, waste 57.8%, 232 bytes, 16384 decoded
+diagnostic-walk-6: 64×64, waste 62.5%, 286 bytes, 16384 decoded
+diagnostic-walk-7: 64×64, waste 57.8%, 206 bytes, 16384 decoded
+PERF-023/024 passed: 8 atlases; manifest 7608 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 4114 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5071 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+solid-0: 12×12, waste 55.6%, 38 bytes, 576 decoded
+PERF-023/024 passed: 1 atlases; manifest 1024 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+edges-0: 8×16, waste 75.0%, 62 bytes, 512 decoded
+PERF-023/024 passed: 1 atlases; manifest 1108 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 64×64, waste 59.4%, 280 bytes, 16384 decoded
+diagnostic-walk-1: 64×64, waste 53.1%, 204 bytes, 16384 decoded
+diagnostic-walk-2: 64×64, waste 62.5%, 274 bytes, 16384 decoded
+diagnostic-walk-3: 64×64, waste 62.5%, 282 bytes, 16384 decoded
+diagnostic-walk-4: 64×64, waste 62.5%, 256 bytes, 16384 decoded
+diagnostic-walk-5: 64×64, waste 57.8%, 232 bytes, 16384 decoded
+diagnostic-walk-6: 64×64, waste 62.5%, 286 bytes, 16384 decoded
+diagnostic-walk-7: 64×64, waste 57.8%, 206 bytes, 16384 decoded
+PERF-023/024 passed: 8 atlases; manifest 7608 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+cook-0-body: 30×600, waste 24.9%, 76 bytes, 72000 decoded
+cook-0-mask: 30×600, waste 24.9%, 72 bytes, 72000 decoded
+PERF-023/024 passed: 2 atlases; manifest 6820 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+odd-0: 38×38, waste 19.9%, 38 bytes, 5776 decoded
+PERF-023/024 passed: 1 atlases; manifest 1021 bytes
+odd-0: 1926×1086, waste 0.6%, 130 bytes, 8366544 decoded
+PERF-023/024 passed: 1 atlases; manifest 1064 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+tiles-0: 336×1344, waste 9.3%, 62 bytes, 1806336 decoded
+PERF-023/024 passed: 1 atlases; manifest 7817 bytes
+tiles-0: 608×1824, waste 2.6%, 88 bytes, 4435968 decoded
+PERF-023/024 passed: 1 atlases; manifest 2286 bytes
+tiles-0: 912×912, waste 13.4%, 132 bytes, 3326976 decoded
+tiles-1: 608×608, waste 2.6%, 60 bytes, 1478656 decoded
+PERF-023/024 passed: 2 atlases; manifest 2795 bytes
+diagnostic-walk-0: 512×64, waste 59.8%, 1386 bytes, 131072 decoded
+PERF-023/024 passed: 1 atlases; manifest 5074 bytes
+
+EXIT 0
+
+2:44  4 users, load averages: 7.67 8.71 7.70
+$ python3 -m unittest discover -s tools/blender -p test_card_checks.py
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.234s
+
+OK
+FACE CHECK back.png: coverage=0.740 mean=0.465 std=0.239
+FACE CHECK back.png: coverage=0.740 mean=0.430 std=0.250
+FACE CHECK back.png: coverage=0.740 mean=0.454 std=0.249
+FACE CHECK paper.png: coverage=0.740 mean=0.967 std=0.017
+FACE CHECK paper.png: coverage=0.740 mean=0.967 std=0.017
+FACE CHECK paper.png: coverage=0.740 mean=0.969 std=0.000
+
+EXIT 0
+
+2:44  4 users, load averages: 7.67 8.71 7.70
+$ VITEST_MAX_WORKERS=2 pnpm exec vitest run tools/assets
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-08
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  02:44:05
+   Duration  8.39s (transform 15ms, setup 0ms, import 24ms, tests 8.24s, environment 0ms)
+
+
+EXIT 0
+
+2:44  4 users, load averages: 7.56 8.65 7.69
+$ pnpm exec tsc -b tsconfig.build.json
+
+EXIT 0
+
+2:44  4 users, load averages: 7.84 8.69 7.71
+$ pnpm run lint:design
+$ node tools/lint_design.mjs
+design lint passed: 367 file(s) scanned
+
+EXIT 0
+

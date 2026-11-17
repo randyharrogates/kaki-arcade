@@ -6,7 +6,13 @@ describe('PERF-023/024 asset pipeline', () => {
   it('packs, reconstructs, downsamples, checks budgets and validates manifests', () => {
     const result = spawnSync('python3', ['-m', 'unittest', 'discover', '-s', 'tools/assets', '-p', 'test_*.py'], { timeout: 60_000, encoding: 'utf8' });
     expect(result.status, result.stderr).toBe(0);
-    expect(result.stderr).toMatch(/Ran 14 tests/);
+    expect(result.stderr).toMatch(/Ran 15 tests/);
+    expect(result.stderr).toContain('OK');
+  }, 90_000);
+  it('validates card pixels and palette mutations', () => {
+    const result = spawnSync('python3', ['-m', 'unittest', 'discover', '-s', 'tools/blender', '-p', 'test_card_checks.py'], { timeout: 60_000, encoding: 'utf8' });
+    expect(result.status, result.stderr).toBe(0);
+    expect(result.stderr).toMatch(/Ran 3 tests/);
     expect(result.stderr).toContain('OK');
   }, 90_000);
   it('exports the runtime manifest shape without a workspace package', () => {

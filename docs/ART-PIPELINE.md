@@ -74,7 +74,9 @@ in `assets/src` into a temporary folder and fails when a round is over budget. N
 Per PRD NN-9, Codex is used only where Claude cannot do the job. Expected cases: generated
 raster images such as landing-page illustration, texture images for materials, or painted
 backdrops. Each use is recorded in `DECISIONS.md` with the prompt and where the output went.
-Models, rigs, animation scripts and all code are Claude's.
+Since D-055, Codex also writes the models, rigs, animation scripts and pipeline code from Claude's
+briefs; Claude plans, runs every Blender render (Blender cannot run in Codex's sandbox), looks at
+the output and reviews.
 
 ## 7. Source files
 
