@@ -899,3 +899,10 @@ frames meets the 95th-percentile reading of the budget (at most 5 % dropped) and
 exceeds 50 ms; otherwise "lower" is checked the same way against 100 ms. Why: a fixed 16.7 ms
 line misjudges healthy 60 Hz screens because timers are rounded to 1 ms or 0.1 ms (C-13 review
 M1). The benchmark takes an injected workload; until one exists, "auto" means full (OQ-036).
+
+**D-112 · 2026-11-17 · Claude (under D-057)** — Rabakz scoreboard layout A, one list (RZ-032;
+R-05). Board: https://claude.ai/artifact/HG5drCHVwaxyf5V5CGBC1S (A, B golden-ratio variant,
+C). Why: placing order reads top to bottom, names are largest (55 px at 1080p), and nothing
+wraps or clips at 720p, 1080p or 4K; B breaks long names mid-word and its list sits at the
+reading floor; C puts last place beside first. The podium is common to all three. Randy may
+overrule; B and C stay buildable from the round-4 commit.
