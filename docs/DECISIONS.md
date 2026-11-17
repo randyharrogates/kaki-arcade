@@ -942,3 +942,11 @@ toward the thumb like any drag past the edge. Why: K-02's re-review found that m
 the first 1 px move jump from nothing to nearly full speed, which breaks "tracks the thumb
 1:1" (CTRL-005). The other choice, not moving the base, puts part of it off the phone for a
 thumb within 42 px of the edge and cannot reach full deflection toward that edge.
+
+**D-117 · 2026-11-17 · Claude** (under D-057) — The phone's play area keeps a 13 px margin to
+its edges and to the "Keep your screen on" note. Where a layout cannot keep 13 px at the
+control floors (D-051, D-053), the margin falls to the next spacing step, 8 px, and never
+lower; controls never shrink below their floors to keep a margin. Why: K-04's UAT found the
+Peek Poker grid (4 × 4 cells of 89 × 68 px) and its Lock in fit a 667 × 375 phone only with an
+8 px margin above the note; the alternatives were cells below the D-053 floor or dropping the
+note.
