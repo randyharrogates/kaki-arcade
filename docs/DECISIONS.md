@@ -1037,3 +1037,11 @@ round 4 (credentials fetched only after validation, role and rate checks, at mos
 per socket; the first-reading wait once per room, kept across hibernation); if C-02's fourth
 review is not clean it is parked as a follow-up before release (M8), since the relay is only
 needed for phones that cannot connect directly.
+
+**D-129 · 2026-11-17 · Claude** (under D-057) — How PERF-020's start-up half is measured until a
+real phone is tested. "A mid-range phone on Wi-Fi" is Chromium with CPU throttling 4× (the
+common mid-tier mobile setting) and a network of 30 Mbit/s down, 15 Mbit/s up and 20 ms
+round-trip, loading the production build with an empty cache, at 844 × 390. "Interactive" is the
+first moment the controller's controls are drawn and a press on one is accepted (its handler
+fires). The check takes the median of 5 cold loads and fails above 2 s. Randy's real-phone test
+(K-07, X-09) remains the final word.
