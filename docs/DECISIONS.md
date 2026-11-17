@@ -1027,3 +1027,13 @@ engine decides the size by measurement before the control is shown. Rabakz answe
 characters (RZ-022), and "Modular Interface of Digital Instruments" breaks into four lines at
 34 px in a 667 px phone's answer button and is cut. Same approach as D-123 on the TV. Found by
 K-04's final review and confirmed in the UAT.
+
+**D-128 · 2026-11-17 · Randy** — "Can you do this autonomously. Make ur decisions based on your
+jusgement", asked whether R-05 gets another round past WORKFLOW §4's three rounds. Claude now
+decides what happens to an issue whose review does not converge (one more round, a follow-up
+issue, or parking it), logs the choice here, and reports it. Claude's choices under it:
+R-05 gets one small round 22 (prompt descender room and prompt overflow checks); C-02 gets a
+round 4 (credentials fetched only after validation, role and rate checks, at most one in flight
+per socket; the first-reading wait once per room, kept across hibernation); if C-02's fourth
+review is not clean it is parked as a follow-up before release (M8), since the relay is only
+needed for phones that cannot connect directly.
