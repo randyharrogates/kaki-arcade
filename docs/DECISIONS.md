@@ -1083,3 +1083,16 @@ builds the 52 faces in style B.
 pennant, Queen a crown, King a battlement), not shown on the options board. Final rendered deck,
 with a greyscale check, the back and the flip frames: https://claude.ai/artifact/NTj5G1mnDyevGiVNeF9RRX.
 Measured cost: one atlas 1926 × 1100, 958 KB; 8.5 MB decoded plus 2.1 MB half size.
+
+**D-134 · 2026-11-18 · Claude** (under D-057) — Tabao Rush order-card icons (A-04) use a 55°
+camera tilt instead of the decided 60° (D-044). They are HUD pictures on a white ticket, never
+beside kitchen sprites, and from 60° flat food (noodles, rice, cucumber) read as slivers at 55 px.
+Recorded as an exception in ART-PIPELINE §3.
+
+**D-135 · 2026-11-18 · Claude** (under D-128) — A-04 continues to a sixth Codex round past PLAN
+§5's three-round limit: every round has fixed real, measured problems and none has repeated. Two
+scope choices from the round-5 review: (1) the 12 ingredient-step icons are dropped; the decided
+order card 5A shows one 55 px dish icon with the steps as 21 px text, and step icons would need
+Randy's word; (2) partly built dishes are drawn by the renderer from container sprites plus
+smaller portion sprites placed on named slot anchors per container in the asset manifest, so
+every reachable partial plate can be shown (T-07 consumes them).

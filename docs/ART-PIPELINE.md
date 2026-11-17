@@ -36,6 +36,8 @@ See `PERFORMANCE.md` for the budgets these serve.
 
 - One camera angle and one light rig for every asset in a game, so sprites sit together.
   Orthographic camera; the tilt is chosen at the design gate.
+  Exception (D-134): order-card icons are HUD pictures, not objects in the kitchen, and use a
+  55° tilt so flat food reads at 55 px; they never sit beside world sprites.
 - Characters render at a fixed pixel size per frame (chosen at the gate, expected about
   128 px) and are packed into atlases no larger than 2048 × 2048.
 - Shadows and glows are rendered into the sprite or the background. Nothing is blurred or lit
