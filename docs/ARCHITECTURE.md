@@ -32,7 +32,7 @@ packages/
   netcode/        WebRTC transport, reconnect, input sequencing, link-quality measurement
   sim-core/       Fixed-timestep loop, seeded RNG, snapshot helpers, input buffer
   platform/       Room state, lobby, game picker, game interface, results
-  controller-kit/ Stick, D-pad, buttons, shoulder, tilt/shake, private display panel
+  controller-kit/ Shell (header, page lock, wake lock), stick, D-pad, buttons, shoulder, tilt/shake, private display panel
   ui/             Design tokens from DESIGN.md §4, shared shell components, motion helpers
 games/
   rabakz/         rules (pure) · host view (host/: view-model, Screen) · controller layouts

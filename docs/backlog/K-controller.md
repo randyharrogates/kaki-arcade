@@ -12,10 +12,25 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
-| K-01 | Controller page shell: landscape, fills the screen, no scroll, zoom, selection or pull-to-refresh, screen stays awake; shows colour, seat, nickname and connection | CTRL-004, CTRL-008 | F-06, S-05 | 2 | todo |
+| K-01 | Controller page shell: landscape, fills the screen, no scroll, zoom, selection or pull-to-refresh, screen stays awake; shows colour, seat, nickname and connection | CTRL-004, CTRL-008 | F-06, S-05 | 2 | merged |
 | K-02 | Left stick: tracks the thumb 1:1 with no smoothing, re-centres on release, multi-touch with buttons | CTRL-005, PERF-012 | K-01 | 2 | todo |
 | K-03 | D-pad, the four shape buttons (cross, circle, square, triangle; D-047), L and R, Start: face buttons at least 110 px, other in-play controls 89 px, nothing under 55 px (D-051), press scale and feedback within one frame, vibration where supported | CTRL-001, CTRL-005, CTRL-006, PERF-012 | K-01 | 2 | todo |
 | K-08 | Controller size and start-up budget check in verify | PERF-020 | K-02, K-03 | 2 | todo |
+
+**From K-01 (controller shell), merged 2026-11-17 after two Codex rounds and two reviews.**
+`ControllerShell` (seat, name, link, theme, children) owns the page lock (reference-counted) and
+the wake lock (retries once on the next touch after a refusal). **For C-16:** mount it on the
+real `/play` once seated; it must become the only wake-lock owner (PhonePage holds one too);
+align the link words and icons with the lobby ("Disconnected" against "Lost") and switch the
+relative import to `@kaki/controller-kit` (add the dependency and a `./shell.css` export).
+**For K-04/K-05:** the page lock cancels `contextmenu` and `dblclick` on the whole document and
+sets touch-action none on html; scope them to the shell root if a panel needs selection or
+scrolling; the "Keep your screen on" note sits at the bottom centre where K-03 controls go.
+**Later:** measure the name's text box (not the player box) in the 13 px check and assert which
+proof condition fires; a `data-wake` attribute so held and released can be told apart in UAT;
+`installPageLock` ignores a new root on later mounts; no shot of a real safe-area inset or a
+non-console theme; the portrait strip ends before the turn does. **S-05** still decides wake
+lock on iPhone Safari and pull-to-refresh on Android Chrome.
 
 ## Story K2 — Each game gets exactly the controls it needs
 

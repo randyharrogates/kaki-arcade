@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — K-01: phone controller shell
+
+- `packages/controller-kit`: `ControllerShell`, a reference-counted page lock, a wake-lock helper
+  that retries once on touch, the header model; dev demo `/play?demo=controller`;
+  `uat/slices/K-01-controller-shell.mjs`. The kit now depends on `preact` 11.2.0 (D-110).
+- (CTRL-004, CTRL-008 in progress)
+
 ## 2026-11-17 — R-03: Rabakz TV screen
 
 - `games/rabakz/host/` (view-model, Screen, dev page), exported as `"./host"`; success pulse

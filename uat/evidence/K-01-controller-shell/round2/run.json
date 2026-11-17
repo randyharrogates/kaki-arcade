@@ -1,0 +1,567 @@
+{
+  "slice": "K-01-controller-shell",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- K-01-controller-shell --phones 1",
+  "commit": "9fd6a19c87741ad31d2aba4fcb8a273d71d06063",
+  "viewports": [
+    "844×390",
+    "667×375",
+    "568×320",
+    "390×844",
+    "320×568"
+  ],
+  "steps": [
+    {
+      "name": "844x390-seat1-connected",
+      "ms": 521.3567080000003,
+      "status": "completed"
+    },
+    {
+      "name": "844x390-seat1-reconnecting",
+      "ms": 194.11616700000013,
+      "status": "completed"
+    },
+    {
+      "name": "844x390-seat1-lost",
+      "ms": 188.80391700000018,
+      "status": "completed"
+    },
+    {
+      "name": "844x390-seat8-connected",
+      "ms": 177.60624999999982,
+      "status": "completed"
+    },
+    {
+      "name": "844x390-seat8-reconnecting",
+      "ms": 189.65204200000016,
+      "status": "completed"
+    },
+    {
+      "name": "844x390-seat8-lost",
+      "ms": 178.1256669999998,
+      "status": "completed"
+    },
+    {
+      "name": "667x375-seat1-connected",
+      "ms": 172.5648329999999,
+      "status": "completed"
+    },
+    {
+      "name": "667x375-seat1-reconnecting",
+      "ms": 168.9190410000001,
+      "status": "completed"
+    },
+    {
+      "name": "667x375-seat1-lost",
+      "ms": 169.57150000000001,
+      "status": "completed"
+    },
+    {
+      "name": "667x375-seat8-connected",
+      "ms": 170.1677080000004,
+      "status": "completed"
+    },
+    {
+      "name": "667x375-seat8-reconnecting",
+      "ms": 169.99887500000023,
+      "status": "completed"
+    },
+    {
+      "name": "667x375-seat8-lost",
+      "ms": 168.91145800000004,
+      "status": "completed"
+    },
+    {
+      "name": "568x320-seat1-connected",
+      "ms": 166.4764580000001,
+      "status": "completed"
+    },
+    {
+      "name": "568x320-seat1-reconnecting",
+      "ms": 170.04983300000004,
+      "status": "completed"
+    },
+    {
+      "name": "568x320-seat1-lost",
+      "ms": 216.72004199999992,
+      "status": "completed"
+    },
+    {
+      "name": "568x320-seat8-connected",
+      "ms": 169.62116700000024,
+      "status": "completed"
+    },
+    {
+      "name": "568x320-seat8-reconnecting",
+      "ms": 167.06654200000048,
+      "status": "completed"
+    },
+    {
+      "name": "568x320-seat8-lost",
+      "ms": 167.69012500000008,
+      "status": "completed"
+    },
+    {
+      "name": "390x844-seat1-connected",
+      "ms": 546.6883750000006,
+      "status": "completed"
+    },
+    {
+      "name": "390x844-seat1-reconnecting",
+      "ms": 558.0918329999995,
+      "status": "completed"
+    },
+    {
+      "name": "390x844-seat1-lost",
+      "ms": 547.6700000000001,
+      "status": "completed"
+    },
+    {
+      "name": "390x844-seat8-connected",
+      "ms": 557.6218750000007,
+      "status": "completed"
+    },
+    {
+      "name": "390x844-seat8-reconnecting",
+      "ms": 557.7879999999996,
+      "status": "completed"
+    },
+    {
+      "name": "390x844-seat8-lost",
+      "ms": 564.5475830000005,
+      "status": "completed"
+    },
+    {
+      "name": "320x568-seat1-connected",
+      "ms": 534.3927079999994,
+      "status": "completed"
+    },
+    {
+      "name": "320x568-seat1-reconnecting",
+      "ms": 533.0290830000013,
+      "status": "completed"
+    },
+    {
+      "name": "320x568-seat1-lost",
+      "ms": 532.8591670000005,
+      "status": "completed"
+    },
+    {
+      "name": "320x568-seat8-connected",
+      "ms": 532.8783750000002,
+      "status": "completed"
+    },
+    {
+      "name": "320x568-seat8-reconnecting",
+      "ms": 533.3603329999987,
+      "status": "completed"
+    },
+    {
+      "name": "320x568-seat8-lost",
+      "ms": 552.1282499999998,
+      "status": "completed"
+    },
+    {
+      "name": "Overlap detector rejects deliberately restored overflowing layout",
+      "ms": 537.8561659999996,
+      "status": "completed"
+    },
+    {
+      "name": "Real wake helper resolves, hides/releases, and re-requests on return",
+      "ms": 533.3249579999992,
+      "status": "completed"
+    },
+    {
+      "name": "Mounted page lock and unmount cleanup",
+      "ms": 93.82920800000102,
+      "status": "completed"
+    },
+    {
+      "name": "Link crossfade and portrait turn frame strips",
+      "ms": 5192.6484169999985,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced motion retains live link state and final portrait turn",
+      "ms": 186.25512499999968,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-844x390-seat1-connected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-844x390-seat1-reconnecting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-844x390-seat1-lost.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-844x390-seat8-connected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-844x390-seat8-reconnecting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-844x390-seat8-lost.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-667x375-seat1-connected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-667x375-seat1-reconnecting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-667x375-seat1-lost.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-667x375-seat8-connected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-667x375-seat8-reconnecting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-667x375-seat8-lost.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-568x320-seat1-connected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-568x320-seat1-reconnecting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-568x320-seat1-lost.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone1-568x320-seat8-connected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-568x320-seat8-reconnecting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-568x320-seat8-lost.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-390x844-seat1-connected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone1-390x844-seat1-reconnecting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone1-390x844-seat1-lost.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone1-390x844-seat8-connected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone1-390x844-seat8-reconnecting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone1-390x844-seat8-lost.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone1-320x568-seat1-connected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-320x568-seat1-reconnecting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone1-320x568-seat1-lost.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone1-320x568-seat8-connected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-phone1-320x568-seat8-reconnecting.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-phone1-320x568-seat8-lost.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-phone1-long-name-clipped.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-phone1-wake-reacquired.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-phone1-link-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone1-link-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-phone1-link-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-phone1-link-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-phone1-link-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-phone1-link-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-phone1-portrait-turn-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-phone1-portrait-turn-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-phone1-portrait-turn-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-phone1-portrait-turn-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-phone1-portrait-turn-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-phone1-portrait-turn-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-phone1-portrait-reduced-held.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-844x390-seat1-connected.jpg",
+    "02-phone1-844x390-seat1-reconnecting.jpg",
+    "03-phone1-844x390-seat1-lost.jpg",
+    "04-phone1-844x390-seat8-connected.jpg",
+    "05-phone1-844x390-seat8-reconnecting.jpg",
+    "06-phone1-844x390-seat8-lost.jpg",
+    "07-phone1-667x375-seat1-connected.jpg",
+    "08-phone1-667x375-seat1-reconnecting.jpg",
+    "09-phone1-667x375-seat1-lost.jpg",
+    "10-phone1-667x375-seat8-connected.jpg",
+    "11-phone1-667x375-seat8-reconnecting.jpg",
+    "12-phone1-667x375-seat8-lost.jpg",
+    "13-phone1-568x320-seat1-connected.jpg",
+    "14-phone1-568x320-seat1-reconnecting.jpg",
+    "15-phone1-568x320-seat1-lost.jpg",
+    "16-phone1-568x320-seat8-connected.jpg",
+    "17-phone1-568x320-seat8-reconnecting.jpg",
+    "18-phone1-568x320-seat8-lost.jpg",
+    "19-phone1-390x844-seat1-connected.jpg",
+    "20-phone1-390x844-seat1-reconnecting.jpg",
+    "21-phone1-390x844-seat1-lost.jpg",
+    "22-phone1-390x844-seat8-connected.jpg",
+    "23-phone1-390x844-seat8-reconnecting.jpg",
+    "24-phone1-390x844-seat8-lost.jpg",
+    "25-phone1-320x568-seat1-connected.jpg",
+    "26-phone1-320x568-seat1-reconnecting.jpg",
+    "27-phone1-320x568-seat1-lost.jpg",
+    "28-phone1-320x568-seat8-connected.jpg",
+    "29-phone1-320x568-seat8-reconnecting.jpg",
+    "30-phone1-320x568-seat8-lost.jpg",
+    "31-phone1-long-name-clipped.jpg",
+    "32-phone1-wake-reacquired.jpg",
+    "39-strip-link-crossfade.jpg",
+    "46-strip-portrait-turn.jpg",
+    "47-phone1-portrait-reduced-held.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-844x390-seat1-connected.jpg",
+      "bytes": 83406
+    },
+    {
+      "file": "02-phone1-844x390-seat1-reconnecting.jpg",
+      "bytes": 84907
+    },
+    {
+      "file": "03-phone1-844x390-seat1-lost.jpg",
+      "bytes": 80816
+    },
+    {
+      "file": "04-phone1-844x390-seat8-connected.jpg",
+      "bytes": 83829
+    },
+    {
+      "file": "05-phone1-844x390-seat8-reconnecting.jpg",
+      "bytes": 85262
+    },
+    {
+      "file": "06-phone1-844x390-seat8-lost.jpg",
+      "bytes": 81174
+    },
+    {
+      "file": "07-phone1-667x375-seat1-connected.jpg",
+      "bytes": 67887
+    },
+    {
+      "file": "08-phone1-667x375-seat1-reconnecting.jpg",
+      "bytes": 69120
+    },
+    {
+      "file": "09-phone1-667x375-seat1-lost.jpg",
+      "bytes": 65170
+    },
+    {
+      "file": "10-phone1-667x375-seat8-connected.jpg",
+      "bytes": 68266
+    },
+    {
+      "file": "11-phone1-667x375-seat8-reconnecting.jpg",
+      "bytes": 69529
+    },
+    {
+      "file": "12-phone1-667x375-seat8-lost.jpg",
+      "bytes": 65512
+    },
+    {
+      "file": "13-phone1-568x320-seat1-connected.jpg",
+      "bytes": 56219
+    },
+    {
+      "file": "14-phone1-568x320-seat1-reconnecting.jpg",
+      "bytes": 57249
+    },
+    {
+      "file": "15-phone1-568x320-seat1-lost.jpg",
+      "bytes": 53365
+    },
+    {
+      "file": "16-phone1-568x320-seat8-connected.jpg",
+      "bytes": 56565
+    },
+    {
+      "file": "17-phone1-568x320-seat8-reconnecting.jpg",
+      "bytes": 57635
+    },
+    {
+      "file": "18-phone1-568x320-seat8-lost.jpg",
+      "bytes": 53730
+    },
+    {
+      "file": "19-phone1-390x844-seat1-connected.jpg",
+      "bytes": 98275
+    },
+    {
+      "file": "20-phone1-390x844-seat1-reconnecting.jpg",
+      "bytes": 99534
+    },
+    {
+      "file": "21-phone1-390x844-seat1-lost.jpg",
+      "bytes": 95611
+    },
+    {
+      "file": "22-phone1-390x844-seat8-connected.jpg",
+      "bytes": 98575
+    },
+    {
+      "file": "23-phone1-390x844-seat8-reconnecting.jpg",
+      "bytes": 99887
+    },
+    {
+      "file": "24-phone1-390x844-seat8-lost.jpg",
+      "bytes": 95874
+    },
+    {
+      "file": "25-phone1-320x568-seat1-connected.jpg",
+      "bytes": 70809
+    },
+    {
+      "file": "26-phone1-320x568-seat1-reconnecting.jpg",
+      "bytes": 71763
+    },
+    {
+      "file": "27-phone1-320x568-seat1-lost.jpg",
+      "bytes": 68146
+    },
+    {
+      "file": "28-phone1-320x568-seat8-connected.jpg",
+      "bytes": 71132
+    },
+    {
+      "file": "29-phone1-320x568-seat8-reconnecting.jpg",
+      "bytes": 72102
+    },
+    {
+      "file": "30-phone1-320x568-seat8-lost.jpg",
+      "bytes": 68487
+    },
+    {
+      "file": "31-phone1-long-name-clipped.jpg",
+      "bytes": 66645
+    },
+    {
+      "file": "32-phone1-wake-reacquired.jpg",
+      "bytes": 60238
+    },
+    {
+      "file": "39-strip-link-crossfade.jpg",
+      "bytes": 276904
+    },
+    {
+      "file": "46-strip-portrait-turn.jpg",
+      "bytes": 390012
+    },
+    {
+      "file": "47-phone1-portrait-reduced-held.jpg",
+      "bytes": 61220
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 5380
+    },
+    {
+      "file": "run.json",
+      "bytes": 13475
+    }
+  ],
+  "totalBytes": 3123747,
+  "maxBytes": 12582912
+}

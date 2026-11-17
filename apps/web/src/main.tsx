@@ -1,12 +1,23 @@
 import { installFavicon } from './favicon';
 import { render } from 'preact';
-import { useLayoutEffect } from 'preact/hooks';
+import type { ComponentType } from 'preact';
+import { useLayoutEffect, useState } from 'preact/hooks';
 import { screenScale } from './viewport';
 import { PhonePage } from './phone-route';
 import { HostLobby } from './host-route';
 import { Landing } from './landing-route';
 import '@kaki/ui/tokens.css';
 import './style.css';
+function ControllerDemoRoute() {
+  const [demo, setDemo] = useState<ComponentType | null>(null);
+  useLayoutEffect(() => {
+    let active = true;
+    if (import.meta.env.DEV) void import('./controller-demo').then(module => { if (active) setDemo(() => module.ControllerDemo); });
+    return () => { active = false; };
+  }, []);
+  const Demo = demo;
+  return Demo ? <Demo/> : null;
+}
 function App() {
   useLayoutEffect(() => {
     const resize = (): void => {
@@ -25,6 +36,7 @@ function App() {
     return () => { window.removeEventListener('resize', resize); };
   }, []);
   const path = location.pathname.replace(/\/$/, '') || '/';
+  if (import.meta.env.DEV && path === '/play' && new URLSearchParams(location.search).get('demo') === 'controller') return <ControllerDemoRoute/>;
   if (path === '/play') return <PhonePage/>;
   if (path === '/host') return <HostLobby/>;
   if (path === '/') return <Landing/>;

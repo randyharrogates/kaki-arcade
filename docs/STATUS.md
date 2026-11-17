@@ -187,6 +187,14 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   integrator's browser checks found two faults the reviews had not (tiny names, an expired
   room looping) and one of the integrator's own evidence claims was wrong and is withdrawn in
   the report.
+- **Phone controller shell (K-01), development page only.** `/play?demo=controller` shows the
+  landscape controller frame: a one-line header with the seat number in its colour, the name
+  (cut with an ellipsis when long) and the link state as icon plus word, an empty play area,
+  and "Turn your phone sideways" in portrait. While shown, the page cannot scroll, zoom, select
+  text or pull to refresh, and it asks the phone to stay awake, saying "Keep your screen on"
+  only if refused. Tested in Chromium phone emulation from 320 to 844 px wide. Not proven: real
+  iPhone and Android (S-05); not yet the page a seated player sees (C-16); no stick or buttons
+  yet (K-02, K-03).
 - **Rabakz TV screen (R-03), development page only.** The question, four options with letter
   and shape, who has answered, lock-outs and wrong options marked without colour alone, and
   the reveal, at reading size for 720p to 4K with eight players. A correct option pulses once

@@ -885,3 +885,7 @@ seats in one row of cards along the bottom). Options A (seat list first; as buil
 does not show) and C (full-width picture under a text panel) stay in the development build
 only. Board: https://claude.ai/artifact/AXvSn8hMfRUDRa6g1A67E8. Why: B keeps the picker tile's
 reading order, so nothing jumps during the grow, and it is the golden-ratio variant. None of the three is measured for frame time yet (PERF-001, PERF-002).
+
+**D-110 · 2026-11-17 · Claude (integrator)** — `packages/controller-kit` depends on `preact`
+11.2.0, the same pinned version `apps/web` and `games/rabakz` use, so the kit can render its
+shell; one Preact instance in the bundle. No new package enters the repository.

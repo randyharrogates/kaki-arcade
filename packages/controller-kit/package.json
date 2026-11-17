@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@kaki/protocol": "workspace:*",
-    "@kaki/ui": "workspace:*"
+    "@kaki/ui": "workspace:*",
+    "preact": "11.2.0"
   }
 }

@@ -46,6 +46,9 @@
     },
     {
       "path": "../../games/rabakz/tsconfig.lib.json"
+    },
+    {
+      "path": "../../packages/controller-kit/tsconfig.lib.json"
     }
   ]
 }

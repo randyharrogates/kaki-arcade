@@ -56,11 +56,11 @@ requirement.
 | CTRL-001 | MUST | The phone shows a console-style controller assembled from a standard kit: left stick, D-pad, A/B/X/Y face… | M3 | not started | — | — | — |
 | CTRL-002 | MUST | Each game declares which kit parts it uses per phase | M3 | not started | — | — | — |
 | CTRL-003 | MUST | Optional kit parts a game may request: tilt, shake, swipe area, and a private display panel (text, cards,… | M3 | not started | — | — | — |
-| CTRL-004 | MUST | The controller works in landscape, fills the screen, prevents page scroll, zoom, text selection and… | M3 | not started | — | — | — |
+| CTRL-004 | MUST | The controller works in landscape, fills the screen, prevents page scroll, zoom, text selection and… | M3 | in progress | `packages/controller-kit/src/{shell.ts,shell.css,lock.ts,wake.ts,model.ts}`; dev demo `/play?demo=controller`; not yet the real `/play` (C-16) | `packages/controller-kit/src/shell.test.ts`, `uat/slices/K-01-controller-shell.mjs` | `uat/evidence/K-01-controller-shell/round2/` (Chromium phone emulation; real phones are S-05) |
 | CTRL-005 | MUST | Touch targets are at least 55 px | M3 | not started | — | — | — |
 | CTRL-006 | MUST | Every press gives feedback on the phone within one frame: visual always, vibration where the browser… | M3 | not started | — | — | — |
 | CTRL-007 | MUST | Motion parts (tilt, shake) ask for permission with a clear tap-to-enable step on iPhone and degrade to a… | M3 | not started | — | — | — |
-| CTRL-008 | MUST | The controller shows the player's colour, seat and nickname, and a connection indicator | M3 | not started | — | — | — |
+| CTRL-008 | MUST | The controller shows the player's colour, seat and nickname, and a connection indicator | M3 | in progress | `packages/controller-kit/src/{shell.ts,shell.css,lock.ts,wake.ts,model.ts}`; dev demo `/play?demo=controller`; not yet the real `/play` (C-16) | `packages/controller-kit/src/shell.test.ts`, `uat/slices/K-01-controller-shell.mjs` | `uat/evidence/K-01-controller-shell/round2/` (Chromium phone emulation; real phones are S-05) |
 | CTRL-009 | SHOULD | A physical keyboard or gamepad attached to the host can act as one extra player for development and… | M3 | not started | — | — | — |
 
 ## Networking
