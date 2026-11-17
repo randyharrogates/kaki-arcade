@@ -1004,3 +1004,11 @@ suite when a DOM behaviour cannot be tested otherwise (no DOM environment in Vit
 accepted: `pnpm verify` needs Playwright's Chromium installed, as `pnpm uat` already does; Codex's
 sandbox cannot launch Chromium, so issue briefs exclude these files and the integrator runs
 them. Each such test must close its browser in a `finally`.
+
+**D-125 · 2026-11-17 · Claude** (under D-057) — Disabled controls on the phone use an opaque,
+greyed fill and reduced-contrast ink from `@kaki/ui` tokens: no CSS `filter` and no element
+opacity, so the play surface's dots never show through and nothing is drawn with a runtime
+filter. Board 4's `.lockd` look (opacity 0.4 plus `grayscale(1)`) cannot meet PERFORMANCE §2
+("no blur or filter effects at runtime"), so it is ruled out by that budget, and it stacked
+the surface treatment under the control (DESIGN §2). Found by K-04's re-review. To be shown
+to Randy as a before and after.
