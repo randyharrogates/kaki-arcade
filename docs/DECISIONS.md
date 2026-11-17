@@ -1105,3 +1105,24 @@ runs it on the dev Mac now; S-03b runs the same page on the TCL Q65 when Randy i
 decides only whether the TV can run the host without the laptop. Dependency for the spike:
 `pixi.js` 8.22.0 (exact, released 2026-10-01, more than two weeks old), a root dev dependency
 until S-04 decides where the renderer lives.
+
+**D-137 · 2026-11-18 · Claude** (S-04, from the S-03a numbers on the dev Mac, D-128) — Tabao Rush
+draws with **PixiJS 8** (WebGL), not Canvas 2D; Preact stays the shell. Stress scene: 8 cooks (body,
+tinted apron mask, head), 80 items, 10 stations with timer rings, 6 order cards, fire, 200
+particles, HUD digits; 1920 × 1080; headed Playwright Chromium; 60 s capture after 5 s warm-up.
+| Run | Frames over 16.7 ms p99 / max | Update + draw work median / p99 / max | Draw calls | Decoded textures |
+|---|---|---|---|---|
+| PixiJS full | 18.7 / 18.8 ms, 0 long tasks | 0.5 / 0.8 / 1.1 ms | 1 | 126 MB |
+| PixiJS lower | 18.7 / 18.8 ms, 0 long tasks | 0.5 / 0.7 / 1.1 ms | 1 | 38 MB |
+| Canvas full | 18.7 / 18.8 ms, 0 long tasks | 0.9 / 1.7 / 2.3 ms | 373 | 663 MB |
+| Canvas lower | 18.7 / 18.8 ms, 0 long tasks | 0.6 / 1.2 / 1.4 ms | 273 | 172 MB |
+Both keep every frame on the display's refresh (measured 59.9 Hz in the test browser although macOS
+reports 75 Hz), so frame intervals do not separate them. They are separated by memory: Canvas keeps
+a tinted copy of every cook sprite per player, 663 MB at full detail against the 256 MB of
+PERF-024, while PixiJS tints on the GPU (126 MB). PixiJS also does about half the main-thread work
+with one batched draw call. Cost: 168 KB gzip (657 KB raw) against Canvas's 1 KB, loaded only when
+Tabao Rush starts (lazy chunk, as the Rabakz bank), so the first page (PERF-022) is unchanged.
+Caveats: the work time is main-thread submission, not GPU completion; the frame intervals are the
+end-to-end check and show no frame over 18.8 ms. S-03b (the TV's own browser) still decides only
+TV against laptop on HDMI. `pixi.js` moves from a root dev dependency to a dependency of the Tabao
+Rush renderer package when T-07 builds it.
