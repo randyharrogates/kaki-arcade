@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — R-05: Rabakz scoreboard and podium
+
+- `games/rabakz/host/`: standings (scoreboard every 5 questions, final podium, team totals first
+  in team mode, ties and late joiners), `Results.tsx`, screen layout and copy masks with room for
+  ink (prompt descenders, header Q tail), and `overflow.ts`, a browser checker that compares
+  measured ink with each mask; `tools/perf/rabakz-screen` covers the eight screens.
+- (RZ-032 in progress: the screens run on the Rabakz dev page; the console wires them with R-02.)
+
 ## 2026-11-17 — K-04: layout engine
 
 - `packages/controller-kit/src`: `layout-renderer.ts` (draws the declared parts, revision guard,

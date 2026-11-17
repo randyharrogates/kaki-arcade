@@ -37,6 +37,7 @@ export function privateView(state: State, id: string): PrivateView | null {
 }
 export function publicView(state: State) {
   const q = question(state);
+  const baseline = state.phase === 'scoreboard' ? state.scoreboardTotals?.previous : state.scoreboardTotals?.current;
   return { phase: state.phase, round: state.round + 1, length: state.settings.length,
     winners: state.phase === 'reveal' ? state.winners.map((winner) => ({ ...winner.info })) : [],
     finalRound: finalRound(state), question: state.phase === 'final' ? null : {
@@ -46,12 +47,12 @@ export function publicView(state: State) {
     }, wrong: [...state.wrong],
     correct: state.phase === 'reveal' || state.phase === 'over' || state.phase === 'scoreboard' ? q.correct : null,
     players: state.players.map((player) => ({
-      ...player.info, score: player.score, streak: player.streak, gained: player.gained,
+      ...player.info, score: player.score, previousScore: baseline?.players.find(old => old.incarnation === player.incarnation)?.score ?? 0, streak: player.streak, gained: player.gained,
       lockedOut: state.phase === 'question' && player.pick !== null && state.wrong.includes(player.pick),
       waiting: !player.eligible, answered: state.phase === 'question' ? player.pick !== null && state.wrong.includes(player.pick) : player.pick !== null,
       pick: state.phase === 'question' ? null : player.answers.at(-1) ?? null,
       answers: state.phase === 'question' ? null : [...player.answers],
-    })), teamScores: [...state.teamScores] };
+    })), previousTeamScores: baseline ? [...baseline.teams] : [0, 0], teamScores: [...state.teamScores] };
 }
 export function results(state: State): Results {
   const players = state.players.map((player) => ({

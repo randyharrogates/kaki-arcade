@@ -1,9 +1,10 @@
 import { blend, GHOST_OPACITY, THEMES, COLOUR_TOKENS, PHI, SHAPE_BUTTONS, SHAPE_NAMES, space, tv, tvType, lineHeight } from '@kaki/ui';
+import { categoryTitle } from './categories';
 import type { publicView } from '../src/rules/views';
 
 export type RabakzPublicView = ReturnType<typeof publicView>;
 
-export type MeasureText = (text: string, size: number, face: 'display' | 'body') => number;
+export type MeasureText = (text: string, size: number, face: 'display' | 'body' | 'mono') => number;
 export const cssLength = (value: number): `${number}px` => `${String(value)}px` as `${number}px`;
 export const viewportStyle = (width: number, height: number) => ({ width: cssLength(width), height: cssLength(height) });
 /** Deterministic conservative fallback; the browser supplies actual face measurements. */
@@ -29,7 +30,7 @@ export const SCREEN = {
   width: tv.width, height: tv.height, safe: tv.safeMargin,
   innerWidth: tv.width - 2 * tv.safeMargin,
   innerHeight: tv.height - 2 * tv.safeMargin,
-  sectionGap: space[13], header: space[55], footer: space[233] + space[55], gap: space[21],
+  headerGap: space[21], sectionGap: space[13], header: space[55], footer: space[233] + space[55], gap: space[21],
   shape: space[55], padding: space[8],
 };
 
@@ -40,8 +41,8 @@ export function screenScale(width: number, height: number): number {
 
 export function questionFit(prompt: string, options: readonly string[], picture: boolean, reveal = false, measure: MeasureText = fallbackMeasure) {
   const footer = space[377];
-  const top = SCREEN.safe + SCREEN.header + SCREEN.sectionGap;
-  const available = SCREEN.innerHeight - SCREEN.header - SCREEN.sectionGap;
+  const top = SCREEN.safe + SCREEN.header + SCREEN.headerGap;
+  const available = SCREEN.innerHeight - SCREEN.header - SCREEN.headerGap;
   const contentHeight = available - footer - SCREEN.sectionGap;
   // Prefer secondary media : primary copy = 1 : φ. Only maximum copy may
   // shrink the media at the 34px floor. Maximum copy uses a 144px-high
@@ -53,9 +54,12 @@ export function questionFit(prompt: string, options: readonly string[], picture:
     const compact = picture && mediaWidth === space[144] * PHI;
     const optionsWidth = compact ? SCREEN.innerWidth : width;
     const textWidth = (optionsWidth - SCREEN.gap) / 2 - 2 * SCREEN.padding - (SCREEN.shape + space[13]);
-    return [tvType.display, tvType.title, tvType.body].flatMap(size => {
+    return [space[13], space[8], space[5], 0].flatMap(promptGap => [tvType.display, tvType.title, tvType.body].flatMap(size => {
       const lines = textLines(prompt, width, size, measure, 'display');
-      const promptHeight = lines.length * size * lineHeight.display;
+      // Reserve both font edges inside the prompt's clipped copy mask.
+      const promptHeadroom = size === tvType.display ? space[21] : size === tvType.title ? space[13] : space[8];
+      const promptDescenders = promptHeadroom;
+      const promptHeight = lines.length * size * lineHeight.display + promptHeadroom + promptDescenders;
       return (size === tvType.display ? [tvType.title] : size === tvType.title ? [tvType.title, tvType.body] : [tvType.body]).map(optionSize => {
         const fitted = options.map(text => ({ size: optionSize, fontSize: cssLength(optionSize), lines: textLines(text, textWidth, optionSize, measure) }));
         const textHeight = Math.max(SCREEN.shape, ...fitted.map(o => o.lines.length * o.size * lineHeight.body));
@@ -65,19 +69,21 @@ export function questionFit(prompt: string, options: readonly string[], picture:
         const labelWidth = Math.max(measure('✓ Correct', tvType.body, 'body'), measure('⊘ Wrong', tvType.body, 'body'));
         const marksHeight = space[55] + (marksWidth < picksWidth + space[13] + labelWidth ? tvType.body * lineHeight.body + space[8] : 0);
         const minimumRow = textHeight + 2 * SCREEN.padding + marksHeight + space[5];
-        const used = Math.max(promptHeight, compact ? mediaWidth / PHI : 0) + SCREEN.sectionGap + 2 * minimumRow + SCREEN.gap;
-        return { compact, optionsWidth, width, mediaWidth, mediaHeight: mediaWidth / PHI, size, lines, promptHeight, fitted, marksHeight, minimumRow, used };
+        const used = Math.max(promptHeight, compact ? mediaWidth / PHI : 0) + promptGap + 2 * minimumRow + SCREEN.gap;
+        return { promptHeadroom, promptDescenders, promptGap, compact, optionsWidth, width, mediaWidth, mediaHeight: mediaWidth / PHI, size, lines, promptHeight, fitted, marksHeight, minimumRow, used };
       });
-    });
+    }));
   });
   // Media size wins first, then prompt size, then answer size. All decisions
   // reserve reveal marks, the two-line outcome and eight wide-name seats.
+  candidates.sort((a, b) => b.mediaWidth - a.mediaWidth || b.size - a.size ||
+    (b.fitted[0]?.size ?? 0) - (a.fitted[0]?.size ?? 0) || b.promptGap - a.promptGap);
   const chosen = candidates.find(c => Math.max(c.used, c.mediaHeight) <= contentHeight) ?? candidates[candidates.length - 1];
   if (!chosen) throw new Error('Missing fit candidate');
   const { width, mediaWidth, mediaHeight, size, lines, promptHeight, fitted } = chosen;
   // D-102: choose the largest fitting answer step; spare height pads equal rows.
-  const optionHeight = Math.max(chosen.minimumRow, (contentHeight - Math.max(promptHeight, chosen.compact ? mediaHeight : 0) - SCREEN.sectionGap - SCREEN.gap) / 2);
-  const mainTop = top + Math.max(promptHeight, chosen.compact ? mediaHeight : 0) + SCREEN.sectionGap;
+  const optionHeight = Math.max(chosen.minimumRow, (contentHeight - Math.max(promptHeight, chosen.compact ? mediaHeight : 0) - chosen.promptGap - SCREEN.gap) / 2);
+  const mainTop = top + Math.max(promptHeight, chosen.compact ? mediaHeight : 0) + chosen.promptGap;
   const copyX = SCREEN.safe + (picture ? mediaWidth + SCREEN.sectionGap : 0);
   const boxes = {
     prompt: { x: copyX, y: top, width, height: promptHeight },
@@ -86,7 +92,7 @@ export function questionFit(prompt: string, options: readonly string[], picture:
     awards: { x: SCREEN.safe, y: top + contentHeight + SCREEN.sectionGap, width: SCREEN.innerWidth, height: footer },
   };
   const needed = Math.max(chosen.used, mediaHeight) + SCREEN.sectionGap + footer;
-  return { reveal, boxes, width, size, fontSize: cssLength(size), promptHeight: cssLength(promptHeight), lines, options: fitted, marksHeight: chosen.marksHeight, optionHeight, needed, available, fits: needed <= available };
+  return { reveal, boxes, width, size, fontSize: cssLength(size), promptHeight: cssLength(promptHeight), promptHeadroom: cssLength(chosen.promptHeadroom), promptDescenders: cssLength(chosen.promptDescenders), lines, options: fitted, marksHeight: chosen.marksHeight, optionHeight, needed, available, fits: needed <= available };
 
 }
 
@@ -106,7 +112,7 @@ export function screenModel(view: RabakzPublicView, measure: MeasureText = fallb
     picks: reveal ? p.answers ?? [] : [],
   }));
   return {
-    questionId: q.id, identity: `${q.id}:${view.phase}:${view.wrong.join(',')}`, reveal, category: q.category, heading: `Question ${String(view.round)} of ${String(view.length)}`,
+    questionId: q.id, identity: `${q.id}:${view.phase}:${view.wrong.join(',')}`, reveal, category: categoryTitle(q.category), heading: `Question ${String(view.round)} of ${String(view.length)}`,
     prompt: q.prompt, fit, picture,
     pictureLabel: 'Picture slot',
     outcome: !reveal ? '' : view.winners.length === 0 ? 'Nobody got it right' :

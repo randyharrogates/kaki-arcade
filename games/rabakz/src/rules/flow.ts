@@ -64,7 +64,12 @@ export function step(state: State, inputs: StepInputs): State {
     if (elapsed < REVEAL_STEPS) return { ...state, elapsed };
     if (state.phase === 'final') return { ...state, phase: 'question', elapsed: 0 };
     if (state.round + 1 === state.settings.length) return { ...state, phase: 'over', elapsed: 0 };
-    if ((state.round + 1) % 5 === 0) return { ...state, phase: 'scoreboard', elapsed: 0 };
+    if ((state.round + 1) % 5 === 0) return { ...state, phase: 'scoreboard', elapsed: 0,
+      scoreboardTotals: {
+        ...(state.scoreboardTotals ? { previous: state.scoreboardTotals.current } : {}),
+        current: { players: state.players.map(player => ({ incarnation: player.incarnation, score: player.score })),
+          teams: [...state.teamScores] },
+      } };
     return advance(state);
   }
   let current: State = { ...state, tick: state.tick + 1, elapsed: state.elapsed + 1 };

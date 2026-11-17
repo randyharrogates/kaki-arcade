@@ -33,7 +33,16 @@ export interface Seat {
   readonly eligible: boolean;
   readonly joinedMidGame: boolean;
 }
+/** Public totals only; absent until the first scoreboard (zero baseline). */
+export interface ScoreboardTotals {
+  readonly players: readonly { readonly incarnation: number; readonly score: number }[];
+  readonly teams: readonly [number, number];
+}
 export interface State {
+  readonly scoreboardTotals?: {
+    readonly current: ScoreboardTotals;
+    readonly previous?: ScoreboardTotals;
+  };
   readonly rng: RngState;
   readonly nextSeat: number;
   readonly retiredRevisions: Readonly<Record<string, number>>;

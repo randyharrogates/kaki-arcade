@@ -1,3 +1,4 @@
+import { detectOverflow } from './overflow';
 import { render } from 'preact';
 import { countUpDuration, STAGGER_MS } from '@kaki/ui';
 import { RabakzScreen } from './Screen';
@@ -7,16 +8,7 @@ import '@kaki/ui/tokens.css';
 
 /** Imported only by dev/index.html; the production game entry has no import of this module. */
 if ((import.meta as ImportMeta & { readonly env: { readonly DEV: boolean } }).env.DEV) {
-  Object.assign(window, { __rzOverflow: () => [...document.querySelectorAll<HTMLElement>('.rz-option')].flatMap((card, index) => {
-    const bounds = card.getBoundingClientRect();
-    return [...card.querySelectorAll<HTMLElement>('*')].filter(child => {
-      const box = child.getBoundingClientRect();
-      return box.left < bounds.left - 1 || box.top < bounds.top - 1 || box.right > bounds.right + 1 || box.bottom > bounds.bottom + 1;
-    }).map(child => {
-      const box = child.getBoundingClientRect();
-      return { card: index, element: child.getAttribute('class'), box: { left: box.left, top: box.top, right: box.right, bottom: box.bottom } };
-    });
-  }) });
+  Object.assign(window, { __rzOverflow: detectOverflow });
   const query = new URLSearchParams(location.search);
   const stateName = SCENARIOS.find(s => s === query.get('state')) ?? 'open';
   const requestedCount = query.has('players') ? Number(query.get('players')) : NaN;
@@ -35,7 +27,7 @@ if ((import.meta as ImportMeta & { readonly env: { readonly DEV: boolean } }).en
         animation.pause();
         animation.currentTime = at;
       }
-      if (from && to) document.documentElement.dataset.rzReady = '1';
+      document.documentElement.dataset.rzReady = '1';
     }); });
   };
   // Perf-only fixture driver retains the mounted screen across real public snapshots.

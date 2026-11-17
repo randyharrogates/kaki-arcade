@@ -2,7 +2,7 @@
 .rz-artboard { position: absolute; left: 50%; top: 50%; width: var(--ka-tv-width); height: var(--ka-tv-height); transform-origin: center; }
 .rz-frame { box-sizing: border-box; width: 100%; height: 100%; padding: var(--ka-tv-safe-margin); position: relative; font-family: var(--ka-font-body); font-size: var(--ka-type-34); line-height: var(--ka-line-body); color: var(--ka-ink); background-color: var(--ka-bg); background-image: var(--ka-bg-treatment); background-size: var(--ka-bg-treatment-size); background-position: var(--ka-bg-treatment-position); }
 .rz-frame * { box-sizing: border-box; min-width: 0; }
-.rz-header { display: flex; align-items: center; justify-content: space-between; gap: var(--ka-space-21); }
+.rz-header { margin-bottom: var(--ka-space-8); display: flex; align-items: center; justify-content: space-between; gap: var(--ka-space-21); }
 .rz-question h1 { margin: 0; font-family: var(--ka-font-display); font-weight: var(--ka-weight-regular); line-height: var(--ka-line-display); text-wrap: balance; overflow-wrap: anywhere; }
 .rz-option { position: relative; overflow: hidden; padding: var(--ka-space-8); display: grid; grid-template-columns: var(--ka-space-55) 1fr; gap: var(--ka-space-13); align-items: center; border-radius: var(--ka-radius-corner); color: var(--ka-panel-ink); background: var(--ka-panel-treatment); row-gap: var(--ka-space-5); grid-template-rows: 1fr var(--rz-marks-height); }
 .rz-shape { width: var(--ka-space-55); height: var(--ka-space-55); }
@@ -46,3 +46,74 @@
 @media (prefers-reduced-motion: reduce) { .rz-pulse-ring { display: none; } }
 
 .rz-winner { margin-left: var(--ka-space-5); }
+.rz-results-body { position: relative; margin-top: var(--ka-space-5); transform-origin: top left; }
+.rz-rank, .rz-column-headings { display: grid; grid-template-columns: var(--ka-space-144) var(--ka-space-55) minmax(0, var(--rz-name-fr)) minmax(0, 1fr); align-items: center; column-gap: var(--ka-space-13); padding-inline: var(--ka-space-13); }
+.rz-rank { position: absolute; border-radius: var(--ka-radius-corner); color: var(--ka-ink); font-size: var(--ka-type-55); line-height: var(--ka-line-body); }
+.rz-rank[data-leader] { background: var(--ka-panel-treatment); color: var(--ka-panel-ink); box-shadow: inset 0 0 0 var(--rz-edge) var(--ka-panel-edge-colour); }
+.rz-place { font-family: var(--ka-font-display); font-weight: var(--ka-weight-regular); color: var(--ka-secondary); text-align: right; padding-inline: var(--ka-space-13); padding-block: var(--ka-space-5); }
+.rz-rank .rz-seat-number { font-size: var(--ka-type-34); }
+.rz-rank[data-leader] .rz-place { color: var(--ka-panel-ink); }
+.rz-player-name { display: flex; align-items: center; gap: var(--ka-space-13); }
+.rz-rank-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rz-row-team { display: inline-block; flex-shrink: 0; width: var(--ka-space-21); height: var(--ka-space-21); }
+.rz-score-area { display: grid; grid-template-columns: minmax(0, 1fr) var(--ka-space-233); gap: var(--ka-space-13); align-items: center; text-align: right; }
+.rz-score-area > :last-child { justify-self: end; }
+.rz-total, .rz-solo-total { font-family: var(--ka-font-mono); font-variant-numeric: tabular-nums; }
+.rz-total { white-space: nowrap; }
+.rz-delta { font-family: var(--ka-font-mono); font-variant-numeric: tabular-nums; font-size: var(--ka-type-34); color: var(--ka-secondary); }
+.rz-delta[data-chip] { background: var(--ka-chip); color: var(--ka-accent); border-radius: var(--ka-radius-pill); padding: var(--ka-space-8) var(--ka-space-21); }
+.rz-rank[data-leader] .rz-delta:not([data-chip]) { color: var(--ka-panel-secondary); }
+.rz-results .rz-header { align-items: baseline; margin-bottom: var(--ka-space-21); }
+.rz-results .rz-header > :last-child { font-size: var(--ka-type-34); color: var(--ka-secondary); line-height: var(--ka-line-display); }
+.rz-round-label { font-family: var(--ka-font-body); font-size: var(--ka-type-34); color: var(--ka-secondary); }
+.rz-column-headings { font-size: var(--ka-type-34); color: var(--ka-secondary); line-height: var(--ka-line-body); margin-top: 0; }
+.rz-team-totals { display: grid; grid-template-columns: var(--ka-golden-columns); gap: var(--ka-space-13); margin-top: var(--ka-space-5); }
+.rz-team-panel { display: flex; align-items: center; gap: var(--ka-space-13); height: calc(var(--ka-type-55) * var(--ka-line-body)); padding-inline: var(--ka-space-13); background: var(--ka-panel-treatment); color: var(--ka-panel-ink); border-radius: var(--ka-radius-corner); box-shadow: inset 0 0 0 var(--rz-edge) var(--ka-panel-edge-colour); font-size: var(--ka-type-34); line-height: var(--ka-line-display); }
+.rz-team-panel .rz-delta:not([data-chip]) { line-height: var(--ka-line-body); }
+.rz-team-panel .rz-total { margin-left: auto; font-size: var(--ka-type-55); line-height: var(--ka-line-body); }
+.rz-podium { display: flex; align-items: end; gap: var(--rz-column-gap); }
+.rz-step { flex: 1; display: flex; flex-direction: column; justify-content: end; align-items: center; gap: var(--rz-member-gap); color: var(--ka-ink); }
+.rz-step-place { order: 2; display: grid; place-items: center; width: 100%; height: var(--rz-step-height); border-radius: var(--ka-radius-corner); background: var(--ka-panel-treatment); color: var(--ka-panel-ink); box-shadow: inset 0 0 0 var(--rz-edge) var(--ka-panel-edge-colour); font-family: var(--ka-font-display); padding-block: var(--ka-space-5); flex-shrink: 0; font-size: var(--rz-step-type); font-weight: var(--ka-weight-regular); line-height: var(--ka-line-body); }
+.rz-step-members { width: 100%; display: grid; grid-template-columns: 1fr; gap: var(--rz-member-gap); }
+.rz-podium-name { display: flex; justify-content: center; align-items: center; gap: var(--ka-space-13); }
+.rz-podium-player { display: grid; row-gap: var(--rz-player-gap); text-align: center; font-size: var(--rz-podium-type); line-height: var(--ka-line-display); justify-items: center; }
+.rz-solo { height: 100%; display: grid; grid-template-columns: minmax(0, 1fr); place-content: center normal; justify-items: center; text-align: center; gap: var(--ka-space-34); font-size: var(--ka-type-55); }
+.rz-solo-total { font-size: var(--ka-type-34); }
+
+.rz-team-mark { display: block; width: var(--ka-space-55); height: var(--ka-space-55); border-radius: var(--ka-radius-corner); }
+.rz-solo > strong { max-width: 100%; overflow-wrap: anywhere; line-height: var(--ka-line-body); }
+.rz-solo-total { padding-block: var(--ka-space-5); display: block; max-width: 100%; line-height: var(--ka-line-body); overflow-wrap: anywhere; }
+
+.rz-rank[data-compact] { font-size: var(--ka-type-34); }
+.rz-no-team { color: var(--ka-secondary); font-size: var(--ka-type-34); white-space: nowrap; flex-shrink: 0; }
+.rz-podium-name { width: 100%; max-width: 100%; line-height: var(--rz-podium-line); }
+.rz-podium-name > .rz-rank-name { flex: 0 1 auto; }
+
+
+
+.rz-podium-name > .rz-seat-number, .rz-podium-name > .rz-team-mark { flex-shrink: 0; }
+
+.rz-podium-player .rz-total { font-size: var(--ka-type-34); line-height: var(--rz-podium-line); }
+
+/* Name headroom is included in the podium geometry. */
+.rz-podium-player .rz-rank-name { padding-block: var(--rz-name-padding); }
+
+/* Font content headroom stays within the fixed ranked-row height. */
+.rz-rank .rz-total, .rz-rank .rz-delta { padding-block: var(--ka-space-5); }
+
+.rz-rank[data-leader] .rz-no-team { color: var(--ka-panel-secondary); }
+.rz-podium-name .rz-seat-number { font-size: var(--ka-type-34); }
+.rz-group-label { display: flex; align-items: center; gap: var(--ka-space-13); font-size: var(--ka-type-34); line-height: var(--ka-line-body); color: var(--ka-secondary); }
+
+.rz-rank[data-compact] .rz-delta[data-chip] { padding-block: var(--ka-space-5); }
+
+/* Keep both font edges inside the prompt swap mask and its measured box. */
+.rz-question h1 > .rz-copy > div { padding-top: var(--rz-prompt-headroom); padding-bottom: var(--rz-prompt-descenders); }
+
+/* The 55px line plus 13px bottom clearance and 8px gap retain the
+   original 55 + 21px header-to-prompt budget without negative margins. */
+.rz-header > :first-child .rz-copy > div { padding-top: 0; padding-bottom: var(--ka-space-13); }
+.rz-question h1 > .rz-copy > div { padding-inline: var(--ka-space-5); }
+
+/* Centre category ink on the heading line, above its descender clearance. */
+.rz-header > :last-child .rz-copy > div { padding-bottom: var(--ka-space-13); }

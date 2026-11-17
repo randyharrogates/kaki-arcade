@@ -1,11 +1,13 @@
 import { useContext, useLayoutEffect, useRef, useState } from 'preact/hooks';
 import { createContext } from 'preact';
 import type { ComponentChildren } from 'preact';
-import { motionGeometry, countUpAt, countUpDuration, GHOST_OPACITY, STAGGER_MS, duration, exitDuration, easing, reducedMotion, SEAT_NUMERAL, SHAPE_STROKE, space } from '@kaki/ui';
+import { crossfade, motionGeometry, countUpAt, countUpDuration, GHOST_OPACITY, STAGGER_MS, duration, exitDuration, easing, reducedMotion, SEAT_NUMERAL, SHAPE_STROKE, space } from '@kaki/ui';
 import type { Motion } from '@kaki/ui';
 import { createFitCache, cssLength, screenModel, screenScale, viewportStyle, fallbackMeasure as fallback } from './view-model';
 import type { MeasureText, RabakzPublicView, ScreenModel } from './view-model';
 import './screen.css';
+import { ResultsFrame } from './Results';
+import { scoreboardModel } from './standings';
 
 
 
@@ -76,8 +78,8 @@ function QuestionBlock({ model, reduced, slow }: { model: ScreenModel; reduced: 
     return animateBlockWipe(incoming.current, outgoing.current, slow, () => { setOld(null); }, () => reducedNow.current !== reduced);
   }, [old, reduced, slow]);
   const contents = (m: ScreenModel, quiet: boolean) => <>
-    <MovingBox className="rz-question" box={m.fit.boxes.prompt} reduced={quiet} slow={slow}>
-      <h1 style={inlineStyle({ fontSize: m.fit.fontSize, height: m.fit.promptHeight })}><Copy identity={m.prompt} reduced={quiet} slow={slow}><span style={inlineStyle({ fontSize: m.fit.fontSize })}>{m.prompt}</span></Copy></h1>
+    <MovingBox className="rz-question" box={{ ...m.fit.boxes.prompt, x: m.fit.boxes.prompt.x - space[5], width: m.fit.boxes.prompt.width + 2 * space[5] }} reduced={quiet} slow={slow}>
+      <h1 style={inlineStyle({ fontSize: m.fit.fontSize, height: m.fit.promptHeight, '--rz-prompt-headroom': m.fit.promptHeadroom, '--rz-prompt-descenders': m.fit.promptDescenders })}><Copy identity={m.prompt} reduced={quiet} slow={slow}><span style={inlineStyle({ fontSize: m.fit.fontSize })}>{m.prompt}</span></Copy></h1>
     </MovingBox>
     <MovingBox className="rz-media" box={m.fit.boxes.media} reduced={quiet} slow={slow} visible={m.picture}><div role="img" aria-label="Neutral framed picture slot. Photograph pending R-13."><Copy identity={m.pictureLabel} reduced={quiet} slow={slow}>{m.pictureLabel}</Copy></div></MovingBox>
     <OptionGrid model={m} reduced={quiet} slow={slow} />
@@ -122,7 +124,7 @@ function RevealSurface({ questionId, active, correct, reduced, slow }: { questio
   return <div ref={root} class="rz-reveal-surface" data-correct={correct || undefined} aria-hidden="true" style={inlineStyle({ clipPath: active ? 'inset(0)' : 'inset(0 100% 0 0)' })}>{correct && !reduced && <div class="rz-pulse-ring" />}</div>;
 }
 
-function Score({ from, to, reduced, slow, frozenAt, index }: { index: number; from: number; to: number; reduced: boolean; slow: number; frozenAt?: number | undefined }) {
+export function Score({ from, to, reduced, slow, frozenAt, index }: { index: number; from: number; to: number; reduced: boolean; slow: number; frozenAt?: number | undefined }) {
   const root = useRef<HTMLSpanElement>(null);
   const [value, setValue] = useState(reduced ? to : from);
   useLayoutEffect(() => {
@@ -206,7 +208,7 @@ export function QuestionFrame({ model, reduced = reducedMotion(), slow = 1, froz
       </div></div>}</SeatSlot>)}</div>
     </footer>;
   const moving = { reduced, slow };
-  return <section class="rz-frame" data-theme="rabakz" data-reveal={model.reveal || undefined} data-picture={model.picture || undefined}>
+  return <section class="rz-frame" data-fit={model.fit.fits ? 'fits' : 'failed'} data-theme="rabakz" data-reveal={model.reveal || undefined} data-picture={model.picture || undefined}>
     <header class="rz-header"><span><Copy identity={model.heading} reduced={reduced} slow={slow}>{model.heading}</Copy></span><span><Copy identity={model.category} reduced={reduced} slow={slow}>{model.category}</Copy></span></header>
     <QuestionBlock model={model} reduced={reduced} slow={slow} />
     <MovingBox className="rz-player-strip" box={model.fit.boxes.awards} {...moving}>{seats}</MovingBox>
@@ -247,9 +249,9 @@ function Copy({ identity, children, reduced, slow, fill = false }: { identity: s
 }
 
 /** Loading a registered face may reject; retain the already measured fallback. */
-export function loadScreenFonts(fonts: { ready: Promise<unknown>; load: (name: string) => Promise<unknown> }, names: { display: string; body: string }, loaded: () => void) {
+export function loadScreenFonts(fonts: { ready: Promise<unknown>; load: (name: string) => Promise<unknown> }, names: { display: string; body: string; mono?: string }, loaded: () => void) {
   return fonts.ready.then(async () => {
-    await Promise.all([fonts.load(`89px ${names.display}`), fonts.load(`700 55px ${names.body}`)]);
+    await Promise.all([fonts.load(`89px ${names.display}`), fonts.load(`700 55px ${names.body}`), ...(names.mono ? [fonts.load(`34px ${names.mono}`)] : [])]);
     loaded();
   }).catch(() => { /* Keep the current fallback fit when a face cannot load. */ });
 }
@@ -265,8 +267,8 @@ export function RabakzScreen({ view, width, height, reduced = reducedMotion(), s
     const context = document.createElement('canvas').getContext('2d');
     if (!element || !context) return;
     const styles = getComputedStyle(element);
-    const fonts = { display: styles.getPropertyValue('--ka-font-display'), body: styles.getPropertyValue('--ka-font-body') };
-    const refresh = () => { setMeasure(() => (text: string, size: number, face: 'display' | 'body') => {
+    const fonts = { display: styles.getPropertyValue('--ka-font-display'), body: styles.getPropertyValue('--ka-font-body'), mono: styles.getPropertyValue('--ka-font-mono') };
+    const refresh = () => { setMeasure(() => (text: string, size: number, face: 'display' | 'body' | 'mono') => {
       context.font = `${face === 'body' ? '700 ' : ''}${String(size)}px ${fonts[face]}`;
       return context.measureText(text).width;
     }); };
@@ -281,10 +283,38 @@ export function RabakzScreen({ view, width, height, reduced = reducedMotion(), s
   const [fitCache] = useState(() => createFitCache());
   const model = screenModel(view, measure, view.question ? fitCache(view.question, width, height, measure, fontEpoch) : undefined) ?? retained.current;
   if (model) retained.current = model;
-  if (!model) return null;
+  const results = view.phase === 'scoreboard' || view.phase === 'over';
+  const board = results ? scoreboardModel(view) : undefined;
+  if (!model && !results) return null;
   return <div ref={viewport} class="rz-viewport" data-theme="rabakz" style={viewportStyle(width, height)}>
     <div class="rz-artboard" style={inlineStyle({ transform: `translate(-50%, -50%) scale(${String(screenScale(width, height))})` })}>
-      <QuestionFrame model={model} reduced={reduced} slow={slow} frozenAt={frozenAt} />
+      <ResultsBoundary identity={results ? view.phase : 'question'} reduced={reduced} slow={slow}>
+        {results && board ? <ResultsFrame measure={measure} view={view} board={board} reduced={reduced} slow={slow} frozenAt={frozenAt} /> : model && <QuestionFrame model={model} reduced={reduced} slow={slow} frozenAt={frozenAt} />}
+      </ResultsBoundary>
     </div>
   </div>;
+}
+
+export function animateResultsCrossfade(incoming: HTMLElement | null, outgoing: HTMLElement | null, reduced: boolean, slow: number) {
+  const frames = crossfade({ reduced });
+  return { enter: play(incoming, frames.incoming, slow), exit: play(outgoing, frames.outgoing, slow) };
+}
+
+/** One shared boundary for question → scoreboard and scoreboard → end. */
+function ResultsBoundary({ identity, children, reduced, slow }: { identity: string; children: ComponentChildren; reduced: boolean; slow: number }) {
+  const last = useRef({ identity, children });
+  const [old, setOld] = useState<ComponentChildren>(null);
+  const incoming = useRef<HTMLDivElement>(null), outgoing = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    if (last.current.identity !== identity && !reduced) setOld(last.current.children);
+    last.current = { identity, children };
+  }, [identity, children, reduced]);
+  useLayoutEffect(() => {
+    if (reduced) { setOld(null); return; }
+    if (!old) return;
+    const { enter, exit } = animateResultsCrossfade(incoming.current, outgoing.current, reduced, slow);
+    if (enter) enter.onfinish = () => { setOld(null); };
+    return () => { enter?.cancel(); exit?.cancel(); };
+  }, [old, reduced, slow]);
+  return <>{old && !reduced && <div class="rz-block" ref={outgoing} inert aria-hidden="true">{old}</div>}<div class="rz-block" ref={incoming}>{children}</div></>;
 }

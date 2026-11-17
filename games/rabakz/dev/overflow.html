@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>RZ-032 overflow matrix</title>
+<body><pre id="report">Running…</pre>
+<script type="module">
+import { SCENARIOS } from '../host/scenarios.ts';
+// Serve through the same dev server as index.html. No screenshots or evidence writes.
+const report = document.querySelector('#report');
+const results = [];
+const frame = document.createElement('iframe');
+frame.style.border = '0';
+document.body.append(frame);
+try {
+  for (const [width, height] of [[1280, 720], [1920, 1080], [3840, 2160]]) {
+    frame.style.width = `${width}px`;
+    frame.style.height = `${height}px`;
+    for (const state of SCENARIOS) for (const players of [1, 2, 4, 8]) {
+      await new Promise((resolve, reject) => {
+        frame.onload = resolve;
+        frame.onerror = reject;
+        frame.src = `./index.html?state=${state}&players=${players}&reduced=1&at=10000`;
+      });
+      const win = frame.contentWindow;
+      await win.document.fonts.ready;
+      const deadline = performance.now() + 10000;
+      while (win.document.documentElement.dataset.rzReady !== '1') {
+        if (performance.now() > deadline) throw new Error(`Not ready: ${state}`);
+        await new Promise(resolve => setTimeout(resolve, 20));
+      }
+      await new Promise(resolve => win.requestAnimationFrame(() => win.requestAnimationFrame(resolve)));
+      const findings = win.__rzOverflow();
+      const truncated = [...win.document.querySelectorAll('.rz-rank-name')]
+        .filter(name => name.scrollWidth > name.clientWidth + 1)
+        .map(name => name.textContent);
+      const fit = [...win.document.querySelectorAll('[data-fit]')].map(element => element.dataset.fit);
+      results.push({ fit, findings, width, height, state, players, overflow: findings.filter(f => f.kind === 'overflow'), overhang: findings.filter(f => f.kind === 'overhang'), truncated });
+      report.textContent = JSON.stringify({ checked: results.length, failures: results.filter(r => r.overflow.length || r.fit.some(value => value === 'failed')), truncated: results.filter(r => r.truncated.length) }, null, 2);
+    }
+  }
+  window.__rzMatrix = results;
+  report.textContent = JSON.stringify({ checked: results.length, tight: results.filter(r => r.fit.includes('tight')), fitFailures: results.filter(r => r.fit.some(value => value === 'failed')).length, overflow: results.reduce((sum, r) => sum + r.overflow.length, 0), failures: results.filter(r => r.overflow.length || r.fit.some(value => value === 'failed')), truncated: results.filter(r => r.truncated.length) }, null, 2);
+} catch (error) { report.textContent = String(error); throw error; }
+finally { frame.remove(); }
+</script></body></html>

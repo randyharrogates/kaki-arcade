@@ -235,6 +235,12 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   the striped back. Changes crossfade without a blank frame. Tested in Chromium phone emulation
   at 667, 844 and 932 wide. Not proven: real phones (K-07); the games' own layouts (R-02, P-03,
   T-08); long action labels and web-font loading (follow-ups in K-05).
+- **Rabakz scoreboard and podium (R-05), development page only.** A scoreboard every five
+  questions and a final podium, with ties, late joiners and team totals first in team mode, for
+  one to eight players at 720p to 4K. Long names end in an ellipsis; every heading and prompt is
+  masked with room for its ink, and a browser checker compares measured ink with each mask (480
+  screen states, none clipped). Screen transitions held 16.7 ms frames in the performance run.
+  Not proven: inside the console (R-02 wires the game), sounds (RZ-033).
 - **Rabakz TV screen (R-03), development page only.** The question, four options with letter
   and shape, who has answered, lock-outs and wrong options marked without colour alone, and
   the reveal, at reading size for 720p to 4K with eight players. A correct option pulses once

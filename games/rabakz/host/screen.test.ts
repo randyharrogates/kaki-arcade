@@ -1,8 +1,8 @@
 import { inlineStyle, revealTransition, animateBlockWipe, needsBlockWipe, blockMasks, layoutIdentity, successFrames, loadScreenFonts } from './Screen';
 import * as ts from 'typescript';
 import { readFileSync } from 'node:fs';
-import { describe, expect, it } from 'vitest';
-import { motionGeometry, blend, GHOST_OPACITY, contrastRatio, COLOUR_TOKENS, PLAYER_COLOURS, SEAT_NUMERAL, THEMES, tvType } from '@kaki/ui';
+import { describe, expect, it, vi } from 'vitest';
+import { motionGeometry, blend, GHOST_OPACITY, contrastRatio, COLOUR_TOKENS, PLAYER_COLOURS, SEAT_NUMERAL, THEMES, tvType, space, lineHeight } from '@kaki/ui';
 import { rabakz } from '../src/index';
 import { advance, answer, LONG_OPTION, LONG_PROMPT, scenario, SCENARIOS } from './scenarios';
 import { questionFit, SCREEN, screenModel, screenScale, viewportStyle, textLines, fallbackMeasure, createFitCache } from './view-model';
@@ -14,9 +14,9 @@ function model(name: typeof SCENARIOS[number]) {
 }
 
 describe('R-03 public screen model', () => {
-  for (const name of SCENARIOS) it(`RZ-003 RZ-031 ${name} uses a stepped real rule state`, () => {
+  for (const name of SCENARIOS.filter(name => !name.startsWith('scoreboard') && !name.startsWith('podium'))) it(`RZ-003 RZ-031 ${name} uses a stepped real rule state`, () => {
     const m = model(name);
-    expect(m.heading).toBe((name === 'next-question' || name === 'perf-next-question') ? 'Question 2 of 10' : 'Question 1 of 10');
+    expect(m.heading).toBe(name === 'reveal-teams' ? 'Question 10 of 10' : (name === 'next-question' || name === 'perf-next-question') ? 'Question 2 of 10' : 'Question 1 of 10');
     expect(m.options.map(o => o.shape)).toEqual(['cross', 'circle', 'square', 'triangle']);
     expect(m.options).toHaveLength(4);
     expect(JSON.stringify(m)).not.toMatch(/timer|countdown|time left|progress|elapsed|fastest|seconds/iu);
@@ -60,11 +60,11 @@ describe('R-03 public screen model', () => {
         const fit = questionFit(LONG_PROMPT, Array.from({ length: 4 }, () => LONG_OPTION), picture, reveal);
         expect(fit.fits).toBe(true);
         expect(fit.options.every(o => o.size === tvType.body)).toBe(true);
-        for (const [width, height] of [[1280, 720], [1920, 1080], [3840, 2160]]) {
-          const scale = screenScale(width ?? 0, height ?? 0);
+        for (const [width, height] of [[1280, 720], [1920, 1080], [3840, 2160]] as const) {
+          const scale = screenScale(width, height);
           expect(fit.needed * scale).toBeLessThanOrEqual(fit.available * scale);
-          expect(SCREEN.width * scale).toBeLessThanOrEqual(width ?? 0);
-          expect(SCREEN.height * scale).toBeLessThanOrEqual(height ?? 0);
+          expect(SCREEN.width * scale).toBeLessThanOrEqual(width);
+          expect(SCREEN.height * scale).toBeLessThanOrEqual(height);
         }
       }
     }
@@ -125,7 +125,7 @@ it('RZ-030 CSS length boundary always supplies units to Preact', () => {
   for (const [width, height] of [[1280, 720], [1920, 1080], [3840, 2160]] as const) {
     for (const value of Object.values(viewportStyle(width, height))) expect(value).toMatch(/^\d+px$/u);
   }
-  for (const name of SCENARIOS) {
+  for (const name of SCENARIOS.filter(name => !name.startsWith('scoreboard') && !name.startsWith('podium'))) {
     const m = model(name);
     for (const value of [m.fit.fontSize, m.fit.promptHeight, ...m.options.map(o => o.fontSize)]) expect(value).toMatch(/^[\d.]+px$/u);
   }
@@ -270,7 +270,7 @@ it('RZ-030 picture maximum copy, eight wide names and three winners fit beside m
     expect(fit.boxes.media.height * scale).toBe(144 * scale);
     expect(fit.boxes.media.x + fit.boxes.media.width).toBeLessThan(fit.boxes.prompt.x);
     expect(fit.boxes.options.x).toBe(SCREEN.safe);
-    expect(fit.boxes.prompt.y + fit.boxes.prompt.height).toBeLessThan(fit.boxes.options.y);
+    expect(fit.boxes.prompt.y + fit.boxes.prompt.height).toBeLessThanOrEqual(fit.boxes.options.y);
     for (const box of Object.values(fit.boxes)) {
       expect((box.x + box.width) * scale).toBeLessThanOrEqual(width);
       expect((box.y + box.height) * scale).toBeLessThanOrEqual(height - 55 * scale);
@@ -500,4 +500,123 @@ it('RZ-031 early reveal runs once after its question wipe, including consecutive
   expect(revealTransition(previous, 'new', true, true)).toBeNull();
   expect(revealTransition(previous, 'new', true, false)).toEqual({ was: false });
   expect(revealTransition(previous, 'new', true, false)).toBeNull();
+});
+
+it('RZ-032 fallback mono fitting waits for fonts.ready without a bundled font', async () => {
+  let ready!: () => void;
+  let refreshed = false;
+  const loaded: string[] = [];
+  const pending = loadScreenFonts({ ready: new Promise<void>(resolve => { ready = resolve; }),
+    load: name => { loaded.push(name); return Promise.resolve([]); } },
+  { display: 'serif', body: 'sans-serif', mono: 'monospace' }, () => { refreshed = true; });
+  expect(loaded).toEqual([]);
+  ready();
+  await pending;
+  expect(loaded).toContain('34px monospace');
+  expect(refreshed).toBe(true);
+  const css = readFileSync('games/rabakz/host/screen.css', 'utf8');
+  expect(css).not.toContain('@font-face');
+  expect(css).toContain('font-family: var(--ka-font-mono); font-variant-numeric: tabular-nums');
+
+});
+
+it('RZ-032 results boundary animations match the shared crossfade helper', async () => {
+  const { crossfade } = await import('@kaki/ui');
+  const { animateResultsCrossfade } = await import('./Screen');
+  const incoming = { closest: () => null, animate: vi.fn() };
+  const outgoing = { closest: () => null, animate: vi.fn() };
+  animateResultsCrossfade(incoming as unknown as HTMLElement, outgoing as unknown as HTMLElement, false, 2);
+  const shared = crossfade({ reduced: false });
+  expect(incoming.animate).toHaveBeenCalledWith(shared.incoming.keyframes, { ...shared.incoming.options, duration: shared.incoming.options.duration * 2 });
+  expect(outgoing.animate).toHaveBeenCalledWith(shared.outgoing.keyframes, { ...shared.outgoing.options, duration: shared.outgoing.options.duration * 2 });
+  incoming.animate.mockClear(); outgoing.animate.mockClear();
+  animateResultsCrossfade(incoming as unknown as HTMLElement, outgoing as unknown as HTMLElement, true, 1);
+  expect(incoming.animate).not.toHaveBeenCalled();
+  expect(outgoing.animate).not.toHaveBeenCalled();
+});
+
+
+it('RZ-030 RZ-031 question and reveal reserve header clearance and report failed copy honestly', () => {
+  for (const state of SCENARIOS.filter(name => !name.startsWith('scoreboard') && !name.startsWith('podium'))) {
+    const m = model(state);
+    for (const [width, height] of [[1280, 720], [1920, 1080], [3840, 2160]] as const) {
+      const scale = screenScale(width, height);
+      expect(Number.parseFloat(m.fit.promptHeadroom)).toBeGreaterThanOrEqual(m.fit.size * 10 / 55);
+      const descenders = Number.parseFloat(m.fit.promptDescenders);
+      expect(descenders).toBe(m.fit.size === tvType.display ? space[21] : m.fit.size === tvType.title ? space[13] : space[8]);
+      expect(m.fit.boxes.prompt.height).toBe(m.fit.lines.length * m.fit.size * lineHeight.display + Number.parseFloat(m.fit.promptHeadroom) + descenders);
+      expect(m.fit.boxes.prompt.y * scale).toBeCloseTo((SCREEN.safe + SCREEN.header + SCREEN.headerGap) * scale);
+      expect(m.fit.boxes.options.y + m.fit.boxes.options.height).toBeLessThanOrEqual(m.fit.boxes.awards.y - SCREEN.sectionGap + 0.001);
+      expect(m.fit.boxes.awards.y + m.fit.boxes.awards.height).toBe(SCREEN.height - SCREEN.safe);
+      expect(m.fit.fits).toBe(true);
+    }
+  }
+  expect(questionFit('Impossible prompt '.repeat(1000), ['Answer'], true).fits).toBe(false);
+  expect(readFileSync('games/rabakz/host/Screen.tsx', 'utf8')).toContain("data-fit={model.fit.fits ? 'fits' : 'failed'}");
+});
+
+it('RZ-030 round 22 prompt heights include both font edges', () => {
+  const heights = Object.fromEntries(['jack-u', 'non-picture-question', 'picture-question', 'picture', 'longest-text', 'longest-reveal'].map(name => {
+    const fit = model(name as typeof SCENARIOS[number]).fit;
+    return [name, { size: fit.size, lines: fit.lines.length, height: fit.boxes.prompt.height, descenders: Number.parseFloat(fit.promptDescenders), optionsBottom: fit.boxes.options.y + fit.boxes.options.height }];
+  }));
+  expect(heights).toMatchInlineSnapshot(`
+    {
+      "jack-u": {
+        "descenders": 13,
+        "height": 136,
+        "lines": 2,
+        "optionsBottom": 635,
+        "size": 55,
+      },
+      "longest-reveal": {
+        "descenders": 8,
+        "height": 152,
+        "lines": 4,
+        "optionsBottom": 635,
+        "size": 34,
+      },
+      "longest-text": {
+        "descenders": 8,
+        "height": 152,
+        "lines": 4,
+        "optionsBottom": 635,
+        "size": 34,
+      },
+      "non-picture-question": {
+        "descenders": 21,
+        "height": 131,
+        "lines": 1,
+        "optionsBottom": 635,
+        "size": 89,
+      },
+      "picture": {
+        "descenders": 13,
+        "height": 81,
+        "lines": 1,
+        "optionsBottom": 635,
+        "size": 55,
+      },
+      "picture-question": {
+        "descenders": 13,
+        "height": 81,
+        "lines": 1,
+        "optionsBottom": 635,
+        "size": 55,
+      },
+    }
+  `);
+  expect(readFileSync('games/rabakz/host/screen.css', 'utf8')).toContain('.rz-question h1 > .rz-copy > div { padding-top: var(--rz-prompt-headroom); padding-bottom: var(--rz-prompt-descenders); }');
+});
+
+
+it('RZ-030 RZ-032 round 26 pads header ink inside its layout and prompt ink inside its mask', () => {
+  const css = readFileSync('games/rabakz/host/screen.css', 'utf8');
+  expect(css).toContain('.rz-header > :first-child .rz-copy > div { padding-top: 0; padding-bottom: var(--ka-space-13); }');
+  expect(css).toContain('.rz-question h1 > .rz-copy > div { padding-inline: var(--ka-space-5); }');
+  // Incoming and .rz-old are both direct div children; their clearance matches.
+  expect(css).toContain('.rz-header > :last-child .rz-copy > div { padding-bottom: var(--ka-space-13); }');
+  expect(55 + 0 + 13 + 8).toBe(SCREEN.header + SCREEN.headerGap);
+  const source = readFileSync('games/rabakz/host/Screen.tsx', 'utf8');
+  expect(source).toContain('x: m.fit.boxes.prompt.x - space[5], width: m.fit.boxes.prompt.width + 2 * space[5]');
 });

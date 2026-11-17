@@ -1,0 +1,10 @@
+import { chromium } from '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-05/node_modules/playwright/index.mjs';
+const WT = '/Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-05';
+const browser = await chromium.launch(); const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+await page.goto(`http://localhost:5670/@fs${WT}/games/rabakz/dev/overflow.html`);
+await page.waitForFunction(() => Array.isArray(window.__rzMatrix), null, { timeout: 900000 });
+const r = await page.evaluate(() => window.__rzMatrix);
+const fails = r.filter(x => x.overflow.length);
+console.log('checked', r.length, 'with overflow', fails.length, 'truncated states', r.filter(x => x.truncated.length).length);
+console.log(JSON.stringify(fails.slice(0, 8).map(f => [f.width, f.state, f.players, f.overflow.slice(0,2)])).slice(0, 1500));
+await browser.close();

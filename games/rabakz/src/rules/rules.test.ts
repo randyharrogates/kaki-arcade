@@ -363,3 +363,39 @@ function required<T>(value: T | undefined | null): T {
   if (value === undefined || value === null) throw new Error("Missing expected value");
   return value;
 }
+
+it('RZ-032 snapshots every five questions, keeps two-board deltas and survives saved-state restoration', () => {
+  for (const teams of [false, true]) {
+    let state = init(4, 30, teams);
+    const firstTotals = new Map<string, number>();
+    let firstTeams: readonly number[] = [];
+    for (let round = 1; round <= 10; round++) {
+      state = wait(win(state, [round % 4]), 240);
+      expect(state.phase).toBe(round % 5 === 0 ? 'scoreboard' : 'question');
+      if (round === 5) {
+        const view = rabakz.publicView(state);
+        for (const p of view.players) {
+          expect(p.previousScore).toBe(0);
+          firstTotals.set(p.id, p.score);
+        }
+        expect(view.previousTeamScores).toEqual([0, 0]);
+        firstTeams = view.teamScores;
+        expect(state.scoreboardTotals?.current.teams).toEqual(state.teamScores);
+        expect(state.scoreboardTotals?.current.players.map(p => p.score)).toEqual(state.players.map(p => p.score));
+      }
+      if (round === 10) {
+        const view = rabakz.publicView(state);
+        for (const p of view.players) expect(p.previousScore).toBe(firstTotals.get(p.id));
+        expect(view.players.some(p => p.score > p.previousScore)).toBe(true);
+        expect(view.previousTeamScores).toEqual(firstTeams);
+        // Save and restore the simulation state, then continue the same match.
+        const restored = JSON.parse(JSON.stringify(state)) as State;
+        expect(rabakz.publicView(restored)).toEqual(view);
+        const continued = tick(restored, [], 'continue');
+        expect(rabakz.publicView(continued).players.map(p => p.previousScore)).toEqual(view.players.map(p => p.score));
+        expect(rabakz.publicView(continued).previousTeamScores).toEqual(view.teamScores);
+      }
+      if (state.phase === 'scoreboard') state = tick(state, [], 'continue');
+    }
+  }
+});
