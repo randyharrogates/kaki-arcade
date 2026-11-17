@@ -1020,3 +1020,10 @@ one line and the two action hints share a row; then the headline steps 144 → 8
 the last step on the type scale and only used when 89 cannot fit). The fit compares the column's
 first and last child with the safe area rather than `scrollHeight`. The ranking list fits its
 grid row (`minmax(0, 1fr)`) at 8 players in teams by using smaller spacing-scale gaps.
+
+**D-127 · 2026-11-17 · Claude** (under D-057) — A phone control label that does not fit its
+button at 34 px steps down to 21 px (the next step on the type scale) and wraps there; the layout
+engine decides the size by measurement before the control is shown. Rabakz answers run to 40
+characters (RZ-022), and "Modular Interface of Digital Instruments" breaks into four lines at
+34 px in a 667 px phone's answer button and is cut. Same approach as D-123 on the TV. Found by
+K-04's final review and confirmed in the UAT.
