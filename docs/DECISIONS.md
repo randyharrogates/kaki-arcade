@@ -1395,3 +1395,14 @@ the reveal says when picks were filled at random; locked, scoreboard and over st
 Watch the TV for the reveal", "Scores on the TV" and "Match over", never "Your hand". (5) Whether Lock
 in carries the cross shape is put to Randy as an artifact at P-03's first render; until then, no shape.
 
+
+**D-165 · 2026-11-18 · Claude** (under D-142; C-12 round 8 review) — Amends D-156 and D-162 for the
+host keyboard. (1) The paused panel's entrance and exit use the motion tokens (entrance
+`duration.base`, exit by `EXIT_FACTOR`), not D-156's 200 ms and 160 ms: a Claude decision cannot set a
+one-off timing under DESIGN §4.5. (2) L (leave as the keyboard player) acts only in the lobby and on
+the picker and start screen, never during play, pause or results, so a stray press cannot drop a
+player from a running game. (3) The picker header is built as D-162 says: heading left with main's
+fitter (89 px, down to 55 px), player count right, the hint right-aligned directly under the count,
+the game stage where main has it. Round 8's extra row was the integrator's brief, not a decision, and
+is withdrawn. (4) The lobby header keeps one height: the game-pad and keyboard hints share one line,
+so seats never move when a pad connects. Randy may overrule.
