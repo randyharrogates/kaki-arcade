@@ -1126,3 +1126,13 @@ Caveats: the work time is main-thread submission, not GPU completion; the frame 
 end-to-end check and show no frame over 18.8 ms. S-03b (the TV's own browser) still decides only
 TV against laptop on HDMI. `pixi.js` moves from a root dev dependency to a dependency of the Tabao
 Rush renderer package when T-07 builds it.
+
+**D-138 · 2026-11-18 · Claude** (D-057) — A-04 gets a seventh round. The round-6 re-review found
+three measurable defects: the rim ink is written as linear values into a display-space buffer, so
+every outline is (6, 4, 2) instead of #2B2118; the portion composition check passes with no portions
+at all (the container alone scores IoU 1.0) and composed partial dishes carry their own rims and a
+different layer order from the finished dish; and the slice note describes an earlier tree. These
+change what players see on every plate, so they are fixed before merge rather than deferred. Round 7
+also covers the loose drink that looks served, rojak sauce drawn before the mix, the kway teow
+pinwheel, the faint burnt-rice cue, per-container anchors and a guard that the item folder matches
+the manifest. Test-only rule duplication and the non-atomic publish are recorded as known limits.
