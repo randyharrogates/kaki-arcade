@@ -353,9 +353,16 @@ seat numbers only when a name cannot fit. UAT: `uat/evidence/C-16-start-game/rou
 | 4 Phone controller | Done: 1A with shape buttons in our colours, 2B, 3A, 4B (D-047, D-048) |
 | 5 Motion | Done: 1B, 2A, 3A, 4A (D-051). **Gate closed 2026-11-16.** |
 
+### Controller size and start-up check (K-08)
+`pnpm verify` fails when the controller page and everything it loads passes 300,000 B gzip
+(73,837 B today). `pnpm perf -- controller` builds for production, opens the controller page five
+times in headless Chromium slowed 4x and fails when the median time to interactive passes 2 s
+(D-148); it measured 221 to 252 ms on the dev Mac. A real phone has not been measured.
+
 ## Performance numbers
 
-No budget has been assessed yet. Diagnostics from `pnpm perf` on the dev Mac (Apple M3,
+PERF-020 is assessed in an emulated browser (K-08: start-up median 252 ms of 2,000 ms, controller
+73,837 B gzip of 300,000 B); no other budget has been assessed yet. Diagnostics from `pnpm perf` on the dev Mac (Apple M3,
 2026-11-17, other jobs running, so rough): simulation step at eight players, 95th percentile
 0.008 ms for Tabao Rush and under 0.001 ms for Peek Poker and Rabakz; game-only allocation
 per step at eight players about 27 KB (Tabao Rush), 10 KB (Peek Poker), 10 KB (Rabakz); lobby

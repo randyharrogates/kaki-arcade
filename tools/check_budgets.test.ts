@@ -105,6 +105,19 @@ it.each(['RUDE_WORDS', JSON.stringify(RUDE_WORDS), JSON.stringify(RUDE_WORDS.sli
   finally { rmSync(output, { recursive: true, force: true }); }
 });
 
+it('PERF-020 includes CSS, fonts and shared chunks exactly once', () => {
+  const output = mkdtempSync(join(tmpdir(), 'kaki-controller-assets-'));
+  const files = ['index.html', 'entry.js', 'shared.js', 'style.css', 'font.woff2'];
+  try {
+    for (const file of files) writeFileSync(join(output, file), file);
+    const size = controllerBundleSize(output, {
+      'index.html': { file: 'entry.js', imports: ['shared'], css: ['style.css'], assets: ['font.woff2'] },
+      shared: { file: 'shared.js', css: ['style.css'], assets: ['font.woff2'] },
+    });
+    expect(size.files.sort()).toEqual([...files].sort());
+    expect(size.gzip).toBe(files.reduce((sum, file) => sum + gzipSync(file).length, 0));
+  } finally { rmSync(output, { recursive: true, force: true }); }
+});
 it.each(['"69"', '"Ah Boys to Men"'])('permits legitimate single answer %s', literal => {
   const output = mkdtempSync(join(tmpdir(), 'kaki-answer-'));
   try { writeFileSync(join(output, 'entry.js'), literal); expect(() => deployBundleSize(output)).not.toThrow(); }

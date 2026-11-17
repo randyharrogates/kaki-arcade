@@ -140,3 +140,42 @@ logical CPU count is flagged; otherwise it says unknown. A quiet-machine integra
 repeat is required. Mac memory checks retain the 4 GiB perf gate; under denied sysctl,
 Node total RAM plus memory_pressure retain the same memory threshold and disclose the
 shell helper's existing level-1 pressure fallback. Other systems use Node free RAM.
+
+## Controller cold start (PERF-020, D-129)
+
+`pnpm run build && pnpm perf -- controller` checks the production `/play` entry in
+headless Chromium. Under D-148 this is a blocking perf scenario outside verify;
+verify retains the transfer-size check. It starts and stops its own Vite preview
+on an ephemeral port with `--strictPort`. No signal server or UAT listener is needed
+for the initial join controls. The single-page run retains the UAT 3 GiB memory
+gate; refusal is a memory refusal, not a measured budget failure.
+
+Each of five runs uses a fresh mobile context at 844 × 390, scale 3, blocked service
+workers, disabled/cleared cache, CDP CPU rate 4, and CDP network conditions of
+30 Mbit/s down, 15 Mbit/s up and 20 ms latency. A pre-navigation probe waits for fonts,
+a visible, hittable room-code control and a presentation frame, then dispatches a
+synthetic pointerdown. Its observational page handler marks
+`kaki-controller-interactive` without changing form state or performing a join.
+The mark's startTime is relative to navigation start; browser automation round trips
+are outside the measured interval. The median of five must be ≤ 2000 ms.
+
+This measures the production join controller entry, not the development-only kit demo
+or QR-to-seated latency. The existing round/frame harness is deliberately not used:
+it opens a host and creates a room before capture, whereas this check measures cold
+navigation. Shared UAT process, readiness, port, memory and evidence helpers are reused.
+`uat/evidence/controller/perf-1/startup.json` records conditions, browser
+version, raw samples, median, threshold and pass/fail. The gitignored, marked `perf-1` folder is
+replaced on repeat runs; copy reviewed evidence to an unmarked folder to retain it.
+Missing controls/marks or browser/server errors fail the command. No timing result is
+claimed until the integrator runs Chromium on a quiet machine.
+
+The transfer-size half follows main's D-115 phone-closure measurement: HTML, the
+entry's recursive static import closure (JS, CSS and assets), phone-route chunks and
+CSS-referenced public files, counted once. Host-only dynamic imports are excluded;
+the whole deployment remains measured against PERF-022. Verify keeps the unchanged
+300,000-byte gzip controller threshold. The start-up half runs separately through
+`pnpm perf -- controller`; over-budget medians, incomplete samples and browser/server
+errors fail, and “not assessed” never passes. Optional `--slice` selects the evidence
+parent and `--out perf-controller<name>` selects another gitignored marked run folder. It always
+runs one headless production page; `--headed`, `--headless`, `--phones` and `--build` are refused.
+To keep a reviewed report, copy `startup.json` into an unmarked folder such as `first-run`.

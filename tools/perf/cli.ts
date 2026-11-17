@@ -25,8 +25,15 @@ export async function main(args: string[]) {
     const { scanProduction } = await import('./production.js');
     process.stdout.write(`Production scan: ${String(await scanProduction('apps/web/dist'))} bytes; kaki-perf-timing-v1 and __kakiPerfRecord absent.\n`); return;
   }
-  if (args.includes('--help')) { process.stdout.write('Usage: pnpm perf [-- <scenario> --phones 1|4|8 --headed|--headless --slice <name> --out <name> --build development|production]\nDefault: full installed-game simulations. Browser scenarios: files in uat/perf; lobby-8 is available, picker is pending.\n'); return; }
+  if (args.includes('--help')) { process.stdout.write('Usage: pnpm perf [-- <scenario> --phones 1|4|8 --headed|--headless --slice <name> --out <name> --build development|production]\nDefault: full installed-game simulations. Controller cold start: controller (production, headless, blocking). Browser scenarios: files in uat/perf; lobby-8 is available, picker is pending.\n'); return; }
   const options = parse(args), root = process.cwd();
+  if (options.scenario === 'controller') {
+    const ignored = args.filter(v => ['--headed', '--headless', '--phones', '--build'].includes(v));
+    if (ignored.length) throw new Error(`pnpm perf -- controller always runs one headless production page; remove ${ignored.join(', ')}`);
+    const { main } = await import('./controller-startup.js');
+    await main({ slice: options.slice, out: args.includes('--out') ? options.out : 'perf-1' });
+    return;
+  }
   const gate = memoryGate();
   process.stdout.write(`Memory gate: ${JSON.stringify(gate)}\n`);
   const command = ['node --expose-gc tools/perf/run.mjs', ...args.filter((v, i) => !(i === 0 && v === '--'))].join(' ');

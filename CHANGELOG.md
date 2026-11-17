@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — K-08: controller size and start-up check
+
+- `tools/check_budgets.mjs` checks the controller entry and everything it loads in `pnpm verify`
+  (73,837 B gzip of 300,000 B). PERF-020.
+- `pnpm perf -- controller`: production build on a free port, five headless Chromium loads at CPU
+  4x, fails when the median time to interactive passes 2,000 ms; median 252 ms on the dev Mac.
+  Runs outside verify (D-148). Evidence `uat/evidence/K-08-controller-budget/first-run/`.
+
 ## 2026-11-18 — S-02: cook art spike
 
 - `tools/blender/cook.py`: toy cook rig at 1.5 tiles, idle and walk in 8 directions, body, cap

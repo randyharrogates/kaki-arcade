@@ -89,7 +89,10 @@ export function PhonePage() {
       <div class="phone-intro"><h1>Kaki Arcade</h1><p>Join the room on the TV</p></div>
       <form class="phone-fields" onSubmit={event => { event.preventDefault(); feedback(); phone.current?.join(code, name); }}>
         <label for="room-code">Room code</label>
-        <input id="room-code" name="code" class="phone-code ka-panel" value={code} onInput={event => { setCode(event.currentTarget.value); }} autoCapitalize="characters" autoCorrect="off" spellcheck={false} enterKeyHint="next" aria-describedby="code-help"/>
+        <input onPointerDown={event => {
+          // PERF-020: observational only; the cold-load probe dispatches after paint.
+          if (!event.isTrusted && !performance.getEntriesByName('kaki-controller-interactive').length) performance.mark('kaki-controller-interactive');
+        }} id="room-code" name="code" class="phone-code ka-panel" value={code} onInput={event => { setCode(event.currentTarget.value); }} autoCapitalize="characters" autoCorrect="off" spellcheck={false} enterKeyHint="next" aria-describedby="code-help"/>
         <span id="code-help" class="phone-help">8 characters, as shown on the TV</span>
         <label for="nickname">Your name</label>
         <div class="phone-name-row"><input id="nickname" name="nickname" class="ka-panel" value={name} onInput={event => { setName(event.currentTarget.value); }} autoComplete="nickname" enterKeyHint="go" aria-describedby="name-help"/><button class="ka-panel ka-pressable" type="submit">Join</button></div>
