@@ -1308,3 +1308,16 @@ over the other row instead of a single band of overlapping cards; arcs stay with
 its 55 px gaps (P-04 round 3). (3) `perpendicularArcPoint` joins the shared motion helpers in
 `packages/ui` (any game may use it). Randy may overrule; the round-4 strip is put to him as an
 artifact.
+
+**D-156 · 2026-11-18 · Claude** (under D-142; C-12 review) — The host keyboard and gamepad add no
+persistent action bar to the TV. They move focus through the controls each screen already shows.
+One hint line in the D-130 style (34 px, bottom-left at the 55 px safe margin) appears on the
+lobby ("J: join from this keyboard · Arrows and Enter: choose"), picker and team setup, and
+results (the existing D-130 hints); nothing keyboard-related is drawn during play. Escape during
+play opens a centred "Paused" panel (K1 panel surface and edge, Resume and Quit to picker at the
+34 px type with targets of at least 89 px, focus on Resume; enters from 0.95 ease-out 200 ms,
+exits 160 ms; none under reduced motion). The TV's own results actions call the host directly, so
+results never need a connected leader. Reason: the review found the round-3 bar inside the safe
+margin, over seat cards, with 21 px text during play, and new UI without a choice. The rendered
+screens go to Randy as an artifact after the round; Randy may overrule.
+
