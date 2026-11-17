@@ -1366,3 +1366,13 @@ outline, chip and dashed edge), which is what DESIGN §4.2 describes, not the pl
 Every controller-kit surface drawn on a panel (targets, kit buttons, cards, grid cells) uses
 `--ka-panel-ink`, so text stays dark on light in every game theme.
 
+**D-162 · 2026-11-18 · Claude** (under D-142; C-12 round 5 review) — Amends D-156/D-159 for hint
+placement. On the lobby and the picker the host's keyboard hint line sits in the header row,
+right-aligned before the player count (lobby) or under it (picker), not bottom-left: there the
+lobby hint sat about 8 px under the seat cards, and in the header it keeps at least 21 px from every
+other element (C-12 round 5 shots 02, 03, 11). Team setup keeps its phone sentence ("Tap your side on
+your phone. ⟨leader⟩ starts.") with the keyboard hints beside it; results keep D-156's place. A hint
+names only keys that act on that screen: no "Enter: pick a game" with no player seated; the start
+screen shows "Enter: start · Esc: back", with "T: teams" only when the game has teams (T is D-159's
+Teams key). The game-pad hint reads "Start on a game pad: join" (D-159 wording).
+
