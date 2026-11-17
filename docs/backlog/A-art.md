@@ -28,6 +28,9 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 - **A-01b (before A-02 or A-06):** the Blender render timeout is a fixed 300 s; make it per job
   or per frame. Lossy encoding must be allowed only where a page holds a single frame
   (backgrounds), since neighbours bleed into each other otherwise.
+- **A-01d (with A-01b):** `pipeline.py --render` decides staleness by modification time, so a
+  merge or checkout re-renders other issues' jobs (A-08 re-rendered S-02's cook spike twice).
+  Decide staleness by input content hash and add `--only <script>` to render one job.
 - **A-01c:** store frame records once per body and mask page pair (the mask repeats them, 109 KB
   of a 248 KB manifest); delete old round data files on rebuild; cache packing by input hash
   (about 30 s per level today, and verify runs it); the singular `anchor` default; a failed

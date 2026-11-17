@@ -1254,3 +1254,10 @@ not team red: on the phone a red Start sits under the Red team button and reads 
 Team colours are kept for teams only. Notices on the team phone (moved by the leader, refusals) use
 21 px. Follow-up C-11b (backlog): grid labels that wrap at 667 and 844, and a visible pressed style
 for the Teams on/off toggle.
+
+**D-150 correction · 2026-11-18 · Claude** — D-150's measurements came from a mismeasured review.
+Measured by ink runs at 1080p: round 2 (Blender's default font) central ranks 56 px, indices
+24–27 px (10: 21 px); JetBrains Mono central 56 px (the 10: 44 px), indices 15–19 px (the 10:
+7 px); DM Sans central 49 px and indices 19 px for every rank. The decision stands (one shared
+height, a readable 10 index, a plain zero, the phone's face); its cost is central ranks 56 → 49 px
+and indices 24–27 → 19 px, both above PP-030 and the 34 px rule.
