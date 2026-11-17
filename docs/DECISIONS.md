@@ -1170,3 +1170,16 @@ recommendation: drinks on a plate use the side-cup slot (no liquid on a bare pla
 or bowl is drawn scaled to that container's opening; kopi-teh is drawn as the cup plus the served
 drink's portion, never from one fixed dish sprite. If round 8 is not clean on these, the remaining
 art polish moves to a follow-up issue and A-04 merges with the defects listed.
+
+**D-142 · 2026-11-18 · Randy** — "Please always go with ur recommendations." Claude now goes ahead
+with its own recommendation on design and graphics choices too, after building the options as an
+artifact (CLAUDE.md rule 5), instead of waiting; Randy may overrule after seeing it. Under this rule
+OQ-039 is decided as recommended: cook sprites are stored as lossy WebP at quality 90 with exact
+alpha (outlines, colour masks and head anchors unchanged), projected at about 2.0 MB for all cook
+animations against the 8 MB level budget (PERF-023); other sprites stay as ART-PIPELINE says.
+Comparison: https://claude.ai/artifact/8zURC9EUKPeTs6Ajaxz5t6.
+
+**D-143 · 2026-11-18 · Randy** — Team setup (PLAT-025, C-11) uses **option C, the centre line**: one
+field split down the middle by a line, red on the left and blue on the right, players standing on
+their side; the phone shows two big team buttons in equal halves, the current team ticked. Board:
+https://claude.ai/artifact/DdL2wQo2WGzNH6aFnfHCZw (Claude had recommended B; Randy chose C).

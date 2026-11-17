@@ -93,19 +93,6 @@ callback interval; (b) set the Mac to a 60 Hz mode for measured runs; (c) keep t
 accept a fail until run on the TV. Recommended: (a) with (b) for the runs. Only you change the
 budget wording. Needed by: T-07.
 
-**OQ-039 · 2026-11-18 · How the cook sprites are stored (PERF-023, S-02).** At board 1C's size the
-cooks' animations project to about 6.3 MB of the 8 MB level download stored lossless (a lower
-bound), leaving under 2 MB for the kitchen, food and screen art. Options, rendered side by side at
-https://claude.ai/artifact/8zURC9EUKPeTs6Ajaxz5t6: A lossless (6.3 MB), B lossy WebP quality 95
-(2.5 MB), C quality 90 (2.0 MB), D quality 85 (1.8 MB); B to D keep transparency, outlines and colour
-masks exact. Memory is the same for all (about 74 MB of 256 MB). Recommended: C. Needed by: A-02.
-
-**OQ-040 · 2026-11-18 · Team setup layout (PLAT-025, C-11).** Three layouts built at true size on
-the TV and phone: https://claude.ai/artifact/DdL2wQo2WGzNH6aFnfHCZw. A two equal team benches; B the
-chosen game's card as the main panel with both teams in a side panel, split 1.618 : 1 (the
-golden-ratio variant); C one field split by a centre line. All are plain layout within every
-budget. Recommended: B. Needed by: C-11.
-
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot
