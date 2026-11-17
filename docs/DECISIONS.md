@@ -913,3 +913,12 @@ changed). "Full" also requires the median frame interval under the workload to b
 cadence does not. The refresh rate kept with a cached verdict is the idle display cadence,
 measured by a short idle probe, never the median under the workload, so a slow TV that drops
 frames under load is not re-measured at every launch (C-13 review round 2).
+
+**D-114 · 2026-11-17 · Randy** — "one list, but make it more aesthetic please. do with ur
+design judgement and my rules." Confirms D-112 (layout A) and asks for a visual pass decided by
+Claude within DESIGN.md §1 to §4. Direction taken (Claude): rows sit on the plum, not in eight
+white slabs; the leader's row alone is a white panel; columns split name : score at 1.618 : 1;
+"pts" moves to one column heading; the change since the last scoreboard is a rose chip; team
+totals as two panels split 1.618 : 1, leader first; rows enter staggered 30 ms, ease-out,
+and each non-zero chip pulses once; reduced motion drops both. The result is published as an
+artifact for Randy to see.

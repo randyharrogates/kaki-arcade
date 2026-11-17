@@ -1,0 +1,42 @@
+{
+  "slice": "C-14-unsupported-browser",
+  "status": "failed",
+  "error": "locator.waitFor: Error: strict mode violation: getByText('Open this page in a current Chrome, Edge or Safari on a computer.', { exact: true }) resolved to 2 elements:\n    1) <p>Open this page in a current Chrome, Edge or Safar…</p> aka locator('#app').getByText('Open this page in a current')\n    2) <p>Open this page in a current Chrome, Edge or Safar…</p> aka locator('#unsupported-classic').getByText('Open this page in a current')\n\nCall log:\n\u001b[2m  - waiting for getByText('Open this page in a current Chrome, Edge or Safari on a computer.', { exact: true }) to be visible\u001b[22m\n\n    at /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/uat/slices/C-14-unsupported-browser.mjs:15:86\n    at async deadline (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/tools/uat/core.ts:181:16)\n    at async Harness.step (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/tools/uat/harness.ts:95:26)\n    at async unsupported (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/uat/slices/C-14-unsupported-browser.mjs:12:7)\n    at async work (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/tools/uat/runner.ts:89:7)\n    at async Module.run (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- C-14-unsupported-browser --phones 1",
+  "commit": "c2c0c0677765e8370039e46318260974bb81b422",
+  "viewports": [],
+  "steps": [
+    {
+      "name": "Unsupported demo landing-1280",
+      "ms": 320.90950000000066,
+      "status": "failed",
+      "error": "locator.waitFor: Error: strict mode violation: getByText('Open this page in a current Chrome, Edge or Safari on a computer.', { exact: true }) resolved to 2 elements:\n    1) <p>Open this page in a current Chrome, Edge or Safar…</p> aka locator('#app').getByText('Open this page in a current')\n    2) <p>Open this page in a current Chrome, Edge or Safar…</p> aka locator('#unsupported-classic').getByText('Open this page in a current')\n\nCall log:\n\u001b[2m  - waiting for getByText('Open this page in a current Chrome, Edge or Safari on a computer.', { exact: true }) to be visible\u001b[22m\n\n    at /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/uat/slices/C-14-unsupported-browser.mjs:15:86\n    at async deadline (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/tools/uat/core.ts:181:16)\n    at async Harness.step (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/tools/uat/harness.ts:95:26)\n    at async unsupported (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/uat/slices/C-14-unsupported-browser.mjs:12:7)\n    at async work (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/tools/uat/runner.ts:89:7)\n    at async Module.run (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-14/tools/uat/run.mjs:15:1"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [],
+  "screenshots": [
+    "01-host-failure.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-failure.png",
+      "bytes": 59330
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 581
+    },
+    {
+      "file": "run.json",
+      "bytes": 3588
+    }
+  ],
+  "totalBytes": 63536,
+  "maxBytes": 12582912
+}

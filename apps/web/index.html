@@ -3,7 +3,49 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+    <script id="support-preflight">
+      /* REL-006 classicFeatures: allSettled, global, replaceAll, timeout, webrtc, animate, clipPath, pointer */
+      (function () {
+        var w = window;
+        var ok = w.Promise && typeof w.Promise.allSettled === 'function' &&
+          typeof w.AbortSignal === 'function' && typeof w.AbortSignal.timeout === 'function' &&
+          typeof globalThis !== 'undefined' && typeof String.prototype.replaceAll === 'function' &&
+          typeof w.RTCPeerConnection === 'function' && w.Element && typeof w.Element.prototype.animate === 'function' &&
+          w.CSS && typeof w.CSS.supports === 'function' && w.CSS.supports('clip-path', 'inset(0)') &&
+          (w.location.pathname.replace(/\/$/, '') !== '/play' || typeof w.PointerEvent === 'function');
+        function reveal() {
+          var app = document.getElementById('app');
+          if (app && app.hasChildNodes()) return;
+          var screen = document.getElementById('unsupported-classic');
+          if (!screen) return;
+          if (app) app.style.display = 'none';
+          var phone = w.location.pathname.replace(/\/$/, '') === '/play';
+          document.getElementById('unsupported-phone').hidden = !phone;
+          document.getElementById('unsupported-computer').hidden = phone;
+          screen.removeAttribute('hidden');
+        }
+        document.addEventListener('unsupported-entry-failed', reveal);
+        if (!ok) {
+          document.documentElement.setAttribute('data-unsupported', '');
+          document.addEventListener('DOMContentLoaded', reveal);
+        }
+        w.addEventListener('load', function () {
+          if (!ok || document.documentElement.getAttribute('data-entry') !== 'run') reveal();
+        });
+      }());
+    </script>
     <title>Kaki Arcade</title>
   </head>
-  <body class="ka-surface"><div id="app"></div><script type="module" src="/src/main.tsx"></script></body>
+  <body class="ka-surface"><div id="app"></div>
+    <main id="unsupported-classic" hidden style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; overflow: auto; padding: 21px; font: 21px/1.5 sans-serif; overflow-wrap: anywhere">
+      <h1 style="font: inherit; font-size: 34px">This browser can’t run Kaki Arcade</h1>
+      <p id="unsupported-computer" hidden>Open this page in an up-to-date Chrome, Edge or Safari on a computer.</p>
+      <p id="unsupported-phone" hidden>Open the join link in an up-to-date Safari on iPhone or Chrome on Android.</p>
+      <p>Missing: required browser features or JavaScript modules.</p>
+    </main>
+    <noscript><main style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; overflow: auto; padding: 21px; font: 21px/1.5 sans-serif; overflow-wrap: anywhere">
+      <h1 style="font: inherit; font-size: 34px">Kaki Arcade needs JavaScript</h1>
+      <p>Turn on JavaScript, or open this page in an up-to-date Chrome, Edge or Safari on a computer, or Safari or Chrome on your phone.</p>
+    </main></noscript>
+    <script nomodule>var failure = document.createEvent('Event'); failure.initEvent('unsupported-entry-failed', false, false); document.dispatchEvent(failure);</script><script type="module" src="/src/main.tsx"></script></body>
 </html>

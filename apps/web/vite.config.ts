@@ -11,6 +11,18 @@ export default defineConfig(({ mode, command }) => {
   }
   return {
     plugins: [preact(), {
+      // REL-006: Vite hoists the entry into head. Load it only after the ES5 preflight.
+      name: 'unsupported-entry-guard',
+      transformIndexHtml: {
+        order: 'post',
+        handler(html) {
+          return html.replace(/<script\b[^>]*type="module"[^>]*src="([^"]+)"[^>]*><\/script>/g, (tag, src: string) => {
+            if (!src.includes('/src/main.tsx') && !src.includes('/assets/')) return tag;
+            return `<script>if (!document.documentElement.hasAttribute('data-unsupported')) { var entry = document.createElement('script'); entry.type = 'module'; entry.src = ${JSON.stringify(src)}; entry.crossOrigin = ''; function failed() { var event = document.createEvent('Event'); event.initEvent('unsupported-entry-failed', false, false); document.dispatchEvent(event); } entry.onerror = failed; window.addEventListener('error', function (event) { if (event.filename === entry.src || event.target === entry) failed(); }); document.head.appendChild(entry); }</script>`;
+          });
+        },
+      },
+    }, {
       name: 'picker-production-fixture-scan',
       apply: 'build',
       generateBundle(_options, bundle) {

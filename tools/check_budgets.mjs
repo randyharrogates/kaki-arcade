@@ -53,7 +53,7 @@ export function deployBundleSize(output) {
     if (/\.map$|\.tsbuildinfo$/.test(file)) throw new Error(`Non-deployable build output: ${file}`);
     const bytes = readFileSync(resolve(output, file));
     if (file.endsWith('.css') && /(?:^|[;{])\s*(?!--)[-a-z]*(?:behaviour|colour|centre)[-a-z]*\s*:/.test(bytes.toString())) throw new Error(`Unknown CSS property: ${file}`);
-    if (/Cloud Noodle|Pebble Puff|Mango Moon|Waffle Fern|Velvet Kite|Bumble Bean|Puddle Pip|Comet Crumb|demo-seat-|Ah Boy|H7KQ9MXR/.test(bytes.toString())) throw new Error(`Demo fixture shipped: ${file}`);
+    if (/unsupportedDemo|unsupported-demo|Cloud Noodle|Pebble Puff|Mango Moon|Waffle Fern|Velvet Kite|Bumble Bean|Puddle Pip|Comet Crumb|demo-seat-|Ah Boy|H7KQ9MXR/.test(bytes.toString())) throw new Error(`Demo fixture shipped: ${file}`);
     const text = bytes.toString();
     if (text.includes('RUDE_WORDS') || words.some(word => ['"', "'", '`'].some(quote => text.includes(quote + word + quote)))) throw new Error(`Server code filter shipped: ${file}`);
     raw += bytes.length; gzip += gzipSync(bytes).length;

@@ -1,0 +1,8 @@
+.unsupported { width: 100%; height: 100%; overflow: auto; display: flex; flex-direction: column; justify-content: safe center; gap: var(--ka-space-34); padding: var(--ka-space-55); font-size: var(--ka-type-34); line-height: var(--ka-line-body); overflow-wrap: anywhere; }
+.unsupported h1 { font-size: var(--ka-type-55); }
+.unsupported .unsupported-details { color: var(--ka-secondary); font-size: var(--ka-type-21); }
+@media (max-width: 600px) {
+  .unsupported { padding: var(--ka-space-21); gap: var(--ka-space-21); font-size: var(--ka-type-21); }
+  .unsupported h1 { font-size: var(--ka-type-34); }
+  .unsupported .unsupported-details { font-size: var(--ka-type-13); }
+}

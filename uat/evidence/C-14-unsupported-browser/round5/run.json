@@ -1,0 +1,216 @@
+{
+  "slice": "C-14-unsupported-browser",
+  "status": "completed-awaiting-visual-review",
+  "command": "node uat/slices/C-14-unsupported-browser.mjs --production",
+  "commit": "139b0dbed7b8017fcd60593d41fd0e6c5a46f2b2",
+  "viewports": [
+    "390×844",
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Production classic /",
+      "ms": 193.42158400000017,
+      "status": "completed"
+    },
+    {
+      "name": "Production classic /host",
+      "ms": 130.96237500000052,
+      "status": "completed"
+    },
+    {
+      "name": "Production classic /play",
+      "ms": 129.44725000000017,
+      "status": "completed"
+    },
+    {
+      "name": "Production failed-preflight /",
+      "ms": 130.27712499999961,
+      "status": "completed"
+    },
+    {
+      "name": "Production failed-preflight /host",
+      "ms": 129.91016600000057,
+      "status": "completed"
+    },
+    {
+      "name": "Production failed-preflight /play",
+      "ms": 131.54950000000008,
+      "status": "completed"
+    },
+    {
+      "name": "Production parse /",
+      "ms": 133.1507500000007,
+      "status": "completed"
+    },
+    {
+      "name": "Production parse /host",
+      "ms": 131.78279199999997,
+      "status": "completed"
+    },
+    {
+      "name": "Production parse /play",
+      "ms": 131.52216599999974,
+      "status": "completed"
+    },
+    {
+      "name": "Production with JavaScript off shows the noscript message",
+      "ms": 117.3872080000001,
+      "status": "completed"
+    },
+    {
+      "name": "Production working browser /",
+      "ms": 162.42600000000039,
+      "status": "completed"
+    },
+    {
+      "name": "Production working browser /host",
+      "ms": 1097.5180420000006,
+      "status": "completed"
+    },
+    {
+      "name": "Production working browser /play",
+      "ms": 513.4482499999995,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-page-production-classic-landing.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-page-production-classic-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-page-production-classic-play.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-page-production-failed-preflight-landing.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-page-production-failed-preflight-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-page-production-failed-preflight-play.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-page-production-parse-landing.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-page-production-parse-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-page-production-parse-play.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-page-production-javascript-off.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-production-working-landing.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-production-working-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-production-working-play.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-page-production-classic-landing.jpg",
+    "02-page-production-classic-host.jpg",
+    "03-page-production-classic-play.jpg",
+    "04-page-production-failed-preflight-landing.jpg",
+    "05-page-production-failed-preflight-host.jpg",
+    "06-page-production-failed-preflight-play.jpg",
+    "07-page-production-parse-landing.jpg",
+    "08-page-production-parse-host.jpg",
+    "09-page-production-parse-play.jpg",
+    "10-page-production-javascript-off.jpg",
+    "11-host-production-working-landing.jpg",
+    "12-host-production-working-host.jpg",
+    "13-host-production-working-play.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-page-production-classic-landing.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "02-page-production-classic-host.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "03-page-production-classic-play.jpg",
+      "bytes": 38612
+    },
+    {
+      "file": "04-page-production-failed-preflight-landing.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "05-page-production-failed-preflight-host.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "06-page-production-failed-preflight-play.jpg",
+      "bytes": 38612
+    },
+    {
+      "file": "07-page-production-parse-landing.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "08-page-production-parse-host.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "09-page-production-parse-play.jpg",
+      "bytes": 38612
+    },
+    {
+      "file": "10-page-production-javascript-off.jpg",
+      "bytes": 38312
+    },
+    {
+      "file": "11-host-production-working-landing.jpg",
+      "bytes": 127482
+    },
+    {
+      "file": "12-host-production-working-host.jpg",
+      "bytes": 256714
+    },
+    {
+      "file": "13-host-production-working-play.jpg",
+      "bytes": 52777
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2356
+    },
+    {
+      "file": "run.json",
+      "bytes": 5143
+    }
+  ],
+  "totalBytes": 831391,
+  "maxBytes": 12582912
+}

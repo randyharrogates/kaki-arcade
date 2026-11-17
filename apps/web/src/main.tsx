@@ -1,3 +1,7 @@
+document.documentElement.setAttribute('data-entry', 'run');
+import { supportDecision } from './support';
+import type { SupportEnvironment } from './support';
+import { BrowserNotSupported } from './BrowserNotSupported';
 import { installFavicon } from './favicon';
 import { render } from 'preact';
 import type { ComponentType } from 'preact';
@@ -43,4 +47,26 @@ function App() {
   return <main class="screen room-status"><h1>This page has not been built yet.</h1><a href="/">Back to Kaki Arcade</a></main>;
 }
 const root = document.getElementById('app');
-if (root) render(<App/>, root);
+async function start(): Promise<void> {
+  // Functions are bound to window when present, so nothing is copied off it unbound.
+  const env: SupportEnvironment = { pathname: location.pathname,
+    RTCPeerConnection: window.RTCPeerConnection, WebSocket: window.WebSocket, Element: window.Element,
+    CSS: window.CSS, PointerEvent: window.PointerEvent, fetch: typeof window.fetch === 'function' ? window.fetch.bind(window) : undefined,
+    AbortController: window.AbortController, AbortSignal: window.AbortSignal,
+    URL: window.URL, URLSearchParams: window.URLSearchParams, crypto: window.crypto,
+    matchMedia: typeof window.matchMedia === 'function' ? window.matchMedia.bind(window) : undefined, getComputedStyle: typeof window.getComputedStyle === 'function' ? window.getComputedStyle.bind(window) : undefined,
+    ResizeObserver: window.ResizeObserver, requestAnimationFrame: typeof window.requestAnimationFrame === 'function' ? window.requestAnimationFrame.bind(window) : undefined,
+    cancelAnimationFrame: typeof window.cancelAnimationFrame === 'function' ? window.cancelAnimationFrame.bind(window) : undefined, performance: window.performance };
+  const decision = supportDecision(env);
+  if (import.meta.env.DEV && decision.screen === 'route') {
+    const { unsupportedDemo } = await import('./unsupported-demo');
+    decision.missing.push(...unsupportedDemo(location.search));
+    if (decision.missing.length) decision.screen = 'unsupported';
+  }
+  if (root) render(decision.screen === 'unsupported'
+    ? <BrowserNotSupported pathname={location.pathname} missing={decision.missing}/>
+    : <App/>, root);
+}
+void start().catch(() => {
+  document.dispatchEvent(new Event('unsupported-entry-failed'));
+});

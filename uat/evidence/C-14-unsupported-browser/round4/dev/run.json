@@ -1,0 +1,344 @@
+{
+  "slice": "C-14-unsupported-browser",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- C-14-unsupported-browser --phones 1",
+  "commit": "47e22e2137f907deacaca78d8d0f4fdf77ca5ab5",
+  "viewports": [
+    "1280×720",
+    "390×844",
+    "320×568",
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Unsupported demo landing-1280",
+      "ms": 751.407209,
+      "status": "completed"
+    },
+    {
+      "name": "Normal route landing-1280",
+      "ms": 180.11112500000036,
+      "status": "completed"
+    },
+    {
+      "name": "Unsupported demo host-1280",
+      "ms": 175.67629099999976,
+      "status": "completed"
+    },
+    {
+      "name": "Normal route host-1280",
+      "ms": 1144.2130420000003,
+      "status": "completed"
+    },
+    {
+      "name": "Unsupported demo play-1280",
+      "ms": 175.449834,
+      "status": "completed"
+    },
+    {
+      "name": "Normal route play-1280",
+      "ms": 540.5811250000006,
+      "status": "completed"
+    },
+    {
+      "name": "Unsupported demo landing-390",
+      "ms": 150.72600000000057,
+      "status": "completed"
+    },
+    {
+      "name": "Normal route landing-390",
+      "ms": 149.5107079999998,
+      "status": "completed"
+    },
+    {
+      "name": "Unsupported demo host-390",
+      "ms": 150.24637499999972,
+      "status": "completed"
+    },
+    {
+      "name": "Normal route host-390",
+      "ms": 1069.2431670000005,
+      "status": "completed"
+    },
+    {
+      "name": "Unsupported demo play-390",
+      "ms": 170.43275000000085,
+      "status": "completed"
+    },
+    {
+      "name": "Normal route play-390",
+      "ms": 549.7257089999994,
+      "status": "completed"
+    },
+    {
+      "name": "Unsupported demo landing-320",
+      "ms": 149.78650000000016,
+      "status": "completed"
+    },
+    {
+      "name": "Normal route landing-320",
+      "ms": 167.30712499999936,
+      "status": "completed"
+    },
+    {
+      "name": "Unsupported demo host-320",
+      "ms": 169.5056250000016,
+      "status": "completed"
+    },
+    {
+      "name": "Normal route host-320",
+      "ms": 1066.5002920000006,
+      "status": "completed"
+    },
+    {
+      "name": "Unsupported demo play-320",
+      "ms": 166.16029100000014,
+      "status": "completed"
+    },
+    {
+      "name": "Normal route play-320",
+      "ms": 532.6173340000005,
+      "status": "completed"
+    },
+    {
+      "name": "Delayed demo chunk keeps the static message hidden",
+      "ms": 3609.351666999999,
+      "status": "completed"
+    },
+    {
+      "name": "Real missing WebSocket /",
+      "ms": 225.0566660000004,
+      "status": "completed"
+    },
+    {
+      "name": "Real missing WebSocket /host",
+      "ms": 175.37762499999917,
+      "status": "completed"
+    },
+    {
+      "name": "Real missing WebSocket /play",
+      "ms": 174.5625830000008,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-unsupported-landing-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-normal-landing-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-unsupported-host-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-normal-host-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-unsupported-play-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-normal-play-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-unsupported-landing-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-normal-landing-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-unsupported-host-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-normal-host-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-unsupported-play-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-normal-play-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-unsupported-landing-320.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-normal-landing-320.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-unsupported-host-320.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-normal-host-320.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-unsupported-play-320.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-normal-play-320.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-page-delayed-demo.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-page-real-missing-websocket-landing.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-page-real-missing-websocket-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-page-real-missing-websocket-play.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-unsupported-landing-1280.jpg",
+    "02-host-normal-landing-1280.jpg",
+    "03-host-unsupported-host-1280.jpg",
+    "04-host-normal-host-1280.jpg",
+    "05-host-unsupported-play-1280.jpg",
+    "06-host-normal-play-1280.jpg",
+    "07-host-unsupported-landing-390.jpg",
+    "08-host-normal-landing-390.jpg",
+    "09-host-unsupported-host-390.jpg",
+    "10-host-normal-host-390.jpg",
+    "11-host-unsupported-play-390.jpg",
+    "12-host-normal-play-390.jpg",
+    "13-host-unsupported-landing-320.jpg",
+    "14-host-normal-landing-320.jpg",
+    "15-host-unsupported-host-320.jpg",
+    "16-host-normal-host-320.jpg",
+    "17-host-unsupported-play-320.jpg",
+    "18-host-normal-play-320.jpg",
+    "19-page-delayed-demo.jpg",
+    "20-page-real-missing-websocket-landing.jpg",
+    "21-page-real-missing-websocket-host.jpg",
+    "22-page-real-missing-websocket-play.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-unsupported-landing-1280.jpg",
+      "bytes": 79249
+    },
+    {
+      "file": "02-host-normal-landing-1280.jpg",
+      "bytes": 61595
+    },
+    {
+      "file": "03-host-unsupported-host-1280.jpg",
+      "bytes": 79249
+    },
+    {
+      "file": "04-host-normal-host-1280.jpg",
+      "bytes": 144671
+    },
+    {
+      "file": "05-host-unsupported-play-1280.jpg",
+      "bytes": 79674
+    },
+    {
+      "file": "06-host-normal-play-1280.jpg",
+      "bytes": 38358
+    },
+    {
+      "file": "07-host-unsupported-landing-390.jpg",
+      "bytes": 38587
+    },
+    {
+      "file": "08-host-normal-landing-390.jpg",
+      "bytes": 20164
+    },
+    {
+      "file": "09-host-unsupported-host-390.jpg",
+      "bytes": 38587
+    },
+    {
+      "file": "10-host-normal-host-390.jpg",
+      "bytes": 37947
+    },
+    {
+      "file": "11-host-unsupported-play-390.jpg",
+      "bytes": 38842
+    },
+    {
+      "file": "12-host-normal-play-390.jpg",
+      "bytes": 29121
+    },
+    {
+      "file": "13-host-unsupported-landing-320.jpg",
+      "bytes": 32534
+    },
+    {
+      "file": "14-host-normal-landing-320.jpg",
+      "bytes": 12739
+    },
+    {
+      "file": "15-host-unsupported-host-320.jpg",
+      "bytes": 32534
+    },
+    {
+      "file": "16-host-normal-host-320.jpg",
+      "bytes": 25611
+    },
+    {
+      "file": "17-host-unsupported-play-320.jpg",
+      "bytes": 32756
+    },
+    {
+      "file": "18-host-normal-play-320.jpg",
+      "bytes": 23325
+    },
+    {
+      "file": "19-page-delayed-demo.jpg",
+      "bytes": 137455
+    },
+    {
+      "file": "20-page-real-missing-websocket-landing.jpg",
+      "bytes": 75090
+    },
+    {
+      "file": "21-page-real-missing-websocket-host.jpg",
+      "bytes": 75090
+    },
+    {
+      "file": "22-page-real-missing-websocket-play.jpg",
+      "bytes": 75501
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 3347
+    },
+    {
+      "file": "run.json",
+      "bytes": 7844
+    }
+  ],
+  "totalBytes": 1219907,
+  "maxBytes": 12582912
+}

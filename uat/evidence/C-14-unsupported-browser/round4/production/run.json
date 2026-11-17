@@ -1,0 +1,164 @@
+{
+  "slice": "C-14-unsupported-browser",
+  "status": "completed-awaiting-visual-review",
+  "command": "node uat/slices/C-14-unsupported-browser.mjs --production",
+  "commit": "47e22e2137f907deacaca78d8d0f4fdf77ca5ab5",
+  "viewports": [
+    "390×844"
+  ],
+  "steps": [
+    {
+      "name": "Production classic /",
+      "ms": 193.06520799999998,
+      "status": "completed"
+    },
+    {
+      "name": "Production classic /host",
+      "ms": 187.0679170000003,
+      "status": "completed"
+    },
+    {
+      "name": "Production classic /play",
+      "ms": 169.51383299999998,
+      "status": "completed"
+    },
+    {
+      "name": "Production failed-preflight /",
+      "ms": 188.48716700000023,
+      "status": "completed"
+    },
+    {
+      "name": "Production failed-preflight /host",
+      "ms": 185.5862500000003,
+      "status": "completed"
+    },
+    {
+      "name": "Production failed-preflight /play",
+      "ms": 147.51533300000028,
+      "status": "completed"
+    },
+    {
+      "name": "Production parse /",
+      "ms": 187.72620800000004,
+      "status": "completed"
+    },
+    {
+      "name": "Production parse /host",
+      "ms": 168.82695799999965,
+      "status": "completed"
+    },
+    {
+      "name": "Production parse /play",
+      "ms": 171.61049999999977,
+      "status": "completed"
+    },
+    {
+      "name": "Production working browser keeps static message hidden",
+      "ms": 80.4360829999996,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-page-production-classic-landing.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-page-production-classic-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-page-production-classic-play.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-page-production-failed-preflight-landing.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-page-production-failed-preflight-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-page-production-failed-preflight-play.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-page-production-parse-landing.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-page-production-parse-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-page-production-parse-play.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-page-production-classic-landing.jpg",
+    "02-page-production-classic-host.jpg",
+    "03-page-production-classic-play.jpg",
+    "04-page-production-failed-preflight-landing.jpg",
+    "05-page-production-failed-preflight-host.jpg",
+    "06-page-production-failed-preflight-play.jpg",
+    "07-page-production-parse-landing.jpg",
+    "08-page-production-parse-host.jpg",
+    "09-page-production-parse-play.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-page-production-classic-landing.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "02-page-production-classic-host.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "03-page-production-classic-play.jpg",
+      "bytes": 38612
+    },
+    {
+      "file": "04-page-production-failed-preflight-landing.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "05-page-production-failed-preflight-host.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "06-page-production-failed-preflight-play.jpg",
+      "bytes": 38612
+    },
+    {
+      "file": "07-page-production-parse-landing.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "08-page-production-parse-host.jpg",
+      "bytes": 38789
+    },
+    {
+      "file": "09-page-production-parse-play.jpg",
+      "bytes": 38612
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1826
+    },
+    {
+      "file": "run.json",
+      "bytes": 3855
+    }
+  ],
+  "totalBytes": 354288,
+  "maxBytes": 12582912
+}
