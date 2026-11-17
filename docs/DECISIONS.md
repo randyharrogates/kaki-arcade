@@ -795,3 +795,18 @@ never a pass. Sample minima (180 s and 600 visible frames inside the round for P
 observations for PERF-010 and PERF-012) are measurement-validity rules, not budgets. Randy may
 overrule; rule 6's wording in CLAUDE.md is his to change and is left as it is.
 
+**D-101 · 2026-11-17 · Claude under D-057** — Rabakz big screen, readings after the second
+R-03 review; they go on the same board as D-097 for Randy to overrule. (a) An option's shape
+sits to the left of its text in every layout, as on the phone's answer buttons (RZ-003); the
+picture layout no longer puts it underneath. (b) Answers are at most one step of the TV type
+scale below the prompt (prompt 89 px, answers 55 px), except where both are at the 34 px
+floor; spare height goes to padding. This replaces the round-4 request to grow answer text to
+89 px. (c) The correct card does not pulse when nobody got it right: the pulse confirms a
+success. (d) While a question is open a seat that has answered correctly keeps reading
+"Thinking" until the reveal, which follows within 0.25 s (RZ-006); only a wrong answer changes
+a seat, to "Locked out" (RZ-005). The TV therefore never names a winner before the reveal.
+(e) Each seat keeps its own place in the strip by seat number; a player leaving does not move
+the others. (f) When the layout differs between two questions (a picture appears or goes, text
+sizes change) the picture is masked in or out and the boxes move and resize with an
+ease-in-out move over `duration.slow`; nothing cuts.
+
