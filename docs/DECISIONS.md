@@ -906,3 +906,10 @@ C). Why: placing order reads top to bottom, names are largest (55 px at 1080p), 
 wraps or clips at 720p, 1080p or 4K; B breaks long names mid-word and its list sits at the
 reading floor; C puts last place beside first. The podium is common to all three. Randy may
 overrule; B and C stay buildable from the round-4 commit.
+
+**D-113 · 2026-11-17 · Claude (under D-057)** — Addendum to D-111 (PERF-002; no budget
+changed). "Full" also requires the median frame interval under the workload to be at most
+20.5 ms, so a steady 50 Hz display (TVs in 50 Hz mode) counts as full and a steady 40 to 48 Hz
+cadence does not. The refresh rate kept with a cached verdict is the idle display cadence,
+measured by a short idle probe, never the median under the workload, so a slow TV that drops
+frames under load is not re-measured at every launch (C-13 review round 2).
