@@ -1282,3 +1282,19 @@ the phone's clipped edge (C-11b rounds 5 and 6). While a refusal shows it replac
 return 3 seconds later or at the next tap. Each button still names its team in its accessible
 label and carries the team colour on its seat disc. Crossfade with the motion tokens; reduced
 motion swaps instantly. Randy may overrule.
+
+**D-154 · 2026-11-18 · Claude** (under D-142; A-02 plan) — The cook body (A-02). (1) Walk cadence:
+stride 0.72 tiles per 8-frame cycle with 3 stance frames and one flight frame per step (option B of
+three: 0.48 / 0.72 / 0.96), so feet do not slide at the provisional 3 tiles/s (D-072) while the
+legs reach only slightly further than the S-02 spike's; walk frames advance by distance
+(`floor(distance × 8 / strideTiles) mod 8`), not by a fixed fps. The two numbers are constants in
+`tools/blender/cook_poses.py`; the integrator renders all three options side by side as an
+artifact after A-02's first renders, and Randy may overrule. (2) Cook sprites ship lossless for
+now: the packer refuses lossy pages with more than one frame (A-01b), which conflicts with D-142's
+lossy q90 for cook sprites. Estimated 6.0–7.0 MB of the 8 MB level budget at full size, so a
+storage decision (for example lossy pages with frames on a 32 px grid, or fewer frames) is needed
+before A-05 and A-06 add stations and backgrounds. (3) One render job per action plus one head
+job, each publishing only its own folder and writing its own `frames.json`; cook jobs no longer
+write `pipeline.json`. The S-02 spike set is retired (its evidence stays). A-02 publishes the cap
+head; A-03 adds the other seven. (4) A-02 may edit A-01's `tools/assets/pipeline.py`, its tests and
+`manifest.d.ts` for `frameFiles`, animation fields and `--no-pack`, and ART-PIPELINE §5 and a new §9.
