@@ -1,8 +1,10 @@
-import { checkLayout } from '@kaki/platform';
+import { checkLayout, checkPrivateView } from '@kaki/platform';
+import type { PrivateView } from '@kaki/platform';
+import { phoneThemes } from './phone-themes';
 import type { Layout, LayoutOutput } from '@kaki/controller-kit';
 import { teamSetupView } from './team-setup';
 import type { TeamSetupView } from './team-setup';
-import type { SeatNumber } from '@kaki/ui';
+import type { ThemeName, SeatNumber } from '@kaki/ui';
 import { createPhoneReconnect, createPhoneSeatStore } from '@kaki/platform';
 import type { PhoneReconnectDial, PhoneReconnectOptions, PhoneReconnectState, ReconnectClock, ReconnectStorage } from '@kaki/platform';
 import { CODE_ALPHABET, CODE_LENGTH, checkNickname } from '@kaki/protocol';
@@ -44,13 +46,13 @@ export const phoneCopy = {
 } as const;
 export type PhoneState = keyof typeof phoneCopy;
 export interface PhoneView {
-  gameLayout?: Layout | undefined; gameViewRevision?: number | undefined; teamSetup: TeamSetupView | null; layout: boolean; theme: 'console'; picker: PickerState | null; phase: RoomPhase; state: PhoneState; title: string; detail: string; code: string; name: string;
+  gamePrivateView: PrivateView | null; gameLayout?: Layout | undefined; gameViewRevision?: number | undefined; teamSetup: TeamSetupView | null; layout: boolean; theme: ThemeName; picker: PickerState | null; phase: RoomPhase; state: PhoneState; title: string; detail: string; code: string; name: string;
   seat: number | null; colour: string; leader: boolean; connected: boolean;
   notice: string; renaming: boolean; action: 'Join' | 'Join another room' | 'Join again' | 'Reload' | null;
 }
 export function phoneView(state: PhoneState, input: Partial<Pick<PhoneView, 'code' | 'name' | 'seat' | 'colour' | 'leader' | 'notice' | 'phase'>> = {}): PhoneView {
   if (['seat-expired', 'room-gone', 'waiting-for-lobby', 'left'].includes(state)) input = { ...input, seat: null, colour: '', leader: false };
-  return { teamSetup: null, layout: false, theme: 'console', picker: null, phase: 'lobby', renaming: state === 'rename', code: '', name: '', seat: null, colour: '', leader: false, notice: '', ...input,
+  return { gamePrivateView: null, teamSetup: null, layout: false, theme: 'console', picker: null, phase: 'lobby', renaming: state === 'rename', code: '', name: '', seat: null, colour: '', leader: false, notice: '', ...input,
     state, title: phoneCopy[state][0], detail: state === 'lobby' && (input.phase === 'playing' || input.phase === 'paused') ? 'Watch the TV.' : state === 'lobby' && input.leader ? "Pick a game when everyone’s in." : phoneCopy[state][1], connected: state === 'lobby' || state === 'name-taken' || state === 'name-replaced' || (input.seat !== null && input.seat !== undefined && ['entry', 'invalid-code', 'blank', 'too-long', 'bad-characters', 'rename', 'name-not-sent'].includes(state)),
     action: ['entry', 'invalid-code', 'blank', 'too-long', 'bad-characters', 'left'].includes(state) ? 'Join'
       : ['room-full', 'room-not-found', 'room-gone', 'cannot-connect'].includes(state) ? 'Join another room'
@@ -79,17 +81,27 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     if (stopped) return;
     const next = phoneView(state, { ...view, ...input });
     if (!next.connected) naming = false;
-    view = { ...next, teamSetup: next.connected ? (input.teamSetup === undefined ? view.teamSetup : input.teamSetup) : null, layout: next.seat !== null && (input.layout ?? view.layout), picker: next.connected ? (input.picker ?? view.picker) : null, renaming: naming, gameLayout: input.gameLayout ?? view.gameLayout, gameViewRevision: input.gameViewRevision ?? view.gameViewRevision }; changed(view);
+    view = { ...next, teamSetup: next.connected ? (input.teamSetup === undefined ? view.teamSetup : input.teamSetup) : null, layout: next.seat !== null && (input.layout ?? view.layout), picker: next.connected ? (input.picker ?? view.picker) : null, renaming: naming, gameLayout: input.gameLayout ?? view.gameLayout, gameViewRevision: input.gameViewRevision ?? view.gameViewRevision };
+    if (view.seat === null || !view.connected) view.gamePrivateView = null;
+    view.theme = view.connected && !view.teamSetup && (view.phase === 'playing' || view.phase === 'paused') ? phoneThemes[view.picker?.game?.id ?? ''] ?? 'console' : 'console';
+    changed(view);
   }
   function message(message: HostMessage): void {
     if (message.t === 'seat') {
       naming = false; everSeated = true; failures = 0; allowedAt = 0; unavailable = false;
       const notice = message.nameReplaced ? 'Your name was changed by the room.' : !message.resumed && message.name !== requestedName ? 'Name taken. The room added a number to your name.' : '';
       publish(message.nameReplaced ? 'name-replaced' : notice ? 'name-taken' : 'lobby', { seat: message.seat, colour: `var(--ka-seat-${String(message.colour + 1)})`, name: message.name, notice });
-    } else if (message.t === 'view') { const setup = teamSetupView(message.view); publish(view.state, { gameViewRevision: message.rev, teamSetup: setup ? { ...setup, revision: message.rev } : null }); }
+    } else if (message.t === 'view') {
+      const setup = teamSetupView(message.view);
+      if (setup) publish(view.state, { gamePrivateView: null, gameViewRevision: message.rev, teamSetup: { ...setup, revision: message.rev } });
+      else if (message.view === null) publish(view.state, { gamePrivateView: null, gameViewRevision: message.rev, teamSetup: null });
+      else if (checkPrivateView(message.view).length === 0 && (!view.gamePrivateView || message.rev > view.gamePrivateView.revision)) {
+        publish(view.state, { gamePrivateView: { ...message.view as unknown as PrivateView, revision: message.rev }, gameViewRevision: message.rev, teamSetup: null });
+      }
+    }
     else if (message.t === 'layout' && checkLayout(message.layout).length === 0) publish(view.state, { layout: true, gameLayout: message.layout as unknown as Layout });
-    else if (message.t === 'picker-state') publish(view.state, { picker: message, ...(message.screen === 'picker' || message.screen === 'lobby' || message.screen === 'start' ? { layout: false } : {}) });
-    else if (message.t === 'room') publish(view.state, { leader: message.leader, phase: message.phase, ...(message.phase === 'lobby' || message.phase === 'results' ? { layout: false } : {}) });
+    else if (message.t === 'picker-state') publish(view.state, { picker: message, ...(message.screen === 'picker' || message.screen === 'lobby' || message.screen === 'start' ? { layout: false, gamePrivateView: null } : {}) });
+    else if (message.t === 'room') publish(view.state, { leader: message.leader, phase: message.phase, ...(message.phase === 'lobby' || message.phase === 'results' ? { layout: false, gamePrivateView: null } : {}) });
     else if (message.t === 'name-refused') {
       if (view.seat === null) { generation++; driver?.stop(); } else naming = true;
       publish(message.reason);

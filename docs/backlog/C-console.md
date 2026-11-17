@@ -42,6 +42,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | C-12 | Keyboard on the host for setup, and a keyboard or gamepad as one extra player | PLAT-024, CTRL-009 | C-10 | 2 | todo |
 | C-14 | Unsupported-browser message | REL-006 | C-07 | 2 | merged |
 | C-16 | Start a game from the picker: Start loads the chosen game's module, runs it in the session runner, shows its TV screen and sends phones their controller; quit and results return to the picker | PLAT-022, PLAT-023 | C-09, C-10, R-03, K-01 | 2 | merged |
+| C-16b | Phones draw the game's private view beside the controls and take the game's phone theme while a game is playing or paused (console otherwise); kit surfaces on panels use the panel ink | CTRL-003, PLAT-031 | C-16, K-05 | 2 | merged |
 | C-15 | Console end to end with a test game: 8 emulated phones join, pick, play, pause, a phone reloads, the host reloads | PLAT-030, PLAT-033, NN-1, NN-2 | C-05 to C-14, C-16, K-08 | 3 | todo |
 
 ## Carried from reviews

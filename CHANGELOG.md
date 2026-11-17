@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — C-16b: phones show the game's private view and theme
+
+- `apps/web/src/phone.ts`, `phone-route.tsx`, `phone-themes.ts`: a phone keeps its own private view
+  (newer revisions only; dropped if it fails the check; cleared on lobby, picker, results, seat loss,
+  leave and disconnect) and draws it beside the controls; while a game is playing or paused the page
+  and controller take that game's phone theme (D-161: Tabao Rush uses its own token block), console
+  otherwise. `packages/controller-kit`: every surface drawn on a panel uses `--ka-panel-ink`, so text
+  stays readable in every game theme. CTRL-003, PLAT-031 (in progress). Controller page 94,055 B gzip
+  of 300,000 (PERF-020); cold start median 175 ms. Evidence `uat/evidence/C-16b-private-panel/round3/`.
+
 ## 2026-11-18 — P-04: Peek Poker table on the TV
 
 - `games/peek-poker/host/`: canvas table with grid, shared cards, flips with masks, swaps on arcs

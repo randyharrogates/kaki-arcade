@@ -1,0 +1,111 @@
+{
+  "slice": "C-16b-private-panel",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- C-16b-private-panel --phones 2 --out round2",
+  "commit": "e724cc3e3b5c27303a20403857442d591be9d68c",
+  "viewports": [
+    "667×375",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1089.395125,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-phone-question-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone2-phone-question-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-phone-private-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone2-phone-results-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-phone-paused-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone2-peek-poker-hand-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-tabao-rush-phone-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-team-setup-console-667.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-phone-question-667.jpg",
+    "02-phone2-phone-question-844.jpg",
+    "03-phone1-phone-private-667.jpg",
+    "04-phone2-phone-results-844.jpg",
+    "05-phone1-phone-paused-667.jpg",
+    "06-phone2-peek-poker-hand-667.jpg",
+    "07-phone1-tabao-rush-phone-844.jpg",
+    "08-phone1-team-setup-console-667.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-phone-question-667.jpg",
+      "bytes": 152800
+    },
+    {
+      "file": "02-phone2-phone-question-844.jpg",
+      "bytes": 159482
+    },
+    {
+      "file": "03-phone1-phone-private-667.jpg",
+      "bytes": 152800
+    },
+    {
+      "file": "04-phone2-phone-results-844.jpg",
+      "bytes": 88883
+    },
+    {
+      "file": "05-phone1-phone-paused-667.jpg",
+      "bytes": 159340
+    },
+    {
+      "file": "06-phone2-peek-poker-hand-667.jpg",
+      "bytes": 99727
+    },
+    {
+      "file": "07-phone1-tabao-rush-phone-844.jpg",
+      "bytes": 182447
+    },
+    {
+      "file": "08-phone1-team-setup-console-667.jpg",
+      "bytes": 125454
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1184
+    },
+    {
+      "file": "run.json",
+      "bytes": 2439
+    }
+  ],
+  "totalBytes": 1124593,
+  "maxBytes": 12582912
+}

@@ -1,0 +1,102 @@
+{
+  "slice": "C-16b-private-panel",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- C-16b-private-panel --phones 2 --out round3",
+  "commit": "b9fddda57ab066f482aad29cf3c6ed854590869c",
+  "viewports": [
+    "667×375",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1267.3802090000001,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-phone-question-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone2-phone-question-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone2-phone-results-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-phone-paused-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone2-peek-poker-hand-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-tabao-rush-phone-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-team-setup-console-667.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-phone-question-667.jpg",
+    "02-phone2-phone-question-844.jpg",
+    "03-phone2-phone-results-844.jpg",
+    "04-phone1-phone-paused-667.jpg",
+    "05-phone2-peek-poker-hand-667.jpg",
+    "06-phone1-tabao-rush-phone-844.jpg",
+    "07-phone1-team-setup-console-667.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-phone-question-667.jpg",
+      "bytes": 172311
+    },
+    {
+      "file": "02-phone2-phone-question-844.jpg",
+      "bytes": 179379
+    },
+    {
+      "file": "03-phone2-phone-results-844.jpg",
+      "bytes": 88883
+    },
+    {
+      "file": "04-phone1-phone-paused-667.jpg",
+      "bytes": 158102
+    },
+    {
+      "file": "05-phone2-peek-poker-hand-667.jpg",
+      "bytes": 99727
+    },
+    {
+      "file": "06-phone1-tabao-rush-phone-844.jpg",
+      "bytes": 182447
+    },
+    {
+      "file": "07-phone1-team-setup-console-667.jpg",
+      "bytes": 125454
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1108
+    },
+    {
+      "file": "run.json",
+      "bytes": 2236
+    }
+  ],
+  "totalBytes": 1009684,
+  "maxBytes": 12582912
+}

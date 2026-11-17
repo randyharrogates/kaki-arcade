@@ -1,0 +1,75 @@
+{
+  "slice": "C-16b-private-panel",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- C-16b-private-panel --phones 2 --out round1",
+  "commit": "8191a7854550eb70bc6b4174d808f3aa6f0f7787",
+  "viewports": [
+    "667×375",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1449.581916,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-phone-question-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone2-phone-question-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-phone-private-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone2-phone-results-844.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-phone-question-667.jpg",
+    "02-phone2-phone-question-844.jpg",
+    "03-phone1-phone-private-667.jpg",
+    "04-phone2-phone-results-844.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-phone-question-667.jpg",
+      "bytes": 151811
+    },
+    {
+      "file": "02-phone2-phone-question-844.jpg",
+      "bytes": 158467
+    },
+    {
+      "file": "03-phone1-phone-private-667.jpg",
+      "bytes": 151811
+    },
+    {
+      "file": "04-phone2-phone-results-844.jpg",
+      "bytes": 88883
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 862
+    },
+    {
+      "file": "run.json",
+      "bytes": 1571
+    }
+  ],
+  "totalBytes": 553442,
+  "maxBytes": 12582912
+}

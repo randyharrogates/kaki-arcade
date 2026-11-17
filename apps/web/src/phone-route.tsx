@@ -73,7 +73,7 @@ export function PhonePage() {
   const feedback = (): void => { if ('vibrate' in navigator) navigator.vibrate(duration.fast); };
   const teamChoice = view.leader && view.teamSetup?.screen === 'choice' ? <TeamsToggle enabled={view.teamSetup.enabled} toggle={() => { phone.current?.teamInput('teams-toggle'); }}/> : null;
   if (controller && wakeReady) return <GameController controller={controller} view={view} send={output => { phone.current?.controllerInput(output); }}/>;
-  return <main ref={page} class="phone-page" data-seated={view.seat !== null} data-theme="console" aria-label="Phone lobby">
+  return <main ref={page} class="phone-page ka-surface" data-seated={view.seat !== null} data-theme={view.theme} aria-label="Phone lobby">
     <div class="phone-live" role="status" aria-live="polite" aria-atomic="true">{announcement}<span>{teamAnnouncement}</span></div>
     {view.seat !== null && <header class="phone-id"><span class="phone-badge" style={{ backgroundColor: view.colour }}>{view.seat}</span><strong>{view.name}</strong><span class="phone-connection" role="img" aria-label={view.connected ? 'Connected' : 'Disconnected'} data-connected={view.connected}><Icon kind={view.connected ? 'good' : 'weak'}/><span aria-hidden="true">{view.connected ? 'Connected' : 'Disconnected'}{ownTeam === undefined ? '' : ` · on ${ownTeam === 0 ? 'Red' : 'Blue'}`}</span></span><button class="phone-leave ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button></header>}
     <Overlap fade identity={view.teamSetup?.screen === 'teams' ? 'teams' : results ? 'results' : picker && picker.screen !== 'lobby' ? 'picker' : view.renaming ? 'rename' : form ? 'form' : 'lobby'}>{view.connected && view.teamSetup?.screen === 'teams' ? <PhoneTeams setup={view.teamSetup} seat={view.seat} leader={view.leader} send={(control, value) => { feedback(); phone.current?.teamInput(control, value); }}/> : view.renaming ? <section class="phone-join ka-panel">
@@ -129,5 +129,5 @@ function GameController({ controller, view, send }: { controller: NonNullable<Re
     observer.observe(board);
     return () => { observer.disconnect(); };
   }, []);
-  return <ControllerShell {...controller}>{area && view.gameLayout && <LayoutEngine layout={view.gameLayout} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={send}/>}</ControllerShell>;
+  return <ControllerShell {...controller}>{area && view.gameLayout && <LayoutEngine layout={view.gameLayout} privateView={view.gamePrivateView} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={send}/>}</ControllerShell>;
 }

@@ -335,6 +335,11 @@ TV screen and sends each phone its controller; pause and quit go back to the pic
 players. The results screen names winners and ties at the largest size that fits and falls back to
 seat numbers only when a name cannot fit. UAT: `uat/evidence/C-16-start-game/round14/`.
 
+- **Phones show each game's private view and theme (C-16b, 2026-11-18).** The phone draws its own
+  private view (Rabakz's score panel, Peek Poker's hand) beside the controls, and takes the game's
+  phone theme while a game is playing or paused; console on every other screen. Text on panels stays
+  readable in every theme. Evidence `uat/evidence/C-16b-private-panel/round3/`.
+
 ## Does not exist yet
 
 - No controller or game screen yet; the picker stops at "Starting…" until C-10 wires the session.
