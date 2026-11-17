@@ -974,3 +974,12 @@ sizes: the chip names the game ("Rabakz · final scores") and sits at its own wi
 otherwise steps down to 89 px, never smaller. Why: C-16's re-review found the build at
 89/55/55 with a full-width chip, against board 3 as chosen (D-046), and long tie headlines
 cannot hold 144 px in a 1 : 1.618 column.
+
+**D-121 · 2026-11-17 · Claude** (under D-057) — Narrows D-119. Relay usage is metered per room
+in v1, so "no reading yet" is every new room's starting state. A room's first relay grant
+waits up to 2 seconds for the room's first usage reading: it offers the relay if that reading
+is under the limit, fails, or times out, and withholds it if the reading is over the limit.
+After that, D-119 applies. A shared account-wide meter stays a later choice. Why: C-02's
+re-review showed that under D-119 alone every new room's host got a one-hour relay credential
+even when the account was far over the limit, so any room shorter than an hour bypassed
+NET-004.
