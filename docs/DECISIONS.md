@@ -922,3 +922,12 @@ white slabs; the leader's row alone is a white panel; columns split name : score
 totals as two panels split 1.618 : 1, leader first; rows enter staggered 30 ms, ease-out,
 and each non-zero chip pulses once; reduced motion drops both. The result is published as an
 artifact for Randy to see.
+
+**D-115 · 2026-11-17 · Claude (under D-057)** — How PERF-020 (controller download) is measured;
+the 300 KB budget is unchanged. The check counts what a phone loads: `index.html`, the entry
+chunk and its static import closure (JS, CSS and assets, following `imports` recursively in
+the Vite manifest), any chunk the phone route imports, and public files that CSS references.
+It does not follow host-only dynamic imports (game modules, the TV game screens, the Rabakz
+question bank). Why: counting the whole deploy put the controller at 291 KB when a phone
+downloads 67 KB (C-16 review), and would fail as the bank grows. The whole deploy stays
+measured against PERF-022.
