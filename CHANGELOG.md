@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — S-02: cook art spike
+
+- `tools/blender/cook.py`: toy cook rig at 1.5 tiles, idle and walk in 8 directions, body, cap
+  head and colour masks, contact shadow, anchors written back after publish; checks for height,
+  foot slide, anchor jump, foot lift, mask coverage and spill. Rendered set in
+  `assets/src/tabao-rush/cook-spike/`. NN-4, TR-060 (idle and walk).
+- Storage decision D-142 corrected by D-144; evidence `uat/evidence/S-02-cook-spike/round2/`.
+
 ## 2026-11-18 — K-05: private panel on the phone
 
 - `packages/controller-kit/src/layout-renderer.ts`, `layout.css`: the private block (text, stats,

@@ -310,6 +310,16 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   mid-round watch and share the score. Rules only: no screen yet. Built by Codex; two review
   rounds, the last must-fix confirmed by the integrator against the reviewer's test.
 
+### Cook art spike (S-02)
+
+- One toy cook is rigged in Blender and rendered at board 1C's size (1.5 tiles to the top of the
+  head) in 8 directions, idle and walk, as a shared body plus a separate cap head, with colour
+  masks so the cap and apron take each player's colour. 208 frames, 192 × 192 px, 94 s per
+  character. Storage decided as lossy WebP q90 with exact colour (D-142, D-144): about 2.8 MB for
+  all cook animations of the 8 MB level budget. Evidence: `uat/evidence/S-02-cook-spike/round2/`.
+  The other 7 actions, the jobs split under the 300 s render timeout, and the first full render's
+  body-mask check are A-02's.
+
 ### Private panel on the phone (K-05)
 
 - A game can show each phone a private panel: text, stats, cards, choices and a tappable grid,

@@ -256,6 +256,93 @@ class PipelineTests(unittest.TestCase):
             p.render(config)
             self.assertEqual(run.call_count, 2)
 
+        # S-02: exercise the actual cook job, without launching Blender. Source-relative
+        # outputs and cwd must work from assets/src, and every PNG must be declared.
+        import json
+        config = json.loads((p.ROOT / 'assets/src/pipeline.json').read_text())
+        cook = next(job for job in config['renders'] if job['script'] == 'cook.py')
+        self.assertEqual(cook['args'], ['--out', 'tabao-rush/cook-spike'])
+        self.assertEqual(cook['inputs'], ['pipeline.json'])
+        declared = set(cook['outputs'])
+        group = next(g for g in config['sets'] if g['id'] == 'tabao-rush-cook-spike')
+        self.assertEqual(len(group['frames']), 208)
+        self.assertEqual(declared, {f['file'] for f in group['frames']} |
+                         {'tabao-rush/cook-spike/render-validation.json'})
+        self.assertTrue(all(len(f['anchor']) == 2 for f in group['frames']))
+        # Execute the production pose/socket functions without importing Blender.
+        import ast
+        import types
+        source = ast.parse((p.ROOT / 'tools/blender/cook.py').read_text())
+        functions = [n for n in source.body if isinstance(n, ast.FunctionDef)
+                     and n.name in ('pose', 'bone_world', 'socket')]
+        events = []
+        graph = types.SimpleNamespace(update=lambda: events.append('depsgraph'))
+        scene = types.SimpleNamespace(frame_set=lambda f: events.append(('frame', f)))
+        matrix = types.SimpleNamespace(translation=types.SimpleNamespace(copy=lambda: [3, 4, 5]))
+        class World:
+            def __matmul__(self, other):
+                events.append('evaluated-matrix')
+                return matrix
+        evaluated = types.SimpleNamespace(matrix_world=World(), pose=types.SimpleNamespace(
+            bones={'head_socket': types.SimpleNamespace(matrix=object())}))
+        rig = types.SimpleNamespace(animation_data=types.SimpleNamespace(),
+                                    rotation_euler=types.SimpleNamespace(),
+                                    evaluated_get=lambda g: evaluated)
+        context = types.SimpleNamespace(scene=scene,
+            view_layer=types.SimpleNamespace(update=lambda: events.append('view-layer')),
+            evaluated_depsgraph_get=lambda: graph)
+        namespace = {'bpy': types.SimpleNamespace(context=context), 'math': __import__('math'),
+                     'project': lambda point: point}
+        exec(compile(ast.Module(body=functions, type_ignores=[]), 'cook-pose', 'exec'), namespace)
+        action = types.SimpleNamespace(slots=['walk-slot'])
+        namespace['pose'](rig, {'walk': action}, 'walk', 2, 1)
+        self.assertEqual(namespace['socket'](rig), [3, 4, 5])
+        self.assertEqual(events, [('frame', 3), 'view-layer', 'depsgraph', 'evaluated-matrix'])
+        self.assertEqual(rig.animation_data.action_slot, 'walk-slot')
+        # Recorded render anchors, including masks, are authoritative; no pose formula.
+        report = json.loads((p.ROOT / 'assets/src/tabao-rush/cook-spike/render-validation.json').read_text())
+        helpers = [n for n in source.body if isinstance(n, ast.FunctionDef)
+                   and n.name in ('require', 'update_anchors')]
+        helper_ns = {'Path': Path}
+        exec(compile(ast.Module(body=helpers, type_ignores=[]), 'cook-anchors', 'exec'), helper_ns)
+        expected_config = copy.deepcopy(config)
+        helper_ns['update_anchors'](expected_config, report['frames'])
+        expected_group = next(g for g in expected_config['sets'] if g['id'] == group['id'])
+        self.assertEqual(group['frames'], expected_group['frames'])
+        for frame in expected_group['frames']:
+            frame['anchor'] = [-1, -1]
+        helper_ns['update_anchors'](expected_config, report['frames'])
+        self.assertEqual(group['frames'], expected_group['frames'])
+        broken = copy.deepcopy(config)
+        next(g for g in broken['sets'] if g['id'] == group['id'])['frames'].pop()
+        with self.assertRaisesRegex(RuntimeError, 'no frame'):
+            helper_ns['update_anchors'](broken, report['frames'])
+        # Metadata mutation follows successful frame publication; output timestamps follow it.
+        main_node = next(n for n in source.body if isinstance(n, ast.FunctionDef) and n.name == 'main')
+        main_source = ast.unparse(main_node)
+        self.assertLess(main_source.index('shutil.move'), main_source.index('config.write_text'))
+        self.assertLess(main_source.index('config.write_text'), main_source.index('output.touch'))
+        p.write_json(self.source / 'pipeline.json', config)
+        def cook_stub(args, **kwargs):
+            if args[0] == 'blender':
+                self.assertEqual(kwargs['cwd'], self.source)
+                self.assertEqual(args[4], str(p.ROOT / 'tools/blender/cook.py'))
+                self.assertEqual(args[5:], ['--', '--out', 'tabao-rush/cook-spike'])
+                self.assertTrue(kwargs['check'])
+                for output in declared:
+                    path = self.source / output
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_bytes(b'stub output')
+            return p.subprocess.CompletedProcess(args, 0)
+        with patch.object(p.subprocess, 'run', side_effect=cook_stub) as run:
+            p.render({'renders': [cook]}, self.source)
+            p.render({'renders': [cook]}, self.source)
+            self.assertEqual(run.call_count, 2)
+            # Missing any declared frame forces a rebuild.
+            (self.source / sorted(declared)[0]).unlink()
+            p.render({'renders': [cook]}, self.source)
+            self.assertEqual(run.call_count, 4)
+
 
 if __name__ == '__main__':
     unittest.main()
