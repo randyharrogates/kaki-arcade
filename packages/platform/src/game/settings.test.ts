@@ -203,6 +203,61 @@ describe('settings schema', () => {
       'settings field "more": the default needs at least 3 chosen',
     ]);
   });
+  it('accepts grouped options and a label for choosing none (D-157)', () => {
+    expect(
+      checkSettingsSchema({
+        fields: [
+          {
+            kind: 'multi',
+            id: 'topics',
+            label: 'Categories',
+            noneLabel: 'Mixed',
+            options: [
+              { value: 'art', label: 'Arts', group: 'Around the world' },
+              { value: 'sgFood', label: 'Food', group: 'Singapore' },
+            ],
+            default: [],
+          },
+        ],
+      }),
+    ).toEqual([]);
+  });
+  it('finds what is wrong with groups and the none label (D-157)', () => {
+    expect(
+      checkSettingsSchema({
+        fields: [
+          {
+            kind: 'multi',
+            id: 'half',
+            label: 'Half',
+            noneLabel: ' ',
+            options: [
+              { value: 'a', label: 'A', group: 'One' },
+              { value: 'b', label: 'B' },
+            ],
+            default: [],
+          },
+          {
+            kind: 'multi',
+            id: 'blank',
+            label: 'Blank',
+            noneLabel: 'Any',
+            min: 1,
+            options: [
+              { value: 'a', label: 'A', group: '' },
+              { value: 'b', label: 'B', group: 'Two' },
+            ],
+            default: ['a'],
+          },
+        ],
+      }),
+    ).toEqual([
+      'settings field "half": either every option names a group or none does',
+      'settings field "half": noneLabel must not be empty',
+      'settings field "blank": option "a" has an empty group',
+      'settings field "blank": noneLabel needs min 0, since choosing none must be allowed',
+    ]);
+  });
   it('ties each field to a key of the settings type', () => {
     const bad: SettingsSchema<Demo> = {
       fields: [

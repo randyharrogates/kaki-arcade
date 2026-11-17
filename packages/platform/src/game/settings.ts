@@ -27,6 +27,12 @@ interface FieldBase<Id extends string> {
 export interface ChoiceOption<Value extends string | number> {
   readonly value: Value;
   readonly label: string;
+  /**
+   * The heading this option is shown under, for long lists (D-157). Options with the same group
+   * are drawn together, in the order listed; in a `multi` field a group heading picks or clears
+   * all of its options. Omit it on every option for a plain list.
+   */
+  readonly group?: string;
 }
 export interface ChoiceField<
   Id extends string = string,
@@ -45,6 +51,11 @@ export interface MultiField<
   readonly default: readonly Value[];
   /** Fewest that may be chosen. Default 0. */
   readonly min?: number;
+  /**
+   * What choosing none means, shown as the first option, for example `Mixed` (D-157). When set,
+   * the console draws it pressed exactly when nothing is chosen, and tapping it clears the choice.
+   */
+  readonly noneLabel?: string;
 }
 export interface ToggleField<Id extends string = string> extends FieldBase<Id> {
   readonly kind: 'toggle';
@@ -178,7 +189,20 @@ export function checkSettingsSchema(schema: {
         values.add(option.value);
         if (typeof option.label !== 'string' || option.label.trim() === '')
           problems.push(`${at}: option ${JSON.stringify(option.value)} needs a label`);
+        if (option.group !== undefined && (typeof option.group !== 'string' || option.group.trim() === ''))
+          problems.push(`${at}: option ${JSON.stringify(option.value)} has an empty group`);
       }
+      const grouped = field.options.filter((option) => option.group !== undefined).length;
+      if (grouped !== 0 && grouped !== field.options.length)
+        problems.push(`${at}: either every option names a group or none does`);
+      if (
+        field.kind === 'multi' &&
+        field.noneLabel !== undefined &&
+        (typeof field.noneLabel !== 'string' || field.noneLabel.trim() === '')
+      )
+        problems.push(`${at}: noneLabel must not be empty`);
+      if (field.kind === 'multi' && field.noneLabel !== undefined && (field.min ?? 0) > 0)
+        problems.push(`${at}: noneLabel needs min 0, since choosing none must be allowed`);
       if (
         field.kind === 'multi' &&
         field.min !== undefined &&
