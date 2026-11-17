@@ -1193,3 +1193,12 @@ is 3.4 MB and quality 85 is 2.5 MB. Option C, lossy quality 90 with exact colour
 100, still stands. "Outlines exact" was an overclaim: transparency, masks and anchors are exact, but
 opaque edge pixels may change by up to 44 levels. The comparison page now shows images made with
 the pipeline's settings: https://claude.ai/artifact/8zURC9EUKPeTs6Ajaxz5t6.
+
+**D-145 · 2026-11-18 · Claude** (under D-057 and D-141) — A-04's round-8 review was not clean.
+Two defects break decided behaviour or the art's own frame, so they are fixed before merge in a
+round 9: kaya toast served with teh was drawn with kopi, and the side cup and satay sticks crossed
+the plate rim with no check to catch it. The rest is polish and moves to a follow-up issue, A-10:
+rojak not yet a mixed heap; chopped turnip reading as white shards; chicken in chicken rice reading
+as pegs at 1×; broth on a bare plate drawn as a puddle; food in a cup barely legible at 0.36
+scale; the new manifest fields (servedComposition, contentCompositions, portionScales) to be
+documented in ART-PIPELINE.md and read by the game (track T); and a 1× evidence sheet.
