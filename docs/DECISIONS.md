@@ -1376,3 +1376,11 @@ names only keys that act on that screen: no "Enter: pick a game" with no player 
 screen shows "Enter: start · Esc: back", with "T: teams" only when the game has teams (T is D-159's
 Teams key). The game-pad hint reads "Start on a game pad: join" (D-159 wording).
 
+**D-163 · 2026-11-18 · Claude** (under D-142; D-154(1) follow-through) — The cook walk stride
+comparison D-154 promised is published: https://claude.ai/artifact/644EAwnxQzuatXbfCNRh9S (three real
+renders at 0.48, 0.72 and 0.96 tiles, animated at 3 tiles/s with frames advanced by distance). 0.72
+stands: 0.48 turns frames over at 50 a second and judders on a 60 Hz TV; 0.96 reads as lunging for a
+short-legged cook; all three cost the same atlas and memory. Randy may overrule. A-02 evidence ships as
+JPG contact sheets at 1× (UAT.md), not full PNG strips, to limit repository growth while cook frames are
+lossless.
+
