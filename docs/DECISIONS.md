@@ -937,7 +937,8 @@ area. The base is drawn where the thumb lands but kept wholly inside the area (i
 outline), so it never spills off the phone or over the header. The knob is always under the
 thumb, from the first frame: a landing near the edge, where the base had to be moved inward,
 reads at once as a push toward that edge, and every later move is measured from the same
-base. Why: K-02's re-review found that measuring from the moved base but starting at zero made
+base. In the deep corner, more than one radius from the moved base, the knob is rubber-banded
+toward the thumb like any drag past the edge. Why: K-02's re-review found that measuring from the moved base but starting at zero made
 the first 1 px move jump from nothing to nearly full speed, which breaks "tracks the thumb
 1:1" (CTRL-005). The other choice, not moving the base, puts part of it off the phone for a
 thumb within 42 px of the edge and cannot reach full deflection toward that edge.
