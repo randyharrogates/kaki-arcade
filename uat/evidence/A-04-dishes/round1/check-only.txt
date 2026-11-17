@@ -1,0 +1,5 @@
+Projected closest: icon-satay / icon-kway-teow-cooked: IoU 0.793328
+ITEMS: 65 models checked; no rendering or writes
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

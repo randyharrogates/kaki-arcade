@@ -240,6 +240,206 @@ class PipelineTests(unittest.TestCase):
             with self.assertRaises(p.subprocess.TimeoutExpired):
                 p.render(cfg)
 
+    def test_items_staging_and_guards(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('items', p.ROOT/'tools/blender/items.py')
+        items = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(items)
+        items.coverage()
+        destination = self.root/'items'
+        destination.mkdir()
+        (destination/'sprite.png').write_bytes(b'previous')
+        (destination/'render-validation.json').write_bytes(b'previous report')
+        with self.assertRaisesRegex(RuntimeError, 'failed validation'):
+            with items.staged_output(destination) as staged:
+                (staged/'sprite.png').write_bytes(b'broken')
+                (staged/'render-validation.json').write_bytes(b'broken report')
+                raise RuntimeError('failed validation')
+        self.assertEqual((destination/'sprite.png').read_bytes(), b'previous')
+        self.assertEqual((destination/'render-validation.json').read_bytes(), b'previous report')
+        with items.staged_output(destination) as staged:
+            (staged/'sprite.png').write_bytes(b'validated')
+            (staged/'render-validation.json').write_bytes(b'validated report')
+        self.assertEqual((destination/'sprite.png').read_bytes(), b'validated')
+        self.assertEqual((destination/'render-validation.json').read_bytes(), b'validated report')
+        self.assertEqual(items.png_mask({0, 88}, 89), {88*89, 89*89-1})
+        self.assertEqual(items.compose_masks({0}, [({44*89+44}, [45.5,46.5])]), {0,46*89+45})
+        previous = {}
+        items.check_unique_item('item-noodles-raw', b'a', (1,2), previous)
+        for encoded, pixels in [(b'a', (3,4)), (b'b', (1,2))]:
+            with self.assertRaisesRegex(RuntimeError, 'identical item states'):
+                items.check_unique_item('item-noodles-cooked', encoded, pixels, previous)
+        items.check_unique_item('item-noodles-cooked', b'b', (3,4), previous)
+        # Execute the pure Python self-check examples embedded in the TS coverage test.
+        import re
+        source = (p.ROOT/'tools/items.test.ts').read_text()
+        for example in re.findall(r"execFileSync\('python3', \['-c', `([\s\S]*?)`\]", source):
+            with patch('sys.stdout'):
+                exec(example, {})
+
+    def test_items_publish_listing_and_rim_bytes(self):
+        import importlib.util
+        from types import SimpleNamespace
+        spec = importlib.util.spec_from_file_location('items', p.ROOT/'tools/blender/items.py')
+        items = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(items)
+        destination = self.root/'items-listing'
+        destination.mkdir()
+        (destination/'icon-stale.png').write_bytes(b'stale')
+        (destination/'portion-stale.png').write_bytes(b'stale')
+        with items.staged_output(destination) as staged:
+            for name, *_ in items.specifications():
+                (staged/(name+'.png')).write_bytes(b'valid')
+            (staged/'render-validation.json').write_text('{}')
+        self.assertEqual({f.name for f in destination.iterdir()},
+                         {name+'.png' for name, *_ in items.specifications()} | {'render-validation.json'})
+        # Byte-image adapter exercises the actual add_rim write path and PNG decoder.
+        path = self.root/'rim.png'
+        image = Image.new('RGBA', (5,5))
+        image.putpixel((2,2), (255,255,255,255))
+        image.save(path)
+        class ByteImage:
+            size = (5,5)
+            pixels = [value/255 for pixel in image.getdata() for value in pixel]
+            def save(self):
+                stored = Image.new('RGBA', self.size)
+                stored.putdata([tuple(round(v*255) for v in self.pixels[i:i+4])
+                                for i in range(0,len(self.pixels),4)])
+                stored.save(self.filepath_raw)
+        adapter = ByteImage()
+        items.bpy = SimpleNamespace(data=SimpleNamespace(images=SimpleNamespace(
+            load=lambda *args, **kwargs: adapter, remove=lambda image: None)))
+        items.add_rim(path, 5)
+        self.assertEqual(items.png_rgba(path)[6], (43,33,24,255))
+
+    def test_items_colour_validation_reads_saved_frames(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('items', p.ROOT/'tools/blender/items.py')
+        items = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(items)
+        output = self.root/'colour'
+        output.mkdir()
+        blank = [(0,0,0,0)]*89**2
+        config = p.json.loads((p.ROOT/'assets/src/pipeline.json').read_text())
+        frames = {f['id']: f for g in config['sets'] if g['id'] == 'tabao-rush-items' for f in g['frames']}
+        for kind in ('plate', 'bowl', 'cup'):
+            items.write_rgba(output/f'container-{kind}-clean.png', blank)
+        for index, (food, (states, _, _)) in enumerate(items.PORTIONS.items()):
+            pixels = list(blank)
+            extent = 30 if food == 'laksa-broth' else 20
+            for y in range(30,30+extent):
+                for x in range(30,30+extent):
+                    pixels[y*89+x] = (50+index*10,90,180,255)
+            for state in states:
+                items.write_rgba(output/f'portion-{food}-{state}.png', pixels)
+        for dish, (container, _) in items.DISH_PARTS.items():
+            anchors = frames[f'container-{container}-clean']['anchors']
+            layers = [(items.png_rgba(output/(layer['frame']+'.png')), anchors[layer['slot']])
+                      for layer in items.dish_layers(dish)]
+            items.write_rgba(output/f'dish-{dish}-plated.png', items.rim_rgba(items.compose_rgba(blank, layers)))
+        self.assertTrue(all(score['passes'] for score in items.check_colour_compositions(output).values()))
+        # Change the independently saved portion, leaving its completed dish intact.
+        items.write_rgba(output/'portion-kopi-cooked.png', blank)
+        with self.assertRaisesRegex(RuntimeError, 'kopi-teh: colour composition failed'):
+            items.check_colour_compositions(output)
+
+    def test_item_composition_metadata_survives_packing(self):
+        config = p.json.loads((p.ROOT/'assets/src/pipeline.json').read_text())
+        group = next(g for g in config['sets'] if g['id'] == 'tabao-rush-items')
+        selected = [f for f in group['frames'] if f['id'] in
+                    ('dish-kopi-teh-plated', 'container-plate-clean', 'container-cup-clean')]
+        by_id = {frame['id']: frame for frame in group['frames']}
+        selected_ids = {frame['id'] for frame in selected}
+        # Include the transitive references carried by the selected metadata.
+        for frame in selected:
+            layers = list(frame.get('composition', []))
+            for override in frame.get('contentCompositions', {}).values():
+                layers.extend(override)
+            for variant in frame.get('servedComposition', {}).get('variants', {}).values():
+                layers.extend(variant)
+            for layer in layers:
+                if layer['frame'] not in selected_ids:
+                    selected.append(by_id[layer['frame']])
+                    selected_ids.add(layer['frame'])
+        # Use isolated synthetic pixels; metadata comes from the real manifest.
+        frames = []
+        for frame in selected:
+            local = copy.deepcopy(frame)
+            local['file'] = local['id']+'.png'
+            Image.new('RGBA',(89,89),(100,80,50,255)).save(self.source/local['file'])
+            frames.append(local)
+        packed = p.pack({'sets':[dict(id='items',frames=frames,metadata=group['metadata'])],
+                         'rounds':{'test':['items']}}, self.source, self.out)
+        recovered = {key:value for atlas in packed['atlases'] for key,value in atlas['frames'].items()}
+        for frame in selected:
+            self.assertEqual(recovered[frame['id']]['metadata'],
+                             {key:frame[key] for key in group['metadata'] if key in frame})
+        served = recovered['dish-kopi-teh-plated']['metadata']['servedComposition']
+        self.assertEqual(served['variants']['teh'][0]['frame'], 'portion-teh-cooked')
+        self.assertEqual(served['variants']['kopi'][0]['frame'], 'portion-kopi-cooked')
+
+    def test_every_portion_must_be_visible_and_essential(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('items', p.ROOT/'tools/blender/items.py')
+        items = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(items)
+        blank = [(0,0,0,0)]*89**2
+        def patch_pixels(left, top, width, colour):
+            pixels = list(blank)
+            for y in range(top, top+width):
+                for x in range(left, left+width):
+                    pixels[y*89+x] = (*colour,255)
+            return pixels
+        first = patch_pixels(15,25,20,(210,100,30))
+        second = patch_pixels(50,25,20,(40,190,70))
+        layers = [(first,[44.5,44.5]),(second,[44.5,44.5])]
+        actual = items.rim_rgba(items.compose_rgba(blank,layers))
+        result = items.check_portion_visibility(actual,blank,layers,'test')
+        self.assertTrue(result['shiftPortionRejected'])
+        self.assertTrue(all(v >= .04 for v in result['visiblePortionShares']))
+        # A second, fully hidden portion cannot be excused by an essential first.
+        hidden = [(first,[44.5,44.5]),(second,[44.5,44.5]),(second,[44.5,44.5])]
+        with self.assertRaisesRegex(RuntimeError, 'visible share'):
+            items.check_portion_visibility(actual,blank,hidden,'test')
+        tiny = patch_pixels(70,60,3,(200,180,70))
+        with self.assertRaisesRegex(RuntimeError, 'visible share'):
+            items.check_portion_visibility(items.rim_rgba(items.compose_rgba(blank,layers+[(tiny,[44.5,44.5])])),
+                                           blank,layers+[(tiny,[44.5,44.5])],'test')
+
+    def test_items_render_contract(self):
+        import json
+        config = json.loads((p.ROOT/'assets/src/pipeline.json').read_text())
+        job = next(j for j in config['renders'] if j['script'] == 'items.py')
+        self.assertEqual(job['inputs'], ['tools/blender/items.py', 'tools/blender/kalib.py', 'pipeline.json'])
+        frames = next(g for g in config['sets'] if g['id'] == 'tabao-rush-items')['frames']
+        self.assertEqual(set(job['outputs']), {f['file'] for f in frames} | {'tabao-rush/items/render-validation.json'})
+        self.assertEqual(job['args'], ['--out', 'tabao-rush/items'])
+        # Isolated source + stub: never invoke Blender or touch committed frames.
+        (self.source/'pipeline.json').write_text('{}')
+        calls = []
+        def stub(args, **kwargs):
+            if args[0] == 'blender':
+                calls.append((args, kwargs))
+                for output in job['outputs']:
+                    target = self.source/output
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_bytes(b'validated')
+            return p.subprocess.CompletedProcess(args, 0)
+        with patch.object(p.subprocess, 'run', side_effect=stub):
+            p.render({'renders': [job]}, self.source)
+        self.assertEqual(len(calls), 1)
+        args, kwargs = calls[0]
+        self.assertEqual(Path(args[args.index('-P')+1]), p.ROOT/'tools/blender/items.py')
+        self.assertEqual(kwargs['cwd'], self.source)
+        self.assertEqual((kwargs['cwd']/args[args.index('--out')+1]).resolve(),
+                         (self.source/'tabao-rush/items').resolve())
+        # Repo inputs remain bounded, and missing inputs fail before subprocess.
+        broken = copy.deepcopy(job)
+        broken['inputs'] = ['tools/blender/missing.py']
+        with patch.object(p.subprocess, 'run') as run:
+            with self.assertRaisesRegex(ValueError, 'existing inputs'):
+                p.render({'renders': [broken]}, self.source)
+            run.assert_not_called()
     def test_production_card_job(self):
         import os
         config = p.read_json(p.ROOT / 'assets/src/pipeline.json')
@@ -393,6 +593,133 @@ class PipelineTests(unittest.TestCase):
             (self.source / sorted(declared)[0]).unlink()
             p.render({'renders': [cook]}, self.source)
             self.assertEqual(run.call_count, 4)
+
+
+class ItemContainmentTests(unittest.TestCase):
+    def test_all_container_layers_and_served_drinks_stay_inside(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('items', p.ROOT/'tools/blender/items.py')
+        items = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(items)
+        config = p.read_json(p.ROOT/'assets/src/pipeline.json')
+        group = next(g for g in config['sets'] if g['id'] == 'tabao-rush-items')
+        frames = {f['id']: f for f in group['frames']}
+        # Recorded data must describe committed pixels before containment uses it.
+        for ident, recorded in group['containmentFootprints'].items():
+            with self.subTest(frame=ident):
+                self.assertEqual(recorded, items.footprint(items.png_rgba(
+                    p.ROOT/'assets/src/tabao-rush/items'/(ident+'.png'))))
+        self.assertGreater(items.check_containment(frames, group['containmentFootprints']), 40)
+        for drink in ('kopi', 'teh'):
+            variant = frames['dish-kaya-toast-plated']['servedComposition']['variants'][drink]
+            self.assertEqual(variant[-1]['frame'], f'portion-side-{drink}-cooked')
+            self.assertEqual(variant[1:], [dict(layer, order=layer['order']+10)
+                                          for layer in frames['container-plate-clean']['contentCompositions'][drink]])
+        # Check new placements against the real portion colours, without rendering.
+        root = p.ROOT/'assets/src/tabao-rush/items'
+        plate = items.png_rgba(root/'container-plate-clean.png')
+        for dish in ('satay', 'kaya-toast'):
+            if dish == 'kaya-toast':
+                layers = [(items.png_rgba(root/'portion-bread-spread.png'), items.slot_anchor('bread'))]
+                side_layers = [(items.scaled_rgba(items.png_rgba(root/(ident+'.png')), scale), anchor)
+                               for ident, anchor, scale in items.composition_layers(items.plate_drinks()['kopi'], frames['container-plate-clean'])]
+                side = items.compose_rgba([(0,0,0,0)]*89**2, side_layers)
+                layers.append((side, [44.5,44.5]))
+            else:
+                layers = [(items.png_rgba(root/(layer['frame']+'.png')), items.slot_anchor(layer['slot']))
+                          for layer in items.dish_layers(dish)]
+            actual = items.rim_rgba(items.compose_rgba(plate, layers), container=plate)
+            items.check_portion_visibility(actual, plate, layers, dish)
+        # Final reference and legacy side portion use the exact published cup layers.
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            for ident in ('container-plate-clean', 'portion-side-cup-clean', 'portion-side-kopi-cooked', 'portion-bread-spread'):
+                (output/(ident+'.png')).write_bytes((root/(ident+'.png')).read_bytes())
+            items.finish_side_cup(output)
+            layers = [(items.png_rgba(root/'portion-bread-spread.png'), items.slot_anchor('bread'))]
+            layers += [(items.scaled_rgba(items.png_rgba(root/(ident+'.png')), scale), anchor)
+                       for ident, anchor, scale in items.composition_layers(items.plate_drinks()['kopi'], frames['container-plate-clean'])]
+            expected = items.rim_rgba(items.compose_rgba(plate, layers), container=plate)
+            self.assertEqual(items.png_rgba(output/'dish-kaya-toast-plated.png'), expected)
+            legacy = items.png_rgba(output/'portion-drink-side-clean.png')
+            self.assertEqual(items.footprint(legacy), group['containmentFootprints']['portion-drink-side-clean'])
+        # The tolerance is an offending-pixel count, not a relaxed spatial margin.
+        blank = [(0,0,0,0)]*89**2
+        base_pixels = list(blank)
+        base_pixels[4000] = (255,255,255,255)
+        trial = {'container-test-clean': {'id': 'container-test-clean', 'anchors': {'food': [44.5,44.5]}, 'portionScales': {'food': 1}}}
+        for count in (2, 3):
+            food = list(blank)
+            for i in range(count):
+                food[4000+i] = (255,255,255,255)
+            # One of the three pixels lies on ink; another is outside alpha.
+            ink_base = list(base_pixels)
+            ink_base[4001] = (43,33,24,255)
+            records = {'container-test-clean': items.footprint(ink_base), 'portion-food-cooked': items.footprint(food)}
+            if count == 2:
+                items.check_containment(trial, records)
+            else:
+                # Add one more outside pixel to exceed the two-pixel allowance.
+                food[4003] = (255,255,255,255)
+                records['portion-food-cooked'] = items.footprint(food)
+                with self.assertRaisesRegex(RuntimeError, '3 pixels'):
+                    items.check_containment(trial, records)
+        broken = copy.deepcopy(frames)
+        broken['container-plate-clean']['contentCompositions']['kopi'][0]['anchor'][0] += 20
+        with self.assertRaisesRegex(RuntimeError, 'outside opaque interior or on rim ink > 2'):
+            items.check_containment(broken, group['containmentFootprints'])
+
+
+class BakedOutlineTests(unittest.TestCase):
+    def test_committed_frame_flags_match_outline_ink(self):
+        group = next(g for g in p.read_json(p.ROOT/'assets/src/pipeline.json')['sets']
+                     if g['id'] == 'tabao-rush-items')
+        for frame in group['frames']:
+            with self.subTest(frame=frame['id']):
+                with Image.open(p.ROOT/'assets/src'/frame['file']) as image:
+                    ink = any(a >= 128 and max(abs(c-v) for c, v in
+                              zip((r, g, b), (43, 33, 24))) <= 2
+                              for r, g, b, a in image.convert('RGBA').getdata())
+                self.assertEqual(frame.get('bakedOutline', False), ink)
+
+    def test_missing_composition_frame_has_clear_error(self):
+        layer = {'frame': 'portion-side-cup-clean', 'scale': 1}
+        for metadata in (
+            {'composition': [layer]},
+            {'contentCompositions': {'kopi': [layer]}},
+            {'servedComposition': {'variants': {'teh': [layer]}}},
+        ):
+            with self.subTest(metadata=metadata):
+                with self.assertRaisesRegex(
+                    ValueError, 'dish-test: missing composition frame portion-side-cup-clean'
+                ):
+                    p.validate_outline_scales([{'id': 'dish-test', **metadata}])
+
+    def test_outline_scale_guard_covers_every_composition_path(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('items', p.ROOT/'tools/blender/items.py')
+        items = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(items)
+        group = next(g for g in p.read_json(p.ROOT/'assets/src/pipeline.json')['sets']
+                     if g['id'] == 'tabao-rush-items')
+        frames = {f['id']: f for f in group['frames']}
+        items.check_outline_scales(frames)
+        p.validate_outline_scales(list(frames.values()))
+        for scale in (.68, 1.2):
+            for path in ('content', 'served', 'fixed', 'generic'):
+                broken = copy.deepcopy(frames)
+                if path == 'content':
+                    broken['container-plate-clean']['contentCompositions']['kopi'][0]['scale'] = scale
+                elif path == 'served':
+                    broken['dish-kaya-toast-plated']['servedComposition']['variants']['teh'][1]['scale'] = scale
+                elif path == 'fixed':
+                    broken['dish-kaya-toast-plated']['composition'][1]['scale'] = scale
+                else:
+                    broken['container-plate-clean']['portionScales']['drink-side'] = scale
+                with self.assertRaisesRegex(ValueError, 'baked outline requires scale 1'):
+                    items.check_outline_scales(broken)
+                with self.assertRaisesRegex(ValueError, 'baked outline requires scale 1'):
+                    p.validate_outline_scales(list(broken.values()))
 
 
 if __name__ == '__main__':

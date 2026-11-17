@@ -27,6 +27,25 @@ DECODED = 256_000_000
 DIRECTIONS = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw']
 
 
+def validate_outline_scales(frames):
+    by_id = {frame['id']: frame for frame in frames}
+    for base in frames:
+        layers = list(base.get('composition', []))
+        for override in base.get('contentCompositions', {}).values():
+            layers.extend(override)
+        for variant in base.get('servedComposition', {}).get('variants', {}).values():
+            layers.extend(variant)
+        for slot, scale in base.get('portionScales', {}).items():
+            if slot not in base.get('contentCompositions', {}):
+                layers.extend({'frame': ident, 'scale': scale} for ident in by_id
+                              if ident.startswith('portion-'+slot+'-'))
+        for layer in layers:
+            if layer['frame'] not in by_id:
+                raise ValueError(f"{base['id']}: missing composition frame {layer['frame']}")
+            if by_id[layer['frame']].get('bakedOutline', False) and layer.get('scale', 1) != 1:
+                raise ValueError(f"{base['id']}/{layer['frame']}: baked outline requires scale 1")
+
+
 def read_json(path):
     return json.loads(Path(path).read_text())
 
@@ -179,6 +198,7 @@ def pack(config, source, output):
             raise ValueError(f'Duplicate set {name}')
         sets[name] = []
         frames, ids, animations = [], set(), []
+        validate_outline_scales(group['frames'])
         animations = group.get('animations', [])
         validate_animations(animations, name)
         encoding, quality = group.get('encoding', 'lossless'), group.get('quality', 90)
@@ -441,7 +461,8 @@ def render(config, source=ROOT):
         script = (ROOT / 'tools/blender' / job['script']).resolve()
         if not script.is_relative_to((ROOT / 'tools/blender').resolve()) or not script.is_file():
             raise ValueError('Render script must exist under tools/blender')
-        inputs = [source_path(source, p) for p in job['inputs']] + [script]
+        inputs = [source_path(ROOT, p) if p.startswith('tools/blender/') else source_path(source, p)
+                  for p in job['inputs']] + [script]
         inputs.extend(source_path(ROOT, p) for p in job.get('extraInputs', []))
         outputs = [source_path(source, p) for p in job['outputs']]
         if not outputs or not all(p.is_file() for p in inputs):

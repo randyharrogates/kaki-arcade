@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — A-04: dishes and ingredients
+
+- `tools/blender/items.py` renders ingredients, containers, the seven dishes in each state and
+  order-card icons, with served compositions, containment, visibility and outline-scale checks
+  (`bakedOutline`). TR-040; TR-041 in progress (in-game check with track T; polish A-10, D-145).
+  Evidence `uat/evidence/A-04-dishes/`.
+
 ## 2026-11-18 — A-08: playing cards
 
 - `tools/blender/cards.py` renders 52 faces, the back and five flip frames as a declared render job

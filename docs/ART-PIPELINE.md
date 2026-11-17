@@ -85,3 +85,18 @@ is not used** (Randy, 2026-11-16, D-054): a script may save a `.blend` for inspe
 is git-ignored and can be deleted at any time. Small hand-made inputs a script needs (a
 texture, a reference image) go under `assets/src/` as ordinary files and count towards the
 repository size, so keep them small.
+
+## 8. Baked item outlines
+
+`bakedOutline: true` means the frame PNG already contains the raster ink outline
+(#2B2118, RGB 43,33,24; pixel checks allow ±2 per channel). This includes plated
+dishes with rimmed bases and portions assembled from rimmed cup layers, as well
+as frames receiving the rim pass directly. Liquids without ink leave the flag false
+or absent. Packing preserves the flag in the runtime manifest.
+
+The pipeline refuses an outlined frame used at any scale other than 1: shrinking
+or enlarging baked ink changes its intended one-pixel width. The guard covers fixed
+`composition`, `servedComposition` variants, `contentCompositions` overrides and
+generic `portionScales`. Author and render smaller outlined objects at their final
+pixel size, then compose them at scale 1. The side cup and its liquid layers follow
+this rule; the liquid layers themselves contain no outline.

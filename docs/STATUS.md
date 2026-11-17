@@ -353,6 +353,13 @@ seat numbers only when a name cannot fit. UAT: `uat/evidence/C-16-start-game/rou
 | 4 Phone controller | Done: 1A with shape buttons in our colours, 2B, 3A, 4B (D-047, D-048) |
 | 5 Motion | Done: 1B, 2A, 3A, 4A (D-051). **Gate closed 2026-11-16.** |
 
+### Dishes and ingredients (A-04)
+Tabao Rush's ingredients, containers, the seven dishes in each state and their order-card icons
+are rendered in Blender (`tools/blender/items.py`) into one atlas (254 × 940, 234,944 B). Served
+dishes are built from their parts (kaya toast with kopi or teh in a side cup); checks keep every
+portion inside its container and visible. Evidence: `uat/evidence/A-04-dishes/round9`, `round11`,
+`round12`. Not yet drawn in a game; polish (rojak heap, chopped turnip and chicken at 1×) is A-10.
+
 ### Playing cards (A-08)
 The full Peek Poker deck exists as art: 52 faces, the back and five flip frames, rendered in
 Blender from `tools/blender/cards.py`. Ranks are DM Sans Bold (D-150) at one shared height, so the

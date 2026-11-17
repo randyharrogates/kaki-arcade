@@ -1,0 +1,3 @@
+Projected closest: icon-satay / icon-kway-teow-cooked: IoU 0.793328
+Rendered closest: icon-chicken-rice / icon-satay: IoU 0.788664
+Projected closest pair rendered IoU: 0.782092

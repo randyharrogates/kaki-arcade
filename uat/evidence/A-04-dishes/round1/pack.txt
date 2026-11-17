@@ -1,0 +1,2 @@
+tabao-rush-items-0: 582×384, waste 19.6%, 239454 bytes, 893952 decoded
+PERF-023/024 passed: 1 atlases; manifest 9539 bytes

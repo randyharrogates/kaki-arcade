@@ -1,825 +1,1391 @@
 {
   "sets": [
     {
-      "id": "peek-poker-cards",
+      "id": "tabao-rush-items",
       "encoding": "lossless",
-      "anchors": [
-        "centre"
-      ],
       "frames": [
         {
-          "id": "card-as",
-          "file": "peek-poker/cards/card-as.png",
+          "id": "item-rice-raw",
+          "file": "tabao-rush/items/item-rice-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-2s",
-          "file": "peek-poker/cards/card-2s.png",
+          "id": "item-rice-cooked",
+          "file": "tabao-rush/items/item-rice-cooked.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-3s",
-          "file": "peek-poker/cards/card-3s.png",
+          "id": "item-rice-burnt",
+          "file": "tabao-rush/items/item-rice-burnt.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-4s",
-          "file": "peek-poker/cards/card-4s.png",
+          "id": "item-chicken-raw",
+          "file": "tabao-rush/items/item-chicken-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-5s",
-          "file": "peek-poker/cards/card-5s.png",
+          "id": "item-chicken-chopped",
+          "file": "tabao-rush/items/item-chicken-chopped.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-6s",
-          "file": "peek-poker/cards/card-6s.png",
+          "id": "item-cucumber-raw",
+          "file": "tabao-rush/items/item-cucumber-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-7s",
-          "file": "peek-poker/cards/card-7s.png",
+          "id": "item-cucumber-chopped",
+          "file": "tabao-rush/items/item-cucumber-chopped.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-8s",
-          "file": "peek-poker/cards/card-8s.png",
+          "id": "item-kway-teow-raw",
+          "file": "tabao-rush/items/item-kway-teow-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-9s",
-          "file": "peek-poker/cards/card-9s.png",
+          "id": "item-kway-teow-chopped",
+          "file": "tabao-rush/items/item-kway-teow-chopped.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-10s",
-          "file": "peek-poker/cards/card-10s.png",
+          "id": "item-kway-teow-cooked",
+          "file": "tabao-rush/items/item-kway-teow-cooked.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-js",
-          "file": "peek-poker/cards/card-js.png",
+          "id": "item-kway-teow-burnt",
+          "file": "tabao-rush/items/item-kway-teow-burnt.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-qs",
-          "file": "peek-poker/cards/card-qs.png",
+          "id": "item-satay-raw",
+          "file": "tabao-rush/items/item-satay-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-ks",
-          "file": "peek-poker/cards/card-ks.png",
+          "id": "item-satay-chopped",
+          "file": "tabao-rush/items/item-satay-chopped.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-ah",
-          "file": "peek-poker/cards/card-ah.png",
+          "id": "item-satay-cooked",
+          "file": "tabao-rush/items/item-satay-cooked.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-2h",
-          "file": "peek-poker/cards/card-2h.png",
+          "id": "item-satay-burnt",
+          "file": "tabao-rush/items/item-satay-burnt.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-3h",
-          "file": "peek-poker/cards/card-3h.png",
+          "id": "item-laksa-broth-raw",
+          "file": "tabao-rush/items/item-laksa-broth-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-4h",
-          "file": "peek-poker/cards/card-4h.png",
+          "id": "item-laksa-broth-cooked",
+          "file": "tabao-rush/items/item-laksa-broth-cooked.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-5h",
-          "file": "peek-poker/cards/card-5h.png",
+          "id": "item-laksa-broth-burnt",
+          "file": "tabao-rush/items/item-laksa-broth-burnt.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-6h",
-          "file": "peek-poker/cards/card-6h.png",
+          "id": "item-noodles-raw",
+          "file": "tabao-rush/items/item-noodles-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-7h",
-          "file": "peek-poker/cards/card-7h.png",
+          "id": "item-noodles-cooked",
+          "file": "tabao-rush/items/item-noodles-cooked.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-8h",
-          "file": "peek-poker/cards/card-8h.png",
+          "id": "item-pineapple-raw",
+          "file": "tabao-rush/items/item-pineapple-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-9h",
-          "file": "peek-poker/cards/card-9h.png",
+          "id": "item-pineapple-chopped",
+          "file": "tabao-rush/items/item-pineapple-chopped.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-10h",
-          "file": "peek-poker/cards/card-10h.png",
+          "id": "item-turnip-raw",
+          "file": "tabao-rush/items/item-turnip-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-jh",
-          "file": "peek-poker/cards/card-jh.png",
+          "id": "item-turnip-chopped",
+          "file": "tabao-rush/items/item-turnip-chopped.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-qh",
-          "file": "peek-poker/cards/card-qh.png",
+          "id": "item-bread-raw",
+          "file": "tabao-rush/items/item-bread-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-kh",
-          "file": "peek-poker/cards/card-kh.png",
+          "id": "item-bread-cooked",
+          "file": "tabao-rush/items/item-bread-cooked.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-ad",
-          "file": "peek-poker/cards/card-ad.png",
+          "id": "item-bread-burnt",
+          "file": "tabao-rush/items/item-bread-burnt.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-2d",
-          "file": "peek-poker/cards/card-2d.png",
+          "id": "item-bread-spread",
+          "file": "tabao-rush/items/item-bread-spread.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-3d",
-          "file": "peek-poker/cards/card-3d.png",
+          "id": "item-kopi-raw",
+          "file": "tabao-rush/items/item-kopi-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-4d",
-          "file": "peek-poker/cards/card-4d.png",
+          "id": "item-kopi-cooked",
+          "file": "tabao-rush/items/item-kopi-cooked.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-5d",
-          "file": "peek-poker/cards/card-5d.png",
+          "id": "item-teh-raw",
+          "file": "tabao-rush/items/item-teh-raw.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-6d",
-          "file": "peek-poker/cards/card-6d.png",
+          "id": "item-teh-cooked",
+          "file": "tabao-rush/items/item-teh-cooked.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-7d",
-          "file": "peek-poker/cards/card-7d.png",
+          "id": "container-plate-clean",
+          "file": "tabao-rush/items/container-plate-clean.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
           "anchors": {
-            "centre": [
-              88,
-              115.5
+            "rice": [
+              33.5,
+              35.5
+            ],
+            "chicken": [
+              56.5,
+              49.5
+            ],
+            "cucumber": [
+              60.5,
+              27.5
+            ],
+            "kway-teow": [
+              44.5,
+              39.5
+            ],
+            "satay": [
+              32.5,
+              44.5
+            ],
+            "laksa-broth": [
+              44.5,
+              40.5
+            ],
+            "noodles": [
+              44.5,
+              40.5
+            ],
+            "pineapple": [
+              30.5,
+              47.5
+            ],
+            "turnip": [
+              49.5,
+              53.5
+            ],
+            "bread": [
+              33.5,
+              45.5
+            ],
+            "kopi": [
+              54.5,
+              45.5
+            ],
+            "teh": [
+              54.5,
+              45.5
+            ],
+            "rojak-dressing": [
+              44.5,
+              34.5
+            ],
+            "drink-side": [
+              54.5,
+              45.5
             ]
-          }
+          },
+          "portionScales": {
+            "rice": 1,
+            "chicken": 1,
+            "cucumber": 1,
+            "kway-teow": 1,
+            "satay": 1,
+            "laksa-broth": 1,
+            "noodles": 1,
+            "pineapple": 1,
+            "turnip": 1,
+            "bread": 1,
+            "kopi": 0.68,
+            "teh": 0.68,
+            "rojak-dressing": 1,
+            "drink-side": 1
+          },
+          "contentCompositions": {
+            "kopi": [
+              {
+                "frame": "portion-side-cup-clean",
+                "anchor": [
+                  54.5,
+                  45.5
+                ],
+                "scale": 1,
+                "order": 10
+              },
+              {
+                "frame": "portion-side-kopi-cooked",
+                "anchor": [
+                  54.5,
+                  35.5
+                ],
+                "scale": 1,
+                "order": 20
+              }
+            ],
+            "teh": [
+              {
+                "frame": "portion-side-cup-clean",
+                "anchor": [
+                  54.5,
+                  45.5
+                ],
+                "scale": 1,
+                "order": 10
+              },
+              {
+                "frame": "portion-side-teh-cooked",
+                "anchor": [
+                  54.5,
+                  35.5
+                ],
+                "scale": 1,
+                "order": 20
+              }
+            ]
+          },
+          "bakedOutline": true
         },
         {
-          "id": "card-8d",
-          "file": "peek-poker/cards/card-8d.png",
+          "id": "container-plate-dirty",
+          "file": "tabao-rush/items/container-plate-dirty.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
           "anchors": {
-            "centre": [
-              88,
-              115.5
+            "rice": [
+              33.5,
+              35.5
+            ],
+            "chicken": [
+              56.5,
+              49.5
+            ],
+            "cucumber": [
+              60.5,
+              27.5
+            ],
+            "kway-teow": [
+              44.5,
+              39.5
+            ],
+            "satay": [
+              32.5,
+              44.5
+            ],
+            "laksa-broth": [
+              44.5,
+              40.5
+            ],
+            "noodles": [
+              44.5,
+              40.5
+            ],
+            "pineapple": [
+              30.5,
+              47.5
+            ],
+            "turnip": [
+              49.5,
+              53.5
+            ],
+            "bread": [
+              33.5,
+              45.5
+            ],
+            "kopi": [
+              54.5,
+              45.5
+            ],
+            "teh": [
+              54.5,
+              45.5
+            ],
+            "rojak-dressing": [
+              44.5,
+              34.5
+            ],
+            "drink-side": [
+              54.5,
+              45.5
             ]
-          }
+          },
+          "portionScales": {
+            "rice": 1,
+            "chicken": 1,
+            "cucumber": 1,
+            "kway-teow": 1,
+            "satay": 1,
+            "laksa-broth": 1,
+            "noodles": 1,
+            "pineapple": 1,
+            "turnip": 1,
+            "bread": 1,
+            "kopi": 0.68,
+            "teh": 0.68,
+            "rojak-dressing": 1,
+            "drink-side": 1
+          },
+          "contentCompositions": {
+            "kopi": [
+              {
+                "frame": "portion-side-cup-clean",
+                "anchor": [
+                  54.5,
+                  45.5
+                ],
+                "scale": 1,
+                "order": 10
+              },
+              {
+                "frame": "portion-side-kopi-cooked",
+                "anchor": [
+                  54.5,
+                  35.5
+                ],
+                "scale": 1,
+                "order": 20
+              }
+            ],
+            "teh": [
+              {
+                "frame": "portion-side-cup-clean",
+                "anchor": [
+                  54.5,
+                  45.5
+                ],
+                "scale": 1,
+                "order": 10
+              },
+              {
+                "frame": "portion-side-teh-cooked",
+                "anchor": [
+                  54.5,
+                  35.5
+                ],
+                "scale": 1,
+                "order": 20
+              }
+            ]
+          },
+          "bakedOutline": true
         },
         {
-          "id": "card-9d",
-          "file": "peek-poker/cards/card-9d.png",
+          "id": "container-bowl-clean",
+          "file": "tabao-rush/items/container-bowl-clean.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
           "anchors": {
-            "centre": [
-              88,
-              115.5
+            "rice": [
+              44.5,
+              34.5
+            ],
+            "chicken": [
+              44.5,
+              34.5
+            ],
+            "cucumber": [
+              44.5,
+              34.5
+            ],
+            "kway-teow": [
+              44.5,
+              34.5
+            ],
+            "satay": [
+              44.5,
+              34.5
+            ],
+            "laksa-broth": [
+              44.5,
+              34.5
+            ],
+            "noodles": [
+              44.5,
+              33.5
+            ],
+            "pineapple": [
+              44.5,
+              34.5
+            ],
+            "turnip": [
+              44.5,
+              34.5
+            ],
+            "bread": [
+              44.5,
+              34.5
+            ],
+            "kopi": [
+              44.5,
+              34.5
+            ],
+            "teh": [
+              44.5,
+              34.5
             ]
-          }
+          },
+          "portionScales": {
+            "rice": 0.7,
+            "chicken": 0.7,
+            "cucumber": 0.7,
+            "kway-teow": 0.7,
+            "satay": 0.7,
+            "laksa-broth": 1,
+            "noodles": 1,
+            "pineapple": 0.7,
+            "turnip": 0.7,
+            "bread": 0.7,
+            "kopi": 0.7,
+            "teh": 0.7
+          },
+          "bakedOutline": true
         },
         {
-          "id": "card-10d",
-          "file": "peek-poker/cards/card-10d.png",
+          "id": "container-bowl-dirty",
+          "file": "tabao-rush/items/container-bowl-dirty.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
           "anchors": {
-            "centre": [
-              88,
-              115.5
+            "rice": [
+              44.5,
+              34.5
+            ],
+            "chicken": [
+              44.5,
+              34.5
+            ],
+            "cucumber": [
+              44.5,
+              34.5
+            ],
+            "kway-teow": [
+              44.5,
+              34.5
+            ],
+            "satay": [
+              44.5,
+              34.5
+            ],
+            "laksa-broth": [
+              44.5,
+              34.5
+            ],
+            "noodles": [
+              44.5,
+              33.5
+            ],
+            "pineapple": [
+              44.5,
+              34.5
+            ],
+            "turnip": [
+              44.5,
+              34.5
+            ],
+            "bread": [
+              44.5,
+              34.5
+            ],
+            "kopi": [
+              44.5,
+              34.5
+            ],
+            "teh": [
+              44.5,
+              34.5
             ]
-          }
+          },
+          "portionScales": {
+            "rice": 0.7,
+            "chicken": 0.7,
+            "cucumber": 0.7,
+            "kway-teow": 0.7,
+            "satay": 0.7,
+            "laksa-broth": 1,
+            "noodles": 1,
+            "pineapple": 0.7,
+            "turnip": 0.7,
+            "bread": 0.7,
+            "kopi": 0.7,
+            "teh": 0.7
+          },
+          "bakedOutline": true
         },
         {
-          "id": "card-jd",
-          "file": "peek-poker/cards/card-jd.png",
+          "id": "container-cup-clean",
+          "file": "tabao-rush/items/container-cup-clean.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
           "anchors": {
-            "centre": [
-              88,
-              115.5
+            "rice": [
+              44.5,
+              29.5
+            ],
+            "chicken": [
+              44.5,
+              29.5
+            ],
+            "cucumber": [
+              44.5,
+              29.5
+            ],
+            "kway-teow": [
+              44.5,
+              29.5
+            ],
+            "satay": [
+              44.5,
+              29.5
+            ],
+            "laksa-broth": [
+              44.5,
+              29.5
+            ],
+            "noodles": [
+              44.5,
+              29.5
+            ],
+            "pineapple": [
+              44.5,
+              29.5
+            ],
+            "turnip": [
+              44.5,
+              29.5
+            ],
+            "bread": [
+              44.5,
+              29.5
+            ],
+            "kopi": [
+              44.5,
+              29.5
+            ],
+            "teh": [
+              44.5,
+              29.5
             ]
-          }
+          },
+          "portionScales": {
+            "rice": 0.36,
+            "chicken": 0.36,
+            "cucumber": 0.36,
+            "kway-teow": 0.36,
+            "satay": 0.36,
+            "laksa-broth": 0.36,
+            "noodles": 0.36,
+            "pineapple": 0.36,
+            "turnip": 0.36,
+            "bread": 0.36,
+            "kopi": 1,
+            "teh": 1
+          },
+          "bakedOutline": true
         },
         {
-          "id": "card-qd",
-          "file": "peek-poker/cards/card-qd.png",
+          "id": "container-cup-dirty",
+          "file": "tabao-rush/items/container-cup-dirty.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
           "anchors": {
-            "centre": [
-              88,
-              115.5
+            "rice": [
+              44.5,
+              29.5
+            ],
+            "chicken": [
+              44.5,
+              29.5
+            ],
+            "cucumber": [
+              44.5,
+              29.5
+            ],
+            "kway-teow": [
+              44.5,
+              29.5
+            ],
+            "satay": [
+              44.5,
+              29.5
+            ],
+            "laksa-broth": [
+              44.5,
+              29.5
+            ],
+            "noodles": [
+              44.5,
+              29.5
+            ],
+            "pineapple": [
+              44.5,
+              29.5
+            ],
+            "turnip": [
+              44.5,
+              29.5
+            ],
+            "bread": [
+              44.5,
+              29.5
+            ],
+            "kopi": [
+              44.5,
+              29.5
+            ],
+            "teh": [
+              44.5,
+              29.5
             ]
-          }
+          },
+          "portionScales": {
+            "rice": 0.36,
+            "chicken": 0.36,
+            "cucumber": 0.36,
+            "kway-teow": 0.36,
+            "satay": 0.36,
+            "laksa-broth": 0.36,
+            "noodles": 0.36,
+            "pineapple": 0.36,
+            "turnip": 0.36,
+            "bread": 0.36,
+            "kopi": 1,
+            "teh": 1
+          },
+          "bakedOutline": true
         },
         {
-          "id": "card-kd",
-          "file": "peek-poker/cards/card-kd.png",
+          "id": "item-extinguisher",
+          "file": "tabao-rush/items/item-extinguisher.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-ac",
-          "file": "peek-poker/cards/card-ac.png",
+          "id": "dish-chicken-rice-plated",
+          "file": "tabao-rush/items/dish-chicken-rice-plated.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "composition": [
+            {
+              "frame": "portion-rice-cooked",
+              "slot": "rice",
+              "order": 10
+            },
+            {
+              "frame": "portion-chicken-chopped",
+              "slot": "chicken",
+              "order": 20
+            },
+            {
+              "frame": "portion-cucumber-chopped",
+              "slot": "cucumber",
+              "order": 30
+            }
+          ],
+          "bakedOutline": true
         },
         {
-          "id": "card-2c",
-          "file": "peek-poker/cards/card-2c.png",
+          "id": "dish-char-kway-teow-plated",
+          "file": "tabao-rush/items/dish-char-kway-teow-plated.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "composition": [
+            {
+              "frame": "portion-kway-teow-cooked",
+              "slot": "kway-teow",
+              "order": 10
+            }
+          ],
+          "bakedOutline": true
         },
         {
-          "id": "card-3c",
-          "file": "peek-poker/cards/card-3c.png",
+          "id": "dish-satay-plated",
+          "file": "tabao-rush/items/dish-satay-plated.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "composition": [
+            {
+              "frame": "portion-cucumber-chopped",
+              "slot": "cucumber",
+              "order": 10
+            },
+            {
+              "frame": "portion-satay-cooked",
+              "slot": "satay",
+              "order": 20
+            }
+          ],
+          "bakedOutline": true
         },
         {
-          "id": "card-4c",
-          "file": "peek-poker/cards/card-4c.png",
+          "id": "dish-laksa-plated",
+          "file": "tabao-rush/items/dish-laksa-plated.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "composition": [
+            {
+              "frame": "portion-laksa-broth-cooked",
+              "slot": "laksa-broth",
+              "order": 10
+            },
+            {
+              "frame": "portion-noodles-cooked",
+              "slot": "noodles",
+              "order": 20
+            }
+          ],
+          "bakedOutline": true
         },
         {
-          "id": "card-5c",
-          "file": "peek-poker/cards/card-5c.png",
+          "id": "dish-rojak-plated",
+          "file": "tabao-rush/items/dish-rojak-plated.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "composition": [
+            {
+              "frame": "portion-pineapple-chopped",
+              "slot": "pineapple",
+              "order": 10
+            },
+            {
+              "frame": "portion-turnip-chopped",
+              "slot": "turnip",
+              "order": 20
+            },
+            {
+              "frame": "portion-cucumber-chopped",
+              "slot": "cucumber",
+              "order": 30
+            },
+            {
+              "frame": "portion-rojak-dressing-clean",
+              "slot": "rojak-dressing",
+              "order": 40
+            }
+          ],
+          "bakedOutline": true
         },
         {
-          "id": "card-6c",
-          "file": "peek-poker/cards/card-6c.png",
+          "id": "dish-kaya-toast-plated",
+          "file": "tabao-rush/items/dish-kaya-toast-plated.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "composition": [
+            {
+              "frame": "portion-bread-spread",
+              "slot": "bread",
+              "order": 10
+            },
+            {
+              "frame": "portion-drink-side-clean",
+              "slot": "drink-side",
+              "order": 20
+            }
+          ],
+          "servedComposition": {
+            "container": "container-plate-clean",
+            "ingredient": "servedDrink",
+            "variants": {
+              "kopi": [
+                {
+                  "frame": "portion-bread-spread",
+                  "slot": "bread",
+                  "order": 10
+                },
+                {
+                  "frame": "portion-side-cup-clean",
+                  "anchor": [
+                    54.5,
+                    45.5
+                  ],
+                  "scale": 1,
+                  "order": 20
+                },
+                {
+                  "frame": "portion-side-kopi-cooked",
+                  "anchor": [
+                    54.5,
+                    35.5
+                  ],
+                  "scale": 1,
+                  "order": 30
+                }
+              ],
+              "teh": [
+                {
+                  "frame": "portion-bread-spread",
+                  "slot": "bread",
+                  "order": 10
+                },
+                {
+                  "frame": "portion-side-cup-clean",
+                  "anchor": [
+                    54.5,
+                    45.5
+                  ],
+                  "scale": 1,
+                  "order": 20
+                },
+                {
+                  "frame": "portion-side-teh-cooked",
+                  "anchor": [
+                    54.5,
+                    35.5
+                  ],
+                  "scale": 1,
+                  "order": 30
+                }
+              ]
+            }
+          },
+          "bakedOutline": true
         },
         {
-          "id": "card-7c",
-          "file": "peek-poker/cards/card-7c.png",
+          "id": "dish-kopi-teh-plated",
+          "file": "tabao-rush/items/dish-kopi-teh-plated.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "composition": [
+            {
+              "frame": "portion-kopi-cooked",
+              "slot": "kopi",
+              "order": 10
+            }
+          ],
+          "servedComposition": {
+            "container": "container-cup-clean",
+            "ingredient": "servedDrink",
+            "variants": {
+              "kopi": [
+                {
+                  "frame": "portion-kopi-cooked",
+                  "slot": "kopi",
+                  "order": 10
+                }
+              ],
+              "teh": [
+                {
+                  "frame": "portion-teh-cooked",
+                  "slot": "teh",
+                  "order": 10
+                }
+              ]
+            }
+          },
+          "bakedOutline": true
         },
         {
-          "id": "card-8c",
-          "file": "peek-poker/cards/card-8c.png",
+          "id": "icon-chicken-rice",
+          "file": "tabao-rush/items/icon-chicken-rice.png",
           "anchor": [
-            88,
-            115.5
+            27.5,
+            27.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-9c",
-          "file": "peek-poker/cards/card-9c.png",
+          "id": "icon-char-kway-teow",
+          "file": "tabao-rush/items/icon-char-kway-teow.png",
           "anchor": [
-            88,
-            115.5
+            27.5,
+            27.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-10c",
-          "file": "peek-poker/cards/card-10c.png",
+          "id": "icon-satay",
+          "file": "tabao-rush/items/icon-satay.png",
           "anchor": [
-            88,
-            115.5
+            27.5,
+            27.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-jc",
-          "file": "peek-poker/cards/card-jc.png",
+          "id": "icon-laksa",
+          "file": "tabao-rush/items/icon-laksa.png",
           "anchor": [
-            88,
-            115.5
+            27.5,
+            27.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-qc",
-          "file": "peek-poker/cards/card-qc.png",
+          "id": "icon-rojak",
+          "file": "tabao-rush/items/icon-rojak.png",
           "anchor": [
-            88,
-            115.5
+            27.5,
+            27.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-kc",
-          "file": "peek-poker/cards/card-kc.png",
+          "id": "icon-kaya-toast",
+          "file": "tabao-rush/items/icon-kaya-toast.png",
           "anchor": [
-            88,
-            115.5
+            27.5,
+            27.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-back",
-          "file": "peek-poker/cards/card-back.png",
+          "id": "icon-kopi-teh",
+          "file": "tabao-rush/items/icon-kopi-teh.png",
           "anchor": [
-            88,
-            115.5
+            27.5,
+            27.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
         },
         {
-          "id": "card-flip-0",
-          "file": "peek-poker/cards/card-flip-0.png",
+          "id": "portion-rice-cooked",
+          "file": "tabao-rush/items/portion-rice-cooked.png",
           "anchor": [
-            88,
-            115.5
-          ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+            44.5,
+            44.5
+          ]
         },
         {
-          "id": "card-flip-1",
-          "file": "peek-poker/cards/card-flip-1.png",
+          "id": "portion-chicken-chopped",
+          "file": "tabao-rush/items/portion-chicken-chopped.png",
           "anchor": [
-            88,
-            115.5
-          ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+            44.5,
+            44.5
+          ]
         },
         {
-          "id": "card-flip-2",
-          "file": "peek-poker/cards/card-flip-2.png",
+          "id": "portion-cucumber-chopped",
+          "file": "tabao-rush/items/portion-cucumber-chopped.png",
           "anchor": [
-            88,
-            115.5
-          ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+            44.5,
+            44.5
+          ]
         },
         {
-          "id": "card-flip-3",
-          "file": "peek-poker/cards/card-flip-3.png",
+          "id": "portion-kway-teow-cooked",
+          "file": "tabao-rush/items/portion-kway-teow-cooked.png",
           "anchor": [
-            88,
-            115.5
-          ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+            44.5,
+            44.5
+          ]
         },
         {
-          "id": "card-flip-4",
-          "file": "peek-poker/cards/card-flip-4.png",
+          "id": "portion-satay-cooked",
+          "file": "tabao-rush/items/portion-satay-cooked.png",
           "anchor": [
-            88,
-            115.5
+            44.5,
+            44.5
+          ]
+        },
+        {
+          "id": "portion-laksa-broth-cooked",
+          "file": "tabao-rush/items/portion-laksa-broth-cooked.png",
+          "anchor": [
+            44.5,
+            44.5
+          ]
+        },
+        {
+          "id": "portion-noodles-cooked",
+          "file": "tabao-rush/items/portion-noodles-cooked.png",
+          "anchor": [
+            44.5,
+            44.5
+          ]
+        },
+        {
+          "id": "portion-pineapple-chopped",
+          "file": "tabao-rush/items/portion-pineapple-chopped.png",
+          "anchor": [
+            44.5,
+            44.5
+          ]
+        },
+        {
+          "id": "portion-turnip-chopped",
+          "file": "tabao-rush/items/portion-turnip-chopped.png",
+          "anchor": [
+            44.5,
+            44.5
+          ]
+        },
+        {
+          "id": "portion-bread-cooked",
+          "file": "tabao-rush/items/portion-bread-cooked.png",
+          "anchor": [
+            44.5,
+            44.5
+          ]
+        },
+        {
+          "id": "portion-bread-spread",
+          "file": "tabao-rush/items/portion-bread-spread.png",
+          "anchor": [
+            44.5,
+            44.5
+          ]
+        },
+        {
+          "id": "portion-kopi-cooked",
+          "file": "tabao-rush/items/portion-kopi-cooked.png",
+          "anchor": [
+            44.5,
+            44.5
+          ]
+        },
+        {
+          "id": "portion-teh-cooked",
+          "file": "tabao-rush/items/portion-teh-cooked.png",
+          "anchor": [
+            44.5,
+            44.5
+          ]
+        },
+        {
+          "id": "portion-drink-side-clean",
+          "file": "tabao-rush/items/portion-drink-side-clean.png",
+          "anchor": [
+            44.5,
+            44.5
           ],
-          "anchors": {
-            "centre": [
-              88,
-              115.5
-            ]
-          }
+          "bakedOutline": true
+        },
+        {
+          "id": "portion-rojak-dressing-clean",
+          "file": "tabao-rush/items/portion-rojak-dressing-clean.png",
+          "anchor": [
+            44.5,
+            44.5
+          ]
+        },
+        {
+          "id": "portion-side-cup-clean",
+          "file": "tabao-rush/items/portion-side-cup-clean.png",
+          "anchor": [
+            44.5,
+            44.5
+          ],
+          "bakedOutline": true
+        },
+        {
+          "id": "portion-side-kopi-cooked",
+          "file": "tabao-rush/items/portion-side-kopi-cooked.png",
+          "anchor": [
+            44.5,
+            44.5
+          ]
+        },
+        {
+          "id": "portion-side-teh-cooked",
+          "file": "tabao-rush/items/portion-side-teh-cooked.png",
+          "anchor": [
+            44.5,
+            44.5
+          ]
         }
-      ]
+      ],
+      "metadata": [
+        "composition",
+        "servedComposition",
+        "portionScales",
+        "contentCompositions",
+        "bakedOutline"
+      ],
+      "containmentFootprints": {
+        "container-plate-clean": {
+          "opaque": "0:0:0:0:0:0:0:0:fffe000000000:1ffffff00000000:fffffffe0000000:3ffffffff8000000:fffffffffe000000:3ffffffffff800000:fffffffffffe00000:1ffffffffffff00000:7ffffffffffffc0000:fffffffffffffe0000:1ffffffffffffff0000:3ffffffffffffff8000:7ffffffffffffffc000:fffffffffffffffe000:ffffffffffffffff000:1ffffffffffffffff000:3ffffffffffffffff800:7ffffffffffffffffc00:7ffffffffffffffffc00:fffffffffffffffffe00:fffffffffffffffffe00:1ffffffffffffffffff00:1ffffffffffffffffff00:1ffffffffffffffffff00:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:1ffffffffffffffffff00:1ffffffffffffffffff00:1ffffffffffffffffff00:fffffffffffffffffe00:fffffffffffffffffe00:7ffffffffffffffffc00:7ffffffffffffffffc00:3ffffffffffffffff800:3ffffffffffffffff800:1ffffffffffffffff000:fffffffffffffffe000:7ffffffffffffffc000:3ffffffffffffff8000:1ffffffffffffff0000:fffffffffffffe0000:7ffffffffffffc0000:3ffffffffffff80000:1fffffffffffe00000:7ffffffffffc00000:1ffffffffff000000:7ffffffffc000000:1ffffffff0000000:3ffffff80000000:3ffff800000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:e01e000000000:180000700000000:c00000020000000:2000000008000000:8000000002000000:20000000000800000:80000000000200000:100000000000000000:400000000000040000:800000000000020000:1000000000000010000:2000000000000008000:4000000000000004000:8000000000000002000:1000:10000000000000001000:20000000000000000800:40000000000000000400:40000000000000000400:80000000000000000200:0:100000000000000000100:100000000000000000100:0:200000000000000000080:200000000000000000080:0:0:0:40:400000000000000000040:400000000000000000040:400000000000000000040:40:400000000000000000000:40:400000000000000000040:0:0:0:80:200000000000000000080:0:0:100000000000000000100:0:80000000000000000200:0:40000000000000000000:0:20000000000000000800:10000000000000001000:2000:4000000000000004000:0:1000000000000000000:0:40000:200000000000080000:100000000000000000:40000000000000000:1000000:4000000004000000:1000000010000000:300000080000000:20003800000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "container-plate-dirty": {
+          "opaque": "0:0:0:0:0:0:0:0:fffe000000000:1ffffff00000000:fffffffe0000000:3ffffffff8000000:fffffffffe000000:3ffffffffff800000:fffffffffffe00000:1ffffffffffff00000:7ffffffffffffc0000:fffffffffffffe0000:1ffffffffffffff0000:3ffffffffffffff8000:7ffffffffffffffc000:fffffffffffffffe000:ffffffffffffffff000:1ffffffffffffffff000:3ffffffffffffffff800:7ffffffffffffffffc00:7ffffffffffffffffc00:fffffffffffffffffe00:fffffffffffffffffe00:1ffffffffffffffffff00:1ffffffffffffffffff00:1ffffffffffffffffff00:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:7ffffffffffffffffffc0:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:3ffffffffffffffffff80:1ffffffffffffffffff00:1ffffffffffffffffff00:1ffffffffffffffffff00:fffffffffffffffffe00:fffffffffffffffffe00:7ffffffffffffffffc00:7ffffffffffffffffc00:3ffffffffffffffff800:3ffffffffffffffff800:1ffffffffffffffff000:fffffffffffffffe000:7ffffffffffffffc000:3ffffffffffffff8000:1ffffffffffffff0000:fffffffffffffe0000:7ffffffffffffc0000:3ffffffffffff80000:1fffffffffffe00000:7ffffffffffc00000:1ffffffffff000000:1fffffffffc000000:1fffffffff0000000:1fbffffff80000000:1f83fffff00000000:3f00000000:3e00000000:3e00000000:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:e01e000000000:180000700000000:c00000020000000:2000000008000000:8000000002000000:20000000000800000:80000000000200000:100000000000000000:400000000000040000:800000000000020000:1000000000000010000:2000000000000008000:4000000000000004000:8000000000000002000:1000:10000000000000000000:20000000000000000800:40000000000000000400:40000000000000000400:80000000000000000200:0:100000000000000000100:100000000000000000100:0:200000000000000000080:200000000000000000080:0:0:0:40:400000000000000000040:400000000000000000040:400000000000000000040:40:400000000000000000000:40:400000000000000000040:0:0:0:80:200000000000000000080:0:0:100000000000000000100:0:80000000000000000200:0:40000000000000000000:0:20000000000000000800:10000000000000001000:2000:4000000000000004000:0:1000000000000000000:0:40000:200000000000080000:100000000000000000:40000000000000000:1000000:10000000004000000:10000000010000000:100000080000000:10820000100000000:100000000:0:2200000000:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "container-bowl-clean": {
+          "opaque": "0:0:0:7ffc000000000:fffffe00000000:7ffffffc0000000:1ffffffff0000000:7ffffffffc000000:1ffffffffff000000:7ffffffffffc00000:fffffffffffe00000:1ffffffffffff00000:3ffffffffffff80000:7ffffffffffffc0000:fffffffffffffe0000:1ffffffffffffff0000:3ffffffffffffff8000:7ffffffffffffffc000:7ffffffffffffffc000:fffffffffffffffe000:fffffffffffffffe000:1ffffffffffffffff000:1ffffffffffffffff000:3ffffffffffffffff800:3ffffffffffffffff800:3ffffffffffffffff800:3ffffffffffffffff800:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:3ffffffffffffffff800:3ffffffffffffffff800:3ffffffffffffffff800:3ffffffffffffffff800:1ffffffffffffffff000:1ffffffffffffffff000:fffffffffffffffe000:fffffffffffffffe000:7ffffffffffffffc000:7ffffffffffffffc000:3ffffffffffffff8000:1ffffffffffffff0000:fffffffffffffe0000:7ffffffffffffe0000:7ffffffffffff80000:1ffffffffffff00000:fffffffffffe00000:7ffffffffffc00000:1ffffffffff000000:fffffffffe000000:3ffffffff8000000:7ffffffe0000000:1ffffff00000000:1ffff800000000:3ff0000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:700c000000000:c0000600000000:600000040000000:1000000010000000:4000000004000000:10000000001000000:40000000000400000:80000000000200000:100000:80000:400000000000040000:20000:1000000000000010000:2000000000000008000:4000000000000004000:4000000000000000000:8000000000000002000:0:10000000000000001000:0:20000000000000000800:20000000000000000800:0:0:40000000000000000400:40000000000000000400:0:0:0:0:0:0:0:0:0:40000000000000000400:0:0:800:20000000000000000800:0:10000000000000001000:0:8000000000000002000:0:4000000000000004000:2000000000000000000:10000:0:20000:400000000000080000:0:0:40000000000400000:1000000:8000000002000000:1000000008000000:400000060000000:100000100000000:10001800000000:3810000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "container-bowl-dirty": {
+          "opaque": "0:0:0:7ffc000000000:fffffe00000000:7ffffffc0000000:1ffffffff0000000:7ffffffffc000000:1ffffffffff000000:7ffffffffffc00000:fffffffffffe00000:1ffffffffffff00000:3ffffffffffff80000:7ffffffffffffc0000:fffffffffffffe0000:1ffffffffffffff0000:3ffffffffffffff8000:7ffffffffffffffc000:7ffffffffffffffc000:fffffffffffffffe000:fffffffffffffffe000:1ffffffffffffffff000:1ffffffffffffffff000:3ffffffffffffffff800:3ffffffffffffffff800:3ffffffffffffffff800:3ffffffffffffffff800:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:7ffffffffffffffffc00:3ffffffffffffffff800:3ffffffffffffffff800:3ffffffffffffffff800:3ffffffffffffffff800:1ffffffffffffffff000:1ffffffffffffffff000:fffffffffffffffe000:fffffffffffffffe000:7ffffffffffffffc000:7ffffffffffffffc000:3ffffffffffffff8000:1ffffffffffffff0000:fffffffffffffe0000:7ffffffffffffe0000:7ffffffffffff80000:1ffffffffffff00000:fffffffffffe00000:7ffffffffffc00000:1ffffffffff000000:fffffffffe000000:3ffffffff8000000:3fffffffe0000000:3fffffff00000000:7e1ffffe00000000:7e03ff3e00000000:7c00003e00000000:3c00003e00000000:3e00000000:7c00000000:7c00000000:7c00000000:7c00000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:600c000000000:c0000600000000:600000040000000:1000000010000000:4000000004000000:10000000001000000:40000000000400000:80000000000200000:100000:80000:400000000000040000:20000:1000000000000010000:2000000000000008000:4000000000000004000:4000000000000000000:8000000000000002000:0:10000000000000001000:0:20000000000000000800:20000000000000000800:0:0:40000000000000000400:40000000000000000400:0:0:0:0:0:0:0:0:0:40000000000000000400:0:0:800:20000000000000000800:0:10000000000000001000:0:8000000000000002000:0:4000000000000004000:2000000000000000000:10000:0:20000:400000000000080000:0:0:40000000000400000:1000000:8000000002000000:8000000:2000000060000000:2300000100000000:4210000000000000:4203812200000000:4000000200000000:2c00000200000000:200000000:4000000000:0:0:4400000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "container-cup-clean": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:3ff8000000000:1ffff000000000:7ffffc00000000:1ffffff00000000:3ffffff80000000:fffffffe0000000:1ffffffff0000000:1ffffffff0000000:3ffffffff8000000:7ffffffffc000000:7ffffffffc000000:fffffffffe000000:fffffffffe000000:fffffffffe000000:1ffffffffff000000:1ffffffffff000000:7ffffffffff000000:3fffffffffff000000:ffffffffffff000000:1ffffffffffff000000:3ffffffffffff000000:7fffffffffffe000000:7fffffffffffe000000:7fffffffffffe000000:7fffffffffffc000000:7f87ffffffffc000000:7ff7ffffffffc000000:7fffffffffff8000000:7fffffffffff8000000:7fffffffffff0000000:3fffffffffff0000000:1ffefffffffe0000000:ffefffffffe0000000:3fe7ffffffc0000000:7c7ffffffc0000000:7ffffffc0000000:3ffffff80000000:3ffffff80000000:1ffffff00000000:1ffffff00000000:fffffe00000000:7ffffc00000000:3ffff800000000:1ffff000000000:7ffc000000000:fe0000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:3c18000000000:10001000000000:40000400000000:100000100000000:200000080000000:800000020000000:1000000010000000:0:0:4000000004000000:0:8000000002000000:0:0:10000000000000000:10000000000000000:60000000001000000:0:800000000000000000:1000000000000000000:2000000000001000000:4000000000000000000:0:0:38000000000000000:4000000:34000000004000000:0:8000000:4000000000000000000:2001000000010000000:1000000000000000000:2000000020000000:202000000000000000:40000000040000000:400000040000000:0:200000080000000:0:100000100000000:80000200000000:40000400000000:20000800000000:10001000000000:4004000000000:fe0000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "container-cup-dirty": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:3ff8000000000:1ffff000000000:7ffffc00000000:1ffffff00000000:3ffffff80000000:fffffffe0000000:1ffffffff0000000:1ffffffff0000000:3ffffffff8000000:7ffffffffc000000:7ffffffffc000000:fffffffffe000000:fffffffffe000000:fffffffffe000000:1ffffffffff000000:1ffffffffff000000:7ffffffffff000000:3fffffffffff000000:ffffffffffff000000:1ffffffffffff000000:3ffffffffffff000000:7fffffffffffe000000:7fffffffffffe000000:7fffffffffffe000000:7fffffffffffc000000:7f87ffffffffc000000:7ff7ffffffffc000000:7fffffffffff8000000:7fffffffffff8000000:7fffffffffff0000000:3fffffffffff0000000:1ffefffffffe0000000:ffefffffffe0000000:3fe7ffffffc0000000:7c7ffffffc0000000:7ffffffc0000000:3ffffff80000000:3ffffff80000000:1ffffff00000000:1ffffff00000000:fffffe00000000:7ffffc00000000:3ffff800000000:1ffff000000000:7ffc000000000:ffc000000000:1c000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:3c18000000000:10001000000000:40000400000000:100000100000000:200000080000000:800000020000000:1000000010000000:0:0:4000000004000000:0:8000000002000000:0:0:10000000000000000:10000000000000000:60000000001000000:0:800000000000000000:1000000000000000000:2000000000001000000:4000000000000000000:0:0:38000000000000000:4000000:34000000004000000:0:8000000:4000000000000000000:2001000000010000000:1000000000000000000:2000000020000000:202000000000000000:40000000040000000:400000040000000:0:200000080000000:0:100000100000000:80000200000000:40000400000000:20000800000000:10003000000000:4000000000000:f24000000000:1c000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-rice-cooked": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:1ff0000000000:fffe000000000:3ffff800000000:fffffe00000000:1ffffff00000000:3ffffffc0000000:fffffffe0000000:fffffffe0000000:1ffffffff0000000:3ffffffff8000000:3ffffffff8000000:7ffffffffc000000:7ffffffffc000000:7ffffffffc000000:7ffffffffc000000:7ffffffffc000000:7ffffffffc000000:7ffffffffc000000:7ffffffffc000000:7ffffffffc000000:7ffffffffc000000:3ffffffff8000000:3ffffffff8000000:1ffffffff0000000:fffffffe0000000:7ffffffc0000000:3ffffff80000000:1ffffff00000000:fffffe00000000:3ffff800000000:7ffc000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-chicken-chopped": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:204104080000000:79e38f3c0000000:79f7df3c0000000:fdf7df7e0000000:fdf7df7e0000000:79f7df3c0000000:f9f7df3e0000000:fdf7df7e0000000:fdf7df7e0000000:fdf7df7e0000000:f9e7cf3e0000000:79e7cf3c0000000:78c7c63c0000000:300380180000000:380000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-cucumber-chopped": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:387800000000:fefc00000000:fffe00000000:fffe00000000:fffe00000000:7cfc00000000:383800000000:18103000000000:7e7cfc00000000:fffefe00000000:fffffe00000000:fffffe00000000:7efefc00000000:3c7c7800000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-kway-teow-cooked": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:1800000000000:c00000000000:3fe600000000000:1ffff00000000000:1ffffe0000000000:1fffff8000000000:1fffffc000800000:7ffffe019e00000:3fff0dbe00000:7fffffff00000:ffcff7fff7f80000:3fffffbffc3f80000:7fffff3ffc1f80000:fffffc7ffc1f80000:1fffffcffe01fc0000:3ffffffff801fc0000:3ffffffff001fc0000:7ffefffff001f80000:7ff83fffe001f80000:7ff87fffe003f80000:fffdfffff803f80000:fffffffffc07f00000:fffffffffe0ff00000:fffffffff1fe00000:fffffffffffe00000:fffffffffffe00000:ffffffffffff80000:ffffffffffff80000:ffffffffffff00000:fff1ffffffff00000:fffffffffffe00000:7ffffffffffe00000:7fffff9ffffc00000:7ffff07fff800000:7ffce00ffe000000:7ff0000000000000:7fc0000000000000:3fffc00000000000:3fffc00000000000:1fffc00000000000:fff800000000000:3ff800000000000:7f800000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-satay-cooked": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:3f80fe03f8000000:7fc1ff07fc000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffc3ff8ffe000000:7fc1ff07fc000000:7fc1ff07fc000000:ffe3ff07fe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffc3ff07fe000000:7fc1ff07fc000000:7fc1ff07fc000000:ffe3ff87fe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:ffe3ff8ffe000000:7fc1ff07fc000000:7fc1ff03fc000000:e003800e0000000:e003800e0000000:e003800e0000000:e003800e0000000:e003800e0000000:e003800e0000000:e003800e0000000:e003800e0000000:e003800e0000000:e003800e0000000:e003800e0000000:e003800e0000000:e003800e0000000:e003800e0000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-laksa-broth-cooked": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:3ff8000000000:3ffff800000000:1ffffff00000000:7ffffffc0000000:1ffffffff0000000:7ffffffffc000000:fffffffffe000000:1ffffffffff000000:3ffffffffff800000:7ffffffffffc00000:fffffffffffe00000:1ffffffffffff00000:3ffffffffffff80000:3ffffffffffff80000:7ffffffffffffc0000:fffffffffffffe0000:fffffffffffffe0000:fffffffffffffe0000:1ffffffffffffff0000:1ffffffffffffff0000:1ffffffffffffff0000:1ffffffffffffff0000:3ffffffffffffff8000:3ffffffffffffff8000:3ffffffffffffff8000:3ffffffffffffff8000:3ffffffffffffff8000:3ffffffffffffff8000:3ffffffffffffff8000:3ffffffffffffff0000:1ffffffffffffff0000:1ffffffffffffff0000:1ffffffffffffff0000:fffffffffffffe0000:fffffffffffffe0000:fffffffffffffe0000:7ffffffffffffc0000:3ffffffffffff80000:3ffffffffffff80000:1ffffffffffff00000:fffffffffffe00000:7ffffffffffc00000:3ffffffffff800000:1ffffffffff000000:fffffffffe000000:7ffffffffc000000:1ffffffff0000000:7ffffffc0000000:1ffffff00000000:3ffff800000000:3ff8000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-noodles-cooked": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:100000000000:7f0000000000:3ffc000000000:7ffe000000000:fe7f800000000:3fc0fc00000000:7ff87e00000000:c0fffc1f80000000:1fffffe0ffe000000:1fff03f87ff000000:1ffe00fc3ff000000:7fc007e07f000000:7ffc03fcff000000:1ffff00ffff000000:1ffff807fff000000:ffffc01fff000000:ff07f001fe000000:ffc1f801ff000000:1fff0fe07ff000000:1fff87fdffe000000:1e0fc1fffc0000000:803f0fff00000000:1f83fe00000000:e00fe1ffc0000000:1f807fffff8000000:1fe01fffffc000000:1ff007ffffe000000:1fc01ff83f800000:7e007e00f000000:3f00fc007000000:1fc7f8000000000:7ffe0000000000:3ffc0000000000:ff00000000000:1800000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-pineapple-chopped": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:1c00000000:7e00000000:1ff00000000:3ff80000000:7ff80000000:7ff80000000:1ffff80000000:3ffffc0000000:3ffffe0000000:3fffc78000000:3fff018000000:6003ffc01c000000:f803ff803e000000:1fe03ff80ff000000:1ff83ff83ff000000:3ffc0fe07ff800000:3ffc00007ff800000:3ffc00007ff800000:3ffc00007ff800000:1ff80fc07ff000000:ff81ff87fe000000:3f03ff83f8000000:fc3ff80f8000000:1c3ff8038000000:3ff8000000000:3ff8000000000:3ff8000000000:3ff8000000000:1ff0000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-turnip-chopped": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:700000000000:f80000000000:1fe0000000000:101ff0000000000:f01ff0000000000:1f87ff8000000000:1f9fffc000000000:1fffffe000000000:ffffffc00000000:ffffffc00000000:ffffffe00000000:7ff7ffe00000000:7fc7ffe00000000:7f87ffe00000000:ff07f3f00000000:1ff07f3f00000000:3ff0fe3f00000000:7ff0fe3f00000000:ff81ff3f80000000:ff01ff3f80000000:fe01ffbf80000000:7c03ffff80000000:1801ffff80000000:fffe00000000:ffe00000000:ffe00000000:7fc00000000:7fc00000000:3fc00000000:3fc00000000:1f800000000:1f800000000:1f800000000:f800000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-bread-cooked": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:3fffc7fff8000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:3fff83fff8000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-bread-spread": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:3fffc7fff8000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:7fffc7fffc000000:3fff83fff8000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-kopi-cooked": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:100000000000:3ff8000000000:fffe000000000:3ffff800000000:7ffffc00000000:fffffe00000000:1ffffff00000000:3ffffff80000000:3ffffff80000000:7ffffffc0000000:7ffffffc0000000:7ffffffc0000000:7ffffffc0000000:fffffffe0000000:7ffffffc0000000:7ffffffc0000000:7ffffffc0000000:7ffffffc0000000:3ffffff80000000:3ffffff80000000:1ffffff00000000:fffffe00000000:7ffffc00000000:3ffff800000000:fffe000000000:3ff8000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-teh-cooked": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:100000000000:3ff8000000000:fffe000000000:3ffff800000000:7ffffc00000000:fffffe00000000:1ffffff00000000:3ffffff80000000:3ffffff80000000:7ffffffc0000000:7ffffffc0000000:7ffffffc0000000:7ffffffc0000000:fffffffe0000000:7ffffffc0000000:7ffffffc0000000:7ffffffc0000000:7ffffffc0000000:3ffffff80000000:3ffffff80000000:1ffffff00000000:fffffe00000000:7ffffc00000000:3ffff800000000:fffe000000000:3ff8000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-drink-side-clean": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:3ff8000000000:fffe000000000:3ffff800000000:7ffffc00000000:fffffe00000000:1ffffff00000000:1ffffff00000000:3ffffff80000000:3ffffff80000000:3ffffff80000000:7ffffffc0000000:3fffffffc0000000:ffffffffc0000000:1ffffffffc0000000:1ffffffff80000000:3ffffffff80000000:3ffffffff80000000:3ffffffff80000000:3ffffffff00000000:3ffffffff00000000:1fffffffe00000000:fffffffe00000000:7f7ffffc00000000:1f7ffffc00000000:3ffff800000000:3ffff800000000:3ffff800000000:1ffff000000000:fffe000000000:7ffc000000000:3ff8000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:2008000000000:8002000000000:20000800000000:40000400000000:80000000000000:100000100000000:0:200000080000000:0:0:400000040000000:2000000040000000:8000000040000000:10000000040000000:0:20000000000000000:20000000080000000:600000080000000:20000000100000000:20000000100000000:0:8080000200000000:0:1040000400000000:0:20000800000000:20000800000000:10001000000000:8002000000000:4004000000000:2008000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-rojak-dressing-clean": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:6000000000000:1801e000000000000:1fcfc000000000000:fff0000000000000:380008000000000:38000000000:e0000030000000000:e0000000000000000:3800000000:3fc00000000:3fce00000000:4003e0780000000:6000001c1000000:7000000c3000000:3000000:0:0:0:0:0:0:f000000000000000:7f800000000000000:1f1c00000000000000:80e00000000000000:600000000000000:300000000000000:300000000000000:c000000000e00000:c000000003f80000:f1e0000:1e060000:1e000000:0:0:600000000000:3f80000000000:79c0000000000:f0000000000:3c000000000:1c000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-side-cup-clean": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:3ff8000000000:fffe000000000:3ffff800000000:7ffffc00000000:fffffe00000000:1ffffff00000000:1ffffff00000000:3ffffff80000000:3ffffff80000000:3ffffff80000000:7ffffffc0000000:3fffffffc0000000:ffffffffc0000000:1ffffffffc0000000:1ffffffff80000000:3ffffffff80000000:3ffffffff80000000:3ffffffff80000000:3ffffffff00000000:3ffffffff00000000:1fffffffe00000000:fffffffe00000000:7f7ffffc00000000:1f7ffffc00000000:3ffff800000000:3ffff800000000:3ffff800000000:1ffff000000000:fffe000000000:7ffc000000000:3ff8000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:2008000000000:8002000000000:20000800000000:40000400000000:80000000000000:100000100000000:0:200000080000000:0:0:400000040000000:2000000040000000:8000000040000000:10000000040000000:0:20000000000000000:20000000080000000:600000080000000:20000000100000000:20000000100000000:0:8080000200000000:0:1040000400000000:0:20000800000000:20000800000000:10001000000000:8002000000000:4004000000000:2008000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-side-kopi-cooked": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:1ff0000000000:7ffc000000000:fffe000000000:1ffff000000000:3ffff800000000:3ffff800000000:3ffff800000000:7ffffc00000000:7ffffc00000000:7ffffc00000000:3ffff800000000:3ffff800000000:3ffff800000000:1ffff000000000:fffe000000000:7ffc000000000:1ff0000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        },
+        "portion-side-teh-cooked": {
+          "opaque": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:1ff0000000000:7ffc000000000:fffe000000000:1ffff000000000:3ffff800000000:3ffff800000000:3ffff800000000:7ffffc00000000:7ffffc00000000:7ffffc00000000:3ffff800000000:3ffff800000000:3ffff800000000:1ffff000000000:fffe000000000:7ffc000000000:1ff0000000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+          "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+        }
+      }
     },
     {
       "id": "tabao-rush-cook-spike",
@@ -2772,6 +3338,827 @@
           }
         }
       ]
+    },
+    {
+      "id": "peek-poker-cards",
+      "encoding": "lossless",
+      "anchors": [
+        "centre"
+      ],
+      "frames": [
+        {
+          "id": "card-as",
+          "file": "peek-poker/cards/card-as.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-2s",
+          "file": "peek-poker/cards/card-2s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-3s",
+          "file": "peek-poker/cards/card-3s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-4s",
+          "file": "peek-poker/cards/card-4s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-5s",
+          "file": "peek-poker/cards/card-5s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-6s",
+          "file": "peek-poker/cards/card-6s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-7s",
+          "file": "peek-poker/cards/card-7s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-8s",
+          "file": "peek-poker/cards/card-8s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-9s",
+          "file": "peek-poker/cards/card-9s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-10s",
+          "file": "peek-poker/cards/card-10s.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-js",
+          "file": "peek-poker/cards/card-js.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-qs",
+          "file": "peek-poker/cards/card-qs.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-ks",
+          "file": "peek-poker/cards/card-ks.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-ah",
+          "file": "peek-poker/cards/card-ah.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-2h",
+          "file": "peek-poker/cards/card-2h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-3h",
+          "file": "peek-poker/cards/card-3h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-4h",
+          "file": "peek-poker/cards/card-4h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-5h",
+          "file": "peek-poker/cards/card-5h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-6h",
+          "file": "peek-poker/cards/card-6h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-7h",
+          "file": "peek-poker/cards/card-7h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-8h",
+          "file": "peek-poker/cards/card-8h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-9h",
+          "file": "peek-poker/cards/card-9h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-10h",
+          "file": "peek-poker/cards/card-10h.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-jh",
+          "file": "peek-poker/cards/card-jh.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-qh",
+          "file": "peek-poker/cards/card-qh.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-kh",
+          "file": "peek-poker/cards/card-kh.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-ad",
+          "file": "peek-poker/cards/card-ad.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-2d",
+          "file": "peek-poker/cards/card-2d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-3d",
+          "file": "peek-poker/cards/card-3d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-4d",
+          "file": "peek-poker/cards/card-4d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-5d",
+          "file": "peek-poker/cards/card-5d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-6d",
+          "file": "peek-poker/cards/card-6d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-7d",
+          "file": "peek-poker/cards/card-7d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-8d",
+          "file": "peek-poker/cards/card-8d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-9d",
+          "file": "peek-poker/cards/card-9d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-10d",
+          "file": "peek-poker/cards/card-10d.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-jd",
+          "file": "peek-poker/cards/card-jd.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-qd",
+          "file": "peek-poker/cards/card-qd.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-kd",
+          "file": "peek-poker/cards/card-kd.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-ac",
+          "file": "peek-poker/cards/card-ac.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-2c",
+          "file": "peek-poker/cards/card-2c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-3c",
+          "file": "peek-poker/cards/card-3c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-4c",
+          "file": "peek-poker/cards/card-4c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-5c",
+          "file": "peek-poker/cards/card-5c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-6c",
+          "file": "peek-poker/cards/card-6c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-7c",
+          "file": "peek-poker/cards/card-7c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-8c",
+          "file": "peek-poker/cards/card-8c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-9c",
+          "file": "peek-poker/cards/card-9c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-10c",
+          "file": "peek-poker/cards/card-10c.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-jc",
+          "file": "peek-poker/cards/card-jc.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-qc",
+          "file": "peek-poker/cards/card-qc.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-kc",
+          "file": "peek-poker/cards/card-kc.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-back",
+          "file": "peek-poker/cards/card-back.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-flip-0",
+          "file": "peek-poker/cards/card-flip-0.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-flip-1",
+          "file": "peek-poker/cards/card-flip-1.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-flip-2",
+          "file": "peek-poker/cards/card-flip-2.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-flip-3",
+          "file": "peek-poker/cards/card-flip-3.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        },
+        {
+          "id": "card-flip-4",
+          "file": "peek-poker/cards/card-flip-4.png",
+          "anchor": [
+            88,
+            115.5
+          ],
+          "anchors": {
+            "centre": [
+              88,
+              115.5
+            ]
+          }
+        }
+      ]
     }
   ],
   "rounds": {
@@ -2781,10 +4168,99 @@
     ],
     "peek-poker": [
       "peek-poker-cards"
+    ],
+    "tabao-rush": [
+      "tabao-rush-items"
     ]
   },
   "powerOfTwo": false,
   "renders": [
+    {
+      "script": "items.py",
+      "inputs": [
+        "tools/blender/items.py",
+        "tools/blender/kalib.py",
+        "pipeline.json"
+      ],
+      "outputs": [
+        "tabao-rush/items/item-rice-raw.png",
+        "tabao-rush/items/item-rice-cooked.png",
+        "tabao-rush/items/item-rice-burnt.png",
+        "tabao-rush/items/item-chicken-raw.png",
+        "tabao-rush/items/item-chicken-chopped.png",
+        "tabao-rush/items/item-cucumber-raw.png",
+        "tabao-rush/items/item-cucumber-chopped.png",
+        "tabao-rush/items/item-kway-teow-raw.png",
+        "tabao-rush/items/item-kway-teow-chopped.png",
+        "tabao-rush/items/item-kway-teow-cooked.png",
+        "tabao-rush/items/item-kway-teow-burnt.png",
+        "tabao-rush/items/item-satay-raw.png",
+        "tabao-rush/items/item-satay-chopped.png",
+        "tabao-rush/items/item-satay-cooked.png",
+        "tabao-rush/items/item-satay-burnt.png",
+        "tabao-rush/items/item-laksa-broth-raw.png",
+        "tabao-rush/items/item-laksa-broth-cooked.png",
+        "tabao-rush/items/item-laksa-broth-burnt.png",
+        "tabao-rush/items/item-noodles-raw.png",
+        "tabao-rush/items/item-noodles-cooked.png",
+        "tabao-rush/items/item-pineapple-raw.png",
+        "tabao-rush/items/item-pineapple-chopped.png",
+        "tabao-rush/items/item-turnip-raw.png",
+        "tabao-rush/items/item-turnip-chopped.png",
+        "tabao-rush/items/item-bread-raw.png",
+        "tabao-rush/items/item-bread-cooked.png",
+        "tabao-rush/items/item-bread-burnt.png",
+        "tabao-rush/items/item-bread-spread.png",
+        "tabao-rush/items/item-kopi-raw.png",
+        "tabao-rush/items/item-kopi-cooked.png",
+        "tabao-rush/items/item-teh-raw.png",
+        "tabao-rush/items/item-teh-cooked.png",
+        "tabao-rush/items/container-plate-clean.png",
+        "tabao-rush/items/container-plate-dirty.png",
+        "tabao-rush/items/container-bowl-clean.png",
+        "tabao-rush/items/container-bowl-dirty.png",
+        "tabao-rush/items/container-cup-clean.png",
+        "tabao-rush/items/container-cup-dirty.png",
+        "tabao-rush/items/item-extinguisher.png",
+        "tabao-rush/items/dish-chicken-rice-plated.png",
+        "tabao-rush/items/dish-char-kway-teow-plated.png",
+        "tabao-rush/items/dish-satay-plated.png",
+        "tabao-rush/items/dish-laksa-plated.png",
+        "tabao-rush/items/dish-rojak-plated.png",
+        "tabao-rush/items/dish-kaya-toast-plated.png",
+        "tabao-rush/items/dish-kopi-teh-plated.png",
+        "tabao-rush/items/icon-chicken-rice.png",
+        "tabao-rush/items/icon-char-kway-teow.png",
+        "tabao-rush/items/icon-satay.png",
+        "tabao-rush/items/icon-laksa.png",
+        "tabao-rush/items/icon-rojak.png",
+        "tabao-rush/items/icon-kaya-toast.png",
+        "tabao-rush/items/icon-kopi-teh.png",
+        "tabao-rush/items/portion-rice-cooked.png",
+        "tabao-rush/items/portion-chicken-chopped.png",
+        "tabao-rush/items/portion-cucumber-chopped.png",
+        "tabao-rush/items/portion-kway-teow-cooked.png",
+        "tabao-rush/items/portion-satay-cooked.png",
+        "tabao-rush/items/portion-laksa-broth-cooked.png",
+        "tabao-rush/items/portion-noodles-cooked.png",
+        "tabao-rush/items/portion-pineapple-chopped.png",
+        "tabao-rush/items/portion-turnip-chopped.png",
+        "tabao-rush/items/portion-bread-cooked.png",
+        "tabao-rush/items/portion-bread-spread.png",
+        "tabao-rush/items/portion-kopi-cooked.png",
+        "tabao-rush/items/portion-teh-cooked.png",
+        "tabao-rush/items/portion-drink-side-clean.png",
+        "tabao-rush/items/render-validation.json",
+        "tabao-rush/items/portion-rojak-dressing-clean.png",
+        "tabao-rush/items/portion-side-cup-clean.png",
+        "tabao-rush/items/portion-side-kopi-cooked.png",
+        "tabao-rush/items/portion-side-teh-cooked.png"
+      ],
+      "args": [
+        "--out",
+        "tabao-rush/items"
+      ]
+    },
     {
       "script": "cook.py",
       "args": [
