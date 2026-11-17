@@ -61,6 +61,14 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   step time and never reaches the game. `step()` refuses after the match is over although the
   contract lets a game be stepped after the end.
 
+- **Found at R-05 (2026-11-17): the token fonts are not shipped.** DESIGN §4 names DM Serif
+  Display, DM Sans and JetBrains Mono, and `packages/ui/tokens.css` names them first in each
+  stack, but no font file or `@font-face` exists anywhere, so every screen so far is drawn in
+  system fallbacks (Georgia or Iowan for headings, system sans, SF Mono). Ship the three faces
+  once from `packages/ui` (licences recorded, woff2 subsets, preloaded before any round so
+  nothing loads during play, PERF-020 and PERF-022 transfer sizes measured), and re-photograph
+  the lobby, picker and Rabakz screens, whose text fitting was measured with fallbacks. Games
+  must not ship their own copies. Needs a DECISIONS line for the font files.
 - **From F-08 (performance harness), due before T-07.** Launch the host in its own browser
   instance for frame-budget runs (the first phone opening in the same Chromium is the prime
   suspect for a 1,027 ms first frame in the integrator's first lobby run; it did not recur).
