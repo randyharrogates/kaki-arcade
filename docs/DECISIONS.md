@@ -1012,3 +1012,11 @@ filter. Board 4's `.lockd` look (opacity 0.4 plus `grayscale(1)`) cannot meet PE
 ("no blur or filter effects at runtime"), so it is ruled out by that budget, and it stacked
 the surface treatment under the control (DESIGN §2). Found by K-04's re-review. To be shown
 to Randy as a before and after.
+
+**D-126 · 2026-11-17 · Claude** (Randy approved the round) — Amends D-123. The console results
+winner column must end inside the 55 px safe margin in every case, including a tie of two
+12-character names with the keyboard hint. It frees room in this order: the keyboard hint sits on
+one line and the two action hints share a row; then the headline steps 144 → 89 → 55 px (55 is
+the last step on the type scale and only used when 89 cannot fit). The fit compares the column's
+first and last child with the safe area rather than `scrollHeight`. The ranking list fits its
+grid row (`minmax(0, 1fr)`) at 8 players in teams by using smaller spacing-scale gaps.
