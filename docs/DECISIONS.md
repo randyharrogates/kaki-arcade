@@ -889,3 +889,13 @@ reading order, so nothing jumps during the grow, and it is the golden-ratio vari
 **D-110 · 2026-11-17 · Claude (integrator)** — `packages/controller-kit` depends on `preact`
 11.2.0, the same pinned version `apps/web` and `games/rabakz` use, so the kit can render its
 shell; one Preact instance in the bundle. No new package enters the repository.
+
+**D-111 · 2026-11-17 · Claude (under D-057)** — Lower-detail benchmark measurement rule
+(PERF-001, PERF-002; no budget changed). Frame times come from the browser's frame timestamps
+(the `requestAnimationFrame` argument, as `pnpm perf` uses), not a clock read in the callback;
+the first frames after the lobby paints are discarded; a frame counts as dropped when its
+interval exceeds 1.5 × the display's median interval. "Full" holds when the share of dropped
+frames meets the 95th-percentile reading of the budget (at most 5 % dropped) and no frame
+exceeds 50 ms; otherwise "lower" is checked the same way against 100 ms. Why: a fixed 16.7 ms
+line misjudges healthy 60 Hz screens because timers are rounded to 1 ms or 0.1 ms (C-13 review
+M1). The benchmark takes an injected workload; until one exists, "auto" means full (OQ-036).

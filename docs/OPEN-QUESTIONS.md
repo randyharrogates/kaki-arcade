@@ -69,6 +69,14 @@ played on a screen: whether patience and the warning feel right; whether orders 
 flood; whether plates are the bottleneck (4 plates cap an 8-cook round near 34 to 46 dishes);
 whether three stars is fair at every cook count. Needed by: T-16 (tuning).
 
+**OQ-036 · 2026-11-17 · Lower-detail benchmark needs a real workload (PERF-002).** An idle lobby
+holds the display's cadence on any TV, so a lobby benchmark cannot tell a slow TV from a fast
+one (C-13 review). Working rule (D-111): the benchmark measures dropped frames under an injected
+workload; until the game renderer exists (T-07) there is no representative workload, so "auto"
+stays on full detail and the setting can be changed by hand. Randy: is a short off-screen draw
+of the busiest scene on the lobby acceptable (a second or two before the room code shows), or
+should detail be chosen from the first seconds of the first round instead?
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot
