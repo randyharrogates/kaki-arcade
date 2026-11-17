@@ -14,7 +14,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 |---|---|---|---|---|---|
 | K-01 | Controller page shell: landscape, fills the screen, no scroll, zoom, selection or pull-to-refresh, screen stays awake; shows colour, seat, nickname and connection | CTRL-004, CTRL-008 | F-06, S-05 | 2 | merged |
 | K-02 | Left stick: tracks the thumb 1:1 with no smoothing, re-centres on release, multi-touch with buttons | CTRL-005, PERF-012 | K-01 | 2 | merged |
-| K-03 | D-pad, the four shape buttons (cross, circle, square, triangle; D-047), L and R, Start: face buttons at least 110 px, other in-play controls 89 px, nothing under 55 px (D-051), press scale and feedback within one frame, vibration where supported | CTRL-001, CTRL-005, CTRL-006, PERF-012 | K-01 | 2 | todo |
+| K-03 | D-pad, the four shape buttons (cross, circle, square, triangle; D-047), L and R, Start: face buttons at least 110 px, other in-play controls 89 px, nothing under 55 px (D-051), press scale and feedback within one frame, vibration where supported | CTRL-001, CTRL-005, CTRL-006, PERF-012 | K-01 | 2 | merged |
 | K-08 | Controller size and start-up budget check in verify | PERF-020 | K-02, K-03 | 2 | todo |
 
 **From K-01 (controller shell), merged 2026-11-17 after two Codex rounds and two reviews.**

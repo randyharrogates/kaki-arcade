@@ -1,0 +1,127 @@
+{
+  "slice": "K-03-buttons",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- K-03-buttons --phones 1",
+  "commit": "584f2a8f31eb42b9e378ecc9899fbed6bbce334c",
+  "viewports": [
+    "667×375",
+    "844×390",
+    "932×430"
+  ],
+  "steps": [
+    {
+      "name": "layout-667x375",
+      "ms": 602.2003329999998,
+      "status": "completed"
+    },
+    {
+      "name": "layout-844x390",
+      "ms": 261.446958,
+      "status": "completed"
+    },
+    {
+      "name": "layout-932x430",
+      "ms": 261.84349999999995,
+      "status": "completed"
+    },
+    {
+      "name": "Two simultaneous face presses and first-frame feedback",
+      "ms": 348.38745900000004,
+      "status": "completed"
+    },
+    {
+      "name": "D-pad slide switches directions",
+      "ms": 446.98908299999994,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced motion retains immediate pressed state",
+      "ms": 166.6790000000001,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-layout-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-layout-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-layout-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-press-first-frame-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-press-first-frame-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-press-first-frame-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-dpad-switched.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-reduced-motion-held.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-layout-667.jpg",
+    "02-phone1-layout-844.jpg",
+    "03-phone1-layout-932.jpg",
+    "07-strip-press-first-frame.jpg",
+    "08-phone1-dpad-switched.jpg",
+    "09-phone1-reduced-motion-held.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-layout-667.jpg",
+      "bytes": 125421
+    },
+    {
+      "file": "02-phone1-layout-844.jpg",
+      "bytes": 143034
+    },
+    {
+      "file": "03-phone1-layout-932.jpg",
+      "bytes": 160240
+    },
+    {
+      "file": "07-strip-press-first-frame.jpg",
+      "bytes": 526005
+    },
+    {
+      "file": "08-phone1-dpad-switched.jpg",
+      "bytes": 162081
+    },
+    {
+      "file": "09-phone1-reduced-motion-held.jpg",
+      "bytes": 164424
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1285
+    },
+    {
+      "file": "run.json",
+      "bytes": 2700
+    }
+  ],
+  "totalBytes": 1285227,
+  "maxBytes": 12582912
+}

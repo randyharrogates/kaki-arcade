@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { ControllerShell, Stick } from '../../../packages/controller-kit/src/index';
+import { ControllerShell, FaceButtons, DPad, ShoulderButton, StartButton, Stick, controlSizes } from '../../../packages/controller-kit/src/index';
 import type { LinkState } from '../../../packages/controller-kit/src/index';
 import type { SeatNumber } from '@kaki/ui';
 import '../../../packages/controller-kit/src/shell.css';
+import '../../../packages/controller-kit/src/buttons.css';
 import '../../../packages/controller-kit/src/stick.css';
+import './controller-demo.css';
+// Development page: the stick (K-02) by default, the buttons (K-03) with ?controls=buttons.
+// The real layouts come from the layout engine (K-04).
 export function ControllerDemo() {
+  const buttons = new URLSearchParams(location.search).get('controls') === 'buttons';
   const readout = useRef<HTMLOutputElement>(null);
   const showVector = (vector: { x: number; y: number }) => {
     const node = readout.current;
@@ -12,6 +17,16 @@ export function ControllerDemo() {
     node.dataset.x = String(vector.x); node.dataset.y = String(vector.y);
     node.textContent = `x ${vector.x.toFixed(3)} · y ${vector.y.toFixed(3)}`;
   };
+  const [held, setHeld] = useState<string[]>([]);
+  const [area, setArea] = useState<{ width: number; height: number; viewport: { width: number; height: number } } | null>(null);
+  useEffect(() => {
+    const board = document.querySelector('.ka-controller-play');
+    if (!board) return;
+    const observer = new ResizeObserver(([entry]) => { if (entry) setArea({ width: entry.contentRect.width, height: entry.contentRect.height, viewport: { width: innerWidth, height: innerHeight } }); });
+    observer.observe(board); return () => { observer.disconnect(); };
+  }, []);
+  const sizes = area ? controlSizes(area.viewport, area) : null;
+  const callbacks = { onPress: (id: string) => { setHeld(old => [...old.filter(value => value !== id), id]); }, onRelease: (id: string) => { setHeld(old => old.filter(value => value !== id)); } };
   const params = new URLSearchParams(location.search);
   const rawSeat = Number(params.get('seat') ?? 1);
   const seat = (Number.isInteger(rawSeat) && rawSeat >= 1 && rawSeat <= 8 ? rawSeat : 1) as SeatNumber;
@@ -31,5 +46,14 @@ export function ControllerDemo() {
       window.removeEventListener('controller-demo-unmount', unmount);
     };
   }, [cycle]);
-  return mounted ? <ControllerShell seat={seat} name={params.get('name') ?? 'Player'} link={link}><style>{`.ka-stick-readout { position: absolute; right: var(--ka-space-21); top: var(--ka-space-21); font-family: var(--ka-font-mono); font-size: var(--ka-phone-type-13); color: var(--ka-secondary); }`}</style><Stick onChange={showVector}/><output ref={readout} class="ka-stick-readout" data-x="0" data-y="0">x 0.000 · y 0.000</output></ControllerShell> : null;
+  if (!mounted) return null;
+  if (buttons) return <ControllerShell seat={seat} name={params.get('name') ?? 'Player'} link={link}>
+    {sizes && <div class="ka-buttons-demo" data-sizes={JSON.stringify(sizes)} style={{ '--in-play-width': `${String(sizes.inPlayWidth)}px` }}>
+      <div class="ka-buttons-demo-l"><ShoulderButton {...callbacks} id="L" size={sizes.inPlayWidth} height={sizes.inPlayHeight}/></div><div class="ka-buttons-demo-r"><ShoulderButton {...callbacks} id="R" size={sizes.inPlayWidth} height={sizes.inPlayHeight}/></div>
+      <div class="ka-buttons-demo-left"><DPad {...callbacks} size={sizes.inPlayWidth} height={sizes.inPlayHeight}/></div>
+      <div class="ka-buttons-demo-right"><FaceButtons {...callbacks} size={sizes.face}/></div>
+      <div class="ka-buttons-demo-centre"><StartButton {...callbacks} size={sizes.inPlayWidth} height={sizes.inPlayHeight}/></div><output aria-label="Held controls">{held.length ? held.join(', ') : 'None'}</output>
+    </div>}
+  </ControllerShell>;
+  return <ControllerShell seat={seat} name={params.get('name') ?? 'Player'} link={link}><style>{`.ka-stick-readout { position: absolute; right: var(--ka-space-21); top: var(--ka-space-21); font-family: var(--ka-font-mono); font-size: var(--ka-phone-type-13); color: var(--ka-secondary); }`}</style><Stick onChange={showVector}/><output ref={readout} class="ka-stick-readout" data-x="0" data-y="0">x 0.000 · y 0.000</output></ControllerShell>;
 }

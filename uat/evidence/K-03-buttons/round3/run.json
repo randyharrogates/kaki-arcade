@@ -1,0 +1,217 @@
+{
+  "slice": "K-03-buttons",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- K-03-buttons --phones 1",
+  "commit": "a7c707954c9609986235deddcdb216ca9563cd1e",
+  "viewports": [
+    "667×375",
+    "844×390",
+    "932×430"
+  ],
+  "steps": [
+    {
+      "name": "layout-667x375",
+      "ms": 641.0137080000002,
+      "status": "completed"
+    },
+    {
+      "name": "layout-844x390",
+      "ms": 298.95579199999975,
+      "status": "completed"
+    },
+    {
+      "name": "layout-932x430",
+      "ms": 276.9028750000002,
+      "status": "completed"
+    },
+    {
+      "name": "Two simultaneous face presses and first-frame feedback",
+      "ms": 330.1784580000003,
+      "status": "completed"
+    },
+    {
+      "name": "Twenty first-animation-frame samples across controls",
+      "ms": 1199.1447090000001,
+      "status": "completed"
+    },
+    {
+      "name": "Release strip begins while held and eases out",
+      "ms": 540.0573749999994,
+      "status": "completed"
+    },
+    {
+      "name": "Close-up Cross held and at rest, side by side",
+      "ms": 317.4758330000004,
+      "status": "completed"
+    },
+    {
+      "name": "Trusted touchCancel and hidden visibility release held inputs",
+      "ms": 55.513708999999835,
+      "status": "completed"
+    },
+    {
+      "name": "D-pad slide switches directions",
+      "ms": 451.420666,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced motion retains immediate pressed state",
+      "ms": 315.2645829999992,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-layout-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-layout-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-layout-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-press-first-frame-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-press-first-frame-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-press-first-frame-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-press-first-frame-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-release-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-release-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-release-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-release-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-release-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-release-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-release-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone1-release-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-release-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-release-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-release-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone1-release-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone1-cross-held-left-rest-right-close-up-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone1-cross-held-left-rest-right-close-up-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone1-dpad-switched.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-reduced-motion-held.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-layout-667.jpg",
+    "02-phone1-layout-844.jpg",
+    "03-phone1-layout-932.jpg",
+    "08-strip-press-first-frame.jpg",
+    "21-strip-release.jpg",
+    "24-strip-cross-held-left-rest-right-close-up.jpg",
+    "25-phone1-dpad-switched.jpg",
+    "26-phone1-reduced-motion-held.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-layout-667.jpg",
+      "bytes": 132342
+    },
+    {
+      "file": "02-phone1-layout-844.jpg",
+      "bytes": 149672
+    },
+    {
+      "file": "03-phone1-layout-932.jpg",
+      "bytes": 167262
+    },
+    {
+      "file": "08-strip-press-first-frame.jpg",
+      "bytes": 81480
+    },
+    {
+      "file": "21-strip-release.jpg",
+      "bytes": 232175
+    },
+    {
+      "file": "24-strip-cross-held-left-rest-right-close-up.jpg",
+      "bytes": 36604
+    },
+    {
+      "file": "25-phone1-dpad-switched.jpg",
+      "bytes": 167418
+    },
+    {
+      "file": "26-phone1-reduced-motion-held.jpg",
+      "bytes": 166717
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1752
+    },
+    {
+      "file": "run.json",
+      "bytes": 4860
+    }
+  ],
+  "totalBytes": 1140319,
+  "maxBytes": 12582912
+}

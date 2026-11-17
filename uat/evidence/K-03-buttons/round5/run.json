@@ -1,0 +1,237 @@
+{
+  "slice": "K-03-buttons",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- K-03-buttons --phones 1",
+  "commit": "d3aedd062ca6721c8262207fcd779e25decfff95",
+  "viewports": [
+    "667×375",
+    "844×390",
+    "932×430"
+  ],
+  "steps": [
+    {
+      "name": "layout-667x375",
+      "ms": 451.72254199999975,
+      "status": "completed"
+    },
+    {
+      "name": "layout-844x390",
+      "ms": 283.11862500000007,
+      "status": "completed"
+    },
+    {
+      "name": "layout-932x430",
+      "ms": 297.09466599999996,
+      "status": "completed"
+    },
+    {
+      "name": "Press vibrates once with HAPTIC_TICK_MS; release does not",
+      "ms": 208.23204099999975,
+      "status": "completed"
+    },
+    {
+      "name": "Empty D-pad centre captures a slide onto Right",
+      "ms": 321.5616249999998,
+      "status": "completed"
+    },
+    {
+      "name": "Cross stays held moving from 2 px inside rim to 1 px inside",
+      "ms": 244.3002080000001,
+      "status": "completed"
+    },
+    {
+      "name": "Two simultaneous face presses and first-frame feedback",
+      "ms": 361.1454579999995,
+      "status": "completed"
+    },
+    {
+      "name": "Twenty first-animation-frame samples across controls",
+      "ms": 1200.5792499999998,
+      "status": "completed"
+    },
+    {
+      "name": "Release strip begins while held and eases out",
+      "ms": 548.402,
+      "status": "completed"
+    },
+    {
+      "name": "Release run notes: 1 intermediate pre-capture samples (0.97 < scale < 0.995); samples lag the picture by one frame; per-frame pre-capture scales [0.97,0.97,0.986435,0.997366,0.999563,0.999972,1,1,1,1,1,1]",
+      "ms": 0.045957999999700405,
+      "status": "completed"
+    },
+    {
+      "name": "Close-up Cross held and at rest, side by side",
+      "ms": 292.1394999999993,
+      "status": "completed"
+    },
+    {
+      "name": "Trusted touchCancel and hidden visibility release held inputs",
+      "ms": 55.63724999999977,
+      "status": "completed"
+    },
+    {
+      "name": "D-pad slide switches directions",
+      "ms": 448.2313750000003,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced motion retains immediate pressed state",
+      "ms": 319.3707909999994,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-layout-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-layout-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-layout-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-press-first-frame-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-press-first-frame-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-press-first-frame-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-press-first-frame-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-release-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-release-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-release-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-release-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-release-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-release-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-release-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone1-release-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-release-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-release-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-release-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone1-release-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone1-cross-held-left-rest-right-close-up-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone1-cross-held-left-rest-right-close-up-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone1-dpad-switched.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-reduced-motion-held.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-layout-667.jpg",
+    "02-phone1-layout-844.jpg",
+    "03-phone1-layout-932.jpg",
+    "08-strip-press-first-frame.jpg",
+    "21-strip-release.jpg",
+    "24-strip-cross-held-left-rest-right-close-up.jpg",
+    "25-phone1-dpad-switched.jpg",
+    "26-phone1-reduced-motion-held.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-layout-667.jpg",
+      "bytes": 133822
+    },
+    {
+      "file": "02-phone1-layout-844.jpg",
+      "bytes": 151195
+    },
+    {
+      "file": "03-phone1-layout-932.jpg",
+      "bytes": 168590
+    },
+    {
+      "file": "08-strip-press-first-frame.jpg",
+      "bytes": 81606
+    },
+    {
+      "file": "21-strip-release.jpg",
+      "bytes": 232111
+    },
+    {
+      "file": "24-strip-cross-held-left-rest-right-close-up.jpg",
+      "bytes": 36606
+    },
+    {
+      "file": "25-phone1-dpad-switched.jpg",
+      "bytes": 168725
+    },
+    {
+      "file": "26-phone1-reduced-motion-held.jpg",
+      "bytes": 168041
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2216
+    },
+    {
+      "file": "run.json",
+      "bytes": 5588
+    }
+  ],
+  "totalBytes": 1148537,
+  "maxBytes": 12582912
+}

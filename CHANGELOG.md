@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — K-03: D-pad, shape buttons, L, R and Start
+
+- `packages/controller-kit/src`: `buttons.ts` (D-pad, shape diamond from the shared shape
+  paths, shoulder and Start buttons; press drawn in the pointer handler, release eases),
+  `button-input.ts` (pointer routing, multi-touch, slide between D-pad directions, held
+  hit-testing on unscaled geometry, guarded vibration), `button-sizing.ts` (sizes from the
+  phone with a play-area fit check, D-051 floors), `buttons.css`; demo behind
+  `?controls=buttons`; `tools/uat/thumb.ts` cancels only a touch in progress.
+- (CTRL-001, CTRL-005, CTRL-006, PERF-012 in progress)
+
 ## 2026-11-17 — K-02: floating left stick
 
 - `packages/controller-kit/src`: `stick-model.ts` (dead zone, normalised vector, rubber-band,

@@ -1,0 +1,9 @@
+.ka-buttons-demo { height: 100%; position: relative; }
+.ka-buttons-demo-left, .ka-buttons-demo-right { position: absolute; bottom: var(--ka-space-13); }
+.ka-buttons-demo-left { left: var(--ka-space-13); }
+.ka-buttons-demo-right { right: var(--ka-space-13); }
+.ka-buttons-demo-l, .ka-buttons-demo-r, .ka-buttons-demo-centre { position: absolute; top: var(--ka-space-13); }
+.ka-buttons-demo-l { left: var(--ka-space-13); }
+.ka-buttons-demo-centre { left: calc(var(--ka-space-13) + 2 * (var(--in-play-width) + var(--ka-space-13))); }
+.ka-buttons-demo-r { left: calc(var(--ka-space-13) + 3 * (var(--in-play-width) + var(--ka-space-13))); }
+.ka-buttons-demo > output { position: absolute; top: var(--ka-space-13); left: calc(var(--in-play-width) + 2 * var(--ka-space-13)); width: var(--in-play-width); font-size: var(--ka-phone-type-13); text-align: center; overflow-wrap: anywhere; max-height: var(--ka-space-34); overflow: hidden; }

@@ -1,0 +1,199 @@
+{
+  "slice": "K-03-buttons",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- K-03-buttons --phones 1",
+  "commit": "9bfb567c885543a26abc6f3ccde546dd63a8a404",
+  "viewports": [
+    "667×375",
+    "844×390",
+    "932×430"
+  ],
+  "steps": [
+    {
+      "name": "layout-667x375",
+      "ms": 630.0457079999996,
+      "status": "completed"
+    },
+    {
+      "name": "layout-844x390",
+      "ms": 326.61354200000005,
+      "status": "completed"
+    },
+    {
+      "name": "layout-932x430",
+      "ms": 295.9070419999998,
+      "status": "completed"
+    },
+    {
+      "name": "Two simultaneous face presses and first-frame feedback",
+      "ms": 653.0852500000005,
+      "status": "completed"
+    },
+    {
+      "name": "Twenty first-animation-frame samples across controls",
+      "ms": 1212.782333,
+      "status": "completed"
+    },
+    {
+      "name": "Release strip begins while held and eases out",
+      "ms": 1411.7762919999996,
+      "status": "completed"
+    },
+    {
+      "name": "Trusted touchCancel and hidden visibility release held inputs",
+      "ms": 51.5732909999997,
+      "status": "completed"
+    },
+    {
+      "name": "D-pad slide switches directions",
+      "ms": 431.36783300000025,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced motion retains immediate pressed state",
+      "ms": 319.37308399999984,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-layout-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-layout-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-layout-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-press-first-frame-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-press-first-frame-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-press-first-frame-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-press-first-frame-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-release-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-release-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-release-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-release-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-release-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-release-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-release-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone1-release-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-release-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-release-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-release-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone1-release-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone1-dpad-switched.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone1-reduced-motion-held.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-layout-667.jpg",
+    "02-phone1-layout-844.jpg",
+    "03-phone1-layout-932.jpg",
+    "08-strip-press-first-frame.jpg",
+    "21-strip-release.jpg",
+    "22-phone1-dpad-switched.jpg",
+    "23-phone1-reduced-motion-held.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-layout-667.jpg",
+      "bytes": 132342
+    },
+    {
+      "file": "02-phone1-layout-844.jpg",
+      "bytes": 149672
+    },
+    {
+      "file": "03-phone1-layout-932.jpg",
+      "bytes": 167262
+    },
+    {
+      "file": "08-strip-press-first-frame.jpg",
+      "bytes": 706200
+    },
+    {
+      "file": "21-strip-release.jpg",
+      "bytes": 2100023
+    },
+    {
+      "file": "22-phone1-dpad-switched.jpg",
+      "bytes": 167445
+    },
+    {
+      "file": "23-phone1-reduced-motion-held.jpg",
+      "bytes": 166700
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1573
+    },
+    {
+      "file": "run.json",
+      "bytes": 4346
+    }
+  ],
+  "totalBytes": 3595600,
+  "maxBytes": 12582912
+}

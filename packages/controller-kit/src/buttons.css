@@ -1,0 +1,10 @@
+/* Diamond diagonal separation uses Pythagoras; axis step includes phi spacing. */
+.ka-button-diamond { display: grid; grid-template-columns: repeat(3, var(--control-size)); grid-template-rows: repeat(3, var(--control-height, var(--control-size))); gap: var(--ka-space-13); }
+.ka-face-diamond { grid-template-columns: repeat(3, calc((var(--control-size) + var(--ka-space-5)) / var(--diagonal-axis))); grid-template-rows: repeat(3, calc((var(--control-size) + var(--ka-space-5)) / var(--diagonal-axis))); gap: var(--ka-space-13); width: calc(var(--control-size) + 2 * ((var(--control-size) + var(--ka-space-5)) / var(--diagonal-axis) + var(--ka-space-13))); height: calc(var(--control-size) + 2 * ((var(--control-size) + var(--ka-space-5)) / var(--diagonal-axis) + var(--ka-space-13))); }
+.ka-face-diamond .ka-kit-button { box-sizing: border-box; min-height: 0; min-width: 0; flex: none; border-radius: var(--ka-radius-pill); color: var(--ka-on-colour); border: var(--ka-space-5) solid var(--ka-on-colour); }
+.ka-kit-button { box-sizing: border-box; min-height: 0; min-width: 0; flex: none; width: var(--control-size); height: var(--control-height, var(--control-size)); padding: var(--ka-space-5); border: var(--ka-panel-edge); border-radius: var(--ka-radius-corner); background: var(--ka-panel-treatment); color: var(--ka-ink); font: inherit; touch-action: none; -webkit-tap-highlight-color: transparent; transform: scale(1); }
+.ka-kit-button svg { pointer-events: none; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.ka-kit-triangle { background: var(--ka-shape-triangle); }
+.ka-kit-square { background: var(--ka-shape-square); }
+.ka-kit-circle { background: var(--ka-shape-circle); }
+.ka-kit-cross { background: var(--ka-shape-cross); }
