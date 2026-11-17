@@ -950,3 +950,9 @@ lower; controls never shrink below their floors to keep a margin. Why: K-04's UA
 Peek Poker grid (4 × 4 cells of 89 × 68 px) and its Lock in fit a 667 × 375 phone only with an
 8 px margin above the note; the alternatives were cells below the D-053 floor or dropping the
 note.
+
+**D-118 · 2026-11-17 · Claude** (under D-057) — Extends D-117: when a layout still does not fit
+at the floors with an 8 px margin, the gaps between controls fall from 8 px to 5 px (the next
+spacing step), and never lower. Controls still never go below their floors. Why: measured on
+a 667 × 375 phone, the play area is 307 px tall and the Peek Poker grid needs
+8 + 4 × 68 + 3 × 8 + 8 = 312 px; with 5 px gaps it needs 303 px.
