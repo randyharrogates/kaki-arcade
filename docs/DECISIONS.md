@@ -1061,3 +1061,11 @@ share first" (team ties "Both teams share first" stays as is if it fits) and a s
 are always in the ranking list beside it. This bounds the column for any valid name, whatever
 the script. The "+N" badge for 5 or more tied players uses the chip's brown surface, not the
 accent, so it never reads as a seat colour, and is announced as "N more players".
+
+**D-132 · 2026-11-17 · Claude** (under D-057) — Private panel space on the phone. Controls keep
+priority: the layout engine places the game's controls first (with D-118's margins and gaps), and
+the private panel takes the space left. In that space the panel grows its parts to fill it like
+the engine does (cards up to their natural size, text at 34 px); when space is short, panel text
+steps 34 → 21 → 13 px and wraps, and cards scale down to a 55 px-wide floor. A layout plus private
+view that still cannot fit at a 667 × 307 play area fails the game conformance check, so a game can
+never send it, and the engine never draws a clipped panel.
