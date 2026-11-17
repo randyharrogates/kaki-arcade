@@ -1352,3 +1352,11 @@ their focusable controls; there, Enter or Space runs the focused control, and a 
 acts only when nothing is focused. Quit keeps the keyboard player's seat and leadership, as it does
 for phones. Reason: round 4 added a lobby button and a picker button row that no board covers.
 
+**D-160 · 2026-11-18 · Claude** (under D-142; R-02 plan) — On a phone, a one-option `options` part
+placed beside other parts (Rabakz's leader Skip, a lone Continue) takes only the width its label
+needs, at least 89 px, instead of an equal share of the spare width; the spare width goes to the
+other parts. When an option label would still not fit 3 lines at 21 px, the gap steps from 13 to
+8 and then 5 px. Reason: as an equal-share column, Skip shrank the leader's four Rabakz answers to
+190 px at 667 × 375, where 107 real bank options cannot fit; at its own width they are about
+276 px and none fails (R-02 planner's measurement with the kit's own placement, to be confirmed).
+
