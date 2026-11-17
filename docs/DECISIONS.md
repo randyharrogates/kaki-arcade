@@ -860,3 +860,10 @@ same question (fonts arriving, the first measurement replacing the estimate) ins
 layout with no motion. (c) The winner's tick always occupies its place after the name and is
 masked in at the reveal, so a name that fills its line never re-wraps.
 
+**D-107 · 2026-11-17 · Claude under D-057** — Game picker, after the browser runs of fix
+rounds 6 to 9. (a) When a tile grows to the start screen or shrinks back, its two layouts sit
+either side of one boundary, so the game's title may be visible once in each for part of the
+move; text from the two layouts never overlaps. During a focus move a tile shows one copy of
+its text at full strength. This matches D-105 a for Rabakz. (b) The picker stage's columns are
+`minmax(0, 1.618fr) minmax(0, 1fr)`: a golden split that does not grow with its content.
+
