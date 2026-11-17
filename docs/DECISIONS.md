@@ -1298,3 +1298,13 @@ job, each publishing only its own folder and writing its own `frames.json`; cook
 write `pipeline.json`. The S-02 spike set is retired (its evidence stays). A-02 publishes the cap
 head; A-03 adds the other seven. (4) A-02 may edit A-01's `tools/assets/pipeline.py`, its tests and
 `manifest.d.ts` for `frameFiles`, animation fields and `--no-pack`, and ART-PIPELINE §5 and a new §9.
+
+**D-155 · 2026-11-18 · Claude** (under D-142; P-04 review) — Peek Poker swaps. (1) A swap uses one
+ease only: the motion token's in-out curve over the rules' 2 seconds, with linear progress along the
+arc, so the movement is visible and slow across the whole swap (peak speed at most about 3 times the
+average). (2) In a row swap the two rows set off 20% of the swap apart, and the row moving up is
+drawn lifted: above the other, 5% larger, with a deeper baked-style shadow, so it reads as passing
+over the other row instead of a single band of overlapping cards; arcs stay within the grid and
+its 55 px gaps (P-04 round 3). (3) `perpendicularArcPoint` joins the shared motion helpers in
+`packages/ui` (any game may use it). Randy may overrule; the round-4 strip is put to him as an
+artifact.
