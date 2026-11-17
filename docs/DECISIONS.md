@@ -991,3 +991,16 @@ its private pick grid on the phone (PP-005): it is a control, only private. Aske
 board 4's square diamond with 110 px faces needs 316 px of height and a 667 × 375 phone's play
 area is 307 px (K-04). C-16 and R-05, past three review rounds, continue to a final review
 (Randy's answer to the WORKFLOW §4 stop).
+
+**D-123 · 2026-11-17 · Claude** (under D-057) — Amends D-120: any console results headline,
+not only a tie, steps from 144 px to 89 px when the winner column would otherwise overflow the
+screen's safe area; never smaller than 89 px. Why: C-16's final review rendered "Cloud Noodle
+wins!" at 144 px and the column ran to 1,139 px on a 1080 px screen, cutting off "Back to game
+picker".
+
+**D-124 · 2026-11-17 · Claude** (under D-057) — Browser-backed unit tests (a Vitest test that
+launches headless Chromium, such as `apps/web/src/Overlap.dom.test.ts`) are allowed in the main
+suite when a DOM behaviour cannot be tested otherwise (no DOM environment in Vitest). Costs
+accepted: `pnpm verify` needs Playwright's Chromium installed, as `pnpm uat` already does; Codex's
+sandbox cannot launch Chromium, so issue briefs exclude these files and the integrator runs
+them. Each such test must close its browser in a `finally`.
