@@ -1226,3 +1226,14 @@ would make verify fail for reasons unrelated to the budget. PERF-020's size half
 the phone closure, D-115) stays in verify. Like other browser budgets, the start-up check must
 pass before any slice that changes the phone's entry or controller closes; the budget itself is
 unchanged.
+
+**D-149 · 2026-11-18 · Claude** (under D-142; C-11 review) — Team setup (PLAT-025, D-143):
+(1) No team-size cap. The only rule is that each team keeps at least one player; teams may be
+uneven (TR-052). The cap of ceil(max / 2) came from Claude's C-11 brief, not from a requirement,
+and at 8 players it refused every switch and leader move. (2) Only a chip that changes team moves
+on an arc; chips that reflow within their side move straight with ease-in-out, so nothing passes
+its rest position. (3) The TV screen uses the TV type and spacing tokens at true size, not a one-off
+`zoom` scaling the 1440 board to 1920. (4) A refused switch is shown only on the phone that tapped,
+naming the team, with the picker's refusal style; the TV names who was refused. Showing team names
+and colours during play is for the games' own issues (Rabakz R-04/R-08, Tabao Rush versus), so
+PLAT-025 stays in progress after C-11.
