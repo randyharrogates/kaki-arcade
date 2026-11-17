@@ -1160,3 +1160,13 @@ down together, to the largest size that fits every label, so peers keep one size
 drops to 13 px beside five labels at 34 px); option buttons keep stepping one by one, since each is
 its own control. (2) A card-perspective token of 610 px joins `@kaki/ui`, matching the approved
 specimen, and replaces the one-off value in the private panel.
+
+**D-141 · 2026-11-18 · Claude** (D-057) — A-04 gets an eighth round. The round-7 re-review confirmed
+the rim colour, layering, unique states and pruning, but found visible defects players would meet:
+the finished rojak reads as a grid of dark bars and hides the turnip; a served teh is drawn as kopi
+when the kopi-teh order completes; drinks placed on a plate become a puddle and plate-sized food
+overflows a cup; the completion check still passes a dish with one portion missing. Decided by
+recommendation: drinks on a plate use the side-cup slot (no liquid on a bare plate); food in a cup
+or bowl is drawn scaled to that container's opening; kopi-teh is drawn as the cup plus the served
+drink's portion, never from one fixed dish sprite. If round 8 is not clean on these, the remaining
+art polish moves to a follow-up issue and A-04 merges with the defects listed.
