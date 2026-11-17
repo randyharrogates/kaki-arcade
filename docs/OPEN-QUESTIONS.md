@@ -80,3 +80,16 @@ whether three stars is fair at every cook count. Needed by: T-16 (tuning).
   Android phone and up to 3 players for now, so input delay over real Wi-Fi is not signed off
   before that session.
 - Players are in the same room in v1; a phone on mobile data may still join through the relay.
+
+**OQ-034 · Where the performance budgets are enforced, and a simulation budget.** CLAUDE.md
+rule 6 and `PERFORMANCE.md` say `pnpm verify` fails when a budget is exceeded. The frame-time
+and input-delay budgets need a real browser, a visible window and minutes of running, so the
+performance harness (F-08) keeps them in `pnpm perf`, with only a short smoke in verify.
+Decided by Claude under D-057 as D-100 (verify keeps the size budgets and the smoke; `pnpm
+perf` is a gate before a slice with a game screen closes); Randy may overrule. Still his to
+set, not decided: (a) a simulation budget (Codex proposes 95th percentile at most 1.67 ms and
+99th at most 3.34 ms per step at eight players; measured today about 0.005 ms, so it would
+catch only gross regressions); (b) a game-only allocation guard for Tabao Rush (about 19 KB
+per step measured, about 1.1 MB a second); (c) whether frame time is accepted on a production
+build or the dev build. Needed by: T-07, the first game screen.
+

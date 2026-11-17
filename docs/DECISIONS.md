@@ -784,3 +784,14 @@ the ten-minute idle limit, or at the twelve-hour room limit), the host keeps the
 links, stops accepting new joins, and offers a new room after the game. This confirms
 D-095 (f). The host does not yet do this: today it ends the room. It is built with C-10 and
 C-15, where the session is wired to the host.
+
+**D-100 · 2026-11-17 · Claude under D-057** — Where performance budgets are checked (OQ-034).
+`pnpm verify` enforces the budgets it can measure without a browser (transfer sizes) and runs
+a short smoke of the performance harness. Budgets that need a real browser (PERF-001, PERF-010,
+PERF-012, PERF-030) are checked by `pnpm perf`, which the integrator runs on a quiet machine
+before any slice that draws a game screen is closed; a failure there blocks the slice exactly
+as a verify failure does. No budget is changed. "Not assessed" and "insufficient samples" are
+never a pass. Sample minima (180 s and 600 visible frames inside the round for PERF-001; 100
+observations for PERF-010 and PERF-012) are measurement-validity rules, not budgets. Randy may
+overrule; rule 6's wording in CLAUDE.md is his to change and is left as it is.
+
