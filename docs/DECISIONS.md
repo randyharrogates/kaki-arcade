@@ -1247,3 +1247,10 @@ the phone already uses for card text, and has a plain zero. Source asset:
 `assets/src/fonts/dm-sans/DMSans-Bold.ttf` from the official googlefonts/dm-fonts repository with
 its `OFL.txt` (SIL Open Font License 1.1); the JetBrains files are removed from A-08. Indices are
 fitted to one shared cap height and central ranks to another, the 10 included.
+
+**D-151 · 2026-11-18 · Claude** (under D-142; C-11 round-4 review) — Team setup's Start button, on
+the TV and the phone, uses the console primary (kopi brown `--ka-chip`, as on "Ready to start?"),
+not team red: on the phone a red Start sits under the Red team button and reads as a team colour.
+Team colours are kept for teams only. Notices on the team phone (moved by the leader, refusals) use
+21 px. Follow-up C-11b (backlog): grid labels that wrap at 667 and 844, and a visible pressed style
+for the Teams on/off toggle.
