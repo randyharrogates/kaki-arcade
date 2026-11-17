@@ -1045,3 +1045,11 @@ round-trip, loading the production build with an empty cache, at 844 × 390. "In
 first moment the controller's controls are drawn and a press on one is accepted (its handler
 fires). The check takes the median of 5 cold loads and fails above 2 s. Randy's real-phone test
 (K-07, X-09) remains the final word.
+
+**D-130 · 2026-11-17 · Claude** (under D-057, D-128) — On the console results screen, names in the
+ranking list stay on one line and end with an ellipsis when they do not fit; the two columns keep
+their 1 : 1.618 split whatever the names (`minmax(0, …)` tracks), so a wide 12-character name
+cannot squeeze the winner column. The winner column shows at most 4 player badges; with 5 or
+more tied it shows 3 badges and a "+N" badge. The keyboard hint reads "Enter: play again · Esc:
+game picker". Found by C-16's round 8 review with valid wide-script names (for example Tamil
+conjuncts) at the 12-character limit.
