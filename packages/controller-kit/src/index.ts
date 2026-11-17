@@ -18,3 +18,5 @@ export type { LayoutEngineProps } from './layout-renderer';
 export { placeLayout, diamondSpan } from './layout-placement';
 export { revisionProblem, layoutOutput } from './layout-types';
 export type { Layout, LayoutPart, LayoutOutput, LayoutValue } from './layout-types';
+
+export type { PrivateView, PanelBlock } from './layout-types';

@@ -444,6 +444,8 @@ it('round 3 permits needless private revisions', () => {
 it('round 2 repeat probes respect the original control audience', { timeout: 15000 }, () => {
   const guarded: GameModule<PicksState, PicksSettings> = {
     ...picks,
+    // This audience probe exercises the legacy control-only phone contract.
+    privateView: () => null,
     controllerLayout(state, id) {
       const layout = picks.controllerLayout(state, id);
       return {

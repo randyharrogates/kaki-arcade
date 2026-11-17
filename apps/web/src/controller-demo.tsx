@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { ControllerShell, FaceButtons, DPad, ShoulderButton, StartButton, Stick, controlSizes, LayoutEngine } from '@kaki/controller-kit';
 import type { Layout, LayoutOutput, LinkState } from '@kaki/controller-kit';
+import { privateFixtures } from './private-fixtures';
 import { layoutFixtures, nextWireLayout } from './layout-fixtures';
 import '../../../packages/controller-kit/src/layout.css';
 import type { SeatNumber } from '@kaki/ui';
@@ -11,6 +12,13 @@ import './controller-demo.css';
 // Development page: the stick (K-02) by default, the buttons (K-03) with ?controls=buttons.
 // The real layouts come from the layout engine (K-04).
 export function ControllerDemo() {
+  const privateName = new URLSearchParams(location.search).get('private');
+  const [privateView,setPrivateView] = useState(privateName ? privateFixtures[privateName] ?? null : null);
+  useEffect(() => {
+    const change = (event:Event) => { const name:unknown = (event as CustomEvent<unknown>).detail; if (typeof name === 'string' && privateFixtures[name]) setPrivateView(privateFixtures[name]); };
+    window.addEventListener('controller-demo-private',change);
+    return () => { window.removeEventListener('controller-demo-private',change); };
+  }, []);
   const layoutName = new URLSearchParams(location.search).get('layout');
   const [fixture, setFixture] = useState<Layout | null>(layoutName ? layoutFixtures[layoutName] ?? null : null);
   const outputs = useRef<LayoutOutput[]>([]);
@@ -65,7 +73,7 @@ export function ControllerDemo() {
   }, [cycle]);
   if (!mounted) return null;
   if (fixture) return <ControllerShell seat={seat} name={params.get('name') ?? 'Player'} link={link}>
-    {area && <LayoutEngine layout={fixture} area={area} viewport={area.viewport} isLeader={params.get('leader') === '1'} onOutput={output => {
+    {area && <LayoutEngine layout={fixture} privateView={privateView} area={area} viewport={area.viewport} isLeader={params.get('leader') === '1'} onOutput={output => {
       outputs.current.push(output);
       if (layoutReadout.current) { layoutReadout.current.dataset.outputs = JSON.stringify(outputs.current); layoutReadout.current.textContent = `${output.control} · ${output.phase} · r${String(output.revision)}`; }
       if (layoutName === 'options' && output.phase === 'choose') setFixture(old => layoutFixtures.watch ? nextWireLayout(old,layoutFixtures.watch) : null);

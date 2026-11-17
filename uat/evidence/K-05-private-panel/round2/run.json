@@ -1,0 +1,440 @@
+{
+  "slice": "K-05-private-panel",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- K-05-private-panel --phones 2",
+  "commit": "efd60712593ee12c89cd4bc4ea80d7e3de6a29f3",
+  "viewports": [
+    "667×375",
+    "667×443",
+    "844×390",
+    "932×430",
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "text-667",
+      "ms": 1229.2599160000004,
+      "status": "completed"
+    },
+    {
+      "name": "cards-667",
+      "ms": 330.3023750000002,
+      "status": "completed"
+    },
+    {
+      "name": "stats-667",
+      "ms": 324.5813339999995,
+      "status": "completed"
+    },
+    {
+      "name": "grid-667",
+      "ms": 323.5840419999995,
+      "status": "completed"
+    },
+    {
+      "name": "empty-667",
+      "ms": 300.1603749999995,
+      "status": "completed"
+    },
+    {
+      "name": "picker-667",
+      "ms": 277.71741699999984,
+      "status": "completed"
+    },
+    {
+      "name": "text-667",
+      "ms": 334.9085420000001,
+      "status": "completed"
+    },
+    {
+      "name": "cards-667",
+      "ms": 281.1622499999994,
+      "status": "completed"
+    },
+    {
+      "name": "stats-667",
+      "ms": 321.2987499999999,
+      "status": "completed"
+    },
+    {
+      "name": "grid-667",
+      "ms": 287.21154099999967,
+      "status": "completed"
+    },
+    {
+      "name": "empty-667",
+      "ms": 326.7818750000006,
+      "status": "completed"
+    },
+    {
+      "name": "picker-667",
+      "ms": 327.1055830000005,
+      "status": "completed"
+    },
+    {
+      "name": "text-844",
+      "ms": 288.8014579999999,
+      "status": "completed"
+    },
+    {
+      "name": "cards-844",
+      "ms": 309.9235000000008,
+      "status": "completed"
+    },
+    {
+      "name": "stats-844",
+      "ms": 276.065125000001,
+      "status": "completed"
+    },
+    {
+      "name": "grid-844",
+      "ms": 290.8498749999999,
+      "status": "completed"
+    },
+    {
+      "name": "empty-844",
+      "ms": 260.2712499999998,
+      "status": "completed"
+    },
+    {
+      "name": "picker-844",
+      "ms": 259.3833340000001,
+      "status": "completed"
+    },
+    {
+      "name": "text-932",
+      "ms": 268.2015420000007,
+      "status": "completed"
+    },
+    {
+      "name": "cards-932",
+      "ms": 316.8279160000002,
+      "status": "completed"
+    },
+    {
+      "name": "stats-932",
+      "ms": 334.07024999999885,
+      "status": "completed"
+    },
+    {
+      "name": "grid-932",
+      "ms": 320.11825000000135,
+      "status": "completed"
+    },
+    {
+      "name": "empty-932",
+      "ms": 317.82324999999946,
+      "status": "completed"
+    },
+    {
+      "name": "picker-932",
+      "ms": 322.51920900000005,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 997.7013330000009,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-private-text-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-private-cards-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-private-stats-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-private-grid-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-private-empty-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-private-picker-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-private-text-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-private-cards-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-private-stats-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-private-grid-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-private-empty-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-private-picker-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-private-text-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-private-cards-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-private-stats-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone1-private-grid-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-private-empty-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-private-picker-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-private-text-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone1-private-cards-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone1-private-stats-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone1-private-grid-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone1-private-empty-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone1-private-picker-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone1-private-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-private-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone1-private-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone1-private-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-phone1-private-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-phone1-private-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-phone1-private-crossfade-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-phone1-private-crossfade-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-phone1-private-crossfade-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone1-private-crossfade-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-phone1-private-crossfade-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-phone1-private-crossfade-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-host-host-no-private-content.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-private-text-667.jpg",
+    "02-phone1-private-cards-667.jpg",
+    "03-phone1-private-stats-667.jpg",
+    "04-phone1-private-grid-667.jpg",
+    "05-phone1-private-empty-667.jpg",
+    "06-phone1-private-picker-667.jpg",
+    "07-phone1-private-text-667.jpg",
+    "08-phone1-private-cards-667.jpg",
+    "09-phone1-private-stats-667.jpg",
+    "10-phone1-private-grid-667.jpg",
+    "11-phone1-private-empty-667.jpg",
+    "12-phone1-private-picker-667.jpg",
+    "13-phone1-private-text-844.jpg",
+    "14-phone1-private-cards-844.jpg",
+    "15-phone1-private-stats-844.jpg",
+    "16-phone1-private-grid-844.jpg",
+    "17-phone1-private-empty-844.jpg",
+    "18-phone1-private-picker-844.jpg",
+    "19-phone1-private-text-932.jpg",
+    "20-phone1-private-cards-932.jpg",
+    "21-phone1-private-stats-932.jpg",
+    "22-phone1-private-grid-932.jpg",
+    "23-phone1-private-empty-932.jpg",
+    "24-phone1-private-picker-932.jpg",
+    "37-strip-private-crossfade.jpg",
+    "38-host-host-no-private-content.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-private-text-667.jpg",
+      "bytes": 126222
+    },
+    {
+      "file": "02-phone1-private-cards-667.jpg",
+      "bytes": 105676
+    },
+    {
+      "file": "03-phone1-private-stats-667.jpg",
+      "bytes": 79565
+    },
+    {
+      "file": "04-phone1-private-grid-667.jpg",
+      "bytes": 142932
+    },
+    {
+      "file": "05-phone1-private-empty-667.jpg",
+      "bytes": 59434
+    },
+    {
+      "file": "06-phone1-private-picker-667.jpg",
+      "bytes": 153831
+    },
+    {
+      "file": "07-phone1-private-text-667.jpg",
+      "bytes": 136435
+    },
+    {
+      "file": "08-phone1-private-cards-667.jpg",
+      "bytes": 114287
+    },
+    {
+      "file": "09-phone1-private-stats-667.jpg",
+      "bytes": 89016
+    },
+    {
+      "file": "10-phone1-private-grid-667.jpg",
+      "bytes": 153978
+    },
+    {
+      "file": "11-phone1-private-empty-667.jpg",
+      "bytes": 68824
+    },
+    {
+      "file": "12-phone1-private-picker-667.jpg",
+      "bytes": 163592
+    },
+    {
+      "file": "13-phone1-private-text-844.jpg",
+      "bytes": 114159
+    },
+    {
+      "file": "14-phone1-private-cards-844.jpg",
+      "bytes": 121241
+    },
+    {
+      "file": "15-phone1-private-stats-844.jpg",
+      "bytes": 95700
+    },
+    {
+      "file": "16-phone1-private-grid-844.jpg",
+      "bytes": 172486
+    },
+    {
+      "file": "17-phone1-private-empty-844.jpg",
+      "bytes": 74931
+    },
+    {
+      "file": "18-phone1-private-picker-844.jpg",
+      "bytes": 174302
+    },
+    {
+      "file": "19-phone1-private-text-932.jpg",
+      "bytes": 128140
+    },
+    {
+      "file": "20-phone1-private-cards-932.jpg",
+      "bytes": 135748
+    },
+    {
+      "file": "21-phone1-private-stats-932.jpg",
+      "bytes": 106589
+    },
+    {
+      "file": "22-phone1-private-grid-932.jpg",
+      "bytes": 182859
+    },
+    {
+      "file": "23-phone1-private-empty-932.jpg",
+      "bytes": 86673
+    },
+    {
+      "file": "24-phone1-private-picker-932.jpg",
+      "bytes": 189033
+    },
+    {
+      "file": "37-strip-private-crossfade.jpg",
+      "bytes": 1347051
+    },
+    {
+      "file": "38-host-host-no-private-content.jpg",
+      "bytes": 255854
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 3429
+    },
+    {
+      "file": "run.json",
+      "bytes": 9652
+    }
+  ],
+  "totalBytes": 4591676,
+  "maxBytes": 12582912
+}

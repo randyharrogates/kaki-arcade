@@ -368,17 +368,18 @@ export interface Crossfade {
   /**
    * The old screen. It stays fully drawn underneath for the whole change, so the two overlap
    * and there is never a blank or see-through frame. Remove it when this finishes.
+   * With exitOnly, an unpaired old block fades out in the shorter exit duration.
    */
   outgoing: Motion;
 }
 
 /** The screen change (4A): a crossfade at `slow` with old and new overlapping. */
 // Icon swaps use this opacity-only crossfade too (D-056).
-export function crossfade(option?: ReducedOption): Crossfade {
+export function crossfade(option?: ReducedOption & { readonly exitOnly?: boolean }): Crossfade {
   const timing = { duration: duration.slow, easing: easing.inOut };
   return {
     incoming: build([{ opacity: 0 }, { opacity: 1 }], timing, option),
-    outgoing: build([{ opacity: 1 }, { opacity: 1 }], timing, option),
+    outgoing: build([{ opacity: 1 }, { opacity: option?.exitOnly ? 0 : 1 }], option?.exitOnly ? { ...timing,duration:exitDuration('slow') } : timing, option),
   };
 }
 

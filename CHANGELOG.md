@@ -2,6 +2,15 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — K-05: private panel on the phone
+
+- `packages/controller-kit/src/layout-renderer.ts`, `layout.css`: the private block (text, stats,
+  cards, choices, grid), fitted by `packages/platform/src/game/private-placement.ts`; crossfades
+  per block or across the whole panel, interrupted fades cleaned up; card turn with the new
+  card-perspective token in `@kaki/ui` (D-140). CTRL-003 (private panel part).
+- Tests: renderer DOM tests, placement tests, private-session delivery; UAT
+  `uat/slices/K-05-private-panel.mjs` at four phone sizes with three frame strips.
+
 ## 2026-11-18 — C-16: start a game from the picker
 
 - `apps/web/src/`: Start loads the chosen game's module (`session-loading.ts`, before `init`; the

@@ -8,6 +8,7 @@
  */
 
 :root {
+  --ka-card-perspective: 610px;
   --ka-space-0: 0;
   --ka-space-5: 5px;
   --ka-space-8: 8px;

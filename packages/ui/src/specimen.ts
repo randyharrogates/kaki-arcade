@@ -261,7 +261,7 @@ h1, h2, h3, p { margin: 0; font-size: inherit; font-weight: var(--ka-weight-regu
 .chit { grid-area: 1 / 1; padding: var(--ka-space-13) var(--ka-space-21); text-align: center; font-weight: var(--ka-weight-bold); line-height: 1.1; }
 .ring { grid-area: 1 / 1; width: var(--ka-space-89); height: var(--ka-space-89); border-radius: 50%; border: 5px solid var(--ka-accent); opacity: 0; }
 .score { font-size: var(--ka-type-55); }
-.table { perspective: 610px; }
+.table { perspective: var(--ka-card-perspective); }
 .card { position: relative; width: var(--ka-space-89); height: var(--ka-space-144); }
 .card span { position: absolute; inset: 0; border-radius: var(--ka-radius-medium); display: grid; place-items: center; }
 .card .back { background-color: var(--ka-card-back); background-image: var(--ka-card-back-treatment); border: 5px solid var(--ka-card-back-border); }

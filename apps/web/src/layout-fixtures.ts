@@ -11,6 +11,7 @@ const answers: LayoutPart = { kind:'options',id:'answers',size:'large',options:[
 ] };
 const grid: LayoutPart = { kind:'grid',id:'grid',rows:4,cols:4,cells:Array.from({ length:16 },(_,i) => ({ label:String(i+1), ...(i === 0 ? { state:'selected' as const } : {}) })) };
 export const layoutFixtures: Readonly<Record<string, Layout>> = {
+  empty:{ revision:1,controls:[] },
   'stick-faces':{ revision:1,controls:[{ kind:'stick',id:'move' },...faces] },
   'long-answer':{ revision:1,controls:[{ ...answers,options:answers.options.map((o,i) => i === 0 ? { ...o,label:'Modular Interface of Digital Instruments' } : o) }] },
   'hidden-cards':{ revision:1,controls:[{ kind:'cards',id:'hidden',tappable:true,cards:[{ id:'back',label:'Secret',faceDown:true },{ id:'disabled',label:'Secret',faceDown:true,state:'disabled' }] }] },

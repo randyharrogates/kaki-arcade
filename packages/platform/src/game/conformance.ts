@@ -1,3 +1,4 @@
+import { placeController } from './private-placement';
 // The conformance kit (PLAT-030 to PLAT-033, PLAT-025): what every game must pass before it
 // is put in front of the console. A game's own test file calls it:
 //
@@ -63,6 +64,13 @@ import type {
   Secret,
   TeamId,
 } from './types';
+/** D-132: conformance and the phone engine call the same pure placement. */
+export function checkPrivatePhoneFit(layout: ControllerLayout, view: PrivateView | null, area = { width:667,height:307 }, viewport = { width:area.width,height:area.height+68 }): string[] {
+  for (const leader of [false,true]) {
+    if (!placeController(layout,view,area,leader,{},viewport).fits) return [`D-132: layout plus private view cannot fit a ${String(area.width)} × ${String(area.height)} play area with control floors, 13 px wrapped text and 55 px private cards (${leader ? 'leader' : 'non-leader'})`];
+  }
+  return [];
+}
 export const CONFORMANCE_CHECKS = [
   ['meta', 'Picker details are complete and consistent'],
   ['settings', 'The settings schema is sound and its defaults validate'],
@@ -809,7 +817,7 @@ class Kit<State> {
       let problems = this.layoutChecks.get(key);
       if (problems === undefined) {
         const found = [...checkLayout(layout), ...checkPrivateView(view)];
-        if (found.length === 0) found.push(...checkPhoneFit(layout, view));
+        if (found.length === 0) found.push(...(view?.blocks.length ? checkPrivatePhoneFit(layout, view) : checkPhoneFit(layout, view)));
         if (this.layoutChecks.size >= 512) this.layoutChecks.clear();
         this.layoutChecks.set(key, found);
         problems = found;
@@ -818,7 +826,7 @@ class Kit<State> {
         const size = problem.includes('bytes; the most the protocol');
         ledger.fail(size ? 'views-json' : 'layout', `${where}, ${player.id}`, problem);
       }
-      if (problems.length > 0) {
+      if (problems.some(problem => !problem.startsWith('D-132:'))) {
         ok = false;
         continue;
       }

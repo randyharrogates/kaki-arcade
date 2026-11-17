@@ -54,6 +54,8 @@ uat/
 docs/
 ```
 
+- Controller placement dependency: controller-kit imports the pure `@kaki/platform/{layout,phone-placement,phone-placement-types,private-placement}` exports; conformance imports those same modules. They depend on the phone contract and the pure UI line-height token, never the renderer or DOM.
+
 ## 3. The game interface (PLAT-030 to PLAT-033)
 
 Every game is a module exporting the interface below. The exact types are in

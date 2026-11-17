@@ -118,3 +118,6 @@ export function goldenWidth(height: number): number {
 
 /** `aspect-ratio` for a media panel. */
 export const GOLDEN_ASPECT = '1.618 / 1';
+
+/** D-140: perspective distance for turning cards, in px. */
+export const CARD_PERSPECTIVE = 610;

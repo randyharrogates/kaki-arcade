@@ -209,6 +209,9 @@ describe('readSources', () => {
       'json.ts',
       'kit.ts',
       'layout.ts',
+      'phone-placement-types.ts',
+      'phone-placement.ts',
+      'private-placement.ts',
       'purity.ts',
       'settings.ts',
       'types.ts',
@@ -216,9 +219,9 @@ describe('readSources', () => {
   });
 });
 describe('the game interface itself is pure', () => {
-  it('has no clock, timer or unseeded randomness, and imports only sim-core', () => {
+  it('has no clock, timer or unseeded randomness, and only placement imports UI tokens', () => {
     expect(
-      scanSources(readSources(fs, HERE).filter((file) => file.path !== 'conformance.ts')),
+      readSources(fs, HERE).filter(file => file.path !== 'conformance.ts').flatMap(file => scanSources([file],file.path === 'private-placement.ts' ? { allowImports:['@kaki/ui'] } : {})),
     ).toEqual([]);
   });
 });

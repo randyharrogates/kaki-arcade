@@ -27,8 +27,8 @@
 .ka-layout-ghost { position: absolute; inset: 0; z-index: 0; }
 
 .ka-layout-options > :only-child { padding-inline: var(--ka-space-13); font-size: var(--ka-phone-type-34); }
-.ka-layout-options > :only-child span { min-width: 0; white-space: nowrap; }
-.ka-layout-target[data-label-step="21"] > span { flex: 1 1 0; white-space: normal; }
+.ka-layout-options > :only-child span { min-width: 0; white-space: normal; }
+.ka-layout-target[data-label-step="21"] > span { flex: 0 1 auto; white-space: normal; }
 .ka-layout-options > :only-child[data-label-step="21"] span { white-space: normal; }
 
 .ka-layout-engine .ka-button-diamond { gap: var(--layout-gap); }
@@ -42,3 +42,35 @@
 
 .ka-layout-card-back[aria-disabled='true'], .ka-layout-card-back[data-state='disabled'] { background-color: var(--ka-disabled-fill); background-image: var(--ka-disabled-card-back-treatment); border-color: var(--ka-disabled-border); }
 .ka-layout-grid > button > span { min-width: 0; line-height: 1; }
+
+/* D-132: block geometry comes from the same fit calculation as placement. */
+.ka-private-panel { position:absolute; display:flex; flex-direction:column; justify-content:center; gap:var(--layout-gap); }
+.ka-private-block { flex:none; min-width:0; }
+.ka-private-panel .ka-layout-text { overflow-wrap:normal; line-height:var(--ka-line-body); font-size:var(--ka-phone-type-34); }
+.ka-private-panel .ka-layout-text > span { min-width:0; max-width:100%; }
+.ka-private-panel .ka-layout-cards { width:100%; max-width:100%; margin-inline:auto; perspective:var(--ka-card-perspective); }
+.ka-private-panel .ka-layout-card { box-sizing:border-box; min-width:var(--ka-space-55); aspect-ratio:68 / 93; }
+.ka-private-panel .ka-layout-grid > div { min-height:0; min-width:0; aspect-ratio:auto; position:relative; padding:var(--ka-space-5); }
+.ka-private-grid-label { width:100%; height:100%; min-width:0; min-height:0; text-align:center; line-height:var(--ka-line-display); display:flex; align-items:center; justify-content:center; }
+.ka-private-panel .ka-layout-grid { width:100%; height:100%; margin-inline:auto; }
+.ka-private-panel .ka-layout-card { position:relative; }
+.ka-private-stat-value { flex:1; width:100%; min-height:0; display:flex; align-items:center; justify-content:center; }
+.ka-private-stat-label { flex:none; line-height:var(--ka-line-body); }
+.ka-private-ghost, .ka-private-ghost * { pointer-events:none !important; }
+.ka-private-panel .ka-layout-target { pointer-events:none; }
+.ka-private-stat { height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.ka-private-stat-label { font-size:var(--ka-phone-type-13); }
+.ka-private-stat-value { font-size:var(--private-stat-value, var(--ka-phone-type-89)); line-height:var(--ka-line-body); }
+.ka-private-panel [data-kind='cards'] { width:100%; height:100%; }
+.ka-layout-options > :only-child[data-label-step="21"] svg { width:var(--ka-space-21); height:var(--ka-space-21); }
+
+.ka-private-panel .ka-layout-card-face { font-size:var(--private-card-type); }
+.ka-private-stat > span { max-width:100%; text-align:center; }
+
+.ka-layout-options > button > span { flex:0 1 auto; width:fit-content; max-width:100%; }
+.ka-layout-target[data-label-step="21"] > svg { width:var(--ka-space-21); height:var(--ka-space-21); }
+
+.ka-private-panel .ka-layout-grid > [data-state='selected'] { outline-offset:calc(-1 * var(--ka-space-5)); }
+
+.ka-private-stat-label { overflow-wrap:normal; }
+.ka-private-stat-value { white-space:nowrap; overflow-wrap:normal; }

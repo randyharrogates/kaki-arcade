@@ -7,10 +7,15 @@
   "exports": {
     ".": "./src/index.ts",
     "./kit": "./src/game/kit.ts",
-    "./harness": "./src/harness/index.ts"
+    "./harness": "./src/harness/index.ts",
+    "./layout": "./src/game/layout.ts",
+    "./phone-placement": "./src/game/phone-placement.ts",
+    "./phone-placement-types": "./src/game/phone-placement-types.ts",
+    "./private-placement": "./src/game/private-placement.ts"
   },
   "dependencies": {
     "@kaki/protocol": "workspace:*",
-    "@kaki/sim-core": "workspace:*"
+    "@kaki/sim-core": "workspace:*",
+    "@kaki/ui": "workspace:*"
   }
 }

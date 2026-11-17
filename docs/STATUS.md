@@ -310,6 +310,15 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   mid-round watch and share the score. Rules only: no screen yet. Built by Codex; two review
   rounds, the last must-fix confirmed by the integrator against the reviewer's test.
 
+### Private panel on the phone (K-05)
+
+- A game can show each phone a private panel: text, stats, cards, choices and a tappable grid,
+  seen only on that phone. It fits every phone size from 667 × 375 up without breaking a word;
+  grid labels step down together (D-140); a change crossfades without blur (D-056), a whole-panel
+  change fades as one surface, and a card turns face-up in perspective (610 px token). Rapid
+  back-to-back changes leave no stray styles. Evidence: `uat/evidence/K-05-private-panel/round7/`.
+  Tilt, shake and swipe area (the rest of CTRL-003) do not exist yet.
+
 ### Start a game from the picker (C-16)
 Start loads the chosen game (Rabakz's question bank only when Rabakz is picked), runs it, shows its
 TV screen and sends each phone its controller; pause and quit go back to the picker with the same

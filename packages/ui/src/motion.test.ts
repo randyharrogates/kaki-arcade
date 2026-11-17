@@ -462,3 +462,9 @@ describe('frame renderer allocation and environment contract', () => {
     expect(press(false, ON).options.duration).toBe(duration.fast);
   });
 });
+
+it('D-140 exit-only crossfade fades out with the shorter exit duration', () => {
+  expect(crossfade({ exitOnly:true,reduced:false }).outgoing.options.duration).toBe(exitDuration('slow'));
+  expect(crossfade({ exitOnly:true,reduced:false }).outgoing.keyframes.at(-1)).toEqual({ opacity:0 });
+  expect(crossfade({ reduced:false }).outgoing.keyframes.at(-1)).toEqual({ opacity:1 });
+});

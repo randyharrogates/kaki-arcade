@@ -12,10 +12,10 @@ it('steps labels to 21 for either measured overflow dimension (D-127)', () => {
   expect(labelTypeStep({ width:144,height:136 },{ width:144,height:100 })).toBe(21);
 });
 
-function measureFixture(naturalWidth: number, wrappedHeight: number, columnGap = '13px', padding = '13px', buttonWidth = 217, buttonHeight = 68) {
+function measureFixture(naturalWidth: number, wrappedHeight: number, columnGap = '13px', padding = '13px', buttonWidth = 217, buttonHeight = 68, wordWidth = 0) {
   const style = { cssText:'',flex:'',width:'',whiteSpace:'' };
   const label = {
-    style, clientWidth:55, scrollWidth:naturalWidth,
+    style, clientWidth:55, scrollWidth:wordWidth,
     getBoundingClientRect:() => ({ width:style.width === 'max-content' ? naturalWidth : 123,height:style.whiteSpace === 'nowrap' ? 34 : wrappedHeight }),
   } as unknown as HTMLElement;
   const button = {
@@ -41,7 +41,7 @@ it('CTRL-002 keeps the only-child span nowrap at step 34 and permits wrapping on
   const rules = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)];
   const whiteSpace = (step:string) => rules.filter(([,selector]) => selector?.includes('.ka-layout-options > :only-child') && (!selector.includes('[data-label-step=') || selector.includes(`[data-label-step="${step}"]`)))
     .flatMap(([, ,body]) => [...(body ?? '').matchAll(/white-space:\s*(\w+)/g)].map(match => match[1])).at(-1);
-  expect(whiteSpace('34')).toBe('nowrap');
+  expect(whiteSpace('34')).toBe('normal');
   expect(whiteSpace('21')).toBe('normal');
 });
 
@@ -59,7 +59,7 @@ it('CTRL-002 never steps down when any input dimension is non-finite', () => {
 });
 it('CTRL-002 gives step-21 labels the remaining flex width instead of their shrunk intrinsic width', () => {
   const css = readFileSync(new URL('./layout.css',import.meta.url),'utf8');
-  expect(css).toMatch(/\.ka-layout-target\[data-label-step="21"\] > span\s*\{[^}]*flex: 1 1 0;[^}]*white-space: normal;/);
+  expect(css).toMatch(/\.ka-layout-target\[data-label-step="21"\] > span\s*\{[^}]*flex: 0 1 auto;[^}]*white-space: normal;/);
 });
 
 it('CTRL-002 selects 21 for Modular Interface of Digital Instruments in a 667 answer button', () => {
@@ -109,4 +109,10 @@ it('CTRL-002 gives the 667 × 307 picker its natural 34 px Lock in width', () =>
   expect(labelTypeStep({ width:110,height:34 },{
     width:(action?.width ?? 0)-26-6-55-13,height:(action?.height ?? 0)-10-6,
   })).toBe(34);
+});
+
+it('CTRL-003 keeps a two-line 34 px label when its wrapped height fits', () => { expect(measureFixture(200,68,'13px','5px',217,100)).toBe(34); });
+
+it('CTRL-003 steps down when Instruments overflows a wrapped span despite fitting height', () => {
+  expect(measureFixture(680,120,'13px','5px',225,170,204)).toBe(21);
 });

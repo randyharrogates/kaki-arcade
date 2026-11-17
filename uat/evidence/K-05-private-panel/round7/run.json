@@ -1,0 +1,1099 @@
+{
+  "slice": "K-05-private-panel",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- K-05-private-panel --phones 1 --max-mb 14",
+  "commit": "7ee99aea9a5f5c46d96d058a3a5da213ec45b43e",
+  "viewports": [
+    "667×375",
+    "667×443",
+    "844×390",
+    "932×430"
+  ],
+  "steps": [
+    {
+      "name": "empty-text-667x375",
+      "ms": 894.4199160000003,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-667x375",
+      "ms": 284.1993339999999,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-3-667x375",
+      "ms": 298.1067499999999,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-5-667x375",
+      "ms": 252.142875,
+      "status": "completed"
+    },
+    {
+      "name": "empty-stats-667x375",
+      "ms": 275.37116700000024,
+      "status": "completed"
+    },
+    {
+      "name": "empty-stats-second-667x375",
+      "ms": 250.18795799999953,
+      "status": "completed"
+    },
+    {
+      "name": "empty-rabakz-667x375",
+      "ms": 255.71658300000036,
+      "status": "completed"
+    },
+    {
+      "name": "empty-long-text-667x375",
+      "ms": 261.6100000000006,
+      "status": "completed"
+    },
+    {
+      "name": "empty-text-cards-667x375",
+      "ms": 301.9973749999999,
+      "status": "completed"
+    },
+    {
+      "name": "empty-grid-667x375",
+      "ms": 249.94041600000037,
+      "status": "completed"
+    },
+    {
+      "name": "empty-grid-words-667x375",
+      "ms": 231.69583299999977,
+      "status": "completed"
+    },
+    {
+      "name": "empty-empty-667x375",
+      "ms": 231.27587500000027,
+      "status": "completed"
+    },
+    {
+      "name": "picker-picker-667x375",
+      "ms": 269.5431659999995,
+      "status": "completed"
+    },
+    {
+      "name": "picker-stats-667x375",
+      "ms": 250.2038330000005,
+      "status": "completed"
+    },
+    {
+      "name": "picker-stats-second-667x375",
+      "ms": 306.1341249999996,
+      "status": "completed"
+    },
+    {
+      "name": "long-answer-picker-667x375",
+      "ms": 232.5340409999999,
+      "status": "completed"
+    },
+    {
+      "name": "eight-long-options-text-667x375",
+      "ms": 618.3682920000001,
+      "status": "completed"
+    },
+    {
+      "name": "empty-text-667x443",
+      "ms": 216.4944170000008,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-667x443",
+      "ms": 265.1717919999992,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-3-667x443",
+      "ms": 233.54529099999854,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-5-667x443",
+      "ms": 248.96274999999878,
+      "status": "completed"
+    },
+    {
+      "name": "empty-stats-667x443",
+      "ms": 288.24466700000085,
+      "status": "completed"
+    },
+    {
+      "name": "empty-stats-second-667x443",
+      "ms": 246.49604100000033,
+      "status": "completed"
+    },
+    {
+      "name": "empty-rabakz-667x443",
+      "ms": 209.32454199999847,
+      "status": "completed"
+    },
+    {
+      "name": "empty-long-text-667x443",
+      "ms": 214.44033300000046,
+      "status": "completed"
+    },
+    {
+      "name": "empty-text-cards-667x443",
+      "ms": 211.8926250000004,
+      "status": "completed"
+    },
+    {
+      "name": "empty-grid-667x443",
+      "ms": 211.3799169999984,
+      "status": "completed"
+    },
+    {
+      "name": "empty-grid-words-667x443",
+      "ms": 216.3689579999991,
+      "status": "completed"
+    },
+    {
+      "name": "empty-empty-667x443",
+      "ms": 255.8307079999995,
+      "status": "completed"
+    },
+    {
+      "name": "picker-picker-667x443",
+      "ms": 210.15529199999946,
+      "status": "completed"
+    },
+    {
+      "name": "picker-stats-667x443",
+      "ms": 212.36449999999968,
+      "status": "completed"
+    },
+    {
+      "name": "picker-stats-second-667x443",
+      "ms": 212.21224999999868,
+      "status": "completed"
+    },
+    {
+      "name": "long-answer-picker-667x443",
+      "ms": 261.08350000000064,
+      "status": "completed"
+    },
+    {
+      "name": "eight-long-options-text-667x443",
+      "ms": 652.3005829999984,
+      "status": "completed"
+    },
+    {
+      "name": "empty-text-844x390",
+      "ms": 195.08737500000097,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-844x390",
+      "ms": 215.6239999999998,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-3-844x390",
+      "ms": 210.48270799999955,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-5-844x390",
+      "ms": 209.44216700000106,
+      "status": "completed"
+    },
+    {
+      "name": "empty-stats-844x390",
+      "ms": 210.21679200000108,
+      "status": "completed"
+    },
+    {
+      "name": "empty-stats-second-844x390",
+      "ms": 210.50437499999862,
+      "status": "completed"
+    },
+    {
+      "name": "empty-rabakz-844x390",
+      "ms": 211.88683400000082,
+      "status": "completed"
+    },
+    {
+      "name": "empty-long-text-844x390",
+      "ms": 262.2366669999992,
+      "status": "completed"
+    },
+    {
+      "name": "empty-text-cards-844x390",
+      "ms": 258.13966699999946,
+      "status": "completed"
+    },
+    {
+      "name": "empty-grid-844x390",
+      "ms": 212.67004199999974,
+      "status": "completed"
+    },
+    {
+      "name": "empty-grid-words-844x390",
+      "ms": 210.48837500000081,
+      "status": "completed"
+    },
+    {
+      "name": "empty-empty-844x390",
+      "ms": 212.48441600000115,
+      "status": "completed"
+    },
+    {
+      "name": "picker-picker-844x390",
+      "ms": 211.66891699999906,
+      "status": "completed"
+    },
+    {
+      "name": "picker-stats-844x390",
+      "ms": 261.6912080000002,
+      "status": "completed"
+    },
+    {
+      "name": "picker-stats-second-844x390",
+      "ms": 263.7030829999985,
+      "status": "completed"
+    },
+    {
+      "name": "long-answer-picker-844x390",
+      "ms": 214.27879099999882,
+      "status": "completed"
+    },
+    {
+      "name": "eight-long-options-text-844x390",
+      "ms": 601.3870000000006,
+      "status": "completed"
+    },
+    {
+      "name": "empty-text-932x430",
+      "ms": 233.04187499999898,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-932x430",
+      "ms": 267.26129199999923,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-3-932x430",
+      "ms": 220.00575000000026,
+      "status": "completed"
+    },
+    {
+      "name": "empty-cards-5-932x430",
+      "ms": 269.67612499999814,
+      "status": "completed"
+    },
+    {
+      "name": "empty-stats-932x430",
+      "ms": 215.52729199999885,
+      "status": "completed"
+    },
+    {
+      "name": "empty-stats-second-932x430",
+      "ms": 219.05975000000035,
+      "status": "completed"
+    },
+    {
+      "name": "empty-rabakz-932x430",
+      "ms": 264.6759579999998,
+      "status": "completed"
+    },
+    {
+      "name": "empty-long-text-932x430",
+      "ms": 216.50012499999866,
+      "status": "completed"
+    },
+    {
+      "name": "empty-text-cards-932x430",
+      "ms": 215.1687499999971,
+      "status": "completed"
+    },
+    {
+      "name": "empty-grid-932x430",
+      "ms": 216.38474999999744,
+      "status": "completed"
+    },
+    {
+      "name": "empty-grid-words-932x430",
+      "ms": 237.93712499999674,
+      "status": "completed"
+    },
+    {
+      "name": "empty-empty-932x430",
+      "ms": 265.86025000000154,
+      "status": "completed"
+    },
+    {
+      "name": "picker-picker-932x430",
+      "ms": 220.36191699999836,
+      "status": "completed"
+    },
+    {
+      "name": "picker-stats-932x430",
+      "ms": 224.25620799999888,
+      "status": "completed"
+    },
+    {
+      "name": "picker-stats-second-932x430",
+      "ms": 255.62862499999756,
+      "status": "completed"
+    },
+    {
+      "name": "long-answer-picker-932x430",
+      "ms": 274.90625,
+      "status": "completed"
+    },
+    {
+      "name": "eight-long-options-text-932x430",
+      "ms": 620.1310410000006,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-private-empty-text-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-private-empty-cards-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-private-empty-cards-3-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-private-empty-cards-5-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-private-empty-stats-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-private-empty-stats-second-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-private-empty-rabakz-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-private-empty-long-text-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-private-empty-text-cards-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-private-empty-grid-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-private-empty-grid-words-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-private-empty-empty-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-private-picker-picker-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-private-picker-stats-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-private-picker-stats-second-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone1-private-long-answer-picker-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-private-eight-long-options-text-667x375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-private-empty-text-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-private-empty-cards-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone1-private-empty-cards-3-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone1-private-empty-cards-5-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone1-private-empty-stats-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone1-private-empty-stats-second-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone1-private-empty-rabakz-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone1-private-empty-long-text-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-private-empty-text-cards-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone1-private-empty-grid-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone1-private-empty-grid-words-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-phone1-private-empty-empty-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-phone1-private-picker-picker-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-phone1-private-picker-stats-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-phone1-private-picker-stats-second-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-phone1-private-long-answer-picker-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone1-private-eight-long-options-text-667x443.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-phone1-private-empty-text-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-phone1-private-empty-cards-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-phone1-private-empty-cards-3-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-phone1-private-empty-cards-5-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-phone1-private-empty-stats-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-phone1-private-empty-stats-second-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-phone1-private-empty-rabakz-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-phone1-private-empty-long-text-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-phone1-private-empty-text-cards-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-phone1-private-empty-grid-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-phone1-private-empty-grid-words-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-phone1-private-empty-empty-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-phone1-private-picker-picker-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "48-phone1-private-picker-stats-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "49-phone1-private-picker-stats-second-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "50-phone1-private-long-answer-picker-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "51-phone1-private-eight-long-options-text-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "52-phone1-private-empty-text-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "53-phone1-private-empty-cards-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "54-phone1-private-empty-cards-3-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "55-phone1-private-empty-cards-5-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "56-phone1-private-empty-stats-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "57-phone1-private-empty-stats-second-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "58-phone1-private-empty-rabakz-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "59-phone1-private-empty-long-text-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "60-phone1-private-empty-text-cards-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "61-phone1-private-empty-grid-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "62-phone1-private-empty-grid-words-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "63-phone1-private-empty-empty-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "64-phone1-private-picker-picker-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "65-phone1-private-picker-stats-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "66-phone1-private-picker-stats-second-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "67-phone1-private-long-answer-picker-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "68-phone1-private-eight-long-options-text-932x430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "69-phone1-private-card-turn-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "70-phone1-private-card-turn-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "71-phone1-private-card-turn-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "72-phone1-private-card-turn-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "73-phone1-private-card-turn-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "74-phone1-private-card-turn-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "75-phone1-private-card-turn-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "76-phone1-private-card-turn-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "78-phone1-private-panel-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "79-phone1-private-panel-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "80-phone1-private-panel-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "81-phone1-private-panel-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "82-phone1-private-panel-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "83-phone1-private-panel-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "84-phone1-private-panel-crossfade-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "85-phone1-private-panel-crossfade-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "87-phone1-private-arrangement-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "88-phone1-private-arrangement-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "89-phone1-private-arrangement-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "90-phone1-private-arrangement-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "91-phone1-private-arrangement-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "92-phone1-private-arrangement-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "93-phone1-private-arrangement-crossfade-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "94-phone1-private-arrangement-crossfade-frame08.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-private-empty-text-667x375.jpg",
+    "02-phone1-private-empty-cards-667x375.jpg",
+    "03-phone1-private-empty-cards-3-667x375.jpg",
+    "04-phone1-private-empty-cards-5-667x375.jpg",
+    "05-phone1-private-empty-stats-667x375.jpg",
+    "06-phone1-private-empty-stats-second-667x375.jpg",
+    "07-phone1-private-empty-rabakz-667x375.jpg",
+    "08-phone1-private-empty-long-text-667x375.jpg",
+    "09-phone1-private-empty-text-cards-667x375.jpg",
+    "10-phone1-private-empty-grid-667x375.jpg",
+    "11-phone1-private-empty-grid-words-667x375.jpg",
+    "12-phone1-private-empty-empty-667x375.jpg",
+    "13-phone1-private-picker-picker-667x375.jpg",
+    "14-phone1-private-picker-stats-667x375.jpg",
+    "15-phone1-private-picker-stats-second-667x375.jpg",
+    "16-phone1-private-long-answer-picker-667x375.jpg",
+    "17-phone1-private-eight-long-options-text-667x375.jpg",
+    "18-phone1-private-empty-text-667x443.jpg",
+    "19-phone1-private-empty-cards-667x443.jpg",
+    "20-phone1-private-empty-cards-3-667x443.jpg",
+    "21-phone1-private-empty-cards-5-667x443.jpg",
+    "22-phone1-private-empty-stats-667x443.jpg",
+    "23-phone1-private-empty-stats-second-667x443.jpg",
+    "24-phone1-private-empty-rabakz-667x443.jpg",
+    "25-phone1-private-empty-long-text-667x443.jpg",
+    "26-phone1-private-empty-text-cards-667x443.jpg",
+    "27-phone1-private-empty-grid-667x443.jpg",
+    "28-phone1-private-empty-grid-words-667x443.jpg",
+    "29-phone1-private-empty-empty-667x443.jpg",
+    "30-phone1-private-picker-picker-667x443.jpg",
+    "31-phone1-private-picker-stats-667x443.jpg",
+    "32-phone1-private-picker-stats-second-667x443.jpg",
+    "33-phone1-private-long-answer-picker-667x443.jpg",
+    "34-phone1-private-eight-long-options-text-667x443.jpg",
+    "35-phone1-private-empty-text-844x390.jpg",
+    "36-phone1-private-empty-cards-844x390.jpg",
+    "37-phone1-private-empty-cards-3-844x390.jpg",
+    "38-phone1-private-empty-cards-5-844x390.jpg",
+    "39-phone1-private-empty-stats-844x390.jpg",
+    "40-phone1-private-empty-stats-second-844x390.jpg",
+    "41-phone1-private-empty-rabakz-844x390.jpg",
+    "42-phone1-private-empty-long-text-844x390.jpg",
+    "43-phone1-private-empty-text-cards-844x390.jpg",
+    "44-phone1-private-empty-grid-844x390.jpg",
+    "45-phone1-private-empty-grid-words-844x390.jpg",
+    "46-phone1-private-empty-empty-844x390.jpg",
+    "47-phone1-private-picker-picker-844x390.jpg",
+    "48-phone1-private-picker-stats-844x390.jpg",
+    "49-phone1-private-picker-stats-second-844x390.jpg",
+    "50-phone1-private-long-answer-picker-844x390.jpg",
+    "51-phone1-private-eight-long-options-text-844x390.jpg",
+    "52-phone1-private-empty-text-932x430.jpg",
+    "53-phone1-private-empty-cards-932x430.jpg",
+    "54-phone1-private-empty-cards-3-932x430.jpg",
+    "55-phone1-private-empty-cards-5-932x430.jpg",
+    "56-phone1-private-empty-stats-932x430.jpg",
+    "57-phone1-private-empty-stats-second-932x430.jpg",
+    "58-phone1-private-empty-rabakz-932x430.jpg",
+    "59-phone1-private-empty-long-text-932x430.jpg",
+    "60-phone1-private-empty-text-cards-932x430.jpg",
+    "61-phone1-private-empty-grid-932x430.jpg",
+    "62-phone1-private-empty-grid-words-932x430.jpg",
+    "63-phone1-private-empty-empty-932x430.jpg",
+    "64-phone1-private-picker-picker-932x430.jpg",
+    "65-phone1-private-picker-stats-932x430.jpg",
+    "66-phone1-private-picker-stats-second-932x430.jpg",
+    "67-phone1-private-long-answer-picker-932x430.jpg",
+    "68-phone1-private-eight-long-options-text-932x430.jpg",
+    "77-strip-private-card-turn.jpg",
+    "86-strip-private-panel-crossfade.jpg",
+    "95-strip-private-arrangement-crossfade.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-private-empty-text-667x375.jpg",
+      "bytes": 125523
+    },
+    {
+      "file": "02-phone1-private-empty-cards-667x375.jpg",
+      "bytes": 105676
+    },
+    {
+      "file": "03-phone1-private-empty-cards-3-667x375.jpg",
+      "bytes": 71149
+    },
+    {
+      "file": "04-phone1-private-empty-cards-5-667x375.jpg",
+      "bytes": 79871
+    },
+    {
+      "file": "05-phone1-private-empty-stats-667x375.jpg",
+      "bytes": 79890
+    },
+    {
+      "file": "06-phone1-private-empty-stats-second-667x375.jpg",
+      "bytes": 90911
+    },
+    {
+      "file": "07-phone1-private-empty-rabakz-667x375.jpg",
+      "bytes": 95374
+    },
+    {
+      "file": "08-phone1-private-empty-long-text-667x375.jpg",
+      "bytes": 219401
+    },
+    {
+      "file": "09-phone1-private-empty-text-cards-667x375.jpg",
+      "bytes": 73006
+    },
+    {
+      "file": "10-phone1-private-empty-grid-667x375.jpg",
+      "bytes": 131359
+    },
+    {
+      "file": "11-phone1-private-empty-grid-words-667x375.jpg",
+      "bytes": 106396
+    },
+    {
+      "file": "12-phone1-private-empty-empty-667x375.jpg",
+      "bytes": 59434
+    },
+    {
+      "file": "13-phone1-private-picker-picker-667x375.jpg",
+      "bytes": 160888
+    },
+    {
+      "file": "14-phone1-private-picker-stats-667x375.jpg",
+      "bytes": 157773
+    },
+    {
+      "file": "15-phone1-private-picker-stats-second-667x375.jpg",
+      "bytes": 162502
+    },
+    {
+      "file": "16-phone1-private-long-answer-picker-667x375.jpg",
+      "bytes": 174327
+    },
+    {
+      "file": "17-phone1-private-eight-long-options-text-667x375.jpg",
+      "bytes": 335661
+    },
+    {
+      "file": "18-phone1-private-empty-text-667x443.jpg",
+      "bytes": 135862
+    },
+    {
+      "file": "19-phone1-private-empty-cards-667x443.jpg",
+      "bytes": 114287
+    },
+    {
+      "file": "20-phone1-private-empty-cards-3-667x443.jpg",
+      "bytes": 81598
+    },
+    {
+      "file": "21-phone1-private-empty-cards-5-667x443.jpg",
+      "bytes": 89620
+    },
+    {
+      "file": "22-phone1-private-empty-stats-667x443.jpg",
+      "bytes": 89388
+    },
+    {
+      "file": "23-phone1-private-empty-stats-second-667x443.jpg",
+      "bytes": 101168
+    },
+    {
+      "file": "24-phone1-private-empty-rabakz-667x443.jpg",
+      "bytes": 109334
+    },
+    {
+      "file": "25-phone1-private-empty-long-text-667x443.jpg",
+      "bytes": 228986
+    },
+    {
+      "file": "26-phone1-private-empty-text-cards-667x443.jpg",
+      "bytes": 82438
+    },
+    {
+      "file": "27-phone1-private-empty-grid-667x443.jpg",
+      "bytes": 147771
+    },
+    {
+      "file": "28-phone1-private-empty-grid-words-667x443.jpg",
+      "bytes": 117692
+    },
+    {
+      "file": "29-phone1-private-empty-empty-667x443.jpg",
+      "bytes": 68824
+    },
+    {
+      "file": "30-phone1-private-picker-picker-667x443.jpg",
+      "bytes": 171891
+    },
+    {
+      "file": "31-phone1-private-picker-stats-667x443.jpg",
+      "bytes": 166871
+    },
+    {
+      "file": "32-phone1-private-picker-stats-second-667x443.jpg",
+      "bytes": 174365
+    },
+    {
+      "file": "33-phone1-private-long-answer-picker-667x443.jpg",
+      "bytes": 184370
+    },
+    {
+      "file": "34-phone1-private-eight-long-options-text-667x443.jpg",
+      "bytes": 346645
+    },
+    {
+      "file": "35-phone1-private-empty-text-844x390.jpg",
+      "bytes": 142291
+    },
+    {
+      "file": "36-phone1-private-empty-cards-844x390.jpg",
+      "bytes": 121241
+    },
+    {
+      "file": "37-phone1-private-empty-cards-3-844x390.jpg",
+      "bytes": 88138
+    },
+    {
+      "file": "38-phone1-private-empty-cards-5-844x390.jpg",
+      "bytes": 97468
+    },
+    {
+      "file": "39-phone1-private-empty-stats-844x390.jpg",
+      "bytes": 95401
+    },
+    {
+      "file": "40-phone1-private-empty-stats-second-844x390.jpg",
+      "bytes": 106699
+    },
+    {
+      "file": "41-phone1-private-empty-rabakz-844x390.jpg",
+      "bytes": 111880
+    },
+    {
+      "file": "42-phone1-private-empty-long-text-844x390.jpg",
+      "bytes": 236423
+    },
+    {
+      "file": "43-phone1-private-empty-text-cards-844x390.jpg",
+      "bytes": 87703
+    },
+    {
+      "file": "44-phone1-private-empty-grid-844x390.jpg",
+      "bytes": 148092
+    },
+    {
+      "file": "45-phone1-private-empty-grid-words-844x390.jpg",
+      "bytes": 124404
+    },
+    {
+      "file": "46-phone1-private-empty-empty-844x390.jpg",
+      "bytes": 74931
+    },
+    {
+      "file": "47-phone1-private-picker-picker-844x390.jpg",
+      "bytes": 174824
+    },
+    {
+      "file": "48-phone1-private-picker-stats-844x390.jpg",
+      "bytes": 175962
+    },
+    {
+      "file": "49-phone1-private-picker-stats-second-844x390.jpg",
+      "bytes": 181066
+    },
+    {
+      "file": "50-phone1-private-long-answer-picker-844x390.jpg",
+      "bytes": 188829
+    },
+    {
+      "file": "51-phone1-private-eight-long-options-text-844x390.jpg",
+      "bytes": 377796
+    },
+    {
+      "file": "52-phone1-private-empty-text-932x430.jpg",
+      "bytes": 155241
+    },
+    {
+      "file": "53-phone1-private-empty-cards-932x430.jpg",
+      "bytes": 135748
+    },
+    {
+      "file": "54-phone1-private-empty-cards-3-932x430.jpg",
+      "bytes": 100495
+    },
+    {
+      "file": "55-phone1-private-empty-cards-5-932x430.jpg",
+      "bytes": 108915
+    },
+    {
+      "file": "56-phone1-private-empty-stats-932x430.jpg",
+      "bytes": 107074
+    },
+    {
+      "file": "57-phone1-private-empty-stats-second-932x430.jpg",
+      "bytes": 118823
+    },
+    {
+      "file": "58-phone1-private-empty-rabakz-932x430.jpg",
+      "bytes": 129015
+    },
+    {
+      "file": "59-phone1-private-empty-long-text-932x430.jpg",
+      "bytes": 250012
+    },
+    {
+      "file": "60-phone1-private-empty-text-cards-932x430.jpg",
+      "bytes": 100550
+    },
+    {
+      "file": "61-phone1-private-empty-grid-932x430.jpg",
+      "bytes": 165527
+    },
+    {
+      "file": "62-phone1-private-empty-grid-words-932x430.jpg",
+      "bytes": 132985
+    },
+    {
+      "file": "63-phone1-private-empty-empty-932x430.jpg",
+      "bytes": 86673
+    },
+    {
+      "file": "64-phone1-private-picker-picker-932x430.jpg",
+      "bytes": 189514
+    },
+    {
+      "file": "65-phone1-private-picker-stats-932x430.jpg",
+      "bytes": 190016
+    },
+    {
+      "file": "66-phone1-private-picker-stats-second-932x430.jpg",
+      "bytes": 201100
+    },
+    {
+      "file": "67-phone1-private-long-answer-picker-932x430.jpg",
+      "bytes": 202328
+    },
+    {
+      "file": "68-phone1-private-eight-long-options-text-932x430.jpg",
+      "bytes": 394115
+    },
+    {
+      "file": "77-strip-private-card-turn.jpg",
+      "bytes": 930653
+    },
+    {
+      "file": "86-strip-private-panel-crossfade.jpg",
+      "bytes": 1267701
+    },
+    {
+      "file": "95-strip-private-arrangement-crossfade.jpg",
+      "bytes": 1018821
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 11014
+    },
+    {
+      "file": "run.json",
+      "bytes": 28076
+    }
+  ],
+  "totalBytes": 13197832,
+  "maxBytes": 14680064
+}

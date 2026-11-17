@@ -1,20 +1,6 @@
-import type { ColourTokenName } from '@kaki/ui';
-/** Structural input boundary: accepts platform ControllerLayout without a runtime dependency.
- * Keep in step with platform/src/game/layout.ts; platform owns the wire contract. */
-export type Face = 'face-bottom' | 'face-right' | 'face-left' | 'face-top';
-export interface Item { readonly id?: string; readonly label?: string; readonly state?: 'plain' | 'selected' | 'disabled'; readonly focus?: boolean; readonly colour?: ColourTokenName; readonly face?: Face; readonly faceDown?: boolean; readonly mark?: string }
-interface Base { readonly id: string; readonly audience?: 'everyone' | 'leader' | 'not-leader' }
-export type LayoutPart = Base & (
-  | { readonly kind: 'stick' | 'dpad' | 'tilt' }
-  | { readonly kind: 'button'; readonly button: Face | 'shoulder-left' | 'shoulder-right'; readonly label: string; readonly disabled?: boolean; readonly colour?: ColourTokenName }
-  | { readonly kind: 'shake'; readonly button: Face | 'shoulder-left' | 'shoulder-right' }
-  | { readonly kind: 'swipe'; readonly label?: string }
-  | { readonly kind: 'options'; readonly options: readonly (Item & { readonly id: string; readonly label: string })[]; readonly size?: 'large' }
-  | { readonly kind: 'grid'; readonly rows: number; readonly cols: number; readonly cells: readonly Item[] }
-  | { readonly kind: 'cards'; readonly cards: readonly (Item & { readonly id: string; readonly label: string })[]; readonly tappable?: boolean }
-  | { readonly kind: 'text'; readonly text: string; readonly tone?: 'title' | 'body' | 'note' }
-);
-export interface Layout { readonly revision: number; readonly controls: readonly LayoutPart[] }
+/** Structural input boundary shared with pure placement; platform owns the wire contract. */
+export type { Face,Item,LayoutPart,Layout,PanelBlock,PrivateView } from '@kaki/platform/phone-placement-types';
+import type { Layout,LayoutPart } from '@kaki/platform/phone-placement-types';
 export type LayoutValue = boolean | string | number | { readonly x: number; readonly y: number };
 export interface LayoutOutput { readonly control: string; readonly revision: number; readonly phase: 'press' | 'release' | 'change' | 'choose'; readonly value: LayoutValue }
 export const faceShape = { 'face-bottom': 'cross', 'face-right': 'circle', 'face-left': 'square', 'face-top': 'triangle' } as const;

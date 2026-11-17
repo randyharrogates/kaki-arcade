@@ -11,6 +11,7 @@
   "dependencies": {
     "@kaki/protocol": "workspace:*",
     "@kaki/ui": "workspace:*",
-    "preact": "11.2.0"
+    "preact": "11.2.0",
+    "@kaki/platform": "workspace:*"
   }
 }

@@ -18,6 +18,9 @@
     },
     {
       "path": "../ui/tsconfig.lib.json"
+    },
+    {
+      "path": "../platform/tsconfig.lib.json"
     }
   ]
 }

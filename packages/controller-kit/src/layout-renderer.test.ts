@@ -2,14 +2,14 @@ import { afterEach, expect, it, vi } from 'vitest';
 import type { VNode } from 'preact';
 import { LayoutEngine } from './layout-renderer';
 import type { Layout, LayoutOutput } from './layout-types';
-const hooks = vi.hoisted(() => ({ refs:[] as { current:unknown }[], index:0, effects:[] as (() => undefined | (() => void))[] }));
+const hooks = vi.hoisted(() => ({ updates:[] as unknown[], refs:[] as { current:unknown }[], index:0, effects:[] as (() => undefined | (() => void))[] }));
 vi.mock('preact/hooks',() => ({
   useMemo:(compute:() => unknown) => compute(),
   useRef:(initial:unknown) => hooks.refs[hooks.index++] ?? (hooks.refs[hooks.index-1] = { current:initial }),
-  useState:(initial:unknown) => [initial,vi.fn()],
+  useState:(initial:unknown) => [initial,(value:unknown) => { hooks.updates.push(value); }],
   useLayoutEffect:(effect:() => undefined | (() => void)) => { hooks.effects.push(effect); },
 }));
-afterEach(() => { hooks.refs = []; hooks.index = 0; hooks.effects = []; vi.unstubAllGlobals(); });
+afterEach(() => { hooks.updates = []; hooks.refs = []; hooks.index = 0; hooks.effects = []; vi.unstubAllGlobals(); });
 function engine(layout:Layout,onOutput:(output:LayoutOutput) => void = vi.fn()) {
   hooks.index = 0; hooks.effects = [];
   return LayoutEngine({ layout,viewport:{ width:844,height:390 }, area:{ width:844,height:322 },onOutput });
@@ -117,4 +117,148 @@ it('CTRL-002 captures the current DOM only at a tap-signature swap', () => {
   expect(cloneNode).not.toHaveBeenCalled();
   engine({ revision:3,controls:[{ kind:'options',id:'options',options:[{ id:'b',label:'Changed answer' }] }] });
   expect(cloneNode).toHaveBeenCalledExactlyOnceWith(true);
+});
+
+it('CTRL-003 private-only score changes snapshot only the panel, never held controls', () => {
+  const layout:Layout = { revision:1,controls:[{ kind:'stick',id:'move' }] };
+  const render = (value:number) => { hooks.index = 0; hooks.effects = []; return LayoutEngine({ layout,privateView:{ revision:value,blocks:[{ kind:'stat',label:'Points',value }] },area:{ width:667,height:307 },viewport:{ width:667,height:375 },onOutput:vi.fn() }); };
+  render(1);
+  const cloneControls = vi.fn();
+  const clonePanel = vi.fn(() => ({}));
+  const ref = hooks.refs[0]; if (!ref) throw new Error('No root');
+  ref.current = { cloneNode:cloneControls,querySelector:() => ({ cloneNode:clonePanel }) };
+  render(2);
+  expect(cloneControls).not.toHaveBeenCalled();
+  expect(clonePanel).toHaveBeenCalledExactlyOnceWith(true);
+});
+
+// Exercise the actual fit and transition effects with DOM geometry that overflows
+// only while an outgoing decorative block participates in scroll measurement.
+import { privateFixtures } from '../../../apps/web/src/private-fixtures';
+import { layoutFixtures } from '../../../apps/web/src/layout-fixtures';
+import { placeController } from './private-panel';
+class PrivateNode {
+  style:Record<string,string> = {}; inert = false; children:PrivateNode[] = [];
+  classes = new Set<string>(); parent:PrivateNode | null = null;
+  classList = { contains:(name:string) => this.classes.has(name),add:(name:string) => { this.classes.add(name); } };
+  getBoundingClientRect() { return { left:0,top:0 }; }
+  offsetLeft = 0; offsetTop = 0; offsetWidth = 100; offsetHeight = 100;
+  clientWidth = 100; clientHeight = 100;
+  get scrollWidth() { return this.children.some(n => n.classes.has('ka-private-ghost')) ? 1000 : 100; }
+  get scrollHeight() { return this.scrollWidth; }
+  setAttribute() { /* inert snapshot metadata */ }
+  remove() { if (this.parent) this.parent.children = this.parent.children.filter(n => n !== this); }
+  replaceWith(node:PrivateNode) { const parent = this.parent; if (parent) { parent.children[parent.children.indexOf(this)] = node; node.parent = parent; this.parent = null; } }
+  append(node:PrivateNode) { node.remove(); this.children.push(node); node.parent = this; }
+  insertBefore(node:PrivateNode,incoming:PrivateNode) { node.remove(); this.children.splice(this.children.indexOf(incoming),0,node); node.parent = this; }
+  cloneNode():PrivateNode { const node = new PrivateNode(); this.children.forEach(child => { node.append(child.cloneNode()); }); return node; }
+  querySelectorAll(selector:string):PrivateNode[] { return selector === '.ka-private-ghost' ? this.children.filter(n => n.classes.has('ka-private-ghost')) : []; }
+  querySelector(selector:string) { return selector.includes('ka-private-panel') ? this.children[0] ?? null : null; }
+  animations:{ finish:() => void; keyframes:unknown; options:unknown }[] = [];
+  animate(keyframes:unknown,options:unknown) { let finish = () => { /* resolved by the test */ }; const finished = new Promise<void>(resolve => { finish = resolve; }); this.animations.push({ finish,keyframes,options }); return { finished,cancel:() => { finish(); } }; }
+}
+for (const [from,to] of [['cards','text'],['cards','stats'],['revealed','text'],['grid','text'],['stats','rabakz'],['rabakz','stats']] as const) it(`CTRL-003 motion ${from} -> ${to} ignores ghosts and remeasures on completion`, async () => {
+  const fonts = Object.assign(new EventTarget(),{ ready:new Promise<void>(() => { /* fonts remain pending */ }) });
+  vi.stubGlobal('document',{ fonts,createComment:() => new PrivateNode() });
+  vi.stubGlobal('HTMLElement',PrivateNode);
+  vi.stubGlobal('window',{ matchMedia:() => ({ matches:false }) });
+  vi.stubGlobal('ResizeObserver',class { observe() { /* manual geometry */ } disconnect() { /* no observer */ } });
+  const root = new PrivateNode(), panel = new PrivateNode(); root.append(panel);
+  const render = (name:string) => {
+    hooks.index = 0; hooks.effects = [];
+    const view = privateFixtures[name]; if (!view) throw new Error(`Missing private fixture ${name}`);
+    return LayoutEngine({ layout:{ revision:1,controls:[] },privateView:view,area:{ width:844,height:390 },viewport:{ width:844,height:390 },onOutput:vi.fn() });
+  };
+  render(from); const ref = hooks.refs[0]; if (!ref) throw new Error('Missing root'); ref.current = root;
+  privateFixtures[from]?.blocks.forEach(() => { panel.append(new PrivateNode()); });
+  render(to);
+  panel.children = []; privateFixtures[to]?.blocks.forEach(() => { panel.append(new PrivateNode()); });
+  // Fit effect precedes the crossfade effect; font completion can measure mid-fade.
+  const fit = hooks.effects[2]?.(); hooks.effects[3]?.();
+  expect(root.children.some(n => n.classes.has('ka-private-ghost')) || panel.children.some(n => n.classes.has('ka-private-ghost'))).toBe(true);
+  fonts.dispatchEvent(new Event('loadingdone'));
+  expect(panel.style.visibility).toBe('');
+  const animations = [...root.children,...panel.children].flatMap(n => n.animations);
+  expect(animations.length).toBeGreaterThan(0);
+  panel.style.visibility = 'hidden'; // Completion must actively remeasure.
+  animations.forEach(a => { a.finish(); }); await Promise.resolve();
+  expect(panel.children.some(n => n.classes.has('ka-private-ghost'))).toBe(false);
+  expect(panel.style.visibility).toBe('');
+  expect(hooks.updates.at(-1)).toBe(true);
+  if (typeof fit === 'function') fit();
+});
+it('CTRL-003 D-132 word-grid renderer mount agrees with pure placement at review sizes', () => {
+  for (const [name,width,height] of [['stick-faces',667,375],['stick-faces',667,443],['shoulders',844,390]] as const) {
+    const layout = layoutFixtures[name]; if (!layout) throw new Error(name);
+    const area = { width,height:height-68 }, viewport = { width,height };
+    const placed = placeController(layout,privateFixtures['grid-words'],area,false,{},viewport);
+    hooks.index = 0; hooks.effects = [];
+    const words = privateFixtures['grid-words']; if (!words) throw new Error('Missing grid-words fixture');
+    const node = LayoutEngine({ layout,privateView:words,area,viewport,onOutput:vi.fn() });
+    expect((node.props as unknown as Record<string,unknown>)['data-fits']).toBe(String(placed.fits));
+    if (placed.fits && placed.panel) {
+      const gridGap = placed.gap === 5 ? 5 : 8;
+      const cell = ((placed.metrics.heights[0] ?? 0)-gridGap)/2;
+      expect(cell-12).toBeGreaterThanOrEqual(59); // Chrome's measured Dumplings at 13 px.
+      const label = new PrivateNode(); label.clientWidth = cell-12;
+      // Model Chrome's measured word across the permitted type steps.
+      Object.defineProperty(label,'scrollWidth',{ get:() => 59*Number(label.style.fontSize?.match(/type-(\d+)/)?.[1] ?? 13)/13 });
+      Object.defineProperty(label,'scrollHeight',{ get:() => 13 });
+      const panel = new PrivateNode();
+      const grid = new PrivateNode();
+      Object.assign(grid,{ contains:(node:PrivateNode) => node === label });
+      panel.querySelectorAll = selector => selector === '.ka-private-grid-label' ? [label] : selector === '.ka-layout-grid' ? [grid] : [];
+      const root = new PrivateNode(); root.append(panel);
+      const ref = hooks.refs[0]; if (!ref) throw new Error('Missing root'); ref.current = root;
+      vi.stubGlobal('document',{ fonts:Object.assign(new EventTarget(),{ ready:new Promise<void>(() => { /* pending */ }) }),createComment:() => new PrivateNode() });
+      vi.stubGlobal('ResizeObserver',class { observe() { /* manual geometry */ } disconnect() { /* no observer */ } });
+      const dispose = hooks.effects[2]?.();
+      expect(hooks.updates.at(-1)).toBe(placed.fits);
+      expect(panel.style.visibility).toBe('');
+      if (typeof dispose === 'function') dispose();
+    }
+  }
+});
+
+it('CTRL-003 restores live styles before a second private change 90 ms into a fade', async () => {
+  vi.useFakeTimers();
+  vi.stubGlobal('HTMLElement',PrivateNode);
+  vi.stubGlobal('window',{ matchMedia:() => ({ matches:false }) });
+  vi.stubGlobal('document',{ fonts:Object.assign(new EventTarget(),{ ready:new Promise<void>(() => { /* pending fonts */ }) }),createComment:() => new PrivateNode() });
+  vi.stubGlobal('ResizeObserver',class { observe() { /* manual geometry */ } disconnect() { /* no observer */ } });
+  const root = new PrivateNode(), panel = new PrivateNode(); root.append(panel); panel.append(new PrivateNode());
+  const render = (name:string) => {
+    hooks.index = 0; hooks.effects = [];
+    LayoutEngine({ layout:{ revision:1,controls:[] },privateView:privateFixtures[name] ?? null,area:{ width:932,height:362 },viewport:{ width:932,height:430 },onOutput:vi.fn() });
+  };
+  const surface = new PrivateNode();
+  root.querySelector = selector => selector === '.ka-layout-surface' ? surface : root.children.find(node => !node.classes.has('ka-private-ghost')) ?? null;
+  vi.stubGlobal('getComputedStyle',() => ({ backgroundColor:'var(--ka-paper)',backgroundImage:'radial-gradient(black, transparent)',backgroundSize:'8px 8px',backgroundPosition:'0px 0px' }));
+  render('picker'); const ref = hooks.refs[0]; if (!ref) throw new Error('Missing root'); ref.current = root;
+  render('long-text'); hooks.effects[2]?.(); hooks.effects[3]?.();
+  expect(panel.children.find(node => !node.classes.has('ka-private-ghost'))?.style.backgroundImage).toContain('radial-gradient');
+  await vi.advanceTimersByTimeAsync(90);
+  render('picker'); hooks.effects[2]?.(); hooks.effects[3]?.();
+  [...root.children,...panel.children].flatMap(node => node.animations).forEach(animation => { animation.finish(); });
+  await Promise.resolve();
+  for (const node of [panel,...panel.children]) for (const property of ['backgroundImage','zIndex','position']) expect(node.style[property] ?? '').toBe('');
+  expect(root.children.some(node => node.classes.has('ka-private-ghost'))).toBe(false);
+  vi.useRealTimers();
+});
+
+it('CTRL-003 D-140 private grid labels share the largest step fitting every label', () => {
+  const short = new PrivateNode(), long = new PrivateNode(), grid = new PrivateNode(), panel = new PrivateNode(), root = new PrivateNode();
+  for (const [node,factor] of [[short,1],[long,4]] as const) {
+    Object.defineProperty(node,'scrollWidth',{ get:() => factor*Number(node.style.fontSize?.match(/type-(\d+)/)?.[1] ?? 34) });
+  }
+  Object.assign(grid,{ contains:(node:PrivateNode) => node === short || node === long });
+  panel.querySelectorAll = selector => selector === '.ka-layout-grid' ? [grid] : selector === '.ka-private-grid-label' ? [short,long] : [];
+  root.append(panel);
+  engine({ revision:1,controls:[] }); const ref = hooks.refs[0]; if (!ref) throw new Error('Missing root'); ref.current = root;
+  vi.stubGlobal('document',{ fonts:Object.assign(new EventTarget(),{ ready:new Promise<void>(() => { /* pending */ }) }) });
+  vi.stubGlobal('ResizeObserver',class { observe() { /* manual */ } disconnect() { /* manual */ } });
+  hooks.effects[2]?.();
+  expect(short.style.fontSize).toBe('var(--ka-phone-type-21)');
+  expect(long.style.fontSize).toBe(short.style.fontSize);
+  expect(hooks.updates.at(-1)).toBe(true);
 });

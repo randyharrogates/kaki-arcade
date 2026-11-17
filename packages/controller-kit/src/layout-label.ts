@@ -1,4 +1,5 @@
 /// <reference lib="dom" />
+import { space } from '@kaki/ui';
 import type { Size } from '@kaki/ui';
 /** D-127: measured label bounds at 34 px select the next phone type step on overflow. */
 export function labelTypeStep(measured: Size, available: Size): 34 | 21 {
@@ -27,7 +28,9 @@ export function measureLabelTypeStep(button: HTMLButtonElement, label: HTMLEleme
     const natural = label.getBoundingClientRect();
     Object.assign(label.style, { width:`${String(Math.max(0,available.width))}px`, whiteSpace:'normal' });
     const wrappedHeight = label.getBoundingClientRect().height;
-    return labelTypeStep({ width:natural.width,height:Math.max(natural.height,wrappedHeight) },available);
+    // Labels no wider than the contract option floor retain a single line. Longer answers may wrap under D-127.
+    if (natural.width <= space[144] && natural.width > available.width) return 21;
+    return labelTypeStep({ width:Math.max(Math.min(natural.width,available.width),label.scrollWidth || 0),height:Math.max(natural.height,wrappedHeight,(label.scrollHeight || 0)) },available);
   } finally {
     label.style.cssText = originalStyle;
   }

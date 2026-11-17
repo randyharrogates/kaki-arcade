@@ -278,6 +278,9 @@ importers:
 
   packages/controller-kit:
     dependencies:
+      '@kaki/platform':
+        specifier: workspace:*
+        version: link:../platform
       '@kaki/protocol':
         specifier: workspace:*
         version: link:../protocol
@@ -306,6 +309,9 @@ importers:
       '@kaki/sim-core':
         specifier: workspace:*
         version: link:../sim-core
+      '@kaki/ui':
+        specifier: workspace:*
+        version: link:../ui
 
   packages/protocol: {}
 
