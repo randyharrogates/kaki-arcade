@@ -1208,3 +1208,11 @@ documented in ART-PIPELINE.md and read by the game (track T); and a 1× evidence
 kit requires (its min-players rule fails if the two counts are split), and takes about 90 s of
 work. At a 120 s test-runner timeout it failed under load (121.5 s), so its timeout is now 240 s.
 This is the test runner's limit, not a performance budget in PERFORMANCE.md; no budget changes.
+
+**D-147 · 2026-11-18 · Claude** (under D-142) — Peek Poker card ranks (A-08) are drawn in
+**JetBrains Mono Bold**, DESIGN §4.2's numbers face, instead of Blender's built-in font, which the
+A-08 review found was an unrecorded one-off. Source asset, not a code dependency:
+`assets/src/fonts/jetbrains-mono/JetBrainsMono-Bold.ttf` from the official JetBrains Mono v2.304
+release, with its `OFL.txt` (SIL Open Font License 1.1) beside it; the file is identical to the one
+installed on the build Mac. D-133 is settled under D-142 (no longer pending Randy). Randy may
+overrule after seeing the re-rendered deck.
