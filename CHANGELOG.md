@@ -2,6 +2,15 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — K-02: floating left stick
+
+- `packages/controller-kit/src`: `stick-model.ts` (dead zone, normalised vector, rubber-band,
+  graded stretch, clamped anchor with the knob under the thumb, D-116), `stick.ts` (pointer
+  routing, capture, cancel on pointercancel, lost capture, hide, blur, pagehide and resize),
+  `stick.css` (dashed outline in the stick-outline token); `lock.ts` cancels only cancelable
+  multi-touch moves; demo on `/play?demo=controller`; `uat/slices/K-02-left-stick.mjs`.
+- (CTRL-001, CTRL-005, PERF-012 in progress)
+
 ## 2026-11-17 — C-13 part 1: host-device storage and detail benchmark
 
 - `packages/platform/src/storage`: `host-store.ts` (versioned, validated, size-capped records;

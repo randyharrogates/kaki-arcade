@@ -5,3 +5,7 @@ export type { LinkState } from './model';
 export { installPageLock } from './lock';
 export { keepScreenAwake } from './wake';
 export type { WakeState, WakeNavigator, WakeSentinel, VisibilityTarget } from './wake';
+export { Stick } from './stick';
+export type { StickProps } from './stick';
+export { stickModel, routeStick } from './stick-model';
+export type { Vector, StickArea, StickPointer, StickEvent } from './stick-model';

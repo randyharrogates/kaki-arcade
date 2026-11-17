@@ -1,0 +1,333 @@
+{
+  "slice": "K-02-left-stick",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- K-02-left-stick --phones 1",
+  "commit": "1fc4a98c1383ff7e1628eb71b4684ddd121d3956",
+  "viewports": [
+    "844×390",
+    "667×375"
+  ],
+  "steps": [
+    {
+      "name": "844x390 touch tracking, rubber-band and multi-touch",
+      "ms": 3006.2456250000005,
+      "status": "completed"
+    },
+    {
+      "name": "667x375 touch tracking, rubber-band and multi-touch",
+      "ms": 2700.1137499999995,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced motion keeps values and removes stretch and release animation",
+      "ms": 413.350958,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-844-off-centre-floating.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-844-tracking-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-844-tracking-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-844-tracking-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-844-tracking-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-844-tracking-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-844-diagonal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-844-rubber-band.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-844-second-touch-no-steal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-844-release-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-844-release-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-844-release-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-844-release-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-844-release-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone1-844-release-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-844-release-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-844-release-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-844-release-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone1-844-release-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone1-844-edge-landing.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone1-844-edge-one-pixel.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone1-844-touch-cancel.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone1-667-off-centre-floating.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-667-tracking-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone1-667-tracking-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone1-667-tracking-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-phone1-667-tracking-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-phone1-667-tracking-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-phone1-667-diagonal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-phone1-667-rubber-band.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone1-667-second-touch-no-steal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-phone1-667-release-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-phone1-667-release-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-phone1-667-release-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-phone1-667-release-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-phone1-667-release-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-phone1-667-release-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-phone1-667-release-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-phone1-667-release-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-phone1-667-release-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-phone1-667-release-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-phone1-667-edge-landing.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-phone1-667-edge-one-pixel.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "48-phone1-667-touch-cancel.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "49-phone1-reduced-motion-held.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "50-phone1-reduced-motion-released.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-844-off-centre-floating.jpg",
+    "07-strip-844-tracking.jpg",
+    "08-phone1-844-diagonal.jpg",
+    "09-phone1-844-rubber-band.jpg",
+    "10-phone1-844-second-touch-no-steal.jpg",
+    "21-strip-844-release.jpg",
+    "22-phone1-844-edge-landing.jpg",
+    "23-phone1-844-edge-one-pixel.jpg",
+    "24-phone1-844-touch-cancel.jpg",
+    "25-phone1-667-off-centre-floating.jpg",
+    "31-strip-667-tracking.jpg",
+    "32-phone1-667-diagonal.jpg",
+    "33-phone1-667-rubber-band.jpg",
+    "34-phone1-667-second-touch-no-steal.jpg",
+    "45-strip-667-release.jpg",
+    "46-phone1-667-edge-landing.jpg",
+    "47-phone1-667-edge-one-pixel.jpg",
+    "48-phone1-667-touch-cancel.jpg",
+    "49-phone1-reduced-motion-held.jpg",
+    "50-phone1-reduced-motion-released.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-844-off-centre-floating.jpg",
+      "bytes": 115707
+    },
+    {
+      "file": "07-strip-844-tracking.jpg",
+      "bytes": 610368
+    },
+    {
+      "file": "08-phone1-844-diagonal.jpg",
+      "bytes": 114383
+    },
+    {
+      "file": "09-phone1-844-rubber-band.jpg",
+      "bytes": 114594
+    },
+    {
+      "file": "10-phone1-844-second-touch-no-steal.jpg",
+      "bytes": 114594
+    },
+    {
+      "file": "21-strip-844-release.jpg",
+      "bytes": 468575
+    },
+    {
+      "file": "22-phone1-844-edge-landing.jpg",
+      "bytes": 112955
+    },
+    {
+      "file": "23-phone1-844-edge-one-pixel.jpg",
+      "bytes": 112877
+    },
+    {
+      "file": "24-phone1-844-touch-cancel.jpg",
+      "bytes": 107997
+    },
+    {
+      "file": "25-phone1-667-off-centre-floating.jpg",
+      "bytes": 97274
+    },
+    {
+      "file": "31-strip-667-tracking.jpg",
+      "bytes": 511836
+    },
+    {
+      "file": "32-phone1-667-diagonal.jpg",
+      "bytes": 96187
+    },
+    {
+      "file": "33-phone1-667-rubber-band.jpg",
+      "bytes": 96416
+    },
+    {
+      "file": "34-phone1-667-second-touch-no-steal.jpg",
+      "bytes": 96416
+    },
+    {
+      "file": "45-strip-667-release.jpg",
+      "bytes": 414177
+    },
+    {
+      "file": "46-phone1-667-edge-landing.jpg",
+      "bytes": 94871
+    },
+    {
+      "file": "47-phone1-667-edge-one-pixel.jpg",
+      "bytes": 95007
+    },
+    {
+      "file": "48-phone1-667-touch-cancel.jpg",
+      "bytes": 89996
+    },
+    {
+      "file": "49-phone1-reduced-motion-held.jpg",
+      "bytes": 96508
+    },
+    {
+      "file": "50-phone1-reduced-motion-released.jpg",
+      "bytes": 89996
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2306
+    },
+    {
+      "file": "run.json",
+      "bytes": 7561
+    }
+  ],
+  "totalBytes": 3660638,
+  "maxBytes": 12582912
+}

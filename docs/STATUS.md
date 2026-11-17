@@ -210,6 +210,13 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   only if refused. Tested in Chromium phone emulation from 320 to 844 px wide. Not proven: real
   iPhone and Android (S-05); not yet the page a seated player sees (C-16); no stick or buttons
   yet (K-02, K-03).
+- **Floating left stick (K-02), development page only.** `/play?demo=controller` shows a
+  dashed stick area; the base appears where the thumb lands (kept inside the area, D-116), the
+  knob tracks the thumb 1:1 and stretches with deflection, rubber-bands past the edge, and
+  eases back and fades on release. A second finger never steals it; hiding the page, losing
+  focus, resizing or a cancelled touch release it. Reduced motion drops the stretch and the
+  easing. Tested in Chromium phone emulation at 844 and 667 wide. Not proven: real phones
+  (K-07); phone frame timing (PERF-012, perf harness); stick and buttons together (K-03).
 - **Rabakz TV screen (R-03), development page only.** The question, four options with letter
   and shape, who has answered, lock-outs and wrong options marked without colour alone, and
   the reveal, at reading size for 720p to 4K with eight players. A correct option pulses once

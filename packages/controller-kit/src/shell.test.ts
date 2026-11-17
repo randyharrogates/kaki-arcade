@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { PLAYER_COLOURS } from '@kaki/ui';
 import { headerModel } from './model';
 import { installPageLock } from './lock';
@@ -45,6 +45,11 @@ describe('CTRL-004/008 controller helpers', () => {
     }
     const single = new Event('touchmove', { cancelable: true }); Object.defineProperty(single, 'touches', { value: [1] });
     (adds[0]?.[1] as (e: Event) => void)(single); expect(single.defaultPrevented).toBe(false);
+    const nonCancelable = new Event('touchmove');
+    Object.defineProperty(nonCancelable, 'touches', { value: [1, 2] });
+    const prevent = vi.spyOn(nonCancelable, 'preventDefault');
+    expect(() => { (adds[0]?.[1] as (e: Event) => void)(nonCancelable); }).not.toThrow();
+    expect(prevent).not.toHaveBeenCalled();
     stop(); expect(removes).toEqual(adds);
   });
   it('acquires, releases hidden, reacquires visible and cleans up without leaks', async () => {

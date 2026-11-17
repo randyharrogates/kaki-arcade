@@ -10,7 +10,7 @@ export function installPageLock(target: LockTarget, root?: { classList: Pick<DOM
   const options = { passive: false, capture: false };
   const cancel = (event: Event): void => { event.preventDefault(); };
   const multiTouch = (event: Event): void => {
-    if ((event as TouchEvent).touches.length > 1) event.preventDefault();
+    if (event.cancelable && (event as TouchEvent).touches.length > 1) event.preventDefault();
   };
   const listeners = [['touchmove', multiTouch], ['gesturestart', cancel], ['dblclick', cancel], ['contextmenu', cancel]] as const;
   for (const [type, listener] of listeners) target.addEventListener(type, listener, options);
