@@ -77,6 +77,12 @@ stays on full detail and the setting can be changed by hand. Randy: is a short o
 of the busiest scene on the lobby acceptable (a second or two before the room code shows), or
 should detail be chosen from the first seconds of the first round instead?
 
+**OQ-037 · 2026-11-17 · DESIGN §4.4 wording for D-122.** Your D-122 lets face buttons shrink
+below 110 px on phones narrower than 844 px (never under 89 px). `DESIGN.md` §4.4 still says
+faces are "at least the 110 px"; only you edit that section. Suggested wording: "Face buttons
+are at least 110 px on phones 844 px wide and wider; narrower phones scale them down with the
+width, never below 89 px (D-122)." Needed by: K-04 merge (the code follows D-122 meanwhile).
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot
