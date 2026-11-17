@@ -956,3 +956,13 @@ at the floors with an 8 px margin, the gaps between controls fall from 8 px to 5
 spacing step), and never lower. Controls still never go below their floors. Why: measured on
 a 667 × 375 phone, the play area is 307 px tall and the Peek Poker grid needs
 8 + 4 × 68 + 3 × 8 + 8 = 312 px; with 5 px gaps it needs 303 px.
+
+**D-119 · 2026-11-17 · Claude** (under D-057) — Relay cut-off when usage is unknown (NET-003,
+NET-004). The pairing server withholds relay access only when the last good usage reading is
+over the monthly limit, or when no good reading has arrived for longer than the grace period
+(30 minutes) since the meter's last good reading or first attempt. While there is no reading
+yet, it offers the relay and retries the reading on a short backoff. Why: C-02's review found
+that failing closed on "no reading yet" left every new room's host without a relay and let one
+failed analytics call withhold it for ten minutes, which defeats NET-003 (a MUST). The cost
+risk is bounded: the 800 GB limit sits 200 GB under the 1,000 GB monthly free allowance
+(D-014), far more than a few unknown minutes can use.
