@@ -1136,3 +1136,18 @@ change what players see on every plate, so they are fixed before merge rather th
 also covers the loose drink that looks served, rojak sauce drawn before the mix, the kway teow
 pinwheel, the faint burnt-rice cue, per-container anchors and a guard that the item folder matches
 the manifest. Test-only rule duplication and the non-atomic publish are recorded as known limits.
+
+**D-139 · 2026-11-18 · Claude** (correcting D-137 after the S-03a review) — PixiJS 8 stays the Tabao
+Rush renderer, but D-137's main reason was wrong. The Canvas run's 663 MB came from the spike's
+tinting method (a full tinted copy of every mask page for all 8 seats), not from Canvas 2D:
+recolouring each cook's current frame into one small scratch canvas when it changes would cost
+about 0.66 MB and put Canvas near PixiJS's 126 MB. The decoded figures are estimates computed by the
+page, and PixiJS's real footprint is nearer twice 126 MB (source canvases plus GPU textures), which
+still fits PERF-024. The reasons that stand: about half the main-thread work (0.5 against 0.9 ms
+median, 0.8 against 1.7 ms p99), one batched draw against 373 per frame, and tinting on the GPU
+through the mask sprite with no per-cook canvases to manage. The cost is about 150 KB gzip (an
+app-mode build of the spike entry; the 168 KB in D-137 was a lib-mode upper bound), to be loaded
+as a lazy chunk when Tabao Rush starts; that chunk is a plan for T-07, not built yet. Also
+corrected: the frame columns in D-137 are animation-callback intervals, p95 was 18.6 to 18.7 ms in
+every run (OQ-038), and the lower-detail rows did not hold 30 fps (the cap rendered about 26 fps; to
+be fixed before S-03b).

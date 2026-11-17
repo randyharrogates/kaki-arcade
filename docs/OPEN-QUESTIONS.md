@@ -83,6 +83,16 @@ faces are "at least the 110 px"; only you edit that section. Suggested wording: 
 are at least 110 px on phones 844 px wide and wider; narrower phones scale them down with the
 width, never below 89 px (D-122)." Needed by: K-04 merge (the code follows D-122 meanwhile).
 
+**OQ-038 · 2026-11-18 · PERF-001 on this Mac's display (S-03a).** PERF-001 asks for a
+95th-percentile frame time of at most 16.7 ms on the dev Mac in Chrome at 1080p. In the S-03a
+stress runs every renderer, even with under 1 ms of work per frame, measured p95 18.6 to 18.7 ms,
+because the browser's animation callbacks here run at 59.9 Hz with jitter on a panel macOS reports
+at 75 Hz. So the first real PERF-001 round (T-07) will probably fail on timing jitter, not on our
+work. Options: (a) measure frame time as the work per frame plus dropped refreshes, not the raw
+callback interval; (b) set the Mac to a 60 Hz mode for measured runs; (c) keep the wording and
+accept a fail until run on the TV. Recommended: (a) with (b) for the runs. Only you change the
+budget wording. Needed by: T-07.
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot
