@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-17 — F-07: UAT harness; `pnpm uat`
+
+- `tools/uat/` (runner, harness, thumb helper), `uat/slices/` for the host lobby and the join
+  page, playwright 1.64.0 (D-094). Run folders `uat/evidence/<slice>/auto/` are untracked
+  (D-096). `docs/UAT.md` §2 rewritten; the uat-runner agent points at `uat/slices/`.
+- (NFR-TEST in progress)
+
 ## 2026-11-17 — C-08: phone join page; `pnpm dev`
 
 - `apps/web` phone route, view and demo states at `/play`; `tools/dev.mjs` behind `pnpm dev`

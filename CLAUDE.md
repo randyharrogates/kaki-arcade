@@ -102,7 +102,7 @@ Not all exist yet; they are created in M2 and M3. Keep this list true.
 |---|---|
 | `pnpm dev` | Host, controller and local pairing server (works today; `KAKI_HOST=<LAN IP>` for phones) |
 | `pnpm verify` | Workspace check, typecheck, ESLint, design lint, unit tests, build, trace check (works today; size budgets and performance join with F-08) |
-| `pnpm uat -- <slice>` | Playwright UAT for a slice; screenshots to `uat/evidence/<slice>/` |
+| `pnpm uat -- <slice>` | Playwright UAT (works today); output in `uat/evidence/<slice>/auto/` or `--out <name>`; replaces marked run folders only; automated completion awaits visual review |
 | `pnpm perf` | Performance harness with scripted controllers |
 | `pnpm assets` | Render and pack art from Blender sources |
 | `python3 tools/trace_check.py` | Check the PRD against `docs/TRACEABILITY.md` (works today) |

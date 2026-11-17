@@ -13,16 +13,19 @@ You run user acceptance testing for one slice of Kaki Arcade and report what you
 
 ## Do
 
-1. Run `pnpm uat -- NNN-name`. If the slice has no UAT spec yet, write one in `uat/specs/`
-   following `docs/UAT.md` §1 and §4, naming the requirement IDs in its header.
-2. Confirm the evidence folder `uat/evidence/NNN-name/` holds step-numbered screenshots for
-   the big screen and at least one phone, frame strips for anything animated, and `perf.json`.
+1. Run `pnpm uat -- <slice>`. If no script exists, write `uat/slices/<slice>.mjs` following
+   `docs/UAT.md` §1 and §4, naming the requirement IDs in its header. Install Chromium first
+   with `pnpm exec playwright install chromium` if needed. Use `--out <name>` to keep a run.
+2. Inspect the generated `uat/evidence/<slice>/auto/REPORT.md` (or `<slice>/<name>/REPORT.md`
+   with `--out <name>`), `run.json`, the screenshots and the contact sheets. Keep evidence a
+   person has looked at outside the generated folder. Investigate any UNSETTLED row.
+   Performance evidence comes from F-08 when it exists.
 3. **Open every image with the Read tool.** For dense areas (HUD text, order cards, controller
    labels), crop and enlarge, then read the crop.
 4. For each acceptance statement in the slice note, decide pass or fail from what the pictures
    show, not from the script's exit code.
 5. Check each screenshot against `docs/DESIGN.md` §6.
-6. Write `uat/evidence/NNN-name/REPORT.md`:
+6. Write `uat/evidence/<slice>/REPORT.md` (beside the generated folder, never inside it):
 
    | Acceptance statement | Result | Evidence | Notes |
    |---|---|---|---|

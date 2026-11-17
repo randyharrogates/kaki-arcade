@@ -1,0 +1,2 @@
+Usage: pnpm uat -- <slice> [--out name] [--max-mb 12] [--timeout-min 10] [--phones 1..8] [--headed] [--keep]
+Slices: C-07-host-lobby, C-08-join-page

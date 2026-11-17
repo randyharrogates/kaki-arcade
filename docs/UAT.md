@@ -11,8 +11,9 @@ player's side: what is on the TV and what is on the phone.
 - **Real pairing:** phone contexts join through the real join link and a locally running
   pairing server (`wrangler dev`), using real WebRTC between contexts. No mocked transport in
   UAT.
-- **Scripted thumbs:** a helper drives the controller with real pointer events (press, hold,
-  drag the stick along a path, multi-touch), so the kit itself is under test.
+- **Scripted thumbs:** a helper dispatches trusted Chromium touch events through CDP (press,
+  hold, drag along a path, multi-touch). Chromium derives pointer events from those touches, so
+  the controller kit itself is under test. Not yet used by any slice.
 - **Deterministic games:** UAT starts games with a fixed seed so screenshots are comparable
   between runs.
 - **Local stack by hand:** `pnpm dev` starts the web app and the local pairing server and
@@ -26,16 +27,32 @@ player's side: what is on the TV and what is on the phone.
 
 ## 2. Evidence
 
-Saved under `uat/evidence/NNN-slice-name/`:
+Install Chromium on a fresh machine: `pnpm exec playwright install chromium`. Run
+`pnpm uat -- <slice>` using scripts in `uat/slices/*.mjs`. Generated evidence goes to
+`uat/evidence/<slice>/auto/` (not tracked in git), or `uat/evidence/<slice>/<name>/` with
+`--out <name>`. Only run folders carrying the harness's `.uat-run` marker may be replaced; an
+existing folder without it is refused. Keep evidence a person has looked at outside generated
+run folders, or in a named `--out` run kept for the purpose.
+
+Flags: `--frames` (keep individual strip frames), `--max-mb <MiB>` (default 12),
+`--timeout-min <minutes>` (default 10), `--keep` (keep a successful run open until interrupted),
+`--phones <1..8>` (default 8), `--headed` (not yet proven), `--out <name>` (letters, digits and
+dashes) and `--help`.
 
 | File | Content |
 |---|---|
-| `01-host-<step>.png`, `01-phone1-<step>.png`, … | Step-numbered screenshots of the big screen and phones |
-| `strip-<name>.png` | Frame strips for anything animated: 6 to 12 frames side by side |
-| `perf.json` | Frame-time and input-delay percentiles for the run |
-| `REPORT.md` | Each acceptance statement → pass/fail → the screenshot that shows it |
+| Numbered host and phone `.jpg` screenshots (`.png` for full 4K) | Player-visible states |
+| Numbered `strip-<name>.jpg` contact sheets | Animation samples; individual frames only with `--frames` |
+| `run.json` | Steps, join-to-seat timings, expected and unexpected errors, the screenshot list, per-shot unsettled flags and sizes |
+| `REPORT.md` | Generated image index, timings and expected errors; UNSETTLED marks a capture that missed settling; visual findings and acceptance await a person |
+| `perf.json` | Frame-time and input-delay percentiles, when F-08 supplies them |
+| `.uat-run` | The harness's ownership marker |
 
-Evidence is committed. It is the record that a requirement was seen working.
+Expected browser errors are registered inside a step, before the action, scoped to the page and
+the pairing address with a pattern that names the reason. Unexpected errors fail the run. A
+still fails if motion has not settled within 3 seconds unless the caller passes
+`allowUnsettled`. A completed automated run awaits visual review: open every screenshot and
+strip before recording acceptance.
 
 ## 3. Looking is mandatory
 
@@ -71,6 +88,6 @@ Claude run the checklist below on real hardware and record results in `STATUS.md
 
 ## 6. Requirement coverage
 
-Each UAT spec file names the requirement IDs it proves in its header. `tools/trace_check.py`
-reads those headers, so a `done` row in `TRACEABILITY.md` without a spec naming its ID fails
-verify.
+Each UAT script names the requirement IDs it exercises in its header. `tools/trace_check.py`
+verifies `done` rows against their listed evidence paths; it does not read script headers or
+establish visual acceptance.

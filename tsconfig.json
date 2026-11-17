@@ -12,6 +12,7 @@
     "tools/**/*.ts",
     "tools/**/*.mjs",
     "uat/**/*.ts",
+    "uat/**/*.mjs",
     "spikes/**/*.ts"
   ],
   "exclude": ["**/node_modules", "**/dist", "uat/evidence"]

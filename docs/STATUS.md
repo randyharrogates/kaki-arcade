@@ -187,6 +187,18 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   integrator's browser checks found two faults the reviews had not (tiny names, an expired
   room looping) and one of the integrator's own evidence claims was wrong and is withdrawn in
   the report.
+- **UAT harness (F-07).** `pnpm uat -- <slice>` starts the web app and a local pairing server,
+  drives one host and up to eight phone browser contexts, takes settled screenshots and
+  transition strips, fails on unexpected browser errors, enforces step and run deadlines and a
+  size cap, stops everything it started, and writes a report that claims nothing was looked at.
+  Scripts exist for the host lobby (31 steps) and the join page (14 steps, eight phones, a
+  ninth refused, host reopen, a 25-second pairing outage) and both pass in Chromium. Its first
+  runs found a real lobby fault (a late joiner shown as "Seat N"). Built by Codex over four fix
+  rounds with two reviews; Codex cannot run a browser, so the integrator made eight small fixes
+  from real runs, and the last fix round was checked by running, not by a third review. The
+  integrator's claim that the first strips showed the seat wipe was wrong and is withdrawn in
+  the report; the final strips do show it. **Not proven:** headed mode, the thumb helper,
+  WebKit and Firefox.
 - **Phone join page (C-08).** `/play` on a phone: the room code typed, pasted, or carried by
   the link; a name; then the lobby with the seat number, colour and name, a leader mark,
   "Change name" on its own screen and "Leave". A screen each for a full room, a room not
@@ -216,7 +228,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 ## Does not exist yet
 
 - No game picker, controller or game screen yet.
-- `pnpm uat` (F-07, in review), `pnpm perf` (F-08).
+- `pnpm perf` (F-08).
 
 ## Design gate
 

@@ -14,7 +14,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 |---|---|---|---|---|---|
 | F-01 | pnpm workspace, strict TypeScript, lint (including the φ-scale spacing rule and no raw colours outside `packages/ui`), Vitest, and `pnpm verify` with the trace check wired in | NN-7, NN-8, NFR-TEST | — | 0 | merged |
 | F-09 | Agent tooling: an issue-builder agent definition, an `/issue` command, and a helper that creates the worktree and prints its ports | NN-8 | — | 0 | merged |
-| F-07 | UAT harness: Playwright host plus N phone contexts with real pairing, scripted thumbs, screenshot and frame-strip helpers, `pnpm uat` | NFR-TEST | F-01 | 1 | doing (Codex) |
+| F-07 | UAT harness: Playwright host plus N phone contexts with real pairing, scripted thumbs, screenshot and frame-strip helpers, `pnpm uat` | NFR-TEST | F-01 | 1 | merged |
 | F-08 | Performance harness: scripted controllers at 1, 4 and 8 players, frame-time and input-delay percentiles, budget check, `pnpm perf` | NFR-PERF, PERF-001, PERF-010 | F-01, F-03 | 1 | todo |
 
 ## Story F2 — Tracks meet at contracts, not at each other's code
@@ -60,3 +60,11 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   the room hands over after its grace period. `evenIfRefused` on held inputs is cleaned at
   step time and never reaches the game. `step()` refuses after the match is over although the
   contract lets a game be stepped after the end.
+
+- **From F-07 (UAT harness).** Every later slice gets a script in `uat/slices/`. Not proven:
+  `--headed`, `--keep`, `--frames` and the thumb helper in a real browser (K-07 is the first
+  user of thumbs). A dev-only `&changeAfter=<ms>` on the host demo would let strips load already
+  slowed; today the lobby script settles, slows, then waits for the fixed 2 s change. Codex
+  cannot run a browser, so each harness or script change needs an integrator run: budget for
+  it. A DOM render test for views (the phone route, the Rabakz screen) is still missing: three
+  screens have shipped faults that only a browser showed.

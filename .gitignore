@@ -18,3 +18,5 @@ blob-report/
 playwright/.cache/
 assets/dist/
 .playwright-mcp/
+uat/evidence/*/auto/
+uat/evidence/**/.uat-run

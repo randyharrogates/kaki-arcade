@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "node tools/dev.mjs",
+    "uat": "node tools/uat/run.mjs",
     "check:workspace": "node tools/check_workspace.mjs",
     "typecheck": "tsc -b tsconfig.build.json",
     "lint": "eslint . --max-warnings 0",
@@ -20,6 +21,7 @@
     "verify": "pnpm run check:workspace && pnpm run typecheck && pnpm run lint && pnpm run lint:design && pnpm run test && pnpm run build && pnpm run trace"
   },
   "devDependencies": {
+    "playwright": "1.64.0",
     "@eslint/js": "10.0.1",
     "@types/node": "24.19.2",
     "eslint": "10.15.0",
