@@ -867,3 +867,14 @@ move; text from the two layouts never overlaps. During a focus move a tile shows
 its text at full strength. This matches D-105 a for Rabakz. (b) The picker stage's columns are
 `minmax(0, 1.618fr) minmax(0, 1fr)`: a golden split that does not grow with its content.
 
+**D-108 · 2026-11-17 · Claude under D-057** — Game picker, after the third C-09 review.
+(a) The TV heading and its status line change together by the lobby's shared-boundary mask,
+never by a cross-fade: two sentences are never printed over each other. (b) The picker header
+always reserves one 89 px line plus the status line; a 55 px heading sits inside that band, so
+the tile area is in the same place on the picker and on the start screen. (c) Queued Previous
+and Next presses count modulo the number of games. Inside one `fast` window only the latest
+of Select, Back and Start is kept; that is accepted at human tap rates. (d) The interrupted-
+move check does not depend on frame time: pause, read the rectangles, send the interrupting
+change, seek the new animations to their start, and require the rectangles to match within
+2 px.
+
