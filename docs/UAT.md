@@ -36,8 +36,13 @@ run folders, or in a named `--out` run kept for the purpose.
 
 Flags: `--frames` (keep individual strip frames), `--max-mb <MiB>` (default 12),
 `--timeout-min <minutes>` (default 10), `--keep` (keep a successful run open until interrupted),
-`--phones <1..8>` (default 8), `--headed` (not yet proven), `--out <name>` (letters, digits and
-dashes) and `--help`.
+`--phones <1..8>` (default 8), `--host-browser chromium|chrome|webkit` (TV engine, default
+`chromium`; `chrome` is installed Google Chrome; `webkit` needs `pnpm exec playwright install
+webkit`), `--phone-browser chromium|webkit` (phone engine with Pixel 7 or iPhone 13 emulation;
+without it, phones use Chromium with the legacy iPhone Safari user agent), `--headed` (not yet
+proven), `--out <name>` (letters, digits and dashes) and `--help`. Engines and versions appear in
+run.json and the REPORT header. Playwright WebKit cannot open data channels on this Mac, so WebKit
+phones never seat (D-212).
 
 | File | Content |
 |---|---|

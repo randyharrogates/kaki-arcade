@@ -6,6 +6,15 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 **Last updated:** 2026-11-16 · **Milestone:** M0 complete. **Build started 2026-11-16 on Randy's go (D-043):** Wave 0 running. Design gate: boards 0, 0B, 1A, 2 and 2B done; 1, 3, 4 and 5 to come.
 
 ## Works
+- **Browser matrix, part 1 (X-05, merged 2026-11-18; REL-004 and REL-006 in progress).** `pnpm uat`
+  can put the TV in Playwright Chromium, branded Chrome or Playwright WebKit and the phones in
+  Chromium (Pixel 7) or WebKit (iPhone 13), each engine launched once and closed on every path.
+  With a Chromium 156 or Chrome 157 TV and Chromium phones, a two-phone pass works: lobby, picker,
+  a Peek Poker round to its scoreboard, Menu → Paused → Resume, Quit to picker, and Rabakz question 1
+  with a wrong answer locked out and a right answer revealed. The unsupported-browser message (C-14)
+  also shows correctly in WebKit 27.2. The UAT harness excuses no request the engine cancels.
+  **Not yet:** in Playwright WebKit on this Mac no phone is ever seated (no ICE candidates locally;
+  D-212). Edge, real Safari, iPhones, Android phones, TV browsers and Firefox are untested (OQ-051).
 - **Rabakz phones (R-02, merged 2026-11-18; RZ-003, RZ-005, CTRL-003).** Four shape buttons with the option text in a 2 × 2 grid under a private strip (Score, Locked out, Locked in); the leader's Skip sits at the right. Main's phone header and Menu chip sit above, and the Paused veil covers the strip on every phone. Reveal: Right, Wrong or Skipped, with points gained, streak, total and the chosen option; scoreboard and end show "1st · 100" and "2nd · 700". Short answers draw at 34 px; if any answer in a group needs more room, the whole group steps to 21 px bold, at most three lines. Each group is measured once when shown, and selecting a card does not re-measure (0–2.1 ms per pass at 4x CPU). Controller start-up 179 ms median (budget 2 s). Evidence: `uat/evidence/R-02-phone-layouts/uat-r21-p2/`. **Not proven:** real phones (K-07); the final-round announcement (unit-tested only). Open for Randy: the title pulse on non-success states and the departures from board 4 (OQ-050).
 - **Peek Poker scores and podium (P-05, merged 2026-11-18; PP-032, PP-012, DATA-002).** After each reveal the TV shows a five-second scoreboard: the leader and score on the left, every player ranked on the right (1 : 1.618), shared places as "=2", rows entering 30 ms apart (none with reduced motion). At match end the same board is the final podium until the leader presses Continue; the shell's "The leader continues on their phone" is the only hand-off line. It fits 1920 × 1080 and 1280 × 720 with eight players. Each phone shows its own place (with "=" for ties) and score between rounds and on Results. Solo: "Best N" during play and on the scoreboard; "New best · N" with one pulse appears, and pulses once the board has settled, only after the shell confirms the record was written (`kaki.host-device.game.peek-poker.progress-v1`), and only for a completed match that stayed one player. If storage cannot be read, no best is shown and nothing is written. Evidence: `uat/evidence/P-05-scores-podium/r9-p1/`, `r8-p3/`, `r7-p8/`; diagnostic 8-phone perf through scoreboards and podium, 16.7 ms median, 33.3 ms worst, none over 50 ms (`perf-r7/`, development build, not assessed). Not yet: the assessed full-match run (P-09).
 - **Shell pictures (A-09, 2026-11-18; REL-002, PLAT-020).** The landing page shows its title, one line, "Host a game", the three games and a "Put this on your TV" link, with a picture of friends playing on their phones in the 1.618 : 1 side column, and Privacy and Credits at the foot. At 1000 px wide or less the landing is one unscaled scrolling column with no picture, and every link is at least 55 px tall. Each game has its own 1.618 : 1 picture in the picker and on the start screen (656 × 405 at 1080p); the pictures decode during the lobby and load only on the TV's pages: 148 KB of WebP in all. On every start screen the picture sits left and the details and settings right; "Who's in" is 13 px below the picture at the same height on all three games. Each player tile is at most two lines: the name on one line, cut short with "…" when too long, and "Seat held" below it when that player has dropped. A refused setting shows at the foot of the card and fades in and out in place, so the player strip does not move. Fits at 1080p and 720p. Evidence: `uat/evidence/A-09-shell-imagery/uat-r16/`. **Not proven:** real TV legibility, including truncated names (X-09); the replacement crossfade is tested but not pictured.
@@ -247,7 +256,8 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   old to load the app at all (no modules, a failed early check, code they can't read) get a
   plain version of the same message, and so does a browser with JavaScript off. Seen working
   in Chromium on the development and production builds, at 320 to 1280 px wide; every normal
-  page still loads. Not proven: a real old Safari or Android, WebKit and Firefox engines (X-05).
+  page still loads. Not proven: a real old Safari or Android, Firefox (no runner option) and the
+  WebKit production build; WebKit 27.2 on the development build was seen in X-05.
   Built by Codex over four fix rounds; two review rounds. The integrator's browser checks
   found that the round-3 backstop showed the message in a working browser (fixed in round 4).
 - **Phone controller shell (K-01), development page only.** `/play?demo=controller` shows the
@@ -346,7 +356,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   from real runs, and the last fix round was checked by running, not by a third review. The
   integrator's claim that the first strips showed the seat wipe was wrong and is withdrawn in
   the report; the final strips do show it. **Not proven:** headed mode, the thumb helper,
-  WebKit and Firefox.
+  Firefox, and WebKit past the lobby (D-212).
 - **Phone join page (C-08).** `/play` on a phone: the room code typed, pasted, or carried by
   the link; a name; then the lobby with the seat number, colour and name, a leader mark,
   "Change name" on its own screen and "Leave". A screen each for a full room, a room not

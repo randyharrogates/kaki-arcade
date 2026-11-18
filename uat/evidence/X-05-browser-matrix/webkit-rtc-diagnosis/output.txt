@@ -1,0 +1,2 @@
+webkit 27.2 {"hasRTC":"function","channel":"timeout:new","candidates":[]}
+chromium 156.0.8078.4 {"hasRTC":"function","channel":"open","candidates":["cd0d037a-39d8-484a-9d7a-665ab6151240.local 53145 typ host"]}

@@ -4,18 +4,35 @@ import { resolve, join, basename } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
-import { chromium } from 'playwright';
+import { chromium, webkit } from 'playwright';
 import type { Browser } from 'playwright';
 import { errorMessage, prepareEvidence, parseArgs, selectPorts, memoryGate, assertPortFree, startGroup, stopGroup, ready } from './core.js';
 import { Harness } from './harness.js';
 import { builtInSlices } from './slices.js';
 
+export function parseRunnerArgs(args: string[]) {
+  let hostBrowser: 'chromium' | 'chrome' | 'webkit' = 'chromium';
+  let phoneBrowser: 'chromium' | 'webkit' = 'chromium';
+  let phoneBrowserExplicit = false;
+  const rest: string[] = [];
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg === '--host-browser' || arg === '--phone-browser') {
+      const value = args[++i];
+      if (arg === '--host-browser' && (value === 'chromium' || value === 'chrome' || value === 'webkit')) hostBrowser = value;
+      else if (arg === '--phone-browser' && (value === 'chromium' || value === 'webkit')) { phoneBrowser = value; phoneBrowserExplicit = true; }
+      else throw new Error(`Invalid ${arg}: ${value ?? 'missing value'}`);
+    } else if (arg !== undefined) rest.push(arg);
+  }
+  return { ...parseArgs(rest), hostBrowser, phoneBrowser, phoneBrowserExplicit };
+}
+
 export async function run(args = process.argv.slice(2), extension?: { production?: boolean; command?: string; headed?: boolean; script: string; execute: (harness: Harness) => Promise<void> }) {
   if (args.filter(a => a !== '--').includes('--help')) {
-    process.stdout.write('Usage: pnpm uat -- <slice> [--out name] [--max-mb 12] [--timeout-min 10] [--phones 1..8] [--headed] [--keep] [--frames] [--signal-var NAME:value]\nSlices: ' + Object.keys(builtInSlices).join(', ') + '\n');
+    process.stdout.write('Usage: pnpm uat -- <slice> [--out name] [--max-mb 12] [--timeout-min 10] [--phones 1..8] [--host-browser chromium|chrome|webkit] [--phone-browser chromium|webkit] [--headed] [--keep] [--frames] [--signal-var NAME:value]\nSlices: ' + Object.keys(builtInSlices).join(', ') + '\n');
     return;
   }
-  const options = parseArgs(args); options.headed = extension?.headed ?? options.headed; const root = process.cwd();
+  const options = parseRunnerArgs(args); options.headed = extension?.headed ?? options.headed; const root = process.cwd();
   const script = extension?.script ?? resolve(root, 'uat/slices', `${options.slice}.mjs`); await access(script);
   const ports = selectPorts(process.env, basename(root));
   const origin = `http://127.0.0.1:${String(ports.web)}`; const signalUrl = `http://127.0.0.1:${String(ports.signal)}`;
@@ -32,7 +49,7 @@ export async function run(args = process.argv.slice(2), extension?: { production
   const fatal = (error: unknown) => { normalStop = false; interrupted = new Error(errorMessage(error)); controller.abort(interrupted); };
   process.on('uncaughtException', fatal); process.on('unhandledRejection', fatal);
   const timeout = setTimeout(() => { normalStop = completed; interrupted = new Error(`UAT exceeded ${String(options.timeoutMin)}-minute timeout during ${harness?.activeStep ?? 'setup/run'}`); controller.abort(interrupted); }, options.timeoutMin * 60000);
-  let temp: string | undefined; let browser: Browser | undefined; let harness: Harness | undefined;
+  let temp: string | undefined; const browsers = new Map<string, Browser>(); let harness: Harness | undefined;
   let web: ReturnType<typeof startGroup> | undefined; let signal: ReturnType<typeof startGroup> | undefined;
   let cleanupPromise: Promise<void> | undefined;
   const isNormalStop = () => completed && normalStop;
@@ -44,7 +61,8 @@ export async function run(args = process.argv.slice(2), extension?: { production
   };
   const cleanup = async () => {
     shuttingDown = true;
-    const outcomes = await Promise.allSettled([browser?.close(), stopGroup(web?.child.pid), stopSignal()]);
+    const closing = [...browsers.values()]; browsers.clear();
+    const outcomes = await Promise.allSettled([...closing.map(browser => browser.close()), stopGroup(web?.child.pid), stopSignal()]);
     await recordWrangler();
     outcomes.push(...await Promise.allSettled([temp ? rm(temp, { recursive: true, force: true }) : Promise.resolve(), wranglerCreated ? rm(wranglerState, { recursive: true, force: true }) : Promise.resolve()]));
     const failed = outcomes.find(o => o.status === 'rejected'); if (failed?.status === 'rejected') throw failed.reason;
@@ -77,9 +95,20 @@ export async function run(args = process.argv.slice(2), extension?: { production
       web = startGroup('pnpm', ['--dir', 'apps/web', 'exec', 'vite', ...(extension?.production ? ['preview'] : []), '--host', '127.0.0.1', '--port', String(ports.web), '--strictPort'], { cwd: root, env: { ...process.env, KAKI_SIGNAL_URL: signalUrl, KAKI_JOIN_ORIGIN: origin, KAKI_PORT_WEB: String(ports.web) } });
       watch(web, 'Web');
       await ready(origin, web.check, controller.signal, 60000, async response => response.ok && (await response.text()).includes('<title>Kaki Arcade</title>'));
-      browser = await chromium.launch({ headless: !options.headed }); if (controller.signal.aborted) { await browser.close(); controller.signal.throwIfAborted(); }
-      harness = new Harness(browser, origin, evidence, options.slice, options.phones, { stopSignal, startSignal,
-        async resetSignal() { await stopSignal(); await rm(join(tempDir, 'state'), { recursive: true, force: true }); await startSignal(); } });
+      const launch = async (engine: 'chromium' | 'chrome' | 'webkit') => {
+        controller.signal.throwIfAborted();
+        const existing = browsers.get(engine); if (existing) return existing;
+        const browser = await (engine === 'webkit' ? webkit : chromium).launch({ headless: !options.headed, ...(engine === 'chrome' ? { channel: 'chrome' } : {}) });
+        browsers.set(engine, browser);
+        if (controller.signal.aborted) { browsers.delete(engine); await browser.close(); controller.signal.throwIfAborted(); }
+        return browser;
+      };
+      const hostBrowser = await launch(options.hostBrowser);
+      const phoneBrowser = await launch(options.phoneBrowser);
+      harness = new Harness(hostBrowser, origin, evidence, options.slice, options.phones, { stopSignal, startSignal,
+        async resetSignal() { await stopSignal(); await rm(join(tempDir, 'state'), { recursive: true, force: true }); await startSignal(); } },
+        { browser: phoneBrowser, ...(options.phoneBrowserExplicit ? { engine: options.phoneBrowser } : {}) });
+      harness.engines = { host: { engine: options.hostBrowser, version: hostBrowser.version() }, phone: { engine: options.phoneBrowserExplicit ? options.phoneBrowser : 'chromium (legacy iPhone emulation)', version: phoneBrowser.version() } };
       harness.keepFrames = options.frames; harness.signalOrigin = signalUrl;
       harness.maxBytes = options.maxMb * 1024 * 1024;
       harness.command = extension?.command ?? ['node tools/uat/run.mjs', ...args].join(' ');

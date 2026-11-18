@@ -2,6 +2,20 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — X-05: browser matrix, part 1
+
+- REL-004 (in progress): `pnpm uat -- <slice> --host-browser chromium|chrome|webkit --phone-browser
+  chromium|webkit`; one launch per engine, closed on success, failure and interruption; engines and
+  versions in run.json and REPORT. Phones keep their old emulation unless `--phone-browser` is given.
+- Two-phone matrix pass: Chromium 156 and Chrome 157 TVs with Pixel 7-emulated Chromium phones pass
+  (`uat/evidence/X-05-browser-matrix/r3-chromium-chromium/`, `r3-chrome-chromium/`). Playwright
+  WebKit 27.2 phones never seat (D-212).
+- REL-006 (in progress): the C-14 unsupported-browser slice passes under WebKit 27.2 as well as
+  Chromium (`uat/evidence/C-14-unsupported-browser/x05-webkit/`, `x05-chromium/`); C-14's `/` check
+  now waits for the landing page (A-09) and its `/host` check for the lobby, not the loading
+  placeholder. The harness excuses no cancelled request.
+- Open: OQ-051.
+
 ## 2026-11-18 — A-07b: effect readability
 
 - TR-010, TR-062: sparks render unlit as a 7×9 px edge-red ring around a gold core (about

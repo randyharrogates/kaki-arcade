@@ -1,0 +1,104 @@
+{
+  "slice": "X-05-browser-matrix",
+  "status": "failed",
+  "error": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: /You.re in/ }) to be visible\u001b[22m\n\n    at Harness.waitSeated (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/harness.ts:152:60)\n    at /Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/uat/slices/X-05-browser-matrix.mjs:34:13\n    at async deadline (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/core.ts:186:16)\n    at async Harness.step (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/harness.ts:103:26)\n    at async browserMatrix (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/uat/slices/X-05-browser-matrix.mjs:32:47)\n    at async work (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/runner.ts:118:7)\n    at async Module.run (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/runner.ts:126:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/run.mjs:15:1",
+  "engines": {
+    "host": {
+      "engine": "webkit",
+      "version": "27.2"
+    },
+    "phone": {
+      "engine": "webkit",
+      "version": "27.2"
+    }
+  },
+  "coverage": "REL-004 remains in progress. Automated Mac engines only: WebKit is not real Safari. Edge is not installed; real Safari, iPhone and Android await X-09 / K-07. TV browsers are not covered. REL-006 unsupported proof remains C-14.",
+  "command": "node tools/uat/run.mjs -- X-05-browser-matrix --phones 2 --host-browser webkit --phone-browser webkit --out webkit-webkit --max-mb 24",
+  "commit": "2aad56d9038687890be56f81fcac48f3338884a3",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1194.4464579999994,
+      "status": "completed"
+    },
+    {
+      "name": "Supported pages and room created (REL-006)",
+      "ms": 1044.5385829999996,
+      "status": "completed"
+    },
+    {
+      "name": "Phone 1 joins",
+      "ms": 15033.55125,
+      "status": "failed",
+      "error": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: /You.re in/ }) to be visible\u001b[22m\n\n    at Harness.waitSeated (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/harness.ts:152:60)\n    at /Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/uat/slices/X-05-browser-matrix.mjs:34:13\n    at async deadline (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/core.ts:186:16)\n    at async Harness.step (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/harness.ts:103:26)\n    at async browserMatrix (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/uat/slices/X-05-browser-matrix.mjs:32:47)\n    at async work (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/runner.ts:118:7)\n    at async Module.run (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/runner.ts:126:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-05/tools/uat/run.mjs:15:1"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-room.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-room.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone2-room.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-room.jpg",
+    "02-phone1-room.jpg",
+    "03-phone2-room.jpg",
+    "05-phone1-failure.png",
+    "04-host-failure.png",
+    "06-phone2-failure.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-room.jpg",
+      "bytes": 366913
+    },
+    {
+      "file": "02-phone1-room.jpg",
+      "bytes": 261412
+    },
+    {
+      "file": "03-phone2-room.jpg",
+      "bytes": 261995
+    },
+    {
+      "file": "04-host-failure.png",
+      "bytes": 941335
+    },
+    {
+      "file": "05-phone1-failure.png",
+      "bytes": 114310
+    },
+    {
+      "file": "06-phone2-failure.png",
+      "bytes": 1880529
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1317
+    },
+    {
+      "file": "run.json",
+      "bytes": 4369
+    }
+  ],
+  "totalBytes": 3832217,
+  "maxBytes": 25165824
+}

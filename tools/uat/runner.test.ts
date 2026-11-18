@@ -3,14 +3,23 @@ import type * as Core from './core.js';
 import { EventEmitter } from 'node:events';
 import { it, expect, vi, beforeEach } from 'vitest';
 
-const state = vi.hoisted(() => ({ servers: [] as string[][], headless: undefined as boolean | undefined, refuse: '', events: [] as string[], launchAbort: false, kept: false, closed: 0, saved: [] as string[], exitServer: false, children: [] as EventEmitter[] }));
+const state = vi.hoisted(() => ({ servers: [] as string[][], headless: undefined as boolean | undefined, refuse: '', events: [] as string[], launchAbort: false, kept: false, closed: 0, launches: [] as string[], closes: [] as string[], failLaunch: '', saved: [] as string[], engines: { host: { engine: '', version: '' }, phone: { engine: '', version: '' } }, exitServer: false, children: [] as EventEmitter[] }));
 vi.mock('node:fs/promises', () => ({
   access: (path: string) => path.endsWith('.wrangler') && state.refuse === 'wrangler' ? Promise.resolve() : path.endsWith('.wrangler') ? Promise.reject(Object.assign(new Error('missing'), { code: 'ENOENT' })) : Promise.resolve(),
   mkdtemp: () => Promise.resolve('/tmp/fake-uat'), readFile: () => Promise.resolve('"main": "src/worker.ts"'),
   writeFile: () => Promise.resolve(), rm: () => Promise.resolve(),
 }));
 vi.mock('node:child_process', () => ({ execFileSync: vi.fn(() => 'commit') }));
-vi.mock('playwright', () => ({ chromium: { launch: (options: { headless: boolean }) => { state.headless = options.headless; if (state.launchAbort) process.emit('SIGINT'); return Promise.resolve({ close: () => { state.closed++; return Promise.resolve(); } }); } } }));
+vi.mock('playwright', () => {
+  const launch = (engine: string, options: { headless: boolean; channel?: string }) => {
+    const name = options.channel ?? engine; state.launches.push(name); state.headless = options.headless;
+    if (state.failLaunch === name) return Promise.reject(new Error('launch failed'));
+    if (state.launchAbort) process.emit('SIGINT');
+    return Promise.resolve({ version: () => name + '-version', close: () => { state.closed++; state.closes.push(name); return Promise.resolve(); } });
+  };
+  return { chromium: { launch: (options: { headless: boolean; channel?: string }) => launch('chromium', options) },
+    webkit: { launch: (options: { headless: boolean }) => launch('webkit', options) } };
+});
 vi.mock('./core.js', async importOriginal => {
   const original = await importOriginal<typeof Core>();
   return { ...original,
@@ -23,6 +32,7 @@ vi.mock('./core.js', async importOriginal => {
 });
 vi.mock('./harness.js', () => ({ Harness: class {
   activeStep = undefined;
+  set engines(value: { host: { engine: string; version: string }; phone: { engine: string; version: string } }) { state.engines = value; }
   init() { return Promise.resolve(); }
   abort() { /* Fake harness. */ }
   failureShots() { return Promise.resolve(); }
@@ -31,8 +41,8 @@ vi.mock('./harness.js', () => ({ Harness: class {
   save(status: string) { state.saved.push(status); return Promise.resolve(); }
 } }));
 vi.mock('./slices.js', () => ({ builtInSlices: { 'F-07': () => { if (state.exitServer) state.children.at(-1)?.emit('exit', 1); return Promise.resolve(); } } }));
-import { run } from './runner.js';
-beforeEach(() => { state.refuse = ''; state.exitServer = false; state.children = []; state.events = []; state.launchAbort = false; state.kept = false; state.closed = 0; state.saved = []; process.exitCode = 0; });
+import { run, parseRunnerArgs } from './runner.js';
+beforeEach(() => { state.launches = []; state.closes = []; state.failLaunch = ''; state.refuse = ''; state.exitServer = false; state.children = []; state.events = []; state.launchAbort = false; state.kept = false; state.closed = 0; state.saved = []; process.exitCode = 0; });
 it('does not prepare evidence on memory or port refusal (NFR-TEST)', async () => {
   for (const refusal of ['wrangler', 'memory', 'port']) {
     state.refuse = refusal; state.events = [];
@@ -94,4 +104,53 @@ it('explicit headless override wins over headed arguments and production uses bu
   await run(['F-07', '--signal-var', 'COUNTS_DEV_READ:true']);
   expect(state.servers[0]).toContain('COUNTS_DEV_READ:true');
   expect(state.servers[1]).not.toContain('COUNTS_DEV_READ:true');
+});
+
+it('parses browser defaults and validates choices (REL-004)', () => {
+  expect(parseRunnerArgs(['F-07'])).toMatchObject({ hostBrowser: 'chromium', phoneBrowser: 'chromium', phoneBrowserExplicit: false });
+  expect(parseRunnerArgs(['--', 'F-07', '--host-browser', 'chrome', '--phone-browser', 'webkit', '--phones', '2'])).toMatchObject({ hostBrowser: 'chrome', phoneBrowser: 'webkit', phoneBrowserExplicit: true, phones: 2 });
+  expect(parseRunnerArgs(['F-07', '--phone-browser', 'chromium'])).toMatchObject({ phoneBrowser: 'chromium', phoneBrowserExplicit: true });
+  for (const args of [['--host-browser'], ['--phone-browser'], ['--host-browser', 'edge'], ['--phone-browser', 'chrome']]) {
+    expect(() => parseRunnerArgs(['F-07', ...args])).toThrow('Invalid');
+  }
+});
+
+it.each([['chromium', 'chromium'], ['chrome', 'chromium'], ['webkit', 'webkit'], ['chrome', 'webkit']])(
+  'launches %s / %s once per distinct browser and closes on success, failure and abort (REL-004)',
+  async (host, phone) => {
+    const stderr = vi.spyOn(process.stderr, 'write').mockImplementation(() => true);
+    try {
+      for (const outcome of ['success', 'failure', 'abort']) {
+        state.launches = []; state.closes = [];
+        await run(['X-05', '--host-browser', host, '--phone-browser', phone], {
+          script: '/tmp/matrix.mjs', execute: () => {
+            if (outcome === 'abort') process.emit('SIGINT');
+            if (outcome === 'failure') return Promise.reject(new Error('slice failed'));
+            return Promise.resolve();
+          },
+        });
+        expect(state.launches).toEqual([...new Set([host, phone])]);
+        expect(state.closes.sort()).toEqual([...state.launches].sort());
+        expect(process.exitCode).toBe(outcome === 'success' ? 0 : 1);
+        process.exitCode = 0;
+      }
+    } finally { stderr.mockRestore(); process.exitCode = 0; }
+  });
+
+it('closes the first engine when the second launch fails (REL-004)', async () => {
+  state.failLaunch = 'webkit';
+  const stderr = vi.spyOn(process.stderr, 'write').mockImplementation(() => true);
+  try {
+    await run(['F-07', '--host-browser', 'chrome', '--phone-browser', 'webkit']);
+    expect(state.closes).toContain('chrome'); expect(process.exitCode).toBe(1);
+  } finally { stderr.mockRestore(); process.exitCode = 0; }
+});
+
+it.each([
+  [[], 'chromium (legacy iPhone emulation)'],
+  [['--phone-browser', 'chromium'], 'chromium'],
+  [['--phone-browser', 'webkit'], 'webkit'],
+])('records phone engine metadata for flags %j (REL-004)', async (flags, engine) => {
+  await run(['F-07', ...flags]);
+  expect(state.engines).toMatchObject({ phone: { engine, version: engine === 'webkit' ? 'webkit-version' : 'chromium-version' } });
 });

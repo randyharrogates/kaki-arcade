@@ -1,3 +1,6 @@
+import { stripTypeScriptTypes } from 'node:module';
+import { readdir } from 'node:fs/promises';
+import { devices } from 'playwright';
 import { EventEmitter } from 'node:events';
 import { mkdtemp, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -47,21 +50,28 @@ it('collects errors per page, scopes expectations, and persists failing steps wi
     expect(run.totalBytes).toBe(actual.reduce((a, b) => a + b, 0));
     expect(run.steps[1]).toMatchObject({ name: 'bad action', status: 'failed' });
     expect(run.steps[1]?.ms).toBeGreaterThanOrEqual(0);
-    expect(await readFile(join(folder, 'REPORT.md'), 'utf8')).toContain('Visual review and acceptance decisions are pending');
+    const report = await readFile(join(folder, 'REPORT.md'), 'utf8');
+    expect(report).toContain('Visual review and acceptance decisions are pending');
+    expect(report).not.toMatch(/\n{3}/);
+    expect(run).not.toHaveProperty('coverage');
   } finally { await rm(folder, { recursive: true, force: true }); }
 });
 
 it('uses separate browser contexts and landscape touch emulation for each phone (NFR-TEST)', async () => {
   const folder = await mkdtemp(join(tmpdir(), 'kaki-uat-context-'));
   const contexts: unknown[] = [];
-  const fakeBrowser = { newContext: (options: unknown) => { contexts.push(options); return Promise.resolve({ newPage: () => Promise.resolve({ evaluate: () => Promise.resolve(), setDefaultTimeout() { /* No browser in this test. */ }, setDefaultNavigationTimeout() { /* No browser in this test. */ }, on() { /* No browser events in this test. */ } } as unknown as Page) }); } } as unknown as Browser;
+  const fakeBrowser = { newContext: (options: unknown) => { contexts.push(options); return Promise.resolve({ newPage: () => Promise.resolve({ evaluate: () => Promise.resolve(), setDefaultTimeout() { /* No browser in this test. */ }, setDefaultNavigationTimeout() { /* No browser in this test. */ }, on() { /* No browser events in this test. */ }, emulateMedia: () => Promise.resolve(), isClosed: () => false } as unknown as Page) }); } } as unknown as Browser;
   const network = { stopSignal: () => Promise.resolve(), startSignal: () => Promise.resolve(), resetSignal: () => Promise.resolve() };
   try {
     const harness = new Harness(fakeBrowser, '', folder, 'F-07', 2, network); await harness.init();
     const first = await harness.newPhone(); const second = await harness.newPhone('portrait');
     expect(first).not.toBe(second); expect(contexts).toHaveLength(3);
-    expect(contexts[1]).toMatchObject({ viewport: { width: 844, height: 390 }, hasTouch: true, isMobile: true, deviceScaleFactor: 3 });
-    expect(contexts[2]).toMatchObject({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, deviceScaleFactor: 3 });
+    const legacy = { hasTouch: true, isMobile: true, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1', deviceScaleFactor: 3, reducedMotion: 'no-preference' };
+    expect(contexts[1]).toEqual({ viewport: { width: 844, height: 390 }, ...legacy });
+    expect(contexts[2]).toEqual({ viewport: { width: 390, height: 844 }, ...legacy });
+    await harness.reducedMotion(true);
+    await harness.newPhone();
+    expect(contexts[3]).toEqual({ viewport: { width: 844, height: 390 }, ...legacy, reducedMotion: 'reduce' });
   } finally { await rm(folder, { recursive: true, force: true }); }
 });
 
@@ -193,5 +203,66 @@ it('records unsettled shots, fails their step, and permits explicit opt-in (NFR-
     const run = JSON.parse(await readFile(join(folder, 'run.json'), 'utf8')) as { shotStates: { unsettled: boolean }[] };
     expect(run.shotStates).toHaveLength(2); expect(run.shotStates.every(s => s.unsettled)).toBe(true);
     expect(await readFile(join(folder, 'REPORT.md'), 'utf8')).toContain('UNSETTLED');
+  } finally { await rm(folder, { recursive: true, force: true }); }
+});
+
+it.each(['chromium', 'webkit'] as const)('uses explicit %s phone descriptors and records both versions (REL-004)', async engine => {
+  const folder = await mkdtemp(join(tmpdir(), 'uat-webkit-'));
+  const contexts: unknown[] = [];
+  const page = { evaluate: () => Promise.resolve(), setDefaultTimeout() { /* Fake page. */ }, setDefaultNavigationTimeout() { /* Fake page. */ }, on() { /* Fake page. */ } };
+  const host = { newContext: () => Promise.resolve({ newPage: () => Promise.resolve(page) }) } as unknown as Browser;
+  const phone = { newContext: (options: unknown) => { contexts.push(options); return Promise.resolve({ newPage: () => Promise.resolve(page) }); } } as unknown as Browser;
+  const network = { stopSignal: () => Promise.resolve(), startSignal: () => Promise.resolve(), resetSignal: () => Promise.resolve() };
+  try {
+    const h = new Harness(host, '', folder, 'X-05', 2, network, { browser: phone, engine });
+    h.engines = { host: { engine: 'chrome', version: '123' }, phone: { engine: 'webkit', version: '456' } };
+    h.coverage = 'REL-004 remains in progress.';
+    await h.init(); await h.newPhone(); await h.newPhone();
+    expect(contexts).toHaveLength(2);
+    expect(contexts[0]).toEqual({ ...devices[engine === 'webkit' ? 'iPhone 13' : 'Pixel 7'], viewport: { width: 844, height: 390 }, reducedMotion: 'no-preference' });
+    await h.save();
+    expect(JSON.parse(await readFile(join(folder, 'run.json'), 'utf8')) as unknown).toMatchObject({ engines: h.engines });
+    const report = await readFile(join(folder, 'REPORT.md'), 'utf8');
+    expect(report).toContain('Host browser: chrome 123');
+    expect(report).toContain('Phone browser: webkit 456');
+    expect(report).toContain(h.coverage);
+  } finally { await rm(folder, { recursive: true, force: true }); }
+});
+
+it('loads all UAT TypeScript sources with Node strip-only syntax (REL-004)', async () => {
+  const folder = join(process.cwd(), 'tools/uat');
+  for (const file of await readdir(folder)) {
+    if (!file.endsWith('.ts')) continue;
+    const source = await readFile(join(folder, file), 'utf8');
+    expect(() => stripTypeScriptTypes(source, { mode: 'strip', sourceUrl: file }), file).not.toThrow();
+  }
+});
+
+
+it.each([
+  // No engine cancellation is excused (X-05 review 2): the app aborts its own fetches on timeout, and a
+  // cancelled request is fixed at its cause in the slice.
+  'cancelled', 'net::ERR_ABORTED', 'NS_BINDING_ABORTED', 'net::ERR_CONNECTION_REFUSED',
+] as const)('a same-origin request failure %s stays unexpected and is kept in run.json (REL-004, REL-006)', async errorText => {
+  const folder = await mkdtemp(join(tmpdir(), 'uat-request-failure-'));
+  class FakePage extends EventEmitter {
+    evaluate() { return Promise.resolve(); }
+    setDefaultTimeout() { /* Fake page. */ }
+    setDefaultNavigationTimeout() { /* Fake page. */ }
+  }
+  const host = new FakePage();
+  const browser = { newContext: () => Promise.resolve({ newPage: () => Promise.resolve(host) }) } as unknown as Browser;
+  const network = { stopSignal: () => Promise.resolve(), startSignal: () => Promise.resolve(), resetSignal: () => Promise.resolve() };
+  try {
+    const h = new Harness(browser, 'http://localhost:8000', folder, 'X-05', 1, network);
+    await h.init();
+    const url = 'http://localhost:8000/src/local-player.ts';
+    host.emit('requestfailed', { url: () => url, failure: () => ({ errorText }) });
+    expect(() => { h.assertNoUnexpectedErrors(); }).toThrow('Unexpected browser errors');
+    await h.save();
+    const run = JSON.parse(await readFile(join(folder, 'run.json'), 'utf8')) as { errors: unknown[] };
+    expect(run.errors).toEqual([{
+      page: 'host', kind: 'requestfailed', text: errorText, url, expected: false,
+    }]);
   } finally { await rm(folder, { recursive: true, force: true }); }
 });

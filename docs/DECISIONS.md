@@ -1656,3 +1656,18 @@ Steam and spray gain a faint #2B2118 edge (+.5 px, 18% alpha) that greys the who
 Every PNG text chunk is stripped. A full re-render gave byte-identical fire, steam and spray.
 
 Cost: effects atlas +1,278 B transferred and +6,944 B decoded at full size (39,096 B and 181,184 B), and 14,666 B at half. The Tabao Rush round is 2.06 MB (PERF-023 limit 8 MB) and 51.0 MB decoded (PERF-024 limit 256 MB). Randy may overrule.
+
+**D-212 · 2026-11-18 · Claude, integrator** (X-05; REL-004, REL-006) — X-05 part 1 is the automated
+half of the browser matrix on this Mac: Playwright Chromium 156 and branded Chrome 157 (channel
+"chrome") on the TV, and Playwright Chromium (Pixel 7) or Playwright WebKit 27.2 (iPhone 13) on the
+phones. No package is added; the owner installed the WebKit binary. Playwright WebKit cannot stand
+in for Safari's networking here. With the local pairing grant (no ICE servers), a same-page loopback
+in WebKit gathers no ICE candidates and its data channel never opens, while Chromium opens at once
+with an mDNS host candidate (`uat/evidence/X-05-browser-matrix/webkit-rtc-diagnosis/`). In the
+matrix, no WebKit phone is ever seated, whether the TV is WebKit or Chrome. The cause inside the
+build is not established, and whether real Safari connects is unproven either way. The WebKit runs
+therefore show only that supported pages load without the unsupported message, and C-14 shows the
+message itself in WebKit. REL-004 and REL-006 stay in progress until Edge, real Safari, iPhone,
+Android and TV browsers (K-07, X-09) and Firefox (no runner option yet) are checked. The UAT harness
+excuses no request failure for being "cancelled" by an engine; a cancelled request is fixed at its
+cause in the slice (X-05 review 2: C-14 had waited for the route's loading placeholder).

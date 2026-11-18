@@ -16,10 +16,10 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | X-02 | "Put this on your TV" help page | REL-003 | F-06, S-03 | 4 | merged |
 | X-03 | Privacy page and credits page, including the question-bank attribution | DATA-001, DATA-004, RZ-021 | F-06 | 4 | merged |
 | X-04 | Anonymous error and performance counts only | DATA-003 | C-10 | 4 | merged |
-| X-05 | Browser matrix: Chrome, Edge, Safari on the big screen; iPhone Safari and Android Chrome | REL-004, REL-006 | C-15 | 4 | todo |
+| X-05 | Browser matrix: Chrome, Edge, Safari on the big screen; iPhone Safari and Android Chrome | REL-004, REL-006 | C-15 | 4 | part 1 merged (automated Mac subset: Chromium and Chrome TVs pass; C-14 passes in WebKit; Playwright WebKit cannot seat phones, D-212); Edge, real Safari, iPhone, Android and TV browsers at K-07 and X-09; Firefox needs a runner option (OQ-051) |
 | X-07 | Names checked for trademarks and clashes: Kaki Arcade, Tabao Rush, Peek Poker, Rabakz | — | — | 4 | todo |
 | X-08 | 30-minute 8-player soak across all three games | NFR-REL, PERF-030 | R-08, P-07, T-14 | 4 | todo |
-| X-09 | Real-device UAT with Randy and his players: the `UAT.md` §5 checklist, 8 real phones, the TV | NFR-REL, REL-005, PERF-002, PERF-010 | X-08 | 4 | todo |
+| X-09 | Real-device UAT with Randy and his players: the `UAT.md` §5 checklist, 8 real phones, the TV | NFR-REL, REL-004, REL-005, REL-006, PERF-002, PERF-010 | X-08 | 4 | todo |
 | X-06 | Deploy to Cloudflare on `arcade.leeseidon.com` over HTTPS, then push the repository (Randy's go required) | REL-001, NET-006 | X-01 to X-09 | 4 | todo |
 
 ### X-02 review follow-ups for X-01 (2026-11-18)

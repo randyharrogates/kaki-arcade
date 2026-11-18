@@ -21,7 +21,8 @@ export default async function unsupported(h) {
       });
       await h.step(`Normal route ${label}`, async () => {
         await h.host.goto(`${h.origin}${path}`);
-        const normal = path === '/play' ? '.phone-page' : path === '/host' ? '.lobby, .room-status' : '.room-status';
+        // Since A-09, / is the landing page (landing-route.tsx), not the room screen.
+        const normal = path === '/play' ? '.phone-page' : path === '/host' ? '.lobby' : '.landing-screen';
         await h.host.locator('#app').locator(normal).first().waitFor();
         assert.equal(await h.host.locator('#app main.unsupported').getByRole('heading', { name: heading, exact: true }).count(), 0);
         assert.equal(await h.host.locator('#unsupported-classic').isHidden(), true);
@@ -123,7 +124,8 @@ async function productionChecks(h) {
   });
   for (const path of ['/', '/host', '/play']) await h.step(`Production working browser ${path}`, async () => {
     await h.host.goto(`${h.origin}${path}`, { waitUntil: 'load' });
-    const normal = path === '/play' ? '.phone-page' : path === '/host' ? '.lobby, .room-status' : '.room-status';
+    // Since A-09, / is the landing page (landing-route.tsx), not the room screen.
+    const normal = path === '/play' ? '.phone-page' : path === '/host' ? '.lobby' : '.landing-screen';
     await h.host.locator('#app').locator(normal).first().waitFor();
     await h.host.evaluate(() => new Promise(resolve => requestAnimationFrame(resolve)));
     assert.equal(await h.host.locator('#unsupported-classic').isHidden(), true);

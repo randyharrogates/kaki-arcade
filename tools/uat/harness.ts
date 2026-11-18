@@ -4,6 +4,7 @@ import { mkdir, writeFile, readFile, stat, rm, readdir } from 'node:fs/promises'
 import { join } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { setTimeout as delay } from 'node:timers/promises';
+import { devices } from 'playwright';
 import type { Browser, Page, BrowserContext } from 'playwright';
 import { deadline, errorMessage, evidenceName, hostPresets, phonePresets, matchesError, reportSkeleton, safeName } from './core.js';
 import type { ErrorRecord } from './core.js';
@@ -14,6 +15,8 @@ export class Harness {
   phones: Page[] = [];
   code = '';
   maxBytes = 12 * 1024 * 1024;
+  engines?: { host: { engine: string; version: string }; phone: { engine: string; version: string } };
+  coverage = '';
   command = '';
   commit = '';
   readonly viewports = new Set<string>();
@@ -47,8 +50,11 @@ export class Harness {
   readonly slice: string;
   readonly maxPhones: number;
   readonly network: { stopSignal(): Promise<void>; startSignal(): Promise<void>; resetSignal(): Promise<void> };
+  readonly phoneEngine: { browser: Browser; engine?: 'chromium' | 'webkit' } | undefined;
   constructor(browser: Browser, origin: string, evidence: string, slice: string, maxPhones: number,
-    network: { stopSignal(): Promise<void>; startSignal(): Promise<void>; resetSignal(): Promise<void> }) {
+    network: { stopSignal(): Promise<void>; startSignal(): Promise<void>; resetSignal(): Promise<void> },
+    phoneEngine?: { browser: Browser; engine?: 'chromium' | 'webkit' }) {
+    this.phoneEngine = phoneEngine;
     this.browser = browser; this.origin = origin; this.evidence = evidence; this.slice = slice; this.maxPhones = maxPhones; this.network = network;
   }
 
@@ -115,7 +121,14 @@ export class Harness {
   async newPhone(preset: keyof typeof phonePresets = 'landscape') {
     // Allow one overflow phone for the room-full test, also in an isolated context.
     if (this.phones.length >= this.maxPhones + 1) throw new Error('Phone context limit reached');
-    const context = await this.browser.newContext({ viewport: phonePresets[preset], hasTouch: true, isMobile: true, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1', deviceScaleFactor: 3, reducedMotion: this.motion ? 'reduce' : 'no-preference' });
+    const context = await (this.phoneEngine?.browser ?? this.browser).newContext({
+      ...(this.phoneEngine?.engine ? devices[this.phoneEngine.engine === 'webkit' ? 'iPhone 13' : 'Pixel 7'] : {
+        hasTouch: true, isMobile: true,
+        userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1',
+        deviceScaleFactor: 3,
+      }),
+      viewport: phonePresets[preset], reducedMotion: this.motion ? 'reduce' : 'no-preference',
+    });
     const page = await context.newPage(); this.phones.push(page); this.observe(page, `phone${String(this.phones.length)}`); return page;
   }
   async joinPhone(name: string) {
@@ -240,8 +253,10 @@ export class Harness {
     if (total > this.maxBytes) throw new Error(`Evidence size ${(total / 1048576).toFixed(2)} MB exceeds --max-mb ${String(this.maxBytes / 1048576)}; reduce captures or raise --max-mb`);
   }
   async save(status = 'running', error?: unknown) {
-    const meta = { command: this.command, commit: this.commit, viewports: [...this.viewports], steps: this.steps, joins: this.joins, errors: this.errors, shotStates: this.shotStates };
-    await writeFile(join(this.evidence, 'REPORT.md'), reportSkeleton(this.slice, this.screenshots, meta));
+    const meta = { engines: this.engines, ...(this.coverage ? { coverage: this.coverage } : {}), command: this.command, commit: this.commit, viewports: [...this.viewports], steps: this.steps, joins: this.joins, errors: this.errors, shotStates: this.shotStates };
+    await writeFile(join(this.evidence, 'REPORT.md'), reportSkeleton(this.slice, this.screenshots, meta).replace(
+      'Automated execution only.',
+      `Host browser: ${this.engines?.host.engine ?? 'unrecorded'} ${this.engines?.host.version ?? ''}\nPhone browser: ${this.engines?.phone.engine ?? 'unrecorded'} ${this.engines?.phone.version ?? ''}\n\n${this.coverage ? `${this.coverage}\n\n` : ''}Automated execution only.`));
     const files = await this.fileSizes();
     const manifest = { slice: this.slice, status, ...(error ? { error: errorMessage(error) } : {}), ...meta, screenshots: this.screenshots, files, totalBytes: 0, maxBytes: this.maxBytes };
     files.push({ file: 'run.json', bytes: 0 });
