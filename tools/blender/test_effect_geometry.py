@@ -25,6 +25,18 @@ class EffectGeometryTests(unittest.TestCase):
                 self.assertEqual(frame['anchor'], list(anchor))
                 self.assertEqual(frame['blendMode'], 'source-over')
                 self.assertEqual(frame['reducedMotionFrame'], name+'-0')
+        self.assertEqual(E.EFFECTS['sparks'], (64, 4, 8, (32, 48)))
+        self.assertEqual(E.spark_layers(0), E.spark_layers(4))
+        for outline, alpha, colour in E.spark_layers(0):
+            rx, ry = (3.5, 4.5) if colour == '#B5371F' else (2, 3)
+            self.assertAlmostEqual(max(x for x, _ in outline)-min(x for x, _ in outline), rx*2)
+            self.assertAlmostEqual(max(y for _, y in outline)-min(y for _, y in outline), ry*2)
+        self.assertEqual(E.spark_layers(0)[0][1], 0)
+        self.assertEqual(max(alpha for _, alpha, _ in E.spark_layers(2)), 1)
+        for f in range(64):
+            for outline, alpha, _ in E.spark_layers(f/16):
+                self.assertTrue(0 <= alpha <= 1)
+                self.assertTrue(all(0 < 32+x < 64 and 0 < 48-y < 64 for x, y in outline))
         self.assertTrue(any(layer[1] == 1 for layer in E.fire_tongues(0)))
 
     def test_fire_tips_palette_and_fixed_foot(self):

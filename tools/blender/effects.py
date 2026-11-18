@@ -14,10 +14,10 @@ import kalib as K
 import effect_geometry as E
 
 
-def render_fire(frame, size, origin):
+def render_unlit(layers, size, origin):
     """Camera-plane flame meshes with unlit palette colours, no peach lighting wash."""
     toward_camera = Vector((0, -.5, math.sin(math.pi/3)))
-    for index, (outline, alpha, colour) in enumerate(E.fire_tongues(frame)):
+    for index, (outline, alpha, colour) in enumerate(layers):
         vertices = []
         for x, y in outline:
             sx, sy = x+origin[0]-size/2, y+size/2-origin[1]
@@ -53,8 +53,17 @@ def render(effect, frame, output):
     K.STYLE = 'matte'
     K.lights()
     size, _, _, origin = E.EFFECTS[effect]
-    if effect == 'fire':
-        render_fire(frame, size, origin)
+    if effect == 'shadow':
+        # Analytic sRGB bytes: no Monte Carlo lighting or denoising grain.
+        image = bpy.data.images.new('soft-shadow', width=size, height=size, alpha=True)
+        image.pixels = E.shadow_pixels(size)
+        image.filepath_raw = str(output)
+        image.file_format = 'PNG'
+        image.save()
+        bpy.data.images.remove(image)
+        return
+    if effect in ('fire', 'sparks'):
+        render_unlit(E.fire_tongues(frame) if effect == 'fire' else E.spark_layers(frame), size, origin)
     for index, (x, y, rx, ry, alpha, colour) in enumerate(E.particles(effect, frame)):
         if alpha < 1e-8:
             continue
@@ -64,7 +73,7 @@ def render(effect, frame, output):
             location=(sx/120, sy*math.sin(math.pi/3)/120, sy*.5/120))
         obj = bpy.context.object
         obj.rotation_euler.x = math.pi/6
-        obj.scale = (rx/120, ry/120, .001 if effect == 'shadow' else min(rx, ry)/240)
+        obj.scale = (rx/120, ry/120, min(rx, ry)/240)
         material = K.mat(colour)
         # Independent material per particle; mix physical matte with transparent.
         material = material.copy()
@@ -89,7 +98,7 @@ def render(effect, frame, output):
     camera.data.ortho_scale = size/120
     scene = bpy.context.scene
     scene.camera = camera
-    if effect == 'fire':
+    if effect in ('fire', 'sparks'):
         scene.view_settings.view_transform = 'Standard'
         scene.view_settings.look = 'None'
         scene.view_settings.exposure = 0
@@ -125,9 +134,7 @@ def strip_render_metadata(path):
         length = int.from_bytes(data[offset:offset+4], 'big')
         end = offset + length + 12
         kind = data[offset+4:offset+8]
-        payload = data[offset+8:offset+8+length]
-        if not (kind in (b'tEXt', b'zTXt', b'iTXt')
-                and payload.split(b'\0', 1)[0] in (b'Date', b'RenderTime')):
+        if kind not in (b'tEXt', b'zTXt', b'iTXt'):
             chunks.append(data[offset:end])
         offset = end
     path.write_bytes(b''.join(chunks))

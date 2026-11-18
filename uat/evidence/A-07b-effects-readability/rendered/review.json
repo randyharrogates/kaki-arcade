@@ -1,0 +1,11 @@
+{
+  "visualReview": "round 2 looked at by integrator and reviewer 2026-11-18 (re-stamped after the D-207 docstring; PNGs byte-identical)",
+  "instructions": "Review all 1x/4x sheets including half-detail and greyscale columns, last/first seams and GIFs; compare static options at 3 m. Panel proportions 233:144.",
+  "effects": [
+    "steam",
+    "sparks",
+    "fire",
+    "spray",
+    "shadow"
+  ]
+}

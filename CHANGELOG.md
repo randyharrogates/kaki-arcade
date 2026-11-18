@@ -2,6 +2,19 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — A-07b: effect readability
+
+- TR-010, TR-062: sparks render unlit as a 7×9 px edge-red ring around a gold core (about
+  4.5 : 1 on cream, was 1.9), rising on an arc with transparent births and deaths; steam and
+  spray are edged so they show on the light counter.
+- TR-009: the thrown-item shadow is an analytic, grain-free ellipse in the palette brown at
+  peak alpha .5; the height rule is unchanged (D-207).
+- Every PNG text chunk is stripped, so re-renders are byte-identical; effect review sheets
+  gain half-detail (at play size) and greyscale columns, and the strip script keeps an
+  existing review.json.
+- Cost: effects atlas +1.3 KB transferred, +7 KB decoded.
+- Not yet: drawn in game (T-07); Cycles grain inside steam and spray lobes.
+
 ## 2026-11-18 — R-02: Rabakz phone layouts
 
 - RZ-003, RZ-005: phone answer grid, private status strip and reveal views; leader Skip beside the

@@ -18,11 +18,10 @@ COLOURS = {'steam': '#EFEAE2', 'sparks': '#F2B21B',
 def particles(effect, frame):
     """Return (x, screen-up y, radius-x, radius-y, alpha, colour) from origin."""
     _, count, _, _ = EFFECTS[effect]
-    if effect == 'shadow':
-        # Nested transparent ellipses bake a soft edge without runtime filtering.
-        return [(0, 0, 23-i, (23-i)*.5, .025, COLOURS[effect]) for i in range(16)]
-    if effect == 'fire':
-        return []  # Fire uses pointed mesh tongues, never ellipsoid particles.
+    if effect in ('fire', 'sparks', 'shadow'):
+        # Fire and sparks are unlit mesh layers; the shadow is analytic;
+        # none use ellipsoid particles.
+        return []
     t = (frame % count) / count
     result = []
     for i in range(5):
@@ -36,8 +35,37 @@ def particles(effect, frame):
             x, y, rx, ry = (i-2)*4, 5+age*33, 4+age*5, 5+age*5
         else:
             x, y, rx, ry = (i-2)*9, 9+age*36, 10-age*6, 16-age*8
+        if effect in ('steam', 'spray'):
+            # Warm edge greys the whole lobe slightly; improves contrast on marble.
+            result.append((x, y, rx+.5, ry+.5, fade*.18, COLOURS['shadow']))
         result.append((x, y, rx, ry, fade*.85, COLOURS[effect]))
     return result
+
+
+def spark_layers(frame):
+    """D-192 / D-207: 7×9 px unlit red ellipses with 4×6 px gold cores."""
+    t = (frame % 4)/4
+    layers = []
+    for i in range(5):
+        age = (t+i/5) % 1
+        alpha = math.sin(math.pi*age)**2
+        x, y = (i-2)*age*10, 6+age*26-12*age*age
+        for rx, ry, colour in [(3.5, 4.5, COLOURS['edge']), (2, 3, COLOURS['sparks'])]:
+            outline = [(x+rx*math.cos(j*math.tau/32),
+                        y+ry*math.sin(j*math.tau/32)) for j in range(32)]
+            layers.append((outline, alpha, colour))
+    return layers
+
+
+def shadow_pixels(size=64):
+    """Smooth compact ellipse, constant palette RGB and noise-free alpha."""
+    rgb = [int(COLOURS['shadow'][i:i+2], 16)/255 for i in (1, 3, 5)]
+    pixels = []
+    for y in range(size):
+        for x in range(size):
+            r2 = ((x+.5-size/2)/23)**2 + ((y+.5-size/2)/11.5)**2
+            pixels.extend(rgb+[.5*max(0, 1-r2)**2])
+    return pixels
 
 
 def fire_tongues(frame):
