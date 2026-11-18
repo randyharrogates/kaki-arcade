@@ -110,3 +110,21 @@ it.each([1, 2, 8])('PP-020 inspects every host send during a scripted round with
   expect(inspected).toBeGreaterThan(count);
   expect(t.leaksFound).toEqual([]);
 }, 60000);
+
+it('PLAT-008 PP-013 late seat has no cards or picks until next round and starts at zero', () => {
+  const t = twin({ game: peekPoker, seed: 7, players: 2, settings: { rounds: 3 } });
+  t.step();
+  const existing = t.session.state?.players.map(p => p.score);
+  t.session.updateRoom(joinRoom(t.room, 3));
+  expect(t.session.state?.players[2]).toMatchObject({ score: 0, waiting: true, joinedMidGame: true });
+  expect(t.session.state?.players.slice(0, 2).map(p => p.score)).toEqual(existing);
+  expect(t.transport.lastLayout.get('c3')?.controls.map(c => c.id)).toEqual(['wait']);
+  t.transport.tap('c3', 'grid', 1); t.step();
+  expect(t.session.state?.players[2]?.picks).toEqual([]);
+  for (let i = 0; i < 6000 && t.session.state?.round === 1; i++) t.step();
+  expect(t.session.state?.round).toBe(2);
+  expect(t.session.state?.players[2]).toMatchObject({ score: 0, waiting: false });
+  expect(t.session.state?.players.slice(0, 2).map(p => p.score)).toEqual(t.match.state.players.map(p => p.score));
+  expect(t.leaksFound).toEqual([]);
+  t.session.quit('seat-1', true);
+});

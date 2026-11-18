@@ -2,7 +2,15 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — C-17: late join
 
+- PLAT-008, RZ-014, PP-013, TR-056: late join for games that allow it; held phones are let in when
+  the TV returns to the picker or results. `GameMeta.midGameJoin` (conformance-checked); the
+  reconnect host keeps a refused request and replays it once, at most one seat per phone (D-201);
+  the host keeps the running game's admission through pause and resume, and team matches hold new
+  phones (D-202; OQ-048); clearer waiting copy ("You join at the next question", "You join at the
+  next round"); Leave stays on screen in the held phone's action row.
+- UAT at 3 phones (`uat/evidence/C-17-late-join/r4-p3/`).
 
 ## 2026-11-18 — R-06: Rabakz solo best and recently seen questions
 

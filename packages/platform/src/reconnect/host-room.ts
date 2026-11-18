@@ -1,4 +1,4 @@
-import { PROTOCOL_VERSION as v, validatePhoneMessage } from '@kaki/protocol';
+import { canAskToJoin, PROTOCOL_VERSION as v, validatePhoneMessage } from '@kaki/protocol';
 import type { HostMessage } from '@kaki/protocol';
 import type { GameModule, JsonValue, Results } from '../game/types';
 import { findSecret } from '../game/json';
@@ -41,6 +41,8 @@ export function createReconnectRoom(o: {
   let timer: unknown;
   let stopped = false;
   const peers = new Map<string, ReconnectHostPeer>();
+  // Keep the original request: admission must not depend on a second phone send.
+  const waiting = new Map<string, string | null>();
   function schedule(): void {
     o.clock.cancel(timer);
     if (stopped) return;
@@ -89,7 +91,7 @@ export function createReconnectRoom(o: {
     o.changed?.(room); schedule();
   }
   schedule();
-  return {
+  const adapter = {
     get room(): RoomState { return room; },
     attach(id: string, peer: ReconnectHostPeer): void {
       if (stopped || peers.has(id)) return;
@@ -114,6 +116,9 @@ export function createReconnectRoom(o: {
       else if (message.t === 'set-name') result = applyPhoneEvent(room, identity,
         { type: 'rename', name: message.name }, o.clock.now());
       else return;
+      if (message.t === 'hello' && !result.result.ok && result.result.reason === 'game-running')
+        waiting.set(id, message.name);
+      else if (result.result.ok || message.t === 'leave') waiting.delete(id);
       if (result.result.ok) {
         const accepted = result.state.players.find(p => p.connectionId === id);
         if (accepted) {
@@ -126,17 +131,30 @@ export function createReconnectRoom(o: {
     },
     dropped(id: string): void {
       if (stopped || !peers.delete(id)) return;
+      waiting.delete(id);
       const seat = room.players.find(p => p.connectionId === id);
       if (seat) commit(applyHostEvent(room, { type: 'disconnect', seat: seat.seat },
         o.clock.now()));
     },
     host(event: HostEvent): void {
-      if (!stopped) commit(applyHostEvent(room, event, o.clock.now()));
+      if (stopped) return;
+      commit(applyHostEvent(room, event, o.clock.now()));
+      if (canAskToJoin(room.phase) || room.allowRunningJoin) {
+        for (const [id, name] of [...waiting]) {
+          // Broadcasts and changed callbacks can synchronously admit/cancel requests.
+          if (!waiting.has(id)) continue;
+          if (!(canAskToJoin(room.phase) || room.allowRunningJoin)) break;
+          waiting.delete(id);
+          if (room.players.some(player => player.connectionId === id)) continue;
+          adapter.receive(id, { v, t: 'hello', name });
+        }
+      }
     },
     stop(): void {
       stopped = true; o.clock.cancel(timer);
-      const old = [...peers.values()]; peers.clear();
+      const old = [...peers.values()]; peers.clear(); waiting.clear();
       for (const peer of old) peer.close();
     },
   };
+  return adapter;
 }

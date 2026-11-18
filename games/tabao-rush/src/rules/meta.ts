@@ -8,5 +8,5 @@ export const meta: GameMeta = {
     players: { min: 1, max: 8 },
     teams: 'none',
     coop: true,
-    solo: true,
+    solo: true, midGameJoin: true,
   };

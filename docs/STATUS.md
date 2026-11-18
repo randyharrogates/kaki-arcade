@@ -6,6 +6,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 **Last updated:** 2026-11-16 · **Milestone:** M0 complete. **Build started 2026-11-16 on Randy's go (D-043):** Wave 0 running. Design gate: boards 0, 0B, 1A, 2 and 2B done; 1, 3, 4 and 5 to come.
 
 ## Works
+- **Late join (C-17, merged 2026-11-18; PLAT-008, RZ-014, PP-013, TR-056).** A phone can join while Rabakz or Peek Poker is running. It is seated at once with a score of 0, sees "You join at the next question" or "You join at the next round", and plays from there. A game that does not allow mid-game joining, and any match played in teams, holds the phone on "Waiting for the lobby"; the phone is let in automatically when the TV returns to the picker or results. Evidence: `uat/evidence/C-17-late-join/r4-p3/`. **Not yet:** joining a running team match (OQ-048); Tabao Rush's next-round entry is shown only in module tests.
 
 - **Rabakz solo best and recently seen questions (R-06, merged 2026-11-18).** A one-player match
   is a score attack against a best kept on this TV for each match length (10, 30 or 50). During

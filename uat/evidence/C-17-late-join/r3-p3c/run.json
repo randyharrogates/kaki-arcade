@@ -1,0 +1,189 @@
+{
+  "slice": "C-17-late-join",
+  "status": "failed",
+  "error": "page.waitForFunction: Timeout 15000ms exceeded.\n    at /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/uat/slices/C-17-late-join.mjs:100:18\n    at async deadline (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/core.ts:186:16)\n    at async Harness.step (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/harness.ts:97:26)\n    at async lateJoin (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/uat/slices/C-17-late-join.mjs:90:3)\n    at async work (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/runner.ts:89:7)\n    at async Module.run (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- C-17-late-join --phones 3 --out r3-p3c",
+  "commit": "718685a0aee3797a27f6c821f96b0c884685c093",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1358.022,
+      "status": "completed"
+    },
+    {
+      "name": "Two players seated; third phone has not joined",
+      "ms": 1100.7112909999996,
+      "status": "completed"
+    },
+    {
+      "name": "Rabakz running with two players",
+      "ms": 2433.8160420000004,
+      "status": "completed"
+    },
+    {
+      "name": "Third phone seated with zero and safe next-question controls",
+      "ms": 5155.77725,
+      "status": "completed"
+    },
+    {
+      "name": "Rabakz next question enables third phone at zero",
+      "ms": 19634.578833,
+      "status": "failed",
+      "error": "page.waitForFunction: Timeout 15000ms exceeded.\n    at /Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/uat/slices/C-17-late-join.mjs:100:18\n    at async deadline (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/core.ts:186:16)\n    at async Harness.step (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/harness.ts:97:26)\n    at async lateJoin (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/uat/slices/C-17-late-join.mjs:90:3)\n    at async work (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/runner.ts:89:7)\n    at async Module.run (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/run.mjs:15:1"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-01-two-seated-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-01-two-seated-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone2-01-two-seated-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone3-01-two-seated-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-02-rabakz-two-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-02-rabakz-two-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone2-02-rabakz-two-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone3-02-rabakz-two-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-03-rabakz-waiting-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-03-rabakz-waiting-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone2-03-rabakz-waiting-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone3-03-rabakz-waiting-phone3.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-01-two-seated-tv.jpg",
+    "02-phone1-01-two-seated-phone1.jpg",
+    "03-phone2-01-two-seated-phone2.jpg",
+    "04-phone3-01-two-seated-phone3.jpg",
+    "05-host-02-rabakz-two-tv.jpg",
+    "06-phone1-02-rabakz-two-phone1.jpg",
+    "07-phone2-02-rabakz-two-phone2.jpg",
+    "08-phone3-02-rabakz-two-phone3.jpg",
+    "09-host-03-rabakz-waiting-tv.jpg",
+    "10-phone1-03-rabakz-waiting-phone1.jpg",
+    "11-phone2-03-rabakz-waiting-phone2.jpg",
+    "12-phone3-03-rabakz-waiting-phone3.jpg",
+    "13-host-failure.png",
+    "15-phone2-failure.png",
+    "14-phone1-failure.png",
+    "16-phone3-failure.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-01-two-seated-tv.jpg",
+      "bytes": 248704
+    },
+    {
+      "file": "02-phone1-01-two-seated-phone1.jpg",
+      "bytes": 128006
+    },
+    {
+      "file": "03-phone2-01-two-seated-phone2.jpg",
+      "bytes": 111948
+    },
+    {
+      "file": "04-phone3-01-two-seated-phone3.jpg",
+      "bytes": 150453
+    },
+    {
+      "file": "05-host-02-rabakz-two-tv.jpg",
+      "bytes": 233568
+    },
+    {
+      "file": "06-phone1-02-rabakz-two-phone1.jpg",
+      "bytes": 185439
+    },
+    {
+      "file": "07-phone2-02-rabakz-two-phone2.jpg",
+      "bytes": 180069
+    },
+    {
+      "file": "08-phone3-02-rabakz-two-phone3.jpg",
+      "bytes": 150453
+    },
+    {
+      "file": "09-host-03-rabakz-waiting-tv.jpg",
+      "bytes": 244610
+    },
+    {
+      "file": "10-phone1-03-rabakz-waiting-phone1.jpg",
+      "bytes": 177131
+    },
+    {
+      "file": "11-phone2-03-rabakz-waiting-phone2.jpg",
+      "bytes": 170866
+    },
+    {
+      "file": "12-phone3-03-rabakz-waiting-phone3.jpg",
+      "bytes": 130094
+    },
+    {
+      "file": "13-host-failure.png",
+      "bytes": 294643
+    },
+    {
+      "file": "14-phone1-failure.png",
+      "bytes": 148613
+    },
+    {
+      "file": "15-phone2-failure.png",
+      "bytes": 151209
+    },
+    {
+      "file": "16-phone3-failure.png",
+      "bytes": 157761
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2033
+    },
+    {
+      "file": "run.json",
+      "bytes": 5927
+    }
+  ],
+  "totalBytes": 2871564,
+  "maxBytes": 12582912
+}

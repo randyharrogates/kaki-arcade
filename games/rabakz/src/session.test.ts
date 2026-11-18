@@ -63,3 +63,25 @@ describe('C-10 review: Rabakz through the session runner', { timeout: 60_000 }, 
     expect(t.session.ended).toBe(false);
   });
 });
+
+it('PLAT-008 RZ-014 late seat waits safely, starts next question at zero and preserves existing scores', () => {
+  const t = twin({ game: rabakz, seed: 7, players: 2, settings, context });
+  t.step();
+  const before = t.session.state;
+  if (!before) throw new Error('No match');
+  const correct = before.questions[0]?.correct;
+  t.tap('seat-1', 'answer', String(correct)); t.step();
+  const room = joinRoom(t.room, 3); t.session.updateRoom(room);
+  expect(t.session.state?.players[2]).toMatchObject({ score: 0, eligible: false, joinedMidGame: true });
+  expect(t.transport.lastLayout.get('c3')?.controls.some(c => c.id === 'answer')).toBe(false);
+  const existing = t.session.state?.players.slice(0, 2).map(p => p.score);
+  expect(existing).toEqual(before.players.map(p => p.score));
+  for (let i = 0; i < 1000 && t.session.state?.round === 0; i++) t.step();
+  expect(t.session.state?.round).toBe(1);
+  expect(t.session.state?.players[2]).toMatchObject({ score: 0, eligible: true });
+  expect(t.session.state?.players[0]?.score).toBe(100);
+  expect(t.session.state?.players[1]?.score).toBe(0);
+  expect(t.transport.lastLayout.get('c3')?.controls.some(c => c.id === 'answer')).toBe(true);
+  expect(t.leaksFound).toEqual([]);
+  t.session.quit('seat-1', true);
+});

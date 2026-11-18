@@ -16,7 +16,7 @@ const layouts: readonly ControllerLayout[] = [0, 1, 2].map(revision => ({ revisi
     { id: 'no', label: 'No' }] }, { kind: 'swipe', id: 'move' }, { kind: 'dpad', id: 'pad' }] }));
 export const fixture: GameModule<FixtureState, { steps: number }, { step: number }> = {
   meta: { id: 'session-fixture', name: 'Session fixture', blurb: 'Test', players: { min: 1, max: 8 },
-    teams: 'optional', coop: false, solo: true },
+    teams: 'optional', coop: false, solo: true, midGameJoin: true },
   settings: { fields: [{ kind: 'number', id: 'steps', label: 'Steps', min: 1, max: 100000, step: 1, default: 30 }] },
   init(seed, players, settings, context) {
     return { seed, step: -settings.steps, players, actions: [], presses: 0, held: 0, paused: false, data: context.data };

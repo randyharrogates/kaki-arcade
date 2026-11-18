@@ -56,7 +56,7 @@ const game = {
     players: { min: 1, max: 8 },
     teams: 'none',
     coop: false,
-    solo: true,
+    solo: true, midGameJoin: true,
   },
   settings: { fields: [] },
   init: () => ({ events: [], round: 1 }),

@@ -9,7 +9,7 @@ import { meta as peekPoker } from '../../../games/peek-poker/src/meta';
 import { meta as rabakz } from '../../../games/rabakz/src/meta';
 import type { HostScreen } from './session-adapter';
 export const consoleE2eEnabled = import.meta.env.DEV && typeof location !== 'undefined' && new URLSearchParams(location.search).get('fixture') === 'console-e2e';
-export const gameMetas = consoleE2eEnabled ? [{ id: 'console-e2e', name: 'Console test', blurb: 'Development console integration fixture.', players: { min: 1, max: 8 }, teams: 'none' as const, coop: true, solo: true }] : [tabaoRush, peekPoker, rabakz];
+export const gameMetas = consoleE2eEnabled ? [{ id: 'console-e2e', name: 'Console test', blurb: 'Development console integration fixture.', players: { min: 1, max: 8 }, teams: 'none' as const, coop: true, solo: true, midGameJoin: false }] : [tabaoRush, peekPoker, rabakz];
 const selectionChecks = new Map<string, (id: string, settings: JsonValue) => boolean>();
 /** Called only by the host start adapter; phones and the picker import metadata alone. */
 export async function loadGame(id: string) {

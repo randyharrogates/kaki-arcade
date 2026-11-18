@@ -1,0 +1,435 @@
+{
+  "slice": "C-17-late-join",
+  "status": "failed",
+  "error": "Error: Unexpected browser errors: [{\"page\":\"host\",\"kind\":\"console\",\"text\":\"Failed to load resource: the server responded with a status of 426 (Upgrade Required)\",\"url\":\"http://127.0.0.1:5251/rooms/TDF8YP5H/host\",\"expected\":false},{\"page\":\"host\",\"kind\":\"requestfailed\",\"text\":\"net::ERR_ABORTED\",\"url\":\"http://127.0.0.1:5251/rooms/TDF8YP5H/host\",\"expected\":false}]\n    at Harness.assertNoUnexpectedErrors (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/harness.ts:254:110)\n    at Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/harness.ts:97:190)\n    at async lateJoin (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/uat/slices/C-17-late-join.mjs:120:3)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- C-17-late-join --phones 3 --out r3-p3b",
+  "commit": "59efc187b4bd2e631bb9967bb421a004145ef7ec",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1678.414625,
+      "status": "completed"
+    },
+    {
+      "name": "Two players seated; third phone has not joined",
+      "ms": 1272.1869580000002,
+      "status": "completed"
+    },
+    {
+      "name": "Rabakz running with two players",
+      "ms": 3230.2761659999996,
+      "status": "completed"
+    },
+    {
+      "name": "Third phone seated with zero and safe next-question controls",
+      "ms": 5196.401625,
+      "status": "completed"
+    },
+    {
+      "name": "Rabakz next question enables third phone at zero",
+      "ms": 20986.230042,
+      "status": "completed"
+    },
+    {
+      "name": "Peek Poker running with two players",
+      "ms": 2048.5341659999976,
+      "status": "completed"
+    },
+    {
+      "name": "Third phone seated with no private cards and next-round message",
+      "ms": 951.143624999997,
+      "status": "completed"
+    },
+    {
+      "name": "Peek Poker next round enables the third player at zero",
+      "ms": 18186.386832999997,
+      "status": "failed",
+      "error": "Error: Unexpected browser errors: [{\"page\":\"host\",\"kind\":\"console\",\"text\":\"Failed to load resource: the server responded with a status of 426 (Upgrade Required)\",\"url\":\"http://127.0.0.1:5251/rooms/TDF8YP5H/host\",\"expected\":false},{\"page\":\"host\",\"kind\":\"requestfailed\",\"text\":\"net::ERR_ABORTED\",\"url\":\"http://127.0.0.1:5251/rooms/TDF8YP5H/host\",\"expected\":false}]\n    at Harness.assertNoUnexpectedErrors (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/harness.ts:254:110)\n    at Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/harness.ts:97:190)\n    at async lateJoin (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/uat/slices/C-17-late-join.mjs:120:3)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-17/tools/uat/run.mjs:15:1"
+    }
+  ],
+  "joins": [],
+  "errors": [
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 426 (Upgrade Required)",
+      "url": "http://127.0.0.1:5251/rooms/TDF8YP5H/host",
+      "expected": false
+    },
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_ABORTED",
+      "url": "http://127.0.0.1:5251/rooms/TDF8YP5H/host",
+      "expected": false
+    }
+  ],
+  "shotStates": [
+    {
+      "file": "01-host-01-two-seated-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-01-two-seated-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone2-01-two-seated-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone3-01-two-seated-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-02-rabakz-two-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-02-rabakz-two-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone2-02-rabakz-two-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone3-02-rabakz-two-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-03-rabakz-waiting-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-03-rabakz-waiting-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone2-03-rabakz-waiting-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone3-03-rabakz-waiting-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-04-rabakz-entered-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-04-rabakz-entered-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone2-04-rabakz-entered-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone3-04-rabakz-entered-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-05-rabakz-picker-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-05-rabakz-picker-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone2-05-rabakz-picker-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone3-05-rabakz-picker-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-06-poker-two-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone1-06-poker-two-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone2-06-poker-two-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone3-06-poker-two-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-07-poker-waiting-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-07-poker-waiting-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone2-07-poker-waiting-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone3-07-poker-waiting-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-08-poker-entered-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-phone1-08-poker-entered-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-phone2-08-poker-entered-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-phone3-08-poker-entered-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-host-09-poker-picker-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone1-09-poker-picker-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-phone2-09-poker-picker-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-phone3-09-poker-picker-phone3.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-01-two-seated-tv.jpg",
+    "02-phone1-01-two-seated-phone1.jpg",
+    "03-phone2-01-two-seated-phone2.jpg",
+    "04-phone3-01-two-seated-phone3.jpg",
+    "05-host-02-rabakz-two-tv.jpg",
+    "06-phone1-02-rabakz-two-phone1.jpg",
+    "07-phone2-02-rabakz-two-phone2.jpg",
+    "08-phone3-02-rabakz-two-phone3.jpg",
+    "09-host-03-rabakz-waiting-tv.jpg",
+    "10-phone1-03-rabakz-waiting-phone1.jpg",
+    "11-phone2-03-rabakz-waiting-phone2.jpg",
+    "12-phone3-03-rabakz-waiting-phone3.jpg",
+    "13-host-04-rabakz-entered-tv.jpg",
+    "14-phone1-04-rabakz-entered-phone1.jpg",
+    "15-phone2-04-rabakz-entered-phone2.jpg",
+    "16-phone3-04-rabakz-entered-phone3.jpg",
+    "17-host-05-rabakz-picker-tv.jpg",
+    "18-phone1-05-rabakz-picker-phone1.jpg",
+    "19-phone2-05-rabakz-picker-phone2.jpg",
+    "20-phone3-05-rabakz-picker-phone3.jpg",
+    "21-host-06-poker-two-tv.jpg",
+    "22-phone1-06-poker-two-phone1.jpg",
+    "23-phone2-06-poker-two-phone2.jpg",
+    "24-phone3-06-poker-two-phone3.jpg",
+    "25-host-07-poker-waiting-tv.jpg",
+    "26-phone1-07-poker-waiting-phone1.jpg",
+    "27-phone2-07-poker-waiting-phone2.jpg",
+    "28-phone3-07-poker-waiting-phone3.jpg",
+    "29-host-08-poker-entered-tv.jpg",
+    "30-phone1-08-poker-entered-phone1.jpg",
+    "31-phone2-08-poker-entered-phone2.jpg",
+    "32-phone3-08-poker-entered-phone3.jpg",
+    "33-host-09-poker-picker-tv.jpg",
+    "34-phone1-09-poker-picker-phone1.jpg",
+    "35-phone2-09-poker-picker-phone2.jpg",
+    "36-phone3-09-poker-picker-phone3.jpg",
+    "37-host-failure.png",
+    "40-phone3-failure.png",
+    "39-phone2-failure.png",
+    "38-phone1-failure.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-01-two-seated-tv.jpg",
+      "bytes": 246868
+    },
+    {
+      "file": "02-phone1-01-two-seated-phone1.jpg",
+      "bytes": 128006
+    },
+    {
+      "file": "03-phone2-01-two-seated-phone2.jpg",
+      "bytes": 111948
+    },
+    {
+      "file": "04-phone3-01-two-seated-phone3.jpg",
+      "bytes": 149193
+    },
+    {
+      "file": "05-host-02-rabakz-two-tv.jpg",
+      "bytes": 234560
+    },
+    {
+      "file": "06-phone1-02-rabakz-two-phone1.jpg",
+      "bytes": 177114
+    },
+    {
+      "file": "07-phone2-02-rabakz-two-phone2.jpg",
+      "bytes": 172281
+    },
+    {
+      "file": "08-phone3-02-rabakz-two-phone3.jpg",
+      "bytes": 149193
+    },
+    {
+      "file": "09-host-03-rabakz-waiting-tv.jpg",
+      "bytes": 281141
+    },
+    {
+      "file": "10-phone1-03-rabakz-waiting-phone1.jpg",
+      "bytes": 204793
+    },
+    {
+      "file": "11-phone2-03-rabakz-waiting-phone2.jpg",
+      "bytes": 198081
+    },
+    {
+      "file": "12-phone3-03-rabakz-waiting-phone3.jpg",
+      "bytes": 130094
+    },
+    {
+      "file": "13-host-04-rabakz-entered-tv.jpg",
+      "bytes": 256101
+    },
+    {
+      "file": "14-phone1-04-rabakz-entered-phone1.jpg",
+      "bytes": 202550
+    },
+    {
+      "file": "15-phone2-04-rabakz-entered-phone2.jpg",
+      "bytes": 195949
+    },
+    {
+      "file": "16-phone3-04-rabakz-entered-phone3.jpg",
+      "bytes": 196302
+    },
+    {
+      "file": "17-host-05-rabakz-picker-tv.jpg",
+      "bytes": 183401
+    },
+    {
+      "file": "18-phone1-05-rabakz-picker-phone1.jpg",
+      "bytes": 136731
+    },
+    {
+      "file": "19-phone2-05-rabakz-picker-phone2.jpg",
+      "bytes": 100016
+    },
+    {
+      "file": "20-phone3-05-rabakz-picker-phone3.jpg",
+      "bytes": 99726
+    },
+    {
+      "file": "21-host-06-poker-two-tv.jpg",
+      "bytes": 325187
+    },
+    {
+      "file": "22-phone1-06-poker-two-phone1.jpg",
+      "bytes": 377260
+    },
+    {
+      "file": "23-phone2-06-poker-two-phone2.jpg",
+      "bytes": 378345
+    },
+    {
+      "file": "24-phone3-06-poker-two-phone3.jpg",
+      "bytes": 156255
+    },
+    {
+      "file": "25-host-07-poker-waiting-tv.jpg",
+      "bytes": 327467
+    },
+    {
+      "file": "26-phone1-07-poker-waiting-phone1.jpg",
+      "bytes": 376262
+    },
+    {
+      "file": "27-phone2-07-poker-waiting-phone2.jpg",
+      "bytes": 377281
+    },
+    {
+      "file": "28-phone3-07-poker-waiting-phone3.jpg",
+      "bytes": 368858
+    },
+    {
+      "file": "29-host-08-poker-entered-tv.jpg",
+      "bytes": 326261
+    },
+    {
+      "file": "30-phone1-08-poker-entered-phone1.jpg",
+      "bytes": 376058
+    },
+    {
+      "file": "31-phone2-08-poker-entered-phone2.jpg",
+      "bytes": 376351
+    },
+    {
+      "file": "32-phone3-08-poker-entered-phone3.jpg",
+      "bytes": 376632
+    },
+    {
+      "file": "33-host-09-poker-picker-tv.jpg",
+      "bytes": 185450
+    },
+    {
+      "file": "34-phone1-09-poker-picker-phone1.jpg",
+      "bytes": 138436
+    },
+    {
+      "file": "35-phone2-09-poker-picker-phone2.jpg",
+      "bytes": 102112
+    },
+    {
+      "file": "36-phone3-09-poker-picker-phone3.jpg",
+      "bytes": 101860
+    },
+    {
+      "file": "37-host-failure.png",
+      "bytes": 352083
+    },
+    {
+      "file": "38-phone1-failure.png",
+      "bytes": 253697
+    },
+    {
+      "file": "39-phone2-failure.png",
+      "bytes": 102826
+    },
+    {
+      "file": "40-phone3-failure.png",
+      "bytes": 103366
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 4271
+    },
+    {
+      "file": "run.json",
+      "bytes": 12697
+    }
+  ],
+  "totalBytes": 9053100,
+  "maxBytes": 12582912
+}

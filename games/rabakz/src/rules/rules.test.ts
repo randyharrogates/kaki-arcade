@@ -188,6 +188,7 @@ describe('Rabakz rules', () => {
     const newcomer = { id: 'new', seat: 3, name: 'New', colour: 'seat-3' as const };
     state = rabakz.join(state, newcomer);
     expect(state.players[2]).toMatchObject({ score: 0, eligible: false, joinedMidGame: true });
+    expect(rabakz.privateView(state, 'new')?.blocks).toContainEqual({ kind: 'text', text: 'You join at the next question' });
     state = tick(state, [[2, correct(state)]]);
     expect(state.firstCorrect).toBeNull();
     state = tick(win(state), [], 'continue');
@@ -398,4 +399,16 @@ it('RZ-032 snapshots every five questions, keeps two-board deltas and survives s
       if (state.phase === 'scoreboard') state = tick(state, [], 'continue');
     }
   }
+});
+
+it('RZ-014 joining preserves earned scores and team totals while awaiting the next question', () => {
+  const state = tick(win(init(2, 10, true)), [], 'continue');
+  const running = tick(state);
+  const third = makePlayers(3, true)[2];
+  if (!third) throw new Error('No third player');
+  const joined = rabakz.join(running, third);
+  expect(joined.players.slice(0, 2)).toEqual(running.players);
+  expect(joined.teamScores).toEqual(running.teamScores);
+  expect(joined.players[2]).toMatchObject({ score: 0, eligible: false });
+  expect(rabakz.controllerLayout(joined, third.id).controls.some(c => c.id === 'answer')).toBe(false);
 });

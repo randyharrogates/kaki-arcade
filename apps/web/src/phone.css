@@ -130,3 +130,6 @@
 
 /* Short labels such as Done must retain the universal 55 px target floor. */
 .phone-page .phone-team-actions button { min-width: var(--ka-space-55); flex-shrink: 0; }
+
+/* Leave inside the action row: the row's gap spaces it, so the header margin must not push it past the edge (C-17). */
+.phone-page .phone-actions button.phone-leave { margin-left: 0; }

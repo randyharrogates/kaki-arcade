@@ -63,7 +63,7 @@ Every game is a module exporting the interface below. The exact types are in
 
 ```ts
 interface GameModule<State, Settings, View> {
-  meta: { id; name; blurb; players: { min; max }; teams: 'none' | 'optional' | 'required'; coop; solo };
+  meta: { id; name; blurb; players: { min; max }; teams: 'none' | 'optional' | 'required'; coop; solo; midGameJoin: boolean };
   stepMode?: 'returns-new' | 'in-place';          // default returns-new (D-048)
   settings: SettingsSchema<Settings> | ((context: SetupContext) => SettingsSchema<Settings>);
   preload?(settings: Settings | null): AssetManifest;
@@ -107,6 +107,19 @@ Rules:
   them in `secrets` and provides `scrambleSecrets`; nothing a player must not see appears in the
   public view, another phone, a layout or `results` before the rules reveal it (PP-020). A game
   stops declaring a secret once the screen gives it away.
+- `meta.midGameJoin` declares running admission (PLAT-008; D-201). The host applies the running
+  game’s declaration in both playing and paused phases. With it enabled, the room seats a
+  new phone immediately and the session calls `join` once for its new seat token; the game
+  sends only a safe waiting layout/private view until its next join point, then enables play
+  at its starting score (RZ-014 next question; PP-013 next round; TR-056 spectates until the
+  next round). The normal per-phone output comparison sends the changed controls at that point.
+  With it disabled, the reconnect host retains the refused request for that live connection
+  and retries admission when the room becomes eligible (including picker/lobby or results),
+  without requiring another phone send. Disconnect and explicit leave cancel that request.
+  While a match uses teams, the host does not admit a new phone even if the game declares
+  `midGameJoin`. The phone waits on “Waiting for the lobby” and is let in at the picker or
+  results (D-202; OQ-048).
+  A resumed seat token retains its existing membership and score without another `join`.
 - Mid-game joiners are marked `joinedMidGame`; in co-op they share the team score, in
   competitive play they start at 0 (D-062). Bots live inside a game's own state.
 - The platform owns: joining, seats, teams, pause, reconnect, leaving, the picker and results

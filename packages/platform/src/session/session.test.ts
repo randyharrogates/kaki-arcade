@@ -209,3 +209,30 @@ describe('authoritative session', () => {
   });
 
 });
+
+it('PLAT-008 held membership never reaches join; allowed seat joins once; resume retains score and membership', () => {
+  let joins = 0;
+  const game = { ...fixture, join(state: FixtureState, player: Parameters<typeof fixture.join>[1]) {
+    joins++; return fixture.join(state, player);
+  } };
+  const s = setup(2, game); s.frame();
+  let room = applyHostEvent(s.room, { type: 'phase', phase: 'playing', allowRunningJoin: false }, 0).state;
+  const request = { deviceId: 'd3', connectionId: 'c3' };
+  const held = applyPhoneEvent(room, request, { type: 'join', name: 'Third', seatToken: '3'.repeat(32) }, 0);
+  expect(held.result).toMatchObject({ ok: false, reason: 'game-running' });
+  s.session.updateRoom(held.state); expect(joins).toBe(0);
+  room = applyHostEvent(room, { type: 'phase', phase: 'playing', allowRunningJoin: game.meta.midGameJoin }, 0).state;
+  room = applyPhoneEvent(room, request, { type: 'join', name: 'Third', seatToken: '3'.repeat(32) }, 0).state;
+  s.session.updateRoom(room); expect(joins).toBe(1);
+  const state = s.session.state;
+  if (!state) throw new Error('No match');
+  const scores = game.results(state);
+  expect(scores.players.find(p => p.id === 'seat-3')?.score).toBe(0);
+  room = applyPhoneEvent(room, { deviceId: 'd3', connectionId: 'c3-new' }, { type: 'resume', seatToken: '3'.repeat(32) }, 1).state;
+  s.session.updateRoom(room); expect(joins).toBe(1);
+  const resumed = s.session.state;
+  if (!resumed) throw new Error('No resumed match');
+  expect(game.results(resumed)).toEqual(scores);
+  room = applyPhoneEvent(room, { deviceId: 'd3', connectionId: 'c3-new', seat: 3 }, { type: 'leave' }, 2).state;
+  s.session.updateRoom(room); expect(s.session.state?.players).toHaveLength(2);
+});

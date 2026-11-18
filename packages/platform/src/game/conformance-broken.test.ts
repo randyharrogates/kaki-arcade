@@ -582,6 +582,15 @@ describe('the kit catches each kind of broken game', () => {
       /step \d+: step (on a copy of the state )?threw RangeError: unexpected lock/,
     );
   });
+  it('PLAT-008 rejects missing and non-boolean mid-game join declarations', () => {
+    for (const midGameJoin of [undefined, 'true', 1, null]) {
+      const report = brokenDots('invalid join declaration', {
+        meta: { ...dots.meta, midGameJoin: midGameJoin as unknown as boolean },
+      });
+      expect(failed(report)).toContain('meta');
+      expect(said(report, 'meta')).toContain('midGameJoin must be true or false');
+    }
+  });
   it('picker details and settings that do not hold together', () => {
     const meta = brokenDots('solo claimed for a two-player game', {
       meta: { ...dots.meta, players: { min: 2, max: 9 }, id: 'Dots!' },

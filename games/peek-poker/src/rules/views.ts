@@ -10,7 +10,7 @@ export function controllerLayout(state: State, id: string): ControllerLayout {
   const p = state.players.find((p) => p.info.id === id);
   const revision = p?.revision ?? 0;
   if (p === undefined || p.waiting) {
-    return { revision, controls: [{ kind: 'text', id: 'wait', text: 'Join next round' }] };
+    return { revision, controls: [{ kind: 'text', id: 'wait', text: 'You join at the next round' }] };
   }
   if (state.phase === 'pick' && !p.locked) {
     return { revision, controls: [

@@ -31,7 +31,7 @@ export function privateView(state: State, id: string): PrivateView | null {
     { kind: 'stat', label: 'Score', value: player.score },
     { kind: 'stat', label: 'Streak', value: player.streak },
     { kind: 'stat', label: 'Points gained', value: player.gained },
-    { kind: 'text', text: !player.eligible ? 'Next question' :
+    { kind: 'text', text: !player.eligible ? 'You join at the next question' :
       player.pick === null ? 'Watch the screen' : 'Locked in' },
   ] };
 }

@@ -85,6 +85,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     return setupLoading || setupProblem !== null || Boolean(setup && settingsView(setup.schema, chosenSettings.get(picker.focus) ?? {}).problem);
   }
   let savedTeams: TeamSetupView | null = null;
+  let runningAllowsJoin = false;
   const teamNotices = new Map<number, { notice: string; refused: boolean }>();
   let confirmingTeams = false;
   const peers = new Map<string, ReconnectHostPeer>();
@@ -261,8 +262,13 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     if (picker.screen === 'starting') {
       if (!confirmingTeams) for (const p of roomAdapter.room.players) if (p.team !== null) roomAdapter.host({ type: 'team', seat: p.seat, team: null });
       const loading = ++loadAttempt; const gameId = picker.focus;
+      const teamsInUse = confirmingTeams && savedTeams?.enabled === true;
+      const allowRunningJoin = (gameMetas.find(meta => meta.id === gameId)?.midGameJoin ?? false) && !teamsInUse;
       void (chosenSettings.has(picker.focus) ? deps.session?.start(picker.focus, roomAdapter.room, chosenSettings.get(picker.focus)) : deps.session?.start(picker.focus, roomAdapter.room))?.then(() => {
-        if (!stopped && loading === loadAttempt && picker.screen === 'starting' && roomAdapter?.room.phase === 'lobby') roomAdapter.host({ type: 'phase', phase: 'playing', allowRunningJoin: false });
+        if (!stopped && loading === loadAttempt && picker.screen === 'starting' && roomAdapter?.room.phase === 'lobby') {
+          runningAllowsJoin = allowRunningJoin;
+          roomAdapter.host({ type: 'phase', phase: 'playing', allowRunningJoin });
+        }
       }).catch(() => {
         if (stopped || loading !== loadAttempt || picker.screen !== 'starting' || picker.focus !== gameId) return;
         picker = pickerFailed(picker, gameMetas);
@@ -451,7 +457,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     leaderInput(connection: string, action: PickerInput, revision = picker.revision): void { input(connection, { v: 1, t: 'picker-input', input: action, revision }); },
     roomInput(event: HostEvent): void { roomAdapter?.host(event); },
     sessionEvent(event: SessionEvent): void {
-      if (event.type === 'paused') roomAdapter?.host({ type: 'phase', phase: event.paused ? 'paused' : 'playing', allowRunningJoin: false });
+      if (event.type === 'paused') roomAdapter?.host({ type: 'phase', phase: event.paused ? 'paused' : 'playing', allowRunningJoin: runningAllowsJoin });
       else if (event.type === 'results') {
         if (snapshot && roomAdapter?.room.phase !== 'results') {
           snapshot.scores = { ...snapshot.scores, ...Object.fromEntries(event.results.players.map(p => [p.id, (snapshot?.scores[p.id] ?? 0) + p.score])) };

@@ -396,3 +396,13 @@ describe('Peek Poker pure rules', () => {
     }
   });
 });
+
+it('PP-013 joining preserves earned scores and never deals a waiting player into this round', () => {
+  let state = tick(init());
+  state = { ...state, players: state.players.map((p, i) => ({ ...p, score: i ? 20 : 40 })) };
+  const joined = game.join(state, must(makePlayers(3, false)[2]));
+  expect(game.results(joined).players.filter(p => p.id !== 'p3')).toEqual(game.results(state).players);
+  expect(joined.players[2]).toMatchObject({ score: 0, waiting: true, picks: [] });
+  expect(game.privateView(joined, 'p3')).toBeNull();
+  expect(game.controllerLayout(joined, 'p3').controls).toEqual([{ kind: 'text', id: 'wait', text: 'You join at the next round' }]);
+});

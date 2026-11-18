@@ -84,6 +84,16 @@ export interface GameMeta {
   readonly coop: boolean;
   /** Playable by one person alone. Must be true exactly when `players.min` is 1. */
   readonly solo: boolean;
+  /**
+   * PLAT-008: may a phone join while this game is running? `true`: the shell seats it at once and
+   * calls `join`; the game keeps the joiner out of play, with a safe waiting layout and private
+   * view, until its own next join point (for example the next question or round), then starts it
+   * with the game's starting score. `false`: the phone waits for the lobby and is let in when the
+   * TV returns to the picker, lobby or results. Each game spec says which (RZ-014, PP-013, TR-056).
+   * While a match uses teams the host holds a new phone even when this is `true`, and lets it in
+   * at the picker or results (D-202; which team a late joiner gets is OQ-048).
+   */
+  readonly midGameJoin: boolean;
 }
 /**
  * How `step`, `join`, `leave`, `pause` and `resume` treat the state they are given.
