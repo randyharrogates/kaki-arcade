@@ -1,0 +1,140 @@
+{
+  "gap": "PLAT-025: no team colour on phones or TV during play",
+  "round": 1,
+  "phones": [
+    {
+      "name": "R08Guest1",
+      "team": 0,
+      "text": "1\nR08Guest1\n✓\n↻\n!\nConnected\nMenu\nScore 0\nHair\nSweet\nLantern\nRed\nSkip\n\nKeep your screen on",
+      "teamNameText": [
+        "Red"
+      ],
+      "seatColours": [
+        {
+          "text": "1",
+          "colour": "rgb(217, 72, 59)"
+        }
+      ]
+    },
+    {
+      "name": "R08Guest2",
+      "team": 1,
+      "text": "2\nR08Guest2\n✓\n↻\n!\nConnected\nMenu\nScore 0\nHair\nSweet\nLantern\nRed\n\nKeep your screen on",
+      "teamNameText": [
+        "Red"
+      ],
+      "seatColours": [
+        {
+          "text": "2",
+          "colour": "rgb(47, 127, 214)"
+        }
+      ]
+    },
+    {
+      "name": "R08Guest3",
+      "team": 0,
+      "text": "3\nR08Guest3\n✓\n↻\n!\nConnected\nMenu\nScore 0\nHair\nSweet\nLantern\nRed\n\nKeep your screen on",
+      "teamNameText": [
+        "Red"
+      ],
+      "seatColours": [
+        {
+          "text": "3",
+          "colour": "rgb(242, 178, 27)"
+        }
+      ]
+    },
+    {
+      "name": "R08Guest4",
+      "team": 1,
+      "text": "4\nR08Guest4\n✓\n↻\n!\nConnected\nMenu\nScore 0\nHair\nSweet\nLantern\nRed\n\nKeep your screen on",
+      "teamNameText": [
+        "Red"
+      ],
+      "seatColours": [
+        {
+          "text": "4",
+          "colour": "rgb(57, 168, 91)"
+        }
+      ]
+    },
+    {
+      "name": "R08Guest5",
+      "team": 0,
+      "text": "5\nR08Guest5\n✓\n↻\n!\nConnected\nMenu\nScore 0\nHair\nSweet\nLantern\nRed\n\nKeep your screen on",
+      "teamNameText": [
+        "Red"
+      ],
+      "seatColours": [
+        {
+          "text": "5",
+          "colour": "rgb(142, 91, 208)"
+        }
+      ]
+    },
+    {
+      "name": "R08Guest6",
+      "team": 1,
+      "text": "6\nR08Guest6\n✓\n↻\n!\nConnected\nMenu\nScore 0\nHair\nSweet\nLantern\nRed\n\nKeep your screen on",
+      "teamNameText": [
+        "Red"
+      ],
+      "seatColours": [
+        {
+          "text": "6",
+          "colour": "rgb(240, 124, 42)"
+        }
+      ]
+    },
+    {
+      "name": "R08Guest7",
+      "team": 0,
+      "text": "7\nR08Guest7\n✓\n↻\n!\nConnected\nMenu\nScore 0\nHair\nSweet\nLantern\nRed\n\nKeep your screen on",
+      "teamNameText": [
+        "Red"
+      ],
+      "seatColours": [
+        {
+          "text": "7",
+          "colour": "rgb(34, 166, 166)"
+        }
+      ]
+    }
+  ],
+  "tv": {
+    "text": "Question 1 of 10\nSingapore nature\nThe rambutan gets its name from the Malay word 'rambut'. What does 'rambut' mean?\nHair\nSweet\nLantern\nRed\nPlayers\n1\nR08Guest1✓\n••• Thinking\n2\nR08Guest2✓\n••• Thinking\n3\nR08Guest3✓\n••• Thinking\n4\nR08Guest4✓\n••• Thinking\n5\nR08Guest5✓\n••• Thinking\n6\nR08Guest6✓\n••• Thinking\n7\nR08Guest7✓\n••• Thinking",
+    "teamNameText": [
+      "Red"
+    ],
+    "seatColours": [
+      {
+        "text": "1",
+        "colour": "rgb(217, 72, 59)"
+      },
+      {
+        "text": "2",
+        "colour": "rgb(47, 127, 214)"
+      },
+      {
+        "text": "3",
+        "colour": "rgb(242, 178, 27)"
+      },
+      {
+        "text": "4",
+        "colour": "rgb(57, 168, 91)"
+      },
+      {
+        "text": "5",
+        "colour": "rgb(142, 91, 208)"
+      },
+      {
+        "text": "6",
+        "colour": "rgb(240, 124, 42)"
+      },
+      {
+        "text": "7",
+        "colour": "rgb(34, 166, 166)"
+      }
+    ]
+  }
+}

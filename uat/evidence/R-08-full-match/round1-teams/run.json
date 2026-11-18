@@ -1,0 +1,190 @@
+{
+  "slice": "R-08-full-match",
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: Team-mates share a phone team colour (PLAT-025)\n+ actual - expected\n\n+ 'rgb(242, 178, 27)'\n- 'rgb(217, 72, 59)'\n        ^\n\n    at file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/uat/slices/R-08-full-match.mjs:168:46\n    at async deadline (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/tools/uat/core.ts:186:16)\n    at async Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/tools/uat/harness.ts:97:26)\n    at async fullMatch (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/uat/slices/R-08-full-match.mjs:153:45)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- R-08-full-match --phones 8 --max-mb 24 --timeout-min 20 --out round1-teams",
+  "commit": "b485254e2bb771ebc1870b4e7688895a689e94c8",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1285.053333,
+      "status": "completed"
+    },
+    {
+      "name": "Question 1: privacy, inputs, reveal and scores",
+      "ms": 820.2922079999998,
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Team-mates share a phone team colour (PLAT-025)\n+ actual - expected\n\n+ 'rgb(242, 178, 27)'\n- 'rgb(217, 72, 59)'\n        ^\n\n    at file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/uat/slices/R-08-full-match.mjs:168:46\n    at async deadline (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/tools/uat/core.ts:186:16)\n    at async Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/tools/uat/harness.ts:97:26)\n    at async fullMatch (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/uat/slices/R-08-full-match.mjs:153:45)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-08/tools/uat/run.mjs:15:1"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-team-setup-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-team-setup-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-question-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-question-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone2-question-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone3-question-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone4-question-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone5-question-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone6-question-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone7-question-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone8-question-phone8.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-team-setup-tv.jpg",
+    "02-phone1-team-setup-phone.jpg",
+    "03-host-question-tv.jpg",
+    "04-phone1-question-phone1.jpg",
+    "05-phone2-question-phone2.jpg",
+    "06-phone3-question-phone3.jpg",
+    "07-phone4-question-phone4.jpg",
+    "08-phone5-question-phone5.jpg",
+    "09-phone6-question-phone6.jpg",
+    "10-phone7-question-phone7.jpg",
+    "11-phone8-question-phone8.jpg",
+    "12-host-failure.png",
+    "17-phone5-failure.png",
+    "16-phone4-failure.png",
+    "18-phone6-failure.png",
+    "14-phone2-failure.png",
+    "13-phone1-failure.png",
+    "19-phone7-failure.png",
+    "20-phone8-failure.png",
+    "15-phone3-failure.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-team-setup-tv.jpg",
+      "bytes": 154880
+    },
+    {
+      "file": "02-phone1-team-setup-phone.jpg",
+      "bytes": 140361
+    },
+    {
+      "file": "03-host-question-tv.jpg",
+      "bytes": 257431
+    },
+    {
+      "file": "04-phone1-question-phone1.jpg",
+      "bytes": 175178
+    },
+    {
+      "file": "05-phone2-question-phone2.jpg",
+      "bytes": 166768
+    },
+    {
+      "file": "06-phone3-question-phone3.jpg",
+      "bytes": 166815
+    },
+    {
+      "file": "07-phone4-question-phone4.jpg",
+      "bytes": 166324
+    },
+    {
+      "file": "08-phone5-question-phone5.jpg",
+      "bytes": 166436
+    },
+    {
+      "file": "09-phone6-question-phone6.jpg",
+      "bytes": 166918
+    },
+    {
+      "file": "10-phone7-question-phone7.jpg",
+      "bytes": 166242
+    },
+    {
+      "file": "11-phone8-question-phone8.jpg",
+      "bytes": 166737
+    },
+    {
+      "file": "12-host-failure.png",
+      "bytes": 350472
+    },
+    {
+      "file": "13-phone1-failure.png",
+      "bytes": 198553
+    },
+    {
+      "file": "14-phone2-failure.png",
+      "bytes": 166049
+    },
+    {
+      "file": "15-phone3-failure.png",
+      "bytes": 166372
+    },
+    {
+      "file": "16-phone4-failure.png",
+      "bytes": 165706
+    },
+    {
+      "file": "17-phone5-failure.png",
+      "bytes": 166327
+    },
+    {
+      "file": "18-phone6-failure.png",
+      "bytes": 167002
+    },
+    {
+      "file": "19-phone7-failure.png",
+      "bytes": 165390
+    },
+    {
+      "file": "20-phone8-failure.png",
+      "bytes": 166776
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1925
+    },
+    {
+      "file": "run.json",
+      "bytes": 5998
+    }
+  ],
+  "totalBytes": 3614697,
+  "maxBytes": 25165824
+}

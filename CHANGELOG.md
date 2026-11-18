@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — R-08: Rabakz full-match UAT
+
+- RZ-001–RZ-016, RZ-032, RZ-034, PLAT-033: solo, 8-phone free-for-all and 8-phone teams in the
+  real console, with a late joiner and a mid-question reload, against an independent score oracle.
+- Known gaps recorded as named UAT steps: PLAT-025 (teams not shown during play, R-15) and RZ-009
+  (no final-round announcement, R-16). Found: the TV does not show the streak (RZ-008, R-18). D-254.
+
 ## 2026-11-18 — P-07: Peek Poker full-match UAT
 
 - PP-001–PP-011, PP-031, PLAT-033: full five-round console match at 3 and 8 phones, with an
