@@ -35,6 +35,8 @@ Content work. It needs no code from other tracks and starts in Wave 0.
 
 ## Carried from reviews
 
+- **From C-12 (2026-11-18):** with 8 players in teams, the final screen's "Enter: Continue" hint overlaps the last ranking row (`uat/evidence/C-12-host-keyboard/round11/16-host-host-before-results-enter.jpg`). Owner: the Rabakz final screen (R-05 or R-03 follow-up).
+
 - **R-01** shuffles the four options of a multiple-choice or picture question with the match
   seed, and its test checks that the correct position is uniform over many seeds on the real
   bank (RZ-026). There are no true-or-false questions (D-049).

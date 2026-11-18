@@ -1,0 +1,184 @@
+{
+  "slice": "C-12-host-keyboard",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- C-12-host-keyboard --phones 8 --out round5",
+  "commit": "377fd00c8c47e647310cef56b785f0467d462b58",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 2054.058125,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-landing-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-lobby-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-lobby-hint-joined.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-picker-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-picker-heading.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-keyboard-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-pause-panel.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-quit-keeps-seat.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-local-and-two-phones.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-keyboard-stick-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-keyboard-stick-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-keyboard-stick-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-keyboard-stick-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-keyboard-stick-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-keyboard-stick-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-team-setup-8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-host-before-results-enter.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-results-no-leader.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-results-keys.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-landing-focus.jpg",
+    "02-host-lobby-focus.jpg",
+    "11-host-lobby-hint-joined.jpg",
+    "03-host-picker-focus.jpg",
+    "10-host-picker-heading.jpg",
+    "05-host-keyboard-start.jpg",
+    "06-host-pause-panel.jpg",
+    "12-host-quit-keeps-seat.jpg",
+    "07-host-local-and-two-phones.jpg",
+    "16-strip-keyboard-stick.jpg",
+    "07-host-team-setup-8.jpg",
+    "16-host-host-before-results-enter.jpg",
+    "09-host-results-no-leader.jpg",
+    "08-host-results-keys.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-landing-focus.jpg",
+      "bytes": 129148
+    },
+    {
+      "file": "02-host-lobby-focus.jpg",
+      "bytes": 264580
+    },
+    {
+      "file": "03-host-picker-focus.jpg",
+      "bytes": 184754
+    },
+    {
+      "file": "05-host-keyboard-start.jpg",
+      "bytes": 130421
+    },
+    {
+      "file": "06-host-pause-panel.jpg",
+      "bytes": 136311
+    },
+    {
+      "file": "07-host-local-and-two-phones.jpg",
+      "bytes": 251089
+    },
+    {
+      "file": "07-host-team-setup-8.jpg",
+      "bytes": 137211
+    },
+    {
+      "file": "08-host-results-keys.jpg",
+      "bytes": 225170
+    },
+    {
+      "file": "09-host-results-no-leader.jpg",
+      "bytes": 222792
+    },
+    {
+      "file": "10-host-picker-heading.jpg",
+      "bytes": 150168
+    },
+    {
+      "file": "11-host-lobby-hint-joined.jpg",
+      "bytes": 258406
+    },
+    {
+      "file": "12-host-quit-keeps-seat.jpg",
+      "bytes": 258406
+    },
+    {
+      "file": "16-host-host-before-results-enter.jpg",
+      "bytes": 247714
+    },
+    {
+      "file": "16-strip-keyboard-stick.jpg",
+      "bytes": 875291
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1564
+    },
+    {
+      "file": "run.json",
+      "bytes": 3935
+    }
+  ],
+  "totalBytes": 3476997,
+  "maxBytes": 12582912
+}

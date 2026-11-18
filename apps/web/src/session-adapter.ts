@@ -40,6 +40,7 @@ export function createSessionAdapter(o: AdapterOptions) {
   }
   return {
     buffer, prefetch,
+    command(action: 'pause' | 'resume' | 'quit', id: string): void { if (action === 'quit') runner?.quit(id, true); else if (action === 'pause') runner?.pause(id); else runner?.resume(id); },
     async start(gameId: string, room: RoomState): Promise<void> {
       stop(); latestRoom = room; const current = generation;
       const loaded = await prefetch(gameId);

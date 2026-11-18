@@ -1,0 +1,112 @@
+{
+  "slice": "C-12-host-keyboard",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- C-12-host-keyboard --out round3",
+  "commit": "97ed787488e6484776dbb670a85675ce9d464ae7",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1280.857708,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-landing-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-lobby-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-picker-focus.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-keyboard-start.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-local-and-two-phones.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-keyboard-stick-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-keyboard-stick-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-keyboard-stick-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-keyboard-stick-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-keyboard-stick-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-keyboard-stick-frame06.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-landing-focus.jpg",
+    "02-host-lobby-focus.jpg",
+    "03-host-picker-focus.jpg",
+    "04-host-keyboard-start.jpg",
+    "05-host-local-and-two-phones.jpg",
+    "12-strip-keyboard-stick.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-landing-focus.jpg",
+      "bytes": 114927
+    },
+    {
+      "file": "02-host-lobby-focus.jpg",
+      "bytes": 259304
+    },
+    {
+      "file": "03-host-picker-focus.jpg",
+      "bytes": 185321
+    },
+    {
+      "file": "04-host-keyboard-start.jpg",
+      "bytes": 132333
+    },
+    {
+      "file": "05-host-local-and-two-phones.jpg",
+      "bytes": 250237
+    },
+    {
+      "file": "12-strip-keyboard-stick.jpg",
+      "bytes": 1037311
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1003
+    },
+    {
+      "file": "run.json",
+      "bytes": 2332
+    }
+  ],
+  "totalBytes": 1982805,
+  "maxBytes": 12582912
+}

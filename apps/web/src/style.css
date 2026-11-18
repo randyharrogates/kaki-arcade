@@ -43,7 +43,7 @@ header { display: flex; align-items: baseline; gap: var(--ka-space-34); }
 button, a { color: var(--ka-ink); font: inherit; }
 button, a.ka-panel { padding: var(--ka-space-13) var(--ka-space-34); min-height: var(--ka-space-89); cursor: pointer; }
 a.ka-panel { display: inline-block; text-decoration: none; }
-button:focus-visible, a:focus-visible { outline: var(--ka-space-5) solid var(--ka-ink); outline-offset: var(--ka-space-5); }
+button:focus-visible, a:focus-visible, [role="button"]:focus-visible { outline: var(--ka-space-5) solid var(--ka-ink); outline-offset: var(--ka-space-5); }
 .seat-content[data-held="true"] .nickname { color: var(--ka-panel-secondary); }
 .seat-content[data-held="true"] .seat-number { border: var(--ka-space-5) solid; color: var(--ka-seat-numeral); }
 
@@ -65,10 +65,12 @@ button:focus-visible, a:focus-visible { outline: var(--ka-space-5) solid var(--k
 
 .picker-screen { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: var(--ka-space-34); }
 .picker-screen header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--ka-space-8) var(--ka-space-34); }
-.picker-screen header > .overlap { overflow: visible; min-width: 0; }
+.picker-screen header > .overlap { grid-column: 1; grid-row: 1; overflow: visible; min-width: 0; }
 .picker-screen header p { grid-column: 1 / -1; grid-row: 2; font-size: var(--ka-type-34); }
-.picker-screen header .player-count { grid-column: 2; grid-row: 1; }
-.picker-screen header h1 { font-size: var(--ka-type-89); }
+.picker-screen header .player-count { justify-self: end; }
+.picker-screen header h1 { font-size: var(--ka-type-89); white-space: nowrap; }
+/* The 89 px display face overhangs its 1.0 line box; the heading block (heading and subtitle together) sits 21 px down so the drawn text clears the safe margin. */
+.picker-screen header .incoming, .picker-screen header .outgoing { padding-top: var(--ka-space-21); }
 .picker-stage { position: relative; display: grid; grid-template-columns: minmax(0, 1.618fr) minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: var(--ka-space-34); min-height: 0; }
 .game-tile { min-width: 0; min-height: 0; position: relative; transform-origin: 0 0; overflow: hidden; border-radius: var(--ka-radius-corner); }
 .game-surface { position: absolute; inset: 0; transform-origin: 0 0; }
@@ -107,13 +109,8 @@ button:focus-visible, a:focus-visible { outline: var(--ka-space-5) solid var(--k
 
 .picker-screen header .outgoing { position: absolute; inset: 0; }
 
-.picker-screen header { --picker-heading-size: var(--ka-type-89); position: relative; z-index: 3; min-height: calc(var(--ka-type-89) * var(--ka-line-display) + var(--ka-type-34) * var(--ka-line-body) + var(--ka-space-8)); align-content: start; }
-
-/* Use the same board typography for real and demo states; fit after fonts load. */
-.picker-screen header[data-start="true"] h1 { font-size: var(--ka-type-89); white-space: nowrap; }
-.picker-screen header[data-start="true"] > .overlap { grid-column: 1; min-width: 0; }
-.picker-screen header[data-start="true"] .player-count { grid-row: 1; }
-.picker-screen header[data-start="true"] p { grid-column: 1; }
+/* D-165: reserve the heading inset in the fixed 4A copy band. */
+.picker-screen header { --picker-copy-band: calc(var(--ka-type-89) * var(--ka-line-display) + var(--ka-type-34) * var(--ka-line-body) + var(--ka-space-21) + var(--ka-space-21)); position: relative; z-index: 3; min-height: var(--picker-copy-band); align-content: start; align-items: start; }
 
 .picker-screen header .player-count { align-self: start; }
 
@@ -121,9 +118,9 @@ button:focus-visible, a:focus-visible { outline: var(--ka-space-5) solid var(--k
 
 .picker-screen header p { display: flex; gap: var(--ka-space-8); align-items: baseline; }
 
-/* Equal copy bands keep the lobby mask boundary in the same header coordinates. */
-.picker-screen header > .overlap { height: calc(var(--ka-type-89) * var(--ka-line-display) + var(--ka-type-34) * var(--ka-line-body) + var(--ka-space-8)); }
-.picker-screen header .incoming, .picker-screen header .outgoing { height: 100%; grid-template-rows: calc(var(--ka-type-89) * var(--ka-line-display)) auto; row-gap: var(--ka-space-8); align-items: start; }
+/* Match main’s fixed heading/subtitle rows during the 4A crossfade. */
+.picker-screen header > .overlap { height: var(--picker-copy-band); }
+.picker-screen header .incoming, .picker-screen header .outgoing { height: 100%; grid-template-rows: calc(var(--ka-type-89) * var(--ka-line-display)) auto; row-gap: var(--ka-space-21); align-content: start; align-items: start; }
 
 .session-placeholder .picker-players { position: absolute; bottom: var(--ka-space-55); left: var(--ka-space-55); right: var(--ka-space-55); }
 .console-results { display: grid; grid-template-rows: minmax(0, 1fr); grid-template-columns: minmax(0, 1fr) minmax(0, 1.618fr); gap: var(--ka-space-55); font-size: var(--ka-type-34); }
@@ -148,3 +145,32 @@ button:focus-visible, a:focus-visible { outline: var(--ka-space-5) solid var(--k
 .game-final-hint { position: absolute; bottom: var(--ka-space-55); left: var(--ka-space-55); font-size: var(--ka-type-34); }
 
 .results-ranking .ranking-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.host-hints { position: absolute; bottom: var(--ka-space-55); left: var(--ka-space-55); display: flex; gap: var(--ka-space-21); font-size: var(--ka-type-34); }
+.host-hints span + span::before { content: '·'; margin-right: var(--ka-space-21); }
+.host-pause { z-index: 5; display: grid; place-items: center; pointer-events: none; }
+.host-pause section { pointer-events: auto; padding: var(--ka-space-55); display: grid; gap: var(--ka-space-21); }
+.host-pause h2 { font-size: var(--ka-type-55); }
+.host-pause button { font-size: var(--ka-type-34); min-height: var(--ka-space-89); padding: var(--ka-space-13) var(--ka-space-34); }
+
+.results-hints [role="button"]:focus-visible { outline: var(--ka-space-5) solid var(--ka-ink); outline-offset: var(--ka-space-5); }
+
+.team-keyboard-hints { align-self: baseline; display: flex; gap: var(--ka-space-21); }
+.team-keyboard-hints span + span::before { content: '·'; margin-right: var(--ka-space-21); }
+
+/* Hints participate in header layout so counts reserve their actual width. */
+.lobby header { height: var(--ka-space-89); flex-wrap: nowrap; gap: var(--ka-space-21); }
+.lobby-hints { margin-left: auto; white-space: nowrap; }
+.lobby .host-hints, .picker-screen .host-hints { position: static; line-height: var(--ka-line-body); }
+.host-pad-hint { font-size: var(--ka-type-34); line-height: var(--ka-line-body); }
+.lobby header .player-count { margin-left: 0; flex: none; }
+.picker-header-side { grid-column: 2; grid-row: 1; display: grid; justify-items: end; gap: var(--ka-space-21); }
+.picker-screen header .host-hints { justify-content: flex-end; white-space: nowrap; gap: var(--ka-space-21); }
+.team-keyboard-hints { flex-wrap: wrap; }
+
+.team-screen footer { align-items: baseline; }
+
+.lobby header h1 { flex: none; white-space: nowrap; }
+.lobby header[data-crowded="true"] h1 { font-size: var(--ka-type-55); }
+
+.team-screen footer p { align-self: baseline; }

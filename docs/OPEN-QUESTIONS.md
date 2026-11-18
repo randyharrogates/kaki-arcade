@@ -93,6 +93,12 @@ callback interval; (b) set the Mac to a 60 Hz mode for measured runs; (c) keep t
 accept a fail until run on the TV. Recommended: (a) with (b) for the runs. Only you change the
 budget wording. Needed by: T-07.
 
+**OQ-041 · A keyboard or pad player cannot play games with private phone views (raised 2026-11-18 at C-12's merge).**
+CTRL-009's extra player sits at the TV, so it has no private screen: in Peek Poker it cannot pick
+secretly, and in Rabakz its answers would be seen. Options: allow the local seat only in games
+without private views (Tabao Rush), or show its private view on the TV and accept that others can
+see it. Built today: the seat joins, but those games do not give it a private view. Needed by: M6.
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot

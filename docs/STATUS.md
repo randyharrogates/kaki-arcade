@@ -7,6 +7,11 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 
 ## Works
 
+- **C-12 (2026-11-18): the TV works from a keyboard.** Landing, lobby, picker, start screen, team
+  setup, results and the pause panel all work from the arrow keys, Enter and Esc, with the keys
+  shown on screen (D-162, D-165); P or Esc pauses during play. J seats a keyboard player and a game
+  pad seats one more (CTRL-009, in progress: no real pad tested yet, held-key movement waits on
+  T-07). Checked with 8 phones at 1080p and 720p. Evidence: `uat/evidence/C-12-host-keyboard/round11/`.
 - **A-02 (2026-11-18): the cook body.** One shared cook body, rendered in Blender, does all nine
   actions (idle, walk, carry-walk, chop, stir, wash, serve, throw, extinguish) in 8 directions,
   with a cap head, colour masks for cap and apron, and a head and throwing-hand anchor on every

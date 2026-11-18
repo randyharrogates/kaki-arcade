@@ -1,3 +1,5 @@
+import { LOCAL_CONNECTION } from './local-player';
+import type { SessionPeer } from './session-links';
 import { wireJson } from './session-adapter';
 import { splitTeams, reconcileTeams, switchTeam } from '@kaki/platform';
 import { roomPlayers } from './team-setup';
@@ -28,7 +30,7 @@ export interface HostDependencies {
   mintToken(): string;
   dial(credentials: HostCredentials | undefined, callbacks: DialCallbacks,
     registerStop: (stop: () => void) => void): Promise<HostLink & { reopened: boolean }>;
-  session?: { continueResults?(): void; start(gameId: string, room: RoomState): Promise<unknown>; prefetch?(gameId: string): Promise<unknown>; updateRoom?(room: RoomState): void; stop?(): void; control?(id: string, message: unknown): void; dropped?(id: string): void };
+  session?: { localPeer?(id: string, peer: SessionPeer): void; command?(action: 'pause' | 'resume' | 'quit', id: string): void; continueResults?(): void; start(gameId: string, room: RoomState): Promise<unknown>; prefetch?(gameId: string): Promise<unknown>; updateRoom?(room: RoomState): void; stop?(): void; control?(id: string, message: unknown): void; dropped?(id: string): void };
   online?: { subscribe(callback: () => void): () => void };
   lifecycle?: { subscribe(callback: (event?: 'pageshow' | 'pagehide' | 'hidden') => void): () => void };
 }
@@ -297,7 +299,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
           }
           const wasStarting = picker.screen === 'starting'; picker = pickerRoom(picker, room, previousRoom); if (wasStarting && picker.screen !== 'starting') { loadAttempt++; deps.session?.stop?.(); } previousRoom = room; deps.session?.updateRoom?.(room); checkpoints?.checkpoint(); sendPicker(); if (teamSetup) sendTeams(); publish(); } });
       checkpoints = createHostCheckpoints({ store, clock: deps.clock,
-        capture: () => ({ ...captured, room: roomAdapter?.room ?? captured.room }),
+        capture: () => { const room = roomAdapter?.room ?? captured.room; const players = room.players.filter(p => p.connectionId !== LOCAL_CONNECTION); return { ...captured, room: { ...room, players, leader: players.some(p => p.seat === room.leader) ? room.leader : players.filter(p => p.disconnectedAt === null).reduce<number | null>((seat, p) => seat === null ? p.seat : Math.min(seat, p.seat), null) } }; },
         ...(deps.lifecycle ? { lifecycle: deps.lifecycle } : {}) });
       failures = 0; retryAfter = 0;
       deps.clock.cancel(retry);
@@ -342,6 +344,27 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
   function returnToPicker(): void { if (roomAdapter?.room.phase !== 'results') return; loadAttempt++; deps.session?.stop?.(); discardTeams(); roomAdapter.host({ type: 'phase', phase: 'lobby', allowRunningJoin: false }); picker = { ...picker, screen: 'picker', revision: picker.revision + 1 }; sendPicker(); publish(); }
   return {
     start, playAgain, continueResults,
+    joinLocal(peer: ReconnectHostPeer & SessionPeer): boolean {
+      if (!roomAdapter || pairing !== 'ready' || roomAdapter.room.phase !== 'lobby') return false;
+      if (roomAdapter.room.players.some(p => p.connectionId === LOCAL_CONNECTION)) return true;
+      peers.set(LOCAL_CONNECTION, peer); roomAdapter.attach(LOCAL_CONNECTION, peer);
+      deps.session?.localPeer?.(LOCAL_CONNECTION, peer);
+      roomAdapter.receive(LOCAL_CONNECTION, { v: 1, t: 'hello', name: null });
+      return roomAdapter.room.players.some(p => p.connectionId === LOCAL_CONNECTION);
+    },
+    leaveLocal(): void {
+      roomAdapter?.receive(LOCAL_CONNECTION, { v: 1, t: 'leave' });
+      deps.session?.dropped?.(LOCAL_CONNECTION);
+    },
+    // Setup only: these are exactly the actions the authenticated leader can perform.
+    keyboard(action: PickerInput | 'teams-toggle' | 'teams-back' | 'teams-start' | 'teams-move' | 'pause' | 'resume' | 'quit', value?: string): void {
+      if (!roomAdapter || pairing !== 'ready') return;
+      const leader = roomAdapter.room.players.find(p => p.seat === roomAdapter?.room.leader && p.disconnectedAt === null);
+      if (!leader) return;
+      if (action.startsWith('teams-')) teamInput(leader.connectionId, { v: 1, t: 'action', rev: 0, viewRev: teamSetup?.revision ?? 0, data: { control: action, ...(value ? { value } : {}) } });
+      else if (action === 'pause' || action === 'resume' || action === 'quit') deps.session?.command?.(action, `seat-${String(leader.seat)}`);
+      else input(leader.connectionId, { v: 1, t: 'picker-input', revision: picker.revision, input: action });
+    },
     teamInput(id: string, control: string, value?: string): void { teamInput(id, { v: 1, t: 'action', rev: 0, viewRev: teamSetup?.revision ?? 0, data: { control, ...(value === undefined ? {} : { value }) } }); },
     get teamSetup() { return teamSetup; },
     get picker() { return picker; },

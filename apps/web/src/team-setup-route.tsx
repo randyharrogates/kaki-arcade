@@ -30,7 +30,7 @@ function TeamName({ name }: { name: string }) {
   }, [name]);
   return <span class="team-player-name" ref={ref} title={name} aria-label={name}>{name}</span>;
 }
-export function TeamSetup({ setup, room, game, start }: { setup: TeamSetupView; room: RoomState; game: string; start: () => void }) {
+export function TeamSetup({ setup, room, game, start, move }: { setup: TeamSetupView; room: RoomState; game: string; start: () => void; move?: (id: string) => void }) {
   const nodes = useRef(new Map<string, HTMLElement>());
   const before = useRef(new Map<string, DOMRect>());
   const previousTeams = useRef(new Map<string, number | undefined>());
@@ -72,12 +72,12 @@ export function TeamSetup({ setup, room, game, start }: { setup: TeamSetupView; 
       <h2 class="team-label team-red-label">Red · {setup.players.filter(p => p.team === 0).length}</h2>
       <h2 class="team-label team-blue-label">Blue · {setup.players.filter(p => p.team === 1).length}</h2>
       <div class="team-line"/>
-      {setup.players.map(p => <div key={p.id} ref={el => { if (el) nodes.current.set(p.id, el); else nodes.current.delete(p.id); }} class="team-player ka-panel" data-team={p.team} data-seat={p.seat}
+      {setup.players.map(p => <div key={p.id} ref={el => { if (el) nodes.current.set(p.id, el); else nodes.current.delete(p.id); }} class="team-player ka-panel" role="button" tabIndex={0} onClick={() => { move?.(p.id); }} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); move?.(p.id); } }} data-team={p.team} data-seat={p.seat}
         style={{ gridColumn: p.team === 0 ? 1 : 2, gridRow: setup.players.filter(other => other.team === p.team && other.seat <= p.seat).length + 1 }}>
         <span class="seat-number" style={{ backgroundColor: `var(--ka-seat-${String(p.seat)})` }}>{p.seat}</span><TeamName name={p.name}/>{p.seat === room.leader && <span class="team-leader"><Icon kind="leader"/> Leader</span>}
       </div>)}
     </section>
-    <footer><p role="status">{setup.error ?? `Tap your side on your phone. ${leader} starts.`}</p><button class="ka-panel ka-pressable picker-primary" onClick={start} disabled={setup.players.length < 2}>Start</button></footer>
+    <footer><p role="status">{setup.error ?? `Tap your side on your phone. ${leader} starts.`}</p><p class="team-keyboard-hints"><span>Arrows and Enter: choose</span><span>Esc: back</span></p><button class="ka-panel ka-pressable picker-primary" onClick={start} disabled={setup.players.length < 2}>Start</button></footer>
   </main>;
 }
 export function PhoneTeams({ setup, seat, leader, send }: { setup: TeamSetupView; seat: number | null; leader: boolean; send: (control: string, value?: string) => void }) {

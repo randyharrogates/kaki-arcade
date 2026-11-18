@@ -60,6 +60,8 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
   return {
     clock,
     session: {
+      localPeer: (id, peer) => { links.peer(id, peer); },
+      command: (action, id) => { session.command(action, id); },
       continueResults: () => { session.continueResults(); },
       prefetch: session.prefetch,
       async start(id, room) { links.setup(room, session.buffer); await session.start(id, room); },

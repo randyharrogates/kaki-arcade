@@ -1,3 +1,4 @@
+import { hostResultsKey } from './host-keyboard';
 import { TEAM_THEMES } from '@kaki/ui';
 import { gameMetas } from './game-registry';
 import { ChoiceShape } from './choice-shape';
@@ -66,9 +67,7 @@ export function Results({ session, room, back, again, keyboard, active = true }:
   useLayoutEffect(() => {
     if (!active) return;
     const key = (event: KeyboardEvent): void => {
-      if (event.repeat) return;
-      if (event.key === 'Enter') { event.preventDefault(); again(); }
-      if (event.key === 'Escape') { event.preventDefault(); back(); }
+      hostResultsKey(event, again, back);
     };
     window.addEventListener('keydown', key);
     return () => { window.removeEventListener('keydown', key); };
@@ -132,7 +131,7 @@ export function Results({ session, room, back, again, keyboard, active = true }:
     <span id="results-headline-description" aria-hidden="true" class="announcements">{headline}</span>
     <section class="results-winner"><span class="ka-chip">{gameMetas.find(game => game.id === session.gameId)?.name ?? 'Game'} · final scores</span><h1 ref={heading} style={{ fontSize: 'var(--ka-type-144)' }}>{headline}</h1>
       {summary && <div class="winner-score"><div class="winner-badges" role="group" aria-label={teams.length ? 'First-place teams' : 'First-place players'}>{teams.length ? winningTeams.map(team => <span class="seat-number" key={team.team} style={{ backgroundColor: `var(--ka-${teamTheme(team.team).token})` }}>{team.team === 0 ? 'R' : 'B'}</span>) : winners.slice(0, winners.length > 4 ? 3 : 4).map(player => badge(player.id))}{!teams.length && winners.length > 4 && <span class="seat-number" style={{ backgroundColor: 'var(--ka-chip)', color: 'var(--ka-chip-ink)' }}><span aria-hidden="true">+{winners.length - 3}</span><span class="announcements">{`${String(winners.length - 3)} more players`}</span></span>}</div><strong>{`${summary.score.toLocaleString('en-GB')} ${summary.score === 1 ? 'point' : 'points'}`}</strong></div>}
-      <p>The leader chooses on their phone</p><div class="results-hints"><span><ChoiceShape/>Play again</span><span><ChoiceShape circle/>Back to game picker</span></div>
+      <p>The leader chooses on their phone</p><div class="results-hints"><span role="button" tabIndex={0} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); if (!event.repeat) again(); } }} onClick={again}><ChoiceShape/>Play again</span><span role="button" tabIndex={0} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); if (!event.repeat) back(); } }} onClick={back}><ChoiceShape circle/>Back to game picker</span></div>
       {keyboard && <p class="results-keyboard">Enter: play again · Esc: game picker</p>}
     </section>
     <ol id="results-ranking" class="results-ranking" aria-label="Final rankings">{teams.map(team => <li class="ka-panel" key={`team-${String(team.team)}`}><span>{team.place}</span><span class="seat-number" style={{ backgroundColor: `var(--ka-${teamTheme(team.team).token})` }}>{team.team === 0 ? 'R' : 'B'}</span><span class="ranking-name" title={teamName(team.team)}>{teamName(team.team)}</span><strong>{team.score.toLocaleString('en-GB')}</strong></li>)}{players.map(player => <li class="ka-panel" key={player.id}><span>{player.place}</span>{badge(player.id)}<span class="ranking-name" title={name(player.id)}>{name(player.id)}</span><strong>{player.score.toLocaleString('en-GB')}</strong></li>)}</ol>

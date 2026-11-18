@@ -1409,6 +1409,11 @@ so seats never move when a pad connects. Randy may overrule.
 Addendum (C-12 round 10): the heading and its subtitle are 21 px apart, not 8, because the 89 px
 display face's descent otherwise reaches the subtitle line; the picker stage therefore starts 13 px
 lower than main's (≈ 243 px at 1080p, not 230).
+Addendum (C-12 round 11): the heading block's 21 px inset is real layout space inside both crossfade
+bands, not a visual offset, so the copy band is 175.2 px and the picker stage starts at ≈ 264 px at
+1080p, with the subtitle's drawn text at least 21 px above it. When a game pad is connected, phones
+are seated and there is no keyboard seat, the lobby's hints share one line and the "Kaki Arcade"
+title steps down to the 55 px display size so the header stays one line inside the safe margin.
 
 **D-166 · 2026-11-18 · Claude** (under D-142; K-09 round 3) — Completes D-164(1). The selected
 outline on a face-down card is drawn in the card back's own border colour (`--ka-card-back-border`,

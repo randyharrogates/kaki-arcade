@@ -3,6 +3,7 @@ import { expand } from '@kaki/ui';
 import { MAX_PLAYERS } from '@kaki/protocol';
 import type { RoomState, PickerModel } from '@kaki/platform';
 import { playerRange, unavailable } from '@kaki/platform';
+import { LOCAL_CONNECTION } from './local-player';
 import { gameMetas } from './game-registry';
 import { Icon } from './icons';
 import { Overlap } from './Overlap';
@@ -10,7 +11,7 @@ import { pickerAnimation, pickerRects, pickerFocusAnimation, pickerLayout } from
 import { freezePickerContent, wipePickerContent } from './picker-content';
 
 /** The tile owns the mask; surface and content travel together without scaling text. */
-export function GamePicker({ state, room }: { state: PickerModel; room: RoomState }) {
+export function GamePicker({ state, room, localDevice = 'keyboard' }: { state: PickerModel; room: RoomState; localDevice?: 'keyboard' | 'controller' }) {
   const tiles = useRef(new Map<string, HTMLElement>());
   const snapshots = useRef(new Map<string, HTMLElement>());
   const before = useRef(new Map<string, DOMRect>());
@@ -82,12 +83,14 @@ export function GamePicker({ state, room }: { state: PickerModel; room: RoomStat
     previous.current = state;
   }, [expanded, state.focus]);
   useLayoutEffect(() => () => { for (const clip of clips.current.values()) clip.clear(); for (const animation of animations.current) animation.cancel(); }, []);
-  const leader = room.players.find(player => player.seat === room.leader)?.name ?? 'The leader';
+  const leaderPlayer = room.players.find(player => player.seat === room.leader);
+  const leader = leaderPlayer?.name ?? 'The leader';
+  const starts = `${leader} starts ${leaderPlayer?.connectionId === LOCAL_CONNECTION ? `with the ${localDevice}` : 'on their phone'}`;
   const params = import.meta.env.DEV ? new URLSearchParams(location.search) : null;
   const layout = import.meta.env.DEV && params?.get('demo') === 'picker' ? params.get('layout') ?? 'b' : undefined;
   return <main class="screen picker-screen" aria-label="Game picker" data-layout={layout} data-art={import.meta.env.DEV && params?.get('art') === '1' ? 'placeholder' : undefined}>
-    <header data-start={expanded}><Overlap fade identity={expanded ? state.screen : 'picker'}><PickerHeading expanded={expanded} text={expanded ? state.screen === 'starting' ? 'Starting…' : `${leader} starts on their phone` : 'Pick a game'}/>{(!expanded || state.error) && <p>{state.error ? <><Icon kind="weak"/>{state.error}</> : `${leader} is choosing: ${gameMetas.find(game => game.id === state.focus)?.name ?? ''}`}</p>}</Overlap><span class="player-count">{room.players.length} of {MAX_PLAYERS} players</span></header>
-    <div class="announcements" aria-live="polite" aria-atomic="true">{state.error ?? `${state.screen === 'starting' ? 'Starting ' + (gameMetas.find(game => game.id === state.focus)?.name ?? 'the game') : expanded ? leader + ' starts on their phone' : leader + ' is choosing'}${expanded ? '' : ' ' + (gameMetas.find(game => game.id === state.focus)?.name ?? '')}`}</div>
+    <header data-start={expanded}><Overlap fade identity={expanded ? state.screen : 'picker'}><PickerHeading expanded={expanded} text={expanded ? state.screen === 'starting' ? 'Starting…' : starts : 'Pick a game'}/>{(!expanded || state.error) && <p>{state.error ? <><Icon kind="weak"/>{state.error}</> : `${leader} is choosing: ${gameMetas.find(game => game.id === state.focus)?.name ?? ''}`}</p>}</Overlap><div class="picker-header-side"><span class="player-count">{room.players.length} of {MAX_PLAYERS} players</span><p class="host-hints">{expanded ? <><span>Enter: start</span><span>Esc: back</span>{gameMetas.find(game => game.id === state.focus)?.teams !== 'none' && <span>T: teams</span>}</> : <><span>Left and Right: choose</span><span>Enter: select</span><span>Esc: back</span></>}</p></div></header>
+    <div class="announcements" aria-live="polite" aria-atomic="true">{state.error ?? `${state.screen === 'starting' ? 'Starting ' + (gameMetas.find(game => game.id === state.focus)?.name ?? 'the game') : expanded ? starts : leader + ' is choosing'}${expanded ? '' : ' ' + (gameMetas.find(game => game.id === state.focus)?.name ?? '')}`}</div>
     <div class="picker-stage" role="list" aria-label="Installed games">
       {gameMetas.map(game => {
         const focused = game.id === state.focus;
@@ -122,7 +125,8 @@ function PickerHeading({ expanded, text }: { expanded: boolean; text: string }) 
       if (!context) return;
       const css = getComputedStyle(element);
       context.font = `${css.fontWeight} ${css.fontSize} ${css.fontFamily}`;
-      const width = context.measureText(element.textContent).width;
+      const metrics = context.measureText(element.textContent);
+      const width = Math.max(metrics.width, metrics.actualBoundingBoxRight);
       const header = element.closest('header');
       if (!header) return;
       const column = parseFloat(getComputedStyle(header).gridTemplateColumns.split(' ')[0] ?? '0');

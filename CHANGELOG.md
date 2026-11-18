@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — C-12: the TV works from a keyboard, plus a keyboard or pad player
+
+- `apps/web/src/host-keyboard.ts`, `host-route.tsx`, `picker-route.tsx`, `style.css`: arrow keys,
+  Enter and Esc drive the landing, lobby, picker, start screen, team setup, results and the pause
+  panel, with key hints on screen; the picker header follows D-162 with D-165's spacing.
+  `local-player.ts`, `gamepad-poll.ts`: J seats a keyboard player; a connected game pad seats one more
+  and is polled only while present. PLAT-024 (done), CTRL-009 (in progress) (D-162, D-165).
+
 ## 2026-11-18 — A-02: the cook body, nine actions in eight directions
 
 - `tools/blender/cook.py`, `tools/blender/cook_poses.py`: one shared cook body, rigged and posed for
