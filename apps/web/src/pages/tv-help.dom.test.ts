@@ -34,6 +34,8 @@ it('REL-003 fits the TV board and lets phones scroll without horizontal overflow
     for (const url of ['../../../../packages/ui/tokens.css', '../style.css']) await hosted.addStyleTag({ content: await readFile(new URL(url, import.meta.url), 'utf8') });
     for (const item of output.output) if (item.type === 'asset' && item.fileName.endsWith('.css')) await hosted.addStyleTag({ content: String(item.source) });
     await hosted.addScriptTag({ type: 'module', content: chunk.code });
+    // An inline module may run after addScriptTag resolves; wait for its global.
+    await hosted.waitForFunction(() => typeof Reflect.get(window, 'showHelp') === 'function');
     await hosted.evaluate('window.showHelp()');
     await hosted.locator('.tv-help h1').waitFor();
     expect(await hosted.locator('.tv-help-address').textContent()).toBe('Address: kaki.test');
