@@ -205,13 +205,13 @@ export function QuestionFrame({ model, reduced = reducedMotion(), slow = 1, froz
         <span class="rz-seat-number" style={inlineStyle({ background: p.colour, color: SEAT_NUMERAL })}>{p.seat}</span>
         <div class="rz-seat-name"><Copy identity={p.name} reduced={reduced} slow={slow}>{Array.from(p.name).slice(0, -1).join('')}<span class="rz-name-tail">{Array.from(p.name).at(-1)}<span class="rz-winner"><Copy identity={String(model.reveal && model.winners.includes(p.id))} reduced={reduced} slow={slow}><span aria-hidden={!model.reveal || !model.winners.includes(p.id) || undefined} aria-label={model.reveal && model.winners.includes(p.id) ? "Winner" : undefined} style={inlineStyle({ clipPath: model.reveal && model.winners.includes(p.id) ? 'inset(0)' : 'inset(0 100% 0 0)' })}>✓</span></Copy></span></span></Copy></div>
         <div class="rz-seat-status" aria-label={!model.reveal && p.lockedOut ? 'Locked out' : undefined}><Copy identity={model.reveal ? model.identity : p.status} reduced={reduced} slow={slow}>{model.reveal ? <>
-          {p.wonLabel && <span class="rz-gained">{p.wonLabel} </span>}<span><Score index={index} from={p.score - p.gained} to={p.score} reduced={reduced} slow={slow} frozenAt={frozenAt} /> pts</span>
+          {p.wonLabel && <span class="rz-gained">{p.wonLabel} · </span>}<span><Score index={index} from={p.score - p.gained} to={p.score} reduced={reduced} slow={slow} frozenAt={frozenAt} /> pts</span>
         </> : <>{p.status === 'Locked out' ? '⊘ ' : p.status === 'Thinking' ? '••• ' : '→ '}{p.status}</>}</Copy></div>
       </div></div>}</SeatSlot>)}</div>
     </footer>;
   const moving = { reduced, slow };
   return <section class="rz-frame" data-fit={model.fit.fits ? 'fits' : 'failed'} data-theme="rabakz" data-reveal={model.reveal || undefined} data-picture={model.picture || undefined}>
-    <header class="rz-header"><span><Copy identity={model.heading} reduced={reduced} slow={slow}>{model.heading}</Copy></span><span><Copy identity={model.category} reduced={reduced} slow={slow}>{model.category}</Copy></span></header>
+    <header class="rz-header"><span><Copy identity={model.heading} reduced={reduced} slow={slow}>{model.heading}</Copy></span><span class="rz-header-detail"><Copy identity={model.category} reduced={reduced} slow={slow}>{model.category}</Copy>{model.soloBest !== undefined && <span class="rz-play-best"> · Best {model.soloBest}</span>}</span></header>
     <QuestionBlock model={model} reduced={reduced} slow={slow} />
     <MovingBox className="rz-player-strip" box={model.fit.boxes.awards} {...moving}>{seats}</MovingBox>
   </section>;

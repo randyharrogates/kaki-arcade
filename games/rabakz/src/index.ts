@@ -1,3 +1,4 @@
+import { appendRecent, emptyRecord, validRecord } from './records';
 import { meta } from './meta';
 import type { GameModule, JsonValue, SettingsSchema } from '@kaki/platform';
 import { teamsInUse } from '@kaki/platform';
@@ -48,16 +49,25 @@ export const rabakz: GameModule<State, Settings, ReturnType<typeof publicView>> 
       return { ...q, options: order.map((index) => q.options[index]) as
         [string, string, string, string], correct: order.indexOf(q.correct) };
     });
-    return { rng, questions, settings, nextSeat: players.length, retiredRevisions: {}, players: players.map((info, index) => seat(info, false, index)),
+    const record = validRecord(context.saved) ? context.saved : emptyRecord();
+    return { savedRecord: record, soloEligible: players.length === 1 && validRecord(context.saved),
+      ...(players.length === 1 && validRecord(context.saved) && (record.bests[String(settings.length)] ?? 0) > 0 ? { soloBest: record.bests[String(settings.length)] } : {}), rng, questions, settings, nextSeat: players.length, retiredRevisions: {}, players: players.map((info, index) => seat(info, false, index)),
       teams: teamsInUse(players), teamScores: [0, 0], round: 0, phase: 'question',
       wrongPresses: {}, tick: 0, elapsed: 0, firstCorrect: null, wrong: [], winners: [] };
+  },
+  save(state) {
+    const bests = { ...state.savedRecord.bests };
+    const score = state.players[0]?.score ?? 0;
+    if (isNewBest(state)) bests[String(state.settings.length)] = score;
+    return { recent: appendRecent(state.savedRecord.recent, state.questions.slice(0, state.round + (state.phase === 'final' ? 0 : 1)).map(q => q.id)), bests };
   },
   step,
   join(state, player) {
     if (state.players.some((item) => item.info.id === player.id)) return state;
     const added = { ...seat(player, state.tick !== 0, state.nextSeat),
       privateRevision: (state.retiredRevisions[player.id] ?? -1) + 1, eligible: state.tick === 0 || state.phase !== 'question' };
-    return { ...state, nextSeat: state.nextSeat + 1, players: [...state.players, added] };
+    const { soloBest: _best, ...multiplayer } = state;
+    return { ...(_best === undefined ? state : multiplayer), soloEligible: false, nextSeat: state.nextSeat + 1, players: [...state.players, added] };
   },
   leave(state, id) {
     const departing = state.players.find((player) => player.info.id === id);
@@ -77,3 +87,13 @@ export function questionData(questions: readonly Question[]): JsonValue {
 }
 
 export { meta } from './meta';
+
+export function isNewBest(state: State): boolean {
+  return state.soloEligible && state.phase === 'over' && (state.players[0]?.score ?? 0) > (state.soloBest ?? 0);
+}
+export { RECORD_VERSION, emptyRecord, validRecord } from './records';
+
+/** RZ-013: claim a best in the TV view only after the shell confirms saving. */
+export function savedView(view: ReturnType<typeof publicView>, state: State): ReturnType<typeof publicView> {
+  return isNewBest(state) ? { ...view, soloBest: state.players[0]?.score ?? 0, newBest: true } : view;
+}

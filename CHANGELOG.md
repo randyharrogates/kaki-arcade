@@ -4,6 +4,22 @@ Newest first. One entry per closed slice, naming the requirement IDs.
 
 
 
+## 2026-11-18 — R-06: Rabakz solo best and recently seen questions
+
+- RZ-013: solo score attack against a best kept on the TV per match length; "Category · Best N"
+  in the header during play at 34 px, "New best · N" only after a successful write, with one
+  pulse once the results screen has settled (none with reduced motion); ties, quits, joins and
+  unreadable records never claim a best.
+- RZ-015: the TV remembers up to 200 recently shown question ids and avoids them until the pool
+  runs out, then reuses the oldest first, ahead of difficulty quotas.
+- DATA-002 (in progress): game records are game-owned and pure (`save(state)`, `savedView`);
+  only the app shell opens the store, reading before every Start and writing outside the frame
+  callback, once per results screen or quit to the picker.
+- UAT: four seed-42 solo matches (first best, beaten, unbeaten, tied), a four-digit best, two
+  pulse strips and a multi-player match with no best (`uat/evidence/R-06-solo-best/round6/`);
+  diagnostic perf with the solo states (`perf-r5/`).
+- D-195, D-196, D-197, D-198; OQ-047.
+
 ## 2026-11-18 — P-08: Peek Poker card atlas in the production build
 
 - PP-030, PP-031 (in progress), PERF-020, PERF-022: the production build publishes every atlas

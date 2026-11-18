@@ -299,8 +299,11 @@ Only the cue's oscillators and envelope gains are created during playback; no fi
   reopening a closed tab, not a new tab.
 - **Host-device storage** (DATA-002, C-13): scores, stars and settings live behind injected,
   versioned codecs in `packages/platform/src/storage`, in the TV browser's `localStorage`. Only
-  the host shell opens that store, at explicit between-round or idle-settings save points,
-  never through phone or server transports. A record newer than the running code is ignored
+  the host shell opens that store, at explicit save points (settings when idle; game records as
+  below), never through phone or server transports. Game records
+  use one key per game, `kaki.host-device.game.<id>.progress-v1`, read on every Start and
+  saved after results and on quit to the picker. An unreadable record arrives as `null`
+  (nothing is written that match); a missing record arrives as the game's `empty()`. A record newer than the running code is ignored
   on read and never overwritten. Each schema sets its own size cap (16 KiB by default). The
   lower-detail benchmark (`benchmark.ts`, D-111, D-113) judges dropped frames under an
   injected workload and keys its cached verdict on the user-agent hash, the screen and the

@@ -457,7 +457,6 @@ export function selectQuestions(input: SelectInput): Selection {
   };
   take(fresh, true, false);
   take(fresh, false, false);
-  take(recent, true, true);
   take(recent, false, true);
 
   if (chosen.length < count) {

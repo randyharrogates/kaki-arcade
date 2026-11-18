@@ -38,7 +38,7 @@ export function privateView(state: State, id: string): PrivateView | null {
 export function publicView(state: State) {
   const q = question(state);
   const baseline = state.phase === 'scoreboard' ? state.scoreboardTotals?.previous : state.scoreboardTotals?.current;
-  return { wrongPresses: state.wrongPresses, phase: state.phase, round: state.round + 1, length: state.settings.length,
+  return { ...(state.soloBest !== undefined ? { soloBest: state.soloBest } : {}), newBest: false, wrongPresses: state.wrongPresses, phase: state.phase, round: state.round + 1, length: state.settings.length,
     winners: state.phase === 'reveal' ? state.winners.map((winner) => ({ ...winner.info })) : [],
     finalRound: finalRound(state), question: state.phase === 'final' ? null : {
       id: q.id, prompt: q.prompt, options: [...q.options], category: q.category,

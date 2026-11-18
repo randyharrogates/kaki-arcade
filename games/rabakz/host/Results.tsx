@@ -117,7 +117,7 @@ export function ResultsFrame({ view, board, reduced, slow, frozenAt, measure = f
     {board.teams.length > 0 && !end && <div class="rz-team-totals">{board.teams.map(t => <div class="rz-team-panel" key={t.id}><span class="rz-row-team" aria-hidden="true" style={inlineStyle({ background: teamMark(t.id).colour })} /><span>{t.name}</span><span class="rz-total">{t.score}</span><span class="rz-delta" data-chip={t.delta !== 0 || undefined}>+{t.delta}</span></div>)}</div>}
     {!end && <div class="rz-column-headings"><span /><span /><span /><span class="rz-score-area"><span>Points</span><span>Gained</span></span></div>}
     <div class="rz-results-body" style={inlineStyle({ height: cssLength(bodyHeight), ...(end ? { position: 'absolute', width: cssLength(SCREEN.innerWidth), top: cssLength(SCREEN.safe + SCREEN.header + RESULTS_HEADER_GAP + (RESULTS_HEIGHT - bodyHeight) / 2), marginTop: '0' } : {}) })}>
-      {solo && <div class="rz-solo"><strong class="rz-podium-name"><span class="rz-seat-number" style={inlineStyle({ background: board.players[0]?.colour ?? COLOUR_TOKENS['seat-1'], color: SEAT_NUMERAL })}>{board.players[0]?.seat}</span><span class="rz-rank-name">{board.players[0]?.name}</span></strong><span class="rz-solo-total">{board.players[0]?.score} pts</span></div>}
+      {solo && <div class="rz-solo"><strong class="rz-podium-name"><span class="rz-seat-number" style={inlineStyle({ background: board.players[0]?.colour ?? COLOUR_TOKENS['seat-1'], color: SEAT_NUMERAL })}>{board.players[0]?.seat}</span><span class="rz-rank-name">{board.players[0]?.name}</span></strong><span class="rz-solo-total">{board.players[0]?.score} pts</span>{view.soloBest !== undefined && <SoloBest value={view.soloBest} fresh={view.newBest} reduced={reduced} slow={slow} />}</div>}
       {end && !solo && <div class="rz-podium" data-arrangement={regions.arrangement} data-fit={fit} style={inlineStyle({ height: cssLength(podiumHeight), '--rz-podium-type': cssLength(tvType.title) })}>{order.map(place => {
         const members = top.filter(p => p.place === place);
         const level = place - 1;
@@ -137,4 +137,18 @@ export function ResultsFrame({ view, board, reduced, slow, frozenAt, measure = f
       </div>
     </div>
   </section>;
+}
+
+function SoloBest({ value, fresh, reduced, slow }: { value: number; fresh: boolean; reduced: boolean; slow: number }) {
+  const root = useRef<HTMLSpanElement>(null);
+  const confirmed = useRef(false);
+  useLayoutEffect(() => {
+    if (!fresh || confirmed.current) return;
+    confirmed.current = true;
+    if (reduced) return;
+    const motion = pulse({ reduced: false });
+    const animation = root.current?.animate(motion.keyframes, { ...motion.options, duration: motion.options.duration * slow, delay: duration.slow * slow });
+    return () => animation?.cancel();
+  }, [fresh, reduced, slow]);
+  return <span ref={root} class="rz-solo-best">{fresh ? 'New best · ' : 'Best '}{value}</span>;
 }

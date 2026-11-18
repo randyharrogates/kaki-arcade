@@ -117,3 +117,8 @@
 
 /* Centre category ink on the heading line, above its descender clearance. */
 .rz-header > :last-child .rz-copy > div { padding-bottom: var(--ka-space-13); }
+
+.rz-solo-best { display: block; font-size: var(--ka-type-34); line-height: var(--ka-line-body); }
+
+.rz-header-detail { display: flex; align-items: baseline; gap: var(--ka-space-8); }
+.rz-play-best { font-size: var(--ka-type-34); white-space: nowrap; }

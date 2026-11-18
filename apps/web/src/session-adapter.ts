@@ -1,3 +1,4 @@
+import { saveSession } from './session-storage';
 import type { hostCounts } from './counts';
 import { prepareSetup, prepareMatch } from './session-loading';
 import type { PreparedSetup } from './game-setup';
@@ -37,6 +38,8 @@ export function createSessionAdapter(o: AdapterOptions) {
   let latestRoom: RoomState | undefined;
   let runner: ReturnType<typeof createSession> | undefined;
   let stopFrames: (() => void) | undefined;
+  let saveActive: ((state: unknown) => Promise<void>) | undefined;
+  let resultsEnded = false;
   let revealResults: (() => void) | undefined;
   let stopTransport: (() => void) | undefined;
   const buffer = createInputBuffer<string>({ axisCount: 4, seqModulus: SEQ_MODULO, staleAfterSteps: INPUT_STALE_STEPS });
@@ -53,7 +56,14 @@ export function createSessionAdapter(o: AdapterOptions) {
   }
   return {
     buffer, prefetch,
-    command(action: 'pause' | 'resume' | 'quit', id: string): void { if (action === 'quit') runner?.quit(id, true); else if (action === 'pause') runner?.pause(id); else runner?.resume(id); },
+    command(action: 'pause' | 'resume' | 'quit', id: string): void {
+      if (action === 'quit') {
+        const active = runner;
+        const save = saveActive;
+        if (active?.quit(id, true) === 'quit' && !resultsEnded && active.state !== undefined) void save?.(active.state);
+      } else if (action === 'pause') runner?.pause(id);
+      else runner?.resume(id);
+    },
     async setup(id: string, teams: boolean) {
       const version = (setupVersions.get(id) ?? 0) + 1; setupVersions.set(id, version);
       const loaded = await prefetch(id);
@@ -62,7 +72,7 @@ export function createSessionAdapter(o: AdapterOptions) {
       return setup;
     },
     async start(gameId: string, room: RoomState, settings?: object): Promise<void> {
-      stop(); latestRoom = room; const current = generation;
+      stop(); resultsEnded = false; latestRoom = room; const current = generation;
       const loaded = await prefetch(gameId);
       const seed = o.seed();
       const prepared = settings ? await prepareMatch(loaded.game, seed, setups.get(gameId) ?? await prepareSetup(loaded.game), settings) : await o.prepare(loaded.game, seed, loaded.game.meta.teams === 'required' || (loaded.game.meta.teams === 'optional' && room.players.length > 1 && room.players.every(p => p.team !== null)));
@@ -71,6 +81,11 @@ export function createSessionAdapter(o: AdapterOptions) {
       const isFailed = (): boolean => setup.failed;
       let display: SessionDisplay = { gameId, view: null, soundHistory: { previous: null }, ...(loaded.Screen ? { Screen: loaded.Screen } : {}) };
       let previousView: unknown;
+      saveActive = async state => {
+        const view = await saveSession(loaded.game, state, display.view, prepared.context.saved !== null);
+        if (current !== generation) return;
+        display = { ...display, view }; o.display(display);
+      };
       const next = createSession({ game: loaded.game, ...prepared, seed, room: latestRoom, buffer,
         transport: { ...o.transport, subscribe(receive) { stopTransport = o.transport.subscribe(receive); return () => { stopTransport?.(); stopTransport = undefined; }; } },
         publicView(view) {
@@ -81,7 +96,17 @@ export function createSessionAdapter(o: AdapterOptions) {
         event(event) {
           if (event.type === 'paused') { display = { ...display, paused: event.paused }; if (runner) o.display(display); }
           if (event.type === 'error') { setup.failed = true; o.counts?.add('error:host:session'); o.counts?.stop(); }
-          if (event.type === 'results') { stopFrames?.(); stopFrames = undefined; o.counts?.end(); display = { ...display, results: event.results, finalScreen: loaded.finalScreen ?? false }; revealResults = () => { display = { ...display, finalScreen: false }; o.display(display); }; o.display(display); }
+          if (event.type === 'results') {
+            resultsEnded = true;
+            stopFrames?.(); stopFrames = undefined; o.counts?.end();
+            // Results can arrive inside advance(). Save only after that frame returns.
+            queueMicrotask(() => {
+              if (current === generation && next.state !== undefined) void saveActive?.(next.state);
+            });
+            display = { ...display, results: event.results, finalScreen: loaded.finalScreen ?? false };
+            revealResults = () => { display = { ...display, finalScreen: false }; o.display(display); };
+            o.display(display);
+          }
           o.event(event);
         },
       });

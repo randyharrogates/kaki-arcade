@@ -4,7 +4,7 @@ import type { Harness } from '../uat/harness.js';
 import type { Capture } from './browser.js';
 import scenario from '../../uat/perf/rabakz-screen.mjs';
 
-it('RZ-030 NFR-PERF cycles real dev fixtures for 1600 callbacks without claiming a round', async () => {
+it('RZ-030 NFR-PERF cycles real dev fixtures, solo states included, for 2750 callbacks without claiming a round', async () => {
   const states: string[] = [];
   let frames = 0;
   vi.stubGlobal('window', { __rzPerfState: (name: string) => { states.push(name); } });
@@ -20,8 +20,8 @@ it('RZ-030 NFR-PERF cycles real dev fixtures for 1600 callbacks without claiming
   } as unknown as Harness;
   try {
     await (scenario as { run(h: Harness, capture: Capture): Promise<void> }).run(h, { roundStart, roundEnd } as unknown as Capture);
-    expect(states).toEqual(Array.from({ length: 5 }, () => ['open', 'reveal-one-winner', 'perf-next-question', 'picture-question', 'open', 'scoreboard-teams', 'reveal-teams', 'podium-teams']).flat());
-    expect(frames).toBe(1600);
+    expect(states).toEqual(Array.from({ length: 5 }, () => ['open', 'reveal-one-winner', 'perf-next-question', 'picture-question', 'open', 'scoreboard-teams', 'reveal-teams', 'podium-teams', 'perf-solo-best', 'perf-solo-final']).flat());
+    expect(frames).toBe(2750);
     expect(roundStart).not.toHaveBeenCalled();
     expect(roundEnd).not.toHaveBeenCalled();
     expect(scenario.frameReason).toContain('not a real busiest 180-second round');

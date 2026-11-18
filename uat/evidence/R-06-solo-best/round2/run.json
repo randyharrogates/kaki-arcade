@@ -1,0 +1,84 @@
+{
+  "slice": "R-06-solo-best",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- R-06-solo-best --phones 1 --out round2",
+  "commit": "a24117ac4b83abfd8b960527f1a6bae10e0171c0",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1395.7608340000002,
+      "status": "completed"
+    },
+    {
+      "name": "Solo match 1 with seed 42",
+      "ms": 37267.9785,
+      "status": "completed"
+    },
+    {
+      "name": "Solo match 2 with seed 42",
+      "ms": 36502.325667,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-match-1-start-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-match-1-end-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-match-2-start-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-match-2-end-tv.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-match-1-start-tv.jpg",
+    "02-host-match-1-end-tv.jpg",
+    "03-host-match-2-start-tv.jpg",
+    "04-host-match-2-end-tv.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-match-1-start-tv.jpg",
+      "bytes": 202546
+    },
+    {
+      "file": "02-host-match-1-end-tv.jpg",
+      "bytes": 212920
+    },
+    {
+      "file": "03-host-match-2-start-tv.jpg",
+      "bytes": 219708
+    },
+    {
+      "file": "04-host-match-2-end-tv.jpg",
+      "bytes": 213133
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 912
+    },
+    {
+      "file": "run.json",
+      "bytes": 1719
+    }
+  ],
+  "totalBytes": 850975,
+  "maxBytes": 12582912
+}

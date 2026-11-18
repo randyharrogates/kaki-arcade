@@ -7,6 +7,23 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 
 ## Works
 
+- **Rabakz solo best and recently seen questions (R-06, merged 2026-11-18).** A one-player match
+  is a score attack against a best kept on this TV for each match length (10, 30 or 50). During
+  play the header reads "Category · Best N" once a positive best exists; the solo final shows
+  "New best · N" only after the TV has stored it, with one pulse after the results screen has
+  settled (none with reduced motion), or "Best N" when it was not beaten. A tie keeps the best,
+  anyone joining ends best eligibility, and quitting never sets a best. Each game keeps one
+  record on this device (`kaki.host-device.game.<id>.progress-v1`; for Rabakz up to 200 recent
+  question ids, oldest first, and bests by length), read before every Start and written after
+  results or on quit to the picker; if it cannot be read, nothing is written that match.
+  Recently seen questions are avoided until the chosen pool runs out, then the oldest return
+  first. Nothing about bests or history reaches a phone. Perf: `rabakz-screen` diagnostic with
+  the solo header and solo final fixtures, development build, headless: 2761 frames, median
+  16.7 ms, p95 16.7 ms, max 33.4 ms, 0 frames over 50 ms, 0 long tasks; no budget assessed
+  (`uat/evidence/R-06-solo-best/perf-r5/`). **Not yet:** no save when the page closes mid-match;
+  the question-to-results crossfade holds the question block until about 400 ms, then cuts it
+  (older, R-05 transition); the all-tied podium shows a full-width "=1" step (OQ-047).
+
 - **Station effects (A-07, merged 2026-11-18): art only.** Steam, sparks, fire, extinguisher spray and a thrown-item ground shadow, rendered in Blender and packed as one small atlas: 37.8 KB and 0.17 MB decoded at full size, 13.8 KB and 0.04 MB at half. The fire is three pointed tongues in gold, orange and red, with fixed feet and a flicker that loops without a jump. It reads as fire from 3 m, at half detail and in greyscale, and frame 0, the reduced-motion still, shows all three tongues. One spray strip is rotated for all eight directions. The items render stamp now hashes only the items set, so other sets no longer make it stale. **Not yet:** drawn in the game or on station art (T-07); spray rotation and nozzle fit untested. Sparks are hard to see on the light counter; steam and spray are faint there, and the shadow is grainy (follow-up A-07b). Evidence: `uat/evidence/A-07-effects/rendered/`.
 
 - **Privacy and Credits pages (X-03, merged 2026-11-18; DATA-004, RZ-021).** The landing page has Privacy and Credits links; on phones they sit below the landing content as 55 px targets. Privacy says in plain words what the TV counts (four problems and one smoothness band per match), when it sends them (after results, or when the page is hidden or closed, never in play), that phones send nothing and that daily totals have no end date; it also covers room-code limits and expiry (10 minutes empty, 12 hours in all), no sign-up, what stays on the TV and that our server never sees nicknames. Credits names the Open Trivia Database and CC BY‑SA 4.0 with links and offers our adapted questions under the same licence, and credits the Singapore pack, DM Sans and our own sound. On the TV the pages fit the 1920 × 1080 board in 1.618 : 1 columns without scrolling (Privacy clears its edge by 47 px at 1080p against 34 needed, under one line spare), focus the back link for the remote, and scroll in one column on phones; their code loads only when opened. Development build in Chromium. **Not proven:** real TV or Windows fonts (X-09); the footer on A-09's real landing; transfer budgets until the next verify; OQ-030 limiter wording; how the adapted bank is offered (OQ-045).

@@ -176,8 +176,11 @@ export interface SetupContext {
    */
   readonly data: Readonly<Record<string, JsonValue>>;
   /**
-   * What this game last asked the host device to keep (`save(state)`), or null. Personal
-   * bests, stars per level, recently seen questions (DATA-002).
+   * What this game last asked the host device to keep (`save(state)`): personal bests,
+   * stars per level and recently seen questions (DATA-002). Read on every Start;
+   * saved after results and on quit to the picker. For registered game records, null
+   * means unreadable (nothing is written that match); a missing record uses empty().
+   * One key per game: `kaki.host-device.game.<id>.progress-v1`.
    */
   readonly saved: JsonValue;
   /** Whether the lobby's teams switch is on for this match (PLAT-025). */

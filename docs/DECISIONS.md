@@ -1597,3 +1597,28 @@ under Peek Poker's cream text (prod-r2). A `MutationObserver` on the shell's `da
 `packages/controller-kit/src/layout-renderer.ts` re-copies the paint in place. It is game-agnostic;
 held controls, revision history and crossfade ghosts survive, and the swap is a hard cut, like the
 shell's.
+
+**D-195 · 2026-11-18 · Claude** (R-06; RZ-013, DATA-002) — A game opts into host-device records
+through `SessionRegistration.record` (version, validate, empty, savedView). The shell keeps one key
+per game, `kaki.host-device.game.<id>.progress-v1`, and reads it into `context.saved` in
+`prepareMatch` on every Start, never from the cached setup. A missing or corrupt record arrives as
+`empty()`; an unreadable one arrives as `null`, and that match writes nothing. The shell writes
+`save(state)` once, after the results frame or on quit to the picker when results have not fired;
+the game's pure `savedView(view, state)` claims a best only after a successful write. Why: one key,
+a pure codec, and the store stays in the shell. P-05 reuses this, so its `empty()` must not be null.
+
+**D-196 · 2026-11-18 · Claude** (R-06; RZ-015) — Question history is capped at 200 unique ids of at
+most 64 characters, oldest first; an id seen again moves to the newest end. Once fresh questions
+run out, the oldest recent ones win over Mixed difficulty quotas. Questions shown up to a quit
+count; a final question that is still hidden does not.
+
+**D-197 · 2026-11-18 · Claude** (R-06; RZ-013) — "Best N" follows the category in the header's
+right-hand slot as "Category · Best N" at 34 px, same ink, a middle dot and an 8 px gap. The reveal
+reads "+N · N pts". The solo final shows "New best · N" or "Best N" at 34 px beneath the score. The
+success pulse waits for the results crossfade (`duration.slow`) so it plays on the settled screen.
+Chosen by recommendation; Randy may overrule with a rendered board.
+
+**D-198 · 2026-11-18 · Claude** (R-06; PERF-001) — R-06 closes on the diagnostic `rabakz-screen`
+run (perf-r5), as R-05 and P-06 did; the run now includes the solo header and the solo final with
+its pulse. Development build, headless, no budget assessed: max 33.4 ms, 0 frames over 50 ms, 0 long
+tasks. The assessed Rabakz run comes with the full-match performance issue. Randy may overrule.

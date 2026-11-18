@@ -17,7 +17,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | R-03 | Big-screen question and reveal views: text at reading size, option shapes, no timer, who has answered and who is locked out, options marked wrong | RZ-003, RZ-005, RZ-006, RZ-030, RZ-031, RZ-034 | R-01, F-06 | 2 | merged |
 | R-04 | Setup screen: length, categories, difficulty, free-for-all or teams | RZ-001, RZ-010, RZ-011, RZ-012 | R-03 | 2 | merged 2026-11-18 |
 | R-05 | Scoreboard every 5 questions, podium, team totals | RZ-032 | R-03 | 2 | merged |
-| R-06 | Solo best per length and recently-seen questions on the host device | RZ-013, RZ-015 | R-01, C-13 | 2 | todo |
+| R-06 | Solo best per length and recently-seen questions on the host device | RZ-013, RZ-015 | R-01, C-13 | 2 | merged |
 | R-07 | Sound effects | RZ-033 | R-03 | 3 | merged 2026-11-18 (part 1 cues and engine; part 2 Effects and Music levels in the pause panel); follow-ups: music playback, real-TV listen, shared Mallet helper between platform and Rabakz |
 | R-08 | Full-match UAT in the real console: 1 player, 8 players, teams, a phone reloading mid-question | RZ-001 to RZ-034, PLAT-033 | R-02 to R-06, C-15 | 3 | todo |
 
@@ -101,5 +101,5 @@ Content work. It needs no code from other tracks and starts in Wave 0.
   phone that joins during a game on "Waiting for the lobby — You can join when the current game ends"
   (`apps/web/src/phone.ts`). RZ-014 cannot close until the console offers a late-join path to games
   that declare it. Not owned by any issue yet: build it before R-08, which must prove RZ-014 in the
-  real console. Evidence: `uat/evidence/R-06-solo-best/round3/12-host-friend-join-missing-tv.jpg`,
-  `13-phone2-friend-join-missing-phone.jpg` (R-06 branch).
+  real console. Evidence: `uat/evidence/R-06-solo-best/round6/37-phone2-friend-waits-for-lobby-phone.jpg`. Built in C-17.
+- **From R-06 review 6 (R-03/R-05 transition):** the question-to-results crossfade holds the question block fully opaque until about 400 ms, then cuts it in one frame, with the results body showing between the cards (R-06 `round6/14` and `30` at 244–324 ms). DESIGN §1 asks to overlap old and new states. Fade the outgoing question block.

@@ -1,0 +1,287 @@
+{
+  "slice": "R-06-solo-best",
+  "status": "completed-visually-reviewed",
+  "command": "node --expose-gc tools/perf/run.mjs rabakz-screen --phones 1 --headless --slice R-06-solo-best --out perf-r5",
+  "commit": "d21bce5ebcb6c8487b442dc266e1df381d34d5b8",
+  "viewports": [],
+  "steps": [
+    {
+      "name": "Cycle 1: open",
+      "ms": 916.6972499999997,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: reveal-one-winner",
+      "ms": 913.549833,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: perf-next-question",
+      "ms": 918.7117500000004,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: picture-question",
+      "ms": 923.8632500000003,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: open",
+      "ms": 928.321750000001,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: scoreboard-teams",
+      "ms": 922.0128339999992,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: reveal-teams",
+      "ms": 914.9747499999994,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: podium-teams",
+      "ms": 915.9848329999986,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: perf-solo-best",
+      "ms": 922.9260830000003,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 1: perf-solo-final",
+      "ms": 904.9650000000001,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: open",
+      "ms": 917.2767500000009,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: reveal-one-winner",
+      "ms": 913.6869170000009,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: perf-next-question",
+      "ms": 916.179709,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: picture-question",
+      "ms": 910.2452909999993,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: open",
+      "ms": 913.0283750000017,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: scoreboard-teams",
+      "ms": 915.9834579999988,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: reveal-teams",
+      "ms": 915.708083999998,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: podium-teams",
+      "ms": 913.7732920000017,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: perf-solo-best",
+      "ms": 917.3017499999987,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 2: perf-solo-final",
+      "ms": 912.1752080000006,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: open",
+      "ms": 921.1658329999991,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: reveal-one-winner",
+      "ms": 915.5555000000022,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: perf-next-question",
+      "ms": 914.3426250000011,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: picture-question",
+      "ms": 913.6931660000009,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: open",
+      "ms": 916.1706250000025,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: scoreboard-teams",
+      "ms": 911.3401249999988,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: reveal-teams",
+      "ms": 925.1253749999996,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: podium-teams",
+      "ms": 926.7114159999983,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: perf-solo-best",
+      "ms": 916.6946669999998,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 3: perf-solo-final",
+      "ms": 912.9793329999993,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: open",
+      "ms": 914.4108330000017,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: reveal-one-winner",
+      "ms": 915.1098329999986,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: perf-next-question",
+      "ms": 915.5823330000057,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: picture-question",
+      "ms": 914.3689589999994,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: open",
+      "ms": 915.6029170000038,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: scoreboard-teams",
+      "ms": 913.8549580000035,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: reveal-teams",
+      "ms": 914.7916669999977,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: podium-teams",
+      "ms": 913.3944580000025,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: perf-solo-best",
+      "ms": 909.971292000002,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 4: perf-solo-final",
+      "ms": 915.9187919999968,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: open",
+      "ms": 924.0083749999976,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: reveal-one-winner",
+      "ms": 928.9987079999992,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: perf-next-question",
+      "ms": 940.8171250000014,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: picture-question",
+      "ms": 917.4257500000022,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: open",
+      "ms": 909.7604999999967,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: scoreboard-teams",
+      "ms": 926.833166000004,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: reveal-teams",
+      "ms": 925.0582920000015,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: podium-teams",
+      "ms": 915.9218330000003,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: perf-solo-best",
+      "ms": 913.5202910000007,
+      "status": "completed"
+    },
+    {
+      "name": "Cycle 5: perf-solo-final",
+      "ms": 915.1885830000028,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [],
+  "screenshots": [],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "PERF.md",
+      "bytes": 2585
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2780
+    },
+    {
+      "file": "perf.json",
+      "bytes": 93898
+    },
+    {
+      "file": "run.json",
+      "bytes": 6301
+    }
+  ],
+  "totalBytes": 105601,
+  "maxBytes": 12582912
+}

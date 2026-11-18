@@ -1,0 +1,296 @@
+{
+  "slice": "R-06-solo-best",
+  "status": "completed-visually-reviewed",
+  "command": "node tools/uat/run.mjs -- R-06-solo-best --phones 2 --out round6",
+  "commit": "ac4f2bfd6f998cfca7d5d7cd9d803783e670dd08",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1324.4812500000003,
+      "status": "completed"
+    },
+    {
+      "name": "Solo match 1 with seed 42",
+      "ms": 34357.334500000004,
+      "status": "completed"
+    },
+    {
+      "name": "Solo match 2 with seed 42",
+      "ms": 33862.664749999996,
+      "status": "completed"
+    },
+    {
+      "name": "Solo match 3 with seed 42",
+      "ms": 33449.789124999996,
+      "status": "completed"
+    },
+    {
+      "name": "Solo match 4 with seed 42",
+      "ms": 32980.864583,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 834.6041670000122,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-match-1-start-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-match-1-new-best-pulse-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-match-1-new-best-pulse-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-match-1-new-best-pulse-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-match-1-new-best-pulse-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-match-1-new-best-pulse-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-match-1-new-best-pulse-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-match-1-new-best-pulse-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-match-1-new-best-pulse-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-match-1-new-best-pulse-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-match-1-new-best-pulse-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-match-1-new-best-pulse-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-match-1-new-best-pulse-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-match-1-end-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-match-2-start-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-match-2-reveal-best-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-match-2-new-best-pulse-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-match-2-new-best-pulse-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-match-2-new-best-pulse-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-match-2-new-best-pulse-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-match-2-new-best-pulse-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-match-2-new-best-pulse-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-match-2-new-best-pulse-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-match-2-new-best-pulse-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-match-2-new-best-pulse-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-host-match-2-new-best-pulse-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-host-match-2-new-best-pulse-frame11.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-match-2-new-best-pulse-frame12.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-host-match-2-end-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-match-3-start-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-host-match-3-end-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-host-match-4-start-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-host-match-4-end-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-host-long-best-status-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-phone2-friend-waits-for-lobby-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-host-two-player-no-best-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-host-two-player-start-no-best-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-host-two-player-final-no-best-tv.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-match-1-start-tv.jpg",
+    "14-strip-match-1-new-best-pulse.jpg",
+    "15-host-match-1-end-tv.jpg",
+    "16-host-match-2-start-tv.jpg",
+    "17-host-match-2-reveal-best-tv.jpg",
+    "30-strip-match-2-new-best-pulse.jpg",
+    "31-host-match-2-end-tv.jpg",
+    "32-host-match-3-start-tv.jpg",
+    "33-host-match-3-end-tv.jpg",
+    "34-host-match-4-start-tv.jpg",
+    "35-host-match-4-end-tv.jpg",
+    "36-host-long-best-status-tv.jpg",
+    "37-phone2-friend-waits-for-lobby-phone.jpg",
+    "38-host-two-player-no-best-tv.jpg",
+    "39-host-two-player-start-no-best-tv.jpg",
+    "40-host-two-player-final-no-best-tv.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-match-1-start-tv.jpg",
+      "bytes": 201190
+    },
+    {
+      "file": "14-strip-match-1-new-best-pulse.jpg",
+      "bytes": 2862071
+    },
+    {
+      "file": "15-host-match-1-end-tv.jpg",
+      "bytes": 210193
+    },
+    {
+      "file": "16-host-match-2-start-tv.jpg",
+      "bytes": 219671
+    },
+    {
+      "file": "17-host-match-2-reveal-best-tv.jpg",
+      "bytes": 229373
+    },
+    {
+      "file": "30-strip-match-2-new-best-pulse.jpg",
+      "bytes": 2792145
+    },
+    {
+      "file": "31-host-match-2-end-tv.jpg",
+      "bytes": 210488
+    },
+    {
+      "file": "32-host-match-3-start-tv.jpg",
+      "bytes": 268104
+    },
+    {
+      "file": "33-host-match-3-end-tv.jpg",
+      "bytes": 208477
+    },
+    {
+      "file": "34-host-match-4-start-tv.jpg",
+      "bytes": 225463
+    },
+    {
+      "file": "35-host-match-4-end-tv.jpg",
+      "bytes": 209395
+    },
+    {
+      "file": "36-host-long-best-status-tv.jpg",
+      "bytes": 252499
+    },
+    {
+      "file": "37-phone2-friend-waits-for-lobby-phone.jpg",
+      "bytes": 106132
+    },
+    {
+      "file": "38-host-two-player-no-best-tv.jpg",
+      "bytes": 218103
+    },
+    {
+      "file": "39-host-two-player-start-no-best-tv.jpg",
+      "bytes": 222852
+    },
+    {
+      "file": "40-host-two-player-final-no-best-tv.jpg",
+      "bytes": 200595
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2112
+    },
+    {
+      "file": "run.json",
+      "bytes": 6860
+    }
+  ],
+  "totalBytes": 8645760,
+  "maxBytes": 12582912
+}

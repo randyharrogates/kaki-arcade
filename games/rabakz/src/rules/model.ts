@@ -1,3 +1,4 @@
+import type { RabakzRecord } from '../records';
 import type { PlayerInfo } from '@kaki/platform';
 import type { RngState } from '@kaki/sim-core';
 
@@ -39,6 +40,9 @@ export interface ScoreboardTotals {
   readonly teams: readonly [number, number];
 }
 export interface State {
+  readonly savedRecord: RabakzRecord;
+  readonly soloEligible: boolean;
+  readonly soloBest?: number;
   readonly scoreboardTotals?: {
     readonly current: ScoreboardTotals;
     readonly previous?: ScoreboardTotals;

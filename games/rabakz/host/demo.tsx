@@ -2,7 +2,7 @@ import { detectOverflow } from './overflow';
 import { render } from 'preact';
 import { countUpDuration, STAGGER_MS } from '@kaki/ui';
 import { RabakzScreen } from './Screen';
-import { rabakz } from '../src/index';
+import { rabakz, savedView } from '../src/index';
 import { advance, answer, scenario, SCENARIOS } from './scenarios';
 import '@kaki/ui/tokens.css';
 
@@ -19,7 +19,8 @@ if ((import.meta as ImportMeta & { readonly env: { readonly DEV: boolean } }).en
   const to = SCENARIOS.find(s => s === query.get('to'));
   let state = scenario(from ?? stateName, count);
   let seeking = !from;
-  const draw = () => { render(<RabakzScreen view={rabakz.publicView(state)} width={innerWidth} height={innerHeight}
+  let saved = false;
+  const draw = () => { render(<RabakzScreen view={saved ? savedView(rabakz.publicView(state), state) : rabakz.publicView(state)} width={innerWidth} height={innerHeight}
     slow={slow} frozenAt={seeking ? at : undefined} {...(query.get('reduced') === '1' ? { reduced: true } : {})} />, document.body);
     if (seeking) requestAnimationFrame(() => { requestAnimationFrame(() => {
       // Effects and the browser font measurement have applied before seeking.
@@ -33,6 +34,13 @@ if ((import.meta as ImportMeta & { readonly env: { readonly DEV: boolean } }).en
   // Perf-only fixture driver retains the mounted screen across real public snapshots.
   if (query.get('perf') === '1') Object.assign(window, {
     __rzPerfState(name: string) {
+      saved = name === 'perf-solo-final';
+      if (name === 'perf-solo-best' || saved) {
+        state = scenario('open', 1);
+        state = { ...state, soloEligible: true, soloBest: 1550,
+          ...(saved ? { phase: 'over' as const, players: state.players.map(p => ({ ...p, score: 1600 })) } : {}) };
+        draw(); return;
+      }
       const next = SCENARIOS.find(value => value === name);
       if (!next) throw new Error('Unknown Rabakz fixture');
       state = scenario(next, 8); draw();

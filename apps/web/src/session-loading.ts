@@ -1,3 +1,5 @@
+import { readSaved } from './session-storage';
+export { saveSession } from './session-storage';
 import { defaultSettings, settingsSchema, validateSettings } from '@kaki/platform';
 import type { InitContext, JsonValue } from '@kaki/platform';
 import { loadGame, sessionRegistrations } from './game-registry';
@@ -24,7 +26,8 @@ async function resolveData(game: LoadedGame, context: InitContext, settings: obj
 export async function prepareMatch(game: LoadedGame, seed: number, setup: { context: InitContext }, settings: object) {
   const checked = validateSettings(settingsSchema(game, setup.context), settings);
   if (!checked.ok) throw new Error(checked.errors.join('. '));
-  const context = { ...setup.context, data: { ...setup.context.data } };
+  // R-06 (see DECISIONS: game records): read this device's saved record on every Start, never from the cached setup.
+  const context = { ...setup.context, data: { ...setup.context.data }, saved: await readSaved(game.meta.id) };
   await resolveData(game, context, checked.settings, seed);
   return { context, settings: checked.settings };
 }

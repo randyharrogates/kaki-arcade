@@ -1,10 +1,10 @@
 /** Containers whose own content, children and text must remain within their bounds. */
 export const OVERFLOW_SELECTORS = [
   '.rz-question', '.rz-question h1', '.rz-question .rz-copy',
-  '.rz-header', '.rz-header .rz-copy', '.rz-seat-number', '.rz-group-label', '.rz-frame', '.rz-no-team', '.rz-player-name', '.rz-row-team', '.rz-score-area', '.rz-round-label', '.rz-column-headings', '.rz-team-panel',
+  '.rz-play-best', '.rz-header-detail', '.rz-header', '.rz-header .rz-copy', '.rz-seat-number', '.rz-group-label', '.rz-frame', '.rz-no-team', '.rz-player-name', '.rz-row-team', '.rz-score-area', '.rz-round-label', '.rz-column-headings', '.rz-team-panel',
   '.rz-ranked-region', '.rz-option', '.rz-results', '.rz-results-body', '.rz-rank', '.rz-rank-name',
   '.rz-place', '.rz-total', '.rz-delta', '.rz-team-totals', '.rz-podium',
-  '.rz-team-mark', '.rz-step', '.rz-step-place', '.rz-step-members', '.rz-podium-player', '.rz-podium-name', '.rz-solo', '.rz-solo-total',
+  '.rz-team-mark', '.rz-step', '.rz-step-place', '.rz-step-members', '.rz-podium-player', '.rz-podium-name', '.rz-solo', '.rz-solo-total', '.rz-solo-best',
 ] as const;
 
 /** Hidden name ranges are expected only when the specified ellipsis is installed. */

@@ -6,12 +6,12 @@ import type { AdapterOptions } from './session-adapter';
 import { hostCounts } from './counts';
 import type { SessionDisplay } from './session-adapter';
 
-function fixture(onDisplay?: (display: SessionDisplay | null) => void, counts?: AdapterOptions['counts']) {
+function fixture(onDisplay?: (display: SessionDisplay | null) => void, counts?: AdapterOptions['counts'], minPlayers = 1) {
   let room = createRoom();
   room = applyPhoneEvent(room, { connectionId: 'a', deviceId: 'd' }, { type: 'join', name: 'Fern', seatToken: '1'.repeat(32) }, 0).state;
   const calls: string[] = [];
   const game: GameModule<number, object, number> = {
-    meta: { id: 'test', name: 'Test', blurb: 'Test', players: { min: 1, max: 8 }, teams: 'none', coop: false, solo: true },
+    meta: { id: 'test', name: 'Test', blurb: 'Test', players: { min: minPlayers, max: 8 }, teams: 'none', coop: false, solo: true },
     settings: { fields: [] }, init: () => { calls.push('init'); return 0; },
     step: state => { calls.push('step'); return state + 1; }, join: s => s, leave: s => s,
     publicView: s => s, privateView: () => null, controllerLayout: () => ({ revision: 0, controls: [] }),
@@ -168,4 +168,16 @@ it('DATA-003 the real session boundary sends once after results, never in play',
   expect(send).toHaveBeenCalledTimes(1); counts.hide(); f.frame(17);
   expect(send).toHaveBeenCalledTimes(1); expect(beacon).not.toHaveBeenCalled();
   f.adapter.stop();
+});
+
+it('RZ-013 quit while short of players saves once through results', async () => {
+  const storage = await import('./session-storage');
+  const save = vi.spyOn(storage, 'saveSession').mockResolvedValue(0);
+  const f = fixture(undefined, undefined, 2);
+  try {
+    await f.adapter.start('test', f.room);
+    f.adapter.command('quit', 'seat-1');
+    await vi.waitFor(() => { expect(save).toHaveBeenCalledOnce(); });
+    expect(f.events.filter(event => event.type === 'results')).toHaveLength(1);
+  } finally { f.adapter.stop(); save.mockRestore(); }
 });

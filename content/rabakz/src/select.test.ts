@@ -818,6 +818,16 @@ describe('selectQuestions: fairness', () => {
   });
 });
 
+it('RZ-015 oldest recent beats Mixed difficulty quotas after fresh questions run out', () => {
+  const bank = makeBank({ categories: { food: { easy: 12, medium: 12, hard: 12 } } });
+  const all = bank.chunks.flatMap(chunk => chunk.questions);
+  const fresh = all.filter(q => q.difficulty === 'easy').slice(0, 9);
+  const oldest = all.find(q => q.difficulty === 'easy' && !fresh.includes(q));
+  if (!oldest) throw new Error('Missing oldest fixture');
+  const recent = [oldest, ...all.filter(q => q !== oldest && !fresh.includes(q))].map(q => q.id);
+  const selected = questionsOf(select(bank, { count: 10, difficulty: 'mixed' }, { recentlyUsed: recent }));
+  expect(ids(selected).sort()).toEqual([...fresh.map(q => q.id), oldest.id].sort());
+});
 
 it('RZ-010 setupTable aggregates regions and separates picture counts from plain counts', () => {
   const bank = makeBank({ categories: { life: { easy: 8, medium: 4, hard: 2 } }, singaporeEvery: 2, pictureEvery: 2, pictureBytes: 123 });

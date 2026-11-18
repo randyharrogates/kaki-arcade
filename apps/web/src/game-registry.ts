@@ -42,6 +42,7 @@ export function validGameSelection(id: string, settings: JsonValue): boolean {
 }
 
 interface SessionRegistration {
+  record?: () => Promise<{ version: number; validate(value: unknown): value is JsonValue; empty(): JsonValue; savedView(view: unknown, state: unknown): unknown }>;
   finalHintTheme?: typeof THEMES.console;
   finalScreen?: boolean;
   screen?: () => Promise<HostScreen>;
@@ -58,6 +59,11 @@ export const sessionRegistrations: Record<string, SessionRegistration> = {
     viewKey: async () => (await import('../../../games/peek-poker/host')).publicViewKey,
   },
   rabakz: {
+    record: async () => {
+      const { RECORD_VERSION, savedView, validRecord, emptyRecord } = await import('@kaki/game-rabakz');
+      return { version: RECORD_VERSION, validate: (value: unknown): value is JsonValue => validRecord(value), empty: () => emptyRecord() as unknown as JsonValue,
+        savedView: (view, state) => savedView(view as Parameters<typeof savedView>[0], state as Parameters<typeof savedView>[1]) };
+    },
     finalHintTheme: THEMES.rabakz,
     finalScreen: true,
     viewKey: async () => { const { publicViewKey } = await import('@kaki/game-rabakz/host'); return view => publicViewKey(view as Parameters<typeof publicViewKey>[0]); },
@@ -70,7 +76,7 @@ export const sessionRegistrations: Record<string, SessionRegistration> = {
         if (!checked.ok) throw new Error('Invalid Rabakz settings');
         const { length, categories, difficulty } = checked.settings;
         const rng = createRng(seed);
-        return questionData(await (await import('@kaki/content-rabakz/session')).questions({ count: length, categories: categories?.length ? categories : 'mixed', difficulty, region: 'mixed' }, () => nextFloat(rng)));
+        return questionData(await (await import('@kaki/content-rabakz/session')).questions({ count: length, categories: categories?.length ? categories : 'mixed', difficulty, region: 'mixed' }, () => nextFloat(rng), (await import('@kaki/game-rabakz')).validRecord(context.saved) ? (context.saved as unknown as { recent: string[] }).recent : []));
       },
     },
   },

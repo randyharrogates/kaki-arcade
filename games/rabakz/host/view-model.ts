@@ -112,7 +112,7 @@ export function screenModel(view: RabakzPublicView, measure: MeasureText = fallb
     picks: reveal ? p.answers ?? [] : [],
   }));
   return {
-    questionId: q.id, identity: `${q.id}:${view.phase}:${view.wrong.join(',')}`, reveal, category: categoryTitle(q.category), heading: `Question ${String(view.round)} of ${String(view.length)}`,
+    soloBest: view.soloBest, questionId: q.id, identity: `${q.id}:${view.phase}:${view.wrong.join(',')}`, reveal, category: categoryTitle(q.category), heading: `Question ${String(view.round)} of ${String(view.length)}`,
     prompt: q.prompt, fit, picture,
     pictureLabel: 'Picture slot',
     outcome: !reveal ? '' : view.winners.length === 0 ? 'Nobody got it right' :
