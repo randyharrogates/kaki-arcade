@@ -2,6 +2,20 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — A-03: cook heads
+
+- TR-064 (art), TR-061 (head): seven new heads beside the cap (uncle, auntie, makcik, bun,
+  specs, turban, songkok) in eight facings, each a sprite and a colour mask on the shared head
+  socket; every pair differs in greyscale in every facing (review gate, lowest 0.230; cap tinted
+  in each seat colour, lowest 0.241). Only the cap tints; the apron carries the player or team
+  colour for everyone (D-263).
+- Bun enlarged, turban kopi brown, specs hair muted brown so bun and specs can be told apart
+  (D-264–D-266; options board of rounds 4, 5 and 6).
+- Pipeline: head jobs live in `assets/src/pipeline.cook-heads.json`, so body, cap and items
+  stamps stay unchanged. The production pack runs in the review script and pipeline packing,
+  not the unit suite. Heads atlas 202,586 B (4.13 MB decoded); Tabao Rush round 2.22 MB of 8 MB.
+- Not yet: the character picker on the phone (TR-064) and heads in game (T-07).
+
 ## 2026-11-19 — R-17: No answer on the phone reveal
 
 - RZ-006, RZ-007: a phone's reveal says "Skipped" only for the leader whose Skip ended the

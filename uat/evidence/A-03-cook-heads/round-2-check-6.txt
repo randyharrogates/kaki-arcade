@@ -1,0 +1,6 @@
+Load: 4.99560546875
+$ pnpm run lint:design
+$ node tools/lint_design.mjs
+design lint passed: 416 file(s) scanned
+
+Exit: 0

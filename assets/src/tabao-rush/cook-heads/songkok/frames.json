@@ -1,0 +1,226 @@
+[
+  {
+    "id": "head-songkok-s",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-s.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-s-mask",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-s-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-se",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-se.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-se-mask",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-se-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-e",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-e.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-e-mask",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-e-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-ne",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-ne.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-ne-mask",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-ne-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-n",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-n.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-n-mask",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-n-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-nw",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-nw.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-nw-mask",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-nw-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-w",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-w.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-w-mask",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-w-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-sw",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-sw.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-songkok-sw-mask",
+    "file": "tabao-rush/cook-heads/songkok/head-songkok-sw-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  }
+]

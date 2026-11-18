@@ -1,0 +1,2 @@
+17:53  4 users, load averages: 5.24 4.79 4.74
+pnpm exec eslint tools/assets --max-warnings 0

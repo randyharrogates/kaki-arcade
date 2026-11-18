@@ -1,0 +1,226 @@
+[
+  {
+    "id": "head-uncle-s",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-s.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-s-mask",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-s-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-se",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-se.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-se-mask",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-se-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-e",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-e.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-e-mask",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-e-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-ne",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-ne.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-ne-mask",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-ne-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-n",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-n.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-n-mask",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-n-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-nw",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-nw.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-nw-mask",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-nw-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-w",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-w.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-w-mask",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-w-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-sw",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-sw.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-uncle-sw-mask",
+    "file": "tabao-rush/cook-heads/uncle/head-uncle-sw-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  }
+]

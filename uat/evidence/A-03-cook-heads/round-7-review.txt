@@ -1,0 +1,12 @@
+Launch load: 6.31
+Elapsed: 125.60 s
+Exit: 0
+peek-poker-cards-0: 1926×1100, waste 7.8%, 915460 bytes, 8474400 decoded
+tabao-rush-cook-body-0: 2012×2012, waste 20.3%, 591406 bytes, 16192576 decoded
+tabao-rush-cook-body-1: 1984×2006, waste 15.9%, 593390 bytes, 15919616 decoded
+tabao-rush-cook-body-2: 1560×1954, waste 15.4%, 419614 bytes, 12192960 decoded
+tabao-rush-cook-body-3: 1542×758, waste 16.3%, 138310 bytes, 4675344 decoded
+tabao-rush-cook-heads-0: 796×1296, waste 16.7%, 202586 bytes, 4126464 decoded
+tabao-rush-effects-0: 66×660, waste 30.1%, 37818 bytes, 174240 decoded
+tabao-rush-items-0: 254×938, waste 19.1%, 236252 bytes, 953008 decoded
+PERF-023/024 passed: 8 atlases; manifest 378428 bytes

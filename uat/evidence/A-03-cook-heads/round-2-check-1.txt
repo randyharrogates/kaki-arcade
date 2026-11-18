@@ -1,0 +1,9 @@
+Load: 7.736328125
+$ python3 -m unittest tools/blender/test_cook_poses.py
+............
+----------------------------------------------------------------------
+Ran 12 tests in 2.228s
+
+OK
+
+Exit: 0

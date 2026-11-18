@@ -1,0 +1,58 @@
+17:53  4 users, load averages: 5.63 4.81 4.75
+pnpm exec vitest run tools/assets
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-03
+
+ ❯ tools/assets/pipeline.test.ts (5 tests | 1 failed) 35964ms
+     × packs, reconstructs, downsamples, checks budgets and validates manifests 33539ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tools/assets/pipeline.test.ts > PERF-023/024 asset pipeline > packs, reconstructs, downsamples, checks budgets and validates manifests
+AssertionError: ....F........F.......................................................................
+======================================================================
+FAIL: test_retired_jobs_and_stamp_changes (test_cook_body.CookDecisionJobTests.test_retired_jobs_and_stamp_changes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-03/tools/assets/test_cook_body.py", line 138, in test_retired_jobs_and_stamp_changes
+    self.assertIsNone(p.stale_reason(outputs, stamp, digest))
+AssertionError: 'content stamp differs' is not None
+
+======================================================================
+FAIL: test_published_heads_and_production_budget (test_cook_heads.CookHeadsTests.test_published_heads_and_production_budget)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-03/tools/assets/test_cook_heads.py", line 178, in test_published_heads_and_production_budget
+    R.validate(R.S.SOURCE, frames)
+  File "/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-03/tools/assets/cook_heads_review.py", line 64, in validate
+    assert not failures, f'Indistinct heads: {failures}'
+AssertionError: Indistinct heads: {'bun/specs/s': 0.1578111640405521, 'bun/specs/se': 0.1326813956296028, 'bun/specs/e': 0.07653550863723609, 'bun/specs/ne': 0.03240524099204492, 'bun/specs/n': 0.00783319894021426, 'bun/specs/nw': 0.03464014043300175, 'bun/specs/w': 0.08257321171387422, 'bun/specs/sw': 0.13104863038494027}
+
+----------------------------------------------------------------------
+Ran 85 tests in 33.423s
+
+FAILED (failures=2)
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tools/assets/pipeline.test.ts:8:42
+      6|   it('packs, reconstructs, downsamples, checks budgets and validates m…
+      7|     const result = spawnSync('python3', ['-m', 'unittest', 'discover',…
+      8|     expect(result.status, result.stderr).toBe(0);
+       |                                          ^
+      9|     expect(result.stderr).toMatch(/Ran [1-9]\d* tests/);
+     10|     expect(result.stderr).toMatch(/\nOK\b/);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 5 passed (6)
+   Start at  17:53:09
+   Duration  36.06s (transform 20ms, setup 0ms, import 31ms, tests 35.97s, environment 0ms)
+

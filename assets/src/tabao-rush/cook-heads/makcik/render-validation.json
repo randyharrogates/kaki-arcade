@@ -1,0 +1,275 @@
+{
+  "action": "makcik",
+  "count": 1,
+  "fps": 1,
+  "loop": true,
+  "strideTiles": null,
+  "frameSize": [
+    256,
+    256
+  ],
+  "pixelsPerTile": 120,
+  "directionOrder": [
+    "s",
+    "se",
+    "e",
+    "ne",
+    "n",
+    "nw",
+    "w",
+    "sw"
+  ],
+  "checks": {
+    "heightTiles": 1.561921984772198,
+    "maxFootSlidePx": 0.0,
+    "maxAnchorJumpPx": 2.16961669921875,
+    "minFootLiftPx": 0
+  },
+  "frames": [
+    {
+      "id": "head-makcik-s",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-s.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-s-mask",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-s-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-se",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-se.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-se-mask",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-se-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-e",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-e.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-e-mask",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-e-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-ne",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-ne.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-ne-mask",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-ne-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-n",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-n.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-n-mask",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-n-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-nw",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-nw.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-nw-mask",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-nw-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-w",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-w.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-w-mask",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-w-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-sw",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-sw.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-makcik-sw-mask",
+      "file": "tabao-rush/cook-heads/makcik/head-makcik-sw-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    }
+  ],
+  "decodedPixelSHA256": {
+    "head-makcik-s.png": "22848f4ded979a8c0fdd1703dfa76cb98b56722b32be0d38da964542ea7231a9",
+    "head-makcik-s-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-makcik-se.png": "0294f9a493540fa1264498967cb397655e8599a982790f3146e3bd3871857924",
+    "head-makcik-se-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-makcik-e.png": "5ab44cefacf4bc733f005d927c34d160e14d9b8e25162dde28844bb373fd03a1",
+    "head-makcik-e-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-makcik-ne.png": "c03924025d04ef38563b2f1dac8e9cce95fd8c63f74d0dca2cd99fe8a5e641e9",
+    "head-makcik-ne-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-makcik-n.png": "03933562d9a94395a6477d88378d4f0a46a8cd022f2d980e7064a0ae04ed086f",
+    "head-makcik-n-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-makcik-nw.png": "a4f7f5f0a77a33489c7cafe0baa8d3f86e0e2809152e816ebc1d2a65df733b87",
+    "head-makcik-nw-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-makcik-w.png": "04e7cbf2c85f7f54b3a8d694a6c4cc4add905e8de09cb75454d7fdf1110172c9",
+    "head-makcik-w-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-makcik-sw.png": "a21727d1a23eb3dca5041fd380b7a6187acdd039929a052aa824fa4a34c39389",
+    "head-makcik-sw-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29"
+  },
+  "setupSeconds": 0.6409736659843475,
+  "secondsPerFrame": 0.3915879479391151,
+  "totalSeconds": 6.906380833010189
+}

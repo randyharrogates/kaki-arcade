@@ -1,0 +1,275 @@
+{
+  "action": "uncle",
+  "count": 1,
+  "fps": 1,
+  "loop": true,
+  "strideTiles": null,
+  "frameSize": [
+    256,
+    256
+  ],
+  "pixelsPerTile": 120,
+  "directionOrder": [
+    "s",
+    "se",
+    "e",
+    "ne",
+    "n",
+    "nw",
+    "w",
+    "sw"
+  ],
+  "checks": {
+    "heightTiles": 1.4987823077244684,
+    "maxFootSlidePx": 0.0,
+    "maxAnchorJumpPx": 2.16961669921875,
+    "minFootLiftPx": 0
+  },
+  "frames": [
+    {
+      "id": "head-uncle-s",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-s.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-s-mask",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-s-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-se",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-se.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-se-mask",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-se-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-e",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-e.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-e-mask",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-e-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-ne",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-ne.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-ne-mask",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-ne-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-n",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-n.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-n-mask",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-n-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-nw",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-nw.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-nw-mask",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-nw-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-w",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-w.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-w-mask",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-w-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-sw",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-sw.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-uncle-sw-mask",
+      "file": "tabao-rush/cook-heads/uncle/head-uncle-sw-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    }
+  ],
+  "decodedPixelSHA256": {
+    "head-uncle-s.png": "97911cef1b091744fcd44bc29a81562be204ffa3abac7857975beab257fea947",
+    "head-uncle-s-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-uncle-se.png": "157df6c5c260c2e399e7b0850bcf926e279a84e852ff3d855a10a816856d34c6",
+    "head-uncle-se-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-uncle-e.png": "4f6302716947fe8d7cff1000c13db8b836a2a409abad25afa5af860c9d97a9fb",
+    "head-uncle-e-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-uncle-ne.png": "f388f2a4fa1f629a829424a168488b9c4491e45a0e0ebf87ff0d05b1875e104b",
+    "head-uncle-ne-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-uncle-n.png": "21bc3fa7233d47bbe9e1e5356f48017bfacaf54ee9c162dd99e0c78c2fc4a181",
+    "head-uncle-n-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-uncle-nw.png": "dec6d23482e4e12a638452e0e0518b53acdae09ababd2adcdd3f56c100f156cc",
+    "head-uncle-nw-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-uncle-w.png": "82e19e7403b1c8fb1e1ea6f5133c1cc8789bcd0dabae13a305e36cf44e8f6409",
+    "head-uncle-w-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-uncle-sw.png": "daeb36d8788bda20f3295eb516b12aa74cfd70723611713b2eadfe7b69803102",
+    "head-uncle-sw-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29"
+  },
+  "setupSeconds": 0.5286535840132274,
+  "secondsPerFrame": 0.25256959112448385,
+  "totalSeconds": 4.569767042004969
+}

@@ -19,6 +19,26 @@ class PipelineTests(unittest.TestCase):
         self.out = self.root / 'dist'
         self.manifest = p.pack(self.config, self.source, self.out)
 
+    def test_refresh_metadata_preserves_base_with_extension(self):
+        path = self.source/'pipeline.json'
+        base = dict(renders=[], sets=[dict(id='tabao-rush-items', frames=[])])
+        p.write_json(path, base)
+        extension = dict(renders=[dict(id='head', script='cook_heads.py')],
+                         sets=[dict(id='heads', frames=[])])
+        p.write_json(self.source/'pipeline.heads.json', extension)
+        def refresh(config, source):
+            self.assertEqual(config, base)
+            self.assertEqual(source, self.source)
+            config['sets'][0]['containmentFootprints'] = {}
+        with patch('sys.argv', ['pipeline.py', '--config', str(path), '--refresh-item-metadata']), \
+                patch.object(p, 'refresh_item_metadata', side_effect=refresh):
+            p.main()
+        expected = copy.deepcopy(base)
+        expected['sets'][0]['containmentFootprints'] = {}
+        self.assertEqual(p.read_json(path), expected)
+        self.assertEqual(p.read_json(self.source/'pipeline.heads.json'), extension)
+        self.assertEqual(len(p.load_config(path)['renders']), 1)
+
     def test_frame_files(self):
         group = self.config['sets'][0]
         original = group['frames']

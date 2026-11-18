@@ -1,0 +1,43 @@
+One-minute uptime load at launch: 4.08 (<8)
+...E.......................
+======================================================================
+ERROR: test_authored_luma_margins (test_cook_heads_colour.HeadColourTests.test_authored_luma_margins)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-03/tools/blender/test_cook_heads_colour.py", line 36, in test_authored_luma_margins
+    looks = assignments('kalib.py')['LOOKS']
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-03/tools/blender/test_cook_heads_colour.py", line 13, in assignments
+    values = {node.targets[0].id: ast.literal_eval(node.value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-03/tools/blender/test_cook_heads_colour.py", line 13, in <dictcomp>
+    values = {node.targets[0].id: ast.literal_eval(node.value)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randy/.pyenv/versions/3.11.5/lib/python3.11/ast.py", line 110, in literal_eval
+    return _convert(node_or_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randy/.pyenv/versions/3.11.5/lib/python3.11/ast.py", line 99, in _convert
+    return dict(zip(map(_convert, node.keys),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randy/.pyenv/versions/3.11.5/lib/python3.11/ast.py", line 109, in _convert
+    return _convert_signed_num(node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randy/.pyenv/versions/3.11.5/lib/python3.11/ast.py", line 83, in _convert_signed_num
+    return _convert_num(node)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/randy/.pyenv/versions/3.11.5/lib/python3.11/ast.py", line 74, in _convert_num
+    _raise_malformed_node(node)
+  File "/Users/randy/.pyenv/versions/3.11.5/lib/python3.11/ast.py", line 71, in _raise_malformed_node
+    raise ValueError(msg + f': {node!r}')
+ValueError: malformed node or string on line 108: <ast.Call object at 0x10a220610>
+
+----------------------------------------------------------------------
+Ran 27 tests in 1.582s
+
+FAILED (errors=1)
+FACE CHECK back.png: coverage=0.740 mean=0.465 std=0.239
+FACE CHECK back.png: coverage=0.740 mean=0.430 std=0.250
+FACE CHECK back.png: coverage=0.740 mean=0.454 std=0.249
+FACE CHECK paper.png: coverage=0.740 mean=0.967 std=0.017
+FACE CHECK paper.png: coverage=0.740 mean=0.967 std=0.017
+FACE CHECK paper.png: coverage=0.740 mean=0.969 std=0.000

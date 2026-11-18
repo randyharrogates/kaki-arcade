@@ -1,0 +1,27 @@
+Launch load: 6.31
+Elapsed: 0.36 s
+Exit: 0
+cards: fresh: content stamp matches and all outputs exist
+items: fresh: content stamp matches and all outputs exist
+cook-body-idle: fresh: content stamp matches and all outputs exist
+cook-body-walk: fresh: content stamp matches and all outputs exist
+cook-body-carry-walk: fresh: content stamp matches and all outputs exist
+cook-body-chop: fresh: content stamp matches and all outputs exist
+cook-body-stir: fresh: content stamp matches and all outputs exist
+cook-body-wash: fresh: content stamp matches and all outputs exist
+cook-body-serve: fresh: content stamp matches and all outputs exist
+cook-body-throw: fresh: content stamp matches and all outputs exist
+cook-body-extinguish: fresh: content stamp matches and all outputs exist
+cook-head-cap: fresh: content stamp matches and all outputs exist
+effect-steam: fresh: content stamp matches and all outputs exist
+effect-sparks: fresh: content stamp matches and all outputs exist
+effect-fire: fresh: content stamp matches and all outputs exist
+effect-spray: fresh: content stamp matches and all outputs exist
+effect-shadow: fresh: content stamp matches and all outputs exist
+cook-head-uncle: fresh: content stamp matches and all outputs exist
+cook-head-auntie: fresh: content stamp matches and all outputs exist
+cook-head-makcik: fresh: content stamp matches and all outputs exist
+cook-head-bun: fresh: content stamp matches and all outputs exist
+cook-head-specs: fresh: content stamp matches and all outputs exist
+cook-head-turban: fresh: content stamp matches and all outputs exist
+cook-head-songkok: fresh: content stamp matches and all outputs exist

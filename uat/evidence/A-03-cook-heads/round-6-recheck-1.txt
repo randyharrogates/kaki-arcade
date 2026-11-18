@@ -1,0 +1,12 @@
+One-minute uptime load at launch: 4.00 (<8)
+...........................
+----------------------------------------------------------------------
+Ran 27 tests in 1.742s
+
+OK
+FACE CHECK back.png: coverage=0.740 mean=0.465 std=0.239
+FACE CHECK back.png: coverage=0.740 mean=0.430 std=0.250
+FACE CHECK back.png: coverage=0.740 mean=0.454 std=0.249
+FACE CHECK paper.png: coverage=0.740 mean=0.967 std=0.017
+FACE CHECK paper.png: coverage=0.740 mean=0.967 std=0.017
+FACE CHECK paper.png: coverage=0.740 mean=0.969 std=0.000

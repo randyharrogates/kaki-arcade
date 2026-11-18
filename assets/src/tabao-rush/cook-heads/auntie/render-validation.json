@@ -1,0 +1,275 @@
+{
+  "action": "auntie",
+  "count": 1,
+  "fps": 1,
+  "loop": true,
+  "strideTiles": null,
+  "frameSize": [
+    256,
+    256
+  ],
+  "pixelsPerTile": 120,
+  "directionOrder": [
+    "s",
+    "se",
+    "e",
+    "ne",
+    "n",
+    "nw",
+    "w",
+    "sw"
+  ],
+  "checks": {
+    "heightTiles": 1.604314596275799,
+    "maxFootSlidePx": 0.0,
+    "maxAnchorJumpPx": 2.16961669921875,
+    "minFootLiftPx": 0
+  },
+  "frames": [
+    {
+      "id": "head-auntie-s",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-s.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-s-mask",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-s-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-se",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-se.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-se-mask",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-se-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-e",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-e.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-e-mask",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-e-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-ne",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-ne.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-ne-mask",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-ne-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-n",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-n.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-n-mask",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-n-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-nw",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-nw.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-nw-mask",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-nw-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-w",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-w.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-w-mask",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-w-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-sw",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-sw.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-auntie-sw-mask",
+      "file": "tabao-rush/cook-heads/auntie/head-auntie-sw-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    }
+  ],
+  "decodedPixelSHA256": {
+    "head-auntie-s.png": "67217cdbbe47e130c4984d7ce375fdee6b3d28015d9af126b87e67dbea2ec575",
+    "head-auntie-s-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-auntie-se.png": "2b25747517484fea1224ffc5ecf907975f3942cdd907dd0c6fa3f459ff2e9eb9",
+    "head-auntie-se-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-auntie-e.png": "168631b00b1c4d29969b2022f014085888a43a50b095528645f1afaf8019ecd7",
+    "head-auntie-e-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-auntie-ne.png": "ece150b7537e2bdeb28fe62a9306f4786ef8c28ce8616de5925c4705c115612c",
+    "head-auntie-ne-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-auntie-n.png": "ce0e642346451bcf20f3a4931b2f7fb02c97a3f7f1bee0c69984a725e6a923b2",
+    "head-auntie-n-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-auntie-nw.png": "5ca4e69de7e7a603ba129f73a55b81bbf5d6864eeb43573099536629683799fa",
+    "head-auntie-nw-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-auntie-w.png": "1fcb433b3c4cfcd4460c609f78dac001bba7df5bffc5473d027c8dc416a13df5",
+    "head-auntie-w-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-auntie-sw.png": "d6773329a5086f8b12dda470bc5aa61882088d1d85345c059b02d348ed254897",
+    "head-auntie-sw-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29"
+  },
+  "setupSeconds": 0.7522629169980064,
+  "secondsPerFrame": 0.31056044531214866,
+  "totalSeconds": 5.721230041992385
+}

@@ -1,0 +1,226 @@
+[
+  {
+    "id": "head-bun-s",
+    "file": "tabao-rush/cook-heads/bun/head-bun-s.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-s-mask",
+    "file": "tabao-rush/cook-heads/bun/head-bun-s-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-se",
+    "file": "tabao-rush/cook-heads/bun/head-bun-se.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-se-mask",
+    "file": "tabao-rush/cook-heads/bun/head-bun-se-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-e",
+    "file": "tabao-rush/cook-heads/bun/head-bun-e.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-e-mask",
+    "file": "tabao-rush/cook-heads/bun/head-bun-e-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-ne",
+    "file": "tabao-rush/cook-heads/bun/head-bun-ne.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-ne-mask",
+    "file": "tabao-rush/cook-heads/bun/head-bun-ne-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-n",
+    "file": "tabao-rush/cook-heads/bun/head-bun-n.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-n-mask",
+    "file": "tabao-rush/cook-heads/bun/head-bun-n-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-nw",
+    "file": "tabao-rush/cook-heads/bun/head-bun-nw.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-nw-mask",
+    "file": "tabao-rush/cook-heads/bun/head-bun-nw-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-w",
+    "file": "tabao-rush/cook-heads/bun/head-bun-w.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-w-mask",
+    "file": "tabao-rush/cook-heads/bun/head-bun-w-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-sw",
+    "file": "tabao-rush/cook-heads/bun/head-bun-sw.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-bun-sw-mask",
+    "file": "tabao-rush/cook-heads/bun/head-bun-sw-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  }
+]

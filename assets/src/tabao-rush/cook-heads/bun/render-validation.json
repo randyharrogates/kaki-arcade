@@ -1,0 +1,275 @@
+{
+  "action": "bun",
+  "count": 1,
+  "fps": 1,
+  "loop": true,
+  "strideTiles": null,
+  "frameSize": [
+    256,
+    256
+  ],
+  "pixelsPerTile": 120,
+  "directionOrder": [
+    "s",
+    "se",
+    "e",
+    "ne",
+    "n",
+    "nw",
+    "w",
+    "sw"
+  ],
+  "checks": {
+    "heightTiles": 1.8559682675404474,
+    "maxFootSlidePx": 0.0,
+    "maxAnchorJumpPx": 2.16961669921875,
+    "minFootLiftPx": 0
+  },
+  "frames": [
+    {
+      "id": "head-bun-s",
+      "file": "tabao-rush/cook-heads/bun/head-bun-s.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-s-mask",
+      "file": "tabao-rush/cook-heads/bun/head-bun-s-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-se",
+      "file": "tabao-rush/cook-heads/bun/head-bun-se.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-se-mask",
+      "file": "tabao-rush/cook-heads/bun/head-bun-se-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-e",
+      "file": "tabao-rush/cook-heads/bun/head-bun-e.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-e-mask",
+      "file": "tabao-rush/cook-heads/bun/head-bun-e-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-ne",
+      "file": "tabao-rush/cook-heads/bun/head-bun-ne.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-ne-mask",
+      "file": "tabao-rush/cook-heads/bun/head-bun-ne-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-n",
+      "file": "tabao-rush/cook-heads/bun/head-bun-n.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-n-mask",
+      "file": "tabao-rush/cook-heads/bun/head-bun-n-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-nw",
+      "file": "tabao-rush/cook-heads/bun/head-bun-nw.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-nw-mask",
+      "file": "tabao-rush/cook-heads/bun/head-bun-nw-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-w",
+      "file": "tabao-rush/cook-heads/bun/head-bun-w.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-w-mask",
+      "file": "tabao-rush/cook-heads/bun/head-bun-w-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-sw",
+      "file": "tabao-rush/cook-heads/bun/head-bun-sw.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-bun-sw-mask",
+      "file": "tabao-rush/cook-heads/bun/head-bun-sw-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    }
+  ],
+  "decodedPixelSHA256": {
+    "head-bun-s.png": "dace2ae6c7f1e7b912565d2fc27d75aac07fc7610c20f5900edc2bf5d71a2e5d",
+    "head-bun-s-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-bun-se.png": "f343913281469cbce9caf10d14bd5a4a60e4823fd441e6e6ce3a0f33c3f1f8e2",
+    "head-bun-se-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-bun-e.png": "f3ebf02701c5e5fc8c93032e57eec4908110f939e2a944d14da4a44120c7866c",
+    "head-bun-e-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-bun-ne.png": "e4b20de10ef439de05a7a01486c7045e9aa5b8d7aa20620df8c731a59e431d78",
+    "head-bun-ne-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-bun-n.png": "a5277340e386fc46d6b6e008ecb4f4f9c0e29b14d41425fbd2ba050d28fd3d94",
+    "head-bun-n-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-bun-nw.png": "b86780b0004221ccabe3fb8bed860b62e5d2bf6769c5732e8f091ae2c076324b",
+    "head-bun-nw-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-bun-w.png": "72a480d63da79efae6fd5220d2fcfe30f5ac1f64f196836b73d22520b9f1f7d9",
+    "head-bun-w-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-bun-sw.png": "57237bab62467b1b7b4f9c4945b15efd7f949cf8632e4a463772ba89f145857a",
+    "head-bun-sw-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29"
+  },
+  "setupSeconds": 0.514553832996171,
+  "secondsPerFrame": 0.2163384323102946,
+  "totalSeconds": 3.9759687499608845
+}

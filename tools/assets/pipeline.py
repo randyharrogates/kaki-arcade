@@ -540,9 +540,27 @@ def check(path):
     print(f'PERF-023/024 passed: {len(atlases)} atlases; manifest {manifest_bytes} bytes')
 
 
+def load_config(path):
+    """Load sibling pipeline.*.json extensions without changing legacy stamp inputs.
+
+    Extensions append render jobs and replace atlas sets by id. Render inputs
+    remain explicit: an unrelated extension is never an input to an existing job.
+    """
+    config = read_json(path)
+    for extension in sorted(path.parent.glob(path.stem + '.*' + path.suffix)):
+        extra = read_json(extension)
+        if set(extra) - {'renders', 'sets'}:
+            raise ValueError('Pipeline extensions support only renders and sets')
+        config.setdefault('renders', []).extend(extra.get('renders', []))
+        for group in extra.get('sets', []):
+            config['sets'] = [g for g in config.get('sets', []) if g['id'] != group['id']]
+            config['sets'].append(group)
+    return config
+
+
 def render_config(path):
-    """Read source declarations; D-172 retires the evidence-only render jobs."""
-    return read_json(path)
+    """Read source declarations plus sibling extensions; D-172 retires the evidence-only render jobs."""
+    return load_config(path)
 
 
 def item_stamp_config(data):
@@ -739,6 +757,7 @@ def main():
             migrate_items_stamp(config, args.config.parent, args.migrate_items_stamp)
             return 0
         if args.refresh_item_metadata:
+            config = read_json(args.config)
             refresh_item_metadata(config, args.config.parent)
             args.config.write_text(json.dumps(config, indent=2)+'\n')
             return 0

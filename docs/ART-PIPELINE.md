@@ -104,6 +104,11 @@ sources. It is written only after successful rendering and presence of every dec
 post-render input bytes are hashed to capture any inputs updated during rendering.
 Missing outputs, missing/invalid stamps or differing hashes make a job stale. Existing outputs
 without stamps rerender once; checkouts that only change timestamps do not invalidate stamps.
+All declared inputs remain significant, including the full pipeline config when declared.
+A job declaring the whole `pipeline.json` becomes stale whenever that file changes.
+Sibling `pipeline.*.json` extensions append renders and replace atlas sets by id;
+they are loaded by the pipeline without becoming inputs of unrelated legacy jobs.
+Keep new independent jobs in extensions to preserve published legacy stamps.
 For the `items` job only, the declared `pipeline.json` input is canonical JSON with
 only `tabao-rush-items.containmentFootprints` and that set's per-frame `bakedOutline`
 removed. These named fields describe published pixels and are written by metadata
@@ -262,6 +267,56 @@ the first stable frame ID and packs one tile. Original IDs remain aliases to the
 same rectangle for direct references. Timing, frame count and release indices
 are unchanged. This includes idle/extinguish slots 1 and 3 and any other exact
 repeats; distinct anchors or metadata prevent sharing.
+
+### A-03: eight interchangeable heads (TR-064, TR-061; TR-060)
+
+`cook-head-<character>` jobs cover cap, uncle, auntie, makcik, bun, specs, turban
+and songkok. Each publishes `head-<character>-<direction>` plus `-mask` for all
+8 directions, with the same static 1 fps looping clips as cap. All actions use
+these static heads, translated to the sampled body socket; no extra action head
+frames are needed. Heads derive from board-1 `kalib.py` with `same_body=True`,
+with head-local enlarged bun, kopi-brown turban and muted-brown specs hair
+(rounds 5–6); skin and shared body proportions remain inherited. The apron remains the
+seat/team colour carrier for every head, including tudung, turban and songkok;
+only cap receives the neutral-white head accent mask. The bun ribbon is enclosed
+in its hair; all seven new head masks are empty in every facing.
+
+The head anchor is the attachment socket, not the lowest opaque pixel (tudung
+and uncle's towel extend below it). Round the socket translation once: placement
+error is at most sqrt(0.5) pixels at 1080p. Preserve authored overlap below the
+socket. Actual composition and cavity coverage still require visual review.
+
+`python3 tools/assets/cook_heads_plan.py` regenerates the cook declarations in
+`assets/src/pipeline.cook-heads.json`; it preserves the atlas encoding and family.
+The seven new jobs use the isolated cook_heads.py renderer and cook_heads_contract.py,
+with explicit shared input hashes. The base pipeline.json, cook.py and cook_poses.py
+remain byte-identical to their pre-A-03 versions, preserving items, body and cap stamps.
+
+Render one job at a time using
+`python3 tools/assets/pipeline.py --render --only cook-head-<character> --no-pack`.
+Each job produces 16 PNGs and two metadata files. The inherited cap allowance is
+120 seconds per job (rough planning estimate: 30 seconds setup plus 16 renders
+at 2 seconds each, with timeout headroom). The round-6 jobs actually took
+3.9–6.9 seconds each (`render-validation.json` totalSeconds).
+
+After rendering the heads and all body jobs, run
+`python3 tools/assets/cook_heads_review.py --out uat/evidence/A-03-cook-heads/review`.
+It fails on missing frames, socket placement error above 1 pixel or pairwise
+anchor-aligned greyscale brightness difference below 20% of occupied-union
+pixels in any facing (brightness delta must exceed 24/255). It writes measured differences and eight
+character strips, each with all eight facings on light/dark counters at 1× and
+nearest-neighbour 4×. Open every strip to assess readability; the numerical bound
+does not establish character recognition. It also packs all published level art
+into a temporary directory using production encoding (cook q90 under D-172), invoking the
+production PERF-023 (8 MB transfer) and PERF-024 (256 MB decoded) guards. Missing
+renders are pending acceptance, never substituted with synthetic budget numbers.
+Round 5 adds native 1080p greyscale lineups covering all eight heads/facings on
+light/dark grounds, plus a 3:1 sampling proxy for 3m review. This proxy is not
+a calibrated physical-distance test. Sheets and difference JSON are written
+before pairwise rejection so failed pairs can still be inspected. Round 7 also
+checks cap tinted in every PLAYER_COLOURS entry against every other head/facing
+at the same 0.20 gate; JSON keys are `untinted` and `tinted_cap`. The full pack
+runs here and in pipeline packing, outside the unit suite (60 s Vitest limit).
 
 ## 10. Item serving compositions (TR-041; D-141, D-145)
 

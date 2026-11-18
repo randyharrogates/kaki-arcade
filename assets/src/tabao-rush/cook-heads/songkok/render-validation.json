@@ -1,0 +1,275 @@
+{
+  "action": "songkok",
+  "count": 1,
+  "fps": 1,
+  "loop": true,
+  "strideTiles": null,
+  "frameSize": [
+    256,
+    256
+  ],
+  "pixelsPerTile": 120,
+  "directionOrder": [
+    "s",
+    "se",
+    "e",
+    "ne",
+    "n",
+    "nw",
+    "w",
+    "sw"
+  ],
+  "checks": {
+    "heightTiles": 1.5271947690052912,
+    "maxFootSlidePx": 0.0,
+    "maxAnchorJumpPx": 2.16961669921875,
+    "minFootLiftPx": 0
+  },
+  "frames": [
+    {
+      "id": "head-songkok-s",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-s.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-s-mask",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-s-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-se",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-se.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-se-mask",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-se-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-e",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-e.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-e-mask",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-e-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-ne",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-ne.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-ne-mask",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-ne-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-n",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-n.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-n-mask",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-n-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-nw",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-nw.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-nw-mask",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-nw-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-w",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-w.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-w-mask",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-w-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-sw",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-sw.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    },
+    {
+      "id": "head-songkok-sw-mask",
+      "file": "tabao-rush/cook-heads/songkok/head-songkok-sw-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ]
+      }
+    }
+  ],
+  "decodedPixelSHA256": {
+    "head-songkok-s.png": "58071a7448726c847679f67390e5aaab69967cea5f84fb2bc5c46b0406b62e86",
+    "head-songkok-s-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-songkok-se.png": "5be82b5bfa5e80631c3b76950394e4ef0791f46eb54101a279bc59412412f991",
+    "head-songkok-se-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-songkok-e.png": "db3e19961889ad5dec5d4c817cc0e46d73abb983bfca95f97f00733ae7d62f3b",
+    "head-songkok-e-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-songkok-ne.png": "d12c776c03699ff2a282c7bc9425f0aacdab6501d4e7073b1969ceeaf3328432",
+    "head-songkok-ne-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-songkok-n.png": "a82486c5c53e26fbb1abf1170dfebe9b728591c490e6841f23b94d4e81016e0c",
+    "head-songkok-n-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-songkok-nw.png": "b29b4a445bbe1686484c37f18dfa027fcba3607f249e78a7c45381eca1156860",
+    "head-songkok-nw-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-songkok-w.png": "1501dfbaec6555bf7bd11c4ae95d11673baeed2bff6b7cd9679c87385a26ab6a",
+    "head-songkok-w-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29",
+    "head-songkok-sw.png": "48bed7a9f6a6cea0d257ddf847197a2df1ea82e7e3513f140ea37a171bcc526b",
+    "head-songkok-sw-mask.png": "deebf57fad866b38cb6a56e3a0d1d25cbed5daef5f68e46028ebef7371c89b29"
+  },
+  "setupSeconds": 0.5031912910053506,
+  "secondsPerFrame": 0.21410576824928285,
+  "totalSeconds": 3.928883582993876
+}

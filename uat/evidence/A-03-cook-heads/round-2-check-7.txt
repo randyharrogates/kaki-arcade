@@ -1,0 +1,23 @@
+Load: 4.99560546875
+$ python3 tools/assets/pipeline.py --check-stale
+cards: fresh: content stamp matches and all outputs exist
+items: fresh: content stamp matches and all outputs exist
+cook-body-idle: fresh: content stamp matches and all outputs exist
+cook-body-walk: fresh: content stamp matches and all outputs exist
+cook-body-carry-walk: fresh: content stamp matches and all outputs exist
+cook-body-chop: fresh: content stamp matches and all outputs exist
+cook-body-stir: fresh: content stamp matches and all outputs exist
+cook-body-wash: fresh: content stamp matches and all outputs exist
+cook-body-serve: fresh: content stamp matches and all outputs exist
+cook-body-throw: fresh: content stamp matches and all outputs exist
+cook-body-extinguish: fresh: content stamp matches and all outputs exist
+cook-head-cap: fresh: content stamp matches and all outputs exist
+cook-head-uncle: stale: missing output head-uncle-s.png
+cook-head-auntie: stale: missing output head-auntie-s.png
+cook-head-makcik: stale: missing output head-makcik-s.png
+cook-head-bun: stale: missing output head-bun-s.png
+cook-head-specs: stale: missing output head-specs-s.png
+cook-head-turban: stale: missing output head-turban-s.png
+cook-head-songkok: stale: missing output head-songkok-s.png
+
+Exit: 1

@@ -1,0 +1,12 @@
+Launch load: 7.27
+Elapsed: 40.49 s
+Exit: 0
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-03
+
+
+ Test Files  2 passed (2)
+      Tests  6 passed (6)
+   Start at  20:08:21
+   Duration  40.17s (transform 28ms, setup 0ms, import 43ms, tests 40.05s, environment 0ms)
+

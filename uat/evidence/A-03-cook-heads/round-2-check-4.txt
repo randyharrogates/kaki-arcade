@@ -1,0 +1,13 @@
+Load: 7.1064453125
+$ VITEST_MAX_WORKERS=2 pnpm exec vitest run tools/assets
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-03
+
+
+ Test Files  2 passed (2)
+      Tests  5 passed (5)
+   Start at  11:19:13
+   Duration  17.21s (transform 30ms, setup 0ms, import 68ms, tests 17.01s, environment 0ms)
+
+
+Exit: 0

@@ -1,0 +1,226 @@
+[
+  {
+    "id": "head-auntie-s",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-s.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-s-mask",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-s-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-se",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-se.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-se-mask",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-se-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-e",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-e.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-e-mask",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-e-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-ne",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-ne.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-ne-mask",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-ne-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-n",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-n.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-n-mask",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-n-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-nw",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-nw.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-nw-mask",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-nw-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-w",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-w.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-w-mask",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-w-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-sw",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-sw.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  },
+  {
+    "id": "head-auntie-sw-mask",
+    "file": "tabao-rush/cook-heads/auntie/head-auntie-sw-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ]
+    }
+  }
+]

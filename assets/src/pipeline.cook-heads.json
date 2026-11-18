@@ -1,0 +1,794 @@
+{
+  "renders": [
+    {
+      "id": "cook-head-uncle",
+      "script": "cook_heads.py",
+      "args": [
+        "--heads",
+        "--out",
+        "tabao-rush/cook-heads/uncle",
+        "--character",
+        "uncle"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py",
+        "tools/blender/cook.py",
+        "tools/blender/cook_heads_contract.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-heads/uncle/head-uncle-s.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-s-mask.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-se.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-se-mask.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-e.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-e-mask.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-ne.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-ne-mask.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-n.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-n-mask.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-nw.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-nw-mask.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-w.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-w-mask.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-sw.png",
+        "tabao-rush/cook-heads/uncle/head-uncle-sw-mask.png",
+        "tabao-rush/cook-heads/uncle/frames.json",
+        "tabao-rush/cook-heads/uncle/render-validation.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "cook-head-auntie",
+      "script": "cook_heads.py",
+      "args": [
+        "--heads",
+        "--out",
+        "tabao-rush/cook-heads/auntie",
+        "--character",
+        "auntie"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py",
+        "tools/blender/cook.py",
+        "tools/blender/cook_heads_contract.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-heads/auntie/head-auntie-s.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-s-mask.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-se.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-se-mask.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-e.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-e-mask.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-ne.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-ne-mask.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-n.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-n-mask.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-nw.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-nw-mask.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-w.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-w-mask.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-sw.png",
+        "tabao-rush/cook-heads/auntie/head-auntie-sw-mask.png",
+        "tabao-rush/cook-heads/auntie/frames.json",
+        "tabao-rush/cook-heads/auntie/render-validation.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "cook-head-makcik",
+      "script": "cook_heads.py",
+      "args": [
+        "--heads",
+        "--out",
+        "tabao-rush/cook-heads/makcik",
+        "--character",
+        "makcik"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py",
+        "tools/blender/cook.py",
+        "tools/blender/cook_heads_contract.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-heads/makcik/head-makcik-s.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-s-mask.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-se.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-se-mask.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-e.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-e-mask.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-ne.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-ne-mask.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-n.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-n-mask.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-nw.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-nw-mask.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-w.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-w-mask.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-sw.png",
+        "tabao-rush/cook-heads/makcik/head-makcik-sw-mask.png",
+        "tabao-rush/cook-heads/makcik/frames.json",
+        "tabao-rush/cook-heads/makcik/render-validation.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "cook-head-bun",
+      "script": "cook_heads.py",
+      "args": [
+        "--heads",
+        "--out",
+        "tabao-rush/cook-heads/bun",
+        "--character",
+        "bun"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py",
+        "tools/blender/cook.py",
+        "tools/blender/cook_heads_contract.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-heads/bun/head-bun-s.png",
+        "tabao-rush/cook-heads/bun/head-bun-s-mask.png",
+        "tabao-rush/cook-heads/bun/head-bun-se.png",
+        "tabao-rush/cook-heads/bun/head-bun-se-mask.png",
+        "tabao-rush/cook-heads/bun/head-bun-e.png",
+        "tabao-rush/cook-heads/bun/head-bun-e-mask.png",
+        "tabao-rush/cook-heads/bun/head-bun-ne.png",
+        "tabao-rush/cook-heads/bun/head-bun-ne-mask.png",
+        "tabao-rush/cook-heads/bun/head-bun-n.png",
+        "tabao-rush/cook-heads/bun/head-bun-n-mask.png",
+        "tabao-rush/cook-heads/bun/head-bun-nw.png",
+        "tabao-rush/cook-heads/bun/head-bun-nw-mask.png",
+        "tabao-rush/cook-heads/bun/head-bun-w.png",
+        "tabao-rush/cook-heads/bun/head-bun-w-mask.png",
+        "tabao-rush/cook-heads/bun/head-bun-sw.png",
+        "tabao-rush/cook-heads/bun/head-bun-sw-mask.png",
+        "tabao-rush/cook-heads/bun/frames.json",
+        "tabao-rush/cook-heads/bun/render-validation.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "cook-head-specs",
+      "script": "cook_heads.py",
+      "args": [
+        "--heads",
+        "--out",
+        "tabao-rush/cook-heads/specs",
+        "--character",
+        "specs"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py",
+        "tools/blender/cook.py",
+        "tools/blender/cook_heads_contract.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-heads/specs/head-specs-s.png",
+        "tabao-rush/cook-heads/specs/head-specs-s-mask.png",
+        "tabao-rush/cook-heads/specs/head-specs-se.png",
+        "tabao-rush/cook-heads/specs/head-specs-se-mask.png",
+        "tabao-rush/cook-heads/specs/head-specs-e.png",
+        "tabao-rush/cook-heads/specs/head-specs-e-mask.png",
+        "tabao-rush/cook-heads/specs/head-specs-ne.png",
+        "tabao-rush/cook-heads/specs/head-specs-ne-mask.png",
+        "tabao-rush/cook-heads/specs/head-specs-n.png",
+        "tabao-rush/cook-heads/specs/head-specs-n-mask.png",
+        "tabao-rush/cook-heads/specs/head-specs-nw.png",
+        "tabao-rush/cook-heads/specs/head-specs-nw-mask.png",
+        "tabao-rush/cook-heads/specs/head-specs-w.png",
+        "tabao-rush/cook-heads/specs/head-specs-w-mask.png",
+        "tabao-rush/cook-heads/specs/head-specs-sw.png",
+        "tabao-rush/cook-heads/specs/head-specs-sw-mask.png",
+        "tabao-rush/cook-heads/specs/frames.json",
+        "tabao-rush/cook-heads/specs/render-validation.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "cook-head-turban",
+      "script": "cook_heads.py",
+      "args": [
+        "--heads",
+        "--out",
+        "tabao-rush/cook-heads/turban",
+        "--character",
+        "turban"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py",
+        "tools/blender/cook.py",
+        "tools/blender/cook_heads_contract.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-heads/turban/head-turban-s.png",
+        "tabao-rush/cook-heads/turban/head-turban-s-mask.png",
+        "tabao-rush/cook-heads/turban/head-turban-se.png",
+        "tabao-rush/cook-heads/turban/head-turban-se-mask.png",
+        "tabao-rush/cook-heads/turban/head-turban-e.png",
+        "tabao-rush/cook-heads/turban/head-turban-e-mask.png",
+        "tabao-rush/cook-heads/turban/head-turban-ne.png",
+        "tabao-rush/cook-heads/turban/head-turban-ne-mask.png",
+        "tabao-rush/cook-heads/turban/head-turban-n.png",
+        "tabao-rush/cook-heads/turban/head-turban-n-mask.png",
+        "tabao-rush/cook-heads/turban/head-turban-nw.png",
+        "tabao-rush/cook-heads/turban/head-turban-nw-mask.png",
+        "tabao-rush/cook-heads/turban/head-turban-w.png",
+        "tabao-rush/cook-heads/turban/head-turban-w-mask.png",
+        "tabao-rush/cook-heads/turban/head-turban-sw.png",
+        "tabao-rush/cook-heads/turban/head-turban-sw-mask.png",
+        "tabao-rush/cook-heads/turban/frames.json",
+        "tabao-rush/cook-heads/turban/render-validation.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "cook-head-songkok",
+      "script": "cook_heads.py",
+      "args": [
+        "--heads",
+        "--out",
+        "tabao-rush/cook-heads/songkok",
+        "--character",
+        "songkok"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py",
+        "tools/blender/cook.py",
+        "tools/blender/cook_heads_contract.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-heads/songkok/head-songkok-s.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-s-mask.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-se.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-se-mask.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-e.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-e-mask.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-ne.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-ne-mask.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-n.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-n-mask.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-nw.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-nw-mask.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-w.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-w-mask.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-sw.png",
+        "tabao-rush/cook-heads/songkok/head-songkok-sw-mask.png",
+        "tabao-rush/cook-heads/songkok/frames.json",
+        "tabao-rush/cook-heads/songkok/render-validation.json"
+      ],
+      "timeoutSeconds": 120
+    }
+  ],
+  "sets": [
+    {
+      "id": "tabao-rush-cook-heads",
+      "encoding": "lossless",
+      "anchors": [
+        "head"
+      ],
+      "frameFiles": [
+        "tabao-rush/cook-heads/cap/frames.json",
+        "tabao-rush/cook-heads/uncle/frames.json",
+        "tabao-rush/cook-heads/auntie/frames.json",
+        "tabao-rush/cook-heads/makcik/frames.json",
+        "tabao-rush/cook-heads/bun/frames.json",
+        "tabao-rush/cook-heads/specs/frames.json",
+        "tabao-rush/cook-heads/turban/frames.json",
+        "tabao-rush/cook-heads/songkok/frames.json"
+      ],
+      "animations": [
+        {
+          "action": "cap",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-cap-s"
+            ],
+            "se": [
+              "head-cap-se"
+            ],
+            "e": [
+              "head-cap-e"
+            ],
+            "ne": [
+              "head-cap-ne"
+            ],
+            "n": [
+              "head-cap-n"
+            ],
+            "nw": [
+              "head-cap-nw"
+            ],
+            "w": [
+              "head-cap-w"
+            ],
+            "sw": [
+              "head-cap-sw"
+            ]
+          }
+        },
+        {
+          "action": "cap-mask",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-cap-s-mask"
+            ],
+            "se": [
+              "head-cap-se-mask"
+            ],
+            "e": [
+              "head-cap-e-mask"
+            ],
+            "ne": [
+              "head-cap-ne-mask"
+            ],
+            "n": [
+              "head-cap-n-mask"
+            ],
+            "nw": [
+              "head-cap-nw-mask"
+            ],
+            "w": [
+              "head-cap-w-mask"
+            ],
+            "sw": [
+              "head-cap-sw-mask"
+            ]
+          }
+        },
+        {
+          "action": "uncle",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-uncle-s"
+            ],
+            "se": [
+              "head-uncle-se"
+            ],
+            "e": [
+              "head-uncle-e"
+            ],
+            "ne": [
+              "head-uncle-ne"
+            ],
+            "n": [
+              "head-uncle-n"
+            ],
+            "nw": [
+              "head-uncle-nw"
+            ],
+            "w": [
+              "head-uncle-w"
+            ],
+            "sw": [
+              "head-uncle-sw"
+            ]
+          }
+        },
+        {
+          "action": "uncle-mask",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-uncle-s-mask"
+            ],
+            "se": [
+              "head-uncle-se-mask"
+            ],
+            "e": [
+              "head-uncle-e-mask"
+            ],
+            "ne": [
+              "head-uncle-ne-mask"
+            ],
+            "n": [
+              "head-uncle-n-mask"
+            ],
+            "nw": [
+              "head-uncle-nw-mask"
+            ],
+            "w": [
+              "head-uncle-w-mask"
+            ],
+            "sw": [
+              "head-uncle-sw-mask"
+            ]
+          }
+        },
+        {
+          "action": "auntie",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-auntie-s"
+            ],
+            "se": [
+              "head-auntie-se"
+            ],
+            "e": [
+              "head-auntie-e"
+            ],
+            "ne": [
+              "head-auntie-ne"
+            ],
+            "n": [
+              "head-auntie-n"
+            ],
+            "nw": [
+              "head-auntie-nw"
+            ],
+            "w": [
+              "head-auntie-w"
+            ],
+            "sw": [
+              "head-auntie-sw"
+            ]
+          }
+        },
+        {
+          "action": "auntie-mask",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-auntie-s-mask"
+            ],
+            "se": [
+              "head-auntie-se-mask"
+            ],
+            "e": [
+              "head-auntie-e-mask"
+            ],
+            "ne": [
+              "head-auntie-ne-mask"
+            ],
+            "n": [
+              "head-auntie-n-mask"
+            ],
+            "nw": [
+              "head-auntie-nw-mask"
+            ],
+            "w": [
+              "head-auntie-w-mask"
+            ],
+            "sw": [
+              "head-auntie-sw-mask"
+            ]
+          }
+        },
+        {
+          "action": "makcik",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-makcik-s"
+            ],
+            "se": [
+              "head-makcik-se"
+            ],
+            "e": [
+              "head-makcik-e"
+            ],
+            "ne": [
+              "head-makcik-ne"
+            ],
+            "n": [
+              "head-makcik-n"
+            ],
+            "nw": [
+              "head-makcik-nw"
+            ],
+            "w": [
+              "head-makcik-w"
+            ],
+            "sw": [
+              "head-makcik-sw"
+            ]
+          }
+        },
+        {
+          "action": "makcik-mask",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-makcik-s-mask"
+            ],
+            "se": [
+              "head-makcik-se-mask"
+            ],
+            "e": [
+              "head-makcik-e-mask"
+            ],
+            "ne": [
+              "head-makcik-ne-mask"
+            ],
+            "n": [
+              "head-makcik-n-mask"
+            ],
+            "nw": [
+              "head-makcik-nw-mask"
+            ],
+            "w": [
+              "head-makcik-w-mask"
+            ],
+            "sw": [
+              "head-makcik-sw-mask"
+            ]
+          }
+        },
+        {
+          "action": "bun",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-bun-s"
+            ],
+            "se": [
+              "head-bun-se"
+            ],
+            "e": [
+              "head-bun-e"
+            ],
+            "ne": [
+              "head-bun-ne"
+            ],
+            "n": [
+              "head-bun-n"
+            ],
+            "nw": [
+              "head-bun-nw"
+            ],
+            "w": [
+              "head-bun-w"
+            ],
+            "sw": [
+              "head-bun-sw"
+            ]
+          }
+        },
+        {
+          "action": "bun-mask",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-bun-s-mask"
+            ],
+            "se": [
+              "head-bun-se-mask"
+            ],
+            "e": [
+              "head-bun-e-mask"
+            ],
+            "ne": [
+              "head-bun-ne-mask"
+            ],
+            "n": [
+              "head-bun-n-mask"
+            ],
+            "nw": [
+              "head-bun-nw-mask"
+            ],
+            "w": [
+              "head-bun-w-mask"
+            ],
+            "sw": [
+              "head-bun-sw-mask"
+            ]
+          }
+        },
+        {
+          "action": "specs",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-specs-s"
+            ],
+            "se": [
+              "head-specs-se"
+            ],
+            "e": [
+              "head-specs-e"
+            ],
+            "ne": [
+              "head-specs-ne"
+            ],
+            "n": [
+              "head-specs-n"
+            ],
+            "nw": [
+              "head-specs-nw"
+            ],
+            "w": [
+              "head-specs-w"
+            ],
+            "sw": [
+              "head-specs-sw"
+            ]
+          }
+        },
+        {
+          "action": "specs-mask",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-specs-s-mask"
+            ],
+            "se": [
+              "head-specs-se-mask"
+            ],
+            "e": [
+              "head-specs-e-mask"
+            ],
+            "ne": [
+              "head-specs-ne-mask"
+            ],
+            "n": [
+              "head-specs-n-mask"
+            ],
+            "nw": [
+              "head-specs-nw-mask"
+            ],
+            "w": [
+              "head-specs-w-mask"
+            ],
+            "sw": [
+              "head-specs-sw-mask"
+            ]
+          }
+        },
+        {
+          "action": "turban",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-turban-s"
+            ],
+            "se": [
+              "head-turban-se"
+            ],
+            "e": [
+              "head-turban-e"
+            ],
+            "ne": [
+              "head-turban-ne"
+            ],
+            "n": [
+              "head-turban-n"
+            ],
+            "nw": [
+              "head-turban-nw"
+            ],
+            "w": [
+              "head-turban-w"
+            ],
+            "sw": [
+              "head-turban-sw"
+            ]
+          }
+        },
+        {
+          "action": "turban-mask",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-turban-s-mask"
+            ],
+            "se": [
+              "head-turban-se-mask"
+            ],
+            "e": [
+              "head-turban-e-mask"
+            ],
+            "ne": [
+              "head-turban-ne-mask"
+            ],
+            "n": [
+              "head-turban-n-mask"
+            ],
+            "nw": [
+              "head-turban-nw-mask"
+            ],
+            "w": [
+              "head-turban-w-mask"
+            ],
+            "sw": [
+              "head-turban-sw-mask"
+            ]
+          }
+        },
+        {
+          "action": "songkok",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-songkok-s"
+            ],
+            "se": [
+              "head-songkok-se"
+            ],
+            "e": [
+              "head-songkok-e"
+            ],
+            "ne": [
+              "head-songkok-ne"
+            ],
+            "n": [
+              "head-songkok-n"
+            ],
+            "nw": [
+              "head-songkok-nw"
+            ],
+            "w": [
+              "head-songkok-w"
+            ],
+            "sw": [
+              "head-songkok-sw"
+            ]
+          }
+        },
+        {
+          "action": "songkok-mask",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-songkok-s-mask"
+            ],
+            "se": [
+              "head-songkok-se-mask"
+            ],
+            "e": [
+              "head-songkok-e-mask"
+            ],
+            "ne": [
+              "head-songkok-ne-mask"
+            ],
+            "n": [
+              "head-songkok-n-mask"
+            ],
+            "nw": [
+              "head-songkok-nw-mask"
+            ],
+            "w": [
+              "head-songkok-w-mask"
+            ],
+            "sw": [
+              "head-songkok-sw-mask"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

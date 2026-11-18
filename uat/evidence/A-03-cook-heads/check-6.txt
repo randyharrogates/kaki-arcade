@@ -1,0 +1,6 @@
+11:10  4 users, load averages: 7.53 13.66 12.59
+$ pnpm run lint:design
+$ node tools/lint_design.mjs
+design lint passed: 416 file(s) scanned
+
+exit 0

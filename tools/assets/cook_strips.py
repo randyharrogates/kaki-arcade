@@ -7,6 +7,7 @@ import sys
 from PIL import Image, ImageChops, ImageDraw
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'blender'))
 import cook_poses as C
+import pipeline as P
 
 SOURCE = Path(__file__).resolve().parents[2]/'assets/src'
 SIZE = 256
@@ -57,7 +58,7 @@ def composite_head(body, head, body_anchor, head_anchor):
 
 
 def load_frames(source=SOURCE):
-    config = json.loads((source/'pipeline.json').read_text())
+    config = P.load_config(source/'pipeline.json')
     frames = {}
     for group in config['sets']:
         if group['id'] not in ('tabao-rush-cook-body', 'tabao-rush-cook-heads'):
