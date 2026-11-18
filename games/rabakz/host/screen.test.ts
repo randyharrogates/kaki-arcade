@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { motionGeometry, blend, GHOST_OPACITY, contrastRatio, COLOUR_TOKENS, PLAYER_COLOURS, SEAT_NUMERAL, THEMES, tvType, space, lineHeight } from '@kaki/ui';
 import { rabakz } from '../src/index';
 import { advance, answer, LONG_OPTION, LONG_PROMPT, scenario, SCENARIOS } from './scenarios';
-import { questionFit, SCREEN, screenModel, screenScale, viewportStyle, textLines, fallbackMeasure, createFitCache } from './view-model';
+import { questionFit, SCREEN, revealOutcome, screenModel, screenScale, viewportStyle, textLines, fallbackMeasure, createFitCache } from './view-model';
 
 function model(name: typeof SCENARIOS[number]) {
   const result = screenModel(rabakz.publicView(scenario(name)));
@@ -619,4 +619,60 @@ it('RZ-030 RZ-032 round 26 pads header ink inside its layout and prompt ink insi
   expect(55 + 0 + 13 + 8).toBe(SCREEN.header + SCREEN.headerGap);
   const source = readFileSync('games/rabakz/host/Screen.tsx', 'utf8');
   expect(source).toContain('x: m.fit.boxes.prompt.x - space[5], width: m.fit.boxes.prompt.width + 2 * space[5]');
+});
+
+
+describe('R-18 RZ-008 outcome streak', () => {
+  for (const count of [1, 4, 8]) for (const teams of [false, true]) for (const streak of [0, 1, 2, 3, 4]) {
+    it(`shows one winner at ${String(streak)} with ${String(count)} players, teams ${String(teams)}`, () => {
+      const state = scenario('reveal-one-winner', count);
+      const view = rabakz.publicView({ ...state, teams, players: state.players.map(p => ({ ...p, streak })) });
+      expect(screenModel(view)?.outcome).toBe('Mei got it' + (streak < 2 ? '' : ` · Streak ${String(streak)}` + (streak >= 3 ? ' · +50 bonus' : '')));
+    });
+  }
+  for (const name of ['reveal-tie', 'reveal-teams', 'reveal-nobody'] as const) it(`omits streak for ${name}`, () => {
+    const state = scenario(name);
+    const view = rabakz.publicView({ ...state, players: state.players.map(p => ({ ...p, streak: 4 })) });
+    // Team/tie outcomes with several winners remain unchanged.
+    if (name === 'reveal-teams') view.winners = view.players.slice(0, 2);
+    expect(screenModel(view)?.outcome).not.toContain('Streak');
+  });
+  it('names the doubled bonus in a final-round question (RZ-009)', () => {
+    const state = scenario('reveal-one-winner');
+    const view = { ...rabakz.publicView({ ...state, players: state.players.map(p => ({ ...p, streak: 3 })) }), finalRound: true };
+    expect(screenModel(view)?.outcome).toBe('Mei got it · Streak 3 · +100 bonus');
+    view.winners = view.winners.map(p => ({ ...p, name: 'W'.repeat(12) }));
+    expect(screenModel(view)?.outcome).toBe(`${'W'.repeat(12)} got it · Streak 3 · +100 bonus`);
+  });
+  it('keeps twelve wide glyph names whole with the full suffix in the design-unit outcome line', () => {
+    for (const name of ['W'.repeat(12), '麗'.repeat(12), '😀'.repeat(12)]) {
+      const state = scenario('reveal-one-winner');
+      const view = rabakz.publicView({ ...state, players: state.players.map(p => ({ ...p, streak: 4 })) });
+      view.winners = view.winners.map(p => ({ ...p, name }));
+      const m = screenModel(view); expect(m).not.toBeNull();
+      for (const [w, h] of [[1920, 1080], [1280, 720]] as const) {
+        const scale = screenScale(w, h);
+        expect(m?.outcome).toBe(`${name} got it · Streak 4 · +50 bonus`);
+        expect(fallbackMeasure(m?.outcome ?? '', tvType.body, 'body') * scale).toBeLessThanOrEqual(SCREEN.innerWidth * scale);
+        expect(m?.fit.fits).toBe(true);
+      }
+    }
+  });
+  it('measures full copy then drops bonus, then streak, preserving the base even if it cannot fit', () => {
+    const state = scenario('reveal-one-winner');
+    const view = rabakz.publicView({ ...state, players: state.players.map(p => ({ ...p, streak: 4 })) });
+    const measure = vi.fn((text: string) => text.length);
+    const base = 'Mei got it', short = base + ' · Streak 4', full = short + ' · +50 bonus';
+    for (const [width, expected] of [[full.length, full], [short.length, short], [base.length, base], [0, base]] as const) {
+      expect(revealOutcome(view, width, measure)).toBe(expected);
+    }
+    expect(measure).toHaveBeenCalledWith(full, tvType.body, 'body');
+    expect(measure).toHaveBeenCalledWith(short, tvType.body, 'body');
+    expect(revealOutcome({ ...view, phase: 'question' }, 100, measure)).toBe('');
+  });
+  it('retains at least 4.5:1 contrast on the existing outcome surface', () => {
+    for (const paint of [THEMES.rabakz.background.colour, ...THEMES.rabakz.background.treatment.paints]) {
+      expect(contrastRatio(THEMES.rabakz.background.ink, paint)).toBeGreaterThanOrEqual(4.5);
+    }
+  });
 });

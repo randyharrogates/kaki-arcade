@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — R-18: the TV shows the streak
+
+- RZ-008: the TV reveal's outcome line names a single winner's streak from 2 ("· Streak 2") and
+  the bonus from 3 ("· Streak 3 · +50 bonus", "+100 bonus" in the doubled final round); measured
+  fallback drops the bonus, then the streak, never the name (D-260). Evidence `uat/evidence/R-18-tv-streak/round1/`.
+- Not shown on the TV: streaks of several simultaneous winners, and on nobody-won reveals; phones
+  keep every player's streak.
+
 ## 2026-11-19 — C-20: conformance and pipeline test limits
 
 - PLAT-030–033: the conformance kit walks each step's state once for its size and sharing checks,

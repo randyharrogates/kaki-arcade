@@ -1,0 +1,100 @@
+{
+  "slice": "R-18-tv-streak",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- R-18-tv-streak --phones 1 --out round1",
+  "commit": "541430e96c4b61a6ffcdbf18d21034e3fb24ab57",
+  "viewports": [
+    "1920×1080",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1575.8377500000001,
+      "status": "completed"
+    },
+    {
+      "name": "Win 1: TV streak",
+      "ms": 1108.405499999999,
+      "status": "completed"
+    },
+    {
+      "name": "Win 2: TV streak",
+      "ms": 1092.069958,
+      "status": "completed"
+    },
+    {
+      "name": "Win 3: TV streak",
+      "ms": 992.2920830000003,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-win-1-tv-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-win-2-tv-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-win-3-tv-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-win-3-tv-1280.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-win-1-tv-1920.jpg",
+    "02-host-win-2-tv-1920.jpg",
+    "03-host-win-3-tv-1920.jpg",
+    "04-host-win-3-tv-1280.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-win-1-tv-1920.jpg",
+      "bytes": 252639
+    },
+    {
+      "file": "02-host-win-2-tv-1920.jpg",
+      "bytes": 253952
+    },
+    {
+      "file": "03-host-win-3-tv-1920.jpg",
+      "bytes": 264938
+    },
+    {
+      "file": "04-host-win-3-tv-1280.jpg",
+      "bytes": 163058
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1028
+    },
+    {
+      "file": "run.json",
+      "bytes": 2015
+    }
+  ],
+  "totalBytes": 937667,
+  "maxBytes": 12582912
+}

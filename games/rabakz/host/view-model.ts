@@ -96,6 +96,20 @@ export function questionFit(prompt: string, options: readonly string[], picture:
 
 }
 
+/** RZ-008: keep the winner's name intact; optional streak copy yields first. */
+export function revealOutcome(view: RabakzPublicView, width: number, measure: MeasureText = fallbackMeasure): string {
+  if (view.phase !== 'reveal') return '';
+  const base = view.winners.length === 0 ? 'Nobody got it right' :
+    view.winners.length > 3 ? `${String(view.winners.length)} players got it` :
+    view.winners.map(p => p.name).join(' and ') + (view.winners.length === 1 ? ' got it' : view.winners.length === 2 ? ' both got it' : ' all got it');
+  const winner = view.winners.length === 1 ? view.winners[0] : undefined;
+  const streak = winner ? view.players.find(p => p.id === winner.id)?.streak ?? 0 : 0;
+  if (streak < 2) return base;
+  const suffix = ` · Streak ${String(streak)}`;
+  const candidates = streak >= 3 ? [base + suffix + ` · +${String(view.finalRound ? 100 : 50)} bonus`, base + suffix] : [base + suffix];
+  return candidates.find(text => measure(text, tvType.body, 'body') <= width) ?? base;
+}
+
 export function screenModel(view: RabakzPublicView, measure: MeasureText = fallbackMeasure, cachedFit?: ReturnType<typeof questionFit>) {
   if (view.phase !== 'question' && view.phase !== 'reveal') return null;
   const q = view.question;
@@ -115,9 +129,7 @@ export function screenModel(view: RabakzPublicView, measure: MeasureText = fallb
     soloBest: view.soloBest, questionId: q.id, identity: `${q.id}:${view.phase}:${view.wrong.join(',')}`, reveal, category: categoryTitle(q.category), heading: `Question ${String(view.round)} of ${String(view.length)}`,
     prompt: q.prompt, fit, picture,
     pictureLabel: 'Picture slot',
-    outcome: !reveal ? '' : view.winners.length === 0 ? 'Nobody got it right' :
-      view.winners.length > 3 ? `${String(view.winners.length)} players got it` :
-      view.winners.map(p => p.name).join(' and ') + (view.winners.length === 1 ? ' got it' : view.winners.length === 2 ? ' both got it' : ' all got it'),
+    outcome: revealOutcome(view, fit.boxes.awards.width, measure),
     winners: view.winners.map(p => p.id), players,
     options: q.options.map((text, index) => ({
       index, text, shape: SHAPE_NAMES[index] ?? 'cross',
