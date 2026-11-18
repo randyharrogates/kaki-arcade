@@ -1,0 +1,96 @@
+{
+  "slice": "K-11-could-not-connect",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- K-11-could-not-connect --phones 1 --out round1",
+  "commit": "1269e2e01eabcc47f432a1f8e3224caa21d37ced",
+  "viewports": [
+    "390×844",
+    "375×667"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1092.0764999999997,
+      "status": "completed"
+    },
+    {
+      "name": "Join a room whose host has closed",
+      "ms": 15610.725957999999,
+      "status": "completed"
+    },
+    {
+      "name": "Settled timeout at 390",
+      "ms": 153.87091599999985,
+      "status": "completed"
+    },
+    {
+      "name": "Settled timeout at 375",
+      "ms": 109.54550000000017,
+      "status": "completed"
+    },
+    {
+      "name": "Try again returns to connecting for the same room",
+      "ms": 564.6997920000031,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-could-not-connect-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-could-not-connect-375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-retry-connecting.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-could-not-connect-390.jpg",
+    "02-phone1-could-not-connect-375.jpg",
+    "03-phone1-retry-connecting.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-could-not-connect-390.jpg",
+      "bytes": 139475
+    },
+    {
+      "file": "02-phone1-could-not-connect-375.jpg",
+      "bytes": 125352
+    },
+    {
+      "file": "03-phone1-retry-connecting.jpg",
+      "bytes": 72077
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1130
+    },
+    {
+      "file": "run.json",
+      "bytes": 2087
+    }
+  ],
+  "totalBytes": 340158,
+  "maxBytes": 12582912
+}

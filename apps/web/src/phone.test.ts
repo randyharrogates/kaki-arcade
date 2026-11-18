@@ -13,16 +13,16 @@ function fixture(saved = false) {
   let dial: PhoneReconnectDial | undefined;
   let feedback: Parameters<PhoneDependencies['dial']>[1] | undefined;
   let view = phoneView('entry');
-  let canSend = true;
+  let canSend = true; let closes = 0;
   const sent: unknown[] = []; const times: number[] = [];
   const deps: PhoneDependencies = { clock, storage, dial(options, receive) {
     dial = options; feedback = receive; times.push(clock.now());
     options.onPeer({ sendPhone(message) { sent.push(message); return canSend; } });
-    return { stop: () => undefined };
+    return { stop: () => { closes++; } };
   } };
   const phone = createPhone(deps, null, next => { view = next; });
   return { phone, clock, storage, sent, times, deps, failSend() { canSend = false; },
-    get view() { return view; }, get dial() { if (!dial) throw new Error('No dial'); return dial; },
+    get closes() { return closes; }, get view() { return view; }, get dial() { if (!dial) throw new Error('No dial'); return dial; },
     get feedback() { if (!feedback) throw new Error('No feedback'); return feedback; },
     seat(name = 'Fern', replaced = false) { dial?.onControl({ v: 1, t: 'seat', seat: 3, colour: 2, name, nameReplaced: replaced, resumed: saved, seatToken: SECRET }); },
   };
@@ -266,4 +266,51 @@ it('PLAT-023 paused controls cannot send game inputs and only the leader can res
   f.dial.onControl({ v: 1, t: 'room', phase: 'paused', players: 8, leader: true, team: null });
   f.phone.sessionCommand('quit'); expect(f.sent.at(-1)).toMatchObject({ t: 'action', data: { control: 'console-quit' } });
   f.phone.sessionCommand(); expect(f.sent.at(-1)).toMatchObject({ t: 'action', data: { control: 'console-resume' } }); f.phone.stop();
+});
+describe('REL-006 connecting timeout', () => {
+  it('keeps connecting at 14.9 s, offers retry at 15 s and closes the old attempt', () => {
+    const f = fixture(); f.phone.join(CODE, 'Fern');
+    f.dial.onHost(false);
+    f.clock.advance(14900); expect(f.view.state).toBe('connecting');
+    f.clock.advance(100); expect(f.view.state).toBe('could-not-connect');
+    expect(`${f.view.title} ${f.view.detail}`).toBe('This phone could not connect to the big screen. Connect it to the same Wi-Fi as the big screen and scan again.');
+    expect(f.view.action).toBe('Try again');
+    const old = f.dial; const closes = f.closes;
+    f.phone.retry(); expect(f.closes).toBe(closes + 1);
+    expect(f.closes).toBeGreaterThan(0); expect(f.times).toHaveLength(2);
+    expect(f.dial).not.toBe(old); expect(f.dial.code).toBe(CODE);
+    expect(f.view.state).toBe('connecting');
+    old.onError('room-full'); expect(f.view.state).toBe('connecting');
+    f.dial.onState('control-open'); expect(f.sent.at(-1)).toMatchObject({ t: 'hello', name: 'Fern' });
+    f.clock.advance(14900); expect(f.view.state).toBe('connecting');
+    f.clock.advance(100); expect(f.view.state).toBe('could-not-connect');
+    f.phone.stop(); expect(f.clock.tasks.size).toBe(0);
+  });
+  it('keeps the advice when the reconnect hold window ends for a never-seated phone', () => {
+    const f = fixture(); f.phone.join(CODE, 'Fern');
+    f.dial.onHost(false); f.clock.advance(130000);
+    expect(f.view.state).toBe('could-not-connect'); expect(f.view.action).toBe('Try again');
+    f.phone.retry(); expect(f.view.state).toBe('connecting'); f.phone.stop();
+  });
+  it('never shows the message after seating at 10 s', () => {
+    const f = fixture(); f.phone.join(CODE, 'Fern'); f.clock.advance(10000); f.seat();
+    f.clock.advance(20000); expect(f.view.state).toBe('lobby'); f.phone.stop();
+  });
+  it('continues normally when a late connection seats the phone', () => {
+    const f = fixture(); f.phone.join(CODE, 'Fern'); f.clock.advance(16000);
+    expect(f.view.state).toBe('could-not-connect'); f.seat();
+    expect(f.view.state).toBe('lobby'); f.clock.advance(20000); expect(f.view.action).toBe(null); f.phone.stop();
+  });
+  it('keeps the timeout visible across signalling presence changes until seated', () => {
+    const f = fixture(); f.phone.join(CODE, 'Fern');
+    f.dial.onHost(false); f.clock.advance(15000);
+    f.dial.onHost(true); expect(f.view.state).toBe('could-not-connect');
+    f.dial.onHost(false); expect(f.view.state).toBe('could-not-connect');
+    f.seat(); expect(f.view.state).toBe('lobby'); f.phone.stop();
+  });
+  it.each(['edit', 'leave', 'stop'] as const)('cancels the timer on %s', action => {
+    const f = fixture(); f.phone.join(CODE, 'Fern'); f.clock.advance(10000); f.phone[action]();
+    f.clock.advance(20000); expect(f.view.state).not.toBe('could-not-connect');
+    expect(f.clock.tasks.size).toBe(0); f.phone.stop();
+  });
 });

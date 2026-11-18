@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — K-11: phone that can't reach the big screen
+
+- REL-006: after 15 s on "Connecting to the host…", a never-seated phone shows "This phone
+  can't reach the big screen" with Wi-Fi advice and Try again; a seated phone keeps Host
+  disconnected and its hold (D-250, D-267). Two-size Chromium UAT with the real server.
+
 ## 2026-11-19 — C-22: scores per game across a TV reload
 
 - PLAT-009: the host snapshot keeps completed-round scores per game id; a host reload restores

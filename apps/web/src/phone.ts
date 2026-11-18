@@ -30,6 +30,7 @@ export const phoneCopy = {
   'too-long': ['Your name is too long', 'Use 1 to 12 visible characters.'],
   'bad-characters': ['Check your name', 'Remove hidden characters or unsupported marks.'],
   connecting: ['Joining the room…', 'Connecting to the host.'],
+  'could-not-connect': ['This phone could not connect to the big screen.', 'Connect it to the same Wi-Fi as the big screen and scan again.'],
   lobby: ["You’re in.", 'Waiting for the leader to pick a game.'],
   'name-taken': ['Name taken', 'The room has added a number to your name.'],
   'name-replaced': ['Your name was changed', 'The room has given you a neutral name.'],
@@ -51,7 +52,7 @@ export interface PhoneView {
   resultStats?: { label: string; value: string | number }[];
   gamePrivateView: PrivateView | null; gameLayout?: Layout | undefined; gameViewRevision?: number | undefined; teamSetup: TeamSetupView | null; layout: boolean; theme: ThemeName; picker: PickerState | null; phase: RoomPhase; state: PhoneState; title: string; detail: string; code: string; name: string;
   seat: number | null; colour: string; leader: boolean; connected: boolean;
-  notice: string; renaming: boolean; action: 'Join' | 'Join another room' | 'Join again' | 'Reload' | null;
+  notice: string; renaming: boolean; action: 'Try again' | 'Join' | 'Join another room' | 'Join again' | 'Reload' | null;
 }
 export function phoneView(state: PhoneState, input: Partial<Pick<PhoneView, 'code' | 'name' | 'seat' | 'colour' | 'leader' | 'notice' | 'phase'>> = {}): PhoneView {
   if (['seat-expired', 'room-gone', 'waiting-for-lobby', 'left'].includes(state)) input = { ...input, seat: null, colour: '', leader: false };
@@ -59,7 +60,7 @@ export function phoneView(state: PhoneState, input: Partial<Pick<PhoneView, 'cod
     state, title: phoneCopy[state][0], detail: state === 'lobby' && (input.phase === 'playing' || input.phase === 'paused') ? 'Watch the TV.' : state === 'lobby' && input.leader ? "Pick a game when everyone’s in." : phoneCopy[state][1], connected: state === 'lobby' || state === 'name-taken' || state === 'name-replaced' || (input.seat !== null && input.seat !== undefined && ['entry', 'invalid-code', 'blank', 'too-long', 'bad-characters', 'rename', 'name-not-sent'].includes(state)),
     action: ['entry', 'invalid-code', 'blank', 'too-long', 'bad-characters', 'left'].includes(state) ? 'Join'
       : ['room-full', 'room-not-found', 'room-gone', 'cannot-connect'].includes(state) ? 'Join another room'
-      : state === 'hold-over' || state === 'seat-expired' ? 'Join again' : state === 'out-of-date' ? 'Reload' : null };
+      : state === 'could-not-connect' ? 'Try again' : state === 'hold-over' || state === 'seat-expired' ? 'Join again' : state === 'out-of-date' ? 'Reload' : null };
 }
 export interface PhoneDependencies {
   clock: ReconnectClock; storage: ReconnectStorage;
@@ -70,6 +71,8 @@ export interface PhoneDependencies {
 export function createPhone(deps: PhoneDependencies, codeQuery: string | null, changed: (view: PhoneView) => void) {
   const store = createPhoneSeatStore(deps.storage);
   let view = phoneView('entry', { code: codeQuery ?? '' });
+  let connectingTimer: unknown;
+  function cancelConnecting(): void { deps.clock.cancel(connectingTimer); connectingTimer = undefined; }
   let driver: ReturnType<typeof createPhoneReconnect> | undefined;
   let stopped = false;
   let generation = 0;
@@ -82,6 +85,13 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
   let peer: { sendPhone(message: PhoneMessage): boolean } | undefined;
   function publish(state: PhoneState, input: Partial<PhoneView> = {}): void {
     if (stopped) return;
+    // Signalling retries must not hide the advice; a host seat still proceeds normally.
+    if (state === 'connecting' && view.state === 'could-not-connect') state = 'could-not-connect';
+    if (state !== 'connecting') cancelConnecting();
+    else if (connectingTimer === undefined) connectingTimer = deps.clock.schedule(() => {
+      connectingTimer = undefined;
+      if (view.state === 'connecting') publish('could-not-connect');
+    }, 15000);
     const next = phoneView(state, { ...view, ...input });
     if (!next.connected) naming = false;
     view = { ...next, teamSetup: next.connected ? (input.teamSetup === undefined ? view.teamSetup : input.teamSetup) : null, layout: next.seat !== null && (input.layout ?? view.layout), picker: next.connected ? (input.picker ?? view.picker) : null, renaming: naming, gameLayout: input.gameLayout ?? view.gameLayout, gameViewRevision: input.gameViewRevision ?? view.gameViewRevision };
@@ -112,15 +122,20 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     }
   }
   function begin(code: string, name: string | null, restoring: boolean): void {
+    cancelConnecting();
     generation++; driver?.stop(); naming = false; peer = undefined; const current = generation;
     requestedName = name ?? ''; unavailable = false;
+    // A deliberate retry starts a new 15-second window, unlike automatic retries.
+    view = { ...view, state: 'entry' };
     publish('connecting', { code, ...(restoring ? {} : { phase: 'lobby', name: name ?? '', seat: null, colour: '', leader: false, notice: '' }) });
     const created = createPhoneReconnect({ store, clock: deps.clock, attemptDelayMs: () => allowedAt - deps.clock.now(), initial: { code, nickname: name },
       ...(deps.lifecycle ? { lifecycle: deps.lifecycle } : {}),
       state(state: PhoneReconnectState) {
         if (current !== generation) return;
         if (state === 'back-in-seat') { if (view.seat !== null) publish('lobby'); return; } // Seat message supplies the public identity.
-        const mapped = state === 'connecting' && unavailable ? 'unreachable' : state === 'connecting' && everSeated ? 'host-disconnected' : state === 'room-gone' && !everSeated ? 'room-not-found' : state;
+        // No host has answered a fresh join yet: keep its connecting window running.
+        // A phone that never had a seat has no hold to end: keep (or show) the advice instead (D-267).
+        const mapped = state === 'hold-over' && !everSeated ? 'could-not-connect' : state === 'host-disconnected' && !everSeated ? 'connecting' : state === 'connecting' && unavailable ? 'unreachable' : state === 'connecting' && everSeated ? 'host-disconnected' : state === 'room-gone' && !everSeated ? 'room-not-found' : state;
         publish(mapped, state === 'left' ? { seat: null, colour: '', leader: false } : {});
       }, message: input => { if (current === generation) message(input); },
       dial(options) {
@@ -196,9 +211,10 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     },
     cancelName(): void { if (naming) { naming = false; publish('lobby'); } },
     edit(): void { generation++; driver?.stop(); store.clear(); everSeated = false; publish('entry', { seat: null, colour: '', leader: false, notice: '' }); },
+    retry(): void { if (view.state === 'could-not-connect') { failures = 0; allowedAt = 0; begin(view.code, requestedName || null, false); } },
     rejoin(): void { driver?.rejoin(); },
     leave(): void { driver?.leave(); },
-    stop(): void { stopped = true; generation++; driver?.stop(); },
+    stop(): void { cancelConnecting(); stopped = true; generation++; driver?.stop(); },
   };
 }
 

@@ -116,7 +116,7 @@ export function PhonePage() {
       <div class="phone-message">{view.leader && <strong class="phone-leader">You’re the leader</strong>}<Overlap fade identity={view.state}><div class="phone-status"><h2>{view.title}</h2><p>{view.detail}</p></div></Overlap>
         {view.connected && view.leader && picker?.screen === 'lobby' && <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('open'); }}>Pick a game</button>}
         {(view.connected || ['waiting-for-lobby', 'hold-over'].includes(view.state)) && <div class="phone-actions">{view.connected && <button class="ka-panel ka-pressable" onClick={() => { setName(view.name); feedback(); phone.current?.changeName(); }}>Change name</button>}{view.seat === null && <button class="ka-panel ka-pressable phone-leave" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button>}</div>}
-        {view.action && <button class="ka-panel ka-pressable" onClick={() => { feedback(); if (view.action === 'Reload') location.reload(); else if (view.action === 'Join again') phone.current?.rejoin(); else phone.current?.edit(); }}>{view.action}</button>}
+        {view.action && <button class="ka-panel ka-pressable" onClick={() => { feedback(); if (view.action === 'Reload') location.reload(); else if (view.action === 'Try again') phone.current?.retry(); else if (view.action === 'Join again') phone.current?.rejoin(); else phone.current?.edit(); }}>{view.action}</button>}
       </div>
     </section>}</Overlap>
   </main>;
