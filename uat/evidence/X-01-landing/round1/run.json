@@ -1,0 +1,253 @@
+{
+  "slice": "X-01-landing",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- X-01-landing --out round1",
+  "commit": "9fd54a6260fa11d47cdfdc4ceeb5ec18422715a0",
+  "viewports": [
+    "1920×1080",
+    "1280×720",
+    "390×844"
+  ],
+  "steps": [
+    {
+      "name": "Landing and keyboard at 1920 × 1080",
+      "ms": 1177.5982919999997,
+      "status": "completed"
+    },
+    {
+      "name": "Landing and keyboard at 1280 × 720",
+      "ms": 719.4953750000004,
+      "status": "completed"
+    },
+    {
+      "name": "Landing and keyboard at 390 × 844",
+      "ms": 652.5982910000002,
+      "status": "completed"
+    },
+    {
+      "name": "Enter on Host a game opens the room screen",
+      "ms": 1291.855708,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-landing-1920-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-landing-1920-ArrowDown-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-landing-1920-ArrowDown-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-landing-1920-ArrowDown-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-landing-1920-ArrowRight-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-landing-1920-ArrowRight-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-landing-1920-ArrowRight-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-landing-1280-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-landing-1280-ArrowDown-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-landing-1280-ArrowDown-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-landing-1280-ArrowDown-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-landing-1280-ArrowRight-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-landing-1280-ArrowRight-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-landing-1280-ArrowRight-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-landing-390-host.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-landing-390-ArrowDown-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-landing-390-ArrowDown-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-landing-390-ArrowDown-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-landing-390-ArrowRight-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-landing-390-ArrowRight-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-landing-390-ArrowRight-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-host-room-after-enter.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-landing-1920-host.jpg",
+    "02-host-landing-1920-ArrowDown-1.jpg",
+    "03-host-landing-1920-ArrowDown-2.jpg",
+    "04-host-landing-1920-ArrowDown-3.jpg",
+    "05-host-landing-1920-ArrowRight-1.jpg",
+    "06-host-landing-1920-ArrowRight-2.jpg",
+    "07-host-landing-1920-ArrowRight-3.jpg",
+    "08-host-landing-1280-host.jpg",
+    "09-host-landing-1280-ArrowDown-1.jpg",
+    "10-host-landing-1280-ArrowDown-2.jpg",
+    "11-host-landing-1280-ArrowDown-3.jpg",
+    "12-host-landing-1280-ArrowRight-1.jpg",
+    "13-host-landing-1280-ArrowRight-2.jpg",
+    "14-host-landing-1280-ArrowRight-3.jpg",
+    "15-host-landing-390-host.jpg",
+    "16-host-landing-390-ArrowDown-1.jpg",
+    "17-host-landing-390-ArrowDown-2.jpg",
+    "18-host-landing-390-ArrowDown-3.jpg",
+    "19-host-landing-390-ArrowRight-1.jpg",
+    "20-host-landing-390-ArrowRight-2.jpg",
+    "21-host-landing-390-ArrowRight-3.jpg",
+    "22-host-host-room-after-enter.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-landing-1920-host.jpg",
+      "bytes": 239658
+    },
+    {
+      "file": "02-host-landing-1920-ArrowDown-1.jpg",
+      "bytes": 239147
+    },
+    {
+      "file": "03-host-landing-1920-ArrowDown-2.jpg",
+      "bytes": 238132
+    },
+    {
+      "file": "04-host-landing-1920-ArrowDown-3.jpg",
+      "bytes": 237903
+    },
+    {
+      "file": "05-host-landing-1920-ArrowRight-1.jpg",
+      "bytes": 239147
+    },
+    {
+      "file": "06-host-landing-1920-ArrowRight-2.jpg",
+      "bytes": 238139
+    },
+    {
+      "file": "07-host-landing-1920-ArrowRight-3.jpg",
+      "bytes": 237903
+    },
+    {
+      "file": "08-host-landing-1280-host.jpg",
+      "bytes": 125721
+    },
+    {
+      "file": "09-host-landing-1280-ArrowDown-1.jpg",
+      "bytes": 125703
+    },
+    {
+      "file": "10-host-landing-1280-ArrowDown-2.jpg",
+      "bytes": 125192
+    },
+    {
+      "file": "11-host-landing-1280-ArrowDown-3.jpg",
+      "bytes": 125110
+    },
+    {
+      "file": "12-host-landing-1280-ArrowRight-1.jpg",
+      "bytes": 125713
+    },
+    {
+      "file": "13-host-landing-1280-ArrowRight-2.jpg",
+      "bytes": 125192
+    },
+    {
+      "file": "14-host-landing-1280-ArrowRight-3.jpg",
+      "bytes": 125110
+    },
+    {
+      "file": "15-host-landing-390-host.jpg",
+      "bytes": 40214
+    },
+    {
+      "file": "16-host-landing-390-ArrowDown-1.jpg",
+      "bytes": 40090
+    },
+    {
+      "file": "17-host-landing-390-ArrowDown-2.jpg",
+      "bytes": 39226
+    },
+    {
+      "file": "18-host-landing-390-ArrowDown-3.jpg",
+      "bytes": 39117
+    },
+    {
+      "file": "19-host-landing-390-ArrowRight-1.jpg",
+      "bytes": 40091
+    },
+    {
+      "file": "20-host-landing-390-ArrowRight-2.jpg",
+      "bytes": 39217
+    },
+    {
+      "file": "21-host-landing-390-ArrowRight-3.jpg",
+      "bytes": 39109
+    },
+    {
+      "file": "22-host-host-room-after-enter.jpg",
+      "bytes": 252584
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2584
+    },
+    {
+      "file": "run.json",
+      "bytes": 5988
+    }
+  ],
+  "totalBytes": 3086027,
+  "maxBytes": 12582912
+}

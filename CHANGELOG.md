@@ -2,6 +2,18 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — X-01: landing keyboard and remote reach
+
+- REL-002: arrow keys and a TV remote reach all four landing links in reading order (Host a game,
+  Put this on your TV, Privacy, Credits); Up and Left go back; the ends stop; Enter and Space open
+  the focused link; with nothing focused an arrow returns to Host a game and Space opens it;
+  Alt, Ctrl and Cmd arrows go to the browser; holding Space does not repeat; Tab is unchanged; text
+  fields keep their keys (D-255).
+- Host a game is focused when the landing opens on the TV layout only; phones show no ring at load.
+  Host a game stays the single primary action and Put this on your TV a secondary link.
+- UAT at 1920, 1280 and 390 wide (`uat/evidence/X-01-landing/round2/`).
+- Not yet: a real TV remote and readability from 3 m (X-09).
+
 ## 2026-11-18 — R-08: Rabakz full-match UAT
 
 - RZ-001–RZ-016, RZ-032, RZ-034, PLAT-033: solo, 8-phone free-for-all and 8-phone teams in the

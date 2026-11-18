@@ -12,7 +12,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
-| X-01 | Landing page with one "Host a game" action | REL-002 | F-06, A-09 | 4 | todo |
+| X-01 | Landing page with one "Host a game" action | REL-002 | F-06, A-09 | 4 | done |
 | X-02 | "Put this on your TV" help page | REL-003 | F-06, S-03 | 4 | merged |
 | X-03 | Privacy page and credits page, including the question-bank attribution | DATA-001, DATA-004, RZ-021 | F-06 | 4 | merged |
 | X-04 | Anonymous error and performance counts only | DATA-003 | C-10 | 4 | merged |
@@ -28,9 +28,9 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 - Place the "Put this on your TV" link as a secondary or footer link on the final landing page (the
   locked landing board has one action), rename the action "Host a game" (REL-002), and let arrow keys
   and a TV remote reach both links (today any arrow returns focus to the host link); test the Space and
-  arrow handling there.
+  arrow handling there — done (X-01, D-255).
 - When C-02 (relay) resumes, re-check the help page's phone Wi-Fi line against the NET-004 message.
-- X-09 on the TCL Q65: the help page's viewport, readability from 3 m and the TV-browser advice.
+- X-09 on the TCL Q65: the help page's viewport, readability from 3 m and the TV-browser advice; the landing focus ring crosses the Privacy/Credits footer pill's edge (X-01 review, deferred).
 
 ### X-04 review follow-ups (2026-11-18)
 
