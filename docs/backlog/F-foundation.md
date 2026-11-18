@@ -16,6 +16,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | F-09 | Agent tooling: an issue-builder agent definition, an `/issue` command, and a helper that creates the worktree and prints its ports | NN-8 | — | 0 | merged |
 | F-07 | UAT harness: Playwright host plus N phone contexts with real pairing, scripted thumbs, screenshot and frame-strip helpers, `pnpm uat` | NFR-TEST | F-01 | 1 | merged |
 | F-08 | Performance harness: scripted controllers at 1, 4 and 8 players, frame-time and input-delay percentiles, budget check, `pnpm perf` | NFR-PERF, PERF-001, PERF-010 | F-01, F-03 | 1 | done (harness; budgets assessed from T-07 on) |
+| F-10 | PERF-040 assessment in bare `pnpm perf` (blocking); a branded-Chrome channel option for assessed milestone PERF-001 runs; the 60 Hz guard: PERF-001 is assessed only when the system reports a 60 Hz display mode, recorded in `perf.json` (D-227, D-249) | PERF-040, PERF-001 | F-08 | 3 | todo |
 
 ## Story F2 — Tracks meet at contracts, not at each other's code
 

@@ -2,6 +2,29 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — Delegated decisions
+
+- D-214 to D-253, decided by Claude under Randy's delegation of 2026-11-18 ("make the decisions
+  for all outstanding questions"); Randy may overrule any of them. OQ-006, OQ-029, OQ-031,
+  OQ-034 to OQ-037, OQ-039 to OQ-050 and the new OQ-052 are closed; OQ-001, OQ-028, OQ-030,
+  OQ-032, OQ-038 and OQ-051 are decided up to their gated step; the five working assumptions
+  are confirmed (D-244).
+- PRD: PLAT-006 (a keyboard or pad seat leads only while no phone is seated, D-231), PLAT-009
+  (a host reload loses the running match; scores kept per game, D-226), new PLAT-011 (host kick
+  that blocks rejoining, D-247).
+- PERFORMANCE: PERF-023 covers one round of any game (D-242); new PERF-040 simulation step
+  budget, 1.67 ms p95 and 3.34 ms p99 at 8 players, blocking in `pnpm perf` (D-227); the detail
+  benchmark runs during Start preparation (D-228); assessed PERF-001 runs use branded Chrome,
+  a production build and a 60 Hz mode (D-227, D-249). No budget is loosened.
+- DESIGN: §4.3 Tabao Rush HUD (step icons, tip in a score pop; D-219, D-220); §4.4 Rabakz phone
+  departures (D-235) and D-122's narrow-phone floor (D-239); §6 34 px floor covers results and
+  final screens (D-224).
+- Game specs: Rabakz RZ-005 (D-238), RZ-016 (D-221), §3 setup (D-240) and Continue (D-222) rows;
+  Tabao Rush TR-058 sabo hatch (D-225). CLAUDE.md `pnpm perf` row (D-227); UAT.md TV check
+  (D-228).
+- Backlog: A-11, C-21 to C-25, C-27, F-10, K-10, K-11, P-11, R-15, R-16, R-18 (doing), R-19,
+  R-20, X-10. TRACEABILITY rows for PLAT-011 and PERF-040.
+
 ## 2026-11-18 — C-19: label timing method
 
 - PERF-012, CTRL-003: the label-cost test takes the median of 7 fresh mounts per game against

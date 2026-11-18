@@ -87,7 +87,7 @@ Claude run the checklist below on real hardware and record results in `STATUS.md
 - [ ] Stick and two buttons held together respond on both phones.
 - [ ] Motion permission prompt and the button fallback (iPhone).
 - [ ] Laptop on HDMI to the TV in Game Mode: 8 phones joined, a full round, no visible lag.
-- [ ] TCL Q65 browser: lobby loads, benchmark chooses a detail mode, PERF-002 numbers recorded.
+- [ ] TCL Q65 browser: lobby loads; the first round's preparation chooses a detail mode, PERF-002 numbers recorded.
 - [ ] Phone on mobile data: joins through the relay and is marked as relayed.
 - [ ] Host reload mid-session: phones recover (PLAT-009).
 

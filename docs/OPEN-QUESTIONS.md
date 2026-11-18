@@ -8,10 +8,12 @@ entry.
 
 **OQ-001 · Names not checked.** Kaki Arcade, Tabao Rush, Peek Poker and Rabakz were not checked for
 trademarks or existing games of the same name. Check before public release (M8). Needed by: M8.
+Decided 2026-11-18 (D-245): keep the names through v1. Still open: Randy's name check before M8.
 
 **OQ-006 · Music source.** Randy wants effects and music in v1 (D-050). Effects are synthesised
 in code. Music needs a source: tracks under a free licence with credit, or loops composed in
 code. Claude will put two or three candidates per game to Randy to hear. Needed by: M6.
+Closed 2026-11-18: D-236 — Tabao Rush loops composed in code; no music for Peek Poker or Rabakz without a requirement.
 
 **OQ-028 · Network spike (S-01): needs Randy's real phones, and a ruling on PERF-010.** On one Mac
 with emulated phones the network costs 1 to 4 ms and scripted input reaches the simulation in
@@ -25,11 +27,13 @@ page receives the touch, or raise the figure, or accept a 120 Hz host step. (3) 
 held at 60 Hz measured about 22 MB an hour through a relay, against the 10 MB an hour assumed
 behind the 800 GB limit in NET-004; the send policy for C-04 (on touch plus a 30 Hz tick) roughly
 halves it. Needed by: C-04, S-04.
+Decided 2026-11-18 (D-246): PERF-010 unchanged; 120 Hz host step if real phones are over; 60 Hz sends kept (D-058); 22 MB/h replaces the 10 MB/h estimate. Still open: Randy's real-phone run (§2); the tunnel and relay runs (§3, §4) on his go.
 
 **OQ-029 · Tabao Rush: can dirty plates be thrown?** TR-009 says plates and finished dishes
 cannot be thrown; the versus sabo in TR-058 has "dirty plates thrown across". Claude builds to
 TR-009 for now (D-078 i) and will treat the sabo as plates arriving in the other kitchen by
 the game's own action, not by a player's throw, unless Randy says otherwise. Needed by: T-14.
+Closed 2026-11-18: D-225 — no; a centre-line sabo hatch sends the plate across.
 
 **OQ-030 · Pairing server deploy: plan, cost and checklist.** Nothing is deployed. Before a
 public deploy Randy must: approve the Workers Paid plan (the "1 million Durable Object requests
@@ -46,6 +50,7 @@ real edge (shard memory after 590 s idle; the address header for IPv4 and IPv6; 
 binding), which needs Randy's go. Also for the
 shell: anyone with a room code can take all 8 seats; the host needs a kick that blocks
 rejoining. Needed by: first deploy (M8).
+Decided 2026-11-18 (D-247): recommendations and conditional privacy wording set; kick added as PLAT-011, built in C-23. Still open: Randy's go on plan and spend, secret, staging, DNS and deploy (M8).
 
 **OQ-031 · What a host reload keeps mid-match.** PLAT-009 says "A running round is lost; the
 room, players and scores so far are restored." Built today (D-086 a): the whole running match
@@ -54,6 +59,7 @@ is several rounds, "scores so far" could instead mean: lose only the current rou
 on with the match totals. That needs a checkpoint and resume hook added to the game contract.
 Recommendation: keep today's behaviour for v1 and revisit after the first real game night.
 Needed by: M4 (Peek Poker playable).
+Closed 2026-11-18: D-226 — keep today's behaviour; the match is lost.
 
 **OQ-033 · A room the pairing server has dropped while a game is running. Closed: Randy confirmed the recommendation on 2026-11-17 (D-099).** After an
 outage longer than the ten-minute idle limit, or at the twelve-hour limit, the pairing server
@@ -68,6 +74,7 @@ provisional (D-091), worked out by arithmetic, not by play. To settle once a rou
 played on a screen: whether patience and the warning feel right; whether orders at 8 cooks
 flood; whether plates are the bottleneck (4 plates cap an 8-cook round near 34 to 46 dishes);
 whether three stars is fair at every cook count. Needed by: T-16 (tuning).
+Decided 2026-11-18 (D-248): baseline and acceptance lines set. Still open: playtests (T-16).
 
 **OQ-036 · 2026-11-17 · Lower-detail benchmark needs a real workload (PERF-002).** An idle lobby
 holds the display's cadence on any TV, so a lobby benchmark cannot tell a slow TV from a fast
@@ -76,12 +83,14 @@ workload; until the game renderer exists (T-07) there is no representative workl
 stays on full detail and the setting can be changed by hand. Randy: is a short off-screen draw
 of the busiest scene on the lobby acceptable (a second or two before the room code shows), or
 should detail be chosen from the first seconds of the first round instead?
+Closed 2026-11-18: D-228 — benchmark during Start preparation; threshold check on the real TV stays with PERF-002's manual run.
 
 **OQ-037 · 2026-11-17 · DESIGN §4.4 wording for D-122.** Your D-122 lets face buttons shrink
 below 110 px on phones narrower than 844 px (never under 89 px). `DESIGN.md` §4.4 still says
 faces are "at least the 110 px"; only you edit that section. Suggested wording: "Face buttons
 are at least 110 px on phones 844 px wide and wider; narrower phones scale them down with the
 width, never below 89 px (D-122)." Needed by: K-04 merge (the code follows D-122 meanwhile).
+Closed 2026-11-18: D-239 — wording applied.
 
 **OQ-038 · 2026-11-18 · PERF-001 on this Mac's display (S-03a).** PERF-001 asks for a
 95th-percentile frame time of at most 16.7 ms on the dev Mac in Chrome at 1080p. In the S-03a
@@ -92,12 +101,14 @@ work. Options: (a) measure frame time as the work per frame plus dropped refresh
 callback interval; (b) set the Mac to a 60 Hz mode for measured runs; (c) keep the wording and
 accept a fail until run on the TV. Recommended: (a) with (b) for the runs. Only you change the
 budget wording. Needed by: T-07.
+Decided 2026-11-18 (D-249): (b), 60 Hz mode as reported by the system; harness refuses other modes. Still open: setting the Mac to 60 Hz; Randy decides only if a 60 Hz run still fails on jitter.
 
 **OQ-041 · A keyboard or pad player cannot play games with private phone views (raised 2026-11-18 at C-12's merge).**
 CTRL-009's extra player sits at the TV, so it has no private screen: in Peek Poker it cannot pick
 secretly, and in Rabakz its answers would be seen. Options: allow the local seat only in games
 without private views (Tabao Rush), or show its private view on the TV and accept that others can
 see it. Built today: the seat joins, but those games do not give it a private view. Needed by: M6.
+Closed 2026-11-18: D-230 — local seat plays Tabao Rush only; watches the others.
 
 **OQ-042 · A leader on the TV keyboard or game pad cannot change a game's settings (raised 2026-11-18 at R-04's merge).**
 When the leader is CTRL-009's local seat, the start screen accepts only Enter (start with the
@@ -105,8 +116,11 @@ defaults or the kept values), Esc and T; nothing moves between or changes settin
 keys and the d-pad move through the settings and change them on the TV, or the leader role always
 goes to a phone player when one is present. Built today: start with defaults or kept values.
 Needed by: M6.
+Closed 2026-11-18: D-231 — a phone leads whenever one is seated.
 
 ## Assumptions Claude is working to (say if wrong)
+
+Confirmed 2026-11-18: D-244.
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot
   sliding (ART-PIPELINE §4), not physics simulation.
@@ -133,6 +147,7 @@ run can assess frames but not input delay); (d) which display rate is the refere
 PERF-001: the dev Mac's main display runs at 75 Hz, where a frame is 13.3 ms, not 16.7 ms;
 (e) PERF-001 says Chrome and the harness runs Playwright's Chromium: accept that, or run real
 Chrome. Needed by: T-07, the first game screen.
+Closed 2026-11-18: D-227 — PERF-040 added (1.67 / 3.34 ms); no allocation budget; production build for frames; 60 Hz; Chrome at milestones.
 
 **OQ-035 · Rabakz: does the TV show that someone has answered correctly before the reveal?**
 RZ-005 says the big screen shows "who has answered". A correct answer ends the question within
@@ -141,12 +156,14 @@ Claude under D-057 as D-101 (d): a correct answerer's seat keeps reading "Thinki
 reveal; only a wrong answer changes a seat, to "Locked out". This reads RZ-005 narrowly; only
 Randy changes the game spec, so its wording is left as it is until he confirms or overrules.
 Needed by: R-03 (built this way), R-04 (the phone's own feedback).
+Closed 2026-11-18: D-238 — D-101(d) confirmed; RZ-005 reworded.
 
 **OQ-039 · Rabakz setup wording in the game spec (raised 2026-11-18 by R-04's review).**
 `docs/games/rabakz.md` §3 lists "Setup (leader only) | D-pad and cross … 'The leader is setting
 up'", but D-157 (the decided board) has the leader tap settings on the phone and watchers read
 "⟨leader⟩ is setting up". Built as D-157. Only Randy changes the spec: update §3 to match D-157, or
 say if the D-pad form was meant. Needed by: M6.
+Closed 2026-11-18: D-240 — §3 updated to D-157.
 
 **OQ-040 · A TV nobody has touched plays no sound (raised 2026-11-18 by R-07's review).**
 Browsers only start audio after a click or key press on that page. If the room is created and the
@@ -155,22 +172,34 @@ Rush's) stay silent. A game pad does not count either: browsers do not treat gam
 gesture, so a TV played only by a pad (C-12) also stays silent. Options: a one-line "Press any key for sound" note on the TV (a visible change,
 so it would go to Randy as an artifact), or accept silence until someone touches the TV. Needed by:
 M6.
+Closed 2026-11-18: D-229 — unlock on "Host a game"; lobby hint while blocked.
 
 **OQ-043 · Peek Poker reveal: seat markers when many players pick one card (raised 2026-11-18 by P-06's review).** When five or more players pick the same card, the two-row marker block covers the lower half of its face; the rank and corner suit stay readable (P-06 round5-p8/22, P-04 round5/15). Keep it, or choose an alternative: markers in a strip outside the card, smaller pips, or a count badge? Options to be shown as rendered boards with their performance cost.
+Closed 2026-11-18: D-241 — keep the two-row block.
 
 
 **OQ-044 · Where do "scores so far" show after a host reload? (raised 2026-11-18 by C-15's review).** PLAT-009 restores them, but no screen shows cumulative scores, and they currently add up across different games. Options: a running total on the lobby seat cards, a per-game total on the results screen, or per-game storage only. Needed by M3 close.
+Closed 2026-11-18: D-226 — per-game storage only; no new screen in v1.
 
 **OQ-045 · How is the adapted Rabakz bank "offered under the same licence"? (raised 2026-11-18 by X-03's review).** Credits says our adapted questions "are shared under the same licence (CC BY‑SA 4.0)", and RZ-021 requires the offer, but no separate download exists. Assumption until Randy answers: the questions shipped in the game bundle are the shared copy, and no separate download is needed in v1.
+Closed 2026-11-18: D-232 — Credits links to the shipped bank files.
 
 **OQ-046 · Transfer budget for round assets of games other than Tabao Rush (raised 2026-11-18 by P-08's review).** PERF-023 names only "One Tabao Rush level", but the asset pipeline applies the same 8 MB per round to every game (Peek Poker is 915,460 B full and 235,742 B half), and D-193 relies on that to keep round atlases out of the shell budget. Should PERF-023 read "one round of any game, all assets", or should Peek Poker and Rabakz get their own budgets? Assumption until Randy answers: the 8 MB / 256 MB round budgets apply to every game.
+Closed 2026-11-18: D-242 — every game's round.
 
 **OQ-047 · Rabakz podium when every player ties, or a tie spills past the podium (raised 2026-11-18 by R-06's review).** With one occupied place the step stretches across the TV with only "=1" in serif (R-06 `round6/40` at two players; R-05 `round11/1920-podium-ties-4` at four, where two tied players also appear below as "=1" rows). Keep it, or choose one of: a step capped at 1 : 1.618 width; "Tied for first" copy; every tied player on the step; no step surface when everyone ties. Options to be shown as rendered boards with their performance cost.
+Closed 2026-11-18: D-233 — tied players on the step; "Tied for first" when all tie.
 
 **OQ-048 · Which team does a phone joining a running team match get? (raised 2026-11-18 by C-17's review).** RZ-014 says a mid-match joiner enters at the next question with 0, but PLAT-025 balances teams only before the game, and D-079(f) keeps a joiner out of the game until the room gives them a team. Options: put them automatically on the smaller team (a tie goes to the team behind on points); let the phone choose Red or Blue before the next question; or hold them until the match ends. Assumption until Randy answers: hold them on "Waiting for the lobby" (D-202).
+Closed 2026-11-18: D-234 — smaller team, then team behind, then Red.
 
 **OQ-049 · TV setup feedback band and two-line player tiles (raised 2026-11-18 by A-09).** (1) The TV's Rabakz setup feedback moved from under the settings rows to a band at the foot of the start card (D-200), so "Who's in" never jumps. To show: rendered stills with a refusal showing, side by side: the reserve kept (the strip drops on entry), the reserve hidden (the strip snaps on refusal) and the band (A-09 uat-r16/63); the first two must be rendered. (2) TV player tiles cut long names to one line ("WWWW…" for a 12-character wide name, uat-r16/74) with "Seat held" on a second line. Assumption until Randy answers: the band and the two-line tile.
+Closed 2026-11-18: D-243 — band and two-line tiles kept.
 
 **OQ-050 · Rabakz phone: departures from board 4, and the title pulse (raised 2026-11-18 by R-02's review).** The built phone differs from board 4 in five ways: Locked out shows a pill and a note instead of a veil over the answers; the reveal says "Right" at 34 px instead of "Correct" with +150 at 89 px; the header says "Connected" with the Menu chip instead of "Question 7 of 10"; Skip is a play-area target instead of "Skip question" in the header, which cannot meet the 89 × 68 floor; and at 667 the status title drops a size for "Locked out" but not for "Locked in", because the strip is split into equal thirds (uat-r21-p2 09 vs 21). The kit also pulses every new status title, including Locked out, Wrong and Skipped, where DESIGN §3 and RZ-031 say the pulse confirms success. Keep the built versions or restore board 4, and pulse only on Right? To be shown as rendered options side by side, each with its performance cost. Assumption until Randy answers: the built versions.
+Closed 2026-11-18: D-235 — built versions kept; pulse on success only; one title size per strip.
 
 **OQ-051 · Do Safari and iPhone phones connect, and what covers Firefox? (raised 2026-11-18 by X-05's review).** Playwright WebKit 27.2 on macOS gathers no ICE candidates with the local pairing grant and never opens a data channel, so no automated run here can seat a WebKit phone or drive a WebKit TV past the lobby (D-212). Real Safari normally offers mDNS host candidates, and the production relay grant may add relay candidates, but neither has been seen. Also unseen is what a phone shows if a connection never opens: in WebKit it stayed on "Joining the room… Connecting to the host." for the whole 15 s step, which matters for REL-006 ("not a broken page"). Needed: a real iPhone in Safari, and a Mac in Safari as the TV, on the LAN and through the relay (K-07, X-09). Firefox has no runner option, so its REL-006 message is unseen; Randy to decide whether Firefox gets a runner option or a manual check at X-09. Assumption until then: Safari is supported per REL-004, but unproven.
+Decided 2026-11-18 (D-250): Firefox by hand at X-09; 15 s "could not connect" state (K-11). Still open: real iPhone and Safari runs (K-07, X-09).
+
+**OQ-052 · Peek Poker reveal: order of tied hands (raised 2026-11-18 by P-07's review).** Hands of equal strength were listed by seat, so the +3 speed winner could sit below a +1 player (P-07 round3-p8/55). Closed 2026-11-18: D-223 — by points, then lock-in time; seat last.

@@ -19,6 +19,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | P-05 | Scoreboard between rounds, podium, solo personal best | PP-032, PP-012 | P-04, C-13 | 2 | done (merged 2026-11-18; D-208–D-211) |
 | P-06 | Load the table (P-04) in the console: register the host screen and view key in the game registry, as Rabakz does, with the card atlas and fonts decoded and warmed before the round starts (nothing loads during play); found by P-03's UAT, where the TV shows "This game's screen is not built yet" | PP-030, PP-031, PLAT-033 | P-04, C-10 | 2 | merged 2026-11-18 |
 | P-07 | Full-match UAT in the real console, including a check that no pick reaches the big screen or another phone early | PP-001 to PP-032, PLAT-033 | P-03 to P-06, C-15 | 3 | todo |
+| P-11 | Tied hands at the reveal: equal hands ordered by this round's points, then lock-in time (random fills last), seat only as the final tiebreak; change `rankedHands` (`games/peek-poker/src/rules/round.ts`) and its unit test, and update P-07's UAT pin (`uat/slices/P-07-full-match.mjs`) to the new order (D-223) | PP-008, PP-009 | P-07 | 3 | todo |
 
 ## Carried from reviews
 

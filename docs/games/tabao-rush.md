@@ -82,7 +82,7 @@ plating counter · serving counter · sink and dish rack · bin.
 | TR-055 | MUST | A 60-second playable tutorial on first run teaches move, pick up, act and serve. Skippable. |
 | TR-056 | MUST | A player who joins mid-round enters at the next round, and spectates until then. |
 | TR-057 | MUST | Every level and arena fits the whole 16:9 screen at once. Nothing scrolls and the camera never moves. |
-| TR-058 | MUST | The two mirrored kitchens in a versus arena interact: every arena has at least one thing both teams can reach or contest. The four forms, chosen by Randy on board 3 (D-046): a **shared pantry** (a scarce ingredient and plates on the middle counter), **trade across** (each side holds an ingredient the other needs and must throw it over), a **gold order** (a shared hatch where the first team to serve scores double) and **sabo** (dirty plates thrown across land in the other team's sink). An arena uses one or two of them, never all four at once. |
+| TR-058 | MUST | The two mirrored kitchens in a versus arena interact: every arena has at least one thing both teams can reach or contest. The four forms, chosen by Randy on board 3 (D-046): a **shared pantry** (a scarce ingredient and plates on the middle counter), **trade across** (each side holds an ingredient the other needs and must throw it over), a **gold order** (a shared hatch where the first team to serve scores double) and **sabo** (a cook puts a dirty plate on a hatch on the centre line, which sends it on an arc into the other team's sink; players never throw plates, TR-009). An arena uses one or two of them, never all four at once. |
 
 ## 6. Feel and presentation
 

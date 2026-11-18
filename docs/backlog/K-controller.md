@@ -43,6 +43,8 @@ lock on iPhone Safari and pull-to-refresh on Android Chrome.
 | K-06 | Tilt, shake and swipe parts, with the tap-to-enable step on iPhone and a button fallback | CTRL-003, CTRL-007 | K-04, S-05 | 2 | todo |
 | K-09 | A lone option takes only its own width; large lone options keep their size; face-down grid cells (D-160, D-164, D-166) | CTRL-002, CTRL-005, PP-005 | K-04, K-05 | 2 | done |
 | K-07 | Controller UAT on emulated phones and on Randy's real iPhone and Android | CTRL-001 to CTRL-008 | K-04 to K-06 | 3 | todo |
+| K-10 | Selected face-down card: controller-kit `layout.css` selected state for `.ka-layout-card-back` keeps the white inset frame and adds a centred tick (34 px cream disc, 21 px ink tick), crossfading in from 0.95 over `fast`; DOM contrast test; P-07 phone stills re-shot at 667 and 844 (D-218) | PP-005 | K-09, P-07 | 3 | todo |
+| K-11 | Could not connect: after 15 s on "Connecting to the host…" the phone shows "This phone could not connect to the big screen. Connect it to the same Wi-Fi as the big screen and scan again." with a Try again button of at least 55 px (D-250) | REL-006 | C-08 | 3 | todo |
 
 ### K-05 follow-up for C-15 (from the K-05 review, 2026-11-17)
 

@@ -143,7 +143,7 @@ layout functions named below are in `tools/boards/board3_template.html`. Every s
 - **Rabakz reveal** (`rzReveal`), **results** (`results`): as shown.
 - **Peek Poker table: 4B** (`ppB`): players down the left with Picking or Picked, the grid in
   the centre, round, shared cards and timer on the right.
-- **Tabao Rush HUD: 5A** (`trA`): order cards bottom left, time, score and stars bottom right.
+- **Tabao Rush HUD: 5A** (`trA`): order cards bottom left, time, score and stars bottom right. Recipe steps on the cards are icons (TR-001), not the board's placeholder text; the speed tip shows in a score pop on each serve, not as a HUD line (D-219, D-220).
 - **Tabao Rush versus** (`vs`): team scores in the top corners, each team's orders under its
   kitchen, one clock in the middle. Not explicitly confirmed by Randy; taken as accepted.
 - **Versus interaction:** all four forms, one or two per arena (TR-058).
@@ -158,9 +158,10 @@ layout functions named below are in `tools/boards/board3_template.html`. Every s
 - **Button style: 3A**, filled colour; a press is shown by scale 0.97 and a vibration.
 - **Peek Poker picker: 4B**, grid in the centre with 89 px cells and a 144 px Lock in button
   under the right thumb.
-- The single-design phone screens on board 4 stand as shown.
+- The single-design phone screens on board 4 stand as shown, except the Rabakz play views, which follow D-203 and D-235 (Locked out as a pill and note, the reveal's "Right" at 34 px, the "Connected" header with Menu, Skip in the play area).
 - **Buttons must not be too small** (Randy, D-051). The four face buttons are at least the
-  110 px shown on board 4 at 844 × 390, and scale up with the phone; any other control a
+  110 px shown on board 4 on phones 844 px wide and wider, and scale up with the phone; on narrower
+  phones they scale down with the width, never below 89 px (D-122); any other control a
   player taps during play is at least 89 px wide and 68 px tall (the Peek Poker grid cell on
   board 4, where a 4 × 4 grid of 89 × 68 px cells with 8 px gaps is 296 px tall), and nothing
   tappable anywhere is under 55 px.
@@ -242,5 +243,5 @@ The reviewer checks every UAT screenshot against this list.
 - [ ] Entrances ease out; exits are about 20% shorter; no blank frame between states.
 - [ ] Press states scale to 0.97; touch targets are at least 55 px.
 - [ ] Players are distinguishable without colour.
-- [ ] Big-screen text is readable from 3 m (minimum 34 px at 1080p for anything players must read in play).
+- [ ] Big-screen text is readable from 3 m (minimum 34 px at 1080p for anything players must read in play and on results and final screens).
 - [ ] `prefers-reduced-motion` drops motion and keeps state changes.

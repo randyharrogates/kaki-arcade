@@ -33,7 +33,7 @@ Measured from the touch event on the phone to the simulation step that applies i
 | PERF-020 | Controller page | ≤ 300 KB transferred; interactive ≤ 2 s on a mid-range phone on Wi-Fi |
 | PERF-021 | QR scan to seated in lobby | ≤ 5 s |
 | PERF-022 | Host shell (landing to lobby) | ≤ 1.5 MB transferred |
-| PERF-023 | One Tabao Rush level, all assets | ≤ 8 MB transferred; loaded before the round starts, never during it |
+| PERF-023 | One round of any game (a Tabao Rush level, a Peek Poker or Rabakz round), all assets | ≤ 8 MB transferred; loaded before the round starts, never during it |
 | PERF-024 | Texture memory in a round | ≤ 256 MB decoded on the host |
 
 ### Stability
@@ -41,6 +41,12 @@ Measured from the touch event on the phone to the simulation step that applies i
 | ID | Budget |
 |---|---|
 | PERF-030 | 30-minute 8-player session: no crash, memory growth under 10%, no stuck input (NFR-REL) |
+
+### Simulation
+
+| ID | Budget |
+|---|---|
+| PERF-040 | One simulation step at 8 players, every installed game, seeded bots, on the dev Mac: 95th percentile ≤ 1.67 ms, 99th percentile ≤ 3.34 ms (D-227) |
 
 ## 2. How the game is built to meet them
 
@@ -62,7 +68,7 @@ Measured from the touch event on the phone to the simulation step that applies i
 - **Everything loaded before play.** No network requests, decoding or shader compilation during
   a round.
 - **Lower-detail mode** for PERF-002: half-resolution atlases, 30 fps render, particles and
-  blur effects off. Chosen automatically from a short benchmark on the lobby screen, and
+  blur effects off. Chosen automatically from a short off-screen benchmark of the game's busiest scene while its first round on that TV prepares, cached for that TV, and
   overridable in settings.
 - **Tiny input messages**, sent over an unordered unreliable channel so a lost packet is
   replaced by the next one instead of stalling the queue.
@@ -81,12 +87,12 @@ Stated on the help page (REL-003):
 
 - `pnpm perf` runs every installed game at 1, 4 and 8 players with seeded bots at the fixed
   timestep until the match ends, and reports step time, allocation per step (whole run and
-  game only) and observed garbage-collection pauses. These are diagnostics: no simulation
-  budget has been set (OQ-034). The heaviest level remains the aim; default settings are what
+  game only) and observed garbage-collection pauses. Step time is assessed against PERF-040
+  and a failure blocks once F-10 builds that assessment (diagnostic until then); allocation and pauses are reported (§2's Tabao Rush rule applies). The heaviest level remains the aim; default settings are what
   is measured until T-05.
 - `pnpm perf -- <scenario> [--phones 1|4|8]` uses the local pairing stack, one 1920 × 1080
-  host and separate phone contexts in a visible browser (Playwright Chromium, not branded
-  Chrome). It records host frame times, frames over 50 ms, long tasks, the display's refresh
+  host and separate phone contexts in a visible browser (Playwright Chromium by default; assessed milestone PERF-001 runs use
+  branded Chrome, on a production build and a 60 Hz display mode). It records host frame times, frames over 50 ms, long tasks, the display's refresh
   rate, whether every phone link is direct (read from the host's WebRTC statistics for the
   local and remote candidates of every selected pair) and, where a game screen is
   instrumented, touch-to-apply and touch-to-feedback times. Timing hooks exist only in

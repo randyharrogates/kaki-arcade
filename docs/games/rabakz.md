@@ -19,7 +19,7 @@ No betting, no wagering of points, no real-money element.
 | RZ-002 | MUST | Two question types are mixed in a match: **multiple choice** (four options) and **picture** (an image on the TV with four options). There are no true-or-false questions (Randy, D-049: in a buzzer race one wrong press gives the answer away). There is no type-the-answer question. |
 | RZ-003 | MUST | The question and its options are shown on the big screen. Each phone shows one large button per option, carrying the same shape and colour as the option on the TV (no letters, D-050), and the option's text. |
 | RZ-004 | MUST | There is **no answer timer**. Any player may answer at any moment after the question appears. A press is that player's answer for this turn and cannot be changed. |
-| RZ-005 | MUST | While a question is open the big screen shows **who** has answered (seat markers) and marks an option as wrong once someone has chosen it wrongly. No answer is sent to another phone. |
+| RZ-005 | MUST | While a question is open the big screen shows **who** has answered wrongly and is locked out (seat markers) and marks an option as wrong once someone has chosen it wrongly; a player who has answered correctly is not shown until the reveal (D-101). No answer is sent to another phone. |
 | RZ-006 | MUST | A question ends as soon as someone answers correctly. Correct answers that reach the host within **0.25 seconds** of the first correct one count as answered at the same time and all score. A player who answers wrongly is **locked out until every other player has taken a turn** on this question; when every player has answered wrongly, all are unlocked and may answer again. The leader can skip a question, and after **30 seconds** with no answer and no skip the game reveals the answer and moves on; no countdown is shown. The reveal shows the correct option, who chose what, and the points gained. |
 | RZ-007 | MUST | Scoring: the player (or each of the players, when simultaneous) who answers correctly scores **100 points**. There is no speed bonus. A wrong answer, a skipped question or no answer scores 0. Scores never go down. |
 | RZ-008 | MUST | Streak bonus: from a player's third question won in a row, each question they win scores **50 extra**. The streak ends when another player wins a question without them, or they answer wrongly. The phone and the big screen show the streak. |
@@ -30,7 +30,7 @@ No betting, no wagering of points, no real-money element.
 | RZ-013 | MUST | With 1 player the match is a score attack against a personal best saved on the host device, kept separately for each match length. Only the player's first answer to a question can score; after a wrong answer the correct one is revealed. |
 | RZ-014 | MUST | A player who joins mid-match enters at the next question with a score of 0. |
 | RZ-015 | MUST | No question repeats within a match. Questions recently seen on this host device are avoided until the pool for the chosen categories and difficulty runs out (DATA-002). |
-| RZ-016 | MUST | Players level on points at the end share the placing. |
+| RZ-016 | MUST | Players level on points at the end share the placing, shown with "=" on the big screen and on phones. In team mode the teams are placed, and teams level on points share the placing (D-221). |
 
 ## 2. Question bank
 
@@ -50,10 +50,10 @@ Declared to the controller kit (CTRL-002):
 
 | Phase | Phone shows |
 |---|---|
-| Setup (leader only) | D-pad and **cross** (the bottom button) to choose length, categories, difficulty and teams. Other phones show "The leader is setting up". |
+| Setup (leader only) | The leader taps the settings on the phone: length, categories (tabs "Around the world" and "Singapore") and difficulty; teams are chosen in the lobby. Other phones show "⟨leader⟩ is setting up" (D-157). |
 | Question | Four answer buttons marked **cross, circle, square and triangle** (the same four shapes as the Tabao Rush buttons, D-050), each with its shape, colour and option text; no letters. After pressing: "Locked in" and the chosen option. |
 | Reveal | Right or wrong, points gained, current streak and total. |
-| Scoreboard / end | The player's placing and total. Leader: **cross** to continue. **Start** pauses at any time. |
+| Scoreboard / end | The player's placing and total. Leader: a **Continue** button (words only, no shape, D-222). **Menu** pauses at any time (D-184). |
 
 ## 4. Presentation
 

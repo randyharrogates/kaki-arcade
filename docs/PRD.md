@@ -74,11 +74,12 @@ These came directly from Randy and override convenience.
 | PLAT-003 | MUST | A room holds 1 to 8 players. A ninth joiner sees a clear "room is full" message. |
 | PLAT-004 | MUST | Each player picks a nickname (max 12 characters) and is assigned a distinct colour and seat number shown on both the big screen and their phone. |
 | PLAT-005 | MUST | Nicknames pass a blocked-words filter. A blocked name is replaced with a neutral default and the player is told. |
-| PLAT-006 | MUST | The first player to join is the room leader and can start games, change settings and return to the picker. Leadership passes on if the leader leaves. |
+| PLAT-006 | MUST | The first player to join is the room leader and can start games, change settings and return to the picker; a keyboard or pad seat at the big screen (CTRL-009) leads only while no phone is seated (D-231). Leadership passes on if the leader leaves. |
 | PLAT-007 | MUST | A player whose phone sleeps, reloads or drops is put back in the same seat with the same state when they return within 2 minutes. |
 | PLAT-008 | MUST | Players can join mid-session from the lobby. Joining during a running game is decided per game (each game spec says). |
-| PLAT-009 | MUST | If the host page closes or reloads, phones show "host disconnected" and reconnect automatically when the room returns. A running round is lost; the room, players and scores so far are restored. |
+| PLAT-009 | MUST | If the host page closes or reloads, phones show "host disconnected" and reconnect automatically when the room returns. A running match is lost; the room, players, teams, leader and the results of finished matches are restored, with scores kept per game (D-226). |
 | PLAT-010 | SHOULD | The big screen shows connection quality per player (good, weak, relayed). |
+| PLAT-011 | MUST | The host or the leader can remove a player from the room; a removed phone cannot rejoin that room (D-247). |
 
 ### 3.2 Game picker and sessions
 
