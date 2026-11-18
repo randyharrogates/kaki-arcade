@@ -41,6 +41,7 @@ lock on iPhone Safari and pull-to-refresh on Android Chrome.
 | K-04 | Layout engine: draws only the parts a game asks for in the current phase, and grows them to fill the space | CTRL-002 | K-02, K-03, F-04 | 2 | merged |
 | K-05 | Private display panel: text, cards, choices and a tappable grid, seen only on that phone | CTRL-003 | K-04 | 2 | done |
 | K-06 | Tilt, shake and swipe parts, with the tap-to-enable step on iPhone and a button fallback | CTRL-003, CTRL-007 | K-04, S-05 | 2 | todo |
+| K-09 | A lone option takes only its own width; large lone options keep their size; face-down grid cells (D-160, D-164, D-166) | CTRL-002, CTRL-005, PP-005 | K-04, K-05 | 2 | done |
 | K-07 | Controller UAT on emulated phones and on Randy's real iPhone and Android | CTRL-001 to CTRL-008 | K-04 to K-06 | 3 | todo |
 
 ### K-05 follow-up for C-15 (from the K-05 review, 2026-11-17)

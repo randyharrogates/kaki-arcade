@@ -104,6 +104,7 @@ export interface OptionsControl extends ControlBase {
   readonly size?: 'large';
 }
 export interface GridCell {
+  readonly faceDown?: boolean;
   readonly label?: string;
   readonly colour?: ColourToken;
   readonly state?: ItemState;
@@ -385,7 +386,10 @@ function checkCells(problems: Problems, where: string, source: Loose): void {
       problems.add(at, 'must be an object');
       return;
     }
-    problems.keys(at, cell, ['label', 'colour', 'state', 'focus']);
+    problems.keys(at, cell, ['label', 'colour', 'state', 'focus', 'faceDown']);
+    problems.flag(`${at} faceDown`, cell.faceDown);
+    if (cell.faceDown === true && (cell.label !== undefined || cell.mark !== undefined))
+      problems.add(at, 'face-down cell must not carry a label or mark');
     problems.flag(`${at} focus`, cell.focus);
     problems.text(`${at} label`, cell.label, PHONE_LIMITS.cellLabel, false);
     problems.token(`${at} colour`, cell.colour);

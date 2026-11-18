@@ -7,33 +7,10 @@ export const PRIVATE_STAT_STEPS = [89,55,34,21] as const;
 export const PRIVATE_CARD_FLOOR = PHONE.tappable;
 export const PRIVATE_CARD_MAX = PHONE.optionWidth;
 export const PRIVATE_LINE_HEIGHT = lineHeight.body;
+import { textWidth,textHeight,optionLabelStep } from './option-metrics';
+export { textWidth,textHeight,optionLabelStep,SINGLE_OPTION_INSET } from './option-metrics';
 export function privateBlocks(view:PrivateView | null | undefined, leader:boolean):readonly PanelBlock[] {
   return view?.blocks.filter(b => !b.audience || b.audience === 'everyone' || (b.audience === 'leader') === leader) ?? [];
-}
-/** Approximate DM Sans / DM Serif glyph advances, rather than one em per letter.
- * DOM measurement selects each block's final step after fonts have loaded. */
-export function textWidth(text:string,size:number):number {
-  let width = 0;
-  for (const c of text) width += size*(/\s/.test(c) ? 0.28 : /[ilI.,!':;|]/.test(c) ? 0.28 : /[MW@%]/.test(c) ? 0.9 : /[A-Z0-9]/.test(c) ? 0.65 : 0.53);
-  return width;
-}
-export function textHeight(text:string,size:number,width:number,words = false,overhang = 0):number {
-  let lines = 1, advance = 0;
-  for (const c of words ? text.match(/\S+|\s/g) ?? [] : text) {
-    const glyph = textWidth(c,size);
-    if (words && glyph > width+overhang) return Infinity;
-    if (c === '\n') { lines++; advance = 0; }
-    else { if (advance+glyph > width && advance) { lines++; advance = 0; } advance += glyph; }
-  }
-  return Math.ceil(lines*size*PRIVATE_LINE_HEIGHT);
-}
-/** R-10: whole words, glyph, gap and button insets share the same step ladder. */
-export function optionLabelStep(label:string,width:number,height:number,face = false,single = false):34|21|null {
-  for (const step of [34,21] as const) {
-    const available = width-(single ? 28 : 12)-(face ? step === 34 ? 55+13 : 21+13 : 0);
-    if (available > 0 && textHeight(label,step,available,true) <= Math.min(Math.ceil(3*step*PRIVATE_LINE_HEIGHT),height-12)) return step;
-  }
-  return null;
 }
 function gridLabelFits(cells:readonly { readonly label?:string; readonly faceDown?:boolean; readonly face?:unknown }[],width:number,height:number,steps:readonly number[],glyphs = false):boolean {
   return cells.every(cell => cell.faceDown === true || steps.some(step => textHeight(cell.label ?? '',step,width-12-(glyphs && cell.face ? (step === 34 ? 55 : 21)+13 : 0),true) <= height-12));
@@ -96,6 +73,12 @@ export function controlContentFits(parts:ReturnType<typeof packLayout>['parts'],
 export function placeController(layout:Layout,view:PrivateView | null | undefined,area:Size,leader:boolean,widths:Readonly<Record<string,number>>,viewport:Size) {
   const blocks = privateBlocks(view,leader);
   if (!blocks.length) return { ...placeLayout(layout,area,leader,widths,viewport),panel:null,metrics:null };
+  // Preserve the existing private text measurements; only lone option widths affect this rule.
+  const loneWidths:Record<string,number> = {};
+  for (const c of layout.controls) {
+    const width = widths[c.id];
+    if (c.kind === 'options' && c.options.length === 1 && width !== undefined) loneWidths[c.id] = width;
+  }
   const hasControls = layout.controls.some(c => !c.audience || c.audience === 'everyone' || (c.audience === 'leader') === leader);
   const pack = (margin:13|8,gap:13|8|5) => {
     const contentWidths:Record<string,number> = {};
@@ -112,7 +95,7 @@ export function placeController(layout:Layout,view:PrivateView | null | undefine
       contentWidths[c.id] = high;
     }
     const controlsAt = (width:number) => {
-      const packed = packLayout(layout,{ width,height:area.height },leader,{},margin,gap,viewport,contentWidths);
+      const packed = packLayout(layout,{ width,height:area.height },leader,loneWidths,margin,gap,viewport,contentWidths);
       return { ...packed,fits:packed.fits && controlContentFits(packed.parts,gap) };
     };
     let low = 0,high = Math.floor(area.width);

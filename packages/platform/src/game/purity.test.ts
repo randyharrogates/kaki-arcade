@@ -209,6 +209,7 @@ describe('readSources', () => {
       'json.ts',
       'kit.ts',
       'layout.ts',
+      'option-metrics.ts',
       'phone-placement-types.ts',
       'phone-placement.ts',
       'private-placement.ts',
@@ -221,7 +222,7 @@ describe('readSources', () => {
 describe('the game interface itself is pure', () => {
   it('has no clock, timer or unseeded randomness, and only placement imports UI tokens', () => {
     expect(
-      readSources(fs, HERE).filter(file => file.path !== 'conformance.ts').flatMap(file => scanSources([file],file.path === 'private-placement.ts' ? { allowImports:['@kaki/ui'] } : {})),
+      readSources(fs, HERE).filter(file => file.path !== 'conformance.ts').flatMap(file => scanSources([file],['private-placement.ts','option-metrics.ts'].includes(file.path) ? { allowImports:['@kaki/ui'] } : {})),
     ).toEqual([]);
   });
 });

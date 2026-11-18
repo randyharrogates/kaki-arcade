@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — K-09: lone options, large Lock in, face-down grid cells
+
+- `packages/platform/src/game/{phone-placement.ts,private-placement.ts,option-metrics.ts}`: a lone
+  option (Rabakz's Skip) takes only its own width, at least 89 px, and the space goes to the other
+  parts (D-160, the stated exception to CTRL-002's "used parts grow"); a large lone option keeps its
+  144 × 144 size beside a grid (D-164). `packages/platform/src/game/layout.ts` and
+  `packages/controller-kit`: face-down grid cells named "Card N", with a selected outline in the card
+  back's border colour, inset so it clears 3 : 1 in every theme (D-164, D-166). CTRL-002, CTRL-005,
+  PP-005 (in progress). Controller start-up 171 ms of 2,000 ms.
+
 ## 2026-11-18 — C-16b: phones show the game's private view and theme
 
 - `apps/web/src/phone.ts`, `phone-route.tsx`, `phone-themes.ts`: a phone keeps its own private view

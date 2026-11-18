@@ -262,3 +262,22 @@ it('CTRL-003 D-140 private grid labels share the largest step fitting every labe
   expect(long.style.fontSize).toBe(short.style.fontSize);
   expect(hooks.updates.at(-1)).toBe(true);
 });
+
+it('PP-005 D-164 names face-down grid targets by row-major index and preserves selection', () => {
+  const layout:Layout = { revision:1,controls:[{ kind:'grid',id:'grid',rows:4,cols:4,
+    cells:Array.from({ length:16 },(_,i) => ({ faceDown:true,state:i === 5 ? 'selected' : 'plain' })) }] };
+  const wrapper = children(engine(layout))[1]; if (!wrapper) throw new Error('No wrapper');
+  const part = children(wrapper)[0]; if (!part) throw new Error('No part');
+  hooks.index = 10;
+  const items = children(invoke(part))[0]; if (!items) throw new Error('No grid');
+  const targets = children(items);
+  expect(targets).toHaveLength(16);
+  targets.forEach((target,index) => {
+    hooks.index = 20+index*4;
+    const button = invoke(target), props = button.props as Record<string,unknown>;
+    expect(props['aria-label']).toBe(`Card ${String(index+1)}`);
+    expect(props['aria-pressed']).toBe(index === 5);
+    expect(props.class).toContain('ka-layout-card-back');
+    expect(children(button).at(-1)?.props.children).toBeNull();
+  });
+});

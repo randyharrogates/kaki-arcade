@@ -539,3 +539,13 @@ it('round 2 measures unbreakable words and the entire options block', async () =
   };
   expect(footprintOf(long).width).toBeGreaterThan(818);
 });
+
+it('CTRL-004 D-164 accepts face-down grid flags and rejects leaked faces', () => {
+  const layout = (cell:unknown) => ({ revision:1,controls:[{ kind:'grid',id:'g',rows:1,cols:1,cells:[cell] }] });
+  const cell:GridCell = { faceDown:true,state:'selected' };
+  expect(checkLayout(layout(cell))).toEqual([]);
+  expect(checkLayout(layout({ faceDown:false,label:'Ace' }))).toEqual([]);
+  for (const face of [{ label:'Ace' },{ label:'' },{ mark:'spade' }])
+    expect(checkLayout(layout({ faceDown:true,...face })).join('\n')).toContain('face-down cell must not carry a label or mark');
+  expect(checkLayout(layout({ faceDown:'yes' })).join('\n')).toMatch(/faceDown.*true or false/);
+});

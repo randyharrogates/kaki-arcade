@@ -5,11 +5,12 @@ import { join } from 'node:path';
 /** @param {import('../../tools/uat/harness.ts').Harness} h */
 export default async function layoutEngine(h) {
   const page = await h.newPhone();
-  const names = ['stick-faces','options','picker','dpad-only','text-only','cards','hidden-cards','readonly-hidden-cards','long-answer','shoulders','disabled-options','disabled-faces','every'];
+  const names = ['stick-faces','options','peek-pick','picker','dpad-only','text-only','cards','hidden-cards','readonly-hidden-cards','long-answer','shoulders','disabled-options','disabled-faces','every'];
   /** @param {string} name */
   const open = async name => {
     await page.goto(`${h.origin}/play?demo=controller&layout=${name}`);
     await page.locator('.ka-layout-engine').waitFor();
+    if (name === 'peek-pick') await page.locator('[data-theme]').evaluateAll(nodes => { nodes.forEach(node => { node.setAttribute('data-theme','peek-poker'); }); });
   };
   for (const [width,height] of [[667,375],[844,390],[932,430]]) {
     assert.ok(width && height);
@@ -33,7 +34,7 @@ export default async function layoutEngine(h) {
             width:rect.width,height:rect.height,
             labelFontSize:parseFloat(getComputedStyle(node).fontSize),
             labelLineHeight:parseFloat(getComputedStyle(node.querySelector('span') ?? node).lineHeight),
-            labelSingleLine:getComputedStyle(node.querySelector('span') ?? node).whiteSpace === 'nowrap',
+            labelSingleLine:[...node.querySelectorAll('span')].every(span => { const r = document.createRange(); r.selectNodeContents(span); return new Set([...r.getClientRects()].filter(x => x.width > 0).map(x => Math.round(x.top))).size <= 1; }),
             labelFits:node.scrollWidth <= node.clientWidth && node.scrollHeight <= node.clientHeight,
             label:(() => { const r = node.querySelector('span')?.getBoundingClientRect(); return r ? { left:r.left-box.left,right:r.right-box.left,height:r.height } : null; })() };
         });
@@ -55,8 +56,8 @@ export default async function layoutEngine(h) {
       assert.ok(gap === 13 || gap === 8 || gap === 5, `${name}: valid gap`);
       if (gap === 5) assert.equal(margin,8,`${name}: compact gaps follow compact margin`);
       // Independent floor sums: D-122 scaled diamond, 296 px grid, and edge margins.
-      const expectedMargin = (diamond && geometry.height < faceFloor*(1+2*95/110)+26) || (name === 'picker' && geometry.height < 322) ? 8 : 13;
-      const expectedGap = name === 'picker' && geometry.height < 312 ? 5 : expectedMargin;
+      const expectedMargin = (diamond && geometry.height < faceFloor*(1+2*95/110)+26) || (['picker','peek-pick'].includes(name) && geometry.height < 322) ? 8 : 13;
+      const expectedGap = ['picker','peek-pick'].includes(name) && geometry.height < 312 ? 5 : expectedMargin;
       assert.equal(margin,expectedMargin,`${name}: D-117 margin from floor sums`);
       assert.equal(gap,expectedGap,`${name}: D-118 spacing from floor sums`);
       if (diamond) {
@@ -105,6 +106,17 @@ export default async function layoutEngine(h) {
         // D-127: this real bank answer may use the next type step when measured overflow occurs.
         assert.ok([34,21].includes(answer.labelFontSize),'long answer uses the phone type scale');
         assert.ok(answer.labelFits,'long answer fits its button');
+      }
+      if (name === 'peek-pick') {
+        const cells = page.locator('.ka-layout-grid > button');
+        assert.equal(await cells.count(),16);
+        for (let i = 0; i < 16; i++) {
+          assert.equal(await cells.nth(i).getAttribute('aria-label'),`Card ${String(i+1)}`);
+          assert.equal(await cells.nth(i).getAttribute('aria-pressed'),i === 0 || i === 5 ? 'true' : null);
+        }
+        const lock = geometry.targets.find(t => t.id === 'lock:lock');
+        assert.ok(lock && lock.width >= 144 && lock.height >= 144);
+        assert.equal(lock.shape,undefined);
       }
       if (name === 'readonly-hidden-cards') {
         const backs = page.getByRole('img',{ name:'Hidden card',exact:true });

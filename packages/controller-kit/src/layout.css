@@ -75,3 +75,7 @@
 
 .ka-private-stat-label { overflow-wrap:normal; }
 .ka-private-stat-value { white-space:nowrap; overflow-wrap:normal; }
+
+/* D-164: ink contrasts with both the patterned card back and felt. Keep the
+ * selection inset so adjacent outlines remain clear even at the 5 px gap. */
+.ka-layout-card-back[data-state='selected'], .ka-private-panel .ka-layout-grid > .ka-layout-card-back[data-state='selected'] { outline-color: var(--ka-card-back-border); outline-offset: calc(-1 * var(--ka-space-13)); }

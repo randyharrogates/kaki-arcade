@@ -85,7 +85,7 @@ function Part({ control: c, layout, output, width, height, gap, readOnly = false
   if (c.kind === 'options' || c.kind === 'grid' || c.kind === 'cards') {
     const items = c.kind === 'options' ? c.options : c.kind === 'grid' ? c.cells : c.cards;
     content = h('div', { class:`ka-layout-items ka-layout-${c.kind}`, style: { gridTemplateColumns: c.kind === 'cards' ? `repeat(${String(items.length)}, 1fr)` : `repeat(${String(c.kind === 'grid' ? c.cols : Math.min(2,items.length))}, 1fr)` } }, ...items.map((item,index) => {
-      const label = item.faceDown ? 'Hidden card' : item.label ?? '';
+      const label = item.faceDown ? c.kind === 'grid' ? `Card ${String(index+1)}` : 'Hidden card' : item.label ?? '';
       const mark = ({ spade:'♠',heart:'♥',club:'♣',diamond:'♦' } as Record<string,string>)[item.mark ?? ''] ?? item.mark;
       const content = c.kind === 'cards' && !item.faceDown ? h('span',{ class:'ka-layout-card-face' },h('span',null,item.label),h('span',null,mark)) : item.faceDown ? null : label;
       if ((c.kind === 'cards' && !c.tappable) || (c.kind === 'grid' && readOnly)) return h('div', { key:item.id ?? index, class:'ka-layout-card', 'data-state':item.state, 'data-focus':String(item.focus === true), style:item.colour && !item.faceDown ? { background:colourTokenVar(item.colour) } : undefined, 'aria-label':label, ...(item.faceDown ? { role:'img', class:'ka-layout-card ka-layout-card-back' } : {}) },c.kind === 'grid' ? h('span',{ class:'ka-private-grid-label' },content) : content);

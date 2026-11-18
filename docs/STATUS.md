@@ -7,6 +7,13 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 
 ## Works
 
+- **K-09 (2026-11-18): lone options and face-down cards on phones.** A lone option such as Rabakz's
+  Skip takes only its own width (at least 89 px) and the answers get the rest (D-160); a large lone
+  option such as Peek Poker's Lock in keeps 144 × 144 beside a 4 × 4 grid (D-164); face-down grid
+  cells are named "Card N" and a selected one shows a white inset outline that clears 3 : 1 in every
+  theme (D-166). Evidence `uat/evidence/K-04-layout-engine/k09-round3/` and
+  `uat/evidence/C-16b-private-panel/k09-rabakz/`.
+
 - Repository, requirements, design rules, architecture, build loop and tracking docs.
 - `docs/HANDOFF.md`: full context from the planning conversation for the build session.
 - `python3 tools/trace_check.py`: 152 requirements tracked (PRD v1.1), check passes.
@@ -429,6 +436,11 @@ with eight phones on a 75 Hz display, frame time 95th percentile 14.1 ms, worst 
 None run yet (`UAT.md` §5).
 
 ## Known gaps and risks
+
+- Peek Poker's felt does not fill the phone page at some sizes: at 844 × 390 the page shows the
+  console marble with felt only in a strip at the bottom (seen in K-09's peek-pick fixture and in
+  main's C-16b round 3 shot 05). The phone theme surface needs to cover the whole page; to be fixed
+  with P-03.
 
 - Performance budgets are targets, not measurements, until M2.
 - Whether the TCL Q65's own browser can run the game is unknown (REL-005).

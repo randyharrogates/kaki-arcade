@@ -1,3 +1,4 @@
+import { textWidth,optionLabelStep,SINGLE_OPTION_INSET } from './option-metrics';
 import { PHONE } from './layout';
 import { visibleParts } from './phone-placement-types';
 import type { Layout,LayoutPart,Rect,Size } from './phone-placement-types';
@@ -14,9 +15,24 @@ export function diamondSpan(size: number): number { return size * (1 + 2 * 95 / 
  * required canvas; the caller must supply a simpler layout or a larger play area. */
 export function placeLayout(layout: Layout, area: Size, leader: boolean, optionWidths: Readonly<Record<string, number>>, viewport: Size): Placement {
   const preferred = packLayout(layout, area, leader, optionWidths, space[13], space[13], viewport);
-  if (preferred.fits) return preferred;
+  if (preferred.fits) {
+    // Content pressure reduces gaps without changing the chosen margins.
+    let result = preferred;
+    for (const gap of [8,5] as const) {
+      if (optionLabelsFit(result)) break;
+      result = packLayout(layout,area,leader,optionWidths,result.margin,gap,viewport);
+    }
+    return result;
+  }
   const compact = packLayout(layout, area, leader, optionWidths, space[8], space[8], viewport);
-  return compact.fits ? compact : packLayout(layout, area, leader, optionWidths, space[8], space[5], viewport);
+  return compact.fits && optionLabelsFit(compact) ? compact : packLayout(layout, area, leader, optionWidths, space[8], space[5], viewport);
+}
+function optionLabelsFit(placement:Placement):boolean {
+  return placement.parts.every(({ control:c,width,height }) => {
+    if (c.kind !== 'options') return true;
+    const columns = Math.min(2,c.options.length), rows = Math.ceil(c.options.length/2);
+    return c.options.every(o => optionLabelStep(o.label,(width-(columns-1)*placement.gap)/columns,(height-(rows-1)*placement.gap)/rows,Boolean(o.face),c.options.length === 1) !== null);
+  });
 }
 export function packLayout(layout: Layout, area: Size, leader: boolean, optionWidths: Readonly<Record<string, number>>, margin: 13 | 8, gap: 13 | 8 | 5 = space[13], viewport: Size = area, contentWidths:Readonly<Record<string,number>> = {}): Placement {
   const gridGap = gap === space[5] ? gap : space[8];
@@ -32,7 +48,19 @@ export function packLayout(layout: Layout, area: Size, leader: boolean, optionWi
   const shoulderWidth = shoulders.length ? floor.inPlayWidth + gap : 0;
   const bodyH = h - header;
   const movingMin = moving.map(c => c.kind === 'dpad' ? 3 * floor.inPlayWidth + 2 * gap : 2 * floor.inPlayWidth);
-  const panelMin = panels.map(c => c.kind === 'grid' ? c.cols * floor.inPlayWidth + (c.cols - 1) * gridGap : c.kind === 'options' ? Math.min(2, c.options.length) * (contentWidths[c.id] ?? PHONE.optionWidth) + (c.options.length > 1 ? gap : 0) : c.kind === 'cards' ? c.cards.length * floor.inPlayWidth + Math.max(0, c.cards.length - 1) * gap : (contentWidths[c.id] ?? space[144]));
+  const columnsInRow = moving.length + panels.length + (faces.length ? 1 : 0) + (shoulders.length ? 1 : 0);
+  const fixedOption = (c:LayoutPart) => c.kind === 'options' && c.options.length === 1 && columnsInRow > 1;
+  // Standard lone targets reserve the compact label step; large targets retain 34 px.
+  // The renderer can retain 34 px in either size when it fits.
+  // Kit measurements are natural 34 px widths, including a 55 px face and 13 px gap.
+  const loneWidth = (c:LayoutPart) => {
+    if (c.kind !== 'options') return 0;
+    const option = c.options[0], measured = optionWidths[c.id], step = c.size === 'large' ? 34 : 21;
+    const label = measured === undefined ? textWidth(option?.label ?? '',step)
+      : Math.max(0,measured-SINGLE_OPTION_INSET-(option?.face ? 68 : 0))*step/34;
+    return Math.max(c.size === 'large' ? space[144] : floor.inPlayWidth,Math.ceil(label+SINGLE_OPTION_INSET+(option?.face ? step === 34 ? 68 : 34 : 0)));
+  };
+  const panelMin = panels.map(c => c.kind === 'grid' ? c.cols * floor.inPlayWidth + (c.cols - 1) * gridGap : fixedOption(c) ? loneWidth(c) : c.kind === 'options' ? Math.min(2, c.options.length) * (contentWidths[c.id] ?? PHONE.optionWidth) + (c.options.length > 1 ? gap : 0) : c.kind === 'cards' ? c.cards.length * floor.inPlayWidth + Math.max(0, c.cards.length - 1) * gap : (contentWidths[c.id] ?? space[144]));
   const columnCount = moving.length + panels.length + (faces.length ? 1 : 0);
   const availableFaceWidth = w - shoulderWidth - movingMin.reduce((a,b) => a+b,0) - panelMin.reduce((a,b) => a+b,0) - Math.max(0,columnCount-1)*gap;
   const faceSize = Math.max(faceFloor(viewport), Math.min(space[144], bodyH/(1+2*95/110), availableFaceWidth/(1+2*95/110)));
@@ -42,7 +70,8 @@ export function packLayout(layout: Layout, area: Size, leader: boolean, optionWi
   if (grid?.kind === 'grid' && action?.kind === 'options' && controls.length === 2) {
     const gw = grid.cols*floor.inPlayWidth+(grid.cols-1)*gridGap;
     const gh = grid.rows*floor.inPlayHeight+(grid.rows-1)*gridGap;
-    const bw = Math.max(PHONE.optionWidth,Math.min(optionWidths[action.id] ?? 0,w-gw-gap)), bh = action.size === 'large' ? space[144] : floor.inPlayHeight;
+    // Large labels may wrap within the available column, retaining their target floor.
+    const bw = action.size === 'large' ? Math.max(space[144],Math.min(loneWidth(action),contentWidths[action.id] ?? w-gw-gap)) : loneWidth(action), bh = action.size === 'large' ? space[144] : floor.inPlayHeight;
     const gx = Math.max(margin,Math.min((area.width-gw)/2,area.width-margin-bw-gap-gw));
     // Keep the fixed grid clear of the note even when the surrounding margins cannot fit.
     // `required` still reports the missing margin, so this never claims a false fit.
@@ -65,7 +94,7 @@ export function packLayout(layout: Layout, area: Size, leader: boolean, optionWi
   }
   const columns = moving.length + (faces.length ? 1 : 0) + panels.length;
   const minimum = movingMin.reduce((a,b) => a+b,0) + panelMin.reduce((a,b) => a+b,0) + span + shoulderWidth + Math.max(0, columns - 1) * gap;
-  const extra = Math.max(0, w - minimum) / Math.max(1, moving.length + panels.length);
+  const extra = Math.max(0, w - minimum) / Math.max(1, moving.length + panels.filter(c => !fixedOption(c)).length);
   let x: number = margin;
   for (const [i, c] of moving.entries()) {
     const width = (movingMin[i] ?? 0) + extra;
@@ -78,7 +107,7 @@ export function packLayout(layout: Layout, area: Size, leader: boolean, optionWi
     x += width + gap;
   }
   for (const [i, c] of panels.entries()) {
-    const width = (panelMin[i] ?? 0) + extra;
+    const width = (panelMin[i] ?? 0) + (fixedOption(c) ? 0 : extra);
     let height = bodyH;
     if (c.kind === 'grid') height = c.rows * floor.inPlayHeight + (c.rows-1) * gridGap;
     if (c.kind === 'options') height = c.options.length > 1 ? Math.max(bodyH,Math.ceil(c.options.length/2)*floor.inPlayHeight+(Math.ceil(c.options.length/2)-1)*gap) : c.size === 'large' ? space[144] : floor.inPlayHeight;
