@@ -94,3 +94,12 @@ Content work. It needs no code from other tracks and starts in Wave 0.
 - The two-line start-blocked message has no 720 TV still.
 - "Teams on ✓" puts the tick after the word; the other chips put it before.
 - Dead `.setup-refusal` rule and `data-refused` attributes; superseded evidence folders (round1, roundK, roundL, checks.md).
+
+### RZ-014 in the console (found 2026-11-18, R-06 UAT)
+
+- The Rabakz rules seat a mid-match joiner at the next question (RZ-014), but the console holds every
+  phone that joins during a game on "Waiting for the lobby — You can join when the current game ends"
+  (`apps/web/src/phone.ts`). RZ-014 cannot close until the console offers a late-join path to games
+  that declare it. Not owned by any issue yet: build it before R-08, which must prove RZ-014 in the
+  real console. Evidence: `uat/evidence/R-06-solo-best/round3/12-host-friend-join-missing-tv.jpg`,
+  `13-phone2-friend-join-missing-phone.jpg` (R-06 branch).
