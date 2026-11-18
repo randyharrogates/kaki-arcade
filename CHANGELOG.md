@@ -2,6 +2,20 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — A-10: dish art polish
+
+- TR-041, TR-040 (in progress until seen on the TV): rojak is a mixed heap with dark sauce;
+  chopped turnip is cream with warm-beige sides (D-173); chicken is five flat fanned slices with
+  a skin band; laksa shows a broth rim; cups show their contents. Drop and shift checks keep
+  every portion visible in its composition (closest icon pair IoU 0.7457).
+- Pipeline: `--refresh-item-metadata` recomputes containment footprints and outline flags from
+  the pixels; the items stamp leaves out only those derived fields; `--migrate-items-stamp`
+  accepts a committed render without re-rendering when its inputs and outputs are unchanged;
+  render and stale checks refuse any turnip colour but cream.
+- Sheets (`tools/assets/item_sheet.py`): servings, loose items and icons on both counters at
+  1× and 4×, `uat/evidence/A-10-dish-polish/round5`. Items atlas 236,330 B; the level stays at
+  5.14 of 8 MB.
+
 ## 2026-11-18 — R-07 part 1: Rabakz sounds on the TV
 
 - RZ-033 (in progress): the TV plays D-168's Mallet set: answers open, a buzz-in note per seat,

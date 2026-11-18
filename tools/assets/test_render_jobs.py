@@ -64,6 +64,70 @@ class RenderJobTests(unittest.TestCase):
         output.unlink()
         self.assertIn('missing output', self.reason())
 
+    def test_items_derived_metadata_and_real_inputs(self):
+        self.job.update(id='items', script='items.py', inputs=['pipeline.json', 'input'])
+        group = dict(id='tabao-rush-items', containmentFootprints={'a': 'old'},
+                     frames=[dict(id='a', bakedOutline=False, scale=1)])
+        self.config['sets'] = [group, dict(id='other', containmentFootprints={})]
+        path = self.source / 'pipeline.json'
+        p.write_json(path, self.config)
+        p.render(self.config, self.source)
+        group['containmentFootprints'] = {'a': 'new'}
+        group['frames'][0]['bakedOutline'] = True
+        p.write_json(path, self.config)
+        self.assertIsNone(self.reason())
+        snapshot = copy.deepcopy(self.config)
+        for mutate in (
+            lambda: group['frames'][0].update(scale=2),
+            lambda: group.update(newRenderSetting=True),
+            lambda: self.config['sets'][1].update(containmentFootprints={'x': 'changed'}),
+            lambda: self.job['args'].append('--changed'),
+        ):
+            mutate()
+            p.write_json(path, self.config)
+            self.assertEqual(self.reason(), 'content stamp differs')
+            self.config = copy.deepcopy(snapshot)
+            self.job = self.config['renders'][0]
+            group = self.config['sets'][0]
+            p.write_json(path, self.config)
+            self.assertIsNone(self.reason())
+        for path in (self.source / 'input', self.root / 'extra', self.root / 'tools/blender/items.py'):
+            original = path.read_bytes()
+            path.write_bytes(original + b'changed')
+            self.assertEqual(self.reason(), 'content stamp differs')
+            path.write_bytes(original)
+            self.assertIsNone(self.reason())
+
+    def test_verified_legacy_items_migration(self):
+        self.job.update(id='items', script='items.py', inputs=['pipeline.json', 'input'])
+        self.config['sets'] = [dict(id='tabao-rush-items', containmentFootprints={'a': 'old'})]
+        path = self.source / 'pipeline.json'
+        p.write_json(path, self.config)
+        p.render(self.config, self.source)
+        _, outputs, stamp, _, _ = p.render_job(self.job, self.source)
+        p.write_json(stamp, {'sha256': p.render_job(self.job, self.source, legacy=True)[3]})
+        parent_config = path.read_bytes()
+        self.config['sets'][0]['containmentFootprints'] = {'a': 'new'}
+        p.write_json(path, self.config)
+        saved = {f.relative_to(self.root).as_posix(): f.read_bytes()
+                 for f in self.root.rglob('*') if f.is_file()}
+        def git_show(command, **kwargs):
+            rev, name = command[2].split(':', 1)
+            return parent_config if rev.endswith('^') and name == 'assets/src/pipeline.json' else saved[name]
+        with patch.object(p.subprocess, 'check_output', side_effect=git_show):
+            original = (self.source / 'input').read_bytes()
+            (self.source / 'input').write_bytes(b'changed')
+            with self.assertRaisesRegex(ValueError, 'Real items inputs differ'):
+                p.migrate_items_stamp(self.config, self.source, 'render')
+            (self.source / 'input').write_bytes(original)
+            outputs[0].write_bytes(b'changed')
+            with self.assertRaisesRegex(ValueError, 'outputs differ'):
+                p.migrate_items_stamp(self.config, self.source, 'render')
+            outputs[0].write_bytes(b'rendered')
+            p.migrate_items_stamp(self.config, self.source, 'render')
+            self.assertIsNone(self.reason())
+        self.assertEqual(self.blender.call_count, 1)
+
     def test_limits_and_failed_publication(self):
         for invalid in (0, -1, True, 1.5, '300', None):
             self.job['timeoutSeconds'] = invalid

@@ -392,10 +392,12 @@ Evidence: `uat/evidence/A-01b-render-jobs/`.
 
 ### Dishes and ingredients (A-04)
 Tabao Rush's ingredients, containers, the seven dishes in each state and their order-card icons
-are rendered in Blender (`tools/blender/items.py`) into one atlas (254 × 940, 234,944 B). Served
+are rendered in Blender (`tools/blender/items.py`) into one atlas (254 × 940, 236,330 B). Served
 dishes are built from their parts (kaya toast with kopi or teh in a side cup); checks keep every
 portion inside its container and visible. Evidence: `uat/evidence/A-04-dishes/round9`, `round11`,
-`round12`. Not yet drawn in a game; polish (rojak heap, chopped turnip and chicken at 1×) is A-10.
+`round12`. A-10 polish is done: a mixed rojak heap, cream turnip (D-173), flat sliced chicken with a skin
+band, a broth rim and cup contents (`uat/evidence/A-10-dish-polish/round5`, 40 sheets). Not yet
+drawn in a game (T-07, T-18); the chicken's look and the cup contents are judged on the TV at 3 m.
 
 ### Peek Poker table on the TV (P-04)
 A development page (`games/peek-poker/dev/`) draws the TV table for 1 to 8 players: the 16-card

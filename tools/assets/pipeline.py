@@ -515,7 +515,19 @@ def check(path):
     print(f'PERF-023/024 passed: {len(atlases)} atlases; manifest {manifest_bytes} bytes')
 
 
-def render_job(job, source):
+def item_stamp_config(data):
+    """TR-041: omit only pixel-derived item metadata, at its owned locations."""
+    config = json.loads(data)
+    for group in config.get('sets', []):
+        if group.get('id') == 'tabao-rush-items':
+            group.pop('containmentFootprints', None)
+            for frame in group.get('frames', []):
+                frame.pop('bakedOutline', None)
+    return json.dumps(config, sort_keys=True, separators=(',', ':')).encode()
+
+
+def render_job(job, source, *, read_bytes=None, legacy=False):
+    read_bytes = read_bytes or Path.read_bytes
     ident = safe_name(job['id'])
     script = (ROOT / 'tools/blender' / job['script']).resolve()
     if not script.is_relative_to((ROOT / 'tools/blender').resolve()) or not script.is_file():
@@ -535,7 +547,10 @@ def render_job(job, source):
         digest.update(len(value).to_bytes(8, 'big') + value)
     for path in inputs:
         base = ROOT.resolve() if path.is_relative_to(ROOT.resolve()) else source.resolve()
-        for value in (path.relative_to(base).as_posix().encode(), path.read_bytes()):
+        data = read_bytes(path)
+        if ident == 'items' and path == (source / 'pipeline.json').resolve() and not legacy:
+            data = item_stamp_config(data)
+        for value in (path.relative_to(base).as_posix().encode(), data):
             digest.update(len(value).to_bytes(8, 'big') + value)
     stamp = outputs[0].parent / ('.' + ident + '.render-stamp.json')
     return script, outputs, stamp, digest.hexdigest(), limit
@@ -610,11 +625,67 @@ def render(config, source=ROOT, only=None, check_stale=False):
     return stale
 
 
+def refresh_item_metadata(config, source):
+    """TR-041: derive containment and ink metadata from published pixels only."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('item_metadata', ROOT/'tools/blender/items.py')
+    items = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(items)
+    group = next(g for g in config['sets'] if g['id'] == 'tabao-rush-items')
+    footprints = {}
+    for frame in group['frames']:
+        pixels = items.png_rgba(source/frame['file'])
+        if frame['id'].startswith(('container-', 'portion-')):
+            footprints[frame['id']] = items.footprint(pixels)
+        ink = any(a >= 128 and max(abs(c-v) for c,v in
+                                    zip((r,g,b), (43,33,24))) <= 2
+                                    for r,g,b,a in pixels)
+        if ink or 'bakedOutline' in frame:
+            frame['bakedOutline'] = ink
+    group['containmentFootprints'] = footprints
+
+
+def migrate_items_stamp(config, source, revision):
+    """Authenticate a legacy committed render before changing its stamp format."""
+    def committed(path, rev=revision):
+        relative = path.resolve().relative_to(ROOT.resolve()).as_posix()
+        return subprocess.check_output(['git', 'show', f'{rev}:{relative}'], cwd=ROOT)
+
+    config_path = (source / 'pipeline.json').resolve()
+    saved = json.loads(committed(config_path))
+    job = next(j for j in saved['renders'] if j['id'] == 'items')
+    current_job = next(j for j in config['renders'] if j['id'] == 'items')
+    if current_job != job:
+        raise ValueError('Items render job differs from committed render')
+    _, outputs, stamp, digest, _ = render_job(job, source)
+    # Round 4 refreshed metadata in the render commit, after stamping the parent config.
+    old_stamp = json.loads(committed(stamp))
+    authenticated = False
+    for config_revision in (revision, revision + '^'):
+        def legacy_bytes(path):
+            return committed(path, config_revision if path == config_path else revision)
+        if old_stamp == {'sha256': render_job(job, source, read_bytes=legacy_bytes, legacy=True)[3]}:
+            authenticated = True
+            break
+    if not authenticated:
+        raise ValueError('Committed legacy stamp does not authenticate render inputs')
+    if digest != render_job(job, source, read_bytes=committed)[3]:
+        raise ValueError('Real items inputs differ from committed render')
+    if any(not path.is_file() or path.read_bytes() != committed(path) for path in outputs):
+        raise ValueError('Items outputs differ from committed render')
+    if not stamp.is_file() or stamp.read_bytes() != committed(stamp):
+        raise ValueError('Items stamp differs from committed render')
+    write_json(stamp, {'sha256': digest})
+    print('items: migrated verified committed render stamp; no rendering or packing')
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', type=Path, default=ROOT / 'assets/src/pipeline.json')
     parser.add_argument('--output', type=Path, default=ROOT / 'assets/dist')
     mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--refresh-item-metadata', action='store_true')
+    mode.add_argument('--migrate-items-stamp', metavar='COMMIT')
     mode.add_argument('--render', action='store_true')
     parser.add_argument('--check', type=Path)
     parser.add_argument('--only')
@@ -629,7 +700,17 @@ def main():
         check(args.check)
     else:
         config = read_json(args.config)
+        if args.migrate_items_stamp:
+            migrate_items_stamp(config, args.config.parent, args.migrate_items_stamp)
+            return 0
+        if args.refresh_item_metadata:
+            refresh_item_metadata(config, args.config.parent)
+            args.config.write_text(json.dumps(config, indent=2)+'\n')
+            return 0
         if args.render or args.check_stale:
+            # D-173 settled the turnip as cream; the switch is not in the stamp, so refuse any other value.
+            if os.environ.get('KAKI_TURNIP_STYLE', 'cream') != 'cream':
+                raise SystemExit('KAKI_TURNIP_STYLE must be unset or cream (D-173); other turnip options are scratch renders only')
             stale = render(config, args.config.parent, args.only, args.check_stale)
         if args.check_stale:
             return int(stale)

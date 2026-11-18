@@ -1,0 +1,186 @@
+# Round 5 — TR-041 pipeline checks
+
+`python3 -m unittest discover -s tools/assets -p 'test_*.py'`
+
+Load gate: `10:58  4 users, load averages: 3.36 4.36 5.92`
+
+Exit: 0
+
+```text
+......................................................................
+----------------------------------------------------------------------
+Ran 70 tests in 23.016s
+
+OK
+Predicted composition chicken-rice [{'food': 'rice', 'share': 0.19954988747186797, 'drop': 13.9679919979995, 'shiftMin': 7.2470617654413605}, {'food': 'chicken', 'share': 0.16711990497624407, 'drop': 16.069767441860463, 'shiftMin': 12.994998749687422}, {'food': 'cucumber', 'share': 0.08311452863215804, 'drop': 10.130782695673918, 'shiftMin': 11.81245311327832}]
+Predicted composition char-kway-teow [{'food': 'kway-teow', 'share': 0.331451713785339, 'drop': 60.304728546409805, 'shiftMin': 49.608956717538156}]
+Predicted composition satay [{'food': 'cucumber', 'share': 0.07480327254559081, 'drop': 9.55783162628029, 'shiftMin': 10.595553334998751}, {'food': 'satay', 'share': 0.2529040719460405, 'drop': 34.62253310017487, 'shiftMin': 20.11016737446915}]
+Predicted composition laksa [{'food': 'laksa-broth', 'share': 0.4922303473491773, 'drop': 65.73857404021938, 'shiftMin': 40.97592931139549}, {'food': 'noodles', 'share': 0.20473415600243755, 'drop': 13.207800121876904, 'shiftMin': 13.401584399756246}]
+Predicted composition rojak [{'food': 'pineapple', 'share': 0.07947299324831208, 'drop': 12.5423855963991, 'shiftMin': 12.655663915978995}, {'food': 'turnip', 'share': 0.19046949237309327, 'drop': 16.14403600900225, 'shiftMin': 15.058764691172794}, {'food': 'cucumber', 'share': 0.06235933983495874, 'drop': 7.894473618404601, 'shiftMin': 8.306076519129782}, {'food': 'rojak-dressing', 'share': 0.1306107776944236, 'drop': 16.794948737184296, 'shiftMin': 18.81495373843461}]
+Predicted composition kaya-toast [{'food': 'bread', 'share': 0.19054916187140356, 'drop': 28.56617463097323, 'shiftMin': 16.20215161371028}, {'food': 'drink-side', 'share': 0.16257505629221916, 'drop': 12.243432574430823, 'shiftMin': 15.415061295971979}]
+Predicted composition kopi-teh [{'food': 'kopi', 'share': 0.5451914514692787, 'drop': 93.3739982190561, 'shiftMin': 66.84683882457702}]
+Projected closest icons: (0.7457072771872445, 'chicken-rice', 'char-kway-teow')
+Chicken rice / rojak predicted icon IoU: 0.714176
+Rojak projected visible shares: [0.079697, 0.191007, 0.062535, 0.130979]
+Round 3 chicken prediction {'food': 'chicken', 'share': 0.08802200550137534, 'drop': 6.8267066766691675, 'shiftMin': 5.015253813453364, 'scores': [{'meanAbsoluteRGBA': [1.188797199299825, 4.231307826956739, 6.8267066766691675, 0.0], 'fractionOver40': 0.08177044261065267, 'passes': False}, {'meanAbsoluteRGBA': [1.2300575143785946, 3.744936234058515, 5.89697424356089, 0.012003000750187547], 'fractionOver40': 0.06726681670417604, 'passes': False}, {'meanAbsoluteRGBA': [1.259064766191548, 3.291572893223306, 5.015253813453364, 0.0], 'fractionOver40': 0.05476369092273068, 'passes': False}, {'meanAbsoluteRGBA': [1.703675918979745, 5.371842960740185, 8.502125531382847, 0.0], 'fractionOver40': 0.09927481870467617, 'passes': False}, {'meanAbsoluteRGBA': [2.0305076269067266, 7.195798949737434, 11.59964991247812, 0.0], 'fractionOver40': 0.1385346336584146, 'passes': False}]}
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1050 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 4688 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 64×64, waste 37.5%, 512 bytes, 16384 decoded
+diagnostic-walk-1: 64×64, waste 41.4%, 562 bytes, 16384 decoded
+diagnostic-walk-2: 64×64, waste 60.2%, 368 bytes, 16384 decoded
+PERF-023/024 passed: 3 atlases; manifest 5770 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+repeat-0: 20×40, waste 36.0%, 38 bytes, 3200 decoded
+PERF-023/024 passed: 1 atlases; manifest 1330 bytes
+repeat-0: 20×20, waste 36.0%, 38 bytes, 1600 decoded
+repeat-1: 20×20, waste 36.0%, 38 bytes, 1600 decoded
+PERF-023/024 passed: 2 atlases; manifest 1638 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 32×32, waste 59.4%, 336 bytes, 4096 decoded
+PERF-023/024 passed: 1 atlases; manifest 1122 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+solid-0: 12×12, waste 55.6%, 38 bytes, 576 decoded
+PERF-023/024 passed: 1 atlases; manifest 1024 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+edges-0: 8×16, waste 75.0%, 62 bytes, 512 decoded
+PERF-023/024 passed: 1 atlases; manifest 1108 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 64×64, waste 37.5%, 512 bytes, 16384 decoded
+diagnostic-walk-1: 64×64, waste 41.4%, 562 bytes, 16384 decoded
+diagnostic-walk-2: 64×64, waste 60.2%, 368 bytes, 16384 decoded
+PERF-023/024 passed: 3 atlases; manifest 5770 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+items-0: 94×470, waste 8.3%, 46 bytes, 176720 decoded
+PERF-023/024 passed: 1 atlases; manifest 3737 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+cook-0-body: 30×30, waste 24.9%, 62 bytes, 3600 decoded
+cook-0-mask: 30×30, waste 24.9%, 60 bytes, 3600 decoded
+PERF-023/024 passed: 2 atlases; manifest 6721 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+odd-0: 38×38, waste 19.9%, 38 bytes, 5776 decoded
+PERF-023/024 passed: 1 atlases; manifest 1021 bytes
+odd-0: 1926×1086, waste 0.6%, 130 bytes, 8366544 decoded
+PERF-023/024 passed: 1 atlases; manifest 1064 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+tiles-0: 84×84, waste 9.3%, 44 bytes, 28224 decoded
+PERF-023/024 passed: 1 atlases; manifest 7584 bytes
+tiles-0: 304×304, waste 2.6%, 46 bytes, 369664 decoded
+PERF-023/024 passed: 1 atlases; manifest 2237 bytes
+tiles-0: 304×304, waste 2.6%, 46 bytes, 369664 decoded
+PERF-023/024 passed: 1 atlases; manifest 2419 bytes
+diagnostic-walk-0: 512×32, waste 59.8%, 1038 bytes, 65536 decoded
+PERF-023/024 passed: 1 atlases; manifest 5054 bytes
+items: migrated verified committed render stamp; no rendering or packing
+
+```
+
+`python3 -m unittest discover -s tools/blender -p 'test_*.py'`
+
+Load gate: `10:59  4 users, load averages: 3.32 4.25 5.84`
+
+Exit: 0
+
+```text
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 1.099s
+
+OK
+FACE CHECK back.png: coverage=0.740 mean=0.465 std=0.239
+FACE CHECK back.png: coverage=0.740 mean=0.430 std=0.250
+FACE CHECK back.png: coverage=0.740 mean=0.454 std=0.249
+FACE CHECK paper.png: coverage=0.740 mean=0.967 std=0.017
+FACE CHECK paper.png: coverage=0.740 mean=0.967 std=0.017
+FACE CHECK paper.png: coverage=0.740 mean=0.969 std=0.000
+
+```
+
+`VITEST_MAX_WORKERS=2 pnpm exec vitest run tools/items.test.ts tools/assets`
+
+Load gate: `10:59  4 users, load averages: 3.32 4.25 5.84`
+
+Exit: 0
+
+```text
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-10
+
+
+ Test Files  3 passed (3)
+      Tests  11 passed (11)
+   Start at  10:59:20
+   Duration  24.43s (transform 145ms, setup 0ms, import 188ms, tests 24.41s, environment 0ms)
+
+
+```
+
+`pnpm exec eslint tools --max-warnings 0`
+
+Load gate: `10:59  4 users, load averages: 3.30 4.17 5.76`
+
+Exit: 0
+
+```text
+
+```
+
+`pnpm run lint:design`
+
+Load gate: `10:59  4 users, load averages: 3.19 4.13 5.74`
+
+Exit: 0
+
+```text
+$ node tools/lint_design.mjs
+design lint passed: 408 file(s) scanned
+
+```
+

@@ -16,16 +16,16 @@
     "luminanceVariance": 0.02720389766393341
   },
   "item-chicken-chopped": {
-    "opaquePixels": 1353,
-    "luminanceVariance": 0.05075672877995136
+    "opaquePixels": 1913,
+    "luminanceVariance": 0.02844074317417863
   },
   "item-cucumber-raw": {
     "opaquePixels": 1355,
     "luminanceVariance": 0.008917107995879752
   },
   "item-cucumber-chopped": {
-    "opaquePixels": 1450,
-    "luminanceVariance": 0.03825389865660742
+    "opaquePixels": 1310,
+    "luminanceVariance": 0.03701575807519307
   },
   "item-kway-teow-raw": {
     "opaquePixels": 1850,
@@ -84,16 +84,16 @@
     "luminanceVariance": 0.01751279700798913
   },
   "item-pineapple-chopped": {
-    "opaquePixels": 1228,
-    "luminanceVariance": 0.041474396222633624
+    "opaquePixels": 1069,
+    "luminanceVariance": 0.03764504795554479
   },
   "item-turnip-raw": {
     "opaquePixels": 2180,
     "luminanceVariance": 0.033897765721535855
   },
   "item-turnip-chopped": {
-    "opaquePixels": 814,
-    "luminanceVariance": 0.057661950704764965
+    "opaquePixels": 959,
+    "luminanceVariance": 0.053941875089788864
   },
   "item-bread-raw": {
     "opaquePixels": 2561,
@@ -133,7 +133,7 @@
   },
   "container-plate-dirty": {
     "opaquePixels": 4076,
-    "luminanceVariance": 0.028326420679658567
+    "luminanceVariance": 0.028326360737125876
   },
   "container-bowl-clean": {
     "opaquePixels": 3328,
@@ -156,24 +156,24 @@
     "luminanceVariance": 0.028591452639086593
   },
   "dish-chicken-rice-plated": {
-    "opaquePixels": 4039,
-    "luminanceVariance": 0.025032869226725797
+    "opaquePixels": 4040,
+    "luminanceVariance": 0.024708303062023384
   },
   "dish-char-kway-teow-plated": {
     "opaquePixels": 4039,
     "luminanceVariance": 0.052963965997023396
   },
   "dish-satay-plated": {
-    "opaquePixels": 4043,
-    "luminanceVariance": 0.027712168944019337
+    "opaquePixels": 4044,
+    "luminanceVariance": 0.027938821934115777
   },
   "dish-laksa-plated": {
     "opaquePixels": 3328,
-    "luminanceVariance": 0.02031069319549583
+    "luminanceVariance": 0.024234544459664234
   },
   "dish-rojak-plated": {
-    "opaquePixels": 4039,
-    "luminanceVariance": 0.027942821961602443
+    "opaquePixels": 4040,
+    "luminanceVariance": 0.036079921900782165
   },
   "dish-kaya-toast-plated": {
     "opaquePixels": 4039,
@@ -184,24 +184,24 @@
     "luminanceVariance": 0.05557756141573421
   },
   "icon-chicken-rice": {
-    "opaquePixels": 1045,
-    "luminanceVariance": 0.05265610335561733
+    "opaquePixels": 1074,
+    "luminanceVariance": 0.0375556058554274
   },
   "icon-char-kway-teow": {
     "opaquePixels": 946,
     "luminanceVariance": 0.021235746954236433
   },
   "icon-satay": {
-    "opaquePixels": 744,
-    "luminanceVariance": 0.037438105856536404
+    "opaquePixels": 788,
+    "luminanceVariance": 0.03773279813014391
   },
   "icon-laksa": {
     "opaquePixels": 1008,
-    "luminanceVariance": 0.035120926819382156
+    "luminanceVariance": 0.037393946464280486
   },
   "icon-rojak": {
-    "opaquePixels": 988,
-    "luminanceVariance": 0.05641567590009979
+    "opaquePixels": 987,
+    "luminanceVariance": 0.045736351172032404
   },
   "icon-kaya-toast": {
     "opaquePixels": 945,
@@ -213,15 +213,15 @@
   },
   "portion-rice-cooked": {
     "opaquePixels": 988,
-    "luminanceVariance": 0.002913532852135255
+    "luminanceVariance": 0.0035382827877611257
   },
   "portion-chicken-chopped": {
-    "opaquePixels": 386,
-    "luminanceVariance": 0.018769411308333137
+    "opaquePixels": 699,
+    "luminanceVariance": 0.006812570636952888
   },
   "portion-cucumber-chopped": {
-    "opaquePixels": 253,
-    "luminanceVariance": 0.01544284935475724
+    "opaquePixels": 386,
+    "luminanceVariance": 0.01805502016594028
   },
   "portion-kway-teow-cooked": {
     "opaquePixels": 1498,
@@ -232,20 +232,20 @@
     "luminanceVariance": 0.007886070179367313
   },
   "portion-laksa-broth-cooked": {
-    "opaquePixels": 2428,
-    "luminanceVariance": 0.0011139967308308567
+    "opaquePixels": 2444,
+    "luminanceVariance": 0.008295724284044204
   },
   "portion-noodles-cooked": {
-    "opaquePixels": 887,
-    "luminanceVariance": 0.0025500801359398233
+    "opaquePixels": 713,
+    "luminanceVariance": 0.003954685577557636
   },
   "portion-pineapple-chopped": {
-    "opaquePixels": 581,
-    "luminanceVariance": 0.0038871598704843364
+    "opaquePixels": 536,
+    "luminanceVariance": 0.0037501977839323806
   },
   "portion-turnip-chopped": {
-    "opaquePixels": 623,
-    "luminanceVariance": 0.00411719965719761
+    "opaquePixels": 726,
+    "luminanceVariance": 0.01138719323036587
   },
   "portion-bread-cooked": {
     "opaquePixels": 999,
@@ -261,11 +261,11 @@
   },
   "portion-teh-cooked": {
     "opaquePixels": 660,
-    "luminanceVariance": 0.0009227487133427416
+    "luminanceVariance": 0.0031870287434645557
   },
   "portion-rojak-dressing-clean": {
-    "opaquePixels": 303,
-    "luminanceVariance": 0.019493289582319315
+    "opaquePixels": 593,
+    "luminanceVariance": 0.019018945071729607
   },
   "portion-side-cup-clean": {
     "opaquePixels": 787,
@@ -277,7 +277,7 @@
   },
   "portion-side-teh-cooked": {
     "opaquePixels": 318,
-    "luminanceVariance": 0.0007923280252802961
+    "luminanceVariance": 0.0025045895406258277
   },
   "portion-drink-side-clean": {
     "opaquePixels": 787,
@@ -300,7 +300,7 @@
     "chicken-rice": {
       "meanAbsoluteRGBA": [
         0.0,
-        0.0,
+        0.0002475860361475613,
         0.0,
         0.0
       ],
@@ -309,9 +309,9 @@
       "dropPortionRejected": true,
       "shiftPortionRejected": true,
       "visiblePortionShares": [
-        0.2198017693501433,
-        0.07425639233162937,
-        0.04964536941292982
+        0.19348566775743498,
+        0.1535090347009773,
+        0.08214419216560107
       ]
     },
     "char-kway-teow": {
@@ -341,7 +341,7 @@
       "dropPortionRejected": true,
       "shiftPortionRejected": true,
       "visiblePortionShares": [
-        0.045688014651056964,
+        0.0750734802948745,
         0.24409702510056236
       ]
     },
@@ -357,8 +357,8 @@
       "dropPortionRejected": true,
       "shiftPortionRejected": true,
       "visiblePortionShares": [
-        0.4864300527903469,
-        0.21826687405731524
+        0.5012505545204508,
+        0.18448576546003018
       ]
     },
     "rojak": {
@@ -373,10 +373,10 @@
       "dropPortionRejected": true,
       "shiftPortionRejected": true,
       "visiblePortionShares": [
-        0.09766560731065119,
-        0.12640559999444098,
-        0.049235337999678074,
-        0.04641607076106005
+        0.06718847636924073,
+        0.10978989074135788,
+        0.06494157169443372,
+        0.12582516542145453
       ]
     },
     "kaya-toast": {

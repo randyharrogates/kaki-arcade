@@ -21,7 +21,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | A-07 | Effects: steam, sparks, fire, extinguisher spray, thrown-item shadows | TR-009, TR-010, TR-062 | A-01 | 2 | todo |
 | A-08 | Playing cards: faces, back and flip frames, suits distinct by shape | PP-030, PP-031 | G-02, A-01 | 2 | done |
 | A-09 | Shell imagery: landing illustration and game picker tiles (image generation may use Codex, logged) | REL-002, PLAT-020 | G-02 | 2 | todo |
-| A-10 | Dish art polish after A-04 (D-145): mixed rojak heap, recognisable chopped turnip and chicken at 1×, broth and cup-food cases, document and use the dish composition fields, 1× evidence | TR-041 | A-04 | 2 | todo |
+| A-10 | Dish art polish after A-04 (D-145): mixed rojak heap, recognisable chopped turnip and chicken at 1×, broth and cup-food cases, document and use the dish composition fields, 1× evidence | TR-041 | A-04 | 2 | done |
 
 ## Carried from reviews
 

@@ -100,9 +100,30 @@ sources. It is written only after successful rendering and presence of every dec
 post-render input bytes are hashed to capture any inputs updated during rendering.
 Missing outputs, missing/invalid stamps or differing hashes make a job stale. Existing outputs
 without stamps rerender once; checkouts that only change timestamps do not invalidate stamps.
-All declared inputs remain significant, including the full pipeline config when declared.
-A job declaring the whole `pipeline.json` becomes stale whenever any art issue edits that file.
+For the `items` job only, the declared `pipeline.json` input is canonical JSON with
+only `tabao-rush-items.containmentFootprints` and that set's per-frame `bakedOutline`
+removed. These named fields describe published pixels and are written by metadata
+refresh; they do not control rendering. Every other field (including fields in
+other sets), script, declared input, extra input and argument remains significant.
+Other jobs continue hashing the full declared config bytes. JSON formatting and
+key order alone do not change the items config hash.
 Duplicate ids and colliding stamp paths are rejected before rendering.
+
+TR-041 legacy stamp migration (no Blender or PNG changes):
+
+```sh
+python3 tools/assets/pipeline.py --migrate-items-stamp 240c5c75beda81255ffd8fc3391b581472fe8d80
+python3 tools/assets/pipeline.py --check-stale --only items
+```
+
+Migration authenticates the revision's legacy stamp using its committed sources
+and either its config or its parent config (the round-4 render preceded metadata
+refresh). It then requires all current real inputs and declared output bytes to
+match that authenticated revision before writing the new items stamp. Changed
+sources or settings refuse migration; it is not an unconditional restamp command.
+The command can be repeated for that legacy revision. It neither packs nor renders.
+Future renders write the new stamp directly: render → refresh → pack → sheet
+needs only one render, even when refreshed footprints or ink flags change.
 
 Lossy WebP is accepted only for pages containing a single frame (backgrounds). Multi-frame
 pages must use lossless encoding to prevent neighbour bleed; this is checked per packed page,
@@ -219,3 +240,103 @@ the first stable frame ID and packs one tile. Original IDs remain aliases to the
 same rectangle for direct references. Timing, frame count and release indices
 are unchanged. This includes idle/extinguish slots 1 and 3 and any other exact
 repeats; distinct anchors or metadata prevent sharing.
+
+## 10. Item serving compositions (TR-041; D-141, D-145)
+
+The `tabao-rush-items` set declares these frame metadata keys for preservation by
+`pipeline.py`. They describe how to draw a serving; the game reader is a track-T
+follow-up. They are not additional recipe rules. Ready food can be placed in any
+accepted container, including a wrong recipe.
+
+| Field | Meaning and selection |
+|---|---|
+| `composition` | Ordered portion layers for a fixed `dish-…-plated` reference. Use the dish's recipe container as the base. This is the canonical reference for composition validation. |
+| `servedComposition` | On a completed dish, draw `container` first, then select `variants[servedDrink]` using the **actual** served kopi or teh. `ingredient: "servedDrink"` names that simulation selector, not a literal ingredient. Kaya toast and kopi-teh require this selection; never fall back to the fixed kopi reference for teh. |
+| `contentCompositions` | On a clean or dirty container, a map from ingredient ID to replacement layers. For that ingredient, draw these layers **instead of** its generic portion. Plate kopi/teh use a final-size side cup followed by its matching liquid, so neither becomes a bare puddle. |
+| `portionScales` | Dimensionless scale for a generic ingredient portion in this container, used only when there is no content override. Plate food is normally 1, bowl food 0.70, cup food 0.36. Bowl broth/noodles and cup kopi/teh are authored to fit and use 1. |
+
+All anchors are **pixels in the original, untrimmed 89 × 89 PNG canvas**. The
+source frame anchor is [44.5, 44.5]; +X is right, +Y is down. A layer's explicit
+`anchor` is its destination in the container canvas. Otherwise `slot` selects a
+named destination from the base container's `anchors`. Sort layers by increasing
+`order` and alpha-composite back to front. Each layer has its own optional
+`scale`, default **1**; composition layers do not implicitly inherit
+`portionScales`. An explicit anchor takes precedence over a slot.
+
+For generic contents, select `portion-<ingredient>-<appearance>` (including bread's
+spread history), its named container anchor and its `portionScales` value. For a
+content override, use the override's layers and explicit/default layer scales.
+For a completed served variant, use that variant's base container and layers;
+do not also draw the fixed dish or duplicate its generic contents. For other
+completed dishes, the fixed reference or its equivalent ordered composition is
+available. Dirty containers retain the same content-placement contract.
+
+For source point **p**, destination anchor **a**, source anchor **s** and scale
+**k**, the placement is **a + k × (p − s)**, in pixels. Scale is uniform about the
+source anchor **before** translation, never about the trim rectangle or canvas
+corner. Atlas `trim` and `rect` are storage details; reconstruct their source
+position before applying this transform. Lower-detail atlas coordinates are
+halved but the intended full-resolution TV geometry remains the same.
+`halfRule` halves a frame's `anchor` and named `anchors`; it does **not** halve
+explicit anchors nested inside `contentCompositions` or `servedComposition`
+metadata. A reader using half-detail source coordinates must halve those explicit
+anchors itself before applying the placement transform.
+
+The Blender portion table is in world units, with 120 px/world unit at 1080p and
+the DESIGN §4.6 camera. Its projected slot is
+`[44.5 + round(120*x), 44.5 - round(120*(y*sin(60°) + z*0.5))]`.
+`PORTIONS`' authored model scale is already baked into its PNG: do not multiply
+it again in game code. In particular the side-cup model's 0.68 is baked at final
+size, outlined there and composed at scale **1**. The generic 0.36 cup food scale
+is an additional container transform. Every `bakedOutline` frame must retain
+unit composition scale (§8), including in generic slots and served variants.
+
+Broth portions now include their own ceramic rim: even a wrong plate serving has
+liquid enclosed by a rim; the laksa recipe remains bowl-based. The rim is geometry,
+not baked raster ink, so generic cup/bowl scaling is permitted. Validation checks
+all accepted generic portions, overrides and served variants against the clean
+container's opaque interior excluding ink, allowing at most two offending pixels
+per layer. A render must pass containment, composition colour/visibility, frame
+edge and silhouette checks before visual review. Recorded footprints describe the
+committed PNGs. After every render, refresh them with:
+
+`python3 tools/assets/pipeline.py --refresh-item-metadata`
+
+This mode reads all item PNGs, recomputes container/portion footprints and each
+frame's `bakedOutline` flag (alpha ≥128, ink RGB 43,33,24 within ±2), then writes
+only pipeline.json. It neither renders nor packs, and deliberately permits stale
+render stamps so committed pixels can be repaired independently of source changes.
+
+## 11. Item evidence sheets (TR-041)
+
+After rendering and publishing the `items` job, run:
+
+`python3 tools/assets/item_sheet.py round1`
+
+This creates a **new** `uat/evidence/A-10-dish-polish/round1/` directory; existing
+runs are refused. Stale renders are refused using the pipeline's content stamp.
+It writes labelled 1920 × 1080 PNG pages on light marble (`#EFEAE2`) and dark kopi
+counter tones (`#6B4426`), each with one faint speckle treatment. These are
+controlled contrast backgrounds from DESIGN §4.2, not a claim to reproduce every
+lit counter in a level. Pages cover every fixed dish, portion and container,
+separate loose-items and icons pages, all served-drink variants, and each ready food in plate, bowl and cup compositions.
+Thus the 0.36 cup contents, plate broth rim and both plate drinks can be inspected.
+
+View each `*-1x-*.png` at **100%**, one image pixel per display pixel: an item
+canvas occupies 89 × 89 pixels at the 1080p TV design scale (120 px/world unit);
+order icons retain their native 55 × 55 pixel canvas.
+`*-4x-*.png` magnifies the exact same pixels by nearest neighbour to 356 × 356;
+icons become 220 × 220; it does not rerender or improve details. Do not fit either page to the window
+when judging size. `sheet.json` records every case, page, source SHA-256 and render
+digest. Its visual review state starts as pending. Review all pages at both scales,
+then record findings alongside them; generating sheets alone is not a visual pass.
+
+Turnip render options (TR-041; D-145): `items.py` alone reads
+`KAKI_TURNIP_STYLE=tan|cream|lilac`; default is `cream`, chosen in D-173. The switch is outside the render stamp, so `pipeline.py --render` and `--check-stale` refuse any value but `cream`; the other options are for scratch renders by calling Blender directly, and the switch goes in a later art pass. Tan retains the round-2
+face. Cream uses an off-white cut face, warm-beige sides and a darker edge. Lilac
+adds a muted purple skin band on one side of the cream face. The authored colour
+smoke check requires side/ceramic contrast >2:1 and edge/face >1.5:1; the pale top
+is intentionally exempt. Palette tokens are declared in items.py. These material
+ratios do not establish rendered readability. Render all three options into
+scratch directories for Randy's artifact; `--out` supports scratch output without
+publishing source PNGs. The default render and its rendered checks remain the gate.

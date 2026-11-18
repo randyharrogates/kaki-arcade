@@ -36,8 +36,9 @@ DISHES = ('chicken-rice', 'char-kway-teow', 'satay', 'laksa', 'rojak', 'kaya-toa
 # all consume this table. Camera is fixed at 60 degrees and 120 pixels/world unit.
 PORTIONS = {
     'rice': (('cooked',), (-.09, .05, .06), .66),
-    'chicken': (('chopped',), (.10, -.09, .07), .55),
-    'cucumber': (('chopped',), (.13, .12, .07), .42),
+    'chicken': (('chopped',), (.10, -.09, .07), .62),
+    # Wider cucumber portion exposes the outer slices around the mixed rojak cap.
+    'cucumber': (('chopped',), (.13, .12, .07), .56),
     'kway-teow': (('cooked',), (0, 0, .08), .9),
     'satay': (('cooked',), (-.10, -.03, .05), .78),
     'laksa-broth': (('cooked',), (0, 0, .165), 1),
@@ -47,7 +48,8 @@ PORTIONS = {
     'bread': (('cooked', 'spread'), (-.09, -.04, .06), .63),
     'kopi': (('cooked',), (0, 0, .255), 1),
     'teh': (('cooked',), (0, 0, .255), 1),
-    'rojak-dressing': (('clean',), (0, 0, .16), 1),
+    # Compact cap connects all three portions without blanketing their silhouettes.
+    'rojak-dressing': (('clean',), (0, 0, .16), .60),
     'side-cup': (('clean',), (0, 0, 0), .68),
     'side-kopi': (('cooked',), (0, 0, 0), .68),
     'side-teh': (('cooked',), (0, 0, 0), .68),
@@ -63,6 +65,80 @@ DISH_PARTS = {
     'kaya-toast': ('plate', (('bread', 'spread', 10), ('drink-side', 'clean', 20))),
     'kopi-teh': ('cup', (('kopi', 'cooked', 10),)),
 }
+
+
+# Pure geometry specifications, shared by Blender and TR-041 regression checks.
+CERAMIC = '#F4EBDD'
+# Item material palette: existing dough/cream/beige tokens plus a muted purple
+# skin token for Randy's lilac option (original turnip skin, not a brand colour).
+TURNIP_PALETTE = {
+    'tan': ('#AA682E', '#C7A16A', '#AA682E'),
+    'cream': ('#C7A16A', '#EEE3C9', '#AA682E'),
+    'lilac': ('#C7A16A', '#EEE3C9', '#A58AAB'),
+}
+TURNIP_STYLE = os.environ.get('KAKI_TURNIP_STYLE', 'cream')
+if TURNIP_STYLE not in TURNIP_PALETTE:
+    raise ValueError('KAKI_TURNIP_STYLE must be tan, cream or lilac')
+TURNIP_EDGE, TURNIP_FACE, TURNIP_SKIN = TURNIP_PALETTE[TURNIP_STYLE]
+CHICKEN_SKIN, CHICKEN_FACE = '#AA682E', '#E9BC8F'
+CHICKEN_BAND_WIDTH = .030
+BROTH_RADIUS, BROTH_RIM_RADIUS, BROTH_RIM_WIDTH = .221, .235, .010
+
+
+def turnip_chunks():
+    return [((x, y, .055+(i%2)*.025), (.080, .092, .070), angle)
+            for i, (x, y, angle) in enumerate((
+                (-.11,-.08,.2), (0,-.10,-.4), (.11,-.07,.7),
+                (-.10,.03,-.2), (.01,.02,.4), (.11,.04,1.0),
+                (-.05,.12,-.7), (.06,.12,.1)))]
+
+
+def chicken_slices():
+    # Broad, low shingles: the +X skin edge sits above the next slice.
+    # Build lower/right slices first; dimensions are full box extents.
+    return [(((i-2)*.075, .018*abs(i-2), .052+(4-i)*.009),
+             (.17, .27-abs(i-2)*.008, .04), (i-2)*.18)
+            for i in reversed(range(5))]
+
+
+def rojak_topping():
+    # Dough is interleaved with fruit/vegetable portions, sauce is a set of broad
+    # flattened lobes, never curves. Centre rises above the outer chunks.
+    dough = [((x,y,z), (.085,.070,.065), angle)
+             for x,y,z,angle in ((-.15,-.05,-.015,.4), (.12,-.09,-.005,-.5),
+                                 (-.09,.10,.015,1.1), (.08,.08,.035,.2))]
+    sauce = [((x,y,z), (.075,.063,.013)) for x,y,z in (
+        (-.17,-.07,.020), (-.06,-.12,.040), (.07,-.08,.035),
+        (.16,.02,.025), (-.12,.07,.045), (0,.04,.075), (.06,.14,.030))]
+    peanuts = [((x,y,z+.020), (.028,.023,.018), i*.71)
+               for i,(x,y,z) in enumerate((
+                   (-.17,-.07,.020), (-.06,-.12,.040), (.07,-.08,.035),
+                   (.16,.02,.025), (-.12,.07,.045), (0,.04,.075),
+                   (.06,.14,.030), (-.02,.06,.075), (.03,.02,.075)))]
+    return dough, sauce, peanuts
+
+
+def rojak_mix():
+    # Repeated recipe ingredients bridge the three portion slots into one tossed
+    # heap. These are garnish geometry, not additional simulation ingredients.
+    return [(food, (x,y,z), (.070,.060,.055), colour, angle)
+            for food,x,y,z,colour,angle in (
+                ('pineapple', .11,.03,.025,'#E9BB38',.5),
+                ('pineapple', -.04,.12,.035,'#E9BB38',-.7),
+                ('cucumber', -.14,.02,.020,'#3D873E',1.1),
+                ('cucumber', .03,-.11,.025,'#3D873E',-.3),
+                ('turnip', .12,.12,.015,TURNIP_FACE,.8),
+                ('turnip', -.08,-.09,.020,TURNIP_FACE,-.4))]
+
+
+def colour_contrast(a, b):
+    """WCAG relative-luminance ratio of authored sRGB materials, before lighting."""
+    def luminance(colour):
+        rgb = [int(colour[i:i+2], 16)/255 for i in (1,3,5)]
+        linear = [v/12.92 if v <= .04045 else ((v+.055)/1.055)**2.4 for v in rgb]
+        return sum(v*w for v,w in zip(linear, (.2126,.7152,.0722)))
+    lo, hi = sorted((luminance(a), luminance(b)))
+    return (hi+.05)/(lo+.05)
 
 
 def dish_layers(ident):
@@ -129,18 +205,19 @@ def portion(ident, state, placed=False):
     _, offset, scale = PORTIONS[ident]
     start = set(model.children)
     if ident == 'rojak-dressing':
-        # Short unequal drizzles cross only small patches of the mixed heap.
-        for points in (
-                [(-.23,-.11,.01),(-.18,-.09,.018),(-.13,-.12,.01)],
-                [(-.05,-.20,.01),(.01,-.16,.018),(.05,-.17,.01)],
-                [(.10,-.07,.01),(.14,-.02,.018),(.20,-.04,.01)],
-                [(-.12,.06,.01),(-.07,.10,.018),(.01,.08,.01)],
-                [(.04,.18,.01),(.10,.15,.018),(.17,.17,.01)]):
-            strand(points, '#513022', .009)
-        for x, y, angle in ((-.18,-.08,.3),(-.04,-.18,1.2),(.12,-.03,.7),
-                            (-.08,.10,-.4),(.08,.15,1.8),(.20,.07,.2)):
-            fleck = box((x, y, .035), (.025, .016, .012), '#C7A16A')
-            fleck.rotation_euler.z = angle
+        dough, sauce, peanuts = rojak_topping()
+        for _, loc, size, colour, angle in rojak_mix():
+            obj = box(loc, size, colour)
+            obj.rotation_euler.z = angle
+        for loc, size, angle in dough:
+            obj = box(loc, size, '#C98A45')
+            obj.rotation_euler.z = angle
+            ball((loc[0],loc[1],loc[2]+.035), (.030,.023,.008), '#6B4426')
+        for loc, size in sauce:
+            ball(loc, size, '#513022')
+        for loc, size, angle in peanuts:
+            obj = box(loc, size, '#C7A16A')
+            obj.rotation_euler.z = angle
     elif ident == 'side-cup':
         vessel('cup')
     elif ident in ('side-kopi', 'side-teh'):
@@ -151,17 +228,22 @@ def portion(ident, state, placed=False):
         strand([(.10*math.cos(t*math.tau/32), .10*math.sin(t*math.tau/32), .271)
                 for t in range(33)], '#CDAC71', .008)
     elif ident in ('kopi', 'teh', 'laksa-broth'):
-        radius = .125 if ident != 'laksa-broth' else .245
+        radius = .125 if ident != 'laksa-broth' else BROTH_RADIUS
         ball((0, 0, 0), (radius, radius, .018),
              {'kopi': '#462D20', 'teh': '#AD7445', 'laksa-broth': '#DF702D'}[ident])
         if ident == 'laksa-broth':
+            # The portion carries its own ceramic rim, including on a wrong plate.
+            # No baked ink: this rim must also survive generic cup scaling.
+            strand([(BROTH_RIM_RADIUS*math.cos(t*math.tau/48),
+                     BROTH_RIM_RADIUS*math.sin(t*math.tau/48), .012)
+                    for t in range(49)], CERAMIC, BROTH_RIM_WIDTH)
             for i in range(5):
                 ball((.13*math.cos(i*1.3), .13*math.sin(i*1.3), .018), (.025, .025, .009), '#A54624')
-        elif ident == 'kopi':
+        else:
             strand([(.10*math.cos(t*math.tau/32), .10*math.sin(t*math.tau/32), .016)
                     for t in range(33)], '#CDAC71', .008)
     else:
-        ingredient(ident, state)
+        ingredient(ident, state, serving=True)
     for obj in set(model.children)-start:
         obj.location *= scale
         obj.scale *= scale
@@ -350,11 +432,11 @@ def vessel(kind, dirty=False, offset=(0, 0, 0), filled=None):
 
 
 
-def ingredient(ident, state, offset=(0, 0, 0), scale=1):
+def ingredient(ident, state, offset=(0, 0, 0), scale=1, serving=False):
     # All food fits a .60-world-unit footprint; chunking changes silhouette.
     start = set(model.children)
     burnt = state == 'burnt'
-    colours = {'rice': '#F2E3BA', 'chicken': '#E9BC8F', 'cucumber': '#3D873E',
+    colours = {'rice': '#DCC697' if serving else '#F2E3BA', 'chicken': '#E9BC8F', 'cucumber': '#3D873E',
                'kway-teow': '#DCC697' if state in ('raw', 'chopped') else '#6B4426',
                'satay': '#D99488' if state in ('raw', 'chopped') else '#DF9A58', 'laksa-broth': '#DF702D', 'noodles': '#E4AD65' if state == 'cooked' else '#F4D695',
                'pineapple': '#E9BB38', 'turnip': '#EEE4CF', 'bread': '#C98A45',
@@ -386,9 +468,9 @@ def ingredient(ident, state, offset=(0, 0, 0), scale=1):
             for i in range(5):
                 ball((.13*math.cos(i*1.3), .13*math.sin(i*1.3), .20), (.025, .025, .009), '#A54624')
     elif ident == 'noodles':
-        for j in range(5):
-            strand([(-.23+t*.046, (j-2)*.075+.055*math.sin(t*.8+j),
-                     .045+j%2*.03) for t in range(11)], c, .022)
+        for j in range(3 if serving else 5):
+            strand([(-.23+t*.046, (j-(1 if serving else 2))*.075+.055*math.sin(t*.8+j),
+                     .045+j%2*.03) for t in range(11)], c, .032 if serving else .022)
     elif ident == 'kway-teow':
         palette = ('#161310', '#231B16') if burnt else (('#EEE3C9', '#DCCDAF')
                   if state in ('raw', 'chopped') else ('#583019', '#754326'))
@@ -434,7 +516,7 @@ def ingredient(ident, state, offset=(0, 0, 0), scale=1):
         else:
             ball((0, 0, .09), (.24, .22, .09), c)
             ball((0, 0, .13), (.20, .19, .16), c)
-        for i in range(24):
+        for i in range(8 if serving else 24):
             a = i*2.4; r = .025+.014*(i%9)
             ball((r*math.cos(a), .04+r*.6*math.sin(a), .30-.035*(i%3)), (.027, .011, .012), c)
     elif ident == 'chicken':
@@ -445,12 +527,15 @@ def ingredient(ident, state, offset=(0, 0, 0), scale=1):
                 ball((side*.16, -.22, .07), (.04, .075, .04), '#EAD9BC')
                 ball((side*.16, .10, .10), (.09, .08, .07), '#D4A38D')
         else:
-            for i in range(5):
-                x = (i-2)*.095
-                ball((x, (i%2)*.025, .065), (.040, .12-abs(i-2)*.012, .045), '#EFE0BC')
-                # Broad skin cap at one end, leaving a clear pale cut face.
-                ball((x, .055, .105), (.040, .060, .018), '#AA682E')
-                strand([(x-.026, .014, .12), (x, .012, .126), (x+.026, .014, .12)], '#D3A65C', .009)
+            for loc, size, angle in chicken_slices():
+                # Local +X is one long edge; rotate both offset and band together.
+                cut = box(loc, size, CHICKEN_FACE)
+                cut.rotation_euler.z = angle
+                band_offset = size[0]/2-CHICKEN_BAND_WIDTH/2
+                skin = box((loc[0]+band_offset*math.cos(angle),
+                            loc[1]+band_offset*math.sin(angle), loc[2]+size[2]/2),
+                           (CHICKEN_BAND_WIDTH, size[1], .008), CHICKEN_SKIN)
+                skin.rotation_euler.z = angle
     elif ident == 'pineapple' and state == 'raw':
         # Upright oval fruit; diamond lattice follows the curved skin in both directions.
         ball((0, 0, .22), (.155, .145, .215), '#C6A044')
@@ -482,23 +567,28 @@ def ingredient(ident, state, offset=(0, 0, 0), scale=1):
         if ident == 'turnip':
             strand([(.18, 0, .10), (.28, -.02, .045)], c, .022)
             strand([(-.20, 0, .12), (-.27, .05, .19)], '#417842', .025)
+    elif ident == 'turnip':
+        for loc, size, angle in turnip_chunks():
+            edge = box(loc, size, TURNIP_EDGE)
+            edge.rotation_euler.z = angle
+            face = box((loc[0], loc[1], loc[2]+size[2]/2),
+                       (size[0]*.82, size[1]*.82, .010), TURNIP_FACE)
+            face.rotation_euler.z = angle
+            band_offset = size[0]/2-.006
+            skin = box((loc[0]+band_offset*math.cos(angle), loc[1]+band_offset*math.sin(angle),
+                        loc[2]+size[2]/2), (.012, size[1], .012), TURNIP_SKIN)
+            skin.rotation_euler.z = angle
     else:
-        for i in range(9 if ident == 'turnip' else 5):
-            x, y = (i%3-1)*.15, (i//3-.5)*.17
+        for i in range(5):
+            x, y = ((-.12,-.07), (.08,-.11), (-.08,.08), (.12,.07), (0,.01))[i]
+            z = .055+(.045 if i == 4 else (i%2)*.018)
             if ident == 'cucumber':
-                ball((x, y, .055), (.075, .075, .035), c)
-                ball((x, y, .088), (.052, .052, .009), '#BFD07B' if not burnt else '#40362B')
+                ball((x, y, z), (.075, .075, .035), c)
+                ball((x, y, z+.033), (.052, .052, .009), '#BFD07B' if not burnt else '#40362B')
             elif ident == 'pineapple':
-                obj = box((x, y, .065), (.12, .085, .10), c)
+                obj = box((x, y, z+.01), (.12, .085, .10), c)
                 obj.rotation_euler.z = (i%3-1)*.55
-                strand([(x-.04, y-.025, .12), (x+.04, y+.025, .12)], '#F3D269', .012)
-            elif ident == 'turnip':
-                x, y = (i%3-1)*.085, (i//3-1)*.075
-                angle = (.2, -.4, .7, -.2, .4, 1.0, -.7, .1, -.3)[i]
-                obj = box((x, y, .045+(i%3)*.018), (.050, .135, .045), '#CEBA96')
-                obj.rotation_euler.z = angle
-                face = box((x, y, .069+(i%3)*.018), (.041, .126, .009), '#EEE9DD')
-                face.rotation_euler.z = angle
+                strand([(x-.04, y-.025, z+.065), (x+.04, y+.025, z+.065)], '#F3D269', .012)
             else:
                 box((x, y, .06), (.12, .12, .10), c)
     if burnt and ident in ('rice', 'laksa-broth', 'bread'):
@@ -1151,8 +1241,8 @@ def main():
     parser.add_argument('--check-only', action='store_true')
     args = parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
     coverage()
-    if args.out.resolve() != ROOT/'assets/src/tabao-rush/items':
-        parser.error('Output must be assets/src/tabao-rush/items')
+    if args.out.resolve().is_relative_to(ROOT/'assets/dist'):
+        parser.error('Output must not be assets/dist')
     global bpy, K, Vector, materials
     import bpy
     import kalib as K
@@ -1232,6 +1322,8 @@ def main():
         print(f'Projected closest: {left} / {right}: IoU {score:.6f}')
         if not args.check_only:
             rendered_score, rendered_left, rendered_right = closest_pair(icon_masks)
+            if rendered_score >= .75:
+                raise RuntimeError(f'{rendered_left} / {rendered_right}: rendered icon IoU must be < .75')
             print(f'Rendered closest: {rendered_left} / {rendered_right}: IoU {rendered_score:.6f}')
             print(f'Projected closest pair rendered IoU: {len(icon_masks[left] & icon_masks[right])/len(icon_masks[left] | icon_masks[right]):.6f}')
             for i, (left, a) in enumerate(projected_masks.items()):
