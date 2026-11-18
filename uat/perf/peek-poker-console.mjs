@@ -2,7 +2,7 @@
 /** @type {import('../../tools/perf/browser.ts').Scenario} */
 const scenario = {
   name: 'peek-poker-console',
-  frameReason: 'One console round is diagnostic, not a busiest 180-second round',
+  frameReason: 'A full console match including scoreboard and podium is diagnostic, not a busiest 180-second round',
   inputReason: 'Controller inputs are exercised without instrumented apply timestamps',
   feedbackReason: 'Controller feedback is not instrumented in this table diagnostic',
   async run(h) {
@@ -27,6 +27,7 @@ const scenario = {
         await leader.getByRole('button', { name: 'Start', exact: true }).click();
         await h.host.locator('.pp-table[data-phase="memorise"]').waitFor();
       });
+      for(let round=1;round<=5;round++) {
       await h.step('Memorise → pick', async () => {
         await h.host.locator('.pp-table[data-phase="pick"]').waitFor({ timeout: 90000 });
       }, 100000);
@@ -44,6 +45,15 @@ const scenario = {
           for (let frame = 0; frame < 130; frame++) await new Promise(resolve => requestAnimationFrame(resolve));
         });
       }, 90000);
+      await h.step(`Round ${String(round)} scoreboard`, async () => {
+        await h.host.locator('.pp-table[data-phase="scoreboard"]').waitFor({timeout:60000});
+        await h.host.evaluate(async()=>{for(let frame=0;frame<60;frame++) await new Promise(resolve=>requestAnimationFrame(resolve));});
+      },90000);
+      }
+      await h.step('Final podium (over)', async () => {
+        await h.host.locator('.pp-table[data-phase="over"]').waitFor({timeout:60000});
+        await h.host.evaluate(async()=>{for(let frame=0;frame<130;frame++) await new Promise(resolve=>requestAnimationFrame(resolve));});
+      },90000);
     } finally { for (const phone of phones) await phone.close(); }
   },
 };

@@ -1,0 +1,35 @@
+{
+  "slice": "P-05-scores-podium",
+  "status": "failed",
+  "error": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-phase=\"memorise\"]') to be visible\u001b[22m\n\n    at scores (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/P-05/uat/slices/P-05-scores-podium.mjs:29:53)\n    at async work (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/P-05/tools/uat/runner.ts:89:7)\n    at async Module.run (/Users/randy/projects/personal/web-apps/kaki-arcade-wt/P-05/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/P-05/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- P-05-scores-podium --phones 1 --out round1-p1",
+  "commit": "b96346e68e488822d0bf67f549011b891b68b694",
+  "viewports": [],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1878.4305830000003,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [],
+  "screenshots": [],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 462
+    },
+    {
+      "file": "run.json",
+      "bytes": 1264
+    }
+  ],
+  "totalBytes": 1763,
+  "maxBytes": 12582912
+}

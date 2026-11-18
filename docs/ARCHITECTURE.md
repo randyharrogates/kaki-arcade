@@ -141,6 +141,10 @@ Rules:
 
 ## 4. Simulation and rendering
 
+Phone Results retains only private-view stats labelled **Place** and **Score**, clearing them
+on the next match, lobby or disconnect (P-05; D-210). These English labels are the shell convention until the private-view
+contract declares a result-stat flag; tied places use string values such as "=2".
+
 - **Fixed timestep** simulation at 60 Hz, decoupled from rendering. Rendering interpolates
   between the last two states for objects the player is **not** directly controlling; a
   controlled cook is drawn at its latest simulated position (design rule: no tween while held).

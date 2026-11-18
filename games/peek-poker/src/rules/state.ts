@@ -42,6 +42,8 @@ export interface State {
   paused: boolean;
   solo: boolean;
   best: number;
+  bestAtStart: number;
+  recordable: boolean;
 }
 export function newPicker(info: PlayerInfo, mid: boolean, waiting: boolean): Picker {
   return {

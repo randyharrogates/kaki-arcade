@@ -86,7 +86,7 @@ export function step(state: State, inputs: StepInputs): State {
   if (!phaseChanged && !secondsChanged) return next;
   return { ...next, players: next.players.map((p, i) => {
     const previous = state.players[i];
-    return p.waiting ? p : { ...p,
+    return p.waiting && next.phase !== 'scoreboard' && next.phase !== 'over' ? p : { ...p,
       revision: p.revision + (phaseChanged ? 1 : 0),
       viewRevision: p.viewRevision + (p.viewRevision === previous?.viewRevision ? 1 : 0),
     };
@@ -107,7 +107,7 @@ export const peekPoker: GameModule<State, Settings, ReturnType<typeof publicView
     return deal({
       rng: createRng(seed), settings: { ...settings }, phase: 'memorise', round: 1,
       left: secondsToSteps(20), ticks: 0, grid: [], shared: [], lockCount: 0,
-      swaps: [], swapIndex: 0, paused: false, solo: players.length === 1, best,
+      swaps: [], swapIndex: 0, paused: false, solo: players.length === 1, best, bestAtStart: best, recordable: context.saved !== null,
       players: players.map((p) => newPicker(p, false, false)),
     });
   },
@@ -116,19 +116,20 @@ export const peekPoker: GameModule<State, Settings, ReturnType<typeof publicView
     if (state.players.some((p) => p.info.id === player.id)) return state;
     return {
       ...state, solo: false,
-      players: [...state.players, newPicker(player, state.ticks > 0, state.ticks > 0 && state.phase !== 'over')]
+      players: [...state.players.map(p => state.phase === 'scoreboard' || state.phase === 'over' ? { ...p, viewRevision: p.viewRevision + 1 } : p), newPicker(player, state.ticks > 0, state.ticks > 0 && state.phase !== 'over')]
         .sort((a, b) => a.info.seat - b.info.seat),
     };
   },
   leave(state, id) {
     if (!state.players.some((p) => p.info.id === id)) return state;
-    return { ...state, players: state.players.filter((p) => p.info.id !== id) };
+    return { ...state, players: state.players.filter((p) => p.info.id !== id).map(p =>
+      state.phase === 'scoreboard' || state.phase === 'over' ? { ...p, viewRevision: p.viewRevision + 1 } : p) };
   },
   pause: (state) => state.phase === 'memorise' ? { ...state, paused: true } : state,
   resume: (state) => state.paused ? { ...state, paused: false } : state,
   controllerLayout, privateView, publicView, results, secrets, scrambleSecrets,
   isOver: (state) => state.phase === 'over',
   assets: () => [],
-  save: (state) => ({ best: state.solo && state.phase === 'over' ?
-    Math.max(state.best, state.players[0]?.score ?? 0) : state.best }),
+  save: (state) => ({ best: state.solo && state.players.length === 1 && state.phase === 'over' ?
+    Math.max(state.bestAtStart, state.players[0]?.score ?? 0) : state.bestAtStart }),
 };

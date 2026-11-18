@@ -19,7 +19,11 @@ it('PP-005 phone phases use plain copy and seconds only during memorising', () =
   for (const [phase, text] of [['swap', 'Watch the TV'], ['scoreboard', 'Scores on the TV'], ['over', 'Match over']] as const) {
     const state = { ...reveal(s), phase };
     expect(game.controllerLayout(state, 'p1').controls).toContainEqual({ kind: 'text', id: 'watch', text, tone: 'title' });
-    expect(game.privateView(state, 'p1')).toBeNull();
+    if (phase === 'swap') expect(game.privateView(state, 'p1')).toBeNull();
+    else expect(game.privateView(state, 'p1')?.blocks).toEqual([
+      { kind: 'stat', label: 'Place', value: `${state.players.some((p, i) => i > 0 && p.score === state.players[0]?.score) ? '=' : ''}${String(1 + state.players.filter(p => p.score > (state.players[0]?.score ?? 0)).length)}` },
+      { kind: 'stat', label: 'Score', value: state.players[0]?.score },
+    ]);
   }
 });
 it('PP-005 face-down grid toggles two picks and enables the large shapeless Lock in', () => {
@@ -74,4 +78,12 @@ it.each([1, 2, 8])('PP-020 every outgoing view at every step of a scripted round
     s = driveStep(game, s, createTick(), STEP_MS);
   }
   expect(s.phase).toBe('reveal'); expect(sent).toBeGreaterThan(2000);
+});
+
+it('PP-032 phone places mark ties and preserve competition ranking', () => {
+  const s = init(3); s.phase = 'over';
+  s.players.forEach((p, i) => { p.score = i === 0 ? 55 : 34; });
+  expect(s.players.map(p => game.privateView(s, p.info.id)?.blocks[0])).toEqual([
+    {kind:'stat',label:'Place',value:'1'}, {kind:'stat',label:'Place',value:'=2'}, {kind:'stat',label:'Place',value:'=2'},
+  ]);
 });

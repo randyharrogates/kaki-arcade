@@ -58,3 +58,19 @@ it('PP-030 interleaved sessions never suppress a changed drawing', () => {
   // A newly created session still publishes its initial equivalent snapshot.
   expect(publicViewKey(structuredClone(b))).not.toBe(undefined);
 });
+
+it('PP-032 publishes changed scores and solo records on scoreboard and podium', () => {
+  for (const phase of ['scoreboard', 'over'] as const) {
+    const view = { ...peekPoker.publicView(scenario('reveal')), phase };
+    for (const mutate of [
+      (copy: typeof view) => { const player = copy.players[0]; if (!player) throw Error('player'); player.score++; },
+      (copy: typeof view) => { copy.soloBest = (copy.soloBest ?? 0) + 1; },
+      (copy: typeof view) => { copy.newBest = !copy.newBest; },
+    ]) {
+      const key = publicViewKey(view);
+      const copy = structuredClone(view); mutate(copy);
+      expect(publicViewKey(copy)).not.toBe(key);
+      expect(publicViewKey(structuredClone(copy))).toBe(publicViewKey(copy));
+    }
+  }
+});

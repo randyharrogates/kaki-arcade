@@ -13,7 +13,7 @@ import '@kaki/controller-kit/shell.css';
 import { pickerAnnouncement } from './picker-announcement';
 import { duration } from '@kaki/ui';
 import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks';
-import { createPhone, phoneView, phoneController } from './phone';
+import { createPhone, phoneView, phoneController, offersTeamChoice } from './phone';
 import type { PhoneView } from './phone';
 import { phoneBrowserDependencies } from './phone-browser';
 import { Icon } from './icons';
@@ -74,7 +74,7 @@ export function PhonePage() {
   const teamAnnouncement = ownTeam === undefined ? '' : ` Your team is ${ownTeam === 0 ? 'Red' : 'Blue'}. ${view.teamSetup?.notice ?? ''}`;
   const form = view.action === 'Join' && !view.renaming;
   const feedback = (): void => { if ('vibrate' in navigator) navigator.vibrate(duration.fast); };
-  const teamChoice = view.leader && view.teamSetup?.screen === 'choice' ? <TeamsToggle enabled={view.teamSetup.enabled} toggle={() => { feedback(); phone.current?.teamInput('teams-toggle'); }}/> : null;
+  const teamChoice = offersTeamChoice(view) && view.teamSetup?.screen === 'choice' ? <TeamsToggle enabled={view.teamSetup.enabled} toggle={() => { feedback(); phone.current?.teamInput('teams-toggle'); }}/> : null;
   if (controller && wakeReady) return <GameController sessionCommand={action => { phone.current?.sessionCommand(action); }} controller={controller} view={view} send={output => { phone.current?.controllerInput(output); }}/>;
   return <main ref={page} class="phone-page ka-surface" data-seated={view.seat !== null} data-setup={view.leader && view.teamSetup?.screen === 'choice' && picker?.screen === 'start'} data-theme={view.theme} aria-label="Phone lobby">
     <PhoneLive announcement={announcement}><span>{teamAnnouncement}</span></PhoneLive>
@@ -97,7 +97,7 @@ export function PhonePage() {
         {picker.screen === 'picker' ? <><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('previous'); }}><span aria-hidden="true">← </span>Previous</button><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('next'); }}>Next<span aria-hidden="true"> →</span></button><button class="ka-panel ka-pressable picker-primary" disabled={picker.reason !== null && !picker.failed} onClick={() => { feedback(); phone.current?.pickerInput('select'); }}>Select</button></> : <button class="ka-panel ka-pressable picker-primary" disabled={picker.reason !== null && !picker.failed} onClick={() => { feedback(); phone.current?.pickerInput('start'); }}>Start</button>}
         <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('back'); }}>Back</button>
       </div>}
-    </section> : results ? <section class="phone-picker"><div class="phone-status phone-results"><h2>Results</h2><p>Watch the TV.</p></div>{teamChoice}{view.leader && (view.picker?.screen === 'starting' ? <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('select'); }}><ChoiceShape/>Continue</button> : <><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('start'); }}><ChoiceShape/>Play again</button><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('open'); }}><ChoiceShape circle/>Back to game picker</button></>)}</section> : form ? <section class="phone-join ka-panel">
+    </section> : results ? <section class="phone-picker"><div class="phone-status phone-results"><h2>Results</h2>{view.resultStats?.map(stat => <p key={stat.label}>{stat.label} <strong>{stat.value}</strong></p>)}<p>Watch the TV.</p></div>{teamChoice}{view.leader && (view.picker?.screen === 'starting' ? <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('select'); }}><ChoiceShape/>Continue</button> : <><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('start'); }}><ChoiceShape/>Play again</button><button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('open'); }}><ChoiceShape circle/>Back to game picker</button></>)}</section> : form ? <section class="phone-join ka-panel">
       <div class="phone-intro"><h1>Kaki Arcade</h1><p>Join the room on the TV</p></div>
       <form class="phone-fields" onSubmit={event => { event.preventDefault(); feedback(); phone.current?.join(code, name); }}>
         <label for="room-code">Room code</label>

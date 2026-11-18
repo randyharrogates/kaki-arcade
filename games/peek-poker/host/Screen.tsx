@@ -1,3 +1,4 @@
+import { resultsBoard, updateResultBest } from './results';
 import { must } from '../src/rules/invariant';
 import { perpendicularArcPoint, bezierAt, bezier, cardTurnAt, duration, pulse, SEAT_NUMERAL, tv, space, EDGE_WIDTH, radius, fontStack, cardLift } from '../../../packages/ui/src/index';
 import { SWAP_SECONDS } from '../src/rules/round';
@@ -95,20 +96,22 @@ export function fitName(ctx:Pick<CanvasRenderingContext2D,'measureText'>, name:s
   return end ? `${name.slice(0,end)}…` : '';
 }
 /** Drawing key: phase/round/totalRounds/seconds; grid and shared card codes;
- * swap kind/from/to; player id/name/seat/colour/waiting/locked/picks; hand
+ * swap kind/from/to; player id/name/seat/colour/score/waiting/locked/picks; soloBest/newBest; hand
  * id/name/points and ordering. These feed screenModel, canvas and mounted rows.
  * Hand.cards and other simulation metadata are not drawn. Keep this list and
  * the field-mutation test aligned when the table gains visible fields. */
 export function sameTable(a:PokerPublicView|undefined,b:PokerPublicView):boolean {
   if(a === b) return true;
-  if(a?.phase !== b.phase || a.round !== b.round || a.totalRounds !== b.totalRounds || a.seconds !== b.seconds || a.swap?.kind !== b.swap?.kind || a.swap?.from !== b.swap?.from || a.swap?.to !== b.swap?.to) return false;
+  if(!a) return false;
+  if(a.soloBest !== b.soloBest || a.newBest !== b.newBest) return false;
+  if(a.phase !== b.phase || a.round !== b.round || a.totalRounds !== b.totalRounds || a.seconds !== b.seconds || a.swap?.kind !== b.swap?.kind || a.swap?.from !== b.swap?.from || a.swap?.to !== b.swap?.to) return false;
   if((a.grid === null) !== (b.grid === null)) return false;
   for(let i=0;i<16;i++) if(a.grid?.[i] !== b.grid?.[i]) return false;
   for(let i=0;i<3;i++) if(a.shared[i] !== b.shared[i]) return false;
   if(a.players.length !== b.players.length || a.hands.length !== b.hands.length) return false;
   for(let i=0;i<a.players.length;i++) {
     const p=must(a.players[i]),q=must(b.players[i]);
-    if(p.id !== q.id || p.name !== q.name || p.seat !== q.seat || p.colour !== q.colour || p.waiting !== q.waiting || p.locked !== q.locked || p.picks?.length !== q.picks?.length) return false;
+    if(p.id !== q.id || p.name !== q.name || p.seat !== q.seat || p.colour !== q.colour || p.score !== q.score || p.waiting !== q.waiting || p.locked !== q.locked || p.picks?.length !== q.picks?.length) return false;
     for(let j=0;j<(p.picks?.length ?? 0);j++) if(p.picks?.[j] !== q.picks?.[j]) return false;
   }
   for(let i=0;i<a.hands.length;i++) {const p=must(a.hands[i]),q=must(b.hands[i]);if(p.id !== q.id || p.name !== q.name || p.points !== q.points) return false;}
@@ -122,13 +125,15 @@ export function PeekPokerScreen(root: HTMLElement, deck: CardDeck) {
   const divisor=deck.divisor ?? 1;canvas.width=tv.width/divisor;canvas.height=tv.height/divisor;context.scale(1/divisor,1/divisor);
   table.style.setProperty('--pp-card-width',`${String(CARD.contentWidth)}px`);table.style.setProperty('--pp-card-height',`${String(CARD.contentHeight)}px`);
   table.style.setProperty('--pp-grid-width',`${String(GRID.width)}px`);table.style.setProperty('--pp-grid-height',`${String(GRID.height)}px`);
+  const results=document.createElement('section');results.className='pp-results';table.append(results);
+  const best=document.createElement('p');best.className='pp-best';table.append(best);
   const seats=must(root.querySelector('.pp-players')), hands=must(root.querySelector<HTMLElement>('.pp-hands'));
   const heading=must(root.querySelector('h1')), seconds=must(root.querySelector('.pp-timer strong')), label=must(root.querySelector('.pp-timer span'));
   const grid=must(root.querySelector<HTMLElement>('.pp-grid')), shared=[...root.querySelectorAll<HTMLElement>('.pp-shared-cards i')];
   const media=matchMedia('(prefers-reduced-motion: reduce)');
   let last:ScreenModel|undefined, before:ScreenModel|undefined, key='', frame=0, started=0, snapshot:PokerPublicView|undefined;
   let oldWidth=0,oldHeight=0,oldQuiet=false,oldAt:number|undefined;
-  let handsKey='';
+  let handsKey='', resultsKey='';
   const rows=new Map<string,{row:HTMLDivElement;name:HTMLSpanElement;status:HTMLSpanElement;locked:boolean}>();
   let current:ScreenOptions|undefined;
   function update(options:ScreenOptions) {
@@ -140,6 +145,13 @@ export function PeekPokerScreen(root: HTMLElement, deck: CardDeck) {
     if(nextKey !== key || (model.phase === 'swap' && last && model.seconds > last.seconds)) {before=last ?? model;started=performance.now();key=nextKey;}
     last=model;cancelAnimationFrame(frame);
     const scale=Math.min(width/tv.width,height/tv.height);table.style.transform=`translate(-50%, -50%) scale(${String(scale)})`;table.dataset.phase=model.phase;
+    best.textContent=view.soloBest !== null && view.soloBest > 0 ? `Best ${String(view.soloBest)}` : '';
+    if(view.phase === 'scoreboard' || view.phase === 'over') {
+      const nextResults=JSON.stringify([view.phase,view.round,view.players.map(p=>[p.id,p.name,p.seat,p.colour,p.score]),view.soloBest,quiet]);
+      if(nextResults !== resultsKey) {resultsKey=nextResults;resultsBoard(results,view,quiet);} else updateResultBest(results,view,quiet);
+      return;
+    }
+    resultsKey='';
     canvas.setAttribute('aria-label',`${model.label}: sixteen grid cards and three shared cards`);
     for(const [id,entry] of rows) if(!model.players.some(p=>p.id === id)) {entry.row.remove();rows.delete(id);}
     for(const player of model.players) {
@@ -164,6 +176,9 @@ export function PeekPokerScreen(root: HTMLElement, deck: CardDeck) {
       if(at === undefined && elapsed < (model.phase === 'swap' ? SWAP_MS : duration.slow)) frame=requestAnimationFrame(draw);
     };draw(performance.now());
   }
+  // Final snapshots can remain mounted without another simulation publication.
+  const resize=()=>{if(current) update({...current,width:innerWidth,height:innerHeight});};
+  window.addEventListener('resize',resize);
   const preference=()=>{if(media.matches) for(const animation of table.getAnimations({subtree:true})) animation.cancel();if(current) update(current);};media.addEventListener('change',preference);
   async function ready(options:ScreenOptions) {
     await prepareTable(deck,async()=>{
@@ -189,5 +204,5 @@ export function PeekPokerScreen(root: HTMLElement, deck: CardDeck) {
       table.style.removeProperty('opacity');
     });
   }
-  return {update,ready,destroy(){cancelAnimationFrame(frame);media.removeEventListener('change',preference);root.replaceChildren();}};
+  return {update,ready,destroy(){window.removeEventListener('resize',resize);cancelAnimationFrame(frame);media.removeEventListener('change',preference);root.replaceChildren();}};
 }

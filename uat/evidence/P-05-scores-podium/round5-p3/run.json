@@ -1,0 +1,121 @@
+{
+  "slice": "P-05-scores-podium",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- P-05-scores-podium --phones 3 --out round5-p3",
+  "commit": "4423c72a4d659e8381e5e7b855dcc580d6c6e04e",
+  "viewports": [
+    "844×390",
+    "1920×1080",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1561.753083,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-match-1-phone-1-scores.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone2-match-1-phone-2-scores.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone3-match-1-phone-3-scores.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-match-1-scoreboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-match-1-phone-1-final.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone2-match-1-phone-2-final.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone3-match-1-phone-3-final.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-match-1-podium-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-match-1-podium-1280.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-match-1-phone-1-scores.jpg",
+    "02-phone2-match-1-phone-2-scores.jpg",
+    "03-phone3-match-1-phone-3-scores.jpg",
+    "04-host-match-1-scoreboard.jpg",
+    "05-phone1-match-1-phone-1-final.jpg",
+    "06-phone2-match-1-phone-2-final.jpg",
+    "07-phone3-match-1-phone-3-final.jpg",
+    "08-host-match-1-podium-1920.jpg",
+    "09-host-match-1-podium-1280.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-match-1-phone-1-scores.jpg",
+      "bytes": 105298
+    },
+    {
+      "file": "02-phone2-match-1-phone-2-scores.jpg",
+      "bytes": 106528
+    },
+    {
+      "file": "03-phone3-match-1-phone-3-scores.jpg",
+      "bytes": 106691
+    },
+    {
+      "file": "04-host-match-1-scoreboard.jpg",
+      "bytes": 287891
+    },
+    {
+      "file": "05-phone1-match-1-phone-1-final.jpg",
+      "bytes": 117129
+    },
+    {
+      "file": "06-phone2-match-1-phone-2-final.jpg",
+      "bytes": 96821
+    },
+    {
+      "file": "07-phone3-match-1-phone-3-final.jpg",
+      "bytes": 96477
+    },
+    {
+      "file": "08-host-match-1-podium-1920.jpg",
+      "bytes": 295806
+    },
+    {
+      "file": "09-host-match-1-podium-1280.jpg",
+      "bytes": 153566
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1304
+    },
+    {
+      "file": "run.json",
+      "bytes": 2714
+    }
+  ],
+  "totalBytes": 1370262,
+  "maxBytes": 12582912
+}

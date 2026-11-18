@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import type { HostMessage } from '@kaki/protocol';
 import type { PhoneReconnectDial } from '@kaki/platform';
-import { createPhone, phoneView } from './phone';
+import { createPhone, phoneView, offersTeamChoice } from './phone';
 import { Clock, MemoryStorage, CODE, SECRET } from './testing.fixture';
 
 function fixture() {
@@ -66,6 +66,25 @@ it('PLAT-031 connection loss clears the view and reconnect mid-game restores the
   f.picker();
   expect(f.view.connected).toBe(true); expect(f.view.theme).toBe('rabakz');
   expect(f.view.gamePrivateView).toBeNull(); f.privateView(4); expect(f.view.gamePrivateView?.revision).toBe(4);
+  f.phone.stop();
+});
+it('PP-032 Results retains only own place and score and clears them for the next match',()=>{
+  const f=fixture();f.room('playing');
+  f.send({v:1,t:'view',rev:3,view:{revision:3,blocks:[{kind:'stat',label:'Place',value:'=2'},{kind:'stat',label:'Score',value:34},{kind:'text',text:'Private hand'}]}});
+  f.room('results');expect(f.view.gamePrivateView).toBeNull();
+  expect(f.view.resultStats).toEqual([{label:'Place',value:'=2'},{label:'Score',value:34}]);
+  f.room('results');expect(f.view.resultStats).toHaveLength(2);
+  f.room('playing');expect(f.view.resultStats).toEqual([]);f.phone.stop();
+});
+
+it('PP-032 Results offers teams only when the game offers them', () => {
+  const f = fixture();
+  for (const teamsOffered of [false, true]) {
+    f.send({v:1,t:'view',rev:teamsOffered ? 3 : 2,view:{kind:'team-setup',revision:0,screen:'choice',enabled:false,teamsOffered,teamsReason:null,settings:null,players:[],error:null}});
+    f.room('results');
+    expect(offersTeamChoice(f.view)).toBe(teamsOffered);
+    expect(offersTeamChoice({...f.view,leader:false})).toBe(false);
+  }
   f.phone.stop();
 });
 

@@ -33,8 +33,13 @@ export function controllerLayout(state: State, id: string): ControllerLayout {
 
 export function privateView(state: State, id: string): PrivateView | null {
   const p = state.players.find((p) => p.info.id === id);
-  if (p === undefined || p.waiting) return null;
+  if (p === undefined) return null;
   const revision = p.viewRevision;
+  if (state.phase === 'scoreboard' || state.phase === 'over') return { revision, blocks: [
+    { kind: 'stat', label: 'Place', value: `${state.players.some(other => other !== p && other.score === p.score) ? '=' : ''}${String(1 + state.players.filter(other => other.score > p.score).length)}` },
+    { kind: 'stat', label: 'Score', value: p.score },
+  ] };
+  if (p.waiting) return null;
   if (state.phase === 'memorise') {
     return { revision, blocks: [
       { kind: 'stat', label: 'Seconds', value: Math.ceil(state.left / STEPS_PER_SECOND) },
@@ -60,6 +65,8 @@ export function publicView(state: State) {
   const revealed = state.phase === 'reveal' || state.phase === 'scoreboard' || state.phase === 'over';
   const faceUp = revealed || (state.phase === 'memorise' && !state.paused);
   return {
+    soloBest: state.recordable && state.solo && state.players.length === 1 ? state.bestAtStart : null,
+    newBest: false,
     phase: state.phase, round: state.round, totalRounds: state.settings.rounds,
     seconds: Math.ceil(state.left / STEPS_PER_SECOND),
     grid: faceUp ? state.grid.map(cardCode) : null,
@@ -84,7 +91,7 @@ export function results(state: State): Results {
   return { mode: 'players', players: sorted.map((p, i) => {
     if (i === 0 || p.score !== sorted[i - 1]?.score) place = i + 1;
     return { id: p.info.id, score: p.score, place, joinedMidGame: p.joinedMidGame };
-  }), extras: { personalBest: state.best, solo: state.solo } };
+  }) };
 }
 
 export function secrets(state: State): Secret[] {
@@ -111,4 +118,10 @@ export function scrambleSecrets(state: State, viewer: string | null, salt: numbe
     p.info.id === viewer || p.picks.length === 0 ? p : {
       ...p, picks: p.picks.map((i) => (i + offset) % 16),
     }) };
+}
+
+/** PP-012, DATA-002: called only after the shell confirms a successful write (D-195). */
+export function savedView(view: ReturnType<typeof publicView>, state: State): ReturnType<typeof publicView> {
+  return state.recordable && state.solo && state.players.length === 1 && state.phase === 'over'
+    && (state.players[0]?.score ?? 0) > state.bestAtStart ? { ...view, newBest: true } : view;
 }

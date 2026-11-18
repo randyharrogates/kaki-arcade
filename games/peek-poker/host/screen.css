@@ -17,3 +17,21 @@
 .pp-hands:empty { display: none; }
 .pp-hands li { display: flex; white-space: nowrap; column-gap: var(--ka-space-13); }
 .pp-hand-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pp-results { display: none; }
+.pp-table[data-phase="scoreboard"] > :not(.pp-results), .pp-table[data-phase="over"] > :not(.pp-results) { display: none; }
+.pp-table[data-phase="scoreboard"] .pp-results, .pp-table[data-phase="over"] .pp-results { display: grid; }
+.pp-results { position: absolute; inset: var(--ka-space-55); grid-template-columns: minmax(0,1fr) minmax(0,1.618fr); gap: var(--ka-space-55); align-items: center; }
+.pp-summary { min-width: 0; display: flex; flex-direction: column; gap: var(--ka-space-34); }
+.pp-summary h1 { margin: 0; overflow-wrap: anywhere; font: var(--ka-type-55) / var(--ka-line-display) var(--ka-font-display); }
+.pp-summary p { margin: 0; }
+.pp-winning-score { font-size: var(--ka-type-55); }
+.pp-score-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--ka-space-13); min-width: 0; }
+.pp-score-row { display: flex; align-items: center; gap: var(--ka-space-21); padding: var(--ka-space-13); border: var(--ka-panel-edge); border-radius: var(--ka-radius-corner); background: var(--ka-panel-treatment); color: var(--ka-panel-ink); }
+.pp-score-row > strong:first-child { width: var(--ka-space-55); flex: none; }
+.pp-best { font-size: var(--ka-type-34); line-height: var(--ka-line-display); position: absolute; bottom: var(--ka-space-13); left: var(--ka-space-55); margin: 0; }
+.pp-winner-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ka-space-21); }
+
+/* Reserve the unscaled shell hint at 720p within the game board. */
+.pp-table[data-phase="over"] .pp-results { bottom: calc(var(--ka-space-89) + var(--ka-space-55)); }
+
+.pp-result-best { align-self: flex-start; transform-origin: left center; }

@@ -48,6 +48,7 @@ export const phoneCopy = {
 } as const;
 export type PhoneState = keyof typeof phoneCopy;
 export interface PhoneView {
+  resultStats?: { label: string; value: string | number }[];
   gamePrivateView: PrivateView | null; gameLayout?: Layout | undefined; gameViewRevision?: number | undefined; teamSetup: TeamSetupView | null; layout: boolean; theme: ThemeName; picker: PickerState | null; phase: RoomPhase; state: PhoneState; title: string; detail: string; code: string; name: string;
   seat: number | null; colour: string; leader: boolean; connected: boolean;
   notice: string; renaming: boolean; action: 'Join' | 'Join another room' | 'Join again' | 'Reload' | null;
@@ -84,7 +85,7 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     const next = phoneView(state, { ...view, ...input });
     if (!next.connected) naming = false;
     view = { ...next, teamSetup: next.connected ? (input.teamSetup === undefined ? view.teamSetup : input.teamSetup) : null, layout: next.seat !== null && (input.layout ?? view.layout), picker: next.connected ? (input.picker ?? view.picker) : null, renaming: naming, gameLayout: input.gameLayout ?? view.gameLayout, gameViewRevision: input.gameViewRevision ?? view.gameViewRevision };
-    if (view.seat === null || !view.connected) view.gamePrivateView = null;
+    if (view.seat === null || !view.connected) { view.gamePrivateView = null; view.resultStats = []; }
     view.theme = view.connected && !view.teamSetup && (view.phase === 'playing' || view.phase === 'paused') ? phoneThemes[view.picker?.game?.id ?? ''] ?? 'console' : 'console';
     changed(view);
   }
@@ -104,7 +105,7 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     else if (message.t === 'layout' && checkLayout(message.layout).length === 0) publish(view.state, { layout: true, gameLayout: message.layout as unknown as Layout });
     else if (message.t === 'picker-state' && message.screen === 'lobby' && message.reason === CLOSED_ROOM_REASON) publish('room-gone', { layout: false, picker: null });
     else if (message.t === 'picker-state') publish(view.state, { picker: message, ...(message.screen === 'picker' || message.screen === 'lobby' || message.screen === 'start' ? { layout: false, gamePrivateView: null } : {}) });
-    else if (message.t === 'room') publish(view.state, { leader: message.leader, phase: message.phase, ...(message.phase === 'lobby' || message.phase === 'results' ? { layout: false, gamePrivateView: null } : {}) });
+    else if (message.t === 'room') publish(view.state, { resultStats: message.phase === 'results' ? view.gamePrivateView?.blocks.flatMap(block => block.kind === 'stat' && (block.label === 'Place' || block.label === 'Score') ? [{ label: block.label, value: block.value }] : []) ?? (view.phase === 'results' ? view.resultStats ?? [] : []) : [], leader: message.leader, phase: message.phase, ...(message.phase === 'lobby' || message.phase === 'results' ? { layout: false, gamePrivateView: null } : {}) });
     else if (message.t === 'name-refused') {
       if (view.seat === null) { generation++; driver?.stop(); } else naming = true;
       publish(message.reason);
@@ -204,4 +205,8 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
 /** A disconnected held seat keeps its controller and shows reconnecting until the seat expires. */
 export function phoneController(view: PhoneView) {
   return !view.teamSetup && view.layout && view.seat !== null ? { seat: view.seat as SeatNumber, name: view.name, theme: view.theme, link: view.connected ? 'connected' as const : view.state === 'host-disconnected' || view.state === 'unreachable' ? 'reconnecting' as const : 'lost' as const } : null;
+}
+
+export function offersTeamChoice(view: PhoneView): boolean {
+  return view.leader && view.teamSetup?.screen === 'choice' && view.teamSetup.teamsOffered;
 }

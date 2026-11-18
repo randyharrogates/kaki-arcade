@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — P-05: Peek Poker scores, podium and solo best
+
+- PP-032: a running scoreboard after every reveal and a final podium at match end, leader on the left and the ranked table on the right (1 : 1.618), shared places as "=N", rows entering 30 ms apart (none with reduced motion); fits 1920 × 1080 and 1280 × 720 with eight players beside the shell's final hint. Phones show their own place and score between rounds and on Results; the Results Teams toggle appears only when the game offers teams.
+- PP-012: one-player matches show "Best N" in play and on the scoreboard and, when beaten, "New best · N" with one pulse on the settled board once the save has succeeded (pure `savedView`, D-195); failed writes, ties, quits, joins and unreadable storage never claim a best.
+- DATA-002 (in progress): Peek Poker's best lives in the shell's host-device record store (`progress-v1`, version 1 `{ best }`).
+- UAT at 1 phone (`r9-p1`), 3 phones (`r8-p3`) and 8 phones (`r7-p8`), with row-entrance and pulse strips; diagnostic 8-phone perf through scoreboards and podium (`perf-r7/`).
+
 ## 2026-11-18 — A-09: shell pictures
 
 - REL-002 (in progress): landing page with title, one line, one "Host a game" action, the three

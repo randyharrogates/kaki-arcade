@@ -1,4 +1,6 @@
 import { PeekPokerScreen, sameTable } from './Screen';
+// Share the mounted renderer's field comparison so publication and drawing agree.
+export { sameTable } from './Screen';
 import { preloadCards } from './assets';
 import type { PokerPublicView } from './view-model';
 

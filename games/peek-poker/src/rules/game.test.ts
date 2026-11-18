@@ -274,7 +274,7 @@ describe('Peek Poker pure rules', () => {
     while (!game.isOver(state)) state = tick(state);
     expect(game.save?.(state)).toEqual({ best: must(state.players[0]).score });
     expect(tick(state)).toBe(state);
-    expect(game.save?.(game.leave(state, 'p1'))).toEqual({ best: must(state.players[0]).score });
+    expect(game.save?.(game.leave(state, 'p1'))).toEqual({ best: 1 });
   });
   it('PP-013 waiting newcomer starts at zero and first plays next round', () => {
     let state = tick(init(1));
@@ -397,6 +397,29 @@ describe('Peek Poker pure rules', () => {
   });
 });
 
+it('PP-012 save preserves the starting record on quit, ties, lower scores and multiplayer', () => {
+  let state = game.init(42, makePlayers(1, false), { rounds: 3 }, { data: {}, saved: { best: 10 }, teams: false });
+  must(state.players[0]).score = 30;
+  state.best = 99; // Derived display state must never become the persistence baseline.
+  expect(game.save?.(state)).toEqual({ best: 10 });
+  state.phase = 'over';
+  for (const score of [9, 10, 11]) {
+    must(state.players[0]).score = score;
+    expect(game.save?.(state)).toEqual({ best: Math.max(10, score) });
+  }
+  state = game.join(state, must(makePlayers(2, false)[1]));
+  expect(game.save?.(state)).toEqual({ best: 10 });
+  state = game.leave(state, 'p2');
+  expect(game.save?.(state)).toEqual({ best: 10 });
+});
+it('PP-012 unreadable storage suppresses best claims throughout the match', () => {
+  const state = game.init(42, makePlayers(1, false), { rounds: 3 }, { data: {}, saved: null, teams: false });
+  expect(state.recordable).toBe(false);
+  expect(game.publicView(state)).toMatchObject({ soloBest: null, newBest: false });
+  state.phase = 'over';
+  must(state.players[0]).score = 30;
+  expect(game.publicView(state)).toMatchObject({ soloBest: null, newBest: false });
+});
 it('PP-013 joining preserves earned scores and never deals a waiting player into this round', () => {
   let state = tick(init());
   state = { ...state, players: state.players.map((p, i) => ({ ...p, score: i ? 20 : 40 })) };

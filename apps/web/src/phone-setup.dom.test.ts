@@ -24,6 +24,7 @@ it('PLAT-006/025 keeps setup watchers identified and their message within both l
         const input = () => { document.body.dataset.inputs = String(Number(document.body.dataset.inputs || 0) + 1); };
         export const phoneView = () => view;
         export const phoneController = () => null;
+        export const offersTeamChoice = v => v.leader && v.teamSetup?.screen === 'choice' && v.teamSetup.teamsOffered;
         export const createPhone = (_deps, _code, present) => { presentView = present; present(view); return {settingInput:input,pickerInput:input,teamInput:input,stop(){},leave(){document.body.dataset.left='true';}}; };`;
     },
   }], build: { write: false, minify: false, lib: { entry: fixture, formats: ['es'] }, rolldownOptions: { output: { codeSplitting: false } } } });
