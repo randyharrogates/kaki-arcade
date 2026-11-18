@@ -46,7 +46,7 @@
 @media (prefers-reduced-motion: reduce) { .rz-pulse-ring { display: none; } }
 
 .rz-winner { margin-left: var(--ka-space-5); }
-.rz-results-body { position: relative; margin-top: var(--ka-space-5); transform-origin: top left; }
+.rz-results-body { position: relative; margin-top: var(--ka-space-5); }
 .rz-rank, .rz-column-headings { display: grid; grid-template-columns: var(--ka-space-144) var(--ka-space-55) minmax(0, var(--rz-name-fr)) minmax(0, 1fr); align-items: center; column-gap: var(--ka-space-13); padding-inline: var(--ka-space-13); }
 .rz-rank { position: absolute; border-radius: var(--ka-radius-corner); color: var(--ka-ink); font-size: var(--ka-type-55); line-height: var(--ka-line-body); }
 .rz-rank[data-leader] { background: var(--ka-panel-treatment); color: var(--ka-panel-ink); box-shadow: inset 0 0 0 var(--rz-edge) var(--ka-panel-edge-colour); }

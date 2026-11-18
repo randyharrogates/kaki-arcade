@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'preact/hooks';
-import { COLOUR_TOKENS, PHI, tvType, lineHeight, duration, easing, space, STAGGER_MS, SEAT_NUMERAL, enter, pulse, EDGE_WIDTH } from '@kaki/ui';
+import { FINAL_HINT_BAND, COLOUR_TOKENS, PHI, tvType, lineHeight, duration, easing, space, STAGGER_MS, SEAT_NUMERAL, enter, pulse, EDGE_WIDTH } from '@kaki/ui';
 import { Score, inlineStyle } from './Screen';
 import { cssLength, SCREEN, fallbackMeasure } from './view-model';
 import type { ComponentChildren } from 'preact';
@@ -36,14 +36,14 @@ export const stepHeight = (place: number) => place === 1 ? space[89] + space[55]
 /** Match the padded name line, explicit grid gap and points line in screen.css. */
 export const PODIUM_GEOMETRY = { line: lineHeight.body, padding: space[5], playerGap: space[5], memberGap: space[13], columnGap: space[21] };
 export const PODIUM_PLAYER_HEIGHT = tvType.title * PODIUM_GEOMETRY.line + 2 * PODIUM_GEOMETRY.padding + PODIUM_GEOMETRY.playerGap + tvType.body * PODIUM_GEOMETRY.line;
-export const podiumStepHeight = (place: number, members: number, surfaceHeight = stepHeight(place)) => surfaceHeight + PODIUM_GEOMETRY.memberGap + members * PODIUM_PLAYER_HEIGHT + (members - 1) * PODIUM_GEOMETRY.memberGap;
+export const podiumStepHeight = (place: number, members: number, surfaceHeight = stepHeight(place), geometry: { memberGap: number; playerGap: number } = PODIUM_GEOMETRY) => surfaceHeight + geometry.memberGap + members * (PODIUM_PLAYER_HEIGHT - PODIUM_GEOMETRY.playerGap + geometry.playerGap) + (members - 1) * geometry.memberGap;
 /** Names deliberately ellipsise; fit checks the complete stacked line boxes. */
-export function podiumFit(top: readonly StandingPlayer[], columns: number, height: number, measure: MeasureText = fallbackMeasure, surfaceHeight?: number): number | null {
+export function podiumFit(top: readonly StandingPlayer[], columns: number, height: number, measure: MeasureText = fallbackMeasure, surfaceHeight?: number, geometry: { memberGap: number; playerGap: number } = PODIUM_GEOMETRY): number | null {
   const width = (SCREEN.innerWidth - (columns - 1) * PODIUM_GEOMETRY.columnGap) / columns;
   if (!columns || width < space[55] + space[13] + measure('…', tvType.title, 'body')) return null;
   const fits = [...new Set(top.map(p => p.place))].every(place => {
     const rows = top.filter(p => p.place === place).length;
-    return podiumStepHeight(place, rows, surfaceHeight) <= height;
+    return podiumStepHeight(place, rows, surfaceHeight, geometry) <= height;
   });
   return fits ? tvType.title : null;
 }
@@ -86,7 +86,10 @@ export function ResultsFrame({ view, board, reduced, slow, frozenAt, measure = f
   const end = view.phase === 'over';
   const solo = end && board.players.length === 1 && board.teams.length === 0;
   const teamHeight = board.teams.length && !end ? tvType.title * lineHeight.body + space[5] : 0;
-  const height = RESULTS_HEIGHT - teamHeight - (end ? 0 : tvType.body * lineHeight.body + space[5]);
+  // Budget against the shell reserve before selecting the row/podium rhythm.
+  // Retain one row-entrance distance below the body while rows settle into place.
+  const finalHeight = RESULTS_HEIGHT - (FINAL_HINT_BAND - SCREEN.safe) - space[13];
+  const height = end ? finalHeight : RESULTS_HEIGHT - teamHeight - tvType.body * lineHeight.body - space[5];
   const ordered: StandingPlayer[] = end && board.teams.length ? board.teams.map(t => ({ id: `team-${String(t.id)}`, seat: t.id + 1, colour: teamMark(t.id).colour, name: t.name, score: t.score, before: 0, delta: 0, place: t.place, tied: board.teams.filter(other => other.score === t.score).length > 1, overallLeader: false, teamView: false, team: undefined })) : end ? board.players : board.ordered;
   const partition = podiumSteps(end ? ordered : []);
   const { top, order } = partition;
@@ -94,15 +97,18 @@ export function ResultsFrame({ view, board, reduced, slow, frozenAt, measure = f
   const grouped = board.teams.length > 0;
   const list = end ? rest : ordered;
   const groupStarts = list.flatMap((p, i) => p.team !== undefined && (i === 0 || p.team !== list[i - 1]?.team) ? [i] : []);
-  const groupHeight = tvType.body * lineHeight.body + space[5];
+  const tiedTeams = end && grouped && order.length === 1 && top.length > 1;
+  // Recover 46 px in the stacked team podium and labels, preserving all text sizes.
+  const geometry = tiedTeams ? { ...PODIUM_GEOMETRY, memberGap: 0, playerGap: 0 } : PODIUM_GEOMETRY;
+  const groupHeight = tvType.body * lineHeight.body + (tiedTeams ? 0 : space[5]);
   const unteamedStart = grouped ? list.findIndex(p => p.team === undefined) : -1;
   const unteamedGap = unteamedStart > 0 ? space[5] : 0;
   const labelsHeight = (grouped ? groupStarts.length * groupHeight : 0) + unteamedGap;
-  // Compress only empty podium surface space after list gaps reach zero.
-  const surfaceHeight = end && board.teams.length > 0 && order.length === 1 && top.length > 1
-    ? [space[89] + space[55], space[89], space[55]].find(surface => podiumStepHeight(1, top.length, surface) + labelsHeight + rest.length * space[55] <= height) ?? space[55]
+  // Compress only empty podium surface space for stacked tied-team names.
+  const surfaceHeight = tiedTeams
+    ? [space[89] + space[55], space[89], space[55]].find(surface => podiumStepHeight(1, top.length, surface, geometry) + labelsHeight + rest.length * space[55] <= height) ?? space[55]
     : undefined;
-  const occupiedPodiumHeight = top.length ? Math.max(...order.map(place => podiumStepHeight(place, top.filter(p => p.place === place).length, surfaceHeight))) : 0;
+  const occupiedPodiumHeight = top.length ? Math.max(...order.map(place => podiumStepHeight(place, top.filter(p => p.place === place).length, surfaceHeight, geometry))) : 0;
   const compact = end || grouped;
   // Tighten list spacing in token steps, retaining the fixed row floors.
   const finalGap = [space[8], space[5], 0].find(gap => occupiedPodiumHeight + labelsHeight + space[34] + rest.length * space[55] + Math.max(0, rest.length - 1) * gap <= height) ?? 0;
@@ -111,12 +117,12 @@ export function ResultsFrame({ view, board, reduced, slow, frozenAt, measure = f
   const podiumHeight = end && top.length ? occupiedPodiumHeight : regions.podiumHeight;
   const bodyHeight = end && !solo ? podiumHeight + (rest.length ? listGap + regions.restHeight + labelsHeight : 0) : height;
 
-  const fit = bodyHeight > RESULTS_HEIGHT || (end && !solo && podiumFit(top, order.length, podiumHeight, measure, surfaceHeight) === null) ? 'failed' : end && rest.length && (finalGap < space[8] || listGap < space[34]) ? 'tight' : 'fits';
-  return <section data-fit={fit} class="rz-frame rz-results" data-theme="rabakz" data-final={end || undefined} style={inlineStyle({ '--rz-name-fr': `${String(PHI)}fr`, '--rz-edge': cssLength(EDGE_WIDTH), '--rz-podium-line': String(PODIUM_GEOMETRY.line), '--rz-name-padding': cssLength(PODIUM_GEOMETRY.padding), '--rz-player-gap': cssLength(PODIUM_GEOMETRY.playerGap), '--rz-member-gap': cssLength(PODIUM_GEOMETRY.memberGap), '--rz-column-gap': cssLength(PODIUM_GEOMETRY.columnGap) })}>
-    <header class="rz-header"><span>{end ? 'Final results' : <>Scoreboard <span class="rz-round-label">after question {board.round}</span></>}</span><span>{end ? 'Leader can continue' : `Leader can continue · automatic after ${String(SCOREBOARD_STEPS * STEP_MS / 1000)} s`}</span></header>
+  const fit = bodyHeight > height || (end && !solo && podiumFit(top, order.length, podiumHeight, measure, surfaceHeight, geometry) === null) ? 'failed' : end && rest.length && (finalGap < space[8] || listGap < space[34]) ? 'tight' : 'fits';
+  return <section data-fit={fit} class="rz-frame rz-results" data-theme="rabakz" data-final={end || undefined} style={inlineStyle({ '--rz-name-fr': `${String(PHI)}fr`, '--rz-edge': cssLength(EDGE_WIDTH), '--rz-podium-line': String(PODIUM_GEOMETRY.line), '--rz-name-padding': cssLength(PODIUM_GEOMETRY.padding), '--rz-player-gap': cssLength(geometry.playerGap), '--rz-member-gap': cssLength(geometry.memberGap), '--rz-column-gap': cssLength(PODIUM_GEOMETRY.columnGap) })}>
+    <header class="rz-header"><span>{end ? 'Final results' : <>Scoreboard <span class="rz-round-label">after question {board.round}</span></>}</span><span>{!end && `Leader can continue · automatic after ${String(SCOREBOARD_STEPS * STEP_MS / 1000)} s`}</span></header>
     {board.teams.length > 0 && !end && <div class="rz-team-totals">{board.teams.map(t => <div class="rz-team-panel" key={t.id}><span class="rz-row-team" aria-hidden="true" style={inlineStyle({ background: teamMark(t.id).colour })} /><span>{t.name}</span><span class="rz-total">{t.score}</span><span class="rz-delta" data-chip={t.delta !== 0 || undefined}>+{t.delta}</span></div>)}</div>}
     {!end && <div class="rz-column-headings"><span /><span /><span /><span class="rz-score-area"><span>Points</span><span>Gained</span></span></div>}
-    <div class="rz-results-body" style={inlineStyle({ height: cssLength(bodyHeight), ...(end ? { position: 'absolute', width: cssLength(SCREEN.innerWidth), top: cssLength(SCREEN.safe + SCREEN.header + RESULTS_HEADER_GAP + (RESULTS_HEIGHT - bodyHeight) / 2), marginTop: '0' } : {}) })}>
+    <div class="rz-results-body" style={inlineStyle({ height: cssLength(bodyHeight), ...(end ? { position: 'absolute', width: cssLength(SCREEN.innerWidth), top: cssLength(SCREEN.safe + SCREEN.header + RESULTS_HEADER_GAP + (finalHeight - bodyHeight) / 2), marginTop: '0' } : {}) })}>
       {solo && <div class="rz-solo"><strong class="rz-podium-name"><span class="rz-seat-number" style={inlineStyle({ background: board.players[0]?.colour ?? COLOUR_TOKENS['seat-1'], color: SEAT_NUMERAL })}>{board.players[0]?.seat}</span><span class="rz-rank-name">{board.players[0]?.name}</span></strong><span class="rz-solo-total">{board.players[0]?.score} pts</span>{view.soloBest !== undefined && <SoloBest value={view.soloBest} fresh={view.newBest} reduced={reduced} slow={slow} />}</div>}
       {end && !solo && <div class="rz-podium" data-arrangement={regions.arrangement} data-fit={fit} style={inlineStyle({ height: cssLength(podiumHeight), '--rz-podium-type': cssLength(tvType.title) })}>{order.map(place => {
         const members = top.filter(p => p.place === place);

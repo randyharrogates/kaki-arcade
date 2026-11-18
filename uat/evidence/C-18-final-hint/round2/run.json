@@ -1,0 +1,110 @@
+{
+  "slice": "C-18-final-hint",
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: Final ranking clears the hand-off band\n    at finalHint (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-18/uat/slices/C-18-final-hint.mjs:78:18)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:541:9)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-18/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-18/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-18/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- C-18-final-hint --phones 8 --max-mb 24 --timeout-min 25 --out round2",
+  "commit": "6469c45e5090be74120943e5a990dcaa006010ee",
+  "viewports": [
+    "1920×1080",
+    "1280×720",
+    "3840×2160"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 864.070541,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker: run unanswered rounds to the final screen",
+      "ms": 21554.129458,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 852.9177920000002,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz: run unanswered rounds to the final screen",
+      "ms": 177886.797,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-peek-poker-1920-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-peek-poker-1280-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-peek-poker-3840-phone.png",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-peek-poker-1920-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-peek-poker-1280-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-peek-poker-3840-keyboard.png",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-peek-poker-1920-phone.jpg",
+    "02-host-peek-poker-1280-phone.jpg",
+    "03-host-peek-poker-3840-phone.png",
+    "04-host-peek-poker-1920-keyboard.jpg",
+    "05-host-peek-poker-1280-keyboard.jpg",
+    "06-host-peek-poker-3840-keyboard.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-peek-poker-1920-phone.jpg",
+      "bytes": 294693
+    },
+    {
+      "file": "02-host-peek-poker-1280-phone.jpg",
+      "bytes": 157640
+    },
+    {
+      "file": "03-host-peek-poker-3840-phone.png",
+      "bytes": 1228284
+    },
+    {
+      "file": "04-host-peek-poker-1920-keyboard.jpg",
+      "bytes": 291454
+    },
+    {
+      "file": "05-host-peek-poker-1280-keyboard.jpg",
+      "bytes": 155464
+    },
+    {
+      "file": "06-host-peek-poker-3840-keyboard.png",
+      "bytes": 1215861
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1298
+    },
+    {
+      "file": "run.json",
+      "bytes": 3126
+    }
+  ],
+  "totalBytes": 3347857,
+  "maxBytes": 25165824
+}

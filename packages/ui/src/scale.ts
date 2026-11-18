@@ -121,3 +121,6 @@ export const GOLDEN_ASPECT = '1.618 / 1';
 
 /** D-140: perspective distance for turning cards, in px. */
 export const CARD_PERSPECTIVE = 610;
+
+/** PLAT-022: final-screen hand-off band, measured from the artboard foot. */
+export const FINAL_HINT_BAND = space[55] + space[34];

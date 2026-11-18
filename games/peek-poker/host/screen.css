@@ -31,7 +31,7 @@
 .pp-best { font-size: var(--ka-type-34); line-height: var(--ka-line-display); position: absolute; bottom: var(--ka-space-13); left: var(--ka-space-55); margin: 0; }
 .pp-winner-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ka-space-21); }
 
-/* Reserve the unscaled shell hint at 720p within the game board. */
-.pp-table[data-phase="over"] .pp-results { bottom: calc(var(--ka-space-89) + var(--ka-space-55)); }
+/* Shared artboard hand-off band (PLAT-022). */
+.pp-table[data-phase="over"] .pp-results { bottom: var(--ka-final-hint-band); }
 
 .pp-result-best { align-self: flex-start; transform-origin: left center; }

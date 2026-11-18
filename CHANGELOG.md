@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — C-18: final-screen hand-off band
+
+- PLAT-022, PLAT-024: the shell's final hint scales with the 1920 × 1080 board (same `--screen-scale`, centred layer) and sits in a shared 55 + 34 px band (`FINAL_HINT_BAND`, `--ka-final-hint-band`); phone and keyboard wording unchanged.
+- PP-032: Peek Poker's final ranking uses the shared band instead of its own 89 + 55 reserve (D-209, D-258).
+- RZ-032: Rabakz drops its duplicate "Leader can continue" on the final screen and fits podium and every row above the band at 34 px with no scaling; tied-team finals close the podium's member and player gaps to make room (R-08 carried bug).
+- UAT: 8 phones at 1280, 1920 and 3840 for Peek Poker, Rabakz free-for-all and tied teams; untied teams, solo and four players at 1920; both hint variants (`uat/evidence/C-18-final-hint/round4/`).
+
 ## 2026-11-18 — P-10: final scores line
 
 - PP-032: the scoreboard after the last round says "Final scores in 5 seconds"; earlier ones

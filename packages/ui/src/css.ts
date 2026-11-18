@@ -20,7 +20,7 @@ import {
   STAGGER_MS,
   TEMPOS,
 } from './motion-tokens';
-import { CARD_PERSPECTIVE, GOLDEN_ASPECT, GOLDEN_COLUMNS, GOLDEN_COLUMNS_REVERSED, PHI, phone, px, radius, SPACING, tv } from './scale';
+import { FINAL_HINT_BAND, CARD_PERSPECTIVE, GOLDEN_ASPECT, GOLDEN_COLUMNS, GOLDEN_COLUMNS_REVERSED, PHI, phone, px, radius, SPACING, tv } from './scale';
 import type { RadiusName } from './scale';
 import { PEEK_POKER_CARDS, THEME_NAMES, THEMES } from './themes';
 import type { Theme } from './themes';
@@ -47,6 +47,7 @@ const EASING_CSS_NAME = { out: 'out', inOut: 'in-out', in: 'in', linear: 'linear
 export function sharedDeclarations(): Declaration[] {
   return [
     ['--ka-card-perspective', px(CARD_PERSPECTIVE)],
+    ['--ka-final-hint-band', px(FINAL_HINT_BAND)],
     ...SPACING.map((value): Declaration => [`--ka-space-${String(value)}`, px(value)]),
     ...RADIUS_NAMES.map((name): Declaration => [`--ka-radius-${name}`, px(radius[name])]),
     ['--ka-opacity-ghost', String(GHOST_OPACITY)],

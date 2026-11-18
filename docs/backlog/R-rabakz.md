@@ -40,7 +40,8 @@ Content work. It needs no code from other tracks and starts in Wave 0.
 
 ## Carried from reviews
 
-- **From C-12 (2026-11-18):** with 8 players in teams, the final screen's "Enter: Continue" hint overlaps the last ranking row (`uat/evidence/C-12-host-keyboard/round11/16-host-host-before-results-enter.jpg`). Owner: the Rabakz final screen (R-05 or R-03 follow-up).
+- **From C-12 (2026-11-18):** with 8 players in teams, the final screen's "Enter: Continue" hint overlaps the last ranking row (`uat/evidence/C-12-host-keyboard/round11/16-host-host-before-results-enter.jpg`). Owner: the Rabakz final screen (R-05 or R-03 follow-up). — fixed by C-18 (round4 stills 13–20; untied teams 19–20).
+- **From C-18 review 2 (2026-11-19):** untied 8-player team final list rows sit at 0 px gap, so adjacent highlighted rows butt edges (C-18 round4/19); consider with OQ-047 podium polish.
 
 - **R-01** shuffles the four options of a multiple-choice or picture question with the match
   seed, and its test checks that the correct position is uniform over many seeds on the real

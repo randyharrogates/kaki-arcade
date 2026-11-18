@@ -15,6 +15,7 @@ it('PP-032 board 3 scoreboard and final fit both TV sizes with eight tied player
     import {PeekPokerScreen} from '${screen}';import {scenario} from '${scenarios}';import {peekPoker} from '${rules}';
     const screen=PeekPokerScreen(document.body,{frames:new Map(),faces:new Map()});
     const hintRoot=document.createElement('div');document.body.append(hintRoot);
+    const resize=()=>document.documentElement.style.setProperty('--screen-scale',String(Math.min(innerWidth/1920,innerHeight/1080)));resize();addEventListener('resize',resize);
     window.draw=(phase,best=null,newBest=false,reduced=true,solo=false)=>{render(phase === 'over' ? h(GameFinalHint,{keyboard:false}) : null,hintRoot);const state=scenario('reveal',best === null && !solo ? 8 : 1);state.phase=phase;state.players.forEach(p=>{p.score=89;p.info.name='ABCDEFGHIJKL';});screen.update({view:{...peekPoker.publicView(state),soloBest:best,newBest},width:innerWidth,height:innerHeight,reduced});};
   `;}}]});
   const output=Array.isArray(bundle) ? bundle[0] : bundle;
@@ -37,6 +38,7 @@ it('PP-032 board 3 scoreboard and final fit both TV sizes with eight tied player
         })).toMatchObject({fits:true,scroll:false});
         if(phase === 'over') {
           expect(await page.locator('.game-final-hint').count()).toBe(1);
+          expect(await page.locator('.game-final-hint').evaluate(n=>n.getBoundingClientRect().height)).toBeCloseTo(34*size.width/1920);
           expect(await page.locator('.game-final-hint').evaluate(hint=>{
             const h=hint.getBoundingClientRect();
             return [...document.querySelectorAll('.pp-score-row,.pp-summary')].every(row=>{const r=row.getBoundingClientRect();return r.right<=h.left || r.left>=h.right || r.bottom<h.top || r.top>h.bottom;});
