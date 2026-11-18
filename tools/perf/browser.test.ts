@@ -1,4 +1,5 @@
 import type * as Metrics from './metrics.js';
+import { osRefresh } from './display.js';
 import { machine } from './metrics.js';
 import { expect, it, vi } from 'vitest';
 import type { Harness } from '../uat/harness.js';
@@ -6,12 +7,13 @@ import type { Report } from './report.js';
 import { openHost, browserScenario } from './browser.js';
 import type { Capture, Scenario } from './browser.js';
 vi.mock('./metrics.js', async original => ({ ...await original<typeof Metrics>(), machine: vi.fn(() => ({ contention: 'unknown', loadAverageStart: [0, 0, 0] })) }));
+vi.mock('./display.js', () => ({ osRefresh: vi.fn(() => 60) }));
 const saved = vi.hoisted(() => ({ report: undefined as Report | undefined }));
 vi.mock('./report.js', () => ({ writeReport: (_root: string, _name: string, report: Report) => {
   saved.report = report;
   return Promise.resolve(Number(report.assessments.some(a => a.status === 'fail' || a.status === 'insufficient samples')));
 } }));
-async function runScenario(run: (h: Harness, c: Capture, advance: (ms: number) => void) => Promise<void>, roundFrames = 600, direct = false, options: Partial<Scenario> = {}) {
+async function runScenario(run: (h: Harness, c: Capture, advance: (ms: number) => void) => Promise<void>, roundFrames = 600, direct = false, options: Partial<Scenario> = {}, build = 'production') {
   let now = 0, starts = 0;
   const clock = vi.spyOn(performance, 'now').mockImplementation(() => now);
   const host = { addInitScript: () => Promise.resolve(), evaluate: (fn: () => unknown) => {
@@ -26,7 +28,7 @@ async function runScenario(run: (h: Harness, c: Capture, advance: (ms: number) =
     await browserScenario(h, { name: 'test', busiestRound: true, inputReason: 'no game', feedbackReason: 'no controller', ...options, run: async (h, capture) => {
       now = 200000; // Lobby time must not qualify the round.
       await run(h, capture, ms => { now += ms; }); now += 200000;
-    } }, true);
+    } }, true, '', build);
   } finally { clock.mockRestore(); }
   return saved.report;
 }
@@ -109,4 +111,28 @@ it('custom host pages navigate locally without room creation or phones (NFR-PERF
   for (const hostPage of ['https://example.com', '//example.com/page', 'relative']) {
     await expect(openHost(h, { name: 'bad', hostPage, run: () => Promise.resolve() })).rejects.toThrow('local absolute path');
   }
+});
+
+it.each([60, 75, 120, null])('records and enforces the OS refresh guard at %s Hz (PERF-001)', async hz => {
+  vi.mocked(osRefresh).mockReturnValueOnce(hz).mockReturnValueOnce(hz);
+  const report = await runScenario(async (_h, capture, advance) => {
+    await capture.roundStart(); advance(180000); await capture.roundEnd();
+  });
+  expect(report?.assessments[0]?.status).toBe(hz === 60 ? 'pass' : 'not assessed');
+  expect(report?.measurements[0]).toMatchObject({ refresh: { osRefreshHz: hz, guardPassed: hz === 60 } });
+});
+
+it('refuses a refresh mode change at round end (PERF-001)', async () => {
+  vi.mocked(osRefresh).mockReturnValueOnce(60).mockReturnValueOnce(75);
+  const report = await runScenario(async (_h, capture, advance) => { await capture.roundStart(); advance(180000); await capture.roundEnd(); });
+  expect(report?.assessments[0]).toMatchObject({ status: 'not assessed', reason: 'OS-reported display refresh rate changed during round' });
+});
+it('labels Chromium passes as slice evidence in JSON and Markdown assessment data (PERF-001)', async () => {
+  const report = await runScenario(async (_h, capture, advance) => { await capture.roundStart(); advance(180000); await capture.roundEnd(); });
+  expect(report?.assessments[0]?.reason).toContain('slice gate only; milestone needs --host-browser chrome');
+});
+
+it('refuses a development build even with qualifying frames and display (PERF-001)', async () => {
+  const report = await runScenario(async (_h, capture, advance) => { await capture.roundStart(); advance(180000); await capture.roundEnd(); }, 600, false, {}, 'development');
+  expect(report?.assessments[0]).toMatchObject({ status: 'not assessed', reason: 'PERF-001 requires a production build' });
 });

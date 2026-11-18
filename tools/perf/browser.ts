@@ -1,8 +1,8 @@
 /// <reference lib="dom" />
-import { spawnSync } from 'node:child_process';
+import { osRefresh } from './display.js';
 import type { Page } from 'playwright';
 import type { Harness } from '../uat/harness.js';
-import { clockTick, resolution, evaluate, machine, summary, timing } from './metrics.js';
+import { clockTick, resolution, evaluate, machine, summary, timing, refreshGuard } from './metrics.js';
 import { correlate } from './timing.js';
 import type { PerfTimingEvent } from '../../packages/platform/src/harness/perf-timing';
 import type { Timing } from './metrics.js';
@@ -64,8 +64,8 @@ export async function browserScenario(h: Harness, scenario: Scenario, headed: bo
     const medianMs = intervals[29] ?? 0;
     return { samples: intervals.length, medianMs, measuredHz: 1000 / medianMs };
   }).catch(() => null);
-  const display = process.platform === 'darwin' ? spawnSync('system_profiler', ['SPDisplaysDataType'], { encoding: 'utf8', timeout: 5000 }) : null;
-  const osRefreshHz = Number(/(?:Refresh Rate:|@)\s*(\d+(?:\.\d+)?)\s*Hz/i.exec(display?.stdout ?? '')?.[1]) || null;
+  const osRefreshHz = osRefresh();
+  let guard = refreshGuard(osRefreshHz);
   await startFrames(h.host);
   const steps: { name: string; startTime: number; endTime: number }[] = [];
   const originalStep = h.step.bind(h);
@@ -78,10 +78,11 @@ export async function browserScenario(h: Harness, scenario: Scenario, headed: bo
   const inputs: Timing[] = [];
   const events: PerfTimingEvent[] = [];
   let roundStart: number | undefined, roundSeconds = 0, roundRaw: Awaited<ReturnType<typeof stopFrames>> | undefined;
+  let osRefreshHzEnd: number | null = null;
   const clocks: { offsetMs: number; uncertaintyMs: number; clockTickMs: number }[] = [];
   const capture: Capture = { inputs, events,
     async roundStart() { if (roundStart !== undefined) throw new Error('Round already started'); await stopFrames(h.host); await startFrames(h.host); roundStart = performance.now(); },
-    async roundEnd() { if (roundStart === undefined || roundRaw) throw new Error('Round not active'); roundSeconds = (performance.now() - roundStart) / 1000; roundRaw = await stopFrames(h.host); },
+    async roundEnd() { if (roundStart === undefined || roundRaw) throw new Error('Round not active'); roundSeconds = (performance.now() - roundStart) / 1000; roundRaw = await stopFrames(h.host); osRefreshHzEnd = osRefresh(); },
     async observe(page) {
     let best = { offsetMs: 0, uncertaintyMs: Infinity };
     for (let i = 0; i < 5; i++) {
@@ -125,18 +126,21 @@ export async function browserScenario(h: Harness, scenario: Scenario, headed: bo
   const parsed = inputs.map(timing);
   const manualMissingFeedback = parsed.slice(0, inputs.length - correlated.samples.length).filter(t => t.feedbackFrames === null).length;
   const delays = parsed.map(t => t.inputMs), feedback = [...correlated.feedback, ...parsed.slice(0, inputs.length - correlated.samples.length).flatMap(t => t.feedbackFrames === null ? [] : [t.feedbackFrames])];
+  if (!roundRaw) osRefreshHzEnd = osRefresh();
+  if (osRefreshHzEnd !== osRefreshHz) guard = { passed: false, reason: 'OS-reported display refresh rate changed during round' };
   const assessments = [
-    evaluate('PERF-001', raw.frames, { minimum: 600, headed, seconds: roundRaw ? roundSeconds : 0, reason: nonempty(scenario.frameReason) ?? (h.maxPhones !== 8 ? 'PERF-001 specifies eight players' : !scenario.busiestRound ? 'Scenario has not declared the busiest full game round' : raw.hidden ? 'Host was hidden; rAF may be throttled' : undefined) }),
+    evaluate('PERF-001', raw.frames, { minimum: 600, headed, seconds: roundRaw ? roundSeconds : 0, reason: nonempty(scenario.frameReason) ?? (build !== 'production' ? 'PERF-001 requires a production build' : guard.reason) ?? (h.maxPhones !== 8 ? 'PERF-001 specifies eight players' : !scenario.busiestRound ? 'Scenario has not declared the busiest full game round' : raw.hidden ? 'Host was hidden; rAF may be throttled' : undefined) }),
     evaluate('PERF-010', delays, { minimum: 100, reason: nonempty(scenario.inputReason) ?? (correlated.incomplete ? 'Incomplete timing traces; input coverage not established' : undefined) ?? (direct.verified ? undefined : 'Direct path not verified') }),
     evaluate('PERF-012', feedback, { minimum: 100, reason: nonempty(scenario.feedbackReason) ?? (correlated.missingFeedback || manualMissingFeedback || feedback.length < inputs.length ? 'Touch without feedback: coverage unknown; not assessed rather than silently passing' : undefined) }),
     { id: 'PERF-030', status: 'not assessed' as const, reason: 'Not a 30-minute session; no memory/stuck-input coverage' },
   ];
   const contention = environment.contention.startsWith('detected') || endEnvironment.contention.startsWith('detected');
   if (contention) for (const assessment of assessments) if (assessment.status === 'pass') { assessment.status = 'not assessed'; assessment.reason = 'contention'; }
+  if (assessments[0]?.status === 'pass' && h.engines?.host.engine !== 'chrome') assessments[0].reason += '; slice gate only; milestone needs --host-browser chrome';
   const requiredAssessments = nonempty(scenario.feedbackReason) ? [] : ['PERF-012'];
   const exit = await writeReport(process.cwd(), scenario.name, { schemaVersion: 1, layer: 'browser', scenario: scenario.name, machine: { ...environment, memoryGate, loadAverageEnd: endEnvironment.loadAverageStart, contentionEnd: endEnvironment.contention }, assessments, requiredAssessments,
     notes: [`Command: ${command}`, `Build: ${build}`, 'Each observed context is calibrated by the lowest of five Node round trips; uncertainty is half that round trip plus clock precision. Ordering tolerates 2 ms and clamps only those small negative deltas. Larger inversions remain invalid. This measures local browser scheduling and WebRTC, not real Wi-Fi, phone hardware or display scan-out.', 'Headless rAF representativeness is unproven. Headed run required for PERF-001. Long tasks are not GC attribution; real-round GC tracing remains required when game screens exist.'],
-    measurements: [{ browser: 'Playwright Chromium (not branded Chrome)', refresh: { ...refresh, osRefreshHz }, steps, hostClock: 'performance.now() milliseconds relative to host page timeOrigin', browserVersion: h.browser.version(), headed, viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1, phoneViewport: { width: 844, height: 390 }, phoneDeviceScaleFactor: 3, phones: scenario.hostPage ? 0 : h.maxPhones, build, command, clocks, direct, seconds, roundSeconds, nodeClockTickMs: tick, clockTickMs: raw.clockTickMs, timingResolution: { framesMs: resolution(summary(raw.frames), raw.clockTickMs), inputMs: resolution(summary(delays), Math.max(tick, ...clocks.map(c => c.clockTickMs))), longTasksMs: resolution(summary(raw.longTasks), raw.clockTickMs) }, minimumFrames: 600, minimumInputs: 100, frameSampleStatus: raw.frames.length < 600 || !roundRaw || roundSeconds < 180 ? 'insufficient samples' : 'sufficient samples', framesMs: summary(raw.frames), longTasksMs: summary(raw.longTasks), longTasksSupported: raw.longTasksSupported, inputMs: summary(delays), feedbackFrames: summary(feedback), raw, inputs, timingEvents: events, incompleteInputs: correlated.incomplete }],
+    measurements: [{ browser: h.engines?.host.engine === 'chrome' ? 'Google Chrome' : 'Playwright Chromium (not branded Chrome)', browserChannel: h.engines?.host.engine ?? 'chromium', refresh: { ...refresh, osRefreshHz, osRefreshHzEnd, guardPassed: guard.passed, guardReason: guard.reason }, steps, hostClock: 'performance.now() milliseconds relative to host page timeOrigin', browserVersion: h.browser.version(), headed, viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1, phoneViewport: { width: 844, height: 390 }, phoneDeviceScaleFactor: 3, phones: scenario.hostPage ? 0 : h.maxPhones, build, command, clocks, direct, seconds, roundSeconds, nodeClockTickMs: tick, clockTickMs: raw.clockTickMs, timingResolution: { framesMs: resolution(summary(raw.frames), raw.clockTickMs), inputMs: resolution(summary(delays), Math.max(tick, ...clocks.map(c => c.clockTickMs))), longTasksMs: resolution(summary(raw.longTasks), raw.clockTickMs) }, minimumFrames: 600, minimumInputs: 100, frameSampleStatus: raw.frames.length < 600 || !roundRaw || roundSeconds < 180 ? 'insufficient samples' : 'sufficient samples', framesMs: summary(raw.frames), longTasksMs: summary(raw.longTasks), longTasksSupported: raw.longTasksSupported, inputMs: summary(delays), feedbackFrames: summary(feedback), raw, inputs, timingEvents: events, incompleteInputs: correlated.incomplete }],
   }, h.evidence);
   if (exit || contention || assessments.some(a => a.status === 'not assessed' && (a.reason === 'contention' || requiredAssessments.includes(a.id)))) throw new Error(assessments.some(a => a.status === 'fail') ? 'Performance budget exceeded; see perf.json' : assessments.some(a => a.status === 'insufficient samples') ? 'Performance: insufficient samples; see perf.json' : 'Performance not assessed; see perf.json');
 }

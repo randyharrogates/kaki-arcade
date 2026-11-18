@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — F-10: PERF-040 assessment and reference-browser options (in progress)
+
+- PERF-040: bare `pnpm perf` times each game's eight-player step over at least 10,000 samples on
+  successive seeds from 808 and blocks on a fail, too few samples, a module that cannot seat eight
+  or detected contention (D-277). The first runs here were under contention, so PERF-040 evidence
+  so far is not assessed; a quiet run is owed.
+- PERF-001: `--build production --host-browser chrome` runs branded Chrome; PERF-001 is assessed
+  only with every display reported at 59.94–60.06 Hz, unchanged at round end. A Chromium pass is
+  labelled slice-gate only.
+
 ## 2026-11-19 — T-07: Tabao Rush TV renderer (in progress)
 
 - TR-001, TR-004, TR-030, TR-031, TR-061, TR-062, PERF-001: station cues (five shapes and eight

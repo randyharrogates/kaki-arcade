@@ -1,4 +1,4 @@
-# F-08 performance harness (NFR-PERF, PERF-001, PERF-010, PERF-012)
+# Performance harness (NFR-PERF, PERF-001, PERF-010, PERF-012)
 
 After the integrator adds the requested root script:
 
@@ -34,7 +34,7 @@ sampled allocations to source files, crediting URL-less V8 built-ins to their ne
 bytes and not native memory. Approximate 95% relative error is 1.96/sqrt(sample count),
 with unknown systematic error; this is not a rigorous confidence interval. Node GC
 entries include harness overhead and exclude forced GC before the measured pass.
-No Node time/allocation/GC budgets have been approved. Node GC is not browser GC.
+PERF-040 assesses eight-player step timing; allocation and GC remain diagnostic. Node GC is not browser GC.
 
 ## Adding a browser scenario
 
@@ -179,3 +179,35 @@ errors fail, and “not assessed” never passes. Optional `--slice` selects the
 parent and `--out perf-controller<name>` selects another gitignored marked run folder. It always
 runs one headless production page; `--headed`, `--headless`, `--phones` and `--build` are refused.
 To keep a reviewed report, copy `startup.json` into an unmarked folder such as `first-run`.
+
+
+## PERF-040 and reference-browser assessment (F-10; D-227, D-249)
+
+Bare `pnpm perf` assesses each installed game's eight-player step p95 ≤ 1.67 ms
+and p99 ≤ 3.34 ms. Any failure exits non-zero. One and four players remain diagnostic.
+After one complete unmeasured warm-up, repeat complete default matches on successive deterministic seeds from 808 (808, 809, …) until
+at least 10,000 step samples are collected (about 100 observations in the upper 1%
+for p99; this improves tail stability but is not a statistical confidence guarantee).
+`assessmentSeeds` records the seed list in perf.json and PERF.md. `assessmentStepMs` records these combined samples separately from the first match's
+`stepMs`, driver and allocation measurements. Only `GameModule.step` is timed;
+bot input generation, reporting and allocation profiling are outside those samples.
+The root `assessments` array includes one PERF-040 entry with `game` per installed game.
+Contention detected at either endpoint downgrades only passes to “not assessed”; failures remain failures. Detected contention exits non-zero; unknown contention does not block.
+
+For milestone PERF-001 use:
+
+```
+pnpm perf -- <scenario> --build production --host-browser chrome
+```
+
+`--host-browser chromium` is the default for slice gates. The shared UAT runner launches
+branded Chrome using Playwright `channel: 'chrome'`; phones retain their existing default.
+The controller cold-start command refuses this option because it has a fixed Chromium setup.
+Browser measurements record `browser`, `browserChannel` and `browserVersion`.
+PERF-001 requires a production build and an OS-reported display mode within 59.94–60.06 Hz inclusive,
+as well as the existing headed, busiest-round, eight-player and sample requirements.
+On macOS `system_profiler SPDisplaysDataType` supplies the current-mode refresh rate;
+`refresh.osRefreshHz`, `refresh.guardPassed` and `refresh.guardReason` record the check.
+Every online display must report the same qualifying rate at the start and round end. Unknown rates, unsupported OSes and conflicting rates across displays cannot qualify. The rate is read again at round end; a change gives “not assessed”. A Chromium pass says “slice gate only; milestone needs --host-browser chrome”.
+The rAF refresh estimate remains diagnostic and cannot satisfy this guard. No budget
+changes or dropped-refresh corrections are applied; other modes are “not assessed”.

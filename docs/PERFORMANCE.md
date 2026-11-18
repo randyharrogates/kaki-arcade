@@ -85,11 +85,7 @@ Stated on the help page (REL-003):
 
 ## 4. Measurement
 
-- `pnpm perf` runs every installed game at 1, 4 and 8 players with seeded bots at the fixed
-  timestep until the match ends, and reports step time, allocation per step (whole run and
-  game only) and observed garbage-collection pauses. Step time is assessed against PERF-040
-  and a failure blocks once F-10 builds that assessment (diagnostic until then); allocation and pauses are reported (§2's Tabao Rush rule applies). The heaviest level remains the aim; default settings are what
-  is measured until T-05.
+- `pnpm perf` runs every installed game at 1, 4 and 8 players with seeded bots at the fixed timestep until the match ends, and reports step time, allocation per step (whole run and game only) and observed garbage-collection pauses. At 8 players, after one unmeasured warm-up match, it repeats complete matches on successive seeds from 808 until it has at least 10,000 step samples per game, timing only `GameModule.step`, and assesses each game against PERF-040. A fail, too few samples or a module that cannot seat eight players blocks. Contention is read at the start and end of the run; if either shows detected contention (one-minute load above the logical CPUs), a pass becomes "not assessed", a fail stays a fail, and the run exits non-zero. The load average cannot prove a quiet machine, so being quiet is the integrator's duty (D-100, D-277). 1 and 4 players, allocation and pauses are reported (§2's Tabao Rush rule applies). The heaviest level remains the aim; default settings are what is measured until T-05.
 - `pnpm perf -- <scenario> [--phones 1|4|8]` uses the local pairing stack, one 1920 × 1080
   host and separate phone contexts in a visible browser (Playwright Chromium by default; assessed milestone PERF-001 runs use
   branded Chrome, on a production build and a 60 Hz display mode). It records host frame times, frames over 50 ms, long tasks, the display's refresh
@@ -98,6 +94,7 @@ Stated on the help page (REL-003):
   instrumented, touch-to-apply and touch-to-feedback times. Timing hooks exist only in
   development builds, so production runs assess frames only. Contexts on one machine do not
   prove real phone or Wi-Fi delay.
+- Browser scenarios accept `--host-browser chromium|chrome` (default Chromium, for slice gates). Milestone PERF-001 runs use `--build production --host-browser chrome` (Playwright channel `chrome`); a missing Chrome exits non-zero. `perf.json` records browser, channel and version, and a Chromium pass is labelled "slice gate only; milestone needs --host-browser chrome". PERF-001 is assessed only on a production build and only when macOS (`system_profiler SPDisplaysDataType`) reports every online display at the same rate within 59.94–60.06 Hz, both before and at the end of the round. A display with no reported rate (such as the dev Mac's built-in panel while it is open), differing rates, a rate that changes during the round, or any other OS gives "not assessed"; `refresh.osRefreshHz`, `refresh.osRefreshHzEnd`, `refresh.guardPassed` and `refresh.guardReason` record the check. The rAF estimate cannot satisfy the guard. No budget changes, and dropped refreshes are never counted as passing (D-227, D-249, D-277).
 - A scenario may set `hostPage` to open a local development page instead of a room, with no
   phones (`uat/perf/rabakz-screen.mjs`). It runs only against development builds, reports zero
   phones, still lands in `perf-<phones>` (default `perf-8`) and assesses no budget.

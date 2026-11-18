@@ -37,8 +37,8 @@ describe('F-08 NFR-PERF measurement contracts', () => {
     expect(() => timing({ touch: 5, receipt: 6, applied: 7, frame: 1, touchFrame: 2, feedbackFrame: 1 })).toThrow();
   });
   it('parses only supported flags, defaults to headed and accepts pnpm separator', () => {
-    expect(parse([])).toEqual({ scenario: 'simulation', headed: true, phones: 8, slice: 'simulation', out: 'perf', build: 'development' });
-    expect(parse(['--', 'lobby-8', '--headless', '--phones', '4'])).toEqual({ scenario: 'lobby-8', headed: false, phones: 4, slice: 'lobby-8', out: 'perf-4', build: 'development' });
+    expect(parse([])).toEqual({ scenario: 'simulation', hostBrowser: 'chromium', headed: true, phones: 8, slice: 'simulation', out: 'perf', build: 'development' });
+    expect(parse(['--', 'lobby-8', '--headless', '--phones', '4'])).toEqual({ scenario: 'lobby-8', hostBrowser: 'chromium', headed: false, phones: 4, slice: 'lobby-8', out: 'perf-4', build: 'development' });
     for (const args of [['../escape'], ['--phones', '2'], ['--phones'], ['--wat']]) expect(() => parse(args)).toThrow();
   });
   it('discovers and validates scenarios and marks the picker slot unavailable', async () => {

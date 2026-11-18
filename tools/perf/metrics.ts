@@ -6,7 +6,7 @@ export function summary(values: readonly number[]) {
   return { count: sorted.length, median: percentile(0.5), p95: percentile(0.95), p99: percentile(0.99), max: sorted.at(-1) ?? null, over50: sorted.filter(v => v > 50).length };
 }
 export type Status = 'pass' | 'fail' | 'not assessed' | 'insufficient samples';
-export interface Assessment { id: string; status: Status; reason: string }
+export interface Assessment { id: string; status: Status; reason: string; game?: string }
 export function evaluate(id: 'PERF-001' | 'PERF-010' | 'PERF-012', values: number[], options: { reason?: string | undefined; minimum: number; headed?: boolean; seconds?: number }): Assessment {
   const reason = options.reason ?? (id === 'PERF-001' && !options.headed ? 'Headless rAF has not been shown representative' : undefined);
   if (reason) return { id, status: 'not assessed', reason };
@@ -34,4 +34,22 @@ export function clockTick() {
 }
 export function resolution(stats: ReturnType<typeof summary>, tick: number) {
   return Object.fromEntries(['median', 'p95', 'p99', 'max'].map(key => { const value = stats[key as 'median']; return [key, value !== null && value < 4 * tick ? 'below resolution' : 'resolved']; }));
+}
+
+export function significant(value: number | null | undefined) {
+  return value === null || value === undefined ? 'unknown' : String(Number(value.toPrecision(3)));
+}
+
+export const simulationMinimum = 10000;
+export function assessSimulation(game: string, stats: ReturnType<typeof summary> | undefined, contention: boolean, matches = 0, supported = true): Assessment & { game: string } {
+  const base = { id: 'PERF-040', game };
+  const detail = `${(stats?.count ?? 0).toLocaleString('en-US')} steps over ${String(matches)} ${matches === 1 ? 'match' : 'matches'}; p95 ${significant(stats?.p95)} ms ${(stats?.p95 ?? Infinity) > 1.67 ? '>' : '≤'} 1.67; p99 ${significant(stats?.p99)} ms ${(stats?.p99 ?? Infinity) > 3.34 ? '>' : '≤'} 3.34`;
+  if (!supported) return { ...base, status: 'fail', reason: 'module does not support eight players' };
+  if (!stats || stats.count < simulationMinimum) return { ...base, status: 'insufficient samples', reason: `${detail}; requires at least 10000 step samples at eight players` };
+  const failed = (stats.p95 ?? Infinity) > 1.67 || (stats.p99 ?? Infinity) > 3.34;
+  return { ...base, status: failed ? 'fail' : contention ? 'not assessed' : 'pass', reason: `${detail}${contention ? '; contention' : ''}` };
+}
+export function refreshGuard(hz: number | null) {
+  const passed = hz !== null && hz >= 59.94 && hz <= 60.06;
+  return { passed, reason: passed ? undefined : hz === null ? 'OS-reported display refresh rate unknown; requires 60 Hz' : `OS-reported display refresh rate is ${String(hz)} Hz; requires 60 Hz` };
 }
