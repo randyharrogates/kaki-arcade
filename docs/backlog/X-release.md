@@ -21,3 +21,12 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | X-08 | 30-minute 8-player soak across all three games | NFR-REL, PERF-030 | R-08, P-07, T-14 | 4 | todo |
 | X-09 | Real-device UAT with Randy and his players: the `UAT.md` §5 checklist, 8 real phones, the TV | NFR-REL, REL-005, PERF-002, PERF-010 | X-08 | 4 | todo |
 | X-06 | Deploy to Cloudflare on `arcade.leeseidon.com` over HTTPS, then push the repository (Randy's go required) | REL-001, NET-006 | X-01 to X-09 | 4 | todo |
+
+### X-02 review follow-ups for X-01 (2026-11-18)
+
+- Place the "Put this on your TV" link as a secondary or footer link on the final landing page (the
+  locked landing board has one action), rename the action "Host a game" (REL-002), and let arrow keys
+  and a TV remote reach both links (today any arrow returns focus to the host link); test the Space and
+  arrow handling there.
+- When C-02 (relay) resumes, re-check the help page's phone Wi-Fi line against the NET-004 message.
+- X-09 on the TCL Q65: the help page's viewport, readability from 3 m and the TV-browser advice.
