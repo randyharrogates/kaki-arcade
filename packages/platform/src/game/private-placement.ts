@@ -36,7 +36,7 @@ export function panelMetrics(blocks:readonly PanelBlock[],width:number,height:nu
   if (!fits) return { fits:false,step:13,steps,heights };
   // Fair rounds allow figures to use 89 -> 55 -> 34 -> 21 without coupling text.
   for (const level of [21,34,55,89]) blocks.forEach((b,i) => {
-    if (b.kind !== 'text' && b.kind !== 'stat' || b.kind === 'text' && level > 34) return;
+    if (b.kind !== 'text' && b.kind !== 'stat' || b.kind === 'text' && (b.tone === 'note' || level > 34)) return;
     const options:readonly number[] = b.kind === 'stat' ? PRIVATE_STAT_STEPS : PRIVATE_TEXT_STEPS;
     const next = options.filter(s => s <= level && s > (steps[i] ?? 13)).sort((a,b) => b-a)[0];
     if (!next) return;

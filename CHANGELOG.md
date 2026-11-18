@@ -2,6 +2,18 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — P-03: Peek Poker phone pick
+
+- PP-005, PP-020 (in progress until seen on the TV): Watch the TV with seconds while memorising;
+  a private face-down 4 × 4 tap grid (no D-pad, D-062(5), D-164), two picks with deselect, and a
+  144 × 144 Lock in without a shape (D-171); Locked in, own hand with name and points at the
+  reveal, a 13 px note when picks were filled at random, Scores on the TV, Match over.
+- No pick reaches another phone or the public view before the reveal (tested at 1, 2 and 8 phones,
+  every host send and every received message).
+- Controller kit: the play-area felt copies the shell's whole painting box, so the felt is one
+  surface on every game's phone; private-panel notes stay at 13 px (D-175).
+- Controller cold start 168.7 ms median (budget 2,000).
+
 ## 2026-11-18 — A-10: dish art polish
 
 - TR-041, TR-040 (in progress until seen on the TV): rojak is a mixed heap with dark sauce;

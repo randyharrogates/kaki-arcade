@@ -62,3 +62,15 @@ assert phone A's private text is in A's DOM and absent from B's DOM and the host
    Minh City"), so one question mixes 34 and 21 px answers. Decide: test the wrapped height at
    34 px first, or keep the current reading of D-127 and say so.
 4. The label step is not re-measured when a web font finishes loading; handle it when fonts ship.
+
+### P-03 follow-ups (from the P-03 review, 2026-11-18)
+
+1. "Watch the TV" and "Locked in" wrap in a narrow private column; in the locked state the 34 px
+   private line then outweighs the title. Give the private column a wider minimum or step the title.
+2. Selected-card corner hairlines show at 667 × 375; the selected state reads only as a thicker white
+   frame (D-166). Tidy the corners.
+3. Hearts and diamonds use dark ink on the phone's face-up cards; check against the TV's card ink.
+4. Re-shoot one Rabakz and one Tabao Rush phone still after the kit's felt wrapper change (no change
+   expected; none taken since).
+5. Add a reduced-motion pick → locked capture to the next Peek Poker phone run.
+

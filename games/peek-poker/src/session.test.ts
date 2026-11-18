@@ -1,5 +1,6 @@
 // C-10 review: Peek Poker through createSession and the harness with identical inputs; privacy.
 import { describe, expect, it } from 'vitest';
+import type { ControllerLayout, PrivateView } from '@kaki/platform';
 import { applyHostEvent, applyPhoneEvent } from '@kaki/platform';
 import { peekPoker } from './rules/game';
 import { joinRoom, twin } from '../../../packages/platform/src/session/testing.fixture';
@@ -65,3 +66,47 @@ it('PLAT-007 reconnected real Peek Poker phone can pick immediately without ack'
   expect(t.hashes()[0]).toBe(t.hashes()[1]);
   expect(t.session.state?.players.find(p => p.info.id === 'seat-2')?.picks).toEqual([3]);
 });
+
+
+it.each([1, 2, 8])('PP-020 inspects every host send during a scripted round with %i phones', count => {
+  const t = twin({ game: peekPoker, seed: 42, players: count, settings: { rounds: 3 } });
+  let cursor = 0;
+  let pickingSteps = 0;
+  let inspected = 0;
+  const phase = () => t.session.state?.phase;
+  while (phase() !== 'reveal' && t.session.step < 4000) {
+    const state = t.session.state;
+    if (state?.phase === 'pick') {
+      for (const p of t.players) {
+        if (pickingSteps === 0) t.tap(p.id, 'grid', p.seat - 1);
+        if (pickingSteps === 1) t.tap(p.id, 'grid', p.seat + 7);
+        // Leave the final phone unlocked so multiplayer also sends the locked view.
+        if (pickingSteps === 2 && p.seat < count) t.tap(p.id, 'lock', 'go');
+      }
+      pickingSteps++;
+    }
+    t.step();
+    if (phase() === 'reveal') break;
+    for (const sent of t.transport.sent.slice(cursor)) {
+      const payload = sent.value as ControllerLayout | PrivateView | null;
+      const seat = Number(sent.connection.slice(1));
+      if (payload && 'controls' in payload) for (const control of payload.controls) {
+        expect(control.kind).not.toBe('cards');
+        if (control.kind === 'grid') for (const [index, cell] of control.cells.entries()) {
+          expect(cell.faceDown).toBe(true);
+          expect(cell.label).toBeUndefined(); expect('mark' in cell).toBe(false);
+          if (cell.state === 'selected') expect([seat - 1, seat + 7]).toContain(index);
+        }
+      }
+      if (payload && 'blocks' in payload) expect(payload.blocks.every(b => b.kind !== 'cards' && b.kind !== 'grid')).toBe(true);
+      inspected++;
+    }
+    cursor = t.transport.sent.length;
+    const publicView = peekPoker.publicView(t.session.state ?? t.match.state);
+    expect(publicView.players.every(p => p.picks === null)).toBe(true);
+    expect(publicView.hands).toEqual([]);
+  }
+  expect(t.session.state?.phase).toBe('reveal');
+  expect(inspected).toBeGreaterThan(count);
+  expect(t.leaksFound).toEqual([]);
+}, 60000);

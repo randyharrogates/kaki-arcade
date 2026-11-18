@@ -56,6 +56,19 @@ function measureGame<S, Settings extends object, V>(name: string, game: GameModu
     const session = createSession({ game, settings, seed: 1, room: makeRoom(8), context: { data: {}, saved: null, teams: false },
       buffer, transport, publicView() { /* sink */ }, event(e) { events.push(e); },
       ...(record ? { recordInput() { /* sink */ } } : {}) });
+    const phaseLayouts = new Map<string, Set<string>>();
+    let phaseEpoch = 0, previousPhase: unknown;
+    transport.onSend = (connection, type) => {
+      if (type !== 'layout') return;
+      const phase = (session.state as { phase?: unknown }).phase;
+      if (phase !== previousPhase) { phaseEpoch++; previousPhase = phase; }
+      const key = String(phaseEpoch);
+      const phones = phaseLayouts.get(key) ?? new Set<string>();
+      expect(phones.has(connection)).toBe(false);
+      phones.add(connection); phaseLayouts.set(key, phones);
+    };
+    // createSession emits its initial layout before the observer is installed.
+    for (const message of transport.sent) transport.onSend(message.connection, message.type, message.value);
     const ids = Array.from({ length: 8 }, (_, i) => `seat-${String(i + 1)}`), axes = [0.5, 0.5, 0, 0];
     for (let i = 0; i < 500; i++) {
       for (const id of ids) buffer.receive(id, i, 0, axes);
@@ -72,7 +85,11 @@ function measureGame<S, Settings extends object, V>(name: string, game: GameModu
       `${name}, recordInput=${String(record)}: ${bytes.toFixed(2)} B/step net heap growth; ${us.toFixed(2)} us/step; layouts=${String(transport.sent.filter(m => m.type === 'layout').length)} views=${String(transport.sent.filter(m => m.type === 'view').length)}\n`);
     expect(session.step).toBe(6500);
     expect(events).toEqual([]);
-    expect(transport.sent.filter(m => m.type === 'layout')).toHaveLength(name === 'peek' ? 56 : 8);
+    // 108⅓ seconds: M/P/R/S in rounds 1 and 2, then round 3 M = 9 phases × 8 phones.
+    // The two S → M changes restore Watch the TV (16 sends missing before P-03 round 3).
+    expect(transport.sent.filter(m => m.type === 'layout')).toHaveLength(name === 'peek' ? 72 : 8);
+    expect(phaseLayouts.size).toBe(name === 'peek' ? 9 : 1);
+    expect([...phaseLayouts.values()].every(phones => phones.size === 8)).toBe(true);
   }
 }
 it('real-game diagnostic ports complete all steps with expected phase layout sends', () => {

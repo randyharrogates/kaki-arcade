@@ -47,7 +47,7 @@
 /* D-132: block geometry comes from the same fit calculation as placement. */
 .ka-private-panel { position:absolute; display:flex; flex-direction:column; justify-content:center; gap:var(--layout-gap); }
 .ka-private-block { flex:none; min-width:0; }
-.ka-private-panel .ka-layout-text { overflow-wrap:normal; line-height:var(--ka-line-body); font-size:var(--ka-phone-type-34); }
+.ka-private-panel .ka-layout-text:not(.ka-layout-note) { overflow-wrap:normal; line-height:var(--ka-line-body); font-size:var(--ka-phone-type-34); }
 .ka-private-panel .ka-layout-text > span { min-width:0; max-width:100%; }
 .ka-private-panel .ka-layout-cards { width:100%; max-width:100%; margin-inline:auto; perspective:var(--ka-card-perspective); }
 .ka-private-panel .ka-layout-card { box-sizing:border-box; min-width:var(--ka-space-55); aspect-ratio:68 / 93; }

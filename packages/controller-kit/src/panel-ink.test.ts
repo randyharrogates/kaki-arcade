@@ -17,3 +17,9 @@ it('CTRL-003 keeps disabled ink on cards and their labels, and on-colour ink on 
   }
   expect(body(".ka-layout-target[class*='ka-kit-']")).toMatch(/color:\s*var\(--ka-on-colour\)/);
 });
+
+it('PP-020 private-panel large text rule excludes note tone', () => {
+  expect(body('.ka-layout-note')).toMatch(/font-size:\s*var\(--ka-phone-type-13\)/);
+  expect(body('.ka-private-panel .ka-layout-text')).not.toMatch(/font-size:/);
+  expect(body('.ka-private-panel .ka-layout-text:not(.ka-layout-note)')).toMatch(/font-size:\s*var\(--ka-phone-type-34\)/);
+});

@@ -194,7 +194,7 @@ export function LayoutEngine(props: LayoutEngineProps) {
       const labels = [...panel.querySelectorAll<HTMLElement>('.ka-layout-text')];
       const stats = [...panel.querySelectorAll<HTMLElement>('.ka-private-stat-value')];
       const grids = [...panel.querySelectorAll<HTMLElement>('.ka-private-grid-label')];
-      const textFits = labels.map(node => choose(node,PRIVATE_TEXT_STEPS)).every(Boolean);
+      const textFits = labels.map(node => choose(node,node.classList.contains('ka-layout-note') ? [13] : PRIVATE_TEXT_STEPS)).every(Boolean);
       const statFits = stats.map(node => choose(node,PRIVATE_STAT_STEPS)).every(Boolean);
       const gridFits = [...panel.querySelectorAll<HTMLElement>('.ka-layout-grid')].every(grid => {
         const labels = grids.filter(label => grid.contains(label));
@@ -319,11 +319,15 @@ export function LayoutEngine(props: LayoutEngineProps) {
         const origin = shell.getBoundingClientRect(), box = node.getBoundingClientRect();
         Object.assign(surface.style, {
           backgroundColor: css.backgroundColor, backgroundImage: css.backgroundImage,
-          backgroundSize: css.backgroundSize,
-          backgroundPosition: css.backgroundPosition.split(',').map(position => {
-            const [x = '0px', y = '0px'] = position.trim().split(/\s+/);
-            return `calc(${x} + ${String(origin.left-box.left)}px) calc(${y} + ${String(origin.top-box.top)}px)`;
-          }).join(','),
+          // Gradients with auto size use their painting box. Copy that box too,
+          // rather than resizing the felt to the shorter play area.
+          left: `${String(origin.left-box.left)}px`, top: `${String(origin.top-box.top)}px`,
+          width: `${String(origin.width)}px`, height: `${String(origin.height)}px`,
+          right: 'auto', bottom: 'auto',
+          // Resolve auto gradients so private crossfade covers can reuse the
+          // same image size even when their own boxes are smaller.
+          backgroundSize: css.backgroundSize.split(',').map(size => size.trim() === 'auto' || size.trim() === 'auto auto' ? `${String(origin.width)}px ${String(origin.height)}px` : size.trim()).join(', '),
+          backgroundPosition: css.backgroundPosition,
         });
       }
     };

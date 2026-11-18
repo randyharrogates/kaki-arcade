@@ -81,13 +81,15 @@ export function step(state: State, inputs: StepInputs): State {
   const next = advanceStep(state, inputs);
   if (next === state) return next;
   const phaseChanged = next.phase !== state.phase;
-  const secondsChanged = (next.phase === 'memorise' || next.phase === 'swap') &&
+  const secondsChanged = next.phase === 'memorise' &&
     Math.ceil(next.left / STEPS_PER_SECOND) !== Math.ceil(state.left / STEPS_PER_SECOND);
   if (!phaseChanged && !secondsChanged) return next;
   return { ...next, players: next.players.map((p, i) => {
     const previous = state.players[i];
-    return p.waiting || p.viewRevision !== previous?.viewRevision ? p :
-      { ...p, viewRevision: p.viewRevision + 1 };
+    return p.waiting ? p : { ...p,
+      revision: p.revision + (phaseChanged ? 1 : 0),
+      viewRevision: p.viewRevision + (p.viewRevision === previous?.viewRevision ? 1 : 0),
+    };
   }) };
 }
 

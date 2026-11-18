@@ -48,12 +48,28 @@ it('CTRL-003 D-132 grows cards, steps text and rejects the card floor overflow',
   expect(placeController(picker,privateFixtures.cards,{ width:550,height:307 },false,{}, { width:667,height:375 }).fits).toBe(false);
 });
 
-it('CTRL-003 gives title/body/note independent 34 px boxes and stats their own intermediate steps', () => {
+it('CTRL-003 gives title/body 34 px boxes and keeps notes at 13 and stats their own intermediate steps', () => {
   const empty = { revision:1,controls:[] };
   const text = placeController(empty,privateFixtures.text,{ width:667,height:307 },false,{}, { width:667,height:375 });
-  expect(text.metrics?.steps).toEqual([34,34,34]);
+  expect(text.metrics?.steps).toEqual([34,34,13]);
   const stats = placeController(empty,privateFixtures.rabakz,{ width:667,height:375 },false,{}, { width:667,height:375 });
   expect(stats.fits).toBe(true);
   expect(stats.metrics?.steps.slice(0,3)).toContain(55);
   expect(stats.metrics?.steps.slice(0,3).every(s => s >= 34)).toBe(true);
+});
+
+
+it('PP-020 reveal notes reserve 13 px text while Points retains its large fit steps', () => {
+  const view = { revision:1,blocks:[
+    { kind:'cards' as const,cards:Array.from({ length:5 },(_,i) => ({ id:String(i),label:'10',mark:'heart' })) },
+    { kind:'text' as const,text:'High card' },
+    { kind:'stat' as const,label:'Points',value:3 },
+    { kind:'text' as const,tone:'note' as const,text:'Missing picks were filled at random' },
+  ] };
+  for (const [width,height] of [[667,307],[844,322],[932,362]] as const) {
+    const result = placeController({ revision:1,controls:[] },view,{ width,height },false,{}, { width,height:height+68 });
+    expect(result.fits).toBe(true);
+    expect(result.metrics?.steps[2]).toBe(width === 932 ? 89 : 55);
+    expect(result.metrics?.steps[3]).toBe(13);
+  }
 });

@@ -1,0 +1,373 @@
+{
+  "slice": "P-03-phone-pick",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- P-03-phone-pick --phones 8 --out round1-p8",
+  "commit": "95bb03d28f6746bbf471c7c7015de1e3bd4b8b7c",
+  "viewports": [
+    "667×375",
+    "844×390",
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1219.3153750000001,
+      "status": "completed"
+    },
+    {
+      "name": "Phone memorise, pick, lock and reveal",
+      "ms": 32707.338541000005,
+      "status": "completed"
+    },
+    {
+      "name": "Random fill and finish the real match",
+      "ms": 112397.73245800001,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-memorise-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-memorise-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-memorise-tv.jpg",
+      "unsettled": true
+    },
+    {
+      "file": "04-phone1-picking-0-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-picking-0-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-picking-0-tv.jpg",
+      "unsettled": true
+    },
+    {
+      "file": "07-phone1-picking-1-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-picking-1-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-picking-1-tv.jpg",
+      "unsettled": true
+    },
+    {
+      "file": "10-phone1-picking-2-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-picking-2-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-picking-2-tv.jpg",
+      "unsettled": true
+    },
+    {
+      "file": "13-phone1-locked-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-locked-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-locked-tv.jpg",
+      "unsettled": true
+    },
+    {
+      "file": "16-phone1-reveal-own-hand-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-reveal-own-hand-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-reveal-own-hand-tv.jpg",
+      "unsettled": true
+    },
+    {
+      "file": "19-phone1-reveal-seat-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone2-reveal-seat-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone3-reveal-seat-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone4-reveal-seat-4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone5-reveal-seat-5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone6-reveal-seat-6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone7-reveal-seat-7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone8-reveal-seat-8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone1-scoreboard-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone1-scoreboard-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-scoreboard-tv.jpg",
+      "unsettled": true
+    },
+    {
+      "file": "30-phone1-random-fill-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-phone1-random-fill-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-random-fill-tv.jpg",
+      "unsettled": true
+    },
+    {
+      "file": "33-phone1-over-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone1-over-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-host-over-tv.jpg",
+      "unsettled": true
+    }
+  ],
+  "screenshots": [
+    "01-phone1-memorise-667.jpg",
+    "02-phone1-memorise-844.jpg",
+    "03-host-memorise-tv.jpg",
+    "04-phone1-picking-0-667.jpg",
+    "05-phone1-picking-0-844.jpg",
+    "06-host-picking-0-tv.jpg",
+    "07-phone1-picking-1-667.jpg",
+    "08-phone1-picking-1-844.jpg",
+    "09-host-picking-1-tv.jpg",
+    "10-phone1-picking-2-667.jpg",
+    "11-phone1-picking-2-844.jpg",
+    "12-host-picking-2-tv.jpg",
+    "13-phone1-locked-667.jpg",
+    "14-phone1-locked-844.jpg",
+    "15-host-locked-tv.jpg",
+    "16-phone1-reveal-own-hand-667.jpg",
+    "17-phone1-reveal-own-hand-844.jpg",
+    "18-host-reveal-own-hand-tv.jpg",
+    "19-phone1-reveal-seat-1.jpg",
+    "20-phone2-reveal-seat-2.jpg",
+    "21-phone3-reveal-seat-3.jpg",
+    "22-phone4-reveal-seat-4.jpg",
+    "23-phone5-reveal-seat-5.jpg",
+    "24-phone6-reveal-seat-6.jpg",
+    "25-phone7-reveal-seat-7.jpg",
+    "26-phone8-reveal-seat-8.jpg",
+    "27-phone1-scoreboard-667.jpg",
+    "28-phone1-scoreboard-844.jpg",
+    "29-host-scoreboard-tv.jpg",
+    "30-phone1-random-fill-667.jpg",
+    "31-phone1-random-fill-844.jpg",
+    "32-host-random-fill-tv.jpg",
+    "33-phone1-over-667.jpg",
+    "34-phone1-over-844.jpg",
+    "35-host-over-tv.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-memorise-667.jpg",
+      "bytes": 292221
+    },
+    {
+      "file": "02-phone1-memorise-844.jpg",
+      "bytes": 374451
+    },
+    {
+      "file": "03-host-memorise-tv.jpg",
+      "bytes": 166563
+    },
+    {
+      "file": "04-phone1-picking-0-667.jpg",
+      "bytes": 317395
+    },
+    {
+      "file": "05-phone1-picking-0-844.jpg",
+      "bytes": 394196
+    },
+    {
+      "file": "06-host-picking-0-tv.jpg",
+      "bytes": 160502
+    },
+    {
+      "file": "07-phone1-picking-1-667.jpg",
+      "bytes": 315456
+    },
+    {
+      "file": "08-phone1-picking-1-844.jpg",
+      "bytes": 393251
+    },
+    {
+      "file": "09-host-picking-1-tv.jpg",
+      "bytes": 160502
+    },
+    {
+      "file": "10-phone1-picking-2-667.jpg",
+      "bytes": 317008
+    },
+    {
+      "file": "11-phone1-picking-2-844.jpg",
+      "bytes": 395051
+    },
+    {
+      "file": "12-host-picking-2-tv.jpg",
+      "bytes": 160502
+    },
+    {
+      "file": "13-phone1-locked-667.jpg",
+      "bytes": 299869
+    },
+    {
+      "file": "14-phone1-locked-844.jpg",
+      "bytes": 382916
+    },
+    {
+      "file": "15-host-locked-tv.jpg",
+      "bytes": 160502
+    },
+    {
+      "file": "16-phone1-reveal-own-hand-667.jpg",
+      "bytes": 287920
+    },
+    {
+      "file": "17-phone1-reveal-own-hand-844.jpg",
+      "bytes": 367773
+    },
+    {
+      "file": "18-host-reveal-own-hand-tv.jpg",
+      "bytes": 160502
+    },
+    {
+      "file": "19-phone1-reveal-seat-1.jpg",
+      "bytes": 367773
+    },
+    {
+      "file": "20-phone2-reveal-seat-2.jpg",
+      "bytes": 365997
+    },
+    {
+      "file": "21-phone3-reveal-seat-3.jpg",
+      "bytes": 288719
+    },
+    {
+      "file": "22-phone4-reveal-seat-4.jpg",
+      "bytes": 364959
+    },
+    {
+      "file": "23-phone5-reveal-seat-5.jpg",
+      "bytes": 287748
+    },
+    {
+      "file": "24-phone6-reveal-seat-6.jpg",
+      "bytes": 368079
+    },
+    {
+      "file": "25-phone7-reveal-seat-7.jpg",
+      "bytes": 287411
+    },
+    {
+      "file": "26-phone8-reveal-seat-8.jpg",
+      "bytes": 365271
+    },
+    {
+      "file": "27-phone1-scoreboard-667.jpg",
+      "bytes": 284676
+    },
+    {
+      "file": "28-phone1-scoreboard-844.jpg",
+      "bytes": 367295
+    },
+    {
+      "file": "29-host-scoreboard-tv.jpg",
+      "bytes": 160502
+    },
+    {
+      "file": "30-phone1-random-fill-667.jpg",
+      "bytes": 289464
+    },
+    {
+      "file": "31-phone1-random-fill-844.jpg",
+      "bytes": 370597
+    },
+    {
+      "file": "32-host-random-fill-tv.jpg",
+      "bytes": 160502
+    },
+    {
+      "file": "33-phone1-over-667.jpg",
+      "bytes": 280642
+    },
+    {
+      "file": "34-phone1-over-844.jpg",
+      "bytes": 363766
+    },
+    {
+      "file": "35-host-over-tv.jpg",
+      "bytes": 160502
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 3106
+    },
+    {
+      "file": "measurements.json",
+      "bytes": 4465
+    },
+    {
+      "file": "payloads.json.gz",
+      "bytes": 131223
+    },
+    {
+      "file": "run.json",
+      "bytes": 7982
+    }
+  ],
+  "totalBytes": 10387296,
+  "maxBytes": 12582912
+}

@@ -28,8 +28,9 @@ describe('Peek Poker through the harness', { timeout: 60_000 }, () => {  // Whol
     match.until((m) => m.publicView().phase === 'pick', ROUND);
     expect(match.publicView().grid).toBeNull();
     match.step(3);
-    // Locked in: the phone shows the waiting text, and the hand is not on the TV yet.
-    expect(match.layoutFor('p1').controls.map((c) => c.id)).toEqual(['watch']);
+    // The final lock immediately reveals (PP-022); controls give way to the own hand.
+    expect(match.publicView().phase).toBe('reveal');
+    expect(match.layoutFor('p1').controls).toEqual([]);
     match.until((m) => m.publicView().phase === 'reveal', 5);
     const hands = match.publicView().hands;
     expect(hands).toHaveLength(players);

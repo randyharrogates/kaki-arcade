@@ -118,7 +118,7 @@ export function PhonePage() {
   </main>;
 }
 
-function GameController({ controller, view, send }: { controller: NonNullable<ReturnType<typeof phoneController>>; view: PhoneView; send: (output: LayoutOutput) => void }) {
+export function GameController({ controller, view, send }: { controller: NonNullable<ReturnType<typeof phoneController>>; view: PhoneView; send: (output: LayoutOutput) => void }) {
   const [area, setArea] = useState<{ width: number; height: number; viewport: { width: number; height: number } } | null>(null);
   useEffect(() => {
     const board = document.querySelector('.ka-controller-play');
@@ -129,5 +129,5 @@ function GameController({ controller, view, send }: { controller: NonNullable<Re
     observer.observe(board);
     return () => { observer.disconnect(); };
   }, []);
-  return <ControllerShell {...controller}>{area && view.gameLayout && <LayoutEngine layout={view.gameLayout} privateView={view.gamePrivateView} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={send}/>}</ControllerShell>;
+  return <div class="phone-game-page" data-theme={controller.theme}><ControllerShell {...controller}>{area && view.gameLayout && <LayoutEngine layout={view.gameLayout} privateView={view.gamePrivateView} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={send}/>}</ControllerShell></div>;
 }

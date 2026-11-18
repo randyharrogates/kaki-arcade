@@ -252,7 +252,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   above and scale down to 89 on narrower phones (D-122). Labels that do not fit at 34 px step to
   21 px (D-127); disabled controls are an opaque grey with dark ink (D-125); face-down cards show
   the striped back. Changes crossfade without a blank frame. Tested in Chromium phone emulation
-  at 667, 844 and 932 wide. Not proven: real phones (K-07); the games' own layouts (R-02, P-03,
+  at 667, 844 and 932 wide. Not proven: real phones (K-07); the games' own layouts (R-02,
   T-08); long action labels and web-font loading (follow-ups in K-05).
 - **Rabakz scoreboard and podium (R-05), development page only.** A scoreboard every five
   questions and a final podium, with ties, late joiners and team totals first in team mode, for
@@ -364,6 +364,16 @@ seat numbers only when a name cannot fit. UAT: `uat/evidence/C-16-start-game/rou
   phone theme while a game is playing or paused; console on every other screen. Text on panels stays
   readable in every theme. Evidence `uat/evidence/C-16b-private-panel/round3/`.
 
+- **Peek Poker phone (P-03, merged 2026-11-18).** While memorising, the phone says Watch the TV
+  with the seconds; during the pick it shows a private face-down 4 × 4 grid: tap two cards (tap
+  again to deselect), then Lock in (144 × 144, words only). Once locked it reads Locked in / Watch
+  the TV for the reveal; at the reveal it shows your own five cards, the hand's name, your points,
+  and a small note if picks were filled at random; then Scores on the TV, and Match over at the
+  end. Phones receive only their own picks; the TV view carries no picks until the reveal. The
+  play-area felt now covers the whole phone page in every game. Tested at 1, 2 and 8 phones at
+  667 × 375 and 844 × 390; controller cold start 168.7 ms median. Not yet: the TV table in the
+  console (P-06/P-07), real phones (K-07). Evidence `uat/evidence/P-03-phone-pick/round1-p8/`.
+
 ## Does not exist yet
 
 - No controller or game screen yet; the picker stops at "Starting…" until C-10 wires the session.
@@ -455,11 +465,6 @@ with eight phones on a 75 Hz display, frame time 95th percentile 14.1 ms, worst 
 None run yet (`UAT.md` §5).
 
 ## Known gaps and risks
-
-- Peek Poker's felt does not fill the phone page at some sizes: at 844 × 390 the page shows the
-  console marble with felt only in a strip at the bottom (seen in K-09's peek-pick fixture and in
-  main's C-16b round 3 shot 05). The phone theme surface needs to cover the whole page; to be fixed
-  with P-03.
 
 - Performance budgets are targets, not measurements, until M2.
 - Whether the TCL Q65's own browser can run the game is unknown (REL-005).

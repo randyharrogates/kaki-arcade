@@ -281,3 +281,47 @@ it('PP-005 D-164 names face-down grid targets by row-major index and preserves s
     expect(children(button).at(-1)?.props.children).toBeNull();
   });
 });
+
+it('PP-020 private notes stay at 13 while Points fits at 89', () => {
+  const note = new PrivateNode(), stat = new PrivateNode(), panel = new PrivateNode(), root = new PrivateNode();
+  note.classes.add('ka-layout-note');
+  panel.querySelectorAll = selector => selector === '.ka-layout-text' ? [note] : selector === '.ka-private-stat-value' ? [stat] : [];
+  root.append(panel);
+  const view = { revision:1,blocks:[{ kind:'text' as const,tone:'note' as const,text:'Missing picks were filled at random' },{ kind:'stat' as const,label:'Points',value:3 }] };
+  const placed = placeController({ revision:1,controls:[] },view,{ width:844,height:322 },false,{}, { width:844,height:390 });
+  expect(placed.metrics?.steps).toEqual([13,89]);
+  LayoutEngine({ layout:{ revision:1,controls:[] },privateView:view,area:{ width:844,height:322 },viewport:{ width:844,height:390 },onOutput:vi.fn() });
+  const ref = hooks.refs[0]; if (!ref) throw Error('Missing root'); ref.current = root;
+  vi.stubGlobal('document',{ fonts:Object.assign(new EventTarget(),{ ready:new Promise<void>(() => { /* pending */ }) }) });
+  vi.stubGlobal('ResizeObserver',class { observe() { /* manual */ } disconnect() { /* manual */ } });
+  hooks.effects[2]?.();
+  expect(note.style.fontSize).toBe('var(--ka-phone-type-13)');
+  expect(stat.style.fontSize).toBe('var(--ka-phone-type-89)');
+  expect(hooks.updates.at(-1)).toBe(true);
+});
+
+it('PP-005 copies the full shell felt box and retains its opaque paint during layout crossfade', () => {
+  const surface = new PrivateNode(), root = new PrivateNode(), shell = new PrivateNode(), parent = new PrivateNode();
+  const rect = { left:0,top:0,width:844,height:390 };
+  shell.getBoundingClientRect = () => rect;
+  root.getBoundingClientRect = () => ({ ...rect,top:55,height:322 });
+  Object.assign(root,{ closest:() => shell,parentElement:parent });
+  root.querySelector = () => surface;
+  const old = new PrivateNode();
+  Object.assign(root,{ cloneNode:() => old });
+  vi.stubGlobal('window',Object.assign(new EventTarget(),{ matchMedia:() => ({ matches:false }) }));
+  vi.stubGlobal('ResizeObserver',class { observe() { /* manual */ } disconnect() { /* manual */ } });
+  const paint = { backgroundColor:'var(--ka-bg)',backgroundImage:'var(--ka-bg-treatment)',backgroundSize:'auto',backgroundPosition:'0px 0px' };
+  vi.stubGlobal('getComputedStyle',() => paint);
+  engine({ revision:1,controls:[] });
+  const ref = hooks.refs[0]; if (!ref) throw Error('Missing root'); ref.current = root;
+  hooks.effects[4]?.(); hooks.effects[5]?.();
+  expect(surface.style).toMatchObject({ ...paint,backgroundSize:'844px 390px',left:'0px',top:'-55px',width:'844px',height:'390px' });
+  engine({ revision:2,controls:[{ kind:'text',id:'watch',text:'Watch the TV' }] });
+  hooks.effects[5]?.();
+  expect(surface.animations).toHaveLength(1);
+  // Opacity animates, but the covering background itself keeps the shell's opaque colour.
+  expect(surface.style.backgroundColor).toBe(paint.backgroundColor);
+  expect(surface.style.backgroundImage).toBe(paint.backgroundImage);
+  expect(parent.children).toContain(old);
+});

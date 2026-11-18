@@ -233,7 +233,7 @@ export const PHONE = {
   /** A cell of a grid that is only looked at. Derived: one 34 px line. */
   cellShown: 34,
   /**
-   * Text. Body is 21 px on a 34 px line, a title 34 px on 55, a note 15 px on 21 (board 4).
+   * Text. Body is 21 px on a 34 px line, a title 34 px on 55, a note 13 px on 21 (board 4's 15 px, set to 13 by D-056: no 15 px type; private panels keep notes at 13, D-175).
    * Derived: an average letter is 0.57 of the type size (12, 19 and 8 px), and an option's
    * text may wrap to three lines of 21 px inside its 68 px (R-10's limit for long options).
    */

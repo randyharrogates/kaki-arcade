@@ -1497,3 +1497,9 @@ cut the count and the fix in half; one status line also means one place to look.
 shows the refusal as D-170 records. Evidence: `uat/evidence/R-04-setup/roundL-p8/19-phone1-difficulty-refused-leader-667.jpg`.
 Randy may overrule.
 
+**D-175 · 2026-11-18 · Claude** (under D-057 and D-142; refines D-164(4) and D-056) — Notes in a
+phone's private panel stay at 13 px on a 21 px line (`packages/controller-kit/src/layout.css`,
+`packages/platform/src/game/private-placement.ts`). Board 4 drew notes at 15 px, but D-056 removed
+15 px type and private panels are narrow, so the note keeps the smallest step instead of growing
+with the panel. First used by Peek Poker's random-fill note (P-03). Randy may overrule.
+

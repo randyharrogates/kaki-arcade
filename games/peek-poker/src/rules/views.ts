@@ -16,7 +16,7 @@ export function controllerLayout(state: State, id: string): ControllerLayout {
     return { revision, controls: [
       { kind: 'grid', id: 'grid', rows: 4, cols: 4,
         cells: Array.from({ length: 16 }, (_, i) => ({
-          state: p.picks.includes(i) ? 'selected' : 'plain',
+          faceDown: true, state: p.picks.includes(i) ? 'selected' : 'plain',
         })),
       },
       { kind: 'options', id: 'lock', size: 'large', options: [{
@@ -24,8 +24,10 @@ export function controllerLayout(state: State, id: string): ControllerLayout {
       }] },
     ] };
   }
-  const text = state.phase === 'memorise' || state.phase === 'swap' ? 'Watch the TV' :
-    state.phase === 'pick' ? 'Locked in' : state.phase === 'over' ? 'Match over' : 'Your hand';
+  if (state.phase === 'reveal') return { revision, controls: [] };
+  const text = state.phase === 'memorise' ? 'Watch the TV' :
+    state.phase === 'swap' ? 'Watch the TV' : state.phase === 'pick' ? 'Locked in' :
+    state.phase === 'scoreboard' ? 'Scores on the TV' : 'Match over';
   return { revision, controls: [{ kind: 'text', id: 'watch', text, tone: 'title' }] };
 }
 
@@ -33,13 +35,15 @@ export function privateView(state: State, id: string): PrivateView | null {
   const p = state.players.find((p) => p.info.id === id);
   if (p === undefined || p.waiting) return null;
   const revision = p.viewRevision;
-  if (state.phase === 'memorise' || state.phase === 'swap') {
+  if (state.phase === 'memorise') {
     return { revision, blocks: [
-      { kind: 'text', text: 'Watch the TV' },
       { kind: 'stat', label: 'Seconds', value: Math.ceil(state.left / STEPS_PER_SECOND) },
     ] };
   }
-  if (p.hand === null) return null;
+  if (state.phase === 'pick' && p.locked) return { revision, blocks: [
+    { kind: 'text', text: 'Watch the TV for the reveal' },
+  ] };
+  if (state.phase !== 'reveal' || p.hand === null) return null;
   return { revision, blocks: [
     { kind: 'cards', cards: [...p.picks.map((i) => must(state.grid[i])), ...state.shared]
       .map((card, i) => ({
@@ -48,6 +52,7 @@ export function privateView(state: State, id: string): PrivateView | null {
       })) },
     { kind: 'text', text: must(HAND_NAMES[p.hand.category]) },
     { kind: 'stat', label: 'Points', value: p.gained },
+    ...(p.filled ? [{ kind: 'text' as const, text: 'Missing picks were filled at random', tone: 'note' as const }] : []),
   ] };
 }
 

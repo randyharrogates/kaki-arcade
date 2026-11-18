@@ -14,7 +14,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 |---|---|---|---|---|---|
 | P-01 | Rules (pure): deal, memorise and pick timers, secret picks, random fill, swap twists, match of 3, 5 or 7 rounds, mid-match join, solo | PP-001 to PP-006, PP-010 to PP-013, PP-022 | F-04 | 1 | merged |
 | P-02 | Hand evaluator and scoring, including the speed rule for tied best hands | PP-007, PP-009 | F-04 | 1 | merged |
-| P-03 | Controller: "watch the TV", private 4 × 4 pick grid with tap (no D-pad, D-062(5), D-164), lock in, own hand at the reveal | PP-005, PP-020 | P-01, K-05 | 2 | todo |
+| P-03 | Controller: "watch the TV", private 4 × 4 pick grid with tap (no D-pad, D-062(5), D-164), lock in, own hand at the reveal | PP-005, PP-020 | P-01, K-05 | 2 | merged 2026-11-18 |
 | P-04 | Big-screen table: grid, shared cards, flips with masks, swaps on arcs, lock-in markers, reveal with picks marked | PP-003, PP-004, PP-008, PP-021, PP-030, PP-031 | P-01, A-08, F-06 | 2 | done |
 | P-05 | Scoreboard between rounds, podium, solo personal best | PP-032, PP-012 | P-04, C-13 | 2 | todo |
 | P-06 | Load the table (P-04) in the console: register the host screen and view key in the game registry, as Rabakz does, with the card atlas and fonts decoded and warmed before the round starts (nothing loads during play); found by P-03's UAT, where the TV shows "This game's screen is not built yet" | PP-030, PP-031, PLAT-033 | P-04, C-10 | 2 | todo |

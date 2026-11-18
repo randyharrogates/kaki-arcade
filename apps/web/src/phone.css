@@ -92,3 +92,7 @@
 
 .phone-picker > .phone-teams-choice { grid-column: 1; }
 .phone-picker:has(> .phone-teams-choice) > .phone-picker-controls { grid-column: 2; grid-row: 1 / 3; }
+
+/* Keep the game surface anchored to the viewport across lobby/controller changes. */
+.phone-game-page { position: fixed; inset: 0; overflow: hidden; }
+.phone-game-page > .ka-controller-shell { position: absolute; height: 100%; }
