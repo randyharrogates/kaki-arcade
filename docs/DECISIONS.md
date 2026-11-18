@@ -1503,3 +1503,14 @@ phone's private panel stay at 13 px on a 21 px line (`packages/controller-kit/sr
 15 px type and private panels are narrow, so the note keeps the smallest step instead of growing
 with the panel. First used by Peek Poker's random-fill note (P-03). Randy may overrule.
 
+
+**D-176 · 2026-11-18 · Claude** (D-057, A-09; image generation logged as AGENTS.md requires) — Codex
+generated eight shell pictures in the A-09 worktree (prompts in `assets/src/images/shell/prompts.json`,
+all original, nothing copied from an existing game or brand). Chosen by recommendation: landing **B**
+(friends holding real phones as controllers; A's handheld consoles misstate how the product works and
+lean toward a console's look), Tabao Rush **B** (the whole kitchen from the game's own angle, cooks
+working together), Peek Poker **A** (the face-down 4 × 4 grid on felt, as played; no chips or money),
+Rabakz **B** (standing answer cards and a phone buzzer). They ship as compressed WebP at 1× (about
+0.3–0.5 MB for the four, inside PERF-022), never as the 2–3 MB source PNGs. The start-screen picture
+slot becomes 1.618 : 1 (about 656 × 405 at 1080p) and the start screen must still fit without
+scrolling. Board: https://claude.ai/artifact/Jc2My5M8t4J4XoikpY8mr2. Randy may overrule.
