@@ -1,0 +1,114 @@
+{
+  "slice": "P-06-table-in-console",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- P-06-table-in-console --phones 1 --out round3-p1",
+  "commit": "b3c937f81820ae952827b2911f21fe1033433c90",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1740.7699999999995,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-peek-poker-start-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-peek-poker-start-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-peek-poker-start-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-peek-poker-start-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-peek-poker-start-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-peek-poker-start-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-peek-poker-start-crossfade-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-peek-poker-start-crossfade-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-peek-poker-start-crossfade-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-peek-poker-start-crossfade-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-tv-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-tv-pick.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-tv-reveal.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "11-strip-peek-poker-start-crossfade.jpg",
+    "12-host-tv-memorise.jpg",
+    "13-host-tv-pick.jpg",
+    "14-host-tv-reveal.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "11-strip-peek-poker-start-crossfade.jpg",
+      "bytes": 2188477
+    },
+    {
+      "file": "12-host-tv-memorise.jpg",
+      "bytes": 321813
+    },
+    {
+      "file": "13-host-tv-pick.jpg",
+      "bytes": 378631
+    },
+    {
+      "file": "14-host-tv-reveal.jpg",
+      "bytes": 324059
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 885
+    },
+    {
+      "file": "requests-after-start.json",
+      "bytes": 36
+    },
+    {
+      "file": "run.json",
+      "bytes": 2501
+    }
+  ],
+  "totalBytes": 3216439,
+  "maxBytes": 12582912
+}

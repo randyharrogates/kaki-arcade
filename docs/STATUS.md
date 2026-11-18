@@ -434,7 +434,7 @@ rows staggered with the upper one lifted, D-155, D-158), seat markers as players
 what they picked), and the reveal turning every card over with each player's picks marked by
 seat colour and number, then the ranked hands list wiping in. Reduced motion shows the end state
 with a "Swapped" outline. With 8 players the frame time stays at 16.7 ms median and 18.7 ms worst
-(`uat/evidence/P-04-table/perf-8-r5/`). It is not yet loaded by the console (C-10/C-15).
+(`uat/evidence/P-04-table/perf-8-r5/`). The console now loads the table (P-06). Start holds "Starting…" while the card atlas, the four table fonts and the table's warm-up finish, then crossfades to the table with no blank frame (instant with reduced motion). Nothing is requested after Start, and picks stay hidden on the TV until the reveal, checked at 1, 2 and 8 phones (uat/evidence/P-06-table-in-console/round5-*). A headed 8-phone run of one console round (development build, other jobs running) kept frames at 16.7 ms median, 17.4 ms 95th percentile and 17.7 ms worst, with none over 50 ms. Preparation behind "Starting…" has one 233 ms frame before the round (perf-8-r5; budgets not assessed: one round, not 180 s). Not yet: a production build has no card atlas, so Peek Poker cannot start from it (P-08); an assessed full-match run (P-09). When five or more players pick one card, the seat markers cover the lower half of its face; rank and corner index stay readable (OQ-043).
 
 ### Playing cards (A-08)
 The full Peek Poker deck exists as art: 52 faces, the back and five flip frames, rendered in

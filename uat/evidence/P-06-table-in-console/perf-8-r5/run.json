@@ -1,0 +1,65 @@
+{
+  "slice": "P-06-table-in-console",
+  "status": "completed-awaiting-visual-review",
+  "command": "node --expose-gc tools/perf/run.mjs peek-poker-console --phones 8 --slice P-06-table-in-console",
+  "commit": "d6c7ad40c6a95cef3eb033d36b429cafca44ffcc",
+  "viewports": [],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1192.33925,
+      "status": "completed"
+    },
+    {
+      "name": "Picker → start Peek Poker",
+      "ms": 1324.5611669999998,
+      "status": "completed"
+    },
+    {
+      "name": "Memorise → pick",
+      "ms": 20380.309167,
+      "status": "completed"
+    },
+    {
+      "name": "All phones pick and lock in → reveal",
+      "ms": 3151.0985420000034,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:5950/favicon.ico",
+      "expected": true
+    }
+  ],
+  "shotStates": [],
+  "screenshots": [],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "PERF.md",
+      "bytes": 2582
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 737
+    },
+    {
+      "file": "perf.json",
+      "bytes": 53791
+    },
+    {
+      "file": "run.json",
+      "bytes": 1413
+    }
+  ],
+  "totalBytes": 58560,
+  "maxBytes": 12582912
+}

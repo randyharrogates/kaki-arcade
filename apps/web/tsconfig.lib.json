@@ -52,6 +52,9 @@
     },
     {
       "path": "../../content/rabakz/tsconfig.lib.json"
+    },
+    {
+      "path": "../../games/peek-poker/tsconfig.host.json"
     }
   ]
 }

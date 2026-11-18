@@ -94,7 +94,11 @@ export function fitName(ctx:Pick<CanvasRenderingContext2D,'measureText'>, name:s
   while(end && ctx.measureText(`${name.slice(0,end)}…`).width > available) end--;
   return end ? `${name.slice(0,end)}…` : '';
 }
-/** Compare rendered public data without building a model or serialising snapshots. */
+/** Drawing key: phase/round/totalRounds/seconds; grid and shared card codes;
+ * swap kind/from/to; player id/name/seat/colour/waiting/locked/picks; hand
+ * id/name/points and ordering. These feed screenModel, canvas and mounted rows.
+ * Hand.cards and other simulation metadata are not drawn. Keep this list and
+ * the field-mutation test aligned when the table gains visible fields. */
 export function sameTable(a:PokerPublicView|undefined,b:PokerPublicView):boolean {
   if(a === b) return true;
   if(a?.phase !== b.phase || a.round !== b.round || a.totalRounds !== b.totalRounds || a.seconds !== b.seconds || a.swap?.kind !== b.swap?.kind || a.swap?.from !== b.swap?.from || a.swap?.to !== b.swap?.to) return false;

@@ -49,7 +49,11 @@ interface SessionRegistration {
 /** Only the registry knows each game's host renderer and declared preload resolvers. */
 export const sessionRegistrations: Record<string, SessionRegistration> = {
   'tabao-rush': { finalHintTheme: THEMES['tabao-rush'], data: {} },
-  'peek-poker': { finalHintTheme: THEMES['peek-poker'], data: {} },
+  'peek-poker': {
+    finalHintTheme: THEMES['peek-poker'], data: {},
+    screen: async () => (await import('../../../games/peek-poker/host')).ConsoleScreen,
+    viewKey: async () => (await import('../../../games/peek-poker/host')).publicViewKey,
+  },
   rabakz: {
     finalHintTheme: THEMES.rabakz,
     finalScreen: true,

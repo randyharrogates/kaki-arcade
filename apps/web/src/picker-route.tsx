@@ -100,7 +100,7 @@ export function GamePicker({ state, room, setup = null, localDevice = 'keyboard'
         const hasSettings = detail && Boolean(setup?.settings && (setup.settings.fields.length || setup.settings.loading || setup.settings.problem));
         const reason = unavailable(game, room.players.length);
         return <div key={game.id} ref={node => { if (node) tiles.current.set(game.id, node); else tiles.current.delete(game.id); }}
-          class="game-tile" data-game={game.id} data-hidden={expanded && covered && !focused}
+          class="game-tile" data-game={game.id} data-focused={focused} data-expanded={detail} data-hidden={expanded && covered && !focused}
           tabIndex={expanded && !focused ? -1 : 0} role="listitem" aria-current={focused ? 'true' : undefined} aria-disabled={reason !== null} aria-label={`${game.name}. ${game.blurb} ${playerRange(game)}. ${reason ?? 'Available'}`}>
           <div class="game-surface ka-panel"/>
           <div class="game-tile-content">

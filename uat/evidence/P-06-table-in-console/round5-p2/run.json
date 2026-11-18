@@ -1,0 +1,296 @@
+{
+  "slice": "P-06-table-in-console",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- P-06-table-in-console --phones 2 --frames --out round5-p2",
+  "commit": "05107482ee540a2374c45c51783825744189e688",
+  "viewports": [
+    "1920×1080",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1441.5681670000001,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 157.234457999999,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-peek-poker-start-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-peek-poker-start-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-peek-poker-start-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-peek-poker-start-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-peek-poker-start-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-peek-poker-start-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-peek-poker-start-crossfade-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-peek-poker-start-crossfade-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-peek-poker-start-crossfade-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-peek-poker-start-crossfade-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-tv-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-tv-memorise-1280x720.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-tv-pick.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-tv-pick-locked-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-tv-reveal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-peek-poker-start-reduced-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-peek-poker-start-reduced-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-peek-poker-start-reduced-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-peek-poker-start-reduced-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-peek-poker-start-reduced-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-peek-poker-start-reduced-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-peek-poker-start-reduced-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-peek-poker-start-reduced-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-peek-poker-start-reduced-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-peek-poker-start-reduced-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-host-tv-memorise-reduced.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-peek-poker-start-crossfade-frame01.jpg",
+    "02-host-peek-poker-start-crossfade-frame02.jpg",
+    "03-host-peek-poker-start-crossfade-frame03.jpg",
+    "04-host-peek-poker-start-crossfade-frame04.jpg",
+    "05-host-peek-poker-start-crossfade-frame05.jpg",
+    "06-host-peek-poker-start-crossfade-frame06.jpg",
+    "07-host-peek-poker-start-crossfade-frame07.jpg",
+    "08-host-peek-poker-start-crossfade-frame08.jpg",
+    "09-host-peek-poker-start-crossfade-frame09.jpg",
+    "10-host-peek-poker-start-crossfade-frame10.jpg",
+    "11-strip-peek-poker-start-crossfade.jpg",
+    "12-host-tv-memorise.jpg",
+    "13-host-tv-memorise-1280x720.jpg",
+    "14-host-tv-pick.jpg",
+    "15-host-tv-pick-locked-1.jpg",
+    "16-host-tv-reveal.jpg",
+    "17-host-peek-poker-start-reduced-frame01.jpg",
+    "18-host-peek-poker-start-reduced-frame02.jpg",
+    "19-host-peek-poker-start-reduced-frame03.jpg",
+    "20-host-peek-poker-start-reduced-frame04.jpg",
+    "21-host-peek-poker-start-reduced-frame05.jpg",
+    "22-host-peek-poker-start-reduced-frame06.jpg",
+    "23-host-peek-poker-start-reduced-frame07.jpg",
+    "24-host-peek-poker-start-reduced-frame08.jpg",
+    "25-host-peek-poker-start-reduced-frame09.jpg",
+    "26-host-peek-poker-start-reduced-frame10.jpg",
+    "27-strip-peek-poker-start-reduced.jpg",
+    "28-host-tv-memorise-reduced.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-peek-poker-start-crossfade-frame01.jpg",
+      "bytes": 130623
+    },
+    {
+      "file": "02-host-peek-poker-start-crossfade-frame02.jpg",
+      "bytes": 146599
+    },
+    {
+      "file": "03-host-peek-poker-start-crossfade-frame03.jpg",
+      "bytes": 133463
+    },
+    {
+      "file": "04-host-peek-poker-start-crossfade-frame04.jpg",
+      "bytes": 133463
+    },
+    {
+      "file": "05-host-peek-poker-start-crossfade-frame05.jpg",
+      "bytes": 133463
+    },
+    {
+      "file": "06-host-peek-poker-start-crossfade-frame06.jpg",
+      "bytes": 146436
+    },
+    {
+      "file": "07-host-peek-poker-start-crossfade-frame07.jpg",
+      "bytes": 325298
+    },
+    {
+      "file": "08-host-peek-poker-start-crossfade-frame08.jpg",
+      "bytes": 325163
+    },
+    {
+      "file": "09-host-peek-poker-start-crossfade-frame09.jpg",
+      "bytes": 325163
+    },
+    {
+      "file": "10-host-peek-poker-start-crossfade-frame10.jpg",
+      "bytes": 325090
+    },
+    {
+      "file": "11-strip-peek-poker-start-crossfade.jpg",
+      "bytes": 2231689
+    },
+    {
+      "file": "12-host-tv-memorise.jpg",
+      "bytes": 325090
+    },
+    {
+      "file": "13-host-tv-memorise-1280x720.jpg",
+      "bytes": 178848
+    },
+    {
+      "file": "14-host-tv-pick.jpg",
+      "bytes": 382715
+    },
+    {
+      "file": "15-host-tv-pick-locked-1.jpg",
+      "bytes": 382193
+    },
+    {
+      "file": "16-host-tv-reveal.jpg",
+      "bytes": 333007
+    },
+    {
+      "file": "17-host-peek-poker-start-reduced-frame01.jpg",
+      "bytes": 138279
+    },
+    {
+      "file": "18-host-peek-poker-start-reduced-frame02.jpg",
+      "bytes": 127429
+    },
+    {
+      "file": "19-host-peek-poker-start-reduced-frame03.jpg",
+      "bytes": 127429
+    },
+    {
+      "file": "20-host-peek-poker-start-reduced-frame04.jpg",
+      "bytes": 127429
+    },
+    {
+      "file": "21-host-peek-poker-start-reduced-frame05.jpg",
+      "bytes": 127429
+    },
+    {
+      "file": "22-host-peek-poker-start-reduced-frame06.jpg",
+      "bytes": 327273
+    },
+    {
+      "file": "23-host-peek-poker-start-reduced-frame07.jpg",
+      "bytes": 327273
+    },
+    {
+      "file": "24-host-peek-poker-start-reduced-frame08.jpg",
+      "bytes": 327109
+    },
+    {
+      "file": "25-host-peek-poker-start-reduced-frame09.jpg",
+      "bytes": 327109
+    },
+    {
+      "file": "26-host-peek-poker-start-reduced-frame10.jpg",
+      "bytes": 327080
+    },
+    {
+      "file": "27-strip-peek-poker-start-reduced.jpg",
+      "bytes": 2389672
+    },
+    {
+      "file": "28-host-tv-memorise-reduced.jpg",
+      "bytes": 327080
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 3351
+    },
+    {
+      "file": "font-requests-before-start.json",
+      "bytes": 757
+    },
+    {
+      "file": "requests-after-start.json",
+      "bytes": 36
+    },
+    {
+      "file": "run.json",
+      "bytes": 7508
+    }
+  ],
+  "totalBytes": 10970583,
+  "maxBytes": 12582912
+}

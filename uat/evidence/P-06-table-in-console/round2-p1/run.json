@@ -1,0 +1,69 @@
+{
+  "slice": "P-06-table-in-console",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- P-06-table-in-console --phones 1 --out round2-p1",
+  "commit": "7f396276b96695b68a1cb8c6d5426675b1e9d738",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1197.482084,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-tv-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-tv-pick.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-tv-reveal.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-tv-memorise.jpg",
+    "02-host-tv-pick.jpg",
+    "03-host-tv-reveal.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-tv-memorise.jpg",
+      "bytes": 104822
+    },
+    {
+      "file": "02-host-tv-pick.jpg",
+      "bytes": 379250
+    },
+    {
+      "file": "03-host-tv-reveal.jpg",
+      "bytes": 326296
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 721
+    },
+    {
+      "file": "requests-after-start.json",
+      "bytes": 36
+    },
+    {
+      "file": "run.json",
+      "bytes": 1333
+    }
+  ],
+  "totalBytes": 812495,
+  "maxBytes": 12582912
+}

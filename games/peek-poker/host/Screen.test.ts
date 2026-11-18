@@ -138,3 +138,47 @@ it.each([1,4,8])('PP-008 lays out %i bold seat digits without text squashing',co
  expect(digits.every(t=>t.args.length===2 && t.font.startsWith('700 '))).toBe(true);
  const ys=new Set(digits.map(t=>t.args[1]));expect(ys.size).toBe(count>4 ? 2 : 1);
 });
+
+it('PP-030 hides memorised faces only after the hide flip completes', () => {
+  const previous = screenModel(peekPoker.publicView(scenario('memorise')));
+  const model = screenModel(peekPoker.publicView(scenario('picking')));
+  const initial = mock(); drawTable(initial.ctx, model, previous, initial.deck, 0, false);
+  expect(initial.images.filter(image => previous.grid.some(card => card.frame === image.id))).toHaveLength(16);
+  for (const elapsed of [duration.slow, duration.slow + 500]) {
+    const done = mock(); drawTable(done.ctx, model, previous, done.deck, elapsed, false);
+    expect(done.images.map(image => image.id)).toEqual(Array(16).fill('card-back'));
+  }
+});
+
+it('PP-030 drawing key covers exactly the fields consumed by the current table', () => {
+  const view = peekPoker.publicView(scenario('reveal'));
+  const mutations: ((copy: typeof view) => void)[] = [
+    copy => { copy.phase = 'memorise'; }, copy => { copy.round++; },
+    copy => { copy.totalRounds++; }, copy => { copy.seconds++; },
+    copy => { copy.grid = null; },
+    copy => { if (copy.grid) copy.grid[0] = copy.grid[0] === 'AS' ? 'KH' : 'AS'; },
+    copy => { copy.shared[0] = copy.shared[0] === 'AS' ? 'KH' : 'AS'; },
+    copy => { copy.swap = { kind: 'rows', from: 0, to: 3 }; },
+    ...['id', 'name', 'seat', 'colour', 'waiting', 'locked', 'picks'].map(field => (copy: typeof view) => {
+      const player = copy.players[0]; if (!player) throw Error('player');
+      Reflect.set(player, field, field === 'picks' ? [15] : field === 'seat' ? 8 :
+        field === 'waiting' || field === 'locked' ? !Reflect.get(player, field) : 'changed');
+    }),
+    ...['id', 'name', 'points'].map(field => (copy: typeof view) => {
+      const hand = copy.hands[0]; if (!hand) throw Error('hand');
+      Reflect.set(hand, field, field === 'points' ? hand.points + 1 : 'changed');
+    }),
+  ];
+  for (const mutate of mutations) {
+    const copy = structuredClone(view); mutate(copy); expect(sameTable(view, copy)).toBe(false);
+  }
+  const swapping = peekPoker.publicView(scenario('swap'));
+  for (const field of ['kind', 'from', 'to']) {
+    const copy = structuredClone(swapping); if (!copy.swap) throw Error('swap');
+    Reflect.set(copy.swap, field, field === 'kind' ? 'rows' : Number(Reflect.get(copy.swap, field)) + 1);
+    expect(sameTable(swapping, copy)).toBe(false);
+  }
+  const copy = structuredClone(view);
+  const hand = copy.hands[0]; if (!hand) throw Error('hand'); hand.cards = [];
+  expect(sameTable(view, copy)).toBe(true);
+});

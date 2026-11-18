@@ -151,6 +151,13 @@ Rules:
   as `"./host"`. A pure `view-model` turns the game's `publicView` (and nothing else) into
   what the `Screen` draws, so a secret cannot reach the TV by mistake. Text is fitted by
   measurement; layout changes between questions use one block mask (D-105, D-106).
+- **Mounted readiness (P-06):** host registrations may supply an imperative `mount`
+  renderer as well as a Preact component. The shell mounts it with the initial public
+  view while Start is pending, awaits its `ready` promise, and only then subscribes
+  simulation frames. Rejection fails Start; cancellation destroys the mounted renderer.
+  Peek Poker uses this gate to fetch/decode the card atlas and await P-04's fonts,
+  sprite uploads and mounted phase warm-up. Updates after readiness only draw public
+  snapshots; no assets are loaded during play.
 - **Picker state:** `packages/platform/src/picker.ts` is the pure picker state machine (no
   game knowledge); `apps/web/src/game-registry.ts` is the only list of installed games. A
   game's index module is fetched when it is selected and loaded at Start.

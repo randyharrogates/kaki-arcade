@@ -27,4 +27,4 @@ it('PP-005 CTRL-003 computes the same selected card-back inset inside and outsid
       return { offset:css.outlineOffset,width:css.outlineWidth };
     }))).toEqual([{ offset:'-13px',width:'5px' },{ offset:'-13px',width:'5px' }]);
   } finally { await browser.close(); }
-});
+}, 30000);

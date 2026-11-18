@@ -9,8 +9,12 @@ import type { ComponentType } from 'preact';
 
 // The registry erases the individual module's state/settings types at this boundary only.
 export type LoadedGame = GameModule<unknown, object>;
-export type HostScreen = ComponentType<{ view: never; width: number; height: number; sound?: Sound | undefined; soundHistory?: { previous: unknown } | undefined }>;
-export interface SessionDisplay { gameId: string; view: unknown; Screen?: HostScreen; soundHistory?: { previous: unknown }; paused?: boolean; finalScreen?: boolean; results?: Extract<SessionEvent, { type: 'results' }>['results'] }
+export interface ScreenProps { view: never; width: number; height: number; sound?: Sound | undefined; soundHistory?: { previous: unknown } | undefined }
+export interface MountedHostScreen {
+  mount(root: HTMLElement, options: ScreenProps): { ready: Promise<void>; update(options: ScreenProps): void; destroy(): void };
+}
+export type HostScreen = ComponentType<ScreenProps> | MountedHostScreen;
+export interface SessionDisplay { gameId: string; view: unknown; Screen?: HostScreen; ready?: (error?: unknown) => void; soundHistory?: { previous: unknown }; paused?: boolean; finalScreen?: boolean; results?: Extract<SessionEvent, { type: 'results' }>['results'] }
 export function hostScreen(display: SessionDisplay | null, lobby: boolean): string { return display ? display.results ? display.finalScreen ? 'game' : 'results' : 'game' : lobby ? 'lobby' : 'picker'; }
 export interface AdapterOptions {
   counts?: Pick<ReturnType<typeof hostCounts>, 'begin' | 'frame' | 'end' | 'stop' | 'add'>;
@@ -29,6 +33,7 @@ export function createSessionAdapter(o: AdapterOptions) {
   const setupVersions = new Map<string, number>();
   const pending = new Map<string, ReturnType<AdapterOptions['load']>>();
   let generation = 0;
+  let cancelReady: (() => void) | undefined;
   let latestRoom: RoomState | undefined;
   let runner: ReturnType<typeof createSession> | undefined;
   let stopFrames: (() => void) | undefined;
@@ -41,6 +46,7 @@ export function createSessionAdapter(o: AdapterOptions) {
     return loaded;
   }
   function stop(): void {
+    cancelReady?.(); cancelReady = undefined;
     o.counts?.stop();
     revealResults = undefined; generation++; stopFrames?.(); stopFrames = undefined; stopTransport?.(); stopTransport = undefined;
     runner = undefined; for (let seat = 1; seat <= 8; seat++) buffer.remove(`seat-${String(seat)}`); o.display(null);
@@ -85,6 +91,20 @@ export function createSessionAdapter(o: AdapterOptions) {
       if (current !== generation) throw new Error('Cancelled');
       next.updateRoom(latestRoom);
       if (isFailed()) { stop(); throw new Error('Session setup failed'); }
+      if (loaded.Screen && 'mount' in loaded.Screen) {
+        try {
+          await new Promise<void>((resolve, reject) => {
+            cancelReady = () => { reject(new Error('Cancelled')); };
+            display = { ...display, ready: error => { if (error) reject(error instanceof Error ? error : new Error('Host screen preparation failed', { cause: error })); else resolve(); } };
+            o.display(display);
+          });
+        } catch (error) { if (current === generation) stop(); throw error; }
+        cancelReady = undefined;
+        if (current !== generation) throw new Error('Cancelled');
+        // Remove readiness only from a fresh, unpublished snapshot.
+        display = { ...display };
+        delete display.ready;
+      }
       runner = next; o.display(display);
       if (!next.ended) {
         o.counts?.begin();

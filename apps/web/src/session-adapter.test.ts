@@ -6,7 +6,7 @@ import type { AdapterOptions } from './session-adapter';
 import { hostCounts } from './counts';
 import type { SessionDisplay } from './session-adapter';
 
-function fixture(counts?: AdapterOptions['counts']) {
+function fixture(onDisplay?: (display: SessionDisplay | null) => void, counts?: AdapterOptions['counts']) {
   let room = createRoom();
   room = applyPhoneEvent(room, { connectionId: 'a', deviceId: 'd' }, { type: 'join', name: 'Fern', seatToken: '1'.repeat(32) }, 0).state;
   const calls: string[] = [];
@@ -28,7 +28,7 @@ function fixture(counts?: AdapterOptions['counts']) {
   const assets = vi.fn(() => { calls.push('assets'); return Promise.resolve(); });
   const layouts = vi.fn(() => true);
   const adapter = createSessionAdapter({ ...(counts ? { counts } : {}), load, prepare: () => Promise.resolve({ context: { data: {}, saved: null, teams: false }, settings: {} }), assets, seed: () => 7,
-    display: next => { display = next; }, event: e => { events.push(e); },
+    display: next => { display = next; onDisplay?.(next); }, event: e => { events.push(e); },
     frames: { subscribe(fn) { frame = fn; staleFrames.push(fn); return endFrames; } },
     transport: { sendLayout: layouts, sendPrivateView: () => true, fence: () => undefined, status: () => undefined, subscribe(fn) { receive = fn; return endTransport; } },
   });
@@ -123,13 +123,44 @@ it('PLAT-025 passes an optional team split and context to game init', async () =
   expect(init.mock.calls[0]?.[1].map(p => p.team)).toEqual([0, 1]);
   expect(init.mock.calls[0]?.[3].teams).toBe(true); adapter.stop();
 });
+it('PLAT-033 awaits mounted readiness and rejects a failed or cancelled mount', async () => {
+  const destroy = vi.fn();
+  const Screen = { mount: vi.fn(() => ({ destroy })) };
+  let mounted: ReturnType<typeof Screen.mount> | undefined;
+  const f = fixture(display => {
+    // Model the shell's renderer ownership at the display subscription boundary.
+    if (display?.ready && !mounted) mounted = Screen.mount();
+    if (!display) { mounted?.destroy(); mounted = undefined; }
+  });
+  f.load.mockImplementation(() => Promise.resolve({ game: f.game, Screen }));
+  const start = f.adapter.start('test', f.room);
+  await vi.waitFor(() => { expect(f.display?.ready).toBeTypeOf('function'); });
+  f.frame(100); expect(f.calls).not.toContain('step');
+  const pendingDisplay = f.display;
+  f.display?.ready?.(); await start;
+  expect(pendingDisplay?.ready).toBeTypeOf('function');
+  expect(f.display).not.toBe(pendingDisplay);
+  expect(f.display?.ready).toBeUndefined();
+  f.frame(17); expect(f.calls).toContain('step');
+  const failure = f.adapter.start('test', f.room);
+  const rejected = expect(failure).rejects.toThrow('decode');
+  await vi.waitFor(() => { expect(f.display?.ready).toBeTypeOf('function'); });
+  f.display?.ready?.(new Error('decode')); await rejected;
+  expect(f.display).toBeNull();
+  const cancelled = f.adapter.start('test', f.room);
+  const cancellation = expect(cancelled).rejects.toThrow('Cancelled');
+  await vi.waitFor(() => { expect(f.display?.ready).toBeTypeOf('function'); });
+  destroy.mockClear();
+  f.adapter.stop(); await cancellation;
+  expect(destroy).toHaveBeenCalledOnce();
+});
 
 
 it('DATA-003 the real session boundary sends once after results, never in play', async () => {
   const send = vi.fn<(body: string) => Promise<boolean>>(() => Promise.resolve(true));
   const beacon = vi.fn(() => true);
   const counts = hostCounts({ send, beacon, cancel: () => undefined });
-  const f = fixture(counts); f.game.isOver = () => false;
+  const f = fixture(undefined, counts); f.game.isOver = () => false;
   await f.adapter.start('test', f.room);
   for (let n = 0; n < 600; n++) f.frame(17);
   counts.hide(); expect(send).not.toHaveBeenCalled(); expect(beacon).not.toHaveBeenCalled();

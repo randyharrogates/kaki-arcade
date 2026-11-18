@@ -1,0 +1,15 @@
+P-06 round 2 — allowed validation only
+VITEST_MAX_WORKERS=2 pnpm exec vitest run games/peek-poker apps/web/src
+Exit 1: 576 passed; 6 Chromium launch failures, MachPortRendezvousServer Permission denied (1100).
+Final pre-invocation uptime one-minute load: 7.58.
+
+pnpm exec tsc -b tsconfig.build.json
+Exit 0. Final pre-invocation uptime one-minute load: 7.82.
+
+pnpm exec eslint games/peek-poker apps/web/src uat/slices/P-06-table-in-console.mjs uat/perf --max-warnings 0
+Exit 0, zero warnings.
+
+pnpm run lint:design
+Exit 0: design lint passed: 413 file(s) scanned.
+
+No UAT or performance scenario was run. REPORT.md acceptance tables were not edited.

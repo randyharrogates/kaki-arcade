@@ -156,3 +156,4 @@ gesture, so a TV played only by a pad (C-12) also stays silent. Options: a one-l
 so it would go to Randy as an artifact), or accept silence until someone touches the TV. Needed by:
 M6.
 
+**OQ-043 · Peek Poker reveal: seat markers when many players pick one card (raised 2026-11-18 by P-06's review).** When five or more players pick the same card, the two-row marker block covers the lower half of its face; the rank and corner suit stay readable (P-06 round5-p8/22, P-04 round5/15). Keep it, or choose an alternative: markers in a strip outside the card, smaller pips, or a count badge? Options to be shown as rendered boards with their performance cost.

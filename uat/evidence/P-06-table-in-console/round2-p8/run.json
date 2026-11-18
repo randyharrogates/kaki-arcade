@@ -1,0 +1,132 @@
+{
+  "slice": "P-06-table-in-console",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- P-06-table-in-console --phones 8 --out round2-p8",
+  "commit": "7f396276b96695b68a1cb8c6d5426675b1e9d738",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1291.7106249999997,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-tv-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-tv-pick.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-tv-pick-locked-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-tv-pick-locked-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-tv-pick-locked-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-tv-pick-locked-4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-tv-pick-locked-5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-tv-pick-locked-6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-tv-pick-locked-7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-tv-reveal.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-tv-memorise.jpg",
+    "02-host-tv-pick.jpg",
+    "03-host-tv-pick-locked-1.jpg",
+    "04-host-tv-pick-locked-2.jpg",
+    "05-host-tv-pick-locked-3.jpg",
+    "06-host-tv-pick-locked-4.jpg",
+    "07-host-tv-pick-locked-5.jpg",
+    "08-host-tv-pick-locked-6.jpg",
+    "09-host-tv-pick-locked-7.jpg",
+    "10-host-tv-reveal.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-tv-memorise.jpg",
+      "bytes": 117221
+    },
+    {
+      "file": "02-host-tv-pick.jpg",
+      "bytes": 402762
+    },
+    {
+      "file": "03-host-tv-pick-locked-1.jpg",
+      "bytes": 401924
+    },
+    {
+      "file": "04-host-tv-pick-locked-2.jpg",
+      "bytes": 400563
+    },
+    {
+      "file": "05-host-tv-pick-locked-3.jpg",
+      "bytes": 400651
+    },
+    {
+      "file": "06-host-tv-pick-locked-4.jpg",
+      "bytes": 400327
+    },
+    {
+      "file": "07-host-tv-pick-locked-5.jpg",
+      "bytes": 400163
+    },
+    {
+      "file": "08-host-tv-pick-locked-6.jpg",
+      "bytes": 399309
+    },
+    {
+      "file": "09-host-tv-pick-locked-7.jpg",
+      "bytes": 399167
+    },
+    {
+      "file": "10-host-tv-reveal.jpg",
+      "bytes": 367859
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1211
+    },
+    {
+      "file": "requests-after-start.json",
+      "bytes": 36
+    },
+    {
+      "file": "run.json",
+      "bytes": 2749
+    }
+  ],
+  "totalBytes": 3693979,
+  "maxBytes": 12582912
+}

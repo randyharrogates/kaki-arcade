@@ -1,0 +1,78 @@
+{
+  "slice": "P-06-table-in-console",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- P-06-table-in-console --phones 2 --out round1-p2",
+  "commit": "d21cf197da43ad043fe26c5d80bc62e6b2350c9f",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 4341.557042,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-tv-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-tv-pick.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-tv-pick-locked-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-tv-reveal.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-tv-memorise.jpg",
+    "02-host-tv-pick.jpg",
+    "03-host-tv-pick-locked-1.jpg",
+    "04-host-tv-reveal.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-tv-memorise.jpg",
+      "bytes": 324301
+    },
+    {
+      "file": "02-host-tv-pick.jpg",
+      "bytes": 382747
+    },
+    {
+      "file": "03-host-tv-pick-locked-1.jpg",
+      "bytes": 382640
+    },
+    {
+      "file": "04-host-tv-reveal.jpg",
+      "bytes": 332252
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 791
+    },
+    {
+      "file": "requests-after-start.json",
+      "bytes": 36
+    },
+    {
+      "file": "run.json",
+      "bytes": 1535
+    }
+  ],
+  "totalBytes": 1424339,
+  "maxBytes": 12582912
+}

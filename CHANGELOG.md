@@ -2,6 +2,18 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — P-06: Peek Poker table in the console
+
+- PP-030, PP-005 (big-screen clause), PP-031 and PLAT-033 (in progress): the console registers
+  Peek Poker's TV table and view key. Host screens may now be mounted renderers with a readiness
+  promise; Start waits on it before the first simulation frame, a failed preparation fails Start,
+  and leaving cancels it (ARCHITECTURE §4, D-181).
+- The card atlas and the four table fonts load, and the table warms up, behind "Starting…"; the
+  picker and table overlap in one crossfade, instant with reduced motion. Nothing is requested after
+  Start at 1, 2 and 8 phones; picks stay hidden on the TV until the reveal; the table fits 1280 × 720.
+- Headed one-round run at 8 phones: frame p95 17.4 ms, worst 17.7 ms during play (diagnostic, D-182).
+- Not yet: production atlas publishing (P-08), an assessed full-match performance run (P-09).
+
 ## 2026-11-18 — X-04: anonymous error and performance counts
 
 - DATA-003: the TV counts session, load and signalling errors, signalling outages (one per drop,
