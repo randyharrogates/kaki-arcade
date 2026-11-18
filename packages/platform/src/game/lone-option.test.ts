@@ -92,7 +92,8 @@ it('CTRL-002 gives a neighbouring lone option its natural label width and preser
       const width = (part.width-(columns-1)*placement.gap)/columns;
       const height = (part.height-(rows-1)*placement.gap)/rows;
       expect(width).toBeGreaterThanOrEqual(89);
-      if (c.id === 'answer') expect(width).toBe(area.width === 667 ? (words[0] === labels[0] ? 263 : 271) : 351.5);
+      // Breakable answers retain 13 px margins/gaps; Skip keeps its natural width.
+      if (c.id === 'answer') expect(width).toBe(area.width === 667 ? 263 : 351.5);
       expect(height).toBeGreaterThanOrEqual(68);
       for (const option of c.options) expect(optionLabelStep(option.label,width,height,Boolean(option.face),columns === 1)).not.toBeNull();
     }
@@ -207,7 +208,8 @@ it('CTRL-002 CTRL-003 CTRL-005 fits the Rabakz leader answers, natural Skip and 
     expect(panel.top+panel.height).toBeLessThanOrEqual(area.height-placed.margin);
     expect(panel.width).toBeGreaterThan(0);
     for (const part of placed.parts) {
-      expect(part.left+part.width).toBeLessThanOrEqual(panel.left-placed.gap);
+      if (part.control.id === 'skip') expect(part.left).toBeGreaterThanOrEqual(panel.left+panel.width+placed.gap);
+      else expect(part.left+part.width).toBeLessThanOrEqual(panel.left-placed.gap);
       if (part.control.kind !== 'options') continue;
       const columns = Math.min(2,part.control.options.length), rows = Math.ceil(part.control.options.length/2);
       const width = (part.width-(columns-1)*placed.gap)/columns, height = (part.height-(rows-1)*placed.gap)/rows;
@@ -215,5 +217,17 @@ it('CTRL-002 CTRL-003 CTRL-005 fits the Rabakz leader answers, natural Skip and 
       expect(height).toBeGreaterThanOrEqual(68);
       for (const option of part.control.options) expect(optionLabelStep(option.label,width,height,Boolean(option.face),columns === 1)).not.toBeNull();
     }
+  }
+});
+
+it('CTRL-002 break opportunities preserve a lone label’s unwrapped natural width', () => {
+  for (const label of ['Cretaceous-Paleogene','Triassic–Jurassic','alpha/beta']) {
+    const layout:Layout = { revision:1,controls:[
+      { kind:'text',id:'note',text:'Ready',tone:'note' },
+      { kind:'options',id:'next',options:[{ id:'go',label }] },
+    ] };
+    const area = { width:844,height:390 };
+    const placed = placeLayout(layout,area,false,{},area);
+    expect(placed.parts.find(p => p.control.id === 'next')?.width).toBe(Math.max(89,Math.ceil(textWidth(label,21)+32)));
   }
 });

@@ -1,0 +1,11 @@
+/* RZ-003 / RZ-005: leave room for bold single-action labels on short phones
+ * without reducing the target, shape, gap or the 34 / 21 px type ladder. */
+.ka-controller-shell[data-theme='rabakz'] .ka-layout-options > :only-child {
+  padding-inline: var(--ka-space-8);
+}
+
+/* A line-height of 1 lets the glyphs overrun the label box by 1 to 3 px at both type steps
+ * (scroll 22 > 21 and 37 > 34 at 667 x 375); body leading keeps every answer inside its button. */
+.ka-controller-shell[data-theme='rabakz'] .ka-layout-options > button > span {
+  line-height: var(--ka-line-body);
+}

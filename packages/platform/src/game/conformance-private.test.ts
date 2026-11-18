@@ -23,13 +23,28 @@ it('CTRL-003 every fitting fixture reserves measured content within its boxes', 
     for (const layout of Object.values(layoutFixtures)) for (const view of Object.values(privateFixtures)) for (const leader of [false,true]) {
       const placed = placeController(layout,view,{ width,height },leader,{}, { width,height:height+68 });
       if (!placed.fits || !placed.panel) continue;
+      const boxes = [...placed.parts,placed.panel];
+      for (const box of boxes) {
+        expect(box.left).toBeGreaterThanOrEqual(0);
+        expect(box.top).toBeGreaterThanOrEqual(0);
+        expect(box.left+box.width).toBeLessThanOrEqual(width);
+        expect(box.top+box.height).toBeLessThanOrEqual(height);
+      }
+      boxes.forEach((a,i) => { boxes.slice(i+1).forEach(b => {
+        // Circular face targets in the diamond have overlapping bounding squares.
+        if ('control' in a && 'control' in b && a.control.kind === 'button' && b.control.kind === 'button' && a.control.button.startsWith('face') && b.control.button.startsWith('face')) {
+          expect(Math.hypot(a.left+a.width/2-b.left-b.width/2,a.top+a.height/2-b.top-b.height/2)).toBeGreaterThanOrEqual((a.width+b.width)/2);
+          return;
+        }
+        expect(a.left < b.left+b.width-0.01 && b.left < a.left+a.width-0.01 && a.top < b.top+b.height-0.01 && b.top < a.top+a.height-0.01,JSON.stringify({layout,view,width,height,leader,a,b})).toBe(false);
+      }); });
       const blocks = view.blocks.filter(b => !b.audience || b.audience === 'everyone' || (b.audience === 'leader') === leader);
       blocks.forEach((block,i) => {
         if (block.kind === 'stat') expect(textWidth(String(block.value),placed.metrics.steps[i] ?? 21)).toBeLessThanOrEqual(placed.panel.width);
       });
       for (const part of placed.parts) {
         const c = part.control;
-        if (c.kind === 'text') expect(textHeight(c.text,{ title:34,body:21,note:13 }[c.tone ?? 'body'],part.width,true)).toBeLessThanOrEqual(part.height);
+        if (c.kind === 'text') expect(textHeight(c.text,{ title:34,body:21,note:13 }[c.tone ?? 'body'],part.width,true),JSON.stringify({ text:c.text,width:part.width,height:part.height,tone:c.tone })).toBeLessThanOrEqual(part.height);
         if (c.kind !== 'options') continue;
         const columns = Math.min(2,c.options.length), rows = Math.ceil(c.options.length/2);
         for (const option of c.options) {
@@ -102,7 +117,7 @@ it('CTRL-003 D-132 long-answer and Your picks are secret fit whole words at both
     expect(part.control.options[0]?.label).toBe(label);
     expect(optionLabelStep(label,width,buttonHeight,true)).toBe(21);
     expect(textWidth('Instruments',21)+34+12).toBeLessThanOrEqual(width);
-    expect(textWidth('Instruments',34)+68+12).toBeGreaterThan(width);
+    expect(textHeight(label,34,width-68-12,true)).toBeGreaterThan(buttonHeight-12);
   }
 });
 it('CTRL-003 unbreakable options step down or reject rather than overflow', () => {
@@ -140,4 +155,24 @@ it('CTRL-003 D-140 private grid metrics choose one largest step for all labels',
   const cell = (metrics.heights[0] ?? 0);
   const step = [34,21,13].find(size => block.cells.every(c => textHeight(c.label,size,cell-12,true) <= cell-12));
   expect(metrics.steps[0]).toBe(step);
+});
+
+it('CTRL-003 rejects every-kind controls with text strip views at every phone size', () => {
+  for (const [width,height] of [[667,307],[667,375],[844,390],[932,430]])
+    for (const name of ['text','long-text','picker']) for (const leader of [false,true]) {
+      const layout = layoutFixtures.every, view = privateFixtures[name];
+      if (!layout || !view || !width || !height) throw new Error('Missing fixture');
+      expect(placeController(layout,view,{width,height},leader,{}, {width,height:height+68}).fits).toBe(false);
+    }
+});
+
+it('RZ-003 CTRL-003 caps short guest answers at 34 in the actual placed grid', () => {
+  const labels = ['Christopher Walken','David Hasselhoff','Jerry Springer','Patrick Swayze'];
+  const layout = {revision:1,controls:[{kind:'options' as const,id:'answer',options:labels.map((label,i) => ({id:String(i),label,face:'face-bottom' as const}))}]};
+  const placed = placeController(layout,{revision:1,blocks:[{kind:'text',tone:'note',text:'Score 0'}]},{width:844,height:322},false,{}, {width:844,height:390});
+  expect(placed.fits).toBe(true);
+  const grid = placed.parts[0];
+  if (!grid) throw new Error('Missing grid');
+  expect(grid).toMatchObject({left:13,top:81,width:813,height:228});
+  for (const label of labels) expect(optionLabelStep(label,(grid.width-placed.gap)/2,(grid.height-placed.gap)/2,true)).toBe(34);
 });

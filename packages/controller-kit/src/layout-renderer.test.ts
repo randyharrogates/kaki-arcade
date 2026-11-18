@@ -53,7 +53,7 @@ it('CTRL-006 disabled held faces give feedback and release at the press revision
   const button = new Button();
   vi.stubGlobal('window',new EventTarget()); vi.stubGlobal('document',Object.assign(new EventTarget(),{ hidden:false }));
   const ref = hooks.refs[20]; if (!ref) throw new Error('No target ref'); ref.current = button;
-  const effect = hooks.effects.at(-2); const dispose = effect?.();
+  const effect = hooks.effects.at(-1); const dispose = effect?.();
   const pointer = (type:string) => { const event = new Event(type,{ cancelable:true }); Object.assign(event,{ button:0,pointerId:1,clientX:55,clientY:55 }); button.dispatchEvent(event); };
   try {
     pointer('pointerdown'); expect(button.dataset.held).toBe('true'); expect(button.style.transform).toBe('scale(0.97)');

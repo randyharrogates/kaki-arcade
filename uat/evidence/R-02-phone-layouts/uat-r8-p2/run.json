@@ -1,0 +1,104 @@
+{
+  "slice": "R-02-phone-layouts",
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: Option text uses 34 or 21 px and at most three lines (locked-out, 667)\n+ actual - expected\n\n+ [\n+   '{\"text\":\"Mentsuyu\",\"size\":21,\"scroll\":98,\"client\":94,\"height\":27.296875,\"line\":\"27.3px\",\"weight\":\"700\"}'\n+ ]\n- []\n\n    at capture (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-02/uat/slices/R-02-phone-layouts.mjs:55:16)\n    at async phoneLayouts (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-02/uat/slices/R-02-phone-layouts.mjs:84:3)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-02/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-02/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/R-02/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- R-02-phone-layouts --phones 2 --out uat-r8-p2",
+  "commit": "027502496f8c71d9a9bd9cf9baab5ee41b919eff",
+  "viewports": [
+    "667×375",
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1303.434334,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-answering-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone2-answering-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-answering-667-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-answering-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone2-answering-844-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-answering-844-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-locked-out-label-fault-667.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-answering-667-phone1.jpg",
+    "02-phone2-answering-667-phone2.jpg",
+    "03-host-answering-667-tv.jpg",
+    "04-phone1-answering-844-phone1.jpg",
+    "05-phone2-answering-844-phone2.jpg",
+    "06-host-answering-844-tv.jpg",
+    "07-phone1-locked-out-label-fault-667.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-answering-667-phone1.jpg",
+      "bytes": 129956
+    },
+    {
+      "file": "02-phone2-answering-667-phone2.jpg",
+      "bytes": 125893
+    },
+    {
+      "file": "03-host-answering-667-tv.jpg",
+      "bytes": 224679
+    },
+    {
+      "file": "04-phone1-answering-844-phone1.jpg",
+      "bytes": 147432
+    },
+    {
+      "file": "05-phone2-answering-844-phone2.jpg",
+      "bytes": 141471
+    },
+    {
+      "file": "06-host-answering-844-tv.jpg",
+      "bytes": 224679
+    },
+    {
+      "file": "07-phone1-locked-out-label-fault-667.jpg",
+      "bytes": 140928
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1129
+    },
+    {
+      "file": "run.json",
+      "bytes": 3121
+    }
+  ],
+  "totalBytes": 1139325,
+  "maxBytes": 12582912
+}

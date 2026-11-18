@@ -1,0 +1,580 @@
+{
+  "slice": "R-02-phone-layouts",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- R-02-phone-layouts --phones 2 --out uat-r21-p2",
+  "commit": "8d397090606a54007f1fecb5ecff6b02f00db74c",
+  "viewports": [
+    "667×375",
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1200.621375,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-answering-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone2-answering-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-answering-667-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-answering-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone2-answering-844-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-answering-844-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-console-paused-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone2-console-paused-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-locked-out-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone2-locked-out-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-locked-out-667-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-locked-out-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone2-locked-out-844-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-locked-out-844-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-unlocked-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone2-unlocked-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-unlocked-667-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-unlocked-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone2-unlocked-844-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-unlocked-844-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone1-locked-in-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone2-locked-in-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-locked-in-667-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone1-locked-in-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone2-locked-in-844-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-locked-in-844-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone1-right-reveal-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone2-right-reveal-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-right-reveal-667-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-phone1-right-reveal-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-phone2-right-reveal-844-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-right-reveal-844-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-phone1-leader-skip-reveal-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone2-leader-skip-reveal-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-host-leader-skip-reveal-667-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-phone1-leader-skip-reveal-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-phone2-leader-skip-reveal-844-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-host-leader-skip-reveal-844-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-phone1-scoreboard-continue-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-phone2-scoreboard-continue-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-host-scoreboard-continue-667-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-phone1-scoreboard-continue-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-phone2-scoreboard-continue-844-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-host-scoreboard-continue-844-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-phone1-four-longest-options-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-phone2-four-longest-options-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-phone1-four-longest-options-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "48-phone2-four-longest-options-844-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "49-phone1-scoreboard-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "50-phone1-scoreboard-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "51-phone2-scoreboard-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "52-phone2-scoreboard-844-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "53-phone1-over-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "54-phone1-over-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "55-phone2-over-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "56-phone2-over-844-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "57-phone1-waiting-667-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "58-phone1-waiting-844-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "59-phone2-waiting-667-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "60-phone2-waiting-844-phone2.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-answering-667-phone1.jpg",
+    "02-phone2-answering-667-phone2.jpg",
+    "03-host-answering-667-tv.jpg",
+    "04-phone1-answering-844-phone1.jpg",
+    "05-phone2-answering-844-phone2.jpg",
+    "06-host-answering-844-tv.jpg",
+    "07-phone1-console-paused-667-phone1.jpg",
+    "08-phone2-console-paused-667-phone2.jpg",
+    "09-phone1-locked-out-667-phone1.jpg",
+    "10-phone2-locked-out-667-phone2.jpg",
+    "11-host-locked-out-667-tv.jpg",
+    "12-phone1-locked-out-844-phone1.jpg",
+    "13-phone2-locked-out-844-phone2.jpg",
+    "14-host-locked-out-844-tv.jpg",
+    "15-phone1-unlocked-667-phone1.jpg",
+    "16-phone2-unlocked-667-phone2.jpg",
+    "17-host-unlocked-667-tv.jpg",
+    "18-phone1-unlocked-844-phone1.jpg",
+    "19-phone2-unlocked-844-phone2.jpg",
+    "20-host-unlocked-844-tv.jpg",
+    "21-phone1-locked-in-667-phone1.jpg",
+    "22-phone2-locked-in-667-phone2.jpg",
+    "23-host-locked-in-667-tv.jpg",
+    "24-phone1-locked-in-844-phone1.jpg",
+    "25-phone2-locked-in-844-phone2.jpg",
+    "26-host-locked-in-844-tv.jpg",
+    "27-phone1-right-reveal-667-phone1.jpg",
+    "28-phone2-right-reveal-667-phone2.jpg",
+    "29-host-right-reveal-667-tv.jpg",
+    "30-phone1-right-reveal-844-phone1.jpg",
+    "31-phone2-right-reveal-844-phone2.jpg",
+    "32-host-right-reveal-844-tv.jpg",
+    "33-phone1-leader-skip-reveal-667-phone1.jpg",
+    "34-phone2-leader-skip-reveal-667-phone2.jpg",
+    "35-host-leader-skip-reveal-667-tv.jpg",
+    "36-phone1-leader-skip-reveal-844-phone1.jpg",
+    "37-phone2-leader-skip-reveal-844-phone2.jpg",
+    "38-host-leader-skip-reveal-844-tv.jpg",
+    "39-phone1-scoreboard-continue-667-phone1.jpg",
+    "40-phone2-scoreboard-continue-667-phone2.jpg",
+    "41-host-scoreboard-continue-667-tv.jpg",
+    "42-phone1-scoreboard-continue-844-phone1.jpg",
+    "43-phone2-scoreboard-continue-844-phone2.jpg",
+    "44-host-scoreboard-continue-844-tv.jpg",
+    "45-phone1-four-longest-options-667-phone1.jpg",
+    "46-phone2-four-longest-options-667-phone2.jpg",
+    "47-phone1-four-longest-options-844-phone1.jpg",
+    "48-phone2-four-longest-options-844-phone2.jpg",
+    "49-phone1-scoreboard-667-phone1.jpg",
+    "50-phone1-scoreboard-844-phone1.jpg",
+    "51-phone2-scoreboard-667-phone2.jpg",
+    "52-phone2-scoreboard-844-phone2.jpg",
+    "53-phone1-over-667-phone1.jpg",
+    "54-phone1-over-844-phone1.jpg",
+    "55-phone2-over-667-phone2.jpg",
+    "56-phone2-over-844-phone2.jpg",
+    "57-phone1-waiting-667-phone1.jpg",
+    "58-phone1-waiting-844-phone1.jpg",
+    "59-phone2-waiting-667-phone2.jpg",
+    "60-phone2-waiting-844-phone2.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-answering-667-phone1.jpg",
+      "bytes": 147723
+    },
+    {
+      "file": "02-phone2-answering-667-phone2.jpg",
+      "bytes": 143456
+    },
+    {
+      "file": "03-host-answering-667-tv.jpg",
+      "bytes": 226450
+    },
+    {
+      "file": "04-phone1-answering-844-phone1.jpg",
+      "bytes": 191367
+    },
+    {
+      "file": "05-phone2-answering-844-phone2.jpg",
+      "bytes": 182876
+    },
+    {
+      "file": "06-host-answering-844-tv.jpg",
+      "bytes": 226450
+    },
+    {
+      "file": "07-phone1-console-paused-667-phone1.jpg",
+      "bytes": 80216
+    },
+    {
+      "file": "08-phone2-console-paused-667-phone2.jpg",
+      "bytes": 80165
+    },
+    {
+      "file": "09-phone1-locked-out-667-phone1.jpg",
+      "bytes": 149703
+    },
+    {
+      "file": "10-phone2-locked-out-667-phone2.jpg",
+      "bytes": 138566
+    },
+    {
+      "file": "11-host-locked-out-667-tv.jpg",
+      "bytes": 230271
+    },
+    {
+      "file": "12-phone1-locked-out-844-phone1.jpg",
+      "bytes": 189741
+    },
+    {
+      "file": "13-phone2-locked-out-844-phone2.jpg",
+      "bytes": 176841
+    },
+    {
+      "file": "14-host-locked-out-844-tv.jpg",
+      "bytes": 230271
+    },
+    {
+      "file": "15-phone1-unlocked-667-phone1.jpg",
+      "bytes": 137230
+    },
+    {
+      "file": "16-phone2-unlocked-667-phone2.jpg",
+      "bytes": 131655
+    },
+    {
+      "file": "17-host-unlocked-667-tv.jpg",
+      "bytes": 233267
+    },
+    {
+      "file": "18-phone1-unlocked-844-phone1.jpg",
+      "bytes": 176039
+    },
+    {
+      "file": "19-phone2-unlocked-844-phone2.jpg",
+      "bytes": 167598
+    },
+    {
+      "file": "20-host-unlocked-844-tv.jpg",
+      "bytes": 233267
+    },
+    {
+      "file": "21-phone1-locked-in-667-phone1.jpg",
+      "bytes": 150134
+    },
+    {
+      "file": "22-phone2-locked-in-667-phone2.jpg",
+      "bytes": 131655
+    },
+    {
+      "file": "23-host-locked-in-667-tv.jpg",
+      "bytes": 233267
+    },
+    {
+      "file": "24-phone1-locked-in-844-phone1.jpg",
+      "bytes": 183048
+    },
+    {
+      "file": "25-phone2-locked-in-844-phone2.jpg",
+      "bytes": 167598
+    },
+    {
+      "file": "26-host-locked-in-844-tv.jpg",
+      "bytes": 233267
+    },
+    {
+      "file": "27-phone1-right-reveal-667-phone1.jpg",
+      "bytes": 108935
+    },
+    {
+      "file": "28-phone2-right-reveal-667-phone2.jpg",
+      "bytes": 108333
+    },
+    {
+      "file": "29-host-right-reveal-667-tv.jpg",
+      "bytes": 242969
+    },
+    {
+      "file": "30-phone1-right-reveal-844-phone1.jpg",
+      "bytes": 125167
+    },
+    {
+      "file": "31-phone2-right-reveal-844-phone2.jpg",
+      "bytes": 124646
+    },
+    {
+      "file": "32-host-right-reveal-844-tv.jpg",
+      "bytes": 242418
+    },
+    {
+      "file": "33-phone1-leader-skip-reveal-667-phone1.jpg",
+      "bytes": 107316
+    },
+    {
+      "file": "34-phone2-leader-skip-reveal-667-phone2.jpg",
+      "bytes": 107007
+    },
+    {
+      "file": "35-host-leader-skip-reveal-667-tv.jpg",
+      "bytes": 258978
+    },
+    {
+      "file": "36-phone1-leader-skip-reveal-844-phone1.jpg",
+      "bytes": 121604
+    },
+    {
+      "file": "37-phone2-leader-skip-reveal-844-phone2.jpg",
+      "bytes": 121468
+    },
+    {
+      "file": "38-host-leader-skip-reveal-844-tv.jpg",
+      "bytes": 258978
+    },
+    {
+      "file": "39-phone1-scoreboard-continue-667-phone1.jpg",
+      "bytes": 97287
+    },
+    {
+      "file": "40-phone2-scoreboard-continue-667-phone2.jpg",
+      "bytes": 85385
+    },
+    {
+      "file": "41-host-scoreboard-continue-667-tv.jpg",
+      "bytes": 216394
+    },
+    {
+      "file": "42-phone1-scoreboard-continue-844-phone1.jpg",
+      "bytes": 112506
+    },
+    {
+      "file": "43-phone2-scoreboard-continue-844-phone2.jpg",
+      "bytes": 99779
+    },
+    {
+      "file": "44-host-scoreboard-continue-844-tv.jpg",
+      "bytes": 216394
+    },
+    {
+      "file": "45-phone1-four-longest-options-667-phone1.jpg",
+      "bytes": 209802
+    },
+    {
+      "file": "46-phone2-four-longest-options-667-phone2.jpg",
+      "bytes": 203342
+    },
+    {
+      "file": "47-phone1-four-longest-options-844-phone1.jpg",
+      "bytes": 221242
+    },
+    {
+      "file": "48-phone2-four-longest-options-844-phone2.jpg",
+      "bytes": 282400
+    },
+    {
+      "file": "49-phone1-scoreboard-667-phone1.jpg",
+      "bytes": 95938
+    },
+    {
+      "file": "50-phone1-scoreboard-844-phone1.jpg",
+      "bytes": 111270
+    },
+    {
+      "file": "51-phone2-scoreboard-667-phone2.jpg",
+      "bytes": 84355
+    },
+    {
+      "file": "52-phone2-scoreboard-844-phone2.jpg",
+      "bytes": 98418
+    },
+    {
+      "file": "53-phone1-over-667-phone1.jpg",
+      "bytes": 84504
+    },
+    {
+      "file": "54-phone1-over-844-phone1.jpg",
+      "bytes": 98509
+    },
+    {
+      "file": "55-phone2-over-667-phone2.jpg",
+      "bytes": 84355
+    },
+    {
+      "file": "56-phone2-over-844-phone2.jpg",
+      "bytes": 98418
+    },
+    {
+      "file": "57-phone1-waiting-667-phone1.jpg",
+      "bytes": 116153
+    },
+    {
+      "file": "58-phone1-waiting-844-phone1.jpg",
+      "bytes": 130288
+    },
+    {
+      "file": "59-phone2-waiting-667-phone2.jpg",
+      "bytes": 107100
+    },
+    {
+      "file": "60-phone2-waiting-844-phone2.jpg",
+      "bytes": 120944
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 5644
+    },
+    {
+      "file": "run.json",
+      "bytes": 14111
+    }
+  ],
+  "totalBytes": 9494515,
+  "maxBytes": 12582912
+}

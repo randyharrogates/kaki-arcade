@@ -129,8 +129,8 @@ describe('Rabakz rules', () => {
     for (let i = 0; i < 3; i += 1) state = tick(win(state), [], 'continue');
     expect(state.players[0]?.score).toBe(350);
     expect(state.players[0]?.streak).toBe(3);
-    expect(rabakz.privateView(state, state.players[0]?.info.id ?? '')?.blocks[1])
-      .toMatchObject({ value: 3 });
+    expect(rabakz.privateView({ ...state, phase: 'reveal' }, state.players[0]?.info.id ?? '')?.blocks.find(block => block.kind === 'text' && block.text === 'Streak 3'))
+      .toMatchObject({ tone: 'body' });
     state = tick(win(state, [1]), [], 'continue');
     expect(state.players[0]?.streak).toBe(0);
     state = tick(state, [[1, (correct(state) + 1) % 4]]);
@@ -188,7 +188,7 @@ describe('Rabakz rules', () => {
     const newcomer = { id: 'new', seat: 3, name: 'New', colour: 'seat-3' as const };
     state = rabakz.join(state, newcomer);
     expect(state.players[2]).toMatchObject({ score: 0, eligible: false, joinedMidGame: true });
-    expect(rabakz.privateView(state, 'new')?.blocks).toContainEqual({ kind: 'text', text: 'You join at the next question' });
+    expect(rabakz.privateView(state, 'new')?.blocks).toContainEqual({ kind: 'text', text: 'You join at the next question', tone: 'title' });
     state = tick(state, [[2, correct(state)]]);
     expect(state.firstCorrect).toBeNull();
     state = tick(win(state), [], 'continue');

@@ -190,7 +190,7 @@ describe('attacks', () => {
   it('A19 private view leaks nothing about own correctness before reveal beyond spec', () => {
     let s = init(3);
     s = step(s, [ans(s, 0, C(s)), ans(s, 1, W(s))]);
-    expect(required(rabakz.privateView(s, id(s, 0))).blocks).toContainEqual({ kind: 'text', text: 'Locked in' });
+    expect(required(rabakz.privateView(s, id(s, 0))).blocks).toContainEqual({ kind: 'text', text: 'Locked in', tone: 'title' });
     expect(rabakz.publicView(s).players.map((p) => p.answered)).toEqual([false, true, false]);
     expect(rabakz.publicView(s).correct).toBeNull();
     expect(rabakz.publicView(s).wrong).toEqual([W(s)]);
@@ -250,7 +250,7 @@ describe('D-071 review fixes', () => {
     expect(s.teamScores[required(info.team)]).toBe(100);
     expect(s.players.find((p) => p.info.id === info.id)).toMatchObject({ score: 0, gained: 0 });
   });
-  it('RZ-006 wrong options stay disabled after unlock and cannot be picked again', () => {
+  it('RZ-006 wrong options stay disabled on phones after unlock; host refuses repeats', () => {
     let s = init(2);
     const wrong = W(s);
     s = step(s, [ans(s, 0, wrong), ans(s, 1, W(s, 2))]);

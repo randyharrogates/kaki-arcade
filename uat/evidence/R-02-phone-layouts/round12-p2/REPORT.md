@@ -1,0 +1,81 @@
+# R-02-phone-layouts UAT evidence
+
+Automated execution only. Visual review and acceptance decisions are pending.
+
+Command: `node tools/uat/run.mjs -- R-02-phone-layouts --phones 2 --out round12-p2`
+Commit: `dd124f5b3b7295db80afd17d5fd6158ac86e3ae8`
+Viewports: 667×375, 1920×1080, 844×390
+
+| Timing | ms | Status |
+|---|---:|---|
+| Create room through host page | 1307.8 | completed |
+
+Expected errors (count):
+None
+
+## Real server
+
+| Screenshot | What it shows | Looked at by |
+|---|---|---|
+| ![01-phone1-answering-667-phone1.jpg](01-phone1-answering-667-phone1.jpg) | | |
+| ![02-phone2-answering-667-phone2.jpg](02-phone2-answering-667-phone2.jpg) | | |
+| ![03-host-answering-667-tv.jpg](03-host-answering-667-tv.jpg) | | |
+| ![04-phone1-answering-844-phone1.jpg](04-phone1-answering-844-phone1.jpg) | | |
+| ![05-phone2-answering-844-phone2.jpg](05-phone2-answering-844-phone2.jpg) | | |
+| ![06-host-answering-844-tv.jpg](06-host-answering-844-tv.jpg) | | |
+| ![07-phone1-locked-out-667-phone1.jpg](07-phone1-locked-out-667-phone1.jpg) | | |
+| ![08-phone2-locked-out-667-phone2.jpg](08-phone2-locked-out-667-phone2.jpg) | | |
+| ![09-host-locked-out-667-tv.jpg](09-host-locked-out-667-tv.jpg) | | |
+| ![10-phone1-locked-out-844-phone1.jpg](10-phone1-locked-out-844-phone1.jpg) | | |
+| ![11-phone2-locked-out-844-phone2.jpg](11-phone2-locked-out-844-phone2.jpg) | | |
+| ![12-host-locked-out-844-tv.jpg](12-host-locked-out-844-tv.jpg) | | |
+| ![13-phone1-unlocked-667-phone1.jpg](13-phone1-unlocked-667-phone1.jpg) | | |
+| ![14-phone2-unlocked-667-phone2.jpg](14-phone2-unlocked-667-phone2.jpg) | | |
+| ![15-host-unlocked-667-tv.jpg](15-host-unlocked-667-tv.jpg) | | |
+| ![16-phone1-unlocked-844-phone1.jpg](16-phone1-unlocked-844-phone1.jpg) | | |
+| ![17-phone2-unlocked-844-phone2.jpg](17-phone2-unlocked-844-phone2.jpg) | | |
+| ![18-host-unlocked-844-tv.jpg](18-host-unlocked-844-tv.jpg) | | |
+| ![19-phone1-locked-in-667-phone1.jpg](19-phone1-locked-in-667-phone1.jpg) | | |
+| ![20-phone2-locked-in-667-phone2.jpg](20-phone2-locked-in-667-phone2.jpg) | | |
+| ![21-host-locked-in-667-tv.jpg](21-host-locked-in-667-tv.jpg) | | |
+| ![22-phone1-locked-in-844-phone1.jpg](22-phone1-locked-in-844-phone1.jpg) | | |
+| ![23-phone2-locked-in-844-phone2.jpg](23-phone2-locked-in-844-phone2.jpg) | | |
+| ![24-host-locked-in-844-tv.jpg](24-host-locked-in-844-tv.jpg) | | |
+| ![25-phone1-right-reveal-667-phone1.jpg](25-phone1-right-reveal-667-phone1.jpg) | | |
+| ![26-phone2-right-reveal-667-phone2.jpg](26-phone2-right-reveal-667-phone2.jpg) | | |
+| ![27-host-right-reveal-667-tv.jpg](27-host-right-reveal-667-tv.jpg) | | |
+| ![28-phone1-right-reveal-844-phone1.jpg](28-phone1-right-reveal-844-phone1.jpg) | | |
+| ![29-phone2-right-reveal-844-phone2.jpg](29-phone2-right-reveal-844-phone2.jpg) | | |
+| ![30-host-right-reveal-844-tv.jpg](30-host-right-reveal-844-tv.jpg) | | |
+| ![31-phone1-leader-skip-reveal-667-phone1.jpg](31-phone1-leader-skip-reveal-667-phone1.jpg) | | |
+| ![32-phone2-leader-skip-reveal-667-phone2.jpg](32-phone2-leader-skip-reveal-667-phone2.jpg) | | |
+| ![33-host-leader-skip-reveal-667-tv.jpg](33-host-leader-skip-reveal-667-tv.jpg) | | |
+| ![34-phone1-leader-skip-reveal-844-phone1.jpg](34-phone1-leader-skip-reveal-844-phone1.jpg) | | |
+| ![35-phone2-leader-skip-reveal-844-phone2.jpg](35-phone2-leader-skip-reveal-844-phone2.jpg) | | |
+| ![36-host-leader-skip-reveal-844-tv.jpg](36-host-leader-skip-reveal-844-tv.jpg) | | |
+| ![37-phone1-scoreboard-continue-667-phone1.jpg](37-phone1-scoreboard-continue-667-phone1.jpg) | | |
+| ![38-phone2-scoreboard-continue-667-phone2.jpg](38-phone2-scoreboard-continue-667-phone2.jpg) | | |
+| ![39-host-scoreboard-continue-667-tv.jpg](39-host-scoreboard-continue-667-tv.jpg) | | |
+| ![40-phone1-scoreboard-continue-844-phone1.jpg](40-phone1-scoreboard-continue-844-phone1.jpg) | | |
+| ![41-phone2-scoreboard-continue-844-phone2.jpg](41-phone2-scoreboard-continue-844-phone2.jpg) | | |
+| ![42-host-scoreboard-continue-844-tv.jpg](42-host-scoreboard-continue-844-tv.jpg) | | |
+| ![43-phone1-four-longest-options-667-phone1.jpg](43-phone1-four-longest-options-667-phone1.jpg) | | |
+| ![44-phone2-four-longest-options-667-phone2.jpg](44-phone2-four-longest-options-667-phone2.jpg) | | |
+| ![45-phone1-four-longest-options-844-phone1.jpg](45-phone1-four-longest-options-844-phone1.jpg) | | |
+| ![46-phone2-four-longest-options-844-phone2.jpg](46-phone2-four-longest-options-844-phone2.jpg) | | |
+| ![47-phone1-scoreboard-667-phone1.jpg](47-phone1-scoreboard-667-phone1.jpg) | | |
+| ![48-phone1-scoreboard-844-phone1.jpg](48-phone1-scoreboard-844-phone1.jpg) | | |
+| ![49-phone2-scoreboard-667-phone2.jpg](49-phone2-scoreboard-667-phone2.jpg) | | |
+| ![50-phone2-scoreboard-844-phone2.jpg](50-phone2-scoreboard-844-phone2.jpg) | | |
+| ![51-phone1-over-667-phone1.jpg](51-phone1-over-667-phone1.jpg) | | |
+| ![52-phone1-over-844-phone1.jpg](52-phone1-over-844-phone1.jpg) | | |
+| ![53-phone2-over-667-phone2.jpg](53-phone2-over-667-phone2.jpg) | | |
+| ![54-phone2-over-844-phone2.jpg](54-phone2-over-844-phone2.jpg) | | |
+| ![55-phone1-waiting-667-phone1.jpg](55-phone1-waiting-667-phone1.jpg) | | |
+| ![56-phone1-waiting-844-phone1.jpg](56-phone1-waiting-844-phone1.jpg) | | |
+| ![57-phone2-waiting-667-phone2.jpg](57-phone2-waiting-667-phone2.jpg) | | |
+| ![58-phone2-waiting-844-phone2.jpg](58-phone2-waiting-844-phone2.jpg) | | |
+
+| Acceptance statement | Pass / fail | Evidence |
+|---|---|---|
+| | | |

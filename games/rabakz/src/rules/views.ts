@@ -21,18 +21,43 @@ export function controllerLayout(state: State, id: string): ControllerLayout {
     })),
   }] : []), {
     kind: 'options', id: 'skip', audience: 'leader',
+    // Keep the tie window private: the host ignores skip once a correct press arrives.
     options: [{ id: 'skip', label: 'Skip' }],
   }] };
 }
 export function privateView(state: State, id: string): PrivateView | null {
   const player = state.players.find((item) => item.info.id === id);
   if (!player) return null;
-  return { revision: player.privateRevision, blocks: [
-    { kind: 'stat', label: 'Score', value: player.score },
-    { kind: 'stat', label: 'Streak', value: player.streak },
-    { kind: 'stat', label: 'Points gained', value: player.gained },
-    { kind: 'text', text: !player.eligible ? 'You join at the next question' :
-      player.pick === null ? 'Watch the screen' : 'Locked in' },
+  const revealed = state.phase === 'reveal';
+  const lastPick = player.answers.at(-1);
+  const lockedOut = state.phase === 'question' && player.pick !== null &&
+    state.wrong.includes(player.pick);
+  const revision = player.privateRevision * 1000 + state.round * 10 +
+    ['question', 'final', 'reveal', 'scoreboard', 'over'].indexOf(state.phase);
+  const text = (text: string, tone: 'title' | 'body' | 'note' = 'note') =>
+    ({ kind: 'text' as const, text, tone });
+  if (state.phase === 'scoreboard' || state.phase === 'over') {
+    const place = 1 + state.players.filter(other => other.score > player.score).length;
+    const suffix = place % 100 >= 11 && place % 100 <= 13 ? 'th' :
+      ({ 1: 'st', 2: 'nd', 3: 'rd' } as Record<number, string>)[place % 10] ?? 'th';
+    return { revision: revision * 10 + place, blocks: [text(`${String(place)}${suffix} · ${String(player.score)}`, 'title')] };
+  }
+  if (revealed) return { revision, blocks: [
+    text(lastPick === undefined ? 'Skipped' : lastPick === question(state).correct ? 'Right' : 'Wrong', 'title'),
+    { kind: 'stat', label: 'Points gained', value: `+${String(player.gained)}` },
+    text(`Streak ${String(player.streak)}`, 'body'),
+    text(`Score ${String(player.score)}`, 'body'),
+    ...(lastPick === undefined ? [] : [text(question(state).options[lastPick] ?? '')]),
+  ] };
+  if (!player.eligible) return { revision, blocks: [text('You join at the next question', 'title')] };
+  if (state.phase === 'question' && player.pick === null) return { revision, blocks: [
+    text(`Score ${String(player.score)}`),
+  ] };
+  return { revision, blocks: [
+    text(lockedOut ? 'Locked out' : player.pick !== null ? 'Locked in' : 'Watch the TV', 'title'),
+    ...(lockedOut ? [text('Wrong answer. Wait until everyone has taken a turn.')] : []),
+    ...(player.pick === null ? [] : [text(question(state).options[player.pick] ?? '')]),
+    ...(!lockedOut && player.pick !== null ? [text('Watch the TV for the reveal')] : []),
   ] };
 }
 export function publicView(state: State) {

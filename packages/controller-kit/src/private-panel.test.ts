@@ -48,16 +48,20 @@ it('CTRL-003 D-132 grows cards, steps text and rejects the card floor overflow',
   expect(placeController(picker,privateFixtures.cards,{ width:550,height:307 },false,{}, { width:667,height:375 }).fits).toBe(false);
 });
 
-it('CTRL-003 gives title/body 34 px boxes and keeps notes at 13 and stats their own intermediate steps', () => {
+it('CTRL-003 respects title/body/note hierarchy and stats their own intermediate steps', () => {
   const empty = { revision:1,controls:[] };
   const text = placeController(empty,privateFixtures.text,{ width:667,height:307 },false,{}, { width:667,height:375 });
-  expect(text.metrics?.steps).toEqual([34,34,13]);
+  expect(text.metrics?.steps).toEqual([34,21,13]);
   const stats = placeController(empty,privateFixtures.rabakz,{ width:667,height:375 },false,{}, { width:667,height:375 });
   expect(stats.fits).toBe(true);
   expect(stats.metrics?.steps.slice(0,3)).toContain(55);
   expect(stats.metrics?.steps.slice(0,3).every(s => s >= 34)).toBe(true);
 });
 
+it('RZ-003 RZ-005 keeps untitled panel text at the original 34 px ceiling', () => {
+  const result = placeController({revision:1,controls:[]},{revision:1,blocks:[{kind:'text',text:'Watch the TV'},{kind:'text',text:'Flush'}]}, {width:667,height:307},false,{}, {width:667,height:375});
+  expect(result.metrics?.steps).toEqual([34,34]);
+});
 
 it('PP-020 reveal notes reserve 13 px text while Points retains its large fit steps', () => {
   const view = { revision:1,blocks:[

@@ -1,4 +1,5 @@
 import '../../../packages/controller-kit/src/layout.css';
+import '../../../games/rabakz/controller.css';
 import '../../../packages/controller-kit/src/buttons.css';
 import '../../../packages/controller-kit/src/stick.css';
 import type { ComponentChildren } from 'preact';

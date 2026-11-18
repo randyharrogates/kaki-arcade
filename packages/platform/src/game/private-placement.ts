@@ -17,11 +17,11 @@ function gridLabelFits(cells:readonly { readonly label?:string; readonly faceDow
 }
 /** Reserve every floor, independently grow each block, then share remaining space.
  * Grid geometry keeps square cells inside its box; labels are measured inside each cell. */
-export function panelMetrics(blocks:readonly PanelBlock[],width:number,height:number,gap:number) {
+export function panelMetrics(blocks:readonly PanelBlock[],width:number,height:number,gap:number): { fits:boolean; step:number; steps:number[]; heights:number[]; widths?:number[] } {
   const gridGap = gap === 5 ? 5 : 8;
   const steps: number[] = blocks.map(b => b.kind === 'stat' ? 21 : 13);
   const need = (b:PanelBlock,step:number) => {
-    if (b.kind === 'text') return textHeight(b.text,step,width,true);
+    if (b.kind === 'text') return textHeight(b.text,step,width-(b.tone === 'title' ? 2*space[21] : 0),true)+(b.tone === 'title' ? 2*space[5] : 0);
     if (b.kind === 'stat') return textHeight(b.label,13,width,true)+(textWidth(String(b.value),step) <= width ? Math.ceil(step*PRIVATE_LINE_HEIGHT) : Infinity);
     if (b.kind === 'cards') return PRIVATE_CARD_FLOOR*PHONE.card.height/PHONE.card.width;
     // CSS cells use space-5 padding and panel-edge on both sides. Reserve
@@ -34,11 +34,14 @@ export function panelMetrics(blocks:readonly PanelBlock[],width:number,height:nu
   const total = () => heights.reduce((a,b) => a+b,0)+Math.max(0,blocks.length-1)*gap;
   const fits = width > 0 && total() <= height && blocks.every(b => b.kind === 'cards' ? b.cards.length*PRIVATE_CARD_FLOOR+Math.max(0,b.cards.length-1)*gap <= width : b.kind !== 'grid' || b.cols*PHONE.cellShown+(b.cols-1)*gridGap <= width);
   if (!fits) return { fits:false,step:13,steps,heights };
+  const titled = blocks.some(b => b.kind === 'text' && b.tone === 'title');
   // Fair rounds allow figures to use 89 -> 55 -> 34 -> 21 without coupling text.
   for (const level of [21,34,55,89]) blocks.forEach((b,i) => {
     if (b.kind !== 'text' && b.kind !== 'stat' || b.kind === 'text' && (b.tone === 'note' || level > 34)) return;
-    const options:readonly number[] = b.kind === 'stat' ? PRIVATE_STAT_STEPS : PRIVATE_TEXT_STEPS;
-    const next = options.filter(s => s <= level && s > (steps[i] ?? 13)).sort((a,b) => b-a)[0];
+    const options:readonly number[] = b.kind === 'stat' ? (titled ? [34,21] : PRIVATE_STAT_STEPS) :
+      titled ? ({ title: [34,21,13], body: [21,13], note: [13] })[b.tone ?? 'body'] : PRIVATE_TEXT_STEPS;
+    const ceiling = titled && !(b.kind === 'text' && b.tone === 'title') ? Math.min(...blocks.flatMap((block,index) => block.kind === 'text' && block.tone === 'title' ? [steps[index] ?? 13] : [])) : Infinity;
+    const next = options.filter(s => s <= ceiling && s <= level && s > (steps[i] ?? 13)).sort((a,b) => b-a)[0];
     if (!next) return;
     const h = need(b,next);
     if (total()-(heights[i] ?? 0)+h <= height) { heights[i] = h; steps[i] = next; }
@@ -115,6 +118,40 @@ export function placeController(layout:Layout,view:PrivateView | null | undefine
     if (result.fits && result.metrics.step === 34) break;
     const candidate = pack(margin,gap);
     if (!result.fits || candidate.fits && candidate.metrics.step > result.metrics.step) result = candidate;
+  }
+  const answers = result.parts.find(p => p.control.kind === 'options' && p.control.options.length === 4);
+  const action = result.parts.find(p => p.control.kind === 'options' && p.control.options.length === 1 && !p.control.options[0]?.face);
+  // Four-option grids with only an optional plain action prefer text above
+  // the controls, leaving their full width available to option labels.
+  const strip = () => {
+    if (!answers || result.parts.some(p => p !== answers && p !== action) || !blocks.every(b => b.kind === 'text')) return null;
+    const margin = space[13], gap = space[8], height = space[55];
+    const width = area.width-2*margin;
+    const widths = blocks.map(() => (width-(blocks.length-1)*gap)/blocks.length);
+    const measured = blocks.map((block,i) => panelMetrics([block],widths[i] ?? 0,height,gap));
+    if (!measured.every(m => m.fits)) return null;
+    const answerWidth = width-(action ? action.width+space[34] : space[5]);
+    const parts = result.parts.map(p => p === answers ? {
+      ...p,left:margin,top:margin+height+space[13],width:answerWidth,
+      height:area.height-2*margin-height-space[13],
+    } : p === action ? { ...p,left:area.width-margin-p.width,top:margin+height+space[13]+(area.height-2*margin-height-space[13]-p.height)/2 } : p);
+    const boxes = [...parts,{left:margin,top:margin,width,height}];
+    if (boxes.some(p => p.width <= 0 || p.height <= 0 || p.left < 0 || p.top < 0 || p.left+p.width > area.width || p.top+p.height > area.height) ||
+      boxes.some((a,i) => boxes.slice(i+1).some(b => a.left < b.left+b.width && b.left < a.left+a.width && a.top < b.top+b.height && b.top < a.top+a.height)) || !controlContentFits(parts,gap)) return null;
+    const steps = measured.map(m => m.steps[0] ?? 13);
+    return { ...result,parts,margin:13 as const,gap:8 as const,fits:true,
+      panel:{left:margin,top:margin,width,height},
+      metrics:{fits:true,step:Math.min(...steps),steps,heights:blocks.map(() => height),widths},
+    };
+  };
+  const preferredStrip = strip();
+  if (preferredStrip) return preferredStrip;
+  if (answers && action) {
+    const left = answers.left+answers.width+space[34];
+    const actionLeft = area.width-result.margin-action.width;
+    const panel = { ...result.panel,left,width:Math.max(0,actionLeft-result.gap-left) };
+    const metrics = panelMetrics(blocks,panel.width,panel.height,result.gap);
+    return { ...result,panel,metrics,parts:result.parts.map(p => p === action ? { ...p,left:actionLeft } : p),fits:result.fits && metrics.fits && actionLeft >= left };
   }
   return result;
 }

@@ -10,8 +10,11 @@ export function textWidth(text:string,size:number):number {
 }
 export function textHeight(text:string,size:number,width:number,words = false,overhang = 0):number {
   let lines = 1, advance = 0;
-  for (const c of words ? text.match(/\S+|\s/g) ?? [] : text) {
-    const glyph = textWidth(c,size);
+  // Normal browser wrapping permits breaks after hyphens, dashes and slashes,
+  // and on either side of an em dash. Keep non-breaking spaces/hyphens intact.
+  const pieces = words ? text.split(/(?<=[-‐‒–/])(?![0-9])|(?<=[—\u200b])|(?=—)|(?=[ \t\r\n\f])|(?<=[ \t\r\n\f])/u) : text;
+  for (const c of pieces) {
+    const glyph = textWidth(c.replace(/\u200b/g,''),size);
     if (words && glyph > width+overhang) return Infinity;
     if (c === '\n') { lines++; advance = 0; }
     else { if (advance+glyph > width && advance) { lines++; advance = 0; } advance += glyph; }

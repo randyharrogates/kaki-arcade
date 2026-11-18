@@ -79,3 +79,7 @@
 /* D-164: ink contrasts with both the patterned card back and felt. Keep the
  * selection inset so adjacent outlines remain clear even at the 5 px gap. */
 .ka-layout-card-back[data-state='selected'], .ka-private-panel .ka-layout-grid > .ka-layout-card-back[data-state='selected'] { outline-color: var(--ka-card-back-border); outline-offset: calc(-1 * var(--ka-space-13)); }
+/* Private status headings reserve token padding inside the kit's chip surface. */
+.ka-private-panel .ka-layout-title > span { box-sizing:border-box; display:inline-block; padding-block:var(--ka-space-5); padding-inline:var(--ka-space-21); color:var(--ka-panel-ink); border-radius:var(--ka-radius-pill); outline:var(--ka-panel-edge); background:var(--ka-panel-treatment); }
+/* D-056: small labels on coloured targets use the bold token. */
+.ka-layout-target[class*='ka-kit-'][data-label-step="21"] > span, .ka-layout-target[style*="background"][data-label-step="21"] > span { font-weight:var(--ka-weight-bold); }

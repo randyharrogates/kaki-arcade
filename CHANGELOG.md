@@ -2,6 +2,18 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — R-02: Rabakz phone layouts
+
+- RZ-003, RZ-005: phone answer grid, private status strip and reveal views; leader Skip beside the
+  answers; phones disable only options the TV marks wrong.
+- CTRL-003: option and grid labels share one measured type step per group; one pass when a group is
+  installed and no re-measure when only selection changes; re-measure on font, size and theme
+  changes (D-205); text strip above a four-option grid (D-203); option text wraps after hyphens,
+  dashes and slashes, but not before a digit (D-204); bold only on coloured 21 px targets (D-206).
+- PERF-012/020: label pass 0–2.1 ms at 4x CPU; controller start-up 179 ms median against 2 s.
+- UAT at 2 phones, 667 and 844 wide, including the Paused veil (`uat/evidence/R-02-phone-layouts/uat-r21-p2/`).
+  Open: OQ-050.
+
 ## 2026-11-18 — P-05: Peek Poker scores, podium and solo best
 
 - PP-032: a running scoreboard after every reveal and a final podium at match end, leader on the left and the ranked table on the right (1 : 1.618), shared places as "=N", rows entering 30 ms apart (none with reduced motion); fits 1920 × 1080 and 1280 × 720 with eight players beside the shell's final hint. Phones show their own place and score between rounds and on Results; the Results Teams toggle appears only when the game offers teams.

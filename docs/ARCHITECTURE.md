@@ -139,6 +139,22 @@ Rules:
   revisions, taps, joins and leaves across a whole match, phone size limits, a source scan for
   impurity). The types are a contract: changed only by the integrator (`PLAN.md` §2).
 
+### Text strip with four-option controls (CTRL-003; D-203)
+
+When the visible controls consist solely of one four-option grid and optionally one
+single option without a face glyph, text-only private blocks prefer a horizontal
+55 px strip above the grid. Placement uses 13 px outer margins and strip separation,
+8 px internal gaps, and reserves the action's measured width plus 34 px beside the
+grid (5 px at the unused edge without an action). Each private block must fit its
+share of the strip. Every placed box must remain inside the phone area and be
+disjoint from every other box before this candidate can report a fit. Other control
+combinations retain side-panel packing; the strip never relocates a subset of them.
+The renderer uses these same placed boxes to cap option type size. Option wrapping
+metrics follow D-204. Each options or interactive-grid group shares its smallest
+measured step (D-205), with one frame-deduplicated, batched measurement pass per
+group on placement, font, viewport, group-size and shell-theme changes. Separate
+controls keep their own step; 21 px bold applies only to coloured targets (D-206).
+
 ## 4. Simulation and rendering
 
 Phone Results retains only private-view stats labelled **Place** and **Score**, clearing them
