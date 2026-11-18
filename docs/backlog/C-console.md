@@ -44,6 +44,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | C-16 | Start a game from the picker: Start loads the chosen game's module, runs it in the session runner, shows its TV screen and sends phones their controller; quit and results return to the picker | PLAT-022, PLAT-023 | C-09, C-10, R-03, K-01 | 2 | merged |
 | C-16b | Phones draw the game's private view beside the controls and take the game's phone theme while a game is playing or paused (console otherwise); kit surfaces on panels use the panel ink | CTRL-003, PLAT-031 | C-16, K-05 | 2 | merged |
 | C-15 | Console end to end with a test game: 8 emulated phones join, pick, play, pause, a phone reloads, the host reloads | PLAT-030, PLAT-033, NN-1, NN-2 | C-05 to C-14, C-16, K-08 | 3 | todo |
+| C-17 | Late join for games that allow it: a game declares mid-match joining; a phone that joins during such a game is seated at the game's next join point with its starting score, instead of waiting for the lobby; other games keep the lobby wait | RZ-014, PP-013, TR-056, PLAT-008 | C-15, R-01 | 3 | todo (after C-15 merges; same files) |
 
 ## Carried from reviews
 
