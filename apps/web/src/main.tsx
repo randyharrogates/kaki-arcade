@@ -28,6 +28,16 @@ function SoundDemoRoute() {
   const Demo = demo;
   return Demo ? <Demo/> : null;
 }
+function TvHelpRoute() {
+  const [help, setHelp] = useState<ComponentType | null>(null);
+  useLayoutEffect(() => {
+    let active = true;
+    void import('./pages/tv-help-route').then(module => { if (active) setHelp(() => module.TvHelp); });
+    return () => { active = false; };
+  }, []);
+  const Help = help;
+  return Help ? <Help/> : <main class="screen room-status" aria-busy="true">Loading…</main>;
+}
 function App() {
   useLayoutEffect(() => {
     const resize = (): void => {
@@ -50,6 +60,7 @@ function App() {
   if (import.meta.env.DEV && path === '/host/sound') return <SoundDemoRoute/>;
   if (path === '/play') return <PhonePage/>;
   if (path === '/host') return <HostLobby/>;
+  if (path === '/tv-help') return <TvHelpRoute/>;
   if (path === '/') return <Landing/>;
   return <main class="screen room-status"><h1>This page has not been built yet.</h1><a href="/">Back to Kaki Arcade</a></main>;
 }

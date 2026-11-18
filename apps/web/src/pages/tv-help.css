@@ -1,0 +1,18 @@
+.tv-help { display: flex; flex-direction: column; gap: var(--ka-space-21); text-align: left; }
+.tv-help nav a { display: inline-flex; align-items: center; min-height: var(--ka-button-minimum-floor); }
+.tv-help h1 { font-size: var(--ka-type-89); }
+.tv-help-columns { display: grid; grid-template-columns: 1.618fr 1fr 1fr; gap: var(--ka-space-34); min-height: 0; }
+.tv-help section { padding: var(--ka-space-21); min-width: 0; }
+.tv-help h2 { font-size: var(--ka-type-55); margin-bottom: var(--ka-space-21); }
+.tv-help ol { padding-left: var(--ka-space-55); display: grid; gap: var(--ka-space-13); }
+.tv-help-address { margin-top: var(--ka-space-13); overflow-wrap: anywhere; }
+/* DESIGN §2: mono for codes and numbers only, so only the host itself. */
+.tv-help-host { font-family: var(--ka-font-mono); }
+@media (max-width: 959px), (max-height: 539px) {
+  html:has(.tv-help), body:has(.tv-help), #app:has(.tv-help) { height: auto; min-height: 100%; overflow: visible; }
+  .tv-help { position: static; transform: none; width: 100%; height: auto; padding: var(--ka-space-21); font-size: var(--ka-phone-type-21); }
+  .tv-help h1 { font-size: var(--ka-phone-type-55); }
+  .tv-help h2 { font-size: var(--ka-phone-type-34); }
+  .tv-help-columns { display: flex; flex-direction: column; gap: var(--ka-space-21); }
+  .tv-help ol { padding-left: var(--ka-space-34); }
+}

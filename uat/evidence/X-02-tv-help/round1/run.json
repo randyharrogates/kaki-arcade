@@ -1,0 +1,106 @@
+{
+  "slice": "X-02-tv-help",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- X-02-tv-help --phones 1 --out round1",
+  "commit": "d3aaa80e09b949f5dd50b067741cfbe2fc607e20",
+  "viewports": [
+    "1920×1080",
+    "1280×720",
+    "390×844",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Landing link opens the help page lazily",
+      "ms": 895.7556249999998,
+      "status": "completed"
+    },
+    {
+      "name": "Help at 1920 × 1080",
+      "ms": 156.93008299999929,
+      "status": "completed"
+    },
+    {
+      "name": "Help at 1280 × 720",
+      "ms": 153.82549999999992,
+      "status": "completed"
+    },
+    {
+      "name": "Help at 390 × 844",
+      "ms": 147.72804200000064,
+      "status": "completed"
+    },
+    {
+      "name": "Help at 844 × 390",
+      "ms": 130.72850000000017,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-landing-help-link.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-tv-help-1920x1080.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-tv-help-1280x720.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-tv-help-390x844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-tv-help-844x390.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-landing-help-link.jpg",
+    "02-host-tv-help-1920x1080.jpg",
+    "03-host-tv-help-1280x720.jpg",
+    "04-host-tv-help-390x844.jpg",
+    "05-host-tv-help-844x390.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-landing-help-link.jpg",
+      "bytes": 132321
+    },
+    {
+      "file": "02-host-tv-help-1920x1080.jpg",
+      "bytes": 259198
+    },
+    {
+      "file": "03-host-tv-help-1280x720.jpg",
+      "bytes": 149468
+    },
+    {
+      "file": "04-host-tv-help-390x844.jpg",
+      "bytes": 76936
+    },
+    {
+      "file": "05-host-tv-help-844x390.jpg",
+      "bytes": 59420
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1097
+    },
+    {
+      "file": "run.json",
+      "bytes": 2206
+    }
+  ],
+  "totalBytes": 680683,
+  "maxBytes": 12582912
+}

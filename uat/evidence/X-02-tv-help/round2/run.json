@@ -1,0 +1,211 @@
+{
+  "slice": "X-02-tv-help",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- X-02-tv-help --phones 1 --out round2",
+  "commit": "eef79eec3babfbc025b6d3c65ed34d0ad5dd7004",
+  "viewports": [
+    "1920×1080",
+    "1280×720",
+    "960×540",
+    "390×844",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Landing link opens the help page lazily",
+      "ms": 1325.5097920000003,
+      "status": "completed"
+    },
+    {
+      "name": "Help at 1920 × 1080",
+      "ms": 222.85283400000026,
+      "status": "completed"
+    },
+    {
+      "name": "Help at 1280 × 720",
+      "ms": 212.0527919999995,
+      "status": "completed"
+    },
+    {
+      "name": "Help at 960 × 540",
+      "ms": 220.10233400000016,
+      "status": "completed"
+    },
+    {
+      "name": "Help at 390 × 844",
+      "ms": 536.7363340000002,
+      "status": "completed"
+    },
+    {
+      "name": "Help at 844 × 390",
+      "ms": 703.7943750000004,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-landing-help-link.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-tv-help-1920x1080.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-tv-help-1280x720.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-tv-help-960x540.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-tv-help-390x844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-tv-help-390x844-section-1-scroll-228.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-tv-help-390x844-section-1-scroll-650.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-tv-help-390x844-section-2-scroll-889.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-tv-help-390x844-section-3-scroll-1318.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-tv-help-844x390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-tv-help-844x390-section-1-scroll-173.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-tv-help-844x390-section-1-scroll-368.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-tv-help-844x390-section-2-scroll-527.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-tv-help-844x390-section-2-scroll-722.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-tv-help-844x390-section-3-scroll-786.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-tv-help-844x390-section-3-scroll-981.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-landing-help-link.jpg",
+    "02-host-tv-help-1920x1080.jpg",
+    "03-host-tv-help-1280x720.jpg",
+    "04-host-tv-help-960x540.jpg",
+    "05-host-tv-help-390x844.jpg",
+    "06-host-tv-help-390x844-section-1-scroll-228.jpg",
+    "07-host-tv-help-390x844-section-1-scroll-650.jpg",
+    "08-host-tv-help-390x844-section-2-scroll-889.jpg",
+    "09-host-tv-help-390x844-section-3-scroll-1318.jpg",
+    "10-host-tv-help-844x390.jpg",
+    "11-host-tv-help-844x390-section-1-scroll-173.jpg",
+    "12-host-tv-help-844x390-section-1-scroll-368.jpg",
+    "13-host-tv-help-844x390-section-2-scroll-527.jpg",
+    "14-host-tv-help-844x390-section-2-scroll-722.jpg",
+    "15-host-tv-help-844x390-section-3-scroll-786.jpg",
+    "16-host-tv-help-844x390-section-3-scroll-981.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-landing-help-link.jpg",
+      "bytes": 132321
+    },
+    {
+      "file": "02-host-tv-help-1920x1080.jpg",
+      "bytes": 302378
+    },
+    {
+      "file": "03-host-tv-help-1280x720.jpg",
+      "bytes": 171679
+    },
+    {
+      "file": "04-host-tv-help-960x540.jpg",
+      "bytes": 117125
+    },
+    {
+      "file": "05-host-tv-help-390x844.jpg",
+      "bytes": 77951
+    },
+    {
+      "file": "06-host-tv-help-390x844-section-1-scroll-228.jpg",
+      "bytes": 83365
+    },
+    {
+      "file": "07-host-tv-help-390x844-section-1-scroll-650.jpg",
+      "bytes": 73177
+    },
+    {
+      "file": "08-host-tv-help-390x844-section-2-scroll-889.jpg",
+      "bytes": 70508
+    },
+    {
+      "file": "09-host-tv-help-390x844-section-3-scroll-1318.jpg",
+      "bytes": 70508
+    },
+    {
+      "file": "10-host-tv-help-844x390.jpg",
+      "bytes": 59627
+    },
+    {
+      "file": "11-host-tv-help-844x390-section-1-scroll-173.jpg",
+      "bytes": 67923
+    },
+    {
+      "file": "12-host-tv-help-844x390-section-1-scroll-368.jpg",
+      "bytes": 61352
+    },
+    {
+      "file": "13-host-tv-help-844x390-section-2-scroll-527.jpg",
+      "bytes": 55757
+    },
+    {
+      "file": "14-host-tv-help-844x390-section-2-scroll-722.jpg",
+      "bytes": 58114
+    },
+    {
+      "file": "15-host-tv-help-844x390-section-3-scroll-786.jpg",
+      "bytes": 58114
+    },
+    {
+      "file": "16-host-tv-help-844x390-section-3-scroll-981.jpg",
+      "bytes": 58114
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2321
+    },
+    {
+      "file": "run.json",
+      "bytes": 5131
+    }
+  ],
+  "totalBytes": 1525502,
+  "maxBytes": 12582912
+}

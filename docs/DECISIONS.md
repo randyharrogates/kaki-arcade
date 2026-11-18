@@ -1538,3 +1538,4 @@ noting. Board with both options from the round-4 run:
 https://claude.ai/artifact/NHhKG9eiGbGD495MXQpuYT. The limiter wording stays open under OQ-030.
 Randy may overrule.
 
+**D-179 · 2026-11-18 · Claude** (X-02; REL-003) — The help page's phone advice says only "Phones need an internet connection. If a phone cannot join, connect it to the same Wi-Fi as the big screen and scan again.", which holds both with today's empty ICE-server list and after C-02's relay, and promises no NET-004 prompt. The TV-browser line shows `location.host` in the mono face after an "Address:" label in DM Sans; on a loopback host it says "the address in this laptop's address bar" in DM Sans (DESIGN §2: mono for codes and numbers only). The route uses the same useState + import() pattern as the other lazy routes, so preact/compat stays out of the shared entry.

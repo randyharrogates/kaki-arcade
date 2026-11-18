@@ -7,6 +7,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 
 ## Works
 
+- **Put this on your TV page (X-02, REL-003).** The landing page links to a short help page: laptop over HDMI as the recommended route (cable and input, Chrome, Edge or Safari, full screen, Game Mode, keep it plugged in and awake); the TV's own browser as a fallback that may be slower or may not open the game, with the site address; and how phones join, with what to do if one cannot (same Wi-Fi, scan again). It fits the 1920 × 1080 board, scales without scrolling at 1280 × 720 and 960 × 540, and scrolls normally on phones. Its code loads only when the page opens; the shared first page grew by 257 B gzip and controller start-up stays at 182 ms. Seen in Chromium on the development build. **Not proven:** a real TV browser (S-03b, X-09), full-screen keys on real keyboards, Game Mode menu names by brand. The link's final place waits for X-01's landing page.
 - **C-12 (2026-11-18): the TV works from a keyboard.** Landing, lobby, picker, start screen, team
   setup, results and the pause panel all work from the arrow keys, Enter and Esc, with the keys
   shown on screen (D-162, D-165); P or Esc pauses during play. J seats a keyboard player and a game

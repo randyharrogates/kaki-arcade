@@ -2,6 +2,18 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — X-02: Put this on your TV
+
+- REL-003 done: a help page reached from the landing page. Laptop over HDMI is recommended (cable and input, Chrome,
+  Edge or Safari, full-screen keys, Game Mode, keep it plugged in and awake); the TV's own browser is a fallback that
+  may be slower or may not open the game; phones scan the QR code and, if one cannot join, use the same Wi-Fi as the
+  big screen and scan again.
+- Three columns at 1.618 : 1 : 1 with 34 px text on the TV board; no scroll at 1920 × 1080, 1280 × 720 or 960 × 540;
+  normal scrolling on phones. Only the host address is set in the mono face.
+- The page's code and styles load only when it opens; the shared first page grew by 257 B gzip; controller start-up
+  median 182 ms.
+- Not yet: a real TV browser (S-03b, X-09); the link's final place with X-01's landing page.
+
 ## 2026-11-18 — A-02b: cook chop and storage
 
 - TR-060 (in progress): the side-raise chop is the cook's default; cook atlases are lossy WebP q90
