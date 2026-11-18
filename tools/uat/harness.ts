@@ -61,7 +61,9 @@ export class Harness {
     this.boundEvaluations(page);
     page.setDefaultTimeout(15000); page.setDefaultNavigationTimeout(30000); this.labels.set(page, label);
     const record = (kind: ErrorRecord['kind'], text: string, url = '') => {
-      this.errors.push({ page: label, kind, text, url, expected: kind !== 'crash' && !(kind === 'requestfailed' && new URL(url).origin === this.origin) && this.expected.some(e => { const where = e.url; return e.page === label && matchesError(text, e.pattern) && (!where || matchesError(url, where) || (text.match(/(?:https?|wss?):\/\/[^\s'"]+/g) ?? []).some(named => matchesError(named, where))); }) });
+      const favicon404 = kind === 'console' && url === new URL('/favicon.ico', this.origin).href &&
+        text === 'Failed to load resource: the server responded with a status of 404 (Not Found)';
+      this.errors.push({ page: label, kind, text, url, expected: favicon404 || kind !== 'crash' && !(kind === 'requestfailed' && new URL(url).origin === this.origin) && this.expected.some(e => { const where = e.url; return e.page === label && matchesError(text, e.pattern) && (!where || matchesError(url, where) || (text.match(/(?:https?|wss?):\/\/[^\s'"]+/g) ?? []).some(named => matchesError(named, where))); }) });
     };
     page.on('console', message => { if (message.type() === 'error') record('console', message.text(), message.location().url); });
     page.on('crash', () => { record('crash', 'Page crashed', page.url()); this.rejectStep?.(new Error(`${label} crashed`)); });

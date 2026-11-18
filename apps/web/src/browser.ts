@@ -1,3 +1,4 @@
+import { hostCounts } from './counts';
 import { viewChannel } from './view-channel';
 import { createSessionAdapter, animationFrames } from './session-adapter';
 import type { SessionDisplay } from './session-adapter';
@@ -49,8 +50,26 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
     schedule: (callback: () => void, delay: number) => window.setTimeout(callback, delay),
     cancel: (handle: unknown) => { if (typeof handle === 'number') window.clearTimeout(handle); },
   };
+  let countRequest: AbortController | undefined;
+  // DATA-003 (D-180): one reconnect:signal per signalling outage (connected → reconnecting), not per retry notification.
+  let signalConnected = false;
+  const countsUrl = (): string => `${(baseUrl || window.location.origin).replace(/\/$/, '')}/counts`;
+  const counts = hostCounts({
+    async send(body) {
+      const controller = new AbortController(); countRequest = controller;
+      try {
+        const response = await fetch(countsUrl(), { method: 'POST', body, credentials: 'omit', referrerPolicy: 'no-referrer',
+          signal: AbortSignal.any([controller.signal, AbortSignal.timeout(2000)]) });
+        return response.ok;
+      } catch { return controller.signal.aborted; }
+      finally { if (countRequest === controller) countRequest = undefined; }
+    },
+    beacon: body => fetch(countsUrl(), { method: 'POST', body, keepalive: true, credentials: 'omit', referrerPolicy: 'no-referrer' }).then(response => response.ok),
+    cancel() { countRequest?.abort(); countRequest = undefined; },
+  });
   const links = sessionLinks();
   const session = createSessionAdapter({
+    counts,
     load: id => loadSessionGame(id, loader), prepare: prepareSession, assets: loadSessionAssets,
     transport: links.transport,
     frames: animationFrames(callback => requestAnimationFrame(callback), handle => { cancelAnimationFrame(handle); }),
@@ -65,7 +84,7 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
       continueResults: () => { session.continueResults(); },
       prefetch: session.prefetch,
       setup: (id, teams) => session.setup(id, teams),
-      async start(id, room, settings) { links.setup(room, session.buffer); await session.start(id, room, settings); },
+      async start(id, room, settings) { links.setup(room, session.buffer); try { await session.start(id, room, settings); } catch (error) { if (!(error instanceof Error && error.message === 'Cancelled')) counts.add('error:host:load'); throw error; } },
       updateRoom(room) { links.updateRoom(room); session.updateRoom(room); },
       control: (id, message) => { links.control(id, message); }, dropped: id => { links.dropped(id); },
       stop() { session.stop(); },
@@ -78,9 +97,9 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
     },
     mintToken: () => Array.from(crypto.getRandomValues(new Uint8Array(32)), byte => byte.toString(16).padStart(2, '0')).join(''),
     lifecycle: { subscribe(callback) {
-      const hide = (): void => { callback('pagehide'); };
+      const hide = (): void => { counts.hide(); callback('pagehide'); };
       const show = (): void => { callback('pageshow'); };
-      const hidden = (): void => { if (document.visibilityState === 'hidden') callback('hidden'); };
+      const hidden = (): void => { if (document.visibilityState === 'hidden') { counts.hide(); callback('hidden'); } };
       window.addEventListener('pagehide', hide); window.addEventListener('pageshow', show);
       document.addEventListener('visibilitychange', hidden);
       return () => {
@@ -142,13 +161,14 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
         },
         onLink: (quality, id) => { callbacks.quality(id, quality); },
         onPairingState: state => {
-          if (state === 'reconnecting') callbacks.state('reconnecting');
+          if (state === 'reconnecting') { if (signalConnected) counts.add('reconnect:signal'); callbacks.state('reconnecting'); }
+          signalConnected = state === 'connected';
           if (state === 'connected' && acknowledgement) callbacks.state('ready');
         },
         onError: reason => {
           if (reason === 'not-allowed') callbacks.state('replaced');
           else if (reason === 'room-not-found' || reason === 'room-expired') callbacks.state('expired');
-          else if (reason === 'socket-unavailable') callbacks.state('unreachable');
+          else if (reason === 'socket-unavailable') { counts.add('error:signal:unavailable'); callbacks.state('unreachable'); }
           // Peer negotiation errors belong to that seat, not the whole lobby.
           if (['not-allowed', 'room-not-found', 'room-expired', 'bad-token', 'socket-unavailable'].includes(reason)) reject(new Error(reason));
         },

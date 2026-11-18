@@ -1,3 +1,4 @@
+import { dailyCounts } from './counts';
 import { admission } from './admission-object';
 import type { AdmissionEnv, AdmissionTicket } from './admission-object';
 import { encodeSignal, parseHostSubprotocols, PROTOCOL_VERSION, SIGNAL_PING_TEXT, SIGNAL_PONG_TEXT, SIGNAL_SUBPROTOCOL, } from '@kaki/protocol';
@@ -45,6 +46,7 @@ export class RoomObject {
         return this.room;
     }
     async fetch(request: Request): Promise<Response> {
+        if (new URL(request.url).hostname === 'counts' && new URL(request.url).pathname === '/counts') return dailyCounts(request, this.ctx);
         return this.critical(async () => {
             const url = new URL(request.url);
             if (request.method === 'POST') {

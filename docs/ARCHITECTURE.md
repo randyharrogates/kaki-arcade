@@ -10,14 +10,14 @@ by the M2 spikes in `ROADMAP.md`; the reason for each choice is in `DECISIONS.md
           ▲   ◀──controller state──         │  runs the simulation
           │                                 │
           └────────── pairing only ─────────┘
-                 Cloudflare Worker + Durable Object (one per room)
+                 Cloudflare Worker + Durable Objects (one per room; one per day for anonymous counts)
                  Cloudflare TURN relay (only when a direct link fails)
 ```
 
 - **Host page** — authoritative. Runs the simulation and draws the game. (NET-001)
 - **Controller page** — draws the kit, sends inputs, shows private panels. Holds no game rules.
 - **Pairing server** — creates rooms, relays WebRTC handshakes, mints short-lived relay
-  credentials, enforces the relay limit and rate limits. Never carries gameplay. (NET-002, NET-004)
+  credentials, enforces the relay limit and rate limits, and accepts the host's anonymous daily counts (DATA-003). Never carries gameplay. (NET-002, NET-004)
 
 ## 2. Repository layout
 
@@ -237,6 +237,17 @@ Only the cue's oscillators and envelope gains are created during playback; no fi
   and charges its owner. A full limiter evicts only clean entries; otherwise newcomers share
   overflow buckets with normal budgets. If the limiter fails, creation and joins answer 503
   and rooms keep working. Unproven on the real edge (D-089).
+- **Anonymous counts (`apps/signal`, X-04, DATA-003, D-180):** the host page alone keeps an
+  in-memory map of eight count kinds (three error kinds, signalling reconnects and one
+  per-match frame-time p95 band). It POSTs that map to `/counts` once after a match's
+  results, and uses fetch with keepalive when the page is hidden or left. It never sends
+  during play, and every request omits cookies and referrer. Phones send nothing.
+  The Worker checks the origin, reads at most 512 bytes and accepts only the eight kinds
+  as integers from 1 to 65,535. It charges a separate admission budget (8 at once, then
+  one a minute per IPv4, IPv6 /64 and /48, rotating HMAC, memory only). It then adds the
+  counts to a `ROOMS` object named `counts:<UTC day>`, which stores one `counts` map
+  and nothing else. `GET /counts` answers only on localhost with `COUNTS_DEV_READ=true`.
+  No address, header or URL is stored.
 - **Connection lifecycle (`packages/netcode`, C-04):** the host paces its own signalling
   below the pairing server's rate limit, offers and answers ahead of candidates and phones in
   rotation. A peer that has not connected within 15 seconds is abandoned; a phone's clock

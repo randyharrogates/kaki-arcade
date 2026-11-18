@@ -2,9 +2,11 @@ import { describe, expect, it, vi } from 'vitest';
 import { createRoom, applyPhoneEvent } from '@kaki/platform';
 import type { GameModule, SessionEvent, SessionTransportEvent } from '@kaki/platform';
 import { createSessionAdapter, hostScreen, animationFrames } from './session-adapter';
+import type { AdapterOptions } from './session-adapter';
+import { hostCounts } from './counts';
 import type { SessionDisplay } from './session-adapter';
 
-function fixture() {
+function fixture(counts?: AdapterOptions['counts']) {
   let room = createRoom();
   room = applyPhoneEvent(room, { connectionId: 'a', deviceId: 'd' }, { type: 'join', name: 'Fern', seatToken: '1'.repeat(32) }, 0).state;
   const calls: string[] = [];
@@ -25,7 +27,7 @@ function fixture() {
   const load = vi.fn(() => { calls.push('load'); return Promise.resolve({ game }); });
   const assets = vi.fn(() => { calls.push('assets'); return Promise.resolve(); });
   const layouts = vi.fn(() => true);
-  const adapter = createSessionAdapter({ load, prepare: () => Promise.resolve({ context: { data: {}, saved: null, teams: false }, settings: {} }), assets, seed: () => 7,
+  const adapter = createSessionAdapter({ ...(counts ? { counts } : {}), load, prepare: () => Promise.resolve({ context: { data: {}, saved: null, teams: false }, settings: {} }), assets, seed: () => 7,
     display: next => { display = next; }, event: e => { events.push(e); },
     frames: { subscribe(fn) { frame = fn; staleFrames.push(fn); return endFrames; } },
     transport: { sendLayout: layouts, sendPrivateView: () => true, fence: () => undefined, status: () => undefined, subscribe(fn) { receive = fn; return endTransport; } },
@@ -120,4 +122,19 @@ it('PLAT-025 passes an optional team split and context to game init', async () =
   await adapter.start('test', room);
   expect(init.mock.calls[0]?.[1].map(p => p.team)).toEqual([0, 1]);
   expect(init.mock.calls[0]?.[3].teams).toBe(true); adapter.stop();
+});
+
+
+it('DATA-003 the real session boundary sends once after results, never in play', async () => {
+  const send = vi.fn<(body: string) => Promise<boolean>>(() => Promise.resolve(true));
+  const beacon = vi.fn(() => true);
+  const counts = hostCounts({ send, beacon, cancel: () => undefined });
+  const f = fixture(counts); f.game.isOver = () => false;
+  await f.adapter.start('test', f.room);
+  for (let n = 0; n < 600; n++) f.frame(17);
+  counts.hide(); expect(send).not.toHaveBeenCalled(); expect(beacon).not.toHaveBeenCalled();
+  f.game.isOver = () => true; f.frame(17); expect(f.display?.results).toBeDefined();
+  expect(send).toHaveBeenCalledTimes(1); counts.hide(); f.frame(17);
+  expect(send).toHaveBeenCalledTimes(1); expect(beacon).not.toHaveBeenCalled();
+  f.adapter.stop();
 });

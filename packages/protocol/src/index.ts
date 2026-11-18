@@ -25,3 +25,4 @@ export * from './signal';
 export * from './channel';
 
 export { CODE_ALPHABET, CODE_LENGTH } from './codes';
+export * from './counts';

@@ -1,3 +1,4 @@
+import * as countsModule from './counts';
 import { afterEach, expect, it, vi } from 'vitest';
 import { createPhoneSeatStore } from '@kaki/platform';
 import { phoneBrowserDependencies } from './phone-browser';
@@ -30,4 +31,17 @@ it.each([['gone', 404, true], ['bare404', 404, false], ['proxy', 503, false], ['
   else expect(times.map(at => at - 1000)).toEqual([0, 1000, 3000, 7000, 15000, 31000]);
   expect(createPhoneSeatStore(storage).read()?.seatToken ?? null).toBe(gone ? null : SECRET);
   expect(JSON.stringify(view)).not.toContain(SECRET); phone.stop();
+});
+
+it('DATA-003 phones send no counts when hidden or shown', () => {
+  const hostCounts = vi.spyOn(countsModule, 'hostCounts');
+  const listeners = new Map<string, () => void>();
+  const fetch = vi.fn(); const beacon = vi.fn();
+  vi.stubGlobal('fetch', fetch); vi.stubGlobal('navigator', { sendBeacon: beacon });
+  vi.stubGlobal('window', { addEventListener: (name: string, fn: () => void) => listeners.set(name, fn), removeEventListener: vi.fn() });
+  vi.stubGlobal('document', { hidden: true, addEventListener: (name: string, fn: () => void) => listeners.set(name, fn), removeEventListener: vi.fn() });
+  const deps = phoneBrowserDependencies('http://signal');
+  const unsubscribe = deps.lifecycle?.subscribe(() => undefined);
+  listeners.get('visibilitychange')?.(); listeners.get('pagehide')?.(); listeners.get('pageshow')?.();
+  expect(hostCounts).not.toHaveBeenCalled(); expect(fetch).not.toHaveBeenCalled(); expect(beacon).not.toHaveBeenCalled(); unsubscribe?.();
 });

@@ -1,0 +1,75 @@
+{
+  "slice": "X-04-counts",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- X-04-counts --phones 1 --signal-var COUNTS_DEV_READ:true --out round3",
+  "commit": "514f51a0fa389768f8cdae667aa51ecaa62c65e1",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1259.3357079999998,
+      "status": "completed"
+    },
+    {
+      "name": "Join Counts Guest",
+      "ms": 299.48333300000013,
+      "status": "completed"
+    },
+    {
+      "name": "Play the shortest Rabakz match with real phone answers",
+      "ms": 78038.466583,
+      "status": "completed"
+    },
+    {
+      "name": "Hide host once and read back today’s anonymous totals",
+      "ms": 219.03612499999872,
+      "status": "completed"
+    }
+  ],
+  "joins": [
+    {
+      "name": "Counts Guest",
+      "ms": 130.29458299999988
+    }
+  ],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-counts-results-tv.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-counts-results-tv.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-counts-results-tv.jpg",
+      "bytes": 159136
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 873
+    },
+    {
+      "file": "counts-requests.json",
+      "bytes": 213
+    },
+    {
+      "file": "counts.json",
+      "bytes": 36
+    },
+    {
+      "file": "run.json",
+      "bytes": 1540
+    }
+  ],
+  "totalBytes": 161835,
+  "maxBytes": 12582912
+}

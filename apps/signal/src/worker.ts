@@ -1,3 +1,4 @@
+import { countsRoute } from './counts';
 import { clientNetworks } from './core/address';
 import { generateCode, normalizeCode } from './core/codes';
 import { allowedOrigin } from './core/http';
@@ -8,6 +9,7 @@ export { AdmissionObject } from './admission-object';
 export { RoomObject } from './room-object';
 interface Env extends AdmissionEnv {
     ROOMS: DurableObjectNamespace;
+    COUNTS_DEV_READ?: string;
     ALLOWED_ORIGINS?: string;
     EDGE_LIMIT?: { limit(options: { key: string }): Promise<{ success: boolean }> };
 }
@@ -19,6 +21,7 @@ async function route(request: Request, env: Env): Promise<Response> {
         const url = new URL(request.url);
         if (request.method === 'OPTIONS')
             return new Response(null, { status: 204 });
+        if (url.pathname === '/counts') return countsRoute(request, env);
         if (url.pathname !== '/rooms' && !url.pathname.startsWith('/rooms/'))
             return new Response(null, { status: 404 });
         const networks = clientNetworks(request.headers.get('CF-Connecting-IP'));

@@ -1,0 +1,111 @@
+{
+  "slice": "X-04-counts",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- X-04-counts --phones 1 --signal-var COUNTS_DEV_READ:true --out round5",
+  "commit": "2de2e1ea12834f1c06e9af121252cddf6d62ac23",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1156.272,
+      "status": "completed"
+    },
+    {
+      "name": "Join Counts Guest",
+      "ms": 270.265625,
+      "status": "completed"
+    },
+    {
+      "name": "Play the shortest Rabakz match with real phone answers",
+      "ms": 78236.023917,
+      "status": "completed"
+    },
+    {
+      "name": "Hide host once and read back today’s anonymous totals",
+      "ms": 3135.644542000009,
+      "status": "completed"
+    }
+  ],
+  "joins": [
+    {
+      "name": "Counts Guest",
+      "ms": 117.80062499999985
+    }
+  ],
+  "errors": [
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:6741/rooms/GTGP2CY4/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:6741/rooms/GTGP2CY4/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "WebSocket connection to 'ws://127.0.0.1:6741/rooms/GTGP2CY4/host' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:6740/src/browser.ts",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:6741/rooms/GTGP2CY4/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:6741/rooms/GTGP2CY4/host",
+      "expected": true
+    }
+  ],
+  "shotStates": [
+    {
+      "file": "01-host-counts-results-tv.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-counts-results-tv.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-counts-results-tv.jpg",
+      "bytes": 166668
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1126
+    },
+    {
+      "file": "counts-requests.json",
+      "bytes": 213
+    },
+    {
+      "file": "counts.json",
+      "bytes": 61
+    },
+    {
+      "file": "run.json",
+      "bytes": 2620
+    }
+  ],
+  "totalBytes": 170725,
+  "maxBytes": 12582912
+}

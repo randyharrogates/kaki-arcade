@@ -13,11 +13,16 @@ export function safeName(value: string): string {
 export function parseArgs(args: string[], env: NodeJS.ProcessEnv = process.env) {
   const values = args.filter((value, i) => !(i === 0 && value === '--'));
   const slice = safeName(values.shift() ?? '');
+  const signalVars: string[] = [];
   let out = 'auto'; let maxMb = 12; let timeoutMin = 10;
   let frames = false; let headed = env.KAKI_UAT_HEADED === '1'; let phones = 8; let keep = false;
   while (values.length) {
     const arg = values.shift();
-    if (arg === '--frames') frames = true;
+    if (arg === '--signal-var') {
+      const value = values.shift() ?? '';
+      if (!/^[A-Z][A-Z0-9_]*:[A-Za-z0-9_.-]+$/.test(value)) throw new Error('--signal-var requires NAME:value');
+      signalVars.push(value);
+    } else if (arg === '--frames') frames = true;
     else if (arg === '--headed') headed = true;
     else if (arg === '--keep') keep = true;
     else if (arg === '--out') { out = values.shift() ?? ''; if (!/^[A-Za-z0-9-]+$/.test(out)) throw new Error('--out requires letters, digits or dashes'); }
@@ -29,7 +34,7 @@ export function parseArgs(args: string[], env: NodeJS.ProcessEnv = process.env) 
       phones = Number(value);
     } else throw new Error(`Unknown argument: ${arg ?? ''}`);
   }
-  return { slice, headed, phones, keep, out, maxMb, timeoutMin, frames };
+  return { slice, headed, phones, keep, out, maxMb, timeoutMin, frames, signalVars };
 }
 export function selectPorts(env: NodeJS.ProcessEnv = process.env, issue = 'main') {
   const match = /^([A-Z])-(\d+)(?:$|-)/.exec(issue);

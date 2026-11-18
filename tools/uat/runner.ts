@@ -12,7 +12,7 @@ import { builtInSlices } from './slices.js';
 
 export async function run(args = process.argv.slice(2), extension?: { production?: boolean; command?: string; headed?: boolean; script: string; execute: (harness: Harness) => Promise<void> }) {
   if (args.filter(a => a !== '--').includes('--help')) {
-    process.stdout.write('Usage: pnpm uat -- <slice> [--out name] [--max-mb 12] [--timeout-min 10] [--phones 1..8] [--headed] [--keep] [--frames]\nSlices: ' + Object.keys(builtInSlices).join(', ') + '\n');
+    process.stdout.write('Usage: pnpm uat -- <slice> [--out name] [--max-mb 12] [--timeout-min 10] [--phones 1..8] [--headed] [--keep] [--frames] [--signal-var NAME:value]\nSlices: ' + Object.keys(builtInSlices).join(', ') + '\n');
     return;
   }
   const options = parseArgs(args); options.headed = extension?.headed ?? options.headed; const root = process.cwd();
@@ -67,7 +67,7 @@ export async function run(args = process.argv.slice(2), extension?: { production
       const startSignal = async () => {
         controller.signal.throwIfAborted(); if (signal) throw new Error('Pairing server already running');
         if (signalSpawned) await assertPortFree(ports.signal);
-        signal = startGroup('pnpm', ['--dir', join(root, 'apps/signal'), 'exec', 'wrangler', 'dev', '--local', '--env', 'dev', '--config', join(tempDir, 'wrangler.jsonc'), '--persist-to', join(tempDir, 'state'), '--port', String(ports.signal), '--var', `ALLOWED_ORIGINS:${origin}`], { cwd: root });
+        signal = startGroup('pnpm', ['--dir', join(root, 'apps/signal'), 'exec', 'wrangler', 'dev', '--local', '--env', 'dev', '--config', join(tempDir, 'wrangler.jsonc'), '--persist-to', join(tempDir, 'state'), '--port', String(ports.signal), '--var', `ALLOWED_ORIGINS:${origin}`, ...options.signalVars.flatMap(value => ['--var', value])], { cwd: root });
         signalSpawned = true; watch(signal, 'Pairing');
         await ready(signalUrl, signal.check, controller.signal, 60000, response => Promise.resolve([403, 404].includes(response.status) && response.headers.get('cache-control') === 'no-store' && (response.headers.get('vary') ?? '').includes('Origin')));
         await recordWrangler();

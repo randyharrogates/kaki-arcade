@@ -7,7 +7,9 @@ import { ready, prepareEvidence, parseArgs, selectPorts, memoryGate, evidenceNam
 
 describe('F-07 harness primitives (NFR-TEST)', () => {
   it('parses pnpm separator, flags, environment and rejects unsafe input', () => {
-    expect(parseArgs(['--', 'C-07-host-lobby', '--phones', '2', '--keep'], { KAKI_UAT_HEADED: '1' })).toEqual({ slice: 'C-07-host-lobby', phones: 2, keep: true, headed: true, out: 'auto', maxMb: 12, timeoutMin: 10, frames: false });
+    expect(parseArgs(['--', 'C-07-host-lobby', '--phones', '2', '--keep'], { KAKI_UAT_HEADED: '1' })).toEqual({ slice: 'C-07-host-lobby', phones: 2, keep: true, headed: true, out: 'auto', maxMb: 12, timeoutMin: 10, frames: false, signalVars: [] });
+    expect(parseArgs(['C-07', '--signal-var', 'COUNTS_DEV_READ:true']).signalVars).toEqual(['COUNTS_DEV_READ:true']);
+    expect(() => parseArgs(['C-07', '--signal-var', 'bad'])).toThrow();
     expect(parseArgs(['C-07', '--timeout-min', '0.5']).timeoutMin).toBe(0.5);
     for (const value of ['0', '-1', 'NaN', 'Infinity']) expect(() => parseArgs(['C-07', '--timeout-min', value])).toThrow();
     expect(parseArgs(['C-07', '--headed'], {} ).headed).toBe(true);

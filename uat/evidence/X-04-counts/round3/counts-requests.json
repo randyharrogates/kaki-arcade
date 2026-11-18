@@ -1,0 +1,15 @@
+{
+  "day": "2026-11-18",
+  "requests": [
+    {
+      "method": "POST",
+      "cookie": false,
+      "referrer": false
+    },
+    {
+      "method": "GET",
+      "cookie": false,
+      "referrer": false
+    }
+  ]
+}

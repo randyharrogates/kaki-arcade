@@ -2,6 +2,21 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — X-04: anonymous error and performance counts
+
+- DATA-003: the TV counts session, load and signalling errors, signalling outages (one per drop,
+  not per retry) and a per-match frame-time p95 band (≤17, ≤34, ≤50, >50 ms; at least 600
+  frames). It sends once after results and once on hiding or leaving the page with a keepalive
+  fetch, never during play, with no cookies, referrer or identifiers. Phones send nothing.
+- The pairing server's POST /counts checks the origin, a 512-byte cap and the eight kinds, has
+  its own rotating-HMAC limit (8 at once, then one a minute, per IPv4, IPv6 /64 and /48), and
+  adds to one daily total per kind. Read-back works only locally.
+- DATA-001: still no personal data; addresses are hashed briefly for the limit and never stored.
+- UAT: a real ten-question Rabakz match is sent, a signalling outage is caused after results,
+  the TV page is left, and the worker's totals are read back (`uat/evidence/X-04-counts/round5`).
+  The harness gains `--signal-var NAME:value` and expects only the missing-favicon 404.
+- D-180.
+
 ## 2026-11-18 — X-02: Put this on your TV
 
 - REL-003 done: a help page reached from the landing page. Laptop over HDMI is recommended (cable and input, Chrome,

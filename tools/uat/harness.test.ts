@@ -16,6 +16,17 @@ it('collects errors per page, scopes expectations, and persists failing steps wi
   try {
     const harness = new Harness(fakeBrowser, 'http://localhost', folder, 'F-07', 1, network);
     await harness.init(); await harness.newPhone();
+    const missing = 'Failed to load resource: the server responded with a status of 404 (Not Found)';
+    for (const [url, text, expected] of [
+      ['http://localhost/favicon.ico', missing, true],
+      ['http://localhost/asset.png', missing, false],
+      ['http://localhost:9001/favicon.ico', missing, false],
+      ['http://localhost/favicon.ico', 'Failed to load resource: net::ERR_CONNECTION_REFUSED', false],
+    ] as const) {
+      host.emit('console', { type: () => 'error', text: () => text, location: () => ({ url }) });
+      expect(harness.errors.at(-1)?.expected).toBe(expected);
+    }
+    harness.errors.splice(0);
     harness.maxBytes = 1; await expect(harness.assertSize()).rejects.toThrow('exceeds --max-mb');
     harness.maxBytes = 12 * 1024 * 1024;
     await harness.step('outage', async () => {

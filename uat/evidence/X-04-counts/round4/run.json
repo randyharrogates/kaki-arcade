@@ -1,0 +1,111 @@
+{
+  "slice": "X-04-counts",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- X-04-counts --phones 1 --signal-var COUNTS_DEV_READ:true --out round4",
+  "commit": "d39136d181f6d0400eab84eafe66b04d49993eeb",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1452.9793330000002,
+      "status": "completed"
+    },
+    {
+      "name": "Join Counts Guest",
+      "ms": 281.1165420000002,
+      "status": "completed"
+    },
+    {
+      "name": "Play the shortest Rabakz match with real phone answers",
+      "ms": 77470.422833,
+      "status": "completed"
+    },
+    {
+      "name": "Hide host once and read back today’s anonymous totals",
+      "ms": 3117.988207999995,
+      "status": "completed"
+    }
+  ],
+  "joins": [
+    {
+      "name": "Counts Guest",
+      "ms": 119.39116700000022
+    }
+  ],
+  "errors": [
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:6741/rooms/SVK3J6WK/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:6741/rooms/SVK3J6WK/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "WebSocket connection to 'ws://127.0.0.1:6741/rooms/SVK3J6WK/host' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:6740/src/browser.ts",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:6741/rooms/SVK3J6WK/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:6741/rooms/SVK3J6WK/host",
+      "expected": true
+    }
+  ],
+  "shotStates": [
+    {
+      "file": "01-host-counts-results-tv.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-counts-results-tv.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-counts-results-tv.jpg",
+      "bytes": 166668
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1126
+    },
+    {
+      "file": "counts-requests.json",
+      "bytes": 213
+    },
+    {
+      "file": "counts.json",
+      "bytes": 61
+    },
+    {
+      "file": "run.json",
+      "bytes": 2637
+    }
+  ],
+  "totalBytes": 170742,
+  "maxBytes": 12582912
+}

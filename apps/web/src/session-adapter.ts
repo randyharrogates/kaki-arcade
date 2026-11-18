@@ -1,3 +1,4 @@
+import type { hostCounts } from './counts';
 import { prepareSetup, prepareMatch } from './session-loading';
 import type { PreparedSetup } from './game-setup';
 import { createSession } from '@kaki/platform';
@@ -12,6 +13,7 @@ export type HostScreen = ComponentType<{ view: never; width: number; height: num
 export interface SessionDisplay { gameId: string; view: unknown; Screen?: HostScreen; soundHistory?: { previous: unknown }; paused?: boolean; finalScreen?: boolean; results?: Extract<SessionEvent, { type: 'results' }>['results'] }
 export function hostScreen(display: SessionDisplay | null, lobby: boolean): string { return display ? display.results ? display.finalScreen ? 'game' : 'results' : 'game' : lobby ? 'lobby' : 'picker'; }
 export interface AdapterOptions {
+  counts?: Pick<ReturnType<typeof hostCounts>, 'begin' | 'frame' | 'end' | 'stop' | 'add'>;
   load(id: string): Promise<{ game: LoadedGame; Screen?: HostScreen; viewKey?: (view: unknown) => unknown; finalScreen?: boolean }>;
   prepare(game: LoadedGame, seed: number, teams?: boolean): Promise<{ context: InitContext; settings: object }>;
   assets(game: LoadedGame, state: unknown): Promise<void>;
@@ -39,6 +41,7 @@ export function createSessionAdapter(o: AdapterOptions) {
     return loaded;
   }
   function stop(): void {
+    o.counts?.stop();
     revealResults = undefined; generation++; stopFrames?.(); stopFrames = undefined; stopTransport?.(); stopTransport = undefined;
     runner = undefined; for (let seat = 1; seat <= 8; seat++) buffer.remove(`seat-${String(seat)}`); o.display(null);
   }
@@ -71,8 +74,8 @@ export function createSessionAdapter(o: AdapterOptions) {
         },
         event(event) {
           if (event.type === 'paused') { display = { ...display, paused: event.paused }; if (runner) o.display(display); }
-          if (event.type === 'error') setup.failed = true;
-          if (event.type === 'results') { stopFrames?.(); stopFrames = undefined; display = { ...display, results: event.results, finalScreen: loaded.finalScreen ?? false }; revealResults = () => { display = { ...display, finalScreen: false }; o.display(display); }; o.display(display); }
+          if (event.type === 'error') { setup.failed = true; o.counts?.add('error:host:session'); o.counts?.stop(); }
+          if (event.type === 'results') { stopFrames?.(); stopFrames = undefined; o.counts?.end(); display = { ...display, results: event.results, finalScreen: loaded.finalScreen ?? false }; revealResults = () => { display = { ...display, finalScreen: false }; o.display(display); }; o.display(display); }
           o.event(event);
         },
       });
@@ -84,7 +87,8 @@ export function createSessionAdapter(o: AdapterOptions) {
       if (isFailed()) { stop(); throw new Error('Session setup failed'); }
       runner = next; o.display(display);
       if (!next.ended) {
-        try { stopFrames = o.frames.subscribe(ms => { if (current === generation) next.advance(ms); }); }
+        o.counts?.begin();
+        try { stopFrames = o.frames.subscribe(ms => { if (current === generation) { o.counts?.frame(ms); next.advance(ms); } }); }
         catch (error) { stop(); throw error; }
       }
     },

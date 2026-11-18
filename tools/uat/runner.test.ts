@@ -88,3 +88,10 @@ it('explicit headless override wins over headed arguments and production uses bu
   expect(vi.mocked(execFileSync).mock.calls[0]?.slice(0, 2)).toEqual(['pnpm', ['--dir', 'apps/web', 'exec', 'vite', 'build']]);
   expect(state.servers.some(args => args.includes('preview'))).toBe(true);
 });
+
+ it('passes explicit worker variables to local starts (DATA-003)', async () => {
+  state.servers = [];
+  await run(['F-07', '--signal-var', 'COUNTS_DEV_READ:true']);
+  expect(state.servers[0]).toContain('COUNTS_DEV_READ:true');
+  expect(state.servers[1]).not.toContain('COUNTS_DEV_READ:true');
+});
