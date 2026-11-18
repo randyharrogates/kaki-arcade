@@ -21,13 +21,13 @@ it('PLAT-006/025 fits generic setup and grouped panels on phones and mirrors TV 
         import { settingsView, reconcileSettings, settingChange } from '${model}'; import { loadGame, gameMetas } from '${registry}'; import { prepareSetup } from '${loading}';
         const root = document.createElement('main'); root.className = 'phone-page'; root.dataset.seated = 'true'; root.dataset.setup = 'true'; document.body.append(root);
         let setup; let schema; let values; let tv = false; let focused = 2; let hideSettings = false;
-        const room = {...createRoom(),leader:1,players:Array.from({length:8}, (_,i)=>({seat:i+1,name:'Player '+(i+1),disconnectedAt:null}))};
+        const room = {...createRoom(),leader:1,players:Array.from({length:8}, (_,i)=>({seat:i+1,name:['MOHAMMAD ALI','Wan Ting Lim','WWWWWWWWWWWW'][i%3],disconnectedAt:i === 2 ? 1 : null}))};
         function draw() { setup = {...setup, settings: settingsView(schema, values)}; render(tv ? <GamePicker state={{...initialPicker(gameMetas),screen:'start',focus:gameMetas[focused].id}} room={room} setup={hideSettings ? null : setup}/> : <GameSetup setup={setup} leader leaderName="Leader" change={(id, value) => {const reason = id === 'items' && value.includes('b') ? 'Only 8 questions. Add a category.' : settingChange(schema, values, id, value).reason; if (!reason) values = {...values, [id]:value}; setup = {...setup, revision:setup.revision+1, refusal:reason ? {field:id,sentence:reason,revision:setup.revision+1} : null}; draw();}} toggle={() => {setup.enabled = !setup.enabled; draw();}} start={() => {}} back={() => {}}/>, root); }
         window.longRefusal = sentence => { setup = {...setup, refusal:{field:'difficulty',sentence,revision:2}}; schema = {...schema,check:()=>sentence}; draw(); };
         window.teamState = (enabled) => { setup = {...setup,enabled,teamsReason:'Teams need 2 players'}; draw(); };
         window.noSettings = () => { schema = {fields:[]}; values = {}; draw(); };
         window.hideSettings = (hidden) => { hideSettings = hidden; draw(); };
-        window.clearRefusal = () => { setup = {...setup,refusal:null}; draw(); };
+        window.clearRefusal = () => { setup = {...setup,refusal:null}; schema = {...schema,check:()=>null}; draw(); };
         window.mirrorRefusal = () => { tv = true; root.className = 'host-shell'; draw(); };
         window.refusalFixture = () => {
           schema = {fields:[{kind:'multi',id:'items',label:'Categories',default:[],options:[{value:'a',label:'Available'},{value:'b',label:'Unavailable'}]}, {kind:'choice',id:'difficulty',label:'Difficulty',default:'mixed',options:[{value:'mixed',label:'Mixed'},{value:'hard',label:'Hard'}]}],check: v => v.difficulty === 'hard' || v.items.includes('b') ? 'Only 8 questions. Add a category.' : null};
@@ -60,6 +60,20 @@ it('PLAT-006/025 fits generic setup and grouped panels on phones and mirrors TV 
         await Promise.all(document.getAnimations().filter(a => a.effect?.getTiming().iterations !== Infinity).map(a => a.finished.catch(() => undefined)));
       });
       await page.waitForFunction(() => document.documentElement.style.getPropertyValue('--screen-scale') === String(Math.min(innerWidth / 1920, innerHeight / 1080)));
+    };
+    const expectOutgoingAt = async (before: { x: number; y: number; width: number; height: number } | null) => {
+      expect(before).not.toBeNull();
+      const outgoing = page.locator('.setup-problem-outgoing');
+      const rect = await outgoing.boundingBox();
+      expect(rect).not.toBeNull();
+      if (!before || !rect) throw new Error('Missing notice rectangle');
+      for (const edge of ['x', 'y', 'width', 'height'] as const) expect(Math.abs(rect[edge] - before[edge])).toBeLessThanOrEqual(1);
+      expect(await outgoing.evaluate(el => {
+        const r = el.getBoundingClientRect();
+        const card = el.closest('.game-tile')?.getBoundingClientRect();
+        if (!card) return false;
+        return r.left >= card.left && r.right <= card.right && r.top >= card.top && r.bottom <= card.bottom;
+      })).toBe(true);
     };
     const fits = async () => await page.locator('.phone-game-setup, .setup-option-grid').evaluateAll(nodes => nodes.every(el => {
       const r = el.getBoundingClientRect(); const page = el.closest('.phone-page');
@@ -138,6 +152,7 @@ it('PLAT-006/025 fits generic setup and grouped panels on phones and mirrors TV 
       await page.evaluate(() => { document.documentElement.style.setProperty('--screen-scale', String(innerWidth / 1920)); });
       await setFixture(2, width > 844); if (width > 844) await settleTV();
       const cardBefore = width > 844 ? await page.locator('.game-tile[data-expanded="true"]').boundingBox() : null;
+      const detailTop = width > 844 ? await page.locator('.game-tile[data-expanded="true"] .game-detail').evaluate(el => el.getBoundingClientRect().top) : null;
       const enabled = width <= 844 ? await page.getByRole('button', { name: 'Start', exact: true }).evaluate(el => getComputedStyle(el).backgroundColor) : '';
       await page.evaluate(sentence => { (Reflect.get(window, 'longRefusal') as (s: string) => void)(sentence); }, sentence);
       const notice = page.locator('[role="status"]').filter({ hasText: sentence });
@@ -154,9 +169,64 @@ it('PLAT-006/025 fits generic setup and grouped panels on phones and mirrors TV 
         expect(await start.evaluate(el => getComputedStyle(el).backgroundColor)).not.toBe(enabled);
       } else {
         expect(await page.locator('.game-tile[data-expanded="true"]').boundingBox()).toEqual(cardBefore);
+        const detail = page.locator('.game-tile[data-expanded="true"] .game-detail');
+        expect(Math.abs(await detail.evaluate(el => el.getBoundingClientRect().top) - (detailTop ?? 0))).toBeLessThanOrEqual(1);
+        expect(await notice.evaluate(el => {
+          const r = el.getBoundingClientRect();
+          const card = el.closest('.game-tile')?.getBoundingClientRect();
+          const tiles = Array.from(document.querySelectorAll('.game-tile[data-expanded="true"] .picker-players li'));
+          return tiles.length === 8 && card && r.left >= card.left && r.right <= card.right && r.top >= card.top && r.bottom <= card.bottom && tiles.every(tile => {
+            const box = tile.getBoundingClientRect();
+            const label = tile.querySelector('.picker-player-text');
+            const name = tile.querySelector('.picker-player-name');
+            if (!label || !name) return false;
+            const css = getComputedStyle(label);
+            const scale = innerWidth / 1920;
+            return box.bottom <= r.top && box.left >= card.left && box.right <= card.right && box.top >= card.top && box.bottom <= card.bottom && label.getBoundingClientRect().height <= 2 * parseFloat(css.lineHeight) * scale + 1 && name.getAttribute('title') === name.textContent;
+          });
+        })).toBe(true);
+        expect(await page.locator('.game-tile[data-expanded="true"] .picker-seat-held').count()).toBe(1);
         expect(await page.locator('.setup-mirror-row dd').evaluateAll(nodes => nodes.every(el => getComputedStyle(el).visibility === 'visible'))).toBe(true);
         expect(await notice.evaluate(el => el.getBoundingClientRect().top >= Math.max(...Array.from(document.querySelectorAll('.setup-mirror-row')).map(row => row.getBoundingClientRect().bottom)))).toBe(true);
       }
+      const beforeClear = width > 844 ? await notice.boundingBox() : null;
+      await page.evaluate(() => { (Reflect.get(window, 'clearRefusal') as () => void)(); });
+      if (width > 844) {
+        await expectOutgoingAt(beforeClear);
+        expect(Math.abs(await page.locator('.game-tile[data-expanded="true"] .game-detail').evaluate(el => el.getBoundingClientRect().top) - (detailTop ?? 0))).toBeLessThanOrEqual(1);
+        const status = page.locator('.setup-mirror-problem > [role="status"]');
+        expect(await status.textContent()).toBe('');
+        expect(await status.evaluate(el => { for (let node: Element | null = el; node; node = node.parentElement) if (getComputedStyle(node).display === 'none' || getComputedStyle(node).visibility === 'hidden') return false; return true; })).toBe(true);
+      }
+    }
+    // Text replacements retain the previous notice alongside the mounted live region.
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    for (const [width, height] of [[1920, 1080], [1280, 720]] as const) {
+      await page.setViewportSize({ width, height });
+      await page.evaluate(() => { document.documentElement.style.setProperty('--screen-scale', String(innerWidth / 1920)); });
+      await setFixture(2, true); await settleTV();
+      const status = page.locator('.setup-mirror-problem > [role="status"]');
+      const mounted = await status.elementHandle();
+      for (const text of ['Loading replacement.', sentence]) {
+        await page.evaluate(text => { (Reflect.get(window, 'longRefusal') as (s: string) => void)(text); }, text);
+        await settleTV();
+      }
+      const beforeReplacement = await status.boundingBox();
+      await page.evaluate(() => { (Reflect.get(window, 'longRefusal') as (s: string) => void)('Only 8 questions.'); });
+      await expectOutgoingAt(beforeReplacement);
+      expect(await page.locator('.setup-problem-outgoing').textContent()).toContain(sentence);
+      expect(await page.locator('.setup-problem-outgoing').getAttribute('aria-hidden')).toBe('true');
+      expect(await page.locator('.setup-problem-outgoing').getAttribute('role')).toBeNull();
+      expect(await status.textContent()).toContain('Only 8 questions.');
+      expect(await mounted.evaluate(el => el === document.querySelector('.setup-mirror-problem > [role="status"]'))).toBe(true);
+      await settleTV();
+      expect(await page.locator('.setup-problem-outgoing').count()).toBe(0);
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      await page.evaluate(() => { (Reflect.get(window, 'longRefusal') as (s: string) => void)('Instant replacement.'); });
+      expect(await status.textContent()).toContain('Instant replacement.');
+      expect(await page.locator('.setup-problem-outgoing').count()).toBe(0);
+      expect(await status.evaluate(el => el.getAnimations().length)).toBe(0);
+      await page.emulateMedia({ reducedMotion: 'no-preference' });
     }
     // Round F: compare against the same start card without a settings envelope.
     for (const [width, height] of [[1920, 1080], [1280, 720]] as const) {
@@ -190,7 +260,8 @@ it('PLAT-006/025 fits generic setup and grouped panels on phones and mirrors TV 
         // Headings may let display glyphs run past a tight line box; that is only a defect if something clips them.
         const heading = /^H[1-6]$/.test(el.tagName);
         const unclipped = heading ? getComputedStyle(el).overflow === 'visible' && getComputedStyle(el.parentElement ?? el).overflow === 'visible' : el.scrollHeight <= el.clientHeight + 1 && el.scrollWidth <= el.clientWidth + 1;
-        const ok = r.width > 0 && r.height > 0 && r.left >= 55 && r.top >= 55 && r.right <= innerWidth - 55 && r.bottom <= innerHeight - 55 && unclipped;
+        const safeMargin = 55 * innerWidth / 1920;
+        const ok = r.width > 0 && r.height > 0 && r.left >= safeMargin && r.top >= safeMargin && r.right <= innerWidth - safeMargin && r.bottom <= innerHeight - safeMargin && unclipped;
         return ok ? [] : [`${el.tagName}.${el.getAttribute('class') ?? ''} ${String(Math.round(r.left))},${String(Math.round(r.top))}–${String(Math.round(r.right))},${String(Math.round(r.bottom))} overflow ${String(el.scrollHeight - el.clientHeight)}`];
       }))).toEqual([]);
       expect(await card.locator('.game-tile-content').evaluateAll(nodes => nodes.every(el => el.scrollHeight <= el.clientHeight + 1 && el.scrollWidth <= el.clientWidth + 1))).toBe(true);

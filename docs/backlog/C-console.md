@@ -127,7 +127,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   `::after` box-shadow is drawn (round 8 passed with the ring missing); assert the interrupt
   step read some animations; `--picker-heading-size` is written but no longer read.
   **For the K track:** the leader's phone keeps four buttons (Previous, Next, Select, Back)
-  until the stick and Pick/Back exist (D-098). **For A-09:** picture slots are not 1.618 : 1
+  until the stick and Pick/Back exist (D-098). **For A-09:** (resolved by A-09, 2026-11-18) picture slots are not 1.618 : 1
   (the primary about 2.05 : 1, expanded about 2.36 : 1, side slots collapse when a reason
   shows); pictures must be preloaded. **For the F follow-up (packages/ui):** make
   `GOLDEN_COLUMNS` and `GOLDEN_COLUMNS_REVERSED` `minmax(0, …)` so `.picker-stage` can use the

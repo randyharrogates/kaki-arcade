@@ -51,4 +51,7 @@ fieldset.setup-teams-row { border: 0; padding: 0; margin: 0; min-width: 0; }
 .setup-help { margin: 0; color: var(--ka-panel-secondary); font-size: var(--ka-phone-type-13); line-height: var(--ka-line-display); }
 .phone-game-setup footer p, .setup-mirror-problem p { display: flex; align-items: center; gap: var(--ka-space-8); }
 .phone-game-setup footer .icon, .setup-mirror-problem .icon { flex-shrink: 0; }
-.setup-mirror-problem { min-height: calc(var(--ka-type-34) * var(--ka-line-body) * 3); }
+/* The content root owns the containing block, across both card columns. */
+.setup-mirror-problem { position: absolute; left: var(--ka-space-34); right: var(--ka-space-34); bottom: calc(var(--ka-space-13) + var(--ka-space-13)); }
+
+.setup-mirror-problem .setup-problem-outgoing { position: absolute; left: 0; right: 0; bottom: 0; }

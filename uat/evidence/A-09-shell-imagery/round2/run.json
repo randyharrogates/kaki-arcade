@@ -1,0 +1,229 @@
+{
+  "slice": "A-09-shell-imagery",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- A-09-shell-imagery --phones 1 --out round2",
+  "commit": "ee650dce1ee6185b57069a68a0024de2b5624483",
+  "viewports": [
+    "1920×1080",
+    "1280×720",
+    "390×844"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 889.0512499999995,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-landing-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-landing-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-landing-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-tabao-rush-picker-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-tabao-rush-picker-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-tabao-rush-picker-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-tabao-rush-start-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-tabao-rush-start-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-tabao-rush-start-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-peek-poker-picker-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-peek-poker-picker-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-peek-poker-picker-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-peek-poker-start-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-peek-poker-start-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-peek-poker-start-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-rabakz-picker-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-rabakz-picker-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-rabakz-picker-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-rabakz-start-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-rabakz-start-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-rabakz-start-390.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-landing-1920.jpg",
+    "02-host-landing-1280.jpg",
+    "03-host-landing-390.jpg",
+    "04-host-tabao-rush-picker-1920.jpg",
+    "05-host-tabao-rush-picker-1280.jpg",
+    "06-host-tabao-rush-picker-390.jpg",
+    "07-host-tabao-rush-start-1920.jpg",
+    "08-host-tabao-rush-start-1280.jpg",
+    "09-host-tabao-rush-start-390.jpg",
+    "10-host-peek-poker-picker-1920.jpg",
+    "11-host-peek-poker-picker-1280.jpg",
+    "12-host-peek-poker-picker-390.jpg",
+    "13-host-peek-poker-start-1920.jpg",
+    "14-host-peek-poker-start-1280.jpg",
+    "15-host-peek-poker-start-390.jpg",
+    "16-host-rabakz-picker-1920.jpg",
+    "17-host-rabakz-picker-1280.jpg",
+    "18-host-rabakz-picker-390.jpg",
+    "19-host-rabakz-start-1920.jpg",
+    "20-host-rabakz-start-1280.jpg",
+    "21-host-rabakz-start-390.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-landing-1920.jpg",
+      "bytes": 228609
+    },
+    {
+      "file": "02-host-landing-1280.jpg",
+      "bytes": 120007
+    },
+    {
+      "file": "03-host-landing-390.jpg",
+      "bytes": 34464
+    },
+    {
+      "file": "04-host-tabao-rush-picker-1920.jpg",
+      "bytes": 244887
+    },
+    {
+      "file": "05-host-tabao-rush-picker-1280.jpg",
+      "bytes": 134019
+    },
+    {
+      "file": "06-host-tabao-rush-picker-390.jpg",
+      "bytes": 33678
+    },
+    {
+      "file": "07-host-tabao-rush-start-1920.jpg",
+      "bytes": 186428
+    },
+    {
+      "file": "08-host-tabao-rush-start-1280.jpg",
+      "bytes": 102870
+    },
+    {
+      "file": "09-host-tabao-rush-start-390.jpg",
+      "bytes": 29112
+    },
+    {
+      "file": "10-host-peek-poker-picker-1920.jpg",
+      "bytes": 239099
+    },
+    {
+      "file": "11-host-peek-poker-picker-1280.jpg",
+      "bytes": 128453
+    },
+    {
+      "file": "12-host-peek-poker-picker-390.jpg",
+      "bytes": 33752
+    },
+    {
+      "file": "13-host-peek-poker-start-1920.jpg",
+      "bytes": 186114
+    },
+    {
+      "file": "14-host-peek-poker-start-1280.jpg",
+      "bytes": 100341
+    },
+    {
+      "file": "15-host-peek-poker-start-390.jpg",
+      "bytes": 30038
+    },
+    {
+      "file": "16-host-rabakz-picker-1920.jpg",
+      "bytes": 230470
+    },
+    {
+      "file": "17-host-rabakz-picker-1280.jpg",
+      "bytes": 125876
+    },
+    {
+      "file": "18-host-rabakz-picker-390.jpg",
+      "bytes": 33626
+    },
+    {
+      "file": "19-host-rabakz-start-1920.jpg",
+      "bytes": 180315
+    },
+    {
+      "file": "20-host-rabakz-start-1280.jpg",
+      "bytes": 99888
+    },
+    {
+      "file": "21-host-rabakz-start-390.jpg",
+      "bytes": 30259
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2146
+    },
+    {
+      "file": "run.json",
+      "bytes": 5132
+    }
+  ],
+  "totalBytes": 2539620,
+  "maxBytes": 12582912
+}

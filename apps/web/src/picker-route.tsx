@@ -1,3 +1,5 @@
+import { preloadShellPictures, shellPictures, shellPicturesReady } from './shell-images';
+import { useEffect } from 'preact/hooks';
 import { GameSetupMirror } from './game-setup-route';
 import type { TeamSetupView } from './team-setup';
 import { useLayoutEffect, useRef, useState } from 'preact/hooks';
@@ -13,7 +15,21 @@ import { pickerAnimation, pickerRects, pickerFocusAnimation, pickerLayout } from
 import { freezePickerContent, wipePickerContent } from './picker-content';
 
 /** The tile owns the mask; surface and content travel together without scaling text. */
-export function GamePicker({ state, room, setup = null, localDevice = 'keyboard' }: { state: PickerModel; room: RoomState; setup?: TeamSetupView | null; localDevice?: 'keyboard' | 'controller' }) {
+interface PickerProps { state: PickerModel; room: RoomState; setup?: TeamSetupView | null; localDevice?: 'keyboard' | 'controller' }
+export function GamePicker(props: PickerProps) {
+  const [ready, setReady] = useState(shellPicturesReady);
+  const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  useEffect(() => {
+    if (ready) return;
+    let alive = true;
+    setFailed(false);
+    void preloadShellPictures().then(() => { if (alive) setReady(true); }, () => { if (alive) setFailed(true); });
+    return () => { alive = false; };
+  }, [attempt, ready]);
+  return ready ? <ReadyGamePicker {...props}/> : <main class="screen room-status" aria-live="polite"><p>{failed ? 'Could not load game pictures.' : 'Loading game pictures…'}</p>{failed && <button onClick={() => { setAttempt(value => value + 1); }}>Try again</button>}</main>;
+}
+function ReadyGamePicker({ state, room, setup = null, localDevice = 'keyboard' }: PickerProps) {
   const tiles = useRef(new Map<string, HTMLElement>());
   const snapshots = useRef(new Map<string, HTMLElement>());
   const before = useRef(new Map<string, DOMRect>());
@@ -94,6 +110,7 @@ export function GamePicker({ state, room, setup = null, localDevice = 'keyboard'
     <div class="announcements" aria-live="polite" aria-atomic="true">{state.error ?? `${state.screen === 'starting' ? 'Starting ' + (gameMetas.find(game => game.id === state.focus)?.name ?? 'the game') : expanded ? starts : leader + ' is choosing'}${expanded ? '' : ' ' + (gameMetas.find(game => game.id === state.focus)?.name ?? '')}`}</div>
     <div class="picker-stage" role="list" aria-label="Installed games">
       {gameMetas.map(game => {
+        const picture = shellPictures[game.id];
         const focused = game.id === state.focus;
         const detail = focused && expanded;
         const hasSettings = detail && Boolean(setup?.settings && (setup.settings.fields.length || setup.settings.loading || setup.settings.problem));
@@ -103,9 +120,9 @@ export function GamePicker({ state, room, setup = null, localDevice = 'keyboard'
           tabIndex={expanded && !focused ? -1 : 0} role="listitem" aria-current={focused ? 'true' : undefined} aria-disabled={reason !== null} aria-label={`${game.name}. ${game.blurb} ${playerRange(game)}. ${reason ?? 'Available'}`}>
           <div class="game-surface ka-panel"/>
           <div class="game-tile-content">
-            <div class="game-picture-slot" aria-label="Game picture slot"/>
+            <div class="game-picture-slot">{picture && <img src={picture.src} alt={picture.alt} width="656" height="405"/>}</div>
             <div class="game-copy"><div class="game-metadata" data-primary={focused}><h2>{game.name}</h2><p>{game.blurb}</p><p>{playerRange(game)}</p>{reason && <strong class="game-unavailable"><Icon kind="weak"/>{reason}</strong>}</div>{hasSettings && <div class="game-setup-slot" aria-label="Settings and team setup slot"><GameSetupMirror setup={setup}/></div>}</div>
-            <div class="game-detail">{detail ? <div class="game-start-content"><h3>Who’s in</h3><ol class="picker-players">{room.players.map(player => <li class="ka-panel" key={player.seat}><span class="seat-number" style={{ backgroundColor: `var(--ka-seat-${String(player.seat)})` }}>{player.seat}</span><span>{player.name}{player.disconnectedAt !== null ? ' · Seat held' : ''}</span></li>)}</ol><div class="game-setup-slot"/></div> : <span/>}</div>
+            <div class="game-detail">{detail ? <div class="game-start-content"><h3>Who’s in</h3><ol class="picker-players">{room.players.map(player => <li class="ka-panel" key={player.seat}><span class="seat-number" style={{ backgroundColor: `var(--ka-seat-${String(player.seat)})` }}>{player.seat}</span><span class="picker-player-text"><span class="picker-player-name" title={player.name}>{player.name}</span>{player.disconnectedAt !== null && <span class="picker-seat-held">Seat held</span>}</span></li>)}</ol><div class="game-setup-slot"/></div> : <span/>}</div>
           </div>
         </div>;
       })}

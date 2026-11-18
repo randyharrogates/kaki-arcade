@@ -8,10 +8,19 @@ import type { ComponentType } from 'preact';
 import { useLayoutEffect, useState } from 'preact/hooks';
 import { screenScale } from './viewport';
 import { PhonePage } from './phone-route';
-import { HostLobby } from './host-route';
-import { Landing } from './landing-route';
 import '@kaki/ui/tokens.css';
 import './style.css';
+function ShellRoute({ host }: { host: boolean }) {
+  const [route, setRoute] = useState<ComponentType | null>(null);
+  useLayoutEffect(() => {
+    let active = true;
+    const loading = host ? import('./host-route').then(module => module.HostLobby) : import('./landing-route').then(module => module.Landing);
+    void loading.then(component => { if (active) setRoute(() => component); });
+    return () => { active = false; };
+  }, [host]);
+  const Route = route;
+  return Route ? <Route/> : <main class="screen room-status" aria-busy="true">Loading…</main>;
+}
 function LegalRoute({ page }: { page: 'privacy' | 'credits' }) {
   const [component, setComponent] = useState<ComponentType<{ page: 'privacy' | 'credits' }> | null>(null);
   useLayoutEffect(() => { let active = true; void import('./pages/legal-route').then(module => { if (active) setComponent(() => module.LegalPage); }); return () => { active = false; }; }, []);
@@ -67,9 +76,9 @@ function App() {
   if (import.meta.env.DEV && path === '/host/sound') return <SoundDemoRoute/>;
   if (path === '/privacy' || path === '/credits') return <LegalRoute page={path.slice(1) as 'privacy' | 'credits'}/>;
   if (path === '/play') return <PhonePage/>;
-  if (path === '/host') return <HostLobby/>;
+  if (path === '/host') return <ShellRoute host/>;
   if (path === '/tv-help') return <TvHelpRoute/>;
-  if (path === '/') return <Landing/>;
+  if (path === '/') return <ShellRoute host={false}/>;
   return <main class="screen room-status"><h1>This page has not been built yet.</h1><a href="/">Back to Kaki Arcade</a></main>;
 }
 const root = document.getElementById('app');

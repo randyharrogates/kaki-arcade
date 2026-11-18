@@ -23,7 +23,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | A-07 | Effects: steam, sparks, fire, extinguisher spray, thrown-item shadows | TR-009, TR-010, TR-062 | A-01 | 2 | merged |
 | A-07b | Effect readability (D-192): sparks unlit with an edge-red #B5371F rim at 6×8 px; strip every PNG text chunk so re-renders are byte-stable; shadow grain; steam and spray stronger on light marble; half-detail and greyscale columns in `effect_strips.py`, which must not reset `review.json`. One render, before T-07 draws effects | TR-010, TR-062 | A-07 | 2 | todo |
 | A-08 | Playing cards: faces, back and flip frames, suits distinct by shape | PP-030, PP-031 | G-02, A-01 | 2 | done |
-| A-09 | Shell imagery: landing illustration and game picker tiles (image generation may use Codex, logged) Keep `<LegalFooter/>` and a phone landing flow that passes legal.dom's centre-point hit test (D-189). | REL-002, PLAT-020 | G-02 | 2 | todo |
+| A-09 | Shell imagery: landing illustration and game picker tiles (image generation may use Codex, logged) Keep `<LegalFooter/>` and a phone landing flow that passes legal.dom's centre-point hit test (D-189). | REL-002, PLAT-020 | G-02 | 2 | done (merged 2026-11-18; D-199, D-200, OQ-049) |
 | A-10 | Dish art polish after A-04 (D-145): mixed rojak heap, recognisable chopped turnip and chicken at 1×, broth and cup-food cases, document and use the dish composition fields, 1× evidence | TR-041 | A-04 | 2 | done |
 
 ## Carried from reviews

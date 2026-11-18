@@ -3,7 +3,7 @@ import { fieldSummary, groupSelection } from './game-setup';
 import type { FieldView } from './game-setup';
 import type { TeamSetupView } from './team-setup';
 import { TeamsToggle } from './team-setup-route';
-import { duration, easing, reducedMotion } from '@kaki/ui';
+import { duration, easing, exitDuration, reducedMotion } from '@kaki/ui';
 import { Icon } from './icons';
 import './game-setup.css';
 export function GameSetup({ setup, leader, leaderName, change, toggle, start, back }: {
@@ -55,9 +55,10 @@ function setupRefusal(setup: TeamSetupView): SetupRefusal | null {
 export function GameSetupMirror({ setup }: { setup: TeamSetupView | null }) {
   if (!setup) return null;
   const refusal = setupRefusal(setup);
+  const problem = refusal?.sentence ?? setup.settings?.problem;
   return <dl class="game-setup-mirror">{setup.settings?.fields.map(field => <div class="setup-mirror-row" data-refused={refusal?.field === field.id} data-field={field.id} key={field.id}><dt class="setup-mirror-heading" data-refused={refusal?.field === field.id}><span>{field.label}</span></dt><dd><MirrorValue value={fieldSummary(field)}/></dd></div>)}
     {setup.teamsOffered && <div class="setup-mirror-row"><dt>Teams</dt><dd><MirrorValue value={setup.enabled ? 'On' : 'Off'}/></dd></div>}
-    <div class="setup-mirror-problem"><p role="status">{(refusal?.sentence ?? setup.settings?.problem ?? setup.settings?.loading) && <><Icon kind="weak"/>{refusal?.sentence ?? setup.settings?.problem ?? 'Loading settings…'}</>}</p></div>
+    <MirrorProblem text={problem ?? (setup.settings?.loading ? 'Loading settings…' : '')} warning={Boolean(problem)}/>
   </dl>;
 }
 
@@ -78,4 +79,28 @@ function MirrorValue({ value }: { value: string }) {
     return () => { a?.cancel(); b.cancel(); old.remove(); };
   }, [value]);
   return <span class="setup-mirror-value" ref={node}><strong>{value}</strong></span>;
+}
+
+/** Keep the live region mounted; only the decorative exit copy retains old text. */
+function MirrorProblem({ text, warning }: { text: string; warning: boolean }) {
+  const node = useRef<HTMLParagraphElement>(null);
+  const previous = useRef<HTMLElement | null>(null);
+  useLayoutEffect(() => {
+    const el = node.current;
+    if (!el) return;
+    const old = previous.current;
+    previous.current = text ? el.cloneNode(true) as HTMLElement : null;
+    if (reducedMotion()) return;
+    const incoming = text ? el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: duration.base, easing: easing.out }) : null;
+    let outgoing: Animation | null = null;
+    if (old && old.textContent !== el.textContent) {
+      old.removeAttribute('role'); old.setAttribute('aria-hidden', 'true');
+      old.classList.add('setup-problem-outgoing');
+      el.parentElement?.append(old);
+      outgoing = old.animate([{ opacity: 1 }, { opacity: 0 }], { duration: exitDuration('base'), easing: easing.inOut, fill: 'forwards' });
+      outgoing.onfinish = () => { old.remove(); };
+    }
+    return () => { incoming?.cancel(); outgoing?.cancel(); old?.remove(); };
+  }, [text]);
+  return <div class="setup-mirror-problem"><p role="status" ref={node}>{text && <>{warning && <Icon kind="weak"/>}{text}</>}</p></div>;
 }

@@ -2,6 +2,27 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — A-09: shell pictures
+
+- REL-002 (in progress): landing page with title, one line, one "Host a game" action, the three
+  games, a "Put this on your TV" link and a picture in the 1.618 : 1 side column; at 1000 px or
+  less one unscaled scrolling column with no picture, the Privacy and Credits footer in flow and
+  55 px targets.
+- PLAT-020: every game tile and start screen shows its own 1.618 : 1 picture; pictures decode during
+  the lobby and the picker waits for them; the landing and host pages load as their own chunks, so
+  phones never download the pictures.
+- PLAT-006/025: one start-screen layout for every game, "Who's in" 13 px below the picture at the
+  same height on all three; setup feedback sits in a band at the foot of the card, fades in and out
+  in place and crossfades when it changes, so the player strip no longer moves when Rabakz settings
+  load or a setting is refused; "Loading settings…" has no warning icon.
+- PLAT-004: on the TV a player tile shows the name on one line (cut short with "…") and
+  "Seat held" on its own line, so a tile is never more than two lines.
+- Four WebPs, 148,452 B (`tools/assets/shell_images.py`); host shell 526,005 B gzip of 1.5 MB (PERF-022);
+  controller 88,017 B gzip of 300 KB (PERF-020).
+- UAT: stills at 1920, 1280, 390 and 844×390, including the landscape footer and a held seat with a
+  12-character name, and eight frame strips including a refusal appearing and clearing
+  (`uat/evidence/A-09-shell-imagery/uat-r16/`, run with --max-mb 20). D-176, D-199, D-200.
+
 ## 2026-11-18 — C-17: late join
 
 - PLAT-008, RZ-014, PP-013, TR-056: late join for games that allow it; held phones are let in when

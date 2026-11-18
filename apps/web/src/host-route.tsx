@@ -1,3 +1,4 @@
+import { preloadShellPictures } from './shell-images';
 import { PausePanel } from './pause-panel';
 import type { Sound } from '@kaki/platform';
 import { hostSound } from './host-sound';
@@ -65,6 +66,7 @@ function hasSavedRoom(): boolean {
   try { return window.sessionStorage.getItem(HOST_STORAGE_KEY) !== null; } catch { return false; }
 }
 export function HostLobby() {
+  useEffect(() => { void preloadShellPictures().catch(() => undefined); }, []);
   const audio = useMemo(() => hostSound(), []);
   useEffect(() => () => { audio.dispose(); }, [audio]);
   const [view, setView] = useState(() => lobbyView({ room: createRoom(), links: new Map(), code: '', pairing: hasSavedRoom() ? 'restoring' : 'creating', origin: location.origin }));

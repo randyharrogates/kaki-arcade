@@ -89,7 +89,7 @@ Content work. It needs no code from other tracks and starts in Wave 0.
 - `game-setup.dom.test.ts` TV-fit test failed once under load: capture the assertion and check for the
   `--screen-scale` race fixed in UAT `shot()`.
 - Keyboard or pad leader cannot change settings (OQ-042).
-- Picture slot is not 1.618 : 1 (about 656 × 257 Rabakz, 656 × 213 Peek Poker at 1080p): A-09 fills it.
+- Picture slot is not 1.618 : 1 (about 656 × 257 Rabakz, 656 × 213 Peek Poker at 1080p): A-09 fills it. (resolved by A-09, 2026-11-18)
 - Refusal copy uses lower-case option names ("mixed", "life"); match the button capitals.
 - The two-line start-blocked message has no 720 TV still.
 - "Teams on ✓" puts the tick after the word; the other chips put it before.
