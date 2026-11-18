@@ -1480,3 +1480,11 @@ quality 90**: 4.90 MB → 1.40 MB for the cook sheets, level art about 1.6 of 8 
 3×; the pipeline gains a check that each lossy sheet stays within a set difference of its lossless
 source. A follow-up issue (A-02c) makes the side raise the default chop and switches cook storage.
 No golden-ratio variant applies (art and storage, not layout). Randy may overrule.
+
+**D-173 · 2026-11-18 · Claude** (under D-057 and D-142; for D-145) — Rojak's chopped turnip
+(TR-041, A-10): **B, cream**, from the artifact https://claude.ai/artifact/2R3vwa8mZnQyt4g3f9zkfE
+(three Blender renders on both counters: A tan, B cream, C cream with a faint purple edge). Cream
+top face with darker warm-beige sides and edge: it matches the raw turnip, and the darker edge
+keeps it visible on the white plate. Round 2's tan matched the peanuts and fried dough and read
+as croutons. All three cost the same (same pixels, same atlas size). No golden-ratio variant
+applies to a colour. Randy may overrule.
