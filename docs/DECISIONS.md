@@ -1406,6 +1406,9 @@ fitter (89 px, down to 55 px), player count right, the hint right-aligned direct
 the game stage where main has it. Round 8's extra row was the integrator's brief, not a decision, and
 is withdrawn. (4) The lobby header keeps one height: the game-pad and keyboard hints share one line,
 so seats never move when a pad connects. Randy may overrule.
+Addendum (C-12 round 10): the heading and its subtitle are 21 px apart, not 8, because the 89 px
+display face's descent otherwise reaches the subtitle line; the picker stage therefore starts 13 px
+lower than main's (≈ 243 px at 1080p, not 230).
 
 **D-166 · 2026-11-18 · Claude** (under D-142; K-09 round 3) — Completes D-164(1). The selected
 outline on a face-down card is drawn in the card back's own border colour (`--ka-card-back-border`,
