@@ -99,6 +99,13 @@ secretly, and in Rabakz its answers would be seen. Options: allow the local seat
 without private views (Tabao Rush), or show its private view on the TV and accept that others can
 see it. Built today: the seat joins, but those games do not give it a private view. Needed by: M6.
 
+**OQ-042 · A leader on the TV keyboard or game pad cannot change a game's settings (raised 2026-11-18 at R-04's merge).**
+When the leader is CTRL-009's local seat, the start screen accepts only Enter (start with the
+defaults or the kept values), Esc and T; nothing moves between or changes settings. Options: arrow
+keys and the d-pad move through the settings and change them on the TV, or the leader role always
+goes to a phone player when one is present. Built today: start with defaults or kept values.
+Needed by: M6.
+
 ## Assumptions Claude is working to (say if wrong)
 
 - "Correct movement" means proper walk and action animation in 8 directions with no foot

@@ -1488,3 +1488,12 @@ top face with darker warm-beige sides and edge: it matches the raw turnip, and t
 keeps it visible on the white plate. Round 2's tan matched the peanuts and fried dough and read
 as croutons. All three cost the same (same pixels, same atlas size). No golden-ratio variant
 applies to a colour. Randy may overrule.
+
+**D-174 · 2026-11-18 · Claude** (under D-057 and D-142; amends D-157) — On the phone's start
+screen a refused choice (too few questions for that difficulty or length) shows its reason in the
+footer status line, at full text width, the same line that gives the start-blocked reason; not in
+the field's heading row as D-157 said. A heading row at 667 px has room for a few words only and
+cut the count and the fix in half; one status line also means one place to look. The TV mirror
+shows the refusal as D-170 records. Evidence: `uat/evidence/R-04-setup/roundL-p8/19-phone1-difficulty-refused-leader-667.jpg`.
+Randy may overrule.
+
