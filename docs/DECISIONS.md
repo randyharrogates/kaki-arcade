@@ -1457,3 +1457,11 @@ shows its on state by fill and border only, with no tick, so it stays on one lin
 value always shows a tick, never a cross, even when another setting has made it unavailable.
 Randy may overrule.
 
+**D-171 · 2026-11-18 · Claude** (under D-057; closes D-164(5)) — Peek Poker's Lock in carries **no
+shape**: a 144 × 144 option with only its words (option A of three real renders: A no shape, B the
+cross, C a golden-ratio 144 × 233, at 844 × 390 and 667 × 375, before and after two picks;
+https://claude.ai/artifact/J5bbQJhLzmMi7bJNLSvKxq). The phone is tap-only (D-062(5)); with the cross
+the enabled button fills with the cross's red, the same red as the card backs, and grows wider. The
+memorise phone reads "Watch the TV" with the seconds, as docs/games/peek-poker.md §2 says (P-03's
+brief wrongly asked for "Memorise the grid"). Randy may overrule.
+
