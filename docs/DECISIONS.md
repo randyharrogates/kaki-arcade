@@ -1527,3 +1527,14 @@ weakly from N, NE and NW; A-02d adds gait sway and a walk gate, shown to Randy a
 first. Randy may overrule after seeing the SE and E strips
 (`uat/evidence/A-02b-cook-alternatives/round7/chop-composed-light-1x.jpg`,
 `extinguish-composed-dark-1x.jpg`).
+
+**D-178 · 2026-11-18 · Claude** (D-057, X-03; DATA-004, RZ-021) — The Privacy and Credits pages
+split their sections into columns at 1.618 : 1 (option B), not two equal columns. On a 1080p TV
+the wider left column lets the longest section (anonymous counts) read in five lines instead of
+six, both columns end at a similar depth, and the page clears its bottom edge by 122 px (equal:
+78 px; 34 px needed); at 1280 × 720, 81 px (equal: 52 px). Phones keep one scrolling column either
+way. Static pages loaded only when opened, so neither option has a frame or transfer cost worth
+noting. Board with both options from the round-4 run:
+https://claude.ai/artifact/NHhKG9eiGbGD495MXQpuYT. The limiter wording stays open under OQ-030.
+Randy may overrule.
+
