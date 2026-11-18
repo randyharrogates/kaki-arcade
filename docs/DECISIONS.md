@@ -1436,3 +1436,14 @@ apart; wrong = two low notes down 144 ms apart, never a harsh buzzer. Synthesise
 levels in the TV pause panel under Resume and Quit, shared by every game (TR-063 needs both), kept
 on the TV's own device. Randy may overrule.
 
+**D-169 · 2026-11-18 · Claude** (under D-057; R-07 review) — When Rabakz's sounds play (RZ-033,
+D-168): (1) a wrong answer plays that seat's buzz note, then "wrong" 233 ms later; (2) a skip, or a
+reveal with no winner after the time runs out, plays nothing, because it is not a wrong answer (as
+D-071 treats it); (3) a correct buzz is not heard when it is pressed: the winner's seat note plays
+at the reveal, then "right" 233 ms after the last seat note, because before the reveal the TV
+must not show or sound who was right; (4) seat notes that land together are staggered 30 ms apart,
+and the effects bus has a limiter created with the engine, so eight seats plus "right" never
+distort; (5) the last wrong press that unlocks everyone again is heard, so the public view carries
+the seats that pressed wrongly in that step (public anyway: the TV shows who has answered,
+RZ-005). Volume levels are read and saved from the TV's device before any sound has played.
+
