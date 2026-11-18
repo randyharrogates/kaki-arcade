@@ -1426,3 +1426,13 @@ because the fixed shoulders cannot keep a two-handed grip at a reach that shows 
 Both go to Randy as an artifact with the current frames beside the alternatives, together with
 the cook-art storage choice (lossless now, 5.14 MB of 8 MB). Randy may overrule.
 
+**D-168 · 2026-11-18 · Claude** (under D-057 and D-050) — Rabakz sound effects (RZ-033, R-07):
+set **A, Mallet**, chosen from three playable sets (A Mallet, B Studio chime, C Golden ratio) in the
+artifact https://claude.ai/artifact/TfLhgkcpWUR6HUHTJuUQT5. Warm wooden notes with a 4 ms attack and
+short decay: answers open = two notes up; buzz in = one note, each seat on its own note of a major
+pentatonic scale (C5 D5 E5 G5 A5 C6 D6 E6) so eight seats never clash; right = four notes up 89 ms
+apart; wrong = two low notes down 144 ms apart, never a harsh buzzer. Synthesised in code (D-050),
+0 KB download, scheduling well under 1 ms. Volume controls: placement **1**, Effects and Music
+levels in the TV pause panel under Resume and Quit, shared by every game (TR-063 needs both), kept
+on the TV's own device. Randy may overrule.
+
