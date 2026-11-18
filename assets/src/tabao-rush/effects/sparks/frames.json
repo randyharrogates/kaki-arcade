@@ -1,0 +1,74 @@
+[
+  {
+    "id": "sparks-0",
+    "file": "tabao-rush/effects/sparks/sparks-0.png",
+    "anchor": [
+      32,
+      48
+    ],
+    "anchors": {
+      "origin": [
+        32,
+        48
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "sparks-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "sparks-1",
+    "file": "tabao-rush/effects/sparks/sparks-1.png",
+    "anchor": [
+      32,
+      48
+    ],
+    "anchors": {
+      "origin": [
+        32,
+        48
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "sparks-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "sparks-2",
+    "file": "tabao-rush/effects/sparks/sparks-2.png",
+    "anchor": [
+      32,
+      48
+    ],
+    "anchors": {
+      "origin": [
+        32,
+        48
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "sparks-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "sparks-3",
+    "file": "tabao-rush/effects/sparks/sparks-3.png",
+    "anchor": [
+      32,
+      48
+    ],
+    "anchors": {
+      "origin": [
+        32,
+        48
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "sparks-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  }
+]

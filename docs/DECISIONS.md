@@ -1559,3 +1559,24 @@ Randy may overrule.
 **D-188 · 2026-11-18 · Claude** (X-03; DATA-004; corrects D-178's figures) — D-178's clearances (122 px at 1080p, 81 px at 720p) were measured on the round-4 copy; the round-6 copy measured 77.9 and 52.0 px. With today's copy, Privacy clears the panel bottom by 47.4 px at 1080p and 31.6 screen px at 720p against 34 and 22.7 needed (uat-r9/fit.txt). The 13.4 px margin is under one 44.19 px body line, so added Privacy text must remove as much, and fit is re-measured when fonts ship and on X-09's laptop. D-178's 1.618 : 1 columns stand.
 
 **D-189 · 2026-11-18 · Claude** (X-03; DATA-004, DESIGN §6) — Until A-09's landing merges, the placeholder landing has a phone flow: at ≤ 1000 px it drops the scaled TV board for an unscaled scrolling column (`.landing-page`), so the Privacy and Credits footer sits in normal flow below the content with 55 px targets, 34 px below the content. A portal was tried and rejected, because the transformed board painted over the footer and took its taps. A-09 must keep `<LegalFooter/>` and a phone flow that passes legal.dom's centre-point hit test. The legal pages focus their back link on mount only on the TV layout (≥ 1001 px).
+
+**D-190 · 2026-11-18 · Claude** (A-07; TR-010; ART-PIPELINE §3) — The effect fire is rendered
+unlit (an Emission shader) with the Standard view transform, an exception to "one light rig for
+every asset". Why: fire is a light source. Under the matte day rig the round-1 fire washed to
+peach and did not read as fire, while the unlit palette colours (#E0A63A, #F07C2A, #B5371F) read
+from 3 m and in greyscale. Steam, sparks, spray and shadow keep the shared rig for now. The same
+exception may extend to sparks in A-07b, since the rig dulls #F2B21B to about #CEA865. ART-PIPELINE
+§3 gains this exception under D-134. Cost: none against PERFORMANCE (the same pixels and atlas).
+Randy may overrule.
+
+**D-191 · 2026-11-18 · Claude** (A-07, A-05, T-07; TR-010) — A-07's `effect-fire` is the only
+animated fire. T-07 draws it at the station's effect point, A-05 drops its animated flame samples,
+and A-05 keeps its static on-fire cue and its burnt-food smoke. Why: two animated fires stacked
+on one station would double the draws and clash. Randy may overrule.
+
+**D-192 · 2026-11-18 · Claude** (A-07b; TR-010, DESIGN §6) — Sparks on the light counter are fixed
+in A-07b without a board: render sparks unlit like the fire (D-190), give each spark an edge-red
+#B5371F rim (4.97 : 1 on cream), and grow the dots to 6×8 px, at no atlas cost. Why: their best
+contrast on cream is about 1.9 : 1 and they nearly vanish at 3 m; no rule clause rests on sparks,
+so it is a readability fix within D-057. The rendered strips on both counters go in A-07b's
+evidence. Randy may overrule.

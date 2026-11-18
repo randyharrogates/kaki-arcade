@@ -1,0 +1,74 @@
+[
+  {
+    "id": "fire-0",
+    "file": "tabao-rush/effects/fire/fire-0.png",
+    "anchor": [
+      48,
+      77
+    ],
+    "anchors": {
+      "origin": [
+        48,
+        77
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "fire-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "fire-1",
+    "file": "tabao-rush/effects/fire/fire-1.png",
+    "anchor": [
+      48,
+      77
+    ],
+    "anchors": {
+      "origin": [
+        48,
+        77
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "fire-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "fire-2",
+    "file": "tabao-rush/effects/fire/fire-2.png",
+    "anchor": [
+      48,
+      77
+    ],
+    "anchors": {
+      "origin": [
+        48,
+        77
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "fire-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "fire-3",
+    "file": "tabao-rush/effects/fire/fire-3.png",
+    "anchor": [
+      48,
+      77
+    ],
+    "anchors": {
+      "origin": [
+        48,
+        77
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "fire-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  }
+]

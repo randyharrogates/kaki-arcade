@@ -1,0 +1,74 @@
+[
+  {
+    "id": "spray-0",
+    "file": "tabao-rush/effects/spray/spray-0.png",
+    "anchor": [
+      13,
+      48
+    ],
+    "anchors": {
+      "origin": [
+        13,
+        48
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "spray-0",
+    "directionConvention": "screen +X; rotate about origin by atan2(-sin(theta)*sin(60deg),cos(theta)); theta from world +X toward +Y",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "spray-1",
+    "file": "tabao-rush/effects/spray/spray-1.png",
+    "anchor": [
+      13,
+      48
+    ],
+    "anchors": {
+      "origin": [
+        13,
+        48
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "spray-0",
+    "directionConvention": "screen +X; rotate about origin by atan2(-sin(theta)*sin(60deg),cos(theta)); theta from world +X toward +Y",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "spray-2",
+    "file": "tabao-rush/effects/spray/spray-2.png",
+    "anchor": [
+      13,
+      48
+    ],
+    "anchors": {
+      "origin": [
+        13,
+        48
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "spray-0",
+    "directionConvention": "screen +X; rotate about origin by atan2(-sin(theta)*sin(60deg),cos(theta)); theta from world +X toward +Y",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "spray-3",
+    "file": "tabao-rush/effects/spray/spray-3.png",
+    "anchor": [
+      13,
+      48
+    ],
+    "anchors": {
+      "origin": [
+        13,
+        48
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "spray-0",
+    "directionConvention": "screen +X; rotate about origin by atan2(-sin(theta)*sin(60deg),cos(theta)); theta from world +X toward +Y",
+    "shadowHeightRule": "none"
+  }
+]

@@ -80,7 +80,6 @@ class RenderJobTests(unittest.TestCase):
         for mutate in (
             lambda: group['frames'][0].update(scale=2),
             lambda: group.update(newRenderSetting=True),
-            lambda: self.config['sets'][1].update(containmentFootprints={'x': 'changed'}),
             lambda: self.job['args'].append('--changed'),
         ):
             mutate()
@@ -97,6 +96,21 @@ class RenderJobTests(unittest.TestCase):
             self.assertEqual(self.reason(), 'content stamp differs')
             path.write_bytes(original)
             self.assertIsNone(self.reason())
+
+    def test_unrelated_set_leaves_items_stamp_unchanged(self):
+        """TR-041: unrelated sets, jobs and round membership cannot stale items."""
+        self.job.update(id='items', script='items.py', inputs=['pipeline.json', 'input'])
+        self.config['sets'] = [dict(id='tabao-rush-items', frames=[])]
+        path = self.source / 'pipeline.json'
+        p.write_json(path, self.config)
+        p.render(self.config, self.source)
+        stamp = p.render_job(self.job, self.source)[2].read_bytes()
+        self.config['sets'].append(dict(id='unrelated', frames=[]))
+        self.config['rounds'] = {'tabao-rush': ['tabao-rush-items', 'unrelated']}
+        self.config['renders'].append(dict(id='unrelated', script='cook.py'))
+        p.write_json(path, self.config)
+        self.assertIsNone(self.reason())
+        self.assertEqual(p.render_job(self.job, self.source)[2].read_bytes(), stamp)
 
     def test_verified_legacy_items_migration(self):
         self.job.update(id='items', script='items.py', inputs=['pipeline.json', 'input'])

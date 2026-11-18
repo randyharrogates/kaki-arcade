@@ -546,14 +546,19 @@ def render_config(path):
 
 
 def item_stamp_config(data):
-    """TR-041: omit only pixel-derived item metadata, at its owned locations."""
+    """TR-041: hash only the items job and set, excluding pixel-derived fields.
+
+    render_job separately hashes every declared script/input/extraInput file.
+    Round membership and other sets are not read by the items renderer.
+    """
     config = json.loads(data)
-    for group in config.get('sets', []):
-        if group.get('id') == 'tabao-rush-items':
-            group.pop('containmentFootprints', None)
-            for frame in group.get('frames', []):
-                frame.pop('bakedOutline', None)
-    return json.dumps(config, sort_keys=True, separators=(',', ':')).encode()
+    group = next(g for g in config.get('sets', []) if g.get('id') == 'tabao-rush-items')
+    group.pop('containmentFootprints', None)
+    for frame in group.get('frames', []):
+        frame.pop('bakedOutline', None)
+    owned = {'sets': [group],
+             'renders': [j for j in config.get('renders', []) if j.get('id') == 'items']}
+    return json.dumps(owned, sort_keys=True, separators=(',', ':')).encode()
 
 
 def render_job(job, source, *, read_bytes=None, legacy=False):

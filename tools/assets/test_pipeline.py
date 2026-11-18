@@ -543,7 +543,10 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(set(job['outputs']), {f['file'] for f in frames} | {'tabao-rush/items/render-validation.json'})
         self.assertEqual(job['args'], ['--out', 'tabao-rush/items'])
         # Isolated source + stub: never invoke Blender or touch committed frames.
-        (self.source/'pipeline.json').write_text('{}')
+        p.write_json(self.source/'pipeline.json', {
+            'renders': [job],
+            'sets': [next(g for g in config['sets'] if g['id'] == 'tabao-rush-items')],
+        })
         calls = []
         def stub(args, **kwargs):
             if args[0] == 'blender':

@@ -3624,6 +3624,80 @@
           }
         }
       ]
+    },
+    {
+      "id": "tabao-rush-effects",
+      "encoding": "lossless",
+      "anchors": [
+        "origin"
+      ],
+      "metadata": [
+        "blendMode",
+        "reducedMotionFrame",
+        "directionConvention",
+        "shadowHeightRule"
+      ],
+      "frameFiles": [
+        "tabao-rush/effects/steam/frames.json",
+        "tabao-rush/effects/sparks/frames.json",
+        "tabao-rush/effects/fire/frames.json",
+        "tabao-rush/effects/spray/frames.json",
+        "tabao-rush/effects/shadow/frames.json"
+      ],
+      "animations": [
+        {
+          "action": "steam",
+          "fps": 8,
+          "loop": true,
+          "frames": [
+            "steam-0",
+            "steam-1",
+            "steam-2",
+            "steam-3"
+          ]
+        },
+        {
+          "action": "sparks",
+          "fps": 8,
+          "loop": true,
+          "frames": [
+            "sparks-0",
+            "sparks-1",
+            "sparks-2",
+            "sparks-3"
+          ]
+        },
+        {
+          "action": "fire",
+          "fps": 8,
+          "loop": true,
+          "frames": [
+            "fire-0",
+            "fire-1",
+            "fire-2",
+            "fire-3"
+          ]
+        },
+        {
+          "action": "spray",
+          "fps": 8,
+          "loop": true,
+          "frames": [
+            "spray-0",
+            "spray-1",
+            "spray-2",
+            "spray-3"
+          ]
+        },
+        {
+          "action": "shadow",
+          "fps": 1,
+          "loop": true,
+          "frames": [
+            "shadow-0"
+          ]
+        }
+      ]
     }
   ],
   "rounds": {
@@ -3634,7 +3708,8 @@
     "tabao-rush": [
       "tabao-rush-items",
       "tabao-rush-cook-body",
-      "tabao-rush-cook-heads"
+      "tabao-rush-cook-heads",
+      "tabao-rush-effects"
     ]
   },
   "powerOfTwo": false,
@@ -4914,6 +4989,118 @@
         "tabao-rush/cook-heads/cap/render-validation.json"
       ],
       "timeoutSeconds": 120
+    },
+    {
+      "id": "effect-steam",
+      "script": "effects.py",
+      "args": [
+        "--effect",
+        "steam",
+        "--out",
+        "tabao-rush/effects/steam"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/effect_geometry.py"
+      ],
+      "outputs": [
+        "tabao-rush/effects/steam/steam-0.png",
+        "tabao-rush/effects/steam/steam-1.png",
+        "tabao-rush/effects/steam/steam-2.png",
+        "tabao-rush/effects/steam/steam-3.png",
+        "tabao-rush/effects/steam/frames.json"
+      ],
+      "timeoutSeconds": 180
+    },
+    {
+      "id": "effect-sparks",
+      "script": "effects.py",
+      "args": [
+        "--effect",
+        "sparks",
+        "--out",
+        "tabao-rush/effects/sparks"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/effect_geometry.py"
+      ],
+      "outputs": [
+        "tabao-rush/effects/sparks/sparks-0.png",
+        "tabao-rush/effects/sparks/sparks-1.png",
+        "tabao-rush/effects/sparks/sparks-2.png",
+        "tabao-rush/effects/sparks/sparks-3.png",
+        "tabao-rush/effects/sparks/frames.json"
+      ],
+      "timeoutSeconds": 180
+    },
+    {
+      "id": "effect-fire",
+      "script": "effects.py",
+      "args": [
+        "--effect",
+        "fire",
+        "--out",
+        "tabao-rush/effects/fire"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/effect_geometry.py"
+      ],
+      "outputs": [
+        "tabao-rush/effects/fire/fire-0.png",
+        "tabao-rush/effects/fire/fire-1.png",
+        "tabao-rush/effects/fire/fire-2.png",
+        "tabao-rush/effects/fire/fire-3.png",
+        "tabao-rush/effects/fire/frames.json"
+      ],
+      "timeoutSeconds": 180
+    },
+    {
+      "id": "effect-spray",
+      "script": "effects.py",
+      "args": [
+        "--effect",
+        "spray",
+        "--out",
+        "tabao-rush/effects/spray"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/effect_geometry.py"
+      ],
+      "outputs": [
+        "tabao-rush/effects/spray/spray-0.png",
+        "tabao-rush/effects/spray/spray-1.png",
+        "tabao-rush/effects/spray/spray-2.png",
+        "tabao-rush/effects/spray/spray-3.png",
+        "tabao-rush/effects/spray/frames.json"
+      ],
+      "timeoutSeconds": 180
+    },
+    {
+      "id": "effect-shadow",
+      "script": "effects.py",
+      "args": [
+        "--effect",
+        "shadow",
+        "--out",
+        "tabao-rush/effects/shadow"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/effect_geometry.py"
+      ],
+      "outputs": [
+        "tabao-rush/effects/shadow/shadow-0.png",
+        "tabao-rush/effects/shadow/frames.json"
+      ],
+      "timeoutSeconds": 180
     }
   ]
 }

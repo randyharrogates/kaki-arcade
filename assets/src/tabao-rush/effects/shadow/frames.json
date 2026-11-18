@@ -1,0 +1,20 @@
+[
+  {
+    "id": "shadow-0",
+    "file": "tabao-rush/effects/shadow/shadow-0.png",
+    "anchor": [
+      32,
+      32
+    ],
+    "anchors": {
+      "origin": [
+        32,
+        32
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "shadow-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "scale=1/(1+heightTiles); opacity=1/(1+heightTiles); ground position follows arc XY"
+  }
+]

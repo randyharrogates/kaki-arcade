@@ -1,0 +1,11 @@
+{
+  "visualReview": "round-3 looked at by integrator and reviewer 2026-11-18; sparks faint on light counter (should-fix)",
+  "instructions": "Review all 1x/4x sheets, last/first seams and GIFs; compare static options at 3 m. Panel proportions 233:144.",
+  "effects": [
+    "steam",
+    "sparks",
+    "fire",
+    "spray",
+    "shadow"
+  ]
+}

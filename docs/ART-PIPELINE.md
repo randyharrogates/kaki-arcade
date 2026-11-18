@@ -38,6 +38,8 @@ See `PERFORMANCE.md` for the budgets these serve.
   Orthographic camera; the tilt is chosen at the design gate.
   Exception (D-134): order-card icons are HUD pictures, not objects in the kitchen, and use a
   55° tilt so flat food reads at 55 px; they never sit beside world sprites.
+  Exception (D-190): effect fire is a light source and renders unlit (Emission, Standard view
+  transform) in palette colours; all other effects use the shared rig.
 - Characters render at a fixed pixel size per frame (chosen at the gate, expected about
   128 px) and are packed into atlases no larger than 2048 × 2048.
 - Shadows and glows are rendered into the sprite or the background. Nothing is blurred or lit

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "steam-0",
+    "file": "tabao-rush/effects/steam/steam-0.png",
+    "anchor": [
+      32,
+      53
+    ],
+    "anchors": {
+      "origin": [
+        32,
+        53
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "steam-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "steam-1",
+    "file": "tabao-rush/effects/steam/steam-1.png",
+    "anchor": [
+      32,
+      53
+    ],
+    "anchors": {
+      "origin": [
+        32,
+        53
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "steam-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "steam-2",
+    "file": "tabao-rush/effects/steam/steam-2.png",
+    "anchor": [
+      32,
+      53
+    ],
+    "anchors": {
+      "origin": [
+        32,
+        53
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "steam-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  },
+  {
+    "id": "steam-3",
+    "file": "tabao-rush/effects/steam/steam-3.png",
+    "anchor": [
+      32,
+      53
+    ],
+    "anchors": {
+      "origin": [
+        32,
+        53
+      ]
+    },
+    "blendMode": "source-over",
+    "reducedMotionFrame": "steam-0",
+    "directionConvention": "none",
+    "shadowHeightRule": "none"
+  }
+]

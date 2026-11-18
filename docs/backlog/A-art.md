@@ -20,7 +20,8 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | A-04 | Ingredients and the 7 dishes in each state, with order-card icons | TR-040, TR-041 | G-01, A-01 | 2 | done |
 | A-05 | Stations in each state: empty, working, done, burning, on fire | TR-030, TR-031, TR-010 | G-01, A-01 | 2 | todo |
 | A-06 | Level backgrounds for the four venues: 8 co-op levels and 3 arenas, with collision maps and anchors exported | TR-050, TR-052, TR-057 | A-05, T-06 | 3 | todo |
-| A-07 | Effects: steam, sparks, fire, extinguisher spray, thrown-item shadows | TR-009, TR-010, TR-062 | A-01 | 2 | todo |
+| A-07 | Effects: steam, sparks, fire, extinguisher spray, thrown-item shadows | TR-009, TR-010, TR-062 | A-01 | 2 | merged |
+| A-07b | Effect readability (D-192): sparks unlit with an edge-red #B5371F rim at 6×8 px; strip every PNG text chunk so re-renders are byte-stable; shadow grain; steam and spray stronger on light marble; half-detail and greyscale columns in `effect_strips.py`, which must not reset `review.json`. One render, before T-07 draws effects | TR-010, TR-062 | A-07 | 2 | todo |
 | A-08 | Playing cards: faces, back and flip frames, suits distinct by shape | PP-030, PP-031 | G-02, A-01 | 2 | done |
 | A-09 | Shell imagery: landing illustration and game picker tiles (image generation may use Codex, logged) Keep `<LegalFooter/>` and a phone landing flow that passes legal.dom's centre-point hit test (D-189). | REL-002, PLAT-020 | G-02 | 2 | todo |
 | A-10 | Dish art polish after A-04 (D-145): mixed rojak heap, recognisable chopped turnip and chicken at 1×, broth and cup-food cases, document and use the dish composition fields, 1× evidence | TR-041 | A-04 | 2 | done |
@@ -34,7 +35,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   merge or checkout re-renders other issues' jobs (A-08 re-rendered S-02's cook spike twice).
   Decide staleness by input content hash and add `--only <script>` to render one job.
 - **A-01c:** store frame records once per body and mask page pair (the mask repeats them, 109 KB
-  of a 248 KB manifest); delete old round data files on rebuild; cache packing by input hash
+  of a 248 KB manifest); give the items job an explicit Cycles seed and thread count (A-07's re-render moved one pixel of container-plate-dirty by one level); delete old round data files on rebuild; cache packing by input hash
   (about 30 s per level today, and verify runs it); the singular `anchor` default; a failed
   `pnpm assets` leaves the old manifest behind.
 - **For track T:** clip sprites to `sourceSize` (odd sizes carry one guard pixel); one page per

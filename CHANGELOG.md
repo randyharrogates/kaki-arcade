@@ -4,6 +4,23 @@ Newest first. One entry per closed slice, naming the requirement IDs.
 
 
 
+## 2026-11-18 — A-07: station effects
+
+- TR-010 (art): fire as three pointed flame tongues in gold #E0A63A, orange #F07C2A and red #B5371F
+  with translucent edges, four frames at 8 fps, feet fixed, flicker on sine phases with no
+  overshoot; frame 0 shows all three tips. Rendered unlit so the light rig does not wash it out
+  (D-190). It is the only animated fire; A-05 keeps its static on-fire cue (D-191).
+  Extinguisher spray: one four-frame strip rotated at the nozzle for all eight directions.
+- TR-009 (art): one soft ground shadow for thrown ingredients, with a height scale and opacity
+  rule in its metadata.
+- TR-062 (art): steam, sparks, fire and spray loop with no seam and no bounce; frame 0 is the
+  reduced-motion still. The effect geometry tests now run in `pnpm verify`.
+- Pipeline: the items render stamp hashes only the items set and job, so new sets no longer make
+  it stale; effect renders use Cycles seed 0 and drop Blender's Date and RenderTime text.
+- One lossless effects atlas: 37.8 KB full, 13.8 KB half, 0.17 MB decoded; the Tabao Rush level
+  is 2.4 MB of 8 MB and 51 MB of 256 MB decoded.
+- Not yet: drawn in game (T-07); sparks on the light counter need more contrast (A-07b).
+
 ## 2026-11-18 — X-03: Privacy and Credits pages
 
 - DATA-004, DATA-001, DATA-002, DATA-003, DATA-005: a Privacy page in plain words. Only the TV sends anonymous counts (four problems, server reach under-counted by design, one smoothness band per match), after results or when the page is hidden or closed, never in play; daily totals have no end date; room codes are hard to guess, limited and expire; no sign-up; saves stay on the TV; our server never sees nicknames.
