@@ -8,13 +8,13 @@ export default async function hostKeyboard(h) {
   await h.host.setViewportSize({ width: 1920, height: 1080 });
   await h.host.goto(h.origin);
   // Wait for the page to draw before pressing keys; a key sent before then is lost.
-  const hostLink = h.host.getByRole('link', { name: 'Host a room', exact: true });
+  const hostLink = h.host.getByRole('link', { name: 'Host a game', exact: true });
   await hostLink.waitFor();
   // The link can draw a moment before its key listener attaches; retry like a person would.
-  for (let i = 0; i < 20 && !(await h.host.evaluate(() => document.activeElement?.textContent === 'Host a room')); i++) {
+  for (let i = 0; i < 20 && !(await h.host.evaluate(() => document.activeElement?.textContent === 'Host a game')); i++) {
     await h.host.keyboard.press('ArrowRight'); await h.host.waitForTimeout(100);
   }
-  await h.host.waitForFunction(() => document.activeElement?.textContent === 'Host a room');
+  await h.host.waitForFunction(() => document.activeElement?.textContent === 'Host a game');
   await namedShot('01-host-landing-focus');
   await h.host.keyboard.press('Enter');
   await h.host.getByRole('main', { name: 'Host lobby' }).waitFor();
