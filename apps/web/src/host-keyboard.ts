@@ -86,7 +86,7 @@ export function hostKeyboard(input: {
 
 export function hostKeyboardControls(): HTMLElement[] {
   const pause = document.querySelector('.host-pause:not([inert])');
-  return [...(pause ?? document).querySelectorAll<HTMLElement>('.host-pause button:not(:disabled), .host-shell button:not(:disabled), .host-shell a[href], .host-shell [role="button"][tabindex="0"]')]
+  return [...(pause ?? document).querySelectorAll<HTMLElement>('.host-pause button:not(:disabled):not([tabindex="-1"]), .host-pause [role="slider"], .host-shell button:not(:disabled), .host-shell a[href], .host-shell [role="button"][tabindex="0"]')]
     .filter(el => el.isConnected && !el.closest('.outgoing, [inert], [hidden], [aria-hidden="true"]') && el.getClientRects().length > 0 && getComputedStyle(el).visibility === 'visible');
 }
 

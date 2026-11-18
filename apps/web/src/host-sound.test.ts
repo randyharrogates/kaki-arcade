@@ -43,5 +43,10 @@ it('RZ-033 reads and saves levels before any gesture and applies them to the cre
   expect(gains).toHaveLength(0);
   target.dispatchEvent(new Event('keydown'));
   expect(gains.slice(0, 3).map(g => g.gain.value)).toEqual([1, 0.42, 0.12]);
+  audio.sound.setLevel('effects', 80);
+  audio.sound.setLevel('music', 65);
+  expect(gains[1]?.gain.setTargetAtTime).toHaveBeenLastCalledWith(0.8, 0, 0.02);
+  expect(gains[2]?.gain.setTargetAtTime).toHaveBeenLastCalledWith(0.65, 0, 0.02);
+  expect(JSON.parse(values.get('kaki.sound.levels') ?? '')).toEqual({ effects: 80, music: 65 });
   audio.dispose();
 });

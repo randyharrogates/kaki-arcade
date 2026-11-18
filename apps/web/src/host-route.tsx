@@ -1,6 +1,7 @@
+import { PausePanel } from './pause-panel';
+import type { Sound } from '@kaki/platform';
 import { hostSound } from './host-sound';
 import { activeScreenSound } from '@kaki/platform';
-import { duration, exitDuration, easing, reducedMotion, POPOVER_START_SCALE } from '@kaki/ui';
 import type { PadAction } from './gamepad-poll';
 import { gamepadPoll, watchGamepads } from './gamepad-poll';
 import { hostKeyboard, hostKeyboardControls, hostResultsKey } from './host-keyboard';
@@ -63,6 +64,8 @@ function hasSavedRoom(): boolean {
   try { return window.sessionStorage.getItem(HOST_STORAGE_KEY) !== null; } catch { return false; }
 }
 export function HostLobby() {
+  const audio = useMemo(() => hostSound(), []);
+  useEffect(() => () => { audio.dispose(); }, [audio]);
   const [view, setView] = useState(() => lobbyView({ room: createRoom(), links: new Map(), code: '', pairing: hasSavedRoom() ? 'restoring' : 'creating', origin: location.origin }));
   const displays = useMemo(sessionDisplayStore, []);
   const [picker, setPicker] = useState(initialPicker(gameMetas));
@@ -173,36 +176,17 @@ export function HostLobby() {
     <div class="announcements" aria-live="polite" aria-atomic="true">{announcement.current}</div>
     <ol class="seats" data-wrap={view.seats.some(seat => seat.connection === 'Scan to join' || seat.connection === 'Seat held')} aria-label="Player seats">{view.seats.map((seat, index) => <Seat key={seat.number} seat={seat} index={changedSeats > 1 ? index : 0}/>)}</ol>
   </main>;
-  return <><SessionSurface displays={displays} room={room} picker={picker} lobby={lobby} teamSetup={teamSetup} localDevice={localDevice} command={(action, value) => { host.current?.keyboard(action, value); }}
+  return <><SessionSurface sound={audio.sound} displays={displays} room={room} picker={picker} lobby={lobby} teamSetup={teamSetup} localDevice={localDevice} command={(action, value) => { host.current?.keyboard(action, value); }}
     startTeams={() => { host.current?.keyboard('teams-start'); }}
     back={() => { host.current?.returnToPicker(); }} again={() => { host.current?.playAgain(); }} continued={() => { host.current?.continueResults(); }}/>
-    <PausePanel paused={room.phase === 'paused'} resume={() => { host.current?.keyboard('resume'); }} quit={() => { host.current?.keyboard('quit'); }}/></>;
+    <PausePanel sound={audio.sound} paused={room.phase === 'paused'} resume={() => { host.current?.keyboard('resume'); }} quit={() => { host.current?.keyboard('quit'); }}/></>;
 }
-function PausePanel({ paused, resume, quit }: { paused: boolean; resume: () => void; quit: () => void }) {
-  const [visible, setVisible] = useState(paused);
-  const panel = useRef<HTMLElement>(null);
-  const resumeButton = useRef<HTMLButtonElement>(null);
-  useLayoutEffect(() => { if (paused) setVisible(true); }, [paused]);
-  useLayoutEffect(() => {
-    const element = panel.current;
-    if (!element || !visible) return;
-    if (paused) resumeButton.current?.focus();
-    if (reducedMotion()) { if (!paused) setVisible(false); return; }
-    const small = { opacity: 0, transform: `scale(${String(POPOVER_START_SCALE)})` };
-    const full = { opacity: 1, transform: 'scale(1)' };
-    const animation = element.animate(paused ? [small, full] : [full, small], { duration: paused ? duration.base : exitDuration('base'), easing: easing.out, fill: 'both' });
-    animation.onfinish = () => { if (!paused) setVisible(false); };
-    return () => { animation.cancel(); if (!paused) setVisible(false); };
-  }, [paused, visible]);
-  return visible ? <div class="host-pause screen" inert={!paused}><section ref={panel} class="ka-panel" role="dialog" aria-modal="true" aria-label="Paused"><h2>Paused</h2><button ref={resumeButton} class="ka-panel ka-pressable" onClick={resume}>Resume</button><button class="ka-panel ka-pressable" onClick={quit}>Quit to picker</button></section></div> : null;
-}
-function SessionSurface({ displays, room, picker, lobby, teamSetup, startTeams, back, again, continued, command, localDevice }: {
+function SessionSurface({ displays, room, picker, lobby, teamSetup, startTeams, back, again, continued, command, localDevice, sound }: {
+  sound: Sound;
   localDevice: 'keyboard' | 'controller'; command: ReturnType<typeof createHost>['keyboard'];
   teamSetup: TeamSetupView | null; startTeams: () => void;
   displays: ReturnType<typeof sessionDisplayStore>; room: RoomState; picker: ReturnType<typeof initialPicker>; lobby: ComponentChildren; back: () => void; again: () => void; continued: () => void;
 }) {
-  const audio = useMemo(() => hostSound(), []);
-  useEffect(() => () => { audio.dispose(); }, [audio]);
   const [session, setSession] = useState(() => displays.get());
   const [size, setSize] = useState({ width: innerWidth, height: innerHeight });
   useEffect(() => displays.subscribe(setSession), [displays]);
@@ -215,5 +199,5 @@ function SessionSurface({ displays, room, picker, lobby, teamSetup, startTeams, 
     const key = (event: KeyboardEvent): void => { setKeyboard(true); hostResultsKey(event, continued, back); };
     window.addEventListener('keydown', key); return () => { window.removeEventListener('keydown', key); };
   }, [session?.finalScreen, continued, back]);
-  return <div class="host-shell"><Overlap fade surface identity={teamSetup?.screen === 'teams' ? 'teams' : hostScreen(session, picker.screen === 'lobby')}>{active => teamSetup?.screen === 'teams' ? <TeamSetup move={id => { command('teams-move', id); }} setup={teamSetup} room={room} game={gameMetas.find(g => g.id === picker.focus)?.name ?? ''} start={() => { if (active) startTeams(); }}/> : session ? session.results && !session.finalScreen ? <Results active={active} session={session} room={room} back={back} again={again} keyboard={keyboard}/> : Screen ? <><Screen view={session.view as never} width={size.width} height={size.height} sound={activeScreenSound(active, audio.sound)} soundHistory={session.soundHistory}/>{session.finalScreen && <GameFinalHint theme={sessionRegistrations[session.gameId]?.finalHintTheme} keyboard={keyboard}/>}</> : <main class="screen room-status session-placeholder" aria-label="Game screen"><h1>This game’s screen is not built yet</h1><ol class="picker-players" aria-label="Players">{room.players.map(p => <li class="ka-panel" key={p.seat}><span class="seat-number" style={{ backgroundColor: `var(--ka-seat-${String(p.seat)})` }}>{p.seat}</span>{p.name}</li>)}</ol></main> : picker.screen === 'lobby' ? lobby : <GamePicker state={picker} room={room} localDevice={localDevice}/>}</Overlap></div>;
+  return <div class="host-shell"><Overlap fade surface identity={teamSetup?.screen === 'teams' ? 'teams' : hostScreen(session, picker.screen === 'lobby')}>{active => teamSetup?.screen === 'teams' ? <TeamSetup move={id => { command('teams-move', id); }} setup={teamSetup} room={room} game={gameMetas.find(g => g.id === picker.focus)?.name ?? ''} start={() => { if (active) startTeams(); }}/> : session ? session.results && !session.finalScreen ? <Results active={active} session={session} room={room} back={back} again={again} keyboard={keyboard}/> : Screen ? <><Screen view={session.view as never} width={size.width} height={size.height} sound={activeScreenSound(active, sound)} soundHistory={session.soundHistory}/>{session.finalScreen && <GameFinalHint theme={sessionRegistrations[session.gameId]?.finalHintTheme} keyboard={keyboard}/>}</> : <main class="screen room-status session-placeholder" aria-label="Game screen"><h1>This game’s screen is not built yet</h1><ol class="picker-players" aria-label="Players">{room.players.map(p => <li class="ka-panel" key={p.seat}><span class="seat-number" style={{ backgroundColor: `var(--ka-seat-${String(p.seat)})` }}>{p.seat}</span>{p.name}</li>)}</ol></main> : picker.screen === 'lobby' ? lobby : <GamePicker state={picker} room={room} localDevice={localDevice}/>}</Overlap></div>;
 }

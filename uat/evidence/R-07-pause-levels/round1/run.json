@@ -1,0 +1,75 @@
+{
+  "slice": "R-07-pause-levels",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- R-07-pause-levels --phones 1 --out round1",
+  "commit": "5e4ef1be3ed96418028431ac27ff8955bab9670e",
+  "viewports": [
+    "1920×1080",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1278.5182500000005,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-pause-1080-before.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-pause-1080-after.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-pause-720-before.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-pause-720-after.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-pause-1080-before.jpg",
+    "02-host-pause-1080-after.jpg",
+    "03-host-pause-720-before.jpg",
+    "04-host-pause-720-after.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-pause-1080-before.jpg",
+      "bytes": 144401
+    },
+    {
+      "file": "02-host-pause-1080-after.jpg",
+      "bytes": 144618
+    },
+    {
+      "file": "03-host-pause-720-before.jpg",
+      "bytes": 71400
+    },
+    {
+      "file": "04-host-pause-720-after.jpg",
+      "bytes": 71125
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 833
+    },
+    {
+      "file": "run.json",
+      "bytes": 1534
+    }
+  ],
+  "totalBytes": 433948,
+  "maxBytes": 12582912
+}

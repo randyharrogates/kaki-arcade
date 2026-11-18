@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — R-07 part 2: Effects and Music levels in the TV pause panel
+
+- RZ-033 (in progress), D-168: the pause panel shows Effects and Music rows between Resume and
+  Quit to picker, each with a level, a bar and − and + buttons. Up/Down moves between rows;
+  Left/Right, or a game pad's d-pad, steps the focused level by 10 between 0 and 100; a held key
+  steps once. Levels are saved on the TV and apply at once.
+- Each Effects change plays one neutral C5 Mallet note from `packages/platform` (D-168 voice) at
+  the new level; reaching 0 is silent. Music changes and presses at either end play nothing.
+- Not yet: music playback, a listen on a real TV, OQ-040.
+
 ## 2026-11-18 — P-03: Peek Poker phone pick
 
 - PP-005, PP-020 (in progress until seen on the TV): Watch the TV with seconds while memorising;

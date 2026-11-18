@@ -76,3 +76,19 @@ export function createSoundEngine(context: SoundContext, storage?: SoundStorage)
 export function activeScreenSound(active: boolean, sound: Sound): Sound | undefined {
   return active ? sound : undefined;
 }
+
+/** Neutral C5 Mallet confirmation (RZ-033, D-168), through the saved Effects bus. */
+export const confirmationTone: SoundCue = (context, time, output) => {
+  for (const [ratio, level, decay] of [[1, 1, 0.42], [3.93, 0.28, 0.09], [9.2, 0.06, 0.03]] as const) {
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+    oscillator.type = 'sine';
+    oscillator.frequency.value = 440 * 2 ** ((72 - 69) / 12) * ratio;
+    gain.gain.setValueAtTime(0.0001, time);
+    gain.gain.exponentialRampToValueAtTime(0.38 * level, time + 0.004);
+    gain.gain.exponentialRampToValueAtTime(0.0001, time + decay);
+    oscillator.connect(gain); gain.connect(output);
+    oscillator.addEventListener('ended', () => { oscillator.disconnect(); gain.disconnect(); });
+    oscillator.start(time); oscillator.stop(time + decay + 0.02);
+  }
+};

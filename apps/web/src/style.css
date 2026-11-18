@@ -43,7 +43,7 @@ header { display: flex; align-items: baseline; gap: var(--ka-space-34); }
 button, a { color: var(--ka-ink); font: inherit; }
 button, a.ka-panel { padding: var(--ka-space-13) var(--ka-space-34); min-height: var(--ka-space-89); cursor: pointer; }
 a.ka-panel { display: inline-block; text-decoration: none; }
-button:focus-visible, a:focus-visible, [role="button"]:focus-visible { outline: var(--ka-space-5) solid var(--ka-ink); outline-offset: var(--ka-space-5); }
+button:focus-visible, a:focus-visible, [role="button"]:focus-visible, .pause-level:focus-visible { outline: var(--ka-space-5) solid var(--ka-ink); outline-offset: var(--ka-space-5); }
 .seat-content[data-held="true"] .nickname { color: var(--ka-panel-secondary); }
 .seat-content[data-held="true"] .seat-number { border: var(--ka-space-5) solid; color: var(--ka-seat-numeral); }
 
@@ -174,3 +174,9 @@ button:focus-visible, a:focus-visible, [role="button"]:focus-visible { outline: 
 .lobby header[data-crowded="true"] h1 { font-size: var(--ka-type-55); }
 
 .team-screen footer p { align-self: baseline; }
+/* RZ-033: TV pause levels share the panel's safe-area scale and type. */
+.pause-level { display: grid; grid-template-columns: 1.618fr auto 1fr auto; align-items: center; gap: var(--ka-space-13); padding: var(--ka-space-13) var(--ka-space-34); font-size: var(--ka-type-34); }
+.host-pause .pause-level button { padding: var(--ka-space-8) var(--ka-space-21); min-height: var(--ka-space-55); }
+.pause-level-value { font-family: var(--ka-font-mono); text-align: center; }
+.pause-level-bar { grid-column: 1 / -1; height: var(--ka-space-8); background: var(--ka-panel-edge-colour); overflow: hidden; }
+.pause-level-bar > span { display: block; height: 100%; background: var(--ka-accent); transform-origin: left; transition: transform var(--ka-duration-base) var(--ka-ease-in-out); }
