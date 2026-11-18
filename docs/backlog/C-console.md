@@ -54,6 +54,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | C-24 | Sound on a TV nobody has touched: the landing's "Host a game" becomes a same-document navigation whose click starts the shared sound engine; while sound is still blocked, the lobby hint row reads "Click or press a key on this screen to turn on sound" and the pause panel's volume row says sound is off; nothing drawn during play (D-229) | RZ-033, TR-063 | R-07, X-01 | 3 | todo |
 | C-25 | Detail benchmark in Start preparation: an optional benchmark scene in the game contract (ARCHITECTURE §3 updated), about 1 s of the game's busiest scene drawn off-screen behind "Starting…" once per game per TV, judged by D-111/D-113, half atlases decoded before Ready on "lower"; the Tabao Rush scene is supplied by T-07/T-17 (D-228) | PERF-002, PERF-023 | C-13, C-16 | 3 | todo |
 | C-27 | Local seat: watches games with private views (marked "Watching"; Start refused with "⟨game⟩ needs a phone. Scan the code to join." when it is the only seat; declared per game in `GameMeta`); a phone leads whenever one is seated (D-230, D-231) | CTRL-009, PLAT-006, PLAT-021, PLAT-024 | C-12 | 3 | todo |
+| C-28 | The shell's final-screen hint ("The leader continues on their phone", `apps/web/src/game-final-hint.tsx`) enters with the game's final screen: it fades in on the crossfade's entrance timing instead of appearing at full strength over the outgoing screen (R-16 review 3); reduced motion shows it at once | PLAT-022 | C-18 | 3 | todo |
 
 ## Carried from reviews
 
