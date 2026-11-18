@@ -1,0 +1,56 @@
+{
+  "slice": "P-10-final-scoreboard",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- P-10-final-scoreboard --phones 1 --out round1-p1",
+  "commit": "77716e5f336c42a2d1a2672860f5e9cc5b2e4b66",
+  "viewports": [
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1328.1539589999998,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-r4-scoreboard-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-r5-scoreboard-tv.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-r4-scoreboard-tv.jpg",
+    "02-host-r5-scoreboard-tv.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-r4-scoreboard-tv.jpg",
+      "bytes": 289833
+    },
+    {
+      "file": "02-host-r5-scoreboard-tv.jpg",
+      "bytes": 290817
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 693
+    },
+    {
+      "file": "run.json",
+      "bytes": 1128
+    }
+  ],
+  "totalBytes": 582508,
+  "maxBytes": 12582912
+}

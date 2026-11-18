@@ -14,7 +14,7 @@ export function resultsBoard(root: HTMLElement, view: PokerPublicView, reduced: 
   for(const p of winners) {const seat=document.createElement('b');seat.className='pp-seat';seat.style.background=p.colour;seat.style.color=SEAT_NUMERAL;seat.textContent=String(p.seat);seat.title=p.name;winnerLine.append(seat);}
   winnerLine.append(score);summary.append(label,title,winnerLine);
 
-  if(!final) {const hint=document.createElement('p');hint.textContent='Next round in 5 seconds';summary.append(hint);}
+  if(!final) {const hint=document.createElement('p');hint.textContent=view.round === view.totalRounds ? 'Final scores in 5 seconds' : 'Next round in 5 seconds';summary.append(hint);}
   const list=document.createElement('ol');list.className='pp-score-list';list.setAttribute('aria-label',final ? 'Final podium' : 'Running scoreboard');
   board.forEach((p,index)=>{const row=document.createElement('li');row.className='pp-score-row';
     const place=document.createElement('strong');place.textContent=`${p.tied ? '=' : ''}${String(p.place)}`;

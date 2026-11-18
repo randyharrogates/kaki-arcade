@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — P-10: final scores line
+
+- PP-032: the scoreboard after the last round says "Final scores in 5 seconds"; earlier ones
+  keep "Next round in 5 seconds". Phones still show "Scores on the TV" (D-256).
+- UAT at 1 phone, rounds 4 and 5 of 5 (`uat/evidence/P-10-final-scoreboard/round1-p1/`).
+
 ## 2026-11-18 — X-01: landing keyboard and remote reach
 
 - REL-002: arrow keys and a TV remote reach all four landing links in reading order (Host a game,

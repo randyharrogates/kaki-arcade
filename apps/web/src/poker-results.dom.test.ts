@@ -100,3 +100,38 @@ it('PP-032 felt and panel text contrast meets 4.5:1 across both surface endpoint
   for(const surface of [colour('--ka-bg'),colour('--ka-bg').map(c=>c*0.96+0.04)]) expect(contrast(colour('--ka-ink'),surface)).toBeGreaterThanOrEqual(4.5);
   for(const token of ['--ka-panel-from','--ka-panel-to']) expect(contrast(colour('--ka-panel-ink'),colour(token))).toBeGreaterThanOrEqual(4.5);
 });
+
+it('PP-032 P-10 scoreboard announces the next round or final scores and the podium has neither countdown',async()=>{
+  const entry=fileURLToPath(new URL('../../../games/peek-poker/host/p10-fixture.ts',import.meta.url));
+  const results=fileURLToPath(new URL('../../../games/peek-poker/host/results.ts',import.meta.url));
+  const scenarios=fileURLToPath(new URL('../../../games/peek-poker/host/scenarios.ts',import.meta.url));
+  const rules=fileURLToPath(new URL('../../../games/peek-poker/src/index.ts',import.meta.url));
+  const bundle=await build({configFile:false,resolve:{alias:[{find:/^preact$/,replacement:createRequire(import.meta.url).resolve('preact')}]},oxc:{jsx:{runtime:'automatic',importSource:'preact'}},build:{write:false,target:'esnext',lib:{entry,formats:['es']}},plugins:[{name:'p10-fixture',resolveId(id){return id === entry ? id : undefined;},load(id){if(id !== entry) return undefined;return `
+    import {resultsBoard} from '${results}';import {scenario} from '${scenarios}';import {peekPoker} from '${rules}';
+    window.draw=(round,totalRounds,phase)=>{const state=scenario('reveal',1);resultsBoard(document.body,{...peekPoker.publicView(state),round,totalRounds,phase},true);};
+  `;}}]});
+  const output=Array.isArray(bundle) ? bundle[0] : bundle;
+  if(!output || !('output' in output)) throw Error('bundle');
+  const chunk=output.output.find(c=>c.type === 'chunk');if(!chunk) throw Error('chunk');
+  const browser=await chromium.launch({headless:true});
+  try {
+    const page=await browser.newPage();
+    await page.addScriptTag({type:'module',content:chunk.code});
+    await page.waitForFunction(()=>Reflect.has(window,'draw'));
+    for(const [round,totalRounds,phase,expected] of [
+      [1,5,'scoreboard','Next round in 5 seconds'],
+      [4,5,'scoreboard','Next round in 5 seconds'],
+      [5,5,'scoreboard','Final scores in 5 seconds'],
+      [3,3,'scoreboard','Final scores in 5 seconds'],
+      [5,5,'over',null],
+    ] as const) {
+      await page.evaluate(({round,totalRounds,phase})=>{
+        (Reflect.get(window,'draw') as (round:number,totalRounds:number,phase:string)=>void)(round,totalRounds,phase);
+      },{round,totalRounds,phase});
+      expect(await page.locator('.pp-summary > span').textContent()).toBe(phase === 'over' ? 'Peek Poker · final scores' : `Scores · round ${String(round)} of ${String(totalRounds)}`);
+      expect(await page.locator('ol').getAttribute('aria-label')).toBe(phase === 'over' ? 'Final podium' : 'Running scoreboard');
+      const lines=await page.locator('.pp-summary p').allTextContents();
+      expect(lines.filter(line=>line === 'Next round in 5 seconds' || line === 'Final scores in 5 seconds')).toEqual(expected === null ? [] : [expected]);
+    }
+  } finally {await browser.close();}
+},30000);
