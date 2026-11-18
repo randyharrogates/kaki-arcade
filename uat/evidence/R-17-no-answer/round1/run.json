@@ -1,0 +1,66 @@
+{
+  "slice": "R-17-no-answer",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- R-17-no-answer --phones 1 --out round1",
+  "commit": "ab29b5f52263cc1caef22b282fa948d41ca4de6a",
+  "viewports": [
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1115.3814580000003,
+      "status": "completed"
+    },
+    {
+      "name": "Solo skip shows Skipped",
+      "ms": 1214.4292080000005,
+      "status": "completed"
+    },
+    {
+      "name": "Next question times out and shows No answer",
+      "ms": 12930.965584000001,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-01-skipped-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-02-no-answer-phone.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-01-skipped-phone.jpg",
+    "02-phone1-02-no-answer-phone.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-01-skipped-phone.jpg",
+      "bytes": 120471
+    },
+    {
+      "file": "02-phone1-02-no-answer-phone.jpg",
+      "bytes": 122273
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 805
+    },
+    {
+      "file": "run.json",
+      "bytes": 1375
+    }
+  ],
+  "totalBytes": 244961,
+  "maxBytes": 12582912
+}

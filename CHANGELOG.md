@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — R-17: No answer on the phone reveal
+
+- RZ-006, RZ-007: a phone's reveal says "Skipped" only for the leader whose Skip ended the
+  question; anyone else without an answer sees "No answer". Right and Wrong are unchanged, and
+  so are scores.
+- RZ-006: a solo wrong answer ends the question inside the step, so a Skip later in the same
+  step does nothing (as the repeat-tap rule requires); what players see is unchanged.
+- UAT at 1 phone (`uat/evidence/R-17-no-answer/round1/`); guests on a leader skip and the idle
+  opponent are covered by unit tests only.
+
 ## 2026-11-19 — P-11: tied hands at the reveal
 
 - PP-008, PP-009: equal hands at the reveal are ordered by this round's points, then lock-in time;

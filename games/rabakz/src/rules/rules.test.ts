@@ -8,6 +8,7 @@ import type { StepInputs } from '@kaki/platform';
 import { DEFAULT_SETTINGS, QUESTION_DATA, questionData, rabakz } from '../index';
 import type { Question, Settings, State } from '../index';
 import { IDLE_STEPS, TIE_STEPS } from './flow';
+import { privateView } from './views';
 
 const bank = (length = 10): Question[] => Array.from({ length }, (_, index) => ({
   id: `q-${String(index)}`, prompt: `Question ${String(index)}`,
@@ -412,4 +413,58 @@ it('RZ-014 joining preserves earned scores and team totals while awaiting the ne
   expect(joined.teamScores).toEqual(running.teamScores);
   expect(joined.players[2]).toMatchObject({ score: 0, eligible: false });
   expect(rabakz.controllerLayout(joined, third.id).controls.some(c => c.id === 'answer')).toBe(false);
+});
+
+
+describe('RZ-006 / RZ-007 same-step solo reveal', () => {
+  it('a wrong answer before leader Skip keeps Wrong and zero points', () => {
+    const initial = init(1);
+    const state = tick(initial, [[0, (correct(initial) + 1) % 4]], 'skip');
+    expect(state.phase).toBe('reveal');
+    expect(state.players[0]).toMatchObject({ skipped: false, gained: 0 });
+    expect(privateView(state, state.players[0]?.info.id ?? '')?.blocks[0])
+      .toMatchObject({ text: 'Wrong' });
+  });
+  it('leader Skip before an answer ignores the answer and keeps Skipped', () => {
+    const initial = init(1);
+    const id = initial.players[0]?.info.id ?? '';
+    const state = rabakz.step(initial, {
+      frames: new Map(), leader: id, connected: new Map([[id, true]]), disconnected: [],
+      actions: [
+        { player: id, control: 'skip', revision: 0 },
+        { player: id, control: 'answer', value: String(correct(initial)), revision: 0 },
+      ],
+    }, STEP_MS);
+    expect(state.phase).toBe('reveal');
+    expect(state.players[0]).toMatchObject({ pick: null, answers: [], skipped: true, gained: 0 });
+    expect(privateView(state, id)?.blocks[0]).toMatchObject({ text: 'Skipped' });
+  });
+  it('a rejected stale answer cannot reveal a disconnected solo wrong pick early', () => {
+    const initial = init(2);
+    const [solo, joiner] = initial.players;
+    if (!solo || !joiner) throw new Error('Missing players');
+    const wrong = (correct(initial) + 1) % 4;
+    const locked = { ...initial, players: [
+      { ...solo, pick: wrong, answers: [wrong] }, { ...joiner, eligible: false },
+    ] };
+    for (const player of [solo, joiner]) {
+      const state = rabakz.step(locked, {
+        frames: new Map(), leader: solo.info.id, connected: new Map(),
+        disconnected: [solo.info.id],
+        actions: [{ player: player.info.id, control: 'answer', value: String(wrong), revision: 0 }],
+      }, STEP_MS);
+      expect(state.phase).toBe('question');
+      expect(state.players).toEqual(locked.players);
+    }
+  });
+  it('an accepted answer listed as disconnected does not reveal early', () => {
+    const initial = init(1);
+    const id = initial.players[0]?.info.id ?? '';
+    const state = rabakz.step(initial, {
+      frames: new Map(), leader: id, connected: new Map(), disconnected: [id],
+      actions: [{ player: id, control: 'answer', value: String((correct(initial) + 1) % 4), revision: 0 }],
+    }, STEP_MS);
+    expect(state.players[0]?.pick).not.toBeNull();
+    expect(state.phase).toBe('question');
+  });
 });

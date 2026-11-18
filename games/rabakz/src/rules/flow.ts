@@ -35,7 +35,7 @@ function advance(state: State): State {
   return { ...state, round,
     phase: round === state.settings.length * 0.9 ? 'final' : 'question', elapsed: 0,
     firstCorrect: null, wrong: [], wrongPresses: {}, winners: [], players: state.players.map((player) => ({
-      ...player, eligible: true, pick: null, gained: 0, answers: [],
+      ...player, eligible: true, pick: null, gained: 0, answers: [], skipped: false,
       privateRevision: player.privateRevision + 1,
     })) };
 }
@@ -81,14 +81,24 @@ export function step(state: State, inputs: StepInputs): State {
     if (inputs.connected.get(action.player) === false) continue;
     // A skip has no effect once someone has answered correctly: the tie window runs out.
     if (action.control === 'skip' && action.player === inputs.leader) {
-      if (current.firstCorrect === null) return reveal(current);
+      if (current.firstCorrect === null) return reveal({ ...current,
+        players: current.players.map(player => player.info.id === action.player ?
+          { ...player, skipped: true } : player),
+      });
       continue;
     }
     if (action.control === 'answer') {
       const pick = typeof action.value === 'string' ? Number(action.value) : -1;
       if (Number.isInteger(pick) && pick >= 0 && pick < 4) {
         // All taps in this step saw the options enabled at its start.
+        const before = current;
         current = answer(current, action.player, pick, state.wrong);
+        // A solo wrong answer ends the question before any later tap can skip it.
+        if (current !== before && current.firstCorrect === null &&
+            current.players.filter(player => player.eligible).length === 1 &&
+            current.players.some(player => player.eligible && player.pick !== null &&
+              inputs.connected.get(player.info.id) !== false &&
+              !inputs.disconnected.includes(player.info.id))) return reveal(current);
       }
     }
   }

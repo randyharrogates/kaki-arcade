@@ -185,7 +185,7 @@ it.each(['phrases', 'words', 'tokens', 'mentsuyu', 'short', 'short-resize', 'con
       await page.emulateMedia({ colorScheme });
       for (const width of [667,844]) for (const theme of ['console','rabakz','peek-poker','tabao-rush']) for (const [label, phase, pick] of [
         ['Locked out', 'question', 1], ['Locked in', 'question', 0],
-        ['Right', 'reveal', 0], ['Wrong', 'reveal', 1], ['Skipped', 'reveal', null],
+        ['Right', 'reveal', 0], ['Wrong', 'reveal', 1], ['No answer', 'reveal', null], // R-17: no pick and no own skip reads "No answer"
       ] as const) {
         await page.setViewportSize({width,height:width === 667 ? 375 : 390});
         await page.evaluate(({ phase, pick, theme }) => {

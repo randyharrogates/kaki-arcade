@@ -136,7 +136,8 @@ it('RZ-005 leader tie-window layout and private view reveal no firstCorrect or w
 it('RZ-005 skipped reveal has no invented pick; scoreboard and end show shared placing and total', () => {
   const t = twin({ ...options, players: 2 });
   const state = t.match.state, id = t.players[0]?.id ?? '';
-  const reveal = privateView({...state,phase:'reveal'},id);
+  t.tap(id, 'skip', 'skip'); t.step();
+  const reveal = privateView(t.match.state,id);
   expect(reveal?.blocks[0]).toMatchObject({text:'Skipped'});
   expect(reveal?.blocks).toHaveLength(4);
   for (const phase of ['scoreboard','over'] as const) {
@@ -175,7 +176,7 @@ it('RZ-005 keeps long-option locked statuses in a fitting private strip', () => 
     const correct = state.questions[0]?.correct ?? 0;
     for (const [phase,pick,label] of [
       ['question',correct,'Locked in'], ['question',(correct+1)%4,'Locked out'],
-      ['reveal',correct,'Right'], ['reveal',(correct+1)%4,'Wrong'], ['reveal',null,'Skipped'],
+      ['reveal',correct,'Right'], ['reveal',(correct+1)%4,'Wrong'], ['reveal',null,'No answer'],
     ] as const) {
       const current = {...own(state,pick),phase};
       const view = privateView(current,id);
@@ -208,4 +209,47 @@ it('RZ-003 keeps the four short names at 34 in the shipped 844 guest cells', () 
   expect(answer).toMatchObject({ left:13,top:81,width:813,height:228 });
   expect(placed.gap).toBe(8);
   expect(names.map(label => optionLabelStep(label,(answer.width-placed.gap)/2,(answer.height-placed.gap)/2,true))).toEqual([34,34,34,34]);
+});
+
+// Exercise accepted inputs and pure rules transitions, rather than inventing reveal state.
+describe('RZ-005 / RZ-007 reveal answer status', () => {
+  const title = (state: State, id: string) => privateView(state, id)?.blocks[0];
+  it('distinguishes a solo skip from the next question timing out', () => {
+    const t = twin({ ...options, players: 1 });
+    const id = t.players[0]?.id ?? '';
+    t.tap(id, 'skip', 'skip'); t.step();
+    expect(t.match.state.players[0]?.skipped).toBe(true);
+    expect(title(t.match.state, id)).toMatchObject({ text: 'Skipped', tone: 'title' });
+    for (let i = 0; i < 240; i++) t.step();
+    expect(t.match.state.phase).toBe('question');
+    expect(t.match.state.players[0]?.skipped).toBe(false);
+    for (let i = 0; i < 1800; i++) t.step();
+    expect(t.match.state.phase).toBe('reveal');
+    expect(title(t.match.state, id)).toMatchObject({ text: 'No answer', tone: 'title' });
+    expect(t.match.state.players[0]?.gained).toBe(0);
+  });
+  it('shows No answer for an idle opponent and preserves Right and Wrong', () => {
+    const t = twin({ ...options, players: 3 });
+    const [winner, wrong, idle] = t.players.map(p => p.id);
+    if (!winner || !wrong || !idle) throw new Error('Missing players');
+    const correct = t.match.state.questions[0]?.correct ?? 0;
+    t.tap(wrong, 'answer', String((correct + 1) % 4));
+    t.tap(winner, 'answer', String(correct)); t.step();
+    for (let i = 0; i < 16; i++) t.step();
+    expect(t.match.state.phase).toBe('reveal');
+    expect(title(t.match.state, winner)).toMatchObject({ text: 'Right' });
+    expect(title(t.match.state, wrong)).toMatchObject({ text: 'Wrong' });
+    expect(title(t.match.state, idle)).toMatchObject({ text: 'No answer' });
+    expect(t.match.state.players.map(p => p.gained)).toEqual([100, 0, 0]);
+  });
+  it('attributes a multiplayer skip only to the leader who pressed it', () => {
+    const t = twin({ ...options, players: 2 });
+    const [leader, guest] = t.players.map(p => p.id);
+    if (!leader || !guest) throw new Error('Missing players');
+    t.tap(guest, 'skip', 'skip'); t.step();
+    expect(t.match.state.phase).toBe('question');
+    t.tap(leader, 'skip', 'skip'); t.step();
+    expect(title(t.match.state, leader)).toMatchObject({ text: 'Skipped' });
+    expect(title(t.match.state, guest)).toMatchObject({ text: 'No answer' });
+  });
 });

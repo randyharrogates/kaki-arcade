@@ -43,7 +43,7 @@ export function privateView(state: State, id: string): PrivateView | null {
     return { revision: revision * 10 + place, blocks: [text(`${String(place)}${suffix} · ${String(player.score)}`, 'title')] };
   }
   if (revealed) return { revision, blocks: [
-    text(lastPick === undefined ? 'Skipped' : lastPick === question(state).correct ? 'Right' : 'Wrong', 'title'),
+    text(lastPick === undefined ? (player.skipped ? 'Skipped' : 'No answer') : lastPick === question(state).correct ? 'Right' : 'Wrong', 'title'),
     { kind: 'stat', label: 'Points gained', value: `+${String(player.gained)}` },
     text(`Streak ${String(player.streak)}`, 'body'),
     text(`Score ${String(player.score)}`, 'body'),

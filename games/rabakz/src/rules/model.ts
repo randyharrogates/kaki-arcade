@@ -30,6 +30,8 @@ export interface Seat {
   readonly gained: number;
   readonly pick: number | null;
   readonly answers: readonly number[];
+  /** This player ended the current question with an accepted skip. */
+  readonly skipped: boolean;
   readonly privateRevision: number;
   readonly eligible: boolean;
   readonly joinedMidGame: boolean;
@@ -71,7 +73,7 @@ export const DEFAULT_SETTINGS: Settings = {
   length: 10, categories: [], difficulty: 'mixed',
 };
 export function seat(info: PlayerInfo, joinedMidGame = false, incarnation = 0): Seat {
-  return { info, incarnation, score: 0, streak: 0, gained: 0, pick: null, answers: [], privateRevision: 0,
+  return { info, incarnation, score: 0, streak: 0, gained: 0, pick: null, answers: [], skipped: false, privateRevision: 0,
     eligible: !joinedMidGame, joinedMidGame };
 }
 export function question(state: State): Question {
