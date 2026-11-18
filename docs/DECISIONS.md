@@ -1470,3 +1470,13 @@ the enabled button fills with the cross's red, the same red as the card backs, a
 memorise phone reads "Watch the TV" with the seconds, as docs/games/peek-poker.md §2 says (P-03's
 brief wrongly asked for "Memorise the grid"). Randy may overrule.
 
+**D-172 · 2026-11-18 · Claude** (under D-057 and D-142; resolves D-167) — Cook art choices, from the
+artifact https://claude.ai/artifact/2PQqWkkwd2uykNRRaUBU8N (real renders, current beside alternative):
+(1) **chop: B, the side raise** (A-02b round 4): the knife hand is visible in all eight facings, the
+head stays still, hand travel 17–26 px; it replaces the current overhead chop. (2) **extinguisher: A,
+keep the current one-handed hold**: the two-handed alternative hides the canister from N, NE and NW,
+and reading who is fighting the fire matters more than the grip. (3) **cook sheets: B, lossy WebP at
+quality 90**: 4.90 MB → 1.40 MB for the cook sheets, level art about 1.6 of 8 MB, no visible change at
+3×; the pipeline gains a check that each lossy sheet stays within a set difference of its lossless
+source. A follow-up issue (A-02c) makes the side raise the default chop and switches cook storage.
+No golden-ratio variant applies (art and storage, not layout). Randy may overrule.
