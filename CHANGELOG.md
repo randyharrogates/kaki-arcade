@@ -3,6 +3,12 @@
 Newest first. One entry per closed slice, naming the requirement IDs.
 
 
+
+## 2026-11-18 — X-03: Privacy and Credits pages
+
+- DATA-004, DATA-001, DATA-002, DATA-003, DATA-005: a Privacy page in plain words. Only the TV sends anonymous counts (four problems, server reach under-counted by design, one smoothness band per match), after results or when the page is hidden or closed, never in play; daily totals have no end date; room codes are hard to guess, limited and expire; no sign-up; saves stay on the TV; our server never sees nicknames.
+- RZ-021: a Credits page links the Open Trivia Database and CC BY‑SA 4.0 and offers our adapted questions under the same licence; it credits the Singapore pack, DM Sans and our own sound.
+- The landing page gains Privacy and Credits links: bottom-left on the TV, below the content as 55 px tap targets on phones. The pages load lazily, fit the 1920 × 1080 board in 1.618 : 1 columns (D-178) and scroll on phones. D-187, D-188, D-189.
 ## 2026-11-18 — C-15: console end to end
 
 - feat(web): console end to end with a fixture game and eight phones: phone Menu and a shared Paused veil (Resume, Quit to picker, leader only) that moves focus in and back to Menu with no browser focus ring, Reconnecting veil with "Host disconnected", completed-round scores survive a host reload, a closed room keeps linked play and offers a new room, a 3 s ICE grace before a link counts as lost (PLAT-023, PLAT-009, PLAT-007, PLAT-030; D-183–D-186).

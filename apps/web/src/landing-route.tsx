@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'preact/hooks';
+import { LegalFooter } from './pages/legal-footer';
 export function Landing() {
   const link = useRef<HTMLAnchorElement>(null);
   useEffect(() => {
@@ -8,5 +9,5 @@ export function Landing() {
     };
     window.addEventListener('keydown', key); return () => { window.removeEventListener('keydown', key); };
   }, []);
-  return <main class="screen room-status"><h1>This page has not been built yet.</h1><a ref={link} href="/host">Host a room</a><a href="/tv-help" style={{ minHeight: 'var(--ka-button-minimum-floor)', display: 'inline-flex', alignItems: 'center' }}>Put this on your TV</a></main>;
+  return <main class="screen room-status landing-page"><h1>This page has not been built yet.</h1><a ref={link} href="/host">Host a room</a><a href="/tv-help" style={{ minHeight: 'var(--ka-button-minimum-floor)', display: 'inline-flex', alignItems: 'center' }}>Put this on your TV</a><LegalFooter/></main>;
 }

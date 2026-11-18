@@ -1,0 +1,8 @@
+privacy-1920x1080-equal: {"clearance":77.9375,"required":34,"panelBottom":1025,"viewportHeight":1080}
+credits-1920x1080-equal: {"clearance":445.0625,"required":34,"panelBottom":1025,"viewportHeight":1080}
+privacy-1920x1080-golden: {"clearance":122.125,"required":34,"panelBottom":1025,"viewportHeight":1080}
+credits-1920x1080-golden: {"clearance":356.6875,"required":34,"panelBottom":1025,"viewportHeight":1080}
+privacy-1280x720-equal: {"clearance":51.95835494995117,"required":22.666666666666664,"panelBottom":683.3333549499512,"viewportHeight":720}
+credits-1280x720-equal: {"clearance":296.7083549499512,"required":22.666666666666664,"panelBottom":683.3333549499512,"viewportHeight":720}
+privacy-1280x720-golden: {"clearance":81.41666793823242,"required":22.666666666666664,"panelBottom":683.3333549499512,"viewportHeight":720}
+credits-1280x720-golden: {"clearance":237.79166793823242,"required":22.666666666666664,"panelBottom":683.3333549499512,"viewportHeight":720}

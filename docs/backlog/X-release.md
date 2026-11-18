@@ -14,7 +14,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 |---|---|---|---|---|---|
 | X-01 | Landing page with one "Host a game" action | REL-002 | F-06, A-09 | 4 | todo |
 | X-02 | "Put this on your TV" help page | REL-003 | F-06, S-03 | 4 | merged |
-| X-03 | Privacy page and credits page, including the question-bank attribution | DATA-001, DATA-004, RZ-021 | F-06 | 4 | todo |
+| X-03 | Privacy page and credits page, including the question-bank attribution | DATA-001, DATA-004, RZ-021 | F-06 | 4 | merged |
 | X-04 | Anonymous error and performance counts only | DATA-003 | C-10 | 4 | merged |
 | X-05 | Browser matrix: Chrome, Edge, Safari on the big screen; iPhone Safari and Android Chrome | REL-004, REL-006 | C-15 | 4 | todo |
 | X-07 | Names checked for trademarks and clashes: Kaki Arcade, Tabao Rush, Peek Poker, Rabakz | — | — | 4 | todo |

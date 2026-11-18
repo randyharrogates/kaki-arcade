@@ -12,6 +12,13 @@ import { HostLobby } from './host-route';
 import { Landing } from './landing-route';
 import '@kaki/ui/tokens.css';
 import './style.css';
+function LegalRoute({ page }: { page: 'privacy' | 'credits' }) {
+  const [component, setComponent] = useState<ComponentType<{ page: 'privacy' | 'credits' }> | null>(null);
+  useLayoutEffect(() => { let active = true; void import('./pages/legal-route').then(module => { if (active) setComponent(() => module.LegalPage); }); return () => { active = false; }; }, []);
+  const Page = component;
+  document.title = `${page === 'privacy' ? 'Privacy' : 'Credits'} · Kaki Arcade`;
+  return Page ? <Page page={page}/> : <main class="screen ka-surface" data-theme="console"><div class="ka-panel"><h1>{page === 'privacy' ? 'Privacy' : 'Credits'}</h1></div></main>;
+}
 function ControllerDemoRoute() {
   const [demo, setDemo] = useState<ComponentType | null>(null);
   useLayoutEffect(() => {
@@ -58,6 +65,7 @@ function App() {
   const path = location.pathname.replace(/\/$/, '') || '/';
   if (import.meta.env.DEV && path === '/play' && new URLSearchParams(location.search).get('demo') === 'controller') return <ControllerDemoRoute/>;
   if (import.meta.env.DEV && path === '/host/sound') return <SoundDemoRoute/>;
+  if (path === '/privacy' || path === '/credits') return <LegalRoute page={path.slice(1) as 'privacy' | 'credits'}/>;
   if (path === '/play') return <PhonePage/>;
   if (path === '/host') return <HostLobby/>;
   if (path === '/tv-help') return <TvHelpRoute/>;

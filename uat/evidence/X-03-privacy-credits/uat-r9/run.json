@@ -1,0 +1,323 @@
+{
+  "slice": "X-03-privacy-credits",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- X-03-privacy-credits --phones 1 --out uat-r9",
+  "commit": "cab6862876b4b6c79fa7124cd223500fd76db3f8",
+  "viewports": [
+    "1920×1080",
+    "390×844",
+    "844×390",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "Privacy 1920x1080",
+      "ms": 159.0757920000001,
+      "status": "completed"
+    },
+    {
+      "name": "Credits 1920x1080",
+      "ms": 155.63383300000032,
+      "status": "completed"
+    },
+    {
+      "name": "Privacy 1280x720",
+      "ms": 151.03020800000013,
+      "status": "completed"
+    },
+    {
+      "name": "Credits 1280x720",
+      "ms": 148.47379199999978,
+      "status": "completed"
+    },
+    {
+      "name": "Privacy 390x844",
+      "ms": 762.7403750000003,
+      "status": "completed"
+    },
+    {
+      "name": "Credits 390x844",
+      "ms": 413.83520899999985,
+      "status": "completed"
+    },
+    {
+      "name": "Privacy 844x390",
+      "ms": 796.8494169999994,
+      "status": "completed"
+    },
+    {
+      "name": "Credits 844x390",
+      "ms": 478.67812500000036,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-landing-footer-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-landing-footer-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-landing-footer-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-privacy-1920x1080-top.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-credits-1920x1080-top.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-privacy-1280x720-top.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-credits-1280x720-top.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-privacy-390x844-top.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-privacy-390x844-section-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-privacy-390x844-section-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-privacy-390x844-section-4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-privacy-390x844-section-5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-privacy-390x844-end.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-credits-390x844-top.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-credits-390x844-section-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-credits-390x844-end.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-privacy-844x390-top.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-privacy-844x390-section-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-privacy-844x390-section-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-privacy-844x390-section-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-privacy-844x390-section-4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-privacy-844x390-section-5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-privacy-844x390-end.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-credits-844x390-top.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-credits-844x390-section-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-credits-844x390-section-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-host-credits-844x390-end.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-landing-footer-1920.jpg",
+    "02-host-landing-footer-390.jpg",
+    "03-host-landing-footer-844.jpg",
+    "04-host-privacy-1920x1080-top.jpg",
+    "05-host-credits-1920x1080-top.jpg",
+    "06-host-privacy-1280x720-top.jpg",
+    "07-host-credits-1280x720-top.jpg",
+    "08-host-privacy-390x844-top.jpg",
+    "09-host-privacy-390x844-section-1.jpg",
+    "10-host-privacy-390x844-section-2.jpg",
+    "11-host-privacy-390x844-section-4.jpg",
+    "12-host-privacy-390x844-section-5.jpg",
+    "13-host-privacy-390x844-end.jpg",
+    "14-host-credits-390x844-top.jpg",
+    "15-host-credits-390x844-section-3.jpg",
+    "16-host-credits-390x844-end.jpg",
+    "17-host-privacy-844x390-top.jpg",
+    "18-host-privacy-844x390-section-1.jpg",
+    "19-host-privacy-844x390-section-2.jpg",
+    "20-host-privacy-844x390-section-3.jpg",
+    "21-host-privacy-844x390-section-4.jpg",
+    "22-host-privacy-844x390-section-5.jpg",
+    "23-host-privacy-844x390-end.jpg",
+    "24-host-credits-844x390-top.jpg",
+    "25-host-credits-844x390-section-1.jpg",
+    "26-host-credits-844x390-section-2.jpg",
+    "27-host-credits-844x390-end.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-landing-footer-1920.jpg",
+      "bytes": 137786
+    },
+    {
+      "file": "02-host-landing-footer-390.jpg",
+      "bytes": 30496
+    },
+    {
+      "file": "03-host-landing-footer-844.jpg",
+      "bytes": 31078
+    },
+    {
+      "file": "04-host-privacy-1920x1080-top.jpg",
+      "bytes": 397658
+    },
+    {
+      "file": "05-host-credits-1920x1080-top.jpg",
+      "bytes": 209078
+    },
+    {
+      "file": "06-host-privacy-1280x720-top.jpg",
+      "bytes": 221583
+    },
+    {
+      "file": "07-host-credits-1280x720-top.jpg",
+      "bytes": 113085
+    },
+    {
+      "file": "08-host-privacy-390x844-top.jpg",
+      "bytes": 100640
+    },
+    {
+      "file": "09-host-privacy-390x844-section-1.jpg",
+      "bytes": 102025
+    },
+    {
+      "file": "10-host-privacy-390x844-section-2.jpg",
+      "bytes": 92954
+    },
+    {
+      "file": "11-host-privacy-390x844-section-4.jpg",
+      "bytes": 93483
+    },
+    {
+      "file": "12-host-privacy-390x844-section-5.jpg",
+      "bytes": 86841
+    },
+    {
+      "file": "13-host-privacy-390x844-end.jpg",
+      "bytes": 86841
+    },
+    {
+      "file": "14-host-credits-390x844-top.jpg",
+      "bytes": 74030
+    },
+    {
+      "file": "15-host-credits-390x844-section-3.jpg",
+      "bytes": 78374
+    },
+    {
+      "file": "16-host-credits-390x844-end.jpg",
+      "bytes": 78374
+    },
+    {
+      "file": "17-host-privacy-844x390-top.jpg",
+      "bytes": 66074
+    },
+    {
+      "file": "18-host-privacy-844x390-section-1.jpg",
+      "bytes": 95915
+    },
+    {
+      "file": "19-host-privacy-844x390-section-2.jpg",
+      "bytes": 70727
+    },
+    {
+      "file": "20-host-privacy-844x390-section-3.jpg",
+      "bytes": 65317
+    },
+    {
+      "file": "21-host-privacy-844x390-section-4.jpg",
+      "bytes": 59650
+    },
+    {
+      "file": "22-host-privacy-844x390-section-5.jpg",
+      "bytes": 62423
+    },
+    {
+      "file": "23-host-privacy-844x390-end.jpg",
+      "bytes": 56913
+    },
+    {
+      "file": "24-host-credits-844x390-top.jpg",
+      "bytes": 53020
+    },
+    {
+      "file": "25-host-credits-844x390-section-1.jpg",
+      "bytes": 57703
+    },
+    {
+      "file": "26-host-credits-844x390-section-2.jpg",
+      "bytes": 59242
+    },
+    {
+      "file": "27-host-credits-844x390-end.jpg",
+      "bytes": 53673
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 3054
+    },
+    {
+      "file": "fit.txt",
+      "bytes": 460
+    },
+    {
+      "file": "run.json",
+      "bytes": 7438
+    }
+  ],
+  "totalBytes": 2645972,
+  "maxBytes": 12582912
+}

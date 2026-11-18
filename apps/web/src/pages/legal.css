@@ -1,0 +1,20 @@
+/* The same 1920 × 1080 board and uniform scale as the shell. */
+.legal-page { position: absolute; left: 50%; top: 50%; width: var(--ka-tv-width); height: var(--ka-tv-height); transform: translate(-50%, -50%) scale(var(--screen-scale, 1)); padding: var(--ka-space-55); overflow: hidden; font-size: var(--ka-type-34); line-height: var(--ka-line-body); }
+.legal-reading { min-width: 0; height: 100%; padding: var(--ka-space-21); padding-bottom: var(--ka-space-34); text-align: left; }
+.legal-reading > a { float: right; }
+.legal-reading > h1 { margin-bottom: var(--ka-space-21); font-size: var(--ka-type-89); }
+.legal-sections { display: grid; grid-template-columns: var(--ka-golden-columns); gap: var(--ka-space-34); }
+.legal-column { display: flex; flex-direction: column; gap: var(--ka-space-34); min-width: 0; }
+.legal-sections section { min-width: 0; break-inside: avoid; }
+.legal-sections h2 { font-size: var(--ka-type-55); margin-bottom: var(--ka-space-13); }
+.legal-links { display: flex; flex-wrap: wrap; gap: var(--ka-space-13) var(--ka-space-21); margin-top: var(--ka-space-13); }
+.legal-page a { display: inline-flex; align-items: center; min-height: var(--ka-space-55); color: inherit; }
+@media (max-width: 1000px) {
+  .legal-page { inset: 0; width: 100%; height: 100%; transform: none; overflow-y: auto; padding: var(--ka-space-21); font-size: var(--ka-phone-type-21); }
+  .legal-reading { height: auto; min-height: 100%; padding: var(--ka-space-21); max-width: calc(var(--ka-space-144) * 1.618 * 3); margin-inline: auto; }
+  .legal-reading > a { float: none; margin-bottom: var(--ka-space-13); }
+  .legal-reading > h1 { font-size: var(--ka-phone-type-55); }
+  .legal-sections { display: flex; flex-direction: column; gap: var(--ka-space-34); }
+  .legal-column { display: contents; }
+  .legal-sections h2 { font-size: var(--ka-phone-type-34); }
+}

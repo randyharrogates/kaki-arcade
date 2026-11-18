@@ -1,0 +1,92 @@
+{
+  "slice": "X-03-privacy-credits",
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/uat/slices/X-03-privacy-credits.mjs:20:18\n    at async deadline (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/tools/uat/core.ts:181:16)\n    at async Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/tools/uat/harness.ts:95:26)\n    at async legal (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/uat/slices/X-03-privacy-credits.mjs:14:50)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- X-03-privacy-credits --phones 1 --out round3",
+  "commit": "fd6f7e9cfcf751ff45e50fd4ea631667755f57b6",
+  "viewports": [
+    "1920×1080",
+    "390×844"
+  ],
+  "steps": [
+    {
+      "name": "Privacy 1920x1080 equal",
+      "ms": 157.3597920000002,
+      "status": "completed"
+    },
+    {
+      "name": "Credits 1920x1080 equal",
+      "ms": 141.75641599999972,
+      "status": "completed"
+    },
+    {
+      "name": "Privacy 1920x1080 golden",
+      "ms": 52.37529200000017,
+      "status": "failed",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/uat/slices/X-03-privacy-credits.mjs:20:18\n    at async deadline (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/tools/uat/core.ts:181:16)\n    at async Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/tools/uat/harness.ts:95:26)\n    at async legal (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/uat/slices/X-03-privacy-credits.mjs:14:50)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/X-03/tools/uat/run.mjs:15:1"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-landing-footer-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-landing-footer-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-privacy-1920x1080-equal-top.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-credits-1920x1080-equal-top.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-landing-footer-1920.jpg",
+    "02-host-landing-footer-390.jpg",
+    "03-host-privacy-1920x1080-equal-top.jpg",
+    "04-host-credits-1920x1080-equal-top.jpg",
+    "05-host-failure.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-landing-footer-1920.jpg",
+      "bytes": 132952
+    },
+    {
+      "file": "02-host-landing-footer-390.jpg",
+      "bytes": 20598
+    },
+    {
+      "file": "03-host-privacy-1920x1080-equal-top.jpg",
+      "bytes": 323203
+    },
+    {
+      "file": "04-host-credits-1920x1080-equal-top.jpg",
+      "bytes": 214142
+    },
+    {
+      "file": "05-host-failure.png",
+      "bytes": 703711
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1030
+    },
+    {
+      "file": "run.json",
+      "bytes": 3774
+    }
+  ],
+  "totalBytes": 1399447,
+  "maxBytes": 12582912
+}

@@ -1,0 +1,4 @@
+privacy-1920x1080: {"clearance":47.375,"required":34,"panelBottom":1025,"viewportHeight":1080}
+credits-1920x1080: {"clearance":356.6875,"required":34,"panelBottom":1025,"viewportHeight":1080}
+privacy-1280x720: {"clearance":31.583354949951172,"required":22.666666666666664,"panelBottom":683.3333549499512,"viewportHeight":720}
+credits-1280x720: {"clearance":237.79166793823242,"required":22.666666666666664,"panelBottom":683.3333549499512,"viewportHeight":720}

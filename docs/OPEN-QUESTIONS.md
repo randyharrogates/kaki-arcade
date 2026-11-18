@@ -160,3 +160,5 @@ M6.
 
 
 **OQ-044 · Where do "scores so far" show after a host reload? (raised 2026-11-18 by C-15's review).** PLAT-009 restores them, but no screen shows cumulative scores, and they currently add up across different games. Options: a running total on the lobby seat cards, a per-game total on the results screen, or per-game storage only. Needed by M3 close.
+
+**OQ-045 · How is the adapted Rabakz bank "offered under the same licence"? (raised 2026-11-18 by X-03's review).** Credits says our adapted questions "are shared under the same licence (CC BY‑SA 4.0)", and RZ-021 requires the offer, but no separate download exists. Assumption until Randy answers: the questions shipped in the game bundle are the shared copy, and no separate download is needed in v1.
