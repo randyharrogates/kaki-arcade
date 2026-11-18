@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — K-10: selected face-down card
+
+- PP-005: a picked face-down card on the phone keeps its white inset frame and shows a centred
+  34 px cream disc with a 21 px ink tick (CSS mask, tokens only), fading in from 0.95 over
+  `fast` and out over `fast-exit`; no fade with reduced motion; card size unchanged (D-218, D-269).
+- DOM test for size, centring, contrast (at least 5.1 : 1 on the red), motion and reduced
+  motion; two-phone UAT stills at 667 × 375 and 844 × 390 replace P-07's selected still.
+
 ## 2026-11-19 — A-03: cook heads
 
 - TR-064 (art), TR-061 (head): seven new heads beside the cap (uncle, auntie, makcik, bun,

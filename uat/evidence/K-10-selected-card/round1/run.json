@@ -1,0 +1,115 @@
+{
+  "slice": "K-10-selected-card",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- K-10-selected-card --phones 2 --max-mb 12 --timeout-min 10 --out round1",
+  "commit": "48e06d42aad6b35eda7f713cca70f47de31d76a2",
+  "viewports": [
+    "667×375",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 2351.4040410000007,
+      "status": "completed"
+    },
+    {
+      "name": "Room created and two phones seated through real pairing",
+      "ms": 3299.139166,
+      "status": "completed"
+    },
+    {
+      "name": "PP-005: start Peek Poker and reach the private pick phase",
+      "ms": 4581.599832999999,
+      "status": "completed"
+    },
+    {
+      "name": "PP-005: 667 × 375, 1 selected",
+      "ms": 406.118457999999,
+      "status": "completed"
+    },
+    {
+      "name": "PP-005: 667 × 375, 2 selected",
+      "ms": 250.3647920000003,
+      "status": "completed"
+    },
+    {
+      "name": "PP-005: 844 × 390, 1 selected",
+      "ms": 265.2969580000008,
+      "status": "completed"
+    },
+    {
+      "name": "PP-005: 844 × 390, 2 selected",
+      "ms": 234.81520799999998,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-phone1-667x375-1-selected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-phone1-667x375-2-selected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-phone1-844x390-1-selected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-phone1-844x390-2-selected.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-phone1-667x375-1-selected.jpg",
+    "02-phone1-phone1-667x375-2-selected.jpg",
+    "03-phone1-phone1-844x390-1-selected.jpg",
+    "04-phone1-phone1-844x390-2-selected.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-phone1-667x375-1-selected.jpg",
+      "bytes": 64776
+    },
+    {
+      "file": "02-phone1-phone1-667x375-2-selected.jpg",
+      "bytes": 65525
+    },
+    {
+      "file": "03-phone1-phone1-844x390-1-selected.jpg",
+      "bytes": 74881
+    },
+    {
+      "file": "04-phone1-phone1-844x390-2-selected.jpg",
+      "bytes": 75505
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1433
+    },
+    {
+      "file": "run.json",
+      "bytes": 2667
+    }
+  ],
+  "totalBytes": 284824,
+  "maxBytes": 12582912
+}

@@ -83,3 +83,37 @@
 .ka-private-panel .ka-layout-title > span { box-sizing:border-box; display:inline-block; padding-block:var(--ka-space-5); padding-inline:var(--ka-space-21); color:var(--ka-panel-ink); border-radius:var(--ka-radius-pill); outline:var(--ka-panel-edge); background:var(--ka-panel-treatment); }
 /* D-056: small labels on coloured targets use the bold token. */
 .ka-layout-target[class*='ka-kit-'][data-label-step="21"] > span, .ka-layout-target[style*="background"][data-label-step="21"] > span { font-weight:var(--ka-weight-bold); }
+
+/* PP-005 D-218: anonymous selection feedback; decoration never takes layout space.
+ * Disc and mask use the existing 34/21 spacing steps. */
+.ka-layout-card-back { position: relative; }
+.ka-layout-card-back::before, .ka-layout-card-back::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(var(--ka-popover-start-scale));
+  transition: opacity var(--ka-duration-fast-exit) var(--ka-ease-out), transform var(--ka-duration-fast-exit) var(--ka-ease-out);
+}
+.ka-layout-card-back::before {
+  width: var(--ka-space-34);
+  height: var(--ka-space-34);
+  border-radius: var(--ka-radius-pill);
+  background-color: var(--ka-panel-to);
+}
+.ka-layout-card-back::after {
+  width: var(--ka-space-21);
+  height: var(--ka-space-21);
+  background-color: var(--ka-seat-numeral);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21'%3E%3Cpath d='M4 10.5 8.5 15 17 6' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.ka-layout-card-back[data-state='selected']::before, .ka-layout-card-back[data-state='selected']::after {
+  opacity: 1;
+  transform: scale(1);
+  transition-duration: var(--ka-duration-fast);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ka-layout-card-back::before, .ka-layout-card-back::after { transition: none; }
+}
