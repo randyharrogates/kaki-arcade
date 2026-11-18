@@ -55,6 +55,9 @@
     },
     {
       "path": "../../games/peek-poker/tsconfig.host.json"
+    },
+    {
+      "path": "../../games/tabao-rush/tsconfig.host.json"
     }
   ]
 }

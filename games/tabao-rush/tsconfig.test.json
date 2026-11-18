@@ -3,6 +3,6 @@
   "compilerOptions": {
     "tsBuildInfoFile": "dist/.test.tsbuildinfo"
   },
-  "include": ["src/**/*.test.ts", "src/**/*.test.tsx"],
-  "references": [{ "path": "./tsconfig.lib.json" }]
+  "include": ["src/**/*.test.ts", "src/**/*.test.tsx", "host/**/*.test.ts"],
+  "references": [{ "path": "./tsconfig.lib.json" }, { "path": "./tsconfig.host.json" }]
 }

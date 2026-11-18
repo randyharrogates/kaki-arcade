@@ -1,0 +1,579 @@
+{
+  "slice": "T-07-tv-renderer",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- T-07-tv-renderer --out round9b-uat --max-mb 40 --timeout-min 20",
+  "commit": "1cfa65565865574ab9e5e9dad111a1315e149cf0",
+  "viewports": [
+    "1920×1080",
+    "1280×720",
+    "1080×1080"
+  ],
+  "steps": [
+    {
+      "name": "1 cooks at 1920",
+      "ms": 3116.853125,
+      "status": "completed"
+    },
+    {
+      "name": "1 cooks at 1280",
+      "ms": 1885.9296249999998,
+      "status": "completed"
+    },
+    {
+      "name": "8 cooks at 1920",
+      "ms": 2049.9773330000007,
+      "status": "completed"
+    },
+    {
+      "name": "8 cooks at 1280",
+      "ms": 2051.234958000001,
+      "status": "completed"
+    },
+    {
+      "name": "HUD drawn width and Rack column",
+      "ms": 2026.358083000001,
+      "status": "completed"
+    },
+    {
+      "name": "Burning station label",
+      "ms": 584.5312090000007,
+      "status": "completed"
+    },
+    {
+      "name": "Mid-clip actions at their stations",
+      "ms": 6448.5589999999975,
+      "status": "completed"
+    },
+    {
+      "name": "Normal entrance at pinned render times",
+      "ms": 2513.876791999999,
+      "status": "completed"
+    },
+    {
+      "name": "Normal serve at pinned render times",
+      "ms": 3041.977458999998,
+      "status": "completed"
+    },
+    {
+      "name": "Normal done at pinned render times",
+      "ms": 2468.123958,
+      "status": "completed"
+    },
+    {
+      "name": "Normal exit at pinned render times",
+      "ms": 2513.939208,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced entrance at pinned render times",
+      "ms": 2405.8521669999973,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced serve at pinned render times",
+      "ms": 2862.961958,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced done at pinned render times",
+      "ms": 2344.264167000001,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced exit at pinned render times",
+      "ms": 2443.779834000001,
+      "status": "completed"
+    },
+    {
+      "name": "Throw landing and cook walk",
+      "ms": 7201.340499999998,
+      "status": "completed"
+    },
+    {
+      "name": "Registry to production MountedScreen readiness without a phone",
+      "ms": 1484.0119590000031,
+      "status": "completed"
+    },
+    {
+      "name": "Letterbox portrait window",
+      "ms": 882.6113750000004,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-1-cooks-1920-showcase.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-1-cooks-1280-showcase.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-8-cooks-1920-showcase.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-8-cooks-1280-showcase.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-hud-score-width.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-rack-column.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-burning-label.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-action-idle.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-action-walk.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-action-carry-walk.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-action-chop.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-action-stir.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-action-wash.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-action-serve.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-action-throw.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-action-extinguish.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-action-rejection.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-entrance-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-entrance-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-entrance-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-entrance-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-entrance-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-serve-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-serve-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-serve-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-host-serve-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-host-serve-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-serve-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-host-done-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-done-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-host-done-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-host-done-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-host-done-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-host-exit-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-host-exit-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-host-exit-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-host-exit-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-host-exit-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-host-reduced-entrance-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-host-reduced-entrance-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-host-reduced-entrance-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-host-reduced-entrance-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-host-reduced-entrance-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "49-host-reduced-serve-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "50-host-reduced-serve-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "51-host-reduced-serve-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "52-host-reduced-serve-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "53-host-reduced-serve-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "54-host-reduced-serve-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "56-host-reduced-done-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "57-host-reduced-done-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "58-host-reduced-done-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "59-host-reduced-done-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "60-host-reduced-done-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "62-host-reduced-exit-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "63-host-reduced-exit-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "64-host-reduced-exit-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "65-host-reduced-exit-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "66-host-reduced-exit-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "68-host-throw-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "69-host-throw-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "70-host-throw-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "71-host-throw-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "72-host-throw-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "73-host-throw-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "74-host-throw-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "75-host-throw-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "77-host-walk-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "78-host-walk-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "79-host-walk-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "80-host-walk-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "81-host-walk-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "82-host-walk-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "83-host-walk-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "84-host-walk-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "86-host-letterboxed.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-1-cooks-1920-showcase.jpg",
+    "02-host-1-cooks-1280-showcase.jpg",
+    "03-host-8-cooks-1920-showcase.jpg",
+    "04-host-8-cooks-1280-showcase.jpg",
+    "05-host-hud-score-width.jpg",
+    "06-host-rack-column.jpg",
+    "07-host-burning-label.jpg",
+    "08-host-action-idle.jpg",
+    "09-host-action-walk.jpg",
+    "10-host-action-carry-walk.jpg",
+    "11-host-action-chop.jpg",
+    "12-host-action-stir.jpg",
+    "13-host-action-wash.jpg",
+    "14-host-action-serve.jpg",
+    "15-host-action-throw.jpg",
+    "16-host-action-extinguish.jpg",
+    "17-host-action-rejection.jpg",
+    "23-strip-entrance.jpg",
+    "30-strip-serve.jpg",
+    "36-strip-done.jpg",
+    "42-strip-exit.jpg",
+    "48-strip-reduced-entrance.jpg",
+    "55-strip-reduced-serve.jpg",
+    "61-strip-reduced-done.jpg",
+    "67-strip-reduced-exit.jpg",
+    "76-strip-throw.jpg",
+    "85-strip-walk.jpg",
+    "86-host-letterboxed.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-1-cooks-1920-showcase.jpg",
+      "bytes": 236996
+    },
+    {
+      "file": "02-host-1-cooks-1280-showcase.jpg",
+      "bytes": 136907
+    },
+    {
+      "file": "03-host-8-cooks-1920-showcase.jpg",
+      "bytes": 264459
+    },
+    {
+      "file": "04-host-8-cooks-1280-showcase.jpg",
+      "bytes": 152884
+    },
+    {
+      "file": "05-host-hud-score-width.jpg",
+      "bytes": 26874
+    },
+    {
+      "file": "06-host-rack-column.jpg",
+      "bytes": 18965
+    },
+    {
+      "file": "07-host-burning-label.jpg",
+      "bytes": 263751
+    },
+    {
+      "file": "08-host-action-idle.jpg",
+      "bytes": 261088
+    },
+    {
+      "file": "09-host-action-walk.jpg",
+      "bytes": 261562
+    },
+    {
+      "file": "10-host-action-carry-walk.jpg",
+      "bytes": 262032
+    },
+    {
+      "file": "11-host-action-chop.jpg",
+      "bytes": 259440
+    },
+    {
+      "file": "12-host-action-stir.jpg",
+      "bytes": 261530
+    },
+    {
+      "file": "13-host-action-wash.jpg",
+      "bytes": 261638
+    },
+    {
+      "file": "14-host-action-serve.jpg",
+      "bytes": 264408
+    },
+    {
+      "file": "15-host-action-throw.jpg",
+      "bytes": 262168
+    },
+    {
+      "file": "16-host-action-extinguish.jpg",
+      "bytes": 263202
+    },
+    {
+      "file": "17-host-action-rejection.jpg",
+      "bytes": 267882
+    },
+    {
+      "file": "23-strip-entrance.jpg",
+      "bytes": 1264249
+    },
+    {
+      "file": "30-strip-serve.jpg",
+      "bytes": 1604470
+    },
+    {
+      "file": "36-strip-done.jpg",
+      "bytes": 1312320
+    },
+    {
+      "file": "42-strip-exit.jpg",
+      "bytes": 1286475
+    },
+    {
+      "file": "48-strip-reduced-entrance.jpg",
+      "bytes": 1319637
+    },
+    {
+      "file": "55-strip-reduced-serve.jpg",
+      "bytes": 1603950
+    },
+    {
+      "file": "61-strip-reduced-done.jpg",
+      "bytes": 1312337
+    },
+    {
+      "file": "67-strip-reduced-exit.jpg",
+      "bytes": 1277622
+    },
+    {
+      "file": "76-strip-throw.jpg",
+      "bytes": 2118865
+    },
+    {
+      "file": "85-strip-walk.jpg",
+      "bytes": 2119127
+    },
+    {
+      "file": "86-host-letterboxed.jpg",
+      "bytes": 147576
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 3491
+    },
+    {
+      "file": "run.json",
+      "bytes": 12465
+    }
+  ],
+  "totalBytes": 19108407,
+  "maxBytes": 41943040
+}

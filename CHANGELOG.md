@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — T-07: Tabao Rush TV renderer (in progress)
+
+- TR-001, TR-004, TR-030, TR-031, TR-061, TR-062, PERF-001: station cues (five shapes and eight
+  cells, no text; north cues above the counter in the screen margin), ink-edged seat markers
+  above their cooks, order cards and HUD, rejection notes and the done pulse (D-271 to D-276).
+  Twelve review rounds. Production performance still to be assessed.
+
 ## 2026-11-19 — X-10: Credits question download
 
 - RZ-021, DATA-004: Credits offers "Download our questions (CC BY‑SA 4.0)", which saves

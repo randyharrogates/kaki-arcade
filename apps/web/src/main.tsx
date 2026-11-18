@@ -83,6 +83,7 @@ function App() {
 }
 const root = document.getElementById('app');
 async function start(): Promise<void> {
+  if(import.meta.env.DEV && location.pathname==='/host/tabao-renderer'){const fixture=await import('./tabao-renderer.fixture');await fixture.start();return;}
   // Functions are bound to window when present, so nothing is copied off it unbound.
   const env: SupportEnvironment = { pathname: location.pathname,
     RTCPeerConnection: window.RTCPeerConnection, WebSocket: window.WebSocket, Element: window.Element,

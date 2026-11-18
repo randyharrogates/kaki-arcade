@@ -52,7 +52,10 @@ interface SessionRegistration {
 /** Only the registry knows each game's host renderer and declared preload resolvers. */
 export const sessionRegistrations: Record<string, SessionRegistration> = {
   ...(consoleE2eEnabled ? { 'console-e2e': { screen: async () => (await import('./console-e2e.fixture')).ConsoleE2eScreen as HostScreen, data: {} } } : {}),
-  'tabao-rush': { finalHintTheme: THEMES['tabao-rush'], data: {} },
+  'tabao-rush': { finalHintTheme: THEMES['tabao-rush'], data: {},
+    screen: async () => (await import('../../../games/tabao-rush/host')).ConsoleScreen,
+    viewKey: async () => (await import('../../../games/tabao-rush/host')).createPublicViewKey(),
+  },
   'peek-poker': {
     record: async () => {
       const { pokerRecordSchema, savedView } = await import('../../../games/peek-poker/src');
