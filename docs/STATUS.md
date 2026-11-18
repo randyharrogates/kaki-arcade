@@ -260,6 +260,14 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   masked with room for its ink, and a browser checker compares measured ink with each mask (480
   screen states, none clipped). Screen transitions held 16.7 ms frames in the performance run.
   Not proven: inside the console (R-02 wires the game), sounds (RZ-033).
+- **Start-screen settings (R-04, merged 2026-11-18).** The leader's phone shows the game's settings:
+  Rabakz Questions 10/30/50, Categories in two tabs with Mixed, Difficulty Easy/Mixed/Hard, and
+  Teams; Peek Poker Rounds 3/5/7. The TV mirrors them beside the game card. A choice that leaves too
+  few questions is refused with the count and a fix, in the phone's footer status line (D-174). A
+  category change that strands the length disables Start with the reason. Settings are kept per game
+  for the room's life (not across a host reload). Other phones read "⟨leader⟩ is setting up". Known
+  gaps: a keyboard or pad leader cannot change settings (OQ-042); teams are not yet shown during play
+  (R-08); the picture slot is empty until A-09.
 - **Rabakz sounds (R-07, parts 1 and 2 merged 2026-11-18).** The TV plays answers open, buzz-in
   seat notes, right and wrong (D-168 Mallet set, D-169 timing) through a limiter whose make-up gain
   is cancelled. The TV pause panel has Effects and Music rows under Resume (D-168), worked by arrow

@@ -64,13 +64,13 @@ button:focus-visible, a:focus-visible, [role="button"]:focus-visible, .pause-lev
 .seat-content .connection { flex: none; height: calc(var(--ka-type-34) * var(--ka-line-body)); margin-top: var(--ka-space-5); }
 
 .picker-screen { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: var(--ka-space-34); }
-.picker-screen header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--ka-space-8) var(--ka-space-34); }
-.picker-screen header > .overlap { grid-column: 1; grid-row: 1; overflow: visible; min-width: 0; }
-.picker-screen header p { grid-column: 1 / -1; grid-row: 2; font-size: var(--ka-type-34); }
-.picker-screen header .player-count { justify-self: end; }
-.picker-screen header h1 { font-size: var(--ka-type-89); white-space: nowrap; }
+.picker-screen > header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--ka-space-8) var(--ka-space-34); }
+.picker-screen > header > .overlap { grid-column: 1; grid-row: 1; overflow: visible; min-width: 0; }
+.picker-screen > header p { grid-column: 1 / -1; grid-row: 2; font-size: var(--ka-type-34); }
+.picker-screen > header .player-count { justify-self: end; }
+.picker-screen > header h1 { font-size: var(--ka-type-89); white-space: nowrap; }
 /* The 89 px display face overhangs its 1.0 line box; the heading block (heading and subtitle together) sits 21 px down so the drawn text clears the safe margin. */
-.picker-screen header .incoming, .picker-screen header .outgoing { padding-top: var(--ka-space-21); }
+.picker-screen > header .incoming, .picker-screen > header .outgoing { padding-top: var(--ka-space-21); }
 .picker-stage { position: relative; display: grid; grid-template-columns: minmax(0, 1.618fr) minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: var(--ka-space-34); min-height: 0; }
 .game-tile { min-width: 0; min-height: 0; position: relative; transform-origin: 0 0; overflow: hidden; border-radius: var(--ka-radius-corner); }
 .game-surface { position: absolute; inset: 0; transform-origin: 0 0; }
@@ -91,12 +91,20 @@ button:focus-visible, a:focus-visible, [role="button"]:focus-visible, .pause-lev
 .game-tile[data-expanded="true"] > .game-tile-content:not([data-snapshot]), .game-tile-content[data-snapshot="true"] { display: grid; grid-template-columns: var(--ka-golden-columns); grid-template-rows: minmax(0, 1fr) auto; gap: var(--ka-space-21); padding: var(--ka-space-34); }
 .game-tile[data-expanded="true"] > .game-tile-content:not([data-snapshot]) .game-picture-slot, .game-tile-content[data-snapshot="true"] .game-picture-slot { margin: 0; min-height: 0; }
 .game-tile[data-expanded="true"] > .game-tile-content:not([data-snapshot]) .game-copy, .game-tile-content[data-snapshot="true"] .game-copy { align-self: stretch; display: grid; align-content: end; padding: 0; }
+/* Setup shares the available height: art/title left, summary right, players below.
+   Keep D-165's header band and the ordinary expanded card unchanged. */
+.game-tile[data-expanded="true"] > .game-tile-content:not([data-snapshot]):has(.game-setup-mirror), .game-tile-content[data-snapshot="true"]:has(.game-setup-mirror) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.618fr); grid-template-rows: minmax(0, 1fr) auto auto; }
+.game-tile[data-expanded="true"] > .game-tile-content:not([data-snapshot]):has(.game-setup-mirror) .game-copy, .game-tile-content[data-snapshot="true"]:has(.game-setup-mirror) .game-copy { display: contents; }
+.game-tile-content:has(.game-setup-mirror) .game-picture-slot { grid-column: 1; grid-row: 1; }
+.game-tile-content:has(.game-setup-mirror) .game-metadata { grid-column: 1; grid-row: 2; min-width: 0; }
+.game-copy > .game-setup-slot { grid-column: 2; grid-row: 1 / 3; min-width: 0; }
+.game-tile-content:has(.game-setup-mirror) .game-detail { grid-row: 3; }
 .game-metadata { display: grid; gap: var(--ka-space-8); }
 .game-detail { position: relative; }
 .game-tile[data-expanded="true"] > .game-tile-content:not([data-snapshot]) .game-detail, .game-tile-content[data-snapshot="true"] .game-detail { grid-column: 1 / -1; }
 .game-detail .outgoing { position: absolute; inset: 0; }
 .game-tile[data-expanded="false"] > .game-tile-content:not([data-snapshot]) .game-detail, .game-tile-content[data-snapshot="false"] .game-detail { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-.game-setup-slot { height: 0; overflow: hidden; }
+.game-setup-slot { min-height: 0; }
 .game-start-content { display: grid; gap: var(--ka-space-13); }
 .game-start-content h3 { font-size: var(--ka-type-34); }
 .picker-players { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: var(--ka-space-13); list-style: none; padding: 0; }
@@ -107,20 +115,20 @@ button:focus-visible, a:focus-visible, [role="button"]:focus-visible, .pause-lev
 
 .game-copy .outgoing { position: absolute; inset: 0; }
 
-.picker-screen header .outgoing { position: absolute; inset: 0; }
+.picker-screen > header .outgoing { position: absolute; inset: 0; }
 
 /* D-165: reserve the heading inset in the fixed 4A copy band. */
-.picker-screen header { --picker-copy-band: calc(var(--ka-type-89) * var(--ka-line-display) + var(--ka-type-34) * var(--ka-line-body) + var(--ka-space-21) + var(--ka-space-21)); position: relative; z-index: 3; min-height: var(--picker-copy-band); align-content: start; align-items: start; }
+.picker-screen > header { --picker-copy-band: calc(var(--ka-type-89) * var(--ka-line-display) + var(--ka-type-34) * var(--ka-line-body) + var(--ka-space-21) + var(--ka-space-21)); position: relative; z-index: 3; min-height: var(--picker-copy-band); align-content: start; align-items: start; }
 
-.picker-screen header .player-count { align-self: start; }
+.picker-screen > header .player-count { align-self: start; }
 
 .game-tile[data-focused="false"] > .game-tile-content:not([data-snapshot]) .game-picture-slot, .game-tile-content[data-snapshot="false"][data-snapshot-focused="false"] .game-picture-slot { flex-basis: 0; margin-bottom: 0; border: 0; outline: var(--ka-panel-edge); outline-style: dashed; overflow: hidden; }
 
-.picker-screen header p { display: flex; gap: var(--ka-space-8); align-items: baseline; }
+.picker-screen > header p { display: flex; gap: var(--ka-space-8); align-items: baseline; }
 
 /* Match main’s fixed heading/subtitle rows during the 4A crossfade. */
-.picker-screen header > .overlap { height: var(--picker-copy-band); }
-.picker-screen header .incoming, .picker-screen header .outgoing { height: 100%; grid-template-rows: calc(var(--ka-type-89) * var(--ka-line-display)) auto; row-gap: var(--ka-space-21); align-content: start; align-items: start; }
+.picker-screen > header > .overlap { height: var(--picker-copy-band); }
+.picker-screen > header .incoming, .picker-screen > header .outgoing { height: 100%; grid-template-rows: calc(var(--ka-type-89) * var(--ka-line-display)) auto; row-gap: var(--ka-space-21); align-content: start; align-items: start; }
 
 .session-placeholder .picker-players { position: absolute; bottom: var(--ka-space-55); left: var(--ka-space-55); right: var(--ka-space-55); }
 .console-results { display: grid; grid-template-rows: minmax(0, 1fr); grid-template-columns: minmax(0, 1fr) minmax(0, 1.618fr); gap: var(--ka-space-55); font-size: var(--ka-type-34); }
@@ -165,7 +173,7 @@ button:focus-visible, a:focus-visible, [role="button"]:focus-visible, .pause-lev
 .host-pad-hint { font-size: var(--ka-type-34); line-height: var(--ka-line-body); }
 .lobby header .player-count { margin-left: 0; flex: none; }
 .picker-header-side { grid-column: 2; grid-row: 1; display: grid; justify-items: end; gap: var(--ka-space-21); }
-.picker-screen header .host-hints { justify-content: flex-end; white-space: nowrap; gap: var(--ka-space-21); }
+.picker-screen > header .host-hints { justify-content: flex-end; white-space: nowrap; gap: var(--ka-space-21); }
 .team-keyboard-hints { flex-wrap: wrap; }
 
 .team-screen footer { align-items: baseline; }

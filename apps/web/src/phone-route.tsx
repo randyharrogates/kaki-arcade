@@ -1,6 +1,7 @@
 import '../../../packages/controller-kit/src/layout.css';
 import '../../../packages/controller-kit/src/buttons.css';
 import '../../../packages/controller-kit/src/stick.css';
+import { GameSetup } from './game-setup-route';
 import { PhoneTeams, TeamsToggle } from './team-setup-route';
 import { ChoiceShape } from './choice-shape';
 import { pageWake, shellAfterWake } from './phone-wake';
@@ -71,12 +72,12 @@ export function PhonePage() {
   const teamAnnouncement = ownTeam === undefined ? '' : ` Your team is ${ownTeam === 0 ? 'Red' : 'Blue'}. ${view.teamSetup?.notice ?? ''}`;
   const form = view.action === 'Join' && !view.renaming;
   const feedback = (): void => { if ('vibrate' in navigator) navigator.vibrate(duration.fast); };
-  const teamChoice = view.leader && view.teamSetup?.screen === 'choice' ? <TeamsToggle enabled={view.teamSetup.enabled} toggle={() => { phone.current?.teamInput('teams-toggle'); }}/> : null;
+  const teamChoice = view.leader && view.teamSetup?.screen === 'choice' ? <TeamsToggle enabled={view.teamSetup.enabled} toggle={() => { feedback(); phone.current?.teamInput('teams-toggle'); }}/> : null;
   if (controller && wakeReady) return <GameController controller={controller} view={view} send={output => { phone.current?.controllerInput(output); }}/>;
-  return <main ref={page} class="phone-page ka-surface" data-seated={view.seat !== null} data-theme={view.theme} aria-label="Phone lobby">
+  return <main ref={page} class="phone-page ka-surface" data-seated={view.seat !== null} data-setup={view.leader && view.teamSetup?.screen === 'choice' && picker?.screen === 'start'} data-theme={view.theme} aria-label="Phone lobby">
     <div class="phone-live" role="status" aria-live="polite" aria-atomic="true">{announcement}<span>{teamAnnouncement}</span></div>
     {view.seat !== null && <header class="phone-id"><span class="phone-badge" style={{ backgroundColor: view.colour }}>{view.seat}</span><strong>{view.name}</strong><span class="phone-connection" role="img" aria-label={view.connected ? 'Connected' : 'Disconnected'} data-connected={view.connected}><Icon kind={view.connected ? 'good' : 'weak'}/><span aria-hidden="true">{view.connected ? 'Connected' : 'Disconnected'}{ownTeam === undefined ? '' : ` · on ${ownTeam === 0 ? 'Red' : 'Blue'}`}</span></span><button class="phone-leave ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button></header>}
-    <Overlap fade identity={view.teamSetup?.screen === 'teams' ? 'teams' : results ? 'results' : picker && picker.screen !== 'lobby' ? 'picker' : view.renaming ? 'rename' : form ? 'form' : 'lobby'}>{view.connected && view.teamSetup?.screen === 'teams' ? <PhoneTeams setup={view.teamSetup} seat={view.seat} leader={view.leader} send={(control, value) => { feedback(); phone.current?.teamInput(control, value); }}/> : view.renaming ? <section class="phone-join ka-panel">
+    <Overlap fade identity={view.teamSetup?.screen === 'teams' ? 'teams' : results ? 'results' : picker && picker.screen !== 'lobby' ? 'picker' : view.renaming ? 'rename' : form ? 'form' : 'lobby'}>{view.connected && view.teamSetup?.screen === 'teams' ? <PhoneTeams setup={view.teamSetup} seat={view.seat} leader={view.leader} send={(control, value) => { feedback(); phone.current?.teamInput(control, value); }}/> : view.connected && view.teamSetup?.screen === 'choice' && !results && picker?.screen === 'start' ? <GameSetup setup={view.teamSetup} leader={view.leader} leaderName={picker.leaderName ?? 'The leader'} change={(id, value) => { feedback(); phone.current?.settingInput(id, value); }} toggle={() => { feedback(); phone.current?.teamInput('teams-toggle'); }} start={() => { feedback(); phone.current?.pickerInput('start'); }} back={() => { feedback(); phone.current?.pickerInput('back'); }}/> : view.renaming ? <section class="phone-join ka-panel">
       <div class="phone-intro"><h1>Change your name</h1></div>
       <form class="phone-fields" onSubmit={event => { event.preventDefault(); feedback(); phone.current?.saveName(name); }}>
         <label for="rename">Your name</label>
@@ -108,7 +109,7 @@ export function PhonePage() {
         <span id="name-help" class="phone-help">1 to 12 visible characters</span>
         <div class="phone-feedback">{view.state !== 'entry' && <><strong>{view.title}</strong><p>{view.detail}</p></>}</div>
       </form>
-    </section> : <section class="phone-lobby" data-seated={view.seat !== null}>
+    </section> : <section class="phone-lobby" data-seated={view.seat !== null} data-setup={view.teamSetup?.screen === 'choice' && picker?.screen === 'start'}>
       <div class="phone-message">{view.leader && <strong class="phone-leader">You’re the leader</strong>}<Overlap fade identity={view.state}><div class="phone-status"><h2>{view.title}</h2><p>{view.detail}</p></div></Overlap>
         {view.connected && view.leader && picker?.screen === 'lobby' && <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('open'); }}>Pick a game</button>}
         {(view.connected || ['waiting-for-lobby', 'hold-over'].includes(view.state)) && <div class="phone-actions">{view.connected && <button class="ka-panel ka-pressable" onClick={() => { setName(view.name); feedback(); phone.current?.changeName(); }}>Change name</button>}{view.seat === null && <button class="ka-panel ka-pressable phone-leave" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button>}</div>}

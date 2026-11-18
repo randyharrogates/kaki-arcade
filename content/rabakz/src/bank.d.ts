@@ -3,3 +3,9 @@ declare module 'virtual:rabakz-bank' {
   const bank: { index: BankIndex; files: readonly { name: string; text: string }[] };
   export default bank;
 }
+
+declare module 'virtual:rabakz-bank-index' {
+  import type { BankIndex } from '@kaki/content-rabakz';
+  const index: BankIndex;
+  export default index;
+}

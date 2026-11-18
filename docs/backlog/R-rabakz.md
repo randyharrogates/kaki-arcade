@@ -15,7 +15,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | R-01 | Rules (pure): match flow as a buzzer race with no timer, first correct answer wins, 0.25 s same-time window, lock-out until everyone has had a turn, leader skip and 30 s auto-skip, scoring in hundreds with streak and double final round, team scoring, mid-match join, ties | RZ-001, RZ-004, RZ-006 to RZ-009, RZ-012, RZ-014, RZ-016, RZ-026 | F-04 | 1 | merged |
 | R-02 | Controller layouts and private views: setup, answer buttons, locked out, leader skip, reveal | RZ-003, RZ-005 | R-01, K-05 | 2 | todo |
 | R-03 | Big-screen question and reveal views: text at reading size, option shapes, no timer, who has answered and who is locked out, options marked wrong | RZ-003, RZ-005, RZ-006, RZ-030, RZ-031, RZ-034 | R-01, F-06 | 2 | merged |
-| R-04 | Setup screen: length, categories, difficulty, free-for-all or teams | RZ-001, RZ-010, RZ-011, RZ-012 | R-03 | 2 | todo |
+| R-04 | Setup screen: length, categories, difficulty, free-for-all or teams | RZ-001, RZ-010, RZ-011, RZ-012 | R-03 | 2 | merged 2026-11-18 |
 | R-05 | Scoreboard every 5 questions, podium, team totals | RZ-032 | R-03 | 2 | merged |
 | R-06 | Solo best per length and recently-seen questions on the host device | RZ-013, RZ-015 | R-01, C-13 | 2 | todo |
 | R-07 | Sound effects | RZ-033 | R-03 | 3 | merged 2026-11-18 (part 1 cues and engine; part 2 Effects and Music levels in the pause panel); follow-ups: music playback, real-TV listen, shared Mallet helper between platform and Rabakz |
@@ -83,3 +83,14 @@ Content work. It needs no code from other tracks and starts in Wave 0.
   order, with category titles (C-10, R-04). Reveal (4 s), final-round announcement (4 s) and
   scoreboard auto-continue (20 s) are provisional until seen on a screen (D-071). Add a skip
   inside the tie window to the long random-match test.
+
+### R-04 follow-ups (from the final re-review)
+
+- `game-setup.dom.test.ts` TV-fit test failed once under load: capture the assertion and check for the
+  `--screen-scale` race fixed in UAT `shot()`.
+- Keyboard or pad leader cannot change settings (OQ-042).
+- Picture slot is not 1.618 : 1 (about 656 × 257 Rabakz, 656 × 213 Peek Poker at 1080p): A-09 fills it.
+- Refusal copy uses lower-case option names ("mixed", "life"); match the button capitals.
+- The two-line start-blocked message has no 720 TV still.
+- "Teams on ✓" puts the tick after the word; the other chips put it before.
+- Dead `.setup-refusal` rule and `data-refused` attributes; superseded evidence folders (round1, roundK, roundL, checks.md).

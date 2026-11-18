@@ -1,0 +1,332 @@
+{
+  "slice": "R-04-setup",
+  "status": "completed-awaiting-visual-review",
+  "command": "node tools/uat/run.mjs -- R-04-setup --phones 1 --out round1-p1",
+  "commit": "6aa4541812301aa23cdb1fe0e542bc0a28be5492",
+  "viewports": [
+    "667×375",
+    "844×390",
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1416.6113339999997,
+      "status": "completed"
+    },
+    {
+      "name": "Open settings and mirror default values",
+      "ms": 1767.6115,
+      "status": "completed"
+    },
+    {
+      "name": "Other installed schemas need no console-specific code",
+      "ms": 1829.4023749999997,
+      "status": "completed"
+    },
+    {
+      "name": "Expand categories in the same row with D-157 groups",
+      "ms": 1446.3913750000002,
+      "status": "completed"
+    },
+    {
+      "name": "RZ-011 refuses Hard for Singapore Life and keeps the chosen difficulty",
+      "ms": 569.2709159999995,
+      "status": "completed"
+    },
+    {
+      "name": "RZ-001/010 category changes may strand 50 questions and disable Start",
+      "ms": 1030.1943329999995,
+      "status": "completed"
+    },
+    {
+      "name": "TV value changes use base crossfades and reduced-motion swaps",
+      "ms": 863.1072919999988,
+      "status": "completed"
+    },
+    {
+      "name": "Start thirty questions with the chosen settings",
+      "ms": 899.6515830000008,
+      "status": "completed"
+    },
+    {
+      "name": "Retain settings across the completed match, picker and a leader reload",
+      "ms": 335848.611167,
+      "status": "completed"
+    },
+    {
+      "name": "Team availability and team confirmation",
+      "ms": 136.78262499999255,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-setup-leader-default-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-setup-leader-default-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-setup-tv-default.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-peek-poker-rounds-leader-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-peek-poker-rounds-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-tabao-no-settings-leader-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-categories-world-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-categories-world-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-categories-singapore-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-categories-singapore-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-categories-group-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-setup-tv-categories.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-difficulty-refused-leader-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-difficulty-refused-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-start-blocked-leader-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-start-blocked-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-length-50-unavailable-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-tv-value-change-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-tv-value-change-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-tv-value-change-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-tv-value-change-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-tv-value-change-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-tv-value-change-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-tv-value-change-reduced-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-tv-value-change-reduced-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-host-tv-value-change-reduced-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-host-tv-value-change-reduced-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-tv-value-change-reduced-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-host-tv-value-change-reduced-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-match-started-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-phone1-settings-kept-leader-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone1-leader-reload-setup-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-phone1-solo-teams-disabled-667.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-setup-leader-default-667.jpg",
+    "02-phone1-setup-leader-default-844.jpg",
+    "03-host-setup-tv-default.jpg",
+    "04-phone1-peek-poker-rounds-leader-667.jpg",
+    "05-host-peek-poker-rounds-tv.jpg",
+    "06-phone1-tabao-no-settings-leader-844.jpg",
+    "07-phone1-categories-world-667.jpg",
+    "08-phone1-categories-world-844.jpg",
+    "09-phone1-categories-singapore-844.jpg",
+    "10-phone1-categories-singapore-667.jpg",
+    "11-phone1-categories-group-844.jpg",
+    "12-host-setup-tv-categories.jpg",
+    "13-phone1-difficulty-refused-leader-667.jpg",
+    "14-host-difficulty-refused-tv.jpg",
+    "15-phone1-start-blocked-leader-844.jpg",
+    "16-host-start-blocked-tv.jpg",
+    "17-phone1-length-50-unavailable-844.jpg",
+    "24-strip-tv-value-change.jpg",
+    "31-strip-tv-value-change-reduced.jpg",
+    "32-host-match-started-tv.jpg",
+    "33-phone1-settings-kept-leader-844.jpg",
+    "34-phone1-leader-reload-setup-667.jpg",
+    "35-phone1-solo-teams-disabled-667.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-setup-leader-default-667.jpg",
+      "bytes": 128735
+    },
+    {
+      "file": "02-phone1-setup-leader-default-844.jpg",
+      "bytes": 143759
+    },
+    {
+      "file": "03-host-setup-tv-default.jpg",
+      "bytes": 139226
+    },
+    {
+      "file": "04-phone1-peek-poker-rounds-leader-667.jpg",
+      "bytes": 68334
+    },
+    {
+      "file": "05-host-peek-poker-rounds-tv.jpg",
+      "bytes": 137153
+    },
+    {
+      "file": "06-phone1-tabao-no-settings-leader-844.jpg",
+      "bytes": 113409
+    },
+    {
+      "file": "07-phone1-categories-world-667.jpg",
+      "bytes": 205895
+    },
+    {
+      "file": "08-phone1-categories-world-844.jpg",
+      "bytes": 222610
+    },
+    {
+      "file": "09-phone1-categories-singapore-844.jpg",
+      "bytes": 156820
+    },
+    {
+      "file": "10-phone1-categories-singapore-667.jpg",
+      "bytes": 141089
+    },
+    {
+      "file": "11-phone1-categories-group-844.jpg",
+      "bytes": 173020
+    },
+    {
+      "file": "12-host-setup-tv-categories.jpg",
+      "bytes": 141571
+    },
+    {
+      "file": "13-phone1-difficulty-refused-leader-667.jpg",
+      "bytes": 156478
+    },
+    {
+      "file": "14-host-difficulty-refused-tv.jpg",
+      "bytes": 149144
+    },
+    {
+      "file": "15-phone1-start-blocked-leader-844.jpg",
+      "bytes": 178266
+    },
+    {
+      "file": "16-host-start-blocked-tv.jpg",
+      "bytes": 154000
+    },
+    {
+      "file": "17-phone1-length-50-unavailable-844.jpg",
+      "bytes": 210270
+    },
+    {
+      "file": "24-strip-tv-value-change.jpg",
+      "bytes": 877762
+    },
+    {
+      "file": "31-strip-tv-value-change-reduced.jpg",
+      "bytes": 876997
+    },
+    {
+      "file": "32-host-match-started-tv.jpg",
+      "bytes": 242221
+    },
+    {
+      "file": "33-phone1-settings-kept-leader-844.jpg",
+      "bytes": 149894
+    },
+    {
+      "file": "34-phone1-leader-reload-setup-667.jpg",
+      "bytes": 134725
+    },
+    {
+      "file": "35-phone1-solo-teams-disabled-667.jpg",
+      "bytes": 134725
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 3304
+    },
+    {
+      "file": "run.json",
+      "bytes": 8135
+    }
+  ],
+  "totalBytes": 5047579,
+  "maxBytes": 12582912
+}

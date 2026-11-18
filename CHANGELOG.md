@@ -2,6 +2,15 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — R-04: start-screen settings
+
+- Start-screen settings on the leader's phone with a TV mirror; Rabakz categories in two groups with
+  Mixed; length and difficulty refusals from the question pool; settings kept per game for the room.
+- RZ-001, RZ-010, RZ-011 done; PLAT-006 done (keyboard leader gap, OQ-042); PLAT-025, RZ-012, PP-001
+  in progress. D-157, D-170, D-174.
+- Teams can be turned off again after the player count drops; no "T: teams" hint when teams cannot be
+  on; clashing category labels are qualified by group; setting taps vibrate.
+
 ## 2026-11-18 — R-07 part 2: Effects and Music levels in the TV pause panel
 
 - RZ-033 (in progress), D-168: the pause panel shows Effects and Music rows between Resume and

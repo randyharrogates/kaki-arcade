@@ -50,7 +50,6 @@
 .phone-teams[data-moving="true"] .phone-team-actions { flex-direction: row; gap: var(--ka-space-8); }
 .phone-page .phone-team-actions button { padding: var(--ka-space-5) var(--ka-space-8); }
 /* D-151: Start uses the console primary, never a team colour. */
-.team-screen .picker-primary, .phone-teams .picker-primary { background-image: none; background-color: var(--ka-chip); color: var(--ka-chip-ink); border-color: var(--ka-chip); font-weight: var(--ka-weight-bold); }
 .phone-teams p[role="status"] strong { font-size: var(--ka-phone-type-21); }
 
 .phone-teams[data-moving="true"] > p .icon { width: var(--ka-phone-type-21); height: var(--ka-phone-type-21); }
@@ -62,3 +61,5 @@
 .phone-team-moves[data-heading-refused="true"] h2 { opacity: 0; transition-duration: var(--ka-duration-base-exit); }
 .phone-team-moves[data-heading-refused="true"] .phone-team-heading-refusal { opacity: 1; }
 .phone-team-moves[data-heading-refused="false"] .phone-team-heading-refusal { transition-duration: var(--ka-duration-base-exit); }
+
+:is(.phone-picker-controls, .phone-game-setup, .phone-teams, .team-screen) .picker-primary { background-image: none; background-color: var(--ka-chip); color: var(--ka-chip-ink); border-color: var(--ka-chip); font-weight: var(--ka-weight-bold); }

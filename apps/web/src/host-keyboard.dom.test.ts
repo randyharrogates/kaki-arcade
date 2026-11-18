@@ -19,6 +19,7 @@ it('PLAT-024 / CTRL-009 keeps board 3 controls absent through 24 phone updates a
         import { meta as rabakz } from '${source('../../../games/rabakz/src/meta.ts')}';
         export const gameMetas = [tabao, poker, rabakz];
         export const sessionRegistrations = {};
+        export const loadGame = async () => { throw new Error("No fixture game session"); };
         export const validGameSelection = () => false;
       `;
       if (id === source('./browser.ts')) return `

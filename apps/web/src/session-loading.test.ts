@@ -1,7 +1,8 @@
 import '../../../content/rabakz/src/bank.d.ts';
 import { expect, it, vi } from 'vitest';
-import { prepareSession } from './session-loading';
-import { loadGame } from './game-registry';
+import { prepareSetup, prepareSession } from './session-loading';
+import { settingsView, reconcileSettings } from './game-setup';
+import { gameMetas, loadGame } from './game-registry';
 import type { LoadedGame } from './session-adapter';
 it('C-16 real Rabakz defaults receive ten seeded questions before init; other modules need no data', async () => {
   const game = await loadGame('rabakz') as unknown as LoadedGame;
@@ -27,6 +28,13 @@ vi.mock('virtual:rabakz-bank', async () => {
   return { default: JSON.parse(source.slice('export default '.length)) as unknown };
 });
 
+vi.mock('virtual:rabakz-bank-index', async () => {
+  const { rabakzBank } = await import('@kaki/content-rabakz/vite');
+  const source = await rabakzBank().load('\0virtual:rabakz-bank-index');
+  if (!source) throw new Error('Missing bank');
+  return { default: JSON.parse(source.slice('export default '.length)) as unknown };
+});
+
 it('validated selection honours Mixed quotas before init', async () => {
   const game = await loadGame('rabakz') as unknown as LoadedGame;
   const prepared = await prepareSession(game, 7);
@@ -44,4 +52,14 @@ it('PLAT-025 prepares Rabakz team data/settings with the selected team context',
   const ready = await prepareSession(game, 7, true);
   expect(ready.context.teams).toBe(true);
   expect(ready.context.data['selected-questions.json']).toHaveLength(10);
+});
+
+it('PLAT-006/025 loads setup data for the real sixteen-option form and keeps its wire view below 4096 bytes', async () => {
+  const game = await loadGame(gameMetas[2]?.id ?? '') as unknown as LoadedGame;
+  const setup = await prepareSetup(game);
+  const settings = settingsView(setup.schema, reconcileSettings(setup.schema));
+  const multi = settings.fields.find(field => field.kind === 'multi');
+  expect(multi?.kind === 'multi' ? multi.options : []).toHaveLength(16);
+  const view = { kind: 'team-setup', revision: 1, screen: 'choice', enabled: false, teamsOffered: true, teamsReason: null, settings, players: [], error: null };
+  expect(new TextEncoder().encode(JSON.stringify(view)).byteLength).toBeLessThanOrEqual(4096);
 });

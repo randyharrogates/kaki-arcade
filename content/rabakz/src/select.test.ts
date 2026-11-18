@@ -13,6 +13,7 @@ import {
   parseChunk,
   picturesMissing,
   poolSize,
+  setupTable,
   selectQuestions,
   settingsFault,
   toPublicQuestion,
@@ -815,4 +816,16 @@ describe('selectQuestions: fairness', () => {
     expect((drawn.small ?? 0) / total).toBeGreaterThan(0.08);
     expect((drawn.small ?? 0) / total).toBeLessThan(0.12);
   });
+});
+
+
+it('RZ-010 setupTable aggregates regions and separates picture counts from plain counts', () => {
+  const bank = makeBank({ categories: { life: { easy: 8, medium: 4, hard: 2 } }, singaporeEvery: 2, pictureEvery: 2, pictureBytes: 123 });
+  const table = setupTable(bank.index);
+  const category = table.categories[0];
+  expect(category).toMatchObject({ id: 'life', title: 'life', region: 'general',
+    plain: { easy: 4, medium: 2, hard: 1 }, pictures: { easy: 4, medium: 2, hard: 1 }, largestPicture: 123 });
+  expect(category?.bytes).toBe(bank.index.categories[0]?.bytes);
+  expect(table.budgetBytes).toBeGreaterThan(0);
+  expect(setupTable(makeBank({ categories: { sg: { easy: 2 } }, singaporeEvery: 1 }).index).categories[0]?.region).toBe('singapore');
 });

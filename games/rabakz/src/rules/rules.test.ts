@@ -344,7 +344,7 @@ describe('Rabakz rules', () => {
   });
   it('RZ-001 RZ-012 passes conformance at minimum and maximum in FFA and teams', () => {
     const data = { [QUESTION_DATA]: questionData(bank()),
-      'categories.json': [{ id: 'general', title: 'General' }, { id: 'singapore', title: 'Singapore' }] };
+      'categories.json': { budgetBytes: 100, categories: ['general', 'singapore'].map(id => ({ id, title: id, region: id, plain: { easy: 50, medium: 50, hard: 50 }, pictures: { easy: 0, medium: 0, hard: 0 }, bytes: 0, largestPicture: 0 })) } };
     const report = runConformance(rabakz, [
       { name: 'solo', players: 1 }, { name: 'eight', players: 8 },
       { name: 'two teams', players: 2, teams: true },

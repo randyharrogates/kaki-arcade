@@ -4,6 +4,7 @@ import { phoneThemes } from './phone-themes';
 import type { Layout, LayoutOutput } from '@kaki/controller-kit';
 import { teamSetupView } from './team-setup';
 import type { TeamSetupView } from './team-setup';
+import type { JsonValue } from '@kaki/platform';
 import type { ThemeName, SeatNumber } from '@kaki/ui';
 import { createPhoneReconnect, createPhoneSeatStore } from '@kaki/platform';
 import type { PhoneReconnectDial, PhoneReconnectOptions, PhoneReconnectState, ReconnectClock, ReconnectStorage } from '@kaki/platform';
@@ -157,6 +158,9 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     },
     teamInput(control: string, value?: string): void {
       if (view.connected && view.teamSetup) peer?.sendPhone({ v: 1, t: 'action', rev: 0, viewRev: view.teamSetup.revision, data: { control, ...(value === undefined ? {} : { value }) } });
+    },
+    settingInput(id: string, value: unknown): void {
+      if (view.connected && view.leader && view.teamSetup) peer?.sendPhone({ v: 1, t: 'action', rev: 0, viewRev: view.teamSetup.revision, data: { control: 'setting', id, value: value as JsonValue } });
     },
     pickerInput(input: PickerInput): void {
       if (view.connected && view.leader && view.picker && !naming) peer?.sendPhone({ v: 1, t: 'picker-input', revision: view.picker.revision, input });

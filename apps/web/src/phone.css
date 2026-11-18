@@ -49,14 +49,13 @@
 .phone-picker h2 { font-size: var(--ka-phone-type-34); }
 .phone-picker-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ka-space-13); }
 .phone-picker-controls button { min-width: var(--ka-space-89); min-height: var(--ka-space-89); }
-.phone-picker-controls button:disabled { cursor: default; color: var(--ka-panel-secondary); border-style: dashed; }
+:is(.phone-picker-controls, .phone-game-setup) button:disabled { cursor: default; color: var(--ka-panel-secondary); border-style: dashed; }
 @media (orientation: portrait) { .phone-picker { grid-template-columns: minmax(0, 1fr); } }
 
 .phone-page button.phone-leave { margin-left: var(--ka-space-21); flex: none; min-width: var(--ka-space-55); min-height: var(--ka-space-55); font-size: var(--ka-phone-type-21); color: var(--ka-panel-secondary); }
-.phone-picker-controls .picker-primary { background-image: none; background-color: var(--ka-chip); color: var(--ka-chip-ink); border-color: var(--ka-chip); }
 .phone-picker-controls button { display: flex; align-items: center; justify-content: center; gap: var(--ka-space-8); }
 .phone-picker-reason { display: flex; align-items: center; gap: var(--ka-space-8); }
-.phone-picker-controls .picker-primary:disabled { color: var(--ka-panel-secondary); background: linear-gradient(var(--ka-panel-from), var(--ka-panel-to)); border-color: var(--ka-panel-secondary); border-style: dashed; text-decoration: none; }
+:is(.phone-picker-controls, .phone-game-setup, .phone-teams, .team-screen) .picker-primary:disabled { color: var(--ka-panel-secondary); background: linear-gradient(var(--ka-panel-from), var(--ka-panel-to)); border-color: var(--ka-panel-secondary); border-style: dashed; text-decoration: none; }
 
 /* The seated shell measures the header intrinsically; content uses the remaining height. */
 .phone-page[data-seated="true"] { display: flex; flex-direction: column; gap: var(--ka-space-21); }

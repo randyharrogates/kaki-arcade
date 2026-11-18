@@ -63,7 +63,7 @@ export const sessionRegistrations: Record<string, SessionRegistration> = {
         if (!checked.ok) throw new Error('Invalid Rabakz settings');
         const { length, categories, difficulty } = checked.settings;
         const rng = createRng(seed);
-        return questionData((await import('@kaki/content-rabakz/session')).questions({ count: length, categories: categories?.length ? categories : 'mixed', difficulty, region: 'mixed' }, () => nextFloat(rng)));
+        return questionData(await (await import('@kaki/content-rabakz/session')).questions({ count: length, categories: categories?.length ? categories : 'mixed', difficulty, region: 'mixed' }, () => nextFloat(rng)));
       },
     },
   },

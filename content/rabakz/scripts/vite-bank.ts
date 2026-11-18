@@ -5,11 +5,12 @@ import { registerHooks } from 'node:module';
 /** Build validated, hashed bank bytes in memory for Vite; never ship the validator to phones. */
 export function rabakzBank() {
   const id = 'virtual:rabakz-bank';
+  const indexId = 'virtual:rabakz-bank-index';
   return {
     name: 'rabakz-bank',
-    resolveId(source: string) { return source === id ? '\0' + id : undefined; },
+    resolveId(source: string) { return (source === id || source === indexId) ? '\0' + source : undefined; },
     async load(source: string) {
-      if (source !== '\0' + id) return;
+      if (source !== '\0' + id && source !== '\0' + indexId) return;
       const directory = fileURLToPath(new URL('../', import.meta.url));
       // Like the content package's CLI, resolve its extensionless TS imports in Node 24.
       // Scope the hook to that package and remove it once the tools entry has loaded.
@@ -24,7 +25,7 @@ export function rabakzBank() {
         pictures: new Map(), hash: text => createHash('sha256').update(text).digest('hex'),
       });
       if (!result.output) throw new Error('Rabakz bank validation failed');
-      return `export default ${JSON.stringify({ index: result.output.index, files: result.output.files })}`;
+      return `export default ${JSON.stringify(source === '\0' + indexId ? result.output.index : { index: result.output.index, files: result.output.files })}`;
     },
   };
 }

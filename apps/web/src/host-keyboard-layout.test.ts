@@ -18,11 +18,11 @@ function rule(selector: string) {
 }
 
 it('PLAT-024 keeps the main copy band and heading beside the count and hints', () => {
-  expect(rule('.picker-screen header')['min-height']).toBe('var(--picker-copy-band)');
-  expect(rule('.picker-screen header > .overlap')).toMatchObject({ 'grid-column': '1', 'grid-row': '1', height: 'var(--picker-copy-band)' });
-  expect(rule('.picker-screen header .incoming')['padding-top']).toBe('var(--ka-space-21)');
-  expect(rule('.picker-screen header > .overlap').top).toBeUndefined();
-  expect(rule('.picker-screen header h1')['white-space']).toBe('nowrap');
+  expect(rule('.picker-screen > header')['min-height']).toBe('var(--picker-copy-band)');
+  expect(rule('.picker-screen > header > .overlap')).toMatchObject({ 'grid-column': '1', 'grid-row': '1', height: 'var(--picker-copy-band)' });
+  expect(rule('.picker-screen > header .incoming')['padding-top']).toBe('var(--ka-space-21)');
+  expect(rule('.picker-screen > header > .overlap').top).toBeUndefined();
+  expect(rule('.picker-screen > header h1')['white-space']).toBe('nowrap');
   expect(rule('.picker-header-side')).toMatchObject({ 'grid-column': '2', 'grid-row': '1', 'justify-items': 'end' });
   expect(rule('.picker-screen .host-hints')['line-height']).toBe('var(--ka-line-body)');
   expect(rule('.lobby header')['flex-wrap']).toBe('nowrap');

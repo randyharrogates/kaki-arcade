@@ -1,3 +1,7 @@
+import { REFUSAL_HOLD_MS } from './team-setup';
+import type { SetupRefusal } from './game-setup-route';
+import { reconcileSettings, settingChange, settingsView } from './game-setup';
+import type { PreparedSetup, SettingsValues } from './game-setup';
 import { LOCAL_CONNECTION } from './local-player';
 import type { SessionPeer } from './session-links';
 import { wireJson } from './session-adapter';
@@ -30,7 +34,7 @@ export interface HostDependencies {
   mintToken(): string;
   dial(credentials: HostCredentials | undefined, callbacks: DialCallbacks,
     registerStop: (stop: () => void) => void): Promise<HostLink & { reopened: boolean }>;
-  session?: { localPeer?(id: string, peer: SessionPeer): void; command?(action: 'pause' | 'resume' | 'quit', id: string): void; continueResults?(): void; start(gameId: string, room: RoomState): Promise<unknown>; prefetch?(gameId: string): Promise<unknown>; updateRoom?(room: RoomState): void; stop?(): void; control?(id: string, message: unknown): void; dropped?(id: string): void };
+  session?: { localPeer?(id: string, peer: SessionPeer): void; command?(action: 'pause' | 'resume' | 'quit', id: string): void; continueResults?(): void; setup?(gameId: string, teams: boolean): Promise<PreparedSetup>; start(gameId: string, room: RoomState, settings?: object): Promise<unknown>; prefetch?(gameId: string): Promise<unknown>; updateRoom?(room: RoomState): void; stop?(): void; control?(id: string, message: unknown): void; dropped?(id: string): void };
   online?: { subscribe(callback: () => void): () => void };
   lifecycle?: { subscribe(callback: (event?: 'pageshow' | 'pagehide' | 'hidden') => void): () => void };
 }
@@ -38,8 +42,47 @@ export interface HostDependencies {
 export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyInput, 'origin'>) => void) {
   const store = createHostSnapshotStore({ storage: deps.storage, clock: deps.clock, validateSelection: validGameSelection });
   let picker = initialPicker(gameMetas);
-  let teamSetup: TeamSetupView | null = null;
+  let teamSetup: (TeamSetupView & { refusal?: SetupRefusal | null }) | null = null;
   let teamRevision = 0;
+  let refusalTimer: unknown;
+  const chosenSettings = new Map<string, SettingsValues>();
+  const preparedSetups = new Map<string, PreparedSetup>();
+  let setupGeneration = 0;
+  let setupLoading = false;
+  let setupProblem: string | null = null;
+  function updateSettingsView(): void {
+    if (!teamSetup) return;
+    const setup = preparedSetups.get(picker.focus);
+    teamSetup = { ...teamSetup, teamsOffered: gameMetas.find(g => g.id === picker.focus)?.teams === 'optional',
+      teamsReason: (roomAdapter?.room.players.length ?? 0) < 2 ? 'Teams need 2 players' : null,
+      settings: setupLoading ? { loading: true, problem: null, fields: [] } : setupProblem ? { loading: false, problem: setupProblem, fields: [] } : setup?.schema.fields.length ? settingsView(setup.schema, chosenSettings.get(picker.focus) ?? {}) : null };
+  }
+  function openSetup(enabled = gameMetas.find(g => g.id === picker.focus)?.teams === 'required', rebuild = true): void {
+    deps.clock.cancel(refusalTimer);
+    const gameId = picker.focus;
+    const offered = gameMetas.find(g => g.id === gameId)?.teams === 'optional';
+    teamSetup = { kind: 'team-setup', revision: ++teamRevision, screen: 'choice', enabled, teamsOffered: offered, teamsReason: null, settings: null, players: [], error: null };
+    const generation = ++setupGeneration;
+    const cached = preparedSetups.get(gameId);
+    setupLoading = deps.session?.setup !== undefined && (rebuild || cached?.context.teams !== enabled); setupProblem = null;
+    updateSettingsView(); sendTeams(); publish();
+    if (!setupLoading || !deps.session?.setup) { if (!offered && !cached?.schema.fields.length) { teamSetup = null; sendTeams(); publish(); } return; }
+    void deps.session.setup(gameId, enabled).then(setup => {
+      if (stopped || generation !== setupGeneration || picker.focus !== gameId || picker.screen !== 'start') return;
+      preparedSetups.set(gameId, setup);
+      chosenSettings.set(gameId, reconcileSettings(setup.schema, chosenSettings.get(gameId)));
+      setupLoading = false; updateSettingsView();
+      if (!offered && !setup.schema.fields.length) { teamSetup = null; teamRevision++; sendTeams(); publish(); }
+      else reviseTeams();
+    }).catch(() => {
+      if (stopped || generation !== setupGeneration || picker.focus !== gameId || picker.screen !== 'start') return;
+      setupLoading = false; setupProblem = 'Settings could not be loaded. Go back and try again.'; updateSettingsView(); reviseTeams();
+    });
+  }
+  function settingsBlocked(): boolean {
+    const setup = preparedSetups.get(picker.focus);
+    return setupLoading || setupProblem !== null || Boolean(setup && settingsView(setup.schema, chosenSettings.get(picker.focus) ?? {}).problem);
+  }
   let savedTeams: TeamSetupView | null = null;
   const teamNotices = new Map<number, { notice: string; refused: boolean }>();
   let confirmingTeams = false;
@@ -86,16 +129,33 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     if (!actor || !data || typeof data !== 'object' || Array.isArray(data)) return;
     const leader = actor.seat === roomAdapter.room.leader;
     teamNotices.delete(actor.seat);
+    if (data.control === 'setting' && leader && teamSetup.screen === 'choice' && !setupLoading && setupProblem === null) {
+      const setup = preparedSetups.get(picker.focus);
+      if (!setup || typeof data.id !== 'string') return;
+      const result = settingChange(setup.schema, chosenSettings.get(picker.focus) ?? {}, data.id, data.value);
+      deps.clock.cancel(refusalTimer);
+      teamSetup = { ...teamSetup, refusal: result.reason ? { field: data.id, sentence: result.reason, revision: teamRevision + 1 } : null };
+      if (result.reason) {
+        const refusal = teamSetup.refusal;
+        refusalTimer = deps.clock.schedule(() => {
+          if (stopped || !teamSetup || teamSetup.refusal !== refusal) return;
+          teamSetup = { ...teamSetup, refusal: null }; reviseTeams();
+        }, REFUSAL_HOLD_MS);
+      } else chosenSettings.set(picker.focus, result.settings);
+      updateSettingsView(); reviseTeams(); return;
+    }
     if (data.control === 'teams-dismiss') { teamSetup = { ...teamSetup, error: null }; reviseTeams(); return; }
     if (data.control === 'teams-toggle' && leader && teamSetup.screen === 'choice') {
+      if (!teamSetup.enabled && (!teamSetup.teamsOffered || teamSetup.teamsReason)) return;
       teamSetup = { ...teamSetup, enabled: !teamSetup.enabled };
       if (savedTeams) savedTeams = { ...savedTeams, enabled: teamSetup.enabled };
-      reviseTeams();
+      openSetup(teamSetup.enabled);
     } else if (teamSetup.screen === 'teams') {
       if (data.control === 'teams-back' && leader) {
         savedTeams = null; teamNotices.clear();
         teamSetup = null; teamRevision++; picker = { ...picker, screen: 'picker', revision: picker.revision + 1 }; sendTeams(); sendPicker(); publish();
       } else if (data.control === 'teams-start' && leader && teamSetup.players.length >= 2) {
+        if (settingsBlocked()) return;
         const game = gameMetas.find(g => g.id === picker.focus);
         if (!game || teamSetup.players.length < game.players.min || teamSetup.players.length > game.players.max) return;
         savedTeams = { ...teamSetup, error: null };
@@ -168,6 +228,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     deps.clock.cancel(trailing); trailing = undefined; queued = undefined;
     if (teamSetup?.screen === 'teams' && !confirmingTeams) return;
     const game = gameMetas.find(g => g.id === picker.focus);
+    if (picker.screen === 'start' && checked.value.input === 'start' && settingsBlocked()) return;
     if (!confirmingTeams && picker.screen === 'start' && checked.value.input === 'start' && game &&
       (game.teams === 'required' || teamSetup?.enabled)) {
       if (room.players.length < Math.max(2, game.players.min) || room.players.length > game.players.max) return;
@@ -179,10 +240,9 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     if (picker === before) return;
     if (picker.screen === 'picker') savedTeams = null;
     if (before.screen === 'starting' && picker.screen !== 'starting') { loadAttempt++; deps.session?.stop?.(); }
-    if (picker.screen === 'start' && before.screen === 'picker' && gameMetas.find(g => g.id === picker.focus)?.teams === 'optional') {
-      savedTeams = null; teamNotices.clear();
-      teamSetup = { kind: 'team-setup', revision: ++teamRevision, screen: 'choice', enabled: false, players: [], error: null }; sendTeams();
-    } else if (teamSetup && picker.screen !== 'start') { teamSetup = null; teamRevision++; sendTeams(); }
+    if (picker.screen === 'start' && before.screen === 'picker') {
+      savedTeams = null; teamNotices.clear(); openSetup();
+    } else if (teamSetup && picker.screen !== 'start') { setupGeneration++; teamSetup = null; teamRevision++; sendTeams(); }
     // Draining queued presses must not start another throttle window.
     if (!flushing) acceptedAt = deps.clock.now();
     acceptedLeader = roomAdapter.room.leader;
@@ -191,24 +251,23 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     if (picker.screen === 'starting') {
       if (!confirmingTeams) for (const p of roomAdapter.room.players) if (p.team !== null) roomAdapter.host({ type: 'team', seat: p.seat, team: null });
       const loading = ++loadAttempt; const gameId = picker.focus;
-      void deps.session?.start(picker.focus, roomAdapter.room).then(() => {
+      void (chosenSettings.has(picker.focus) ? deps.session?.start(picker.focus, roomAdapter.room, chosenSettings.get(picker.focus)) : deps.session?.start(picker.focus, roomAdapter.room))?.then(() => {
         if (!stopped && loading === loadAttempt && picker.screen === 'starting' && roomAdapter?.room.phase === 'lobby') roomAdapter.host({ type: 'phase', phase: 'playing', allowRunningJoin: false });
       }).catch(() => {
         if (stopped || loading !== loadAttempt || picker.screen !== 'starting' || picker.focus !== gameId) return;
         picker = pickerFailed(picker, gameMetas);
-        if (gameMetas.find(g => g.id === gameId)?.teams === 'optional') {
-          teamSetup = { kind: 'team-setup', revision: ++teamRevision, screen: 'choice', enabled: roomAdapter?.room.players.every(p => p.team !== null) ?? false, players: [], error: null }; sendTeams();
-        }
+        openSetup(roomAdapter?.room.players.every(p => p.team !== null) ?? false);
         sendPicker(); publish();
       });
     }
   }
   function terminal(): boolean { return pairing === 'replaced' || pairing === 'expired'; }
   function retire(): void {
-    teamSetup = null;
+    setupGeneration++; setupLoading = false; setupProblem = null; teamSetup = null;
     deps.clock.cancel(trailing); trailing = undefined; queued = undefined;
     if (picker.screen === 'starting') picker = pickerFailed(picker, gameMetas);
     loadAttempt++; acceptedAt = -Infinity; acceptedLeader = null;
+    deps.clock.cancel(refusalTimer);
     checkpoints?.stop(); checkpoints = undefined;
     roomAdapter?.stop(); roomAdapter = undefined;
     link?.stop(); link = undefined;
@@ -224,7 +283,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     // Preserve the latest room before a manual retry.
     checkpoints?.flush(); retire();
     picker = initialPicker(gameMetas);
-    if (fresh) store.clear();
+    if (fresh) { store.clear(); chosenSettings.clear(); preparedSetups.clear(); }
     pairing = store.read() && !fresh ? 'restoring' : 'creating'; code = ''; publish();
     const pending: (() => void)[] = [];
     const current = (): boolean => !stopped && generation === attempt;
@@ -297,6 +356,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
             teamNotices.clear();
             teamSetup = { ...teamSetup, players: reconcileTeams(teamSetup.players, roomPlayers(room), room.leader), error: null, revision: ++teamRevision };
           }
+          if (teamSetup?.screen === 'choice') { updateSettingsView(); teamSetup = { ...teamSetup, revision: ++teamRevision }; }
           const wasStarting = picker.screen === 'starting'; picker = pickerRoom(picker, room, previousRoom); if (wasStarting && picker.screen !== 'starting') { loadAttempt++; deps.session?.stop?.(); } previousRoom = room; deps.session?.updateRoom?.(room); checkpoints?.checkpoint(); sendPicker(); if (teamSetup) sendTeams(); publish(); } });
       checkpoints = createHostCheckpoints({ store, clock: deps.clock,
         capture: () => { const room = roomAdapter?.room ?? captured.room; const players = room.players.filter(p => p.connectionId !== LOCAL_CONNECTION); return { ...captured, room: { ...room, players, leader: players.some(p => p.seat === room.leader) ? room.leader : players.filter(p => p.disconnectedAt === null).reduce<number | null>((seat, p) => seat === null ? p.seat : Math.min(seat, p.seat), null) } }; },
@@ -316,8 +376,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
   }
   function restoreTeamChoice(): void {
     if (teamSetup?.screen === 'choice') return;
-    if (gameMetas.find(g => g.id === picker.focus)?.teams !== 'optional') return;
-    teamSetup = { kind: 'team-setup', revision: ++teamRevision, screen: 'choice', enabled: savedTeams?.enabled ?? false, players: [], error: null };
+    openSetup(savedTeams?.enabled ?? gameMetas.find(g => g.id === picker.focus)?.teams === 'required', false);
     teamNotices.clear(); sendTeams();
   }
   function continueResults(): void {
@@ -331,6 +390,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     roomAdapter.host({ type: 'phase', phase: 'lobby', allowRunningJoin: false });
     picker = { ...picker, screen: 'start', revision: picker.revision + 1 };
     restoreTeamChoice();
+
     acceptedAt = -Infinity;
     const leader = roomAdapter.room.players.find(p => p.seat === roomAdapter?.room.leader);
     if (leader) input(leader.connectionId, { v: 1, t: 'picker-input', input: 'start', revision: picker.revision });

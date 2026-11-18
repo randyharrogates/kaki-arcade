@@ -1,3 +1,4 @@
+import { REFUSAL_HOLD_MS } from './team-setup';
 import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks';
 import { arc, duration, easing, reducedMotion, space } from '@kaki/ui';
 import type { RoomState } from '@kaki/platform';
@@ -102,7 +103,7 @@ export function PhoneTeams({ setup, seat, leader, send }: { setup: TeamSetupView
     window.clearTimeout(refusalTimer.current);
     lastRefusal.current = notice;
     setHeadingRefusal(notice);
-    refusalTimer.current = window.setTimeout(() => { setHeadingRefusal(null); }, 3000);
+    refusalTimer.current = window.setTimeout(() => { setHeadingRefusal(null); }, REFUSAL_HOLD_MS);
   }, [moving, setup.notice, setup.refused, setup.revision]);
   useEffect(() => () => { window.clearTimeout(refusalTimer.current); }, []);
   const own = setup.players.find(p => p.seat === seat);

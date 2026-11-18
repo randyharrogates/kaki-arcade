@@ -3,6 +3,7 @@ import type { GameModule, JsonValue, SettingsSchema } from '@kaki/platform';
 import { teamsInUse } from '@kaki/platform';
 import { createRng, shuffled } from '@kaki/sim-core';
 import { step } from './rules/flow';
+import { readSetupTable, setupProblem } from './rules/setup';
 import { CATEGORY_DATA, QUESTION_DATA, seat } from './rules/model';
 import type { Question, Settings, State } from './rules/model';
 import { scrambleSecrets, secrets } from './rules/secrets';
@@ -14,19 +15,22 @@ export { CATEGORY_DATA, QUESTION_DATA, DEFAULT_SETTINGS } from './rules/model';
 export const rabakz: GameModule<State, Settings, ReturnType<typeof publicView>> = {
   meta,
   settings(context): SettingsSchema<Settings> {
-    const categories = context.data[CATEGORY_DATA];
-    const values = Array.isArray(categories) ? categories.flatMap((value) =>
-      value !== null && typeof value === 'object' && !Array.isArray(value) &&
-      typeof value.id === 'string' && typeof value.title === 'string' ?
-        [{ value: value.id, label: value.title }] : []) : [];
+    const table = readSetupTable(context.data[CATEGORY_DATA]);
+    const values = [...table.categories.filter(category => category.region !== 'singapore'),
+      ...table.categories.filter(category => category.region === 'singapore')].map(category => {
+      const short = category.region === 'singapore' ? category.title.replace(/^Singapore /, '') :
+        category.title.replace('Games, comics and anime', 'Games and anime').replace('Technology and vehicles', 'Tech and vehicles');
+      return { value: category.id, label: short.charAt(0).toUpperCase() + short.slice(1),
+        group: category.region === 'singapore' ? 'Singapore' : 'Around the world' };
+    });
     return { fields: [
       { kind: 'choice', id: 'length', label: 'Questions', default: 10,
         options: ([10, 30, 50] as const).map((value) => ({ value, label: String(value) })) },
       ...(values.length >= 2 ? [{ kind: 'multi' as const, id: 'categories' as const, label: 'Categories', default: [],
-        help: 'none chosen = Mixed', options: values }] : []),
-      { kind: 'choice', id: 'difficulty', label: 'Difficulty', default: 'mixed',
+        noneLabel: 'Mixed', options: values }] : []),
+      { kind: 'choice', id: 'difficulty', label: 'Difficulty', default: 'mixed', help: 'Easy suits children',
         options: (['easy', 'mixed', 'hard'] as const).map((value) => ({ value, label: value.slice(0, 1).toUpperCase() + value.slice(1) })) },
-    ] };
+    ], check: settings => setupProblem(table, settings) };
   },
   preload: (settings) => [{ key: settings === null ? CATEGORY_DATA : QUESTION_DATA,
     kind: 'data' }],

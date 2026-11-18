@@ -1,3 +1,5 @@
+import { prepareSetup, prepareMatch } from './session-loading';
+import type { PreparedSetup } from './game-setup';
 import { createSession } from '@kaki/platform';
 import type { GameModule, InitContext, JsonValue, RoomState, SessionEvent, SessionFrames, SessionTransport, Sound } from '@kaki/platform';
 import { createInputBuffer } from '@kaki/sim-core';
@@ -21,6 +23,8 @@ export interface AdapterOptions {
 }
 /** Frames are gated until init, every asset and the host view have finished loading. */
 export function createSessionAdapter(o: AdapterOptions) {
+  const setups = new Map<string, PreparedSetup>();
+  const setupVersions = new Map<string, number>();
   const pending = new Map<string, ReturnType<AdapterOptions['load']>>();
   let generation = 0;
   let latestRoom: RoomState | undefined;
@@ -41,11 +45,18 @@ export function createSessionAdapter(o: AdapterOptions) {
   return {
     buffer, prefetch,
     command(action: 'pause' | 'resume' | 'quit', id: string): void { if (action === 'quit') runner?.quit(id, true); else if (action === 'pause') runner?.pause(id); else runner?.resume(id); },
-    async start(gameId: string, room: RoomState): Promise<void> {
+    async setup(id: string, teams: boolean) {
+      const version = (setupVersions.get(id) ?? 0) + 1; setupVersions.set(id, version);
+      const loaded = await prefetch(id);
+      const setup = await prepareSetup(loaded.game, teams);
+      if (setupVersions.get(id) === version) setups.set(id, setup);
+      return setup;
+    },
+    async start(gameId: string, room: RoomState, settings?: object): Promise<void> {
       stop(); latestRoom = room; const current = generation;
       const loaded = await prefetch(gameId);
       const seed = o.seed();
-      const prepared = await o.prepare(loaded.game, seed, loaded.game.meta.teams === 'required' || (loaded.game.meta.teams === 'optional' && room.players.length > 1 && room.players.every(p => p.team !== null)));
+      const prepared = settings ? await prepareMatch(loaded.game, seed, setups.get(gameId) ?? await prepareSetup(loaded.game), settings) : await o.prepare(loaded.game, seed, loaded.game.meta.teams === 'required' || (loaded.game.meta.teams === 'optional' && room.players.length > 1 && room.players.every(p => p.team !== null)));
       if (current !== generation) throw new Error('Cancelled');
       const setup = { failed: false };
       const isFailed = (): boolean => setup.failed;

@@ -1,0 +1,54 @@
+.phone-game-setup { min-height: 0; display: flex; flex-direction: column; gap: var(--ka-space-8); font-size: var(--ka-phone-type-21); }
+.phone-game-setup button { min-width: var(--ka-space-55); min-height: var(--ka-space-55); font-size: var(--ka-phone-type-21); line-height: var(--ka-line-display); padding: var(--ka-space-5) var(--ka-space-8); }
+.setup-field-row { display: flex; align-items: center; justify-content: space-between; gap: var(--ka-space-13); }
+.setup-inline-options { display: flex; align-items: center; gap: var(--ka-space-8); }
+.setup-field[data-expanded="true"] { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: var(--ka-space-8); }
+.phone-game-setup[data-expanded="true"] > .setup-field:not([data-expanded="true"]) { display: none; }
+.setup-panel-heading { display: flex; align-items: center; gap: var(--ka-space-8); }
+.setup-tabs { display: flex; position: relative; flex: 1; gap: var(--ka-space-8); }
+.setup-option-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(calc(var(--ka-space-144) + var(--ka-space-34)), 1fr)); gap: var(--ka-space-8); padding: var(--ka-space-8) var(--ka-space-13); min-height: 0; }
+.setup-option-grid button { display: flex; align-items: center; justify-content: center; gap: var(--ka-space-5); }
+.setup-option-label { min-width: 0; overflow-wrap: normal; }
+.phone-game-setup button[aria-pressed="true"] { border-color: var(--ka-ink); }
+.phone-game-setup button[aria-disabled="true"] span { text-decoration: line-through; }
+.phone-game-setup .setup-group { background: var(--ka-chip); color: var(--ka-chip-ink); }
+.setup-teams-row { display: flex; align-items: center; gap: var(--ka-space-13); }
+.phone-game-setup footer { display: flex; align-items: center; gap: var(--ka-space-13); margin-top: auto; }
+.phone-game-setup footer p { flex: 1; margin: 0; }
+.game-setup-mirror { width: 100%; min-width: 0; grid-template-columns: minmax(0, 1fr); margin: 0; align-content: start; grid-auto-rows: max-content; display: grid; gap: var(--ka-space-8); font-size: var(--ka-type-34); line-height: var(--ka-line-body); }
+.setup-mirror-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.618fr); gap: var(--ka-space-21); }
+.game-setup-mirror p { margin: 0; }
+
+.phone-page[data-setup="true"] { padding: var(--ka-space-13) var(--ka-space-21); overflow: hidden; }
+.phone-page[data-setup="true"] > .phone-id { display: none; }
+.phone-page[data-setup="true"] > .overlap > .incoming { height: 100%; }
+.phone-page[data-setup="true"] .phone-game-setup { height: 100%; }
+.phone-page .phone-game-setup button { padding: var(--ka-space-5) var(--ka-space-8); }
+
+.setup-mirror-value { position: relative; }
+.setup-value-outgoing { position: absolute; inset: 0; }
+
+fieldset.setup-teams-row { border: 0; padding: 0; margin: 0; min-width: 0; }
+
+.setup-field-heading { position: relative; flex: 1; min-width: 0; height: var(--ka-space-55); display: flex; align-items: center; }
+
+.setup-mirror-row { position: relative; }
+.setup-mirror-heading { min-width: 0; }
+
+
+.game-setup-mirror dd { margin: 0; min-width: 0; }
+
+/* Board B: reserve the Done row and fit two-line labels in 55 px targets. */
+.phone-page .phone-game-setup button { line-height: var(--ka-line-display); }
+.phone-page .setup-option-grid button { padding-block: 0; }
+.setup-panel-heading { min-height: var(--ka-space-55); flex-shrink: 0; }
+
+.setup-watcher > .picker-status { grid-column: 1 / -1; }
+
+.phone-game-setup button[aria-disabled="true"] { color: var(--ka-panel-secondary); border-style: dashed; }
+.phone-game-setup .setup-group { white-space: nowrap; }
+.phone-game-setup .setup-group[aria-pressed="false"] { background: linear-gradient(var(--ka-panel-from), var(--ka-panel-to)); color: var(--ka-ink); }
+.setup-help { margin: 0; color: var(--ka-panel-secondary); font-size: var(--ka-phone-type-13); line-height: var(--ka-line-display); }
+.phone-game-setup footer p, .setup-mirror-problem p { display: flex; align-items: center; gap: var(--ka-space-8); }
+.phone-game-setup footer .icon, .setup-mirror-problem .icon { flex-shrink: 0; }
+.setup-mirror-problem { min-height: calc(var(--ka-type-34) * var(--ka-line-body) * 3); }

@@ -203,6 +203,28 @@ export function poolSize(
   return plain + sure;
 }
 
+/** RZ-010/011: setup needs counts and byte bounds, never question texts. */
+export function setupTable(index: BankIndex) {
+  return {
+    budgetBytes: MATCH_TRANSFER_BUDGET_BYTES,
+    categories: index.categories.map(category => {
+      const pictures = { easy: 0, medium: 0, hard: 0 };
+      const plain = { easy: 0, medium: 0, hard: 0 };
+      for (const difficulty of DIFFICULTIES) {
+        for (const region of REGIONS) {
+          pictures[difficulty] += category.counts.picturesByDifficultyAndRegion[difficulty][region];
+          plain[difficulty] += category.counts.byDifficultyAndRegion[difficulty][region] -
+            category.counts.picturesByDifficultyAndRegion[difficulty][region];
+        }
+      }
+      return { id: category.id, title: category.title,
+        region: category.counts.byRegion.singapore === category.counts.total ? 'singapore' : 'general',
+        plain, pictures, bytes: category.bytes,
+        largestPicture: category.pictures.reduce((largest, picture) => Math.max(largest, picture.bytes), 0) };
+    }),
+  };
+}
+
 /**
  * The form of a question that may leave the host's simulation: everything but the answer, and
  * of a picture only its file, alt text and credit (a source address usually names the subject).

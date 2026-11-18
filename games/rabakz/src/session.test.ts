@@ -10,7 +10,7 @@ const bank = (n = 10): Question[] => Array.from({ length: n }, (_, i) => ({
   options: [`Right ${String(i)}`, `Wrong a ${String(i)}`, `Wrong b ${String(i)}`, `Wrong c ${String(i)}`],
   correct: 0, category: 'General', difficulty: 'easy', type: 'multiple-choice', region: 'general',
 }));
-const context = { data: { [QUESTION_DATA]: questionData(bank()) } };
+const context = { data: { 'categories.json': { budgetBytes: 0, categories: [{ id: 'general', title: 'General', region: 'general', plain: { easy: 50, medium: 50, hard: 50 }, pictures: { easy: 0, medium: 0, hard: 0 }, bytes: 0, largestPicture: 0 }] }, [QUESTION_DATA]: questionData(bank()) } };
 const settings = { length: 10, difficulty: 'mixed' } as const;
 
 function playRound(t: ReturnType<typeof twin>, limit: number): number {

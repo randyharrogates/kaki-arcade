@@ -1,3 +1,5 @@
+import { GameSetupMirror } from './game-setup-route';
+import type { TeamSetupView } from './team-setup';
 import { useLayoutEffect, useRef, useState } from 'preact/hooks';
 import { expand } from '@kaki/ui';
 import { MAX_PLAYERS } from '@kaki/protocol';
@@ -11,7 +13,7 @@ import { pickerAnimation, pickerRects, pickerFocusAnimation, pickerLayout } from
 import { freezePickerContent, wipePickerContent } from './picker-content';
 
 /** The tile owns the mask; surface and content travel together without scaling text. */
-export function GamePicker({ state, room, localDevice = 'keyboard' }: { state: PickerModel; room: RoomState; localDevice?: 'keyboard' | 'controller' }) {
+export function GamePicker({ state, room, setup = null, localDevice = 'keyboard' }: { state: PickerModel; room: RoomState; setup?: TeamSetupView | null; localDevice?: 'keyboard' | 'controller' }) {
   const tiles = useRef(new Map<string, HTMLElement>());
   const snapshots = useRef(new Map<string, HTMLElement>());
   const before = useRef(new Map<string, DOMRect>());
@@ -89,12 +91,13 @@ export function GamePicker({ state, room, localDevice = 'keyboard' }: { state: P
   const params = import.meta.env.DEV ? new URLSearchParams(location.search) : null;
   const layout = import.meta.env.DEV && params?.get('demo') === 'picker' ? params.get('layout') ?? 'b' : undefined;
   return <main class="screen picker-screen" aria-label="Game picker" data-layout={layout} data-art={import.meta.env.DEV && params?.get('art') === '1' ? 'placeholder' : undefined}>
-    <header data-start={expanded}><Overlap fade identity={expanded ? state.screen : 'picker'}><PickerHeading expanded={expanded} text={expanded ? state.screen === 'starting' ? 'Starting…' : starts : 'Pick a game'}/>{(!expanded || state.error) && <p>{state.error ? <><Icon kind="weak"/>{state.error}</> : `${leader} is choosing: ${gameMetas.find(game => game.id === state.focus)?.name ?? ''}`}</p>}</Overlap><div class="picker-header-side"><span class="player-count">{room.players.length} of {MAX_PLAYERS} players</span><p class="host-hints">{expanded ? <><span>Enter: start</span><span>Esc: back</span>{gameMetas.find(game => game.id === state.focus)?.teams !== 'none' && <span>T: teams</span>}</> : <><span>Left and Right: choose</span><span>Enter: select</span><span>Esc: back</span></>}</p></div></header>
+    <header data-start={expanded}><Overlap fade identity={expanded ? state.screen : 'picker'}><PickerHeading expanded={expanded} text={expanded ? state.screen === 'starting' ? 'Starting…' : starts : 'Pick a game'}/>{(!expanded || state.error) && <p>{state.error ? <><Icon kind="weak"/>{state.error}</> : `${leader} is choosing: ${gameMetas.find(game => game.id === state.focus)?.name ?? ''}`}</p>}</Overlap><div class="picker-header-side"><span class="player-count">{room.players.length} of {MAX_PLAYERS} players</span><p class="host-hints">{expanded ? <><span>Enter: start</span><span>Esc: back</span>{gameMetas.find(game => game.id === state.focus)?.teams !== 'none' && !setup?.teamsReason && <span>T: teams</span>}</> : <><span>Left and Right: choose</span><span>Enter: select</span><span>Esc: back</span></>}</p></div></header>
     <div class="announcements" aria-live="polite" aria-atomic="true">{state.error ?? `${state.screen === 'starting' ? 'Starting ' + (gameMetas.find(game => game.id === state.focus)?.name ?? 'the game') : expanded ? starts : leader + ' is choosing'}${expanded ? '' : ' ' + (gameMetas.find(game => game.id === state.focus)?.name ?? '')}`}</div>
     <div class="picker-stage" role="list" aria-label="Installed games">
       {gameMetas.map(game => {
         const focused = game.id === state.focus;
         const detail = focused && expanded;
+        const hasSettings = detail && Boolean(setup?.settings && (setup.settings.fields.length || setup.settings.loading || setup.settings.problem));
         const reason = unavailable(game, room.players.length);
         return <div key={game.id} ref={node => { if (node) tiles.current.set(game.id, node); else tiles.current.delete(game.id); }}
           class="game-tile" data-game={game.id} data-hidden={expanded && covered && !focused}
@@ -102,8 +105,8 @@ export function GamePicker({ state, room, localDevice = 'keyboard' }: { state: P
           <div class="game-surface ka-panel"/>
           <div class="game-tile-content">
             <div class="game-picture-slot" aria-label="Game picture slot"/>
-            <div class="game-copy"><div class="game-metadata" data-primary={focused}><h2>{game.name}</h2><p>{game.blurb}</p><p>{playerRange(game)}</p>{reason && <strong class="game-unavailable"><Icon kind="weak"/>{reason}</strong>}</div></div>
-            <div class="game-detail">{detail ? <div class="game-start-content"><h3>Who’s in</h3><ol class="picker-players">{room.players.map(player => <li class="ka-panel" key={player.seat}><span class="seat-number" style={{ backgroundColor: `var(--ka-seat-${String(player.seat)})` }}>{player.seat}</span><span>{player.name}{player.disconnectedAt !== null ? ' · Seat held' : ''}</span></li>)}</ol><div class="game-setup-slot" aria-label="Settings and team setup slot"/></div> : <span/>}</div>
+            <div class="game-copy"><div class="game-metadata" data-primary={focused}><h2>{game.name}</h2><p>{game.blurb}</p><p>{playerRange(game)}</p>{reason && <strong class="game-unavailable"><Icon kind="weak"/>{reason}</strong>}</div>{hasSettings && <div class="game-setup-slot" aria-label="Settings and team setup slot"><GameSetupMirror setup={setup}/></div>}</div>
+            <div class="game-detail">{detail ? <div class="game-start-content"><h3>Who’s in</h3><ol class="picker-players">{room.players.map(player => <li class="ka-panel" key={player.seat}><span class="seat-number" style={{ backgroundColor: `var(--ka-seat-${String(player.seat)})` }}>{player.seat}</span><span>{player.name}{player.disconnectedAt !== null ? ' · Seat held' : ''}</span></li>)}</ol><div class="game-setup-slot"/></div> : <span/>}</div>
           </div>
         </div>;
       })}
