@@ -48,6 +48,8 @@ export function deployBundleSize(output) {
   // Read server-only data here; none of it enters the browser dependency graph.
   const source = readFileSync(new URL('../apps/signal/src/core/codes.ts', import.meta.url), 'utf8');
   const words = [...(/RUDE_WORDS = \[([\s\S]*?)\]/.exec(source)?.[1] ?? '').matchAll(/'([^']+)'/g)].map(match => match[1] ?? '');
+  /** @type {Set<string>} */
+  const atlasFiles = new Set();
   let raw = 0; let gzip = 0;
   for (const file of files) {
     if (/\.map$|\.tsbuildinfo$/.test(file)) throw new Error(`Non-deployable build output: ${file}`);
@@ -55,12 +57,29 @@ export function deployBundleSize(output) {
     if (file.endsWith('.css') && /(?:^|[;{])\s*(?!--)[-a-z]*(?:behaviour|colour|centre)[-a-z]*\s*:/.test(bytes.toString())) throw new Error(`Unknown CSS property: ${file}`);
     if (/unsupportedDemo|unsupported-demo|Cloud Noodle|Pebble Puff|Mango Moon|Waffle Fern|Velvet Kite|Bumble Bean|Puddle Pip|Comet Crumb|demo-seat-|Ah Boy\b|Ah Boyz\b|H7KQ9MXR/.test(bytes.toString())) throw new Error(`Demo fixture shipped: ${file}`);
     const text = bytes.toString();
+    if (/(?:^|\/)manifest-[^/]+\.json$/.test(file)) {
+      const parsed = /** @type {unknown} */ (JSON.parse(text));
+      if (!parsed || typeof parsed !== 'object' || !('atlases' in parsed) || !Array.isArray(parsed.atlases)) throw new Error('Missing or invalid atlas: ' + file);
+      for (const atlas of /** @type {unknown[]} */ (parsed.atlases)) {
+        if (!atlas || typeof atlas !== 'object' || !('full' in atlas) || !('half' in atlas)) throw new Error('Missing or invalid atlas: ' + file);
+        for (const detail of [atlas.full, atlas.half]) {
+          if (!detail || typeof detail !== 'object' || !('file' in detail) || typeof detail.file !== 'string' || !/^[\w./-]+\.webp$/.test(detail.file)) throw new Error('Missing or invalid atlas: ' + file);
+          const target = resolve(output, dirname(file), detail.file);
+          const path = relative(resolve(output), target);
+          if (path.startsWith('..') || isAbsolute(path) || !existsSync(target) || !files.includes(path)) throw new Error(`Missing or invalid atlas: ${file} -> ${detail.file}`);
+          atlasFiles.add(path);
+        }
+      }
+    }
     // The filter list, not one word of it: quiz answers can match a single entry (a "69" answer did).
     const quoted = words.filter(word => ['"', "'", '`'].some(quote => text.includes(quote + word + quote)));
     if (text.includes('RUDE_WORDS') || quoted.length >= 3) throw new Error(`Server code filter shipped: ${file}`);
     raw += bytes.length; gzip += gzipSync(bytes).length;
   }
-  return { raw, gzip, files };
+  // PERF-022 covers the shell. Manifest-named atlases are prepared on demand for a round
+  // (PERF-023/024); unrelated public assets still count against the shell budget.
+  const atlasGzip = [...atlasFiles].reduce((sum, file) => sum + gzipSync(readFileSync(resolve(output, file))).length, 0);
+  return { raw, gzip, shellGzip: gzip - atlasGzip, files };
 }
 /** PERF-020: decimal KB, as transferred. @param {number} gzip */
 export function withinControllerBudget(gzip) { return gzip <= 300_000; }
@@ -129,8 +148,9 @@ export function checkHostBundle() {
   console.log(`PERF-020 controller (shared entry): ${String(controller.raw)} bytes raw, ${String(controller.gzip)} bytes gzip / 300000`);
   if (!withinControllerBudget(controller.gzip)) throw new Error('PERF-020 controller transfer budget exceeded');
   const deployed = deployBundleSize(output);
-  console.log(`PERF-022 deploy: ${String(deployed.raw)} bytes raw, ${String(deployed.gzip)} bytes gzip / 1500000`);
-  if (!withinHostBudget(deployed.gzip)) throw new Error('PERF-022 host transfer budget exceeded');
+  console.log(`Deployment total (including round atlases): ${String(deployed.raw)} bytes raw, ${String(deployed.gzip)} bytes gzip`);
+  console.log(`PERF-022 deploy shell excluding round atlases: ${String(deployed.shellGzip)} bytes gzip / 1500000`);
+  if (!withinHostBudget(deployed.shellGzip)) throw new Error('PERF-022 host transfer budget exceeded');
 }
 
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

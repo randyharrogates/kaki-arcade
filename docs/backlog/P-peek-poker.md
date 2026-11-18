@@ -26,7 +26,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   or P-05 should word it for scores. The kit's five-round scenario ends one step inside its
   step limit: raise the limit if any timing changes. Reveal (8 s), scoreboard (5 s) and swap
   (2 s) durations are provisional until seen on a screen (D-069).
-| P-08 | Publish the card atlas WebP files in the production build so the manifest's relative atlas URLs resolve; today Start fails in production and the TV returns to the picker | PP-030, PP-031, PERF-020 | P-06 | 3 | todo |
+| P-08 | Publish the card atlas WebP files in the production build so the manifest's relative atlas URLs resolve; today Start fails in production and the TV returns to the picker | PP-030, PP-031, PERF-020 | P-06 | 3 | merged |
 | P-09 | Assessed performance run of a full 5-round console match at 8 phones on a quiet machine (a round of at least 180 s for PERF-001; input and feedback instrumented for PERF-010/012), on a production build once P-08 lands | PERF-001, PERF-010, PERF-012, PP-031 | P-06, P-08 | 3 | todo |
 
 ### Carried from P-06's review (2026-11-18)

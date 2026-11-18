@@ -140,3 +140,44 @@ it('D-115 walks static cycles, lazy phone routes and CSS public URLs, excluding 
     expect(size.gzip).toBe(files.reduce((sum, file) => sum + gzipSync(file.endsWith('.css') ? '@font-face{src:url(/font.woff2)}body{background:url(./icon.svg)}' : file).length, 0));
   } finally { rmSync(output, { recursive: true, force: true }); }
 });
+
+it('rejects a deployed manifest with a missing atlas without adding atlases to the controller closure', () => {
+  const output = mkdtempSync(join(tmpdir(), 'kaki-atlas-budget-'));
+  try {
+    mkdirSync(join(output, 'assets'));
+    writeFileSync(join(output, 'index.html'), ''); writeFileSync(join(output, 'entry.js'), '');
+    writeFileSync(join(output, 'assets/manifest-hash.json'), JSON.stringify({ atlases: [{ full: { file: 'full.webp' }, half: { file: 'half.webp' } }] }));
+    writeFileSync(join(output, 'assets/full.webp'), 'full');
+    expect(() => deployBundleSize(output)).toThrow('Missing or invalid atlas');
+    writeFileSync(join(output, 'assets/half.webp'), randomBytes(1_600_000));
+    expect(withinHostBudget(deployBundleSize(output).gzip)).toBe(false);
+    expect(withinHostBudget(deployBundleSize(output).shellGzip)).toBe(true);
+    expect(deployBundleSize(output).files).toContain('assets/half.webp');
+    expect(controllerBundleSize(output, { 'index.html': { file: 'entry.js' } }).files.sort()).toEqual(['entry.js', 'index.html']);
+  } finally { rmSync(output, { recursive: true, force: true }); }
+});
+
+it('counts unrelated JSON atlas references against the shell budget (PERF-022)', () => {
+  const output = mkdtempSync(join(tmpdir(), 'kaki-unrelated-atlas-'));
+  try {
+    writeFileSync(join(output, 'data.json'), JSON.stringify({ atlases: [{ full: { file: 'round.webp' }, half: { file: 'round.webp' } }] }));
+    writeFileSync(join(output, 'round.webp'), randomBytes(1_600_000));
+    const size = deployBundleSize(output);
+    expect(size.shellGzip).toBe(size.gzip);
+    expect(withinHostBudget(size.shellGzip)).toBe(false);
+  } finally { rmSync(output, { recursive: true, force: true }); }
+});
+
+it.each([null, {}, { atlases: {} }, { atlases: [null] }, { atlases: [{}] },
+  { atlases: [{ full: {}, half: { file: 'half.webp' } }] },
+  { atlases: [{ full: { file: 12 }, half: { file: 'half.webp' } }] },
+  { atlases: [{ full: { file: '' }, half: { file: 'half.webp' } }] },
+  { atlases: [{ full: { file: '../outside.webp' }, half: { file: 'half.webp' } }] },
+  { atlases: [{ full: { file: 'entry.js' }, half: { file: 'half.webp' } }] },
+])('rejects malformed pipeline atlas entries with a named error: %j', manifest => {
+  const output = mkdtempSync(join(tmpdir(), 'kaki-invalid-atlas-'));
+  try {
+    writeFileSync(join(output, 'manifest-hash.json'), JSON.stringify(manifest));
+    expect(() => deployBundleSize(output)).toThrow('Missing or invalid atlas');
+  } finally { rmSync(output, { recursive: true, force: true }); }
+});

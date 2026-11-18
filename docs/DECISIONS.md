@@ -1580,3 +1580,20 @@ in A-07b without a board: render sparks unlit like the fire (D-190), give each s
 contrast on cream is about 1.9 : 1 and they nearly vanish at 3 m; no rule clause rests on sparks,
 so it is a readability fix within D-057. The rendered strips on both counters go in A-07b's
 evidence. Randy may overrule.
+
+**D-193 · 2026-11-18 · Claude** (P-08; PERF-022, PERF-023, PERF-024) — PERF-022 counts the host
+shell, not round atlases. PERF-022 is "Host shell (landing to lobby)"; the atlases a pipeline
+manifest (`manifest-*.json`) names are fetched only after Start, from a lazy host chunk. So
+`tools/check_budgets.mjs` excludes those `.webp` files from the 1.5 MB shell figure, still reports
+the whole deployment total, and fails on a missing, malformed, non-WebP or undeployed atlas. Round
+atlases stay bounded per round at pack time by `tools/assets/pipeline.py` (8 MB transfer, 256 MB
+decoded). The threshold is unchanged; only the measured scope now matches the requirement's
+wording. Randy may overrule (OQ-046).
+
+**D-194 · 2026-11-18 · Claude** (P-08; PP-005, PP-031) — The controller kit repaints its layout
+surface when the shell theme changes. `LayoutEngine` copies the shell paint onto an opaque
+surface; in production the layout arrived before the playing/theme update, leaving console paint
+under Peek Poker's cream text (prod-r2). A `MutationObserver` on the shell's `data-theme` in
+`packages/controller-kit/src/layout-renderer.ts` re-copies the paint in place. It is game-agnostic;
+held controls, revision history and crossfade ghosts survive, and the swap is a hard cut, like the
+shell's.

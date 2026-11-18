@@ -4,6 +4,18 @@ Newest first. One entry per closed slice, naming the requirement IDs.
 
 
 
+## 2026-11-18 — P-08: Peek Poker card atlas in the production build
+
+- PP-030, PP-031 (in progress), PERF-020, PERF-022: the production build publishes every atlas
+  the asset manifest names (both detail levels, Peek Poker and Tabao Rush) beside it, so Start
+  reaches memorise from a production build. A missing atlas fails the build and the budget check.
+- PERF-022 counts the shell only; round atlases (`.webp` files a pipeline manifest names), loaded
+  after Start, are reported and bounded per round by the asset pipeline (D-193). Shell 370 KB gzip
+  of 1.5 MB; controller 109 KB of 300 KB.
+- Fix (PP-005): the phone controller repaints its play surface when the room's theme changes, so
+  Peek Poker's felt replaces the console paint (production showed cream text on cream) (D-194).
+- Not yet: an assessed full-match performance run (P-09).
+
 ## 2026-11-18 — A-07: station effects
 
 - TR-010 (art): fire as three pointed flame tongues in gold #E0A63A, orange #F07C2A and red #B5371F

@@ -1,0 +1,57 @@
+{
+  "slice": "P-08-production-atlas",
+  "status": "completed-awaiting-visual-review",
+  "command": "node uat/slices/P-08-production-atlas.mjs --out prod-r4",
+  "commit": "c8d44592f23f279308b8ddcfe62aef802c989d00",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 891.9968749999998,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-production-tv-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-production-phone.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-production-tv-memorise.jpg",
+    "02-phone1-production-phone.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-production-tv-memorise.jpg",
+      "bytes": 324101
+    },
+    {
+      "file": "02-phone1-production-phone.jpg",
+      "bytes": 378161
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 699
+    },
+    {
+      "file": "run.json",
+      "bytes": 1148
+    }
+  ],
+  "totalBytes": 704146,
+  "maxBytes": 12582912
+}

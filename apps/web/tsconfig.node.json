@@ -1,6 +1,8 @@
 {
   "extends": "../../tsconfig.test.base.json",
   "include": [
-    "vite.config.ts"
+    "vite.config.ts",
+    "atlas-assets.ts",
+    "atlas-assets.test.ts"
   ]
 }

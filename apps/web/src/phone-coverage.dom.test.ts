@@ -4,6 +4,7 @@ import { chromium } from 'playwright';
 import { build } from 'vite';
 import { rabakzBank } from '@kaki/content-rabakz/vite';
 import { expect, it } from 'vitest';
+import { THEMES } from '@kaki/ui';
 
 it('PP-005 phone game surface covers the viewport and K-09 targets fit all three sizes', async () => {
   const path = (name: string) => fileURLToPath(new URL(name, import.meta.url));
@@ -16,13 +17,16 @@ it('PP-005 phone game surface covers the viewport and K-09 targets fit all three
         import {GameController} from '${path('./phone-route.tsx')}';
         import {phoneView} from '${path('./phone.ts')}';
         import {peekPoker} from '${path('../../../games/peek-poker/src/rules/game.ts')}';
-        import {startPicking} from '${path('../../../games/peek-poker/src/rules/round.ts')}';
+        import {deal,startPicking} from '${path('../../../games/peek-poker/src/rules/round.ts')}';
         import {makePlayers} from '@kaki/platform/kit';
         import {EMPTY_SETUP} from '@kaki/platform';
-        const state=startPicking(peekPoker.init(42,makePlayers(2,false),{rounds:3},EMPTY_SETUP));
-        let view={...phoneView('lobby',{seat:1,leader:true,phase:'playing'}),gameLayout:peekPoker.controllerLayout(state,'p1'),gamePrivateView:null};
+        let state=deal(peekPoker.init(42,makePlayers(2,false),{rounds:3},EMPTY_SETUP));
+        let theme='console';
+        let view={...phoneView('lobby',{seat:1,leader:true,phase:'playing'}),gameLayout:peekPoker.controllerLayout(state,'p1'),gamePrivateView:peekPoker.privateView(state,'p1')};
         const app=document.createElement('div');app.id='app';document.body.append(app);
-        const draw=()=>render(h(GameController,{controller:{seat:1,name:'Fern',theme:'peek-poker',link:view.connected?'connected':'reconnecting'},view,send(){},sessionCommand(action){document.body.dataset.command=action??'menu';}}),app);
+        const draw=()=>render(h(GameController,{controller:{seat:1,name:'Fern',theme:view.connected?theme:'console',link:view.connected?'connected':'reconnecting'},view,send(){},sessionCommand(action){document.body.dataset.command=action??'menu';}}),app);
+        window.showPoker=()=>{theme='peek-poker';draw();};
+        window.showPicking=()=>{state=startPicking(state);view={...view,gameLayout:peekPoker.controllerLayout(state,'p1'),gamePrivateView:null};draw();};
         window.consoleState=(phase,leader,connected)=>{view={...view,phase,leader,connected};draw();};draw();
       `; },
     }] });
@@ -37,13 +41,42 @@ it('PP-005 phone game surface covers the viewport and K-09 targets fit all three
       for (const css of ['../../../packages/ui/tokens.css', './style.css']) await page.addStyleTag({ content: await readFile(path(css), 'utf8') });
       for (const asset of output.output) if (asset.type === 'asset' && asset.fileName.endsWith('.css')) await page.addStyleTag({ content: String(asset.source) });
       await page.addScriptTag({ type: 'module', content: chunk.code });
-      await page.waitForSelector('.ka-layout-grid .ka-layout-target');
+      await page.waitForSelector('.ka-layout-text');
       await page.waitForFunction(() => {
         const play = document.querySelector('.ka-controller-play')?.getBoundingClientRect();
         const engine = document.querySelector('.ka-layout-engine:not(.ka-layout-ghost)')?.getBoundingClientRect();
         if (!play || !engine) return false;
         return play.width === engine.width && play.height === engine.height;
       });
+      // Reproduce the live route: layout arrives before the playing/theme update.
+      await page.waitForSelector('.ka-layout-surface[style]');
+      await page.evaluate(() => { (window as unknown as { showPoker(): void }).showPoker(); });
+      await page.waitForSelector('.ka-controller-shell[data-theme="peek-poker"]');
+      const paint = await page.locator('.ka-layout-surface').evaluate((el, expected) => {
+        const css = getComputedStyle(el);
+        const probe = document.createElement('div');
+        probe.style.backgroundColor = expected.colour; probe.style.backgroundImage = expected.treatment.image;
+        document.body.append(probe);
+        const reference = getComputedStyle(probe);
+        const matches = css.backgroundColor === reference.backgroundColor && css.backgroundImage === reference.backgroundImage;
+        probe.remove();
+        const channels = (s: string) => (s.match(/[\d.]+/g) ?? []).map(Number).slice(0, 3);
+        const luminance = (s: string) => channels(s).reduce((sum, c, i) => {
+          const v = c / 255;
+          return sum + (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4) * ([0.2126, 0.7152, 0.0722][i] ?? 0);
+        }, 0);
+        const texts = [...document.querySelectorAll('.ka-layout-text, .ka-private-stat-label, .ka-private-stat-value')];
+        const b = luminance(css.backgroundColor);
+        return { matches, contrasts: texts.map(text => {
+          const a = luminance(getComputedStyle(text).color);
+          return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+        }) };
+      }, THEMES['peek-poker'].background);
+      expect(paint.matches).toBe(true);
+      expect(paint.contrasts).toHaveLength(3);
+      expect(paint.contrasts.every(contrast => contrast >= 4.5)).toBe(true);
+      await page.evaluate(() => { (window as unknown as { showPicking(): void }).showPicking(); });
+      await page.waitForSelector('.ka-layout-grid .ka-layout-target');
       // Inspect actual theme painters, including the pointer-events:none layout
       // surface which elementsFromPoint omits. Controls intentionally paint cards.
       const samplePaint = () => page.evaluate(() => {
@@ -138,6 +171,15 @@ it('PP-005 phone game surface covers the viewport and K-09 targets fit all three
       // container then), a lost link focuses its dialog with no outline drawn.
       await page.keyboard.press('Shift');
       await page.evaluate(() => { (window as unknown as { consoleState(phase: string, leader: boolean, connected: boolean): void }).consoleState('playing', false, false); });
+      const consolePaint = await page.locator('.ka-layout-engine:not(.ka-layout-ghost) > .ka-layout-surface').evaluate((el, expected) => {
+        const probe = document.createElement('div');
+        probe.style.backgroundColor = expected.colour; probe.style.backgroundImage = expected.treatment.image;
+        document.body.append(probe);
+        const css = getComputedStyle(el), reference = getComputedStyle(probe);
+        const matches = css.backgroundColor === reference.backgroundColor && css.backgroundImage === reference.backgroundImage;
+        probe.remove(); return matches;
+      }, THEMES.console.background);
+      expect(consolePaint).toBe(true);
       const freshLost = page.getByRole('dialog', { name: 'Connection lost', exact: true }); await freshLost.waitFor();
       expect(await freshLost.evaluate(n => document.activeElement === n && getComputedStyle(n).outlineStyle)).toBe('none');
       await page.evaluate(() => { (window as unknown as { consoleState(phase: string, leader: boolean, connected: boolean): void }).consoleState('playing', false, true); });

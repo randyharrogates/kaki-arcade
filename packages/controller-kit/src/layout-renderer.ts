@@ -335,9 +335,13 @@ export function LayoutEngine(props: LayoutEngineProps) {
     const observer = new ResizeObserver(refreshSurface);
     observer.observe(node);
     const shell = node.closest('.ka-controller-shell');
-    if (shell) observer.observe(shell);
+    const themeObserver = new MutationObserver(refreshSurface);
+    if (shell) {
+      observer.observe(shell);
+      themeObserver.observe(shell, { attributes: true, attributeFilter: ['data-theme'] });
+    }
     window.addEventListener('resize',refreshSurface);
-    return () => { observer.disconnect(); window.removeEventListener('resize',refreshSurface); };
+    return () => { observer.disconnect(); themeObserver.disconnect(); window.removeEventListener('resize',refreshSurface); };
   }, []);
   useLayoutEffect(() => {
     const node = root.current;

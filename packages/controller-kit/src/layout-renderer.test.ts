@@ -311,11 +311,17 @@ it('PP-005 copies the full shell felt box and retains its opaque paint during la
   Object.assign(root,{ cloneNode:() => old });
   vi.stubGlobal('window',Object.assign(new EventTarget(),{ matchMedia:() => ({ matches:false }) }));
   vi.stubGlobal('ResizeObserver',class { observe() { /* manual */ } disconnect() { /* manual */ } });
+  let themeChanged = () => { /* observer callback */ };
+  const observe = vi.fn(), disconnect = vi.fn();
+  vi.stubGlobal('MutationObserver',class {
+    constructor(callback:() => void) { themeChanged = callback; }
+    observe = observe; disconnect = disconnect;
+  });
   const paint = { backgroundColor:'var(--ka-bg)',backgroundImage:'var(--ka-bg-treatment)',backgroundSize:'auto',backgroundPosition:'0px 0px' };
   vi.stubGlobal('getComputedStyle',() => paint);
   engine({ revision:1,controls:[] });
   const ref = hooks.refs[0]; if (!ref) throw Error('Missing root'); ref.current = root;
-  hooks.effects[4]?.(); hooks.effects[5]?.();
+  const dispose = hooks.effects[4]?.(); hooks.effects[5]?.();
   expect(surface.style).toMatchObject({ ...paint,backgroundSize:'844px 390px',left:'0px',top:'-55px',width:'844px',height:'390px' });
   engine({ revision:2,controls:[{ kind:'text',id:'watch',text:'Watch the TV' }] });
   hooks.effects[5]?.();
@@ -324,4 +330,12 @@ it('PP-005 copies the full shell felt box and retains its opaque paint during la
   expect(surface.style.backgroundColor).toBe(paint.backgroundColor);
   expect(surface.style.backgroundImage).toBe(paint.backgroundImage);
   expect(parent.children).toContain(old);
+  expect(observe).toHaveBeenCalledWith(shell,{ attributes:true,attributeFilter:['data-theme'] });
+  paint.backgroundColor = 'changed shell base'; paint.backgroundImage = 'changed shell treatment';
+  themeChanged();
+  expect(surface.style.backgroundColor).toBe(paint.backgroundColor);
+  expect(surface.style.backgroundImage).toBe(paint.backgroundImage);
+  expect(parent.children).toContain(old);
+  if (typeof dispose === 'function') dispose();
+  expect(disconnect).toHaveBeenCalledOnce();
 });
