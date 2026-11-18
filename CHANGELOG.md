@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — C-19: label timing method
+
+- PERF-012, CTRL-003: the label-cost test takes the median of 7 fresh mounts per game against
+  the unchanged 4 ms at 4x CPU, and fails any sample over 12 ms; a single interrupted sample
+  no longer fails verify. Rabakz median 0.8–1.5 ms on a quiet machine.
+
 ## 2026-11-18 — X-05: browser matrix, part 1
 
 - REL-004 (in progress): `pnpm uat -- <slice> --host-browser chromium|chrome|webkit --phone-browser

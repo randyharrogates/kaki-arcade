@@ -27,10 +27,17 @@ it('PERF-012 CTRL-003 measures Peek Poker 4×4 and Rabakz options within a quart
             Array.from({length:10},(_,i)=>({id:String(i),prompt:'Which?',
               options:['Christopher Walken','David Hasselhoff','Jerry Springer','Patrick Swayze'],
               correct:0,category:'General',difficulty:'easy',type:'multiple-choice',region:'general'})))}});
+        let container;
         window.mountKit = game => {
+          if (container) {
+            render(null,container);
+            container.remove();
+          }
+          container = document.createElement('div');
+          document.body.append(container);
           render(h(ControllerShell,{seat:1,name:'Player 1',link:'connected',theme:game},
             h(LayoutEngine,{layout:game === 'peek-poker' ? peekPoker.controllerLayout(pp,player) : rabakz.controllerLayout({...rz,phase:'question'},'one'),
-              area:{width:844,height:322},viewport:{width:844,height:390},isLeader:false,onOutput:()=>{}})),document.body);
+              area:{width:844,height:322},viewport:{width:844,height:390},isLeader:false,onOutput:()=>{}})),container);
         };
         window.timeKit = game => {
           const group = document.querySelector(game === 'peek-poker' ? '.ka-layout-grid' : '[data-part="answer"] .ka-layout-options');
@@ -68,18 +75,35 @@ it('PERF-012 CTRL-003 measures Peek Poker 4×4 and Rabakz options within a quart
     } catch { /* Runners without CDP must meet the stricter unthrottled budget. */ }
     const budget = throttled ? 4 : 1;
     for (const game of ['peek-poker','rabakz']) {
-      await page.evaluate(game => { (Reflect.get(window,'mountKit') as (game:string)=>void)(game); },game);
-      await page.evaluate(async () => {
-        await document.fonts.ready;
-        await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-      });
-      const result = await page.evaluate(game =>
-        (Reflect.get(window,'timeKit') as (game:string)=>{pass:number;install:number;targets:number;labels:number})(game),game);
-      process.stdout.write(`PERF-012 ${game} CPU=${throttled ? '4x' : '1x'} pass=${String(result.pass)} ms install=${String(result.install)} ms budget<${String(budget)} ms\n`);
-      expect(result.targets).toBe(game === 'peek-poker' ? 16 : 4);
-      expect(result.labels).toBe(game === 'peek-poker' ? 0 : 4);
-      expect(result.pass,`${game} measureLabelGroup`).toBeLessThan(budget);
-      expect(result.install,`${game} observeLabelGroup install`).toBeLessThan(budget);
+      const samples = [];
+      for (let sample = 0; sample < 7; sample++) {
+        await page.evaluate(game => { (Reflect.get(window,'mountKit') as (game:string)=>void)(game); },game);
+        await page.evaluate(async () => {
+          await document.fonts.ready;
+          await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+        });
+        const result = await page.evaluate(game =>
+          (Reflect.get(window,'timeKit') as (game:string)=>{pass:number;install:number;targets:number;labels:number})(game),game);
+        samples.push(result);
+      }
+      const median = (values:number[]) => {
+        const middle = [...values].sort((a,b)=>a-b)[3];
+        if (values.length !== 7 || middle === undefined) throw new Error('Expected seven timing samples');
+        return middle;
+      };
+      const passes = samples.map(result=>result.pass);
+      const installs = samples.map(result=>result.install);
+      const passMedian = median(passes);
+      const installMedian = median(installs);
+      process.stdout.write(`PERF-012 ${game} CPU=${throttled ? '4x' : '1x'} pass=[${passes.join(', ')}] ms median=${String(passMedian)} ms install=[${installs.join(', ')}] ms median=${String(installMedian)} ms budget<${String(budget)} ms sample ceiling=${String(3*budget)} ms\n`);
+      for (const result of samples) {
+        expect(result.targets).toBe(game === 'peek-poker' ? 16 : 4);
+        expect(result.labels).toBe(game === 'peek-poker' ? 0 : 4);
+        expect(result.pass,`${game} measureLabelGroup sample`).toBeLessThanOrEqual(3*budget);
+        expect(result.install,`${game} observeLabelGroup install sample`).toBeLessThanOrEqual(3*budget);
+      }
+      expect(passMedian,`${game} measureLabelGroup median`).toBeLessThan(budget);
+      expect(installMedian,`${game} observeLabelGroup install median`).toBeLessThan(budget);
     }
   } finally { await browser.close(); }
 },30000);
