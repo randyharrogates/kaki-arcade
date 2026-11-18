@@ -1,0 +1,1418 @@
+{
+  "slice": "P-07-full-match",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- P-07-full-match --phones 8 --max-mb 24 --timeout-min 20 --out p11-p8",
+  "commit": "61a1d117ba299ea5519953d9e017d1203dce6317",
+  "viewports": [
+    "1920×1080",
+    "844×390",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1291.296708,
+      "status": "completed"
+    },
+    {
+      "name": "Lobby: all phones join through real pairing",
+      "ms": 2040.6103329999996,
+      "status": "completed"
+    },
+    {
+      "name": "Picker → default five rounds → Start real Peek Poker",
+      "ms": 1229.8612920000005,
+      "status": "completed"
+    },
+    {
+      "name": "R1 PP-002/003/004/011: deal, memorise timer and swap difficulty",
+      "ms": 10082.697208,
+      "status": "completed"
+    },
+    {
+      "name": "R1 PP-005/006/021: early and late private picks; TV lock seats only",
+      "ms": 12030.103042,
+      "status": "completed"
+    },
+    {
+      "name": "R1 PP-020/021 PLAT-033: every pre-reveal public view is secret",
+      "ms": 2.740916999999172,
+      "status": "completed"
+    },
+    {
+      "name": "R1 PP-020: every decoded control-channel message is secret before reveal",
+      "ms": 1.8364169999986188,
+      "status": "completed"
+    },
+    {
+      "name": "R1 PP-020/021: every sampled pick DOM frame has no early reveal",
+      "ms": 194.7402089999996,
+      "status": "completed"
+    },
+    {
+      "name": "R1 PP-007/008/009/010: reveal, random fill, poker points and speed tie",
+      "ms": 4818.2146250000005,
+      "status": "completed"
+    },
+    {
+      "name": "R1 PP-032: scoreboard and every phone’s own place and score",
+      "ms": 3548.096000000005,
+      "status": "completed"
+    },
+    {
+      "name": "R2 PP-002/003/004/011: deal, memorise timer and swap difficulty",
+      "ms": 6522.566875000004,
+      "status": "completed"
+    },
+    {
+      "name": "R2 PP-005/006/021: early and late private picks; TV lock seats only",
+      "ms": 10222.127457999995,
+      "status": "completed"
+    },
+    {
+      "name": "R2 PP-020/021 PLAT-033: every pre-reveal public view is secret",
+      "ms": 4.410832999994454,
+      "status": "completed"
+    },
+    {
+      "name": "R2 PP-020: every decoded control-channel message is secret before reveal",
+      "ms": 1.1085409999941476,
+      "status": "completed"
+    },
+    {
+      "name": "R2 PP-020/021: every sampled pick DOM frame has no early reveal",
+      "ms": 166.88995799999975,
+      "status": "completed"
+    },
+    {
+      "name": "R2 PP-007/008/009/010: reveal, random fill, poker points and speed tie",
+      "ms": 3607.089832999998,
+      "status": "completed"
+    },
+    {
+      "name": "R2 PP-032: scoreboard and every phone’s own place and score",
+      "ms": 2832.9559169999993,
+      "status": "completed"
+    },
+    {
+      "name": "R3 PP-002/003/004/011: deal, memorise timer and swap difficulty",
+      "ms": 6860.8661250000005,
+      "status": "completed"
+    },
+    {
+      "name": "R3 PP-005/006/021: early and late private picks; TV lock seats only",
+      "ms": 10372.034,
+      "status": "completed"
+    },
+    {
+      "name": "R3 PP-020/021 PLAT-033: every pre-reveal public view is secret",
+      "ms": 1.6552079999964917,
+      "status": "completed"
+    },
+    {
+      "name": "R3 PP-020: every decoded control-channel message is secret before reveal",
+      "ms": 1.0565419999911683,
+      "status": "completed"
+    },
+    {
+      "name": "R3 PP-020/021: every sampled pick DOM frame has no early reveal",
+      "ms": 176.99699999998847,
+      "status": "completed"
+    },
+    {
+      "name": "R3 PP-007/008/009/010: reveal, random fill, poker points and speed tie",
+      "ms": 3564.3767500000104,
+      "status": "completed"
+    },
+    {
+      "name": "R3 PP-032: scoreboard and every phone’s own place and score",
+      "ms": 2857.9613329999993,
+      "status": "completed"
+    },
+    {
+      "name": "R4 PP-002/003/004/011: deal, memorise timer and swap difficulty",
+      "ms": 6062.81495900001,
+      "status": "completed"
+    },
+    {
+      "name": "R4 PP-005/006/021: early and late private picks; TV lock seats only",
+      "ms": 10309.241834,
+      "status": "completed"
+    },
+    {
+      "name": "R4 PP-020/021 PLAT-033: every pre-reveal public view is secret",
+      "ms": 1.101042000009329,
+      "status": "completed"
+    },
+    {
+      "name": "R4 PP-020: every decoded control-channel message is secret before reveal",
+      "ms": 0.6017920000012964,
+      "status": "completed"
+    },
+    {
+      "name": "R4 PP-020/021: every sampled pick DOM frame has no early reveal",
+      "ms": 159.47262500000943,
+      "status": "completed"
+    },
+    {
+      "name": "R4 PP-007/008/009/010: reveal, random fill, poker points and speed tie",
+      "ms": 3574.363624999998,
+      "status": "completed"
+    },
+    {
+      "name": "R4 PP-032: scoreboard and every phone’s own place and score",
+      "ms": 2848.480540999997,
+      "status": "completed"
+    },
+    {
+      "name": "R5 PP-002/003/004/011: deal, memorise timer and swap difficulty",
+      "ms": 8957.964000000007,
+      "status": "completed"
+    },
+    {
+      "name": "R5 PP-005/006/021: early and late private picks; TV lock seats only",
+      "ms": 11845.206917000003,
+      "status": "completed"
+    },
+    {
+      "name": "R5 PP-020/021 PLAT-033: every pre-reveal public view is secret",
+      "ms": 2.070166000004974,
+      "status": "completed"
+    },
+    {
+      "name": "R5 PP-020: every decoded control-channel message is secret before reveal",
+      "ms": 1.0562499999941792,
+      "status": "completed"
+    },
+    {
+      "name": "R5 PP-020/021: every sampled pick DOM frame has no early reveal",
+      "ms": 196.56566700000258,
+      "status": "completed"
+    },
+    {
+      "name": "R5 PP-007/008/009/010: reveal, random fill, poker points and speed tie",
+      "ms": 4435.8092079999915,
+      "status": "completed"
+    },
+    {
+      "name": "R5 PP-032: scoreboard and every phone’s own place and score",
+      "ms": 3596.2975839999854,
+      "status": "completed"
+    },
+    {
+      "name": "PP-001/032: final podium at 1920 and 1280, own final stats, Continue → picker",
+      "ms": 1993.4090419999848,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-r1-memorise-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-r1-memorise-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone2-r1-memorise-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone3-r1-memorise-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone4-r1-memorise-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone5-r1-memorise-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone6-r1-memorise-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone7-r1-memorise-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone8-r1-memorise-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-r1-pick-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-r1-pick-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone2-r1-pick-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone3-r1-pick-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone4-r1-pick-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone5-r1-pick-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone6-r1-pick-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone7-r1-pick-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone8-r1-pick-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-r1-phone1-two-selected.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-r1-locked-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone1-r1-locked-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone2-r1-locked-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone3-r1-locked-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone4-r1-locked-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone5-r1-locked-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone6-r1-locked-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone7-r1-locked-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone8-r1-locked-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-reveal-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-host-reveal-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-host-reveal-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-reveal-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-host-reveal-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-host-reveal-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-host-r1-reveal-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-phone1-r1-reveal-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-phone2-r1-reveal-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-phone3-r1-reveal-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-phone4-r1-reveal-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-phone5-r1-reveal-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-phone6-r1-reveal-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-phone7-r1-reveal-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-phone8-r1-reveal-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-host-r1-seat-markers-7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-host-r1-scoreboard-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-phone1-r1-scoreboard-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "48-phone2-r1-scoreboard-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "49-phone3-r1-scoreboard-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "50-phone4-r1-scoreboard-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "51-phone5-r1-scoreboard-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "52-phone6-r1-scoreboard-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "53-phone7-r1-scoreboard-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "54-phone8-r1-scoreboard-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "55-host-r2-seat-markers-7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "56-host-r3-seat-markers-7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "57-host-r4-seat-markers-7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "58-host-r5-memorise-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "59-phone1-r5-memorise-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "60-phone2-r5-memorise-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "61-phone3-r5-memorise-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "62-phone4-r5-memorise-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "63-phone5-r5-memorise-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "64-phone6-r5-memorise-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "65-phone7-r5-memorise-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "66-phone8-r5-memorise-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "67-host-r5-swap1-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "68-phone1-r5-swap1-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "69-phone2-r5-swap1-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "70-phone3-r5-swap1-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "71-phone4-r5-swap1-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "72-phone5-r5-swap1-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "73-phone6-r5-swap1-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "74-phone7-r5-swap1-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "75-phone8-r5-swap1-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "76-host-r5-swap2-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "77-phone1-r5-swap2-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "78-phone2-r5-swap2-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "79-phone3-r5-swap2-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "80-phone4-r5-swap2-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "81-phone5-r5-swap2-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "82-phone6-r5-swap2-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "83-phone7-r5-swap2-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "84-phone8-r5-swap2-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "85-host-r5-pick-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "86-phone1-r5-pick-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "87-phone2-r5-pick-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "88-phone3-r5-pick-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "89-phone4-r5-pick-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "90-phone5-r5-pick-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "91-phone6-r5-pick-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "92-phone7-r5-pick-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "93-phone8-r5-pick-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "94-host-r5-locked-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "95-phone1-r5-locked-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "96-phone2-r5-locked-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "97-phone3-r5-locked-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "98-phone4-r5-locked-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "99-phone5-r5-locked-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "100-phone6-r5-locked-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "101-phone7-r5-locked-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "102-phone8-r5-locked-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "103-host-r5-reveal-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "104-phone1-r5-reveal-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "105-phone2-r5-reveal-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "106-phone3-r5-reveal-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "107-phone4-r5-reveal-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "108-phone5-r5-reveal-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "109-phone6-r5-reveal-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "110-phone7-r5-reveal-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "111-phone8-r5-reveal-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "112-host-r5-seat-markers-7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "113-host-r5-scoreboard-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "114-phone1-r5-scoreboard-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "115-phone2-r5-scoreboard-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "116-phone3-r5-scoreboard-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "117-phone4-r5-scoreboard-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "118-phone5-r5-scoreboard-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "119-phone6-r5-scoreboard-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "120-phone7-r5-scoreboard-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "121-phone8-r5-scoreboard-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "122-host-podium-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "123-host-podium-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "124-phone1-podium-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "125-phone2-podium-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "126-phone3-podium-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "127-phone4-podium-phone4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "128-phone5-podium-phone5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "129-phone6-podium-phone6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "130-phone7-podium-phone7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "131-phone8-podium-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "132-host-continue-picker.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-r1-memorise-tv.jpg",
+    "02-phone1-r1-memorise-phone1.jpg",
+    "03-phone2-r1-memorise-phone2.jpg",
+    "04-phone3-r1-memorise-phone3.jpg",
+    "05-phone4-r1-memorise-phone4.jpg",
+    "06-phone5-r1-memorise-phone5.jpg",
+    "07-phone6-r1-memorise-phone6.jpg",
+    "08-phone7-r1-memorise-phone7.jpg",
+    "09-phone8-r1-memorise-phone8.jpg",
+    "10-host-r1-pick-tv.jpg",
+    "11-phone1-r1-pick-phone1.jpg",
+    "12-phone2-r1-pick-phone2.jpg",
+    "13-phone3-r1-pick-phone3.jpg",
+    "14-phone4-r1-pick-phone4.jpg",
+    "15-phone5-r1-pick-phone5.jpg",
+    "16-phone6-r1-pick-phone6.jpg",
+    "17-phone7-r1-pick-phone7.jpg",
+    "18-phone8-r1-pick-phone8.jpg",
+    "19-phone1-r1-phone1-two-selected.jpg",
+    "20-host-r1-locked-tv.jpg",
+    "21-phone1-r1-locked-phone1.jpg",
+    "22-phone2-r1-locked-phone2.jpg",
+    "23-phone3-r1-locked-phone3.jpg",
+    "24-phone4-r1-locked-phone4.jpg",
+    "25-phone5-r1-locked-phone5.jpg",
+    "26-phone6-r1-locked-phone6.jpg",
+    "27-phone7-r1-locked-phone7.jpg",
+    "28-phone8-r1-locked-phone8.jpg",
+    "35-strip-reveal.jpg",
+    "36-host-r1-reveal-tv.jpg",
+    "37-phone1-r1-reveal-phone1.jpg",
+    "38-phone2-r1-reveal-phone2.jpg",
+    "39-phone3-r1-reveal-phone3.jpg",
+    "40-phone4-r1-reveal-phone4.jpg",
+    "41-phone5-r1-reveal-phone5.jpg",
+    "42-phone6-r1-reveal-phone6.jpg",
+    "43-phone7-r1-reveal-phone7.jpg",
+    "44-phone8-r1-reveal-phone8.jpg",
+    "45-host-r1-seat-markers-7.jpg",
+    "46-host-r1-scoreboard-tv.jpg",
+    "47-phone1-r1-scoreboard-phone1.jpg",
+    "48-phone2-r1-scoreboard-phone2.jpg",
+    "49-phone3-r1-scoreboard-phone3.jpg",
+    "50-phone4-r1-scoreboard-phone4.jpg",
+    "51-phone5-r1-scoreboard-phone5.jpg",
+    "52-phone6-r1-scoreboard-phone6.jpg",
+    "53-phone7-r1-scoreboard-phone7.jpg",
+    "54-phone8-r1-scoreboard-phone8.jpg",
+    "55-host-r2-seat-markers-7.jpg",
+    "56-host-r3-seat-markers-7.jpg",
+    "57-host-r4-seat-markers-7.jpg",
+    "58-host-r5-memorise-tv.jpg",
+    "59-phone1-r5-memorise-phone1.jpg",
+    "60-phone2-r5-memorise-phone2.jpg",
+    "61-phone3-r5-memorise-phone3.jpg",
+    "62-phone4-r5-memorise-phone4.jpg",
+    "63-phone5-r5-memorise-phone5.jpg",
+    "64-phone6-r5-memorise-phone6.jpg",
+    "65-phone7-r5-memorise-phone7.jpg",
+    "66-phone8-r5-memorise-phone8.jpg",
+    "67-host-r5-swap1-tv.jpg",
+    "68-phone1-r5-swap1-phone1.jpg",
+    "69-phone2-r5-swap1-phone2.jpg",
+    "70-phone3-r5-swap1-phone3.jpg",
+    "71-phone4-r5-swap1-phone4.jpg",
+    "72-phone5-r5-swap1-phone5.jpg",
+    "73-phone6-r5-swap1-phone6.jpg",
+    "74-phone7-r5-swap1-phone7.jpg",
+    "75-phone8-r5-swap1-phone8.jpg",
+    "76-host-r5-swap2-tv.jpg",
+    "77-phone1-r5-swap2-phone1.jpg",
+    "78-phone2-r5-swap2-phone2.jpg",
+    "79-phone3-r5-swap2-phone3.jpg",
+    "80-phone4-r5-swap2-phone4.jpg",
+    "81-phone5-r5-swap2-phone5.jpg",
+    "82-phone6-r5-swap2-phone6.jpg",
+    "83-phone7-r5-swap2-phone7.jpg",
+    "84-phone8-r5-swap2-phone8.jpg",
+    "85-host-r5-pick-tv.jpg",
+    "86-phone1-r5-pick-phone1.jpg",
+    "87-phone2-r5-pick-phone2.jpg",
+    "88-phone3-r5-pick-phone3.jpg",
+    "89-phone4-r5-pick-phone4.jpg",
+    "90-phone5-r5-pick-phone5.jpg",
+    "91-phone6-r5-pick-phone6.jpg",
+    "92-phone7-r5-pick-phone7.jpg",
+    "93-phone8-r5-pick-phone8.jpg",
+    "94-host-r5-locked-tv.jpg",
+    "95-phone1-r5-locked-phone1.jpg",
+    "96-phone2-r5-locked-phone2.jpg",
+    "97-phone3-r5-locked-phone3.jpg",
+    "98-phone4-r5-locked-phone4.jpg",
+    "99-phone5-r5-locked-phone5.jpg",
+    "100-phone6-r5-locked-phone6.jpg",
+    "101-phone7-r5-locked-phone7.jpg",
+    "102-phone8-r5-locked-phone8.jpg",
+    "103-host-r5-reveal-tv.jpg",
+    "104-phone1-r5-reveal-phone1.jpg",
+    "105-phone2-r5-reveal-phone2.jpg",
+    "106-phone3-r5-reveal-phone3.jpg",
+    "107-phone4-r5-reveal-phone4.jpg",
+    "108-phone5-r5-reveal-phone5.jpg",
+    "109-phone6-r5-reveal-phone6.jpg",
+    "110-phone7-r5-reveal-phone7.jpg",
+    "111-phone8-r5-reveal-phone8.jpg",
+    "112-host-r5-seat-markers-7.jpg",
+    "113-host-r5-scoreboard-tv.jpg",
+    "114-phone1-r5-scoreboard-phone1.jpg",
+    "115-phone2-r5-scoreboard-phone2.jpg",
+    "116-phone3-r5-scoreboard-phone3.jpg",
+    "117-phone4-r5-scoreboard-phone4.jpg",
+    "118-phone5-r5-scoreboard-phone5.jpg",
+    "119-phone6-r5-scoreboard-phone6.jpg",
+    "120-phone7-r5-scoreboard-phone7.jpg",
+    "121-phone8-r5-scoreboard-phone8.jpg",
+    "122-host-podium-1920.jpg",
+    "123-host-podium-1280.jpg",
+    "124-phone1-podium-phone1.jpg",
+    "125-phone2-podium-phone2.jpg",
+    "126-phone3-podium-phone3.jpg",
+    "127-phone4-podium-phone4.jpg",
+    "128-phone5-podium-phone5.jpg",
+    "129-phone6-podium-phone6.jpg",
+    "130-phone7-podium-phone7.jpg",
+    "131-phone8-podium-phone8.jpg",
+    "132-host-continue-picker.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-r1-memorise-tv.jpg",
+      "bytes": 332100
+    },
+    {
+      "file": "02-phone1-r1-memorise-phone1.jpg",
+      "bytes": 53581
+    },
+    {
+      "file": "03-phone2-r1-memorise-phone2.jpg",
+      "bytes": 53691
+    },
+    {
+      "file": "04-phone3-r1-memorise-phone3.jpg",
+      "bytes": 53690
+    },
+    {
+      "file": "05-phone4-r1-memorise-phone4.jpg",
+      "bytes": 53598
+    },
+    {
+      "file": "06-phone5-r1-memorise-phone5.jpg",
+      "bytes": 53663
+    },
+    {
+      "file": "07-phone6-r1-memorise-phone6.jpg",
+      "bytes": 53746
+    },
+    {
+      "file": "08-phone7-r1-memorise-phone7.jpg",
+      "bytes": 53587
+    },
+    {
+      "file": "09-phone8-r1-memorise-phone8.jpg",
+      "bytes": 53643
+    },
+    {
+      "file": "10-host-r1-pick-tv.jpg",
+      "bytes": 401502
+    },
+    {
+      "file": "100-phone6-r5-locked-phone6.jpg",
+      "bytes": 55021
+    },
+    {
+      "file": "101-phone7-r5-locked-phone7.jpg",
+      "bytes": 54869
+    },
+    {
+      "file": "102-phone8-r5-locked-phone8.jpg",
+      "bytes": 74685
+    },
+    {
+      "file": "103-host-r5-reveal-tv.jpg",
+      "bytes": 373147
+    },
+    {
+      "file": "104-phone1-r5-reveal-phone1.jpg",
+      "bytes": 54543
+    },
+    {
+      "file": "105-phone2-r5-reveal-phone2.jpg",
+      "bytes": 55130
+    },
+    {
+      "file": "106-phone3-r5-reveal-phone3.jpg",
+      "bytes": 53916
+    },
+    {
+      "file": "107-phone4-r5-reveal-phone4.jpg",
+      "bytes": 53638
+    },
+    {
+      "file": "108-phone5-r5-reveal-phone5.jpg",
+      "bytes": 53748
+    },
+    {
+      "file": "109-phone6-r5-reveal-phone6.jpg",
+      "bytes": 53811
+    },
+    {
+      "file": "11-phone1-r1-pick-phone1.jpg",
+      "bytes": 74603
+    },
+    {
+      "file": "110-phone7-r5-reveal-phone7.jpg",
+      "bytes": 53778
+    },
+    {
+      "file": "111-phone8-r5-reveal-phone8.jpg",
+      "bytes": 55799
+    },
+    {
+      "file": "112-host-r5-seat-markers-7.jpg",
+      "bytes": 373147
+    },
+    {
+      "file": "113-host-r5-scoreboard-tv.jpg",
+      "bytes": 292555
+    },
+    {
+      "file": "114-phone1-r5-scoreboard-phone1.jpg",
+      "bytes": 55565
+    },
+    {
+      "file": "115-phone2-r5-scoreboard-phone2.jpg",
+      "bytes": 55362
+    },
+    {
+      "file": "116-phone3-r5-scoreboard-phone3.jpg",
+      "bytes": 54930
+    },
+    {
+      "file": "117-phone4-r5-scoreboard-phone4.jpg",
+      "bytes": 55351
+    },
+    {
+      "file": "118-phone5-r5-scoreboard-phone5.jpg",
+      "bytes": 54876
+    },
+    {
+      "file": "119-phone6-r5-scoreboard-phone6.jpg",
+      "bytes": 54461
+    },
+    {
+      "file": "12-phone2-r1-pick-phone2.jpg",
+      "bytes": 74731
+    },
+    {
+      "file": "120-phone7-r5-scoreboard-phone7.jpg",
+      "bytes": 54854
+    },
+    {
+      "file": "121-phone8-r5-scoreboard-phone8.jpg",
+      "bytes": 54359
+    },
+    {
+      "file": "122-host-podium-1920.jpg",
+      "bytes": 295061
+    },
+    {
+      "file": "123-host-podium-1280.jpg",
+      "bytes": 157673
+    },
+    {
+      "file": "124-phone1-podium-phone1.jpg",
+      "bytes": 28509
+    },
+    {
+      "file": "125-phone2-podium-phone2.jpg",
+      "bytes": 26339
+    },
+    {
+      "file": "126-phone3-podium-phone3.jpg",
+      "bytes": 26200
+    },
+    {
+      "file": "127-phone4-podium-phone4.jpg",
+      "bytes": 26138
+    },
+    {
+      "file": "128-phone5-podium-phone5.jpg",
+      "bytes": 26096
+    },
+    {
+      "file": "129-phone6-podium-phone6.jpg",
+      "bytes": 26234
+    },
+    {
+      "file": "13-phone3-r1-pick-phone3.jpg",
+      "bytes": 74682
+    },
+    {
+      "file": "130-phone7-podium-phone7.jpg",
+      "bytes": 26198
+    },
+    {
+      "file": "131-phone8-podium-phone8.jpg",
+      "bytes": 26078
+    },
+    {
+      "file": "132-host-continue-picker.jpg",
+      "bytes": 132309
+    },
+    {
+      "file": "14-phone4-r1-pick-phone4.jpg",
+      "bytes": 74634
+    },
+    {
+      "file": "15-phone5-r1-pick-phone5.jpg",
+      "bytes": 74682
+    },
+    {
+      "file": "16-phone6-r1-pick-phone6.jpg",
+      "bytes": 74719
+    },
+    {
+      "file": "17-phone7-r1-pick-phone7.jpg",
+      "bytes": 74622
+    },
+    {
+      "file": "18-phone8-r1-pick-phone8.jpg",
+      "bytes": 74685
+    },
+    {
+      "file": "19-phone1-r1-phone1-two-selected.jpg",
+      "bytes": 74764
+    },
+    {
+      "file": "20-host-r1-locked-tv.jpg",
+      "bytes": 398280
+    },
+    {
+      "file": "21-phone1-r1-locked-phone1.jpg",
+      "bytes": 54884
+    },
+    {
+      "file": "22-phone2-r1-locked-phone2.jpg",
+      "bytes": 54987
+    },
+    {
+      "file": "23-phone3-r1-locked-phone3.jpg",
+      "bytes": 54972
+    },
+    {
+      "file": "24-phone4-r1-locked-phone4.jpg",
+      "bytes": 54887
+    },
+    {
+      "file": "25-phone5-r1-locked-phone5.jpg",
+      "bytes": 54937
+    },
+    {
+      "file": "26-phone6-r1-locked-phone6.jpg",
+      "bytes": 55021
+    },
+    {
+      "file": "27-phone7-r1-locked-phone7.jpg",
+      "bytes": 54869
+    },
+    {
+      "file": "28-phone8-r1-locked-phone8.jpg",
+      "bytes": 74685
+    },
+    {
+      "file": "35-strip-reveal.jpg",
+      "bytes": 2252267
+    },
+    {
+      "file": "36-host-r1-reveal-tv.jpg",
+      "bytes": 374655
+    },
+    {
+      "file": "37-phone1-r1-reveal-phone1.jpg",
+      "bytes": 55345
+    },
+    {
+      "file": "38-phone2-r1-reveal-phone2.jpg",
+      "bytes": 55552
+    },
+    {
+      "file": "39-phone3-r1-reveal-phone3.jpg",
+      "bytes": 54373
+    },
+    {
+      "file": "40-phone4-r1-reveal-phone4.jpg",
+      "bytes": 55349
+    },
+    {
+      "file": "41-phone5-r1-reveal-phone5.jpg",
+      "bytes": 53751
+    },
+    {
+      "file": "42-phone6-r1-reveal-phone6.jpg",
+      "bytes": 54417
+    },
+    {
+      "file": "43-phone7-r1-reveal-phone7.jpg",
+      "bytes": 54258
+    },
+    {
+      "file": "44-phone8-r1-reveal-phone8.jpg",
+      "bytes": 55793
+    },
+    {
+      "file": "45-host-r1-seat-markers-7.jpg",
+      "bytes": 375050
+    },
+    {
+      "file": "46-host-r1-scoreboard-tv.jpg",
+      "bytes": 290449
+    },
+    {
+      "file": "47-phone1-r1-scoreboard-phone1.jpg",
+      "bytes": 55163
+    },
+    {
+      "file": "48-phone2-r1-scoreboard-phone2.jpg",
+      "bytes": 54072
+    },
+    {
+      "file": "49-phone3-r1-scoreboard-phone3.jpg",
+      "bytes": 54549
+    },
+    {
+      "file": "50-phone4-r1-scoreboard-phone4.jpg",
+      "bytes": 55194
+    },
+    {
+      "file": "51-phone5-r1-scoreboard-phone5.jpg",
+      "bytes": 54516
+    },
+    {
+      "file": "52-phone6-r1-scoreboard-phone6.jpg",
+      "bytes": 54605
+    },
+    {
+      "file": "53-phone7-r1-scoreboard-phone7.jpg",
+      "bytes": 54474
+    },
+    {
+      "file": "54-phone8-r1-scoreboard-phone8.jpg",
+      "bytes": 54505
+    },
+    {
+      "file": "55-host-r2-seat-markers-7.jpg",
+      "bytes": 377877
+    },
+    {
+      "file": "56-host-r3-seat-markers-7.jpg",
+      "bytes": 374737
+    },
+    {
+      "file": "57-host-r4-seat-markers-7.jpg",
+      "bytes": 379469
+    },
+    {
+      "file": "58-host-r5-memorise-tv.jpg",
+      "bytes": 333297
+    },
+    {
+      "file": "59-phone1-r5-memorise-phone1.jpg",
+      "bytes": 52672
+    },
+    {
+      "file": "60-phone2-r5-memorise-phone2.jpg",
+      "bytes": 52806
+    },
+    {
+      "file": "61-phone3-r5-memorise-phone3.jpg",
+      "bytes": 52772
+    },
+    {
+      "file": "62-phone4-r5-memorise-phone4.jpg",
+      "bytes": 52679
+    },
+    {
+      "file": "63-phone5-r5-memorise-phone5.jpg",
+      "bytes": 52751
+    },
+    {
+      "file": "64-phone6-r5-memorise-phone6.jpg",
+      "bytes": 52817
+    },
+    {
+      "file": "65-phone7-r5-memorise-phone7.jpg",
+      "bytes": 52684
+    },
+    {
+      "file": "66-phone8-r5-memorise-phone8.jpg",
+      "bytes": 52721
+    },
+    {
+      "file": "67-host-r5-swap1-tv.jpg",
+      "bytes": 386169
+    },
+    {
+      "file": "68-phone1-r5-swap1-phone1.jpg",
+      "bytes": 50278
+    },
+    {
+      "file": "69-phone2-r5-swap1-phone2.jpg",
+      "bytes": 50417
+    },
+    {
+      "file": "70-phone3-r5-swap1-phone3.jpg",
+      "bytes": 50367
+    },
+    {
+      "file": "71-phone4-r5-swap1-phone4.jpg",
+      "bytes": 50288
+    },
+    {
+      "file": "72-phone5-r5-swap1-phone5.jpg",
+      "bytes": 50332
+    },
+    {
+      "file": "73-phone6-r5-swap1-phone6.jpg",
+      "bytes": 50438
+    },
+    {
+      "file": "74-phone7-r5-swap1-phone7.jpg",
+      "bytes": 50309
+    },
+    {
+      "file": "75-phone8-r5-swap1-phone8.jpg",
+      "bytes": 50355
+    },
+    {
+      "file": "76-host-r5-swap2-tv.jpg",
+      "bytes": 385178
+    },
+    {
+      "file": "77-phone1-r5-swap2-phone1.jpg",
+      "bytes": 50278
+    },
+    {
+      "file": "78-phone2-r5-swap2-phone2.jpg",
+      "bytes": 50417
+    },
+    {
+      "file": "79-phone3-r5-swap2-phone3.jpg",
+      "bytes": 50367
+    },
+    {
+      "file": "80-phone4-r5-swap2-phone4.jpg",
+      "bytes": 50288
+    },
+    {
+      "file": "81-phone5-r5-swap2-phone5.jpg",
+      "bytes": 50332
+    },
+    {
+      "file": "82-phone6-r5-swap2-phone6.jpg",
+      "bytes": 50438
+    },
+    {
+      "file": "83-phone7-r5-swap2-phone7.jpg",
+      "bytes": 50309
+    },
+    {
+      "file": "84-phone8-r5-swap2-phone8.jpg",
+      "bytes": 50355
+    },
+    {
+      "file": "85-host-r5-pick-tv.jpg",
+      "bytes": 402763
+    },
+    {
+      "file": "86-phone1-r5-pick-phone1.jpg",
+      "bytes": 74603
+    },
+    {
+      "file": "87-phone2-r5-pick-phone2.jpg",
+      "bytes": 74731
+    },
+    {
+      "file": "88-phone3-r5-pick-phone3.jpg",
+      "bytes": 74682
+    },
+    {
+      "file": "89-phone4-r5-pick-phone4.jpg",
+      "bytes": 74634
+    },
+    {
+      "file": "90-phone5-r5-pick-phone5.jpg",
+      "bytes": 74682
+    },
+    {
+      "file": "91-phone6-r5-pick-phone6.jpg",
+      "bytes": 74719
+    },
+    {
+      "file": "92-phone7-r5-pick-phone7.jpg",
+      "bytes": 74622
+    },
+    {
+      "file": "93-phone8-r5-pick-phone8.jpg",
+      "bytes": 74685
+    },
+    {
+      "file": "94-host-r5-locked-tv.jpg",
+      "bytes": 399560
+    },
+    {
+      "file": "95-phone1-r5-locked-phone1.jpg",
+      "bytes": 54884
+    },
+    {
+      "file": "96-phone2-r5-locked-phone2.jpg",
+      "bytes": 54987
+    },
+    {
+      "file": "97-phone3-r5-locked-phone3.jpg",
+      "bytes": 54972
+    },
+    {
+      "file": "98-phone4-r5-locked-phone4.jpg",
+      "bytes": 54887
+    },
+    {
+      "file": "99-phone5-r5-locked-phone5.jpg",
+      "bytes": 54937
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 13439
+    },
+    {
+      "file": "round-1.json",
+      "bytes": 4400
+    },
+    {
+      "file": "round-2.json",
+      "bytes": 4431
+    },
+    {
+      "file": "round-3.json",
+      "bytes": 4415
+    },
+    {
+      "file": "round-4.json",
+      "bytes": 4422
+    },
+    {
+      "file": "round-5.json",
+      "bytes": 4401
+    },
+    {
+      "file": "secrecy.json.gz",
+      "bytes": 310260
+    },
+    {
+      "file": "run.json",
+      "bytes": 33535
+    }
+  ],
+  "totalBytes": 15273047,
+  "maxBytes": 25165824
+}

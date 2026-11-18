@@ -369,7 +369,18 @@ export default async function fullMatch(h) {
           assert.deepEqual(await faces.locator('span:first-child').allTextContents(),hand.cards.map(c=>c.startsWith('T')?'10':c[0]));
           assert.deepEqual(await faces.locator('span:last-child').allTextContents(),hand.cards.map(c=>'♣♦♥♠'['CDHS'.indexOf(required(c[1], 'card suit'))]));
         }
-        assert.equal(v.hands[0]?.id,v.players[0]?.id);
+        // Independent oracle: this scenario locks in this sequence; the idle seat fills last.
+        const locks=[1,0,...Array.from({length:phones.length-3},(_,n)=>n+2)];
+        const expected=v.players.map((p,i)=>{
+          const hand=required(evaluated[i], 'oracle hand');
+          const base=required([1,2,3,4,5,6,8,10,13][hand.category], 'oracle base points');
+          const points=base+(hand.strength===top?(i===fastest?3:1):0);
+          const lock=locks.indexOf(i);
+          return {id:p.id,seat:p.seat,strength:hand.strength,points,
+            lock:lock<0?Number.MAX_SAFE_INTEGER:lock};
+        }).sort((a,b)=>b.strength-a.strength || b.points-a.points || a.lock-b.lock || a.seat-b.seat);
+        assert.deepEqual(v.hands.map(hand=>hand.id),expected.map(hand=>hand.id));
+        assert.equal(v.hands[0]?.id,v.players[1]?.id,'Speed winner first among equal best hands');
         for(let i=1;i<v.hands.length;i++) assert.ok(rank(required(v.hands[i-1], 'previous ranked hand').cards).strength>=rank(required(v.hands[i], 'ranked hand').cards).strength,'Hands ranked best to worst');
         await phones.at(-1)?.getByText('Missing picks were filled at random',{exact:true}).waitFor();
         if(round===1) await h.frameStrip('reveal',h.host,{frames:6,everyMs:0,checkFrame:async()=>{await h.host.clock.runFor(60);}});

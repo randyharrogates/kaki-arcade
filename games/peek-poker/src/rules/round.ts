@@ -97,5 +97,8 @@ export function reveal(state: State): State {
 
 export function rankedHands(state: State) {
   return state.players.filter((p) => p.hand !== null).sort((a, b) =>
-    compareHands(must(b.hand), must(a.hand)) || a.info.seat - b.info.seat);
+    compareHands(must(b.hand), must(a.hand)) || b.gained - a.gained ||
+    (a.lockOrder ?? Number.MAX_SAFE_INTEGER) - (b.lockOrder ?? Number.MAX_SAFE_INTEGER) ||
+    Number(a.filled) - Number(b.filled) ||
+    a.info.seat - b.info.seat);
 }

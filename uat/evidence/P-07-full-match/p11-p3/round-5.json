@@ -1,0 +1,138 @@
+{
+  "public": {
+    "soloBest": null,
+    "newBest": false,
+    "phase": "reveal",
+    "round": 5,
+    "totalRounds": 5,
+    "seconds": 8,
+    "grid": [
+      "KD",
+      "JC",
+      "9C",
+      "5S",
+      "4C",
+      "7D",
+      "TC",
+      "AS",
+      "5H",
+      "3H",
+      "8D",
+      "8H",
+      "QC",
+      "2H",
+      "9S",
+      "3D"
+    ],
+    "shared": [
+      "6D",
+      "3C",
+      "JH"
+    ],
+    "swap": null,
+    "players": [
+      {
+        "id": "seat-1",
+        "name": "Player 1",
+        "seat": 1,
+        "colour": "seat-1",
+        "score": 34,
+        "waiting": false,
+        "locked": true,
+        "picks": [
+          9,
+          15
+        ]
+      },
+      {
+        "id": "seat-2",
+        "name": "Player 2",
+        "seat": 2,
+        "colour": "seat-2",
+        "score": 44,
+        "waiting": false,
+        "locked": true,
+        "picks": [
+          9,
+          15
+        ]
+      },
+      {
+        "id": "seat-3",
+        "name": "Player 3",
+        "seat": 3,
+        "colour": "seat-3",
+        "score": 10,
+        "waiting": false,
+        "locked": false,
+        "picks": [
+          9,
+          6
+        ]
+      }
+    ],
+    "standings": [],
+    "hands": [
+      {
+        "id": "seat-2",
+        "name": "Three of a kind",
+        "points": 7,
+        "cards": [
+          "3H",
+          "3D",
+          "6D",
+          "3C",
+          "JH"
+        ]
+      },
+      {
+        "id": "seat-1",
+        "name": "Three of a kind",
+        "points": 5,
+        "cards": [
+          "3H",
+          "3D",
+          "6D",
+          "3C",
+          "JH"
+        ]
+      },
+      {
+        "id": "seat-3",
+        "name": "Pair",
+        "points": 2,
+        "cards": [
+          "3H",
+          "TC",
+          "6D",
+          "3C",
+          "JH"
+        ]
+      }
+    ]
+  },
+  "pairs": [
+    [
+      9,
+      15
+    ],
+    [
+      9,
+      15
+    ],
+    [
+      9,
+      12
+    ]
+  ],
+  "sharedSeats": [
+    1,
+    2,
+    3
+  ],
+  "totals": [
+    34,
+    44,
+    10
+  ]
+}

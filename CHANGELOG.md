@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — P-11: tied hands at the reveal
+
+- PP-008, PP-009: equal hands at the reveal are ordered by this round's points, then lock-in time;
+  random fills come after every full pick, and seat is used only as the final tiebreak (D-223,
+  D-261). No new public field; lock order stays in host-private state.
+- Unit tests for the speed winner above a lower seat, +1 ties by lock order, random fill last and
+  the seat fallback; the P-07 UAT pin checks the full order against its own oracle.
+- UAT: P-07 at 3 and 8 phones (`uat/evidence/P-07-full-match/p11-p3/`, `p11-p8/`); R1 at 8 phones
+  shows a three-way straight tie in order.
+
 ## 2026-11-19 — R-18: the TV shows the streak
 
 - RZ-008: the TV reveal's outcome line names a single winner's streak from 2 ("· Streak 2") and

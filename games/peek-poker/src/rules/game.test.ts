@@ -10,7 +10,7 @@ import { peekPoker as game } from './game';
 import type { Settings, State } from './state';
 import { cardCode } from './cards';
 import { evaluate, HAND_POINTS } from './evaluator';
-import { difficulty, MEMORISE_SECONDS, reveal, SWAP_STEPS } from './round';
+import { difficulty, MEMORISE_SECONDS, rankedHands, reveal, SWAP_STEPS } from './round';
 
 function init(count = 2, rounds: 3 | 5 | 7 = 3): State {
   return game.init(42, makePlayers(count, false), { rounds }, EMPTY_SETUP);
@@ -186,6 +186,53 @@ describe('Peek Poker pure rules', () => {
     state = tap(state, 'p2', 'lock', 'go');
     state = tap(state, 'p1', 'lock', 'go');
     expect(must(state.players[1]).gained - must(state.players[0]).gained).toBe(2);
+  });
+  it('PP-008 PP-009 equal hands put the higher-seat speed winner first', () => {
+    let state = choose(choose(pickPhase(), 'p1'), 'p2');
+    state = tap(state, 'p2', 'lock', 'go');
+    state = tap(state, 'p1', 'lock', 'go');
+    expect(must(state.players[1]).gained - must(state.players[0]).gained).toBe(2);
+    expect(game.publicView(state).hands.map(p => p.id)).toEqual(['p2', 'p1']);
+  });
+  it('PP-008 PP-009 equal +1 hands follow lock order before seat order', () => {
+    let state = pickPhase(init(3));
+    for (const id of ['p1', 'p2', 'p3']) state = choose(state, id);
+    for (const id of ['p1', 'p3', 'p2']) state = tap(state, id, 'lock', 'go');
+    expect(must(state.players[1]).gained).toBe(must(state.players[2]).gained);
+    expect(game.publicView(state).hands.map(p => p.id)).toEqual(['p1', 'p3', 'p2']);
+  });
+  it('PP-008 PP-010 random-filled equal hands follow locked hands with equal points', () => {
+    let state = pickPhase(init(3));
+    // Preview only the random player's fill, then let both locked players pick that hand.
+    const picks = must(reveal({ ...state, players: [must(state.players[0])] }).players[0]).picks;
+    state = { ...state, players: state.players.map((p, i) => i === 0 ? p : {
+      ...p, picks: [...picks], locked: true, lockOrder: i - 1,
+    }) };
+    state = reveal(state);
+    expect(must(state.players[0]).filled).toBe(true);
+    expect(must(state.players[0]).hand).toEqual(must(state.players[2]).hand);
+    expect(must(state.players[0]).gained).toBe(must(state.players[2]).gained);
+    expect(game.publicView(state).hands.map(p => p.id)).toEqual(['p2', 'p3', 'p1']);
+  });
+  it('PP-008 PP-010 a random fill follows an unlocked full pick with an equal hand (D-261)', () => {
+    let state = pickPhase(init(2));
+    const picks = must(reveal({ ...state, players: [must(state.players[0])] }).players[0]).picks;
+    // p2 picked the same two cards in full but never locked; p1 is filled at random.
+    state = { ...state, players: state.players.map((p, i) => i === 0 ? p : { ...p, picks: [...picks] }) };
+    state = reveal(state);
+    expect(must(state.players[0]).filled).toBe(true);
+    expect(must(state.players[1]).filled).toBe(false);
+    expect(state.players.every(p => p.lockOrder === null)).toBe(true);
+    expect(must(state.players[0]).hand).toEqual(must(state.players[1]).hand);
+    expect(must(state.players[0]).gained).toBe(must(state.players[1]).gained);
+    expect(game.publicView(state).hands.map(p => p.id)).toEqual(['p2', 'p1']);
+  });
+  it('PP-008 equal hands, points and lock order fall back to seat order', () => {
+    let state = reveal(choose(choose(pickPhase(), 'p1'), 'p2'));
+    state = { ...state, players: [...state.players].reverse() };
+    expect(state.players.every(p => p.lockOrder === null)).toBe(true);
+    expect(state.players[0]?.gained).toBe(state.players[1]?.gained);
+    expect(rankedHands(state).map(p => p.info.id)).toEqual(['p1', 'p2']);
   });
   it('PP-009 bonus compares kickers, not only hand category; random fills are slowest', () => {
     let state = pickPhase();

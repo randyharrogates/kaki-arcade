@@ -1,0 +1,292 @@
+{
+  "public": {
+    "soloBest": null,
+    "newBest": false,
+    "phase": "reveal",
+    "round": 4,
+    "totalRounds": 5,
+    "seconds": 8,
+    "grid": [
+      "3S",
+      "KC",
+      "AC",
+      "4D",
+      "3H",
+      "7S",
+      "AH",
+      "4C",
+      "8H",
+      "8S",
+      "9H",
+      "TS",
+      "5C",
+      "QD",
+      "6H",
+      "TC"
+    ],
+    "shared": [
+      "7C",
+      "6S",
+      "AS"
+    ],
+    "swap": null,
+    "players": [
+      {
+        "id": "seat-1",
+        "name": "Player 1",
+        "seat": 1,
+        "colour": "seat-1",
+        "score": 19,
+        "waiting": false,
+        "locked": true,
+        "picks": [
+          2,
+          6
+        ]
+      },
+      {
+        "id": "seat-2",
+        "name": "Player 2",
+        "seat": 2,
+        "colour": "seat-2",
+        "score": 27,
+        "waiting": false,
+        "locked": true,
+        "picks": [
+          2,
+          6
+        ]
+      },
+      {
+        "id": "seat-3",
+        "name": "Player 3",
+        "seat": 3,
+        "colour": "seat-3",
+        "score": 7,
+        "waiting": false,
+        "locked": true,
+        "picks": [
+          2,
+          5
+        ]
+      },
+      {
+        "id": "seat-4",
+        "name": "Player 4",
+        "seat": 4,
+        "colour": "seat-4",
+        "score": 14,
+        "waiting": false,
+        "locked": true,
+        "picks": [
+          2,
+          6
+        ]
+      },
+      {
+        "id": "seat-5",
+        "name": "Player 5",
+        "seat": 5,
+        "colour": "seat-5",
+        "score": 7,
+        "waiting": false,
+        "locked": true,
+        "picks": [
+          2,
+          7
+        ]
+      },
+      {
+        "id": "seat-6",
+        "name": "Player 6",
+        "seat": 6,
+        "colour": "seat-6",
+        "score": 6,
+        "waiting": false,
+        "locked": true,
+        "picks": [
+          2,
+          8
+        ]
+      },
+      {
+        "id": "seat-7",
+        "name": "Player 7",
+        "seat": 7,
+        "colour": "seat-7",
+        "score": 7,
+        "waiting": false,
+        "locked": true,
+        "picks": [
+          2,
+          9
+        ]
+      },
+      {
+        "id": "seat-8",
+        "name": "Player 8",
+        "seat": 8,
+        "colour": "seat-8",
+        "score": 5,
+        "waiting": false,
+        "locked": false,
+        "picks": [
+          12,
+          9
+        ]
+      }
+    ],
+    "standings": [],
+    "hands": [
+      {
+        "id": "seat-2",
+        "name": "Three of a kind",
+        "points": 7,
+        "cards": [
+          "AC",
+          "AH",
+          "7C",
+          "6S",
+          "AS"
+        ]
+      },
+      {
+        "id": "seat-1",
+        "name": "Three of a kind",
+        "points": 5,
+        "cards": [
+          "AC",
+          "AH",
+          "7C",
+          "6S",
+          "AS"
+        ]
+      },
+      {
+        "id": "seat-4",
+        "name": "Three of a kind",
+        "points": 5,
+        "cards": [
+          "AC",
+          "AH",
+          "7C",
+          "6S",
+          "AS"
+        ]
+      },
+      {
+        "id": "seat-3",
+        "name": "Two pair",
+        "points": 3,
+        "cards": [
+          "AC",
+          "7S",
+          "7C",
+          "6S",
+          "AS"
+        ]
+      },
+      {
+        "id": "seat-6",
+        "name": "Pair",
+        "points": 2,
+        "cards": [
+          "AC",
+          "8H",
+          "7C",
+          "6S",
+          "AS"
+        ]
+      },
+      {
+        "id": "seat-7",
+        "name": "Pair",
+        "points": 2,
+        "cards": [
+          "AC",
+          "8S",
+          "7C",
+          "6S",
+          "AS"
+        ]
+      },
+      {
+        "id": "seat-5",
+        "name": "Pair",
+        "points": 2,
+        "cards": [
+          "AC",
+          "4C",
+          "7C",
+          "6S",
+          "AS"
+        ]
+      },
+      {
+        "id": "seat-8",
+        "name": "High card",
+        "points": 1,
+        "cards": [
+          "5C",
+          "8S",
+          "7C",
+          "6S",
+          "AS"
+        ]
+      }
+    ]
+  },
+  "pairs": [
+    [
+      2,
+      6
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      2,
+      9
+    ],
+    [
+      2,
+      10
+    ]
+  ],
+  "sharedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "totals": [
+    19,
+    27,
+    7,
+    14,
+    7,
+    6,
+    7,
+    5
+  ]
+}
