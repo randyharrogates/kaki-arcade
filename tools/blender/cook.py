@@ -1,14 +1,10 @@
-"""S-02 / NN-4, TR-060: shared toy rig and independently registered cap head.
-
-blender -b --factory-startup -P tools/blender/cook.py -- --check-only
-blender -b --factory-startup -P tools/blender/cook.py -- --out assets/src/tabao-rush/cook-spike
-Only publishes after every decoded-pixel and rig check succeeds. No Pillow required.
-"""
+"""A-02 / TR-060 / NN-4: staged cook action and registered cap-head renders."""
 import argparse
 from array import array
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import shutil
 import sys
@@ -20,10 +16,10 @@ from bpy_extras.object_utils import world_to_camera_view
 from mathutils import Vector
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import kalib as K
+import cook_poses as C
 
-# Match tools/assets/pipeline.py: config paths are rooted at the repository.
 ROOT = Path(__file__).resolve().parents[2]
-CONFIG = ROOT / 'assets/src/pipeline.json'
+SOURCE = ROOT / 'assets/src'
 
 # D-044 board 1C uses this height in vision_scenes.py.
 K.PROPS['toy']['height'] = 1.5
@@ -31,16 +27,19 @@ P = K.PROPS['toy']
 HIP = .07 + P['leg']
 TORSO = HIP + P['rz'] * .82
 TOP = TORSO + P['rz']
-# Oversized staging canvas; crop_frames selects the minimum shared square after rendering.
+# Fixed full-resolution canvas for every action and head.
 SIZE = 256
 PPU = 120
 SCALE = P['height'] / (TOP + P['head_r'] * (P['sink'] + P['squash']))
 SOCKET = Vector((0, 0, TOP)) * SCALE
-DIRECTIONS = ['s', 'se', 'e', 'ne', 'n', 'nw', 'w', 'sw']
-COUNTS = {'idle': 4, 'walk': 8}
+DIRECTIONS = C.DIRECTIONS
+COUNTS = {a: v['count'] for a, v in C.ACTIONS.items()}
+PROPS = {}
+HANDS = {}
+NOZZLE = None
 TIMINGS = {'bodyAndMasks': 0.0, 'headAndMasks': 0.0, 'reference': 0.0}
 MASK_EDGE_TOLERANCE = 16 / 255
-STRIDE = .32 * P['height']
+STRIDE = C.STRIDE_TILES
 
 
 def require(condition, message):
@@ -120,24 +119,11 @@ def build():
                 bone.rotation_mode = 'XYZ'
                 bone.rotation_euler = (0, 0, 0)
                 bone.scale = (1, 1, 1)
-            if action == 'walk':
-                bob = .012 * P['height'] * (1 - math.cos(frame * math.pi / 2))
-                rig.pose.bones['spine'].location = (
-                    rig.pose.bones['spine'].bone.matrix_local.to_3x3().inverted()
-                    @ Vector((0, 0, bob)))
-                # Authored forward travel is removed for sprite capture. A stance foot
-                # travels backwards at exactly the root velocity; swing returns smoothly.
-                for side, offset in [('l', 0), ('r', 4)]:
-                    phase = (frame + offset) % 8
-                    y = STRIDE * (phase / 8 - .25) if phase <= 4 else STRIDE * (.25 - (phase - 4) / 8)
-                    lift = 0 if phase <= 4 else .08 * P['height'] * math.sin(math.pi * (phase - 4) / 4)
-                    leg = rig.pose.bones['leg_' + side]
-                    leg.location = leg.bone.matrix_local.to_3x3().inverted() @ Vector((0, y, lift))
-                    rig.pose.bones['arm_' + side].rotation_euler.x = .18 * math.cos(phase * math.tau / 8)
-            else:
-                # Breathing changes torso volume only; socket stays registered.
-                breath = .004 * (1 - math.cos(frame * math.tau / count))
-                rig.pose.bones['spine'].scale = (1 + breath, 1, 1 + breath)
+            for name, (location, rotation, scale) in C.sample(action, frame).items():
+                bone = rig.pose.bones[name]
+                bone.location = bone.bone.matrix_local.to_3x3().inverted() @ Vector(location)
+                bone.rotation_euler = rotation
+                bone.scale = scale
             for bone in rig.pose.bones:
                 for prop in ['location', 'rotation_euler', 'scale']:
                     bone.keyframe_insert(prop, frame=frame + 1, group=bone.name)
@@ -149,6 +135,22 @@ def build():
                         for key in curve.keyframe_points:
                             key.interpolation = 'LINEAR'
         actions[action] = clip
+    rig.animation_data.action = actions['idle']
+    rig.animation_data.action_slot = actions['idle'].slots[0]
+    bpy.context.scene.frame_set(1)
+    bpy.context.view_layer.update()
+    # Use exactly kalib's resting hand centres, preserving world transforms when
+    # attaching to the arm bones. Props follow the same right-hand transform.
+    for side, sign in (('l', -1), ('r', 1)):
+        shoulder = Vector((sign*P['rx']*.9, 0, TORSO+P['rz']*.40))
+        delta = Vector((sign*.38, 0, -1)).normalized()*P['arm']
+        hand = bpy.data.objects.new('hand_'+side, None)
+        bpy.context.scene.collection.objects.link(hand)
+        hand.location = (shoulder+delta*1.12)*SCALE
+        bpy.context.view_layer.update()
+        attach(hand, rig, 'arm_'+side)
+        HANDS[side] = hand
+    make_props(rig, body)
     K.lights()
     # Configure with the same camera geometry as K.render, without rendering here.
     target = Vector((0, 0, .45 * P['height']))
@@ -204,74 +206,134 @@ def pose(rig, actions, action, frame, direction):
     bpy.context.evaluated_depsgraph_get().update()
 
 
-def rig_checks(rig, actions, body, head):
-    require(set(actions) == {'idle', 'walk'} and len(rig.data.bones) == 8, 'rig/actions')
+def attach(obj, rig, bone):
+    world = obj.matrix_world.copy()
+    obj.parent = rig
+    obj.parent_type = 'BONE'
+    obj.parent_bone = bone
+    obj.matrix_world = world
+
+
+def make_props(rig, body):
+    global NOZZLE
+    root = K.new_root('tools')
+    steel, wood, red = K.mat('#9DABA9'), K.mat('#77513A'), K.mat('#B84432')
+    hand = HANDS['r'].matrix_world.translation
+    groups = {}
+    for name in ('knife', 'spatula', 'extinguisher'):
+        before = set(bpy.data.objects)
+        if name == 'extinguisher':
+            K.ball(root, hand+Vector((0, -.03, -.10)), .095, red, (1, 1, 1.7))
+            K.limb(root, hand+Vector((0, 0, .04)), hand+Vector((0, -.17, .04)), .025, .022, steel)
+        else:
+            # A single bevelled handle avoids the two dark spherical end caps
+            # of K.limb clustering around the raised knife hand.
+            K.rbox(root, hand+Vector((0, -.065, 0)), (.04, .13, .04), wood, .008)
+            K.rbox(root, hand+Vector((0, -.21, 0)),
+                   (.10 if name == 'spatula' else .045, .16, .025), steel, .008)
+        bpy.context.view_layer.update()
+        groups[name] = [o for o in set(bpy.data.objects)-before if o.type == 'MESH']
+        for obj in groups[name]:
+            attach(obj, rig, 'arm_r')
+            obj['cook_prop'] = name
+            body.append(obj)
+    bpy.context.view_layer.update()
+    NOZZLE = bpy.data.objects.new('nozzle', None)
+    bpy.context.scene.collection.objects.link(NOZZLE)
+    NOZZLE.location = hand+Vector((0, -.17, .04))
+    bpy.context.view_layer.update()
+    attach(NOZZLE, rig, 'arm_r')
+    PROPS.update(groups)
+    bpy.data.objects.remove(root, do_unlink=True)
+
+
+def visible_props(action):
+    for name, objects in PROPS.items():
+        for obj in objects:
+            obj.hide_render = name not in C.PROPS.get(action, [])
+
+
+def empty_world(obj):
+    return obj.evaluated_get(bpy.context.evaluated_depsgraph_get()).matrix_world.translation.copy()
+
+
+def frame_record(rig, ident, folder, heads=False):
+    head = socket(rig)
+    anchors = {'head': head}
+    result = dict(id=ident, file=folder+'/'+ident+'.png', anchor=head, anchors=anchors)
+    if not heads:
+        hands = (empty_world(HANDS['r']) if ident.startswith('throw-') else
+                 (empty_world(HANDS['l'])+empty_world(HANDS['r']))/2)
+        anchors.update(root=project(Vector((0, 0, 0))),
+                       hands=project(hands),
+                       throwHand=project(empty_world(HANDS['r'])))
+        camera = bpy.context.scene.camera.matrix_world.inverted()
+        result['handsInFront'] = (camera @ hands).z > (camera @ bone_world(rig, 'spine')).z
+        if ident.startswith('extinguish-'):
+            anchors['nozzle'] = project(empty_world(NOZZLE))
+    return result
+
+
+def rig_checks(rig, actions, body, head, action):
+    require(set(actions) == set(C.ACTIONS) and len(rig.data.bones) == 8, 'rig/actions')
     require(body and head and all(o.parent == rig and len(o.data.vertices) > 0
-                                for o in body + head), 'mesh parenting/geometry')
+                                for o in body+head), 'mesh parenting/geometry')
+    require(all(h.parent == rig and h.parent_bone == 'arm_'+side
+                for side, h in HANDS.items()), 'hand parenting')
     pose(rig, actions, 'idle', 0, 0)
     depsgraph = bpy.context.evaluated_depsgraph_get()
-    heights = []
-    for obj in body + head:
-        evaluated = obj.evaluated_get(depsgraph)
-        heights.extend((evaluated.matrix_world @ Vector(corner)).z
-                       for corner in evaluated.bound_box)
-    height = max(heights) - min(heights)
-    # kalib's 1.5 tiles (board 1C) runs from the sole to the top of the bare head; the cap shell
-    # adds a constant 0.0494 tiles above it (measured), so the whole mesh is expected at 1.5494.
-    # Allow about 1% either way: 1.53 to 1.565 tiles.
-    require(P['height'] == 1.5 and 1.53 <= height <= 1.565,
-            f'D-044 evaluated mesh height {height} tiles')
-    print(f'Cook height: evaluated mesh {height:.4f} tiles including the cap')
-    for direction in range(8):
-        idle = []
-        for frame in range(COUNTS['idle'] + 1):
-            pose(rig, actions, 'idle', frame, direction)
-            idle.append(socket(rig))
-        require(all(math.dist(idle[0], point) < 1e-4 for point in idle), 'idle socket moves')
-    maximum_slide = 0
-    maximum_jump = 0
+    heights = [(o.evaluated_get(depsgraph).matrix_world @ Vector(c)).z
+               for o in body+head if 'cook_prop' not in o for c in o.bound_box]
+    height = max(heights)-min(heights)
+    require(P['height'] == 1.5 and 1.53 <= height <= 1.565, f'D-044 mesh height {height}')
+    maximum_slide = maximum_jump = 0.
     lifts = []
+    count = COUNTS[action]
     for direction in range(8):
-        anchors = []
-        for frame in range(9):
-            pose(rig, actions, 'walk', frame, direction)
+        anchors, feet = [], {'l': [], 'r': []}
+        for frame in range(count):
+            pose(rig, actions, action, frame, direction)
+            visible_props(action)
             anchors.append(socket(rig))
-            for obj in body + head:
-                for corner in obj.bound_box:
-                    evaluated = obj.evaluated_get(bpy.context.evaluated_depsgraph_get())
+            for side in feet:
+                feet[side].append(bone_world(rig, 'leg_'+side))
+            for obj in body+head:
+                if obj.hide_render:
+                    continue
+                evaluated = obj.evaluated_get(bpy.context.evaluated_depsgraph_get())
+                for corner in evaluated.bound_box:
                     point = project(evaluated.matrix_world @ Vector(corner))
-                    require(all(math.isfinite(v) and 1 < v < SIZE - 1 for v in point),
-                            f'geometry outside frame: {obj.name}')
-        maximum_jump = max(maximum_jump, *(math.dist(a, b) for a, b in zip(anchors, anchors[1:])))
-        # Include gameplay root travel when measuring planted feet, not an in-place cheat.
-        for side, offset in [('l', 0), ('r', 4)]:
-            previous = None
-            heights = []
-            for frame in range(9):
-                phase = (frame + offset) % 8
-                pose(rig, actions, 'walk', frame, direction)
-                foot = bone_world(rig, 'leg_' + side)
-                heights.append(foot.z)
-                foot += rig.matrix_world.to_3x3() @ Vector((0, -STRIDE * frame / 8, 0))
-                point = project(foot)
-                if phase in (1, 2, 3, 4) and previous is not None:
-                    maximum_slide = max(maximum_slide, math.dist(point, previous))
-                previous = point
-            lift_px = (max(heights) - min(heights)) * PPU * .5
-            require(lift_px >= 4, f'foot {side} lift {lift_px}px')
-            lifts.append(lift_px)
-        require(0 < max(math.dist(a, b) for a, b in zip(anchors, anchors[1:])),
-                'walk has no head bob')
+                    require(all(math.isfinite(v) and 2 <= v <= SIZE-3 for v in point),
+                            f'geometry outside canvas: {action}/{direction}/{frame}/{obj.name}')
+        pairs = list(zip(anchors, anchors[1:]))
+        if C.ACTIONS[action]['loop']:
+            pairs.append((anchors[-1], anchors[0]))
+        maximum_jump = max(maximum_jump, *(math.dist(a, b) for a, b in pairs))
+        if action == 'idle':
+            require(all(math.dist(anchors[0], a) < 5 for a in anchors), 'idle breath exceeds 5px')
+        moving = action in ('walk', 'carry-walk')
+        for side, offset in (('l', 0), ('r', 4)):
+            points = feet[side]
+            if moving:
+                lifts.append((max(p.z for p in points)-min(p.z for p in points))*PPU*.5)
+                require(lifts[-1] >= 4, f'{side} lift {lifts[-1]}px')
+                for f in range(count):
+                    if (f+offset)%8 >= C.STANCE_FRAMES-1:
+                        continue
+                    a, b = points[f].copy(), points[(f+1)%count].copy()
+                    travel = rig.matrix_world.to_3x3() @ Vector((0, -STRIDE/8, 0))
+                    maximum_slide = max(maximum_slide, math.dist(project(a), project(b+travel)))
+            else:
+                maximum_slide = max(maximum_slide, *(math.dist(project(points[0]), project(p)) for p in points))
         forward = rig.matrix_world.to_3x3() @ Vector((0, -1, 0))
-        origin = project(Vector((0, 0, 0)))
-        actual = project(forward)
-        angle = math.radians(direction * 45)
-        expected = (120 * math.sin(angle), 120 * math.cos(angle) * math.sqrt(3) / 2)
-        require(math.dist([actual[i] - origin[i] for i in range(2)], expected) < .01, 'direction order')
+        origin, actual = project(Vector((0, 0, 0))), project(forward)
+        angle = math.radians(direction*45)
+        expected = (PPU*math.sin(angle), PPU*math.cos(angle)*math.sqrt(3)/2)
+        require(math.dist([actual[i]-origin[i] for i in range(2)], expected) < .01, 'direction order')
     require(maximum_slide < .5, f'foot slide {maximum_slide}px')
-    require(0 < maximum_jump <= 6, f'anchor jump {maximum_jump}px')
+    require(maximum_jump <= 6, f'anchor jump {maximum_jump}px')
     return dict(heightTiles=height, maxFootSlidePx=maximum_slide,
-                maxAnchorJumpPx=maximum_jump, minFootLiftPx=min(lifts))
+                maxAnchorJumpPx=maximum_jump, minFootLiftPx=min(lifts) if lifts else 0)
 
 
 def pixels(path):
@@ -412,176 +474,128 @@ def compare(body, head, reference, shift):
     return iou
 
 
-def crop_frames(stage, records):
-    """Smallest shared square containing every alpha > 1/255 plus 2px per edge."""
-    global SIZE
-    old_size = SIZE
-    paths = sorted(stage.glob('*.png'))
-    xmin = ymin = SIZE
-    xmax = ymax = -1
-    for path in paths:
-        data = pixels(path)
-        for i, alpha in enumerate(data[3::4]):
-            if alpha > 1 / 255:
-                x, y = i % SIZE, i // SIZE
-                xmin, xmax = min(xmin, x), max(xmax, x)
-                ymin, ymax = min(ymin, y), max(ymax, y)
-    size = max(xmax - xmin + 1, ymax - ymin + 1) + 4
-    require(size <= old_size, 'staging canvas too small')
-    left = max(0, min(xmin - 2, old_size - size))
-    bottom = max(0, min(ymin - 2, old_size - size))
-    top = old_size - bottom - size
-    for path in paths:
-        image = bpy.data.images.load(str(path), check_existing=False)
-        data = array('f', [0]) * (old_size * old_size * 4)
-        image.pixels.foreach_get(data)
-        cropped = array('f')
-        for y in range(bottom, bottom + size):
-            start = (y * old_size + left) * 4
-            cropped.extend(data[start:start + size * 4])
-        image.scale(size, size)
-        image.pixels.foreach_set(cropped)
-        image.filepath_raw = str(path)
-        image.save()
-        bpy.data.images.remove(image)
-    SIZE = size
-    for record in records:
-        record['anchor'] = [record['anchor'][0] - left, record['anchor'][1] - top]
-    return {path.name: validate(path, allow_empty='mask' in path.stem)[1] for path in paths}
-
-
-def update_anchors(data, records):
-    group = next(g for g in data['sets'] if g['id'] == 'tabao-rush-cook-spike')
-    frames = {f['id']: f for f in group['frames']}
-    expected = {}
-    for record in records:
-        anchor = [round(v, 3) for v in record['anchor']]
-        for ident in (record['id'], Path(record['mask']).stem):
-            require(ident in frames, f'packing config has no frame {ident}')
-            expected[ident] = anchor
-    require(set(expected) == set(frames), 'packing/render frame coverage differs')
-    for ident, anchor in expected.items():
-        frames[ident]['anchor'] = anchor
-    require(all(frames[i]['anchor'] == a for i, a in expected.items()), 'anchor drift')
+def publish(stage, out):
+    backup = out.with_name(out.name+'.previous')
+    require(not backup.exists(), f'backup already exists: {backup}')
+    if out.exists():
+        out.rename(backup)
+    try:
+        stage.rename(out)
+    except BaseException:
+        if backup.exists():
+            backup.rename(out)
+        raise
+    if backup.exists():
+        shutil.rmtree(backup)
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--out', type=Path, default=Path('assets/src/tabao-rush/cook-spike'))
+    selection = parser.add_mutually_exclusive_group(required=True)
+    selection.add_argument('--action', choices=list(C.ACTIONS))
+    selection.add_argument('--heads', action='store_true')
+    parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--check-only', action='store_true')
     args = parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
+    out = (SOURCE/args.out).resolve()
+    require(out.is_relative_to(SOURCE) and out != SOURCE, 'output outside source')
+    folder = out.relative_to(SOURCE).as_posix()
     started = time.perf_counter()
     rig, actions, body, head, tint, floor = build()
-    checks = rig_checks(rig, actions, body, head)
-    # Exercise metadata coverage even without pixels; never write during the dry run.
-    preflight = []
-    for direction in range(8):
-        pose(rig, actions, 'idle', 0, direction)
-        preflight.append(dict(id=f'head-{direction}', anchor=socket(rig),
-                              mask=f'head-mask-{direction}.png'))
-        for action, count in COUNTS.items():
-            for frame in range(count):
-                pose(rig, actions, action, frame, direction)
-                ident = f'{action}-{direction}-{frame}'
-                preflight.append(dict(id=ident, anchor=socket(rig), mask=f'{ident}-mask.png'))
-    update_anchors(json.loads(CONFIG.read_text()), preflight)
+    selected = args.action or 'idle'
+    checks = rig_checks(rig, actions, body, head, selected)
+    setup = time.perf_counter()-started
     if args.check_only:
-        report = json.loads((args.out / 'render-validation.json').read_text())
-        global SIZE
-        SIZE = report['frameSize'][0]
-        for record in report['frames']:
-            surface, _ = validate(args.out / record['file'])
-            colour_mask, _ = validate(args.out / record['mask'], allow_empty=True)
-            if record['id'].startswith('head-'):
-                check_mask(colour_mask, surface[3::4], record['id'])
-        checks['bodyMaskContainment'] = 'SKIPPED: existing frames lack pre-shadow body alpha; no rendering in check-only'
-        checks['existingFramesChecked'] = len(report['frames']) * 2
+        report = json.loads((out/'render-validation.json').read_text())
+        records = json.loads((out/'frames.json').read_text())
+        require(records == report['frames'], 'published frame metadata differs')
+        expected = C.head_ids() if args.heads else C.frame_ids(selected)
+        require([r['id'] for r in records] == expected, 'published frame coverage differs')
+        for record in records:
+            path = out/(record['id']+'.png')
+            _, digest = validate(path, allow_empty=record['id'].endswith('-mask'))
+            require(digest == report['decodedPixelSHA256'][path.name], 'decoded hash differs')
+            require(record['anchor'] == record['anchors']['head'], 'head anchor differs')
         print(json.dumps(checks, sort_keys=True))
         return
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.TemporaryDirectory(prefix='.cook-', dir=args.out.parent) as folder:
-        stage = Path(folder)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix='.cook-', dir=out.parent) as temp:
+        stage = Path(temp)/'publish'
+        stage.mkdir()
+        scratch = Path(temp)/'heads'
+        scratch.mkdir()
         records, hashes, head_data, head_anchors = [], {}, {}, {}
-        for direction in range(8):
+        for direction, name in enumerate(DIRECTIONS):
             pose(rig, actions, 'idle', 0, direction)
+            visible_props('idle')
             head_anchors[direction] = socket(rig)
             for obj in body:
                 obj.hide_render = True
             floor.hide_render = True
-            path = stage / f'head-{direction}.png'
+            ident = 'head-cap-'+name
+            path = (stage if args.heads else scratch)/(ident+'.png')
             render_frame(path)
-            head_data[direction], hashes[path.name] = validate(path)
-            mask_path = stage / f'head-mask-{direction}.png'
-            mask(mask_path, body + head, tint, floor)
-            head_mask, hashes[mask_path.name] = validate(mask_path, allow_empty=True)
-            # Separate renders sample edges differently; a lone edge pixel differs by a few levels
-            # (8/255 measured), while a real spill is far larger.
-            check_mask(head_mask, head_data[direction][3::4], 'head')
-            records.append(dict(id=f'head-{direction}', anchor=head_anchors[direction],
-                                file=path.name, mask=mask_path.name))
+            head_data[direction], digest = validate(path)
+            mp = path.with_name(ident+'-mask.png')
+            mask(mp, body+head, tint, floor)
+            mask_pixels, mask_digest = validate(mp, allow_empty=True)
+            check_mask(mask_pixels, head_data[direction][3::4], ident)
+            if args.heads:
+                hashes[path.name], hashes[mp.name] = digest, mask_digest
+                for suffix in ('', '-mask'):
+                    records.append(frame_record(rig, ident+suffix, folder, heads=True))
             for obj in body:
                 obj.hide_render = False
-        for action, count in COUNTS.items():
-            for direction in range(8):
-                for frame in range(count):
-                    pose(rig, actions, action, frame, direction)
-                    ident = f'{action}-{direction}-{frame}'
-                    anchor = socket(rig)
+        if not args.heads:
+            for direction, name in enumerate(DIRECTIONS):
+                for frame in range(COUNTS[selected]):
+                    pose(rig, actions, selected, frame, direction)
+                    visible_props(selected)
+                    ident = f'{selected}-{name}-{frame}'
                     for obj in head:
                         obj.visible_camera = False
                     floor.hide_render = False
-                    path = stage / f'{ident}.png'
+                    path = stage/(ident+'.png')
                     pre_shadow_alpha = render_frame(path)
                     body_pixels, hashes[path.name] = validate(path)
-                    mp = stage / f'{ident}-mask.png'
+                    mp = stage/(ident+'-mask.png')
                     for obj in head:
                         obj.hide_render = True
-                    mask(mp, body + head, tint, floor)
+                    mask(mp, body+head, tint, floor)
                     mask_pixels, hashes[mp.name] = validate(mp, allow_empty=True)
                     check_mask(mask_pixels, pre_shadow_alpha, ident)
                     for obj in head:
                         obj.hide_render = False
                         obj.visible_camera = True
                     floor.hide_render = False
-                    reference = stage / 'reference.png'
+                    reference = Path(temp)/'reference.png'
                     render_frame(reference)
                     ref, _ = validate(reference)
+                    anchor = socket(rig)
                     iou = compare(body_pixels, head_data[direction], ref,
-                                  [anchor[i] - head_anchors[direction][i] for i in range(2)])
-                    records.append(dict(id=ident, anchor=anchor, file=path.name, mask=mp.name, compositionIoU=iou))
-        (stage / 'reference.png').unlink()
-        hashes = crop_frames(stage, records)
-        report = dict(nominalHeightTiles=P['height'], frameSizing='minimum shared alpha bounds plus 2px per edge', requirements=['NN-4', 'TR-060', 'PERF-023', 'PERF-024'], frameSize=[SIZE, SIZE],
-                      pixelsPerTile=PPU, directionOrder=DIRECTIONS, strideTiles=STRIDE,
-                      walkFpsAtThreeTilesPerSecond=8*3/STRIDE,
-                      secondsPerCharacter=TIMINGS['bodyAndMasks'] + TIMINGS['headAndMasks'],
-                      totalSecondsIncludingValidation=time.perf_counter()-started,
-                      renderSeconds=TIMINGS, checks=checks, frames=records,
-                      decodedPixelSHA256=hashes)
-        (stage / 'render-validation.json').write_text(json.dumps(report, indent=2) + '\n')
-        # Resolve repository config exactly as pipeline.py does, independent of cwd.
-        config = CONFIG
-        data = json.loads(config.read_text())
-        update_anchors(data, records)
-        backup = args.out.with_name(args.out.name + '.previous')
-        require(not backup.exists(), f'backup already exists: {backup}')
-        if args.out.exists():
-            args.out.rename(backup)
-        try:
-            shutil.move(str(stage), str(args.out))
-        except Exception:
-            if backup.exists():
-                backup.rename(args.out)
-            raise
-        # Publish metadata only after frames successfully publish. Touch all outputs
-        # afterwards because pipeline.json is a render input.
-        config.write_text(json.dumps(data, indent=2) + '\n')
-        for output in args.out.iterdir():
-            output.touch()
-        if backup.exists():
-            shutil.rmtree(backup)
+                                  [anchor[i]-head_anchors[direction][i] for i in range(2)])
+                    for suffix in ('', '-mask'):
+                        record = frame_record(rig, ident+suffix, folder)
+                        record['compositionIoU'] = iou
+                        records.append(record)
+        spec = dict(count=1, fps=1, loop=True) if args.heads else C.ACTIONS[selected]
+        elapsed = time.perf_counter()-started
+        report = dict(action='cap' if args.heads else selected,
+                      **dict(spec, strideTiles=spec.get('strideTiles')), frameSize=[SIZE, SIZE],
+                      pixelsPerTile=PPU, directionOrder=DIRECTIONS, checks=checks,
+                      frames=records, decodedPixelSHA256=hashes, setupSeconds=setup,
+                      secondsPerFrame=(elapsed-setup)/len(records), totalSeconds=elapsed)
+        (stage/'frames.json').write_text(json.dumps(records, indent=2)+'\n')
+        (stage/'render-validation.json').write_text(json.dumps(report, indent=2)+'\n')
+        publish(stage, out)
         print(json.dumps(report, sort_keys=True))
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception:
+        import traceback
+        traceback.print_exc()
+        sys.stdout.flush(); sys.stderr.flush()
+        os._exit(1)

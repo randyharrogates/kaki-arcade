@@ -103,6 +103,17 @@ class RenderJobTests(unittest.TestCase):
             pack.assert_called_once()
         self.assertEqual(self.blender.call_count, 2)
 
+    def test_no_pack(self):
+        config_path = self.source/'pipeline.json'
+        p.write_json(config_path,self.config)
+        with patch('sys.argv',['pipeline.py','--config',str(config_path),'--render','--only','cook','--no-pack']), patch.object(p,'pack') as pack:
+            p.main()
+            pack.assert_not_called()
+        self.assertEqual(self.blender.call_count,1)
+        with patch('sys.argv',['pipeline.py','--no-pack']), contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as error:
+            p.main()
+        self.assertEqual(error.exception.code,2)
+
     def test_timeout_kills_process_group_and_reaps(self):
         # Exercise the actual launcher, with every OS/process operation stubbed.
         patch.stopall()

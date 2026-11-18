@@ -2,6 +2,15 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — A-02: the cook body, nine actions in eight directions
+
+- `tools/blender/cook.py`, `tools/blender/cook_poses.py`: one shared cook body, rigged and posed for
+  idle, walk, carry-walk, chop, stir, wash, serve, throw and extinguish in 8 directions, with a
+  separate cap head, colour masks and per-frame head and throwing-hand anchors. Render jobs split
+  to fit the 300 s render timeout. `tools/assets/pipeline.py`: repeated frames packed once;
+  `tools/assets/cook_strips.py`: sheets and a motion check on composited frames. TR-060, NN-4
+  (D-154, D-163, D-167).
+
 ## 2026-11-18 — K-09: lone options, large Lock in, face-down grid cells
 
 - `packages/platform/src/game/{phone-placement.ts,private-placement.ts,option-metrics.ts}`: a lone

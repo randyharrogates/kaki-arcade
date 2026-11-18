@@ -19,6 +19,58 @@ class PipelineTests(unittest.TestCase):
         self.out = self.root / 'dist'
         self.manifest = p.pack(self.config, self.source, self.out)
 
+    def test_frame_files(self):
+        group = self.config['sets'][0]
+        original = group['frames']
+        group['frames'], external = original[:1], original[1:]
+        p.write_json(self.source/'frames.json', external)
+        group['frameFiles'] = ['frames.json']
+        self.assertEqual(p.merged_frames(group,self.source),original)
+        manifest = p.pack(self.config,self.source,self.out)
+        self.assertEqual(manifest,self.manifest)
+        del group['frames']
+        p.write_json(self.source/'frames.json',original)
+        self.assertEqual(p.merged_frames(group,self.source),original)
+        for file,value in [('missing.json',None),('bad.json',{}),('duplicate.json',[original[0]]) ,('../outside.json',[])]:
+            group['frames'] = original[:1]
+            group['frameFiles'] = [file]
+            if value is not None:
+                (self.source/file).write_text(__import__('json').dumps(value))
+            with self.assertRaisesRegex(ValueError, 'duplicate frame' if file=='duplicate.json' else group['id']+'.*'+file.replace('.', r'\.')):
+                p.pack(self.config,self.source,self.out)
+
+    def test_animation_fields(self):
+        group = self.config['sets'][0]
+        group['animations'] = [dict(action='move',fps=8,frames=[group['frames'][0]['id']],loop=True,strideTiles=.72,releaseFrame=0)]
+        manifest = p.pack(self.config,self.source,self.out)
+        self.assertEqual(manifest['sets'][group['id']]['animations'],group['animations'])
+        for field,values in [('loop',[0,1,None,'yes']),('strideTiles',[True,0,-1,float('inf'),float('nan'),'1']),('releaseFrame',[True,-1,1,0.5,'0'])]:
+            for value in values:
+                animation = dict(group['animations'][0],**{field:value})
+                with self.assertRaisesRegex(ValueError,group['id']+'.*'+field):
+                    p.validate_animations([animation],group['id'])
+
+    def test_duplicate_tiles_and_animation_references(self):
+        image = Image.new('RGBA',(16,16),(200,80,40,255))
+        image.save(self.source/'repeat.png')
+        frames = [dict(id=ident,file='repeat.png',anchors={'hands':[4,6]})
+                  for ident in ('a','b','c')]
+        frames[2]['anchors']['hands'] = [5,6]  # same art, different semantics
+        config = dict(sets=[dict(id='repeat',frames=frames,animations=[dict(
+            action='idle',fps=4,loop=True,frames=['a','b','c','b'])])],
+            rounds={'test':['repeat']})
+        for maximum in (2048,24):  # complete-action and direction fallback paths
+            with patch.object(p,'MAX_SIZE',maximum):
+                manifest = p.pack(config,self.source,self.out)
+            sequence = manifest['sets']['repeat']['animations'][0]['frames']
+            self.assertEqual(sequence,['a','a','c','a'])
+            records = {ident:(atlas['id'],record['rect'])
+                       for atlas in manifest['atlases'] for ident,record in atlas['frames'].items()}
+            self.assertEqual(records['a'],records['b'])
+            self.assertNotEqual(records['a'],records['c'])
+            self.assertEqual(len({(page,tuple(rect)) for page,rect in records.values()}),2)
+        self.assertEqual(config['sets'][0]['animations'][0]['frames'],['a','b','c','b'])
+
     def test_determinism(self):
         before = {f.name: f.read_bytes() for f in self.out.iterdir()}
         self.config['sets'][0]['frames'].reverse()
@@ -584,92 +636,6 @@ class PipelineTests(unittest.TestCase):
             p.render(config)
             self.assertEqual(run.call_count, 2)
 
-        # S-02: exercise the actual cook job, without launching Blender. Source-relative
-        # outputs and cwd must work from assets/src, and every PNG must be declared.
-        import json
-        config = json.loads((p.ROOT / 'assets/src/pipeline.json').read_text())
-        cook = next(job for job in config['renders'] if job['script'] == 'cook.py')
-        self.assertEqual(cook['args'], ['--out', 'tabao-rush/cook-spike'])
-        self.assertEqual(cook['inputs'], ['pipeline.json'])
-        declared = set(cook['outputs'])
-        group = next(g for g in config['sets'] if g['id'] == 'tabao-rush-cook-spike')
-        self.assertEqual(len(group['frames']), 208)
-        self.assertEqual(declared, {f['file'] for f in group['frames']} |
-                         {'tabao-rush/cook-spike/render-validation.json'})
-        self.assertTrue(all(len(f['anchor']) == 2 for f in group['frames']))
-        # Execute the production pose/socket functions without importing Blender.
-        import ast
-        import types
-        source = ast.parse((p.ROOT / 'tools/blender/cook.py').read_text())
-        functions = [n for n in source.body if isinstance(n, ast.FunctionDef)
-                     and n.name in ('pose', 'bone_world', 'socket')]
-        events = []
-        graph = types.SimpleNamespace(update=lambda: events.append('depsgraph'))
-        scene = types.SimpleNamespace(frame_set=lambda f: events.append(('frame', f)))
-        matrix = types.SimpleNamespace(translation=types.SimpleNamespace(copy=lambda: [3, 4, 5]))
-        class World:
-            def __matmul__(self, other):
-                events.append('evaluated-matrix')
-                return matrix
-        evaluated = types.SimpleNamespace(matrix_world=World(), pose=types.SimpleNamespace(
-            bones={'head_socket': types.SimpleNamespace(matrix=object())}))
-        rig = types.SimpleNamespace(animation_data=types.SimpleNamespace(),
-                                    rotation_euler=types.SimpleNamespace(),
-                                    evaluated_get=lambda g: evaluated)
-        context = types.SimpleNamespace(scene=scene,
-            view_layer=types.SimpleNamespace(update=lambda: events.append('view-layer')),
-            evaluated_depsgraph_get=lambda: graph)
-        namespace = {'bpy': types.SimpleNamespace(context=context), 'math': __import__('math'),
-                     'project': lambda point: point}
-        exec(compile(ast.Module(body=functions, type_ignores=[]), 'cook-pose', 'exec'), namespace)
-        action = types.SimpleNamespace(slots=['walk-slot'])
-        namespace['pose'](rig, {'walk': action}, 'walk', 2, 1)
-        self.assertEqual(namespace['socket'](rig), [3, 4, 5])
-        self.assertEqual(events, [('frame', 3), 'view-layer', 'depsgraph', 'evaluated-matrix'])
-        self.assertEqual(rig.animation_data.action_slot, 'walk-slot')
-        # Recorded render anchors, including masks, are authoritative; no pose formula.
-        report = json.loads((p.ROOT / 'assets/src/tabao-rush/cook-spike/render-validation.json').read_text())
-        helpers = [n for n in source.body if isinstance(n, ast.FunctionDef)
-                   and n.name in ('require', 'update_anchors')]
-        helper_ns = {'Path': Path}
-        exec(compile(ast.Module(body=helpers, type_ignores=[]), 'cook-anchors', 'exec'), helper_ns)
-        expected_config = copy.deepcopy(config)
-        helper_ns['update_anchors'](expected_config, report['frames'])
-        expected_group = next(g for g in expected_config['sets'] if g['id'] == group['id'])
-        self.assertEqual(group['frames'], expected_group['frames'])
-        for frame in expected_group['frames']:
-            frame['anchor'] = [-1, -1]
-        helper_ns['update_anchors'](expected_config, report['frames'])
-        self.assertEqual(group['frames'], expected_group['frames'])
-        broken = copy.deepcopy(config)
-        next(g for g in broken['sets'] if g['id'] == group['id'])['frames'].pop()
-        with self.assertRaisesRegex(RuntimeError, 'no frame'):
-            helper_ns['update_anchors'](broken, report['frames'])
-        # Metadata mutation follows successful frame publication; output timestamps follow it.
-        main_node = next(n for n in source.body if isinstance(n, ast.FunctionDef) and n.name == 'main')
-        main_source = ast.unparse(main_node)
-        self.assertLess(main_source.index('shutil.move'), main_source.index('config.write_text'))
-        self.assertLess(main_source.index('config.write_text'), main_source.index('output.touch'))
-        p.write_json(self.source / 'pipeline.json', config)
-        def cook_stub(args, **kwargs):
-            if args[0] == 'blender':
-                self.assertEqual(kwargs['cwd'], self.source)
-                self.assertEqual(args[4], str(p.ROOT / 'tools/blender/cook.py'))
-                self.assertEqual(args[5:], ['--', '--out', 'tabao-rush/cook-spike'])
-                self.assertTrue(kwargs['check'])
-                for output in declared:
-                    path = self.source / output
-                    path.parent.mkdir(parents=True, exist_ok=True)
-                    path.write_bytes(b'stub output')
-            return p.subprocess.CompletedProcess(args, 0)
-        with patch.object(p, 'run_blender', side_effect=lambda *a, **kw: p.subprocess.run(*a, **kw)), patch.object(p.subprocess, 'run', side_effect=cook_stub) as run:
-            p.render({'renders': [cook]}, self.source)
-            p.render({'renders': [cook]}, self.source)
-            self.assertEqual(run.call_count, 2)
-            # Missing any declared frame forces a rebuild.
-            (self.source / sorted(declared)[0]).unlink()
-            p.render({'renders': [cook]}, self.source)
-            self.assertEqual(run.call_count, 4)
 
 
 class ItemContainmentTests(unittest.TestCase):

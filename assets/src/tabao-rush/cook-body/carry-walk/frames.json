@@ -1,0 +1,3586 @@
+[
+  {
+    "id": "carry-walk-s-0",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-0-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-1",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-1-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-2",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-2-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-3",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-3.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        148.87440490722656
+      ],
+      "throwHand": [
+        136.55970764160156,
+        148.87440490722656
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9986747287335377
+  },
+  {
+    "id": "carry-walk-s-3-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-3-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        148.87440490722656
+      ],
+      "throwHand": [
+        136.55970764160156,
+        148.87440490722656
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9986747287335377
+  },
+  {
+    "id": "carry-walk-s-4",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-4-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-5",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-5-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-6",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-6-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-s-7",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-7.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        148.87440490722656
+      ],
+      "throwHand": [
+        136.55970764160156,
+        148.87440490722656
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9986748384959417
+  },
+  {
+    "id": "carry-walk-s-7-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-s-7-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        148.87440490722656
+      ],
+      "throwHand": [
+        136.55970764160156,
+        148.87440490722656
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9986748384959417
+  },
+  {
+    "id": "carry-walk-se-0",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-0-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-1",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-1-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-2",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-2-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-3",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-3.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        145.12358856201172
+      ],
+      "throwHand": [
+        144.5087432861328,
+        139.8818588256836
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9981961298786487
+  },
+  {
+    "id": "carry-walk-se-3-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-3-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        145.12358856201172
+      ],
+      "throwHand": [
+        144.5087432861328,
+        139.8818588256836
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9981961298786487
+  },
+  {
+    "id": "carry-walk-se-4",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-4-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-5",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-5-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-6",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-6-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-se-7",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-7.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        145.12358856201172
+      ],
+      "throwHand": [
+        144.5087432861328,
+        139.8818588256836
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9981662082187214
+  },
+  {
+    "id": "carry-walk-se-7-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-se-7-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        145.12358856201172
+      ],
+      "throwHand": [
+        144.5087432861328,
+        139.8818588256836
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9981662082187214
+  },
+  {
+    "id": "carry-walk-e-0",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999198461045207
+  },
+  {
+    "id": "carry-walk-e-0-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999198461045207
+  },
+  {
+    "id": "carry-walk-e-1",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999183740102848
+  },
+  {
+    "id": "carry-walk-e-1-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999183740102848
+  },
+  {
+    "id": "carry-walk-e-2",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999183473503716
+  },
+  {
+    "id": "carry-walk-e-2-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999183473503716
+  },
+  {
+    "id": "carry-walk-e-3",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-3.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        136.06832885742188
+      ],
+      "throwHand": [
+        142.7871856689453,
+        128.65540313720703
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9982972512770616
+  },
+  {
+    "id": "carry-walk-e-3-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-3-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        136.06832885742188
+      ],
+      "throwHand": [
+        142.7871856689453,
+        128.65540313720703
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9982972512770616
+  },
+  {
+    "id": "carry-walk-e-4",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999188113988796
+  },
+  {
+    "id": "carry-walk-e-4-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999188113988796
+  },
+  {
+    "id": "carry-walk-e-5",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999183473503716
+  },
+  {
+    "id": "carry-walk-e-5-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999183473503716
+  },
+  {
+    "id": "carry-walk-e-6",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999183806725432
+  },
+  {
+    "id": "carry-walk-e-6-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999183806725432
+  },
+  {
+    "id": "carry-walk-e-7",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-7.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        136.06832885742188
+      ],
+      "throwHand": [
+        142.7871856689453,
+        128.65540313720703
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9983084977849376
+  },
+  {
+    "id": "carry-walk-e-7-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-e-7-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        136.06832885742188
+      ],
+      "throwHand": [
+        142.7871856689453,
+        128.65540313720703
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9983084977849376
+  },
+  {
+    "id": "carry-walk-ne-0",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-0-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-1",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-1-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-2",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-2-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-3",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-3.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        127.0130615234375
+      ],
+      "throwHand": [
+        132.4034881591797,
+        121.77133178710938
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9984961215766978
+  },
+  {
+    "id": "carry-walk-ne-3-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-3-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        127.0130615234375
+      ],
+      "throwHand": [
+        132.4034881591797,
+        121.77133178710938
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9984961215766978
+  },
+  {
+    "id": "carry-walk-ne-4",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-4-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-5",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-5-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-6",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-6-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-ne-7",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-7.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        127.0130615234375
+      ],
+      "throwHand": [
+        132.4034881591797,
+        121.77133178710938
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9985149288729092
+  },
+  {
+    "id": "carry-walk-ne-7-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-ne-7-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        127.0130615234375
+      ],
+      "throwHand": [
+        132.4034881591797,
+        121.77133178710938
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9985149288729092
+  },
+  {
+    "id": "carry-walk-n-0",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-0-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-1",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-1-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-2",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-2-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-3",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-3.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        123.26225280761719
+      ],
+      "throwHand": [
+        119.4402847290039,
+        123.26225280761719
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.998923904688701
+  },
+  {
+    "id": "carry-walk-n-3-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-3-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        123.26225280761719
+      ],
+      "throwHand": [
+        119.4402847290039,
+        123.26225280761719
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.998923904688701
+  },
+  {
+    "id": "carry-walk-n-4",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-4-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-5",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-5-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-6",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-6-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-n-7",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-7.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        123.26225280761719
+      ],
+      "throwHand": [
+        119.4402847290039,
+        123.26225280761719
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9989237392373924
+  },
+  {
+    "id": "carry-walk-n-7-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-n-7-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        123.26225280761719
+      ],
+      "throwHand": [
+        119.4402847290039,
+        123.26225280761719
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9989237392373924
+  },
+  {
+    "id": "carry-walk-nw-0",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-0-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-1",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-1-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-2",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-2-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-3",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-3.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        127.0130615234375
+      ],
+      "throwHand": [
+        111.49124908447266,
+        132.25479125976562
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9985929805362308
+  },
+  {
+    "id": "carry-walk-nw-3-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-3-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        127.0130615234375
+      ],
+      "throwHand": [
+        111.49124908447266,
+        132.25479125976562
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9985929805362308
+  },
+  {
+    "id": "carry-walk-nw-4",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-4-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-5",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-5-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-6",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-6-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-nw-7",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-7.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        127.0130615234375
+      ],
+      "throwHand": [
+        111.49124908447266,
+        132.25479125976562
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9985751602944669
+  },
+  {
+    "id": "carry-walk-nw-7-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-nw-7-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        127.0130615234375
+      ],
+      "throwHand": [
+        111.49124908447266,
+        132.25479125976562
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9985751602944669
+  },
+  {
+    "id": "carry-walk-w-0",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996754300551769
+  },
+  {
+    "id": "carry-walk-w-0-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996754300551769
+  },
+  {
+    "id": "carry-walk-w-1",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.999673655870115
+  },
+  {
+    "id": "carry-walk-w-1-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.999673655870115
+  },
+  {
+    "id": "carry-walk-w-2",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996737889414451
+  },
+  {
+    "id": "carry-walk-w-2-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996737889414451
+  },
+  {
+    "id": "carry-walk-w-3",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-3.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        136.06832885742188
+      ],
+      "throwHand": [
+        113.21281433105469,
+        143.48125457763672
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9974235104669887
+  },
+  {
+    "id": "carry-walk-w-3-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-3-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        136.06832885742188
+      ],
+      "throwHand": [
+        113.21281433105469,
+        143.48125457763672
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9974235104669887
+  },
+  {
+    "id": "carry-walk-w-4",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996796925048046
+  },
+  {
+    "id": "carry-walk-w-4-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996796925048046
+  },
+  {
+    "id": "carry-walk-w-5",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996736824930658
+  },
+  {
+    "id": "carry-walk-w-5-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996736824930658
+  },
+  {
+    "id": "carry-walk-w-6",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.999673655870115
+  },
+  {
+    "id": "carry-walk-w-6-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.999673655870115
+  },
+  {
+    "id": "carry-walk-w-7",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-7.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        136.06832885742188
+      ],
+      "throwHand": [
+        113.21281433105469,
+        143.48125457763672
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9974070172595414
+  },
+  {
+    "id": "carry-walk-w-7-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-w-7-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        136.06832885742188
+      ],
+      "throwHand": [
+        113.21281433105469,
+        143.48125457763672
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9974070172595414
+  },
+  {
+    "id": "carry-walk-sw-0",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-0-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-1",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-1-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-2",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-2-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-3",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-3.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        145.12358856201172
+      ],
+      "throwHand": [
+        123.59650421142578,
+        150.36531829833984
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9986661108795332
+  },
+  {
+    "id": "carry-walk-sw-3-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-3-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        145.12358856201172
+      ],
+      "throwHand": [
+        123.59650421142578,
+        150.36531829833984
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9986661108795332
+  },
+  {
+    "id": "carry-walk-sw-4",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-4-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-5",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-5-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-6",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-6-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "carry-walk-sw-7",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-7.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        145.12358856201172
+      ],
+      "throwHand": [
+        123.59650421142578,
+        150.36531829833984
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.998687771672271
+  },
+  {
+    "id": "carry-walk-sw-7-mask",
+    "file": "tabao-rush/cook-body/carry-walk/carry-walk-sw-7-mask.png",
+    "anchor": [
+      128.0,
+      114.92472839355469
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        114.92472839355469
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        145.12358856201172
+      ],
+      "throwHand": [
+        123.59650421142578,
+        150.36531829833984
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.998687771672271
+  }
+]

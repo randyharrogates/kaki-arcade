@@ -1,0 +1,9 @@
+A-02 Round 2 (TR-060, NN-4): sandbox check results
+No renders generated. motion.json is produced by the integrator after rendering.
+Load before each test command: below 8; observed range 3.11–4.43.
+python3 -m unittest discover -s tools/blender -p 'test_cook_poses.py': PASS, 5 tests (final run 0.025 s)
+python3 -m unittest discover -s tools/assets -p 'test_*.py': PASS, 43 tests (8.489 s)
+VITEST_MAX_WORKERS=2 pnpm exec vitest run tools/assets: PASS, 2 files / 5 tests (9.03 s)
+pnpm exec tsc -b tsconfig.build.json: PASS, exit 0
+pnpm exec eslint tools/assets: PASS, exit 0
+pnpm run lint:design: PASS, 377 files

@@ -1416,3 +1416,13 @@ white, the same in every theme), inset 8–13 px so it lies only on the card bac
 the red back and 4.46 : 1 against its stripe. No single colour can clear 3 : 1 against both the felt
 and the marble backgrounds, and the inset outline never touches either, so only the card back
 counts. The rendered pick grid is shown with P-03's Lock in artifact (D-164(5)). Randy may overrule.
+
+**D-167 · 2026-11-18 · Claude** (under D-057 and D-142) — A-02 merges after its round-6 review
+was clean of blockers. Two visible art points are carried to Randy rather than fixed before merge,
+because neither breaks a requirement and the cook body unblocks the big-screen renderer (T-07):
+(1) in chop, the knife hand passes behind the torso for one frame (about 100 ms per loop) in most
+directions; (2) extinguish is a one-handed hold with the arm out to the side, not two-handed,
+because the fixed shoulders cannot keep a two-handed grip at a reach that shows from the north.
+Both go to Randy as an artifact with the current frames beside the alternatives, together with
+the cook-art storage choice (lossless now, 5.14 MB of 8 MB). Randy may overrule.
+

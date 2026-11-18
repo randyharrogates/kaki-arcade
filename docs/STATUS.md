@@ -7,6 +7,13 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 
 ## Works
 
+- **A-02 (2026-11-18): the cook body.** One shared cook body, rendered in Blender, does all nine
+  actions (idle, walk, carry-walk, chop, stir, wash, serve, throw, extinguish) in 8 directions,
+  with a cap head, colour masks for cap and apron, and a head and throwing-hand anchor on every
+  frame. Checks: no foot slide, head anchor jumps at most 5.81 px, every action visibly moves on
+  the composited frames. Tabao Rush art at full size is 5.14 MB of the 8 MB level budget.
+  Not yet drawn in a game (T-07). Two art points await Randy (D-167). Evidence:
+  `uat/evidence/A-02-cook-body/round6/`.
 - **K-09 (2026-11-18): lone options and face-down cards on phones.** A lone option such as Rabakz's
   Skip takes only its own width (at least 89 px) and the answers get the rest (D-160); a large lone
   option such as Peek Poker's Lock in keeps 144 × 144 beside a 4 × 4 grid (D-164); face-down grid
@@ -324,8 +331,8 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   masks so the cap and apron take each player's colour. 208 frames, 192 × 192 px, 94 s per
   character. Storage decided as lossy WebP q90 with exact colour (D-142, D-144): about 2.8 MB for
   all cook animations of the 8 MB level budget. Evidence: `uat/evidence/S-02-cook-spike/round2/`.
-  The other 7 actions, the jobs split under the 300 s render timeout, and the first full render's
-  body-mask check are A-02's.
+  The other 7 actions came with A-02 (above); A-02 keeps the cook sets lossless for now, so the
+  storage choice is put to Randy again with the cook art.
 
 ### Private panel on the phone (K-05)
 

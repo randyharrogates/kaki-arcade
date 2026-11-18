@@ -1,0 +1,2147 @@
+{
+  "action": "extinguish",
+  "count": 4,
+  "fps": 8,
+  "loop": true,
+  "strideTiles": null,
+  "frameSize": [
+    256,
+    256
+  ],
+  "pixelsPerTile": 120,
+  "directionOrder": [
+    "s",
+    "se",
+    "e",
+    "ne",
+    "n",
+    "nw",
+    "w",
+    "sw"
+  ],
+  "checks": {
+    "heightTiles": 1.5494016715092584,
+    "maxFootSlidePx": 0.0,
+    "maxAnchorJumpPx": 0.0,
+    "minFootLiftPx": 0
+  },
+  "frames": [
+    {
+      "id": "extinguish-s-0",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-s-0.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          144.98944091796875,
+          152.90719604492188
+        ],
+        "throwHand": [
+          194.06739807128906,
+          155.0009002685547
+        ],
+        "nozzle": [
+          181.391357421875,
+          168.50550842285156
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9999239717174789
+    },
+    {
+      "id": "extinguish-s-0-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-s-0-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          144.98944091796875,
+          152.90719604492188
+        ],
+        "throwHand": [
+          194.06739807128906,
+          155.0009002685547
+        ],
+        "nozzle": [
+          181.391357421875,
+          168.50550842285156
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9999239717174789
+    },
+    {
+      "id": "extinguish-s-1",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-s-1.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          152.70068359375,
+          144.9029769897461
+        ],
+        "throwHand": [
+          200.89732360839844,
+          128.32061767578125
+        ],
+        "nozzle": [
+          196.4235382080078,
+          145.1178741455078
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-s-1-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-s-1-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          152.70068359375,
+          144.9029769897461
+        ],
+        "throwHand": [
+          200.89732360839844,
+          128.32061767578125
+        ],
+        "nozzle": [
+          196.4235382080078,
+          145.1178741455078
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-s-2",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-s-2.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          155.7834014892578,
+          134.8263931274414
+        ],
+        "throwHand": [
+          194.06739807128906,
+          101.64033508300781
+        ],
+        "nozzle": [
+          198.63418579101562,
+          118.41973876953125
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9999222757655837
+    },
+    {
+      "id": "extinguish-s-2-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-s-2-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          155.7834014892578,
+          134.8263931274414
+        ],
+        "throwHand": [
+          194.06739807128906,
+          101.64033508300781
+        ],
+        "nozzle": [
+          198.63418579101562,
+          118.41973876953125
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9999222757655837
+    },
+    {
+      "id": "extinguish-s-3",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-s-3.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          152.70068359375,
+          144.9029769897461
+        ],
+        "throwHand": [
+          200.89732360839844,
+          128.32061767578125
+        ],
+        "nozzle": [
+          196.4235382080078,
+          145.1178741455078
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-s-3-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-s-3-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          152.70068359375,
+          144.9029769897461
+        ],
+        "throwHand": [
+          200.89732360839844,
+          128.32061767578125
+        ],
+        "nozzle": [
+          196.4235382080078,
+          145.1178741455078
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-se-0",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-se-0.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          155.57875061035156,
+          136.91971588134766
+        ],
+        "throwHand": [
+          196.50106811523438,
+          106.72857666015625
+        ],
+        "nozzle": [
+          199.2742919921875,
+          123.78550720214844
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-se-0-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-se-0-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          155.57875061035156,
+          136.91971588134766
+        ],
+        "throwHand": [
+          196.50106811523438,
+          106.72857666015625
+        ],
+        "nozzle": [
+          199.2742919921875,
+          123.78550720214844
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-se-1",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-se-1.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          154.4960174560547,
+          126.5377197265625
+        ],
+        "throwHand": [
+          179.5461883544922,
+          83.68031311035156
+        ],
+        "nozzle": [
+          190.80772399902344,
+          98.04267883300781
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-se-1-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-se-1-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          154.4960174560547,
+          126.5377197265625
+        ],
+        "throwHand": [
+          179.5461883544922,
+          83.68031311035156
+        ],
+        "nozzle": [
+          190.80772399902344,
+          98.04267883300781
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-se-2",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-se-2.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          148.44833374023438,
+          117.52473449707031
+        ],
+        "throwHand": [
+          152.93234252929688,
+          68.9969482421875
+        ],
+        "nozzle": [
+          170.5719451904297,
+          77.81050109863281
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-se-2-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-se-2-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          148.44833374023438,
+          117.52473449707031
+        ],
+        "throwHand": [
+          152.93234252929688,
+          68.9969482421875
+        ],
+        "nozzle": [
+          170.5719451904297,
+          77.81050109863281
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-se-3",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-se-3.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          154.4960174560547,
+          126.5377197265625
+        ],
+        "throwHand": [
+          179.5461883544922,
+          83.68031311035156
+        ],
+        "nozzle": [
+          190.80772399902344,
+          98.04267883300781
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-se-3-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-se-3-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          154.4960174560547,
+          126.5377197265625
+        ],
+        "throwHand": [
+          179.5461883544922,
+          83.68031311035156
+        ],
+        "nozzle": [
+          190.80772399902344,
+          98.04267883300781
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-e-0",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-e-0.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          150.0128173828125,
+          119.1302490234375
+        ],
+        "throwHand": [
+          158.8077392578125,
+          71.10456848144531
+        ],
+        "nozzle": [
+          175.4057159423828,
+          81.21269226074219
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-e-0-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-e-0-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          150.0128173828125,
+          119.1302490234375
+        ],
+        "throwHand": [
+          158.8077392578125,
+          71.10456848144531
+        ],
+        "nozzle": [
+          175.4057159423828,
+          81.21269226074219
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-e-1",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-e-1.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          140.7703399658203,
+          112.45211791992188
+        ],
+        "throwHand": [
+          128.0,
+          65.189697265625
+        ],
+        "nozzle": [
+          148.39999389648438,
+          68.19444274902344
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 0.9999190676594367
+    },
+    {
+      "id": "extinguish-e-1-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-e-1-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          140.7703399658203,
+          112.45211791992188
+        ],
+        "throwHand": [
+          128.0,
+          65.189697265625
+        ],
+        "nozzle": [
+          148.39999389648438,
+          68.19444274902344
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 0.9999190676594367
+    },
+    {
+      "id": "extinguish-e-2",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-e-2.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          129.13490295410156,
+          109.78240966796875
+        ],
+        "throwHand": [
+          97.1922607421875,
+          71.10456848144531
+        ],
+        "nozzle": [
+          117.57164001464844,
+          66.27995300292969
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 0.9999211045364892
+    },
+    {
+      "id": "extinguish-e-2-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-e-2-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          129.13490295410156,
+          109.78240966796875
+        ],
+        "throwHand": [
+          97.1922607421875,
+          71.10456848144531
+        ],
+        "nozzle": [
+          117.57164001464844,
+          66.27995300292969
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 0.9999211045364892
+    },
+    {
+      "id": "extinguish-e-3",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-e-3.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          140.7703399658203,
+          112.45211791992188
+        ],
+        "throwHand": [
+          128.0,
+          65.189697265625
+        ],
+        "nozzle": [
+          148.39999389648438,
+          68.19444274902344
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 0.9999190676594367
+    },
+    {
+      "id": "extinguish-e-3-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-e-3-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          140.7703399658203,
+          112.45211791992188
+        ],
+        "throwHand": [
+          128.0,
+          65.189697265625
+        ],
+        "nozzle": [
+          148.39999389648438,
+          68.19444274902344
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 0.9999190676594367
+    },
+    {
+      "id": "extinguish-ne-0",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-ne-0.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          131.5520782470703,
+          109.95962524414062
+        ],
+        "throwHand": [
+          103.0676498413086,
+          68.9969482421875
+        ],
+        "nozzle": [
+          123.76750183105469,
+          65.72561645507812
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-ne-0-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-ne-0-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          131.5520782470703,
+          109.95962524414062
+        ],
+        "throwHand": [
+          103.0676498413086,
+          68.9969482421875
+        ],
+        "nozzle": [
+          123.76750183105469,
+          65.72561645507812
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-ne-1",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-ne-1.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          119.56398010253906,
+          110.89730834960938
+        ],
+        "throwHand": [
+          76.45381164550781,
+          83.68031311035156
+        ],
+        "nozzle": [
+          94.042236328125,
+          73.05787658691406
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-ne-1-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-ne-1-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          119.56398010253906,
+          110.89730834960938
+        ],
+        "throwHand": [
+          76.45381164550781,
+          83.68031311035156
+        ],
+        "nozzle": [
+          94.042236328125,
+          73.05787658691406
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-ne-2",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-ne-2.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          109.15666961669922,
+          116.134765625
+        ],
+        "throwHand": [
+          59.498931884765625,
+          106.72857666015625
+        ],
+        "nozzle": [
+          70.68013000488281,
+          90.58256530761719
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-ne-2-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-ne-2-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          109.15666961669922,
+          116.134765625
+        ],
+        "throwHand": [
+          59.498931884765625,
+          106.72857666015625
+        ],
+        "nozzle": [
+          70.68013000488281,
+          90.58256530761719
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-ne-3",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-ne-3.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          119.56398010253906,
+          110.89730834960938
+        ],
+        "throwHand": [
+          76.45381164550781,
+          83.68031311035156
+        ],
+        "nozzle": [
+          94.042236328125,
+          73.05787658691406
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-ne-3-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-ne-3-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          119.56398010253906,
+          110.89730834960938
+        ],
+        "throwHand": [
+          76.45381164550781,
+          83.68031311035156
+        ],
+        "nozzle": [
+          94.042236328125,
+          73.05787658691406
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-n-0",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-n-0.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          111.01055908203125,
+          114.77986145019531
+        ],
+        "throwHand": [
+          61.93259048461914,
+          101.64033508300781
+        ],
+        "nozzle": [
+          74.60862731933594,
+          86.39640808105469
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-n-0-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-n-0-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          111.01055908203125,
+          114.77986145019531
+        ],
+        "throwHand": [
+          61.93259048461914,
+          101.64033508300781
+        ],
+        "nozzle": [
+          74.60862731933594,
+          86.39640808105469
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-n-1",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-n-1.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          103.29932403564453,
+          122.78408813476562
+        ],
+        "throwHand": [
+          55.102684020996094,
+          128.32062530517578
+        ],
+        "nozzle": [
+          59.57646560668945,
+          109.78404235839844
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-n-1-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-n-1-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          103.29932403564453,
+          122.78408813476562
+        ],
+        "throwHand": [
+          55.102684020996094,
+          128.32062530517578
+        ],
+        "nozzle": [
+          59.57646560668945,
+          109.78404235839844
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-n-2",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-n-2.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          100.21659851074219,
+          132.86067962646484
+        ],
+        "throwHand": [
+          61.93260192871094,
+          155.0009002685547
+        ],
+        "nozzle": [
+          57.36581802368164,
+          136.48218536376953
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-n-2-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-n-2-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          100.21659851074219,
+          132.86067962646484
+        ],
+        "throwHand": [
+          61.93260192871094,
+          155.0009002685547
+        ],
+        "nozzle": [
+          57.36581802368164,
+          136.48218536376953
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-n-3",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-n-3.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          103.29932403564453,
+          122.78408813476562
+        ],
+        "throwHand": [
+          55.102684020996094,
+          128.32062530517578
+        ],
+        "nozzle": [
+          59.57646560668945,
+          109.78404235839844
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-n-3-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-n-3-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          103.29932403564453,
+          122.78408813476562
+        ],
+        "throwHand": [
+          55.102684020996094,
+          128.32062530517578
+        ],
+        "nozzle": [
+          59.57646560668945,
+          109.78404235839844
+        ]
+      },
+      "handsInFront": false,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-nw-0",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-nw-0.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          100.4212417602539,
+          130.76734924316406
+        ],
+        "throwHand": [
+          59.498931884765625,
+          149.91265869140625
+        ],
+        "nozzle": [
+          56.72570037841797,
+          131.11640167236328
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9999284999285
+    },
+    {
+      "id": "extinguish-nw-0-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-nw-0-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          100.4212417602539,
+          130.76734924316406
+        ],
+        "throwHand": [
+          59.498931884765625,
+          149.91265869140625
+        ],
+        "nozzle": [
+          56.72570037841797,
+          131.11640167236328
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9999284999285
+    },
+    {
+      "id": "extinguish-nw-1",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-nw-1.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          101.50398254394531,
+          141.1493377685547
+        ],
+        "throwHand": [
+          76.45381164550781,
+          172.9609146118164
+        ],
+        "nozzle": [
+          65.19227600097656,
+          156.85923767089844
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-nw-1-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-nw-1-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          101.50398254394531,
+          141.1493377685547
+        ],
+        "throwHand": [
+          76.45381164550781,
+          172.9609146118164
+        ],
+        "nozzle": [
+          65.19227600097656,
+          156.85923767089844
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-nw-2",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-nw-2.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          107.55166625976562,
+          150.1623306274414
+        ],
+        "throwHand": [
+          103.06764221191406,
+          187.64427185058594
+        ],
+        "nozzle": [
+          85.42804718017578,
+          177.09141540527344
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-nw-2-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-nw-2-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          107.55166625976562,
+          150.1623306274414
+        ],
+        "throwHand": [
+          103.06764221191406,
+          187.64427185058594
+        ],
+        "nozzle": [
+          85.42804718017578,
+          177.09141540527344
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-nw-3",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-nw-3.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          101.50398254394531,
+          141.1493377685547
+        ],
+        "throwHand": [
+          76.45381164550781,
+          172.9609146118164
+        ],
+        "nozzle": [
+          65.19227600097656,
+          156.85923767089844
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-nw-3-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-nw-3-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          101.50398254394531,
+          141.1493377685547
+        ],
+        "throwHand": [
+          76.45381164550781,
+          172.9609146118164
+        ],
+        "nozzle": [
+          65.19227600097656,
+          156.85923767089844
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-w-0",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-w-0.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          105.98717498779297,
+          148.55681610107422
+        ],
+        "throwHand": [
+          97.1922607421875,
+          185.5366668701172
+        ],
+        "nozzle": [
+          80.59429168701172,
+          173.6892318725586
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9998475842097241
+    },
+    {
+      "id": "extinguish-w-0-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-w-0-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          105.98717498779297,
+          148.55681610107422
+        ],
+        "throwHand": [
+          97.1922607421875,
+          185.5366668701172
+        ],
+        "nozzle": [
+          80.59429168701172,
+          173.6892318725586
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9998475842097241
+    },
+    {
+      "id": "extinguish-w-1",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-w-1.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          115.22965240478516,
+          155.23494720458984
+        ],
+        "throwHand": [
+          128.0,
+          191.4515380859375
+        ],
+        "nozzle": [
+          107.5999984741211,
+          186.7074737548828
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9996864466567374
+    },
+    {
+      "id": "extinguish-w-1-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-w-1-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          115.22965240478516,
+          155.23494720458984
+        ],
+        "throwHand": [
+          128.0,
+          191.4515380859375
+        ],
+        "nozzle": [
+          107.5999984741211,
+          186.7074737548828
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9996864466567374
+    },
+    {
+      "id": "extinguish-w-2",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-w-2.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          126.8650894165039,
+          157.9046630859375
+        ],
+        "throwHand": [
+          158.8077392578125,
+          185.5366668701172
+        ],
+        "nozzle": [
+          138.42835998535156,
+          188.62195587158203
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-w-2-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-w-2-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          126.8650894165039,
+          157.9046630859375
+        ],
+        "throwHand": [
+          158.8077392578125,
+          185.5366668701172
+        ],
+        "nozzle": [
+          138.42835998535156,
+          188.62195587158203
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-w-3",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-w-3.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          115.22965240478516,
+          155.23494720458984
+        ],
+        "throwHand": [
+          128.0,
+          191.4515380859375
+        ],
+        "nozzle": [
+          107.5999984741211,
+          186.7074737548828
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9996864466567374
+    },
+    {
+      "id": "extinguish-w-3-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-w-3-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          115.22965240478516,
+          155.23494720458984
+        ],
+        "throwHand": [
+          128.0,
+          191.4515380859375
+        ],
+        "nozzle": [
+          107.5999984741211,
+          186.7074737548828
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 0.9996864466567374
+    },
+    {
+      "id": "extinguish-sw-0",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-sw-0.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          124.44792175292969,
+          157.72743225097656
+        ],
+        "throwHand": [
+          152.93234252929688,
+          187.64427947998047
+        ],
+        "nozzle": [
+          132.23248291015625,
+          189.17630767822266
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-sw-0-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-sw-0-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          124.44792175292969,
+          157.72743225097656
+        ],
+        "throwHand": [
+          152.93234252929688,
+          187.64427947998047
+        ],
+        "nozzle": [
+          132.23248291015625,
+          189.17630767822266
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-sw-1",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-sw-1.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          136.43601989746094,
+          156.78975677490234
+        ],
+        "throwHand": [
+          179.5461883544922,
+          172.96092987060547
+        ],
+        "nozzle": [
+          161.957763671875,
+          181.8440399169922
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-sw-1-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-sw-1-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          136.43601989746094,
+          156.78975677490234
+        ],
+        "throwHand": [
+          179.5461883544922,
+          172.96092987060547
+        ],
+        "nozzle": [
+          161.957763671875,
+          181.8440399169922
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-sw-2",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-sw-2.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          146.84332275390625,
+          151.55230712890625
+        ],
+        "throwHand": [
+          196.50106811523438,
+          149.9126739501953
+        ],
+        "nozzle": [
+          185.3198699951172,
+          164.3193588256836
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-sw-2-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-sw-2-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          146.84332275390625,
+          151.55230712890625
+        ],
+        "throwHand": [
+          196.50106811523438,
+          149.9126739501953
+        ],
+        "nozzle": [
+          185.3198699951172,
+          164.3193588256836
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-sw-3",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-sw-3.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          136.43601989746094,
+          156.78975677490234
+        ],
+        "throwHand": [
+          179.5461883544922,
+          172.96092987060547
+        ],
+        "nozzle": [
+          161.957763671875,
+          181.8440399169922
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    },
+    {
+      "id": "extinguish-sw-3-mask",
+      "file": "tabao-rush/cook-body/extinguish/extinguish-sw-3-mask.png",
+      "anchor": [
+        128.0,
+        116.00473022460938
+      ],
+      "anchors": {
+        "head": [
+          128.0,
+          116.00473022460938
+        ],
+        "root": [
+          128.0,
+          168.50023651123047
+        ],
+        "hands": [
+          136.43601989746094,
+          156.78975677490234
+        ],
+        "throwHand": [
+          179.5461883544922,
+          172.96092987060547
+        ],
+        "nozzle": [
+          161.957763671875,
+          181.8440399169922
+        ]
+      },
+      "handsInFront": true,
+      "compositionIoU": 1.0
+    }
+  ],
+  "decodedPixelSHA256": {
+    "extinguish-s-0.png": "80d336b58f953c9d91c8a6542a1fef11c2909971f86584e46ee02b746c495bfe",
+    "extinguish-s-0-mask.png": "a054000b7fb238fb00a5c2e46cb6f3572a97ea9f7e0c40fed05f91f3c3110714",
+    "extinguish-s-1.png": "a97c76dcaa5ae390111f42583eb8d380a076e2d989d13909e8a6b8c41dd4506e",
+    "extinguish-s-1-mask.png": "2b5043269bd2f4c75f06db1ea77b19b609c27752f59318d438e55030964833d8",
+    "extinguish-s-2.png": "2cfc611da239d8f5ad35a91a15652791e3a0175b239a20585d2c03d477075f8b",
+    "extinguish-s-2-mask.png": "4fad2be6fa3beec6b0aca28f0309db2563c608ece590629803c1fc0153cf12b9",
+    "extinguish-s-3.png": "a97c76dcaa5ae390111f42583eb8d380a076e2d989d13909e8a6b8c41dd4506e",
+    "extinguish-s-3-mask.png": "2b5043269bd2f4c75f06db1ea77b19b609c27752f59318d438e55030964833d8",
+    "extinguish-se-0.png": "a3cb9d81bec355e907016bdf958d15d4b8326eb0f792079597fbe8d4eefc59a5",
+    "extinguish-se-0-mask.png": "6be27a2df4dea06c6b2d9b3ab775717f58442bd93fc576615d0abda710e5061b",
+    "extinguish-se-1.png": "a8c43a2d6c546d487087a16d4e7c84588eed1d8954cd6520272a3344592fe0a7",
+    "extinguish-se-1-mask.png": "2527a5984fa5119c3068188dbc4c0f1baa58f6dd7b1f4773c7725a6a27d7fba1",
+    "extinguish-se-2.png": "884d86b11c804e30f42a136c5158e06b2e3c337e72c6e4e34997d9560b5d5192",
+    "extinguish-se-2-mask.png": "868bb005b15e4361725739810a0bc7e991d7e9de22f396af608f58f9a01d73b2",
+    "extinguish-se-3.png": "a8c43a2d6c546d487087a16d4e7c84588eed1d8954cd6520272a3344592fe0a7",
+    "extinguish-se-3-mask.png": "2527a5984fa5119c3068188dbc4c0f1baa58f6dd7b1f4773c7725a6a27d7fba1",
+    "extinguish-e-0.png": "7351a81cf6a8df3d9ef30ac138bae851abf06b1efe1b93584983fd93c71160b9",
+    "extinguish-e-0-mask.png": "274ede207efcb6a5bda2a9be235c93b45e91aa9229e784772d0d4b08d6934839",
+    "extinguish-e-1.png": "77d3959a3f19211874afa852e2c0c93eda0f99dc2249a61c334c09fadf85e92d",
+    "extinguish-e-1-mask.png": "c0a426c1ab2d610daf38d2327b4ac1f7ed81729ea819ce524918e12c5d3d3a86",
+    "extinguish-e-2.png": "b04a0f0a6f2d0d33b40a278bf530316c805cbc59afd6d18473b841b553bce495",
+    "extinguish-e-2-mask.png": "d1793871b339c41c1ac91e543b345390defbfe32b7852bb8092acc9b75d2ac23",
+    "extinguish-e-3.png": "77d3959a3f19211874afa852e2c0c93eda0f99dc2249a61c334c09fadf85e92d",
+    "extinguish-e-3-mask.png": "c0a426c1ab2d610daf38d2327b4ac1f7ed81729ea819ce524918e12c5d3d3a86",
+    "extinguish-ne-0.png": "d56c374be4b697220713140403747777527ef8af6a455db2986cc9e30685090a",
+    "extinguish-ne-0-mask.png": "b0bc5b33e88cf5e0253223a3834bc3fd091ecd1ec1800a7c844179e79e883f23",
+    "extinguish-ne-1.png": "a1300ff581b6b3d3137defaa8635d50b898d18ef517c6ab2576e8756683ca1e3",
+    "extinguish-ne-1-mask.png": "2db7f04c630452ff82a1d5508a9913a6f0df7ccd48e3f4a9c66bcffe590b10e5",
+    "extinguish-ne-2.png": "a759a59e399d06fa8d695f8f7548fe6cc69656f06ac6bb388a3f907f8edea4fc",
+    "extinguish-ne-2-mask.png": "0ae41cbc3b2b1717d8930a5d533f7ad0a507a8c9687a33dce7913f2b2700439c",
+    "extinguish-ne-3.png": "a1300ff581b6b3d3137defaa8635d50b898d18ef517c6ab2576e8756683ca1e3",
+    "extinguish-ne-3-mask.png": "2db7f04c630452ff82a1d5508a9913a6f0df7ccd48e3f4a9c66bcffe590b10e5",
+    "extinguish-n-0.png": "b967993fb531d40df3954c0cf0288775abc1b0418457028a0aa809a85cf3cfad",
+    "extinguish-n-0-mask.png": "44c5b37dc6ba00e5b12041c1564a2f8b433d362e8013e956495625ab5f8bc49b",
+    "extinguish-n-1.png": "8e85f1363188b35f346e3dd66e6ee15f66f0f07a8d903622479aeeb802fa10f7",
+    "extinguish-n-1-mask.png": "c0f317c6f839fc0dc631d4dcf6b277d64196d2db504a3fe84c206fda6dd1130a",
+    "extinguish-n-2.png": "6169d95cff6d0ca5776d05e086cd3cd64f5bd13d173ac697c60849d4d1084d79",
+    "extinguish-n-2-mask.png": "a3d4c9c4d1eccb5f75da21a1534fa1da9f705b2f0a44239fc67236cae1f462a0",
+    "extinguish-n-3.png": "8e85f1363188b35f346e3dd66e6ee15f66f0f07a8d903622479aeeb802fa10f7",
+    "extinguish-n-3-mask.png": "c0f317c6f839fc0dc631d4dcf6b277d64196d2db504a3fe84c206fda6dd1130a",
+    "extinguish-nw-0.png": "4e7b93bfe42ccd52be1d28f22e40de25448382d257f46cd4bfc7d7a87d09657f",
+    "extinguish-nw-0-mask.png": "f730f32f8a3e249fe184a34e7dbb983de249115b7c2714239d86a4ada1065c4b",
+    "extinguish-nw-1.png": "705ec95da0cdf208528c3d5bc7a7fdfdce568db672c42b0e9937af2a035207ac",
+    "extinguish-nw-1-mask.png": "e2713fae9fa21c8c61df8be3f98a9af1325b5577829d8f92c7b551c2c8541c3b",
+    "extinguish-nw-2.png": "2d1de207bfee0ba1103d35fa5e5230a34cb1e1099b0d7d81e059c8bb39796cdd",
+    "extinguish-nw-2-mask.png": "58a7d0997ffc11400f42efc798d61b9b620fc0ac7ae4ceb9d3bd3129efaf5f23",
+    "extinguish-nw-3.png": "705ec95da0cdf208528c3d5bc7a7fdfdce568db672c42b0e9937af2a035207ac",
+    "extinguish-nw-3-mask.png": "e2713fae9fa21c8c61df8be3f98a9af1325b5577829d8f92c7b551c2c8541c3b",
+    "extinguish-w-0.png": "d64658808a823882510a51d7752052d157352685130e1ef3acb1278c969af65f",
+    "extinguish-w-0-mask.png": "b65ec9b3624c5008417d3c267743162db7d8ba1b54bb5a0244cbfe31ffbf8c09",
+    "extinguish-w-1.png": "e71f48a97affbed70ac2dd67f33d497c46fd4ea9285a574116f2066e4ea76e54",
+    "extinguish-w-1-mask.png": "aff747e45121cb01d7347ef0576bd455de61411730671831b407be5293bf5b24",
+    "extinguish-w-2.png": "dc3a2aa64c29ac0a7b7c1989c93e2a69a33247069e3e02e4edfd014e26a731cc",
+    "extinguish-w-2-mask.png": "687dc41d37e3f6a954289e57e546c45bfe3362a251a00a5dde1b8dea17207634",
+    "extinguish-w-3.png": "e71f48a97affbed70ac2dd67f33d497c46fd4ea9285a574116f2066e4ea76e54",
+    "extinguish-w-3-mask.png": "aff747e45121cb01d7347ef0576bd455de61411730671831b407be5293bf5b24",
+    "extinguish-sw-0.png": "a35787512d410d578903fe1a60fb9339a3db78635610c942b2b55bab2a72d4da",
+    "extinguish-sw-0-mask.png": "8c4a03bf09ebff3629e11678a5a2b247828e0f34b59130b0f2dba5785e50f46e",
+    "extinguish-sw-1.png": "c1253e551bca7db63d910f340f171e8c107256f627cefc2383168f9abc408321",
+    "extinguish-sw-1-mask.png": "8a9dc4240a09029b9891d3b0de6204557e0ac0f12aa4493d501753a4aed343e9",
+    "extinguish-sw-2.png": "9f913c73d81de09a7dc021709d3f02f66386e86ca882d4dec12b012df2b74c4b",
+    "extinguish-sw-2-mask.png": "47506c1fdd9ef3dd238b072c583509fd118d75ee4d41e9394bc10394c6187460",
+    "extinguish-sw-3.png": "c1253e551bca7db63d910f340f171e8c107256f627cefc2383168f9abc408321",
+    "extinguish-sw-3-mask.png": "8a9dc4240a09029b9891d3b0de6204557e0ac0f12aa4493d501753a4aed343e9"
+  },
+  "setupSeconds": 0.5431342910160311,
+  "secondsPerFrame": 0.9427961998753744,
+  "totalSeconds": 60.882091083039995
+}

@@ -7,9 +7,13 @@ export interface DetailFile extends SizeTotals { file: string; width: number; he
 export interface Frame {
   rect: [number, number, number, number];
   sourceSize: [number, number]; trim: [number, number]; anchor: [number, number];
-  anchors: Record<string, [number, number]>; metadata: Record<string, unknown>;
+  /** Cook throwHand is the throwing hand; hands uses that wrist during throw,
+   * otherwise the midpoint. Follow through releaseFrame, then use an item arc. */
+  anchors: Record<string, [number, number]> & { throwHand?: [number, number] }; metadata: Record<string, unknown>;
 }
-export type Animation = { action: string; fps: number } & (
+/** Walk-type frames advance by distance: floor(distance × 8 / strideTiles) mod 8,
+ * rather than by fps. */
+export type Animation = { action: string; fps: number; loop?: boolean; strideTiles?: number; releaseFrame?: number } & (
   { directions: Record<Direction, string[]>; frames?: never } |
   { frames: string[]; directions?: never }
 );

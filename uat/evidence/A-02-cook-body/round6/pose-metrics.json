@@ -1,0 +1,100 @@
+{
+  "before": {
+    "idle": {
+      "uniquePoseCount": 3,
+      "maxHandStepPx": 3.749779428126089,
+      "minHandsTravelPx": 1.2001125100573802
+    },
+    "walk": {
+      "uniquePoseCount": 8,
+      "maxHandStepPx": 4.954691841138811,
+      "minHandsTravelPx": 1.217498909942634
+    },
+    "carry-walk": {
+      "uniquePoseCount": 8,
+      "maxHandStepPx": 1.0800000000000125,
+      "minHandsTravelPx": 1.0799999999999983
+    },
+    "chop": {
+      "uniquePoseCount": 6,
+      "maxHandStepPx": 43.89824844718981,
+      "minHandsTravelPx": 13.058823488354298,
+      "minRaisedHandExposedPx": -38.82236223944069
+    },
+    "stir": {
+      "uniquePoseCount": 8,
+      "maxHandStepPx": 16.566872478664987,
+      "minHandsTravelPx": 14.375043737992298
+    },
+    "wash": {
+      "uniquePoseCount": 2,
+      "maxHandStepPx": 42.87436586072612,
+      "minHandsTravelPx": 36.299675780601405
+    },
+    "serve": {
+      "uniquePoseCount": 6,
+      "maxHandStepPx": 31.95413962454683,
+      "minHandsTravelPx": 19.955120949744128
+    },
+    "throw": {
+      "uniquePoseCount": 6,
+      "maxHandStepPx": 55.55056142528198,
+      "minHandsTravelPx": 34.847610511804376
+    },
+    "extinguish": {
+      "uniquePoseCount": 3,
+      "maxHandStepPx": 11.27054483208792,
+      "minHandsTravelPx": 16.962652815467536,
+      "minCanisterEnvelopeMarginPx": -31.6416881364606
+    }
+  },
+  "after": {
+    "idle": {
+      "uniquePoseCount": 3,
+      "maxHandStepPx": 3.749779428126089,
+      "minHandsTravelPx": 1.2001125100573802
+    },
+    "walk": {
+      "uniquePoseCount": 8,
+      "maxHandStepPx": 4.954691841138811,
+      "minHandsTravelPx": 1.217498909942634
+    },
+    "carry-walk": {
+      "uniquePoseCount": 8,
+      "maxHandStepPx": 1.0800000000000125,
+      "minHandsTravelPx": 1.0799999999999983
+    },
+    "chop": {
+      "uniquePoseCount": 6,
+      "maxHandStepPx": 42.63362067530231,
+      "minHandsTravelPx": 19.8246656367683,
+      "minRaisedHandExposedPx": 8.385897179526637
+    },
+    "stir": {
+      "uniquePoseCount": 8,
+      "maxHandStepPx": 16.566872478664987,
+      "minHandsTravelPx": 14.375043737992298
+    },
+    "wash": {
+      "uniquePoseCount": 6,
+      "maxHandStepPx": 22.814253010756712,
+      "minHandsTravelPx": 36.299675780601405
+    },
+    "serve": {
+      "uniquePoseCount": 6,
+      "maxHandStepPx": 31.95413962454683,
+      "minHandsTravelPx": 19.955120949744128
+    },
+    "throw": {
+      "uniquePoseCount": 6,
+      "maxHandStepPx": 55.55056142528198,
+      "minHandsTravelPx": 34.847610511804376
+    },
+    "extinguish": {
+      "uniquePoseCount": 3,
+      "maxHandStepPx": 31.370405214057097,
+      "minHandsTravelPx": 20.664184598090834,
+      "minCanisterEnvelopeMarginPx": 1.992171988534551
+    }
+  }
+}

@@ -822,1958 +822,6 @@
       ]
     },
     {
-      "id": "tabao-rush-cook-spike",
-      "encoding": "lossless",
-      "frames": [
-        {
-          "id": "idle-0-0",
-          "file": "tabao-rush/cook-spike/idle-0-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-0-0-mask",
-          "file": "tabao-rush/cook-spike/idle-0-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-0-1",
-          "file": "tabao-rush/cook-spike/idle-0-1.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-0-1-mask",
-          "file": "tabao-rush/cook-spike/idle-0-1-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-0-2",
-          "file": "tabao-rush/cook-spike/idle-0-2.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-0-2-mask",
-          "file": "tabao-rush/cook-spike/idle-0-2-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-0-3",
-          "file": "tabao-rush/cook-spike/idle-0-3.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-0-3-mask",
-          "file": "tabao-rush/cook-spike/idle-0-3-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-1-0",
-          "file": "tabao-rush/cook-spike/idle-1-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-1-0-mask",
-          "file": "tabao-rush/cook-spike/idle-1-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-1-1",
-          "file": "tabao-rush/cook-spike/idle-1-1.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-1-1-mask",
-          "file": "tabao-rush/cook-spike/idle-1-1-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-1-2",
-          "file": "tabao-rush/cook-spike/idle-1-2.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-1-2-mask",
-          "file": "tabao-rush/cook-spike/idle-1-2-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-1-3",
-          "file": "tabao-rush/cook-spike/idle-1-3.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-1-3-mask",
-          "file": "tabao-rush/cook-spike/idle-1-3-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-2-0",
-          "file": "tabao-rush/cook-spike/idle-2-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-2-0-mask",
-          "file": "tabao-rush/cook-spike/idle-2-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-2-1",
-          "file": "tabao-rush/cook-spike/idle-2-1.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-2-1-mask",
-          "file": "tabao-rush/cook-spike/idle-2-1-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-2-2",
-          "file": "tabao-rush/cook-spike/idle-2-2.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-2-2-mask",
-          "file": "tabao-rush/cook-spike/idle-2-2-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-2-3",
-          "file": "tabao-rush/cook-spike/idle-2-3.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-2-3-mask",
-          "file": "tabao-rush/cook-spike/idle-2-3-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-3-0",
-          "file": "tabao-rush/cook-spike/idle-3-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-3-0-mask",
-          "file": "tabao-rush/cook-spike/idle-3-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-3-1",
-          "file": "tabao-rush/cook-spike/idle-3-1.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-3-1-mask",
-          "file": "tabao-rush/cook-spike/idle-3-1-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-3-2",
-          "file": "tabao-rush/cook-spike/idle-3-2.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-3-2-mask",
-          "file": "tabao-rush/cook-spike/idle-3-2-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-3-3",
-          "file": "tabao-rush/cook-spike/idle-3-3.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-3-3-mask",
-          "file": "tabao-rush/cook-spike/idle-3-3-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-4-0",
-          "file": "tabao-rush/cook-spike/idle-4-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-4-0-mask",
-          "file": "tabao-rush/cook-spike/idle-4-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-4-1",
-          "file": "tabao-rush/cook-spike/idle-4-1.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-4-1-mask",
-          "file": "tabao-rush/cook-spike/idle-4-1-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-4-2",
-          "file": "tabao-rush/cook-spike/idle-4-2.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-4-2-mask",
-          "file": "tabao-rush/cook-spike/idle-4-2-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-4-3",
-          "file": "tabao-rush/cook-spike/idle-4-3.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-4-3-mask",
-          "file": "tabao-rush/cook-spike/idle-4-3-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-5-0",
-          "file": "tabao-rush/cook-spike/idle-5-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-5-0-mask",
-          "file": "tabao-rush/cook-spike/idle-5-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-5-1",
-          "file": "tabao-rush/cook-spike/idle-5-1.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-5-1-mask",
-          "file": "tabao-rush/cook-spike/idle-5-1-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-5-2",
-          "file": "tabao-rush/cook-spike/idle-5-2.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-5-2-mask",
-          "file": "tabao-rush/cook-spike/idle-5-2-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-5-3",
-          "file": "tabao-rush/cook-spike/idle-5-3.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-5-3-mask",
-          "file": "tabao-rush/cook-spike/idle-5-3-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-6-0",
-          "file": "tabao-rush/cook-spike/idle-6-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-6-0-mask",
-          "file": "tabao-rush/cook-spike/idle-6-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-6-1",
-          "file": "tabao-rush/cook-spike/idle-6-1.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-6-1-mask",
-          "file": "tabao-rush/cook-spike/idle-6-1-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-6-2",
-          "file": "tabao-rush/cook-spike/idle-6-2.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-6-2-mask",
-          "file": "tabao-rush/cook-spike/idle-6-2-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-6-3",
-          "file": "tabao-rush/cook-spike/idle-6-3.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-6-3-mask",
-          "file": "tabao-rush/cook-spike/idle-6-3-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-7-0",
-          "file": "tabao-rush/cook-spike/idle-7-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-7-0-mask",
-          "file": "tabao-rush/cook-spike/idle-7-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-7-1",
-          "file": "tabao-rush/cook-spike/idle-7-1.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-7-1-mask",
-          "file": "tabao-rush/cook-spike/idle-7-1-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-7-2",
-          "file": "tabao-rush/cook-spike/idle-7-2.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-7-2-mask",
-          "file": "tabao-rush/cook-spike/idle-7-2-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-7-3",
-          "file": "tabao-rush/cook-spike/idle-7-3.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "idle-7-3-mask",
-          "file": "tabao-rush/cook-spike/idle-7-3-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-0-0",
-          "file": "tabao-rush/cook-spike/walk-0-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-0-0-mask",
-          "file": "tabao-rush/cook-spike/walk-0-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-0-1",
-          "file": "tabao-rush/cook-spike/walk-0-1.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-0-1-mask",
-          "file": "tabao-rush/cook-spike/walk-0-1-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-0-2",
-          "file": "tabao-rush/cook-spike/walk-0-2.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-0-2-mask",
-          "file": "tabao-rush/cook-spike/walk-0-2-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-0-3",
-          "file": "tabao-rush/cook-spike/walk-0-3.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-0-3-mask",
-          "file": "tabao-rush/cook-spike/walk-0-3-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-0-4",
-          "file": "tabao-rush/cook-spike/walk-0-4.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-0-4-mask",
-          "file": "tabao-rush/cook-spike/walk-0-4-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-0-5",
-          "file": "tabao-rush/cook-spike/walk-0-5.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-0-5-mask",
-          "file": "tabao-rush/cook-spike/walk-0-5-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-0-6",
-          "file": "tabao-rush/cook-spike/walk-0-6.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-0-6-mask",
-          "file": "tabao-rush/cook-spike/walk-0-6-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-0-7",
-          "file": "tabao-rush/cook-spike/walk-0-7.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-0-7-mask",
-          "file": "tabao-rush/cook-spike/walk-0-7-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-1-0",
-          "file": "tabao-rush/cook-spike/walk-1-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-1-0-mask",
-          "file": "tabao-rush/cook-spike/walk-1-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-1-1",
-          "file": "tabao-rush/cook-spike/walk-1-1.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-1-1-mask",
-          "file": "tabao-rush/cook-spike/walk-1-1-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-1-2",
-          "file": "tabao-rush/cook-spike/walk-1-2.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-1-2-mask",
-          "file": "tabao-rush/cook-spike/walk-1-2-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-1-3",
-          "file": "tabao-rush/cook-spike/walk-1-3.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-1-3-mask",
-          "file": "tabao-rush/cook-spike/walk-1-3-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-1-4",
-          "file": "tabao-rush/cook-spike/walk-1-4.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-1-4-mask",
-          "file": "tabao-rush/cook-spike/walk-1-4-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-1-5",
-          "file": "tabao-rush/cook-spike/walk-1-5.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-1-5-mask",
-          "file": "tabao-rush/cook-spike/walk-1-5-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-1-6",
-          "file": "tabao-rush/cook-spike/walk-1-6.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-1-6-mask",
-          "file": "tabao-rush/cook-spike/walk-1-6-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-1-7",
-          "file": "tabao-rush/cook-spike/walk-1-7.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-1-7-mask",
-          "file": "tabao-rush/cook-spike/walk-1-7-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-2-0",
-          "file": "tabao-rush/cook-spike/walk-2-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-2-0-mask",
-          "file": "tabao-rush/cook-spike/walk-2-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-2-1",
-          "file": "tabao-rush/cook-spike/walk-2-1.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-2-1-mask",
-          "file": "tabao-rush/cook-spike/walk-2-1-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-2-2",
-          "file": "tabao-rush/cook-spike/walk-2-2.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-2-2-mask",
-          "file": "tabao-rush/cook-spike/walk-2-2-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-2-3",
-          "file": "tabao-rush/cook-spike/walk-2-3.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-2-3-mask",
-          "file": "tabao-rush/cook-spike/walk-2-3-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-2-4",
-          "file": "tabao-rush/cook-spike/walk-2-4.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-2-4-mask",
-          "file": "tabao-rush/cook-spike/walk-2-4-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-2-5",
-          "file": "tabao-rush/cook-spike/walk-2-5.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-2-5-mask",
-          "file": "tabao-rush/cook-spike/walk-2-5-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-2-6",
-          "file": "tabao-rush/cook-spike/walk-2-6.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-2-6-mask",
-          "file": "tabao-rush/cook-spike/walk-2-6-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-2-7",
-          "file": "tabao-rush/cook-spike/walk-2-7.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-2-7-mask",
-          "file": "tabao-rush/cook-spike/walk-2-7-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-3-0",
-          "file": "tabao-rush/cook-spike/walk-3-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-3-0-mask",
-          "file": "tabao-rush/cook-spike/walk-3-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-3-1",
-          "file": "tabao-rush/cook-spike/walk-3-1.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-3-1-mask",
-          "file": "tabao-rush/cook-spike/walk-3-1-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-3-2",
-          "file": "tabao-rush/cook-spike/walk-3-2.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-3-2-mask",
-          "file": "tabao-rush/cook-spike/walk-3-2-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-3-3",
-          "file": "tabao-rush/cook-spike/walk-3-3.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-3-3-mask",
-          "file": "tabao-rush/cook-spike/walk-3-3-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-3-4",
-          "file": "tabao-rush/cook-spike/walk-3-4.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-3-4-mask",
-          "file": "tabao-rush/cook-spike/walk-3-4-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-3-5",
-          "file": "tabao-rush/cook-spike/walk-3-5.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-3-5-mask",
-          "file": "tabao-rush/cook-spike/walk-3-5-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-3-6",
-          "file": "tabao-rush/cook-spike/walk-3-6.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-3-6-mask",
-          "file": "tabao-rush/cook-spike/walk-3-6-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-3-7",
-          "file": "tabao-rush/cook-spike/walk-3-7.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-3-7-mask",
-          "file": "tabao-rush/cook-spike/walk-3-7-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-4-0",
-          "file": "tabao-rush/cook-spike/walk-4-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-4-0-mask",
-          "file": "tabao-rush/cook-spike/walk-4-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-4-1",
-          "file": "tabao-rush/cook-spike/walk-4-1.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-4-1-mask",
-          "file": "tabao-rush/cook-spike/walk-4-1-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-4-2",
-          "file": "tabao-rush/cook-spike/walk-4-2.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-4-2-mask",
-          "file": "tabao-rush/cook-spike/walk-4-2-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-4-3",
-          "file": "tabao-rush/cook-spike/walk-4-3.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-4-3-mask",
-          "file": "tabao-rush/cook-spike/walk-4-3-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-4-4",
-          "file": "tabao-rush/cook-spike/walk-4-4.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-4-4-mask",
-          "file": "tabao-rush/cook-spike/walk-4-4-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-4-5",
-          "file": "tabao-rush/cook-spike/walk-4-5.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-4-5-mask",
-          "file": "tabao-rush/cook-spike/walk-4-5-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-4-6",
-          "file": "tabao-rush/cook-spike/walk-4-6.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-4-6-mask",
-          "file": "tabao-rush/cook-spike/walk-4-6-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-4-7",
-          "file": "tabao-rush/cook-spike/walk-4-7.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-4-7-mask",
-          "file": "tabao-rush/cook-spike/walk-4-7-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-5-0",
-          "file": "tabao-rush/cook-spike/walk-5-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-5-0-mask",
-          "file": "tabao-rush/cook-spike/walk-5-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-5-1",
-          "file": "tabao-rush/cook-spike/walk-5-1.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-5-1-mask",
-          "file": "tabao-rush/cook-spike/walk-5-1-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-5-2",
-          "file": "tabao-rush/cook-spike/walk-5-2.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-5-2-mask",
-          "file": "tabao-rush/cook-spike/walk-5-2-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-5-3",
-          "file": "tabao-rush/cook-spike/walk-5-3.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-5-3-mask",
-          "file": "tabao-rush/cook-spike/walk-5-3-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-5-4",
-          "file": "tabao-rush/cook-spike/walk-5-4.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-5-4-mask",
-          "file": "tabao-rush/cook-spike/walk-5-4-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-5-5",
-          "file": "tabao-rush/cook-spike/walk-5-5.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-5-5-mask",
-          "file": "tabao-rush/cook-spike/walk-5-5-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-5-6",
-          "file": "tabao-rush/cook-spike/walk-5-6.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-5-6-mask",
-          "file": "tabao-rush/cook-spike/walk-5-6-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-5-7",
-          "file": "tabao-rush/cook-spike/walk-5-7.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-5-7-mask",
-          "file": "tabao-rush/cook-spike/walk-5-7-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-6-0",
-          "file": "tabao-rush/cook-spike/walk-6-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-6-0-mask",
-          "file": "tabao-rush/cook-spike/walk-6-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-6-1",
-          "file": "tabao-rush/cook-spike/walk-6-1.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-6-1-mask",
-          "file": "tabao-rush/cook-spike/walk-6-1-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-6-2",
-          "file": "tabao-rush/cook-spike/walk-6-2.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-6-2-mask",
-          "file": "tabao-rush/cook-spike/walk-6-2-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-6-3",
-          "file": "tabao-rush/cook-spike/walk-6-3.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-6-3-mask",
-          "file": "tabao-rush/cook-spike/walk-6-3-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-6-4",
-          "file": "tabao-rush/cook-spike/walk-6-4.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-6-4-mask",
-          "file": "tabao-rush/cook-spike/walk-6-4-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-6-5",
-          "file": "tabao-rush/cook-spike/walk-6-5.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-6-5-mask",
-          "file": "tabao-rush/cook-spike/walk-6-5-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-6-6",
-          "file": "tabao-rush/cook-spike/walk-6-6.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-6-6-mask",
-          "file": "tabao-rush/cook-spike/walk-6-6-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-6-7",
-          "file": "tabao-rush/cook-spike/walk-6-7.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-6-7-mask",
-          "file": "tabao-rush/cook-spike/walk-6-7-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-7-0",
-          "file": "tabao-rush/cook-spike/walk-7-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-7-0-mask",
-          "file": "tabao-rush/cook-spike/walk-7-0-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-7-1",
-          "file": "tabao-rush/cook-spike/walk-7-1.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-7-1-mask",
-          "file": "tabao-rush/cook-spike/walk-7-1-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-7-2",
-          "file": "tabao-rush/cook-spike/walk-7-2.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-7-2-mask",
-          "file": "tabao-rush/cook-spike/walk-7-2-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-7-3",
-          "file": "tabao-rush/cook-spike/walk-7-3.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-7-3-mask",
-          "file": "tabao-rush/cook-spike/walk-7-3-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-7-4",
-          "file": "tabao-rush/cook-spike/walk-7-4.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-7-4-mask",
-          "file": "tabao-rush/cook-spike/walk-7-4-mask.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "walk-7-5",
-          "file": "tabao-rush/cook-spike/walk-7-5.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-7-5-mask",
-          "file": "tabao-rush/cook-spike/walk-7-5-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-7-6",
-          "file": "tabao-rush/cook-spike/walk-7-6.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-7-6-mask",
-          "file": "tabao-rush/cook-spike/walk-7-6-mask.png",
-          "anchor": [
-            69.0,
-            85.845
-          ]
-        },
-        {
-          "id": "walk-7-7",
-          "file": "tabao-rush/cook-spike/walk-7-7.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "walk-7-7-mask",
-          "file": "tabao-rush/cook-spike/walk-7-7-mask.png",
-          "anchor": [
-            69.0,
-            86.925
-          ]
-        },
-        {
-          "id": "head-0",
-          "file": "tabao-rush/cook-spike/head-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-mask-0",
-          "file": "tabao-rush/cook-spike/head-mask-0.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-1",
-          "file": "tabao-rush/cook-spike/head-1.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-mask-1",
-          "file": "tabao-rush/cook-spike/head-mask-1.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-2",
-          "file": "tabao-rush/cook-spike/head-2.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-mask-2",
-          "file": "tabao-rush/cook-spike/head-mask-2.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-3",
-          "file": "tabao-rush/cook-spike/head-3.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-mask-3",
-          "file": "tabao-rush/cook-spike/head-mask-3.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-4",
-          "file": "tabao-rush/cook-spike/head-4.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-mask-4",
-          "file": "tabao-rush/cook-spike/head-mask-4.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-5",
-          "file": "tabao-rush/cook-spike/head-5.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-mask-5",
-          "file": "tabao-rush/cook-spike/head-mask-5.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-6",
-          "file": "tabao-rush/cook-spike/head-6.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-mask-6",
-          "file": "tabao-rush/cook-spike/head-mask-6.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-7",
-          "file": "tabao-rush/cook-spike/head-7.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        },
-        {
-          "id": "head-mask-7",
-          "file": "tabao-rush/cook-spike/head-mask-7.png",
-          "anchor": [
-            69.0,
-            88.005
-          ]
-        }
-      ],
-      "animations": [
-        {
-          "action": "idle",
-          "fps": 4,
-          "directions": {
-            "s": [
-              "idle-0-0",
-              "idle-0-1",
-              "idle-0-2",
-              "idle-0-3"
-            ],
-            "se": [
-              "idle-1-0",
-              "idle-1-1",
-              "idle-1-2",
-              "idle-1-3"
-            ],
-            "e": [
-              "idle-2-0",
-              "idle-2-1",
-              "idle-2-2",
-              "idle-2-3"
-            ],
-            "ne": [
-              "idle-3-0",
-              "idle-3-1",
-              "idle-3-2",
-              "idle-3-3"
-            ],
-            "n": [
-              "idle-4-0",
-              "idle-4-1",
-              "idle-4-2",
-              "idle-4-3"
-            ],
-            "nw": [
-              "idle-5-0",
-              "idle-5-1",
-              "idle-5-2",
-              "idle-5-3"
-            ],
-            "w": [
-              "idle-6-0",
-              "idle-6-1",
-              "idle-6-2",
-              "idle-6-3"
-            ],
-            "sw": [
-              "idle-7-0",
-              "idle-7-1",
-              "idle-7-2",
-              "idle-7-3"
-            ]
-          }
-        },
-        {
-          "action": "idle-mask",
-          "fps": 4,
-          "directions": {
-            "s": [
-              "idle-0-0-mask",
-              "idle-0-1-mask",
-              "idle-0-2-mask",
-              "idle-0-3-mask"
-            ],
-            "se": [
-              "idle-1-0-mask",
-              "idle-1-1-mask",
-              "idle-1-2-mask",
-              "idle-1-3-mask"
-            ],
-            "e": [
-              "idle-2-0-mask",
-              "idle-2-1-mask",
-              "idle-2-2-mask",
-              "idle-2-3-mask"
-            ],
-            "ne": [
-              "idle-3-0-mask",
-              "idle-3-1-mask",
-              "idle-3-2-mask",
-              "idle-3-3-mask"
-            ],
-            "n": [
-              "idle-4-0-mask",
-              "idle-4-1-mask",
-              "idle-4-2-mask",
-              "idle-4-3-mask"
-            ],
-            "nw": [
-              "idle-5-0-mask",
-              "idle-5-1-mask",
-              "idle-5-2-mask",
-              "idle-5-3-mask"
-            ],
-            "w": [
-              "idle-6-0-mask",
-              "idle-6-1-mask",
-              "idle-6-2-mask",
-              "idle-6-3-mask"
-            ],
-            "sw": [
-              "idle-7-0-mask",
-              "idle-7-1-mask",
-              "idle-7-2-mask",
-              "idle-7-3-mask"
-            ]
-          }
-        },
-        {
-          "action": "walk",
-          "fps": 12,
-          "directions": {
-            "s": [
-              "walk-0-0",
-              "walk-0-1",
-              "walk-0-2",
-              "walk-0-3",
-              "walk-0-4",
-              "walk-0-5",
-              "walk-0-6",
-              "walk-0-7"
-            ],
-            "se": [
-              "walk-1-0",
-              "walk-1-1",
-              "walk-1-2",
-              "walk-1-3",
-              "walk-1-4",
-              "walk-1-5",
-              "walk-1-6",
-              "walk-1-7"
-            ],
-            "e": [
-              "walk-2-0",
-              "walk-2-1",
-              "walk-2-2",
-              "walk-2-3",
-              "walk-2-4",
-              "walk-2-5",
-              "walk-2-6",
-              "walk-2-7"
-            ],
-            "ne": [
-              "walk-3-0",
-              "walk-3-1",
-              "walk-3-2",
-              "walk-3-3",
-              "walk-3-4",
-              "walk-3-5",
-              "walk-3-6",
-              "walk-3-7"
-            ],
-            "n": [
-              "walk-4-0",
-              "walk-4-1",
-              "walk-4-2",
-              "walk-4-3",
-              "walk-4-4",
-              "walk-4-5",
-              "walk-4-6",
-              "walk-4-7"
-            ],
-            "nw": [
-              "walk-5-0",
-              "walk-5-1",
-              "walk-5-2",
-              "walk-5-3",
-              "walk-5-4",
-              "walk-5-5",
-              "walk-5-6",
-              "walk-5-7"
-            ],
-            "w": [
-              "walk-6-0",
-              "walk-6-1",
-              "walk-6-2",
-              "walk-6-3",
-              "walk-6-4",
-              "walk-6-5",
-              "walk-6-6",
-              "walk-6-7"
-            ],
-            "sw": [
-              "walk-7-0",
-              "walk-7-1",
-              "walk-7-2",
-              "walk-7-3",
-              "walk-7-4",
-              "walk-7-5",
-              "walk-7-6",
-              "walk-7-7"
-            ]
-          }
-        },
-        {
-          "action": "walk-mask",
-          "fps": 12,
-          "directions": {
-            "s": [
-              "walk-0-0-mask",
-              "walk-0-1-mask",
-              "walk-0-2-mask",
-              "walk-0-3-mask",
-              "walk-0-4-mask",
-              "walk-0-5-mask",
-              "walk-0-6-mask",
-              "walk-0-7-mask"
-            ],
-            "se": [
-              "walk-1-0-mask",
-              "walk-1-1-mask",
-              "walk-1-2-mask",
-              "walk-1-3-mask",
-              "walk-1-4-mask",
-              "walk-1-5-mask",
-              "walk-1-6-mask",
-              "walk-1-7-mask"
-            ],
-            "e": [
-              "walk-2-0-mask",
-              "walk-2-1-mask",
-              "walk-2-2-mask",
-              "walk-2-3-mask",
-              "walk-2-4-mask",
-              "walk-2-5-mask",
-              "walk-2-6-mask",
-              "walk-2-7-mask"
-            ],
-            "ne": [
-              "walk-3-0-mask",
-              "walk-3-1-mask",
-              "walk-3-2-mask",
-              "walk-3-3-mask",
-              "walk-3-4-mask",
-              "walk-3-5-mask",
-              "walk-3-6-mask",
-              "walk-3-7-mask"
-            ],
-            "n": [
-              "walk-4-0-mask",
-              "walk-4-1-mask",
-              "walk-4-2-mask",
-              "walk-4-3-mask",
-              "walk-4-4-mask",
-              "walk-4-5-mask",
-              "walk-4-6-mask",
-              "walk-4-7-mask"
-            ],
-            "nw": [
-              "walk-5-0-mask",
-              "walk-5-1-mask",
-              "walk-5-2-mask",
-              "walk-5-3-mask",
-              "walk-5-4-mask",
-              "walk-5-5-mask",
-              "walk-5-6-mask",
-              "walk-5-7-mask"
-            ],
-            "w": [
-              "walk-6-0-mask",
-              "walk-6-1-mask",
-              "walk-6-2-mask",
-              "walk-6-3-mask",
-              "walk-6-4-mask",
-              "walk-6-5-mask",
-              "walk-6-6-mask",
-              "walk-6-7-mask"
-            ],
-            "sw": [
-              "walk-7-0-mask",
-              "walk-7-1-mask",
-              "walk-7-2-mask",
-              "walk-7-3-mask",
-              "walk-7-4-mask",
-              "walk-7-5-mask",
-              "walk-7-6-mask",
-              "walk-7-7-mask"
-            ]
-          }
-        }
-      ]
-    },
-    {
       "id": "tabao-rush-items",
       "encoding": "lossless",
       "frames": [
@@ -4159,247 +2207,1438 @@
           "ink": "0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
         }
       }
+    },
+    {
+      "id": "tabao-rush-cook-body",
+      "encoding": "lossless",
+      "anchors": [
+        "root",
+        "head",
+        "hands"
+      ],
+      "metadata": [
+        "handsInFront"
+      ],
+      "frameFiles": [
+        "tabao-rush/cook-body/idle/frames.json",
+        "tabao-rush/cook-body/walk/frames.json",
+        "tabao-rush/cook-body/carry-walk/frames.json",
+        "tabao-rush/cook-body/chop/frames.json",
+        "tabao-rush/cook-body/stir/frames.json",
+        "tabao-rush/cook-body/wash/frames.json",
+        "tabao-rush/cook-body/serve/frames.json",
+        "tabao-rush/cook-body/throw/frames.json",
+        "tabao-rush/cook-body/extinguish/frames.json"
+      ],
+      "animations": [
+        {
+          "action": "idle",
+          "fps": 4,
+          "loop": true,
+          "directions": {
+            "s": [
+              "idle-s-0",
+              "idle-s-1",
+              "idle-s-2",
+              "idle-s-3"
+            ],
+            "se": [
+              "idle-se-0",
+              "idle-se-1",
+              "idle-se-2",
+              "idle-se-3"
+            ],
+            "e": [
+              "idle-e-0",
+              "idle-e-1",
+              "idle-e-2",
+              "idle-e-3"
+            ],
+            "ne": [
+              "idle-ne-0",
+              "idle-ne-1",
+              "idle-ne-2",
+              "idle-ne-3"
+            ],
+            "n": [
+              "idle-n-0",
+              "idle-n-1",
+              "idle-n-2",
+              "idle-n-3"
+            ],
+            "nw": [
+              "idle-nw-0",
+              "idle-nw-1",
+              "idle-nw-2",
+              "idle-nw-3"
+            ],
+            "w": [
+              "idle-w-0",
+              "idle-w-1",
+              "idle-w-2",
+              "idle-w-3"
+            ],
+            "sw": [
+              "idle-sw-0",
+              "idle-sw-1",
+              "idle-sw-2",
+              "idle-sw-3"
+            ]
+          }
+        },
+        {
+          "action": "idle-mask",
+          "fps": 4,
+          "loop": true,
+          "directions": {
+            "s": [
+              "idle-s-0-mask",
+              "idle-s-1-mask",
+              "idle-s-2-mask",
+              "idle-s-3-mask"
+            ],
+            "se": [
+              "idle-se-0-mask",
+              "idle-se-1-mask",
+              "idle-se-2-mask",
+              "idle-se-3-mask"
+            ],
+            "e": [
+              "idle-e-0-mask",
+              "idle-e-1-mask",
+              "idle-e-2-mask",
+              "idle-e-3-mask"
+            ],
+            "ne": [
+              "idle-ne-0-mask",
+              "idle-ne-1-mask",
+              "idle-ne-2-mask",
+              "idle-ne-3-mask"
+            ],
+            "n": [
+              "idle-n-0-mask",
+              "idle-n-1-mask",
+              "idle-n-2-mask",
+              "idle-n-3-mask"
+            ],
+            "nw": [
+              "idle-nw-0-mask",
+              "idle-nw-1-mask",
+              "idle-nw-2-mask",
+              "idle-nw-3-mask"
+            ],
+            "w": [
+              "idle-w-0-mask",
+              "idle-w-1-mask",
+              "idle-w-2-mask",
+              "idle-w-3-mask"
+            ],
+            "sw": [
+              "idle-sw-0-mask",
+              "idle-sw-1-mask",
+              "idle-sw-2-mask",
+              "idle-sw-3-mask"
+            ]
+          }
+        },
+        {
+          "action": "walk",
+          "fps": 33.333333333333336,
+          "loop": true,
+          "strideTiles": 0.72,
+          "directions": {
+            "s": [
+              "walk-s-0",
+              "walk-s-1",
+              "walk-s-2",
+              "walk-s-3",
+              "walk-s-4",
+              "walk-s-5",
+              "walk-s-6",
+              "walk-s-7"
+            ],
+            "se": [
+              "walk-se-0",
+              "walk-se-1",
+              "walk-se-2",
+              "walk-se-3",
+              "walk-se-4",
+              "walk-se-5",
+              "walk-se-6",
+              "walk-se-7"
+            ],
+            "e": [
+              "walk-e-0",
+              "walk-e-1",
+              "walk-e-2",
+              "walk-e-3",
+              "walk-e-4",
+              "walk-e-5",
+              "walk-e-6",
+              "walk-e-7"
+            ],
+            "ne": [
+              "walk-ne-0",
+              "walk-ne-1",
+              "walk-ne-2",
+              "walk-ne-3",
+              "walk-ne-4",
+              "walk-ne-5",
+              "walk-ne-6",
+              "walk-ne-7"
+            ],
+            "n": [
+              "walk-n-0",
+              "walk-n-1",
+              "walk-n-2",
+              "walk-n-3",
+              "walk-n-4",
+              "walk-n-5",
+              "walk-n-6",
+              "walk-n-7"
+            ],
+            "nw": [
+              "walk-nw-0",
+              "walk-nw-1",
+              "walk-nw-2",
+              "walk-nw-3",
+              "walk-nw-4",
+              "walk-nw-5",
+              "walk-nw-6",
+              "walk-nw-7"
+            ],
+            "w": [
+              "walk-w-0",
+              "walk-w-1",
+              "walk-w-2",
+              "walk-w-3",
+              "walk-w-4",
+              "walk-w-5",
+              "walk-w-6",
+              "walk-w-7"
+            ],
+            "sw": [
+              "walk-sw-0",
+              "walk-sw-1",
+              "walk-sw-2",
+              "walk-sw-3",
+              "walk-sw-4",
+              "walk-sw-5",
+              "walk-sw-6",
+              "walk-sw-7"
+            ]
+          }
+        },
+        {
+          "action": "walk-mask",
+          "fps": 33.333333333333336,
+          "loop": true,
+          "strideTiles": 0.72,
+          "directions": {
+            "s": [
+              "walk-s-0-mask",
+              "walk-s-1-mask",
+              "walk-s-2-mask",
+              "walk-s-3-mask",
+              "walk-s-4-mask",
+              "walk-s-5-mask",
+              "walk-s-6-mask",
+              "walk-s-7-mask"
+            ],
+            "se": [
+              "walk-se-0-mask",
+              "walk-se-1-mask",
+              "walk-se-2-mask",
+              "walk-se-3-mask",
+              "walk-se-4-mask",
+              "walk-se-5-mask",
+              "walk-se-6-mask",
+              "walk-se-7-mask"
+            ],
+            "e": [
+              "walk-e-0-mask",
+              "walk-e-1-mask",
+              "walk-e-2-mask",
+              "walk-e-3-mask",
+              "walk-e-4-mask",
+              "walk-e-5-mask",
+              "walk-e-6-mask",
+              "walk-e-7-mask"
+            ],
+            "ne": [
+              "walk-ne-0-mask",
+              "walk-ne-1-mask",
+              "walk-ne-2-mask",
+              "walk-ne-3-mask",
+              "walk-ne-4-mask",
+              "walk-ne-5-mask",
+              "walk-ne-6-mask",
+              "walk-ne-7-mask"
+            ],
+            "n": [
+              "walk-n-0-mask",
+              "walk-n-1-mask",
+              "walk-n-2-mask",
+              "walk-n-3-mask",
+              "walk-n-4-mask",
+              "walk-n-5-mask",
+              "walk-n-6-mask",
+              "walk-n-7-mask"
+            ],
+            "nw": [
+              "walk-nw-0-mask",
+              "walk-nw-1-mask",
+              "walk-nw-2-mask",
+              "walk-nw-3-mask",
+              "walk-nw-4-mask",
+              "walk-nw-5-mask",
+              "walk-nw-6-mask",
+              "walk-nw-7-mask"
+            ],
+            "w": [
+              "walk-w-0-mask",
+              "walk-w-1-mask",
+              "walk-w-2-mask",
+              "walk-w-3-mask",
+              "walk-w-4-mask",
+              "walk-w-5-mask",
+              "walk-w-6-mask",
+              "walk-w-7-mask"
+            ],
+            "sw": [
+              "walk-sw-0-mask",
+              "walk-sw-1-mask",
+              "walk-sw-2-mask",
+              "walk-sw-3-mask",
+              "walk-sw-4-mask",
+              "walk-sw-5-mask",
+              "walk-sw-6-mask",
+              "walk-sw-7-mask"
+            ]
+          }
+        },
+        {
+          "action": "carry-walk",
+          "fps": 33.333333333333336,
+          "loop": true,
+          "strideTiles": 0.72,
+          "directions": {
+            "s": [
+              "carry-walk-s-0",
+              "carry-walk-s-1",
+              "carry-walk-s-2",
+              "carry-walk-s-3",
+              "carry-walk-s-4",
+              "carry-walk-s-5",
+              "carry-walk-s-6",
+              "carry-walk-s-7"
+            ],
+            "se": [
+              "carry-walk-se-0",
+              "carry-walk-se-1",
+              "carry-walk-se-2",
+              "carry-walk-se-3",
+              "carry-walk-se-4",
+              "carry-walk-se-5",
+              "carry-walk-se-6",
+              "carry-walk-se-7"
+            ],
+            "e": [
+              "carry-walk-e-0",
+              "carry-walk-e-1",
+              "carry-walk-e-2",
+              "carry-walk-e-3",
+              "carry-walk-e-4",
+              "carry-walk-e-5",
+              "carry-walk-e-6",
+              "carry-walk-e-7"
+            ],
+            "ne": [
+              "carry-walk-ne-0",
+              "carry-walk-ne-1",
+              "carry-walk-ne-2",
+              "carry-walk-ne-3",
+              "carry-walk-ne-4",
+              "carry-walk-ne-5",
+              "carry-walk-ne-6",
+              "carry-walk-ne-7"
+            ],
+            "n": [
+              "carry-walk-n-0",
+              "carry-walk-n-1",
+              "carry-walk-n-2",
+              "carry-walk-n-3",
+              "carry-walk-n-4",
+              "carry-walk-n-5",
+              "carry-walk-n-6",
+              "carry-walk-n-7"
+            ],
+            "nw": [
+              "carry-walk-nw-0",
+              "carry-walk-nw-1",
+              "carry-walk-nw-2",
+              "carry-walk-nw-3",
+              "carry-walk-nw-4",
+              "carry-walk-nw-5",
+              "carry-walk-nw-6",
+              "carry-walk-nw-7"
+            ],
+            "w": [
+              "carry-walk-w-0",
+              "carry-walk-w-1",
+              "carry-walk-w-2",
+              "carry-walk-w-3",
+              "carry-walk-w-4",
+              "carry-walk-w-5",
+              "carry-walk-w-6",
+              "carry-walk-w-7"
+            ],
+            "sw": [
+              "carry-walk-sw-0",
+              "carry-walk-sw-1",
+              "carry-walk-sw-2",
+              "carry-walk-sw-3",
+              "carry-walk-sw-4",
+              "carry-walk-sw-5",
+              "carry-walk-sw-6",
+              "carry-walk-sw-7"
+            ]
+          }
+        },
+        {
+          "action": "carry-walk-mask",
+          "fps": 33.333333333333336,
+          "loop": true,
+          "strideTiles": 0.72,
+          "directions": {
+            "s": [
+              "carry-walk-s-0-mask",
+              "carry-walk-s-1-mask",
+              "carry-walk-s-2-mask",
+              "carry-walk-s-3-mask",
+              "carry-walk-s-4-mask",
+              "carry-walk-s-5-mask",
+              "carry-walk-s-6-mask",
+              "carry-walk-s-7-mask"
+            ],
+            "se": [
+              "carry-walk-se-0-mask",
+              "carry-walk-se-1-mask",
+              "carry-walk-se-2-mask",
+              "carry-walk-se-3-mask",
+              "carry-walk-se-4-mask",
+              "carry-walk-se-5-mask",
+              "carry-walk-se-6-mask",
+              "carry-walk-se-7-mask"
+            ],
+            "e": [
+              "carry-walk-e-0-mask",
+              "carry-walk-e-1-mask",
+              "carry-walk-e-2-mask",
+              "carry-walk-e-3-mask",
+              "carry-walk-e-4-mask",
+              "carry-walk-e-5-mask",
+              "carry-walk-e-6-mask",
+              "carry-walk-e-7-mask"
+            ],
+            "ne": [
+              "carry-walk-ne-0-mask",
+              "carry-walk-ne-1-mask",
+              "carry-walk-ne-2-mask",
+              "carry-walk-ne-3-mask",
+              "carry-walk-ne-4-mask",
+              "carry-walk-ne-5-mask",
+              "carry-walk-ne-6-mask",
+              "carry-walk-ne-7-mask"
+            ],
+            "n": [
+              "carry-walk-n-0-mask",
+              "carry-walk-n-1-mask",
+              "carry-walk-n-2-mask",
+              "carry-walk-n-3-mask",
+              "carry-walk-n-4-mask",
+              "carry-walk-n-5-mask",
+              "carry-walk-n-6-mask",
+              "carry-walk-n-7-mask"
+            ],
+            "nw": [
+              "carry-walk-nw-0-mask",
+              "carry-walk-nw-1-mask",
+              "carry-walk-nw-2-mask",
+              "carry-walk-nw-3-mask",
+              "carry-walk-nw-4-mask",
+              "carry-walk-nw-5-mask",
+              "carry-walk-nw-6-mask",
+              "carry-walk-nw-7-mask"
+            ],
+            "w": [
+              "carry-walk-w-0-mask",
+              "carry-walk-w-1-mask",
+              "carry-walk-w-2-mask",
+              "carry-walk-w-3-mask",
+              "carry-walk-w-4-mask",
+              "carry-walk-w-5-mask",
+              "carry-walk-w-6-mask",
+              "carry-walk-w-7-mask"
+            ],
+            "sw": [
+              "carry-walk-sw-0-mask",
+              "carry-walk-sw-1-mask",
+              "carry-walk-sw-2-mask",
+              "carry-walk-sw-3-mask",
+              "carry-walk-sw-4-mask",
+              "carry-walk-sw-5-mask",
+              "carry-walk-sw-6-mask",
+              "carry-walk-sw-7-mask"
+            ]
+          }
+        },
+        {
+          "action": "chop",
+          "fps": 10,
+          "loop": true,
+          "directions": {
+            "s": [
+              "chop-s-0",
+              "chop-s-1",
+              "chop-s-2",
+              "chop-s-3",
+              "chop-s-4",
+              "chop-s-5"
+            ],
+            "se": [
+              "chop-se-0",
+              "chop-se-1",
+              "chop-se-2",
+              "chop-se-3",
+              "chop-se-4",
+              "chop-se-5"
+            ],
+            "e": [
+              "chop-e-0",
+              "chop-e-1",
+              "chop-e-2",
+              "chop-e-3",
+              "chop-e-4",
+              "chop-e-5"
+            ],
+            "ne": [
+              "chop-ne-0",
+              "chop-ne-1",
+              "chop-ne-2",
+              "chop-ne-3",
+              "chop-ne-4",
+              "chop-ne-5"
+            ],
+            "n": [
+              "chop-n-0",
+              "chop-n-1",
+              "chop-n-2",
+              "chop-n-3",
+              "chop-n-4",
+              "chop-n-5"
+            ],
+            "nw": [
+              "chop-nw-0",
+              "chop-nw-1",
+              "chop-nw-2",
+              "chop-nw-3",
+              "chop-nw-4",
+              "chop-nw-5"
+            ],
+            "w": [
+              "chop-w-0",
+              "chop-w-1",
+              "chop-w-2",
+              "chop-w-3",
+              "chop-w-4",
+              "chop-w-5"
+            ],
+            "sw": [
+              "chop-sw-0",
+              "chop-sw-1",
+              "chop-sw-2",
+              "chop-sw-3",
+              "chop-sw-4",
+              "chop-sw-5"
+            ]
+          }
+        },
+        {
+          "action": "chop-mask",
+          "fps": 10,
+          "loop": true,
+          "directions": {
+            "s": [
+              "chop-s-0-mask",
+              "chop-s-1-mask",
+              "chop-s-2-mask",
+              "chop-s-3-mask",
+              "chop-s-4-mask",
+              "chop-s-5-mask"
+            ],
+            "se": [
+              "chop-se-0-mask",
+              "chop-se-1-mask",
+              "chop-se-2-mask",
+              "chop-se-3-mask",
+              "chop-se-4-mask",
+              "chop-se-5-mask"
+            ],
+            "e": [
+              "chop-e-0-mask",
+              "chop-e-1-mask",
+              "chop-e-2-mask",
+              "chop-e-3-mask",
+              "chop-e-4-mask",
+              "chop-e-5-mask"
+            ],
+            "ne": [
+              "chop-ne-0-mask",
+              "chop-ne-1-mask",
+              "chop-ne-2-mask",
+              "chop-ne-3-mask",
+              "chop-ne-4-mask",
+              "chop-ne-5-mask"
+            ],
+            "n": [
+              "chop-n-0-mask",
+              "chop-n-1-mask",
+              "chop-n-2-mask",
+              "chop-n-3-mask",
+              "chop-n-4-mask",
+              "chop-n-5-mask"
+            ],
+            "nw": [
+              "chop-nw-0-mask",
+              "chop-nw-1-mask",
+              "chop-nw-2-mask",
+              "chop-nw-3-mask",
+              "chop-nw-4-mask",
+              "chop-nw-5-mask"
+            ],
+            "w": [
+              "chop-w-0-mask",
+              "chop-w-1-mask",
+              "chop-w-2-mask",
+              "chop-w-3-mask",
+              "chop-w-4-mask",
+              "chop-w-5-mask"
+            ],
+            "sw": [
+              "chop-sw-0-mask",
+              "chop-sw-1-mask",
+              "chop-sw-2-mask",
+              "chop-sw-3-mask",
+              "chop-sw-4-mask",
+              "chop-sw-5-mask"
+            ]
+          }
+        },
+        {
+          "action": "stir",
+          "fps": 10,
+          "loop": true,
+          "directions": {
+            "s": [
+              "stir-s-0",
+              "stir-s-1",
+              "stir-s-2",
+              "stir-s-3",
+              "stir-s-4",
+              "stir-s-5",
+              "stir-s-6",
+              "stir-s-7"
+            ],
+            "se": [
+              "stir-se-0",
+              "stir-se-1",
+              "stir-se-2",
+              "stir-se-3",
+              "stir-se-4",
+              "stir-se-5",
+              "stir-se-6",
+              "stir-se-7"
+            ],
+            "e": [
+              "stir-e-0",
+              "stir-e-1",
+              "stir-e-2",
+              "stir-e-3",
+              "stir-e-4",
+              "stir-e-5",
+              "stir-e-6",
+              "stir-e-7"
+            ],
+            "ne": [
+              "stir-ne-0",
+              "stir-ne-1",
+              "stir-ne-2",
+              "stir-ne-3",
+              "stir-ne-4",
+              "stir-ne-5",
+              "stir-ne-6",
+              "stir-ne-7"
+            ],
+            "n": [
+              "stir-n-0",
+              "stir-n-1",
+              "stir-n-2",
+              "stir-n-3",
+              "stir-n-4",
+              "stir-n-5",
+              "stir-n-6",
+              "stir-n-7"
+            ],
+            "nw": [
+              "stir-nw-0",
+              "stir-nw-1",
+              "stir-nw-2",
+              "stir-nw-3",
+              "stir-nw-4",
+              "stir-nw-5",
+              "stir-nw-6",
+              "stir-nw-7"
+            ],
+            "w": [
+              "stir-w-0",
+              "stir-w-1",
+              "stir-w-2",
+              "stir-w-3",
+              "stir-w-4",
+              "stir-w-5",
+              "stir-w-6",
+              "stir-w-7"
+            ],
+            "sw": [
+              "stir-sw-0",
+              "stir-sw-1",
+              "stir-sw-2",
+              "stir-sw-3",
+              "stir-sw-4",
+              "stir-sw-5",
+              "stir-sw-6",
+              "stir-sw-7"
+            ]
+          }
+        },
+        {
+          "action": "stir-mask",
+          "fps": 10,
+          "loop": true,
+          "directions": {
+            "s": [
+              "stir-s-0-mask",
+              "stir-s-1-mask",
+              "stir-s-2-mask",
+              "stir-s-3-mask",
+              "stir-s-4-mask",
+              "stir-s-5-mask",
+              "stir-s-6-mask",
+              "stir-s-7-mask"
+            ],
+            "se": [
+              "stir-se-0-mask",
+              "stir-se-1-mask",
+              "stir-se-2-mask",
+              "stir-se-3-mask",
+              "stir-se-4-mask",
+              "stir-se-5-mask",
+              "stir-se-6-mask",
+              "stir-se-7-mask"
+            ],
+            "e": [
+              "stir-e-0-mask",
+              "stir-e-1-mask",
+              "stir-e-2-mask",
+              "stir-e-3-mask",
+              "stir-e-4-mask",
+              "stir-e-5-mask",
+              "stir-e-6-mask",
+              "stir-e-7-mask"
+            ],
+            "ne": [
+              "stir-ne-0-mask",
+              "stir-ne-1-mask",
+              "stir-ne-2-mask",
+              "stir-ne-3-mask",
+              "stir-ne-4-mask",
+              "stir-ne-5-mask",
+              "stir-ne-6-mask",
+              "stir-ne-7-mask"
+            ],
+            "n": [
+              "stir-n-0-mask",
+              "stir-n-1-mask",
+              "stir-n-2-mask",
+              "stir-n-3-mask",
+              "stir-n-4-mask",
+              "stir-n-5-mask",
+              "stir-n-6-mask",
+              "stir-n-7-mask"
+            ],
+            "nw": [
+              "stir-nw-0-mask",
+              "stir-nw-1-mask",
+              "stir-nw-2-mask",
+              "stir-nw-3-mask",
+              "stir-nw-4-mask",
+              "stir-nw-5-mask",
+              "stir-nw-6-mask",
+              "stir-nw-7-mask"
+            ],
+            "w": [
+              "stir-w-0-mask",
+              "stir-w-1-mask",
+              "stir-w-2-mask",
+              "stir-w-3-mask",
+              "stir-w-4-mask",
+              "stir-w-5-mask",
+              "stir-w-6-mask",
+              "stir-w-7-mask"
+            ],
+            "sw": [
+              "stir-sw-0-mask",
+              "stir-sw-1-mask",
+              "stir-sw-2-mask",
+              "stir-sw-3-mask",
+              "stir-sw-4-mask",
+              "stir-sw-5-mask",
+              "stir-sw-6-mask",
+              "stir-sw-7-mask"
+            ]
+          }
+        },
+        {
+          "action": "wash",
+          "fps": 8,
+          "loop": true,
+          "directions": {
+            "s": [
+              "wash-s-0",
+              "wash-s-1",
+              "wash-s-2",
+              "wash-s-3",
+              "wash-s-4",
+              "wash-s-5"
+            ],
+            "se": [
+              "wash-se-0",
+              "wash-se-1",
+              "wash-se-2",
+              "wash-se-3",
+              "wash-se-4",
+              "wash-se-5"
+            ],
+            "e": [
+              "wash-e-0",
+              "wash-e-1",
+              "wash-e-2",
+              "wash-e-3",
+              "wash-e-4",
+              "wash-e-5"
+            ],
+            "ne": [
+              "wash-ne-0",
+              "wash-ne-1",
+              "wash-ne-2",
+              "wash-ne-3",
+              "wash-ne-4",
+              "wash-ne-5"
+            ],
+            "n": [
+              "wash-n-0",
+              "wash-n-1",
+              "wash-n-2",
+              "wash-n-3",
+              "wash-n-4",
+              "wash-n-5"
+            ],
+            "nw": [
+              "wash-nw-0",
+              "wash-nw-1",
+              "wash-nw-2",
+              "wash-nw-3",
+              "wash-nw-4",
+              "wash-nw-5"
+            ],
+            "w": [
+              "wash-w-0",
+              "wash-w-1",
+              "wash-w-2",
+              "wash-w-3",
+              "wash-w-4",
+              "wash-w-5"
+            ],
+            "sw": [
+              "wash-sw-0",
+              "wash-sw-1",
+              "wash-sw-2",
+              "wash-sw-3",
+              "wash-sw-4",
+              "wash-sw-5"
+            ]
+          }
+        },
+        {
+          "action": "wash-mask",
+          "fps": 8,
+          "loop": true,
+          "directions": {
+            "s": [
+              "wash-s-0-mask",
+              "wash-s-1-mask",
+              "wash-s-2-mask",
+              "wash-s-3-mask",
+              "wash-s-4-mask",
+              "wash-s-5-mask"
+            ],
+            "se": [
+              "wash-se-0-mask",
+              "wash-se-1-mask",
+              "wash-se-2-mask",
+              "wash-se-3-mask",
+              "wash-se-4-mask",
+              "wash-se-5-mask"
+            ],
+            "e": [
+              "wash-e-0-mask",
+              "wash-e-1-mask",
+              "wash-e-2-mask",
+              "wash-e-3-mask",
+              "wash-e-4-mask",
+              "wash-e-5-mask"
+            ],
+            "ne": [
+              "wash-ne-0-mask",
+              "wash-ne-1-mask",
+              "wash-ne-2-mask",
+              "wash-ne-3-mask",
+              "wash-ne-4-mask",
+              "wash-ne-5-mask"
+            ],
+            "n": [
+              "wash-n-0-mask",
+              "wash-n-1-mask",
+              "wash-n-2-mask",
+              "wash-n-3-mask",
+              "wash-n-4-mask",
+              "wash-n-5-mask"
+            ],
+            "nw": [
+              "wash-nw-0-mask",
+              "wash-nw-1-mask",
+              "wash-nw-2-mask",
+              "wash-nw-3-mask",
+              "wash-nw-4-mask",
+              "wash-nw-5-mask"
+            ],
+            "w": [
+              "wash-w-0-mask",
+              "wash-w-1-mask",
+              "wash-w-2-mask",
+              "wash-w-3-mask",
+              "wash-w-4-mask",
+              "wash-w-5-mask"
+            ],
+            "sw": [
+              "wash-sw-0-mask",
+              "wash-sw-1-mask",
+              "wash-sw-2-mask",
+              "wash-sw-3-mask",
+              "wash-sw-4-mask",
+              "wash-sw-5-mask"
+            ]
+          }
+        },
+        {
+          "action": "serve",
+          "fps": 12,
+          "loop": false,
+          "releaseFrame": 3,
+          "directions": {
+            "s": [
+              "serve-s-0",
+              "serve-s-1",
+              "serve-s-2",
+              "serve-s-3",
+              "serve-s-4",
+              "serve-s-5"
+            ],
+            "se": [
+              "serve-se-0",
+              "serve-se-1",
+              "serve-se-2",
+              "serve-se-3",
+              "serve-se-4",
+              "serve-se-5"
+            ],
+            "e": [
+              "serve-e-0",
+              "serve-e-1",
+              "serve-e-2",
+              "serve-e-3",
+              "serve-e-4",
+              "serve-e-5"
+            ],
+            "ne": [
+              "serve-ne-0",
+              "serve-ne-1",
+              "serve-ne-2",
+              "serve-ne-3",
+              "serve-ne-4",
+              "serve-ne-5"
+            ],
+            "n": [
+              "serve-n-0",
+              "serve-n-1",
+              "serve-n-2",
+              "serve-n-3",
+              "serve-n-4",
+              "serve-n-5"
+            ],
+            "nw": [
+              "serve-nw-0",
+              "serve-nw-1",
+              "serve-nw-2",
+              "serve-nw-3",
+              "serve-nw-4",
+              "serve-nw-5"
+            ],
+            "w": [
+              "serve-w-0",
+              "serve-w-1",
+              "serve-w-2",
+              "serve-w-3",
+              "serve-w-4",
+              "serve-w-5"
+            ],
+            "sw": [
+              "serve-sw-0",
+              "serve-sw-1",
+              "serve-sw-2",
+              "serve-sw-3",
+              "serve-sw-4",
+              "serve-sw-5"
+            ]
+          }
+        },
+        {
+          "action": "serve-mask",
+          "fps": 12,
+          "loop": false,
+          "releaseFrame": 3,
+          "directions": {
+            "s": [
+              "serve-s-0-mask",
+              "serve-s-1-mask",
+              "serve-s-2-mask",
+              "serve-s-3-mask",
+              "serve-s-4-mask",
+              "serve-s-5-mask"
+            ],
+            "se": [
+              "serve-se-0-mask",
+              "serve-se-1-mask",
+              "serve-se-2-mask",
+              "serve-se-3-mask",
+              "serve-se-4-mask",
+              "serve-se-5-mask"
+            ],
+            "e": [
+              "serve-e-0-mask",
+              "serve-e-1-mask",
+              "serve-e-2-mask",
+              "serve-e-3-mask",
+              "serve-e-4-mask",
+              "serve-e-5-mask"
+            ],
+            "ne": [
+              "serve-ne-0-mask",
+              "serve-ne-1-mask",
+              "serve-ne-2-mask",
+              "serve-ne-3-mask",
+              "serve-ne-4-mask",
+              "serve-ne-5-mask"
+            ],
+            "n": [
+              "serve-n-0-mask",
+              "serve-n-1-mask",
+              "serve-n-2-mask",
+              "serve-n-3-mask",
+              "serve-n-4-mask",
+              "serve-n-5-mask"
+            ],
+            "nw": [
+              "serve-nw-0-mask",
+              "serve-nw-1-mask",
+              "serve-nw-2-mask",
+              "serve-nw-3-mask",
+              "serve-nw-4-mask",
+              "serve-nw-5-mask"
+            ],
+            "w": [
+              "serve-w-0-mask",
+              "serve-w-1-mask",
+              "serve-w-2-mask",
+              "serve-w-3-mask",
+              "serve-w-4-mask",
+              "serve-w-5-mask"
+            ],
+            "sw": [
+              "serve-sw-0-mask",
+              "serve-sw-1-mask",
+              "serve-sw-2-mask",
+              "serve-sw-3-mask",
+              "serve-sw-4-mask",
+              "serve-sw-5-mask"
+            ]
+          }
+        },
+        {
+          "action": "throw",
+          "fps": 12,
+          "loop": false,
+          "releaseFrame": 3,
+          "directions": {
+            "s": [
+              "throw-s-0",
+              "throw-s-1",
+              "throw-s-2",
+              "throw-s-3",
+              "throw-s-4",
+              "throw-s-5"
+            ],
+            "se": [
+              "throw-se-0",
+              "throw-se-1",
+              "throw-se-2",
+              "throw-se-3",
+              "throw-se-4",
+              "throw-se-5"
+            ],
+            "e": [
+              "throw-e-0",
+              "throw-e-1",
+              "throw-e-2",
+              "throw-e-3",
+              "throw-e-4",
+              "throw-e-5"
+            ],
+            "ne": [
+              "throw-ne-0",
+              "throw-ne-1",
+              "throw-ne-2",
+              "throw-ne-3",
+              "throw-ne-4",
+              "throw-ne-5"
+            ],
+            "n": [
+              "throw-n-0",
+              "throw-n-1",
+              "throw-n-2",
+              "throw-n-3",
+              "throw-n-4",
+              "throw-n-5"
+            ],
+            "nw": [
+              "throw-nw-0",
+              "throw-nw-1",
+              "throw-nw-2",
+              "throw-nw-3",
+              "throw-nw-4",
+              "throw-nw-5"
+            ],
+            "w": [
+              "throw-w-0",
+              "throw-w-1",
+              "throw-w-2",
+              "throw-w-3",
+              "throw-w-4",
+              "throw-w-5"
+            ],
+            "sw": [
+              "throw-sw-0",
+              "throw-sw-1",
+              "throw-sw-2",
+              "throw-sw-3",
+              "throw-sw-4",
+              "throw-sw-5"
+            ]
+          }
+        },
+        {
+          "action": "throw-mask",
+          "fps": 12,
+          "loop": false,
+          "releaseFrame": 3,
+          "directions": {
+            "s": [
+              "throw-s-0-mask",
+              "throw-s-1-mask",
+              "throw-s-2-mask",
+              "throw-s-3-mask",
+              "throw-s-4-mask",
+              "throw-s-5-mask"
+            ],
+            "se": [
+              "throw-se-0-mask",
+              "throw-se-1-mask",
+              "throw-se-2-mask",
+              "throw-se-3-mask",
+              "throw-se-4-mask",
+              "throw-se-5-mask"
+            ],
+            "e": [
+              "throw-e-0-mask",
+              "throw-e-1-mask",
+              "throw-e-2-mask",
+              "throw-e-3-mask",
+              "throw-e-4-mask",
+              "throw-e-5-mask"
+            ],
+            "ne": [
+              "throw-ne-0-mask",
+              "throw-ne-1-mask",
+              "throw-ne-2-mask",
+              "throw-ne-3-mask",
+              "throw-ne-4-mask",
+              "throw-ne-5-mask"
+            ],
+            "n": [
+              "throw-n-0-mask",
+              "throw-n-1-mask",
+              "throw-n-2-mask",
+              "throw-n-3-mask",
+              "throw-n-4-mask",
+              "throw-n-5-mask"
+            ],
+            "nw": [
+              "throw-nw-0-mask",
+              "throw-nw-1-mask",
+              "throw-nw-2-mask",
+              "throw-nw-3-mask",
+              "throw-nw-4-mask",
+              "throw-nw-5-mask"
+            ],
+            "w": [
+              "throw-w-0-mask",
+              "throw-w-1-mask",
+              "throw-w-2-mask",
+              "throw-w-3-mask",
+              "throw-w-4-mask",
+              "throw-w-5-mask"
+            ],
+            "sw": [
+              "throw-sw-0-mask",
+              "throw-sw-1-mask",
+              "throw-sw-2-mask",
+              "throw-sw-3-mask",
+              "throw-sw-4-mask",
+              "throw-sw-5-mask"
+            ]
+          }
+        },
+        {
+          "action": "extinguish",
+          "fps": 8,
+          "loop": true,
+          "directions": {
+            "s": [
+              "extinguish-s-0",
+              "extinguish-s-1",
+              "extinguish-s-2",
+              "extinguish-s-3"
+            ],
+            "se": [
+              "extinguish-se-0",
+              "extinguish-se-1",
+              "extinguish-se-2",
+              "extinguish-se-3"
+            ],
+            "e": [
+              "extinguish-e-0",
+              "extinguish-e-1",
+              "extinguish-e-2",
+              "extinguish-e-3"
+            ],
+            "ne": [
+              "extinguish-ne-0",
+              "extinguish-ne-1",
+              "extinguish-ne-2",
+              "extinguish-ne-3"
+            ],
+            "n": [
+              "extinguish-n-0",
+              "extinguish-n-1",
+              "extinguish-n-2",
+              "extinguish-n-3"
+            ],
+            "nw": [
+              "extinguish-nw-0",
+              "extinguish-nw-1",
+              "extinguish-nw-2",
+              "extinguish-nw-3"
+            ],
+            "w": [
+              "extinguish-w-0",
+              "extinguish-w-1",
+              "extinguish-w-2",
+              "extinguish-w-3"
+            ],
+            "sw": [
+              "extinguish-sw-0",
+              "extinguish-sw-1",
+              "extinguish-sw-2",
+              "extinguish-sw-3"
+            ]
+          }
+        },
+        {
+          "action": "extinguish-mask",
+          "fps": 8,
+          "loop": true,
+          "directions": {
+            "s": [
+              "extinguish-s-0-mask",
+              "extinguish-s-1-mask",
+              "extinguish-s-2-mask",
+              "extinguish-s-3-mask"
+            ],
+            "se": [
+              "extinguish-se-0-mask",
+              "extinguish-se-1-mask",
+              "extinguish-se-2-mask",
+              "extinguish-se-3-mask"
+            ],
+            "e": [
+              "extinguish-e-0-mask",
+              "extinguish-e-1-mask",
+              "extinguish-e-2-mask",
+              "extinguish-e-3-mask"
+            ],
+            "ne": [
+              "extinguish-ne-0-mask",
+              "extinguish-ne-1-mask",
+              "extinguish-ne-2-mask",
+              "extinguish-ne-3-mask"
+            ],
+            "n": [
+              "extinguish-n-0-mask",
+              "extinguish-n-1-mask",
+              "extinguish-n-2-mask",
+              "extinguish-n-3-mask"
+            ],
+            "nw": [
+              "extinguish-nw-0-mask",
+              "extinguish-nw-1-mask",
+              "extinguish-nw-2-mask",
+              "extinguish-nw-3-mask"
+            ],
+            "w": [
+              "extinguish-w-0-mask",
+              "extinguish-w-1-mask",
+              "extinguish-w-2-mask",
+              "extinguish-w-3-mask"
+            ],
+            "sw": [
+              "extinguish-sw-0-mask",
+              "extinguish-sw-1-mask",
+              "extinguish-sw-2-mask",
+              "extinguish-sw-3-mask"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "tabao-rush-cook-heads",
+      "encoding": "lossless",
+      "anchors": [
+        "head"
+      ],
+      "frameFiles": [
+        "tabao-rush/cook-heads/cap/frames.json"
+      ],
+      "animations": [
+        {
+          "action": "cap",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-cap-s"
+            ],
+            "se": [
+              "head-cap-se"
+            ],
+            "e": [
+              "head-cap-e"
+            ],
+            "ne": [
+              "head-cap-ne"
+            ],
+            "n": [
+              "head-cap-n"
+            ],
+            "nw": [
+              "head-cap-nw"
+            ],
+            "w": [
+              "head-cap-w"
+            ],
+            "sw": [
+              "head-cap-sw"
+            ]
+          }
+        },
+        {
+          "action": "cap-mask",
+          "fps": 1,
+          "loop": true,
+          "directions": {
+            "s": [
+              "head-cap-s-mask"
+            ],
+            "se": [
+              "head-cap-se-mask"
+            ],
+            "e": [
+              "head-cap-e-mask"
+            ],
+            "ne": [
+              "head-cap-ne-mask"
+            ],
+            "n": [
+              "head-cap-n-mask"
+            ],
+            "nw": [
+              "head-cap-nw-mask"
+            ],
+            "w": [
+              "head-cap-w-mask"
+            ],
+            "sw": [
+              "head-cap-sw-mask"
+            ]
+          }
+        }
+      ]
     }
   ],
   "rounds": {
     "empty": [],
-    "tabao-rush-cook-spike": [
-      "tabao-rush-cook-spike"
-    ],
     "peek-poker": [
       "peek-poker-cards"
     ],
     "tabao-rush": [
-      "tabao-rush-items"
+      "tabao-rush-items",
+      "tabao-rush-cook-body",
+      "tabao-rush-cook-heads"
     ]
   },
   "powerOfTwo": false,
   "renders": [
-    {
-      "id": "cook-spike",
-      "script": "cook.py",
-      "extraInputs": [
-        "tools/blender/kalib.py"
-      ],
-      "args": [
-        "--out",
-        "tabao-rush/cook-spike"
-      ],
-      "inputs": [
-        "pipeline.json"
-      ],
-      "outputs": [
-        "tabao-rush/cook-spike/idle-0-0.png",
-        "tabao-rush/cook-spike/idle-0-0-mask.png",
-        "tabao-rush/cook-spike/idle-0-1.png",
-        "tabao-rush/cook-spike/idle-0-1-mask.png",
-        "tabao-rush/cook-spike/idle-0-2.png",
-        "tabao-rush/cook-spike/idle-0-2-mask.png",
-        "tabao-rush/cook-spike/idle-0-3.png",
-        "tabao-rush/cook-spike/idle-0-3-mask.png",
-        "tabao-rush/cook-spike/idle-1-0.png",
-        "tabao-rush/cook-spike/idle-1-0-mask.png",
-        "tabao-rush/cook-spike/idle-1-1.png",
-        "tabao-rush/cook-spike/idle-1-1-mask.png",
-        "tabao-rush/cook-spike/idle-1-2.png",
-        "tabao-rush/cook-spike/idle-1-2-mask.png",
-        "tabao-rush/cook-spike/idle-1-3.png",
-        "tabao-rush/cook-spike/idle-1-3-mask.png",
-        "tabao-rush/cook-spike/idle-2-0.png",
-        "tabao-rush/cook-spike/idle-2-0-mask.png",
-        "tabao-rush/cook-spike/idle-2-1.png",
-        "tabao-rush/cook-spike/idle-2-1-mask.png",
-        "tabao-rush/cook-spike/idle-2-2.png",
-        "tabao-rush/cook-spike/idle-2-2-mask.png",
-        "tabao-rush/cook-spike/idle-2-3.png",
-        "tabao-rush/cook-spike/idle-2-3-mask.png",
-        "tabao-rush/cook-spike/idle-3-0.png",
-        "tabao-rush/cook-spike/idle-3-0-mask.png",
-        "tabao-rush/cook-spike/idle-3-1.png",
-        "tabao-rush/cook-spike/idle-3-1-mask.png",
-        "tabao-rush/cook-spike/idle-3-2.png",
-        "tabao-rush/cook-spike/idle-3-2-mask.png",
-        "tabao-rush/cook-spike/idle-3-3.png",
-        "tabao-rush/cook-spike/idle-3-3-mask.png",
-        "tabao-rush/cook-spike/idle-4-0.png",
-        "tabao-rush/cook-spike/idle-4-0-mask.png",
-        "tabao-rush/cook-spike/idle-4-1.png",
-        "tabao-rush/cook-spike/idle-4-1-mask.png",
-        "tabao-rush/cook-spike/idle-4-2.png",
-        "tabao-rush/cook-spike/idle-4-2-mask.png",
-        "tabao-rush/cook-spike/idle-4-3.png",
-        "tabao-rush/cook-spike/idle-4-3-mask.png",
-        "tabao-rush/cook-spike/idle-5-0.png",
-        "tabao-rush/cook-spike/idle-5-0-mask.png",
-        "tabao-rush/cook-spike/idle-5-1.png",
-        "tabao-rush/cook-spike/idle-5-1-mask.png",
-        "tabao-rush/cook-spike/idle-5-2.png",
-        "tabao-rush/cook-spike/idle-5-2-mask.png",
-        "tabao-rush/cook-spike/idle-5-3.png",
-        "tabao-rush/cook-spike/idle-5-3-mask.png",
-        "tabao-rush/cook-spike/idle-6-0.png",
-        "tabao-rush/cook-spike/idle-6-0-mask.png",
-        "tabao-rush/cook-spike/idle-6-1.png",
-        "tabao-rush/cook-spike/idle-6-1-mask.png",
-        "tabao-rush/cook-spike/idle-6-2.png",
-        "tabao-rush/cook-spike/idle-6-2-mask.png",
-        "tabao-rush/cook-spike/idle-6-3.png",
-        "tabao-rush/cook-spike/idle-6-3-mask.png",
-        "tabao-rush/cook-spike/idle-7-0.png",
-        "tabao-rush/cook-spike/idle-7-0-mask.png",
-        "tabao-rush/cook-spike/idle-7-1.png",
-        "tabao-rush/cook-spike/idle-7-1-mask.png",
-        "tabao-rush/cook-spike/idle-7-2.png",
-        "tabao-rush/cook-spike/idle-7-2-mask.png",
-        "tabao-rush/cook-spike/idle-7-3.png",
-        "tabao-rush/cook-spike/idle-7-3-mask.png",
-        "tabao-rush/cook-spike/walk-0-0.png",
-        "tabao-rush/cook-spike/walk-0-0-mask.png",
-        "tabao-rush/cook-spike/walk-0-1.png",
-        "tabao-rush/cook-spike/walk-0-1-mask.png",
-        "tabao-rush/cook-spike/walk-0-2.png",
-        "tabao-rush/cook-spike/walk-0-2-mask.png",
-        "tabao-rush/cook-spike/walk-0-3.png",
-        "tabao-rush/cook-spike/walk-0-3-mask.png",
-        "tabao-rush/cook-spike/walk-0-4.png",
-        "tabao-rush/cook-spike/walk-0-4-mask.png",
-        "tabao-rush/cook-spike/walk-0-5.png",
-        "tabao-rush/cook-spike/walk-0-5-mask.png",
-        "tabao-rush/cook-spike/walk-0-6.png",
-        "tabao-rush/cook-spike/walk-0-6-mask.png",
-        "tabao-rush/cook-spike/walk-0-7.png",
-        "tabao-rush/cook-spike/walk-0-7-mask.png",
-        "tabao-rush/cook-spike/walk-1-0.png",
-        "tabao-rush/cook-spike/walk-1-0-mask.png",
-        "tabao-rush/cook-spike/walk-1-1.png",
-        "tabao-rush/cook-spike/walk-1-1-mask.png",
-        "tabao-rush/cook-spike/walk-1-2.png",
-        "tabao-rush/cook-spike/walk-1-2-mask.png",
-        "tabao-rush/cook-spike/walk-1-3.png",
-        "tabao-rush/cook-spike/walk-1-3-mask.png",
-        "tabao-rush/cook-spike/walk-1-4.png",
-        "tabao-rush/cook-spike/walk-1-4-mask.png",
-        "tabao-rush/cook-spike/walk-1-5.png",
-        "tabao-rush/cook-spike/walk-1-5-mask.png",
-        "tabao-rush/cook-spike/walk-1-6.png",
-        "tabao-rush/cook-spike/walk-1-6-mask.png",
-        "tabao-rush/cook-spike/walk-1-7.png",
-        "tabao-rush/cook-spike/walk-1-7-mask.png",
-        "tabao-rush/cook-spike/walk-2-0.png",
-        "tabao-rush/cook-spike/walk-2-0-mask.png",
-        "tabao-rush/cook-spike/walk-2-1.png",
-        "tabao-rush/cook-spike/walk-2-1-mask.png",
-        "tabao-rush/cook-spike/walk-2-2.png",
-        "tabao-rush/cook-spike/walk-2-2-mask.png",
-        "tabao-rush/cook-spike/walk-2-3.png",
-        "tabao-rush/cook-spike/walk-2-3-mask.png",
-        "tabao-rush/cook-spike/walk-2-4.png",
-        "tabao-rush/cook-spike/walk-2-4-mask.png",
-        "tabao-rush/cook-spike/walk-2-5.png",
-        "tabao-rush/cook-spike/walk-2-5-mask.png",
-        "tabao-rush/cook-spike/walk-2-6.png",
-        "tabao-rush/cook-spike/walk-2-6-mask.png",
-        "tabao-rush/cook-spike/walk-2-7.png",
-        "tabao-rush/cook-spike/walk-2-7-mask.png",
-        "tabao-rush/cook-spike/walk-3-0.png",
-        "tabao-rush/cook-spike/walk-3-0-mask.png",
-        "tabao-rush/cook-spike/walk-3-1.png",
-        "tabao-rush/cook-spike/walk-3-1-mask.png",
-        "tabao-rush/cook-spike/walk-3-2.png",
-        "tabao-rush/cook-spike/walk-3-2-mask.png",
-        "tabao-rush/cook-spike/walk-3-3.png",
-        "tabao-rush/cook-spike/walk-3-3-mask.png",
-        "tabao-rush/cook-spike/walk-3-4.png",
-        "tabao-rush/cook-spike/walk-3-4-mask.png",
-        "tabao-rush/cook-spike/walk-3-5.png",
-        "tabao-rush/cook-spike/walk-3-5-mask.png",
-        "tabao-rush/cook-spike/walk-3-6.png",
-        "tabao-rush/cook-spike/walk-3-6-mask.png",
-        "tabao-rush/cook-spike/walk-3-7.png",
-        "tabao-rush/cook-spike/walk-3-7-mask.png",
-        "tabao-rush/cook-spike/walk-4-0.png",
-        "tabao-rush/cook-spike/walk-4-0-mask.png",
-        "tabao-rush/cook-spike/walk-4-1.png",
-        "tabao-rush/cook-spike/walk-4-1-mask.png",
-        "tabao-rush/cook-spike/walk-4-2.png",
-        "tabao-rush/cook-spike/walk-4-2-mask.png",
-        "tabao-rush/cook-spike/walk-4-3.png",
-        "tabao-rush/cook-spike/walk-4-3-mask.png",
-        "tabao-rush/cook-spike/walk-4-4.png",
-        "tabao-rush/cook-spike/walk-4-4-mask.png",
-        "tabao-rush/cook-spike/walk-4-5.png",
-        "tabao-rush/cook-spike/walk-4-5-mask.png",
-        "tabao-rush/cook-spike/walk-4-6.png",
-        "tabao-rush/cook-spike/walk-4-6-mask.png",
-        "tabao-rush/cook-spike/walk-4-7.png",
-        "tabao-rush/cook-spike/walk-4-7-mask.png",
-        "tabao-rush/cook-spike/walk-5-0.png",
-        "tabao-rush/cook-spike/walk-5-0-mask.png",
-        "tabao-rush/cook-spike/walk-5-1.png",
-        "tabao-rush/cook-spike/walk-5-1-mask.png",
-        "tabao-rush/cook-spike/walk-5-2.png",
-        "tabao-rush/cook-spike/walk-5-2-mask.png",
-        "tabao-rush/cook-spike/walk-5-3.png",
-        "tabao-rush/cook-spike/walk-5-3-mask.png",
-        "tabao-rush/cook-spike/walk-5-4.png",
-        "tabao-rush/cook-spike/walk-5-4-mask.png",
-        "tabao-rush/cook-spike/walk-5-5.png",
-        "tabao-rush/cook-spike/walk-5-5-mask.png",
-        "tabao-rush/cook-spike/walk-5-6.png",
-        "tabao-rush/cook-spike/walk-5-6-mask.png",
-        "tabao-rush/cook-spike/walk-5-7.png",
-        "tabao-rush/cook-spike/walk-5-7-mask.png",
-        "tabao-rush/cook-spike/walk-6-0.png",
-        "tabao-rush/cook-spike/walk-6-0-mask.png",
-        "tabao-rush/cook-spike/walk-6-1.png",
-        "tabao-rush/cook-spike/walk-6-1-mask.png",
-        "tabao-rush/cook-spike/walk-6-2.png",
-        "tabao-rush/cook-spike/walk-6-2-mask.png",
-        "tabao-rush/cook-spike/walk-6-3.png",
-        "tabao-rush/cook-spike/walk-6-3-mask.png",
-        "tabao-rush/cook-spike/walk-6-4.png",
-        "tabao-rush/cook-spike/walk-6-4-mask.png",
-        "tabao-rush/cook-spike/walk-6-5.png",
-        "tabao-rush/cook-spike/walk-6-5-mask.png",
-        "tabao-rush/cook-spike/walk-6-6.png",
-        "tabao-rush/cook-spike/walk-6-6-mask.png",
-        "tabao-rush/cook-spike/walk-6-7.png",
-        "tabao-rush/cook-spike/walk-6-7-mask.png",
-        "tabao-rush/cook-spike/walk-7-0.png",
-        "tabao-rush/cook-spike/walk-7-0-mask.png",
-        "tabao-rush/cook-spike/walk-7-1.png",
-        "tabao-rush/cook-spike/walk-7-1-mask.png",
-        "tabao-rush/cook-spike/walk-7-2.png",
-        "tabao-rush/cook-spike/walk-7-2-mask.png",
-        "tabao-rush/cook-spike/walk-7-3.png",
-        "tabao-rush/cook-spike/walk-7-3-mask.png",
-        "tabao-rush/cook-spike/walk-7-4.png",
-        "tabao-rush/cook-spike/walk-7-4-mask.png",
-        "tabao-rush/cook-spike/walk-7-5.png",
-        "tabao-rush/cook-spike/walk-7-5-mask.png",
-        "tabao-rush/cook-spike/walk-7-6.png",
-        "tabao-rush/cook-spike/walk-7-6-mask.png",
-        "tabao-rush/cook-spike/walk-7-7.png",
-        "tabao-rush/cook-spike/walk-7-7-mask.png",
-        "tabao-rush/cook-spike/head-0.png",
-        "tabao-rush/cook-spike/head-mask-0.png",
-        "tabao-rush/cook-spike/head-1.png",
-        "tabao-rush/cook-spike/head-mask-1.png",
-        "tabao-rush/cook-spike/head-2.png",
-        "tabao-rush/cook-spike/head-mask-2.png",
-        "tabao-rush/cook-spike/head-3.png",
-        "tabao-rush/cook-spike/head-mask-3.png",
-        "tabao-rush/cook-spike/head-4.png",
-        "tabao-rush/cook-spike/head-mask-4.png",
-        "tabao-rush/cook-spike/head-5.png",
-        "tabao-rush/cook-spike/head-mask-5.png",
-        "tabao-rush/cook-spike/head-6.png",
-        "tabao-rush/cook-spike/head-mask-6.png",
-        "tabao-rush/cook-spike/head-7.png",
-        "tabao-rush/cook-spike/head-mask-7.png",
-        "tabao-rush/cook-spike/render-validation.json"
-      ]
-    },
     {
       "id": "cards",
       "script": "cards.py",
@@ -4564,6 +3803,1117 @@
         "tabao-rush/items"
       ],
       "id": "items"
+    },
+    {
+      "id": "cook-body-idle",
+      "script": "cook.py",
+      "args": [
+        "--action",
+        "idle",
+        "--out",
+        "tabao-rush/cook-body/idle"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-body/idle/idle-s-0.png",
+        "tabao-rush/cook-body/idle/idle-s-0-mask.png",
+        "tabao-rush/cook-body/idle/idle-s-1.png",
+        "tabao-rush/cook-body/idle/idle-s-1-mask.png",
+        "tabao-rush/cook-body/idle/idle-s-2.png",
+        "tabao-rush/cook-body/idle/idle-s-2-mask.png",
+        "tabao-rush/cook-body/idle/idle-s-3.png",
+        "tabao-rush/cook-body/idle/idle-s-3-mask.png",
+        "tabao-rush/cook-body/idle/idle-se-0.png",
+        "tabao-rush/cook-body/idle/idle-se-0-mask.png",
+        "tabao-rush/cook-body/idle/idle-se-1.png",
+        "tabao-rush/cook-body/idle/idle-se-1-mask.png",
+        "tabao-rush/cook-body/idle/idle-se-2.png",
+        "tabao-rush/cook-body/idle/idle-se-2-mask.png",
+        "tabao-rush/cook-body/idle/idle-se-3.png",
+        "tabao-rush/cook-body/idle/idle-se-3-mask.png",
+        "tabao-rush/cook-body/idle/idle-e-0.png",
+        "tabao-rush/cook-body/idle/idle-e-0-mask.png",
+        "tabao-rush/cook-body/idle/idle-e-1.png",
+        "tabao-rush/cook-body/idle/idle-e-1-mask.png",
+        "tabao-rush/cook-body/idle/idle-e-2.png",
+        "tabao-rush/cook-body/idle/idle-e-2-mask.png",
+        "tabao-rush/cook-body/idle/idle-e-3.png",
+        "tabao-rush/cook-body/idle/idle-e-3-mask.png",
+        "tabao-rush/cook-body/idle/idle-ne-0.png",
+        "tabao-rush/cook-body/idle/idle-ne-0-mask.png",
+        "tabao-rush/cook-body/idle/idle-ne-1.png",
+        "tabao-rush/cook-body/idle/idle-ne-1-mask.png",
+        "tabao-rush/cook-body/idle/idle-ne-2.png",
+        "tabao-rush/cook-body/idle/idle-ne-2-mask.png",
+        "tabao-rush/cook-body/idle/idle-ne-3.png",
+        "tabao-rush/cook-body/idle/idle-ne-3-mask.png",
+        "tabao-rush/cook-body/idle/idle-n-0.png",
+        "tabao-rush/cook-body/idle/idle-n-0-mask.png",
+        "tabao-rush/cook-body/idle/idle-n-1.png",
+        "tabao-rush/cook-body/idle/idle-n-1-mask.png",
+        "tabao-rush/cook-body/idle/idle-n-2.png",
+        "tabao-rush/cook-body/idle/idle-n-2-mask.png",
+        "tabao-rush/cook-body/idle/idle-n-3.png",
+        "tabao-rush/cook-body/idle/idle-n-3-mask.png",
+        "tabao-rush/cook-body/idle/idle-nw-0.png",
+        "tabao-rush/cook-body/idle/idle-nw-0-mask.png",
+        "tabao-rush/cook-body/idle/idle-nw-1.png",
+        "tabao-rush/cook-body/idle/idle-nw-1-mask.png",
+        "tabao-rush/cook-body/idle/idle-nw-2.png",
+        "tabao-rush/cook-body/idle/idle-nw-2-mask.png",
+        "tabao-rush/cook-body/idle/idle-nw-3.png",
+        "tabao-rush/cook-body/idle/idle-nw-3-mask.png",
+        "tabao-rush/cook-body/idle/idle-w-0.png",
+        "tabao-rush/cook-body/idle/idle-w-0-mask.png",
+        "tabao-rush/cook-body/idle/idle-w-1.png",
+        "tabao-rush/cook-body/idle/idle-w-1-mask.png",
+        "tabao-rush/cook-body/idle/idle-w-2.png",
+        "tabao-rush/cook-body/idle/idle-w-2-mask.png",
+        "tabao-rush/cook-body/idle/idle-w-3.png",
+        "tabao-rush/cook-body/idle/idle-w-3-mask.png",
+        "tabao-rush/cook-body/idle/idle-sw-0.png",
+        "tabao-rush/cook-body/idle/idle-sw-0-mask.png",
+        "tabao-rush/cook-body/idle/idle-sw-1.png",
+        "tabao-rush/cook-body/idle/idle-sw-1-mask.png",
+        "tabao-rush/cook-body/idle/idle-sw-2.png",
+        "tabao-rush/cook-body/idle/idle-sw-2-mask.png",
+        "tabao-rush/cook-body/idle/idle-sw-3.png",
+        "tabao-rush/cook-body/idle/idle-sw-3-mask.png",
+        "tabao-rush/cook-body/idle/frames.json",
+        "tabao-rush/cook-body/idle/render-validation.json"
+      ],
+      "timeoutSeconds": 240
+    },
+    {
+      "id": "cook-body-walk",
+      "script": "cook.py",
+      "args": [
+        "--action",
+        "walk",
+        "--out",
+        "tabao-rush/cook-body/walk"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-body/walk/walk-s-0.png",
+        "tabao-rush/cook-body/walk/walk-s-0-mask.png",
+        "tabao-rush/cook-body/walk/walk-s-1.png",
+        "tabao-rush/cook-body/walk/walk-s-1-mask.png",
+        "tabao-rush/cook-body/walk/walk-s-2.png",
+        "tabao-rush/cook-body/walk/walk-s-2-mask.png",
+        "tabao-rush/cook-body/walk/walk-s-3.png",
+        "tabao-rush/cook-body/walk/walk-s-3-mask.png",
+        "tabao-rush/cook-body/walk/walk-s-4.png",
+        "tabao-rush/cook-body/walk/walk-s-4-mask.png",
+        "tabao-rush/cook-body/walk/walk-s-5.png",
+        "tabao-rush/cook-body/walk/walk-s-5-mask.png",
+        "tabao-rush/cook-body/walk/walk-s-6.png",
+        "tabao-rush/cook-body/walk/walk-s-6-mask.png",
+        "tabao-rush/cook-body/walk/walk-s-7.png",
+        "tabao-rush/cook-body/walk/walk-s-7-mask.png",
+        "tabao-rush/cook-body/walk/walk-se-0.png",
+        "tabao-rush/cook-body/walk/walk-se-0-mask.png",
+        "tabao-rush/cook-body/walk/walk-se-1.png",
+        "tabao-rush/cook-body/walk/walk-se-1-mask.png",
+        "tabao-rush/cook-body/walk/walk-se-2.png",
+        "tabao-rush/cook-body/walk/walk-se-2-mask.png",
+        "tabao-rush/cook-body/walk/walk-se-3.png",
+        "tabao-rush/cook-body/walk/walk-se-3-mask.png",
+        "tabao-rush/cook-body/walk/walk-se-4.png",
+        "tabao-rush/cook-body/walk/walk-se-4-mask.png",
+        "tabao-rush/cook-body/walk/walk-se-5.png",
+        "tabao-rush/cook-body/walk/walk-se-5-mask.png",
+        "tabao-rush/cook-body/walk/walk-se-6.png",
+        "tabao-rush/cook-body/walk/walk-se-6-mask.png",
+        "tabao-rush/cook-body/walk/walk-se-7.png",
+        "tabao-rush/cook-body/walk/walk-se-7-mask.png",
+        "tabao-rush/cook-body/walk/walk-e-0.png",
+        "tabao-rush/cook-body/walk/walk-e-0-mask.png",
+        "tabao-rush/cook-body/walk/walk-e-1.png",
+        "tabao-rush/cook-body/walk/walk-e-1-mask.png",
+        "tabao-rush/cook-body/walk/walk-e-2.png",
+        "tabao-rush/cook-body/walk/walk-e-2-mask.png",
+        "tabao-rush/cook-body/walk/walk-e-3.png",
+        "tabao-rush/cook-body/walk/walk-e-3-mask.png",
+        "tabao-rush/cook-body/walk/walk-e-4.png",
+        "tabao-rush/cook-body/walk/walk-e-4-mask.png",
+        "tabao-rush/cook-body/walk/walk-e-5.png",
+        "tabao-rush/cook-body/walk/walk-e-5-mask.png",
+        "tabao-rush/cook-body/walk/walk-e-6.png",
+        "tabao-rush/cook-body/walk/walk-e-6-mask.png",
+        "tabao-rush/cook-body/walk/walk-e-7.png",
+        "tabao-rush/cook-body/walk/walk-e-7-mask.png",
+        "tabao-rush/cook-body/walk/walk-ne-0.png",
+        "tabao-rush/cook-body/walk/walk-ne-0-mask.png",
+        "tabao-rush/cook-body/walk/walk-ne-1.png",
+        "tabao-rush/cook-body/walk/walk-ne-1-mask.png",
+        "tabao-rush/cook-body/walk/walk-ne-2.png",
+        "tabao-rush/cook-body/walk/walk-ne-2-mask.png",
+        "tabao-rush/cook-body/walk/walk-ne-3.png",
+        "tabao-rush/cook-body/walk/walk-ne-3-mask.png",
+        "tabao-rush/cook-body/walk/walk-ne-4.png",
+        "tabao-rush/cook-body/walk/walk-ne-4-mask.png",
+        "tabao-rush/cook-body/walk/walk-ne-5.png",
+        "tabao-rush/cook-body/walk/walk-ne-5-mask.png",
+        "tabao-rush/cook-body/walk/walk-ne-6.png",
+        "tabao-rush/cook-body/walk/walk-ne-6-mask.png",
+        "tabao-rush/cook-body/walk/walk-ne-7.png",
+        "tabao-rush/cook-body/walk/walk-ne-7-mask.png",
+        "tabao-rush/cook-body/walk/walk-n-0.png",
+        "tabao-rush/cook-body/walk/walk-n-0-mask.png",
+        "tabao-rush/cook-body/walk/walk-n-1.png",
+        "tabao-rush/cook-body/walk/walk-n-1-mask.png",
+        "tabao-rush/cook-body/walk/walk-n-2.png",
+        "tabao-rush/cook-body/walk/walk-n-2-mask.png",
+        "tabao-rush/cook-body/walk/walk-n-3.png",
+        "tabao-rush/cook-body/walk/walk-n-3-mask.png",
+        "tabao-rush/cook-body/walk/walk-n-4.png",
+        "tabao-rush/cook-body/walk/walk-n-4-mask.png",
+        "tabao-rush/cook-body/walk/walk-n-5.png",
+        "tabao-rush/cook-body/walk/walk-n-5-mask.png",
+        "tabao-rush/cook-body/walk/walk-n-6.png",
+        "tabao-rush/cook-body/walk/walk-n-6-mask.png",
+        "tabao-rush/cook-body/walk/walk-n-7.png",
+        "tabao-rush/cook-body/walk/walk-n-7-mask.png",
+        "tabao-rush/cook-body/walk/walk-nw-0.png",
+        "tabao-rush/cook-body/walk/walk-nw-0-mask.png",
+        "tabao-rush/cook-body/walk/walk-nw-1.png",
+        "tabao-rush/cook-body/walk/walk-nw-1-mask.png",
+        "tabao-rush/cook-body/walk/walk-nw-2.png",
+        "tabao-rush/cook-body/walk/walk-nw-2-mask.png",
+        "tabao-rush/cook-body/walk/walk-nw-3.png",
+        "tabao-rush/cook-body/walk/walk-nw-3-mask.png",
+        "tabao-rush/cook-body/walk/walk-nw-4.png",
+        "tabao-rush/cook-body/walk/walk-nw-4-mask.png",
+        "tabao-rush/cook-body/walk/walk-nw-5.png",
+        "tabao-rush/cook-body/walk/walk-nw-5-mask.png",
+        "tabao-rush/cook-body/walk/walk-nw-6.png",
+        "tabao-rush/cook-body/walk/walk-nw-6-mask.png",
+        "tabao-rush/cook-body/walk/walk-nw-7.png",
+        "tabao-rush/cook-body/walk/walk-nw-7-mask.png",
+        "tabao-rush/cook-body/walk/walk-w-0.png",
+        "tabao-rush/cook-body/walk/walk-w-0-mask.png",
+        "tabao-rush/cook-body/walk/walk-w-1.png",
+        "tabao-rush/cook-body/walk/walk-w-1-mask.png",
+        "tabao-rush/cook-body/walk/walk-w-2.png",
+        "tabao-rush/cook-body/walk/walk-w-2-mask.png",
+        "tabao-rush/cook-body/walk/walk-w-3.png",
+        "tabao-rush/cook-body/walk/walk-w-3-mask.png",
+        "tabao-rush/cook-body/walk/walk-w-4.png",
+        "tabao-rush/cook-body/walk/walk-w-4-mask.png",
+        "tabao-rush/cook-body/walk/walk-w-5.png",
+        "tabao-rush/cook-body/walk/walk-w-5-mask.png",
+        "tabao-rush/cook-body/walk/walk-w-6.png",
+        "tabao-rush/cook-body/walk/walk-w-6-mask.png",
+        "tabao-rush/cook-body/walk/walk-w-7.png",
+        "tabao-rush/cook-body/walk/walk-w-7-mask.png",
+        "tabao-rush/cook-body/walk/walk-sw-0.png",
+        "tabao-rush/cook-body/walk/walk-sw-0-mask.png",
+        "tabao-rush/cook-body/walk/walk-sw-1.png",
+        "tabao-rush/cook-body/walk/walk-sw-1-mask.png",
+        "tabao-rush/cook-body/walk/walk-sw-2.png",
+        "tabao-rush/cook-body/walk/walk-sw-2-mask.png",
+        "tabao-rush/cook-body/walk/walk-sw-3.png",
+        "tabao-rush/cook-body/walk/walk-sw-3-mask.png",
+        "tabao-rush/cook-body/walk/walk-sw-4.png",
+        "tabao-rush/cook-body/walk/walk-sw-4-mask.png",
+        "tabao-rush/cook-body/walk/walk-sw-5.png",
+        "tabao-rush/cook-body/walk/walk-sw-5-mask.png",
+        "tabao-rush/cook-body/walk/walk-sw-6.png",
+        "tabao-rush/cook-body/walk/walk-sw-6-mask.png",
+        "tabao-rush/cook-body/walk/walk-sw-7.png",
+        "tabao-rush/cook-body/walk/walk-sw-7-mask.png",
+        "tabao-rush/cook-body/walk/frames.json",
+        "tabao-rush/cook-body/walk/render-validation.json"
+      ],
+      "timeoutSeconds": 420
+    },
+    {
+      "id": "cook-body-carry-walk",
+      "script": "cook.py",
+      "args": [
+        "--action",
+        "carry-walk",
+        "--out",
+        "tabao-rush/cook-body/carry-walk"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-0.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-0-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-1.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-1-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-2.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-2-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-3.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-3-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-4.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-4-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-5.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-5-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-6.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-6-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-7.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-s-7-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-0.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-0-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-1.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-1-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-2.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-2-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-3.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-3-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-4.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-4-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-5.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-5-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-6.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-6-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-7.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-se-7-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-0.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-0-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-1.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-1-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-2.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-2-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-3.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-3-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-4.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-4-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-5.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-5-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-6.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-6-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-7.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-e-7-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-0.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-0-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-1.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-1-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-2.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-2-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-3.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-3-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-4.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-4-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-5.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-5-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-6.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-6-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-7.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-ne-7-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-0.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-0-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-1.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-1-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-2.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-2-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-3.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-3-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-4.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-4-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-5.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-5-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-6.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-6-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-7.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-n-7-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-0.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-0-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-1.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-1-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-2.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-2-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-3.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-3-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-4.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-4-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-5.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-5-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-6.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-6-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-7.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-nw-7-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-0.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-0-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-1.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-1-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-2.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-2-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-3.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-3-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-4.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-4-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-5.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-5-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-6.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-6-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-7.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-w-7-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-0.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-0-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-1.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-1-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-2.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-2-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-3.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-3-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-4.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-4-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-5.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-5-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-6.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-6-mask.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-7.png",
+        "tabao-rush/cook-body/carry-walk/carry-walk-sw-7-mask.png",
+        "tabao-rush/cook-body/carry-walk/frames.json",
+        "tabao-rush/cook-body/carry-walk/render-validation.json"
+      ],
+      "timeoutSeconds": 420
+    },
+    {
+      "id": "cook-body-chop",
+      "script": "cook.py",
+      "args": [
+        "--action",
+        "chop",
+        "--out",
+        "tabao-rush/cook-body/chop"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-body/chop/chop-s-0.png",
+        "tabao-rush/cook-body/chop/chop-s-0-mask.png",
+        "tabao-rush/cook-body/chop/chop-s-1.png",
+        "tabao-rush/cook-body/chop/chop-s-1-mask.png",
+        "tabao-rush/cook-body/chop/chop-s-2.png",
+        "tabao-rush/cook-body/chop/chop-s-2-mask.png",
+        "tabao-rush/cook-body/chop/chop-s-3.png",
+        "tabao-rush/cook-body/chop/chop-s-3-mask.png",
+        "tabao-rush/cook-body/chop/chop-s-4.png",
+        "tabao-rush/cook-body/chop/chop-s-4-mask.png",
+        "tabao-rush/cook-body/chop/chop-s-5.png",
+        "tabao-rush/cook-body/chop/chop-s-5-mask.png",
+        "tabao-rush/cook-body/chop/chop-se-0.png",
+        "tabao-rush/cook-body/chop/chop-se-0-mask.png",
+        "tabao-rush/cook-body/chop/chop-se-1.png",
+        "tabao-rush/cook-body/chop/chop-se-1-mask.png",
+        "tabao-rush/cook-body/chop/chop-se-2.png",
+        "tabao-rush/cook-body/chop/chop-se-2-mask.png",
+        "tabao-rush/cook-body/chop/chop-se-3.png",
+        "tabao-rush/cook-body/chop/chop-se-3-mask.png",
+        "tabao-rush/cook-body/chop/chop-se-4.png",
+        "tabao-rush/cook-body/chop/chop-se-4-mask.png",
+        "tabao-rush/cook-body/chop/chop-se-5.png",
+        "tabao-rush/cook-body/chop/chop-se-5-mask.png",
+        "tabao-rush/cook-body/chop/chop-e-0.png",
+        "tabao-rush/cook-body/chop/chop-e-0-mask.png",
+        "tabao-rush/cook-body/chop/chop-e-1.png",
+        "tabao-rush/cook-body/chop/chop-e-1-mask.png",
+        "tabao-rush/cook-body/chop/chop-e-2.png",
+        "tabao-rush/cook-body/chop/chop-e-2-mask.png",
+        "tabao-rush/cook-body/chop/chop-e-3.png",
+        "tabao-rush/cook-body/chop/chop-e-3-mask.png",
+        "tabao-rush/cook-body/chop/chop-e-4.png",
+        "tabao-rush/cook-body/chop/chop-e-4-mask.png",
+        "tabao-rush/cook-body/chop/chop-e-5.png",
+        "tabao-rush/cook-body/chop/chop-e-5-mask.png",
+        "tabao-rush/cook-body/chop/chop-ne-0.png",
+        "tabao-rush/cook-body/chop/chop-ne-0-mask.png",
+        "tabao-rush/cook-body/chop/chop-ne-1.png",
+        "tabao-rush/cook-body/chop/chop-ne-1-mask.png",
+        "tabao-rush/cook-body/chop/chop-ne-2.png",
+        "tabao-rush/cook-body/chop/chop-ne-2-mask.png",
+        "tabao-rush/cook-body/chop/chop-ne-3.png",
+        "tabao-rush/cook-body/chop/chop-ne-3-mask.png",
+        "tabao-rush/cook-body/chop/chop-ne-4.png",
+        "tabao-rush/cook-body/chop/chop-ne-4-mask.png",
+        "tabao-rush/cook-body/chop/chop-ne-5.png",
+        "tabao-rush/cook-body/chop/chop-ne-5-mask.png",
+        "tabao-rush/cook-body/chop/chop-n-0.png",
+        "tabao-rush/cook-body/chop/chop-n-0-mask.png",
+        "tabao-rush/cook-body/chop/chop-n-1.png",
+        "tabao-rush/cook-body/chop/chop-n-1-mask.png",
+        "tabao-rush/cook-body/chop/chop-n-2.png",
+        "tabao-rush/cook-body/chop/chop-n-2-mask.png",
+        "tabao-rush/cook-body/chop/chop-n-3.png",
+        "tabao-rush/cook-body/chop/chop-n-3-mask.png",
+        "tabao-rush/cook-body/chop/chop-n-4.png",
+        "tabao-rush/cook-body/chop/chop-n-4-mask.png",
+        "tabao-rush/cook-body/chop/chop-n-5.png",
+        "tabao-rush/cook-body/chop/chop-n-5-mask.png",
+        "tabao-rush/cook-body/chop/chop-nw-0.png",
+        "tabao-rush/cook-body/chop/chop-nw-0-mask.png",
+        "tabao-rush/cook-body/chop/chop-nw-1.png",
+        "tabao-rush/cook-body/chop/chop-nw-1-mask.png",
+        "tabao-rush/cook-body/chop/chop-nw-2.png",
+        "tabao-rush/cook-body/chop/chop-nw-2-mask.png",
+        "tabao-rush/cook-body/chop/chop-nw-3.png",
+        "tabao-rush/cook-body/chop/chop-nw-3-mask.png",
+        "tabao-rush/cook-body/chop/chop-nw-4.png",
+        "tabao-rush/cook-body/chop/chop-nw-4-mask.png",
+        "tabao-rush/cook-body/chop/chop-nw-5.png",
+        "tabao-rush/cook-body/chop/chop-nw-5-mask.png",
+        "tabao-rush/cook-body/chop/chop-w-0.png",
+        "tabao-rush/cook-body/chop/chop-w-0-mask.png",
+        "tabao-rush/cook-body/chop/chop-w-1.png",
+        "tabao-rush/cook-body/chop/chop-w-1-mask.png",
+        "tabao-rush/cook-body/chop/chop-w-2.png",
+        "tabao-rush/cook-body/chop/chop-w-2-mask.png",
+        "tabao-rush/cook-body/chop/chop-w-3.png",
+        "tabao-rush/cook-body/chop/chop-w-3-mask.png",
+        "tabao-rush/cook-body/chop/chop-w-4.png",
+        "tabao-rush/cook-body/chop/chop-w-4-mask.png",
+        "tabao-rush/cook-body/chop/chop-w-5.png",
+        "tabao-rush/cook-body/chop/chop-w-5-mask.png",
+        "tabao-rush/cook-body/chop/chop-sw-0.png",
+        "tabao-rush/cook-body/chop/chop-sw-0-mask.png",
+        "tabao-rush/cook-body/chop/chop-sw-1.png",
+        "tabao-rush/cook-body/chop/chop-sw-1-mask.png",
+        "tabao-rush/cook-body/chop/chop-sw-2.png",
+        "tabao-rush/cook-body/chop/chop-sw-2-mask.png",
+        "tabao-rush/cook-body/chop/chop-sw-3.png",
+        "tabao-rush/cook-body/chop/chop-sw-3-mask.png",
+        "tabao-rush/cook-body/chop/chop-sw-4.png",
+        "tabao-rush/cook-body/chop/chop-sw-4-mask.png",
+        "tabao-rush/cook-body/chop/chop-sw-5.png",
+        "tabao-rush/cook-body/chop/chop-sw-5-mask.png",
+        "tabao-rush/cook-body/chop/frames.json",
+        "tabao-rush/cook-body/chop/render-validation.json"
+      ],
+      "timeoutSeconds": 360
+    },
+    {
+      "id": "cook-body-stir",
+      "script": "cook.py",
+      "args": [
+        "--action",
+        "stir",
+        "--out",
+        "tabao-rush/cook-body/stir"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-body/stir/stir-s-0.png",
+        "tabao-rush/cook-body/stir/stir-s-0-mask.png",
+        "tabao-rush/cook-body/stir/stir-s-1.png",
+        "tabao-rush/cook-body/stir/stir-s-1-mask.png",
+        "tabao-rush/cook-body/stir/stir-s-2.png",
+        "tabao-rush/cook-body/stir/stir-s-2-mask.png",
+        "tabao-rush/cook-body/stir/stir-s-3.png",
+        "tabao-rush/cook-body/stir/stir-s-3-mask.png",
+        "tabao-rush/cook-body/stir/stir-s-4.png",
+        "tabao-rush/cook-body/stir/stir-s-4-mask.png",
+        "tabao-rush/cook-body/stir/stir-s-5.png",
+        "tabao-rush/cook-body/stir/stir-s-5-mask.png",
+        "tabao-rush/cook-body/stir/stir-s-6.png",
+        "tabao-rush/cook-body/stir/stir-s-6-mask.png",
+        "tabao-rush/cook-body/stir/stir-s-7.png",
+        "tabao-rush/cook-body/stir/stir-s-7-mask.png",
+        "tabao-rush/cook-body/stir/stir-se-0.png",
+        "tabao-rush/cook-body/stir/stir-se-0-mask.png",
+        "tabao-rush/cook-body/stir/stir-se-1.png",
+        "tabao-rush/cook-body/stir/stir-se-1-mask.png",
+        "tabao-rush/cook-body/stir/stir-se-2.png",
+        "tabao-rush/cook-body/stir/stir-se-2-mask.png",
+        "tabao-rush/cook-body/stir/stir-se-3.png",
+        "tabao-rush/cook-body/stir/stir-se-3-mask.png",
+        "tabao-rush/cook-body/stir/stir-se-4.png",
+        "tabao-rush/cook-body/stir/stir-se-4-mask.png",
+        "tabao-rush/cook-body/stir/stir-se-5.png",
+        "tabao-rush/cook-body/stir/stir-se-5-mask.png",
+        "tabao-rush/cook-body/stir/stir-se-6.png",
+        "tabao-rush/cook-body/stir/stir-se-6-mask.png",
+        "tabao-rush/cook-body/stir/stir-se-7.png",
+        "tabao-rush/cook-body/stir/stir-se-7-mask.png",
+        "tabao-rush/cook-body/stir/stir-e-0.png",
+        "tabao-rush/cook-body/stir/stir-e-0-mask.png",
+        "tabao-rush/cook-body/stir/stir-e-1.png",
+        "tabao-rush/cook-body/stir/stir-e-1-mask.png",
+        "tabao-rush/cook-body/stir/stir-e-2.png",
+        "tabao-rush/cook-body/stir/stir-e-2-mask.png",
+        "tabao-rush/cook-body/stir/stir-e-3.png",
+        "tabao-rush/cook-body/stir/stir-e-3-mask.png",
+        "tabao-rush/cook-body/stir/stir-e-4.png",
+        "tabao-rush/cook-body/stir/stir-e-4-mask.png",
+        "tabao-rush/cook-body/stir/stir-e-5.png",
+        "tabao-rush/cook-body/stir/stir-e-5-mask.png",
+        "tabao-rush/cook-body/stir/stir-e-6.png",
+        "tabao-rush/cook-body/stir/stir-e-6-mask.png",
+        "tabao-rush/cook-body/stir/stir-e-7.png",
+        "tabao-rush/cook-body/stir/stir-e-7-mask.png",
+        "tabao-rush/cook-body/stir/stir-ne-0.png",
+        "tabao-rush/cook-body/stir/stir-ne-0-mask.png",
+        "tabao-rush/cook-body/stir/stir-ne-1.png",
+        "tabao-rush/cook-body/stir/stir-ne-1-mask.png",
+        "tabao-rush/cook-body/stir/stir-ne-2.png",
+        "tabao-rush/cook-body/stir/stir-ne-2-mask.png",
+        "tabao-rush/cook-body/stir/stir-ne-3.png",
+        "tabao-rush/cook-body/stir/stir-ne-3-mask.png",
+        "tabao-rush/cook-body/stir/stir-ne-4.png",
+        "tabao-rush/cook-body/stir/stir-ne-4-mask.png",
+        "tabao-rush/cook-body/stir/stir-ne-5.png",
+        "tabao-rush/cook-body/stir/stir-ne-5-mask.png",
+        "tabao-rush/cook-body/stir/stir-ne-6.png",
+        "tabao-rush/cook-body/stir/stir-ne-6-mask.png",
+        "tabao-rush/cook-body/stir/stir-ne-7.png",
+        "tabao-rush/cook-body/stir/stir-ne-7-mask.png",
+        "tabao-rush/cook-body/stir/stir-n-0.png",
+        "tabao-rush/cook-body/stir/stir-n-0-mask.png",
+        "tabao-rush/cook-body/stir/stir-n-1.png",
+        "tabao-rush/cook-body/stir/stir-n-1-mask.png",
+        "tabao-rush/cook-body/stir/stir-n-2.png",
+        "tabao-rush/cook-body/stir/stir-n-2-mask.png",
+        "tabao-rush/cook-body/stir/stir-n-3.png",
+        "tabao-rush/cook-body/stir/stir-n-3-mask.png",
+        "tabao-rush/cook-body/stir/stir-n-4.png",
+        "tabao-rush/cook-body/stir/stir-n-4-mask.png",
+        "tabao-rush/cook-body/stir/stir-n-5.png",
+        "tabao-rush/cook-body/stir/stir-n-5-mask.png",
+        "tabao-rush/cook-body/stir/stir-n-6.png",
+        "tabao-rush/cook-body/stir/stir-n-6-mask.png",
+        "tabao-rush/cook-body/stir/stir-n-7.png",
+        "tabao-rush/cook-body/stir/stir-n-7-mask.png",
+        "tabao-rush/cook-body/stir/stir-nw-0.png",
+        "tabao-rush/cook-body/stir/stir-nw-0-mask.png",
+        "tabao-rush/cook-body/stir/stir-nw-1.png",
+        "tabao-rush/cook-body/stir/stir-nw-1-mask.png",
+        "tabao-rush/cook-body/stir/stir-nw-2.png",
+        "tabao-rush/cook-body/stir/stir-nw-2-mask.png",
+        "tabao-rush/cook-body/stir/stir-nw-3.png",
+        "tabao-rush/cook-body/stir/stir-nw-3-mask.png",
+        "tabao-rush/cook-body/stir/stir-nw-4.png",
+        "tabao-rush/cook-body/stir/stir-nw-4-mask.png",
+        "tabao-rush/cook-body/stir/stir-nw-5.png",
+        "tabao-rush/cook-body/stir/stir-nw-5-mask.png",
+        "tabao-rush/cook-body/stir/stir-nw-6.png",
+        "tabao-rush/cook-body/stir/stir-nw-6-mask.png",
+        "tabao-rush/cook-body/stir/stir-nw-7.png",
+        "tabao-rush/cook-body/stir/stir-nw-7-mask.png",
+        "tabao-rush/cook-body/stir/stir-w-0.png",
+        "tabao-rush/cook-body/stir/stir-w-0-mask.png",
+        "tabao-rush/cook-body/stir/stir-w-1.png",
+        "tabao-rush/cook-body/stir/stir-w-1-mask.png",
+        "tabao-rush/cook-body/stir/stir-w-2.png",
+        "tabao-rush/cook-body/stir/stir-w-2-mask.png",
+        "tabao-rush/cook-body/stir/stir-w-3.png",
+        "tabao-rush/cook-body/stir/stir-w-3-mask.png",
+        "tabao-rush/cook-body/stir/stir-w-4.png",
+        "tabao-rush/cook-body/stir/stir-w-4-mask.png",
+        "tabao-rush/cook-body/stir/stir-w-5.png",
+        "tabao-rush/cook-body/stir/stir-w-5-mask.png",
+        "tabao-rush/cook-body/stir/stir-w-6.png",
+        "tabao-rush/cook-body/stir/stir-w-6-mask.png",
+        "tabao-rush/cook-body/stir/stir-w-7.png",
+        "tabao-rush/cook-body/stir/stir-w-7-mask.png",
+        "tabao-rush/cook-body/stir/stir-sw-0.png",
+        "tabao-rush/cook-body/stir/stir-sw-0-mask.png",
+        "tabao-rush/cook-body/stir/stir-sw-1.png",
+        "tabao-rush/cook-body/stir/stir-sw-1-mask.png",
+        "tabao-rush/cook-body/stir/stir-sw-2.png",
+        "tabao-rush/cook-body/stir/stir-sw-2-mask.png",
+        "tabao-rush/cook-body/stir/stir-sw-3.png",
+        "tabao-rush/cook-body/stir/stir-sw-3-mask.png",
+        "tabao-rush/cook-body/stir/stir-sw-4.png",
+        "tabao-rush/cook-body/stir/stir-sw-4-mask.png",
+        "tabao-rush/cook-body/stir/stir-sw-5.png",
+        "tabao-rush/cook-body/stir/stir-sw-5-mask.png",
+        "tabao-rush/cook-body/stir/stir-sw-6.png",
+        "tabao-rush/cook-body/stir/stir-sw-6-mask.png",
+        "tabao-rush/cook-body/stir/stir-sw-7.png",
+        "tabao-rush/cook-body/stir/stir-sw-7-mask.png",
+        "tabao-rush/cook-body/stir/frames.json",
+        "tabao-rush/cook-body/stir/render-validation.json"
+      ],
+      "timeoutSeconds": 420
+    },
+    {
+      "id": "cook-body-wash",
+      "script": "cook.py",
+      "args": [
+        "--action",
+        "wash",
+        "--out",
+        "tabao-rush/cook-body/wash"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-body/wash/wash-s-0.png",
+        "tabao-rush/cook-body/wash/wash-s-0-mask.png",
+        "tabao-rush/cook-body/wash/wash-s-1.png",
+        "tabao-rush/cook-body/wash/wash-s-1-mask.png",
+        "tabao-rush/cook-body/wash/wash-s-2.png",
+        "tabao-rush/cook-body/wash/wash-s-2-mask.png",
+        "tabao-rush/cook-body/wash/wash-s-3.png",
+        "tabao-rush/cook-body/wash/wash-s-3-mask.png",
+        "tabao-rush/cook-body/wash/wash-s-4.png",
+        "tabao-rush/cook-body/wash/wash-s-4-mask.png",
+        "tabao-rush/cook-body/wash/wash-s-5.png",
+        "tabao-rush/cook-body/wash/wash-s-5-mask.png",
+        "tabao-rush/cook-body/wash/wash-se-0.png",
+        "tabao-rush/cook-body/wash/wash-se-0-mask.png",
+        "tabao-rush/cook-body/wash/wash-se-1.png",
+        "tabao-rush/cook-body/wash/wash-se-1-mask.png",
+        "tabao-rush/cook-body/wash/wash-se-2.png",
+        "tabao-rush/cook-body/wash/wash-se-2-mask.png",
+        "tabao-rush/cook-body/wash/wash-se-3.png",
+        "tabao-rush/cook-body/wash/wash-se-3-mask.png",
+        "tabao-rush/cook-body/wash/wash-se-4.png",
+        "tabao-rush/cook-body/wash/wash-se-4-mask.png",
+        "tabao-rush/cook-body/wash/wash-se-5.png",
+        "tabao-rush/cook-body/wash/wash-se-5-mask.png",
+        "tabao-rush/cook-body/wash/wash-e-0.png",
+        "tabao-rush/cook-body/wash/wash-e-0-mask.png",
+        "tabao-rush/cook-body/wash/wash-e-1.png",
+        "tabao-rush/cook-body/wash/wash-e-1-mask.png",
+        "tabao-rush/cook-body/wash/wash-e-2.png",
+        "tabao-rush/cook-body/wash/wash-e-2-mask.png",
+        "tabao-rush/cook-body/wash/wash-e-3.png",
+        "tabao-rush/cook-body/wash/wash-e-3-mask.png",
+        "tabao-rush/cook-body/wash/wash-e-4.png",
+        "tabao-rush/cook-body/wash/wash-e-4-mask.png",
+        "tabao-rush/cook-body/wash/wash-e-5.png",
+        "tabao-rush/cook-body/wash/wash-e-5-mask.png",
+        "tabao-rush/cook-body/wash/wash-ne-0.png",
+        "tabao-rush/cook-body/wash/wash-ne-0-mask.png",
+        "tabao-rush/cook-body/wash/wash-ne-1.png",
+        "tabao-rush/cook-body/wash/wash-ne-1-mask.png",
+        "tabao-rush/cook-body/wash/wash-ne-2.png",
+        "tabao-rush/cook-body/wash/wash-ne-2-mask.png",
+        "tabao-rush/cook-body/wash/wash-ne-3.png",
+        "tabao-rush/cook-body/wash/wash-ne-3-mask.png",
+        "tabao-rush/cook-body/wash/wash-ne-4.png",
+        "tabao-rush/cook-body/wash/wash-ne-4-mask.png",
+        "tabao-rush/cook-body/wash/wash-ne-5.png",
+        "tabao-rush/cook-body/wash/wash-ne-5-mask.png",
+        "tabao-rush/cook-body/wash/wash-n-0.png",
+        "tabao-rush/cook-body/wash/wash-n-0-mask.png",
+        "tabao-rush/cook-body/wash/wash-n-1.png",
+        "tabao-rush/cook-body/wash/wash-n-1-mask.png",
+        "tabao-rush/cook-body/wash/wash-n-2.png",
+        "tabao-rush/cook-body/wash/wash-n-2-mask.png",
+        "tabao-rush/cook-body/wash/wash-n-3.png",
+        "tabao-rush/cook-body/wash/wash-n-3-mask.png",
+        "tabao-rush/cook-body/wash/wash-n-4.png",
+        "tabao-rush/cook-body/wash/wash-n-4-mask.png",
+        "tabao-rush/cook-body/wash/wash-n-5.png",
+        "tabao-rush/cook-body/wash/wash-n-5-mask.png",
+        "tabao-rush/cook-body/wash/wash-nw-0.png",
+        "tabao-rush/cook-body/wash/wash-nw-0-mask.png",
+        "tabao-rush/cook-body/wash/wash-nw-1.png",
+        "tabao-rush/cook-body/wash/wash-nw-1-mask.png",
+        "tabao-rush/cook-body/wash/wash-nw-2.png",
+        "tabao-rush/cook-body/wash/wash-nw-2-mask.png",
+        "tabao-rush/cook-body/wash/wash-nw-3.png",
+        "tabao-rush/cook-body/wash/wash-nw-3-mask.png",
+        "tabao-rush/cook-body/wash/wash-nw-4.png",
+        "tabao-rush/cook-body/wash/wash-nw-4-mask.png",
+        "tabao-rush/cook-body/wash/wash-nw-5.png",
+        "tabao-rush/cook-body/wash/wash-nw-5-mask.png",
+        "tabao-rush/cook-body/wash/wash-w-0.png",
+        "tabao-rush/cook-body/wash/wash-w-0-mask.png",
+        "tabao-rush/cook-body/wash/wash-w-1.png",
+        "tabao-rush/cook-body/wash/wash-w-1-mask.png",
+        "tabao-rush/cook-body/wash/wash-w-2.png",
+        "tabao-rush/cook-body/wash/wash-w-2-mask.png",
+        "tabao-rush/cook-body/wash/wash-w-3.png",
+        "tabao-rush/cook-body/wash/wash-w-3-mask.png",
+        "tabao-rush/cook-body/wash/wash-w-4.png",
+        "tabao-rush/cook-body/wash/wash-w-4-mask.png",
+        "tabao-rush/cook-body/wash/wash-w-5.png",
+        "tabao-rush/cook-body/wash/wash-w-5-mask.png",
+        "tabao-rush/cook-body/wash/wash-sw-0.png",
+        "tabao-rush/cook-body/wash/wash-sw-0-mask.png",
+        "tabao-rush/cook-body/wash/wash-sw-1.png",
+        "tabao-rush/cook-body/wash/wash-sw-1-mask.png",
+        "tabao-rush/cook-body/wash/wash-sw-2.png",
+        "tabao-rush/cook-body/wash/wash-sw-2-mask.png",
+        "tabao-rush/cook-body/wash/wash-sw-3.png",
+        "tabao-rush/cook-body/wash/wash-sw-3-mask.png",
+        "tabao-rush/cook-body/wash/wash-sw-4.png",
+        "tabao-rush/cook-body/wash/wash-sw-4-mask.png",
+        "tabao-rush/cook-body/wash/wash-sw-5.png",
+        "tabao-rush/cook-body/wash/wash-sw-5-mask.png",
+        "tabao-rush/cook-body/wash/frames.json",
+        "tabao-rush/cook-body/wash/render-validation.json"
+      ],
+      "timeoutSeconds": 360
+    },
+    {
+      "id": "cook-body-serve",
+      "script": "cook.py",
+      "args": [
+        "--action",
+        "serve",
+        "--out",
+        "tabao-rush/cook-body/serve"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-body/serve/serve-s-0.png",
+        "tabao-rush/cook-body/serve/serve-s-0-mask.png",
+        "tabao-rush/cook-body/serve/serve-s-1.png",
+        "tabao-rush/cook-body/serve/serve-s-1-mask.png",
+        "tabao-rush/cook-body/serve/serve-s-2.png",
+        "tabao-rush/cook-body/serve/serve-s-2-mask.png",
+        "tabao-rush/cook-body/serve/serve-s-3.png",
+        "tabao-rush/cook-body/serve/serve-s-3-mask.png",
+        "tabao-rush/cook-body/serve/serve-s-4.png",
+        "tabao-rush/cook-body/serve/serve-s-4-mask.png",
+        "tabao-rush/cook-body/serve/serve-s-5.png",
+        "tabao-rush/cook-body/serve/serve-s-5-mask.png",
+        "tabao-rush/cook-body/serve/serve-se-0.png",
+        "tabao-rush/cook-body/serve/serve-se-0-mask.png",
+        "tabao-rush/cook-body/serve/serve-se-1.png",
+        "tabao-rush/cook-body/serve/serve-se-1-mask.png",
+        "tabao-rush/cook-body/serve/serve-se-2.png",
+        "tabao-rush/cook-body/serve/serve-se-2-mask.png",
+        "tabao-rush/cook-body/serve/serve-se-3.png",
+        "tabao-rush/cook-body/serve/serve-se-3-mask.png",
+        "tabao-rush/cook-body/serve/serve-se-4.png",
+        "tabao-rush/cook-body/serve/serve-se-4-mask.png",
+        "tabao-rush/cook-body/serve/serve-se-5.png",
+        "tabao-rush/cook-body/serve/serve-se-5-mask.png",
+        "tabao-rush/cook-body/serve/serve-e-0.png",
+        "tabao-rush/cook-body/serve/serve-e-0-mask.png",
+        "tabao-rush/cook-body/serve/serve-e-1.png",
+        "tabao-rush/cook-body/serve/serve-e-1-mask.png",
+        "tabao-rush/cook-body/serve/serve-e-2.png",
+        "tabao-rush/cook-body/serve/serve-e-2-mask.png",
+        "tabao-rush/cook-body/serve/serve-e-3.png",
+        "tabao-rush/cook-body/serve/serve-e-3-mask.png",
+        "tabao-rush/cook-body/serve/serve-e-4.png",
+        "tabao-rush/cook-body/serve/serve-e-4-mask.png",
+        "tabao-rush/cook-body/serve/serve-e-5.png",
+        "tabao-rush/cook-body/serve/serve-e-5-mask.png",
+        "tabao-rush/cook-body/serve/serve-ne-0.png",
+        "tabao-rush/cook-body/serve/serve-ne-0-mask.png",
+        "tabao-rush/cook-body/serve/serve-ne-1.png",
+        "tabao-rush/cook-body/serve/serve-ne-1-mask.png",
+        "tabao-rush/cook-body/serve/serve-ne-2.png",
+        "tabao-rush/cook-body/serve/serve-ne-2-mask.png",
+        "tabao-rush/cook-body/serve/serve-ne-3.png",
+        "tabao-rush/cook-body/serve/serve-ne-3-mask.png",
+        "tabao-rush/cook-body/serve/serve-ne-4.png",
+        "tabao-rush/cook-body/serve/serve-ne-4-mask.png",
+        "tabao-rush/cook-body/serve/serve-ne-5.png",
+        "tabao-rush/cook-body/serve/serve-ne-5-mask.png",
+        "tabao-rush/cook-body/serve/serve-n-0.png",
+        "tabao-rush/cook-body/serve/serve-n-0-mask.png",
+        "tabao-rush/cook-body/serve/serve-n-1.png",
+        "tabao-rush/cook-body/serve/serve-n-1-mask.png",
+        "tabao-rush/cook-body/serve/serve-n-2.png",
+        "tabao-rush/cook-body/serve/serve-n-2-mask.png",
+        "tabao-rush/cook-body/serve/serve-n-3.png",
+        "tabao-rush/cook-body/serve/serve-n-3-mask.png",
+        "tabao-rush/cook-body/serve/serve-n-4.png",
+        "tabao-rush/cook-body/serve/serve-n-4-mask.png",
+        "tabao-rush/cook-body/serve/serve-n-5.png",
+        "tabao-rush/cook-body/serve/serve-n-5-mask.png",
+        "tabao-rush/cook-body/serve/serve-nw-0.png",
+        "tabao-rush/cook-body/serve/serve-nw-0-mask.png",
+        "tabao-rush/cook-body/serve/serve-nw-1.png",
+        "tabao-rush/cook-body/serve/serve-nw-1-mask.png",
+        "tabao-rush/cook-body/serve/serve-nw-2.png",
+        "tabao-rush/cook-body/serve/serve-nw-2-mask.png",
+        "tabao-rush/cook-body/serve/serve-nw-3.png",
+        "tabao-rush/cook-body/serve/serve-nw-3-mask.png",
+        "tabao-rush/cook-body/serve/serve-nw-4.png",
+        "tabao-rush/cook-body/serve/serve-nw-4-mask.png",
+        "tabao-rush/cook-body/serve/serve-nw-5.png",
+        "tabao-rush/cook-body/serve/serve-nw-5-mask.png",
+        "tabao-rush/cook-body/serve/serve-w-0.png",
+        "tabao-rush/cook-body/serve/serve-w-0-mask.png",
+        "tabao-rush/cook-body/serve/serve-w-1.png",
+        "tabao-rush/cook-body/serve/serve-w-1-mask.png",
+        "tabao-rush/cook-body/serve/serve-w-2.png",
+        "tabao-rush/cook-body/serve/serve-w-2-mask.png",
+        "tabao-rush/cook-body/serve/serve-w-3.png",
+        "tabao-rush/cook-body/serve/serve-w-3-mask.png",
+        "tabao-rush/cook-body/serve/serve-w-4.png",
+        "tabao-rush/cook-body/serve/serve-w-4-mask.png",
+        "tabao-rush/cook-body/serve/serve-w-5.png",
+        "tabao-rush/cook-body/serve/serve-w-5-mask.png",
+        "tabao-rush/cook-body/serve/serve-sw-0.png",
+        "tabao-rush/cook-body/serve/serve-sw-0-mask.png",
+        "tabao-rush/cook-body/serve/serve-sw-1.png",
+        "tabao-rush/cook-body/serve/serve-sw-1-mask.png",
+        "tabao-rush/cook-body/serve/serve-sw-2.png",
+        "tabao-rush/cook-body/serve/serve-sw-2-mask.png",
+        "tabao-rush/cook-body/serve/serve-sw-3.png",
+        "tabao-rush/cook-body/serve/serve-sw-3-mask.png",
+        "tabao-rush/cook-body/serve/serve-sw-4.png",
+        "tabao-rush/cook-body/serve/serve-sw-4-mask.png",
+        "tabao-rush/cook-body/serve/serve-sw-5.png",
+        "tabao-rush/cook-body/serve/serve-sw-5-mask.png",
+        "tabao-rush/cook-body/serve/frames.json",
+        "tabao-rush/cook-body/serve/render-validation.json"
+      ],
+      "timeoutSeconds": 360
+    },
+    {
+      "id": "cook-body-throw",
+      "script": "cook.py",
+      "args": [
+        "--action",
+        "throw",
+        "--out",
+        "tabao-rush/cook-body/throw"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-body/throw/throw-s-0.png",
+        "tabao-rush/cook-body/throw/throw-s-0-mask.png",
+        "tabao-rush/cook-body/throw/throw-s-1.png",
+        "tabao-rush/cook-body/throw/throw-s-1-mask.png",
+        "tabao-rush/cook-body/throw/throw-s-2.png",
+        "tabao-rush/cook-body/throw/throw-s-2-mask.png",
+        "tabao-rush/cook-body/throw/throw-s-3.png",
+        "tabao-rush/cook-body/throw/throw-s-3-mask.png",
+        "tabao-rush/cook-body/throw/throw-s-4.png",
+        "tabao-rush/cook-body/throw/throw-s-4-mask.png",
+        "tabao-rush/cook-body/throw/throw-s-5.png",
+        "tabao-rush/cook-body/throw/throw-s-5-mask.png",
+        "tabao-rush/cook-body/throw/throw-se-0.png",
+        "tabao-rush/cook-body/throw/throw-se-0-mask.png",
+        "tabao-rush/cook-body/throw/throw-se-1.png",
+        "tabao-rush/cook-body/throw/throw-se-1-mask.png",
+        "tabao-rush/cook-body/throw/throw-se-2.png",
+        "tabao-rush/cook-body/throw/throw-se-2-mask.png",
+        "tabao-rush/cook-body/throw/throw-se-3.png",
+        "tabao-rush/cook-body/throw/throw-se-3-mask.png",
+        "tabao-rush/cook-body/throw/throw-se-4.png",
+        "tabao-rush/cook-body/throw/throw-se-4-mask.png",
+        "tabao-rush/cook-body/throw/throw-se-5.png",
+        "tabao-rush/cook-body/throw/throw-se-5-mask.png",
+        "tabao-rush/cook-body/throw/throw-e-0.png",
+        "tabao-rush/cook-body/throw/throw-e-0-mask.png",
+        "tabao-rush/cook-body/throw/throw-e-1.png",
+        "tabao-rush/cook-body/throw/throw-e-1-mask.png",
+        "tabao-rush/cook-body/throw/throw-e-2.png",
+        "tabao-rush/cook-body/throw/throw-e-2-mask.png",
+        "tabao-rush/cook-body/throw/throw-e-3.png",
+        "tabao-rush/cook-body/throw/throw-e-3-mask.png",
+        "tabao-rush/cook-body/throw/throw-e-4.png",
+        "tabao-rush/cook-body/throw/throw-e-4-mask.png",
+        "tabao-rush/cook-body/throw/throw-e-5.png",
+        "tabao-rush/cook-body/throw/throw-e-5-mask.png",
+        "tabao-rush/cook-body/throw/throw-ne-0.png",
+        "tabao-rush/cook-body/throw/throw-ne-0-mask.png",
+        "tabao-rush/cook-body/throw/throw-ne-1.png",
+        "tabao-rush/cook-body/throw/throw-ne-1-mask.png",
+        "tabao-rush/cook-body/throw/throw-ne-2.png",
+        "tabao-rush/cook-body/throw/throw-ne-2-mask.png",
+        "tabao-rush/cook-body/throw/throw-ne-3.png",
+        "tabao-rush/cook-body/throw/throw-ne-3-mask.png",
+        "tabao-rush/cook-body/throw/throw-ne-4.png",
+        "tabao-rush/cook-body/throw/throw-ne-4-mask.png",
+        "tabao-rush/cook-body/throw/throw-ne-5.png",
+        "tabao-rush/cook-body/throw/throw-ne-5-mask.png",
+        "tabao-rush/cook-body/throw/throw-n-0.png",
+        "tabao-rush/cook-body/throw/throw-n-0-mask.png",
+        "tabao-rush/cook-body/throw/throw-n-1.png",
+        "tabao-rush/cook-body/throw/throw-n-1-mask.png",
+        "tabao-rush/cook-body/throw/throw-n-2.png",
+        "tabao-rush/cook-body/throw/throw-n-2-mask.png",
+        "tabao-rush/cook-body/throw/throw-n-3.png",
+        "tabao-rush/cook-body/throw/throw-n-3-mask.png",
+        "tabao-rush/cook-body/throw/throw-n-4.png",
+        "tabao-rush/cook-body/throw/throw-n-4-mask.png",
+        "tabao-rush/cook-body/throw/throw-n-5.png",
+        "tabao-rush/cook-body/throw/throw-n-5-mask.png",
+        "tabao-rush/cook-body/throw/throw-nw-0.png",
+        "tabao-rush/cook-body/throw/throw-nw-0-mask.png",
+        "tabao-rush/cook-body/throw/throw-nw-1.png",
+        "tabao-rush/cook-body/throw/throw-nw-1-mask.png",
+        "tabao-rush/cook-body/throw/throw-nw-2.png",
+        "tabao-rush/cook-body/throw/throw-nw-2-mask.png",
+        "tabao-rush/cook-body/throw/throw-nw-3.png",
+        "tabao-rush/cook-body/throw/throw-nw-3-mask.png",
+        "tabao-rush/cook-body/throw/throw-nw-4.png",
+        "tabao-rush/cook-body/throw/throw-nw-4-mask.png",
+        "tabao-rush/cook-body/throw/throw-nw-5.png",
+        "tabao-rush/cook-body/throw/throw-nw-5-mask.png",
+        "tabao-rush/cook-body/throw/throw-w-0.png",
+        "tabao-rush/cook-body/throw/throw-w-0-mask.png",
+        "tabao-rush/cook-body/throw/throw-w-1.png",
+        "tabao-rush/cook-body/throw/throw-w-1-mask.png",
+        "tabao-rush/cook-body/throw/throw-w-2.png",
+        "tabao-rush/cook-body/throw/throw-w-2-mask.png",
+        "tabao-rush/cook-body/throw/throw-w-3.png",
+        "tabao-rush/cook-body/throw/throw-w-3-mask.png",
+        "tabao-rush/cook-body/throw/throw-w-4.png",
+        "tabao-rush/cook-body/throw/throw-w-4-mask.png",
+        "tabao-rush/cook-body/throw/throw-w-5.png",
+        "tabao-rush/cook-body/throw/throw-w-5-mask.png",
+        "tabao-rush/cook-body/throw/throw-sw-0.png",
+        "tabao-rush/cook-body/throw/throw-sw-0-mask.png",
+        "tabao-rush/cook-body/throw/throw-sw-1.png",
+        "tabao-rush/cook-body/throw/throw-sw-1-mask.png",
+        "tabao-rush/cook-body/throw/throw-sw-2.png",
+        "tabao-rush/cook-body/throw/throw-sw-2-mask.png",
+        "tabao-rush/cook-body/throw/throw-sw-3.png",
+        "tabao-rush/cook-body/throw/throw-sw-3-mask.png",
+        "tabao-rush/cook-body/throw/throw-sw-4.png",
+        "tabao-rush/cook-body/throw/throw-sw-4-mask.png",
+        "tabao-rush/cook-body/throw/throw-sw-5.png",
+        "tabao-rush/cook-body/throw/throw-sw-5-mask.png",
+        "tabao-rush/cook-body/throw/frames.json",
+        "tabao-rush/cook-body/throw/render-validation.json"
+      ],
+      "timeoutSeconds": 360
+    },
+    {
+      "id": "cook-body-extinguish",
+      "script": "cook.py",
+      "args": [
+        "--action",
+        "extinguish",
+        "--out",
+        "tabao-rush/cook-body/extinguish"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-body/extinguish/extinguish-s-0.png",
+        "tabao-rush/cook-body/extinguish/extinguish-s-0-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-s-1.png",
+        "tabao-rush/cook-body/extinguish/extinguish-s-1-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-s-2.png",
+        "tabao-rush/cook-body/extinguish/extinguish-s-2-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-s-3.png",
+        "tabao-rush/cook-body/extinguish/extinguish-s-3-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-se-0.png",
+        "tabao-rush/cook-body/extinguish/extinguish-se-0-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-se-1.png",
+        "tabao-rush/cook-body/extinguish/extinguish-se-1-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-se-2.png",
+        "tabao-rush/cook-body/extinguish/extinguish-se-2-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-se-3.png",
+        "tabao-rush/cook-body/extinguish/extinguish-se-3-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-e-0.png",
+        "tabao-rush/cook-body/extinguish/extinguish-e-0-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-e-1.png",
+        "tabao-rush/cook-body/extinguish/extinguish-e-1-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-e-2.png",
+        "tabao-rush/cook-body/extinguish/extinguish-e-2-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-e-3.png",
+        "tabao-rush/cook-body/extinguish/extinguish-e-3-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-ne-0.png",
+        "tabao-rush/cook-body/extinguish/extinguish-ne-0-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-ne-1.png",
+        "tabao-rush/cook-body/extinguish/extinguish-ne-1-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-ne-2.png",
+        "tabao-rush/cook-body/extinguish/extinguish-ne-2-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-ne-3.png",
+        "tabao-rush/cook-body/extinguish/extinguish-ne-3-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-n-0.png",
+        "tabao-rush/cook-body/extinguish/extinguish-n-0-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-n-1.png",
+        "tabao-rush/cook-body/extinguish/extinguish-n-1-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-n-2.png",
+        "tabao-rush/cook-body/extinguish/extinguish-n-2-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-n-3.png",
+        "tabao-rush/cook-body/extinguish/extinguish-n-3-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-nw-0.png",
+        "tabao-rush/cook-body/extinguish/extinguish-nw-0-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-nw-1.png",
+        "tabao-rush/cook-body/extinguish/extinguish-nw-1-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-nw-2.png",
+        "tabao-rush/cook-body/extinguish/extinguish-nw-2-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-nw-3.png",
+        "tabao-rush/cook-body/extinguish/extinguish-nw-3-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-w-0.png",
+        "tabao-rush/cook-body/extinguish/extinguish-w-0-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-w-1.png",
+        "tabao-rush/cook-body/extinguish/extinguish-w-1-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-w-2.png",
+        "tabao-rush/cook-body/extinguish/extinguish-w-2-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-w-3.png",
+        "tabao-rush/cook-body/extinguish/extinguish-w-3-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-sw-0.png",
+        "tabao-rush/cook-body/extinguish/extinguish-sw-0-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-sw-1.png",
+        "tabao-rush/cook-body/extinguish/extinguish-sw-1-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-sw-2.png",
+        "tabao-rush/cook-body/extinguish/extinguish-sw-2-mask.png",
+        "tabao-rush/cook-body/extinguish/extinguish-sw-3.png",
+        "tabao-rush/cook-body/extinguish/extinguish-sw-3-mask.png",
+        "tabao-rush/cook-body/extinguish/frames.json",
+        "tabao-rush/cook-body/extinguish/render-validation.json"
+      ],
+      "timeoutSeconds": 240
+    },
+    {
+      "id": "cook-head-cap",
+      "script": "cook.py",
+      "args": [
+        "--heads",
+        "--out",
+        "tabao-rush/cook-heads/cap"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/cook_poses.py"
+      ],
+      "outputs": [
+        "tabao-rush/cook-heads/cap/head-cap-s.png",
+        "tabao-rush/cook-heads/cap/head-cap-s-mask.png",
+        "tabao-rush/cook-heads/cap/head-cap-se.png",
+        "tabao-rush/cook-heads/cap/head-cap-se-mask.png",
+        "tabao-rush/cook-heads/cap/head-cap-e.png",
+        "tabao-rush/cook-heads/cap/head-cap-e-mask.png",
+        "tabao-rush/cook-heads/cap/head-cap-ne.png",
+        "tabao-rush/cook-heads/cap/head-cap-ne-mask.png",
+        "tabao-rush/cook-heads/cap/head-cap-n.png",
+        "tabao-rush/cook-heads/cap/head-cap-n-mask.png",
+        "tabao-rush/cook-heads/cap/head-cap-nw.png",
+        "tabao-rush/cook-heads/cap/head-cap-nw-mask.png",
+        "tabao-rush/cook-heads/cap/head-cap-w.png",
+        "tabao-rush/cook-heads/cap/head-cap-w-mask.png",
+        "tabao-rush/cook-heads/cap/head-cap-sw.png",
+        "tabao-rush/cook-heads/cap/head-cap-sw-mask.png",
+        "tabao-rush/cook-heads/cap/frames.json",
+        "tabao-rush/cook-heads/cap/render-validation.json"
+      ],
+      "timeoutSeconds": 120
     }
   ]
 }

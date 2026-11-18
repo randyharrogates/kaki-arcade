@@ -81,18 +81,23 @@ Commands (from the repository root):
 Each render job may set `timeoutSeconds` to a positive integer (default 300). On timeout or
 interruption, the pipeline kills the Blender process group, waits and propagates the failure.
 Timeout and missing-output errors name the job id, its script and the limit.
-Choose a limit from a representative measured frame time × total frames (including masks),
-plus scene setup, file publication and a margin for machine load. A-02's nine cook actions ×
-eight directions will need a measured larger limit or separate jobs. Each job requires a unique
-`id` and its own declared outputs; multiple jobs may use the same script. 300 seconds is not a
-target for the whole body render.
+Cook rendering uses one job per action (`cook-body-idle`, `cook-body-walk`,
+`cook-body-carry-walk`, `cook-body-chop`, `cook-body-stir`, `cook-body-wash`,
+`cook-body-serve`, `cook-body-throw`, `cook-body-extinguish`) plus `cook-head-cap`.
+Each action limit is `ceil(2.5 × (30 + 2.0 × frames) / 60) × 60` seconds, where
+frames counts body samples across all eight directions (the per-sample allowance
+includes masks, references and composition checks). The head limit is 120 s.
+Each job publishes only its own folder; cook jobs do not write pipeline.json.
+Use `--render --only <id> --no-pack` to render a selected stale job without packing
+sets whose frames are still missing. `--no-pack` requires `--render`.
+Each job requires a unique id and declared outputs; several jobs may use one script.
 
 Freshness uses SHA-256 of the script, every declared input and extra input (paths and bytes),
 and arguments, rather than modification times. A small JSON stamp named
 `.<id>.render-stamp.json` sits beside the first declared output (for example
 `assets/src/peek-poker/cards/.cards.render-stamp.json`). Commit it with the rendered
 sources. It is written only after successful rendering and presence of every declared output;
-post-render input bytes are hashed because cook publishes anchor metadata to its config.
+post-render input bytes are hashed to capture any inputs updated during rendering.
 Missing outputs, missing/invalid stamps or differing hashes make a job stale. Existing outputs
 without stamps rerender once; checkouts that only change timestamps do not invalidate stamps.
 All declared inputs remain significant, including the full pipeline config when declared.
@@ -134,3 +139,83 @@ or enlarging baked ink changes its intended one-pixel width. The guard covers fi
 generic `portionScales`. Author and render smaller outlined objects at their final
 pixel size, then compose them at scale 1. The side cup and its liquid layers follow
 this rule; the liquid layers themselves contain no outline.
+
+## 9. Cook body frames
+
+TR-060 / NN-4: body ids are `<action>-<direction>-<frame>` and masks append `-mask`.
+Directions are s, se, e, ne, n, nw, w, sw; frames are zero-based. Cap head ids are
+`head-cap-<direction>` and `head-cap-<direction>-mask`. Every frame is 256 × 256 at
+120 pixels per tile. Each action and the cap job publish a `frames.json` list; sets
+load those source-relative lists through `frameFiles`, after any inline frames.
+
+Coordinates are top-left pixels in the uncropped frame. `anchor` is the head socket;
+`anchors.head` is the same point. Body frames also carry `anchors.root` (world origin)
+and `anchors.hands` (the midpoint of the two hand empties, except during throw).
+Body frames also publish `anchors.throwHand`, the throwing hand. During throw,
+`anchors.hands` and its `handsInFront` depth use that same throwing wrist. Follow
+`throwHand` through frame 3, release at its extension, then move the separate item
+along a game-authored arc; never interpolate an item across the body's settle.
+Extinguish frames add
+`anchors.nozzle` at the extinguisher outlet. `handsInFront` says the hands are nearer
+the camera than the spine head, so carried item sprites can be layered correctly.
+Masks are separate frames with exactly the body's anchors and metadata.
+
+Draw the head with its head anchor on the body frame's head anchor. The head's
+colour mask uses the same placement. Apron and cap masks select the player/team
+colour; tools stay black in the mask and never receive that tint.
+
+Animations declare `loop`; serve and throw are one-shot clips with `releaseFrame: 3`.
+`releaseFrame` is zero-based and marks when the held item is released. Walk and
+carry-walk alone declare `strideTiles` (currently 0.72 per eight frames). Advance
+those clips by ground distance: `floor(distance × 8 / strideTiles) mod 8`, rather
+than by fps. Their fps describes the provisional 3 tiles/s speed; carrying changes
+only the upper body. Feet stay fixed during idle and station actions.
+
+Tools are baked into action frames: knife for chop, spatula for stir (pot stir and
+wok toss), and a laterally held extinguisher for extinguish. Carried ingredients,
+containers and dishes remain separate item sprites drawn at hands.
+
+Review with `python3 tools/assets/cook_strips.py --out <evidence-directory>` after
+rendering. It skips missing action lists, writes light/dark 1× JPG contact sheets
+(quality 85; `--format png` opts into PNG at 1×), annotated
+body/tint/head strips, masks, turns, ground-speed walk strips and the lower-body
+carry-minus-walk difference. Inspect the walk ground-speed strips before rendering
+the remaining actions; the pure pose checks cannot establish finished visual quality.
+
+`--check-motion` requires all eight directions for chop, stir, wash, extinguish,
+serve, throw and idle. Every action measures unannotated tinted body **with the
+tinted cap composited**, including tools. This excludes motion in the body-only
+head-shadow pixels hidden by the cap. Missing body/head masks or anchors fail
+coverage. Work actions use every sample: at least 13 px anchor diameter and
+400 changed pixels from sample zero. Serve and throw measure from
+frame zero to `releaseFrame` only, with the same 13 px / 400 thresholds. Serve
+tracks the hands midpoint; throw tracks `throwHand`. A missing head/mask or anchor
+fails coverage. Idle tracks the chest's head socket, with lower thresholds of
+2 px / 100 changed pixels for its gentle breath and weight shift. A changed pixel
+has any RGBA channel difference strictly greater than 24/255, counted once.
+Masks-only sheets always stay at 1×. Ground-speed cells include the full frame
+plus maximum projected stride travel on each side, preventing moving cooks from
+being clipped by the diagnostic viewport. Rendered acceptance still requires
+opening all directions, especially the north-facing one-shots.
+
+Round 6 pose bounds (TR-060 / NN-4, D-154 / D-163): wash uses three-frame
+outward/return strokes, with bounded depth variation distinguishing all six
+samples. Chop retracts the raised hand below the cap envelope. The pure test
+checks frame 1 in every view against a .47-tile shell sphere clipped at +.18 Z
+and a brim ellipsoid (.252, .203, .024) offset (0, -.349, +.203) from the
+head centre, including shell thickness. At least 6 px of the spherical hand
+extends below that envelope; it does not require the whole hand to clear it.
+Extinguish holds the tool laterally with one hand; the other balances the sweep.
+Fixed shoulders cannot keep the former two-handed grip at this lateral reach.
+The test samples the canister ellipsoid and requires a point >=1 px outside
+all three enclosing projected discs: torso (.34 tiles), head/shell (.47) and
+brim (.252), for each frame/view. These bounds catch the reported hidden
+raise/canister poses; Blender must establish exact silhouettes, arm occlusion,
+canvas containment and readable chops/sweeps on the final composited sheets.
+
+The packer canonicalises identical decoded pixels with identical frame semantics
+(anchors, metadata, trim and source size), rewrites repeated animation slots to
+the first stable frame ID and packs one tile. Original IDs remain aliases to the
+same rectangle for direct references. Timing, frame count and release indices
+are unchanged. This includes idle/extinguish slots 1 and 3 and any other exact
+repeats; distinct anchors or metadata prevent sharing.

@@ -1,5 +1,6 @@
 """PERF-023/024 reproducible atlas build. See requirements.txt for the pinned encoder."""
 import argparse
+import copy
 import hashlib
 import io
 import json
@@ -87,6 +88,26 @@ def source_path(source, file):
     return path
 
 
+def merged_frames(group, source):
+    name = group['id']
+    frames = list(group.get('frames', []))
+    for file in group.get('frameFiles', []):
+        try:
+            value = read_json(source_path(source, file))
+            if not isinstance(value, list) or any(not isinstance(f, dict) for f in value):
+                raise ValueError('expected a list of frame objects')
+        except (OSError, ValueError, TypeError) as error:
+            raise ValueError(f'{name}: frameFiles {file}: {error}') from error
+        frames.extend(value)
+    ids = set()
+    for frame in frames:
+        ident = frame['id']
+        if ident in ids:
+            raise ValueError(f'{name}: duplicate frame {ident}')
+        ids.add(ident)
+    return frames
+
+
 def sequences(animation):
     return list(animation['directions'].values()) if 'directions' in animation else [animation['frames']]
 
@@ -104,9 +125,18 @@ def validate_animations(animations, name):
             raise ValueError(f'{name}: animation needs frames or eight directions')
         if 'directions' in a and set(a['directions']) != set(DIRECTIONS):
             raise ValueError(f'{name}: animation needs eight directions')
+        if 'loop' in a and type(a['loop']) is not bool:
+            raise ValueError(f'{name}: loop must be boolean')
+        if 'strideTiles' in a and (type(a['strideTiles']) not in (int, float) or
+                not math.isfinite(a['strideTiles']) or a['strideTiles'] <= 0):
+            raise ValueError(f'{name}: strideTiles must be positive and finite')
         seqs = sequences(a)
         if any(not isinstance(seq, list) or not seq for seq in seqs) or len({len(seq) for seq in seqs}) != 1:
             raise ValueError(f'{name}: inconsistent direction frame counts')
+        if 'releaseFrame' in a and (type(a['releaseFrame']) is not int or
+                not 0 <= a['releaseFrame'] < len(seqs[0])):
+            raise ValueError(f'{name}: releaseFrame outside animation frame range')
+
 
 
 def bleed(image):
@@ -193,14 +223,15 @@ def pack(config, source, output):
     for stale in output.iterdir():
         if re.fullmatch(r'[a-z0-9_-]+-(full|half)\.[0-9a-f]{16}\.webp', stale.name):
             stale.unlink()
-    atlases, sets = [], {}
+    atlases, sets, packed_animations = [], {}, {}
     for group in sorted(config['sets'], key=lambda g: g['id']):
         name = safe_name(group['id'])
         if name in sets:
             raise ValueError(f'Duplicate set {name}')
         sets[name] = []
         frames, ids, animations = [], set(), []
-        validate_outline_scales(group['frames'])
+        specs = merged_frames(group, source)
+        validate_outline_scales(specs)
         animations = group.get('animations', [])
         validate_animations(animations, name)
         encoding, quality = group.get('encoding', 'lossless'), group.get('quality', 90)
@@ -211,7 +242,7 @@ def pack(config, source, output):
             raise ValueError(f'{name}: invalid layers')
         for layer in layers:
             safe_name(layer)
-        for spec in sorted(group['frames'], key=lambda f: f['id']):
+        for spec in sorted(specs, key=lambda f: f['id']):
             ident = safe_name(spec['id'])
             if ident in ids:
                 raise ValueError(f'{name}: duplicate frame {ident}')
@@ -254,6 +285,28 @@ def pack(config, source, output):
             for sequence in sequences(animation):
                 if any(frame not in ids for frame in sequence):
                     raise ValueError(f'{name}: animation references unknown frame')
+        # Identical pixels and frame semantics share the first stable ID. Keep
+        # anchors/metadata in the key: equal artwork alone need not mean equal
+        # attachment or depth semantics. Animation timing/release indices stay put.
+        canonical, aliases, unique = {}, {}, []
+        for frame in frames:
+            spec, original_size, box, _, tiles = frame
+            semantics = {k: v for k, v in spec.items() if k not in ('id', 'file', 'layers')}
+            key = (json.dumps(semantics, sort_keys=True), original_size, box,
+                   tuple((layer, hashlib.sha256(tile.tobytes()).digest())
+                         for layer, tile in sorted(tiles.items())))
+            ident = spec['id']
+            if key in canonical:
+                aliases[ident] = canonical[key]
+            else:
+                canonical[key] = ident
+                unique.append(frame)
+        frames = unique
+        animations = copy.deepcopy(animations)
+        for animation in animations:
+            for sequence in sequences(animation):
+                sequence[:] = [aliases.get(ident, ident) for ident in sequence]
+        packed_animations[name] = animations
         # Atomic sequence groups keep action/direction strips together whenever they fit.
         by_id = {f[0]['id']: f for f in frames}
         batches, assigned = [], set()
@@ -274,7 +327,7 @@ def pack(config, source, output):
                 x += w
                 row = max(row,h)
             for sequence in ([whole] if fits else seqs):
-                batch = [by_id[i] for i in sequence if i not in assigned]
+                batch = [by_id[i] for i in dict.fromkeys(sequence) if i not in assigned]
                 assigned.update(sequence)
                 if batch:
                     batches.append(batch)
@@ -323,6 +376,9 @@ def pack(config, source, output):
                         sourceSize=list(original), trim=[box[0], box[1]],
                         anchor=spec.get('anchor', [0, 0]), anchors=spec.get('anchors', {}),
                         metadata={key: spec[key] for key in group.get('metadata', []) if key in spec})
+                for alias, target in aliases.items():
+                    if target in records:
+                        records[alias] = records[target]
                 # RGBa is premultiplied; BOX has a bounded footprint and cannot ring or bleed.
                 half = canvas.convert('RGBa').resize((width // 2, height // 2), Image.Resampling.BOX).convert('RGBA')
                 ident = f'{name}-{page}' + (f'-{layer}' if layers != ['default'] else '')
@@ -354,7 +410,7 @@ def pack(config, source, output):
     if not rounds or set(sets) != {s for r in rounds.values() for s in r['sets']}:
         raise ValueError('Every set must belong to a preload round')
     manifest = dict(version=1, alphaMode='straight', mipmaps=False, halfRule='Divide rect, trim, sourceSize, anchor and named anchors coordinates by two; metadata is unchanged', atlases=atlases,
-        sets={s: dict(anchors=next(g for g in config['sets'] if g['id'] == s).get('anchors', []), layers=next(g for g in config['sets'] if g['id'] == s).get('layers', ['default']), metadata=next(g for g in config['sets'] if g['id'] == s).get('metadata', []), encoding=next(g for g in config['sets'] if g['id'] == s).get('encoding', 'lossless'), quality=next(g for g in config['sets'] if g['id'] == s).get('quality', 90), atlases=members, animations=next(g for g in config['sets'] if g['id'] == s).get('animations', []),
+        sets={s: dict(anchors=next(g for g in config['sets'] if g['id'] == s).get('anchors', []), layers=next(g for g in config['sets'] if g['id'] == s).get('layers', ['default']), metadata=next(g for g in config['sets'] if g['id'] == s).get('metadata', []), encoding=next(g for g in config['sets'] if g['id'] == s).get('encoding', 'lossless'), quality=next(g for g in config['sets'] if g['id'] == s).get('quality', 90), atlases=members, animations=packed_animations[s],
                      totals={d: total([a for a in atlases if a['set'] == s], d) for d in ('full', 'half')})
               for s, members in sets.items()}, rounds=rounds,
         totals={d: total(atlases, d) for d in ('full', 'half')})
@@ -563,7 +619,10 @@ def main():
     parser.add_argument('--check', type=Path)
     parser.add_argument('--only')
     mode.add_argument('--check-stale', action='store_true')
+    parser.add_argument('--no-pack', action='store_true')
     args = parser.parse_args()
+    if args.no_pack and not args.render:
+        parser.error('--no-pack requires --render')
     if args.only and not (args.render or args.check_stale):
         parser.error('--only requires --render or --check-stale')
     if args.check:
@@ -574,7 +633,8 @@ def main():
             stale = render(config, args.config.parent, args.only, args.check_stale)
         if args.check_stale:
             return int(stale)
-        pack(config, args.config.parent, args.output)
+        if not args.no_pack:
+            pack(config, args.config.parent, args.output)
 
 
 if __name__ == '__main__':

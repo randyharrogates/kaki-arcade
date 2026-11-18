@@ -1,0 +1,3586 @@
+[
+  {
+    "id": "stir-s-0",
+    "file": "tabao-rush/cook-body/stir/stir-s-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        148.22071838378906,
+        156.00696563720703
+      ],
+      "throwHand": [
+        186.5431671142578,
+        147.00502014160156
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-0-mask",
+    "file": "tabao-rush/cook-body/stir/stir-s-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        148.22071838378906,
+        156.00696563720703
+      ],
+      "throwHand": [
+        186.5431671142578,
+        147.00502014160156
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-1",
+    "file": "tabao-rush/cook-body/stir/stir-s-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        143.45343017578125,
+        157.30300903320312
+      ],
+      "throwHand": [
+        179.80496215820312,
+        151.24493408203125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9999204961043091
+  },
+  {
+    "id": "stir-s-1-mask",
+    "file": "tabao-rush/cook-body/stir/stir-s-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        143.45343017578125,
+        157.30300903320312
+      ],
+      "throwHand": [
+        179.80496215820312,
+        151.24493408203125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9999204961043091
+  },
+  {
+    "id": "stir-s-2",
+    "file": "tabao-rush/cook-body/stir/stir-s-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        140.9764862060547,
+        156.0160675048828
+      ],
+      "throwHand": [
+        177.4489288330078,
+        150.54679107666016
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-2-mask",
+    "file": "tabao-rush/cook-body/stir/stir-s-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        140.9764862060547,
+        156.0160675048828
+      ],
+      "throwHand": [
+        177.4489288330078,
+        150.54679107666016
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-3",
+    "file": "tabao-rush/cook-body/stir/stir-s-3.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        137.70321655273438,
+        161.4964370727539
+      ],
+      "throwHand": [
+        173.27708435058594,
+        163.5933837890625
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-3-mask",
+    "file": "tabao-rush/cook-body/stir/stir-s-3-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        137.70321655273438,
+        161.4964370727539
+      ],
+      "throwHand": [
+        173.27708435058594,
+        163.5933837890625
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-4",
+    "file": "tabao-rush/cook-body/stir/stir-s-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        130.656005859375,
+        163.82907104492188
+      ],
+      "throwHand": [
+        161.3115997314453,
+        170.53478240966797
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-4-mask",
+    "file": "tabao-rush/cook-body/stir/stir-s-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        130.656005859375,
+        163.82907104492188
+      ],
+      "throwHand": [
+        161.3115997314453,
+        170.53478240966797
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-5",
+    "file": "tabao-rush/cook-body/stir/stir-s-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        134.7626953125,
+        163.14999389648438
+      ],
+      "throwHand": [
+        167.39601135253906,
+        166.90049743652344
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-5-mask",
+    "file": "tabao-rush/cook-body/stir/stir-s-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        134.7626953125,
+        163.14999389648438
+      ],
+      "throwHand": [
+        167.39601135253906,
+        166.90049743652344
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-6",
+    "file": "tabao-rush/cook-body/stir/stir-s-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        140.9764862060547,
+        160.1599884033203
+      ],
+      "throwHand": [
+        177.4489288330078,
+        158.83464813232422
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-6-mask",
+    "file": "tabao-rush/cook-body/stir/stir-s-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        140.9764862060547,
+        160.1599884033203
+      ],
+      "throwHand": [
+        177.4489288330078,
+        158.83464813232422
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-s-7",
+    "file": "tabao-rush/cook-body/stir/stir-s-7.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        146.3939666748047,
+        158.9565658569336
+      ],
+      "throwHand": [
+        185.68601989746094,
+        154.5520477294922
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9999212846347607
+  },
+  {
+    "id": "stir-s-7-mask",
+    "file": "tabao-rush/cook-body/stir/stir-s-7-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        146.3939666748047,
+        158.9565658569336
+      ],
+      "throwHand": [
+        185.68601989746094,
+        154.5520477294922
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9999212846347607
+  },
+  {
+    "id": "stir-se-0",
+    "file": "tabao-rush/cook-body/stir/stir-se-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        160.30526733398438,
+        137.1648712158203
+      ],
+      "throwHand": [
+        184.47340393066406,
+        105.746337890625
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-0-mask",
+    "file": "tabao-rush/cook-body/stir/stir-se-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        160.30526733398438,
+        137.1648712158203
+      ],
+      "throwHand": [
+        184.47340393066406,
+        105.746337890625
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-1",
+    "file": "tabao-rush/cook-body/stir/stir-se-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        159.0082550048828,
+        140.63629913330078
+      ],
+      "throwHand": [
+        185.2021484375,
+        112.1419677734375
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-1-mask",
+    "file": "tabao-rush/cook-body/stir/stir-se-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        159.0082550048828,
+        140.63629913330078
+      ],
+      "throwHand": [
+        185.2021484375,
+        112.1419677734375
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-2",
+    "file": "tabao-rush/cook-body/stir/stir-se-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        157.57980346679688,
+        140.75029754638672
+      ],
+      "throwHand": [
+        185.7137451171875,
+        112.10545349121094
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-2-mask",
+    "file": "tabao-rush/cook-body/stir/stir-se-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        157.57980346679688,
+        140.75029754638672
+      ],
+      "throwHand": [
+        185.7137451171875,
+        112.10545349121094
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-3",
+    "file": "tabao-rush/cook-body/stir/stir-se-3.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        156.68212890625,
+        147.72686767578125
+      ],
+      "throwHand": [
+        187.3006591796875,
+        126.07931518554688
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-3-mask",
+    "file": "tabao-rush/cook-body/stir/stir-se-3-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        156.68212890625,
+        147.72686767578125
+      ],
+      "throwHand": [
+        187.3006591796875,
+        126.07931518554688
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-4",
+    "file": "tabao-rush/cook-body/stir/stir-se-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        151.0801239013672,
+        154.5970230102539
+      ],
+      "throwHand": [
+        179.46047973632812,
+        140.1253890991211
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-4-mask",
+    "file": "tabao-rush/cook-body/stir/stir-se-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        151.0801239013672,
+        154.5970230102539
+      ],
+      "throwHand": [
+        179.46047973632812,
+        140.1253890991211
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-5",
+    "file": "tabao-rush/cook-body/stir/stir-se-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        151.9675750732422,
+        152.12645721435547
+      ],
+      "throwHand": [
+        177.87152099609375,
+        134.8784942626953
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-5-mask",
+    "file": "tabao-rush/cook-body/stir/stir-se-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        151.9675750732422,
+        152.12645721435547
+      ],
+      "throwHand": [
+        177.87152099609375,
+        134.8784942626953
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-6",
+    "file": "tabao-rush/cook-body/stir/stir-se-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        152.9924774169922,
+        146.53978729248047
+      ],
+      "throwHand": [
+        176.53909301757812,
+        123.68443298339844
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-6-mask",
+    "file": "tabao-rush/cook-body/stir/stir-se-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        152.9924774169922,
+        146.53978729248047
+      ],
+      "throwHand": [
+        176.53909301757812,
+        123.68443298339844
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-7",
+    "file": "tabao-rush/cook-body/stir/stir-se-7.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        158.45223999023438,
+        141.43448638916016
+      ],
+      "throwHand": [
+        184.09010314941406,
+        113.73834228515625
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-se-7-mask",
+    "file": "tabao-rush/cook-body/stir/stir-se-7-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        158.45223999023438,
+        141.43448638916016
+      ],
+      "throwHand": [
+        184.09010314941406,
+        113.73834228515625
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-e-0",
+    "file": "tabao-rush/cook-body/stir/stir-e-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        153.46583557128906,
+        116.44125366210938
+      ],
+      "throwHand": [
+        149.32229614257812,
+        77.83950805664062
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999191003964081
+  },
+  {
+    "id": "stir-e-0-mask",
+    "file": "tabao-rush/cook-body/stir/stir-e-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        153.46583557128906,
+        116.44125366210938
+      ],
+      "throwHand": [
+        149.32229614257812,
+        77.83950805664062
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999191003964081
+  },
+  {
+    "id": "stir-e-1",
+    "file": "tabao-rush/cook-body/stir/stir-e-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        156.39886474609375,
+        119.32582092285156
+      ],
+      "throwHand": [
+        157.09109497070312,
+        81.1868896484375
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.999918896999189
+  },
+  {
+    "id": "stir-e-1-mask",
+    "file": "tabao-rush/cook-body/stir/stir-e-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        156.39886474609375,
+        119.32582092285156
+      ],
+      "throwHand": [
+        157.09109497070312,
+        81.1868896484375
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.999918896999189
+  },
+  {
+    "id": "stir-e-2",
+    "file": "tabao-rush/cook-body/stir/stir-e-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        156.8556671142578,
+        119.78836059570312
+      ],
+      "throwHand": [
+        160.17062377929688,
+        79.8621826171875
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9999186727391022
+  },
+  {
+    "id": "stir-e-2-mask",
+    "file": "tabao-rush/cook-body/stir/stir-e-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        156.8556671142578,
+        119.78836059570312
+      ],
+      "throwHand": [
+        160.17062377929688,
+        79.8621826171875
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9999186727391022
+  },
+  {
+    "id": "stir-e-3",
+    "file": "tabao-rush/cook-body/stir/stir-e-3.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        158.85943603515625,
+        126.36814880371094
+      ],
+      "throwHand": [
+        166.58670043945312,
+        90.96522521972656
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9998370804822417
+  },
+  {
+    "id": "stir-e-3-mask",
+    "file": "tabao-rush/cook-body/stir/stir-e-3-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        158.85943603515625,
+        126.36814880371094
+      ],
+      "throwHand": [
+        166.58670043945312,
+        90.96522521972656
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9998370804822417
+  },
+  {
+    "id": "stir-e-4",
+    "file": "tabao-rush/cook-body/stir/stir-e-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        157.9842071533203,
+        135.5618133544922
+      ],
+      "throwHand": [
+        167.46450805664062,
+        107.50881958007812
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-e-4-mask",
+    "file": "tabao-rush/cook-body/stir/stir-e-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        157.9842071533203,
+        135.5618133544922
+      ],
+      "throwHand": [
+        167.46450805664062,
+        107.50881958007812
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-e-5",
+    "file": "tabao-rush/cook-body/stir/stir-e-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        155.132568359375,
+        133.79583740234375
+      ],
+      "throwHand": [
+        159.1329803466797,
+        105.82060241699219
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9998370140982805
+  },
+  {
+    "id": "stir-e-5-mask",
+    "file": "tabao-rush/cook-body/stir/stir-e-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        155.132568359375,
+        133.79583740234375
+      ],
+      "throwHand": [
+        159.1329803466797,
+        105.82060241699219
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9998370140982805
+  },
+  {
+    "id": "stir-e-6",
+    "file": "tabao-rush/cook-body/stir/stir-e-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        150.3682098388672,
+        129.55059051513672
+      ],
+      "throwHand": [
+        147.19570922851562,
+        99.38664245605469
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999186727391022
+  },
+  {
+    "id": "stir-e-6-mask",
+    "file": "tabao-rush/cook-body/stir/stir-e-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        150.3682098388672,
+        129.55059051513672
+      ],
+      "throwHand": [
+        147.19570922851562,
+        99.38664245605469
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999186727391022
+  },
+  {
+    "id": "stir-e-7",
+    "file": "tabao-rush/cook-body/stir/stir-e-7.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        152.6719970703125,
+        121.66035461425781
+      ],
+      "throwHand": [
+        149.6373748779297,
+        85.85598754882812
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.999918896999189
+  },
+  {
+    "id": "stir-e-7-mask",
+    "file": "tabao-rush/cook-body/stir/stir-e-7-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        152.6719970703125,
+        121.66035461425781
+      ],
+      "throwHand": [
+        149.6373748779297,
+        85.85598754882812
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.999918896999189
+  },
+  {
+    "id": "stir-ne-0",
+    "file": "tabao-rush/cook-body/stir/stir-ne-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        131.70884704589844,
+        105.97572326660156
+      ],
+      "throwHand": [
+        101.68087005615234,
+        79.63197326660156
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-0-mask",
+    "file": "tabao-rush/cook-body/stir/stir-ne-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        131.70884704589844,
+        105.97572326660156
+      ],
+      "throwHand": [
+        101.68087005615234,
+        79.63197326660156
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-1",
+    "file": "tabao-rush/cook-body/stir/stir-ne-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        137.15380859375,
+        105.85494995117188
+      ],
+      "throwHand": [
+        111.93888092041016,
+        76.51278686523438
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-1-mask",
+    "file": "tabao-rush/cook-body/stir/stir-ne-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        137.15380859375,
+        105.85494995117188
+      ],
+      "throwHand": [
+        111.93888092041016,
+        76.51278686523438
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-2",
+    "file": "tabao-rush/cook-body/stir/stir-ne-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        139.228271484375,
+        105.40948486328125
+      ],
+      "throwHand": [
+        115.78239440917969,
+        72.70465087890625
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-2-mask",
+    "file": "tabao-rush/cook-body/stir/stir-ne-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        139.228271484375,
+        105.40948486328125
+      ],
+      "throwHand": [
+        115.78239440917969,
+        72.70465087890625
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-3",
+    "file": "tabao-rush/cook-body/stir/stir-ne-3.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.95970153808594,
+        109.93193054199219
+      ],
+      "throwHand": [
+        123.26919555664062,
+        78.82044982910156
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-3-mask",
+    "file": "tabao-rush/cook-body/stir/stir-ne-3-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.95970153808594,
+        109.93193054199219
+      ],
+      "throwHand": [
+        123.26919555664062,
+        78.82044982910156
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-4",
+    "file": "tabao-rush/cook-body/stir/stir-ne-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        147.32395935058594,
+        117.87400817871094
+      ],
+      "throwHand": [
+        132.35076904296875,
+        91.79144287109375
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-4-mask",
+    "file": "tabao-rush/cook-body/stir/stir-ne-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        147.32395935058594,
+        117.87400817871094
+      ],
+      "throwHand": [
+        132.35076904296875,
+        91.79144287109375
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-5",
+    "file": "tabao-rush/cook-body/stir/stir-ne-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.4036865234375,
+        118.89598083496094
+      ],
+      "throwHand": [
+        122.15715026855469,
+        96.74855041503906
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-5-mask",
+    "file": "tabao-rush/cook-body/stir/stir-ne-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.4036865234375,
+        118.89598083496094
+      ],
+      "throwHand": [
+        122.15715026855469,
+        96.74855041503906
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-6",
+    "file": "tabao-rush/cook-body/stir/stir-ne-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        134.6409454345703,
+        119.14445495605469
+      ],
+      "throwHand": [
+        106.60774230957031,
+        100.17459106445312
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-6-mask",
+    "file": "tabao-rush/cook-body/stir/stir-ne-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        134.6409454345703,
+        119.14445495605469
+      ],
+      "throwHand": [
+        106.60774230957031,
+        100.17459106445312
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-7",
+    "file": "tabao-rush/cook-body/stir/stir-ne-7.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        132.43923950195312,
+        111.21759033203125
+      ],
+      "throwHand": [
+        102.50975799560547,
+        87.23808288574219
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-ne-7-mask",
+    "file": "tabao-rush/cook-body/stir/stir-ne-7-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        132.43923950195312,
+        111.21759033203125
+      ],
+      "throwHand": [
+        102.50975799560547,
+        87.23808288574219
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-0",
+    "file": "tabao-rush/cook-body/stir/stir-n-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        107.7792739868164,
+        111.89884948730469
+      ],
+      "throwHand": [
+        69.45682525634766,
+        110.07373046875
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-0-mask",
+    "file": "tabao-rush/cook-body/stir/stir-n-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        107.7792739868164,
+        111.89884948730469
+      ],
+      "throwHand": [
+        69.45682525634766,
+        110.07373046875
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-1",
+    "file": "tabao-rush/cook-body/stir/stir-n-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        112.54656219482422,
+        108.11474609375
+      ],
+      "throwHand": [
+        76.19503784179688,
+        100.85768127441406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-1-mask",
+    "file": "tabao-rush/cook-body/stir/stir-n-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        112.54656219482422,
+        108.11474609375
+      ],
+      "throwHand": [
+        76.19503784179688,
+        100.85768127441406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-2",
+    "file": "tabao-rush/cook-body/stir/stir-n-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        115.02350616455078,
+        106.03660583496094
+      ],
+      "throwHand": [
+        78.55106353759766,
+        94.82563781738281
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-2-mask",
+    "file": "tabao-rush/cook-body/stir/stir-n-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        115.02350616455078,
+        106.03660583496094
+      ],
+      "throwHand": [
+        78.55106353759766,
+        94.82563781738281
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-3",
+    "file": "tabao-rush/cook-body/stir/stir-n-3.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        118.2967758178711,
+        108.04632568359375
+      ],
+      "throwHand": [
+        82.72291564941406,
+        96.75924682617188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-3-mask",
+    "file": "tabao-rush/cook-body/stir/stir-n-3-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        118.2967758178711,
+        108.04632568359375
+      ],
+      "throwHand": [
+        82.72291564941406,
+        96.75924682617188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-4",
+    "file": "tabao-rush/cook-body/stir/stir-n-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        125.343994140625,
+        111.8948974609375
+      ],
+      "throwHand": [
+        94.68839263916016,
+        102.18025207519531
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-4-mask",
+    "file": "tabao-rush/cook-body/stir/stir-n-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        125.343994140625,
+        111.8948974609375
+      ],
+      "throwHand": [
+        94.68839263916016,
+        102.18025207519531
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-5",
+    "file": "tabao-rush/cook-body/stir/stir-n-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        121.2373046875,
+        116.15499877929688
+      ],
+      "throwHand": [
+        88.6039810180664,
+        112.97660827636719
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999228573632647
+  },
+  {
+    "id": "stir-n-5-mask",
+    "file": "tabao-rush/cook-body/stir/stir-n-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        121.2373046875,
+        116.15499877929688
+      ],
+      "throwHand": [
+        88.6039810180664,
+        112.97660827636719
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999228573632647
+  },
+  {
+    "id": "stir-n-6",
+    "file": "tabao-rush/cook-body/stir/stir-n-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        115.02350616455078,
+        121.41712951660156
+      ],
+      "throwHand": [
+        78.55106353759766,
+        125.58670043945312
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-6-mask",
+    "file": "tabao-rush/cook-body/stir/stir-n-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        115.02350616455078,
+        121.41712951660156
+      ],
+      "throwHand": [
+        78.55106353759766,
+        125.58670043945312
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-7",
+    "file": "tabao-rush/cook-body/stir/stir-n-7.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        109.60603332519531,
+        116.22341918945312
+      ],
+      "throwHand": [
+        70.31398010253906,
+        117.07502746582031
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-n-7-mask",
+    "file": "tabao-rush/cook-body/stir/stir-n-7-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        109.60603332519531,
+        116.22341918945312
+      ],
+      "throwHand": [
+        70.31398010253906,
+        117.07502746582031
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-0",
+    "file": "tabao-rush/cook-body/stir/stir-nw-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        95.69473266601562,
+        130.74095153808594
+      ],
+      "throwHand": [
+        71.52659606933594,
+        151.33240509033203
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-0-mask",
+    "file": "tabao-rush/cook-body/stir/stir-nw-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        95.69473266601562,
+        130.74095153808594
+      ],
+      "throwHand": [
+        71.52659606933594,
+        151.33240509033203
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-1",
+    "file": "tabao-rush/cook-body/stir/stir-nw-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        96.99174499511719,
+        124.78144836425781
+      ],
+      "throwHand": [
+        70.79784393310547,
+        139.96063232421875
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-1-mask",
+    "file": "tabao-rush/cook-body/stir/stir-nw-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        96.99174499511719,
+        124.78144836425781
+      ],
+      "throwHand": [
+        70.79784393310547,
+        139.96063232421875
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-2",
+    "file": "tabao-rush/cook-body/stir/stir-nw-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        98.42020416259766,
+        121.3023681640625
+      ],
+      "throwHand": [
+        70.2862548828125,
+        133.2669677734375
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-2-mask",
+    "file": "tabao-rush/cook-body/stir/stir-nw-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        98.42020416259766,
+        121.3023681640625
+      ],
+      "throwHand": [
+        70.2862548828125,
+        133.2669677734375
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-3",
+    "file": "tabao-rush/cook-body/stir/stir-nw-3.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        99.31787109375,
+        121.81590270996094
+      ],
+      "throwHand": [
+        68.6993408203125,
+        134.27330780029297
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-3-mask",
+    "file": "tabao-rush/cook-body/stir/stir-nw-3-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        99.31787109375,
+        121.81590270996094
+      ],
+      "throwHand": [
+        68.6993408203125,
+        134.27330780029297
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-4",
+    "file": "tabao-rush/cook-body/stir/stir-nw-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        104.91988372802734,
+        121.12693786621094
+      ],
+      "throwHand": [
+        76.53952026367188,
+        132.5896453857422
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-4-mask",
+    "file": "tabao-rush/cook-body/stir/stir-nw-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        104.91988372802734,
+        121.12693786621094
+      ],
+      "throwHand": [
+        76.53952026367188,
+        132.5896453857422
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-5",
+    "file": "tabao-rush/cook-body/stir/stir-nw-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        104.03243255615234,
+        127.17854309082031
+      ],
+      "throwHand": [
+        78.12847137451172,
+        144.99860382080078
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-5-mask",
+    "file": "tabao-rush/cook-body/stir/stir-nw-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        104.03243255615234,
+        127.17854309082031
+      ],
+      "throwHand": [
+        78.12847137451172,
+        144.99860382080078
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-6",
+    "file": "tabao-rush/cook-body/stir/stir-nw-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        103.00753021240234,
+        135.0373306274414
+      ],
+      "throwHand": [
+        79.46089935302734,
+        160.73690795898438
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-6-mask",
+    "file": "tabao-rush/cook-body/stir/stir-nw-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        103.00753021240234,
+        135.0373306274414
+      ],
+      "throwHand": [
+        79.46089935302734,
+        160.73690795898438
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-7",
+    "file": "tabao-rush/cook-body/stir/stir-nw-7.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        97.54776763916016,
+        133.74549102783203
+      ],
+      "throwHand": [
+        71.9098892211914,
+        157.88873291015625
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-nw-7-mask",
+    "file": "tabao-rush/cook-body/stir/stir-nw-7-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        97.54776763916016,
+        133.74549102783203
+      ],
+      "throwHand": [
+        71.9098892211914,
+        157.88873291015625
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-w-0",
+    "file": "tabao-rush/cook-body/stir/stir-w-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        102.53416442871094,
+        151.46456909179688
+      ],
+      "throwHand": [
+        106.67770385742188,
+        179.2392349243164
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-w-0-mask",
+    "file": "tabao-rush/cook-body/stir/stir-w-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        102.53416442871094,
+        151.46456909179688
+      ],
+      "throwHand": [
+        106.67770385742188,
+        179.2392349243164
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-w-1",
+    "file": "tabao-rush/cook-body/stir/stir-w-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        99.60113525390625,
+        146.0919418334961
+      ],
+      "throwHand": [
+        98.90889739990234,
+        170.91571044921875
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9998387616897775
+  },
+  {
+    "id": "stir-w-1-mask",
+    "file": "tabao-rush/cook-body/stir/stir-w-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        99.60113525390625,
+        146.0919418334961
+      ],
+      "throwHand": [
+        98.90889739990234,
+        170.91571044921875
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9998387616897775
+  },
+  {
+    "id": "stir-w-2",
+    "file": "tabao-rush/cook-body/stir/stir-w-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        99.14434051513672,
+        142.26429748535156
+      ],
+      "throwHand": [
+        95.8293685913086,
+        165.51023864746094
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9996788180504256
+  },
+  {
+    "id": "stir-w-2-mask",
+    "file": "tabao-rush/cook-body/stir/stir-w-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        99.14434051513672,
+        142.26429748535156
+      ],
+      "throwHand": [
+        95.8293685913086,
+        165.51023864746094
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9996788180504256
+  },
+  {
+    "id": "stir-w-3",
+    "file": "tabao-rush/cook-body/stir/stir-w-3.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        97.14056396484375,
+        143.17462158203125
+      ],
+      "throwHand": [
+        89.41329193115234,
+        169.38741302490234
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9999207983526057
+  },
+  {
+    "id": "stir-w-3-mask",
+    "file": "tabao-rush/cook-body/stir/stir-w-3-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        97.14056396484375,
+        143.17462158203125
+      ],
+      "throwHand": [
+        89.41329193115234,
+        169.38741302490234
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9999207983526057
+  },
+  {
+    "id": "stir-w-4",
+    "file": "tabao-rush/cook-body/stir/stir-w-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        98.01579284667969,
+        140.1621551513672
+      ],
+      "throwHand": [
+        88.53548431396484,
+        165.20620727539062
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-w-4-mask",
+    "file": "tabao-rush/cook-body/stir/stir-w-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        98.01579284667969,
+        140.1621551513672
+      ],
+      "throwHand": [
+        88.53548431396484,
+        165.20620727539062
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-w-5",
+    "file": "tabao-rush/cook-body/stir/stir-w-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        100.86742401123047,
+        145.50916290283203
+      ],
+      "throwHand": [
+        96.86701965332031,
+        174.0564956665039
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999207481375813
+  },
+  {
+    "id": "stir-w-5-mask",
+    "file": "tabao-rush/cook-body/stir/stir-w-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        100.86742401123047,
+        145.50916290283203
+      ],
+      "throwHand": [
+        96.86701965332031,
+        174.0564956665039
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999207481375813
+  },
+  {
+    "id": "stir-w-6",
+    "file": "tabao-rush/cook-body/stir/stir-w-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        105.63179779052734,
+        152.02652740478516
+      ],
+      "throwHand": [
+        108.80429077148438,
+        185.03470611572266
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996816047122502
+  },
+  {
+    "id": "stir-w-6-mask",
+    "file": "tabao-rush/cook-body/stir/stir-w-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        105.63179779052734,
+        152.02652740478516
+      ],
+      "throwHand": [
+        108.80429077148438,
+        185.03470611572266
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996816047122502
+  },
+  {
+    "id": "stir-w-7",
+    "file": "tabao-rush/cook-body/stir/stir-w-7.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        103.3280029296875,
+        153.5196304321289
+      ],
+      "throwHand": [
+        106.36262512207031,
+        185.7710952758789
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9998403575989783
+  },
+  {
+    "id": "stir-w-7-mask",
+    "file": "tabao-rush/cook-body/stir/stir-w-7-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        103.3280029296875,
+        153.5196304321289
+      ],
+      "throwHand": [
+        106.36262512207031,
+        185.7710952758789
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9998403575989783
+  },
+  {
+    "id": "stir-sw-0",
+    "file": "tabao-rush/cook-body/stir/stir-sw-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        124.29114532470703,
+        161.93009185791016
+      ],
+      "throwHand": [
+        154.31912231445312,
+        177.44677734375
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-0-mask",
+    "file": "tabao-rush/cook-body/stir/stir-sw-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        124.29114532470703,
+        161.93009185791016
+      ],
+      "throwHand": [
+        154.31912231445312,
+        177.44677734375
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-1",
+    "file": "tabao-rush/cook-body/stir/stir-sw-1.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        118.84619140625,
+        159.56281280517578
+      ],
+      "throwHand": [
+        144.0611114501953,
+        175.58981323242188
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-1-mask",
+    "file": "tabao-rush/cook-body/stir/stir-sw-1-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        118.84619140625,
+        159.56281280517578
+      ],
+      "throwHand": [
+        144.0611114501953,
+        175.58981323242188
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-2",
+    "file": "tabao-rush/cook-body/stir/stir-sw-2.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        116.77172088623047,
+        156.64318084716797
+      ],
+      "throwHand": [
+        140.21759033203125,
+        172.66777801513672
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-2-mask",
+    "file": "tabao-rush/cook-body/stir/stir-sw-2-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        116.77172088623047,
+        156.64318084716797
+      ],
+      "throwHand": [
+        140.21759033203125,
+        172.66777801513672
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-3",
+    "file": "tabao-rush/cook-body/stir/stir-sw-3.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.04029083251953,
+        159.61083221435547
+      ],
+      "throwHand": [
+        132.73080444335938,
+        181.5321807861328
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-3-mask",
+    "file": "tabao-rush/cook-body/stir/stir-sw-3-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.04029083251953,
+        159.61083221435547
+      ],
+      "throwHand": [
+        132.73080444335938,
+        181.5321807861328
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-4",
+    "file": "tabao-rush/cook-body/stir/stir-sw-4.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        108.67604064941406,
+        157.84994506835938
+      ],
+      "throwHand": [
+        123.64923095703125,
+        180.92359924316406
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-4-mask",
+    "file": "tabao-rush/cook-body/stir/stir-sw-4-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        108.67604064941406,
+        157.84994506835938
+      ],
+      "throwHand": [
+        123.64923095703125,
+        180.92359924316406
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-5",
+    "file": "tabao-rush/cook-body/stir/stir-sw-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.5963134765625,
+        160.4090118408203
+      ],
+      "throwHand": [
+        133.84283447265625,
+        183.12855529785156
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-5-mask",
+    "file": "tabao-rush/cook-body/stir/stir-sw-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.5963134765625,
+        160.4090118408203
+      ],
+      "throwHand": [
+        133.84283447265625,
+        183.12855529785156
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-6",
+    "file": "tabao-rush/cook-body/stir/stir-sw-6.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        121.35904693603516,
+        162.43267059326172
+      ],
+      "throwHand": [
+        149.39224243164062,
+        184.24676513671875
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-6-mask",
+    "file": "tabao-rush/cook-body/stir/stir-sw-6-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        121.35904693603516,
+        162.43267059326172
+      ],
+      "throwHand": [
+        149.39224243164062,
+        184.24676513671875
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-7",
+    "file": "tabao-rush/cook-body/stir/stir-sw-7.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        123.56075286865234,
+        163.96240234375
+      ],
+      "throwHand": [
+        153.490234375,
+        184.38899993896484
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "stir-sw-7-mask",
+    "file": "tabao-rush/cook-body/stir/stir-sw-7-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        123.56075286865234,
+        163.96240234375
+      ],
+      "throwHand": [
+        153.490234375,
+        184.38899993896484
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  }
+]

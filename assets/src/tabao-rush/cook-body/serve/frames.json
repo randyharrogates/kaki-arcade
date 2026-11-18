@@ -1,0 +1,2690 @@
+[
+  {
+    "id": "serve-s-0",
+    "file": "tabao-rush/cook-body/serve/serve-s-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-s-0-mask",
+    "file": "tabao-rush/cook-body/serve/serve-s-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        149.95440673828125
+      ],
+      "throwHand": [
+        136.55970764160156,
+        149.95440673828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-s-1",
+    "file": "tabao-rush/cook-body/serve/serve-s-1.png",
+    "anchor": [
+      128.0,
+      115.13238525390625
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        115.13238525390625
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        144.56768798828125
+      ],
+      "throwHand": [
+        134.26602172851562,
+        144.56768798828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9987579696944605
+  },
+  {
+    "id": "serve-s-1-mask",
+    "file": "tabao-rush/cook-body/serve/serve-s-1-mask.png",
+    "anchor": [
+      128.0,
+      115.13238525390625
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        115.13238525390625
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        144.56768798828125
+      ],
+      "throwHand": [
+        134.26602172851562,
+        144.56768798828125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9987579696944605
+  },
+  {
+    "id": "serve-s-2",
+    "file": "tabao-rush/cook-body/serve/serve-s-2.png",
+    "anchor": [
+      128.0,
+      120.0792236328125
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        120.0792236328125
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        164.36939239501953
+      ],
+      "throwHand": [
+        159.3450927734375,
+        164.36939239501953
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9988370161156338
+  },
+  {
+    "id": "serve-s-2-mask",
+    "file": "tabao-rush/cook-body/serve/serve-s-2-mask.png",
+    "anchor": [
+      128.0,
+      120.0792236328125
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        120.0792236328125
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        164.36939239501953
+      ],
+      "throwHand": [
+        159.3450927734375,
+        164.36939239501953
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9988370161156338
+  },
+  {
+    "id": "serve-s-3",
+    "file": "tabao-rush/cook-body/serve/serve-s-3.png",
+    "anchor": [
+      128.0,
+      125.33222961425781
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        125.33222961425781
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        164.52281188964844
+      ],
+      "throwHand": [
+        177.72579956054688,
+        164.52281188964844
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9969704217491828
+  },
+  {
+    "id": "serve-s-3-mask",
+    "file": "tabao-rush/cook-body/serve/serve-s-3-mask.png",
+    "anchor": [
+      128.0,
+      125.33222961425781
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        125.33222961425781
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        164.52281188964844
+      ],
+      "throwHand": [
+        177.72579956054688,
+        164.52281188964844
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9969704217491828
+  },
+  {
+    "id": "serve-s-4",
+    "file": "tabao-rush/cook-body/serve/serve-s-4.png",
+    "anchor": [
+      128.0,
+      120.54556274414062
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        120.54556274414062
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        162.42137145996094
+      ],
+      "throwHand": [
+        175.08140563964844,
+        162.42137145996094
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9953260107501752
+  },
+  {
+    "id": "serve-s-4-mask",
+    "file": "tabao-rush/cook-body/serve/serve-s-4-mask.png",
+    "anchor": [
+      128.0,
+      120.54556274414062
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        120.54556274414062
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        162.42137145996094
+      ],
+      "throwHand": [
+        175.08140563964844,
+        162.42137145996094
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9953260107501752
+  },
+  {
+    "id": "serve-s-5",
+    "file": "tabao-rush/cook-body/serve/serve-s-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        177.4489288330078,
+        145.1796417236328
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-s-5-mask",
+    "file": "tabao-rush/cook-body/serve/serve-s-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        177.4489288330078,
+        145.1796417236328
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-se-0",
+    "file": "tabao-rush/cook-body/serve/serve-se-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-se-0-mask",
+    "file": "tabao-rush/cook-body/serve/serve-se-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        146.2035903930664
+      ],
+      "throwHand": [
+        144.5087432861328,
+        140.96186065673828
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-se-1",
+    "file": "tabao-rush/cook-body/serve/serve-se-1.png",
+    "anchor": [
+      127.28254699707031,
+      115.38975524902344
+    ],
+    "anchors": {
+      "head": [
+        127.28254699707031,
+        115.38975524902344
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        133.98248291015625,
+        142.42166137695312
+      ],
+      "throwHand": [
+        138.41322326660156,
+        138.58452606201172
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9944614367198479
+  },
+  {
+    "id": "serve-se-1-mask",
+    "file": "tabao-rush/cook-body/serve/serve-se-1-mask.png",
+    "anchor": [
+      127.28254699707031,
+      115.38975524902344
+    ],
+    "anchors": {
+      "head": [
+        127.28254699707031,
+        115.38975524902344
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        133.98248291015625,
+        142.42166137695312
+      ],
+      "throwHand": [
+        138.41322326660156,
+        138.58452606201172
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9944614367198479
+  },
+  {
+    "id": "serve-se-2",
+    "file": "tabao-rush/cook-body/serve/serve-se-2.png",
+    "anchor": [
+      131.2220458984375,
+      118.92340087890625
+    ],
+    "anchors": {
+      "head": [
+        131.2220458984375,
+        118.92340087890625
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        146.88955688476562,
+        157.59334564208984
+      ],
+      "throwHand": [
+        169.0538787841797,
+        138.3984832763672
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9966549590232481
+  },
+  {
+    "id": "serve-se-2-mask",
+    "file": "tabao-rush/cook-body/serve/serve-se-2-mask.png",
+    "anchor": [
+      131.2220458984375,
+      118.92340087890625
+    ],
+    "anchors": {
+      "head": [
+        131.2220458984375,
+        118.92340087890625
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        146.88955688476562,
+        157.59334564208984
+      ],
+      "throwHand": [
+        169.0538787841797,
+        138.3984832763672
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9966549590232481
+  },
+  {
+    "id": "serve-se-3",
+    "file": "tabao-rush/cook-body/serve/serve-se-3.png",
+    "anchor": [
+      135.10073852539062,
+      122.78506469726562
+    ],
+    "anchors": {
+      "head": [
+        135.10073852539062,
+        122.78506469726562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        154.07110595703125,
+        155.17059326171875
+      ],
+      "throwHand": [
+        189.23255920410156,
+        124.71987915039062
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9967667829490343
+  },
+  {
+    "id": "serve-se-3-mask",
+    "file": "tabao-rush/cook-body/serve/serve-se-3-mask.png",
+    "anchor": [
+      135.10073852539062,
+      122.78506469726562
+    ],
+    "anchors": {
+      "head": [
+        135.10073852539062,
+        122.78506469726562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        154.07110595703125,
+        155.17059326171875
+      ],
+      "throwHand": [
+        189.23255920410156,
+        124.71987915039062
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9967667829490343
+  },
+  {
+    "id": "serve-se-4",
+    "file": "tabao-rush/cook-body/serve/serve-se-4.png",
+    "anchor": [
+      131.5782928466797,
+      119.261962890625
+    ],
+    "anchors": {
+      "head": [
+        131.5782928466797,
+        119.261962890625
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        144.81410217285156,
+        156.38982391357422
+      ],
+      "throwHand": [
+        178.10568237304688,
+        127.5584716796875
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9943319163124115
+  },
+  {
+    "id": "serve-se-4-mask",
+    "file": "tabao-rush/cook-body/serve/serve-se-4-mask.png",
+    "anchor": [
+      131.5782928466797,
+      119.261962890625
+    ],
+    "anchors": {
+      "head": [
+        131.5782928466797,
+        119.261962890625
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        144.81410217285156,
+        156.38982391357422
+      ],
+      "throwHand": [
+        178.10568237304688,
+        127.5584716796875
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9943319163124115
+  },
+  {
+    "id": "serve-se-5",
+    "file": "tabao-rush/cook-body/serve/serve-se-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        162.96568298339844,
+        114.89848327636719
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-se-5-mask",
+    "file": "tabao-rush/cook-body/serve/serve-se-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        162.96568298339844,
+        114.89848327636719
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-e-0",
+    "file": "tabao-rush/cook-body/serve/serve-e-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999183740102848
+  },
+  {
+    "id": "serve-e-0-mask",
+    "file": "tabao-rush/cook-body/serve/serve-e-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        142.7871856689453,
+        137.14833068847656
+      ],
+      "throwHand": [
+        142.7871856689453,
+        129.73540496826172
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999183740102848
+  },
+  {
+    "id": "serve-e-1",
+    "file": "tabao-rush/cook-body/serve/serve-e-1.png",
+    "anchor": [
+      126.9853744506836,
+      116.01107788085938
+    ],
+    "anchors": {
+      "head": [
+        126.9853744506836,
+        116.01107788085938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        136.4604949951172,
+        137.24068450927734
+      ],
+      "throwHand": [
+        136.4604949951172,
+        131.81415557861328
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9986956876171843
+  },
+  {
+    "id": "serve-e-1-mask",
+    "file": "tabao-rush/cook-body/serve/serve-e-1-mask.png",
+    "anchor": [
+      126.9853744506836,
+      116.01107788085938
+    ],
+    "anchors": {
+      "head": [
+        126.9853744506836,
+        116.01107788085938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        136.4604949951172,
+        137.24068450927734
+      ],
+      "throwHand": [
+        136.4604949951172,
+        131.81415557861328
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9986956876171843
+  },
+  {
+    "id": "serve-e-2",
+    "file": "tabao-rush/cook-body/serve/serve-e-2.png",
+    "anchor": [
+      132.55667114257812,
+      116.13302612304688
+    ],
+    "anchors": {
+      "head": [
+        132.55667114257812,
+        116.13302612304688
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        154.7138671875,
+        141.23451232910156
+      ],
+      "throwHand": [
+        154.71385192871094,
+        114.0888671875
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.993056116269681
+  },
+  {
+    "id": "serve-e-2-mask",
+    "file": "tabao-rush/cook-body/serve/serve-e-2-mask.png",
+    "anchor": [
+      132.55667114257812,
+      116.13302612304688
+    ],
+    "anchors": {
+      "head": [
+        132.55667114257812,
+        116.13302612304688
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        154.7138671875,
+        141.23451232910156
+      ],
+      "throwHand": [
+        154.71385192871094,
+        114.0888671875
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.993056116269681
+  },
+  {
+    "id": "serve-e-3",
+    "file": "tabao-rush/cook-body/serve/serve-e-3.png",
+    "anchor": [
+      138.0419464111328,
+      116.63565063476562
+    ],
+    "anchors": {
+      "head": [
+        138.0419464111328,
+        116.63565063476562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        164.8701171875,
+        132.59235382080078
+      ],
+      "throwHand": [
+        164.8701171875,
+        89.52854919433594
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9950260540028423
+  },
+  {
+    "id": "serve-e-3-mask",
+    "file": "tabao-rush/cook-body/serve/serve-e-3-mask.png",
+    "anchor": [
+      138.0419464111328,
+      116.63565063476562
+    ],
+    "anchors": {
+      "head": [
+        138.0419464111328,
+        116.63565063476562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        164.8701171875,
+        132.59235382080078
+      ],
+      "throwHand": [
+        164.8701171875,
+        89.52854919433594
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9950260540028423
+  },
+  {
+    "id": "serve-e-4",
+    "file": "tabao-rush/cook-body/serve/serve-e-4.png",
+    "anchor": [
+      133.06045532226562,
+      116.1630859375
+    ],
+    "anchors": {
+      "head": [
+        133.06045532226562,
+        116.1630859375
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        151.7787322998047,
+        141.82838439941406
+      ],
+      "throwHand": [
+        151.7787322998047,
+        101.05470275878906
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9972609361153629
+  },
+  {
+    "id": "serve-e-4-mask",
+    "file": "tabao-rush/cook-body/serve/serve-e-4-mask.png",
+    "anchor": [
+      133.06045532226562,
+      116.1630859375
+    ],
+    "anchors": {
+      "head": [
+        133.06045532226562,
+        116.1630859375
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        151.7787322998047,
+        141.82838439941406
+      ],
+      "throwHand": [
+        151.7787322998047,
+        101.05470275878906
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9972609361153629
+  },
+  {
+    "id": "serve-e-5",
+    "file": "tabao-rush/cook-body/serve/serve-e-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        128.0,
+        102.35560607910156
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999185535103438
+  },
+  {
+    "id": "serve-e-5-mask",
+    "file": "tabao-rush/cook-body/serve/serve-e-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        128.0,
+        102.35560607910156
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9999185535103438
+  },
+  {
+    "id": "serve-ne-0",
+    "file": "tabao-rush/cook-body/serve/serve-ne-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-ne-0-mask",
+    "file": "tabao-rush/cook-body/serve/serve-ne-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        138.45611572265625,
+        128.0930633544922
+      ],
+      "throwHand": [
+        132.4034881591797,
+        122.85133361816406
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-ne-1",
+    "file": "tabao-rush/cook-body/serve/serve-ne-1.png",
+    "anchor": [
+      127.28254699707031,
+      116.63241577148438
+    ],
+    "anchors": {
+      "head": [
+        127.28254699707031,
+        116.63241577148438
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        133.98248291015625,
+        132.05970001220703
+      ],
+      "throwHand": [
+        129.55174255371094,
+        128.22256469726562
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9940443103311364
+  },
+  {
+    "id": "serve-ne-1-mask",
+    "file": "tabao-rush/cook-body/serve/serve-ne-1-mask.png",
+    "anchor": [
+      127.28254699707031,
+      116.63241577148438
+    ],
+    "anchors": {
+      "head": [
+        127.28254699707031,
+        116.63241577148438
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        133.98248291015625,
+        132.05970001220703
+      ],
+      "throwHand": [
+        129.55174255371094,
+        128.22256469726562
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9940443103311364
+  },
+  {
+    "id": "serve-ne-2",
+    "file": "tabao-rush/cook-body/serve/serve-ne-2.png",
+    "anchor": [
+      131.2220458984375,
+      113.3426513671875
+    ],
+    "anchors": {
+      "head": [
+        131.2220458984375,
+        113.3426513671875
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        146.88955688476562,
+        124.87568664550781
+      ],
+      "throwHand": [
+        124.72523498535156,
+        105.68081665039062
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9941467122767009
+  },
+  {
+    "id": "serve-ne-2-mask",
+    "file": "tabao-rush/cook-body/serve/serve-ne-2-mask.png",
+    "anchor": [
+      131.2220458984375,
+      113.3426513671875
+    ],
+    "anchors": {
+      "head": [
+        131.2220458984375,
+        113.3426513671875
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        146.88955688476562,
+        124.87568664550781
+      ],
+      "throwHand": [
+        124.72523498535156,
+        105.68081665039062
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9941467122767009
+  },
+  {
+    "id": "serve-ne-3",
+    "file": "tabao-rush/cook-body/serve/serve-ne-3.png",
+    "anchor": [
+      135.10073852539062,
+      110.48623657226562
+    ],
+    "anchors": {
+      "head": [
+        135.10073852539062,
+        110.48623657226562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        154.07110595703125,
+        110.01411437988281
+      ],
+      "throwHand": [
+        118.90965270996094,
+        79.56341552734375
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9945957630782534
+  },
+  {
+    "id": "serve-ne-3-mask",
+    "file": "tabao-rush/cook-body/serve/serve-ne-3-mask.png",
+    "anchor": [
+      135.10073852539062,
+      110.48623657226562
+    ],
+    "anchors": {
+      "head": [
+        135.10073852539062,
+        110.48623657226562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        154.07110595703125,
+        110.01411437988281
+      ],
+      "throwHand": [
+        118.90965270996094,
+        79.56341552734375
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9945957630782534
+  },
+  {
+    "id": "serve-ne-4",
+    "file": "tabao-rush/cook-body/serve/serve-ne-4.png",
+    "anchor": [
+      131.5782928466797,
+      113.06419372558594
+    ],
+    "anchors": {
+      "head": [
+        131.5782928466797,
+        113.06419372558594
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        144.81410217285156,
+        127.26695251464844
+      ],
+      "throwHand": [
+        111.52252197265625,
+        98.43560791015625
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9944063245823389
+  },
+  {
+    "id": "serve-ne-4-mask",
+    "file": "tabao-rush/cook-body/serve/serve-ne-4-mask.png",
+    "anchor": [
+      131.5782928466797,
+      113.06419372558594
+    ],
+    "anchors": {
+      "head": [
+        131.5782928466797,
+        113.06419372558594
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        144.81410217285156,
+        127.26695251464844
+      ],
+      "throwHand": [
+        111.52252197265625,
+        98.43560791015625
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9944063245823389
+  },
+  {
+    "id": "serve-ne-5",
+    "file": "tabao-rush/cook-body/serve/serve-ne-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        93.0343246459961,
+        114.89848327636719
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-ne-5-mask",
+    "file": "tabao-rush/cook-body/serve/serve-ne-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        93.0343246459961,
+        114.89848327636719
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-n-0",
+    "file": "tabao-rush/cook-body/serve/serve-n-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-n-0-mask",
+    "file": "tabao-rush/cook-body/serve/serve-n-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        124.34225463867188
+      ],
+      "throwHand": [
+        119.4402847290039,
+        124.34225463867188
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-n-1",
+    "file": "tabao-rush/cook-body/serve/serve-n-1.png",
+    "anchor": [
+      128.0,
+      116.8897705078125
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.8897705078125
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        129.9136734008789
+      ],
+      "throwHand": [
+        121.7339859008789,
+        129.9136734008789
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.998521630874572
+  },
+  {
+    "id": "serve-n-1-mask",
+    "file": "tabao-rush/cook-body/serve/serve-n-1-mask.png",
+    "anchor": [
+      128.0,
+      116.8897705078125
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.8897705078125
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        129.9136734008789
+      ],
+      "throwHand": [
+        121.7339859008789,
+        129.9136734008789
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.998521630874572
+  },
+  {
+    "id": "serve-n-2",
+    "file": "tabao-rush/cook-body/serve/serve-n-2.png",
+    "anchor": [
+      128.0,
+      112.18684387207031
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        112.18684387207031
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        118.09963989257812
+      ],
+      "throwHand": [
+        96.65491485595703,
+        118.09963989257812
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9987218045112782
+  },
+  {
+    "id": "serve-n-2-mask",
+    "file": "tabao-rush/cook-body/serve/serve-n-2-mask.png",
+    "anchor": [
+      128.0,
+      112.18684387207031
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        112.18684387207031
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        118.09963989257812
+      ],
+      "throwHand": [
+        96.65491485595703,
+        118.09963989257812
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9987218045112782
+  },
+  {
+    "id": "serve-n-3",
+    "file": "tabao-rush/cook-body/serve/serve-n-3.png",
+    "anchor": [
+      128.0,
+      107.93907165527344
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        107.93907165527344
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        100.66191101074219
+      ],
+      "throwHand": [
+        78.2741928100586,
+        100.66191101074219
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9991523029104267
+  },
+  {
+    "id": "serve-n-3-mask",
+    "file": "tabao-rush/cook-body/serve/serve-n-3-mask.png",
+    "anchor": [
+      128.0,
+      107.93907165527344
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        107.93907165527344
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        100.66191101074219
+      ],
+      "throwHand": [
+        78.2741928100586,
+        100.66191101074219
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9991523029104267
+  },
+  {
+    "id": "serve-n-4",
+    "file": "tabao-rush/cook-body/serve/serve-n-4.png",
+    "anchor": [
+      128.0,
+      111.78059387207031
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        111.78059387207031
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        121.23541259765625
+      ],
+      "throwHand": [
+        80.91859436035156,
+        121.23541259765625
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9980300598278127
+  },
+  {
+    "id": "serve-n-4-mask",
+    "file": "tabao-rush/cook-body/serve/serve-n-4-mask.png",
+    "anchor": [
+      128.0,
+      111.78059387207031
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        111.78059387207031
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        121.23541259765625
+      ],
+      "throwHand": [
+        80.91859436035156,
+        121.23541259765625
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9980300598278127
+  },
+  {
+    "id": "serve-n-5",
+    "file": "tabao-rush/cook-body/serve/serve-n-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        78.55106353759766,
+        145.1796417236328
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-n-5-mask",
+    "file": "tabao-rush/cook-body/serve/serve-n-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        78.55106353759766,
+        145.1796417236328
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-nw-0",
+    "file": "tabao-rush/cook-body/serve/serve-nw-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-nw-0-mask",
+    "file": "tabao-rush/cook-body/serve/serve-nw-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        128.0930633544922
+      ],
+      "throwHand": [
+        111.49124908447266,
+        133.3347930908203
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-nw-1",
+    "file": "tabao-rush/cook-body/serve/serve-nw-1.png",
+    "anchor": [
+      128.7174530029297,
+      116.63241577148438
+    ],
+    "anchors": {
+      "head": [
+        128.7174530029297,
+        116.63241577148438
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        122.01751708984375,
+        132.05970001220703
+      ],
+      "throwHand": [
+        117.58677673339844,
+        135.89683532714844
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.99467662482123
+  },
+  {
+    "id": "serve-nw-1-mask",
+    "file": "tabao-rush/cook-body/serve/serve-nw-1-mask.png",
+    "anchor": [
+      128.7174530029297,
+      116.63241577148438
+    ],
+    "anchors": {
+      "head": [
+        128.7174530029297,
+        116.63241577148438
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        122.01751708984375,
+        132.05970001220703
+      ],
+      "throwHand": [
+        117.58677673339844,
+        135.89683532714844
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.99467662482123
+  },
+  {
+    "id": "serve-nw-2",
+    "file": "tabao-rush/cook-body/serve/serve-nw-2.png",
+    "anchor": [
+      124.77794647216797,
+      113.3426513671875
+    ],
+    "anchors": {
+      "head": [
+        124.77794647216797,
+        113.3426513671875
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        109.1104507446289,
+        124.87567138671875
+      ],
+      "throwHand": [
+        86.94612884521484,
+        144.07054138183594
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9949041679342866
+  },
+  {
+    "id": "serve-nw-2-mask",
+    "file": "tabao-rush/cook-body/serve/serve-nw-2-mask.png",
+    "anchor": [
+      124.77794647216797,
+      113.3426513671875
+    ],
+    "anchors": {
+      "head": [
+        124.77794647216797,
+        113.3426513671875
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        109.1104507446289,
+        124.87567138671875
+      ],
+      "throwHand": [
+        86.94612884521484,
+        144.07054138183594
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9949041679342866
+  },
+  {
+    "id": "serve-nw-3",
+    "file": "tabao-rush/cook-body/serve/serve-nw-3.png",
+    "anchor": [
+      120.8992691040039,
+      110.48623657226562
+    ],
+    "anchors": {
+      "head": [
+        120.8992691040039,
+        110.48623657226562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        101.92889404296875,
+        110.01411437988281
+      ],
+      "throwHand": [
+        66.7674331665039,
+        140.4648208618164
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9946662822545769
+  },
+  {
+    "id": "serve-nw-3-mask",
+    "file": "tabao-rush/cook-body/serve/serve-nw-3-mask.png",
+    "anchor": [
+      120.8992691040039,
+      110.48623657226562
+    ],
+    "anchors": {
+      "head": [
+        120.8992691040039,
+        110.48623657226562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        101.92889404296875,
+        110.01411437988281
+      ],
+      "throwHand": [
+        66.7674331665039,
+        140.4648208618164
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9946662822545769
+  },
+  {
+    "id": "serve-nw-4",
+    "file": "tabao-rush/cook-body/serve/serve-nw-4.png",
+    "anchor": [
+      124.42171478271484,
+      113.06419372558594
+    ],
+    "anchors": {
+      "head": [
+        124.42171478271484,
+        113.06419372558594
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        111.18589782714844,
+        127.26695251464844
+      ],
+      "throwHand": [
+        77.89431762695312,
+        156.09829711914062
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9938096658711217
+  },
+  {
+    "id": "serve-nw-4-mask",
+    "file": "tabao-rush/cook-body/serve/serve-nw-4-mask.png",
+    "anchor": [
+      124.42171478271484,
+      113.06419372558594
+    ],
+    "anchors": {
+      "head": [
+        124.42171478271484,
+        113.06419372558594
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        111.18589782714844,
+        127.26695251464844
+      ],
+      "throwHand": [
+        77.89431762695312,
+        156.09829711914062
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9938096658711217
+  },
+  {
+    "id": "serve-nw-5",
+    "file": "tabao-rush/cook-body/serve/serve-nw-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        93.0343246459961,
+        175.46080017089844
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-nw-5-mask",
+    "file": "tabao-rush/cook-body/serve/serve-nw-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        93.0343246459961,
+        175.46080017089844
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-w-0",
+    "file": "tabao-rush/cook-body/serve/serve-w-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996736824930658
+  },
+  {
+    "id": "serve-w-0-mask",
+    "file": "tabao-rush/cook-body/serve/serve-w-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        113.21281433105469,
+        137.14833068847656
+      ],
+      "throwHand": [
+        113.21281433105469,
+        144.56124877929688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996736824930658
+  },
+  {
+    "id": "serve-w-1",
+    "file": "tabao-rush/cook-body/serve/serve-w-1.png",
+    "anchor": [
+      129.01463317871094,
+      116.01107788085938
+    ],
+    "anchors": {
+      "head": [
+        129.01463317871094,
+        116.01107788085938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        119.53949737548828,
+        137.24068450927734
+      ],
+      "throwHand": [
+        119.53949737548828,
+        142.66720581054688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9985332464146024
+  },
+  {
+    "id": "serve-w-1-mask",
+    "file": "tabao-rush/cook-body/serve/serve-w-1-mask.png",
+    "anchor": [
+      129.01463317871094,
+      116.01107788085938
+    ],
+    "anchors": {
+      "head": [
+        129.01463317871094,
+        116.01107788085938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        119.53949737548828,
+        137.24068450927734
+      ],
+      "throwHand": [
+        119.53949737548828,
+        142.66720581054688
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9985332464146024
+  },
+  {
+    "id": "serve-w-2",
+    "file": "tabao-rush/cook-body/serve/serve-w-2.png",
+    "anchor": [
+      123.44332885742188,
+      116.13302612304688
+    ],
+    "anchors": {
+      "head": [
+        123.44332885742188,
+        116.13302612304688
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        101.28614044189453,
+        141.23451232910156
+      ],
+      "throwHand": [
+        101.28614044189453,
+        168.38015747070312
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.993297803617571
+  },
+  {
+    "id": "serve-w-2-mask",
+    "file": "tabao-rush/cook-body/serve/serve-w-2-mask.png",
+    "anchor": [
+      123.44332885742188,
+      116.13302612304688
+    ],
+    "anchors": {
+      "head": [
+        123.44332885742188,
+        116.13302612304688
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        101.28614044189453,
+        141.23451232910156
+      ],
+      "throwHand": [
+        101.28614044189453,
+        168.38015747070312
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.993297803617571
+  },
+  {
+    "id": "serve-w-3",
+    "file": "tabao-rush/cook-body/serve/serve-w-3.png",
+    "anchor": [
+      117.95804595947266,
+      116.63565063476562
+    ],
+    "anchors": {
+      "head": [
+        117.95804595947266,
+        116.63565063476562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        91.1298828125,
+        132.59235382080078
+      ],
+      "throwHand": [
+        91.1298828125,
+        175.65616607666016
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9948677457560205
+  },
+  {
+    "id": "serve-w-3-mask",
+    "file": "tabao-rush/cook-body/serve/serve-w-3-mask.png",
+    "anchor": [
+      117.95804595947266,
+      116.63565063476562
+    ],
+    "anchors": {
+      "head": [
+        117.95804595947266,
+        116.63565063476562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        91.1298828125,
+        132.59235382080078
+      ],
+      "throwHand": [
+        91.1298828125,
+        175.65616607666016
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9948677457560205
+  },
+  {
+    "id": "serve-w-4",
+    "file": "tabao-rush/cook-body/serve/serve-w-4.png",
+    "anchor": [
+      122.93953704833984,
+      116.1630859375
+    ],
+    "anchors": {
+      "head": [
+        122.93953704833984,
+        116.1630859375
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        104.22126770019531,
+        141.82838439941406
+      ],
+      "throwHand": [
+        104.22127532958984,
+        182.60206604003906
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9973436368027047
+  },
+  {
+    "id": "serve-w-4-mask",
+    "file": "tabao-rush/cook-body/serve/serve-w-4-mask.png",
+    "anchor": [
+      122.93953704833984,
+      116.1630859375
+    ],
+    "anchors": {
+      "head": [
+        122.93953704833984,
+        116.1630859375
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        104.22126770019531,
+        141.82838439941406
+      ],
+      "throwHand": [
+        104.22127532958984,
+        182.60206604003906
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9973436368027047
+  },
+  {
+    "id": "serve-w-5",
+    "file": "tabao-rush/cook-body/serve/serve-w-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        128.0,
+        188.00366973876953
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996743996743996
+  },
+  {
+    "id": "serve-w-5-mask",
+    "file": "tabao-rush/cook-body/serve/serve-w-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        128.0,
+        188.00366973876953
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9996743996743996
+  },
+  {
+    "id": "serve-sw-0",
+    "file": "tabao-rush/cook-body/serve/serve-sw-0.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-sw-0-mask",
+    "file": "tabao-rush/cook-body/serve/serve-sw-0-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        117.54388427734375,
+        146.2035903930664
+      ],
+      "throwHand": [
+        123.59650421142578,
+        151.44532012939453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-sw-1",
+    "file": "tabao-rush/cook-body/serve/serve-sw-1.png",
+    "anchor": [
+      128.7174530029297,
+      115.38975524902344
+    ],
+    "anchors": {
+      "head": [
+        128.7174530029297,
+        115.38975524902344
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        122.01751708984375,
+        142.42166137695312
+      ],
+      "throwHand": [
+        126.44825744628906,
+        146.25879669189453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9937990905332782
+  },
+  {
+    "id": "serve-sw-1-mask",
+    "file": "tabao-rush/cook-body/serve/serve-sw-1-mask.png",
+    "anchor": [
+      128.7174530029297,
+      115.38975524902344
+    ],
+    "anchors": {
+      "head": [
+        128.7174530029297,
+        115.38975524902344
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        122.01751708984375,
+        142.42166137695312
+      ],
+      "throwHand": [
+        126.44825744628906,
+        146.25879669189453
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9937990905332782
+  },
+  {
+    "id": "serve-sw-2",
+    "file": "tabao-rush/cook-body/serve/serve-sw-2.png",
+    "anchor": [
+      124.77794647216797,
+      118.92340087890625
+    ],
+    "anchors": {
+      "head": [
+        124.77794647216797,
+        118.92340087890625
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        109.11044311523438,
+        157.5933380126953
+      ],
+      "throwHand": [
+        131.27476501464844,
+        176.7882080078125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9967394030599448
+  },
+  {
+    "id": "serve-sw-2-mask",
+    "file": "tabao-rush/cook-body/serve/serve-sw-2-mask.png",
+    "anchor": [
+      124.77794647216797,
+      118.92340087890625
+    ],
+    "anchors": {
+      "head": [
+        124.77794647216797,
+        118.92340087890625
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        109.11044311523438,
+        157.5933380126953
+      ],
+      "throwHand": [
+        131.27476501464844,
+        176.7882080078125
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9967394030599448
+  },
+  {
+    "id": "serve-sw-3",
+    "file": "tabao-rush/cook-body/serve/serve-sw-3.png",
+    "anchor": [
+      120.8992691040039,
+      122.78506469726562
+    ],
+    "anchors": {
+      "head": [
+        120.8992691040039,
+        122.78506469726562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        101.92888641357422,
+        155.17059326171875
+      ],
+      "throwHand": [
+        137.09033203125,
+        185.62130737304688
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9966819806023481
+  },
+  {
+    "id": "serve-sw-3-mask",
+    "file": "tabao-rush/cook-body/serve/serve-sw-3-mask.png",
+    "anchor": [
+      120.8992691040039,
+      122.78506469726562
+    ],
+    "anchors": {
+      "head": [
+        120.8992691040039,
+        122.78506469726562
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        101.92888641357422,
+        155.17059326171875
+      ],
+      "throwHand": [
+        137.09033203125,
+        185.62130737304688
+      ]
+    },
+    "handsInFront": true,
+    "compositionIoU": 0.9966819806023481
+  },
+  {
+    "id": "serve-sw-4",
+    "file": "tabao-rush/cook-body/serve/serve-sw-4.png",
+    "anchor": [
+      124.42171478271484,
+      119.261962890625
+    ],
+    "anchors": {
+      "head": [
+        124.42171478271484,
+        119.261962890625
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        111.18589782714844,
+        156.3898162841797
+      ],
+      "throwHand": [
+        144.4774627685547,
+        185.2211685180664
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9942485621405351
+  },
+  {
+    "id": "serve-sw-4-mask",
+    "file": "tabao-rush/cook-body/serve/serve-sw-4-mask.png",
+    "anchor": [
+      124.42171478271484,
+      119.261962890625
+    ],
+    "anchors": {
+      "head": [
+        124.42171478271484,
+        119.261962890625
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        111.18589782714844,
+        156.3898162841797
+      ],
+      "throwHand": [
+        144.4774627685547,
+        185.2211685180664
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 0.9942485621405351
+  },
+  {
+    "id": "serve-sw-5",
+    "file": "tabao-rush/cook-body/serve/serve-sw-5.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        162.96566772460938,
+        175.46080780029297
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  },
+  {
+    "id": "serve-sw-5-mask",
+    "file": "tabao-rush/cook-body/serve/serve-sw-5-mask.png",
+    "anchor": [
+      128.0,
+      116.00473022460938
+    ],
+    "anchors": {
+      "head": [
+        128.0,
+        116.00473022460938
+      ],
+      "root": [
+        128.0,
+        168.50023651123047
+      ],
+      "hands": [
+        128.0,
+        145.1796417236328
+      ],
+      "throwHand": [
+        162.96566772460938,
+        175.46080780029297
+      ]
+    },
+    "handsInFront": false,
+    "compositionIoU": 1.0
+  }
+]

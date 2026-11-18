@@ -9,6 +9,12 @@ describe('PERF-023/024 asset pipeline', () => {
     expect(result.stderr).toMatch(/Ran [1-9]\d* tests/);
     expect(result.stderr).toMatch(/\nOK\b/);
   }, 90_000);
+  it('validates cook choreography without Blender', () => {
+    const result = spawnSync('python3', ['-m', 'unittest', 'discover', '-s', 'tools/blender', '-p', 'test_cook_poses.py'], { timeout: 60_000, encoding: 'utf8' });
+    expect(result.status, result.stderr).toBe(0);
+    expect(result.stderr).toMatch(/Ran 12 tests/);
+    expect(result.stderr).toMatch(/\nOK\b/);
+  }, 90_000);
   it('validates card pixels and palette mutations', () => {
     const result = spawnSync('python3', ['-m', 'unittest', 'discover', '-s', 'tools/blender', '-p', 'test_card_checks.py'], { timeout: 60_000, encoding: 'utf8' });
     expect(result.status, result.stderr).toBe(0);

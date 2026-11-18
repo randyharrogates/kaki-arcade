@@ -1,0 +1,2 @@
+$ node tools/lint_design.mjs
+design lint passed: 377 file(s) scanned

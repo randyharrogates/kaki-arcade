@@ -1,0 +1,38 @@
+TR-060 / NN-4 round 4. Final standalone Python checks: pose 9 tests PASS (load 6.85); assets 47 tests PASS (load 5.16).
+6:51  4 users, load averages: 5.02 7.60 8.80
+$ VITEST_MAX_WORKERS=2 pnpm exec vitest run tools/assets
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-02
+
+
+ Test Files  2 passed (2)
+      Tests  5 passed (5)
+   Start at  06:51:44
+   Duration  11.32s (transform 26ms, setup 0ms, import 39ms, tests 11.22s, environment 0ms)
+
+
+exit 0
+6:52  4 users, load averages: 7.37 8.03 8.93
+$ pnpm exec tsc -b tsconfig.build.json
+
+exit 0
+6:52  4 users, load averages: 7.10 7.96 8.90
+$ pnpm exec eslint tools --max-warnings 0
+
+exit 0
+6:52  4 users, load averages: 6.69 7.86 8.86
+$ pnpm run lint:design
+$ node tools/lint_design.mjs
+design lint passed: 393 file(s) scanned
+
+exit 0
+
+Final pose recheck (restored anticipation ratio bound and explicit wind-up/release geometry):
+6:52  4 users, load averages: 5.41 7.47 8.69
+$ python3 -m unittest tools/blender/test_cook_poses.py
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.731s
+
+OK
+exit 0
