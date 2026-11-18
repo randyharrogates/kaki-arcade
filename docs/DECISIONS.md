@@ -1447,3 +1447,13 @@ distort; (5) the last wrong press that unlocks everyone again is heard, so the p
 the seats that pressed wrongly in that step (public anyway: the TV shows who has answered,
 RZ-005). Volume levels are read and saved from the TV's device before any sound has played.
 
+**D-170 · 2026-11-18 · Claude** (under D-057 and D-157; R-04 review) — Choices R-04 made that D-157's
+board does not cover: (1) the TV shows a settings refusal too (the board shows it only on the
+phone), on its own line under the summary with the value kept visible, because everyone at the TV
+needs to know why Start is blocked; (2) the leader's phone header is hidden while setting up, so the
+settings panel has the whole screen (D-157); watchers keep their header (round H); (3) no new line
+height: headings use the display line-height token, not 1.05; (4) the group chip ("All of …")
+shows its on state by fill and border only, with no tick, so it stays on one line; (5) the chosen
+value always shows a tick, never a cross, even when another setting has made it unavailable.
+Randy may overrule.
+
