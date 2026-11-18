@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — C-22: scores per game across a TV reload
+
+- PLAT-009: the host snapshot keeps completed-round scores per game id; a host reload restores
+  room, seats, teams, leader and last results and drops the running match; older one-number
+  snapshots load with their scores dropped (D-226, D-270). Eight-phone C-15 run passed.
+
 ## 2026-11-19 — K-10: selected face-down card
 
 - PP-005: a picked face-down card on the phone keeps its white inset frame and shows a centred

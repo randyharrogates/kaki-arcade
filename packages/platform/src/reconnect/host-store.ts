@@ -17,8 +17,8 @@ export interface HostSnapshotInput {
   credentials: HostCredentials;
   createdAt: number;
   room: RoomState;
-  /** Cumulative session scores, keyed by seat-N, independent of the interrupted round. */
-  scores: Readonly<Record<string, number>>;
+  /** Completed-round totals keyed by seat-N, then game module metadata id. */
+  scores: Readonly<Record<string, Readonly<Record<string, number>>>>;
   results: readonly Results[];
   selection: { id: string; settings: JsonValue; saved: JsonValue } | null;
 }
@@ -95,7 +95,8 @@ function valid(value: unknown, now: number, selection: ValidateSelection): value
     value.room.players.some(p => p.disconnectedAt !== null && p.disconnectedAt > (value.writtenAt as number)) ||
     !object(value.scores) ||
     Object.keys(value.scores).length > 8 ||
-    !Object.entries(value.scores).every(([id, score]) => /^seat-[1-8]$/.test(id) && finite(score)) ||
+    !Object.entries(value.scores).every(([id, games]) => /^seat-[1-8]$/.test(id) && object(games) &&
+      Object.entries(games).every(([gameId, score]) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(gameId) && finite(score))) ||
     !Array.isArray(value.results) || value.results.length > 1 || !value.results.every((r: unknown) => validResults(r))) return false;
   const picked = value.selection;
   return picked === null || object(picked) && keys(picked, ['id', 'settings', 'saved']) &&
@@ -154,6 +155,10 @@ export function createHostSnapshotStore(o: {
         if (text.length > HOST_SNAPSHOT_BYTES || storageBytes(text) > HOST_SNAPSHOT_BYTES)
           throw new Error('Invalid host snapshot');
         const snapshot: unknown = JSON.parse(text);
+        // Legacy totals may span games: retain identity/results without guessing attribution.
+        if (object(snapshot) && object(snapshot.scores) && safeJson(snapshot) &&
+          Object.entries(snapshot.scores).every(([id, score]) => /^seat-[1-8]$/.test(id) && finite(score)) &&
+          Object.keys(snapshot.scores).length <= 8) snapshot.scores = {};
         if (!valid(snapshot, o.clock.now(), o.validateSelection) ||
           expectedCode !== undefined && snapshot.credentials.code !== expectedCode)
           throw new Error('Invalid host snapshot');

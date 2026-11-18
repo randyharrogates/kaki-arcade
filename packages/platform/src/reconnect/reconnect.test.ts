@@ -105,7 +105,7 @@ async function rig(count = 1, teams = false) {
     const storage = new MemoryStorage();
     const store = createHostSnapshotStore({ storage, clock, validateSelection: () => false });
     store.write({ credentials: host.credentials, createdAt: 1000, room: room.room,
-      scores: { 'seat-1': 83 }, results: [], selection: null });
+      scores: { 'seat-1': { 'test-game': 83 } }, results: [], selection: null });
     runner = undefined; room.stop(); host.stop(); peers.clear(); restoring = true;
     clock.advance(absenceMs); await settle(clock);
     const restored = await restoreHost({ store, clock, reopen: async (_credentials, registerStop) => {
@@ -244,7 +244,7 @@ describe('PLAT-009 host reload with automatic phone recovery', () => {
         r.clock.advance(2000); r.phones[2]?.lifecycle('wake'); await settle(r.clock);
       }
       r.clock.advance(1000); await settle(r.clock);
-      expect(restored.scores).toEqual({ 'seat-1': 83 });
+      expect(restored.scores).toEqual({ 'seat-1': { 'test-game': 83 } });
       expect(r.room.room.phase).toBe('lobby');
       const after = [...r.room.room.players].sort((a, b) => a.seat - b.seat)
         .map(p => [p.seat, p.name, p.colour, p.team, p.seatToken]);

@@ -460,7 +460,11 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       if (event.type === 'paused') roomAdapter?.host({ type: 'phase', phase: event.paused ? 'paused' : 'playing', allowRunningJoin: runningAllowsJoin });
       else if (event.type === 'results') {
         if (snapshot && roomAdapter?.room.phase !== 'results') {
-          snapshot.scores = { ...snapshot.scores, ...Object.fromEntries(event.results.players.map(p => [p.id, (snapshot?.scores[p.id] ?? 0) + p.score])) };
+          const gameId = gameMetas.find(game => game.id === picker.focus)?.id;
+          if (gameId) snapshot.scores = { ...snapshot.scores, ...Object.fromEntries(event.results.players.map(p => {
+            const games = snapshot?.scores[p.id] ?? {};
+            return [p.id, { ...games, [gameId]: (games[gameId] ?? 0) + p.score }];
+          })) };
           snapshot.results = [event.results];
         }
         picker = { ...picker, screen: sessionRegistrations[picker.focus]?.finalScreen ? 'starting' : 'start', revision: picker.revision + 1 };

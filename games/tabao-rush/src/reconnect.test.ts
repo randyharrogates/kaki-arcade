@@ -72,7 +72,7 @@ describe('PLAT-007 PLAT-009 tabaoRush reconnect', { timeout: 60_000 }, () => {
     const state = r.session.state;
     if (state === undefined) throw new Error('Missing state');
     const results = safeSessionResults(game, state, [game.results(state)]);
-    const scores = { 'seat-1': 83, 'seat-2': 42 };
+    const scores = { 'seat-1': { [game.meta.id]: 83 }, 'seat-2': { [game.meta.id]: 42 } };
     expect(r.store.write({ credentials: { code: 'BCDF2345', hostToken: 'a'.repeat(32) },
       createdAt: 1000, room: r.room, scores, results, selection: savedSelection(game, state, settings),
     })).toBe(true);

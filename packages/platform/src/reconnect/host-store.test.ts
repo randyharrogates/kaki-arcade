@@ -15,7 +15,7 @@ function setup(count = 8) {
     { deviceId: `d${String(i)}`, connectionId: `c${String(i)}` },
     { type: 'join', name: `Guest ${String(i)}`, seatToken: String(i).repeat(32) }, clock.now()).state;
   const input: HostSnapshotInput = { credentials: { code: CODE, hostToken: SECRET }, createdAt: 1000,
-    room, scores: { 'seat-1': 83, 'seat-2': 42 }, results: [{ mode: 'players', players: [
+    room, scores: { 'seat-1': { 'test-game': 83 }, 'seat-2': { 'test-game': 42 } }, results: [{ mode: 'players', players: [
       { id: 'seat-1', place: 1, score: 83, joinedMidGame: false },
     ] }], selection: null };
   const store = createHostSnapshotStore({ storage, clock,
@@ -28,6 +28,16 @@ function reopened() {
 }
 
 describe('PLAT-009 bounded host persistence and strict restore', () => {
+  it('loads legacy numeric totals without assigning mixed-game scores to a game', async () => {
+    const r = setup(); expect(r.store.write(r.input)).toBe(true);
+    const legacy = JSON.parse(r.storage.getItem(HOST_STORAGE_KEY) ?? '{}') as Record<string, unknown>;
+    legacy.scores = { 'seat-1': 125, 'seat-2': 42 };
+    r.storage.setItem(HOST_STORAGE_KEY, JSON.stringify(legacy));
+    const restored = await restoreHost({ store: r.store, clock: r.clock, reopen: reopened });
+    expect(restored).toMatchObject({ scores: {}, results: r.input.results, room: { phase: 'lobby', leader: r.input.room.leader } });
+    expect(restored && !restored.retryable && restored.room.players).toHaveLength(8);
+  });
+
   it.each(['lobby', 'playing', 'paused', 'results'] as const)('restores %s to lobby with names, teams, leader and scores', async phase => {
     const r = setup();
     let room = applyHostEvent(r.input.room,
@@ -197,7 +207,7 @@ describe('DATA-002 lifecycle flush', () => {
     const checkpoints = createHostCheckpoints({ store: r.store, clock: r.clock,
       capture() { captures++; return { ...r.input, scores }; },
       lifecycle: { subscribe(receive) { hide = receive; return () => { /* No DOM. */ }; } } });
-    checkpoints.checkpoint(); scores = { 'seat-1': 99 }; checkpoints.checkpoint();
+    checkpoints.checkpoint(); scores = { 'seat-1': { 'test-game': 99 } }; checkpoints.checkpoint();
     r.clock.advance(10);
     for (let i = 0; i < 100; i++) hide();
     expect(r.store.read()?.scores).toEqual(scores);
@@ -238,9 +248,9 @@ describe('D-086 optional capture and definitive refusals', () => {
     const r = setup(); let score = 1;
     let lifecycle: (event?: 'pageshow' | 'pagehide' | 'hidden') => void = () => undefined;
     const cp = createHostCheckpoints({ store: r.store, clock: r.clock,
-      capture: () => ({ ...r.input, scores: { 'seat-1': score } }),
+      capture: () => ({ ...r.input, scores: { 'seat-1': { 'test-game': score } } }),
       lifecycle: { subscribe(receive) { lifecycle = receive; return () => undefined; } } });
     lifecycle('pagehide'); lifecycle('pageshow'); score = 2; lifecycle('hidden');
-    expect(r.store.read()?.scores).toEqual({ 'seat-1': 2 }); cp.stop();
+    expect(r.store.read()?.scores).toEqual({ 'seat-1': { 'test-game': 2 } }); cp.stop();
   });
 });

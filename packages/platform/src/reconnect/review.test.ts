@@ -105,7 +105,7 @@ async function rig(count = 1, teams = false) {
     const storage = new MemoryStorage();
     const store = createHostSnapshotStore({ storage, clock, validateSelection: () => false });
     store.write({ credentials: host.credentials, createdAt: 1000, room: room.room,
-      scores: { 'seat-1': 83 }, results: [], selection: null });
+      scores: { 'seat-1': { 'test-game': 83 } }, results: [], selection: null });
     runner = undefined; room.stop(); host.stop(); peers.clear(); restoring = true;
     clock.advance(absenceMs); await settle(clock);
     const restored = await restoreHost({ store, clock, reopen: async (_credentials, registerStop) => {
@@ -271,11 +271,11 @@ describe('review: PLAT-009 holds and snapshot', () => {
     const r = hostSetup(1); let score = 1;
     let hide: () => void = () => undefined;
     const cp = createHostCheckpoints({ store: r.store, clock: r.clock,
-      capture: () => ({ ...r.input, scores: { 'seat-1': score } }),
+      capture: () => ({ ...r.input, scores: { 'seat-1': { 'test-game': score } } }),
       lifecycle: { subscribe(f) { hide = f; return () => undefined; } } });
     hide(); r.clock.advance(5000); score = 2; cp.checkpoint();
     r.clock.advance(100); score = 3; cp.checkpoint(); hide();
-    expect(r.storage.getItem(HOST_STORAGE_KEY)).toContain('"seat-1":3');
+    expect(r.storage.getItem(HOST_STORAGE_KEY)).toContain('"test-game":3');
     cp.stop();
   });
 });

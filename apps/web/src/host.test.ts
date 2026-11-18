@@ -336,11 +336,24 @@ it('PLAT-009 checkpoints completed scores once and restores them after an interr
   host.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
   const results = { mode: 'coop' as const, score: 16, players: [{ id: 'seat-1', score: 16, place: 1, joinedMidGame: false }] };
   host.sessionEvent({ type: 'results', results }); host.sessionEvent({ type: 'results', results });
+  const firstGame = host.picker.focus;
+  host.returnToPicker(); f.advance(1000); host.leaderInput('a', 'next');
+  const secondGame = host.picker.focus;
+  expect(secondGame).not.toBe(firstGame);
+  host.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
+  host.sessionEvent({ type: 'results', results: { ...results, players: [{ id: 'seat-1', score: 7, place: 1, joinedMidGame: false }] } });
+  host.returnToPicker();
+  // Another completed round of the second game accumulates only there.
+  host.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
+  host.sessionEvent({ type: 'results', results });
   host.returnToPicker(); host.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
-  f.lifecycle('pagehide'); host.stop();
+  f.lifecycle('pagehide');
+  const beforeReload = JSON.parse(f.values.get(HOST_STORAGE_KEY) ?? '{}') as { scores: unknown };
+  expect(beforeReload.scores).toEqual({ 'seat-1': { [firstGame]: 16, [secondGame]: 23 } });
+  host.stop();
   const restored = f.make(); await restored.start(); f.lifecycle('hidden');
   const saved = JSON.parse(f.values.get(HOST_STORAGE_KEY) ?? '{}') as { scores: unknown; results: unknown };
-  expect(saved.scores).toEqual({ 'seat-1': 16 }); expect(saved.results).toEqual([results]);
+  expect(saved.scores).toEqual(beforeReload.scores); expect(saved.results).toEqual([results]);
   expect(restored.room.phase).toBe('lobby'); restored.stop();
 });
 
@@ -349,6 +362,11 @@ it.each(['left', 'expired'])('PLAT-009 clears completed scores when a seat is %s
   f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v, t: 'hello', name: 'Fern' });
   host.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
   host.sessionEvent({ type: 'results', results: { mode: 'coop', score: 16, players: [{ id: 'seat-1', score: 16, place: 1, joinedMidGame: false }] } });
+  host.returnToPicker(); f.advance(1000); host.leaderInput('a', 'next');
+  host.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
+  host.sessionEvent({ type: 'results', results: { mode: 'players', players: [{ id: 'seat-1', score: 7, place: 1, joinedMidGame: false }] } });
+  f.lifecycle('pagehide');
+  expect(Object.keys((JSON.parse(f.values.get(HOST_STORAGE_KEY) ?? '{}') as { scores: Record<string, object> }).scores['seat-1'] ?? {})).toHaveLength(2);
   host.returnToPicker();
   if (reason === 'left') f.callbacks.control('a', { v, t: 'leave' });
   else { f.callbacks.dropped('a'); f.advance(120001); }

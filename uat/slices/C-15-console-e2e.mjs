@@ -59,8 +59,8 @@ export default async function consoleE2e(h) {
     await leader.getByRole('button', { name: 'Back to game picker', exact: true }).click();
     await h.host.getByRole('main', { name: 'Game picker', exact: true }).waitFor();
     await h.host.keyboard.press('Escape');
-    await h.host.waitForFunction(() => sessionStorage.getItem('kaki.host-reconnect.v1')?.includes('"seat-1":16'));
-    priorScores = await h.host.evaluate(() => sessionStorage.getItem('kaki.host-reconnect.v1')?.match(/"scores":(\{[^}]*\})/)?.[1]);
+    await h.host.waitForFunction(() => sessionStorage.getItem('kaki.host-reconnect.v1')?.includes('"seat-1":{"console-e2e":16'));
+    priorScores = await h.host.evaluate(() => sessionStorage.getItem('kaki.host-reconnect.v1')?.match(/"scores":(\{(?:[^{}]|\{[^{}]*\})*\})/)?.[1]);
   });
   await h.step('Leader picks and starts the module', async () => { await start(); await privacy(); await shots('02-started');
     for (const { width, height } of [{ width: 667, height: 375 }, { width: 844, height: 390 }, { width: 932, height: 430 }]) {
@@ -151,7 +151,7 @@ export default async function consoleE2e(h) {
     assert.equal((await h.host.getByLabel(/^Room code /).getAttribute('aria-label') ?? '').replace(/^Room code /, '').replace(/\s/g, ''), h.code);
     assert.equal(await h.host.locator('[data-console-total]').count(), 0, 'PLAT-009 running round is lost');
     for (const phone of phones) { assert.equal(await phone.locator('.ka-private-panel').count(), 0); assert.equal(await phone.getByRole('button', { name: 'Advance', exact: true }).count(), 0); }
-    assert.deepEqual(await h.host.evaluate(() => sessionStorage.getItem('kaki.host-reconnect.v1')?.match(/"scores":(\{[^}]*\})/)?.[1]), priorScores, 'PLAT-009 prior completed scores survive');
+    assert.deepEqual(await h.host.evaluate(() => sessionStorage.getItem('kaki.host-reconnect.v1')?.match(/"scores":(\{(?:[^{}]|\{[^{}]*\})*\})/)?.[1]), priorScores, 'PLAT-009 prior completed scores survive');
     await shots('09-host-recovered-lobby');
     // Frame-strip helpers mutate a shared capture list: use a second real mid-play reload
     // for the TV strip, rather than running two strip builders concurrently.

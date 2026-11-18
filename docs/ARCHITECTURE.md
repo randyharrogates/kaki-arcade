@@ -318,7 +318,7 @@ Only the cue's oscillators and envelope gains are created during playback; no fi
   change what the phone shows; only with no open data channel do they mean the room is gone or
   the phone has been replaced (D-095 f). An ICE 'disconnected' state counts as channel loss only if it lasts 3 seconds. On the host, a room reported gone while a game is running over open links enters a closed state: play continues, no new phone or local join is accepted, the code is hidden and nothing more is checkpointed; after the game the TV offers a new room (D-099). A newly
   entered valid room code wins over a stored seat. The host keeps its credentials, the room
-  (seats, names, colours, teams, leader and each phone's original drop time), the last results, cumulative per-seat scores from completed rounds
+  (seats, names, colours, teams, leader and each phone's original drop time), the last results, completed-round totals keyed by seat and then by game id (a results screen adds to the selected game's total once; an interrupted round adds nothing; a freed seat loses all its totals; a stored snapshot from before C-22 with one number per seat keeps its room and results and drops its scores, D-226, D-270)
   and the game selection with its `save()` output in `sessionStorage`
   (`kaki.host-reconnect.v1`, at most 64 KiB). It writes at most once a second plus at every
   page exit, never per step, and a good snapshot is never erased because a newer one could not
