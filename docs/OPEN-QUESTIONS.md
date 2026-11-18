@@ -144,7 +144,8 @@ say if the D-pad form was meant. Needed by: M6.
 **OQ-040 · A TV nobody has touched plays no sound (raised 2026-11-18 by R-07's review).**
 Browsers only start audio after a click or key press on that page. If the room is created and the
 whole game is run from phones, the TV may never get one, and RZ-033's sounds (and later Tabao
-Rush's) stay silent. Options: a one-line "Press any key for sound" note on the TV (a visible change,
+Rush's) stay silent. A game pad does not count either: browsers do not treat game-pad input as a
+gesture, so a TV played only by a pad (C-12) also stays silent. Options: a one-line "Press any key for sound" note on the TV (a visible change,
 so it would go to Randy as an artifact), or accept silence until someone touches the TV. Needed by:
 M6.
 
