@@ -260,6 +260,11 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   masked with room for its ink, and a browser checker compares measured ink with each mask (480
   screen states, none clipped). Screen transitions held 16.7 ms frames in the performance run.
   Not proven: inside the console (R-02 wires the game), sounds (RZ-033).
+- **Rabakz sounds (R-07 part 1, merged 2026-11-18).** The TV plays answers open, buzz-in seat
+  notes, right and wrong (D-168 Mallet set, D-169 timing), through a limiter whose make-up gain
+  is cancelled. Effects and Music levels are saved; their pause-panel rows are part 2. Not heard
+  on a real TV yet; the volume against the D-168 artifact needs Randy's ear. A TV that no one has
+  touched stays silent (OQ-040).
 - **Rabakz TV screen (R-03), development page only.** The question, four options with letter
   and shape, who has answered, lock-outs and wrong options marked without colour alone, and
   the reveal, at reading size for 720p to 4K with eight players. A correct option pulses once

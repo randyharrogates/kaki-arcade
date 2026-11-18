@@ -22,3 +22,5 @@ function equalDisplay(a: unknown, b: unknown): boolean {
   for (const field in b) if (!Object.hasOwn(a, field)) return false;
   return true;
 }
+
+export { scheduleCue } from './sound';

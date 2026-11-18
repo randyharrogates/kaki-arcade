@@ -1,13 +1,13 @@
 import { createSession } from '@kaki/platform';
-import type { GameModule, InitContext, JsonValue, RoomState, SessionEvent, SessionFrames, SessionTransport } from '@kaki/platform';
+import type { GameModule, InitContext, JsonValue, RoomState, SessionEvent, SessionFrames, SessionTransport, Sound } from '@kaki/platform';
 import { createInputBuffer } from '@kaki/sim-core';
 import { INPUT_STALE_STEPS, SEQ_MODULO } from '@kaki/protocol';
 import type { ComponentType } from 'preact';
 
 // The registry erases the individual module's state/settings types at this boundary only.
 export type LoadedGame = GameModule<unknown, object>;
-export type HostScreen = ComponentType<{ view: never; width: number; height: number }>;
-export interface SessionDisplay { gameId: string; view: unknown; Screen?: HostScreen; paused?: boolean; finalScreen?: boolean; results?: Extract<SessionEvent, { type: 'results' }>['results'] }
+export type HostScreen = ComponentType<{ view: never; width: number; height: number; sound?: Sound | undefined; soundHistory?: { previous: unknown } | undefined }>;
+export interface SessionDisplay { gameId: string; view: unknown; Screen?: HostScreen; soundHistory?: { previous: unknown }; paused?: boolean; finalScreen?: boolean; results?: Extract<SessionEvent, { type: 'results' }>['results'] }
 export function hostScreen(display: SessionDisplay | null, lobby: boolean): string { return display ? display.results ? display.finalScreen ? 'game' : 'results' : 'game' : lobby ? 'lobby' : 'picker'; }
 export interface AdapterOptions {
   load(id: string): Promise<{ game: LoadedGame; Screen?: HostScreen; viewKey?: (view: unknown) => unknown; finalScreen?: boolean }>;
@@ -49,7 +49,7 @@ export function createSessionAdapter(o: AdapterOptions) {
       if (current !== generation) throw new Error('Cancelled');
       const setup = { failed: false };
       const isFailed = (): boolean => setup.failed;
-      let display: SessionDisplay = { gameId, view: null, ...(loaded.Screen ? { Screen: loaded.Screen } : {}) };
+      let display: SessionDisplay = { gameId, view: null, soundHistory: { previous: null }, ...(loaded.Screen ? { Screen: loaded.Screen } : {}) };
       let previousView: unknown;
       const next = createSession({ game: loaded.game, ...prepared, seed, room: latestRoom, buffer,
         transport: { ...o.transport, subscribe(receive) { stopTransport = o.transport.subscribe(receive); return () => { stopTransport?.(); stopTransport = undefined; }; } },

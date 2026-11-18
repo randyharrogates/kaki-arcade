@@ -1,3 +1,5 @@
+import type { Sound } from '@kaki/platform';
+import { cuesFor, scheduleCue } from './sound';
 import { useContext, useLayoutEffect, useRef, useState } from 'preact/hooks';
 import { createContext } from 'preact';
 import type { ComponentChildren } from 'preact';
@@ -256,9 +258,17 @@ export function loadScreenFonts(fonts: { ready: Promise<unknown>; load: (name: s
   }).catch(() => { /* Keep the current fallback fit when a face cannot load. */ });
 }
 
-export function RabakzScreen({ view, width, height, reduced = reducedMotion(), slow = 1, frozenAt }: {
-  view: RabakzPublicView; width: number; height: number; reduced?: boolean; slow?: number; frozenAt?: number | undefined;
+export function RabakzScreen({ view, width, height, reduced = reducedMotion(), slow = 1, frozenAt, sound, soundHistory }: {
+  view: RabakzPublicView; width: number; height: number; sound?: Sound | undefined; soundHistory?: { previous: unknown } | undefined; reduced?: boolean; slow?: number; frozenAt?: number | undefined;
 }) {
+  const previousSoundView = useRef<RabakzPublicView | null>(null);
+  useLayoutEffect(() => {
+    if (!sound) return;
+    const previous = soundHistory ? soundHistory.previous as RabakzPublicView | null : previousSoundView.current;
+    for (const cue of cuesFor(previous, view)) sound.play(scheduleCue(cue));
+    previousSoundView.current = view;
+    if (soundHistory) soundHistory.previous = view;
+  }, [view, sound, soundHistory]);
   const viewport = useRef<HTMLDivElement>(null);
   const [fontEpoch, setFontEpoch] = useState(0);
   const [measure, setMeasure] = useState<MeasureText>(() => fallback);

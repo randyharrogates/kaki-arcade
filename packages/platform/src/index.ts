@@ -11,3 +11,4 @@ export * from './picker';
 
 export * from './storage/index';
 export * from './teams';
+export * from './sound';

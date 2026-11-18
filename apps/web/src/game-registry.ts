@@ -1,7 +1,7 @@
 import { THEMES } from '@kaki/ui';
 import { createRng, nextFloat } from '@kaki/sim-core';
 import { settingsSchema, validateSettings } from '@kaki/platform';
-import type { GameModule, JsonValue, InitContext } from '@kaki/platform';
+import type { GameModule, JsonValue, InitContext, SoundCue } from '@kaki/platform';
 // The registry is the sole app-level knowledge of installed modules (PLAT-020).
 import { meta as tabaoRush } from '../../../games/tabao-rush/src/meta';
 import { meta as peekPoker } from '../../../games/peek-poker/src/meta';
@@ -68,3 +68,5 @@ export const sessionRegistrations: Record<string, SessionRegistration> = {
     },
   },
 };
+
+export async function loadSoundDemo(): Promise<(cue: { kind: 'unlock' | 'correct' | 'wrong' } | { kind: 'answer'; seat: number }) => SoundCue> { return (await import('@kaki/game-rabakz/host')).scheduleCue; }

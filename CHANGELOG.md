@@ -2,6 +2,17 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — R-07 part 1: Rabakz sounds on the TV
+
+- RZ-033 (in progress): the TV plays D-168's Mallet set: answers open, a buzz-in note per seat,
+  right and wrong, timed by D-169. Each wrong press is counted per player for the question, so
+  every buzz is heard once however many steps run between frames; two wrong presses in one step
+  play their seat notes 30 ms apart and one "wrong" after them.
+- A limiter on the Effects bus, with its make-up gain cancelled (×0.6745) so cues stay at the
+  D-168 level. Effects and Music levels are read and saved before the first gesture.
+- Not yet: the pause-panel level rows (part 2), a listen on a real TV, and OQ-040 (no sound until
+  the TV is touched; a game pad does not count).
+
 ## 2026-11-18 — C-12: the TV works from a keyboard, plus a keyboard or pad player
 
 - `apps/web/src/host-keyboard.ts`, `host-route.tsx`, `picker-route.tsx`, `style.css`: arrow keys,

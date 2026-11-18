@@ -46,7 +46,7 @@ export const rabakz: GameModule<State, Settings, ReturnType<typeof publicView>> 
     });
     return { rng, questions, settings, nextSeat: players.length, retiredRevisions: {}, players: players.map((info, index) => seat(info, false, index)),
       teams: teamsInUse(players), teamScores: [0, 0], round: 0, phase: 'question',
-      tick: 0, elapsed: 0, firstCorrect: null, wrong: [], winners: [] };
+      wrongPresses: {}, tick: 0, elapsed: 0, firstCorrect: null, wrong: [], winners: [] };
   },
   step,
   join(state, player) {

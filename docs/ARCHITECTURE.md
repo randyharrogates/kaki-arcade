@@ -155,6 +155,24 @@ Rules:
   game knowledge); `apps/web/src/game-registry.ts` is the only list of installed games. A
   game's index module is fetched when it is selected and loaded at Start.
 
+The TV sound service (R-07, RZ-033) lives in `packages/platform/src/sound.ts`:
+`apps/web/src/host-sound.ts` creates one context and its master, Effects and Music gain
+nodes on the first TV click, pointer press or key, resumes it on gestures, and passes a
+`Sound` API to the active game's host screen. Levels default to 70 and 55, persist in the
+TV's local storage with blocked-storage fallback, and expose `getLevel`/`setLevel` for the
+pause panel. Games provide scheduling functions to `sound.play`; Rabakz's Mallet synthesis
+and pure public-view transition selection live only in `games/rabakz/host/sound.ts`.
+D-169 adds a pre-created limiter on the Effects bus; cues may be scheduled while
+context resume is pending. Levels load/save before the first audio gesture.
+Rabakz's public view includes `wrongPresses: Record<number, number>` (RZ-005,
+RZ-033): running accepted wrong-press counts per seat for the current question,
+including the press that clears every pick and unlocks all players. Counts reset on
+the next question; the screen compares counts to retain presses across simulation steps. It exposes
+no correct press before reveal. Session-owned view history prevents replay across
+screen remounts and inactive layers; together-arriving seats sound 30 ms apart,
+with right or one wrong starting 233 ms after the final seat note (D-169).
+Only the cue's oscillators and envelope gains are created during playback; no files load.
+
 ## 5. Networking
 
 - **Transport:** two WebRTC data channels per phone, both created by the host, which always

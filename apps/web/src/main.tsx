@@ -22,6 +22,12 @@ function ControllerDemoRoute() {
   const Demo = demo;
   return Demo ? <Demo/> : null;
 }
+function SoundDemoRoute() {
+  const [demo, setDemo] = useState<ComponentType | null>(null);
+  useLayoutEffect(() => { if (import.meta.env.DEV) void import('./host-sound-demo').then(module => { setDemo(() => module.HostSoundDemo); }); }, []);
+  const Demo = demo;
+  return Demo ? <Demo/> : null;
+}
 function App() {
   useLayoutEffect(() => {
     const resize = (): void => {
@@ -41,6 +47,7 @@ function App() {
   }, []);
   const path = location.pathname.replace(/\/$/, '') || '/';
   if (import.meta.env.DEV && path === '/play' && new URLSearchParams(location.search).get('demo') === 'controller') return <ControllerDemoRoute/>;
+  if (import.meta.env.DEV && path === '/host/sound') return <SoundDemoRoute/>;
   if (path === '/play') return <PhonePage/>;
   if (path === '/host') return <HostLobby/>;
   if (path === '/') return <Landing/>;

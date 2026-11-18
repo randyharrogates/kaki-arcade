@@ -43,6 +43,8 @@ export interface State {
     readonly current: ScoreboardTotals;
     readonly previous?: ScoreboardTotals;
   };
+  /** Accepted wrong presses per seat for this question; no answer choices or timing. */
+  readonly wrongPresses: Readonly<Record<number, number>>;
   readonly rng: RngState;
   readonly nextSeat: number;
   readonly retiredRevisions: Readonly<Record<string, number>>;

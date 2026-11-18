@@ -34,7 +34,7 @@ function advance(state: State): State {
   const round = state.round + 1;
   return { ...state, round,
     phase: round === state.settings.length * 0.9 ? 'final' : 'question', elapsed: 0,
-    firstCorrect: null, wrong: [], winners: [], players: state.players.map((player) => ({
+    firstCorrect: null, wrong: [], wrongPresses: {}, winners: [], players: state.players.map((player) => ({
       ...player, eligible: true, pick: null, gained: 0, answers: [],
       privateRevision: player.privateRevision + 1,
     })) };
@@ -48,6 +48,7 @@ function answer(state: State, id: string, pick: number, disabled: readonly numbe
   players[index] = { ...player, pick, streak: correct ? player.streak : 0,
     answers: [...player.answers, pick], privateRevision: player.privateRevision + 1 };
   return { ...state, players,
+    wrongPresses: correct ? state.wrongPresses : { ...state.wrongPresses, [player.info.seat]: (state.wrongPresses[player.info.seat] ?? 0) + 1 },
     winners: correct ? [...state.winners, player] : state.winners,
     firstCorrect: correct ? state.firstCorrect ?? state.tick : state.firstCorrect,
     wrong: correct || state.wrong.includes(pick) ? state.wrong : [...state.wrong, pick] };
