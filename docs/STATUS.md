@@ -6,6 +6,7 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
 **Last updated:** 2026-11-16 · **Milestone:** M0 complete. **Build started 2026-11-16 on Randy's go (D-043):** Wave 0 running. Design gate: boards 0, 0B, 1A, 2 and 2B done; 1, 3, 4 and 5 to come.
 
 ## Works
+- **Peek Poker full match in the console (P-07, merged 2026-11-18; PP-001–PP-011, PP-020, PP-021, PP-031, PP-032, PLAT-033).** A default five-round match runs end to end at 3 and 8 phones: lobby, picker, Start, five rounds of memorise, swaps, pick, reveal and scoreboard, then the podium and Continue to the picker. No pick or hidden card reached the TV or another phone before the reveal in any round. With eight players, seven or eight seat markers on one card leave its rank and corner suit readable (D-241). Known: after the last round the scoreboard says "Next round in 5 seconds" until P-10 merges; tied hands are listed by seat until P-11 (D-223). Not covered: real phones, a real TV, late join, all-locked early end.
 - **Browser matrix, part 1 (X-05, merged 2026-11-18; REL-004 and REL-006 in progress).** `pnpm uat`
   can put the TV in Playwright Chromium, branded Chrome or Playwright WebKit and the phones in
   Chromium (Pixel 7) or WebKit (iPhone 13), each engine launched once and closed on every path.

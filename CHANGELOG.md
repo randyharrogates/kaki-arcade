@@ -2,6 +2,17 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — P-07: Peek Poker full-match UAT
+
+- PP-001–PP-011, PP-031, PLAT-033: full five-round console match at 3 and 8 phones, with an
+  independent scoring oracle and stills of every phase (`uat/evidence/P-07-full-match/round3-p3/`,
+  `round3-p8/`).
+- PP-020, PP-021: allow-list secrecy checks on every public view, every decoded phone message and
+  every pick-phase DOM frame; nothing leaked.
+- PP-008: seven and eight seat markers on one card stay readable (D-241).
+- Found: the final-round scoreboard says "Next round in 5 seconds" (PP-032, back to in progress
+  until P-10); tied-hand order decided as D-223 (P-11).
+
 ## 2026-11-18 — Delegated decisions
 
 - D-214 to D-253, decided by Claude under Randy's delegation of 2026-11-18 ("make the decisions
