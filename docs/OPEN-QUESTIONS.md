@@ -129,3 +129,16 @@ reveal; only a wrong answer changes a seat, to "Locked out". This reads RZ-005 n
 Randy changes the game spec, so its wording is left as it is until he confirms or overrules.
 Needed by: R-03 (built this way), R-04 (the phone's own feedback).
 
+**OQ-039 · Rabakz setup wording in the game spec (raised 2026-11-18 by R-04's review).**
+`docs/games/rabakz.md` §3 lists "Setup (leader only) | D-pad and cross … 'The leader is setting
+up'", but D-157 (the decided board) has the leader tap settings on the phone and watchers read
+"⟨leader⟩ is setting up". Built as D-157. Only Randy changes the spec: update §3 to match D-157, or
+say if the D-pad form was meant. Needed by: M6.
+
+**OQ-040 · A TV nobody has touched plays no sound (raised 2026-11-18 by R-07's review).**
+Browsers only start audio after a click or key press on that page. If the room is created and the
+whole game is run from phones, the TV may never get one, and RZ-033's sounds (and later Tabao
+Rush's) stay silent. Options: a one-line "Press any key for sound" note on the TV (a visible change,
+so it would go to Randy as an artifact), or accept silence until someone touches the TV. Needed by:
+M6.
+
