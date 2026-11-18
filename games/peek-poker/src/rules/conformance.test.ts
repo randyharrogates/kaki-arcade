@@ -1,10 +1,11 @@
+import { conformanceTimeout } from '@kaki/platform/kit';
 import * as fs from 'node:fs';
 import { expect, it } from 'vitest';
 import { readSources, runConformance, formatReport } from '@kaki/platform/kit';
 import { peekPoker } from './game';
 
 it('PP-001 PP-005 PP-012 PP-013 conformance at minimum and maximum counts',
-  { timeout: 120000 }, () => {
+  { timeout: conformanceTimeout(59415) }, () => {
     const report = runConformance(peekPoker, [
       { name: 'solo three rounds', players: 1, settings: { rounds: 3 },
         steps: 9000 },

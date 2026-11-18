@@ -536,6 +536,7 @@ function scoresOf(results: Results): Map<PlayerId, number> {
   return new Map(results.players.map((row) => [row.id, row.score]));
 }
 /** The path at which `state` holds one of the host's borrowed objects, or null. */
+// Build diagnostic paths only on a hit; successful steps need no path strings or entry pairs.
 function findBorrowed(
   value: unknown,
   borrowed: ReadonlySet<object>,
@@ -548,28 +549,24 @@ function findBorrowed(
   seen.add(value);
   if (value instanceof Map) {
     for (const [key, entry] of value as Map<unknown, unknown>) {
-      const found =
-        findBorrowed(key, borrowed, `${path}<key>`, seen) ??
-        findBorrowed(entry, borrowed, `${path}<${String(key)}>`, seen);
-      if (found !== null) return found;
+      const inKey = findBorrowed(key, borrowed, '', seen);
+      if (inKey !== null) return `${path}<key>${inKey}`;
+      const inEntry = findBorrowed(entry, borrowed, '', seen);
+      if (inEntry !== null) return `${path}<${String(key)}>${inEntry}`;
     }
     return null;
   }
   if (value instanceof Set) {
     for (const entry of value as Set<unknown>) {
-      const found = findBorrowed(entry, borrowed, `${path}<entry>`, seen);
-      if (found !== null) return found;
+      const found = findBorrowed(entry, borrowed, '', seen);
+      if (found !== null) return `${path}<entry>${found}`;
     }
     return null;
   }
-  for (const [key, entry] of Object.entries(value)) {
-    const found = findBorrowed(
-      entry,
-      borrowed,
-      Array.isArray(value) ? `${path}[${key}]` : `${path}.${key}`,
-      seen,
-    );
-    if (found !== null) return found;
+  const entries = value as Record<string, unknown>;
+  for (const key of Object.keys(value)) {
+    const found = findBorrowed(entries[key], borrowed, '', seen);
+    if (found !== null) return Array.isArray(value) ? `${path}[${key}]${found}` : `${path}.${key}${found}`;
   }
   return null;
 }
@@ -605,6 +602,7 @@ class Kit<State> {
   /** True once any state of any scenario declared a secret. */
   private sawSecrets = false;
   private readonly layoutChecks = new Map<string, readonly string[]>();
+  private readonly phoneFitChecks = new Map<string, readonly string[]>();
   constructor(
     private readonly module: GameOf<State>,
     private readonly options: ConformanceOptions,
@@ -818,7 +816,18 @@ class Kit<State> {
       let problems = this.layoutChecks.get(key);
       if (problems === undefined) {
         const found = [...checkLayout(layout), ...checkPrivateView(view)];
-        if (found.length === 0) found.push(...(view?.blocks.length ? checkPrivatePhoneFit(layout, view) : checkPhoneFit(layout, view)));
+        if (found.length === 0) {
+          // Revisions affect validation (including byte caps), but not phone placement.
+          // Cache only after full validation; still inspect fresh views on every step.
+          const fitKey = JSON.stringify([layout.controls, view?.blocks ?? null]);
+          let fit = this.phoneFitChecks.get(fitKey);
+          if (fit === undefined) {
+            fit = view?.blocks.length ? checkPrivatePhoneFit(layout, view) : checkPhoneFit(layout, view);
+            if (this.phoneFitChecks.size >= 512) this.phoneFitChecks.clear();
+            this.phoneFitChecks.set(fitKey, fit);
+          }
+          found.push(...fit);
+        }
         if (this.layoutChecks.size >= 512) this.layoutChecks.clear();
         this.layoutChecks.set(key, found);
         problems = found;
@@ -1797,10 +1806,12 @@ class Kit<State> {
           repeat = { before: cloneState(current), inputs: cloneState(tick), first };
         }
         next = stepChecked(checkedModule, current, tick, STEP_MS);
-        if (frozen && module.tinyStateReason === undefined && through.length === 0 &&
-            tick.joined.length === 0 && tick.departed.length === 0 && objectsIn(current).size >= 8) {
+        // Reuse this step's graph walk for both the size and sharing checks.
+        const currentObjects = frozen && module.tinyStateReason === undefined && through.length === 0 &&
+          tick.joined.length === 0 && tick.departed.length === 0 ? objectsIn(current) : null;
+        if (currentObjects !== null && currentObjects.size >= 8) {
           ledger.ran('sharing');
-          unshared = sharesObject(next, objectsIn(current)) ? 0 : unshared + 1;
+          unshared = sharesObject(next, currentObjects) ? 0 : unshared + 1;
           if (unshared >= 30) ledger.fail('sharing', where,
             '30 consecutive non-trivial steps copied every object; share unchanged parts');
         } else {

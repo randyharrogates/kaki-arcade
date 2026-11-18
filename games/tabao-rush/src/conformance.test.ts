@@ -1,3 +1,4 @@
+import { conformanceTimeout } from '@kaki/platform/kit';
 import * as fs from 'node:fs';
 import { expect, it } from 'vitest';
 import { formatReport, fuzzScript, readSources, runConformance } from '@kaki/platform/kit';
@@ -17,7 +18,7 @@ const buttonsAndSupply: Script = (context) => {
 };
 
 it('TR-002 TR-009 TR-023 TR-020 TR-021 TR-022 passes whole-match conformance at 1 and 8 players',
-  { timeout: 120000 }, () => {
+  { timeout: conformanceTimeout(59243) }, () => {
     const report = runConformance(tabaoRush, [
       { name: 'solo co-op', players: 1, steps: ROUND_STEPS + 1, seed: 4201, script: buttonsAndSupply },
       { name: 'eight-cook co-op', players: 8, steps: ROUND_STEPS + 1, seed: 4208, script: buttonsAndSupply },

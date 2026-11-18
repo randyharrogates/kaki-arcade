@@ -1,3 +1,4 @@
+import { conformanceTimeout } from './kit';
 import { describe, expect, it } from 'vitest';
 import {
   keep,
@@ -34,7 +35,7 @@ import type {
   Scenario,
 } from './conformance-support.test';
 describe('review round 1 attacks', () => {
-  it('requires both endpoint scenarios and whole matches at the minimum', () => {
+  it('requires both endpoint scenarios and whole matches at the minimum', { timeout: conformanceTimeout(1923) }, () => {
     const missing = keep(
       'BROKEN Dots: missing endpoint scenarios',
       runConformance(dots, DOTS_ONE, { sources: DOTS_SOURCES, allowImports: ['vitest'] }),
@@ -49,7 +50,7 @@ describe('review round 1 attacks', () => {
     });
     expect(said(alone, 'runs')).toMatch(/needs another player/);
   });
-  it('requires leave to tolerate zero players and empty teams without scoring', () => {
+  it('requires leave to tolerate zero players and empty teams without scoring', { timeout: conformanceTimeout(2065) }, () => {
     const zero = brokenDots('cannot leave to zero', {
       leave(state, id) {
         const next = dots.leave(state, id);
@@ -72,7 +73,7 @@ describe('review round 1 attacks', () => {
     );
     expect(said(team, 'min-players')).toMatch(/empty team/);
   });
-  it('rejects a missing, identity, or partially effective scramble', () => {
+  it('rejects a missing, identity, or partially effective scramble', { timeout: conformanceTimeout(1219) }, () => {
     const missing = { ...picks };
     delete missing.scrambleSecrets;
     const report = keep(
@@ -96,7 +97,7 @@ describe('review round 1 attacks', () => {
       ),
     ).toMatch(/left the secret "the bonus number"/);
   });
-  it('catches a disguised leak on just one other phone and only on some steps', () => {
+  it('catches a disguised leak on just one other phone and only on some steps', { timeout: conformanceTimeout(241) }, () => {
     const leak = brokenPicks('intermittent flag on just the second phone', {
       privateView(state, id) {
         const view = picks.privateView(state, id);
@@ -132,7 +133,7 @@ describe('review round 1 attacks', () => {
     });
     expect(said(disabled, 'secrets')).toMatch(/controllerLayout\(p\d\) changes/);
   });
-  it('catches uneven co-op scores, premature results.save and invalid save data', () => {
+  it('catches uneven co-op scores, premature results.save and invalid save data', { timeout: conformanceTimeout(106) }, () => {
     const uneven = brokenDots('co-op scores disagree', {
       results: (state) => ({
         mode: 'coop',
@@ -165,7 +166,7 @@ describe('review round 1 attacks', () => {
       ).join(),
     ).toMatch(/equal scores share a place/);
   });
-  it('catches a global revision counter, including dropped in-flight taps', () => {
+  it('catches a global revision counter, including dropped in-flight taps', { timeout: conformanceTimeout(98) }, () => {
     const report = brokenPicks('global revision changes when another player locks', {
       controllerLayout(state, id) {
         const layout = picks.controllerLayout(state, id);
@@ -180,7 +181,7 @@ describe('review round 1 attacks', () => {
     expect(failed(report)).not.toContain('repeat-taps');
     expect(failed(report)).not.toContain('late-taps');
   });
-  it('catches scoring twice or answering while locked in a single step', () => {
+  it('catches scoring twice or answering while locked in a single step', { timeout: conformanceTimeout(1020) }, () => {
     // A buzzer: first accepted answer locks this player. Wrong answers also lock out.
     // Use the fixture's seeded, secret-bearing state and score reporting.
     const buzzer: GameModule<PicksState, PicksSettings> = {
@@ -240,7 +241,7 @@ describe('review round 1 attacks', () => {
     expect(said(report, 'repeat-taps')).toMatch(/a second tap.*changed the result/);
   });
 });
-it('review attack: stepping after the match is over must still be safe', () => {
+it('review attack: stepping after the match is over must still be safe', { timeout: conformanceTimeout(283) }, () => {
   const report = brokenDots('throws after over', {
     step(state, inputs, dtMs) {
       if (state.leftSteps <= 0) throw new Error('already finished');
@@ -252,7 +253,7 @@ it('review attack: stepping after the match is over must still be safe', () => {
 it(
   'review attacks: Map mutation, input frames retained in a closure, ' +
     'and sorting a view in place',
-  () => {
+  { timeout: conformanceTimeout(1228) }, () => {
     interface WithMap extends DotsState {
       tally: Map<string, number>;
     }
@@ -295,7 +296,7 @@ it(
   },
 );
 // Round 2: generic versions of the independent review's shipped-game probes.
-it('round 2 catches late joins, last leaves, copies, results leaks and lock then pick', () => {
+it('round 2 catches late joins, last leaves, copies, results leaks and lock then pick', { timeout: conformanceTimeout(3529) }, () => {
   const join = brokenPicks('join throws after round one', {
     join(state, player) {
       if (state.round > 1) throw new Error('late join');
@@ -341,7 +342,7 @@ it('round 2 catches late joins, last leaves, copies, results leaks and lock then
   });
   expect(failed(lock)).toContain('repeat-taps');
 });
-it('round 2 checks private revisions and delayed outcomes independently', () => {
+it('round 2 checks private revisions and delayed outcomes independently', { timeout: conformanceTimeout(1496) }, () => {
   const stuck = brokenPicks('private revision stuck', {
     privateView(state, id) {
       const view = picks.privateView(state, id);
@@ -360,7 +361,7 @@ it('round 2 checks private revisions and delayed outcomes independently', () => 
   expect(failed(late)).not.toContain('layout');
   expect(failed(late)).not.toContain('repeat-taps');
 });
-it('round 2 allows co-op late joiners sharing the existing score', { timeout: 15000 }, () => {
+it('round 2 allows co-op late joiners sharing the existing score', { timeout: conformanceTimeout(4772) }, () => {
   const coop: GameModule<DotsState, DotsSettings> = {
     ...dots,
     meta: { ...dots.meta, coop: true, teams: 'none' },
@@ -413,7 +414,7 @@ it('round 2 allows co-op late joiners sharing the existing score', { timeout: 15
   expect(failed(zero)).toContain('results');
 });
 
-it('round 2 allows text-only layout revisions when no tap could be in flight', () => {
+it('round 2 allows text-only layout revisions when no tap could be in flight', { timeout: conformanceTimeout(3086) }, () => {
   const report = keep(
     'Dots text-only screens',
     runConformance(
@@ -431,7 +432,7 @@ it('round 2 allows text-only layout revisions when no tap could be in flight', (
   expect(report.ok, formatReport(report)).toBe(true);
 });
 
-it('round 3 permits needless private revisions', () => {
+it('round 3 permits needless private revisions', { timeout: conformanceTimeout(5694) }, () => {
   const report = keep('Picks needless private revisions', runConformance({ ...picks,
     privateView(state, id) {
       const view = picks.privateView(state, id);
@@ -441,7 +442,7 @@ it('round 3 permits needless private revisions', () => {
   expect(report.ok, formatReport(report)).toBe(true);
 });
 
-it('round 2 repeat probes respect the original control audience', { timeout: 15000 }, () => {
+it('round 2 repeat probes respect the original control audience', { timeout: conformanceTimeout(2039) }, () => {
   const guarded: GameModule<PicksState, PicksSettings> = {
     ...picks,
     // This audience probe exercises the legacy control-only phone contract.
@@ -486,7 +487,7 @@ it('round 2 repeat probes respect the original control audience', { timeout: 150
 });
 
 describe('review round 4 attacks', () => {
-  it('fails when cosmetic labels and revisions change every step and drop all delayed taps', () => {
+  it('fails when cosmetic labels and revisions change every step and drop all delayed taps', { timeout: conformanceTimeout(1172) }, () => {
     const report = keep('BROKEN Picks: cosmetic labels change every step with revision bumps', runConformance({ ...picks,
       controllerLayout(state, id) {
         const layout = picks.controllerLayout(state, id);

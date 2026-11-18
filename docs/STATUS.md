@@ -525,6 +525,8 @@ None run yet (`UAT.md` §5).
 
 ## Known gaps and risks
 
+- **Test limits under load (C-20, merged 2026-11-19; PLAT-030–033).** Every conformance test has its own limit, 4× its slowest measured run taken alone (at least 15 s; Tabao Rush recipes 552 s); the fixture-game conformance tests run about twice as fast. The asset-pipeline Python suite has 156 s and says when it was killed. The whole-match game tests (30–72 s each when run alone at load 6–8) were not made cheaper; they still pass because their limits are larger. No performance budget changed (D-259).
+
 - Performance budgets are targets, not measurements, until M2.
 - Whether the TCL Q65's own browser can run the game is unknown (REL-005).
 - Names are not checked for trademarks (OQ-001).

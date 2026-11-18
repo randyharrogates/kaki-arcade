@@ -1,3 +1,4 @@
+import { conformanceTimeout } from './kit';
 import { nullPrivateDots, redealDots } from '../test-fixtures/dots.fixture';
 import { describe, expect, it } from 'vitest';
 import {
@@ -18,7 +19,7 @@ import {
   brisk,
 } from './conformance-support.test';
 describe('the conformance kit on the fixture games', () => {
-  it('passes Dots (real time, returns-new, optional teams)', { timeout: 15000 }, () => {
+  it('passes Dots (real time, returns-new, optional teams)', { timeout: conformanceTimeout(2680) }, () => {
     const report = keep(
       'Dots, as written',
       runConformance(dots, DOTS_SCENARIOS, { sources: DOTS_SOURCES, allowImports: ['vitest'] }),
@@ -34,7 +35,7 @@ describe('the conformance kit on the fixture games', () => {
   });
   it(
     'passes Picks (turn-phased, in-place, secrets, data and a saved best)',
-    { timeout: 15000 },
+    { timeout: conformanceTimeout(2641) },
     () => {
       const report = keep(
         'Picks, as written',
@@ -52,7 +53,7 @@ describe('the conformance kit on the fixture games', () => {
       ]);
     },
   );
-  it('gives the same report twice (the kit itself is deterministic)', () => {
+  it('gives the same report twice (the kit itself is deterministic)', { timeout: conformanceTimeout(1749) }, () => {
     const run = (): string =>
       formatReport(
         runConformance(dots, DOTS_SCENARIOS.slice(1, 2), {
@@ -67,12 +68,12 @@ describe('the conformance kit on the fixture games', () => {
         .join('\n');
     expect(stable(run())).toBe(stable(run()));
   });
-  it('assertConformance throws the whole report', () => {
+  it('assertConformance throws the whole report', { timeout: conformanceTimeout(484) }, () => {
     expect(() => assertConformance(dots, DOTS_SCENARIOS.slice(2), { sources: [] })).toThrow(
       /FAIL {2}purity[\s\S]*no source files were given/,
     );
   });
-  it('refuses a scenario the game cannot play, and a run with no scenarios', () => {
+  it('refuses a scenario the game cannot play, and a run with no scenarios', { timeout: conformanceTimeout(51) }, () => {
     const nine = runConformance(dots, [{ name: 'nine', players: 9 }], {
       sources: DOTS_SOURCES,
       allowImports: ['vitest'],
@@ -209,10 +210,10 @@ describe('checkResults', () => {
 // ---------------------------------------------------------------------------------------------
 
 // Adapted from the review skeletons: a no-secrets kitchen and a full new deal.
-it.each([
-  ['always-null private view', nullPrivateDots],
-  ['full round re-deal', redealDots],
-] as const)('round 3 passes %s', (name, game) => {
+for (const [name, game, measuredLoadedMs] of [
+  ['always-null private view', nullPrivateDots, 2051],
+  ['full round re-deal', redealDots, 2018],
+] as const) it(`round 3 passes ${name}`, { timeout: conformanceTimeout(measuredLoadedMs) }, () => {
   const report = keep(`Dots ${name}`, runConformance(game,
     DOTS_SCENARIOS.filter((_, i) => i !== 1), { sources: DOTS_SOURCES, allowImports: ['vitest'] }));
   expect(report.ok, formatReport(report)).toBe(true);
@@ -221,7 +222,7 @@ it.each([
     expect(formatReport(report)).toContain('N/A  private-revision');
   }
 });
-it('round 3 lets a lone waiting joiner finish auto-skips beyond the scenario length', { timeout: 15000 }, () => {
+it('round 3 lets a lone waiting joiner finish auto-skips beyond the scenario length', { timeout: conformanceTimeout(2885) }, () => {
   const report = keep('Picks solo waiting joiner auto-skips', runConformance(picks, [
     { name: 'solo short match', players: 1, data: PICKS_DATA, script: brisk },
     { name: 'full short match', players: 8, data: PICKS_DATA, script: brisk },

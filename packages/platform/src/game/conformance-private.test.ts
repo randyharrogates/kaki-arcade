@@ -1,3 +1,4 @@
+import { conformanceTimeout } from './kit';
 import { placeController,textHeight,textWidth,panelMetrics,optionLabelStep,controlContentFits } from './private-placement';
 import { expect,it } from 'vitest';
 import { checkPrivatePhoneFit,runConformance } from './conformance';
@@ -7,12 +8,12 @@ import { privateFixtures } from '../../../../apps/web/src/private-fixtures';
 const picker = layoutFixtures.picker;
 const note = privateFixtures.picker;
 if (!picker || !note) throw new Error('Missing private picker fixtures');
-it('CTRL-003 D-132 accepts a picker plus wrapped private note at 667 × 307', () => {
+it('CTRL-003 D-132 accepts a picker plus wrapped private note at 667 × 307', { timeout: conformanceTimeout(719) }, () => {
   expect(checkPrivatePhoneFit(picker,note)).toEqual([]);
   const report = runConformance({ ...dots,controllerLayout:() => picker,privateView:() => note },[{ name:'fitting private panel',players:2 }],{ sources:[],stopOnFailure:['layout'] });
   expect(report.checks.find(c => c.id === 'layout')?.status).toBe('pass');
 });
-it('CTRL-003 D-132 rejects impossible combinations through conformance', () => {
+it('CTRL-003 D-132 rejects impossible combinations through conformance', { timeout: conformanceTimeout(37) }, () => {
   const view = { revision:1,blocks:[{ kind:'cards' as const,cards:Array.from({ length:8 },(_,i) => ({ id:String(i),label:'Q' })) }] };
   const report = runConformance({ ...dots,controllerLayout:() => picker,privateView:() => view },[{ name:'impossible private panel',players:2 }],{ sources:[],stopOnFailure:['layout'] });
   expect(report.checks.find(c => c.id === 'layout')?.failures.join(' ')).toContain('D-132: layout plus private view cannot fit a 667 × 307');
@@ -92,7 +93,7 @@ it('CTRL-003 stat figures step down as whole lines and reject a too-narrow floor
   expect(textWidth('12345',metrics.steps[0] ?? 21)).toBeLessThanOrEqual(100);
   expect(panelMetrics(blocks,60,300,13).fits).toBe(false);
 });
-it('CTRL-002 control-only grids and eight cards retain the main phone contract', () => {
+it('CTRL-002 control-only grids and eight cards retain the main phone contract', { timeout: conformanceTimeout(1568) }, () => {
   const layouts = [
     { revision:1,controls:[{ kind:'grid' as const,id:'big-grid',rows:3,cols:8,cells:Array.from({ length:24 },(_,i) => ({ label:String(i) })) }] },
     { revision:1,controls:[{ kind:'cards' as const,id:'cards8',cards:Array.from({ length:8 },(_,i) => ({ id:String(i),label:'Q' })) }] },

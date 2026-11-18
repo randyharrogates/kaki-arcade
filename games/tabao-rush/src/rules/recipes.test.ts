@@ -1,3 +1,4 @@
+import { conformanceTimeout } from '@kaki/platform/kit';
 import { withOrder } from './orders.fixture';
 import * as fs from 'node:fs';
 import { performance } from 'node:perf_hooks';
@@ -299,9 +300,10 @@ function save(name: string, value: string) {
   if (process.env.T04_EVIDENCE === '1') fs.writeFileSync(new URL(name, evidence), value);
 }
 
-// The kit must play 1 and 8 cooks in one run (about 90 s of work), so 120 s timed out under load (D-146).
+// The conformance test carries its own measured limit (C-20, D-259, superseding D-146 for that test);
+// the describe's 240 s governs the other full-match tests here.
 describe('TR-003 TR-004 TR-040 full recipe matches', { timeout: 240000 }, () => {
-  it('passes the unchanged conformance kit at 1 and 8 cooks with cooking and serving inputs', () => {
+  it('passes the unchanged conformance kit at 1 and 8 cooks with cooking and serving inputs', { timeout: conformanceTimeout(137981) }, () => {
     const driver = new Journey(); driver.dish('chicken-rice'); driver.serve();
     // Keep the recorded cooking/service journey; omit unused mechanisms from this kit fixture.
     const active = new Set<StationType>(['chop', 'rice', 'plating', 'serving', 'dish-rack', 'return-counter']);

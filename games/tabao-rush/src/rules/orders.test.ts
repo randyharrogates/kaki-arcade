@@ -1,3 +1,4 @@
+import { conformanceTimeout } from '@kaki/platform/kit';
 import * as fs from 'node:fs';
 import { performance } from 'node:perf_hooks';
 import { describe, expect, it } from 'vitest';
@@ -217,7 +218,7 @@ describe('TR-001 TR-004 TR-005 TR-006 complete rounds', { timeout: 120000 }, () 
     expect(kitchen(driver.state).expired).toBeGreaterThan(0);
     expect(tabaoRush.results(driver.state).players.every((p) => p.score === kitchen(driver.state).score)).toBe(true);
   });
-  it('conformance retains all scenarios: ordered service AND expiry at 1 and 8 cooks', () => {
+  it('conformance retains all scenarios: ordered service AND expiry at 1 and 8 cooks', { timeout: conformanceTimeout(64495) }, () => {
     const driver = new Journey(); driver.dish('chicken-rice'); driver.serve();
     const counts = new Map<number, { served: number; expired: number }>();
     const module: typeof tabaoRush = { ...tabaoRush, init(seed, seated) {

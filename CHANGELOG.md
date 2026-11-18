@@ -2,6 +2,18 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — C-20: conformance and pipeline test limits
+
+- PLAT-030–033: the conformance kit walks each step's state once for its size and sharing checks,
+  caches phone placement after full validation, and builds borrowed-object paths only when one is
+  found; every check and scenario is kept. Fixture-game conformance tests run about twice as fast;
+  the attack test that hit the 5 s default now takes about 1.3–1.7 s.
+- Each of the 62 conformance tests carries its own limit: max(15 s, 4 × its slowest measured run
+  taken alone, load under 8). Whole-match game tests keep their run time; their limits are now
+  131–552 s (were 120–240 s). Not a performance budget; PERFORMANCE.md is unchanged (D-259).
+- PERF-023/024: the asset-pipeline Python suite gets 156 s (4 × 39 s at load 10.9), its test 13 s
+  more, and a killed child reports its status, signal and timeout instead of "expected null to be 0".
+
 ## 2026-11-19 — C-18: final-screen hand-off band
 
 - PLAT-022, PLAT-024: the shell's final hint scales with the 1920 × 1080 board (same `--screen-scale`, centred layer) and sits in a shared 55 + 34 px band (`FINAL_HINT_BAND`, `--ka-final-hint-band`); phone and keyboard wording unchanged.

@@ -1,3 +1,4 @@
+import { conformanceTimeout } from '@kaki/platform/kit';
 import * as fs from 'node:fs';
 import { performance } from 'node:perf_hooks';
 import { expect, it } from 'vitest';
@@ -332,7 +333,7 @@ for (let count = 1; count <= 8; count++) {
   }, 30000);
 }
 
-it('TR-007 TR-008 TR-010 TR-030 station work passes unmodified conformance kit at 1 and 8 players', { timeout: 120000 }, () => {
+it('TR-007 TR-008 TR-010 TR-030 station work passes unmodified conformance kit at 1 and 8 players', { timeout: conformanceTimeout(71544) }, () => {
   // Original scenarios remain unchanged in conformance.test.ts. These add station-specific matches.
   const module: typeof tabaoRush = { ...tabaoRush, init: (seed, seated) => {
     const base = tabaoRush.init(seed, seated, {}, EMPTY_SETUP);

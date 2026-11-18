@@ -1,3 +1,4 @@
+import { conformanceTimeout } from '@kaki/platform/kit';
 import * as fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { createRng, nextInt } from '@kaki/sim-core';
@@ -357,7 +358,7 @@ describe('Rabakz rules', () => {
     if (process.env.RABAKZ_EVIDENCE === '1') fs.writeFileSync('uat/evidence/R-01-rabakz-rules/conformance.json',
       JSON.stringify(report, null, 2));
     expect(report.ok, formatReport(report)).toBe(true);
-  }, 120000);
+  }, conformanceTimeout(32618));
 });
 
 function required<T>(value: T | undefined | null): T {

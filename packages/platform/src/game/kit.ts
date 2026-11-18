@@ -25,3 +25,8 @@ export {
   makePlayers,
   runConformance,
 } from './conformance';
+
+// Correctness-test wall-clock limit for loaded machines, not a performance budget.
+export function conformanceTimeout(measuredLoadedMs: number): number {
+  return Math.max(15_000, Math.ceil(4 * measuredLoadedMs / 1000) * 1000);
+}

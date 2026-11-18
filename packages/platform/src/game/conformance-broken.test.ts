@@ -1,3 +1,4 @@
+import { conformanceTimeout } from './kit';
 import { afterAll, describe, expect, it } from 'vitest';
 import {
   caughtChecks,
@@ -37,7 +38,7 @@ import type {
   GameModule,
 } from './conformance-support.test';
 describe('the kit catches each kind of broken game', () => {
-  it('a returns-new step that changes the state it was given', () => {
+  it('a returns-new step that changes the state it was given', { timeout: conformanceTimeout(32) }, () => {
     const report = brokenDots('step mutates its state', {
       step(state, inputs, dtMs) {
         (state as Writable<DotsState>).leftSteps -= dtMs;
@@ -53,7 +54,7 @@ describe('the kit catches each kind of broken game', () => {
       ),
     );
   });
-  it('a returns-new step that writes into a typed array, which freezing cannot stop', () => {
+  it('a returns-new step that writes into a typed array, which freezing cannot stop', { timeout: conformanceTimeout(1005) }, () => {
     interface WithGrid extends DotsState {
       heat: Float32Array;
     }
@@ -81,7 +82,7 @@ describe('the kit catches each kind of broken game', () => {
       /the state given to the step was changed by it \(a typed array/,
     );
   });
-  it('Math.random in a step: caught by the replay checks and by the source scan', () => {
+  it('Math.random in a step: caught by the replay checks and by the source scan', { timeout: conformanceTimeout(945) }, () => {
     const report = brokenDots(
       'Math.random',
       {
@@ -103,7 +104,7 @@ describe('the kit catches each kind of broken game', () => {
       /a second run from the same seed and inputs first differs at step 0/,
     );
   });
-  it('a module-level counter: state that lives outside the state', () => {
+  it('a module-level counter: state that lives outside the state', { timeout: conformanceTimeout(1183) }, () => {
     let calls = 0;
     const report = brokenDots('a counter outside the state', {
       step(state, inputs, dtMs) {
@@ -114,7 +115,7 @@ describe('the kit catches each kind of broken game', () => {
     });
     expect(failed(report)).toEqual(expect.arrayContaining(['clone', 'determinism']));
   });
-  it('a secret in the public view', () => {
+  it('a secret in the public view', { timeout: conformanceTimeout(143) }, () => {
     const report = brokenPicks('picks shown on the TV', {
       publicView: (state) => ({
         ...(picks.publicView(state) as object),
@@ -126,7 +127,7 @@ describe('the kit catches each kind of broken game', () => {
       /the secret "p\d's pick" \(owner p\d\) is visible at publicView\.players\[\d\]\.pick/,
     );
   });
-  it('a secret in disguise (how many have picked): only scrambleSecrets can see it', () => {
+  it('a secret in disguise (how many have picked): only scrambleSecrets can see it', { timeout: conformanceTimeout(222) }, () => {
     const report = brokenPicks('a count that depends on the picks', {
       publicView: (state) => ({
         ...(picks.publicView(state) as object),
@@ -149,7 +150,7 @@ describe('the kit catches each kind of broken game', () => {
     });
     expect(said(count, 'secrets')).toMatch(/publicView changes/);
   });
-  it("a secret in another player's private view and in another player's layout", () => {
+  it("a secret in another player's private view and in another player's layout", { timeout: conformanceTimeout(254) }, () => {
     const inView = brokenPicks('the seal in every private view', {
       privateView: (state) => ({
         revision: 0,
@@ -196,7 +197,7 @@ describe('the kit catches each kind of broken game', () => {
       ),
     );
   });
-  it('a sampled input frame stored in the state', () => {
+  it('a sampled input frame stored in the state', { timeout: conformanceTimeout(36) }, () => {
     interface WithFrame extends DotsState {
       last: unknown;
     }
@@ -228,7 +229,7 @@ describe('the kit catches each kind of broken game', () => {
       ),
     );
   });
-  it('an action object kept by an in-place game', () => {
+  it('an action object kept by an in-place game', { timeout: conformanceTimeout(45) }, () => {
     interface WithTap extends PicksState {
       lastTap: unknown;
     }
@@ -257,7 +258,7 @@ describe('the kit catches each kind of broken game', () => {
       /state\.lastTap is one of the host's own input objects/,
     );
   });
-  it('a step that changes its inputs', () => {
+  it('a step that changes its inputs', { timeout: conformanceTimeout(132) }, () => {
     const report = brokenPicks('step reverses the list of taps', {
       step(state, inputs, dtMs) {
         (inputs.actions as unknown[]).reverse();
@@ -267,7 +268,7 @@ describe('the kit catches each kind of broken game', () => {
     expect(failed(report)).toContain('state-contract');
     expect(said(report, 'state-contract')).toMatch(/the step changed its inputs/);
   });
-  it('a view that is not JSON', () => {
+  it('a view that is not JSON', { timeout: conformanceTimeout(51) }, () => {
     const map = brokenDots('a Map in the public view', {
       publicView: (state) => ({
         ...dots.publicView(state),
@@ -294,7 +295,7 @@ describe('the kit catches each kind of broken game', () => {
       /privateView\(p1\)\.blocks\[0\]\.value is undefined/,
     );
   });
-  it('state whose behaviour depends on two fields being the same object', () => {
+  it('state whose behaviour depends on two fields being the same object', { timeout: conformanceTimeout(1614) }, () => {
     interface Shared extends PicksState {
       first: PicksState['players'][number] | null;
     }
@@ -328,7 +329,7 @@ describe('the kit catches each kind of broken game', () => {
       ),
     );
   });
-  it('state that does not survive a host reload', () => {
+  it('state that does not survive a host reload', { timeout: conformanceTimeout(1919) }, () => {
     // `undefined` in an array position survives encodeState, so use what does not: a hash that
     // depends on a reference shared between two fields, made after the first step.
     interface Linked extends PicksState {
@@ -363,7 +364,7 @@ describe('the kit catches each kind of broken game', () => {
       /reloaded after step \d+: the run went a different way from step \d+/,
     );
   });
-  it('a layout over the byte cap, over what a phone holds, or outside the schema', () => {
+  it('a layout over the byte cap, over what a phone holds, or outside the schema', { timeout: conformanceTimeout(63) }, () => {
     const fat = brokenPicks('a layout of more than 4,096 bytes', {
       controllerLayout: (state, id) => ({
         revision: picks.controllerLayout(state, id).revision,
@@ -425,7 +426,7 @@ describe('the kit catches each kind of broken game', () => {
     expect(said(invented, 'layout')).toMatch(/kind "slider" is not in the schema/);
     expect(said(invented, 'layout')).toMatch(/colour: must be the name of a colour token/);
   });
-  it('a layout whose taps change meaning without a new revision', () => {
+  it('a layout whose taps change meaning without a new revision', { timeout: conformanceTimeout(132) }, () => {
     const report = brokenPicks('revision stuck at 1', {
       controllerLayout: (state, id) => ({ ...picks.controllerLayout(state, id), revision: 1 }),
     });
@@ -438,7 +439,7 @@ describe('the kit catches each kind of broken game', () => {
       ),
     );
   });
-  it('a score that changes when someone else leaves', () => {
+  it('a score that changes when someone else leaves', { timeout: conformanceTimeout(1080) }, () => {
     const report = brokenDots('leaving shares out a point', {
       leave: (state, id) => ({
         ...state,
@@ -452,7 +453,7 @@ describe('the kit catches each kind of broken game', () => {
       /p\d's score went from \d+ to \d+ when p\d(-s\d+)? joined or left/,
     );
   });
-  it('a join that throws', () => {
+  it('a join that throws', { timeout: conformanceTimeout(771) }, () => {
     const report = brokenDots('join throws', {
       join() {
         throw new Error('no room at the table');
@@ -467,14 +468,14 @@ describe('the kit catches each kind of broken game', () => {
       ),
     );
   });
-  it('a game that ignores its seed', () => {
+  it('a game that ignores its seed', { timeout: conformanceTimeout(1057) }, () => {
     const report = brokenDots('seed ignored', {
       init: (_seed, players, settings, context) => dots.init(4, players, settings, context),
     });
     expect(failed(report)).toEqual(expect.arrayContaining(['seed']));
     expect(said(report, 'seed')).toMatch(/the game ignores its seed/);
   });
-  it('a pause that leaves a mark', () => {
+  it('a pause that leaves a mark', { timeout: conformanceTimeout(1092) }, () => {
     const report = brokenDots('resume does not undo pause', {
       pause: (state) => ({ ...state, leftSteps: state.leftSteps + 1 }),
       resume: (state) => state,
@@ -487,7 +488,7 @@ describe('the kit catches each kind of broken game', () => {
       ),
     );
   });
-  it('results that are not total or not in order', () => {
+  it('results that are not total or not in order', { timeout: conformanceTimeout(2568) }, () => {
     const order = brokenDots('results in seat order', {
       results: (state) => ({
         mode: 'players',
@@ -522,7 +523,7 @@ describe('the kit catches each kind of broken game', () => {
     });
     expect(said(flicker, 'results')).toMatch(/isOver was true at step \d+ and is false again/);
   });
-  it('an asset first named during play', () => {
+  it('an asset first named during play', { timeout: conformanceTimeout(1366) }, () => {
     const report = brokenDots('a late asset', {
       assets: (state) => [
         { key: 'dots/atlas.json', kind: 'atlas' },
@@ -538,7 +539,7 @@ describe('the kit catches each kind of broken game', () => {
       ),
     );
   });
-  it('a view that is not pure', () => {
+  it('a view that is not pure', { timeout: conformanceTimeout(1374) }, () => {
     let calls = 0;
     const counting = brokenDots('a view that counts its calls', {
       publicView(state) {
@@ -570,7 +571,7 @@ describe('the kit catches each kind of broken game', () => {
     });
     expect(said(frozen, 'views-pure')).toMatch(/publicView tried to change the state/);
   });
-  it('a step that throws on something the host can deliver', () => {
+  it('a step that throws on something the host can deliver', { timeout: conformanceTimeout(73) }, () => {
     const report = brokenPicks('step throws once someone has locked in', {
       step(state, inputs, dtMs) {
         if (state.players.some((player) => player.locked)) throw new RangeError('unexpected lock');
@@ -582,7 +583,7 @@ describe('the kit catches each kind of broken game', () => {
       /step \d+: step (on a copy of the state )?threw RangeError: unexpected lock/,
     );
   });
-  it('PLAT-008 rejects missing and non-boolean mid-game join declarations', () => {
+  it('PLAT-008 rejects missing and non-boolean mid-game join declarations', { timeout: conformanceTimeout(20) }, () => {
     for (const midGameJoin of [undefined, 'true', 1, null]) {
       const report = brokenDots('invalid join declaration', {
         meta: { ...dots.meta, midGameJoin: midGameJoin as unknown as boolean },
@@ -591,7 +592,7 @@ describe('the kit catches each kind of broken game', () => {
       expect(said(report, 'meta')).toContain('midGameJoin must be true or false');
     }
   });
-  it('picker details and settings that do not hold together', () => {
+  it('picker details and settings that do not hold together', { timeout: conformanceTimeout(16) }, () => {
     const meta = brokenDots('solo claimed for a two-player game', {
       meta: { ...dots.meta, players: { min: 2, max: 9 }, id: 'Dots!' },
     });
@@ -619,7 +620,7 @@ describe('the kit catches each kind of broken game', () => {
       /settings field "seconds": the default must be 10 plus a whole number of steps of 10/,
     );
   });
-  it('a game that cannot start with every player count it claims', () => {
+  it('a game that cannot start with every player count it claims', { timeout: conformanceTimeout(1095) }, () => {
     const report = brokenDots('init fails for eight', {
       init(seed, players, settings, context) {
         if (players.length === 8) throw new Error('only seven aprons');
@@ -631,7 +632,7 @@ describe('the kit catches each kind of broken game', () => {
       /init with 8 players: init threw Error: only seven aprons/,
     );
   });
-  it('a game that keeps the generator it was handed in a frozen state and draws from it', () => {
+  it('a game that keeps the generator it was handed in a frozen state and draws from it', { timeout: conformanceTimeout(32) }, () => {
     const report = brokenDots('draws from the frozen generator', {
       step(state, inputs, dtMs) {
         const next = dotsStep(state, inputs, dtMs);
@@ -646,7 +647,7 @@ describe('the kit catches each kind of broken game', () => {
     });
     expect(failed(report)).toContain('state-contract');
   });
-  it('an honest in-place copy of Dots also passes', () => {
+  it('an honest in-place copy of Dots also passes', { timeout: conformanceTimeout(2556) }, () => {
     const report = keep(
       'Dots, run as in-place',
       runConformance<DotsState, DotsSettings>(
@@ -665,7 +666,7 @@ describe('the kit catches each kind of broken game', () => {
 // Review attack suite adapted from the independent review's guessing game faults:
 // identity scramble, one-player failure, uneven co-op, early save and post-over throws.
 
-it('coverage probes for sustained copies and private revision changes', () => {
+it('coverage probes for sustained copies and private revision changes', { timeout: conformanceTimeout(390) }, () => {
   expect(failed(brokenDots('whole-state copy every step', { step: (s, i, dt) => cloneState(dotsStep(s, i, dt)) }))).toContain('sharing');
   expect(failed(brokenPicks('private revision stuck', { privateView(s, id) { const v = picks.privateView(s, id); return v === null ? null : { ...v, revision: 0 }; } }))).toContain('private-revision');
 });
