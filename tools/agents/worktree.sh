@@ -15,6 +15,10 @@ letter=$(printf '%s' "$id" | cut -c1); num=$(printf '%s' "$id" | sed 's/[^0-9]//
 idx=$(printf '%s' "GSFCKRPTAX" | awk -v l="$letter" '{print index($0,l)}')
 [ "$idx" -eq 0 ] && idx=11
 base=$(( 4000 + idx * 270 + (10#$num % 27) * 10 ))
+# Browsers and fetch refuse the WHATWG "bad ports" (5060, 5061, 6000, 6566, 6665-6669, 6697 fall in
+# this range); if web, signal or UAT would use one, shift the three up by 3 into the block's spares.
+bad() { case "$1" in 5060|5061|6000|6566|6665|6666|6667|6668|6669|6697) return 0;; esac; return 1; }
+if bad "$base" || bad "$((base+1))" || bad "$((base+2))"; then base=$((base+3)); fi
 echo "worktree: $dir"
 echo "branch:   $branch"
 echo "ports:    web=$base signal=$((base+1)) uat=$((base+2)) spare=$((base+3))-$((base+9))"
