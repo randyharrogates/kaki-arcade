@@ -201,7 +201,7 @@ it('PLAT-024 TV results actions continue and return with every phone disconnecte
   callbacks?.control('phone', { v: 1, t: 'hello', name: null });
   host.keyboard('open'); now += 1000; host.keyboard('next'); now += 1000; host.keyboard('next');
   callbacks?.dropped('phone');
-  host.sessionEvent({ type: 'results' } as Parameters<typeof host.sessionEvent>[0]);
+  host.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } });
   expect(host.room.players.every(p => p.disconnectedAt !== null)).toBe(true);
   const key = (key: string) => ({ key, preventDefault() { /* fixture */ } }) as KeyboardEvent;
   hostResultsKey(key('Enter'), () => { host.continueResults(); }, () => { host.returnToPicker(); }); expect(continued).toHaveBeenCalledOnce();
@@ -251,7 +251,7 @@ it.each(['Back to game picker', 'Play again'])('PLAT-024 focused %s Enter change
     dial: () => Promise.resolve({ credentials: { code: 'H7KQ9MXR', hostToken: 'a'.repeat(32) }, reopened: false, stop() { /* fixture */ } }),
   }, () => undefined);
   await host.start();
-  host.sessionEvent({ type: 'results' } as Parameters<typeof host.sessionEvent>[0]);
+  host.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } });
   expect(host.room.phase).toBe('results');
   const node = { click: () => { if (label === 'Play again') host.playAgain(); else host.returnToPicker(); } } as unknown as HTMLElement;
   const keyboard = hostKeyboard({ state: () => ({ phase: host.room.phase, teams: false }), controls: () => [node], active: () => node, join() { /* fixture */ }, leave() { /* fixture */ }, command() { /* fixture */ } });

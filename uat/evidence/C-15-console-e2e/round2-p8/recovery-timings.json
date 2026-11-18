@@ -1,0 +1,5 @@
+{
+  "reconnectMs": 124.22412500000064,
+  "hostRecoveryMs": 2160.7041659999995,
+  "recoveryBudget": "No duration budget in PERFORMANCE.md; PLAT-007 seat hold is 120000 ms"
+}

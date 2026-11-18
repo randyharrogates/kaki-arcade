@@ -1,3 +1,4 @@
+import { CLOSED_ROOM_REASON } from './team-setup';
 import { describe, expect, it, vi } from 'vitest';
 import { HOST_STORAGE_KEY } from '@kaki/platform';
 import type { HostCredentials } from '@kaki/platform';
@@ -292,4 +293,67 @@ it('PLAT-024 stale results back action cannot interrupt a new start', async () =
   const host = f.make(); await host.start(); f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v, t: 'hello', name: 'Fern' });
   for (const action of ['open', 'select', 'start'] as const) { f.advance(200); host.leaderInput('a', action); }
   stop.mockClear(); host.returnToPicker(); expect(stop).not.toHaveBeenCalled(); expect(host.picker.screen).toBe('starting'); host.stop();
+});
+
+it('D-099 preserves linked players and session, refuses new peers and offers a new room after quit', async () => {
+  const f = fixture(); const stop = vi.fn(); const command = vi.fn();
+  f.deps.session = { start: vi.fn().mockResolvedValue(undefined), stop, command };
+  const host = f.make(); await host.start(); const peer = f.peer();
+  f.callbacks.peer('a', peer); f.callbacks.control('a', { v, t: 'hello', name: 'Fern' });
+  host.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
+  stop.mockClear(); f.callbacks.state('expired');
+  expect(stop).not.toHaveBeenCalled(); expect(peer.close).not.toHaveBeenCalled();
+  expect(host.room.phase).toBe('playing'); expect(host.room.players).toHaveLength(1);
+  expect(f.views.at(-1)?.codeGroups).toEqual([]); expect(f.views.at(-1)?.newRoom).toBe(false);
+  const stranger = f.peer(); f.callbacks.peer('new', stranger); expect(stranger.close).toHaveBeenCalledOnce();
+  f.callbacks.state('ready'); expect(f.views.at(-1)?.pairing).toBe('closed-room');
+  host.keyboard('pause'); expect(command).toHaveBeenCalledWith('pause', 'seat-1');
+  host.sessionEvent({ type: 'picker' });
+  expect(host.picker.screen).toBe('lobby'); expect(f.views.at(-1)?.newRoom).toBe(true);
+  expect(peer.sendHost).toHaveBeenCalledWith(expect.objectContaining({ t: 'picker-state', screen: 'lobby', reason: CLOSED_ROOM_REASON }));
+  f.callbacks.control('new', { v, t: 'hello', name: 'Stranger' }); expect(host.room.players).toHaveLength(1);
+  host.stop();
+});
+it('PLAT-023 phone pause is authenticated, and only the connected leader resumes', async () => {
+  const f = fixture(); const command = vi.fn(); const control = vi.fn(); f.deps.session = { start: vi.fn().mockResolvedValue(undefined), command, control };
+  const host = f.make(); await host.start();
+  for (const id of ['a', 'b']) { f.callbacks.peer(id, f.peer()); f.callbacks.control(id, { v, t: 'hello', name: id }); }
+  control.mockClear();
+  const action = (id: string, control: string) => { f.callbacks.control(id, { v, t: 'action', rev: 0, viewRev: 0, data: { control } }); };
+  host.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
+  action('stranger', 'console-pause'); expect(command).not.toHaveBeenCalled();
+  action('b', 'console-pause'); expect(command).toHaveBeenLastCalledWith('pause', 'seat-2');
+  host.sessionEvent({ type: 'paused', paused: true }); command.mockClear();
+  action('b', 'console-resume'); expect(command).not.toHaveBeenCalled();
+  action('a', 'console-resume'); expect(command).toHaveBeenCalledWith('resume', 'seat-1');
+  command.mockClear(); action('b', 'console-quit'); expect(command).not.toHaveBeenCalled();
+  action('a', 'console-quit'); expect(command).toHaveBeenCalledWith('quit', 'seat-1');
+  expect(control).not.toHaveBeenCalled(); host.stop();
+});
+it('PLAT-009 checkpoints completed scores once and restores them after an interrupted round', async () => {
+  const f = fixture(); const host = f.make(); await host.start();
+  f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v, t: 'hello', name: 'Fern' });
+  host.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
+  const results = { mode: 'coop' as const, score: 16, players: [{ id: 'seat-1', score: 16, place: 1, joinedMidGame: false }] };
+  host.sessionEvent({ type: 'results', results }); host.sessionEvent({ type: 'results', results });
+  host.returnToPicker(); host.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
+  f.lifecycle('pagehide'); host.stop();
+  const restored = f.make(); await restored.start(); f.lifecycle('hidden');
+  const saved = JSON.parse(f.values.get(HOST_STORAGE_KEY) ?? '{}') as { scores: unknown; results: unknown };
+  expect(saved.scores).toEqual({ 'seat-1': 16 }); expect(saved.results).toEqual([results]);
+  expect(restored.room.phase).toBe('lobby'); restored.stop();
+});
+
+it.each(['left', 'expired'])('PLAT-009 clears completed scores when a seat is %s', async reason => {
+  const f = fixture(); const host = f.make(); await host.start();
+  f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v, t: 'hello', name: 'Fern' });
+  host.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
+  host.sessionEvent({ type: 'results', results: { mode: 'coop', score: 16, players: [{ id: 'seat-1', score: 16, place: 1, joinedMidGame: false }] } });
+  host.returnToPicker();
+  if (reason === 'left') f.callbacks.control('a', { v, t: 'leave' });
+  else { f.callbacks.dropped('a'); f.advance(120001); }
+  f.callbacks.peer('new', f.peer()); f.callbacks.control('new', { v, t: 'hello', name: 'New player' });
+  f.lifecycle('pagehide');
+  expect(JSON.parse(f.values.get(HOST_STORAGE_KEY) ?? '{}')).toMatchObject({ scores: {} });
+  host.stop();
 });

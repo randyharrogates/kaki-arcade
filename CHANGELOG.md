@@ -2,6 +2,10 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+
+## 2026-11-18 — C-15: console end to end
+
+- feat(web): console end to end with a fixture game and eight phones: phone Menu and a shared Paused veil (Resume, Quit to picker, leader only) that moves focus in and back to Menu with no browser focus ring, Reconnecting veil with "Host disconnected", completed-round scores survive a host reload, a closed room keeps linked play and offers a new room, a 3 s ICE grace before a link counts as lost (PLAT-023, PLAT-009, PLAT-007, PLAT-030; D-183–D-186).
 ## 2026-11-18 — P-06: Peek Poker table in the console
 
 - PP-030, PP-005 (big-screen clause), PP-031 and PLAT-033 (in progress): the console registers

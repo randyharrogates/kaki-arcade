@@ -1545,3 +1545,11 @@ Randy may overrule.
 **D-181 · 2026-11-18 · Claude** (P-06; PLAT-033, PP-031; ARCHITECTURE §4) — Host screens may be mounted renderers ({ mount(root, props) → { ready, update, destroy } }) as well as Preact components. Start publishes the initial public view, waits on ready before subscribing simulation frames, rejects Start on failure and destroys the renderer on cancel. The preparation root stays paintable behind the opaque "Starting…" picker, not hidden, so the browser actually rasterises it. Why: Peek Poker's canvas table must fetch and decode its atlas, load fonts and warm its draws before the round, so nothing loads during play.
 
 **D-182 · 2026-11-18 · Claude** (P-06; PERF-001) — P-06 closes on a headed diagnostic run of one console round (no budget assessed), as P-04 did. The assessed full-match run, with a round of at least 180 s on a quiet machine and a production build, is P-09. Randy may overrule.
+
+**D-183 · 2026-11-18 · Claude** (C-15; PLAT-023) — The phone Paused veil says "Quit to picker", not board 4's "Quit to lobby": it matches PLAT-023's wording, the TV's Paused panel and where the quit lands. Chosen by recommendation; Randy may overrule.
+
+**D-184 · 2026-11-18 · Claude** (C-15; PLAT-023, D-051) — Phone Menu is an ink pill inside the 47 px ID bar over an unpainted 89 × 68 target that no game control intersects at the three phone sizes; it is disabled and covered while a veil shows. Opening a veil moves focus into it (Resume for the leader, the dialog otherwise, with no visible ring on the dialog); closing it returns focus to Menu. Board 4 draws no Menu control. Chosen by recommendation; Randy may overrule.
+
+**D-185 · 2026-11-18 · Claude** (C-15; PLAT-007, D-095 f) — An ICE "disconnected" state counts as link loss only after 3 s; failed, closed or data-channel close stay immediate. This rides out brief Wi-Fi blips without dropping a seat.
+
+**D-186 · 2026-11-18 · Claude** (C-15; PLAT-009) — The host snapshot keeps cumulative per-seat scores from completed rounds, counted once per results screen; an interrupted round adds nothing, and a freed or expired seat loses its score. Not yet split per game (OQ-044).

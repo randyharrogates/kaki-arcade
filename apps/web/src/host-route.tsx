@@ -159,7 +159,7 @@ export function HostLobby() {
   }, [keyboard, local]);
   const action = (element: HTMLButtonElement | null): void => { element?.focus(); };
   const lobby = <main class="screen lobby" aria-label="Host lobby">
-    <header data-crowded={padConnected && room.players.length > 0 && !room.players.some(isLocalSeat)}><h1>Kaki Arcade</h1><span class="ka-chip" role="status">{view.pairing === 'reconnecting' ? 'Reconnecting' : 'Lobby'}</span><div class="lobby-hints"><p class="host-hints">{room.players.length > 0 && <span>Enter: pick a game</span>}{room.players.some(isLocalSeat) ? <span>L: leave</span> : <span>J: join from this keyboard</span>}{padConnected && !room.players.some(isLocalSeat) && <span class="host-pad-hint">Start on a game pad: join</span>}</p></div><span class="player-count">{view.count}</span></header>
+    <header data-crowded={padConnected && room.players.length > 0 && !room.players.some(isLocalSeat)}><h1>Kaki Arcade</h1><span class="ka-chip" role="status">{view.pairing === 'reconnecting' ? 'Reconnecting' : 'Lobby'}</span><div class="lobby-hints" hidden={view.pairing === 'closed-room'}><p class="host-hints">{room.players.length > 0 && <span>Enter: pick a game</span>}{room.players.some(isLocalSeat) ? <span>L: leave</span> : <span>J: join from this keyboard</span>}{padConnected && !room.players.some(isLocalSeat) && <span class="host-pad-hint">Start on a game pad: join</span>}</p></div><span class="player-count">{view.count}</span></header>
     <section class="ka-panel join-panel" aria-label="Join the room">
       <Overlap identity={view.pairing + view.joinLink}>
         {view.qrPayload ? <div class="join-content">

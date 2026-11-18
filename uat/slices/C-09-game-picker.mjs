@@ -21,9 +21,9 @@ export default async function picker(h) {
   if (h.maxPhones < 2) throw new Error('C-09 requires --phones 2');
   if (process.env.C09_DEMO_MATRIX === '1') {
     await h.host.setViewportSize(hostPresets['1080p']);
-    for (const layout of ['a', 'b', 'c']) for (const players of [1, 8]) for (const art of [0, 1]) {
+    for (const layout of ['b']) for (const players of [1, 8]) for (const art of [0, 1]) {
       await h.step(`Start layout ${layout}, ${String(players)} seats, art ${String(art)}`, async () => {
-        await h.host.goto(`${h.origin}/host?demo=picker&state=start&layout=${layout}&players=${String(players)}&art=${String(art)}`);
+        await h.host.goto(`${h.origin}/host?demo=picker&state=start&players=${String(players)}&art=${String(art)}`);
         await h.host.locator('[data-expanded="true"]').waitFor();
         await h.shot(`layout-${layout}-${String(players)}-art-${String(art)}`); await noScroll(h.host);
       });

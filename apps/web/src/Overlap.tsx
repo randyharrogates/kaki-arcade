@@ -1,6 +1,7 @@
 import { retainOutgoing } from './fade-layers';
 import type { ComponentChildren } from 'preact';
 import { useLayoutEffect, useRef, useState } from 'preact/hooks';
+import type { Tempo } from '@kaki/ui';
 import { crossfade, enter, exit } from '@kaki/ui';
 import { lobbyMotion } from './lobby-motion';
 
@@ -41,14 +42,14 @@ function MaskOverlap({ identity, children, row, index = 0, fade = false }: {
 }
 
 /** Each outgoing layer owns its exit, including when another heading arrives mid-fade. */
-export function Overlap(props: Omit<Parameters<typeof MaskOverlap>[0], 'children'> & { children: ComponentChildren | ((active: boolean) => ComponentChildren); surface?: boolean }) {
-  return props.fade ? <FadeOverlap identity={props.identity} surface={props.surface ?? false}>{props.children}</FadeOverlap> : <MaskOverlap identity={props.identity} row={props.row ?? false} index={props.index ?? 0} children={renderLayer(props.children, true)}/>;
+export function Overlap(props: Omit<Parameters<typeof MaskOverlap>[0], 'children'> & { children: ComponentChildren | ((active: boolean) => ComponentChildren); surface?: boolean; tempo?: Tempo }) {
+  return props.fade ? <FadeOverlap tempo={props.tempo ?? 'slow'} identity={props.identity} surface={props.surface ?? false}>{props.children}</FadeOverlap> : <MaskOverlap identity={props.identity} row={props.row ?? false} index={props.index ?? 0} children={renderLayer(props.children, true)}/>;
 }
 function renderLayer(content: LayerContent, active: boolean): ComponentChildren {
   return typeof content === 'function' ? (content as (active: boolean) => ComponentChildren)(active) : content;
 }
 type LayerContent = ComponentChildren | ((active: boolean) => ComponentChildren);
-function FadeOverlap({ identity, children, surface = false }: { identity: string; children: LayerContent; surface?: boolean }) {
+function FadeOverlap({ identity, children, surface = false, tempo = 'slow' }: { identity: string; children: LayerContent; surface?: boolean; tempo?: Tempo }) {
   const [layers, setLayers] = useState<{ id: number; content: LayerContent }[]>([]);
   const current = useRef({ identity, children, id: 0 });
   if (current.current.identity !== identity) {
@@ -57,16 +58,16 @@ function FadeOverlap({ identity, children, surface = false }: { identity: string
     current.current = { identity, children, id: previous.id + 1 };
   } else current.current.children = children;
   return <div class="overlap">
-    {[...layers.map(layer => <FadeLayer key={layer.id} surface={surface} outgoing done={() => { setLayers(old => old.filter(item => item.id !== layer.id)); }}>{layer.content}</FadeLayer>),
-      <FadeLayer key={current.current.id} surface={surface} initial={current.current.id === 0}>{children}</FadeLayer>] }
+    {[...layers.map(layer => <FadeLayer tempo={tempo} key={layer.id} surface={surface} outgoing done={() => { setLayers(old => old.filter(item => item.id !== layer.id)); }}>{layer.content}</FadeLayer>),
+      <FadeLayer tempo={tempo} key={current.current.id} surface={surface} initial={current.current.id === 0}>{children}</FadeLayer>] }
   </div>;
 }
-function FadeLayer({ children, outgoing = false, initial = false, surface = false, done }: { children: LayerContent; surface?: boolean; outgoing?: boolean; initial?: boolean; done?: () => void }) {
+function FadeLayer({ children, outgoing = false, initial = false, surface = false, tempo = 'slow', done }: { children: LayerContent; surface?: boolean; outgoing?: boolean; initial?: boolean; done?: () => void; tempo?: Tempo }) {
   const element = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     if (initial && !outgoing) return;
     if (!element.current?.animate) { done?.(); return; }
-    const motion = surface ? crossfade()[outgoing ? 'outgoing' : 'incoming'] : (outgoing ? exit : enter)({ kind: 'fade', tempo: 'slow' });
+    const motion = surface ? crossfade()[outgoing ? 'outgoing' : 'incoming'] : (outgoing ? exit : enter)({ kind: 'fade', tempo });
     const slow = import.meta.env.DEV ? Math.max(1, Number(new URLSearchParams(location.search).get('slow')) || 1) : 1;
     motion.options.duration *= slow;
     const animation = element.current.animate(motion.keyframes, motion.options);

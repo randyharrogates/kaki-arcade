@@ -20,9 +20,10 @@ it('PP-005 phone game surface covers the viewport and K-09 targets fit all three
         import {makePlayers} from '@kaki/platform/kit';
         import {EMPTY_SETUP} from '@kaki/platform';
         const state=startPicking(peekPoker.init(42,makePlayers(2,false),{rounds:3},EMPTY_SETUP));
-        const view=phoneView('lobby',{gameLayout:peekPoker.controllerLayout(state,'p1'),gamePrivateView:null});
+        let view={...phoneView('lobby',{seat:1,leader:true,phase:'playing'}),gameLayout:peekPoker.controllerLayout(state,'p1'),gamePrivateView:null};
         const app=document.createElement('div');app.id='app';document.body.append(app);
-        render(h(GameController,{controller:{seat:1,name:'Fern',theme:'peek-poker',link:'connected'},view,send(){}}),app);
+        const draw=()=>render(h(GameController,{controller:{seat:1,name:'Fern',theme:'peek-poker',link:view.connected?'connected':'reconnecting'},view,send(){},sessionCommand(action){document.body.dataset.command=action??'menu';}}),app);
+        window.consoleState=(phase,leader,connected)=>{view={...view,phase,leader,connected};draw();};draw();
       `; },
     }] });
   const output = Array.isArray(bundle) ? bundle[0] : bundle;
@@ -54,8 +55,6 @@ it('PP-005 phone game surface covers the viewport and K-09 targets fit all three
         document.body.append(reference);
         const felt = getComputedStyle(reference).backgroundColor;
         const treatment = getComputedStyle(reference).backgroundImage;
-        reference.className = '';
-        const transparent = getComputedStyle(reference).backgroundColor;
         reference.remove();
         const samples = [];
         for (const y of [grid.top + 1, grid.bottom - 1, innerHeight - 71, innerHeight - 69, innerHeight - 1]) {
@@ -69,7 +68,15 @@ it('PP-005 phone game surface covers the viewport and K-09 targets fit all three
               return css.backgroundImage === treatment && css.backgroundColor === felt;
             });
             const firstPaint = stack.find(n => {
-              const css = getComputedStyle(n); return css.backgroundImage !== 'none' || css.backgroundColor !== transparent;
+              const css = getComputedStyle(n);
+              // Transparent colours can retain nonzero RGB channels. They paint
+              // nothing regardless of the reference element's serialised colour.
+              const clear = (colour: string) => colour === 'transparent' || /^(?:rgba\([^)]*,\s*0(?:\.0+)?\)|[^/]+\/\s*0(?:\.0+)?%?\))$/.test(colour);
+              const border = ['Top', 'Right', 'Bottom', 'Left'].some(side =>
+                parseFloat(css.getPropertyValue(`border-${side.toLowerCase()}-width`)) > 0 &&
+                !clear(css.getPropertyValue(`border-${side.toLowerCase()}-color`)));
+              return css.backgroundImage !== 'none' || !clear(css.backgroundColor) || border ||
+                css.boxShadow !== 'none' || (css.outlineStyle !== 'none' && parseFloat(css.outlineWidth) > 0 && !clear(css.outlineColor));
             });
             const shellBox = shell.getBoundingClientRect();
             const aligned = (n: Element) => {
@@ -110,6 +117,89 @@ it('PP-005 phone game surface covers the viewport and K-09 targets fit all three
       expect(geometry.cells).toHaveLength(16);
       expect(geometry.cells.every(c => c.w >= 89 && c.h >= 68 && c.inside)).toBe(true);
       expect(geometry.lock?.every(v => v >= 144)).toBe(true);
+      const menu = page.getByRole('button', { name: 'Menu', exact: true });
+      const menuBox = await menu.boundingBox();
+      expect(menuBox && menuBox.width >= 89 && menuBox.height >= 68).toBe(true);
+      const gameBoxes = await page.locator('.ka-layout-engine:not(.ka-layout-ghost) [data-control]').evaluateAll(nodes => nodes.map(n => {
+        const r = n.getBoundingClientRect();
+        return { id: n.getAttribute('data-control'), x: r.x, y: r.y, width: r.width, height: r.height };
+      }));
+      expect(gameBoxes).toHaveLength(17);
+      for (const box of gameBoxes) {
+        expect(menuBox && (box.x + box.width <= menuBox.x || box.x >= menuBox.x + menuBox.width ||
+          box.y + box.height <= menuBox.y || box.y >= menuBox.y + menuBox.height),
+        `${String(width)} × ${String(height)}: ${String(box.id)} intersects Menu`).toBe(true);
+      }
+      expect(await menu.evaluate(n => Boolean(n.closest('.ka-controller-header')))).toBe(true);
+      const pillBox = await menu.locator('.phone-session-pill').boundingBox();
+      const barBox = await page.locator('.ka-controller-header').boundingBox();
+      expect(pillBox && barBox && pillBox.y >= barBox.y && pillBox.y + pillBox.height <= barBox.y + barBox.height).toBe(true);
+      // Before any pointer input (Chromium shows :focus-visible on a script-focused
+      // container then), a lost link focuses its dialog with no outline drawn.
+      await page.keyboard.press('Shift');
+      await page.evaluate(() => { (window as unknown as { consoleState(phase: string, leader: boolean, connected: boolean): void }).consoleState('playing', false, false); });
+      const freshLost = page.getByRole('dialog', { name: 'Connection lost', exact: true }); await freshLost.waitFor();
+      expect(await freshLost.evaluate(n => document.activeElement === n && getComputedStyle(n).outlineStyle)).toBe('none');
+      await page.evaluate(() => { (window as unknown as { consoleState(phase: string, leader: boolean, connected: boolean): void }).consoleState('playing', false, true); });
+      await menu.click(); expect(await page.locator('body').getAttribute('data-command')).toBe('menu');
+      for (const leader of [true, false]) {
+        await page.evaluate(leader => { (window as unknown as { consoleState(phase: string, leader: boolean, connected: boolean): void }).consoleState('paused', leader, true); }, leader);
+        const dialog = page.getByRole('dialog', { name: 'Paused', exact: true }); await dialog.waitFor();
+        // Measure the settled veil, not its entrance (it scales in from 0.95).
+        await dialog.evaluate(n => Promise.all(n.getAnimations({ subtree: true }).map(a => a.finished)));
+        expect(await menu.isDisabled()).toBe(true);
+        expect(await menu.locator('.phone-session-pill').evaluate(pill => {
+          const r = pill.getBoundingClientRect();
+          return Boolean(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2)?.closest('.phone-game-veil'));
+        })).toBe(true);
+        expect(await dialog.evaluate(n => n.contains(document.activeElement))).toBe(true);
+        expect(await dialog.evaluate((n, leader) => document.activeElement === (leader ? n.querySelector('button') : n), leader)).toBe(true);
+        expect(await page.locator('.phone-game-controls').evaluate(n => n.hasAttribute('inert'))).toBe(true);
+        expect(await dialog.getByText('Only the leader can quit.', { exact: true }).count()).toBe(1);
+        for (const name of ['Resume', 'Quit to picker']) {
+          const button = dialog.getByRole('button', { name, exact: true });
+          expect(await button.isDisabled()).toBe(!leader);
+          const paint = await button.evaluate(n => {
+            const css = getComputedStyle(n);
+            const reference = document.createElement('span');
+            reference.style.backgroundColor = 'var(--ka-accent)';
+            reference.style.color = 'var(--ka-on-colour)';
+            n.append(reference);
+            const accent = getComputedStyle(reference).backgroundColor;
+            const white = getComputedStyle(reference).color;
+            reference.style.backgroundColor = 'transparent';
+            const transparent = getComputedStyle(reference).backgroundColor;
+            reference.remove();
+            return { transparent, background: css.backgroundColor, image: css.backgroundImage,
+              border: css.borderTopColor, borderWidth: css.borderTopWidth, borderStyle: css.borderTopStyle,
+              colour: css.color, accent, white, opacity: css.opacity,
+              disabledOpacity: String(1 - Number(css.getPropertyValue('--ka-opacity-ghost'))) };
+          });
+          expect(paint.background).toBe(name === 'Resume' ? paint.accent : paint.transparent);
+          expect(paint.image).toBe('none');
+          expect(paint.borderStyle).toBe('solid');
+          expect(paint.borderWidth).toBe('3px');
+          expect(paint.border).toBe(name === 'Resume' ? paint.accent : paint.white);
+          if (name === 'Quit to picker') expect(paint.colour).toBe(paint.white);
+          expect(paint.opacity).toBe(leader ? '1' : paint.disabledOpacity);
+          const r = await button.boundingBox();
+          expect(r && r.width >= 89 && r.height >= 68 && r.x >= 0 && r.y >= 0 && r.x + r.width <= (width ?? 667) && r.y + r.height <= (height ?? 375)).toBe(true);
+          if (leader) { await button.click(); expect(await page.locator('body').getAttribute('data-command')).toBe(name === 'Resume' ? 'menu' : 'quit'); }
+        }
+        await page.evaluate(leader => { (window as unknown as { consoleState(phase: string, leader: boolean, connected: boolean): void }).consoleState('playing', leader, true); }, leader);
+        expect(await menu.evaluate(n => document.activeElement === n)).toBe(true);
+      }
+      await page.evaluate(() => { (window as unknown as { consoleState(phase: string, leader: boolean, connected: boolean): void }).consoleState('playing', false, false); });
+      const lost = page.getByRole('dialog', { name: 'Connection lost', exact: true }); await lost.waitFor();
+      expect(await lost.evaluate(n => document.activeElement === n)).toBe(true);
+      expect(await lost.evaluate(n => getComputedStyle(n).outlineStyle)).toBe('none');
+      expect(await lost.innerText()).toContain('Reconnecting…');
+      expect(await lost.innerText()).toContain('Your seat is kept for 2 minutes.');
+      expect(await lost.innerText()).toContain('Host disconnected');
+      expect(await page.locator('.phone-live').innerText()).toContain('Host disconnected');
+      expect(await page.locator('.phone-game-controls').evaluate(n => n.hasAttribute('inert'))).toBe(true);
+      await page.evaluate(() => { (window as unknown as { consoleState(phase: string, leader: boolean, connected: boolean): void }).consoleState('playing', false, true); });
+      expect(await menu.evaluate(n => document.activeElement === n)).toBe(true);
       await page.close();
     }
   } finally { await browser.close(); }

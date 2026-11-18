@@ -1,6 +1,8 @@
 import '../../../packages/controller-kit/src/layout.css';
 import '../../../packages/controller-kit/src/buttons.css';
 import '../../../packages/controller-kit/src/stick.css';
+import type { ComponentChildren } from 'preact';
+import { createPortal } from 'preact/compat';
 import { GameSetup } from './game-setup-route';
 import { PhoneTeams, TeamsToggle } from './team-setup-route';
 import { ChoiceShape } from './choice-shape';
@@ -10,7 +12,7 @@ import { ControllerShell, LayoutEngine } from '@kaki/controller-kit';
 import '@kaki/controller-kit/shell.css';
 import { pickerAnnouncement } from './picker-announcement';
 import { duration } from '@kaki/ui';
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks';
 import { createPhone, phoneView, phoneController } from './phone';
 import type { PhoneView } from './phone';
 import { phoneBrowserDependencies } from './phone-browser';
@@ -73,9 +75,9 @@ export function PhonePage() {
   const form = view.action === 'Join' && !view.renaming;
   const feedback = (): void => { if ('vibrate' in navigator) navigator.vibrate(duration.fast); };
   const teamChoice = view.leader && view.teamSetup?.screen === 'choice' ? <TeamsToggle enabled={view.teamSetup.enabled} toggle={() => { feedback(); phone.current?.teamInput('teams-toggle'); }}/> : null;
-  if (controller && wakeReady) return <GameController controller={controller} view={view} send={output => { phone.current?.controllerInput(output); }}/>;
+  if (controller && wakeReady) return <GameController sessionCommand={action => { phone.current?.sessionCommand(action); }} controller={controller} view={view} send={output => { phone.current?.controllerInput(output); }}/>;
   return <main ref={page} class="phone-page ka-surface" data-seated={view.seat !== null} data-setup={view.leader && view.teamSetup?.screen === 'choice' && picker?.screen === 'start'} data-theme={view.theme} aria-label="Phone lobby">
-    <div class="phone-live" role="status" aria-live="polite" aria-atomic="true">{announcement}<span>{teamAnnouncement}</span></div>
+    <PhoneLive announcement={announcement}><span>{teamAnnouncement}</span></PhoneLive>
     {view.seat !== null && <header class="phone-id"><span class="phone-badge" style={{ backgroundColor: view.colour }}>{view.seat}</span><strong>{view.name}</strong><span class="phone-connection" role="img" aria-label={view.connected ? 'Connected' : 'Disconnected'} data-connected={view.connected}><Icon kind={view.connected ? 'good' : 'weak'}/><span aria-hidden="true">{view.connected ? 'Connected' : 'Disconnected'}{ownTeam === undefined ? '' : ` · on ${ownTeam === 0 ? 'Red' : 'Blue'}`}</span></span><button class="phone-leave ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button></header>}
     <Overlap fade identity={view.teamSetup?.screen === 'teams' ? 'teams' : results ? 'results' : picker && picker.screen !== 'lobby' ? 'picker' : view.renaming ? 'rename' : form ? 'form' : 'lobby'}>{view.connected && view.teamSetup?.screen === 'teams' ? <PhoneTeams setup={view.teamSetup} seat={view.seat} leader={view.leader} send={(control, value) => { feedback(); phone.current?.teamInput(control, value); }}/> : view.connected && view.teamSetup?.screen === 'choice' && !results && picker?.screen === 'start' ? <GameSetup setup={view.teamSetup} leader={view.leader} leaderName={picker.leaderName ?? 'The leader'} change={(id, value) => { feedback(); phone.current?.settingInput(id, value); }} toggle={() => { feedback(); phone.current?.teamInput('teams-toggle'); }} start={() => { feedback(); phone.current?.pickerInput('start'); }} back={() => { feedback(); phone.current?.pickerInput('back'); }}/> : view.renaming ? <section class="phone-join ka-panel">
       <div class="phone-intro"><h1>Change your name</h1></div>
@@ -119,7 +121,7 @@ export function PhonePage() {
   </main>;
 }
 
-export function GameController({ controller, view, send }: { controller: NonNullable<ReturnType<typeof phoneController>>; view: PhoneView; send: (output: LayoutOutput) => void }) {
+export function GameController({ controller, view, send, sessionCommand }: { controller: NonNullable<ReturnType<typeof phoneController>>; view: PhoneView; send: (output: LayoutOutput) => void; sessionCommand?: (action?: 'quit') => void }) {
   const [area, setArea] = useState<{ width: number; height: number; viewport: { width: number; height: number } } | null>(null);
   useEffect(() => {
     const board = document.querySelector('.ka-controller-play');
@@ -130,5 +132,42 @@ export function GameController({ controller, view, send }: { controller: NonNull
     observer.observe(board);
     return () => { observer.disconnect(); };
   }, []);
-  return <div class="phone-game-page" data-theme={controller.theme}><ControllerShell {...controller}>{area && view.gameLayout && <LayoutEngine layout={view.gameLayout} privateView={view.gamePrivateView} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={send}/>}</ControllerShell></div>;
+  const [header, setHeader] = useState<Element | null>(null);
+  useEffect(() => { setHeader(document.querySelector('.ka-controller-header')); }, []);
+  const blocked = !view.connected || view.phase === 'paused';
+  const veil = !view.connected ? 'lost' : view.phase === 'paused' ? 'paused' : 'playing';
+  const veils = useRef<HTMLDivElement>(null);
+  const menu = useRef<HTMLButtonElement>(null);
+  const focusInVeil = useRef(false);
+  useLayoutEffect(() => {
+    // Keep the last focused location even if an outgoing layer becomes inert.
+    const trackFocus = (event: FocusEvent) => { focusInVeil.current = event.target instanceof Node && Boolean(veils.current?.contains(event.target)); };
+    document.addEventListener('focusin', trackFocus);
+    return () => { document.removeEventListener('focusin', trackFocus); };
+  }, []);
+  useLayoutEffect(() => {
+    if (blocked) {
+      const dialog = veils.current?.querySelector<HTMLElement>('.incoming > .phone-game-veil');
+      const resume = dialog?.querySelector<HTMLButtonElement>('button:not(:disabled)');
+      (resume ?? dialog)?.focus();
+    } else if (focusInVeil.current) {
+      menu.current?.focus();
+    }
+  }, [veil, view.leader, header]);
+  const notice = !view.connected ? 'Host disconnected. Reconnecting… Your seat is kept for 2 minutes.' : view.phase === 'paused' ? 'Paused. Only the leader can quit.' : '';
+  return <div class="phone-game-page" data-console-controls={Boolean(sessionCommand)} data-blocked={blocked} data-theme={controller.theme}>
+    <PhoneLive announcement={notice}/>
+    <ControllerShell {...controller}>
+      {header && sessionCommand && createPortal(<button ref={menu} class="phone-session-button ka-pressable" disabled={blocked} onClick={() => { sessionCommand(); }}><span class="phone-session-pill">Menu</span></button>, header)}
+      <div class="phone-game-controls" inert={blocked} aria-hidden={blocked}>{area && view.gameLayout && <LayoutEngine layout={view.gameLayout} privateView={view.gamePrivateView} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={output => { if (!blocked) send(output); }}/>}</div>
+    </ControllerShell>
+      <div ref={veils} class="phone-game-veils"><Overlap fade tempo="base" identity={veil}>{blocked && <section class="phone-game-veil" tabIndex={-1} role="dialog" aria-modal="true" aria-label={view.connected ? 'Paused' : 'Connection lost'}>
+        <h1>{view.connected ? 'Paused' : 'Reconnecting…'}</h1>
+        {view.connected ? <><div class="phone-veil-actions"><button class="ka-pressable" disabled={!view.leader} onClick={() => { sessionCommand?.(); }}>Resume</button><button class="ka-pressable" disabled={!view.leader} onClick={() => { sessionCommand?.('quit'); }}>Quit to picker</button></div><p>Only the leader can quit.</p></> : <><p>Your seat is kept for 2 minutes.</p><p>Host disconnected</p></>}
+      </section>}</Overlap></div>
+  </div>;
+}
+
+function PhoneLive({ announcement, children }: { announcement: string; children?: ComponentChildren }) {
+  return <div class="phone-live" role="status" aria-live="polite" aria-atomic="true">{announcement}{children}</div>;
 }

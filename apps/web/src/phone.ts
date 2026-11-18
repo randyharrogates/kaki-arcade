@@ -1,3 +1,4 @@
+import { CLOSED_ROOM_REASON } from './team-setup';
 import { checkLayout, checkPrivateView } from '@kaki/platform';
 import type { PrivateView } from '@kaki/platform';
 import { phoneThemes } from './phone-themes';
@@ -34,7 +35,7 @@ export const phoneCopy = {
   'name-replaced': ['Your name was changed', 'The room has given you a neutral name.'],
   'room-full': ['This room is full', 'All 8 seats are taken. Try another room.'],
   'room-not-found': ['Room not found', 'Check the code on the TV and try again.'],
-  'room-gone': ['This room has closed', 'Ask the host for a new room code.'],
+  'room-gone': ['This room has closed', 'Join the new room on the TV.'],
   unreachable: ['Can’t reach the room', 'We’ll keep trying.'],
   'host-disconnected': ['Host disconnected', 'We’ll rejoin your seat when the host returns.'],
   replaced: ['You’re connected in another tab', 'Use that tab to stay in your seat.'],
@@ -101,6 +102,7 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
       }
     }
     else if (message.t === 'layout' && checkLayout(message.layout).length === 0) publish(view.state, { layout: true, gameLayout: message.layout as unknown as Layout });
+    else if (message.t === 'picker-state' && message.screen === 'lobby' && message.reason === CLOSED_ROOM_REASON) publish('room-gone', { layout: false, picker: null });
     else if (message.t === 'picker-state') publish(view.state, { picker: message, ...(message.screen === 'picker' || message.screen === 'lobby' || message.screen === 'start' ? { layout: false, gamePrivateView: null } : {}) });
     else if (message.t === 'room') publish(view.state, { leader: message.leader, phase: message.phase, ...(message.phase === 'lobby' || message.phase === 'results' ? { layout: false, gamePrivateView: null } : {}) });
     else if (message.t === 'name-refused') {
@@ -150,8 +152,12 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     publish(codeQuery !== null && !query ? 'invalid-code' : 'entry', { code: query || (codeQuery ?? '') });
   }
   return {
+    sessionCommand(action?: 'quit'): void {
+      if (!view.connected || !view.layout || (view.phase !== 'playing' && !(view.phase === 'paused' && view.leader))) return;
+      peer?.sendPhone({ v: 1, t: 'action', rev: view.gameLayout?.revision ?? 0, viewRev: view.gameViewRevision ?? 0, data: { control: action === 'quit' ? 'console-quit' : view.phase === 'paused' ? 'console-resume' : 'console-pause' } });
+    },
     controllerInput(output: LayoutOutput): void {
-      if (!view.connected || !view.layout || view.teamSetup || view.gameViewRevision === undefined || output.phase === 'release') return;
+      if (!view.connected || view.phase !== 'playing' || !view.layout || view.teamSetup || view.gameViewRevision === undefined || output.phase === 'release') return;
       const value = output.value;
       if (typeof value !== 'string' && typeof value !== 'number') return;
       peer?.sendPhone({ v: 1, t: 'action', rev: output.revision, viewRev: view.gameViewRevision, data: { control: output.control, value } });

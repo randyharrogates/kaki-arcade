@@ -6,9 +6,10 @@ import { Clock, MemoryStorage, CODE, SECRET } from './testing.fixture';
 
 function fixture() {
   let dial!: PhoneReconnectDial;
+  const sent: unknown[] = [];
   const clock = new Clock();
   let view = phoneView('entry');
-  const phone = createPhone({ clock, storage: new MemoryStorage(), dial(options) { dial = options; options.onPeer({ sendPhone: () => true }); return { stop: () => undefined }; } }, null, next => { view = next; });
+  const phone = createPhone({ clock, storage: new MemoryStorage(), dial(options) { dial = options; options.onPeer({ sendPhone: message => { sent.push(message); return true; } }); return { stop: () => undefined }; } }, null, next => { view = next; });
   phone.join(CODE, 'Fern');
   dial.onState('control-open');
   const send = (message: HostMessage) => { dial.onControl(message); };
@@ -16,7 +17,7 @@ function fixture() {
   const privateView = (rev: number, text = 'Locked in') => { send({ v: 1, t: 'view', rev, view: { revision: rev, blocks: [{ kind: 'text', text }] } }); };
   const room = (phase: 'lobby' | 'playing' | 'paused' | 'results') => { send({ v: 1, t: 'room', phase, players: 1, leader: true, team: null }); };
   const picker = (screen: 'picker' | 'starting' = 'starting', id = 'rabakz') => { send({ v: 1, t: 'picker-state', revision: 1, screen, game: { id, name: 'Game', blurb: 'A game', min: 1, max: 8 }, leaderName: 'Fern', reason: null, failed: false }); };
-  return { reconnect: () => { clock.advance(1000); dial.onHost(true); dial.onState('control-open'); }, disconnect: () => { dial.onState('closed'); }, phone, send, privateView, room, picker, get view() { return view; } };
+  return { sent, reconnect: () => { clock.advance(1000); dial.onHost(true); dial.onState('control-open'); }, disconnect: () => { dial.onState('closed'); }, phone, send, privateView, room, picker, get view() { return view; } };
 }
 it('CTRL-003 / PLAT-031 stores validated private content and only replaces it with a newer wire revision', () => {
   const f = fixture(); f.privateView(3); f.privateView(2, 'Old'); f.privateView(3, 'Duplicate');
@@ -66,4 +67,15 @@ it('PLAT-031 connection loss clears the view and reconnect mid-game restores the
   expect(f.view.connected).toBe(true); expect(f.view.theme).toBe('rabakz');
   expect(f.view.gamePrivateView).toBeNull(); f.privateView(4); expect(f.view.gamePrivateView?.revision).toBe(4);
   f.phone.stop();
+});
+
+it('PLAT-023 phone session button sends pause/resume only while connected and authorised', () => {
+  const f = fixture(); f.phone.sessionCommand(); expect(f.sent).toHaveLength(1); // hello only
+  f.send({ v: 1, t: 'layout', rev: 3, layout: { revision: 3, controls: [] } });
+  f.privateView(4); f.room('playing');
+  f.phone.sessionCommand(); expect(f.sent.at(-1)).toMatchObject({ t: 'action', rev: 3, viewRev: 4, data: { control: 'console-pause' } });
+  f.room('paused'); f.phone.sessionCommand(); expect(f.sent.at(-1)).toMatchObject({ data: { control: 'console-resume' } });
+  f.send({ v: 1, t: 'room', phase: 'paused', players: 2, leader: false, team: null });
+  const count = f.sent.length; f.phone.sessionCommand(); expect(f.sent).toHaveLength(count);
+  f.disconnect(); f.phone.sessionCommand(); expect(f.sent).toHaveLength(count); f.phone.stop();
 });

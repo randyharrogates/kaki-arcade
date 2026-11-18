@@ -1,9 +1,1 @@
-[data-layout="a"] [data-expanded="true"] .game-tile-content { grid-template-columns: var(--ka-golden-columns); }
-[data-layout="a"] [data-expanded="true"] .game-copy { grid-column: 1; grid-row: 2; }
-[data-layout="a"] [data-expanded="true"] .game-detail { grid-column: 2; grid-row: 1 / -1; }
-[data-layout="a"] .picker-players { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-[data-layout="c"] [data-expanded="true"] .game-picture-slot { grid-column: 1 / -1; grid-row: 1 / -1; }
-[data-layout="c"] [data-expanded="true"] .game-copy { grid-column: 2; grid-row: 1; position: relative; background: var(--ka-panel-from); padding: var(--ka-space-21); }
-[data-layout="c"] [data-expanded="true"] .game-detail { position: relative; }
 [data-art="placeholder"] .game-picture-slot { background-image: repeating-linear-gradient(135deg, var(--ka-panel-from) 0 var(--ka-space-21), var(--ka-panel-to) var(--ka-space-21) var(--ka-space-55)); }
-[data-layout="a"] .picker-players li { flex-direction: row; padding: var(--ka-space-8); text-align: left; }

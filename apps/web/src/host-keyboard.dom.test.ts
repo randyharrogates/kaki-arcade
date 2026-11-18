@@ -105,7 +105,7 @@ it('PLAT-024 / CTRL-009 keeps board 3 controls absent through 24 phone updates a
         const resultRoot = document.createElement('div'); document.body.append(resultRoot);
         let integratedResults = true;
         for (const mode of ['Escape', 'Enter', 'pad']) {
-          mounted.sessionEvent({ type: 'results' });
+          mounted.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } });
           render(<Results session={{ gameId: 'peek-poker', results: { players: [] } }} room={mounted.room} keyboard={true} again={() => mounted.playAgain()} back={() => mounted.returnToPicker()}/>, resultRoot);
           await settle(); document.activeElement?.blur();
           if (mode === 'pad') {
@@ -118,10 +118,15 @@ it('PLAT-024 / CTRL-009 keeps board 3 controls absent through 24 phone updates a
           integratedResults &&= !!root.querySelector('.picker-screen');
         }
         resultRoot.remove();
+        mounted.roomInput({ type: 'phase', phase: 'playing', allowRunningJoin: false });
+        window.phoneCallbacks.state('expired'); mounted.sessionEvent({ type: 'picker' });
+        await settle(); await settle();
+        const closedHints = root.querySelector('.lobby-hints');
+        const closedHintsHidden = !!closedHints && closedHints.hidden && getComputedStyle(closedHints).display === 'none' && root.textContent.includes('Create a new room');
         render(null, root); await settle();
         const resultsHost = createHost(browserDependencies(), () => {});
         await resultsHost.start();
-        resultsHost.sessionEvent({ type: 'results' });
+        resultsHost.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } });
         let again = 0, back = 0;
         render(<Results session={{ gameId: 'peek-poker', results: { players: [] } }} room={{ players: [] }} keyboard={true} again={() => { again++; resultsHost.playAgain(); }} back={() => { back++; resultsHost.returnToPicker(); }}/>, root);
         await settle();
@@ -129,10 +134,10 @@ it('PLAT-024 / CTRL-009 keeps board 3 controls absent through 24 phone updates a
         const enter = node => node.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter', bubbles: true, cancelable: true }));
         hints[1].focus(); enter(hints[1]);
         const focusedBack = back === 1 && again === 0 && resultsHost.room.phase === 'lobby' && resultsHost.picker.screen === 'picker';
-        resultsHost.sessionEvent({ type: 'results' });
+        resultsHost.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } });
         hints[0].focus(); enter(hints[0]);
         const focusedAgain = back === 1 && again === 1 && resultsHost.room.phase === 'lobby' && resultsHost.picker.screen === 'start';
-        resultsHost.sessionEvent({ type: 'results' });
+        resultsHost.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } });
         hints[0].blur(); enter(window);
         const unfocusedAgain = again === 2 && resultsHost.room.phase === 'lobby' && resultsHost.picker.screen === 'start';
         resultsHost.joinLocal(localPlayer());
@@ -150,7 +155,7 @@ it('PLAT-024 / CTRL-009 keeps board 3 controls absent through 24 phone updates a
         // Expose real picker renders for the viewport safety matrix below.
         window.renderSafetyScreen = screen => render(<GamePicker state={{ ...resultsHost.picker, screen }} room={{ ...longRoom, players: longRoom.players.map(player => ({ ...player, name: 'WWWWWWWWWWWW', connectionId: 'phone-leader' })) }}/>, root);
         resultsHost.stop();
-        window.hostKeyboardResult = { equalHeaderBands, integratedResults, longHeadingSafe, emptyHint, padHint, pickerHint, startHint, teamsHint, teamStatus, teamHint, stable, localHeading, phoneHeading, zeroStaysLobby, hintJoined, sharedSeat, padHeading, focusedBack, focusedAgain, unfocusedAgain };
+        window.hostKeyboardResult = { closedHintsHidden, equalHeaderBands, integratedResults, longHeadingSafe, emptyHint, padHint, pickerHint, startHint, teamsHint, teamStatus, teamHint, stable, localHeading, phoneHeading, zeroStaysLobby, hintJoined, sharedSeat, padHeading, focusedBack, focusedAgain, unfocusedAgain };
       `;
     },
   }] });
@@ -175,7 +180,7 @@ it('PLAT-024 / CTRL-009 keeps board 3 controls absent through 24 phone updates a
       throw new Error(`Fixture did not finish (${state}): ${errors.join('; ') || String(error)}`);
     });
     expect(await page.evaluate(() => Reflect.get(window, 'hostKeyboardResult') as unknown)).toEqual({
-      equalHeaderBands: true, integratedResults: true, longHeadingSafe: true, emptyHint: true, padHint: 'Start on a game pad: join', pickerHint: 'Left and Right: chooseEnter: selectEsc: back', startHint: 'Enter: startEsc: back', teamsHint: 'Enter: startEsc: backT: teams', teamStatus: 'Tap your side on your phone. Player 1 starts.', teamHint: 'Arrows and Enter: chooseEsc: back',
+      closedHintsHidden: true, equalHeaderBands: true, integratedResults: true, longHeadingSafe: true, emptyHint: true, padHint: 'Start on a game pad: join', pickerHint: 'Left and Right: chooseEnter: selectEsc: back', startHint: 'Enter: startEsc: back', teamsHint: 'Enter: startEsc: backT: teams', teamStatus: 'Tap your side on your phone. Player 1 starts.', teamHint: 'Arrows and Enter: chooseEsc: back',
       stable: true, focusedBack: true, focusedAgain: true, unfocusedAgain: true, zeroStaysLobby: true, hintJoined: true, sharedSeat: true, padHeading: 'Player 1 starts with the controller',
       localHeading: 'Player 1 starts with the keyboard', phoneHeading: 'Phone One starts on their phone',
     });

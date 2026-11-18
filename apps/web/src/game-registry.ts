@@ -8,11 +8,13 @@ import { meta as peekPoker } from '../../../games/peek-poker/src/meta';
 // Metadata has no package subpath yet; retain the existing metadata-only picker import.
 import { meta as rabakz } from '../../../games/rabakz/src/meta';
 import type { HostScreen } from './session-adapter';
-export const gameMetas = [tabaoRush, peekPoker, rabakz];
+export const consoleE2eEnabled = import.meta.env.DEV && typeof location !== 'undefined' && new URLSearchParams(location.search).get('fixture') === 'console-e2e';
+export const gameMetas = consoleE2eEnabled ? [{ id: 'console-e2e', name: 'Console test', blurb: 'Development console integration fixture.', players: { min: 1, max: 8 }, teams: 'none' as const, coop: true, solo: true }] : [tabaoRush, peekPoker, rabakz];
 const selectionChecks = new Map<string, (id: string, settings: JsonValue) => boolean>();
 /** Called only by the host start adapter; phones and the picker import metadata alone. */
 export async function loadGame(id: string) {
   switch (id) {
+    case 'console-e2e': if (consoleE2eEnabled) return register((await import('./console-e2e.fixture')).consoleE2e); throw new Error('Fixture disabled');
     case 'tabao-rush': return register((await import('../../../games/tabao-rush/src/index')).tabaoRush);
     case 'peek-poker': return register((await import('../../../games/peek-poker/src/index')).peekPoker);
     case 'rabakz': {
@@ -48,6 +50,7 @@ interface SessionRegistration {
 }
 /** Only the registry knows each game's host renderer and declared preload resolvers. */
 export const sessionRegistrations: Record<string, SessionRegistration> = {
+  ...(consoleE2eEnabled ? { 'console-e2e': { screen: async () => (await import('./console-e2e.fixture')).ConsoleE2eScreen as HostScreen, data: {} } } : {}),
   'tabao-rush': { finalHintTheme: THEMES['tabao-rush'], data: {} },
   'peek-poker': {
     finalHintTheme: THEMES['peek-poker'], data: {},

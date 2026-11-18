@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "requirement": "PERF-020",
+  "decision": "D-129",
+  "build": "production",
+  "route": "/play",
+  "browserVersion": "156.0.8078.4",
+  "headless": true,
+  "cacheDisabled": true,
+  "cpuRate": 4,
+  "viewport": {
+    "width": 844,
+    "height": 390
+  },
+  "network": {
+    "offline": false,
+    "downloadThroughput": 3750000,
+    "uploadThroughput": 1875000,
+    "latency": 20
+  },
+  "samplesMs": [
+    173.79999995231628,
+    170.9000000357628,
+    170.39999997615814,
+    172,
+    170.69999998807907
+  ],
+  "medianMs": 170.9000000357628,
+  "budgetMs": 2000,
+  "status": "pass",
+  "measurement": "Navigation start to painted room-code control accepting synthetic pointerdown in its attached handler"
+}

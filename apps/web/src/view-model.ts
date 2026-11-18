@@ -6,7 +6,7 @@ import { RECONNECT_WINDOW_MS } from '@kaki/platform';
 import type { RoomState } from '@kaki/platform';
 import { PLAYER_COLOURS } from '@kaki/ui';
 
-export type PairingState = 'creating' | 'restoring' | 'ready' | 'reconnecting' | 'unreachable' | 'expired' | 'replaced';
+export type PairingState = 'creating' | 'restoring' | 'ready' | 'reconnecting' | 'unreachable' | 'expired' | 'replaced' | 'closed-room';
 import type { PickerModel } from '@kaki/platform';
 export interface LobbyInput {
   teamSetup?: TeamSetupView | null;
@@ -21,16 +21,17 @@ export interface LobbyInput {
 const statuses: Record<PairingState, string> = {
   creating: 'Creating your room', restoring: 'Restoring your room', ready: 'Scan to join', reconnecting: 'Reconnecting to the pairing server',
   unreachable: 'Cannot reach the pairing server', expired: 'This room has expired',
+  'closed-room': 'This room is closed to new players',
   replaced: 'Another host tab has taken over',
 };
 export function lobbyView(input: LobbyInput, clock: { now(): number } = { now: () => input.room.clock }) {
   // Reconnecting retains the live room; all other non-ready states suppress link claims.
-  const active = input.pairing === 'ready' || input.pairing === 'reconnecting';
-  const code = active ? normaliseCode(input.code) : '';
+  const active = input.pairing === 'ready' || input.pairing === 'reconnecting' || input.pairing === 'closed-room';
+  const code = active && input.pairing !== 'closed-room' ? normaliseCode(input.code) : '';
   const link = joinLink(input.origin, code, input.joinOrigin);
   return {
     status: statuses[input.pairing], pairing: input.pairing,
-    retry: input.pairing === 'unreachable', newRoom: input.pairing === 'expired',
+    retry: input.pairing === 'unreachable', newRoom: input.pairing === 'expired' || (input.pairing === 'closed-room' && input.room.phase === 'lobby'),
     codeGroups: code ? [code.slice(0, 4), code.slice(4)].filter(Boolean) : [],
     joinLink: link, qrPayload: link, count: `${String(input.room.players.length)} of 8 players`,
     seats: PLAYER_COLOURS.map(token => {

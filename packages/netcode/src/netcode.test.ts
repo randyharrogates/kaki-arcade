@@ -500,7 +500,7 @@ describe('control and link checks', () => {
     pc.connectionState = 'connected'; pc.onconnectionstatechange?.();
     pc.connectionState = 'disconnected'; pc.onconnectionstatechange?.();
     pc.connectionState = 'failed'; pc.onconnectionstatechange?.();
-    expect(states).toEqual(['connected', 'disconnected', 'failed', 'closed'].map((state) => [state, 'peer1']));
+    expect(states).toEqual(['connected', 'failed', 'closed'].map((state) => [state, 'peer1']));
     expect(pc.onicecandidate).toBeNull(); peer.close(); expect(clock.tasks.size).toBe(0);
   });
 

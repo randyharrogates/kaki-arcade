@@ -1,3 +1,4 @@
+import { CLOSED_ROOM_REASON } from './team-setup';
 import { describe, expect, it } from 'vitest';
 import { createPhoneSeatStore } from '@kaki/platform';
 import type { PhoneReconnectDial } from '@kaki/platform';
@@ -237,7 +238,32 @@ it('PLAT-025 preserves the game layout after teams and sends an answer with wire
   f.dial.onControl({ v: 1, t: 'view', rev: 13, view: null });
   expect(f.view.gameLayout).toEqual(layout);
   expect(phoneController(f.view)).not.toBeNull();
+  f.dial.onControl({ v: 1, t: 'room', phase: 'playing', players: 1, leader: true, team: null });
   f.phone.controllerInput({ control: 'answer', revision: 4, phase: 'choose', value: '1' });
   expect(f.sent.at(-1)).toEqual({ v: 1, t: 'action', rev: 4, viewRev: 13, data: { control: 'answer', value: '1' } });
   f.phone.stop();
+});
+
+it.each([true, false])('D-099 closed-room copy replaces the picker for leader=%s', leader => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat();
+  f.dial.onControl({ v: 1, t: 'room', phase: 'lobby', players: 8, leader, team: null });
+  f.dial.onControl({ v: 1, t: 'picker-state', revision: 1, screen: 'lobby', game: null, leaderName: 'Fern', reason: CLOSED_ROOM_REASON, failed: false });
+  expect(f.view).toMatchObject({ state: 'room-gone', title: 'This room has closed', detail: 'Join the new room on the TV.', picker: null, layout: false, leader: false });
+  const before = f.sent.length; f.phone.pickerInput('open'); expect(f.sent).toHaveLength(before); f.phone.stop();
+});
+
+it('PLAT-023 paused controls cannot send game inputs and only the leader can resume or quit', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat();
+  f.dial.onControl({ v: 1, t: 'layout', rev: 1, layout: { revision: 1, controls: [{ kind: 'options', id: 'advance', options: [{ id: 'go', label: 'Advance' }] }] } });
+  f.dial.onControl({ v: 1, t: 'view', rev: 1, view: null });
+  f.dial.onControl({ v: 1, t: 'room', phase: 'playing', players: 8, leader: false, team: null });
+  f.phone.controllerInput({ control: 'advance', revision: 1, phase: 'choose', value: 'go' });
+  expect(f.sent.at(-1)).toMatchObject({ t: 'action', data: { control: 'advance' } });
+  f.dial.onControl({ v: 1, t: 'room', phase: 'paused', players: 8, leader: false, team: null });
+  const before = f.sent.length;
+  f.phone.controllerInput({ control: 'advance', revision: 1, phase: 'choose', value: 1 });
+  f.phone.sessionCommand(); f.phone.sessionCommand('quit'); expect(f.sent).toHaveLength(before);
+  f.dial.onControl({ v: 1, t: 'room', phase: 'paused', players: 8, leader: true, team: null });
+  f.phone.sessionCommand('quit'); expect(f.sent.at(-1)).toMatchObject({ t: 'action', data: { control: 'console-quit' } });
+  f.phone.sessionCommand(); expect(f.sent.at(-1)).toMatchObject({ t: 'action', data: { control: 'console-resume' } }); f.phone.stop();
 });

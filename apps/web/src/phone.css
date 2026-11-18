@@ -48,7 +48,7 @@
 .phone-picker { display: grid; grid-template-columns: var(--ka-golden-columns-reversed); gap: var(--ka-space-21); align-items: center; }
 .phone-picker h2 { font-size: var(--ka-phone-type-34); }
 .phone-picker-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ka-space-13); }
-.phone-picker-controls button { min-width: var(--ka-space-89); min-height: var(--ka-space-89); }
+.phone-picker-controls button { min-width: var(--ka-button-in-play-width-floor); min-height: var(--ka-space-89); }
 :is(.phone-picker-controls, .phone-game-setup) button:disabled { cursor: default; color: var(--ka-panel-secondary); border-style: dashed; }
 @media (orientation: portrait) { .phone-picker { grid-template-columns: minmax(0, 1fr); } }
 
@@ -95,3 +95,38 @@
 /* Keep the game surface anchored to the viewport across lobby/controller changes. */
 .phone-game-page { position: fixed; inset: 0; overflow: hidden; }
 .phone-game-page > .ka-controller-shell { position: absolute; height: 100%; }
+
+/* Board 4 Menu chip: compact ink in the existing ID row. The larger hit area
+   stays out of flow, preserving the game canvas and the existing target contract. */
+.phone-game-page .phone-session-button { position: absolute; top: 0; right: var(--ka-space-13); z-index: 2; width: var(--ka-button-in-play-width-floor); min-height: var(--ka-button-in-play-height-floor); border: 0; padding: 0; box-shadow: none; background: transparent; color: var(--ka-chip-ink); font: var(--ka-weight-bold) var(--ka-phone-type-13)/var(--ka-line-body) var(--ka-font-mono); touch-action: manipulation; }
+.phone-game-page .phone-session-button:not(:focus-visible) { outline: none; }
+.phone-session-pill { position: absolute; top: calc(var(--ka-space-5) + var(--ka-space-34) / 2); left: 50%; transform: translate(-50%, -50%); padding: var(--ka-space-5) var(--ka-space-13); border-radius: var(--ka-radius-pill); background: var(--ka-chip); white-space: nowrap; }
+.phone-game-page[data-console-controls="true"] .ka-controller-header { position: relative; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: var(--ka-space-34); padding-right: calc(var(--ka-button-in-play-width-floor) + var(--ka-space-21)); }
+
+.phone-game-controls { position: absolute; inset: 0; }
+.phone-game-page[data-blocked="true"] .phone-game-controls { opacity: var(--ka-opacity-ghost); pointer-events: none; }
+.phone-game-veils { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+/* Absolute layers give every veil a definite viewport box, including while the
+   empty playing layer overlaps the incoming dialog. No percentage-height grid rows. */
+.phone-game-veils > .overlap, .phone-game-veils > .overlap > div { position: absolute; inset: 0; }
+.phone-game-veils .phone-game-veil { position: absolute; inset: 0; height: auto; }
+/* The dialog takes focus only as a container; Resume keeps the token ring. */
+.phone-game-veil:focus { outline: none; }
+.phone-game-veil { font: var(--ka-phone-type-21)/var(--ka-line-body) var(--ka-font-body); pointer-events: auto; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--ka-space-13); padding: var(--ka-space-13); position: relative; isolation: isolate; color: var(--ka-chip-ink); text-align: center; }
+.phone-game-veil h1 { margin: 0; font: var(--ka-phone-type-55)/var(--ka-line-display) var(--ka-font-display); }
+.phone-game-veil p { margin: 0; font-size: var(--ka-phone-type-21); }
+.phone-veil-actions { display: flex; gap: var(--ka-space-13); flex: none; }
+.phone-veil-actions button { min-width: var(--ka-button-in-play-width-floor); min-height: var(--ka-button-in-play-height-floor); height: var(--ka-button-in-play-height-floor); width: var(--ka-space-233); flex: none; padding: var(--ka-space-8) var(--ka-space-21); font: inherit; font-weight: var(--ka-weight-bold); border: var(--ka-radius-hairline) solid var(--ka-on-colour); border-radius: var(--ka-radius-corner); touch-action: manipulation; }
+.phone-veil-actions button:first-child { width: var(--ka-space-144); }
+.phone-game-page .phone-veil-actions button:disabled { opacity: calc(1 - var(--ka-opacity-ghost)); cursor: default; }
+
+.phone-game-page .phone-veil-actions button:last-child { background: transparent; color: var(--ka-on-colour); border-color: var(--ka-on-colour); }
+
+.phone-game-veil .phone-veil-actions + p { font-size: var(--ka-phone-type-13); }
+
+.phone-game-page .phone-veil-actions button:first-child { background: var(--ka-accent); color: var(--ka-accent-ink); border-color: var(--ka-accent); }
+
+.phone-game-veil::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--ka-seat-numeral); opacity: calc(1 - var(--ka-opacity-ghost)); }
+
+/* Short labels such as Done must retain the universal 55 px target floor. */
+.phone-page .phone-team-actions button { min-width: var(--ka-space-55); flex-shrink: 0; }

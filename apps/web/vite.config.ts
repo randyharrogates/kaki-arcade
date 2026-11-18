@@ -30,7 +30,7 @@ export default defineConfig(({ mode, command }) => {
         // Extend the existing budget scanner within C-09's app lane.
         for (const [file, output] of Object.entries(bundle)) {
           const source = output.type === 'chunk' ? output.code : String(output.source);
-          if (/["'`]demo["'`]|pickerDemo|pickerDemoChange|picker-demo-change|data-layout="[ac]"|data-art="placeholder"|repeating-linear-gradient\(135deg|picker-leader|picker-watcher|Cloud Noodle|Pebble Puff|demo-seat-|SignalRoom|PeerHub/.test(source)) this.error(`Demo fixture shipped: ${file}`);
+          if (/["'`]demo["'`]|pickerDemo|pickerDemoChange|picker-demo-change|data-art="placeholder"|repeating-linear-gradient\(135deg|picker-leader|picker-watcher|Cloud Noodle|Pebble Puff|demo-seat-|SignalRoom|PeerHub|Console test|ConsoleE2e|console-e2e.fixture/.test(source)) this.error(`Demo fixture shipped: ${file}`);
         }
       },
     }],

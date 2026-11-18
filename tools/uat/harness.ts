@@ -134,10 +134,10 @@ export class Harness {
     await page.locator('input[name="nickname"]').fill(name);
     const input = page.locator('input[name="code"]'); if (await input.count() && await input.isVisible()) await input.fill(this.code);
   }
-  async waitSeated(page: Page, name: string) {
+  async waitSeated(page: Page, name: string, timeout?: number) {
     // A host seat alone cannot prove that the phone received its acknowledgement.
-    await page.getByRole('heading', { name: /You.re in/ }).waitFor();
-    await this.hostSeat(name).waitFor();
+    await page.getByRole('heading', { name: /You.re in/ }).waitFor(timeout === undefined ? undefined : { timeout });
+    await this.hostSeat(name).waitFor(timeout === undefined ? undefined : { timeout });
   }
   hostSeatContent() { return this.host.getByRole('list', { name: 'Player seats' }).locator('[data-held]:not([aria-hidden="true"]):not([aria-hidden="true"] *)'); }
   hostSeat(name: string) {

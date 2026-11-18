@@ -68,6 +68,7 @@ export async function createHostTransport(options: HostTransportOptions) {
   const result = await createHostPairing({ ...options, onMessage: message,
     onError(code) {
       if (code === 'socket-unavailable') { options.onError(code); return; }
+      if (['room-not-found', 'room-expired'].includes(code) && [...peers.values()].some(peer => peer.connected)) { options.onError(code); return; }
       stopped = true;
       for (const peer of peers.values()) peer.close();
       peers.clear(); options.onError(code);

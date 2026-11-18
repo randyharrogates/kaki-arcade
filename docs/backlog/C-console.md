@@ -164,6 +164,16 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
   mark. **For F-07:** a DOM render test for the phone route and the name component
   (`phone-message.test.ts` matches source text today). Not done anywhere: real phones, a QR
   scan, Safari, Firefox, the on-screen keyboard, a screen reader on the announcement region.
+### From C-15's reviews (2026-11-18)
+
+- **C-15a · Menu overlap against every game's layout (PLAT-023, D-051).** Check the 89 × 68 Menu target against Tabao Rush's diamond and stick, the Rabakz answer grid and the Peek Poker grid at 667 × 375, 844 × 390 and 932 × 430. Depends on T-*, R-*, P-*.
+- **C-15b · Non-leader Paused copy and state (PLAT-023).** A non-leader sees "Waiting for Phone 1 to resume" with no live-looking buttons, instead of disabled buttons at 0.92 opacity (C-15 round6-p8 stills 27, 29).
+- **C-15c · Reconnect backoff resets when the host returns (PLAT-009).** Phones mid-backoff (cap 30 s) retry promptly once the host is back.
+- **C-15d · Host restore first paint (PLAT-009, DESIGN §3 "never a blank frame on the TV").** Show "Restoring your room" and the held seats from the first frame; hide "J: join" and "Enter: pick a game" until pairing is ready; never show "8 of 8" over placeholder seats (strip 78).
+- **C-15e · Closed-room copy and seat badge (D-099).** Phones keep their seat badge; copy matches what the TV offers before and after "Create a new room" (still 91).
+- **C-15f · D-099 signal reset can surface as ERR_CONNECTION_RESET (UAT harness).** The C-15 slice expects REFUSED and ABORTED when the signal server goes away; round7-p8 saw a host `requestfailed net::ERR_CONNECTION_RESET` instead. Expect it, or find why the reset sometimes shows as RESET. Until then a full re-run can fail at the same point.
+- **C-15g · Raw z-index values in `apps/web/src/phone.css` (veil stack).** Move to tokens or DOM order.
+
 ### C-02 parked (2026-11-17, D-128)
 Four review rounds did not converge, so C-02 is parked with its branch `issue/C-02` and worktree
 kept (round 4 is commit 9c6153a). Resume before release (M8); the relay only matters for phones

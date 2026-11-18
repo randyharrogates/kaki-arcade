@@ -1,3 +1,5 @@
+/** PLAT-009: shared closed-room reason sent by the host and recognised by phones. */
+export const CLOSED_ROOM_REASON = 'This room has closed. Join the new room on the TV.';
 /** D-153: hold refusal copy long enough to read. */
 export const REFUSAL_HOLD_MS = 3000;
 import { validSettingsView } from './game-setup';

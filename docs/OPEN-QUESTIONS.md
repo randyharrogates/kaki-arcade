@@ -157,3 +157,6 @@ so it would go to Randy as an artifact), or accept silence until someone touches
 M6.
 
 **OQ-043 · Peek Poker reveal: seat markers when many players pick one card (raised 2026-11-18 by P-06's review).** When five or more players pick the same card, the two-row marker block covers the lower half of its face; the rank and corner suit stay readable (P-06 round5-p8/22, P-04 round5/15). Keep it, or choose an alternative: markers in a strip outside the card, smaller pips, or a count badge? Options to be shown as rendered boards with their performance cost.
+
+
+**OQ-044 · Where do "scores so far" show after a host reload? (raised 2026-11-18 by C-15's review).** PLAT-009 restores them, but no screen shows cumulative scores, and they currently add up across different games. Options: a running total on the lobby seat cards, a per-game total on the results screen, or per-game storage only. Needed by M3 close.

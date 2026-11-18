@@ -56,6 +56,7 @@ export function createPeer(options: PeerOptions) {
   let lastRtt: number | null = null;
   let linkTimer: unknown;
   let scheduled = false;
+  let disconnectTimer: unknown;
   let layoutRev: number | null = null;
   let viewRev: number | null = null;
 
@@ -166,6 +167,7 @@ export function createPeer(options: PeerOptions) {
     for (const timer of timers) options.clock.cancel(timer); timers.clear();
     sender?.stop();
     pendingPings.clear(); candidates.length = 0;
+    options.clock.cancel(disconnectTimer);
     pc.onicecandidate = null; pc.onconnectionstatechange = null; pc.ondatachannel = null;
     for (const channel of [input, control]) if (channel) {
       channel.onerror = null; channel.onopen = null; channel.onclose = null; channel.onmessage = null; channel.close();
@@ -180,6 +182,11 @@ export function createPeer(options: PeerOptions) {
   pc.onconnectionstatechange = () => {
     if (closed) return;
     void meter.inspect(pc);
+    options.clock.cancel(disconnectTimer);
+    if (pc.connectionState === 'disconnected') {
+      disconnectTimer = options.clock.schedule(() => { if (!closed && pc.connectionState === 'disconnected') close(); }, 3000);
+      return;
+    }
     options.onState(pc.connectionState, options.connectionId);
     if (pc.connectionState === 'failed' || pc.connectionState === 'closed') close();
   };

@@ -1,3 +1,4 @@
+import { CLOSED_ROOM_REASON } from './team-setup';
 import { REFUSAL_HOLD_MS } from './team-setup';
 import type { SetupRefusal } from './game-setup-route';
 import { reconcileSettings, settingChange, settingsView } from './game-setup';
@@ -10,7 +11,7 @@ import { roomPlayers } from './team-setup';
 import type { TeamSetupView } from './team-setup';
 import { duration } from '@kaki/ui';
 import { validatePhoneMessage } from '@kaki/protocol';
-import type { PickerInput } from '@kaki/protocol';
+import type { PhoneMessage, PickerInput } from '@kaki/protocol';
 import type { HostEvent, RoomState, SessionEvent } from '@kaki/platform';
 import { gameMetas, validGameSelection, sessionRegistrations } from './game-registry';
 import { initialPicker, pickerInput, pickerRoom, pickerView, pickerFailed } from '@kaki/platform';
@@ -121,11 +122,10 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     if (!teamSetup) return;
     teamSetup = { ...teamSetup, revision: ++teamRevision }; sendTeams(); publish();
   }
-  function teamInput(id: string, message: unknown): void {
-    const checked = validatePhoneMessage(message);
-    if (!roomAdapter || !teamSetup || !checked.ok || checked.value.t !== 'action' || checked.value.viewRev !== teamSetup.revision) return;
+  function teamInput(id: string, message: PhoneMessage): void {
+    if (!roomAdapter || !teamSetup || message.t !== 'action' || message.viewRev !== teamSetup.revision) return;
     const actor = roomAdapter.room.players.find(p => p.connectionId === id && p.disconnectedAt === null);
-    const data = checked.value.data;
+    const data = message.data;
     if (!actor || !data || typeof data !== 'object' || Array.isArray(data)) return;
     const leader = actor.seat === roomAdapter.room.leader;
     teamNotices.delete(actor.seat);
@@ -180,9 +180,20 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       }
     }
   }
+  function sessionInput(id: string, message: PhoneMessage): void {
+    if (message.t !== 'action' || !roomAdapter) return;
+    const data = message.data;
+    if (!data || typeof data !== 'object' || Array.isArray(data)) return;
+    const actor = roomAdapter.room.players.find(p => p.connectionId === id && p.disconnectedAt === null);
+    if (!actor) return;
+    if (data.control === 'console-pause' && roomAdapter.room.phase === 'playing') deps.session?.command?.('pause', `seat-${String(actor.seat)}`);
+    if (data.control === 'console-resume' && roomAdapter.room.phase === 'paused' && actor.seat === roomAdapter.room.leader) deps.session?.command?.('resume', `seat-${String(actor.seat)}`);
+    if (data.control === 'console-quit' && roomAdapter.room.phase === 'paused' && actor.seat === roomAdapter.room.leader) deps.session?.command?.('quit', `seat-${String(actor.seat)}`);
+  }
   function sendPicker(): void {
     if (!roomAdapter) return;
-    const message = pickerView(picker, roomAdapter.room, gameMetas);
+    const base = pickerView(picker, roomAdapter.room, gameMetas);
+    const message = pairing === 'closed-room' && roomAdapter.room.phase === 'lobby' ? { ...base, reason: CLOSED_ROOM_REASON } : base;
     for (const player of roomAdapter.room.players) if (player.disconnectedAt === null) peers.get(player.connectionId)?.sendHost(message);
   }
   let loadAttempt = 0;
@@ -191,25 +202,24 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
   let queued: { id: string; revision: number; moves: number; beforeAction: number; action?: PickerInput } | undefined;
   let flushing = false;
   let trailing: unknown;
-  function input(id: string, message: unknown): void {
-    const checked = validatePhoneMessage(message);
-    if (stopped || !roomAdapter || !checked.ok || checked.value.t !== 'picker-input') return;
+  function input(id: string, message: PhoneMessage): void {
+    if (stopped || !roomAdapter || message.t !== 'picker-input' || (pairing === 'closed-room' && roomAdapter.room.phase !== 'results')) return;
     const room = roomAdapter.room;
     // Validate now to prevent an unauthorised/stale packet replacing a deliberate press.
-    if (checked.value.revision !== picker.revision || !room.players.some(player =>
+    if (message.revision !== picker.revision || !room.players.some(player =>
       player.connectionId === id && player.seat === room.leader && player.disconnectedAt === null)) return;
     if (room.phase === 'results') {
-      if (checked.value.input === 'open') returnToPicker();
-      else if (checked.value.input === 'select') continueResults();
-      else if (checked.value.input === 'start' && picker.screen !== 'starting') playAgain();
+      if (message.input === 'open') returnToPicker();
+      else if (message.input === 'select') continueResults();
+      else if (message.input === 'start' && picker.screen !== 'starting') playAgain();
       return;
     }
     if (!flushing && acceptedLeader === roomAdapter.room.leader && deps.clock.now() - acceptedAt < duration.fast) {
-      queued ??= { id, revision: checked.value.revision, moves: 0, beforeAction: 0 };
-      if (checked.value.input === 'next' || checked.value.input === 'previous') {
-        queued.moves = (queued.moves + (checked.value.input === 'next' ? 1 : -1)) % gameMetas.length;
+      queued ??= { id, revision: message.revision, moves: 0, beforeAction: 0 };
+      if (message.input === 'next' || message.input === 'previous') {
+        queued.moves = (queued.moves + (message.input === 'next' ? 1 : -1)) % gameMetas.length;
       } else {
-        queued.action = checked.value.input;
+        queued.action = message.input;
         queued.beforeAction = (queued.beforeAction + queued.moves) % gameMetas.length; queued.moves = 0;
       }
       if (trailing === undefined) trailing = deps.clock.schedule(() => {
@@ -228,15 +238,15 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     deps.clock.cancel(trailing); trailing = undefined; queued = undefined;
     if (teamSetup?.screen === 'teams' && !confirmingTeams) return;
     const game = gameMetas.find(g => g.id === picker.focus);
-    if (picker.screen === 'start' && checked.value.input === 'start' && settingsBlocked()) return;
-    if (!confirmingTeams && picker.screen === 'start' && checked.value.input === 'start' && game &&
+    if (picker.screen === 'start' && message.input === 'start' && settingsBlocked()) return;
+    if (!confirmingTeams && picker.screen === 'start' && message.input === 'start' && game &&
       (game.teams === 'required' || teamSetup?.enabled)) {
       if (room.players.length < Math.max(2, game.players.min) || room.players.length > game.players.max) return;
       teamSetup = { kind: 'team-setup', revision: ++teamRevision, screen: 'teams', enabled: true,
         players: savedTeams ? reconcileTeams(savedTeams.players, roomPlayers(room), room.leader) : splitTeams(roomPlayers(room), room.leader), error: null }; sendTeams(); publish(); return;
     }
     const before = picker;
-    picker = pickerInput(picker, roomAdapter.room, gameMetas, id, checked.value.input, checked.value.revision);
+    picker = pickerInput(picker, roomAdapter.room, gameMetas, id, message.input, message.revision);
     if (picker === before) return;
     if (picker.screen === 'picker') savedTeams = null;
     if (before.screen === 'starting' && picker.screen !== 'starting') { loadAttempt++; deps.session?.stop?.(); }
@@ -293,8 +303,12 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     };
     const callbacks: DialCallbacks = {
       retryAfter: ms => { if (current() && Number.isFinite(ms)) retryAfter = Math.max(retryAfter, deps.clock.now() + ms); },
-      peer: (id, peer) => { run(() => { peers.set(id, peer); roomAdapter?.attach(id, peer); }); },
-      control: (id, message) => { run(() => { teamInput(id, message); input(id, message); roomAdapter?.receive(id, message); deps.session?.control?.(id, message); }); },
+      peer: (id, peer) => { if (pairing === 'closed-room') { peer.close(); return; } run(() => { peers.set(id, peer); roomAdapter?.attach(id, peer); }); },
+      control: (id, message) => { if (pairing === 'closed-room' && !roomAdapter?.room.players.some(p => p.connectionId === id && p.disconnectedAt === null)) return; const checked = validatePhoneMessage(message); if (!checked.ok) return;
+        run(() => { const value = checked.value;
+          if (value.t === 'action' && value.data && typeof value.data === 'object' && !Array.isArray(value.data) && typeof value.data.control === 'string' && value.data.control.startsWith('console-')) { sessionInput(id, value); return; }
+          teamInput(id, value); input(id, value); roomAdapter?.receive(id, value); deps.session?.control?.(id, value);
+        }); },
       dropped: id => { run(() => { deps.session?.dropped?.(id); peers.delete(id); links.delete(id); qualityRuns.delete(id); roomAdapter?.dropped(id); }); },
       quality: (id, quality) => { run(() => {
         const previous = links.get(id);
@@ -308,7 +322,10 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
         }
       }); },
       state: state => {
-        if (!current() || terminal()) return;
+        if (!current() || terminal() || (pairing === 'closed-room' && state !== 'replaced')) return;
+        if (state === 'expired' && (roomAdapter?.room.phase === 'playing' || roomAdapter?.room.phase === 'paused') && [...peers.keys()].some(id => roomAdapter?.room.players.some(p => p.connectionId === id && p.disconnectedAt === null))) {
+          pairing = 'closed-room'; checkpoints?.stop(); store.clear(); code = ''; publish(); return;
+        }
         pairing = state;
         if (state === 'replaced' || state === 'expired') {
           // Never let the losing tab overwrite the winner's checkpoint or reopen automatically.
@@ -350,6 +367,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       let previousRoom = captured.room;
       roomAdapter = createReconnectRoom({ room: captured.room, clock: deps.clock, mintToken: () => deps.mintToken(),
         changed: room => {
+          if (snapshot) snapshot.scores = Object.fromEntries(Object.entries(snapshot.scores).filter(([id]) => room.players.some(p => id === `seat-${String(p.seat)}`)));
           if (!room.players.length) { savedTeams = null; teamNotices.clear(); teamSetup = null; teamRevision++; sendTeams(); }
           if (savedTeams && !confirmingTeams) savedTeams = { ...savedTeams, players: reconcileTeams(savedTeams.players, roomPlayers(room), room.leader) };
           if (teamSetup?.screen === 'teams') {
@@ -385,6 +403,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     picker = { ...picker, screen: 'start', revision: picker.revision + 1 }; restoreTeamChoice(); sendPicker(); publish();
   }
   function playAgain(): void {
+    if (pairing === 'closed-room') { returnToPicker(); return; }
     if (roomAdapter?.room.phase !== 'results') return;
     deps.session?.stop?.();
     roomAdapter.host({ type: 'phase', phase: 'lobby', allowRunningJoin: false });
@@ -401,7 +420,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     for (const p of roomAdapter.room.players) if (p.team !== null) roomAdapter.host({ type: 'team', seat: p.seat, team: null });
   }
   // Fence any unresolved start completion before stopping the results session and reopening the picker.
-  function returnToPicker(): void { if (roomAdapter?.room.phase !== 'results') return; loadAttempt++; deps.session?.stop?.(); discardTeams(); roomAdapter.host({ type: 'phase', phase: 'lobby', allowRunningJoin: false }); picker = { ...picker, screen: 'picker', revision: picker.revision + 1 }; sendPicker(); publish(); }
+  function returnToPicker(): void { if (roomAdapter?.room.phase !== 'results') return; loadAttempt++; deps.session?.stop?.(); discardTeams(); roomAdapter.host({ type: 'phase', phase: 'lobby', allowRunningJoin: false }); picker = { ...picker, screen: pairing === 'closed-room' ? 'lobby' : 'picker', revision: picker.revision + 1 }; sendPicker(); publish(); }
   return {
     start, playAgain, continueResults,
     joinLocal(peer: ReconnectHostPeer & SessionPeer): boolean {
@@ -418,12 +437,12 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     },
     // Setup only: these are exactly the actions the authenticated leader can perform.
     keyboard(action: PickerInput | 'teams-toggle' | 'teams-back' | 'teams-start' | 'teams-move' | 'pause' | 'resume' | 'quit', value?: string): void {
-      if (!roomAdapter || pairing !== 'ready') return;
+      if (!roomAdapter || (pairing !== 'ready' && pairing !== 'closed-room')) return;
       const leader = roomAdapter.room.players.find(p => p.seat === roomAdapter?.room.leader && p.disconnectedAt === null);
       if (!leader) return;
       if (action.startsWith('teams-')) teamInput(leader.connectionId, { v: 1, t: 'action', rev: 0, viewRev: teamSetup?.revision ?? 0, data: { control: action, ...(value ? { value } : {}) } });
       else if (action === 'pause' || action === 'resume' || action === 'quit') deps.session?.command?.(action, `seat-${String(leader.seat)}`);
-      else input(leader.connectionId, { v: 1, t: 'picker-input', revision: picker.revision, input: action });
+      else if (action === 'open' || action === 'previous' || action === 'next' || action === 'select' || action === 'start' || action === 'back') input(leader.connectionId, { v: 1, t: 'picker-input', revision: picker.revision, input: action });
     },
     teamInput(id: string, control: string, value?: string): void { teamInput(id, { v: 1, t: 'action', rev: 0, viewRev: teamSetup?.revision ?? 0, data: { control, ...(value === undefined ? {} : { value }) } }); },
     get teamSetup() { return teamSetup; },
@@ -434,13 +453,17 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     sessionEvent(event: SessionEvent): void {
       if (event.type === 'paused') roomAdapter?.host({ type: 'phase', phase: event.paused ? 'paused' : 'playing', allowRunningJoin: false });
       else if (event.type === 'results') {
+        if (snapshot && roomAdapter?.room.phase !== 'results') {
+          snapshot.scores = { ...snapshot.scores, ...Object.fromEntries(event.results.players.map(p => [p.id, (snapshot?.scores[p.id] ?? 0) + p.score])) };
+          snapshot.results = [event.results];
+        }
         picker = { ...picker, screen: sessionRegistrations[picker.focus]?.finalScreen ? 'starting' : 'start', revision: picker.revision + 1 };
         roomAdapter?.host({ type: 'phase', phase: 'results', allowRunningJoin: false }); restoreTeamChoice(); sendPicker(); publish();
       }
       else {
         deps.session?.stop?.(); discardTeams();
         roomAdapter?.host({ type: 'phase', phase: 'lobby', allowRunningJoin: false });
-        picker = event.type === 'error' ? pickerFailed(picker, gameMetas) : { ...picker, screen: 'picker', revision: picker.revision + 1 };
+        picker = pairing === 'closed-room' ? { ...picker, screen: 'lobby', revision: picker.revision + 1 } : event.type === 'error' ? pickerFailed(picker, gameMetas) : { ...picker, screen: 'picker', revision: picker.revision + 1 };
         sendPicker(); publish();
       }
     },

@@ -1,0 +1,987 @@
+{
+  "slice": "C-15-console-e2e",
+  "status": "failed",
+  "error": "Error: Evidence size 12.88 MB exceeds --max-mb 12; reduce captures or raise --max-mb\n    at Harness.assertSize (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/tools/uat/harness.ts:240:38)\n    at async Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/tools/uat/harness.ts:99:116)\n    at async consoleE2e (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/uat/slices/C-15-console-e2e.mjs:175:3)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/tools/uat/run.mjs:15:1",
+  "command": "node tools/uat/run.mjs -- C-15-console-e2e --phones 8 --out round7-p8",
+  "commit": "f99d56dd8b48d0d9043c7bc8ca12dab7d583db01",
+  "viewports": [
+    "1920×1080",
+    "844×390",
+    "667×375",
+    "932×430"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1730.4881249999999,
+      "status": "completed"
+    },
+    {
+      "name": "Join Phone 1",
+      "ms": 363.67208299999993,
+      "status": "completed"
+    },
+    {
+      "name": "Join Phone 2",
+      "ms": 316.7059999999997,
+      "status": "completed"
+    },
+    {
+      "name": "Join Phone 3",
+      "ms": 289.3032090000006,
+      "status": "completed"
+    },
+    {
+      "name": "Join Phone 4",
+      "ms": 298.6018750000003,
+      "status": "completed"
+    },
+    {
+      "name": "Join Phone 5",
+      "ms": 328.234958,
+      "status": "completed"
+    },
+    {
+      "name": "Join Phone 6",
+      "ms": 445.0983329999999,
+      "status": "completed"
+    },
+    {
+      "name": "Join Phone 7",
+      "ms": 546.8053749999999,
+      "status": "completed"
+    },
+    {
+      "name": "Join Phone 8",
+      "ms": 466.5592909999996,
+      "status": "completed"
+    },
+    {
+      "name": "Eight seated browsers",
+      "ms": 632.7855410000002,
+      "status": "completed"
+    },
+    {
+      "name": "Completed scores checkpoint before interrupted round",
+      "ms": 2250.7487920000003,
+      "status": "completed"
+    },
+    {
+      "name": "Leader picks and starts the module",
+      "ms": 1568.1368340000008,
+      "status": "completed"
+    },
+    {
+      "name": "All eight phones send play inputs",
+      "ms": 715.9199160000007,
+      "status": "completed"
+    },
+    {
+      "name": "Keyboard pause and phone resume",
+      "ms": 3213.3870829999996,
+      "status": "completed"
+    },
+    {
+      "name": "Phone pause and keyboard resume",
+      "ms": 1801.6967910000003,
+      "status": "completed"
+    },
+    {
+      "name": "Phone eight reload retains seat, private state and controller",
+      "ms": 1146.310125,
+      "status": "completed"
+    },
+    {
+      "name": "Host reload loses round and restores room and all seats automatically",
+      "ms": 6880.053499999998,
+      "status": "completed"
+    },
+    {
+      "name": "Fresh round then quit retains players",
+      "ms": 1785.7437910000008,
+      "status": "completed"
+    },
+    {
+      "name": "D-099 room gone keeps linked play and offers new room after quit",
+      "ms": 5045.119332999999,
+      "status": "failed",
+      "error": "Error: Unexpected browser errors: [{\"page\":\"host\",\"kind\":\"requestfailed\",\"text\":\"net::ERR_CONNECTION_RESET\",\"url\":\"http://127.0.0.1:5231/rooms/NV8YZQH5/host\",\"expected\":false}]\n    at Harness.assertNoUnexpectedErrors (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/tools/uat/harness.ts:254:110)\n    at Harness.step (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/tools/uat/harness.ts:97:190)\n    at async consoleE2e (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/uat/slices/C-15-console-e2e.mjs:175:3)\n    at async work (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/tools/uat/runner.ts:89:7)\n    at async Module.run (file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/tools/uat/runner.ts:97:5)\n    at async file:///Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-15/tools/uat/run.mjs:15:1"
+    }
+  ],
+  "joins": [
+    {
+      "name": "Phone 1",
+      "ms": 140.63437499999964
+    },
+    {
+      "name": "Phone 2",
+      "ms": 116.2408749999995
+    },
+    {
+      "name": "Phone 3",
+      "ms": 123.23129100000006
+    },
+    {
+      "name": "Phone 4",
+      "ms": 126.0304159999996
+    },
+    {
+      "name": "Phone 5",
+      "ms": 141.9901660000005
+    },
+    {
+      "name": "Phone 6",
+      "ms": 145.7950839999994
+    },
+    {
+      "name": "Phone 7",
+      "ms": 151.52120900000045
+    },
+    {
+      "name": "Phone 8",
+      "ms": 139.2720419999996
+    }
+  ],
+  "errors": [
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_CONNECTION_RESET",
+      "url": "http://127.0.0.1:5231/rooms/NV8YZQH5/host",
+      "expected": false
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: net::ERR_CONNECTION_RESET",
+      "url": "http://127.0.0.1:5231/rooms/NV8YZQH5/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "WebSocket connection to 'ws://127.0.0.1:5231/rooms/NV8YZQH5/host' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5230/src/browser.ts",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5231/rooms/NV8YZQH5/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://127.0.0.1:5231/rooms/NV8YZQH5/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "WebSocket connection to 'ws://127.0.0.1:5231/rooms/NV8YZQH5/host' failed: Error during WebSocket handshake: Unexpected response code: 404",
+      "url": "http://127.0.0.1:5230/src/browser.ts",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:5231/rooms/NV8YZQH5/host",
+      "expected": true
+    },
+    {
+      "page": "host",
+      "kind": "requestfailed",
+      "text": "net::ERR_ABORTED",
+      "url": "http://127.0.0.1:5231/rooms/NV8YZQH5/host",
+      "expected": true
+    }
+  ],
+  "shotStates": [
+    {
+      "file": "01-host-01-seated-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-01-seated-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone8-01-seated-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-01-completed-results-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-01-completed-results-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone8-01-completed-results-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-02-started-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-02-started-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone8-02-started-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-menu-667-375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-menu-844-390.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-menu-932-430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-03-play-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone1-03-play-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone8-03-play-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-keyboard-pause-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-keyboard-pause-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-keyboard-pause-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-keyboard-pause-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-keyboard-pause-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-keyboard-pause-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-04-keyboard-paused-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone1-04-keyboard-paused-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone8-04-keyboard-paused-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone1-paused-leader-667-375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-phone8-paused-non-leader-667-375.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone1-paused-leader-932-430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-phone8-paused-non-leader-932-430.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-host-phone-resume-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-host-phone-resume-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-phone-resume-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-host-phone-resume-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-host-phone-resume-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-host-phone-resume-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-host-05-phone-resumed-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-phone1-05-phone-resumed-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-phone8-05-phone-resumed-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-host-06-phone-paused-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-phone1-06-phone-paused-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-phone8-06-phone-paused-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-host-keyboard-resume-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-host-keyboard-resume-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-host-keyboard-resume-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-host-keyboard-resume-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-host-keyboard-resume-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "48-host-keyboard-resume-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "50-host-07-keyboard-resumed-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "51-phone1-07-keyboard-resumed-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "52-phone8-07-keyboard-resumed-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "53-host-08-phone-recovered-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "54-phone1-08-phone-recovered-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "55-phone8-08-phone-recovered-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "56-phone1-host-reload-phone1-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "57-phone1-host-reload-phone1-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "58-phone1-host-reload-phone1-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "59-phone1-host-reload-phone1-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "60-phone1-host-reload-phone1-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "61-phone1-host-reload-phone1-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "62-phone1-connection-lost-leader.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "63-phone8-connection-lost-non-leader.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "64-phone1-host-reload-phone1-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "65-phone1-host-reload-phone1-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "67-host-09-host-recovered-lobby-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "68-phone1-09-host-recovered-lobby-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "69-phone8-09-host-recovered-lobby-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "70-host-host-reload-tv-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "71-host-host-reload-tv-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "72-host-host-reload-tv-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "73-host-host-reload-tv-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "74-host-host-reload-tv-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "75-host-host-reload-tv-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "76-host-host-reload-tv-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "77-host-host-reload-tv-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "79-host-09-second-host-recovered-lobby-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "80-phone1-09-second-host-recovered-lobby-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "81-phone8-09-second-host-recovered-lobby-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "82-host-10-quit-picker-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "83-phone1-10-quit-picker-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "84-phone8-10-quit-picker-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "85-host-11-quit-keeps-eight-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "86-phone1-11-quit-keeps-eight-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "87-phone8-11-quit-keeps-eight-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "88-host-12-gone-keeps-play-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "89-phone1-12-gone-keeps-play-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "90-phone8-12-gone-keeps-play-phone8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "91-phone1-closed-room-phone-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "92-phone2-closed-room-phone-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "93-phone3-closed-room-phone-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "94-phone4-closed-room-phone-4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "95-phone5-closed-room-phone-5.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "96-phone6-closed-room-phone-6.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "97-phone7-closed-room-phone-7.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "98-phone8-closed-room-phone-8.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "99-host-13-gone-new-room-offer-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "100-phone1-13-gone-new-room-offer-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "101-phone8-13-gone-new-room-offer-phone8.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-01-seated-tv.jpg",
+    "02-phone1-01-seated-phone1.jpg",
+    "03-phone8-01-seated-phone8.jpg",
+    "04-host-01-completed-results-tv.jpg",
+    "05-phone1-01-completed-results-phone1.jpg",
+    "06-phone8-01-completed-results-phone8.jpg",
+    "07-host-02-started-tv.jpg",
+    "08-phone1-02-started-phone1.jpg",
+    "09-phone8-02-started-phone8.jpg",
+    "10-phone1-menu-667-375.jpg",
+    "11-phone1-menu-844-390.jpg",
+    "12-phone1-menu-932-430.jpg",
+    "13-host-03-play-tv.jpg",
+    "14-phone1-03-play-phone1.jpg",
+    "15-phone8-03-play-phone8.jpg",
+    "22-strip-keyboard-pause.jpg",
+    "23-host-04-keyboard-paused-tv.jpg",
+    "24-phone1-04-keyboard-paused-phone1.jpg",
+    "25-phone8-04-keyboard-paused-phone8.jpg",
+    "26-phone1-paused-leader-667-375.jpg",
+    "27-phone8-paused-non-leader-667-375.jpg",
+    "28-phone1-paused-leader-932-430.jpg",
+    "29-phone8-paused-non-leader-932-430.jpg",
+    "36-strip-phone-resume.jpg",
+    "37-host-05-phone-resumed-tv.jpg",
+    "38-phone1-05-phone-resumed-phone1.jpg",
+    "39-phone8-05-phone-resumed-phone8.jpg",
+    "40-host-06-phone-paused-tv.jpg",
+    "41-phone1-06-phone-paused-phone1.jpg",
+    "42-phone8-06-phone-paused-phone8.jpg",
+    "49-strip-keyboard-resume.jpg",
+    "50-host-07-keyboard-resumed-tv.jpg",
+    "51-phone1-07-keyboard-resumed-phone1.jpg",
+    "52-phone8-07-keyboard-resumed-phone8.jpg",
+    "53-host-08-phone-recovered-tv.jpg",
+    "54-phone1-08-phone-recovered-phone1.jpg",
+    "55-phone8-08-phone-recovered-phone8.jpg",
+    "62-phone1-connection-lost-leader.jpg",
+    "63-phone8-connection-lost-non-leader.jpg",
+    "66-strip-host-reload-phone1.jpg",
+    "67-host-09-host-recovered-lobby-tv.jpg",
+    "68-phone1-09-host-recovered-lobby-phone1.jpg",
+    "69-phone8-09-host-recovered-lobby-phone8.jpg",
+    "78-strip-host-reload-tv.jpg",
+    "79-host-09-second-host-recovered-lobby-tv.jpg",
+    "80-phone1-09-second-host-recovered-lobby-phone1.jpg",
+    "81-phone8-09-second-host-recovered-lobby-phone8.jpg",
+    "82-host-10-quit-picker-tv.jpg",
+    "83-phone1-10-quit-picker-phone1.jpg",
+    "84-phone8-10-quit-picker-phone8.jpg",
+    "85-host-11-quit-keeps-eight-tv.jpg",
+    "86-phone1-11-quit-keeps-eight-phone1.jpg",
+    "87-phone8-11-quit-keeps-eight-phone8.jpg",
+    "88-host-12-gone-keeps-play-tv.jpg",
+    "89-phone1-12-gone-keeps-play-phone1.jpg",
+    "90-phone8-12-gone-keeps-play-phone8.jpg",
+    "91-phone1-closed-room-phone-1.jpg",
+    "92-phone2-closed-room-phone-2.jpg",
+    "93-phone3-closed-room-phone-3.jpg",
+    "94-phone4-closed-room-phone-4.jpg",
+    "95-phone5-closed-room-phone-5.jpg",
+    "96-phone6-closed-room-phone-6.jpg",
+    "97-phone7-closed-room-phone-7.jpg",
+    "98-phone8-closed-room-phone-8.jpg",
+    "99-host-13-gone-new-room-offer-tv.jpg",
+    "100-phone1-13-gone-new-room-offer-phone1.jpg",
+    "101-phone8-13-gone-new-room-offer-phone8.jpg",
+    "102-host-failure.png",
+    "103-phone1-failure.png",
+    "106-phone4-failure.png",
+    "108-phone6-failure.png",
+    "107-phone5-failure.png",
+    "105-phone3-failure.png",
+    "110-phone8-failure.png",
+    "104-phone2-failure.png",
+    "109-phone7-failure.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-01-seated-tv.jpg",
+      "bytes": 221880
+    },
+    {
+      "file": "02-phone1-01-seated-phone1.jpg",
+      "bytes": 129556
+    },
+    {
+      "file": "03-phone8-01-seated-phone8.jpg",
+      "bytes": 112685
+    },
+    {
+      "file": "04-host-01-completed-results-tv.jpg",
+      "bytes": 213805
+    },
+    {
+      "file": "05-phone1-01-completed-results-phone1.jpg",
+      "bytes": 120498
+    },
+    {
+      "file": "06-phone8-01-completed-results-phone8.jpg",
+      "bytes": 86736
+    },
+    {
+      "file": "07-host-02-started-tv.jpg",
+      "bytes": 113309
+    },
+    {
+      "file": "08-phone1-02-started-phone1.jpg",
+      "bytes": 115311
+    },
+    {
+      "file": "09-phone8-02-started-phone8.jpg",
+      "bytes": 117183
+    },
+    {
+      "file": "10-phone1-menu-667-375.jpg",
+      "bytes": 99720
+    },
+    {
+      "file": "100-phone1-13-gone-new-room-offer-phone1.jpg",
+      "bytes": 104993
+    },
+    {
+      "file": "101-phone8-13-gone-new-room-offer-phone8.jpg",
+      "bytes": 104993
+    },
+    {
+      "file": "102-host-failure.png",
+      "bytes": 411720
+    },
+    {
+      "file": "103-phone1-failure.png",
+      "bytes": 129349
+    },
+    {
+      "file": "104-phone2-failure.png",
+      "bytes": 129349
+    },
+    {
+      "file": "105-phone3-failure.png",
+      "bytes": 129349
+    },
+    {
+      "file": "106-phone4-failure.png",
+      "bytes": 129349
+    },
+    {
+      "file": "107-phone5-failure.png",
+      "bytes": 129349
+    },
+    {
+      "file": "108-phone6-failure.png",
+      "bytes": 129349
+    },
+    {
+      "file": "109-phone7-failure.png",
+      "bytes": 129349
+    },
+    {
+      "file": "11-phone1-menu-844-390.jpg",
+      "bytes": 115311
+    },
+    {
+      "file": "110-phone8-failure.png",
+      "bytes": 129349
+    },
+    {
+      "file": "12-phone1-menu-932-430.jpg",
+      "bytes": 128987
+    },
+    {
+      "file": "13-host-03-play-tv.jpg",
+      "bytes": 113617
+    },
+    {
+      "file": "14-phone1-03-play-phone1.jpg",
+      "bytes": 112528
+    },
+    {
+      "file": "15-phone8-03-play-phone8.jpg",
+      "bytes": 114407
+    },
+    {
+      "file": "22-strip-keyboard-pause.jpg",
+      "bytes": 788693
+    },
+    {
+      "file": "23-host-04-keyboard-paused-tv.jpg",
+      "bytes": 125244
+    },
+    {
+      "file": "24-phone1-04-keyboard-paused-phone1.jpg",
+      "bytes": 81255
+    },
+    {
+      "file": "25-phone8-04-keyboard-paused-phone8.jpg",
+      "bytes": 80675
+    },
+    {
+      "file": "26-phone1-paused-leader-667-375.jpg",
+      "bytes": 77102
+    },
+    {
+      "file": "27-phone8-paused-non-leader-667-375.jpg",
+      "bytes": 76523
+    },
+    {
+      "file": "28-phone1-paused-leader-932-430.jpg",
+      "bytes": 88820
+    },
+    {
+      "file": "29-phone8-paused-non-leader-932-430.jpg",
+      "bytes": 88212
+    },
+    {
+      "file": "36-strip-phone-resume.jpg",
+      "bytes": 735669
+    },
+    {
+      "file": "37-host-05-phone-resumed-tv.jpg",
+      "bytes": 113742
+    },
+    {
+      "file": "38-phone1-05-phone-resumed-phone1.jpg",
+      "bytes": 112528
+    },
+    {
+      "file": "39-phone8-05-phone-resumed-phone8.jpg",
+      "bytes": 114407
+    },
+    {
+      "file": "40-host-06-phone-paused-tv.jpg",
+      "bytes": 125244
+    },
+    {
+      "file": "41-phone1-06-phone-paused-phone1.jpg",
+      "bytes": 81255
+    },
+    {
+      "file": "42-phone8-06-phone-paused-phone8.jpg",
+      "bytes": 80675
+    },
+    {
+      "file": "49-strip-keyboard-resume.jpg",
+      "bytes": 730413
+    },
+    {
+      "file": "50-host-07-keyboard-resumed-tv.jpg",
+      "bytes": 113962
+    },
+    {
+      "file": "51-phone1-07-keyboard-resumed-phone1.jpg",
+      "bytes": 112528
+    },
+    {
+      "file": "52-phone8-07-keyboard-resumed-phone8.jpg",
+      "bytes": 114407
+    },
+    {
+      "file": "53-host-08-phone-recovered-tv.jpg",
+      "bytes": 114035
+    },
+    {
+      "file": "54-phone1-08-phone-recovered-phone1.jpg",
+      "bytes": 112528
+    },
+    {
+      "file": "55-phone8-08-phone-recovered-phone8.jpg",
+      "bytes": 116617
+    },
+    {
+      "file": "62-phone1-connection-lost-leader.jpg",
+      "bytes": 93620
+    },
+    {
+      "file": "63-phone8-connection-lost-non-leader.jpg",
+      "bytes": 93796
+    },
+    {
+      "file": "66-strip-host-reload-phone1.jpg",
+      "bytes": 919895
+    },
+    {
+      "file": "67-host-09-host-recovered-lobby-tv.jpg",
+      "bytes": 227608
+    },
+    {
+      "file": "68-phone1-09-host-recovered-lobby-phone1.jpg",
+      "bytes": 129584
+    },
+    {
+      "file": "69-phone8-09-host-recovered-lobby-phone8.jpg",
+      "bytes": 112683
+    },
+    {
+      "file": "78-strip-host-reload-tv.jpg",
+      "bytes": 1461102
+    },
+    {
+      "file": "79-host-09-second-host-recovered-lobby-tv.jpg",
+      "bytes": 227608
+    },
+    {
+      "file": "80-phone1-09-second-host-recovered-lobby-phone1.jpg",
+      "bytes": 129584
+    },
+    {
+      "file": "81-phone8-09-second-host-recovered-lobby-phone8.jpg",
+      "bytes": 112683
+    },
+    {
+      "file": "82-host-10-quit-picker-tv.jpg",
+      "bytes": 146768
+    },
+    {
+      "file": "83-phone1-10-quit-picker-phone1.jpg",
+      "bytes": 141322
+    },
+    {
+      "file": "84-phone8-10-quit-picker-phone8.jpg",
+      "bytes": 106719
+    },
+    {
+      "file": "85-host-11-quit-keeps-eight-tv.jpg",
+      "bytes": 219991
+    },
+    {
+      "file": "86-phone1-11-quit-keeps-eight-phone1.jpg",
+      "bytes": 129556
+    },
+    {
+      "file": "87-phone8-11-quit-keeps-eight-phone8.jpg",
+      "bytes": 112671
+    },
+    {
+      "file": "88-host-12-gone-keeps-play-tv.jpg",
+      "bytes": 113378
+    },
+    {
+      "file": "89-phone1-12-gone-keeps-play-phone1.jpg",
+      "bytes": 112512
+    },
+    {
+      "file": "90-phone8-12-gone-keeps-play-phone8.jpg",
+      "bytes": 117183
+    },
+    {
+      "file": "91-phone1-closed-room-phone-1.jpg",
+      "bytes": 104993
+    },
+    {
+      "file": "92-phone2-closed-room-phone-2.jpg",
+      "bytes": 104993
+    },
+    {
+      "file": "93-phone3-closed-room-phone-3.jpg",
+      "bytes": 104993
+    },
+    {
+      "file": "94-phone4-closed-room-phone-4.jpg",
+      "bytes": 104993
+    },
+    {
+      "file": "95-phone5-closed-room-phone-5.jpg",
+      "bytes": 104993
+    },
+    {
+      "file": "96-phone6-closed-room-phone-6.jpg",
+      "bytes": 104993
+    },
+    {
+      "file": "97-phone7-closed-room-phone-7.jpg",
+      "bytes": 104993
+    },
+    {
+      "file": "98-phone8-closed-room-phone-8.jpg",
+      "bytes": 104993
+    },
+    {
+      "file": "99-host-13-gone-new-room-offer-tv.jpg",
+      "bytes": 169908
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 8576
+    },
+    {
+      "file": "run.json",
+      "bytes": 25445
+    }
+  ],
+  "totalBytes": 13508738,
+  "maxBytes": 12582912
+}

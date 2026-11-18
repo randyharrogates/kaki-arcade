@@ -590,3 +590,27 @@ it.each(['room-not-found', 'room-expired', 'not-allowed'])('D-095 phone transpor
   expect(h.phonePCs[0]?.connectionState).not.toBe('closed');
   for (const phone of h.phones) phone.stop(); h.host.stop();
 });
+
+it.each(['room-not-found', 'room-expired'])('D-099 host retains open channels on %s', async code => {
+  const h = await hostAndPhones(2); connectAll(h); await settle(h.clock);
+  const hostId = h.server.room.sockets.find(s => s.role === 'host')?.id ?? '';
+  const socket = h.server.live.get(hostId);
+  expect(socket).toBeDefined();
+  socket?.receive(JSON.stringify({ v, t: 'error', code, retryAfterS: null }));
+  await settle(h.clock, 100);
+  expect(h.hostErrors).toContain(code);
+  expect([...h.host.peers.values()].every(peer => peer.connected)).toBe(true);
+  expect(h.phonePeers.every(peer => peer.connected)).toBe(true);
+  h.phones.forEach(phone => { phone.stop(); }); h.host.stop();
+});
+it('D-095 transient ICE disconnect has a grace period; persistent loss closes the link', async () => {
+  const h = await hostAndPhones(1); connectAll(h); await settle(h.clock);
+  const pc = h.hostPCs[0]; if (!pc) throw new Error('No host peer');
+  pc.connectionState = 'disconnected'; pc.onconnectionstatechange?.();
+  h.clock.advance(2999); expect([...h.host.peers.values()][0]?.connected).toBe(true);
+  pc.connectionState = 'connected'; pc.onconnectionstatechange?.();
+  h.clock.advance(3001); expect([...h.host.peers.values()][0]?.connected).toBe(true);
+  pc.connectionState = 'disconnected'; pc.onconnectionstatechange?.();
+  h.clock.advance(3000); expect(pc.connectionState).toBe('closed');
+  h.phones.forEach(phone => { phone.stop(); }); h.host.stop();
+});

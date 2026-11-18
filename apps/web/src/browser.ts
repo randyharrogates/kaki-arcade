@@ -5,7 +5,7 @@ import type { SessionDisplay } from './session-adapter';
 import type { SessionEvent } from '@kaki/platform';
 import { loadSessionGame, prepareSession, loadSessionAssets } from './session-loading';
 import { sessionLinks } from './session-links';
-import { loadGame } from './game-registry';
+import { loadGame, consoleE2eEnabled } from './game-registry';
 import { createHostTransport } from '@kaki/netcode';
 import type { Channel, PeerConnection, Socket, Stat } from '@kaki/netcode';
 import { HOST_REOPEN_TIMEOUT_MS } from '@kaki/platform';
@@ -73,7 +73,7 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
     load: id => loadSessionGame(id, loader), prepare: prepareSession, assets: loadSessionAssets,
     transport: links.transport,
     frames: animationFrames(callback => requestAnimationFrame(callback), handle => { cancelAnimationFrame(handle); }),
-    seed: () => crypto.getRandomValues(new Uint32Array(1))[0] ?? 0,
+    seed: () => consoleE2eEnabled ? 15 : crypto.getRandomValues(new Uint32Array(1))[0] ?? 0,
     display: present, event,
   });
   return {
@@ -155,8 +155,6 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
         },
         onControl: (message, _identity, id) => { callbacks.control(id, channels.get(id)?.receive(message) ?? null); },
         onState: (state, id) => {
-          // A disconnected peer must re-authenticate on a new connection before using its held seat.
-          if (state === 'disconnected') transport?.peers.get(id)?.close();
           if (state === 'closed') { channels.delete(id); callbacks.dropped(id); }
         },
         onLink: (quality, id) => { callbacks.quality(id, quality); },
