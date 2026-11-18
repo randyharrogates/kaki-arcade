@@ -1,0 +1,636 @@
+[
+  {
+    "id": "station-cue-empty",
+    "file": "tabao-rush/stations/overlays/cue-empty.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "cue-empty"
+  },
+  {
+    "id": "station-cue-working",
+    "file": "tabao-rush/stations/overlays/cue-working.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "cue-working"
+  },
+  {
+    "id": "station-cue-done",
+    "file": "tabao-rush/stations/overlays/cue-done.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "cue-done"
+  },
+  {
+    "id": "station-cue-burning",
+    "file": "tabao-rush/stations/overlays/cue-burning.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "cue-burning"
+  },
+  {
+    "id": "station-cue-on-fire",
+    "file": "tabao-rush/stations/overlays/cue-on-fire.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "cue-on-fire"
+  },
+  {
+    "id": "station-progress-track",
+    "file": "tabao-rush/stations/overlays/progress-track.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "progress-track"
+  },
+  {
+    "id": "station-progress-0",
+    "file": "tabao-rush/stations/overlays/progress-0.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "progress-0"
+  },
+  {
+    "id": "station-progress-1",
+    "file": "tabao-rush/stations/overlays/progress-1.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "progress-1"
+  },
+  {
+    "id": "station-progress-2",
+    "file": "tabao-rush/stations/overlays/progress-2.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "progress-2"
+  },
+  {
+    "id": "station-progress-3",
+    "file": "tabao-rush/stations/overlays/progress-3.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "progress-3"
+  },
+  {
+    "id": "station-progress-4",
+    "file": "tabao-rush/stations/overlays/progress-4.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "progress-4"
+  },
+  {
+    "id": "station-progress-5",
+    "file": "tabao-rush/stations/overlays/progress-5.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "progress-5"
+  },
+  {
+    "id": "station-progress-6",
+    "file": "tabao-rush/stations/overlays/progress-6.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "progress-6"
+  },
+  {
+    "id": "station-progress-7",
+    "file": "tabao-rush/stations/overlays/progress-7.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "progress-7"
+  },
+  {
+    "id": "station-smoke-0",
+    "file": "tabao-rush/stations/overlays/smoke-0.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "smoke-0",
+    "reducedMotionFrame": "station-smoke-2"
+  },
+  {
+    "id": "station-smoke-1",
+    "file": "tabao-rush/stations/overlays/smoke-1.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "smoke-1",
+    "reducedMotionFrame": "station-smoke-2"
+  },
+  {
+    "id": "station-smoke-2",
+    "file": "tabao-rush/stations/overlays/smoke-2.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "smoke-2",
+    "reducedMotionFrame": "station-smoke-2"
+  },
+  {
+    "id": "station-smoke-3",
+    "file": "tabao-rush/stations/overlays/smoke-3.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "smoke-3",
+    "reducedMotionFrame": "station-smoke-2"
+  }
+]

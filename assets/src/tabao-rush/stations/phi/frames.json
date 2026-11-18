@@ -1,0 +1,177 @@
+[
+  {
+    "id": "station-cue-empty",
+    "file": "tabao-rush/stations/phi/cue-empty.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "cue-empty"
+  },
+  {
+    "id": "station-cue-working",
+    "file": "tabao-rush/stations/phi/cue-working.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "cue-working"
+  },
+  {
+    "id": "station-cue-done",
+    "file": "tabao-rush/stations/phi/cue-done.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "cue-done"
+  },
+  {
+    "id": "station-cue-burning",
+    "file": "tabao-rush/stations/phi/cue-burning.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "cue-burning"
+  },
+  {
+    "id": "station-cue-on-fire",
+    "file": "tabao-rush/stations/phi/cue-on-fire.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "overlay": "cue-on-fire"
+  }
+]

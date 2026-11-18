@@ -417,3 +417,52 @@ is intentionally exempt. Palette tokens are declared in items.py. These material
 ratios do not establish rendered readability. Render all three options into
 scratch directories for Randy's artifact; `--out` supports scratch output without
 publishing source PNGs. The default render and its rendered checks remain the gate.
+
+## Station frames
+
+**The canvas**
+- All 31 station frames share an untrimmed **192×192** canvas.
+- Units are pixels, origin top-left, +x right, +y down.
+- At full detail there are **120 px per tile**, so 1 source px is 1 TV px at 120 px per tile.
+
+**Where to put the sprite**
+- Every station frame's `anchor` equals `anchors.root` = **[96,128]**. That is `G.project((0,0,0))`, the tile centre at floor height in the 60° projection.
+- T-07's `cueLayout` uses the same projection (`model.ts` DEPTH 0.866, z×0.5) and the same root: the tile box at (TILE/2, TILE×DEPTH/2).
+- **Drawing:** top-left = rootScreen − anchor×s + trim×s, size rect×s, where s = tilePx/120.
+- Draw every overlay (cue, track, cells, smoke) with its anchor on the same root as the body.
+- Named anchors are where a feature sits on that canvas (offset = anchors.X − anchors.root). They are **not** extra translations; adding both would offset the cue twice.
+- To move a cue (a clamp or a margin), translate the cue and its track and cells by one shared delta.
+
+**Root-relative opaque boxes** (alpha > 128; use these for collisions, not the padded 48×48 rect at trim [72,0])
+
+| Feature | x | y | Centre | Notes |
+|---|---|---|---|---|
+| Plaque, cream outer edge | −22..+21 | −126..−83 | (0,−104) = `anchors.cue` [96,24] | constant box `PLAQUE_COLUMNS/ROWS` (74,118)/(2,46) gives −22..+22, −126..−82, the 44×44 T-07 uses |
+| Ink ring | ±21 | −125..−83 | | |
+| Bar track | −45..+44 | −76..−64 | (0,−70) = `anchors.progress` [96,58] | constant box −45..+45, −77..−63, the 90×14 T-07 uses |
+| Cell i (0-7) | centre −37 + 10.5·i | centre −70 | | 8×8 gold fill; empty mark 4×4 ink at the same centre |
+
+**North-wall cues**
+- The gap from the plaque bottom to the bar top is 5-6 px. The whole block runs −126..−63 (63 px).
+- With `PULSE_SCALE` 1.05 about the block centre (−94.5), it spans −127.6..−61.4.
+- The tile's floor-level north edge is root **−52** (`G.project((0,.5,0))` y 76.04). For a row-0 cue:
+  - the pulsed top is **75.6 px above the level's north floor edge**;
+  - the plaque bottom is 30 px above it;
+  - the bar runs from 25 to 11 px above it.
+- The counter's back-top edge (z 0.68) is root −91 (y 37.3). The plaque therefore overlaps the counter back by 8-9 px, and the bar sits on the counter top.
+- A north cue needs about 76 px of the 203 px top margin at 1920. T-07 should check that against its HUD.
+
+**Effects and food**
+- **Fire:** align A-07 `fire-N` origin [48,77] to `anchors.fire` [96,120] (root −8). The flame spans x −27..+27 and y −78 (top, frame 0) to −4, clearing the plaque by at least 4 px.
+- **Steam and sparks:** align origin [32,53] / [32,48] to `anchors.effect` [96,77] (root −51).
+- **Food:** align the item's own anchor to `anchors.item` [96,77]; drinks use [96,101].
+
+**Order and state**
+- Draw in `metadata.layerOrder`: body, food, fire, effect, progress, cue.
+- `stateLayers` names only the base layers. For working, add `station-progress-0` up to `N−1`, where N = floor(clamp(p/total,0,1)·8); at N = 8 switch to the done cue.
+- For burning, `stateLayers` names smoke-0 as the first frame. Play the `smoke` animation (8 fps, loop). With reduced motion, draw only `reducedMotionFrame` (`station-smoke-2`).
+- Select state in this order: `fire` → on-fire; `burnt` → burning; otherwise the public status. `warning` has no A-05 art (A-07 sparks).
+
+**Half detail**
+- The halfRule halves rect, trim, sourceSize, `anchor` and every named anchor: root [48,64], cue [48,12], progress [48,29], fire [48,60], effect and item [48,38.5].
+- Draw half detail at 2×.

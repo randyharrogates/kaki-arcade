@@ -601,7 +601,7 @@ def render_job(job, source, *, read_bytes=None, legacy=False):
     for path in inputs:
         base = ROOT.resolve() if path.is_relative_to(ROOT.resolve()) else source.resolve()
         data = read_bytes(path)
-        if ident == 'items' and path == (source / 'pipeline.json').resolve() and not legacy:
+        if script.name == 'items.py' and path == (source / 'pipeline.json').resolve() and not legacy:
             data = item_stamp_config(data)
         for value in (path.relative_to(base).as_posix().encode(), data):
             digest.update(len(value).to_bytes(8, 'big') + value)

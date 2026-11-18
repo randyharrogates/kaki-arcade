@@ -76,6 +76,12 @@ class RenderJobTests(unittest.TestCase):
         group['frames'][0]['bakedOutline'] = True
         p.write_json(path, self.config)
         self.assertIsNone(self.reason())
+        # Unrelated sets, pack-only globals and future render jobs do not feed items.
+        self.config['sets'][1]['containmentFootprints'] = {'x': 'changed'}
+        self.config['renders'].append(dict(id='future', script='cards.py'))
+        self.config['powerOfTwo'] = True
+        p.write_json(path, self.config)
+        self.assertIsNone(self.reason())
         snapshot = copy.deepcopy(self.config)
         for mutate in (
             lambda: group['frames'][0].update(scale=2),
@@ -96,6 +102,32 @@ class RenderJobTests(unittest.TestCase):
             self.assertEqual(self.reason(), 'content stamp differs')
             path.write_bytes(original)
             self.assertIsNone(self.reason())
+
+    def test_station_digest_ignores_pipeline_but_tracks_render_inputs(self):
+        root = Path(__file__).resolve().parents[2]
+        source = root / 'assets/src'
+        config_path = source / 'pipeline.json'
+        config = p.read_json(config_path)
+        job = next(j for j in config['renders'] if j['id'] == 'station-chop')
+        with patch.object(p, 'ROOT', root):
+            original = p.render_job(job, source)[3]
+            config['sets'][0]['unrelated'] = True
+            config['renders'].append(dict(id='future'))
+            config['powerOfTwo'] = not config['powerOfTwo']
+            def changed_config(path):
+                if path == config_path:
+                    return p.json.dumps(config).encode()
+                return path.read_bytes()
+            self.assertEqual(original, p.render_job(job, source, read_bytes=changed_config)[3])
+            # No station script/import reads pipeline.json: geometry and kalib
+            # are the actual render settings and must invalidate the stamp.
+            for name in ('station_geometry.py', 'kalib.py'):
+                def changed_input(path):
+                    return path.read_bytes() + (b'changed' if path.name == name else b'')
+                self.assertNotEqual(original, p.render_job(job, source, read_bytes=changed_input)[3])
+            changed_job = copy.deepcopy(job)
+            changed_job['args'].append('--changed')
+            self.assertNotEqual(original, p.render_job(changed_job, source)[3])
 
     def test_unrelated_set_leaves_items_stamp_unchanged(self):
         """TR-041: unrelated sets, jobs and round membership cannot stale items."""

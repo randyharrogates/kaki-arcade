@@ -1,0 +1,73 @@
+[
+  {
+    "id": "station-sink",
+    "file": "tabao-rush/stations/sink/sink.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "stationKind": "sink",
+    "footprint": [
+      -0.5,
+      -0.5,
+      1,
+      1
+    ],
+    "supportedStates": [
+      "empty",
+      "working",
+      "done",
+      "on-fire"
+    ],
+    "staticBody": true,
+    "layerOrder": [
+      "body",
+      "food",
+      "fire",
+      "effect",
+      "progress",
+      "cue"
+    ],
+    "stateLayers": {
+      "empty": [
+        "station-cue-empty"
+      ],
+      "working": [
+        "station-progress-track",
+        "station-cue-working"
+      ],
+      "done": [
+        "station-cue-done"
+      ],
+      "on-fire": [
+        "station-cue-on-fire"
+      ]
+    }
+  }
+]

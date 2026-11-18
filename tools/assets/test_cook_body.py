@@ -19,7 +19,7 @@ class CookBodyTests(unittest.TestCase):
         self.assertEqual(body,dict(id='tabao-rush-cook-body',encoding='lossless',anchors=['root','head','hands'],metadata=['handsInFront'],frameFiles=['tabao-rush/cook-body/'+a+'/frames.json' for a in c.ACTIONS],animations=c.animations()))
         head = next(g for g in data['sets'] if g['id']=='tabao-rush-cook-heads')
         self.assertEqual(head,dict(id='tabao-rush-cook-heads',encoding='lossless',anchors=['head'],frameFiles=['tabao-rush/cook-heads/cap/frames.json'],animations=c.head_animations()))
-        self.assertEqual(data['rounds']['tabao-rush'],['tabao-rush-items','tabao-rush-cook-body','tabao-rush-cook-heads','tabao-rush-effects'])
+        self.assertEqual(data['rounds']['tabao-rush'],['tabao-rush-items','tabao-rush-cook-body','tabao-rush-cook-heads','tabao-rush-effects','tabao-rush-stations'])
         self.assertNotIn('cook-spike',json.dumps(data))
         self.assertFalse((p.ROOT/'assets/src/tabao-rush/cook-spike').exists())
 

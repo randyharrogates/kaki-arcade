@@ -3698,6 +3698,57 @@
           ]
         }
       ]
+    },
+    {
+      "id": "tabao-rush-stations",
+      "encoding": "lossless",
+      "anchors": [
+        "root",
+        "item",
+        "progress",
+        "cue",
+        "effect",
+        "fire"
+      ],
+      "metadata": [
+        "stationKind",
+        "footprint",
+        "supportedStates",
+        "staticBody",
+        "stateLayers",
+        "overlay",
+        "layerOrder",
+        "reducedMotionFrame"
+      ],
+      "frameFiles": [
+        "tabao-rush/stations/chop/frames.json",
+        "tabao-rush/stations/wok/frames.json",
+        "tabao-rush/stations/pot/frames.json",
+        "tabao-rush/stations/grill/frames.json",
+        "tabao-rush/stations/rice/frames.json",
+        "tabao-rush/stations/drinks/frames.json",
+        "tabao-rush/stations/plating/frames.json",
+        "tabao-rush/stations/sink/frames.json",
+        "tabao-rush/stations/bin/frames.json",
+        "tabao-rush/stations/serving/frames.json",
+        "tabao-rush/stations/dish-rack/frames.json",
+        "tabao-rush/stations/return-counter/frames.json",
+        "tabao-rush/stations/ingredient-crate/frames.json",
+        "tabao-rush/stations/overlays/frames.json"
+      ],
+      "animations": [
+        {
+          "action": "smoke",
+          "fps": 8,
+          "loop": true,
+          "frames": [
+            "station-smoke-0",
+            "station-smoke-1",
+            "station-smoke-2",
+            "station-smoke-3"
+          ]
+        }
+      ]
     }
   ],
   "rounds": {
@@ -3709,7 +3760,8 @@
       "tabao-rush-items",
       "tabao-rush-cook-body",
       "tabao-rush-cook-heads",
-      "tabao-rush-effects"
+      "tabao-rush-effects",
+      "tabao-rush-stations"
     ]
   },
   "powerOfTwo": false,
@@ -5101,6 +5153,299 @@
         "tabao-rush/effects/shadow/frames.json"
       ],
       "timeoutSeconds": 180
+    },
+    {
+      "id": "station-chop",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "chop"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/chop/chop.png",
+        "tabao-rush/stations/chop/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-wok",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "wok"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/wok/wok.png",
+        "tabao-rush/stations/wok/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-pot",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "pot"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/pot/pot.png",
+        "tabao-rush/stations/pot/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-grill",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "grill"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/grill/grill.png",
+        "tabao-rush/stations/grill/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-rice",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "rice"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/rice/rice.png",
+        "tabao-rush/stations/rice/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-drinks",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "drinks"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/drinks/drinks.png",
+        "tabao-rush/stations/drinks/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-plating",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "plating"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/plating/plating.png",
+        "tabao-rush/stations/plating/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-sink",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "sink"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/sink/sink.png",
+        "tabao-rush/stations/sink/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-bin",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "bin"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/bin/bin.png",
+        "tabao-rush/stations/bin/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-serving",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "serving"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/serving/serving.png",
+        "tabao-rush/stations/serving/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-dish-rack",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "dish-rack"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/dish-rack/dish-rack.png",
+        "tabao-rush/stations/dish-rack/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-return-counter",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "return-counter"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/return-counter/return-counter.png",
+        "tabao-rush/stations/return-counter/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-ingredient-crate",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "ingredient-crate"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/ingredient-crate/ingredient-crate.png",
+        "tabao-rush/stations/ingredient-crate/frames.json"
+      ],
+      "timeoutSeconds": 120
+    },
+    {
+      "id": "station-overlays",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "overlays"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/overlays/cue-empty.png",
+        "tabao-rush/stations/overlays/cue-working.png",
+        "tabao-rush/stations/overlays/cue-done.png",
+        "tabao-rush/stations/overlays/cue-burning.png",
+        "tabao-rush/stations/overlays/cue-on-fire.png",
+        "tabao-rush/stations/overlays/progress-track.png",
+        "tabao-rush/stations/overlays/progress-0.png",
+        "tabao-rush/stations/overlays/progress-1.png",
+        "tabao-rush/stations/overlays/progress-2.png",
+        "tabao-rush/stations/overlays/progress-3.png",
+        "tabao-rush/stations/overlays/progress-4.png",
+        "tabao-rush/stations/overlays/progress-5.png",
+        "tabao-rush/stations/overlays/progress-6.png",
+        "tabao-rush/stations/overlays/progress-7.png",
+        "tabao-rush/stations/overlays/smoke-0.png",
+        "tabao-rush/stations/overlays/smoke-1.png",
+        "tabao-rush/stations/overlays/smoke-2.png",
+        "tabao-rush/stations/overlays/smoke-3.png",
+        "tabao-rush/stations/overlays/frames.json"
+      ],
+      "timeoutSeconds": 300
+    },
+    {
+      "id": "station-phi",
+      "script": "stations.py",
+      "args": [
+        "--kind",
+        "overlays",
+        "--plaque",
+        "phi"
+      ],
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/station_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/stations/phi/cue-empty.png",
+        "tabao-rush/stations/phi/cue-working.png",
+        "tabao-rush/stations/phi/cue-done.png",
+        "tabao-rush/stations/phi/cue-burning.png",
+        "tabao-rush/stations/phi/cue-on-fire.png",
+        "tabao-rush/stations/phi/frames.json"
+      ],
+      "timeoutSeconds": 300
     }
   ]
 }

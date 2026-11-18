@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — A-05: Tabao Rush station art (in progress)
+
+- TR-030, TR-031, TR-010: 12 station kinds and a crate scripted in Blender; state cues on ink-edged cream plaques (42 px at 120 px per tile); an eight-cell unlit gold bar on an ink track, empty cells marked in ink; a four-frame burnt-food smoke loop at 8 fps, reduced motion smoke-2; anchors and painter order (body, food, fire, effect, progress, cue) in the manifest; only the states the rules reach (D-278, D-279).
+- Station page 206,300 B / 1,166,880 B decoded (half 56,578 B); Tabao Rush round 2,426,954 of 8,000,000 B and 55,408,032 of 256,000,000 B decoded.
+- Not yet: the packed sprite drawn on the TV (replaces T-07's placeholder); TV check at 3 m.
+
 ## 2026-11-19 — F-10: PERF-040 assessment and reference-browser options (in progress)
 
 - PERF-040: bare `pnpm perf` times each game's eight-player step over at least 10,000 samples on

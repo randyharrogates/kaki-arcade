@@ -1,0 +1,54 @@
+[
+  {
+    "id": "station-ingredient-crate",
+    "file": "tabao-rush/stations/ingredient-crate/ingredient-crate.png",
+    "anchor": [
+      96.0,
+      128.0
+    ],
+    "anchors": {
+      "root": [
+        96.0,
+        128.0
+      ],
+      "item": [
+        96.0,
+        77.0
+      ],
+      "progress": [
+        96,
+        58
+      ],
+      "cue": [
+        96,
+        24
+      ],
+      "effect": [
+        96.0,
+        77.0
+      ],
+      "fire": [
+        96,
+        120
+      ]
+    },
+    "stationKind": "ingredient-crate",
+    "footprint": [
+      -0.5,
+      -0.5,
+      1,
+      1
+    ],
+    "supportedStates": [],
+    "staticBody": true,
+    "layerOrder": [
+      "body",
+      "food",
+      "fire",
+      "effect",
+      "progress",
+      "cue"
+    ],
+    "stateLayers": {}
+  }
+]
