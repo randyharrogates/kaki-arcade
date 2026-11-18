@@ -2,6 +2,18 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — X-10: Credits question download
+
+- RZ-021, DATA-004: Credits offers "Download our questions (CC BY‑SA 4.0)", which saves
+  `kaki-arcade-rabakz-questions.json` from the same-origin `/rabakz/questions.json`. The build
+  writes it from the shipped bank: only the 2,342 adapted Open Trivia Database (`otdb-`)
+  questions and their CC BY-SA 4.0 notice. Kaki Arcade-written questions are not included
+  (D-232, D-268). It loads only on click; the game still reads its bank from the lazy chunk.
+- PERF-022: 632,913 B raw added to the deployment; the deploy-shell figure goes from
+  532,530 B to 684,398 B gzip of 1,500,000 (+151,868 B, not exempted).
+- UAT: Credits at 1920, 1280 and 390; the file downloaded by keyboard Enter at 1920 and by
+  tap at 390, 2,342 `otdb-` questions each.
+
 ## 2026-11-19 — K-11: phone that can't reach the big screen
 
 - REL-006: after 15 s on "Connecting to the host…", a never-seated phone shows "This phone

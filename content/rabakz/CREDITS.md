@@ -14,7 +14,7 @@ correction is listed in the import report). No question was otherwise reworded. 
 selection was made is in `scripts/otdb-map.ts` and `scripts/otdb-screen.ts`.
 
 **The adapted questions are offered under the same licence, CC BY-SA 4.0.** That covers the
-`otdb-` questions in `src/questions/*.json` and in the generated chunks built from them.
+`otdb-` questions in `src/questions/*.json` and in the generated chunks built from them. The build also writes these `otdb-` questions, with this notice, to `/rabakz/questions.json`, the Credits page's download; no other question is in that file.
 
 The same credit and notice are recorded in each source file (`defaultSource`) and are written
 by the build into `generated/index.json` (`credits`), for the game's credits page (RZ-021).

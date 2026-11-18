@@ -1,0 +1,97 @@
+{
+  "href": "/rabakz/questions.json",
+  "status": 200,
+  "contentType": "application/json",
+  "licence": "CC BY-SA 4.0",
+  "activations": [
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "method": "keyboard Enter",
+      "questionCount": 2342,
+      "everyIdStartsOtdb": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "method": "tap",
+      "questionCount": 2342,
+      "everyIdStartsOtdb": true
+    }
+  ],
+  "measurements": [
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "fit": {
+        "height": 1080,
+        "scrollHeight": 1080,
+        "width": 1920,
+        "scrollWidth": 1920
+      },
+      "reading": {
+        "x": 55,
+        "y": 55,
+        "width": 1810,
+        "height": 970,
+        "top": 55,
+        "right": 1865,
+        "bottom": 1025,
+        "left": 55
+      },
+      "screenScale": 1
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "fit": {
+        "height": 1080,
+        "scrollHeight": 1080,
+        "width": 1920,
+        "scrollWidth": 1920
+      },
+      "reading": {
+        "x": 36.66666793823242,
+        "y": 36.66666793823242,
+        "width": 1206.666748046875,
+        "height": 646.6666870117188,
+        "top": 36.66666793823242,
+        "right": 1243.3334159851074,
+        "bottom": 683.3333549499512,
+        "left": 36.66666793823242
+      },
+      "screenScale": 0.6666666666666666
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fit": {
+        "height": 844,
+        "scrollHeight": 1172,
+        "width": 390,
+        "scrollWidth": 390
+      },
+      "reading": {
+        "x": 21,
+        "y": 21,
+        "width": 348,
+        "height": 1130.34375,
+        "top": 21,
+        "right": 369,
+        "bottom": 1151.34375,
+        "left": 21
+      },
+      "screenScale": 1
+    }
+  ]
+}

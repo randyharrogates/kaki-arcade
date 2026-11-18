@@ -1,0 +1,44 @@
+{
+  "href": "/rabakz/questions.json",
+  "status": 200,
+  "contentType": "application/json",
+  "licence": "CC BY-SA 4.0",
+  "measurements": [
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "fit": {
+        "height": 1080,
+        "scrollHeight": 1080,
+        "width": 1920,
+        "scrollWidth": 1920
+      }
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "fit": {
+        "height": 1080,
+        "scrollHeight": 1080,
+        "width": 1920,
+        "scrollWidth": 1920
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fit": {
+        "height": 844,
+        "scrollHeight": 1172,
+        "width": 390,
+        "scrollWidth": 390
+      }
+    }
+  ]
+}

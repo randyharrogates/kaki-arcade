@@ -1,0 +1,75 @@
+{
+  "slice": "X-10-credits-download",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- X-10-credits-download --phones 1 --out round1",
+  "commit": "575afa3b7212d4b27b07aa2d019628571d92067a",
+  "viewports": [
+    "1920×1080",
+    "1280×720",
+    "390×844"
+  ],
+  "steps": [],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-credits-download-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-credits-download-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-credits-download-390.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-credits-download-1920.jpg",
+    "02-host-credits-download-1280.jpg",
+    "03-host-credits-download-390.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-credits-download-1920.jpg",
+      "bytes": 218901
+    },
+    {
+      "file": "02-host-credits-download-1280.jpg",
+      "bytes": 118951
+    },
+    {
+      "file": "03-host-credits-download-390.jpg",
+      "bytes": 72239
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 855
+    },
+    {
+      "file": "download.json",
+      "bytes": 788
+    },
+    {
+      "file": "run.json",
+      "bytes": 1549
+    }
+  ],
+  "totalBytes": 413320,
+  "maxBytes": 12582912
+}

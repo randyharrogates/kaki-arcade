@@ -8,6 +8,8 @@ it('DATA-004 RZ-021 footer links render both pages without horizontal scrolling'
     const browser = await chromium.launch({ headless: true });
     try {
       const page = await browser.newPage();
+      const downloads: string[] = [];
+      page.on('request', request => { if (new URL(request.url()).pathname === '/rabakz/questions.json') downloads.push(request.url()); });
       for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 720 }, { width: 390, height: 844 }, { width: 844, height: 390 }, { width: 1000, height: 720 }, { width: 1001, height: 720 }]) {
         await page.setViewportSize(viewport);
         await page.goto('http://127.0.0.1:6732');
@@ -37,6 +39,20 @@ it('DATA-004 RZ-021 footer links render both pages without horizontal scrolling'
           await page.waitForURL(`**/${name.toLowerCase()}`);
           await page.goto(`http://127.0.0.1:6732/${name.toLowerCase()}`);
           await page.getByRole('heading', { name, exact: true }).waitFor();
+          if (viewport.width >= 1280) expect(await page.getByRole('link', { name: 'Back to Kaki Arcade' }).evaluate(el => el === document.activeElement)).toBe(true);
+          if (name === 'Credits') {
+            const download = page.getByRole('link', { name: 'Download our questions (CC BY‑SA 4.0)', exact: true });
+            expect(downloads).toEqual([]);
+            expect(await download.getAttribute('download')).toBe('kaki-arcade-rabakz-questions.json');
+            expect(await download.getAttribute('href')).toBe('/rabakz/questions.json');
+            await page.getByRole('link', { name: 'CC BY‑SA 4.0 licence', exact: true }).focus();
+            await page.keyboard.press('Tab');
+            expect(await download.evaluate(el => el === document.activeElement)).toBe(true);
+            if (viewport.width <= 1000) expect(await download.evaluate(el => el.getBoundingClientRect().height)).toBeGreaterThanOrEqual(55);
+            const fit = await page.locator('.legal-page').evaluate(el => ({ width: el.clientWidth, height: el.clientHeight, scrollWidth: el.scrollWidth, scrollHeight: el.scrollHeight }));
+            expect(fit.scrollWidth, `Credits ${String(viewport.width)}: ${JSON.stringify(fit)}`).toBeLessThanOrEqual(fit.width);
+            if (viewport.width === 390) expect(fit.scrollHeight).toBeGreaterThan(fit.height);
+          }
           if (name === 'Privacy') await page.getByRole('heading', { name: 'Nicknames', exact: true }).waitFor();
           if (name === 'Privacy') expect(await page.locator('section h2').allTextContents()).toEqual(['Anonymous counts', 'Room codes', 'No sign-up', 'Saved on your TV', 'Nicknames']);
           expect(await page.locator('.legal-page').evaluate(el => el.scrollWidth <= el.clientWidth)).toBe(true);
@@ -80,7 +96,6 @@ it('DATA-004 RZ-021 footer links render both pages without horizontal scrolling'
             expect(fit.clearance, `${name} ${String(viewport.width)}: ${JSON.stringify(fit)}`).toBeGreaterThanOrEqual(fit.required);
             expect(await page.locator('.legal-page').evaluate(el => el.scrollHeight <= el.clientHeight)).toBe(true);
             expect(await page.locator('.legal-reading').evaluate(el => el.getBoundingClientRect().bottom <= innerHeight)).toBe(true);
-            expect(await page.getByRole('link', { name: 'Back to Kaki Arcade' }).evaluate(el => el === document.activeElement)).toBe(true);
           }
           if (viewport.width < 1000) {
             const backLink = await page.getByRole('link', { name: 'Back to Kaki Arcade' }).evaluate(el => {

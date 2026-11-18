@@ -43,7 +43,7 @@ export function LegalPage({ page }: { page: LegalPageName }) {
       <a ref={back} href="/">{legalLinks.home}</a><h1>{copy.title}</h1>
       <div ref={reading} class="legal-sections">{groups.map((group, index) => <div class="legal-column" key={index}>{group.map(section => <section key={section.title}>
         <h2>{section.title}</h2><p>{section.text}</p>
-        {'links' in section && <div class="legal-links">{section.links.map(link => <a key={link.href} href={link.href}>{link.label}</a>)}</div>}
+        {'links' in section && <div class="legal-links">{section.links.map(link => <a key={link.href} href={link.href} download={'download' in link ? link.download : undefined}>{link.label}</a>)}</div>}
       </section>)}</div>)}</div>
     </article>
   </main>;

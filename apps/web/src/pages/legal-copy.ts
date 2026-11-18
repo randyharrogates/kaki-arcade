@@ -14,7 +14,7 @@ export const legalCopy = {
   credits: {
     title: 'Credits',
     sections: [
-      { title: 'Rabakz questions', text: 'General knowledge questions come from the Open Trivia Database. We chose family-friendly questions, grouped them and fixed spelling and spacing. Our adapted versions of these questions are shared under the same licence (CC BY‑SA 4.0).', links: [{ label: 'Open Trivia Database', href: 'https://opentdb.com' }, { label: 'CC BY‑SA 4.0 licence', href: 'https://creativecommons.org/licenses/by-sa/4.0/' }] },
+      { title: 'Rabakz questions', text: 'General knowledge questions come from the Open Trivia Database. We chose family-friendly questions, grouped them and fixed spelling and spacing. Our adapted versions of these questions are shared under the same licence (CC BY‑SA 4.0).', links: [{ label: 'Open Trivia Database', href: 'https://opentdb.com' }, { label: 'CC BY‑SA 4.0 licence', href: 'https://creativecommons.org/licenses/by-sa/4.0/' }, { label: 'Download our questions (CC BY‑SA 4.0)', href: '/rabakz/questions.json', download: 'kaki-arcade-rabakz-questions.json' }] },
       { title: 'Singapore questions', text: 'The Singapore pack was written for Kaki Arcade. Each question has a source note so its facts can be checked.' },
       { title: 'Type and sound', text: 'Interface text uses fonts on your device. Card lettering uses DM Sans (SIL Open Font License). Kaki Arcade makes its own sound effects.' },
     ],
