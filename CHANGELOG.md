@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-18 — A-02b: cook chop and storage
+
+- TR-060 (in progress): the side-raise chop is the cook's default; cook atlases are lossy WebP q90
+  with a per-atlas difference check; each rendered cook frame is checked to be one connected piece;
+  all cook jobs re-rendered and packed (D-172, D-177). The alternative cook jobs are retired.
+
 ## 2026-11-18 — R-04: start-screen settings
 
 - Start-screen settings on the leader's phone with a TV mirror; Rabakz categories in two groups with

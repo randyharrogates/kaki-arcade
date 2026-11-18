@@ -1,0 +1,4 @@
+chop-s-1: body opaque islands [7190, 1401]
+chop-se-1: body opaque islands [7016, 1436]
+chop-e-1: body opaque islands [7275, 1375]
+chop-ne-1: body opaque islands [7620, 1329]

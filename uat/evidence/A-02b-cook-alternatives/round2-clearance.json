@@ -1,0 +1,66 @@
+{
+  "minimumCentreSeparationTiles": {
+    "s": [
+      0.055806199836519466,
+      [
+        0.0,
+        "shell"
+      ]
+    ],
+    "se": [
+      -0.08796627952189523,
+      [
+        0.0,
+        "shell"
+      ]
+    ],
+    "e": [
+      0.009563852312667931,
+      [
+        1.0,
+        "shell"
+      ]
+    ],
+    "ne": [
+      0.2087649959819754,
+      [
+        1.0,
+        "shell"
+      ]
+    ],
+    "n": [
+      0.11452955569782608,
+      [
+        0.0,
+        "torso"
+      ]
+    ],
+    "nw": [
+      0.004280248972929834,
+      [
+        0.25,
+        "torso"
+      ]
+    ],
+    "w": [
+      0.0070782716520852995,
+      [
+        1.0,
+        "torso"
+      ]
+    ],
+    "sw": [
+      0.14511453539019376,
+      [
+        1.0,
+        "torso"
+      ]
+    ]
+  },
+  "handDiameterPx": 24.353577871316894,
+  "centrePenetrationPx": 10.555953542627428,
+  "centrePenetrationShareOfHandDiameter": 0.43344569731825716,
+  "conservativeHandEdgePenetrationPx": 22.732742478285875,
+  "conservativeHandEdgeShareOfDiameter": 0.9334456973182572,
+  "sampling": "Every eighth frame, 360 support directions per silhouette; analytic bounds, no rendered pixels."
+}

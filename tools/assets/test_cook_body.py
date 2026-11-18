@@ -113,3 +113,83 @@ class CookBodyTests(unittest.TestCase):
             self.assertTrue(record['handsInFront'])
         record = namespace['frame_record'](None,'serve-n-3','serve')
         self.assertEqual(record['anchors']['hands'],[10,30])
+
+
+class CookDecisionJobTests(unittest.TestCase):
+    def test_retired_jobs_and_stamp_changes(self):
+        source = p.ROOT/'assets/src'
+        config = p.render_config(source/'pipeline.json')
+        self.assertFalse(any(j['script'] == 'cook_alt.py' for j in config['renders']))
+        self.assertNotIn('cook-body-alt', json.dumps(config['sets']))
+        changed_input = (p.ROOT/'tools/blender/cook_poses.py').resolve()
+        def changed_bytes(path):
+            data = path.read_bytes()
+            return data + b'\n# changed cook pose input\n' if path == changed_input else data
+        for job in c.jobs():
+            _, outputs, stamp, digest, _ = p.render_job(job, source)
+            # Cook sources may legitimately await integrator rendering.
+            # Simulate a source edit without changing production inputs or stamps.
+            changed_digest = p.render_job(job, source, read_bytes=changed_bytes)[3]
+            self.assertNotEqual(changed_digest, digest)
+            self.assertEqual(p.stale_reason(outputs, stamp, changed_digest), 'content stamp differs')
+        for job in config['renders']:
+            if job['script'] != 'cook.py':
+                _, outputs, stamp, digest, _ = p.render_job(job, source)
+                self.assertIsNone(p.stale_reason(outputs, stamp, digest))
+
+class CookEncodingTests(unittest.TestCase):
+    def test_q90_passes_q50_fails_and_alpha_is_exact(self):
+        import io
+        from PIL import Image
+        # Real lossless render fixture, including opaque outlines and soft alpha.
+        path = p.ROOT/'assets/src/tabao-rush/cook-body/chop/chop-s-1.png'
+        with Image.open(path) as opened:
+            source = p.bleed(opened.convert('RGBA'))
+        for quality in (90, 50):
+            data = io.BytesIO()
+            source.save(data, format='WEBP', lossless=False, quality=quality, method=6, exact=True)
+            with Image.open(io.BytesIO(data.getvalue())) as decoded:
+                if quality == 90:
+                    metric = p.check_cook_difference(source, decoded)
+                    print('q90 cook difference:', metric)
+                else:
+                    with self.assertRaisesRegex(ValueError, 'Cook lossy difference'):
+                        p.check_cook_difference(source, decoded)
+        changed = source.copy()
+        changed.putpixel((0, 0), (0, 0, 0, 1))
+        with self.assertRaisesRegex(ValueError, 'alpha max'):
+            p.check_cook_difference(source, changed)
+
+    def test_cook_multiframe_pages_use_q90_and_check_both_details(self):
+        from PIL import Image
+        with tempfile.TemporaryDirectory() as folder:
+            source = Path(folder)
+            for index, colour in enumerate(((100, 90, 80, 255), (80, 90, 100, 255))):
+                Image.new('RGBA', (16, 16), colour).save(source/f'{index}.png')
+            config = dict(sets=[dict(id=name, encoding='lossless',
+                frames=[dict(id=f'f-{i}', file=f'{i}.png') for i in range(2)])
+                for name in sorted(p.COOK_SETS)], rounds={'cook':sorted(p.COOK_SETS)})
+            with patch.object(p, 'check_cook_difference', wraps=p.check_cook_difference) as check:
+                result = p.pack(config, source, source/'out')
+            self.assertEqual(check.call_count, 4)
+            for group in result['sets'].values():
+                self.assertEqual((group['encoding'], group['quality']), ('lossy', 90))
+            self.assertEqual(config['sets'][0]['encoding'], 'lossless')
+
+
+class CookIslandTests(unittest.TestCase):
+    def test_connectivity_and_dust(self):
+        from PIL import Image
+        from cook_strips import opaque_islands
+        sprite = Image.new('RGBA', (32, 32))
+        # Two 25-pixel islands, diagonal contact joins them under 8-connectivity.
+        for x in range(5):
+            for y in range(5):
+                sprite.putpixel((x,y),(0,0,0,255))
+                sprite.putpixel((x+6,y+6),(0,0,0,255))
+        self.assertEqual(opaque_islands(sprite),[25,25])
+        sprite.putpixel((5,5),(0,0,0,255))
+        sprite.putpixel((30,30),(0,0,0,255))  # isolated antialias dust
+        sprite.putpixel((20,20),(0,0,0,16))  # excluded alpha tail
+        self.assertEqual(opaque_islands(sprite),[51])
+        self.assertEqual(opaque_islands(Image.new('RGBA',(8,8))),[])

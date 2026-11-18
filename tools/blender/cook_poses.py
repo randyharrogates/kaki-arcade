@@ -51,6 +51,27 @@ def work_pose(left=(-.85, 0., 1.05), right=(-.85, 0., -1.05),
     return pose
 
 
+def chop_pose(raise_hand=False):
+    """Fixed torso; outward/up shoulder reach and rigid knife-arm arc (TR-060).
+
+    The toy rig has one arm bone, so shoulder, elbow mesh and wrist move
+    together without changing limb length. The <=.22-tile shoulder excursion
+    supplies reach independently of the head; the supporting hand stays put.
+    """
+    spine = (.308530, .436, .257304)
+    if raise_hand:
+        arm = (4.195185, -.241275, -.918249)
+        # Keep the sleeve sphere overlapping the torso; rotation supplies
+        # the raised wrist instead of translating the whole arm away.
+        shoulder = (.065, .019855, .025)
+    else:
+        arm, shoulder = (2.677454, 0., -1.360655), ZERO
+    pose = work_pose(right=arm)
+    pose['arm_r'] = (shoulder, arm, ONE)
+    pose['spine'] = (ZERO, spine, ONE)
+    return pose
+
+
 WORK_ACTIONS = ('chop', 'stir', 'wash', 'extinguish')
 KEYS = {
     # Breath lifts the chest and shoulders, with a small sideways weight shift.
@@ -67,10 +88,8 @@ KEYS = {
     'throw': [(0, CARRY), (1, work_pose(right=(.10, 0., -2.60),
         twist=-.40, lean=-.10)),
         (3, work_pose(right=(-2.20, 0., -1.30), twist=.35, lean=.18)), (5, REST)],
-    'chop': [(0, work_pose(right=(-1.05, 0., -.20))),
-        (1, work_pose(right=(-.10, 0., -1.10), twist=-.12)),
-        (3, work_pose(right=(-.65, 0., -.20), lean=.065, dip=.025)),
-        (6, work_pose(right=(-1.05, 0., -.20)))],
+    'chop': [(0, chop_pose()), (1, chop_pose(True)),
+             (3, chop_pose()), (6, chop_pose())],
     'stir': [(f, work_pose(left=(-.85, 0., 1.05),
         right=(-1.25+y, 0., x), twist=x*.30))
         for f,x,y in ((0,.65,0.), (2,0.,-.65), (4,-.65,0.),

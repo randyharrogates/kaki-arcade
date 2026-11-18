@@ -351,8 +351,14 @@ listed as working. Updated in the same slice as any change (`WORKFLOW.md` step 5
   masks so the cap and apron take each player's colour. 208 frames, 192 × 192 px, 94 s per
   character. Storage decided as lossy WebP q90 with exact colour (D-142, D-144): about 2.8 MB for
   all cook animations of the 8 MB level budget. Evidence: `uat/evidence/S-02-cook-spike/round2/`.
-  The other 7 actions came with A-02 (above); A-02 keeps the cook sets lossless for now, so the
-  storage choice is put to Randy again with the cook art.
+  The other 7 actions came with A-02 (above). Since A-02b the cook sheets ship as quality-90 WebP
+  (1.79 MB at full size, 0.81 MB at half size), checked against their lossless source.
+- **A-02b (2026-11-18): cook chop and storage.** The cook's chop is a side raise of the knife arm
+  with the head kept still; cook sheets ship as quality-90 WebP checked against their lossless
+  source; every rendered cook frame is checked to be one connected piece. All nine cook jobs were
+  re-rendered and packed and are fresh. Not yet: the knife hides behind the cap while the SE-facing
+  cook holds it, the E-facing extinguisher is mostly hidden, and carrying reads weakly from behind
+  (A-02d, to Randy as rendered strips before T-07 shows cooks).
 
 ### Private panel on the phone (K-05)
 

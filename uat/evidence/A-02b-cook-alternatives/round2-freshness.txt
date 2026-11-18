@@ -1,0 +1,14 @@
+cards: fresh: content stamp matches and all outputs exist
+items: fresh: content stamp matches and all outputs exist
+cook-body-idle: fresh: content stamp matches and all outputs exist
+cook-body-walk: fresh: content stamp matches and all outputs exist
+cook-body-carry-walk: fresh: content stamp matches and all outputs exist
+cook-body-chop: fresh: content stamp matches and all outputs exist
+cook-body-stir: fresh: content stamp matches and all outputs exist
+cook-body-wash: fresh: content stamp matches and all outputs exist
+cook-body-serve: fresh: content stamp matches and all outputs exist
+cook-body-throw: fresh: content stamp matches and all outputs exist
+cook-body-extinguish: fresh: content stamp matches and all outputs exist
+cook-head-cap: fresh: content stamp matches and all outputs exist
+cook-body-chop-alt: stale: missing output chop-s-0.png
+cook-body-extinguish-alt: stale: missing output extinguish-s-0.png

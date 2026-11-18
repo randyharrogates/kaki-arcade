@@ -1,0 +1,9 @@
+10:36  4 users, load averages: 6.83 7.05 7.57
+$ python3 -m unittest tools/blender/test_cook_poses.py
+................
+----------------------------------------------------------------------
+Ran 16 tests in 1.590s
+
+OK
+
+Exit: 0

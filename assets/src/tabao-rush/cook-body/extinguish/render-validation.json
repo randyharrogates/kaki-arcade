@@ -2084,7 +2084,7 @@
     "extinguish-s-2-mask.png": "4fad2be6fa3beec6b0aca28f0309db2563c608ece590629803c1fc0153cf12b9",
     "extinguish-s-3.png": "a97c76dcaa5ae390111f42583eb8d380a076e2d989d13909e8a6b8c41dd4506e",
     "extinguish-s-3-mask.png": "2b5043269bd2f4c75f06db1ea77b19b609c27752f59318d438e55030964833d8",
-    "extinguish-se-0.png": "a3cb9d81bec355e907016bdf958d15d4b8326eb0f792079597fbe8d4eefc59a5",
+    "extinguish-se-0.png": "43553df108c3ffbb1833a5ceac753615850aea6700df68354d14b1336cf4e45f",
     "extinguish-se-0-mask.png": "6be27a2df4dea06c6b2d9b3ab775717f58442bd93fc576615d0abda710e5061b",
     "extinguish-se-1.png": "a8c43a2d6c546d487087a16d4e7c84588eed1d8954cd6520272a3344592fe0a7",
     "extinguish-se-1-mask.png": "2527a5984fa5119c3068188dbc4c0f1baa58f6dd7b1f4773c7725a6a27d7fba1",
@@ -2141,7 +2141,7 @@
     "extinguish-sw-3.png": "c1253e551bca7db63d910f340f171e8c107256f627cefc2383168f9abc408321",
     "extinguish-sw-3-mask.png": "8a9dc4240a09029b9891d3b0de6204557e0ac0f12aa4493d501753a4aed343e9"
   },
-  "setupSeconds": 0.5431342910160311,
-  "secondsPerFrame": 0.9427961998753744,
-  "totalSeconds": 60.882091083039995
+  "setupSeconds": 0.5256178750423715,
+  "secondsPerFrame": 0.8545349303431067,
+  "totalSeconds": 55.2158534170012
 }

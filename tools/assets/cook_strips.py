@@ -249,15 +249,63 @@ def generate(out, source=SOURCE, output_format='jpg'):
 
     return report
 
+def opaque_islands(sprite):
+    """8-connected alpha>16 components; discard <20-pixel antialias dust.
+
+    16/255 excludes faint shadow/edge tails; 20 pixels is smaller than a
+    shoulder at 120 px/tile, so detached sleeve/hand geometry cannot hide.
+    """
+    alpha = sprite.getchannel('A')
+    width, _ = alpha.size
+    pending = {i for i, value in enumerate(alpha.getdata()) if value > 16}
+    sizes = []
+    while pending:
+        start = pending.pop()
+        stack, count = [start], 0
+        while stack:
+            index = stack.pop()
+            count += 1
+            x, y = index % width, index // width
+            for dy in (-1, 0, 1):
+                for dx in (-1, 0, 1):
+                    if 0 <= x+dx < width and 0 <= y+dy < alpha.height:
+                        neighbour = (y+dy)*width+x+dx
+                        if neighbour in pending:
+                            pending.remove(neighbour)
+                            stack.append(neighbour)
+        if count >= 20:
+            sizes.append(count)
+    return sorted(sizes, reverse=True)
+
+
+def body_island_failures(source, frames):
+    failures = []
+    for action, spec in C.ACTIONS.items():
+        for direction in C.DIRECTIONS:
+            for frame in range(spec['count']):
+                ident = f'{action}-{direction}-{frame}'
+                if ident not in frames:
+                    failures.append(f'{ident}: missing body frame')
+                    continue
+                sizes = opaque_islands(image(source, frames[ident]))
+                if len(sizes) != 1:
+                    failures.append(f'{ident}: body opaque islands {sizes}')
+    return failures
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--out', type=Path)
     parser.add_argument('--check-motion', action='store_true')
     parser.add_argument('--format', choices=('jpg', 'png'), default='jpg')
     args = parser.parse_args()
-    report = generate(args.out, output_format=args.format)
+    if args.out is None and not args.check_motion:
+        parser.error('--out or --check-motion is required')
+    frames = load_frames()
+    report = (generate(args.out, output_format=args.format) if args.out else
+              motion_report(SOURCE, frames))
     if args.check_motion:
-        failures = motion_failures(report)
+        failures = motion_failures(report) + body_island_failures(SOURCE, frames)
         if failures:
             parser.exit(1, '\n'.join(failures)+'\n')
 

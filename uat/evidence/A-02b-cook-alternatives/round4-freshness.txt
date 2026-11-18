@@ -1,0 +1,18 @@
+10:37  4 users, load averages: 5.66 6.75 7.43
+$ python3 tools/assets/pipeline.py --check-stale
+cards: fresh: content stamp matches and all outputs exist
+items: fresh: content stamp matches and all outputs exist
+cook-body-idle: fresh: content stamp matches and all outputs exist
+cook-body-walk: fresh: content stamp matches and all outputs exist
+cook-body-carry-walk: fresh: content stamp matches and all outputs exist
+cook-body-chop: fresh: content stamp matches and all outputs exist
+cook-body-stir: fresh: content stamp matches and all outputs exist
+cook-body-wash: fresh: content stamp matches and all outputs exist
+cook-body-serve: fresh: content stamp matches and all outputs exist
+cook-body-throw: fresh: content stamp matches and all outputs exist
+cook-body-extinguish: fresh: content stamp matches and all outputs exist
+cook-head-cap: fresh: content stamp matches and all outputs exist
+cook-body-chop-alt: stale: content stamp differs
+cook-body-extinguish-alt: stale: content stamp differs
+
+Exit: 1

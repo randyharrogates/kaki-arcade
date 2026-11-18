@@ -252,24 +252,24 @@
     }
   ],
   "decodedPixelSHA256": {
-    "head-cap-s.png": "9a85648be8d8eacc517e4156514fdec3c5a64fe43af9ad912a6f68bf90867a20",
+    "head-cap-s.png": "73dda2a7a9388a43849c0abe44e1e4c9efaa063f7ecb432f7fdcf3df29255363",
     "head-cap-s-mask.png": "e351c25c5a2816d0328e9fb57047953f8ec0056fd3ae1cd7a8560cf8315abc89",
-    "head-cap-se.png": "7e3f8665e39bbc638b5441af08cfcd213700786cb0d7005cd656510b316444f6",
+    "head-cap-se.png": "f3430d44cb93b65a4b009561047ee92916d6e9211d085f2af011c235eaf865e7",
     "head-cap-se-mask.png": "098fc48ba05cf64b816e7101772aaa6929f6c94360f989e42ff5a16302e715b9",
-    "head-cap-e.png": "1efb4c931425790a18c106805f743f3c82b4fc7028ee5a1f9c7e798bc6ccdd58",
+    "head-cap-e.png": "b9a26ef00edb352ea30a089cfd51bf4d4259102bcdf3678ce6ded712c731d815",
     "head-cap-e-mask.png": "39b88ad2852d36eb3dadca5765aebeaca096a8d60f7bb31072a9c13f22bcfead",
     "head-cap-ne.png": "ebf5318ec8073776fb2c9b69fcedbb8872ded6537632a0887ae09527ae2a752d",
     "head-cap-ne-mask.png": "6a9e266a5d045c53b821074801197d5280c77de4b3e5233cfa4e53238a958259",
     "head-cap-n.png": "9d2577e90c85f983aa46fa276b0861f9810af98bae1c62f2e7c3c28e9ac2484a",
     "head-cap-n-mask.png": "715ffb896dd56fc4a20059800116008c9ad98c37519c083d7aa92dd309d449d0",
-    "head-cap-nw.png": "c42fb70cda80c34b6beede4d66db6cb0f5773814cd273fbff79a63892cff46a2",
+    "head-cap-nw.png": "62eb6784d5db61e569cbd5a65c1da4b85eb521beedf60739c1cd1e819873ddbb",
     "head-cap-nw-mask.png": "ef07118b8a8f4cbcfdf2f398f80215efc9d52de232493a4fe50fa5e44301b8ae",
     "head-cap-w.png": "67a3e3f88c9393b236d70be6211b7a33ba56e159e7eb7845d5930b80a83f4874",
     "head-cap-w-mask.png": "dcfb2da46ac1f6aa64a7dce2f6616a2de4fbf773e4b3269739bd072aa2d35161",
-    "head-cap-sw.png": "9a477863a1fb4ce80bfc59ea00ae1179a5b9624e35155856da8be20ec2e9d08c",
+    "head-cap-sw.png": "d78b087fbb63d134b06382470699dfe1b42e33e1b8524abb7211d15556fe3f84",
     "head-cap-sw-mask.png": "ff112284cddd6390711eadbee5eda4e89cdb3374b38ffa6bf744bc3c0f5a58a9"
   },
-  "setupSeconds": 0.5497935839812271,
-  "secondsPerFrame": 0.48142415624897694,
-  "totalSeconds": 8.252580083964858
+  "setupSeconds": 0.5797282910207286,
+  "secondsPerFrame": 0.3792536146247585,
+  "totalSeconds": 6.647786125016864
 }

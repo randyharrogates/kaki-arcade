@@ -1,0 +1,11 @@
+{
+  "chop": {
+    "maxHeadStepPx": 5.362401647734306,
+    "minClearancePx": 0.5718018806349834,
+    "maxSEPenetrationPx": 10.555953542627428,
+    "minWristTravelPx": 13.968219176726361
+  },
+  "extinguish": {
+    "maxHeadStepPx": 0.0
+  }
+}

@@ -1514,3 +1514,16 @@ Rabakz **B** (standing answer cards and a phone buzzer). They ship as compressed
 0.3–0.5 MB for the four, inside PERF-022), never as the 2–3 MB source PNGs. The start-screen picture
 slot becomes 1.618 : 1 (about 656 × 405 at 1080p) and the start screen must still fit without
 scrolling. Board: https://claude.ai/artifact/Jc2My5M8t4J4XoikpY8mr2. Randy may overrule.
+
+**D-177 · 2026-11-18 · Claude** (A-02b; corrects D-172) — After round 6's attached shoulder, the
+side-raise chop's knife is hidden by the cap facing SE during the hold frames (0, 3, 4 and 5 of 6);
+it shows only in the raise. The cook sheets are 1.79 MB at full size (0.81 MB more at half size),
+not 1.40 MB; still well inside PERF-023's 8 MB per level, and about 49 MB decoded against
+PERF-024's 256 MB. The one-handed extinguisher is mostly hidden facing E. A-02c's scope (side raise
+as default chop, lossy cook storage) landed in A-02b, so A-02c is closed as absorbed. The walk meets
+TR-060 (feet do not slide: 0.0 px; each foot 19–22 px with a 9 px lift; each hand 10–12 px; the
+1.2 px "hands" figure is the midpoint of two arms swinging in opposite phase), but carry-walk reads
+weakly from N, NE and NW; A-02d adds gait sway and a walk gate, shown to Randy as rendered strips
+first. Randy may overrule after seeing the SE and E strips
+(`uat/evidence/A-02b-cook-alternatives/round7/chop-composed-light-1x.jpg`,
+`extinguish-composed-dark-1x.jpg`).

@@ -1,0 +1,169 @@
+{
+  "chop-alt": {
+    "s": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 18.613221351048285,
+      "rTravelPx": 37.22644270209658,
+      "nozzleTravelPx": 50.25018879322584
+    },
+    "se": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 23.5101703128854,
+      "rTravelPx": 47.0203406257708,
+      "nozzleTravelPx": 63.38495849940211
+    },
+    "e": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 25.667122090858616,
+      "rTravelPx": 51.33424418171723,
+      "nozzleTravelPx": 67.2356060095936
+    },
+    "ne": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 25.27561107919026,
+      "rTravelPx": 50.5512221583805,
+      "nozzleTravelPx": 67.26959466800521
+    },
+    "n": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 25.45839409297433,
+      "rTravelPx": 50.91678818594866,
+      "nozzleTravelPx": 66.635538178394
+    },
+    "nw": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 25.394239566300083,
+      "rTravelPx": 50.788479132600145,
+      "nozzleTravelPx": 59.41229578520087
+    },
+    "w": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 22.0777710905624,
+      "rTravelPx": 44.15554218112484,
+      "nozzleTravelPx": 43.766591212930685
+    },
+    "sw": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 17.445886188228503,
+      "rTravelPx": 34.89177237645703,
+      "nozzleTravelPx": 36.4533321209363
+    }
+  },
+  "extinguish-alt": {
+    "s": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 11.148936806664338,
+      "rTravelPx": 11.413157381574008,
+      "nozzleTravelPx": 24.123618313563288
+    },
+    "se": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 10.428875439332884,
+      "rTravelPx": 10.385485292784342,
+      "nozzleTravelPx": 21.800712681726583
+    },
+    "e": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 9.655262499758678,
+      "rTravelPx": 10.058458460553966,
+      "nozzleTravelPx": 22.31984527134458
+    },
+    "ne": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 10.428875439332893,
+      "rTravelPx": 11.116404241148638,
+      "nozzleTravelPx": 24.59376709745898
+    },
+    "n": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 11.148936806664366,
+      "rTravelPx": 11.413157381574042,
+      "nozzleTravelPx": 24.123618313563274
+    },
+    "nw": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 10.428875439332884,
+      "rTravelPx": 10.385485292784338,
+      "nozzleTravelPx": 21.80071268172655
+    },
+    "w": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 9.655262499758692,
+      "rTravelPx": 10.058458460553977,
+      "nozzleTravelPx": 22.319845271344573
+    },
+    "sw": {
+      "maxHeadStepPx": 0.0,
+      "handsTravelPx": 10.428875439332874,
+      "rTravelPx": 11.11640424114865,
+      "nozzleTravelPx": 24.593767097458976
+    }
+  },
+  "round3-chop-alt": {
+    "s": {
+      "maxHeadStepPx": 5.353640427108692,
+      "handsTravelPx": 7.039391047669718,
+      "rTravelPx": 14.48587477163007,
+      "nozzleTravelPx": 13.402740262904503
+    },
+    "se": {
+      "maxHeadStepPx": 5.315791357680218,
+      "handsTravelPx": 7.447725699156559,
+      "rTravelPx": 16.778712843987606,
+      "nozzleTravelPx": 16.57988988396725
+    },
+    "e": {
+      "maxHeadStepPx": 5.362401647734306,
+      "handsTravelPx": 6.950046181620077,
+      "rTravelPx": 17.21098897792158,
+      "nozzleTravelPx": 17.385627040757015
+    },
+    "ne": {
+      "maxHeadStepPx": 4.893642801649131,
+      "handsTravelPx": 6.080140583534892,
+      "rTravelPx": 16.183138188412393,
+      "nozzleTravelPx": 17.35044203607626
+    },
+    "n": {
+      "maxHeadStepPx": 3.810932521994344,
+      "handsTravelPx": 6.4016275972097185,
+      "rTravelPx": 16.450359620517972,
+      "nozzleTravelPx": 17.260794954960033
+    },
+    "nw": {
+      "maxHeadStepPx": 3.452220829420427,
+      "handsTravelPx": 7.299085383963979,
+      "rTravelPx": 17.34039996567185,
+      "nozzleTravelPx": 15.47369634067996
+    },
+    "w": {
+      "maxHeadStepPx": 4.448104194679225,
+      "handsTravelPx": 7.333172419718288,
+      "rTravelPx": 16.203294205899304,
+      "nozzleTravelPx": 11.567799987274325
+    },
+    "sw": {
+      "maxHeadStepPx": 5.253803249524027,
+      "handsTravelPx": 6.848287875923233,
+      "rTravelPx": 13.968219176726361,
+      "nozzleTravelPx": 9.913457889286024
+    }
+  },
+  "minimumCentreSeparationPx": {
+    "s": 6.696743980382336,
+    "se": -10.555953542627428,
+    "e": 2.2878826566370813,
+    "ne": 15.535415169219565,
+    "n": 13.74354668373913,
+    "nw": 0.5718018806349834,
+    "w": 3.1860412460466203,
+    "sw": 15.818855171949938
+  },
+  "maxShoulderTravelTiles": 0.2166047487083328,
+  "limits": {
+    "chopHandsAndWristTravelPx": 15,
+    "extinguishNozzleTravelPx": 13,
+    "maxHeadStepPx": 5.5,
+    "maxSEPenetrationPx": 10.555954
+  }
+}

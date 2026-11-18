@@ -1,0 +1,13 @@
+10:37  4 users, load averages: 7.05 7.08 7.57
+$ VITEST_MAX_WORKERS=2 pnpm exec vitest run tools/assets
+
+ RUN  v4.1.12 /Users/randy/projects/personal/web-apps/kaki-arcade-wt/A-02b
+
+
+ Test Files  2 passed (2)
+      Tests  5 passed (5)
+   Start at  10:37:04
+   Duration  10.18s (transform 21ms, setup 0ms, import 32ms, tests 10.09s, environment 0ms)
+
+
+Exit: 0

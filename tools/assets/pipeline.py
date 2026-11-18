@@ -14,7 +14,7 @@ import sys
 
 try:
     import PIL
-    from PIL import Image, ImageFilter, features
+    from PIL import Image, ImageChops, ImageFilter, ImageStat, features
     if PIL.__version__ != '11.1.0' or features.version('webp') != '1.5.0':
         raise ImportError()
 except ImportError:
@@ -27,6 +27,12 @@ MAX_SIZE = 2048
 # PERF-024 ≤ 256 MB decoded in a round. Decimal MB: conservative versus MiB.
 DOWNLOAD = 8_000_000
 DECODED = 256_000_000
+COOK_SETS = {'tabao-rush-cook-body', 'tabao-rush-cook-heads'}
+# D-172: 8-bit RGB mean absolute error on fully opaque source pixels.
+COOK_RGB_MAE = 3.0
+COOK_QUALITY = 90
+
+
 DIRECTIONS = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw']
 
 
@@ -62,9 +68,23 @@ def size_record(path, size):
                 gpuBytes=size[0] * size[1] * 4)
 
 
-def emit(image, output, stem, encoding="lossless", quality=90):
+def check_cook_difference(source, decoded):
+    """Compare with the lossless RGBA source; alpha must remain exact everywhere."""
+    difference = ImageChops.difference(source, decoded.convert('RGBA'))
+    alpha_max = difference.getchannel('A').getextrema()[1]
+    opaque = source.getchannel('A').point(lambda a: 255 if a == 255 else 0)
+    rgb_mae = max(ImageStat.Stat(difference.convert('RGB'), opaque).mean) if opaque.getbbox() else 0.
+    if alpha_max or rgb_mae > COOK_RGB_MAE:
+        raise ValueError(f'Cook lossy difference: RGB MAE {rgb_mae:.6f} > {COOK_RGB_MAE} or alpha max {alpha_max} != 0')
+    return dict(rgbMae=rgb_mae, alphaMax=alpha_max)
+
+
+def emit(image, output, stem, encoding="lossless", quality=90, check_difference=False):
     data = io.BytesIO()
     image.save(data, format='WEBP', lossless=encoding == 'lossless', quality=quality, exact=True, method=6)
+    if check_difference:
+        with Image.open(io.BytesIO(data.getvalue())) as decoded:
+            check_cook_difference(image, decoded)
     digest = hashlib.sha256(data.getvalue()).hexdigest()[:16]
     path = output / f'{stem}.{digest}.webp'
     path.write_bytes(data.getvalue())
@@ -223,6 +243,11 @@ def pack(config, source, output):
     for stale in output.iterdir():
         if re.fullmatch(r'[a-z0-9_-]+-(full|half)\.[0-9a-f]{16}\.webp', stale.name):
             stale.unlink()
+    config = copy.deepcopy(config)
+    for group in config['sets']:
+        if group['id'] in COOK_SETS:
+            # D-172 overrides pipeline.json's historical lossless cook sets.
+            group.update(encoding='lossy', quality=COOK_QUALITY)
     atlases, sets, packed_animations = [], {}, {}
     for group in sorted(config['sets'], key=lambda g: g['id']):
         name = safe_name(group['id'])
@@ -338,7 +363,7 @@ def pack(config, source, output):
         page = 0
         while pending:
             placed, remaining = layout_page(pending, batches)
-            if encoding == 'lossy' and len(placed) > 1:
+            if encoding == 'lossy' and len(placed) > 1 and name not in COOK_SETS:
                 raise ValueError(f'{name}/{page}: lossy encoding requires a single-frame page')
             width = max(px + f[3].width + 2 for f, px, py in placed)
             height = max(py + f[3].height + 2 for f, px, py in placed)
@@ -382,8 +407,8 @@ def pack(config, source, output):
                 # RGBa is premultiplied; BOX has a bounded footprint and cannot ring or bleed.
                 half = canvas.convert('RGBa').resize((width // 2, height // 2), Image.Resampling.BOX).convert('RGBA')
                 ident = f'{name}-{page}' + (f'-{layer}' if layers != ['default'] else '')
-                atlas = dict(id=ident, set=name, layer=layer, full=emit(bleed(canvas), output, ident + '-full', encoding, quality),
-                    half=emit(bleed(half), output, ident + '-half', encoding, quality), frames=records,
+                atlas = dict(id=ident, set=name, layer=layer, full=emit(bleed(canvas), output, ident + '-full', encoding, quality, name in COOK_SETS),
+                    half=emit(bleed(half), output, ident + '-half', encoding, quality, name in COOK_SETS), frames=records,
                     wastedArea=1 - sum(f[3].width * f[3].height for f, _, _ in placed) / (width * height))
                 atlases.append(atlas)
                 sets[name].append(ident)
@@ -513,6 +538,11 @@ def check(path):
     if covered != set(ids):
         raise ValueError('Atlases missing from round preload lists')
     print(f'PERF-023/024 passed: {len(atlases)} atlases; manifest {manifest_bytes} bytes')
+
+
+def render_config(path):
+    """Read source declarations; D-172 retires the evidence-only render jobs."""
+    return read_json(path)
 
 
 def item_stamp_config(data):
@@ -699,7 +729,7 @@ def main():
     if args.check:
         check(args.check)
     else:
-        config = read_json(args.config)
+        config = render_config(args.config)
         if args.migrate_items_stamp:
             migrate_items_stamp(config, args.config.parent, args.migrate_items_stamp)
             return 0

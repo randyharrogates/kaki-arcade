@@ -44,7 +44,8 @@ See `PERFORMANCE.md` for the budgets these serve.
   at runtime.
 - Colour: render a neutral cook plus a mask of the tinted parts (apron and cap). The game
   multiplies the mask by the player's colour in co-op and the team's colour in versus.
-- Outputs are WebP (lossy for backgrounds, lossless for sprites with hard edges), with
+- Outputs are WebP (lossy for backgrounds, lossless for sprites with hard edges;
+  D-172 excepts cook body and heads at lossy q90, checked against lossless source at pack time), with
   half-resolution variants generated for lower-detail mode.
 - `assets/dist/` is generated. Never hand-edit it; change the source or the script and rebuild.
 
@@ -126,7 +127,8 @@ Future renders write the new stamp directly: render → refresh → pack → she
 needs only one render, even when refreshed footprints or ink flags change.
 
 Lossy WebP is accepted only for pages containing a single frame (backgrounds). Multi-frame
-pages must use lossless encoding to prevent neighbour bleed; this is checked per packed page,
+pages must use lossless encoding to prevent neighbour bleed, except the D-172 cook body
+and head sets (lossy q90, checked against their lossless source at pack time); this is checked per packed page,
 including when a set spans several pages.
 
 ## 6. Where Codex comes in
@@ -203,7 +205,10 @@ body/tint/head strips, masks, turns, ground-speed walk strips and the lower-body
 carry-minus-walk difference. Inspect the walk ground-speed strips before rendering
 the remaining actions; the pure pose checks cannot establish finished visual quality.
 
-`--check-motion` requires all eight directions for chop, stir, wash, extinguish,
+`--check-motion` also requires one body-only opaque island in every frame of
+every action (8-connectivity, alpha >16/255, ignoring components below 20 pixels
+of antialias dust). This catches detached arms even when hidden by the cap.
+It requires all eight directions for chop, stir, wash, extinguish,
 serve, throw and idle. Every action measures unannotated tinted body **with the
 tinted cap composited**, including tools. This excludes motion in the body-only
 head-shadow pixels hidden by the cap. Missing body/head masks or anchors fail
@@ -219,20 +224,34 @@ plus maximum projected stride travel on each side, preventing moving cooks from
 being clipped by the diagnostic viewport. Rendered acceptance still requires
 opening all directions, especially the north-facing one-shots.
 
-Round 6 pose bounds (TR-060 / NN-4, D-154 / D-163): wash uses three-frame
-outward/return strokes, with bounded depth variation distinguishing all six
-samples. Chop retracts the raised hand below the cap envelope. The pure test
-checks frame 1 in every view against a .47-tile shell sphere clipped at +.18 Z
-and a brim ellipsoid (.252, .203, .024) offset (0, -.349, +.203) from the
-head centre, including shell thickness. At least 6 px of the spherical hand
-extends below that envelope; it does not require the whole hand to clear it.
-Extinguish holds the tool laterally with one hand; the other balances the sweep.
-Fixed shoulders cannot keep the former two-handed grip at this lateral reach.
-The test samples the canister ellipsoid and requires a point >=1 px outside
-all three enclosing projected discs: torso (.34 tiles), head/shell (.47) and
-brim (.252), for each frame/view. These bounds catch the reported hidden
-raise/canister poses; Blender must establish exact silhouettes, arm occlusion,
-canvas containment and readable chops/sweeps on the final composited sheets.
+D-172 / TR-060: the default chop is the round-4 side raise: fixed head and
+supporting hand, six frames at 10 fps. Round-6 pure tests require published
+hands travel ≥15 px across all eight views (motion-check minimum: 13 px). The rigid knife arm's shoulder excursion is bounded at
+.22 tiles. Round 6 reduces the raised shoulder offset to (.065,.019855,.025) tiles
+to preserve sleeve/torso contact. Pure tests check shoulder-sphere contact at
+eighth frames for all actions. Torso/cap support checks and the SE
+centre-penetration bound of 10.555954 px remain for the unchanged lower hold; these are analytic bounds, not a
+rendered visibility claim. Extinguish keeps the one-handed lateral default.
+The alternative renderer, jobs and strip CLI options are retired.
+
+Cook body and heads use lossy WebP quality 90 (D-172). `pack` applies this policy
+to `tabao-rush-cook-body` and `tabao-rush-cook-heads`, overriding the historical
+lossless declarations in `assets/src/pipeline.json` without rewriting that shared
+items-stamp input. The manifest records the effective lossy encoding and quality.
+Only these checked cook sets may use multi-frame lossy pages; other sets retain
+the single-frame guard.
+
+Before writing **each full and half atlas**, decode its WebP and compare with its
+lossless RGBA packing canvas (after bleed; half uses the existing premultiplied
+BOX reduction). Over source pixels with alpha exactly 255, compute each RGB
+channel's mean absolute difference in 8-bit values; the maximum of those three
+means must be **≤3.0/255**. If there are no opaque pixels, RGB error is zero.
+The maximum absolute alpha difference over **all pixels** must be **0**.
+RGB in partially transparent pixels is excluded; their alpha is still checked.
+A violation raises an error and fails packing. A real lossless chop-frame
+regression passes at q90 and fails at q50; separate tests check alpha rejection,
+checked multi-frame packing and both output resolutions. This error check does
+not replace visual review or the unchanged PERF-023/024 budgets.
 
 The packer canonicalises identical decoded pixels with identical frame semantics
 (anchors, metadata, trim and source size), rewrites repeated animation slots to

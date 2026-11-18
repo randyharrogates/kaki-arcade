@@ -158,19 +158,41 @@ class CookPoseTests(unittest.TestCase):
         for direction in c.DIRECTIONS:
             check(c.upright_head(combined),direction,('combined',direction))
 
-    def test_shoulders_inside_torso(self):
-        # Evaluate in torso space: spine/hips are a common rigid transform.
-        # kalib's torso is an ellipsoid; check the actual shoulder bone heads.
-        for action, keys in c.KEYS.items():
-            for frame, pose in keys:
-                for side, sign in (('l', -1), ('r', 1)):
+    def test_shoulder_spheres_touch_torso(self):
+        # Common spine/hips transforms preserve contact. kalib's shoulder
+        # sphere radius is arm_r*1.35; torso radii have no outline padding.
+        radii = tuple(v*c.TOY_SCALE for v in (.30, .26, .30))
+        radius = .07*1.35*c.TOY_SCALE
+
+        def signed_gap(point):
+            if sum((v/r)**2 for v,r in zip(point,radii)) <= 1:
+                return -radius  # centre is inside: sphere necessarily intersects
+            # Exact nearest point on an axis-aligned ellipsoid, outside case.
+            lo, hi = 0., 1.
+            def constraint(t):
+                return sum((r*v/(t+r*r))**2 for v,r in zip(point,radii))
+            while constraint(hi) > 1:
+                hi *= 2
+            for _ in range(60):
+                mid = (lo+hi)/2
+                if constraint(mid) > 1:
+                    lo = mid
+                else:
+                    hi = mid
+            closest = tuple(r*r*v/(hi+r*r) for v,r in zip(point,radii))
+            return math.dist(point,closest)-radius
+
+        for action,spec in c.ACTIONS.items():
+            for i in range(spec['count']*8+1):
+                pose = c.sample(action,i/8)
+                for side,sign in (('l',-1),('r',1)):
                     loc = pose['arm_'+side][0]
-                    shoulder = (sign*.30*.9*c.TOY_SCALE+loc[0], loc[1],
-                                .30*.40*c.TOY_SCALE+loc[2])
-                    radii = tuple(v*c.TOY_SCALE for v in (.30,.26,.30))
-                    self.assertLessEqual(sum((v/r)**2 for v,r in zip(shoulder,radii)),
-                                         1., (action,frame,side,shoulder))
-                    self.assertEqual(loc, c.ZERO)
+                    point = (sign*.30*.9*c.TOY_SCALE+loc[0],loc[1],
+                             .30*.40*c.TOY_SCALE+loc[2])
+                    self.assertLessEqual(signed_gap(point),0,(action,i/8,side))
+        old = (.30*.9*c.TOY_SCALE+.189493,.019855,
+               .30*.40*c.TOY_SCALE+.103033)
+        self.assertGreater(signed_gap(old),0)  # detached round-5 negative control
 
     def test_release_and_idle_projection(self):
         for action in ('serve', 'throw'):
@@ -194,7 +216,7 @@ class CookPoseTests(unittest.TestCase):
             self.assertGreaterEqual(math.dist(a,b),2)
 
     def test_unique_projected_frames_and_scrub_steps(self):
-        expected = dict(idle=3, walk=8, **{'carry-walk':8}, chop=6,
+        expected = dict(idle=3, walk=8, **{'carry-walk':8}, chop=3,
                         stir=8, wash=6, serve=6, throw=6, extinguish=3)
         for action, count in expected.items():
             for direction in c.DIRECTIONS:
@@ -214,23 +236,15 @@ class CookPoseTests(unittest.TestCase):
         self.assertLessEqual(max_step('wash'),max_step('chop'))
         self.assertLessEqual(max_step('wash'),24)
 
-    def test_knife_raise_cap_bound(self):
-        # Conservative cap shell sphere (r=.47 tiles, clipped z>=.18 above
-        # head centre) plus brim ellipsoid (.252,.203,.024) at (0,-.349,.203).
-        # Test the hand's visible lower edge, not full-hand clearance. The bound includes shell thickness; require at least 6 px of
-        # the spherical hand below the entire projected cap envelope.
-        for d in c.DIRECTIONS:
-            h = c.head_position('chop',1)
-            hc = h[2]+.36*.62*c.TOY_SCALE
-            angle = c.DIRECTIONS.index(d)*math.pi/4
-            shell = hc*.5+.18*.5-math.sqrt(.47**2-.18**2)*math.sqrt(3)/2
-            brim = (hc*.5+.203*.5-.349*math.cos(angle)*math.sqrt(3)/2
-                    -math.sqrt((.252*math.sin(angle))**2*.75
-                               +(.203*math.cos(angle))**2*.75+(.024*.5)**2))
-            bottom = 128-120*(min(shell,brim)-.675*.5)
-            hand = c.projected_anchors('chop',1,d)['r']
-            self.assertGreaterEqual(hand[1]+.09*c.TOY_SCALE*c.PPU-bottom,6,
-                                    (d,hand,bottom))
+    def test_side_raise_keeps_head_and_support_hand_still(self):
+        raised = c.chop_pose(True)
+        length = .24*1.12*c.TOY_SCALE/math.sqrt(1+.38**2)
+        delta = c.bone_rotate((.38*length,0.,-length),raised['arm_r'][1])
+        self.assertGreater(delta[0], .10)  # wrist beside shoulder
+        self.assertGreater(delta[2], .04)  # wrist above shoulder
+        for i in range(49):
+            self.assertEqual(c.head_position('chop', i/8), c.head_position('chop', 0))
+            self.assertEqual(c.hand_positions('chop', i/8)['l'], c.hand_positions('chop', 0)['l'])
 
     def test_canister_body_bound(self):
         for f in range(4):
@@ -269,6 +283,175 @@ class CookPoseTests(unittest.TestCase):
             self.assertEqual(j['timeoutSeconds'],math.ceil(2.5*(30+2*c.ACTIONS[a]['count']*8)/60)*60)
         self.assertEqual(jobs[-1]['timeoutSeconds'],120)
         self.assertEqual(len(c.animations()),18)
+
+
+class CookDecisionTests(unittest.TestCase):
+    def test_decided_default_keys(self):
+        expected = {
+            'chop': [(0,c.chop_pose()), (1,c.chop_pose(True)),
+                     (3,c.chop_pose()), (6,c.chop_pose())],
+            'extinguish': [(f,c.work_pose(left=(-.85,0.,1.05),right=(0.,0.,1.20),
+                twist=math.radians(angle))) for f,angle in ((0,-25),(1,0),(2,25),(3,0),(4,-25))],
+        }
+        for action, keys in expected.items():
+            self.assertEqual(c.KEYS[action],keys)
+
+    def test_default_head_anchor_steps(self):
+        from unittest.mock import patch
+
+        def steps(action):
+            # cook.py: camera target (0,0,.675), offset (0,-.5,sqrt(3)/2),
+            # orthographic scale 256/120. Rotate the rig around world Z by
+            # direction*45 degrees, then screen x=128+120*x and
+            # screen y=128-120*(sqrt(3)/2*y + .5*(z-.675)).
+            # head_position rotates the .30*TOY_SCALE spine-to-socket offset
+            # in the vertical bone basis and adds hips/spine translations.
+            # Upright socket rotation changes orientation, never its origin.
+            for direction in c.DIRECTIONS:
+                points = [c.project(c.head_position(action, f), direction)
+                          for f in range(c.ACTIONS[action]['count'])]
+                for frame, (a, b) in enumerate(zip(points, points[1:]+points[:1])):
+                    yield math.dist(a, b), (action, direction, frame)
+
+        def check(action):
+            for distance, label in steps(action):
+                self.assertLessEqual(distance, 5.5, label)
+
+        for action in ('chop', 'extinguish'):
+            check(action)
+            # Guard the rigid-transform assumptions used by the pure predictor.
+            for f in range(c.ACTIONS[action]['count']):
+                pose = c.sample(action, f)
+                self.assertEqual(pose['hips'][1:], (c.ZERO, c.ONE))
+                self.assertEqual(pose['head'], c.REST['head'])
+                self.assertEqual(pose['head_socket'][0], c.ZERO)
+                self.assertEqual(pose['spine'][2], c.ONE)
+
+        # Reproduce the integrator's failing round-2 chop using its exact keys.
+        previous = dict(c.KEYS['chop'][1][1])
+        previous['spine'] = (c.ZERO, (.436, .341467, .370941), c.ONE)
+        keys = list(c.KEYS['chop'])
+        keys[1] = (1, previous)
+        with patch.dict(c.KEYS, chop=keys):
+            maximum = max(distance for distance, _ in steps('chop'))
+            self.assertAlmostEqual(maximum, 6.34396583306018, places=7)
+            with self.assertRaises(AssertionError):
+                check('chop')
+
+    def test_default_hand_anchor_travel(self):
+        from unittest.mock import patch
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'assets'))
+        from cook_strips import MOTION_THRESHOLDS
+
+        def check(action):
+            for direction in c.DIRECTIONS:
+                points = [c.projected_anchors(action, f, direction)
+                          for f in range(c.ACTIONS[action]['count'])]
+                # cook.py frame_record publishes the two-hand MIDPOINT as
+                # hands, not the knife wrist. Use the same camera as the
+                # head test, and the same diameter as cook_strips.py.
+                # Extinguish uses nozzle (not hands) in motion_report.
+                for anchor in ('hands', 'r') if action == 'chop' else ('nozzle',):
+                    travel = max(math.dist(a[anchor], b[anchor])
+                                 for a in points for b in points)
+                    threshold = 15 if action == 'chop' else MOTION_THRESHOLDS[action][0]
+                    self.assertGreaterEqual(travel, threshold,
+                                            (action, direction, anchor, travel))
+
+        for action in ('chop', 'extinguish'):
+            check(action)
+        # Exact round-3 keys: wrist-only prediction passed, published hands
+        # failed. Keep this negative control independent of today's poses.
+        lower = c.work_pose(right=(2.677454, 0., -1.360655))
+        lower['spine'] = (c.ZERO, (.308530, .436, .257304), c.ONE)
+        raised = c.work_pose(right=(3.062278, 0., -1.455367))
+        raised['spine'] = (c.ZERO, (.4168795, .35564695, .35389545), c.ONE)
+        previous = [(0, lower), (1, raised), (3, lower), (6, lower)]
+        with patch.dict(c.KEYS, chop=previous):
+            with self.assertRaises(AssertionError):
+                check('chop')
+            for direction in c.DIRECTIONS:
+                points = [c.projected_anchors('chop', f, direction)['hands']
+                          for f in range(c.ACTIONS['chop']['count'])]
+                self.assertLess(max(math.dist(a, b) for a in points for b in points), 13)
+
+    def test_default_bounds(self):
+        for action in ('chop',):
+            for i in range(c.ACTIONS[action]['count']*8+1):
+                f=i/8
+                pose=c.sample(action,f)
+                for side in ('l','r'):
+                    if action == 'chop' and side == 'r':
+                        self.assertLessEqual(math.dist(pose['arm_r'][0], c.ZERO), .22)
+                        self.assertEqual(pose['arm_r'][2], c.ONE)
+                    else:
+                        self.assertEqual(pose['arm_'+side][0], c.ZERO)
+                    self.assertEqual(tuple(a+b for a,b in zip(pose['hips'][0],pose['leg_'+side][0])),c.ZERO)
+                local=f%c.ACTIONS[action]['count']
+                left,right=next((l,r) for (a,l),(b,r) in zip(c.KEYS[action],c.KEYS[action][1:]) if a<=local<=b)
+                for bone in c.BONES:
+                    if bone=='head_socket':
+                        continue
+                    for values,lo,hi in zip(pose[bone],left[bone],right[bone]):
+                        for value,a,b in zip(values,lo,hi):
+                            self.assertTrue(min(a,b)-1e-12<=value<=max(a,b)+1e-12)
+                hands=c.hand_positions(action,f)
+                self.assertGreater(hands['r'][0], 0)
+                self.assertLessEqual(max(map(abs, pose['spine'][1])), math.radians(25))
+                head = c.head_position(action, f)
+                # Historical cap clearance describes the lower hold only. The
+                # attached raise replaces the detached reach; visibility needs
+                # the integrator's new render, rather than a cap-envelope claim.
+                for d in c.DIRECTIONS if pose['arm_r'][0] == c.ZERO else ():
+                    for shape, margin in silhouette_margins(pose, hands['r'], head, d).items():
+                        if d == 'se':
+                            # Centre penetration, in px, relative to the conservative
+                            # envelope. This is not rendered occlusion or hand area.
+                            self.assertLessEqual(max(0., -margin)*c.PPU, 10.555954, (f,d,shape))
+                        else:
+                            self.assertGreater(margin, 0., (f,d,shape,margin))
+
+        for direction in c.DIRECTIONS:
+            points = [c.project(c.hand_positions('chop', f)['r'], direction)
+                      for f in range(c.ACTIONS['chop']['count'])]
+            self.assertGreaterEqual(max(math.dist(a,b) for a in points for b in points), 13)
+
+
+def silhouette_margins(pose, hand, head, direction):
+    """Signed centre separation in tiles; exact support sampled every degree.
+
+    Torso: rotating ellipsoid (.30,.26,.30)*scale + .015 per axis.
+    Upright cap: r=.47 dome clipped at z=.18; brim (.252,.203,.024)
+    at (0,-.349,.203) relative to the moving head centre.
+    """
+    angle = c.DIRECTIONS.index(direction)*math.pi/4
+    u = (math.cos(angle), -math.sin(angle), 0)
+    v = (math.sin(angle)*math.sqrt(3)/2, math.cos(angle)*math.sqrt(3)/2, .5)
+    torso = tuple(a+b for a,b in zip((0,0,c.TORSO),
+        tuple(a+b for a,b in zip(pose['hips'][0], pose['spine'][0]))))
+    hc = (head[0], head[1], head[2]+.36*.62*c.TOY_SCALE)
+    axes = [c.bone_rotate(tuple(float(j==k) for j in range(3)), pose['spine'][1])
+            for k in range(3)]
+    result = {}
+    for shape, centre in (('torso',torso), ('shell',hc),
+                          ('brim',(hc[0],hc[1]-.349,hc[2]+.203))):
+        q = tuple(hand[j]-centre[j] for j in range(3))
+        margins = []
+        for k in range(360):
+            theta = k*math.tau/360
+            n = tuple(math.cos(theta)*u[j]+math.sin(theta)*v[j] for j in range(3))
+            if shape == 'torso':
+                support = math.sqrt(sum((sum(n[j]*axes[k][j] for j in range(3))
+                    *(r*c.TOY_SCALE+.015))**2 for k,r in enumerate((.30,.26,.30))))
+            elif shape == 'brim':
+                support = math.sqrt(sum((n[j]*r)**2 for j,r in enumerate((.252,.203,.024))))
+            elif .47*n[2] >= .18:
+                support = .47
+            else:
+                support = .18*n[2]+math.sqrt(.47**2-.18**2)*math.hypot(n[0],n[1])
+            margins.append(sum(q[j]*n[j] for j in range(3))-support)
+        result[shape] = max(margins)
+    return result
 
 
 if __name__ == '__main__':

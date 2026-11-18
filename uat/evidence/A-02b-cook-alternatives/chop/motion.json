@@ -1,0 +1,380 @@
+{
+  "idle": {
+    "s": {
+      "anchor": "head",
+      "travelPx": 3.511411798322925,
+      "maxChangedPixels": 2826
+    },
+    "se": {
+      "anchor": "head",
+      "travelPx": 4.123107998277207,
+      "maxChangedPixels": 3168
+    },
+    "e": {
+      "anchor": "head",
+      "travelPx": 4.3392333984375,
+      "maxChangedPixels": 3146
+    },
+    "ne": {
+      "anchor": "head",
+      "travelPx": 4.123107998277207,
+      "maxChangedPixels": 3128
+    },
+    "n": {
+      "anchor": "head",
+      "travelPx": 3.511411798322925,
+      "maxChangedPixels": 3074
+    },
+    "nw": {
+      "anchor": "head",
+      "travelPx": 2.7018543074452275,
+      "maxChangedPixels": 2612
+    },
+    "w": {
+      "anchor": "head",
+      "travelPx": 2.260772705078125,
+      "maxChangedPixels": 2078
+    },
+    "sw": {
+      "anchor": "head",
+      "travelPx": 2.7018543074452275,
+      "maxChangedPixels": 2420
+    }
+  },
+  "walk": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 1.217498779296875,
+      "maxChangedPixels": 3331
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 1.217498779296875,
+      "maxChangedPixels": 2844
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 1.217498779296875,
+      "maxChangedPixels": 2445
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 1.217498779296875,
+      "maxChangedPixels": 2222
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 1.217498779296875,
+      "maxChangedPixels": 2449
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 1.217498779296875,
+      "maxChangedPixels": 1969
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 1.217498779296875,
+      "maxChangedPixels": 2276
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 1.217498779296875,
+      "maxChangedPixels": 2749
+    }
+  },
+  "carry-walk": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 1.0800018310546875,
+      "maxChangedPixels": 2443
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 1.0800018310546875,
+      "maxChangedPixels": 2431
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 1.0800018310546875,
+      "maxChangedPixels": 2232
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 1.0800018310546875,
+      "maxChangedPixels": 1838
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 1.0800018310546875,
+      "maxChangedPixels": 1564
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 1.0800018310546875,
+      "maxChangedPixels": 1513
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 1.0800018310546875,
+      "maxChangedPixels": 1831
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 1.0800018310546875,
+      "maxChangedPixels": 2206
+    }
+  },
+  "chop": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 18.613224844908697,
+      "maxChangedPixels": 1582
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 23.510171281200204,
+      "maxChangedPixels": 922
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 25.66713309839087,
+      "maxChangedPixels": 1238
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 25.275620171330043,
+      "maxChangedPixels": 2127
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 25.458394100247094,
+      "maxChangedPixels": 2195
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 25.394244453500203,
+      "maxChangedPixels": 2028
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 22.07777433692339,
+      "maxChangedPixels": 2109
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 17.445876809313614,
+      "maxChangedPixels": 2102
+    }
+  },
+  "stir": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 19.227700306451368,
+      "maxChangedPixels": 2695
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 19.722656705843015,
+      "maxChangedPixels": 2168
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 19.647174980217432,
+      "maxChangedPixels": 1055
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 19.631630501253138,
+      "maxChangedPixels": 705
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 17.564720598407543,
+      "maxChangedPixels": 1399
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 14.614238930590677,
+      "maxChangedPixels": 1854
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 14.375038150981382,
+      "maxChangedPixels": 1906
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 16.13936466669732,
+      "maxChangedPixels": 2159
+    }
+  },
+  "wash": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 41.915252685546875,
+      "maxChangedPixels": 3623
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 39.20813436801551,
+      "maxChangedPixels": 3233
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 36.29966735839844,
+      "maxChangedPixels": 2857
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 39.20813436801551,
+      "maxChangedPixels": 2284
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 41.915260314941406,
+      "maxChangedPixels": 1814
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 39.20814013529626,
+      "maxChangedPixels": 2080
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 36.29966735839844,
+      "maxChangedPixels": 2607
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 39.20812860073539,
+      "maxChangedPixels": 2958
+    }
+  },
+  "serve": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 14.568405151367188,
+      "maxChangedPixels": 5481
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 18.00652827354696,
+      "maxChangedPixels": 4922
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 22.5480107697325,
+      "maxChangedPixels": 4756
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 23.888832454646167,
+      "maxChangedPixels": 4583
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 23.680343627929688,
+      "maxChangedPixels": 4021
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 23.888832454646167,
+      "maxChangedPixels": 4751
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 22.5480107697325,
+      "maxChangedPixels": 4791
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 18.006534889643437,
+      "maxChangedPixels": 4827
+    }
+  },
+  "throw": {
+    "s": {
+      "anchor": "throwHand",
+      "travelPx": 57.80909570675789,
+      "maxChangedPixels": 4555
+    },
+    "se": {
+      "anchor": "throwHand",
+      "travelPx": 54.93468909495119,
+      "maxChangedPixels": 3813
+    },
+    "e": {
+      "anchor": "throwHand",
+      "travelPx": 52.83554347850173,
+      "maxChangedPixels": 3620
+    },
+    "ne": {
+      "anchor": "throwHand",
+      "travelPx": 56.503943348219536,
+      "maxChangedPixels": 3115
+    },
+    "n": {
+      "anchor": "throwHand",
+      "travelPx": 57.09867332527203,
+      "maxChangedPixels": 4005
+    },
+    "nw": {
+      "anchor": "throwHand",
+      "travelPx": 50.574105248357384,
+      "maxChangedPixels": 4321
+    },
+    "w": {
+      "anchor": "throwHand",
+      "travelPx": 47.14417974032557,
+      "maxChangedPixels": 4401
+    },
+    "sw": {
+      "anchor": "throwHand",
+      "travelPx": 53.36722123690433,
+      "maxChangedPixels": 4440
+    }
+  },
+  "extinguish": {
+    "s": {
+      "anchor": "nozzle",
+      "travelPx": 52.97074147048635,
+      "maxChangedPixels": 4164
+    },
+    "se": {
+      "anchor": "nozzle",
+      "travelPx": 54.198947389655785,
+      "maxChangedPixels": 3026
+    },
+    "e": {
+      "anchor": "nozzle",
+      "travelPx": 59.730788042321684,
+      "maxChangedPixels": 1960
+    },
+    "ne": {
+      "anchor": "nozzle",
+      "travelPx": 58.61857174708345,
+      "maxChangedPixels": 2375
+    },
+    "n": {
+      "anchor": "nozzle",
+      "travelPx": 52.97074247563476,
+      "maxChangedPixels": 3198
+    },
+    "nw": {
+      "anchor": "nozzle",
+      "travelPx": 54.19895386139528,
+      "maxChangedPixels": 3410
+    },
+    "w": {
+      "anchor": "nozzle",
+      "travelPx": 59.73077684048692,
+      "maxChangedPixels": 3721
+    },
+    "sw": {
+      "anchor": "nozzle",
+      "travelPx": 58.618585566066166,
+      "maxChangedPixels": 4021
+    }
+  }
+}
