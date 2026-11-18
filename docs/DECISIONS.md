@@ -1406,3 +1406,10 @@ fitter (89 px, down to 55 px), player count right, the hint right-aligned direct
 the game stage where main has it. Round 8's extra row was the integrator's brief, not a decision, and
 is withdrawn. (4) The lobby header keeps one height: the game-pad and keyboard hints share one line,
 so seats never move when a pad connects. Randy may overrule.
+
+**D-166 · 2026-11-18 · Claude** (under D-142; K-09 round 3) — Completes D-164(1). The selected
+outline on a face-down card is drawn in the card back's own border colour (`--ka-card-back-border`,
+white, the same in every theme), inset 8–13 px so it lies only on the card back: 5.95 : 1 against
+the red back and 4.46 : 1 against its stripe. No single colour can clear 3 : 1 against both the felt
+and the marble backgrounds, and the inset outline never touches either, so only the card back
+counts. The rendered pick grid is shown with P-03's Lock in artifact (D-164(5)). Randy may overrule.
