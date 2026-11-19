@@ -1,0 +1,716 @@
+{
+  "slice": "T-07-tv-renderer",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "coverage": "North-facing north-counter stills and approach strip: the held item is hidden behind the body by design (depth −0.1). At the north counter a held item shows only when the cook faces s, se or sw; otherwise it is behind the body by design. South/east/west stills at y=1.2 cover this ordering. The disc lower edge is at worst feet −90.5, hands −31.4 (e/w) and −18.5 (s): at least 59 px clearance. Seat-5 recolours seat 1, so its disc reads 1. Lossless edge/cap checks: north-seat-1-1280-lossless.png and north-seat-5-1280-lossless.png. Visual acceptance is pending. Seat 1 measured PNG edge/cap contrast: 3.584:1. Seat 5 measured PNG edge/cap contrast: 3.297:1.",
+  "command": "node tools/uat/run.mjs -- T-07-tv-renderer --out round15-uat --max-mb 40 --timeout-min 20",
+  "commit": "c21901e06cc7a49f2ab861bff8958eda90f986d5",
+  "viewports": [
+    "1920×1080",
+    "1280×720",
+    "1080×1080"
+  ],
+  "steps": [
+    {
+      "name": "1 cooks at 1920",
+      "ms": 3891.86925,
+      "status": "completed"
+    },
+    {
+      "name": "1 cooks at 1280",
+      "ms": 2395.2316249999994,
+      "status": "completed"
+    },
+    {
+      "name": "8 cooks at 1920",
+      "ms": 2216.499833,
+      "status": "completed"
+    },
+    {
+      "name": "8 cooks at 1280",
+      "ms": 2018.6785420000015,
+      "status": "completed"
+    },
+    {
+      "name": "HUD drawn width and Rack column",
+      "ms": 2624.593417,
+      "status": "completed"
+    },
+    {
+      "name": "Burning station label",
+      "ms": 649.8125420000015,
+      "status": "completed"
+    },
+    {
+      "name": "Mid-clip actions at their stations",
+      "ms": 7868.9362089999995,
+      "status": "completed"
+    },
+    {
+      "name": "Normal entrance at pinned render times",
+      "ms": 2839.139124999998,
+      "status": "completed"
+    },
+    {
+      "name": "Normal serve at pinned render times",
+      "ms": 3469.889208999997,
+      "status": "completed"
+    },
+    {
+      "name": "Normal done at pinned render times",
+      "ms": 9403.772792,
+      "status": "completed"
+    },
+    {
+      "name": "Normal exit at pinned render times",
+      "ms": 2730.7710829999996,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced entrance at pinned render times",
+      "ms": 2727.319792000002,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced serve at pinned render times",
+      "ms": 3385.6331659999996,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced done at pinned render times",
+      "ms": 8300.508249999999,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced exit at pinned render times",
+      "ms": 2513.311999999998,
+      "status": "completed"
+    },
+    {
+      "name": "Throw landing and cook walk",
+      "ms": 7736.853500000005,
+      "status": "completed"
+    },
+    {
+      "name": "North counter holding an item at y 1.2",
+      "ms": 5439.856415999995,
+      "status": "completed"
+    },
+    {
+      "name": "North held item depth ordering south, east and west",
+      "ms": 3891.1746659999917,
+      "status": "completed"
+    },
+    {
+      "name": "Lossless 1280 marker edge contrast against seat 1 and seat 5 caps",
+      "ms": 2146.407957999996,
+      "status": "completed"
+    },
+    {
+      "name": "Registry to production MountedScreen readiness without a phone",
+      "ms": 1721.8731660000049,
+      "status": "completed"
+    },
+    {
+      "name": "Letterbox portrait window",
+      "ms": 751.773874999999,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-1-cooks-1920-showcase.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-1-cooks-1280-showcase.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-8-cooks-1920-showcase.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-8-cooks-1280-showcase.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-hud-score-width.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-rack-column.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-burning-label.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-action-idle.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-action-walk.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-action-carry-walk.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-action-chop.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-action-stir.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-action-wash.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-action-serve.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-action-throw.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-action-extinguish.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-action-rejection.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-entrance-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-entrance-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-entrance-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-entrance-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-entrance-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-serve-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-serve-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-serve-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-host-serve-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-host-serve-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-serve-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-host-done-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-done-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-host-done-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-host-done-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-host-done-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-host-exit-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-host-exit-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-host-exit-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-host-exit-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-host-exit-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-host-reduced-entrance-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-host-reduced-entrance-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-host-reduced-entrance-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "46-host-reduced-entrance-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-host-reduced-entrance-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "49-host-reduced-serve-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "50-host-reduced-serve-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "51-host-reduced-serve-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "52-host-reduced-serve-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "53-host-reduced-serve-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "54-host-reduced-serve-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "56-host-reduced-done-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "57-host-reduced-done-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "58-host-reduced-done-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "59-host-reduced-done-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "60-host-reduced-done-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "62-host-reduced-exit-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "63-host-reduced-exit-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "64-host-reduced-exit-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "65-host-reduced-exit-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "66-host-reduced-exit-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "68-host-throw-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "69-host-throw-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "70-host-throw-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "71-host-throw-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "72-host-throw-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "73-host-throw-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "74-host-throw-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "75-host-throw-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "77-host-walk-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "78-host-walk-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "79-host-walk-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "80-host-walk-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "81-host-walk-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "82-host-walk-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "83-host-walk-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "84-host-walk-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "86-host-north-held-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "87-host-north-held-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "88-host-north-approach-2-to-1-2-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "89-host-north-approach-2-to-1-2-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "90-host-north-approach-2-to-1-2-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "91-host-north-approach-2-to-1-2-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "92-host-north-approach-2-to-1-2-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "93-host-north-approach-2-to-1-2-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "94-host-north-approach-2-to-1-2-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "95-host-north-approach-2-to-1-2-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "96-host-north-approach-2-to-1-2-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "98-host-north-held-east-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "99-host-north-held-east-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "100-host-north-held-west-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "101-host-north-held-west-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "102-host-north-held-south-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "103-host-north-held-south-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "104-host-letterboxed.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-1-cooks-1920-showcase.jpg",
+    "02-host-1-cooks-1280-showcase.jpg",
+    "03-host-8-cooks-1920-showcase.jpg",
+    "04-host-8-cooks-1280-showcase.jpg",
+    "05-host-hud-score-width.jpg",
+    "06-host-rack-column.jpg",
+    "07-host-burning-label.jpg",
+    "08-host-action-idle.jpg",
+    "09-host-action-walk.jpg",
+    "10-host-action-carry-walk.jpg",
+    "11-host-action-chop.jpg",
+    "12-host-action-stir.jpg",
+    "13-host-action-wash.jpg",
+    "14-host-action-serve.jpg",
+    "15-host-action-throw.jpg",
+    "16-host-action-extinguish.jpg",
+    "17-host-action-rejection.jpg",
+    "23-strip-entrance.jpg",
+    "30-strip-serve.jpg",
+    "36-strip-done.jpg",
+    "42-strip-exit.jpg",
+    "48-strip-reduced-entrance.jpg",
+    "55-strip-reduced-serve.jpg",
+    "61-strip-reduced-done.jpg",
+    "67-strip-reduced-exit.jpg",
+    "76-strip-throw.jpg",
+    "85-strip-walk.jpg",
+    "86-host-north-held-1920.jpg",
+    "87-host-north-held-1280.jpg",
+    "97-strip-north-approach-2-to-1-2.jpg",
+    "98-host-north-held-east-1920.jpg",
+    "99-host-north-held-east-1280.jpg",
+    "100-host-north-held-west-1920.jpg",
+    "101-host-north-held-west-1280.jpg",
+    "102-host-north-held-south-1920.jpg",
+    "103-host-north-held-south-1280.jpg",
+    "104-host-letterboxed.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-1-cooks-1920-showcase.jpg",
+      "bytes": 242373
+    },
+    {
+      "file": "02-host-1-cooks-1280-showcase.jpg",
+      "bytes": 138598
+    },
+    {
+      "file": "03-host-8-cooks-1920-showcase.jpg",
+      "bytes": 272181
+    },
+    {
+      "file": "04-host-8-cooks-1280-showcase.jpg",
+      "bytes": 155689
+    },
+    {
+      "file": "05-host-hud-score-width.jpg",
+      "bytes": 27197
+    },
+    {
+      "file": "06-host-rack-column.jpg",
+      "bytes": 19210
+    },
+    {
+      "file": "07-host-burning-label.jpg",
+      "bytes": 271616
+    },
+    {
+      "file": "08-host-action-idle.jpg",
+      "bytes": 268549
+    },
+    {
+      "file": "09-host-action-walk.jpg",
+      "bytes": 268857
+    },
+    {
+      "file": "10-host-action-carry-walk.jpg",
+      "bytes": 269376
+    },
+    {
+      "file": "100-host-north-held-west-1920.jpg",
+      "bytes": 266958
+    },
+    {
+      "file": "101-host-north-held-west-1280.jpg",
+      "bytes": 153362
+    },
+    {
+      "file": "102-host-north-held-south-1920.jpg",
+      "bytes": 267188
+    },
+    {
+      "file": "103-host-north-held-south-1280.jpg",
+      "bytes": 153557
+    },
+    {
+      "file": "104-host-letterboxed.jpg",
+      "bytes": 151855
+    },
+    {
+      "file": "11-host-action-chop.jpg",
+      "bytes": 267728
+    },
+    {
+      "file": "12-host-action-stir.jpg",
+      "bytes": 268968
+    },
+    {
+      "file": "13-host-action-wash.jpg",
+      "bytes": 269048
+    },
+    {
+      "file": "14-host-action-serve.jpg",
+      "bytes": 271971
+    },
+    {
+      "file": "15-host-action-throw.jpg",
+      "bytes": 269678
+    },
+    {
+      "file": "16-host-action-extinguish.jpg",
+      "bytes": 270103
+    },
+    {
+      "file": "17-host-action-rejection.jpg",
+      "bytes": 274817
+    },
+    {
+      "file": "23-strip-entrance.jpg",
+      "bytes": 1292047
+    },
+    {
+      "file": "30-strip-serve.jpg",
+      "bytes": 1634560
+    },
+    {
+      "file": "36-strip-done.jpg",
+      "bytes": 1343729
+    },
+    {
+      "file": "42-strip-exit.jpg",
+      "bytes": 1313814
+    },
+    {
+      "file": "48-strip-reduced-entrance.jpg",
+      "bytes": 1346793
+    },
+    {
+      "file": "55-strip-reduced-serve.jpg",
+      "bytes": 1634821
+    },
+    {
+      "file": "61-strip-reduced-done.jpg",
+      "bytes": 1343450
+    },
+    {
+      "file": "67-strip-reduced-exit.jpg",
+      "bytes": 1305241
+    },
+    {
+      "file": "76-strip-throw.jpg",
+      "bytes": 2159744
+    },
+    {
+      "file": "85-strip-walk.jpg",
+      "bytes": 2159176
+    },
+    {
+      "file": "86-host-north-held-1920.jpg",
+      "bytes": 266984
+    },
+    {
+      "file": "87-host-north-held-1280.jpg",
+      "bytes": 153349
+    },
+    {
+      "file": "97-strip-north-approach-2-to-1-2.jpg",
+      "bytes": 2416482
+    },
+    {
+      "file": "98-host-north-held-east-1920.jpg",
+      "bytes": 267334
+    },
+    {
+      "file": "99-host-north-held-east-1280.jpg",
+      "bytes": 153586
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 5095
+    },
+    {
+      "file": "north-seat-1-1280-lossless.png",
+      "bytes": 219076
+    },
+    {
+      "file": "north-seat-5-1280-lossless.png",
+      "bytes": 218968
+    },
+    {
+      "file": "run.json",
+      "bytes": 16459
+    }
+  ],
+  "totalBytes": 24069624,
+  "maxBytes": 41943040
+}

@@ -30,6 +30,10 @@ function advance(){
  * conditions first, then pass through publicView; no alternate renderer or mock view. */
 let fixtureName="";
 function fixture(name:string,at=0){
+  const northSeat5=name==='north-seat5';
+  if(northSeat5)name='north';
+  const northFacing=name==='north-east'?0:name==='north-west'?4:name==='north-south'?2:6;
+  if(name==='north-east'||name==='north-west'||name==='north-south')name='north';
   const previousLevel=state.level, same=fixtureName===name||name==='exit'||name==='done';fixtureName=name;
   running=false;
   const base=loadLevel(FULL_KITCHEN,707,players).state;if(!base)throw new Error('Invalid fixture');state=same?{...base,level:previousLevel}:base;
@@ -41,7 +45,7 @@ function fixture(name:string,at=0){
   const stations={...state.stations};
   const station=Object.values(stations).find(s=>s.type===(name==='serve'||name==='entrance'||name==='rejection'?'serving':name==='wash'?'sink':name==='chop'||name==='done'||name==='north'?'chop':'wok'));
   if(station && ['chop','stir','wash','serve','extinguish','done','rejection','north'].includes(name))state={...state,cooks:state.cooks.map((c,i)=>i===0?{...c,x:station.tile%state.level.width+0.5+(station.tile%state.level.width===0?1:station.tile%state.level.width===state.level.width-1?-1:0),y:Math.floor(station.tile/state.level.width)+0.5+(Math.floor(station.tile/state.level.width)===0?1:Math.floor(station.tile/state.level.width)===state.level.height-1?-1:0),facing:Math.floor(station.tile/state.level.width)===0?6:Math.floor(station.tile/state.level.width)===state.level.height-1?2:station.tile%state.level.width===0?4:0,targetTile:station.tile}:c)};
-  if(name==='north'&&station){state={...state,cooks:state.cooks.map((c,i)=>i===0?{...c,y:2-Math.min(at,48)/60,vx:0,vy:-1,facing:6}:c)};items.push({id:205,kind:'raw',ingredient:'chicken',place:{kind:'held',cook:players[0]?.id ?? ''}});}
+  if(name==='north'&&station){state={...state,cooks:state.cooks.map((c,i)=>i===0?{...c,y:2-Math.min(at,48)/60,vx:northFacing===0?1:northFacing===4?-1:0,vy:northFacing===6?-1:0,facing:northFacing}:c)};items.push({id:205,kind:'raw',ingredient:'chicken',place:{kind:'held',cook:players[0]?.id ?? ''}});}
   if(name==='extinguish')items.push({id:201,kind:'extinguisher',place:{kind:'held',cook:players[0]?.id ?? ''}});
   if(name==='serve')items.push({id:202,kind:'plate',container:'plate',contents:[{id:203,kind:'cooked',ingredient:'rice'},{id:204,kind:'chopped',ingredient:'chicken'}],place:{kind:'held',cook:players[0]?.id ?? ''}});
   if(station && ['chop','stir','wash','extinguish','showcase','done','rejection','north'].includes(name)){stations[station.tile]={...station,worker:name==='north'?null:players[0]?.seat ?? 1,workedAt:state.tick-1,fire:name==='extinguish'||name==='showcase',progress:name==='done'?60:15,total:60,...(name==='rejection'?{rejection:{reason:{code:'dirty' as const},until:state.tick+60}}:{}),content:{id:300,kind:'raw',ingredient:'chicken',place:{kind:'counter',tile:station.tile}}};}
@@ -57,7 +61,7 @@ function fixture(name:string,at=0){
       if(serving)stations[serving.tile]={...serving,content:{...first,id:902,place:{kind:'counter',tile:serving.tile}}};
     }
   }
-  state={...state,stations,inventory:inventory(items),kitchens:state.kitchens?.map(k=>({...k,score:120,tips:20,thresholds:[50,100,200],orders:Array.from({length:6},(_,i)=>({arrivalStep:name==='entrance'?120:state.tick-60,remaining:i===1?1200:i===2?300:2400,total:3600,warning:i===2,id:i,dish:FULL_KITCHEN.allowedDishes[i%FULL_KITCHEN.allowedDishes.length] ?? 'chicken-rice'}))})) ?? []};
+  state={...state,players:state.players.map((player,i)=>i===0&&northSeat5?{...player,colour:'seat-5'}:player),stations,inventory:inventory(items),kitchens:state.kitchens?.map(k=>({...k,score:120,tips:20,thresholds:[50,100,200],orders:Array.from({length:6},(_,i)=>({arrivalStep:name==='entrance'?120:state.tick-60,remaining:i===1?1200:i===2?300:2400,total:3600,warning:i===2,id:i,dish:FULL_KITCHEN.allowedDishes[i%FULL_KITCHEN.allowedDishes.length] ?? 'chicken-rice'}))})) ?? []};
   if(name==='showcase'||name==='burning'){
     let index=0;
     const varied={...state.stations};

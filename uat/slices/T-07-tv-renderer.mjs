@@ -1,4 +1,7 @@
 import assert from 'node:assert/strict';
+import { join } from 'node:path';
+const colourModule=/** @type {unknown} */ (await import(new URL('../../packages/ui/src/colour.ts',import.meta.url).href));
+const {PLAYER_COLOURS}=/** @type {typeof import('../../packages/ui/src/colour')} */ (colourModule);
 const demo=`/@fs${new URL('../../games/tabao-rush/dev/index.html',import.meta.url).pathname}`;
 /** @param {import('playwright').Page} page @param {string} name @param {number} at */
 async function fixture(page,name,at=0){
@@ -7,6 +10,7 @@ async function fixture(page,name,at=0){
 }
 /** @param {import('../../tools/uat/harness.ts').Harness} h */
 export default async function tabaoScreen(h){
+  h.coverage='North-facing north-counter stills and approach strip: the held item is hidden behind the body by design (depth −0.1). At the north counter a held item shows only when the cook faces s, se or sw; otherwise it is behind the body by design. South/east/west stills at y=1.2 cover this ordering. The disc lower edge is at worst feet −90.5, hands −31.4 (e/w) and −18.5 (s): at least 59 px clearance. Seat-5 recolours seat 1, so its disc reads 1. Lossless edge/cap checks: north-seat-1-1280-lossless.png and north-seat-5-1280-lossless.png. Visual acceptance is pending.';
   for(const players of [1,8])for(const [width,height] of /** @type {const} */ ([[1920,1080],[1280,720]]))await h.step(`${String(players)} cooks at ${String(width)}`,async()=>{
     await h.host.setViewportSize({width,height});await h.host.goto(`${h.origin}${demo}?players=${String(players)}`);
     await h.host.waitForFunction(()=>document.documentElement.dataset.trReady==='1');
@@ -87,6 +91,43 @@ export default async function tabaoScreen(h){
     }
     await h.host.setViewportSize({width:1920,height:1080});
     await h.frameStrip('north-approach-2-to-1-2',h.host,{frames:9,everyMs:0,checkFrame:async index=>{await fixture(h.host,'north',index*6);}});
+  });
+  await h.step('North held item depth ordering south, east and west',async()=>{
+    for(const facing of ['east','west','south'])for(const [width,height] of /** @type {const} */ ([[1920,1080],[1280,720]])){
+      await h.host.setViewportSize({width,height});await fixture(h.host,`north-${facing}`,48);
+      await h.shot(`north-held-${facing}-${String(width)}`);
+    }
+  });
+  await h.step('Lossless 1280 marker edge contrast against seat 1 and seat 5 caps',async()=>{
+    await h.host.setViewportSize({width:1280,height:720});
+    for(const seat of [1,5]){
+      await fixture(h.host,seat===1?'north':'north-seat5',48);
+      const png=(await h.host.screenshot({type:'png',path:join(h.evidence,`north-seat-${String(seat)}-1280-lossless.png`)})).toString('base64');
+      const measured=await h.host.evaluate(async encoded=>{
+        const bitmap=await createImageBitmap(await (await fetch(`data:image/png;base64,${encoded}`)).blob());
+        const canvas=document.createElement('canvas');canvas.width=bitmap.width;canvas.height=bitmap.height;
+        const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Pixel canvas');ctx.drawImage(bitmap,0,0);
+        const data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
+        const luminance=(/** @type {number[]} */ rgb)=>{
+          const c=rgb.map(v=>v/255).map(v=>v<=0.04045?v/12.92:((v+0.055)/1.055)**2.4);
+          return (c[0]??0)*0.2126+(c[1]??0)*0.7152+(c[2]??0)*0.0722;
+        };
+        // Bottom centre of the edged disc and the rendered cap immediately below.
+        // The fixed 1920 stage scales by 2/3; cook x=1560, marker centre y≈214.
+        let edge=Infinity,cap=Infinity;
+        let capRgb=[0,0,0];
+        for(let y=155;y<=164;y++)for(let x=1038;x<=1042;x++){
+          const i=(y*canvas.width+x)*4,l=luminance([data[i]??0,data[i+1]??0,data[i+2]??0]);
+          if(y<=157)edge=Math.min(edge,l);else if(y>=160&&l<cap){cap=l;capRgb=[data[i]??0,data[i+1]??0,data[i+2]??0];}
+        }
+        bitmap.close();return {ratio:(cap+0.05)/(edge+0.05),capRgb};
+      },png);
+      const expected=PLAYER_COLOURS.find(c=>c.seat===seat)?.colour;assert.ok(expected);
+      assert.deepEqual(measured.capRgb,[1,3,5].map(i=>Number.parseInt(expected.slice(i,i+2),16)),`seat ${String(seat)} cap sample matches seat colour`);
+      const {ratio}=measured;
+      assert.ok(ratio>=3,`seat ${String(seat)} lossless edge/cap contrast ${String(ratio)} >= 3`);
+      h.coverage+=` Seat ${String(seat)} measured PNG edge/cap contrast: ${ratio.toFixed(3)}:1.`;
+    }
   });
   await h.step('Registry to production MountedScreen readiness without a phone',async()=>{
     await h.host.goto(`${h.origin}/host/tabao-renderer?players=8&fixture=${encodeURIComponent(demo.replace('index.html','renderer.fixture.ts'))}`);

@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — T-07b: Tabao Rush TV renderer follow-ups (in progress)
+
+- TR-061: seat markers draw nearer-cook-on-top with a 3 px ink edge and the numeral centred on its measured glyph; at minimum cook separation discs overlap by at most 8.3 px, and a diagonal neighbour covers the far numeral by at most 1.92 px (D-291).
+- TR-001: placeholder recipe steps measured on a real canvas with the TV font (≤ 2 lines, ≤ 123 px).
+- PERF-001: the hot-path scan follows every function reachable from update/render and rejects per-tick allocations and string building; guarded redraws are listed. Diagnostic run: median 13.3 ms, max 14.4 ms.
+- Not yet: production PERF-001 run; TV check at 3 m.
+
 ## 2026-11-19 — R-16: Rabakz final-round card
 
 - RZ-009: a 4 s "Final round" card on the TV before the double-points block (last 1 of 10, 3 of 30, 5 of 50), with "Final round" at 144 px, the count line at 55 px and a mono ×2 on a 1.618 : 1 panel; paired crossfade in and out at slow, none with reduced motion; the question clock starts after the card. A 34 px "Double points" chip on each final question, kept through its reveal. Phones show "Final round · Double points" during the card (D-217, D-290).

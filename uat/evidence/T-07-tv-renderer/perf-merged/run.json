@@ -1,0 +1,52 @@
+{
+  "slice": "T-07-tv-renderer",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node --expose-gc tools/perf/run.mjs tabao-rush-screen --phones 8 --slice T-07-tv-renderer --out perf-merged",
+  "commit": "c21901e06cc7a49f2ab861bff8958eda90f986d5",
+  "viewports": [],
+  "steps": [
+    {
+      "name": "Eight cooks: real simulation",
+      "ms": 23997.663166,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [],
+  "screenshots": [],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "PERF.md",
+      "bytes": 2608
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 596
+    },
+    {
+      "file": "perf.json",
+      "bytes": 57288
+    },
+    {
+      "file": "run.json",
+      "bytes": 1049
+    }
+  ],
+  "totalBytes": 61578,
+  "maxBytes": 12582912
+}

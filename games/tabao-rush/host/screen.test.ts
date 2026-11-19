@@ -36,7 +36,7 @@ vi.mock('./assets',async()=>{
 afterEach(()=>{vi.unstubAllGlobals();assetConfig.override=undefined;});
 it('drives the mounted update through changing cooks, items, station progress and panels without growing render storage (PERF-001)',async()=>{
   const drawn:string[]=[];
-  const ctx=new Proxy({fillText:(value:string)=>{drawn.push(value);},measureText:(value:string)=>({width:value.length*8}),createLinearGradient:()=>({addColorStop(){}})}, {get(target,key){return key in target?target[key as keyof typeof target]:()=>{};}});
+  const ctx=new Proxy({fillText:(value:string)=>{drawn.push(value);},measureText:(value:string)=>({width:value.length*8,actualBoundingBoxAscent:25,actualBoundingBoxDescent:0}),createLinearGradient:()=>({addColorStop(){}})}, {get(target,key){return key in target?target[key as keyof typeof target]:()=>{};}});
   vi.stubGlobal('document',{fonts:{load:async()=>[],ready:Promise.resolve()},createElement(){metrics.rasters++;return {width:0,height:0,getContext:()=>ctx,toDataURL:()=>{metrics.encodes++;return ''}};}});
   vi.stubGlobal('matchMedia',()=>({matches:false}));let render:FrameRequestCallback=()=>{};vi.stubGlobal('requestAnimationFrame',(callback:FrameRequestCallback)=>{render=callback;return 1;});vi.stubGlobal('cancelAnimationFrame',()=>{});
   const dataset=new Proxy<Record<string,string>>({},{set(target,key,value:string){metrics.writes++;target[String(key)]=value;return true;}});
@@ -55,18 +55,21 @@ it('drives the mounted update through changing cooks, items, station progress an
   const stage=new Container();const panels=createPanels(stage,{frames:new Map()} as Parameters<typeof createPanels>[1],view.stations.length);
   const north=view.stations.find(s=>Math.floor(s.tile/view.level.width)===0);if(!north)throw new Error('North station');
   panels.update({...view,cooks:view.cooks.map(c=>({...c,x:north.tile%view.level.width+0.5,y:1.5}))},false);
-  const seat=stage.children.find(s=>s.zIndex===30000);expect(seat).toBeDefined();
-  expect(stage.children.every(s=>s.zIndex<=30000||s.zIndex===100000)).toBe(true);
+  const seat=stage.children.find(s=>s.zIndex>=30000&&s.zIndex<40000);expect(seat).toBeDefined();
+  expect(stage.children.every(s=>s.zIndex<40000||s.zIndex===100000)).toBe(true);
   expect(panels.stations[view.stations.indexOf(north)]?.sprite.zIndex).toBeLessThan(seat?.zIndex ?? 0);
   expect(panels.stations.every(s=>s.cue.sprite.zIndex<(seat?.zIndex ?? 0)&&s.note.sprite.zIndex<(seat?.zIndex ?? 0))).toBe(true);
   expect(seat?.position.x).toBe(projectX(north.tile%view.level.width+0.5,view.level.width)-27.5);
   const firstCook=view.cooks[0];if(!firstCook)throw new Error('Cook');
   for(const x of [1.2,1.5,2.2,view.level.width-1.2]){
     panels.update({...view,cooks:[{...firstCook,x,y:1.5},{...firstCook,x:x+0.4,y:1.5,id:'b'}]},false);
-    const markers=stage.children.filter(s=>s.zIndex===30000&&s.visible);
+    const markers=stage.children.filter(s=>s.zIndex>=30000&&s.zIndex<40000&&s.visible);
     expect(markers[0]?.position.x).toBe(projectX(x,view.level.width)-27.5);
     expect((markers[1]?.position.x ?? 0)-(markers[0]?.position.x ?? 0)).toBeCloseTo(0.4*TILE);
   }
+  panels.update({...view,cooks:[{...firstCook,x:2.5,y:1.56},{...firstCook,x:2.5,y:1.2,id:'b'}]},false);
+  const depthMarkers=stage.children.filter(s=>s.zIndex>=30000&&s.zIndex<40000&&s.visible);
+  expect(depthMarkers[0]?.zIndex).toBeGreaterThan(depthMarkers[1]?.zIndex ?? Infinity);
   const cookDepth=projectY(1.5,view.level.height)*10;
   expect(panels.stations[view.stations.indexOf(north)]?.sprite.zIndex).toBeLessThan(cookDepth);
   expect(panels.stations.every(s=>s.cue.sprite.zIndex>cookDepth&&s.cue.sprite.zIndex<30000)).toBe(true);
@@ -108,21 +111,23 @@ it('drives the mounted update through changing cooks, items, station progress an
   isolated.destroy();
   panels.destroy();screen?.destroy();
 });
-it('rejects per-step object/array construction in the real update, place, draw and panel functions',()=>{
+function scanHotPath(planted?:string){
   const forbidden:string[]=[];
-  const program=ts.createProgram(['screen.ts','panels.ts','view-model.ts','model.ts','text.ts','item-model.ts','station-cue.ts'].map(file=>fileURLToPath(new URL(file,import.meta.url))),{target:ts.ScriptTarget.Latest,module:ts.ModuleKind.ESNext,moduleResolution:ts.ModuleResolutionKind.Bundler,strict:true,skipLibCheck:true});
+  const options={target:ts.ScriptTarget.Latest,module:ts.ModuleKind.ESNext,moduleResolution:ts.ModuleResolutionKind.Bundler,strict:true,skipLibCheck:true};
+  const host=ts.createCompilerHost(options),read=host.readFile.bind(host);
+  host.readFile=path=>{
+    const source=read(path);
+    return planted&&path.endsWith('/host/station-cue.ts')?source?.replace('return Math.min(normalY+54.5',planted+';return Math.min(normalY+54.5'):source;
+  };
+  const program=ts.createProgram(['screen.ts','panels.ts','view-model.ts','model.ts','text.ts','item-model.ts','station-cue.ts'].map(file=>fileURLToPath(new URL(file,import.meta.url))),options,host);
   const checker=program.getTypeChecker();
-  for(const file of ['screen.ts','panels.ts','view-model.ts','model.ts','text.ts','item-model.ts']){
-    const path=fileURLToPath(new URL(file,import.meta.url));const source=program.getSourceFile(path);if(!source)throw new Error(path);
-    const scan=(node:ts.Node):void=>{if(ts.isObjectLiteralExpression(node)||ts.isArrayLiteralExpression(node)||ts.isNewExpression(node)||ts.isArrowFunction(node)||ts.isFunctionExpression(node)||ts.isForOfStatement(node))forbidden.push(`${file}:${String(source.getLineAndCharacterOfPosition(node.pos).line+1)}`);ts.forEachChild(node,scan);};
-    const visit=(node:ts.Node):void=>{if((ts.isFunctionDeclaration(node)||ts.isMethodDeclaration(node))&&node.name&&['update','place','drawItems','drawItem','render','animation','fitHud','cookIndex','action','setDepth','fittedText','displayName','rejectionText','positionNotes','add','layers','itemModel','rebuild','setHudWidth'].includes(node.name.getText(source))&&node.body)scan(node.body);else ts.forEachChild(node,visit);};visit(source);
-  }
   // Follow local/imported calls with their publication context; arbitrary !== guards do not qualify.
   const dirtyGuards=new Set([
     'hudSeconds!==vm.seconds','hudScore!==vm.score','hudStars!==vm.stars',
     'card.patience!==patience||card.urgency!==urgency',
     'r.nameLevel!==view.level||r.nameTile!==station.tile||r.nameType!==station.type',
     'r.rejection!==rejection','colour!==r.colour||seat!==r.seat',
+    'level!==view.level','r.note.sprite.visible&&r.notePending',
     'cached.name!==name','!backgroundTexture || previous.level!==view.level',
     'viewportWidth!==options.width||viewportHeight!==options.height',
     '(import.meta as ImportMeta & {env:{DEV:boolean}}).env.DEV',
@@ -130,6 +135,7 @@ it('rejects per-step object/array construction in the real update, place, draw a
   const seen=new Set<string>();
   const walk=(node:ts.Node,dirty:boolean):void=>{
     const source=node.getSourceFile();
+    if(ts.isThrowStatement(node))return; // Exceptional exits do not allocate during a successful tick.
     if(ts.isBlock(node)){
       let changed=dirty;
       for(const statement of node.statements){
@@ -145,9 +151,10 @@ it('rejects per-step object/array construction in the real update, place, draw a
     if(ts.isIfStatement(node)){
       walk(node.expression,dirty);walk(node.thenStatement,dirty||dirtyGuards.has(node.expression.getText(source)));if(node.elseStatement)walk(node.elseStatement,dirty);return;
     }
-    const plus=ts.isBinaryExpression(node)&&node.operatorToken.kind===ts.SyntaxKind.PlusToken&&(checker.getTypeAtLocation(node).flags&ts.TypeFlags.StringLike)!==0;
+    if(!dirty&&(ts.isObjectLiteralExpression(node)||ts.isArrayLiteralExpression(node)||ts.isNewExpression(node)||ts.isArrowFunction(node)||ts.isFunctionExpression(node)||ts.isForOfStatement(node)))forbidden.push(`${source.fileName}:allocation:${String(source.getLineAndCharacterOfPosition(node.pos).line+1)}`);
+    const plus=ts.isBinaryExpression(node)&&[ts.SyntaxKind.PlusToken,ts.SyntaxKind.PlusEqualsToken].includes(node.operatorToken.kind)&&(checker.getTypeAtLocation(node).flags&ts.TypeFlags.StringLike)!==0;
     const call=ts.isCallExpression(node);
-    const conversion=call&&(node.expression.getText(source)==='String'||ts.isPropertyAccessExpression(node.expression)&&node.expression.name.text==='padStart');
+    const conversion=call&&(node.expression.getText(source)==='String'||ts.isPropertyAccessExpression(node.expression)&&['padStart','toFixed','join','toString','toLocaleString'].includes(node.expression.name.text));
     if(!dirty&&(ts.isTemplateExpression(node)||ts.isNoSubstitutionTemplateLiteral(node)||plus||conversion))forbidden.push(`${source.fileName}:string:${String(source.getLineAndCharacterOfPosition(node.pos).line+1)}`);
     if(call){
       const declaration=checker.getResolvedSignature(node)?.declaration;
@@ -162,7 +169,18 @@ it('rejects per-step object/array construction in the real update, place, draw a
     const source=program.getSourceFile(path);if(!source)continue;
     const roots=(node:ts.Node):void=>{if((ts.isFunctionDeclaration(node)||ts.isMethodDeclaration(node))&&node.name&&['update','render'].includes(node.name.getText(source))&&node.body)walk(node.body,false);else ts.forEachChild(node,roots);};roots(source);
   }
-  expect(forbidden).toEqual([]);
+  return forbidden;
+}
+it('rejects reachable per-tick strings and allocations (PERF-001)',()=>{expect(scanHotPath()).toEqual([]);});
+it.each([
+  ['compound string addition','let tag="";tag+=normalY','string'],
+  ['toFixed','normalY.toFixed(2)','string'],
+  ['join','[normalY].join()','string'],
+  ['toString','normalY.toString()','string'],
+  ['toLocaleString','normalY.toLocaleString()','string'],
+  ['object literal','const allocation={normalY}','allocation'],
+])('rejects planted %s in reachable station-cue.ts (PERF-001)',(_name,planted,rule)=>{
+  expect(scanHotPath(planted).some(failure=>failure.includes(`station-cue.ts:${rule}:`))).toBe(true);
 });
 
 it('keeps real Pixi HUD drawn width equal to layout through score changes without resizing the source (TR-001)',async()=>{

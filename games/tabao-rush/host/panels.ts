@@ -11,6 +11,7 @@ import type { View } from './model';
 import type { Assets } from './assets';
 import { RECIPE_LABELS, ViewModel, playerFor, colourFor } from './view-model';
 const theme=THEMES['tabao-rush'];
+export const MARKER_RADIUS=19.5,MARKER_LINE_WIDTH=3,MARKER_OUTER_RADIUS=MARKER_RADIUS+MARKER_LINE_WIDTH/2,MARKER_NUMERAL_SIZE=34;
 export const CARD_LAYOUT={x:55,y:881,width:178,height:144,gap:13};
 const CARD=CARD_LAYOUT.width,GAP=CARD_LAYOUT.gap,HEIGHT=CARD_LAYOUT.height,STATION_WIDTH=TILE;
 export function hudPanelBox(out:{x:number;y:number;width:number;height:number},right:number,width:number){out.x=right-width;out.y=923;out.width=width;out.height=102;}
@@ -150,10 +151,11 @@ export function createPanels(stage:Container,assets:Assets,stationCount:number){
     if(levelChanged)band=markerBand(stations,view.level.width);
     for(let i=0;i<seats.length;i++){const r=seats[i],cook=view.cooks[i];if(!r)continue;r.sprite.visible=!!cook;if(!cook)continue;
       const player=playerFor(view,cook.id),colour=colourFor(view,i),seat=player?.seat ?? i+1;
-      if(colour!==r.colour||seat!==r.seat){r.ctx.clearRect(0,0,55,55);r.ctx.fillStyle=colour;r.ctx.beginPath();r.ctx.arc(55/2,55/2,20,0,Math.PI*2);r.ctx.fill();r.ctx.strokeStyle=THEMES.console.panel.ink;r.ctx.lineWidth=2;r.ctx.stroke();r.ctx.fillStyle=SEAT_NUMERAL;r.ctx.font=`bold 34px ${fontStack.body}`;r.ctx.textAlign='center';r.ctx.fillText(String(player?.seat ?? i+1),55/2,55-13);r.texture.source.update();r.colour=colour;r.seat=seat;}
+      if(colour!==r.colour||seat!==r.seat){r.ctx.clearRect(0,0,55,55);r.ctx.fillStyle=colour;r.ctx.beginPath();r.ctx.arc(55/2,55/2,MARKER_RADIUS,0,Math.PI*2);r.ctx.fill();r.ctx.strokeStyle=THEMES.console.panel.ink;r.ctx.lineWidth=MARKER_LINE_WIDTH;r.ctx.stroke();r.ctx.fillStyle=SEAT_NUMERAL;r.ctx.font=`bold ${String(MARKER_NUMERAL_SIZE)}px ${fontStack.body}`;r.ctx.textAlign='center';const numeral=String(seat),glyph=r.ctx.measureText(numeral);r.ctx.fillText(numeral,55/2,55/2+(glyph.actualBoundingBoxAscent-glyph.actualBoundingBoxDescent)/2);r.texture.source.update();r.colour=colour;r.seat=seat;}
       const markerY=projectY(cook.y,view.level.height)-144+55/2;
       const marker=markerPosition(markerY,band);
       r.sprite.position.set(projectX(cook.x,view.level.width)-55/2,marker-55/2);
+      r.sprite.zIndex=30000+projectY(cook.y,view.level.height);
     }
     render(tick,reduced);
   }

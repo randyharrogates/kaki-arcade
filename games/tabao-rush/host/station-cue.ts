@@ -40,7 +40,7 @@ export function markerBand(stations:readonly {tile:number;worldCue:CueLayout;typ
 export function markerPosition(normalY:number,band:number):number{return Math.min(normalY+54.5,Math.max(normalY,band+5+21));}
 export function filledCells(status:string,progress:number):number{return status==='empty'||status==='burnt'?0:status==='done'?8:Math.floor(Math.max(0,Math.min(1,progress))*8);}
 export function hasCue(type:string,total:number):boolean {
-  return !['serving','dish-rack','return-counter','ingredient-crate'].includes(type)&&(processing.has(type)||total>0);
+  return type!=='serving'&&type!=='dish-rack'&&type!=='return-counter'&&type!=='ingredient-crate'&&(processing.has(type)||total>0);
 }
 /** D-215 / TR-031: no text or ring. Paths distinguish completed, fire and burnt. */
 export function drawCue(ctx:CanvasRenderingContext2D,layout:CueLayout,status:string,fire:boolean,progress:number){

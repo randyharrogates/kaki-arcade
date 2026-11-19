@@ -5,12 +5,12 @@ import { cueLayout, drawCue, hasCue, intersects, levelBox, rejectionBox, placeCu
 import { THEMES } from '../../../packages/ui/src/themes';
 import { PLAYER_COLOURS } from '../../../packages/ui/src/colour';
 import { duration, PULSE_SCALE } from '../../../packages/ui/src/motion-tokens';
-import { CARD_LAYOUT, hudPanelBox, hudPanelWidth } from './panels';
+import { MARKER_RADIUS, MARKER_LINE_WIDTH, MARKER_OUTER_RADIUS, MARKER_NUMERAL_SIZE, CARD_LAYOUT, hudPanelBox, hudPanelWidth } from './panels';
 import { TILE, DEPTH, projectX, projectY } from './model';
 import { displayName, nameInset, nameText } from './text';
 import { FULL_KITCHEN, LEVELS } from '../src/levels/catalogue';
 import { loadLevel } from '../src/levels/loader';
-import { COOK_RADIUS } from '../src/rules/state';
+import { COOK_RADIUS, MIN_SEPARATION } from '../src/rules/state';
 import type { Box } from './station-cue';
 const fixture=loadLevel(FULL_KITCHEN,707,[{id:'a',name:'A',seat:1,colour:'seat-1'}]).state;
 if(!fixture)throw new Error('Fixture');
@@ -58,7 +58,7 @@ it('snapshots five distinct shape command streams, without drawing text (TR-031)
   expect(snapshots).toMatchSnapshot();
 });
 it('keeps a rejection at every fixture station inside the level and away from cards, HUD and the worker (TR-004, TR-061)',()=>{
-  const bounds=levelBox(level.width,level.height),obstacles:Box[]=[];
+  const safe={x:5,y:5,width:1910,height:1070},bounds=levelBox(level.width,level.height),obstacles:Box[]=[];
   for(let i=0;i<6;i++)obstacles.push({...CARD_LAYOUT,x:CARD_LAYOUT.x+i*(CARD_LAYOUT.width+CARD_LAYOUT.gap)});
   const metrics={font:'',measureText(value:string){return {width:value.length*parseFloat(this.font)*0.47};}};
   let right=1865;for(const [value,label] of [['★★★','Stars'],['120','Score'],['3:28','Time']]){
@@ -69,7 +69,7 @@ it('keeps a rejection at every fixture station inside the level and away from ca
     const entry=level.tiles[tile];if(entry?.kind!=='station')continue;
     obstacles.push({x:projectX(tile%level.width+0.5,level.width)+21-34,y:projectY(Math.floor(tile/level.width)+0.5,level.height)-68,width:68,height:68});
     if(!hasCue(entry.stationType ?? '',1))continue;
-    const world=cueLayout();placeCue(world,cueLayout(),bounds.x+tile%level.width*TILE,bounds.y+Math.floor(tile/level.width)*TILE*DEPTH,bounds);
+    const world=cueLayout();placeCue(world,cueLayout(),bounds.x+tile%level.width*TILE,bounds.y+Math.floor(tile/level.width)*TILE*DEPTH,tile<level.width?safe:bounds);
     const p=world.plaque,b=world.bar,cx=b.x+b.width/2,cy=(p.y+b.y+b.height)/2;
     obstacles.push({x:cx-b.width*PULSE_SCALE/2,y:cy-(b.y+b.height-p.y)*PULSE_SCALE/2,width:b.width*PULSE_SCALE,height:(b.y+b.height-p.y)*PULSE_SCALE});
   }
@@ -126,18 +126,42 @@ it('sweeps every reachable cook against both pulse sizes with head socket cleara
         const cx=b.x+b.width/2,cy=(p.y+b.y+b.height)/2;
         for(const box of [p,{x:b.x+2,y:b.y+3,width:b.width-4,height:b.height-6}]){
           const bx=cx+(box.x-cx)*scale,by=cy+(box.y-cy)*scale;
-          if(Math.hypot(Math.max(bx-mx,0,mx-bx-box.width*scale),Math.max(by-my,0,my-by-box.height*scale))<21-1e-8)throw new Error('Cue intersection');
+          if(Math.hypot(Math.max(bx-mx,0,mx-bx-box.width*scale),Math.max(by-my,0,my-by-box.height*scale))<MARKER_OUTER_RADIUS-1e-8)throw new Error('Cue intersection');
         }
       }
     }
-    for(let y=1.2*TILE*DEPTH;y<=2.2*TILE*DEPTH;y++)for(let other=y;other<=2.2*TILE*DEPTH;other++)for(const gap of [0,21,41,42,48,120]){
-      const a=markerPosition(y-116.5,band),b=markerPosition(other-116.5,band);
-      if(gap>=42&&Math.hypot(gap,b-a)<42)throw new Error('Pair overlap');
+    // Circular movement separation permits every diagonal, not just vertical pairs.
+    // SFNS bold 34 digits are 16–22 px wide: use the conservative 11 px half-width.
+    // The DOM font check bounds glyph height at 25 px; centre it as production does.
+    const glyphHalfWidth=11,glyphHalfHeight=25/2;
+    for(const y of [1.2,3]){
+      const firstX=projectX(2,level.width);
+      const firstY=markerPosition(projectY(y,level.height)-144+55/2,band);
+      let worstOverlap=0,overlapAngle=0,worstCover=0,coverAngle=0;
+      // 0.01° steps refine the extrema well beyond the required 1° sweep.
+      for(let step=0;step<=9000;step++){
+        const angle=step/100,radians=angle*Math.PI/180;
+        const secondX=projectX(2+MIN_SEPARATION*Math.cos(radians),level.width);
+        const secondY=markerPosition(projectY(y+MIN_SEPARATION*Math.sin(radians),level.height)-144+55/2,band);
+        const dx=secondX-firstX,dy=secondY-firstY;
+        const overlap=Math.max(0,2*MARKER_OUTER_RADIUS-Math.hypot(dx,dy));
+        // Nearest point of the far numeral's axis-aligned glyph box to the
+        // nearer disc centre: radial penetration bounds how much it is covered.
+        const cover=Math.max(0,MARKER_OUTER_RADIUS-Math.hypot(Math.max(0,dx-glyphHalfWidth),Math.max(0,dy-glyphHalfHeight)));
+        expect(overlap).toBeLessThanOrEqual(9);
+        expect(cover).toBeLessThanOrEqual(2);
+        if(overlap>worstOverlap){worstOverlap=overlap;overlapAngle=angle;}
+        if(cover>worstCover){worstCover=cover;coverAngle=angle;}
+      }
+      expect(worstOverlap).toBeCloseTo(y===1.2?8.3448:4.5888,4);
+      expect(overlapAngle).toBe(90);
+      expect(worstCover).toBeCloseTo(y===1.2?1.91687:0,5);
+      expect(coverAngle).toBe(y===1.2?65.28:0);
     }
   }
-});
+},20000); // Review measured 6.05 s under contention; allow over three times that.
 
-it('gives the 2 px marker edge at least 3:1 contrast against caps and floor (TR-061)',()=>{
+it('gives the 3 px marker edge at least 3:1 contrast against caps, measured review-7 samples and floor (TR-061)',()=>{
   const luminance=(channels:readonly number[])=>{
     const rgb=channels.map(v=>v/255).map(v=>v<=0.04045?v/12.92:((v+0.055)/1.055)**2.4);
     return (rgb[0]??0)*0.2126+(rgb[1]??0)*0.7152+(rgb[2]??0)*0.0722;
@@ -145,7 +169,15 @@ it('gives the 2 px marker edge at least 3:1 contrast against caps and floor (TR-
   const channels=(hex:string)=>[1,3,5].map(i=>Number.parseInt(hex.slice(i,i+2),16));
   const edge=luminance(channels(THEMES.console.panel.ink));
   // Review 7's measured cap/disc RGB samples are evidence, not drawing colours.
-  for(const colour of [...PLAYER_COLOURS.map(c=>channels(c.colour)),channels(THEMES.console.panel.to),[214,73,55],[226,69,64]]){
+  const measuredReview7Samples=[[214,73,55],[226,69,64]];
+  for(const colour of [...PLAYER_COLOURS.map(c=>channels(c.colour)),channels(THEMES.console.panel.to),...measuredReview7Samples]){
     const surface=luminance(colour);expect((Math.max(edge,surface)+0.05)/(Math.min(edge,surface)+0.05)).toBeGreaterThanOrEqual(3);
   }
+});
+
+it('retains marker geometry and numeral size (TR-061)',()=>{
+  expect(MARKER_OUTER_RADIUS).toBe(21);
+  expect(MARKER_OUTER_RADIUS).toBe(MARKER_RADIUS+MARKER_LINE_WIDTH/2);
+  expect(MARKER_LINE_WIDTH).toBeGreaterThanOrEqual(3);
+  expect(MARKER_NUMERAL_SIZE).toBe(34);
 });

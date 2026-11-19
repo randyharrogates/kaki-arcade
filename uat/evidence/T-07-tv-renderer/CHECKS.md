@@ -1,49 +1,44 @@
-# T-07 renderer checks — round 12
+# T-07 renderer checks — T-07b round 3
 
-Round 11 is committed at `66581bc2`, evidence at `fbe38037` in `round11-uat/`;
-main merged at `db7f05c7`. Review 7 is not clean: the done strip lacks its pulse,
-the north-counter marker covers the cook/held item at y=1.2, and the documents
-were stale. Earlier round-10 evidence is historical. Perf-r7 remains diagnostic only.
-The integrator commits this round and runs its UAT to round12-uat.
+Main ef115c86 includes T-18 served dishes, C-25 and R-16; the fixture conflict
+is resolved. Round 14 evidence predates this merge.
+The marker has a 3 px ink edge, outer radius 21. Cook separation is 0.36 tile, not the marker gap. The vertical marker centre
+separation is 33.6552 px with the north-band push (3.756 px, rounded 3.76),
+and 37.4112 px (37.41) unpushed. The 0–90° sweep at 0.01° steps uses the
+real 120 / 103.92 px projection and marker placement on both fixture levels.
+Worst disc overlap: in band 8.3448 px at 90°; outside 4.5888 px at 90°.
+Worst nearer-disc cover of the far numeral box: in band 1.91687 px at 65.28°;
+outside 0 px at every angle. Cover is radial penetration from the disc edge
+to the nearest point of the centred glyph box, bounded by half-width 11 px
+(SFNS bold 34 digits are 16–22 px wide) and half-height 25/2 px.
+Nearer cooks draw their marker on top. The sweep has a 20 s timeout after the
+review measured 6.05 s under contention.
 
-Round 12 moves north cues into the screen margin with maximum pulse room, includes
-all potential north cues in the band, caps fallback marker push above real head
-sockets, adds a 2 px ink edge and counter-item rejection obstacles, and tightens
-the reachable-function string scan. The live done fixture and UAT pixel assertions
-cover strips 36/61. New evidence fixtures cover north y=1.2 holding an item at
-1920 × 1080 and 1280 × 720 plus a 2.0 → 1.2 approach strip. Mock font measurement
-remains open. No round-12 visual or performance acceptance is claimed here.
+North-counter fixtures retain east/west and add south at 1920 and 1280, y=1.2.
+At the north counter a held item shows only when the cook faces s, se or sw;
+otherwise it is behind the body by design. Disc lower edge feet −90.5 versus
+hands −31.4 (e/w), −18.5 (s): at least 59 px anchor clearance.
+Seat-5 recolours seat 1, so its numeral reads “1”. Lossless contrast probes now
+assert the cap sample matches its seat colour, then assert ≥ 3:1 edge contrast.
 
-Every pnpm command uses PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN=false; Vitest uses two
-workers. Launches wait for one-minute load below 8; every command is limited to ten
-minutes. Loads below are the immediately preceding uptime readings.
+All checks used PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN=false, ran one at a time
+without load gating, and completed within ten minutes. Vitest used two workers.
 
-| Check | Launch load | Result |
-|---|---:|---|
-| Full Tabao Rush suite, briefed exclusions | 2.40 | 373 passed, 1 new anchor-test failure; corrected hands assertion (some actions raise hands above head); 279.01 s |
-| Build typecheck including UAT slices | 5.70 | UAT viewport tuple annotation error; corrected |
-| ESLint | 7.82 | Three style errors; corrected |
-| Host suite | 6.30 | Passed: 31 tests, 5 files, 4.03 s |
-| Full suite retry, briefed exclusions | 5.54 | Passed: 374 tests, 29 files, 258.51 s |
-| Build typecheck including UAT slices | 5.63 | Passed |
-| ESLint | 6.15 | Passed |
-| Design lint | 6.99 | Two raw-colour findings in measured test samples; changed to RGB evidence data |
-| Design lint retry | 7.16 | Passed: 505 files |
-| Build clean | 6.89 | Passed; emitted files removed |
-| Host suite after scan follows all repository imports | 7.35 | Passed: 31 tests, 5 files, 4.55 s |
-| Build typecheck | 7.00 | Passed |
-| Final ESLint | 6.32 | Passed |
-| Final build typecheck, including UAT slices and north walking fixture | 5.24 | Passed |
-| Final build clean | 3.91 | Passed; emitted files removed |
+| Check | Round 3 result |
+|---|---|
+| Full Tabao Rush suite, briefed exclusions, two workers | Passed: 391 tests, 31 files, 325.84 s. Includes both-level diagonal sweeps and geometry regression assertions. |
+| Build typecheck including UAT slice | Passed: `tsc -b tsconfig.build.json`. |
+| Emitted-file cleanup | Passed: `tsc -b tsconfig.build.json --clean` after typecheck. |
+| ESLint | Passed, zero warnings, including the UAT slice. |
+| Design lint | Passed, 520 files scanned. |
 
-The full-suite retry passed after the anchor correction; the final host suite also
-passed after expanding the string scan. No check reached ten minutes.
+DOM tests were not run by this implementation round. The integrator’s verify3 passed
+text.dom.test.ts (256 files). Historical evidence stays in its original folders.
+The round 3 full-suite pass includes the final marker geometry and diagonal sweep assertions.
 
-No UAT, perf, verify, install, commit, merge or push is run by this implementation
-round. The integrator captures and inspects the evidence, completes REPORT tables
-and obtains independent review. Trackers, contracts, lockfile and design documents
-stay with the integrator.
-
-```sh
-PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN=false pnpm uat -- T-07-tv-renderer --out round12-uat --max-mb 40 --timeout-min 20
-```
+Round14-uat was shot before main’s merge. The integrator reruns UAT to
+round15-uat on the merged tree, inspects all stills and strips, fills REPORT
+and obtains independent review, and reruns perf. Production performance on
+a quiet machine remains owed before T-07 closes; perf-r7 is diagnostic only.
+No new visual or performance acceptance is claimed. No verify, UAT, perf, install
+or commit is run by this implementation round.
