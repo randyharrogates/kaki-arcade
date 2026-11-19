@@ -13,7 +13,7 @@ No betting, no chips, no real-money element.
 | PP-001 | MUST | A match is several rounds: the leader chooses 3, 5 or 7 (default 5). Scores from every round are added up and the highest total wins the match. |
 | PP-002 | MUST | Each round deals from one shuffled standard 52-card deck: **16 cards** into a 4 × 4 grid and **3 shared cards**. |
 | PP-003 | MUST | The 16 grid cards are shown face up on the big screen for the memorise time (**20 seconds** in round 1), then all flip face down. |
-| PP-004 | MUST | The 3 shared cards stay face up for the whole round. |
+| PP-004 | MUST | The 3 shared cards are face down while the grid is shown and flip face up as the grid flips face down; they then stay face up for the rest of the round (Randy, 2026-11-20, D-296). |
 | PP-005 | MUST | Each player **secretly picks 2 grid positions on their own phone** within the pick time (default 20 seconds). The phone shows the face-down 4 × 4 grid; nothing on the big screen reveals who picked what until the reveal. |
 | PP-006 | MUST | **Two or more players may pick the same card.** |
 | PP-007 | MUST | A player's hand is their 2 picked cards plus the 3 shared cards. Hands are ranked by standard poker rankings. |
