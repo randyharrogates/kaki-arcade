@@ -1,0 +1,716 @@
+{
+  "slice": "C-18-final-hint",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- C-18-final-hint --phones 8 --max-mb 30 --timeout-min 25 --out c28-r5",
+  "commit": "8fe2f2819ae0f51e74e812ede4e6e87c03cee21e",
+  "viewports": [
+    "1920×1080",
+    "1280×720",
+    "3840×2160"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 967.0839169999999,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker: run unanswered rounds to the final screen",
+      "ms": 32534.093209,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker: 1920 phone band clearance",
+      "ms": 158.25641599999653,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker: 1280 phone band clearance",
+      "ms": 114.76137500000186,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker: 3840 phone band clearance",
+      "ms": 959.2820829999982,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker: 1920 keyboard band clearance",
+      "ms": 161.57308300000295,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker: 1280 keyboard band clearance",
+      "ms": 113.25562499999796,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker: 3840 keyboard band clearance",
+      "ms": 877.6654169999965,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 1104.7558749999953,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-ffa: run unanswered rounds to the final screen",
+      "ms": 180356.06862499999,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-ffa: 1920 phone band clearance",
+      "ms": 133.7704580000136,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-ffa: 1280 phone band clearance",
+      "ms": 106.12854099998367,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-ffa: 3840 phone band clearance",
+      "ms": 306.57675000000745,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-ffa: 1920 keyboard band clearance",
+      "ms": 111.03441700001713,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-ffa: 1280 keyboard band clearance",
+      "ms": 86.43991700001061,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-ffa: 3840 keyboard band clearance",
+      "ms": 316.17458299998543,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 995.6403329999885,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-teams: run unanswered rounds to the final screen",
+      "ms": 174531.107375,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-teams: 1920 phone band clearance",
+      "ms": 133.64462500001537,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-teams: 1280 phone band clearance",
+      "ms": 111.3722500000149,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-teams: 3840 phone band clearance",
+      "ms": 238.47537500003818,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-teams: 1920 keyboard band clearance",
+      "ms": 94.36958399997093,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-teams: 1280 keyboard band clearance",
+      "ms": 101.34674999996787,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-teams: 3840 keyboard band clearance",
+      "ms": 239.3435419999878,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 868.3224999999511,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-teams-untied: run scored rounds to the final screen",
+      "ms": 144206.98495800002,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-teams-untied: 1920 phone band clearance",
+      "ms": 216.2247080000816,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-teams-untied: 1920 keyboard band clearance",
+      "ms": 173.00608399999328,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 1189.2498749999795,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-solo: run unanswered rounds to the final screen",
+      "ms": 141800.394125,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-solo: 1920 phone band clearance",
+      "ms": 160.3589169998886,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-solo: 1920 keyboard band clearance",
+      "ms": 148.20529200008605,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 1101.8364169999259,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-four: run unanswered rounds to the final screen",
+      "ms": 160575.613,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-four: 1920 phone band clearance",
+      "ms": 148.52004099998157,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-four: 1920 keyboard band clearance",
+      "ms": 110.47770899999887,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 297.8725000000559,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker-reduced: run unanswered rounds to the final screen",
+      "ms": 108206.22854199994,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker-reduced: 1920 phone band clearance",
+      "ms": 151.43933299998753,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker-reduced: 1280 phone band clearance",
+      "ms": 100.67337500001304,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker-reduced: 3840 phone band clearance",
+      "ms": 567.5351249999367,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker-reduced: 1920 keyboard band clearance",
+      "ms": 122.72441699996125,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker-reduced: 1280 keyboard band clearance",
+      "ms": 104.86370899993926,
+      "status": "completed"
+    },
+    {
+      "name": "peek-poker-reduced: 3840 keyboard band clearance",
+      "ms": 766.8651250000112,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 497.2496669999091,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-reduced: run unanswered rounds to the final screen",
+      "ms": 153256.51,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-reduced: 1920 phone band clearance",
+      "ms": 114.65024999994785,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-reduced: 1280 phone band clearance",
+      "ms": 101.55891699995846,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-reduced: 3840 phone band clearance",
+      "ms": 215.37912499997765,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-reduced: 1920 keyboard band clearance",
+      "ms": 122.33708299999125,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-reduced: 1280 keyboard band clearance",
+      "ms": 99.94441700004973,
+      "status": "completed"
+    },
+    {
+      "name": "rabakz-reduced: 3840 keyboard band clearance",
+      "ms": 231.70912500005215,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-peek-poker-1920-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-peek-poker-1280-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-peek-poker-3840-phone.png",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-peek-poker-1920-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-peek-poker-1280-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-peek-poker-3840-keyboard.png",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-rabakz-ffa-1920-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-rabakz-ffa-1280-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-rabakz-ffa-3840-phone.png",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-rabakz-ffa-1920-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-rabakz-ffa-1280-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-rabakz-ffa-3840-keyboard.png",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-rabakz-final-exit-frame01.png",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-rabakz-final-exit-frame02.png",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-rabakz-final-exit-frame03.png",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-rabakz-final-exit-frame04.png",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-rabakz-final-exit-frame05.png",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-rabakz-final-exit-frame06.png",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-rabakz-teams-1920-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-rabakz-teams-1280-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-rabakz-teams-3840-phone.png",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-rabakz-teams-1920-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-rabakz-teams-1280-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-rabakz-teams-3840-keyboard.png",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-rabakz-teams-untied-1920-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-host-rabakz-teams-untied-1920-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-host-rabakz-solo-1920-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-rabakz-solo-1920-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-host-rabakz-four-1920-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-host-rabakz-four-1920-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-peek-poker-reduced-final-entrance-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-host-peek-poker-reduced-final-entrance-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-host-peek-poker-reduced-final-entrance-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-host-peek-poker-reduced-final-entrance-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-host-peek-poker-reduced-final-entrance-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "37-host-peek-poker-reduced-final-entrance-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-host-peek-poker-reduced-1920-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-host-peek-poker-reduced-1280-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-host-peek-poker-reduced-3840-phone.png",
+      "unsettled": false
+    },
+    {
+      "file": "42-host-peek-poker-reduced-1920-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-host-peek-poker-reduced-1280-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-host-peek-poker-reduced-3840-keyboard.png",
+      "unsettled": false
+    },
+    {
+      "file": "45-host-rabakz-reduced-final-entrance-frame01.png",
+      "unsettled": false
+    },
+    {
+      "file": "46-host-rabakz-reduced-final-entrance-frame02.png",
+      "unsettled": false
+    },
+    {
+      "file": "47-host-rabakz-reduced-final-entrance-frame03.png",
+      "unsettled": false
+    },
+    {
+      "file": "48-host-rabakz-reduced-final-entrance-frame04.png",
+      "unsettled": false
+    },
+    {
+      "file": "49-host-rabakz-reduced-final-entrance-frame05.png",
+      "unsettled": false
+    },
+    {
+      "file": "50-host-rabakz-reduced-final-entrance-frame06.png",
+      "unsettled": false
+    },
+    {
+      "file": "52-host-rabakz-reduced-1920-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "53-host-rabakz-reduced-1280-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "54-host-rabakz-reduced-3840-phone.png",
+      "unsettled": false
+    },
+    {
+      "file": "55-host-rabakz-reduced-1920-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "56-host-rabakz-reduced-1280-keyboard.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "57-host-rabakz-reduced-3840-keyboard.png",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-peek-poker-1920-phone.jpg",
+    "02-host-peek-poker-1280-phone.jpg",
+    "03-host-peek-poker-3840-phone.png",
+    "04-host-peek-poker-1920-keyboard.jpg",
+    "05-host-peek-poker-1280-keyboard.jpg",
+    "06-host-peek-poker-3840-keyboard.png",
+    "07-host-rabakz-ffa-1920-phone.jpg",
+    "08-host-rabakz-ffa-1280-phone.jpg",
+    "09-host-rabakz-ffa-3840-phone.png",
+    "10-host-rabakz-ffa-1920-keyboard.jpg",
+    "11-host-rabakz-ffa-1280-keyboard.jpg",
+    "12-host-rabakz-ffa-3840-keyboard.png",
+    "19-strip-rabakz-final-exit.jpg",
+    "20-host-rabakz-teams-1920-phone.jpg",
+    "21-host-rabakz-teams-1280-phone.jpg",
+    "22-host-rabakz-teams-3840-phone.png",
+    "23-host-rabakz-teams-1920-keyboard.jpg",
+    "24-host-rabakz-teams-1280-keyboard.jpg",
+    "25-host-rabakz-teams-3840-keyboard.png",
+    "26-host-rabakz-teams-untied-1920-phone.jpg",
+    "27-host-rabakz-teams-untied-1920-keyboard.jpg",
+    "28-host-rabakz-solo-1920-phone.jpg",
+    "29-host-rabakz-solo-1920-keyboard.jpg",
+    "30-host-rabakz-four-1920-phone.jpg",
+    "31-host-rabakz-four-1920-keyboard.jpg",
+    "38-strip-peek-poker-reduced-final-entrance.jpg",
+    "39-host-peek-poker-reduced-1920-phone.jpg",
+    "40-host-peek-poker-reduced-1280-phone.jpg",
+    "41-host-peek-poker-reduced-3840-phone.png",
+    "42-host-peek-poker-reduced-1920-keyboard.jpg",
+    "43-host-peek-poker-reduced-1280-keyboard.jpg",
+    "44-host-peek-poker-reduced-3840-keyboard.png",
+    "51-strip-rabakz-reduced-final-entrance.jpg",
+    "52-host-rabakz-reduced-1920-phone.jpg",
+    "53-host-rabakz-reduced-1280-phone.jpg",
+    "54-host-rabakz-reduced-3840-phone.png",
+    "55-host-rabakz-reduced-1920-keyboard.jpg",
+    "56-host-rabakz-reduced-1280-keyboard.jpg",
+    "57-host-rabakz-reduced-3840-keyboard.png"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-peek-poker-1920-phone.jpg",
+      "bytes": 293387
+    },
+    {
+      "file": "02-host-peek-poker-1280-phone.jpg",
+      "bytes": 156684
+    },
+    {
+      "file": "03-host-peek-poker-3840-phone.png",
+      "bytes": 1223497
+    },
+    {
+      "file": "04-host-peek-poker-1920-keyboard.jpg",
+      "bytes": 290175
+    },
+    {
+      "file": "05-host-peek-poker-1280-keyboard.jpg",
+      "bytes": 154543
+    },
+    {
+      "file": "06-host-peek-poker-3840-keyboard.png",
+      "bytes": 1211088
+    },
+    {
+      "file": "07-host-rabakz-ffa-1920-phone.jpg",
+      "bytes": 216758
+    },
+    {
+      "file": "08-host-rabakz-ffa-1280-phone.jpg",
+      "bytes": 140042
+    },
+    {
+      "file": "09-host-rabakz-ffa-3840-phone.png",
+      "bytes": 431157
+    },
+    {
+      "file": "10-host-rabakz-ffa-1920-keyboard.jpg",
+      "bytes": 213285
+    },
+    {
+      "file": "11-host-rabakz-ffa-1280-keyboard.jpg",
+      "bytes": 137819
+    },
+    {
+      "file": "12-host-rabakz-ffa-3840-keyboard.png",
+      "bytes": 422298
+    },
+    {
+      "file": "19-strip-rabakz-final-exit.jpg",
+      "bytes": 3521101
+    },
+    {
+      "file": "20-host-rabakz-teams-1920-phone.jpg",
+      "bytes": 225046
+    },
+    {
+      "file": "21-host-rabakz-teams-1280-phone.jpg",
+      "bytes": 143250
+    },
+    {
+      "file": "22-host-rabakz-teams-3840-phone.png",
+      "bytes": 431719
+    },
+    {
+      "file": "23-host-rabakz-teams-1920-keyboard.jpg",
+      "bytes": 221578
+    },
+    {
+      "file": "24-host-rabakz-teams-1280-keyboard.jpg",
+      "bytes": 141072
+    },
+    {
+      "file": "25-host-rabakz-teams-3840-keyboard.png",
+      "bytes": 422842
+    },
+    {
+      "file": "26-host-rabakz-teams-untied-1920-phone.jpg",
+      "bytes": 230357
+    },
+    {
+      "file": "27-host-rabakz-teams-untied-1920-keyboard.jpg",
+      "bytes": 226962
+    },
+    {
+      "file": "28-host-rabakz-solo-1920-phone.jpg",
+      "bytes": 202718
+    },
+    {
+      "file": "29-host-rabakz-solo-1920-keyboard.jpg",
+      "bytes": 199169
+    },
+    {
+      "file": "30-host-rabakz-four-1920-phone.jpg",
+      "bytes": 205229
+    },
+    {
+      "file": "31-host-rabakz-four-1920-keyboard.jpg",
+      "bytes": 201709
+    },
+    {
+      "file": "38-strip-peek-poker-reduced-final-entrance.jpg",
+      "bytes": 1823859
+    },
+    {
+      "file": "39-host-peek-poker-reduced-1920-phone.jpg",
+      "bytes": 294310
+    },
+    {
+      "file": "40-host-peek-poker-reduced-1280-phone.jpg",
+      "bytes": 157506
+    },
+    {
+      "file": "41-host-peek-poker-reduced-3840-phone.png",
+      "bytes": 1231309
+    },
+    {
+      "file": "42-host-peek-poker-reduced-1920-keyboard.jpg",
+      "bytes": 291100
+    },
+    {
+      "file": "43-host-peek-poker-reduced-1280-keyboard.jpg",
+      "bytes": 155410
+    },
+    {
+      "file": "44-host-peek-poker-reduced-3840-keyboard.png",
+      "bytes": 1218842
+    },
+    {
+      "file": "51-strip-rabakz-reduced-final-entrance.jpg",
+      "bytes": 2925895
+    },
+    {
+      "file": "52-host-rabakz-reduced-1920-phone.jpg",
+      "bytes": 216764
+    },
+    {
+      "file": "53-host-rabakz-reduced-1280-phone.jpg",
+      "bytes": 140016
+    },
+    {
+      "file": "54-host-rabakz-reduced-3840-phone.png",
+      "bytes": 430233
+    },
+    {
+      "file": "55-host-rabakz-reduced-1920-keyboard.jpg",
+      "bytes": 213311
+    },
+    {
+      "file": "56-host-rabakz-reduced-1280-keyboard.jpg",
+      "bytes": 137830
+    },
+    {
+      "file": "57-host-rabakz-reduced-3840-keyboard.png",
+      "bytes": 421420
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 7677
+    },
+    {
+      "file": "run.json",
+      "bytes": 18242
+    }
+  ],
+  "totalBytes": 20947246,
+  "maxBytes": 31457280
+}

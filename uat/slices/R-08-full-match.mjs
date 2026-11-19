@@ -142,13 +142,25 @@ export default async function fullMatch(h) {
   }
   /** @param {string} label */
   async function strip(label) {
+    if (label === 'podium') {
+      const starts = await h.host.evaluate(async () => {
+        const animations = document.getAnimations();
+        await Promise.all(animations.map(animation => animation.ready));
+        const hint = animations.find(animation => animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target.matches('.game-final-layer'));
+        const incoming = animations.find(animation => animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target.matches('.rz-block') && !animation.effect.target.closest('[inert]'));
+        return { hint: hint?.startTime, incoming: incoming?.startTime };
+      });
+      assert.equal(typeof starts.hint, 'number', 'Hint entrance has a start time');
+      assert.equal(typeof starts.incoming, 'number', 'Incoming podium has a start time');
+      assert.ok(Math.abs(Number(starts.hint) - Number(starts.incoming)) <= 17, 'Hint and podium start within one frame');
+    }
     if (label === 'podium') await h.host.evaluate(() => {
-      for (const animation of document.getAnimations()) if (animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target.classList.contains('rz-block')) animation.pause();
+      for (const animation of document.getAnimations()) if (animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target.matches('.rz-block, .game-final-layer')) animation.pause();
     });
     await h.frameStrip(label, h.host, { frames: 6, everyMs: 80, checkFrame: async index => {
       if (label === 'podium') {
         await h.host.evaluate(index => {
-          for (const animation of document.getAnimations()) if (animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target.classList.contains('rz-block')) animation.currentTime = Number(animation.effect.getTiming().duration) * index / 5;
+          for (const animation of document.getAnimations()) if (animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target.matches('.rz-block, .game-final-layer')) animation.currentTime = Number(animation.effect.getTiming().duration) * index / 5;
         }, index);
         if (index === 5) await assertIncomingTitle(true);
       } else await h.host.clock.runFor(80);

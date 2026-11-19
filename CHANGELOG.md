@@ -2,6 +2,11 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-20 — C-28: final-screen hint fades in with the final screen
+- PLAT-022: the shell's hand-off line on Peek Poker and Rabakz final screens fades 0 → 1 once, on the screen crossfade's entrance (`slow`, 377 ms), instead of appearing at full strength over the outgoing screen; reduced motion shows it at once; copy changes do not restart it; it leaves with the outgoing screen as before (D-304).
+- Tests: the Peek Poker results check allows exactly that one entrance and still fails on any other animation.
+- Not yet: a real TV.
+
 ## 2026-11-20 — C-23: removing a player from the lobby
 
 - PLAT-011: the TV lobby (pointer or keyboard) and the leader's phone remove a player after a confirmation in the same card or column; the host can remove the leader, and leadership passes on through the leave path; a running game's leave hook runs once.

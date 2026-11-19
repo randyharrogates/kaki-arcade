@@ -8,8 +8,10 @@ export default async function finalHint(h) {
   /** @type {import('playwright').Page[]} */
   const phones = [];
   try {
-    for (const match of ['peek-poker', 'rabakz-ffa', 'rabakz-teams', 'rabakz-teams-untied', 'rabakz-solo', 'rabakz-four']) {
-      const game = match === 'peek-poker' ? match : 'rabakz';
+    for (const match of ['peek-poker', 'rabakz-ffa', 'rabakz-teams', 'rabakz-teams-untied', 'rabakz-solo', 'rabakz-four', 'peek-poker-reduced', 'rabakz-reduced']) {
+      const game = match.startsWith('peek-poker') ? 'peek-poker' : 'rabakz';
+      const reduced = match.endsWith('-reduced');
+      await h.host.emulateMedia({ reducedMotion: reduced ? 'reduce' : 'no-preference' });
       const teams = match.startsWith('rabakz-teams');
       const scoring = match === 'rabakz-teams-untied';
       const count = match === 'rabakz-solo' ? 1 : match === 'rabakz-four' ? 4 : 8;
@@ -84,6 +86,17 @@ export default async function finalHint(h) {
           throw new Error(`${match}: no final hint after 600 s of game time; TV text: ${(await h.host.locator('body').innerText()).slice(0, 400)}`);
         }
       }, 420000);
+      if (reduced) {
+        await h.frameStrip(`${match}-final-entrance`, h.host, { frames: 6, everyMs: 80, checkFrame: async () => {
+          const hint = await h.host.locator('.game-final-layer').evaluate(layer => ({
+            opacity: getComputedStyle(layer).opacity,
+            running: layer.getAnimations().filter(animation => animation.playState === 'running' || animation.pending).length,
+          }));
+          assert.equal(hint.opacity, '1', 'Reduced-motion hint is full strength from frame 0');
+          assert.equal(hint.running, 0, 'Reduced-motion hint has no running animation');
+          await h.host.clock.runFor(80);
+        } });
+      }
       await h.host.clock.resume();
       await h.host.waitForTimeout(1000);
       const rows = game === 'peek-poker' ? '.pp-score-row' : '[data-player], .rz-rank, .rz-solo';
@@ -129,6 +142,43 @@ export default async function finalHint(h) {
             await h.shot(`${match}-${String(width)}-${keyboard ? 'keyboard' : 'phone'}`);
           });
         }
+      }
+      if (match === 'rabakz-ffa') {
+        // Observe before the leader acts; freeze the exit on its first DOM commit.
+        await h.host.evaluate(() => {
+          const hint = document.querySelector('.game-final-layer');
+          if (!hint) throw Error('Missing final hint before exit');
+          Reflect.set(window, 'c28ExitHint', hint);
+          const observer = new MutationObserver(() => {
+            if (!hint.closest('.outgoing')) return;
+            for (const animation of document.getAnimations()) {
+              if (animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target !== hint && animation.effect.target.contains(hint)) animation.pause();
+            }
+            observer.disconnect();
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+        });
+        await leader.getByRole('button', { name: 'Continue', exact: true }).click();
+        await h.host.locator('.outgoing .game-final-layer').waitFor();
+        await h.frameStrip('rabakz-final-exit', h.host, { frames: 6, everyMs: 80, checkFrame: async index => {
+          const state = await h.host.evaluate(index => {
+            const hint = document.querySelector('.outgoing .game-final-layer');
+            if (!hint) throw Error('Hint must remain with the outgoing final screen');
+            const exits = document.getAnimations().filter(animation => animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target !== hint && animation.effect.target.contains(hint));
+            for (const animation of exits) {
+              // Keep the last sample just before removal; assert removal after resuming.
+              animation.currentTime = Number(animation.effect?.getTiming().duration) * Math.min(index / 5, 0.99);
+            }
+            return { same: hint === Reflect.get(window, 'c28ExitHint'), opacity: getComputedStyle(hint).opacity,
+              running: hint.getAnimations().filter(animation => animation.playState === 'running' || animation.pending).length, exits: exits.length };
+          }, index);
+          assert.ok(state.same, 'Exit retains the original hint instance');
+          assert.equal(state.opacity, '1', 'Hint stays opaque within its fading outgoing screen');
+          assert.equal(state.running, 0, 'Hint does not restart its entrance on exit');
+          assert.ok(state.exits > 0, 'Outgoing screen has an exit animation');
+        } });
+        await h.host.evaluate(() => { for (const animation of document.getAnimations()) if (animation.playState === 'paused') animation.play(); });
+        await h.host.locator('.game-final-layer').waitFor({ state: 'detached' });
       }
     }
   } finally { for (const phone of phones) await phone.close(); }

@@ -1906,3 +1906,10 @@ Removal as merged:
 Randy may overrule.
 
 **D-303 · 2026-11-20 · Claude, integrator (A-12; delegated by Randy, 2026-11-18)** (A-12; PP-034, RZ-035, TR-063; D-300) — Tool dependency: the music composer (`tools/music/`) is pure Python 3 standard library and renders WAV itself; the system `ffmpeg` (Homebrew 8.x, libopus and AAC) encodes the loops to Opus in WebM and AAC in M4A at build time only, as Blender is used for art. Nothing ships ffmpeg and no npm or Python package is added. Each loop must stay well inside PERF-023 (≤ 8 MB a round, all assets). Randy may overrule.
+
+**D-304 · 2026-11-20 · Claude, integrator (C-28 review; delegated by Randy, 2026-11-18)** (C-28; PLAT-022; DESIGN §4 4A, §6; follows D-290)
+- The shell's final-screen hint enters with the game's final screen on DESIGN 4A's crossfade entrance: opacity 0 → 1 at `slow` with the in-out curve, started when the hint mounts. It is not a separate ease-out entrance.
+- On Rabakz the final screen is a 4A crossfade, so the hint and the podium fade together (strip 86 in `c28-ffa3`). On Peek Poker the final board redraws with ease-out row entrances. There the hint keeps the crossfade timing so it looks the same in both games. This departs from §6's "entrances ease out" for this one line.
+- The hint fades only once while the final screen is up. When the screen leaves, it stays at full strength with the outgoing screen, as in D-290 (3).
+- Reduced motion shows it at once. The finished entrance keeps `fill: both`, and the layer rests at opacity 1.
+- Randy may overrule.

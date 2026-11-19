@@ -1,5 +1,6 @@
 import { createRequire } from 'node:module';
 import { expect, it } from 'vitest';
+import { crossfade } from '@kaki/ui';
 import { chromium } from 'playwright';
 import { build } from 'vite';
 import { fileURLToPath } from 'node:url';
@@ -37,6 +38,24 @@ it('PP-032 board 3 scoreboard and final fit both TV sizes with eight tied player
           return {fits:rects.every(r=>r.top>=0 && r.left>=0 && r.right<=innerWidth && r.bottom<=innerHeight),ratio:(columns[1] ?? 0)/(columns[0] ?? 1),scroll:document.documentElement.scrollHeight>innerHeight};
         })).toMatchObject({fits:true,scroll:false});
         if(phase === 'over') {
+          // The shared hint legitimately enters with the final screen. Its fill:both
+          // keeps the finished effect discoverable, so retire only that validated
+          // entrance before the global stray-animation guard and subsequent redraws.
+          const entrance = await page.locator('.game-final-layer').evaluate(async layer => {
+            const animations = layer.getAnimations();
+            const animation = animations[0];
+            const effect = animation?.effect;
+            if (!animation || animations.length !== 1 || !(effect instanceof KeyframeEffect) || effect.target !== layer) {
+              throw Error('Expected exactly one final-hint entrance targeting its layer');
+            }
+            const frames = effect.getKeyframes().map(frame => frame.opacity);
+            const timing = effect.getTiming();
+            if (document.getAnimations().length !== 1) throw Error('Expected exactly one animation globally before awaiting the hint entrance');
+            await animation.finished;
+            animation.cancel();
+            return { frames, duration: timing.duration, iterations: timing.iterations };
+          });
+          expect(entrance).toEqual({ frames: ['0', '1'], duration: crossfade({ reduced: false }).incoming.options.duration, iterations: 1 });
           expect(await page.locator('.game-final-hint').count()).toBe(1);
           expect(await page.locator('.game-final-hint').evaluate(n=>n.getBoundingClientRect().height)).toBeCloseTo(34*size.width/1920);
           expect(await page.locator('.game-final-hint').evaluate(hint=>{
