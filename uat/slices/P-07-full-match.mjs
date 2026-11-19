@@ -4,7 +4,7 @@ import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gzipSync } from 'node:zlib';
 
-/** @typedef {{phase:string,round:number,totalRounds:number,seconds:number,grid:string[]|null,shared:string[],swap:{kind:string,from:number,to:number}|null,players:{id:string,name:string,seat:number,score:number,locked:boolean,picks:number[]|null}[],hands:{id:string,name:string,points:number,cards:string[]}[],standings:{id:string,score:number,place:number}[]}} View */
+/** @typedef {{phase:string,round:number,totalRounds:number,seconds:number,grid:string[]|null,shared:string[]|null,sharedCount:number,sharedFaceDown:boolean,swap:{kind:string,from:number,to:number}|null,players:{id:string,name:string,seat:number,score:number,locked:boolean,picks:number[]|null}[],hands:{id:string,name:string,points:number,cards:string[]}[],standings:{id:string,score:number,place:number}[]}} View */
 /** @typedef {{round:number,hands:string,cards:number,selected:(string|null)[],text:string}} DOMFrame */
 const HAND_NAMES = ['High card','Pair','Two pair','Three of a kind','Straight','Flush','Full house','Four of a kind','Straight flush'];
 /** @param {string} phase */
@@ -180,12 +180,17 @@ export default async function fullMatch(h) {
         const v=await view(); assert.equal(v.phase,'memorise'); assert.equal(v.round,round);
         const seconds=required([20,16,12,10,8][round-1], 'memorise duration');
         assert.ok(v.seconds <= seconds && v.seconds >= seconds-1);
-        assert.ok(v.grid); grid=[...v.grid]; shared=[...v.shared];
-        assert.equal(grid.length,16); assert.equal(shared.length,3);
-        assert.equal(new Set([...grid,...shared]).size,19);
-        assert.ok([...grid,...shared].every(c=>/^[2-9TJQKA][CDHS]$/.test(c)));
+        assert.ok(v.grid); grid=[...v.grid];
+        assert.equal(v.shared,null); assert.equal(v.sharedCount,3); assert.equal(v.sharedFaceDown,true);
+        assert.equal(grid.length,16);
+        assert.equal(new Set(grid).size,16);
+        assert.ok(grid.every(c=>/^[2-9TJQKA][CDHS]$/.test(c)));
         if(round===1 || round===5) await shots(`r${String(round)}-memorise`);
         await advance(round>=3 ? 'swap' : 'pick');
+        shared=[...required((await view()).shared, 'shared faces after grid hides')];
+        assert.equal(shared.length,3); assert.equal(new Set([...grid,...shared]).size,19);
+        assert.ok(shared.every(c=>/^[2-9TJQKA][CDHS]$/.test(c)));
+        assert.equal((await view()).sharedFaceDown,false);
         /** @type {{kind:string,from:number,to:number}[]} */ const swaps=[];
         while((await view()).phase==='swap') {
           const swap=(await view()).swap; assert.ok(swap);
@@ -237,7 +242,8 @@ export default async function fullMatch(h) {
         assert.ok(publicFrames.some(v=>v.phase==='pick'));
         for(const v of publicFrames) {
           assert.ok(v.players.every(p=>p.picks===null)); assert.deepEqual(v.hands,[]);
-          assert.deepEqual(v.shared,shared);
+          assert.deepEqual(v.shared,v.phase==='memorise'?null:shared);
+          assert.equal(v.sharedFaceDown,v.phase==='memorise');
           if(v.phase!=='memorise') assert.equal(v.grid,null);
         }
         });
@@ -317,6 +323,19 @@ export default async function fullMatch(h) {
             assert.deepEqual(Object.keys(m).sort(),['v','t','rev','view'].sort());
             // A cleared private view (view: null) carries nothing and is allowed.
             if(m.view===null) continue;
+            // The leader's remove-a-player list (C-23) carries only public seat numbers and names.
+            const shell=/** @type {{kind?: unknown, players?: Record<string, unknown>[]}} */ (/** @type {unknown} */ (m.view));
+            if(shell.kind==='room-players') {
+              assert.deepEqual(Object.keys(shell).sort(),['kind','players']);
+              assert.equal(row.seat,1,'Only the leader receives room-players');
+              assert.ok(Array.isArray(shell.players));
+              for(const p of shell.players) {
+                assert.deepEqual(Object.keys(p).sort(),['name','seat']);
+                assert.ok(typeof p.seat==='number' && Number.isInteger(p.seat) && p.seat>=1 && p.seat<=8);
+                assert.equal(typeof p.name,'string');
+              }
+              continue;
+            }
             assert.deepEqual(Object.keys(m.view).sort(),['revision','blocks'].sort());
             const blocks=m.view.blocks;
             if(blocks[0]?.kind==='stat') {
@@ -416,7 +435,7 @@ export default async function fullMatch(h) {
           const seen=[...new Set(views.filter(v=>v.round===round && v.phase===phase).map(v=>v.seconds))].filter(n=>n>0).sort((a,b)=>a-b);
           assert.deepEqual(seen,Array.from({length:Number(seconds)},(_,i)=>i+1),`${String(phase)} countdown duration`);
         }
-        for(const snapshot of views.filter(v=>v.round===round)) assert.deepEqual(snapshot.shared,shared,'Shared cards unchanged for entire round');
+        for(const snapshot of views.filter(v=>v.round===round)) assert.deepEqual(snapshot.shared,snapshot.phase==='memorise'?null:shared,'Shared cards hidden until grid hides, then unchanged');
       });
     }
     await step('PP-001/032: final podium at 1920 and 1280, own final stats, Continue → picker',async () => {

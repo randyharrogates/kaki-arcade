@@ -9,7 +9,7 @@ vi.mock('preact/hooks',() => ({
   useState:(initial:unknown) => [initial,(value:unknown) => { hooks.updates.push(value); }],
   useLayoutEffect:(effect:() => undefined | (() => void)) => { hooks.effects.push(effect); },
 }));
-afterEach(() => { hooks.updates = []; hooks.refs = []; hooks.index = 0; hooks.effects = []; vi.unstubAllGlobals(); });
+afterEach(() => { hooks.updates = []; hooks.refs = []; hooks.index = 0; hooks.effects = []; vi.unstubAllGlobals(); vi.useRealTimers(); });
 function engine(layout:Layout,onOutput:(output:LayoutOutput) => void = vi.fn()) {
   hooks.index = 0; hooks.effects = [];
   return LayoutEngine({ layout,viewport:{ width:844,height:390 }, area:{ width:844,height:322 },onOutput });
@@ -157,6 +157,69 @@ class PrivateNode {
   animations:{ finish:() => void; keyframes:unknown; options:unknown }[] = [];
   animate(keyframes:unknown,options:unknown) { let finish = () => { /* resolved by the test */ }; const finished = new Promise<void>(resolve => { finish = resolve; }); this.animations.push({ finish,keyframes,options }); return { finished,cancel:() => { finish(); } }; }
 }
+for (const scope of ['layout','private'] as const) for (const timeline of ['running','late','stalled'] as const) it(`CTRL-003 PP-004 ${scope} fade preserves ${timeline} timeline until completion or stall fallback`, async () => {
+  vi.useFakeTimers();
+  vi.stubGlobal('HTMLElement',PrivateNode);
+  vi.stubGlobal('window',{ matchMedia:() => ({ matches:false }) });
+  vi.stubGlobal('getComputedStyle',() => ({ backgroundPosition:'0px 0px' }));
+  const start=Date.now(), duration=377, frame=1000/60;
+  class FadeNode extends PrivateNode {
+    override cloneNode() { return new FadeNode(); }
+    override animate(keyframes:unknown,options:unknown) {
+      const animation=super.animate(keyframes,options);
+      // Running WAAPI model: no pause. A busy first frame delays the timeline.
+      const latency=timeline==='late' ? 100 : 0;
+      Object.defineProperty(animation,'currentTime',{ get:() => timeline==='stalled' ? 0 : Math.max(0,Date.now()-start-latency) });
+      if(timeline==='running') setTimeout(() => { this.animations.at(-1)?.finish(); },duration);
+      return animation;
+    }
+  }
+  const parent=new PrivateNode(), root=new FadeNode(), panel=new FadeNode(), surface=new FadeNode();
+  parent.append(root); root.append(panel); panel.append(new PrivateNode());
+  Object.assign(root,{ parentElement:parent });
+  root.querySelector=selector => selector === '.ka-layout-surface' ? surface : panel;
+  const render=(changed:boolean,value:number) => {
+    hooks.index=0; hooks.effects=[];
+    LayoutEngine({ layout:{ revision:changed ? 2 : 1,controls:changed ? [{kind:'text',id:'watch',text:'Watch'}] : [] },privateView:{revision:value,blocks:[{kind:'stat',label:'Seconds',value}]},area:{width:844,height:322},viewport:{width:844,height:390},onOutput:vi.fn() });
+  };
+  render(false,1);
+  const ref=hooks.refs[0]; if(!ref) throw Error('Missing root'); ref.current=root;
+  render(scope==='layout',2);
+  hooks.effects[3]?.(); hooks.effects[5]?.();
+  const ghosts=() => [...parent.children,...root.children,...panel.children].filter(node => node.classes.has(scope==='layout' ? 'ka-layout-ghost' : 'ka-private-ghost'));
+  expect(ghosts()).toHaveLength(1);
+  if(scope==='layout') {
+    await vi.advanceTimersByTimeAsync(20);
+    render(true,3); hooks.effects[3]?.();
+    expect(ghosts()).toHaveLength(1);
+  }
+  await vi.advanceTimersByTimeAsync(200-(Date.now()-start));
+  expect(ghosts()).toHaveLength(1);
+  await vi.advanceTimersByTimeAsync(duration+frame+1-(Date.now()-start));
+  expect(ghosts()).toHaveLength(timeline==='late' ? 1 : 0);
+  if(timeline==='late') {
+    await vi.advanceTimersByTimeAsync(100);
+    expect(ghosts()).toHaveLength(0);
+  }
+});
+
+it('PP-004 full-layout exits own the private snapshot when both views change', () => {
+  vi.stubGlobal('HTMLElement',PrivateNode);
+  vi.stubGlobal('window',{ matchMedia:() => ({ matches:false }) });
+  const root = new PrivateNode(), panel = new PrivateNode(); root.append(panel);
+  const render = (next:boolean) => {
+    hooks.index = 0; hooks.effects = [];
+    return LayoutEngine({ layout:{ revision:1,controls:next ? [{ kind:'text',id:'watch',text:'Scores on the TV' }] : [] },privateView:{ revision:1,blocks:next ? [{ kind:'stat',label:'Score',value:0 }] : [{ kind:'cards',cards:[{ id:'one',label:'A',mark:'spade' }] }] },area:{ width:844,height:322 },viewport:{ width:844,height:390 },onOutput:vi.fn() });
+  };
+  render(false);
+  const ref = hooks.refs[0]; if (!ref) throw new Error('Missing root'); ref.current = root;
+  panel.append(new PrivateNode());
+  render(true);
+  // Run the private exit effect before the full-layout exit, as Preact does.
+  hooks.effects[3]?.();
+  expect(root.children).toEqual([panel]);
+  expect(panel.animations).toHaveLength(0);
+});
 for (const [from,to] of [['cards','text'],['cards','stats'],['revealed','text'],['grid','text'],['stats','rabakz'],['rabakz','stats']] as const) it(`CTRL-003 motion ${from} -> ${to} ignores ghosts and remeasures on completion`, async () => {
   const fonts = Object.assign(new EventTarget(),{ ready:new Promise<void>(() => { /* fonts remain pending */ }) });
   vi.stubGlobal('document',{ fonts,createComment:() => new PrivateNode() });

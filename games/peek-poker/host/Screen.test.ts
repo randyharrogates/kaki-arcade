@@ -160,7 +160,9 @@ it('PP-030 drawing key covers exactly the fields consumed by the current table',
     copy => { copy.newBest = !copy.newBest; },
     copy => { const player = copy.players[0]; if (!player) throw Error('player'); player.score++; },
     copy => { if (copy.grid) copy.grid[0] = copy.grid[0] === 'AS' ? 'KH' : 'AS'; },
-    copy => { copy.shared[0] = copy.shared[0] === 'AS' ? 'KH' : 'AS'; },
+    copy => { if(copy.shared) copy.shared[0] = copy.shared[0] === 'AS' ? 'KH' : 'AS'; },
+    copy => { copy.sharedCount++; }, copy => { copy.sharedFaceDown = !copy.sharedFaceDown; },
+    copy => { copy.shared = null; },
     copy => { copy.swap = { kind: 'rows', from: 0, to: 3 }; },
     ...['id', 'name', 'seat', 'colour', 'waiting', 'locked', 'picks'].map(field => (copy: typeof view) => {
       const player = copy.players[0]; if (!player) throw Error('player');

@@ -14,6 +14,7 @@ export default async function table(h) {
       await h.host.evaluate(name=>{(/** @type {{__ppState(phase:string,at?:number):void}} */ (/** @type {unknown} */ (window))).__ppState(name,2500);},phase);
       await h.host.locator(`[data-phase="${phase === 'picking' || phase === 'locked' ? 'pick' : phase}"]`).waitFor();
       assert.equal(await h.host.locator('.pp-player').count(),players);
+      assert.equal(await h.host.locator('.pp-shared-cards [data-face-down="true"]').count(),phase === 'memorise' ? 3 : 0);
       // Seat marks share the canvas face transform; drawTable tests count their ink.
       assert.equal(await h.host.locator('.pp-hands li').count(),phase === 'reveal' ? players : 0);
       await h.shot(`${String(players)}-${phase}`);
@@ -28,14 +29,14 @@ export default async function table(h) {
   for (const [name,from,to,times] of strips) {
     await h.host.evaluate(phase=>{(/** @type {{__ppState(phase:string,at?:number):void}} */ (/** @type {unknown} */ (window))).__ppState(phase,2500);},from);
     await h.host.evaluate(()=>new Promise(resolve=>requestAnimationFrame(resolve)));
-    await h.frameStrip(name,h.host,{frames:times.length,everyMs:0,clip:{x:500,y:80,width:750,height:945},checkFrame:async index=>{
+    await h.frameStrip(name,h.host,{frames:times.length,everyMs:0,clip:{x:500,y:80,width:1365,height:945},checkFrame:async index=>{
       await h.host.evaluate(({phase,at})=>{(/** @type {{__ppState(phase:string,at?:number):void}} */ (/** @type {unknown} */ (window))).__ppState(phase,at);},{phase:to,at:times[index]});
       await h.host.evaluate(()=>new Promise(resolve=>requestAnimationFrame(resolve)));
     }});
   }
   await h.host.goto(`${h.origin}${demo}?players=8&swap=rows`);
   await h.host.waitForFunction(()=>document.documentElement.dataset.ppReady === '1');
-  await h.frameStrip('round-4-row-swap',h.host,{frames:6,everyMs:0,clip:{x:500,y:80,width:750,height:945},checkFrame:async index=>{
+  await h.frameStrip('round-4-row-swap',h.host,{frames:6,everyMs:0,clip:{x:500,y:80,width:1365,height:945},checkFrame:async index=>{
     await h.host.evaluate(at=>{(/** @type {{__ppState(phase:string,at?:number):void}} */ (/** @type {unknown} */ (window))).__ppState('swap',at);},index*400);
   }});
   await h.host.evaluate(()=>{(/** @type {{__ppState(phase:string,at?:number):void}} */ (/** @type {unknown} */ (window))).__ppState('picking',2500);});

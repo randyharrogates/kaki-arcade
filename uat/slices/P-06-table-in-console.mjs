@@ -116,6 +116,7 @@ async function runTable(h, reduced) {
     } });
     await h.host.waitForFunction(() => Boolean(document.documentElement.dataset.p06Started));
     await h.host.locator('.pp-table[data-phase="memorise"]').waitFor();
+    assert.equal(await h.host.locator('.pp-shared-cards [data-face-down="true"]').count(),3);
     const started = await h.host.evaluate(() => Number(document.documentElement.dataset.p06Started));
     await h.host.clock.install();
     // Advance real host animation frames, including Overlap cleanup, before freezing ink.

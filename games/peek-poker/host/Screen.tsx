@@ -43,6 +43,19 @@ export function handsClip(elapsed:number,reduced:boolean) {
   const p=reduced ? 1 : bezierAt(bezier.inOut,Math.max(0,Math.min(1,(elapsed-duration.slow/2)/(duration.slow/2))));
   return `inset(0 0 ${String((1-p)*100)}% 0)`;
 }
+/** Paint the same atlas turn and face mask for grid and shared cards.
+ * Leaves the face transform active so grid marks follow the turning face. */
+function paintTurn(ctx:CanvasRenderingContext2D,deck:CardDeck,frame:string,faceId:string,x:number,y:number,turning:boolean,hide:boolean,elapsed:number,showFace:boolean) {
+  const angular=bezierAt(bezier.inOut,Math.min(1,elapsed/duration.slow));
+  const sample=Math.round((hide ? angular : 1-angular)*4);
+  const turn=cardTurnAt(1-sample/4,turnOptions,turnScratch);
+  sprite(ctx,deck,turning ? must(flipKeys[sample]) : frame,x,y);
+  if(!((turning && turn.side === 'face' && turn.width>0) || (!turning && showFace))) return false;
+  ctx.save();ctx.translate(x,y-(turning ? cardLift.turnY*Math.sin(Math.PI*sample/4) : 0));ctx.scale(turning ? turn.width : 1,1);
+  ctx.beginPath();ctx.roundRect(-CARD.contentWidth/2,-CARD.contentHeight/2,CARD.contentWidth,CARD.contentHeight,radius.corner);ctx.clip();
+  if(turning) {const face=deck.faces.get(faceId);if(face) ctx.drawImage(face,-CARD.width/2,-CARD.height/2,CARD.width,CARD.height);}
+  return true;
+}
 function paintCard(ctx:CanvasRenderingContext2D,model:ScreenModel,previous:ScreenModel,deck:CardDeck,elapsed:number,reduced:boolean,layout:TableLayout,card:ScreenModel['grid'][number]) {
   const hide=previous.phase === 'memorise' && model.phase !== 'memorise' && !model.reveal;
   const reveal=model.reveal && !previous.reveal;
@@ -59,14 +72,7 @@ function paintCard(ctx:CanvasRenderingContext2D,model:ScreenModel,previous:Scree
     ctx.save();ctx.translate(x,y);ctx.scale(1+(cardLift.scale-1)*lift,1+(cardLift.scale-1)*lift);ctx.translate(-x,-y);
   }
   const turning=(hide || reveal) && !reduced && elapsed<duration.slow;
-  const angular=bezierAt(bezier.inOut,Math.min(1,elapsed/duration.slow));
-  const sample=Math.round((hide ? angular : 1-angular)*4);
-  const turn=cardTurnAt(1-sample/4,turnOptions,turnScratch);
-  sprite(ctx,deck,turning ? must(flipKeys[sample]) : card.frame,x,y);
-  if((turning && turn.side === 'face' && turn.width>0) || (!turning && model.reveal)) {
-    ctx.save();ctx.translate(x,y-(turning ? 6*Math.sin(Math.PI*sample/4) : 0));ctx.scale(turning ? turn.width : 1,1);
-    ctx.beginPath();ctx.roundRect(-CARD.contentWidth/2,-CARD.contentHeight/2,CARD.contentWidth,CARD.contentHeight,radius.corner);ctx.clip();
-    if(turning) {const face=deck.faces.get(hide ? must(previous.grid[card.index]).frame : card.frame);if(face) ctx.drawImage(face,-CARD.width/2,-CARD.height/2,CARD.width,CARD.height);}
+  if(paintTurn(ctx,deck,card.frame,hide ? must(previous.grid[card.index]).frame : card.frame,x,y,turning,hide,elapsed,model.reveal)) {
     if(model.reveal) for(let i=0;i<card.marks.length;i++) {
       const player=must(card.marks[i]),columns=Math.min(4,card.marks.length),w=CARD.contentWidth/columns;
       const left=-CARD.contentWidth/2+(i%4)*w,top=CARD.contentHeight/2-space[34]*(card.marks.length>4 ? 2 : 1)+Math.floor(i/4)*space[34];
@@ -83,7 +89,12 @@ function paintCard(ctx:CanvasRenderingContext2D,model:ScreenModel,previous:Scree
 }
 export function drawTable(ctx:CanvasRenderingContext2D,model:ScreenModel,previous:ScreenModel,deck:CardDeck,elapsed:number,reduced:boolean,layout=defaultLayout) {
   ctx.clearRect(0,0,tv.width,tv.height);
-  for(let i=0;i<model.shared.length;i++) {const p=layout.shared[i];if(p) sprite(ctx,deck,must(model.shared[i]),p.x,p.y);}
+  for(let i=0;i<model.shared.length;i++) {
+    const p=layout.shared[i];if(!p) continue;
+    const turning=previous.sharedFaceDown && !model.sharedFaceDown && !reduced && elapsed<duration.slow;
+    const faceId=must(model.shared[i]);
+    if(paintTurn(ctx,deck,faceId,faceId,p.x,p.y,turning,false,elapsed,false)) ctx.restore();
+  }
   for(let pass=0;pass<3;pass++) for(const card of model.grid) {
     const layer=!moving(model,card) ? 0 : model.swap?.kind === 'rows' && card.destination.y<card.point.y ? 2 : 1;
     if(layer === pass) paintCard(ctx,model,previous,deck,elapsed,reduced,layout,card);
@@ -105,9 +116,10 @@ export function sameTable(a:PokerPublicView|undefined,b:PokerPublicView):boolean
   if(!a) return false;
   if(a.soloBest !== b.soloBest || a.newBest !== b.newBest) return false;
   if(a.phase !== b.phase || a.round !== b.round || a.totalRounds !== b.totalRounds || a.seconds !== b.seconds || a.swap?.kind !== b.swap?.kind || a.swap?.from !== b.swap?.from || a.swap?.to !== b.swap?.to) return false;
+  if(a.sharedCount !== b.sharedCount || a.sharedFaceDown !== b.sharedFaceDown || (a.shared === null) !== (b.shared === null)) return false;
   if((a.grid === null) !== (b.grid === null)) return false;
   for(let i=0;i<16;i++) if(a.grid?.[i] !== b.grid?.[i]) return false;
-  for(let i=0;i<3;i++) if(a.shared[i] !== b.shared[i]) return false;
+  for(let i=0;i<3;i++) if(a.shared?.[i] !== b.shared?.[i]) return false;
   if(a.players.length !== b.players.length || a.hands.length !== b.hands.length) return false;
   for(let i=0;i<a.players.length;i++) {
     const p=must(a.players[i]),q=must(b.players[i]);
@@ -145,6 +157,7 @@ export function PeekPokerScreen(root: HTMLElement, deck: CardDeck) {
     if(nextKey !== key || (model.phase === 'swap' && last && model.seconds > last.seconds)) {before=last ?? model;started=performance.now();key=nextKey;}
     last=model;cancelAnimationFrame(frame);
     const scale=Math.min(width/tv.width,height/tv.height);table.style.transform=`translate(-50%, -50%) scale(${String(scale)})`;table.dataset.phase=model.phase;
+    for(const card of shared) card.dataset.faceDown=String(model.sharedFaceDown);
     best.textContent=view.soloBest !== null && view.soloBest > 0 ? `Best ${String(view.soloBest)}` : '';
     if(view.phase === 'scoreboard' || view.phase === 'over') {
       const nextResults=JSON.stringify([view.phase,view.round,view.players.map(p=>[p.id,p.name,p.seat,p.colour,p.score]),view.soloBest,quiet]);

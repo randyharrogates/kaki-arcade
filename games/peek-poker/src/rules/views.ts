@@ -70,7 +70,9 @@ export function publicView(state: State) {
     phase: state.phase, round: state.round, totalRounds: state.settings.rounds,
     seconds: Math.ceil(state.left / STEPS_PER_SECOND),
     grid: faceUp ? state.grid.map(cardCode) : null,
-    shared: state.shared.map(cardCode),
+    shared: state.phase === 'memorise' ? null : state.shared.map(cardCode),
+    sharedCount: state.shared.length,
+    sharedFaceDown: state.phase === 'memorise',
     swap: state.phase === 'swap' ? state.swaps[state.swapIndex] ?? null : null,
     players: state.players.map((p) => ({
       id: p.info.id, name: p.info.name, seat: p.info.seat, colour: p.info.colour, score: p.score,
@@ -102,7 +104,10 @@ export function secrets(state: State): Secret[] {
     state.grid.map((card, i) => ({
       owner: null, label: `Grid face ${String(i)}`, value: cardCode(card),
     }));
-  return [...faces, ...state.players.filter((p) => p.picks.length > 0).map((p) => ({
+  const sharedFaces: Secret[] = state.phase === 'memorise' ? state.shared.map((card, i) => ({
+    owner: null, label: `Shared face ${String(i)}`, value: cardCode(card),
+  })) : [];
+  return [...faces, ...sharedFaces, ...state.players.filter((p) => p.picks.length > 0).map((p) => ({
     owner: p.info.id, label: `${p.info.id} picks`, value: p.picks,
     match: (value: JsonValue, path: string) =>
       path.includes('picks') && value !== null,
@@ -114,7 +119,8 @@ export function scrambleSecrets(state: State, viewer: string | null, salt: numbe
   const offset = 1 + Math.abs(salt) % 15;
   const hidden = state.phase !== 'memorise' || state.paused;
   const grid = hidden ? state.grid.map((_, i) => must(state.grid[(i + offset) % 16])) : state.grid;
-  return { ...state, grid, players: state.players.map((p) =>
+  const shared = state.phase === 'memorise' ? state.shared.map((_, i) => must(state.shared[(i + 1) % state.shared.length])) : state.shared;
+  return { ...state, grid, shared, players: state.players.map((p) =>
     p.info.id === viewer || p.picks.length === 0 ? p : {
       ...p, picks: p.picks.map((i) => (i + offset) % 16),
     }) };

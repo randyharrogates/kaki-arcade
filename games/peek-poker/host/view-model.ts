@@ -19,7 +19,8 @@ export function screenModel(view: PokerPublicView) {
   return {
     phase: view.phase, round: view.round, totalRounds: view.totalRounds, seconds: view.seconds, reveal, players,
     label: view.phase === 'memorise' ? 'Memorise the cards' : view.phase === 'swap' ? 'Watch the swap' : reveal ? 'The reveal' : 'Pick two cards',
-    shared: view.shared.map(frameId), swap: view.swap,
+    sharedFaceDown: view.sharedFaceDown,
+    shared: Array.from({length:view.sharedCount}, (_, i) => view.sharedFaceDown || !view.shared?.[i] ? 'card-back' : frameId(view.shared[i])), swap: view.swap,
     grid: Array.from({length:16}, (_, index) => ({ index, point: gridPoint(index),
       frame: view.grid?.[index] ? frameId(view.grid[index]) : 'card-back',
       destination: gridPoint(swapDestination(index, view.swap)),

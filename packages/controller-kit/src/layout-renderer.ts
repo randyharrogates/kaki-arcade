@@ -13,6 +13,22 @@ import { placeController, privateBlocks } from './private-panel';
 import { observeLabelGroup, labelMeasurementSignature, labelCellBox, measureOptionWidth } from './layout-label';
 import { faceShape, layoutOutput, revisionProblem, layoutTapSignature } from './layout-types';
 import type { Item, Layout, LayoutPart, LayoutOutput, LayoutValue, PrivateView, PanelBlock } from './layout-types';
+/** Watch the animation timeline so a late first frame cannot shorten a fade.
+ * A stationary timeline still gets bounded cleanup in background windows. */
+function fadeFallback(animation:Animation | undefined, end:number, finish:() => void) {
+  const frame = 1000 / 60;
+  let previous = animation?.currentTime;
+  let timer:ReturnType<typeof setTimeout>;
+  const check = () => {
+    const current = animation?.currentTime;
+    if (typeof current === 'number' && current !== previous && current < end) {
+      previous = current;
+      timer = setTimeout(check,end-current+frame);
+    } else finish();
+  };
+  timer = setTimeout(check,end+frame);
+  return () => { clearTimeout(timer); };
+}
 export interface LayoutEngineProps { images?: Readonly<Record<string, string>>; layout: Layout; privateView?: PrivateView | null; area: Size; viewport: Size; isLeader?: boolean; onOutput: (output: LayoutOutput) => void; onRevisionProblem?: (problem: string) => void }
 function shape(face: keyof typeof faceShape | undefined) {
   if (!face) return null;
@@ -161,6 +177,7 @@ export function LayoutEngine(props: LayoutEngineProps) {
   const measurePrivate = useRef<(() => void) | null>(null);
   const previous = useRef<Layout | null>(null);
   const snapshot = useRef<HTMLElement | null>(null);
+  const layoutFade = useRef<(() => void) | null>(null);
   useLayoutEffect(() => {
     const problem = previous.current ? revisionProblem(previous.current,props.layout) : null;
     if (problem) props.onRevisionProblem?.(problem);
@@ -268,7 +285,9 @@ export function LayoutEngine(props: LayoutEngineProps) {
     const captured = privateSnapshot.current;
     const old = captured?.node;
     privateSnapshot.current = null;
-    if (!old || !panel || reducedMotion()) return;
+    // A full-layout exit already includes the outgoing private panel.
+    // Do not render a second copy of it inside the incoming layout.
+    if (!old || !panel || snapshot.current || reducedMotion()) return;
     const motion = crossfade();
     const oldBlocks = [...old.children].filter(node => !node.classList.contains('ka-private-ghost'));
     const newBlocks = [...panel.children].filter(node => !node.classList.contains('ka-private-ghost'));
@@ -306,9 +325,10 @@ export function LayoutEngine(props: LayoutEngineProps) {
       let active = true;
       const finish = () => {
         if (!active) return;
-        active = false; privateFades.current.delete(finish);
+        active = false; fallback(); privateFades.current.delete(finish);
         animation.cancel(); leaving.cancel(); outgoing.remove(); Object.assign(incoming.style,original); measurePrivate.current?.();
       };
+      const fallback = fadeFallback(animation,motion.incoming.options.duration + motion.incoming.options.delay,finish);
       privateFades.current.add(finish);
       void animation.finished.then(finish,finish);
     };
@@ -328,6 +348,8 @@ export function LayoutEngine(props: LayoutEngineProps) {
   // Capture the outgoing DOM only when its tap meaning changes, before reconciliation.
   const capturedTransition = useRef(transition);
   if (capturedTransition.current !== transition) {
+    layoutFade.current?.();
+    privateFades.current.forEach(finish => { finish(); });
     snapshot.current = root.current?.cloneNode(true) as HTMLElement | null;
     capturedTransition.current = transition;
   }
@@ -384,17 +406,28 @@ export function LayoutEngine(props: LayoutEngineProps) {
       const motion = crossfade();
       if (motion.incoming.options.duration) {
         // Only entering controls fade; surviving held controls stay fully opaque and track 1:1.
+        const animations: Animation[] = [];
         const ids = new Set(priorControls.current.map(c => c.id));
-        node.querySelectorAll<HTMLElement>('[data-part]').forEach(el => { if (!ids.has(el.dataset.part ?? '')) el.animate(motion.incoming.keyframes,motion.incoming.options); });
+        node.querySelectorAll<HTMLElement>('[data-part]').forEach(el => { if (!ids.has(el.dataset.part ?? '')) animations.push(el.animate(motion.incoming.keyframes,motion.incoming.options)); });
         const cover = surface?.animate(motion.incoming.keyframes,motion.incoming.options);
-        old.animate(motion.outgoing.keyframes,motion.outgoing.options);
+        if (cover) animations.push(cover);
+        animations.push(old.animate(motion.outgoing.keyframes,motion.outgoing.options));
         // Keep the outgoing snapshot until the incoming surface is fully opaque.
-        void (cover?.finished ?? Promise.resolve()).then(() => { old.remove(); },() => { old.remove(); });
+        let active = true;
+        const finish = () => {
+          if (!active) return;
+          active = false; fallback(); old.remove();
+          animations.forEach(animation => { animation.cancel(); });
+          layoutFade.current = null;
+        };
+        const fallback = fadeFallback(cover,motion.incoming.options.duration + motion.incoming.options.delay,finish);
+        layoutFade.current = finish;
+        void (cover?.finished ?? Promise.resolve()).then(finish,finish);
       } else old.remove();
     }
     priorControls.current = props.layout.controls;
     snapshot.current = null;
   }, [transition]);
-  useLayoutEffect(() => () => { privateFades.current.forEach(finish => { finish(); }); root.current?.parentElement?.querySelectorAll('.ka-layout-ghost, .ka-private-ghost').forEach(el => { el.remove(); }); }, []);
+  useLayoutEffect(() => () => { layoutFade.current?.(); privateFades.current.forEach(finish => { finish(); }); root.current?.parentElement?.querySelectorAll('.ka-layout-ghost, .ka-private-ghost').forEach(el => { el.remove(); }); }, []);
   return h('div', { ref:root, class:'ka-layout-engine', 'data-picture-grid': String(props.layout.controls.some(c => c.kind === 'grid' && c.cells.some(cell => cell.image))), 'data-fits':String(placement.fits && panelFits), 'data-margin':String(placement.margin), 'data-gap':String(placement.gap), style:{ width:`${String(props.area.width)}px`,height:`${String(props.area.height)}px`, '--layout-gap':`var(--ka-space-${String(placement.gap)})`, '--layout-grid-gap':`var(--ka-space-${String(placement.gap === 5 ? 5 : 8)})` }, 'data-revision':props.layout.revision }, h('div', { class:'ka-layout-surface', 'aria-hidden':'true' }), placement.panel && placement.fits && h('section',{ class:'ka-private-panel','aria-label':'Private display',style:{ flexDirection:placement.metrics.widths ? 'row' : 'column',left:`${String(placement.panel.left)}px`,top:`${String(placement.panel.top)}px`,width:`${String(placement.panel.width)}px`,height:`${String(placement.panel.height)}px` } },...privateBlocks(props.privateView,props.isLeader ?? false).map((block,index) => h('div',{ key:index,class:'ka-private-block',style:{ ...(placement.metrics.widths ? { width:`${String(placement.metrics.widths[index] ?? 0)}px` } : {}),height:`${String(placement.metrics.heights[index] ?? 0)}px`,...(block.kind === 'grid' ? { width:`${String(((placement.metrics.heights[index] ?? 0)-(block.rows-1)*(placement.gap === 5 ? 5 : 8))/block.rows*block.cols+(block.cols-1)*(placement.gap === 5 ? 5 : 8))}px`,alignSelf:'center' } : {}),...(block.kind === 'cards' ? { width:`${String(block.cards.length*(placement.metrics.heights[index] ?? 0)*PHONE.card.width/PHONE.card.height+Math.max(0,block.cards.length-1)*placement.gap)}px`,alignSelf:'center' } : {}), '--private-card-type':`var(--ka-phone-type-${(placement.metrics.heights[index] ?? 0) < PHONE.card.height ? '21' : '34'})`, '--private-stat-value':`var(--ka-phone-type-${String(placement.metrics.steps[index] ?? 21)})`  } },h(PrivateBlock,{ block,layout:props.layout,gap:placement.gap,images:props.images })))), ...placement.parts.map(p => h('div', { key:`${p.control.id}:${p.control.kind}${p.control.kind === 'button' ? p.control.button : ''}`, 'data-part':p.control.id, class:'ka-layout-part', style:{ left:`${String(p.left)}px`,top:`${String(p.top)}px`,width:`${String(p.width)}px`,height:`${String(p.height)}px`, '--control-size':`${String((p.width-2*placement.gap)/3)}px`, '--control-height':`${String((p.height-2*placement.gap)/3)}px` } },h(Part,{ control:p.control,layout:props.layout,output:props.onOutput,width:p.width,height:p.height,gap:placement.gap,images:props.images }))));
 }

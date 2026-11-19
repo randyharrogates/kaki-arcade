@@ -1,0 +1,1802 @@
+[
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 1,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 2,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 3,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 4,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 1,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 2,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 3,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 4,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 1,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 2,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 3,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 4,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 1,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 2,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 3,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 4,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 1,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 2,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 3,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 4,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 1,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 2,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 3,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 4,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 1,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 2,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 3,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 4,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 1,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 2,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 3,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 4,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 5,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 5,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 5,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 5,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 5,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 5,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 5,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 5,
+    "gameRevision": 2,
+    "round": 1
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 10,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 11,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 12,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 13,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 10,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 11,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 12,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 13,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 10,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 11,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 12,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 13,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 10,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 11,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 12,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 13,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 10,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 11,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 12,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 13,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 10,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 11,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 12,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 13,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 10,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 11,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 12,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 13,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 9,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 10,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 11,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 12,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 14,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 14,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 14,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 14,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 14,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 14,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 14,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 13,
+    "gameRevision": 8,
+    "round": 2
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 20,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 21,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 22,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 23,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 20,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 21,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 22,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 23,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 20,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 21,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 22,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 23,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 20,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 21,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 22,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 23,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 20,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 21,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 22,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 23,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 20,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 21,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 22,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 23,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 20,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 21,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 22,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 23,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 18,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 19,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 20,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 21,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 24,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 24,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 24,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 24,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 24,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 24,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 24,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 22,
+    "gameRevision": 15,
+    "round": 3
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 30,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 31,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 32,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 33,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 30,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 31,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 32,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 33,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 30,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 31,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 32,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 33,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 30,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 31,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 32,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 33,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 30,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 31,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 32,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 33,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 30,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 31,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 32,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 33,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 30,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 31,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 32,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 33,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 27,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 28,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 29,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 30,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 34,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 34,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 34,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 34,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 34,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 34,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 34,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 31,
+    "gameRevision": 22,
+    "round": 4
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 40,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 41,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 42,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 43,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 40,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 41,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 42,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 43,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 40,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 41,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 42,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 43,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 40,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 41,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 42,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 43,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 40,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 41,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 42,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 43,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 40,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 41,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 42,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 43,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 40,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 41,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 42,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 43,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 36,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 37,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 0,
+    "wireRevision": 38,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "grid",
+    "value": 1,
+    "wireRevision": 39,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-1",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 44,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-2",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 44,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-3",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 44,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-4",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 44,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-5",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 44,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-6",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 44,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-7",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 44,
+    "gameRevision": 29,
+    "round": 5
+  },
+  {
+    "step": "All phones pick and lock in → reveal",
+    "player": "seat-8",
+    "control": "lock",
+    "value": "go",
+    "wireRevision": 40,
+    "gameRevision": 29,
+    "round": 5
+  }
+]

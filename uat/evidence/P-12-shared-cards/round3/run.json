@@ -1,0 +1,206 @@
+{
+  "slice": "P-12-shared-cards",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- P-12-shared-cards --phones 3 --out round3",
+  "commit": "cea706ab7058975b277de4fc69c2195b52181448",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1743.904083,
+      "status": "completed"
+    },
+    {
+      "name": "Normal memorise keeps shared faces secret",
+      "ms": 269.7214159999994,
+      "status": "completed"
+    },
+    {
+      "name": "Reduced memorise keeps shared faces secret",
+      "ms": 708.7523330000004,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-grid-hide-shared-reveal-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-grid-hide-shared-reveal-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-grid-hide-shared-reveal-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-grid-hide-shared-reveal-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-grid-hide-shared-reveal-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-grid-hide-shared-reveal-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-grid-hide-shared-reveal-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-grid-hide-shared-reveal-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-grid-hide-shared-reveal-end-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-grid-hide-shared-reveal-end-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-grid-hide-shared-reveal-end-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-grid-hide-shared-reveal-end-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-grid-hide-shared-reveal-end-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-grid-hide-shared-reveal-end-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-just-after-flip.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-pick.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone1-round2-memorise-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone2-round2-memorise-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone3-round2-memorise-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-reduced-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-reduced-pick.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-reduced-pick-settled.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-memorise.jpg",
+    "10-strip-grid-hide-shared-reveal.jpg",
+    "17-strip-grid-hide-shared-reveal-end.jpg",
+    "18-host-just-after-flip.jpg",
+    "19-host-pick.jpg",
+    "20-phone1-round2-memorise-phone1.jpg",
+    "21-phone2-round2-memorise-phone2.jpg",
+    "22-phone3-round2-memorise-phone3.jpg",
+    "23-host-reduced-memorise.jpg",
+    "24-host-reduced-pick.jpg",
+    "25-host-reduced-pick-settled.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-memorise.jpg",
+      "bytes": 342408
+    },
+    {
+      "file": "10-strip-grid-hide-shared-reveal.jpg",
+      "bytes": 3041845
+    },
+    {
+      "file": "17-strip-grid-hide-shared-reveal-end.jpg",
+      "bytes": 2355926
+    },
+    {
+      "file": "18-host-just-after-flip.jpg",
+      "bytes": 385477
+    },
+    {
+      "file": "19-host-pick.jpg",
+      "bytes": 384947
+    },
+    {
+      "file": "20-phone1-round2-memorise-phone1.jpg",
+      "bytes": 376920
+    },
+    {
+      "file": "21-phone2-round2-memorise-phone2.jpg",
+      "bytes": 377788
+    },
+    {
+      "file": "22-phone3-round2-memorise-phone3.jpg",
+      "bytes": 377849
+    },
+    {
+      "file": "23-host-reduced-memorise.jpg",
+      "bytes": 339618
+    },
+    {
+      "file": "24-host-reduced-pick.jpg",
+      "bytes": 385965
+    },
+    {
+      "file": "25-host-reduced-pick-settled.jpg",
+      "bytes": 385748
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1673
+    },
+    {
+      "file": "run.json",
+      "bytes": 4701
+    }
+  ],
+  "totalBytes": 8760902,
+  "maxBytes": 12582912
+}

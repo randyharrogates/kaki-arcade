@@ -125,4 +125,5 @@ export const motionGeometry = {
 export const GHOST_OPACITY = 0.08;
 
 /** Raised cards retain a soft, deeper second shadow throughout their move. */
-export const cardLift = { scale: 1.05, shadowAlpha: 0.12, shadowScale: 1.05, shadowY: 8 } as const;
+// A-08: the atlas card turn’s 6 px face lift (motion geometry, not spacing), shared by grid and shared cards (D-309).
+export const cardLift = { turnY: 6, scale: 1.05, shadowAlpha: 0.12, shadowScale: 1.05, shadowY: 8 } as const;

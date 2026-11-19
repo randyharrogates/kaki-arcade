@@ -3,10 +3,11 @@ import { peekPoker } from '../src/index';
 import { scenario } from './scenarios';
 import { frameId, screenModel, swapDestination } from './view-model';
 describe('P-04 public table (PP-003, PP-004, PP-008, PP-021, PP-030, PP-031)',()=>{
-  it('shows faces only during memorise and reveal, shared throughout',()=>{
+  it('shows faces only during memorise and reveal, shared only after memorise',()=>{
     for(const phase of ['memorise','picking','locked','swap','reveal'] as const){
       const model=screenModel(peekPoker.publicView(scenario(phase)));
       expect(model.shared).toHaveLength(3);
+      expect(model.shared.every(c=>c === 'card-back')).toBe(phase === 'memorise');
       expect(model.grid.every(c=>c.frame === 'card-back')).toBe(!['memorise','reveal'].includes(phase));
     }
     expect(frameId('TH')).toBe('card-10h');

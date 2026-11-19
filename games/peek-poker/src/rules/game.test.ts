@@ -69,16 +69,21 @@ describe('Peek Poker pure rules', () => {
     expect(later.round).toBe(2);
     expect(later.grid).not.toEqual(state.grid);
   });
-  it('PP-003 PP-004 exact 20-second memorise window and shared faces throughout', () => {
+  it('PP-003 PP-004 exact 20-second memorise window and shared faces only after memorise', () => {
     const state = init();
     const almost = advance(state, secondsToSteps(20) - 1);
     expect(game.publicView(almost).grid).not.toBeNull();
     const hidden = tick(almost);
     expect(hidden.phase).toBe('pick');
     expect(game.publicView(hidden).grid).toBeNull();
-    expect(game.publicView(hidden).shared).toEqual(game.publicView(state).shared);
+    expect(game.publicView(state).shared).toBeNull();
+    expect(game.publicView(almost).shared).toBeNull();
+    expect(game.publicView(state).sharedCount).toBe(3);
+    expect(game.publicView(state).sharedFaceDown).toBe(true);
+    expect(game.publicView(hidden).shared).toHaveLength(3);
+    expect(game.publicView(hidden).sharedFaceDown).toBe(false);
     expect(game.publicView(advance(hidden, secondsToSteps(20))).shared)
-      .toEqual(game.publicView(state).shared);
+      .toEqual(game.publicView(hidden).shared);
   });
   it('PP-005 PP-006 tap selects/deselects, limits to two; players may share both cards', () => {
     let state = pickPhase();
@@ -377,7 +382,8 @@ describe('Peek Poker pure rules', () => {
   });
   it('PP-003 PP-005 hidden faces and picks are declared only while withheld', () => {
     const memorise = init();
-    expect(game.secrets(memorise)).toEqual([]);
+    expect(game.secrets(memorise)).toHaveLength(3);
+    expect(game.secrets(memorise).map(s => s.value)).toEqual(memorise.shared.map(cardCode));
     const state = choose(pickPhase(memorise), 'p1');
     expect(game.secrets(state).filter((secret) => secret.owner === null)).toHaveLength(16);
     expect(game.secrets(state).filter((secret) => secret.owner === 'p1')).toHaveLength(1);

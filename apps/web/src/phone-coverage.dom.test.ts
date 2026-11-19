@@ -246,3 +246,55 @@ it('PP-005 phone game surface covers the viewport and K-09 targets fit all three
     }
   } finally { await browser.close(); }
 }, 60000);
+
+
+it('PP-004 removes round-one phone faces after stalled fades into round-two memorise', async () => {
+  const path = (name: string) => fileURLToPath(new URL(name, import.meta.url));
+  const entry = path('./phone-round2-fixture.ts');
+  const bundle = await build({ configFile: false, build: { write: false, target: 'esnext', lib: { entry, formats: ['es'] } }, plugins: [{
+    name: 'phone-round2', resolveId(id) { if (id === entry) return id; return undefined; },
+    load(id) { if (id !== entry) return; return `
+      import {h,render} from 'preact';
+      import {LayoutEngine} from '${path('../../../packages/controller-kit/src/layout-renderer.ts')}';
+      import {peekPoker} from '${path('../../../games/peek-poker/src/index.ts')}';
+      import {scenario} from '${path('../../../games/peek-poker/host/scenarios.ts')}';
+      import {crossfade} from '@kaki/ui';
+      const root=document.createElement('div');document.body.append(root);
+      const animate=Element.prototype.animate;
+      Element.prototype.animate=function(...args){const animation=animate.apply(this,args);animation.pause();return animation;};
+      const revealed={...scenario('reveal',3),round:1};
+      const draw=state=>render(h(LayoutEngine,{layout:peekPoker.controllerLayout(state,'p1'),privateView:peekPoker.privateView(state,'p1'),area:{width:844,height:322},viewport:{width:844,height:390},onOutput(){}}),root);
+      draw(revealed);
+      window.scoreboard=()=>draw({...revealed,phase:'scoreboard'});
+      window.memorise=()=>draw({...scenario('memorise',3),round:2});
+      window.fallback=Number(crossfade().incoming.options.duration)+1000/60;
+    `; },
+  }] });
+  const output = Array.isArray(bundle) ? bundle[0] : bundle;
+  if (!output || !('output' in output)) throw Error('Missing bundle');
+  const chunk = output.output.find(c => c.type === 'chunk');
+  if (!chunk) throw Error('Missing script');
+  const browser = await chromium.launch({ headless: true });
+  try {
+    const page = await browser.newPage({ viewport: { width: 844, height: 390 } });
+    await page.addStyleTag({ content: await readFile(path('../../../packages/ui/tokens.css'), 'utf8') });
+    await page.addScriptTag({ type: 'module', content: chunk.code });
+    await page.waitForSelector('.ka-layout-card-face');
+    await page.evaluate(() => { (Reflect.get(window, 'scoreboard') as () => void)(); });
+    // Scoreboard has only Place and Score; the five faces belong to one exit.
+    expect(await page.locator('.ka-layout-ghost, .ka-private-ghost').count()).toBeLessThanOrEqual(1);
+    expect(await page.locator('.ka-layout-engine:not(.ka-layout-ghost) .ka-layout-card-face').count()).toBe(0);
+    expect(await page.locator('.ka-layout-card-face').count()).toBe(5);
+    await page.evaluate(() => { (Reflect.get(window, 'memorise') as () => void)(); });
+    // Scoreboard and memorise share a tap layout, so this is a private change only. It must not cut the
+    // running layout exit (P-12 review, must-fix 1): the two exits may overlap, and the fallback removes both.
+    expect(await page.locator('.ka-layout-ghost').count()).toBe(1);
+    expect(await page.locator('.ka-private-ghost').count()).toBe(1);
+    await page.waitForTimeout(await page.evaluate(() => Number(Reflect.get(window, 'fallback'))) + 50);
+    expect(await page.locator('.ka-layout-card-face').count()).toBe(0);
+    expect(await page.locator('.ka-layout-ghost, .ka-private-ghost').count()).toBe(0);
+    expect(await page.locator('.ka-layout-engine').count()).toBe(1);
+    expect(await page.locator('.ka-layout-engine').isVisible()).toBe(true);
+    expect(await page.locator('.ka-layout-engine').innerText()).toContain('Watch the TV');
+  } finally { await browser.close(); }
+}, 30000);

@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-20 — P-12: shared cards covered while memorising
+- PP-004: the three shared cards are face down on the TV during memorise and turn face up as the grid turns face down, on the same flip frames, timing and mask; they stay up for the rest of the round; reduced motion shows them at once (D-296, D-309).
+- PP-020: during memorise the public view carries only their count and a face-down flag; their faces are declared secrets until the grid hides.
+- Phones: a private-view change no longer ends a running screen crossfade; an outgoing screen leaves when its fade ends, or after the fade time plus one frame if the fade stalls; one outgoing copy only.
+- Perf at 8 phones (development build): frame p95 18.2 ms, unchanged from P-09; PERF-010 pass; PERF-012 160 of 160.
+- Not yet: real phones and a real TV; PERF-001 on a 60 Hz display.
+
 ## 2026-11-20 — T-08: Tabao Rush phone controller
 - TR-020: the play controller has a stick and four face buttons (Pick up, Act, Dash, Throw); movement responds on the next step with no smoothing, and the knob follows the thumb directly; Dash moves one tile with a one-second cooldown (provisional).
 - The face buttons and the stick stay 13 px inside the play area at every landscape size tested. On short play areas the gaps between buttons shrink first (34 → 21 → 13 px), then the edge space (13 → 8 → 5 px); buttons never go below 110 px from 844 px wide or 89 px below (D-306).

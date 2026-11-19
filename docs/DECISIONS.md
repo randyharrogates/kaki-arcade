@@ -1931,3 +1931,13 @@ Randy may overrule.
 - The phone takes its play-area size from its own controller's board. It reads the size live on mount, on ResizeObserver, on window resize and on visual-viewport resize, and an unchanged size causes no re-render. Nothing runs per frame.
 - T-08 merges with TR-020 in progress: it still needs real phones and T-08b (wok shake), which also traces to TR-020.
 - Randy may overrule.
+
+**D-309 · 2026-11-20 · Claude, integrator (P-12 review; delegated by Randy, 2026-11-18)** (P-12; PP-004, PP-020, PP-031, CTRL-003; follows D-296; keeps D-305)
+- **Public view in memorise.** Peek Poker's public view gives the shared cards as `shared: null` with `sharedCount` and `sharedFaceDown: true`. The faces are declared secrets and scrambled while hidden. From the first view after memorise they are public for the rest of the round.
+- **The TV turn.** The TV draws three backs, then turns them face up at the moment the grid hides, using the grid flip's atlas frames, `slow` duration, in-out curve and face mask through one shared helper. Reduced motion swaps to faces at once. Layout and the "Shared cards" label are unchanged; no new copy.
+- **The lift token.** The 6 px lift during a card turn comes from A-08's turn and is now the token `cardLift.turnY`. It is motion geometry, not spacing, so it sits outside the φ spacing scale.
+- **Phone exits.** A layout or private-panel exit is removed when its fade ends. If the animation timeline stops moving (a background browser window, seen in UAT), it is removed after the fade's duration and delay plus one frame; a late first frame only delays removal and never shortens a fade. A new screen replaces any running exit rather than stacking on it. When layout and private panel change together, only the layout keeps an outgoing copy. A private-view change alone never ends a running screen crossfade, so a layout exit and a private exit may briefly overlap.
+- **P-07's privacy check** allows the leader's `room-players` view (C-23, D-302) only to seat 1, and only as `{kind, players:[{seat, name}]}` with whole-number seats from 1 to 8 and string names, which the TV already shows.
+- **Perf at 8 phones** (development build, Chromium, slice gate only): frame p95 18.2 ms, max 33.4 ms, no long tasks; PERF-010 pass; PERF-012 160 of 160; unchanged from P-09's development run. PERF-001 stays not assessed, as in D-305.
+- Randy may overrule.
+

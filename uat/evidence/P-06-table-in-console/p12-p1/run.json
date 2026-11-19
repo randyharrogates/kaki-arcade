@@ -1,0 +1,197 @@
+{
+  "slice": "P-06-table-in-console",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- P-06-table-in-console --phones 1 --out p12-p1",
+  "commit": "cea706ab7058975b277de4fc69c2195b52181448",
+  "viewports": [
+    "1920×1080",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1516.1669999999995,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 341.0382920000011,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-peek-poker-start-crossfade-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-peek-poker-start-crossfade-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-peek-poker-start-crossfade-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-peek-poker-start-crossfade-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-peek-poker-start-crossfade-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-peek-poker-start-crossfade-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-peek-poker-start-crossfade-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-peek-poker-start-crossfade-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-peek-poker-start-crossfade-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-peek-poker-start-crossfade-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-tv-memorise.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-tv-memorise-1280x720.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-tv-pick.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-tv-reveal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-peek-poker-start-reduced-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-peek-poker-start-reduced-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-peek-poker-start-reduced-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-peek-poker-start-reduced-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-peek-poker-start-reduced-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-peek-poker-start-reduced-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-peek-poker-start-reduced-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-peek-poker-start-reduced-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-peek-poker-start-reduced-frame09.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-peek-poker-start-reduced-frame10.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-host-tv-memorise-reduced.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "11-strip-peek-poker-start-crossfade.jpg",
+    "12-host-tv-memorise.jpg",
+    "13-host-tv-memorise-1280x720.jpg",
+    "14-host-tv-pick.jpg",
+    "15-host-tv-reveal.jpg",
+    "26-strip-peek-poker-start-reduced.jpg",
+    "27-host-tv-memorise-reduced.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "11-strip-peek-poker-start-crossfade.jpg",
+      "bytes": 2478053
+    },
+    {
+      "file": "12-host-tv-memorise.jpg",
+      "bytes": 334886
+    },
+    {
+      "file": "13-host-tv-memorise-1280x720.jpg",
+      "bytes": 181616
+    },
+    {
+      "file": "14-host-tv-pick.jpg",
+      "bytes": 379406
+    },
+    {
+      "file": "15-host-tv-reveal.jpg",
+      "bytes": 326700
+    },
+    {
+      "file": "26-strip-peek-poker-start-reduced.jpg",
+      "bytes": 2642343
+    },
+    {
+      "file": "27-host-tv-memorise-reduced.jpg",
+      "bytes": 333953
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1289
+    },
+    {
+      "file": "font-requests-before-start.json",
+      "bytes": 757
+    },
+    {
+      "file": "requests-after-start.json",
+      "bytes": 36
+    },
+    {
+      "file": "run.json",
+      "bytes": 4483
+    }
+  ],
+  "totalBytes": 6683559,
+  "maxBytes": 12582912
+}
