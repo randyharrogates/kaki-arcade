@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — A-06: Tabao Rush level backgrounds, first two venues (in progress)
+
+- TR-050: the level catalogue is exported to JSON and baked in Blender (floor, walls, counters, A-05 static station bodies) for the kopitiam first shift and the zi char test kitchen, in three looks: Terrazzo (jade trim #5E9C84), Tile (wood trim #C7A16A) and Golden (counter front cream : jade 1.618 : 1). Carried and consumable items are never baked; their counter has an inset steel top. Crates stand without a surround. The floor speckle is gated at 3–9 greyscale standard deviation, checked on the committed renders (D-292). Packed as exact-size q90 WebP in per-level rounds that carry every Tabao Rush set; levelBackgrounds[id].bakedBodies names the stations the host must not draw again.
+- TR-057: fixed 120 px/tile, 60° camera; the kitchen fits inside the 55 px margins and clear of the HUD; anchors and collision exported and checked against the loader.
+- Budgets: level rounds 2.53 / 2.57 MB of 8 MB, 63.7 MB of 256 MB decoded. Terrazzo ships until Randy chooses.
+- Commits 80993a7a (TR-001), e6799b68 and 2cd983f6 (TR-006) name the wrong requirement; all three are TR-050 work. 463a4836 names TR-052, which is A-06b.
+- Not yet: drawn on the TV (T-17); 3 m check; baked plates (OQ-055); the remaining levels and arenas (A-06b).
+
 ## 2026-11-19 — T-07b: Tabao Rush TV renderer follow-ups (in progress)
 
 - TR-061: seat markers draw nearer-cook-on-top with a 3 px ink edge and the numeral centred on its measured glyph; at minimum cook separation discs overlap by at most 8.3 px, and a diagonal neighbour covers the far numeral by at most 1.92 px (D-291).

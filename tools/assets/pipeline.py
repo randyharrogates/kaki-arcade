@@ -20,6 +20,9 @@ try:
 except ImportError:
     sys.exit('Asset pipeline requires Pillow 11.1.0 / libwebp 1.5.0: python3 -m pip install -r tools/assets/requirements.txt')
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'blender'))
+from levels import baked_body
+
 ROOT = Path(__file__).resolve().parents[2]
 # ART-PIPELINE.md §3: atlases no larger than 2048 × 2048 (not a PERF dimension row).
 MAX_SIZE = 2048
@@ -254,6 +257,26 @@ def pack(config, source, output):
         if name in sets:
             raise ValueError(f'Duplicate set {name}')
         sets[name] = []
+        if group.get('type') == 'level-background':
+            quality = group.get('quality', 90)
+            if group.get('encoding') != 'lossy' or type(quality) not in (int, float) or not 0 <= quality <= 100:
+                raise ValueError(f'{name}: backgrounds require lossy encoding and quality 0–100')
+            folder = group['folder']
+            with Image.open(source_path(source, folder+'/background.png')) as image:
+                if image.size != (1920, 1080):
+                    raise ValueError(f'{name}: background must be 1920 × 1080')
+                image = image.convert('RGB')
+                full = emit(image, output, name+'-full', 'lossy', group.get('quality', 90))
+                half = emit(image.resize((960, 540), Image.Resampling.BOX), output,
+                            name+'-half', 'lossy', group.get('quality', 90))
+            frame = dict(rect=[0, 0, 1920, 1080], sourceSize=[1920, 1080], trim=[0, 0],
+                         anchor=[0, 0], anchors={}, metadata={})
+            atlases.append(dict(id=name, set=name, layer='default', full=full, half=half,
+                                frames={name: frame}, wastedArea=0))
+            sets[name] = [name]
+            packed_animations[name] = []
+            print(f'{name}: {full["bytes"]}/8000000 bytes; {full["gpuBytes"]}/256000000 decoded')
+            continue
         frames, ids, animations = [], set(), []
         specs = merged_frames(group, source)
         validate_outline_scales(specs)
@@ -446,7 +469,7 @@ def pack(config, source, output):
             dest.write_bytes(data)
             files.append(dict(file=dest.name, bytes=len(data), sha256=hashlib.sha256(data).hexdigest(), source=file))
         rounds[name] = dict(sets=members, atlases=[a for s in members for a in sets[s]], files=files,
-            **({k: round_spec[k] for k in ('collisionMap', 'stationAnchors') if k in round_spec} if isinstance(round_spec, dict) else {}))
+            **({k: next(f['file'] for f in files if f['source'] == round_spec[k]) for k in ('collisionMap', 'stationAnchors') if k in round_spec} if isinstance(round_spec, dict) else {}))
     if not rounds or set(sets) != {s for r in rounds.values() for s in r['sets']}:
         raise ValueError('Every set must belong to a preload round')
     manifest = dict(version=1, alphaMode='straight', mipmaps=False, halfRule='Divide rect, trim, sourceSize, anchor and named anchors coordinates by two; metadata is unchanged', atlases=atlases,
@@ -459,6 +482,12 @@ def pack(config, source, output):
     for r in rounds.values():
         for d in ('full', 'half'):
             r['totals'][d]['bytes'] += sum(f['bytes'] for f in r['files'])
+    manifest['levelBackgrounds'] = {
+        read_json(source_path(source, g['levelSource']))['id']: dict(
+            type='level-background', set=g['id'], look=g['look'],
+            bakedBodies=[a['id'] for a in read_json(source_path(source, g['levelSource']))['stations'] if baked_body(a['kind'])],
+            **{k: rounds[read_json(source_path(source, g['levelSource']))['id']][k] for k in ('stationAnchors', 'collisionMap')})
+        for g in config['sets'] if g.get('type') == 'level-background'}
     write_json(output / 'manifest.json', manifest)
     check(output / 'manifest.json')
     return manifest
@@ -558,18 +587,25 @@ def check(path):
 def load_config(path):
     """Load sibling pipeline.*.json extensions without changing legacy stamp inputs.
 
-    Extensions append render jobs and replace atlas sets by id. Render inputs
+    Extensions append render jobs and generators, replace atlas sets by id and
+    add per-level rounds. Render inputs
     remain explicit: an unrelated extension is never an input to an existing job.
     """
     config = read_json(path)
     for extension in sorted(path.parent.glob(path.stem + '.*' + path.suffix)):
         extra = read_json(extension)
-        if set(extra) - {'renders', 'sets'}:
-            raise ValueError('Pipeline extensions support only renders and sets')
+        if set(extra) - {'renders', 'sets', 'rounds', 'generatedSources'}:
+            raise ValueError('Pipeline extensions support only renders, sets, rounds and generatedSources')
         config.setdefault('renders', []).extend(extra.get('renders', []))
+        config.setdefault('rounds', {}).update(extra.get('rounds', {}))
+        config.setdefault('generatedSources', []).extend(extra.get('generatedSources', []))
         for group in extra.get('sets', []):
             config['sets'] = [g for g in config.get('sets', []) if g['id'] != group['id']]
             config['sets'].append(group)
+    for spec in config.get('rounds', {}).values():
+        if isinstance(spec, dict) and 'extends' in spec:
+            base = config['rounds'][spec.pop('extends')]
+            spec['sets'] = list(dict.fromkeys((base if isinstance(base, list) else base['sets']) + spec['sets']))
     return config
 
 
@@ -776,6 +812,9 @@ def main():
             refresh_item_metadata(config, args.config.parent)
             args.config.write_text(json.dumps(config, indent=2)+'\n')
             return 0
+        for generator in config.get('generatedSources', []):
+            subprocess.run(['node', str(source_path(ROOT, generator['script'])), '--check'],
+                           cwd=ROOT, check=True, timeout=60)
         if args.render or args.check_stale:
             # D-173 settled the turnip as cream; the switch is not in the stamp, so refuse any other value.
             if os.environ.get('KAKI_TURNIP_STYLE', 'cream') != 'cream':

@@ -135,7 +135,7 @@ class CookDecisionJobTests(unittest.TestCase):
         for job in config['renders']:
             if job['script'] != 'cook.py':
                 _, outputs, stamp, digest, _ = p.render_job(job, source)
-                self.assertIsNone(p.stale_reason(outputs, stamp, digest))
+                self.assertIsNone(p.stale_reason(outputs, stamp, digest), job['id'])
 
 class CookEncodingTests(unittest.TestCase):
     def test_q90_passes_q50_fails_and_alpha_is_exact(self):

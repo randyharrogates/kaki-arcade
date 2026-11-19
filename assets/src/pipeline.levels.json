@@ -1,0 +1,189 @@
+{
+  "renders": [
+    {
+      "id": "level-kopitiam-first-shift-terrazzo",
+      "script": "levels.py",
+      "args": [
+        "--level",
+        "kopitiam-first-shift",
+        "--look",
+        "terrazzo"
+      ],
+      "inputs": [
+        "tabao-rush/levels/kopitiam-first-shift.json"
+      ],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/station_geometry.py"
+      ],
+      "outputs": [
+        "tabao-rush/levels/kopitiam-first-shift/terrazzo/background.png",
+        "tabao-rush/levels/kopitiam-first-shift/terrazzo/anchors.json",
+        "tabao-rush/levels/kopitiam-first-shift/terrazzo/collision.json"
+      ],
+      "timeoutSeconds": 600
+    },
+    {
+      "id": "level-kopitiam-first-shift-tile",
+      "script": "levels.py",
+      "args": [
+        "--level",
+        "kopitiam-first-shift",
+        "--look",
+        "tile"
+      ],
+      "inputs": [
+        "tabao-rush/levels/kopitiam-first-shift.json"
+      ],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/station_geometry.py"
+      ],
+      "outputs": [
+        "tabao-rush/levels/kopitiam-first-shift/tile/background.png",
+        "tabao-rush/levels/kopitiam-first-shift/tile/anchors.json",
+        "tabao-rush/levels/kopitiam-first-shift/tile/collision.json"
+      ],
+      "timeoutSeconds": 600
+    },
+    {
+      "id": "level-kopitiam-first-shift-golden",
+      "script": "levels.py",
+      "args": [
+        "--level",
+        "kopitiam-first-shift",
+        "--look",
+        "golden"
+      ],
+      "inputs": [
+        "tabao-rush/levels/kopitiam-first-shift.json"
+      ],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/station_geometry.py"
+      ],
+      "outputs": [
+        "tabao-rush/levels/kopitiam-first-shift/golden/background.png",
+        "tabao-rush/levels/kopitiam-first-shift/golden/anchors.json",
+        "tabao-rush/levels/kopitiam-first-shift/golden/collision.json"
+      ],
+      "timeoutSeconds": 600
+    },
+    {
+      "id": "level-zi-char-test-kitchen-terrazzo",
+      "script": "levels.py",
+      "args": [
+        "--level",
+        "zi-char-test-kitchen",
+        "--look",
+        "terrazzo"
+      ],
+      "inputs": [
+        "tabao-rush/levels/zi-char-test-kitchen.json"
+      ],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/station_geometry.py"
+      ],
+      "outputs": [
+        "tabao-rush/levels/zi-char-test-kitchen/terrazzo/background.png",
+        "tabao-rush/levels/zi-char-test-kitchen/terrazzo/anchors.json",
+        "tabao-rush/levels/zi-char-test-kitchen/terrazzo/collision.json"
+      ],
+      "timeoutSeconds": 600
+    },
+    {
+      "id": "level-zi-char-test-kitchen-tile",
+      "script": "levels.py",
+      "args": [
+        "--level",
+        "zi-char-test-kitchen",
+        "--look",
+        "tile"
+      ],
+      "inputs": [
+        "tabao-rush/levels/zi-char-test-kitchen.json"
+      ],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/station_geometry.py"
+      ],
+      "outputs": [
+        "tabao-rush/levels/zi-char-test-kitchen/tile/background.png",
+        "tabao-rush/levels/zi-char-test-kitchen/tile/anchors.json",
+        "tabao-rush/levels/zi-char-test-kitchen/tile/collision.json"
+      ],
+      "timeoutSeconds": 600
+    },
+    {
+      "id": "level-zi-char-test-kitchen-golden",
+      "script": "levels.py",
+      "args": [
+        "--level",
+        "zi-char-test-kitchen",
+        "--look",
+        "golden"
+      ],
+      "inputs": [
+        "tabao-rush/levels/zi-char-test-kitchen.json"
+      ],
+      "extraInputs": [
+        "tools/blender/kalib.py",
+        "tools/blender/station_geometry.py"
+      ],
+      "outputs": [
+        "tabao-rush/levels/zi-char-test-kitchen/golden/background.png",
+        "tabao-rush/levels/zi-char-test-kitchen/golden/anchors.json",
+        "tabao-rush/levels/zi-char-test-kitchen/golden/collision.json"
+      ],
+      "timeoutSeconds": 600
+    }
+  ],
+  "sets": [
+    {
+      "id": "tabao-rush-level-kopitiam-first-shift",
+      "type": "level-background",
+      "levelSource": "tabao-rush/levels/kopitiam-first-shift.json",
+      "folder": "tabao-rush/levels/kopitiam-first-shift/terrazzo",
+      "look": "terrazzo",
+      "encoding": "lossy",
+      "quality": 90
+    },
+    {
+      "id": "tabao-rush-level-zi-char-test-kitchen",
+      "type": "level-background",
+      "levelSource": "tabao-rush/levels/zi-char-test-kitchen.json",
+      "folder": "tabao-rush/levels/zi-char-test-kitchen/terrazzo",
+      "look": "terrazzo",
+      "encoding": "lossy",
+      "quality": 90
+    }
+  ],
+  "rounds": {
+    "kopitiam-first-shift": {
+      "sets": [
+        "tabao-rush-level-kopitiam-first-shift"
+      ],
+      "stationAnchors": "tabao-rush/levels/kopitiam-first-shift/terrazzo/anchors.json",
+      "collisionMap": "tabao-rush/levels/kopitiam-first-shift/terrazzo/collision.json",
+      "extends": "tabao-rush"
+    },
+    "zi-char-test-kitchen": {
+      "sets": [
+        "tabao-rush-level-zi-char-test-kitchen"
+      ],
+      "stationAnchors": "tabao-rush/levels/zi-char-test-kitchen/terrazzo/anchors.json",
+      "collisionMap": "tabao-rush/levels/zi-char-test-kitchen/terrazzo/collision.json",
+      "extends": "tabao-rush"
+    }
+  },
+  "generatedSources": [
+    {
+      "script": "tools/assets/export_levels.mjs",
+      "outputs": [
+        "tabao-rush/levels/kopitiam-first-shift.json",
+        "tabao-rush/levels/zi-char-test-kitchen.json"
+      ]
+    }
+  ]
+}

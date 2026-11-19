@@ -522,3 +522,38 @@ are explicitly skipped in unit acceptance tests; partially published sets fail.
 Both packed round totals are checked against PERF-023/024, including the
 manifest transfer cost through the existing pipeline checker. Synthetic unit
 packing proves metadata/half plumbing only, never rendered sizes or readability.
+
+## Level backgrounds (A-06; TR-050, TR-057)
+
+`tools/assets/export_levels.mjs` exports the TypeScript catalogue to
+`assets/src/tabao-rush/levels/<level>.json`; its `--check` mode detects drift.
+`tools/blender/levels.py` reads these files and imports A-05 station geometry.
+Only bodies in the shared static fixture set with `staticBody` metadata are
+baked and listed in `levelBackgrounds[id].bakedBodies`. Carried or consumable
+item bodies are excluded; their tile may still have a counter. Low bodies have
+no counter surround that would obscure their sprite silhouette.
+
+Each look exports `anchors.json`: `levelId`, camera parameters and `stations`,
+`spawns`, `tiles` arrays, retaining tile indices and adding full-resolution
+`screen: [x,y]` centres. `collision.json` contains `levelId`, `width`, `height`
+and a row-major `tiles` array; station occupancy becomes `counter`, while
+walkable tiles equal `compileLevel`'s floor tiles. Packing hashes these JSON
+files as `data-<hash>.json`; round and level-background manifest references
+name the packed files. Every level round inherits all `tabao-rush` sets.
+
+The 1920×1080 projection uses 120 px/tile and 60° tilt. The floor top ends at y=826;
+the 0.12-tile slab's front edge shows to about y=835, about 46 px above the HUD cards at y=881. Anchor, collision and safe-margin
+checks run through `pipeline.test.ts` in verify.
+
+Terrazzo and golden share a three-scale muted wood/steel/ink chip treatment.
+Measure a fixture-free, shadow-free empty-floor crop at full resolution using
+`python3 tools/assets/level_floor.py <background.png> --crop 800 450 1100 550`.
+`FLOOR_STDDEV_BAND` is 3–9 greyscale levels (0–255); the command fails outside
+this band. Check each new terrazzo and golden render, then inspect at 1× on a
+TV: cooks, items and outlines must retain the strongest contrast. The numeric
+band is a render acceptance gate, not a claim that unrendered sources pass.
+
+`python3 tools/assets/level_board.py` rebuilds the venue board and its measured
+full/half WebP costs. Golden splits the 0.60-tile counter front height into a
+cream upper section and jade lower band at 1.618 : 1, without a floor border.
+The board names this split; regenerate it after rendering before visual review.

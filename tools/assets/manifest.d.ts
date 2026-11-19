@@ -28,4 +28,5 @@ export interface AssetManifest {
   atlases: Atlas[]; totals: Totals;
   sets: Record<string, { anchors: string[]; layers: string[]; metadata: string[]; encoding: 'lossless' | 'lossy'; quality: number; atlases: string[]; animations: Animation[]; totals: Totals }>;
   rounds: Record<string, { sets: string[]; atlases: string[]; files: DataFile[]; collisionMap?: string; stationAnchors?: string; totals: Totals }>;
+  levelBackgrounds?: Record<string, { type: 'level-background'; set: string; look: string; bakedBodies: string[]; stationAnchors: string; collisionMap: string }>;
 }

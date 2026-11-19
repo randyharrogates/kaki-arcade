@@ -1,0 +1,253 @@
+{
+  "id": "kopitiam-first-shift",
+  "venue": "kopitiam",
+  "width": 11,
+  "height": 6,
+  "collision": [
+    "wall",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "wall",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "wall",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "floor",
+    "wall"
+  ],
+  "stations": [
+    {
+      "kind": "crate",
+      "ingredient": "rice",
+      "id": "crate-0",
+      "tile": 1,
+      "facing": 2,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "crate",
+      "ingredient": "chicken",
+      "id": "crate-1",
+      "tile": 2,
+      "facing": 2,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "crate",
+      "ingredient": "cucumber",
+      "id": "crate-2",
+      "tile": 3,
+      "facing": 2,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "crate",
+      "ingredient": "kopi",
+      "id": "crate-3",
+      "tile": 4,
+      "facing": 2,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "chop",
+      "id": "chop-4",
+      "tile": 5,
+      "facing": 2,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "rice",
+      "id": "rice-5",
+      "tile": 6,
+      "facing": 2,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "chop",
+      "id": "chop-6",
+      "tile": 7,
+      "facing": 2,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "drinks",
+      "id": "drinks-7",
+      "tile": 8,
+      "facing": 2,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "plating",
+      "id": "plating-8",
+      "tile": 9,
+      "facing": 2,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "serving",
+      "id": "serving-9",
+      "tile": 56,
+      "facing": 6,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "return-counter",
+      "id": "return-counter-10",
+      "tile": 57,
+      "facing": 6,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "sink",
+      "id": "sink-11",
+      "tile": 58,
+      "facing": 6,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "bin",
+      "id": "bin-12",
+      "tile": 59,
+      "facing": 6,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "dish-rack",
+      "container": "plate",
+      "id": "dish-rack-13",
+      "tile": 60,
+      "facing": 6,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "dish-rack",
+      "container": "plate",
+      "id": "dish-rack-14",
+      "tile": 61,
+      "facing": 6,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "dish-rack",
+      "container": "plate",
+      "id": "dish-rack-15",
+      "tile": 62,
+      "facing": 6,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "dish-rack",
+      "container": "plate",
+      "id": "dish-rack-16",
+      "tile": 63,
+      "facing": 6,
+      "kitchen": "coop"
+    },
+    {
+      "kind": "dish-rack",
+      "container": "cup",
+      "id": "dish-rack-17",
+      "tile": 64,
+      "facing": 6,
+      "kitchen": "coop"
+    }
+  ],
+  "spawns": [
+    {
+      "tile": 23,
+      "kitchen": "coop",
+      "facing": 6
+    },
+    {
+      "tile": 24,
+      "kitchen": "coop",
+      "facing": 6
+    },
+    {
+      "tile": 25,
+      "kitchen": "coop",
+      "facing": 6
+    },
+    {
+      "tile": 26,
+      "kitchen": "coop",
+      "facing": 6
+    },
+    {
+      "tile": 27,
+      "kitchen": "coop",
+      "facing": 6
+    },
+    {
+      "tile": 28,
+      "kitchen": "coop",
+      "facing": 6
+    },
+    {
+      "tile": 29,
+      "kitchen": "coop",
+      "facing": 6
+    },
+    {
+      "tile": 30,
+      "kitchen": "coop",
+      "facing": 6
+    }
+  ]
+}

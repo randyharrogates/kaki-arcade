@@ -1,0 +1,1089 @@
+{
+  "levelId": "zi-char-test-kitchen",
+  "camera": {
+    "width": 1920,
+    "height": 1080,
+    "pixelsPerTile": 120,
+    "tilt": 60,
+    "Y0": -0.24788298691300992,
+    "centreY": 514.24
+  },
+  "stations": [
+    {
+      "kind": "crate",
+      "ingredient": "rice",
+      "id": "crate-0",
+      "tile": 1,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        240.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "crate",
+      "ingredient": "chicken",
+      "id": "crate-1",
+      "tile": 2,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        360.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "crate",
+      "ingredient": "cucumber",
+      "id": "crate-2",
+      "tile": 3,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        480.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "crate",
+      "ingredient": "kway-teow",
+      "id": "crate-3",
+      "tile": 4,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        600.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "crate",
+      "ingredient": "satay",
+      "id": "crate-4",
+      "tile": 5,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        720.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "crate",
+      "ingredient": "laksa-broth",
+      "id": "crate-5",
+      "tile": 6,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        840.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "crate",
+      "ingredient": "noodles",
+      "id": "crate-6",
+      "tile": 7,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        960.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "crate",
+      "ingredient": "pineapple",
+      "id": "crate-7",
+      "tile": 8,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        1080.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "crate",
+      "ingredient": "turnip",
+      "id": "crate-8",
+      "tile": 9,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        1200.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "crate",
+      "ingredient": "bread",
+      "id": "crate-9",
+      "tile": 10,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        1320.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "crate",
+      "ingredient": "kopi",
+      "id": "crate-10",
+      "tile": 11,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        1440.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "chop",
+      "id": "chop-11",
+      "tile": 12,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        1560.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "chop",
+      "id": "chop-12",
+      "tile": 13,
+      "facing": 2,
+      "kitchen": "coop",
+      "screen": [
+        1680.0,
+        254.44
+      ]
+    },
+    {
+      "kind": "rice",
+      "id": "rice-13",
+      "tile": 76,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        240.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "chop",
+      "id": "chop-14",
+      "tile": 77,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        360.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "wok",
+      "id": "wok-15",
+      "tile": 78,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        480.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "grill",
+      "id": "grill-16",
+      "tile": 79,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        600.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "pot",
+      "id": "pot-17",
+      "tile": 80,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        720.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "plating",
+      "id": "plating-18",
+      "tile": 81,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        840.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "drinks",
+      "id": "drinks-19",
+      "tile": 82,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        960.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "serving",
+      "id": "serving-20",
+      "tile": 83,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        1080.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "return-counter",
+      "id": "return-counter-21",
+      "tile": 84,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        1200.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "sink",
+      "id": "sink-22",
+      "tile": 85,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        1320.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "bin",
+      "id": "bin-23",
+      "tile": 86,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        1440.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "dish-rack",
+      "container": "plate",
+      "id": "dish-rack-24",
+      "tile": 87,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        1560.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "dish-rack",
+      "container": "plate",
+      "id": "dish-rack-25",
+      "tile": 88,
+      "facing": 6,
+      "kitchen": "coop",
+      "screen": [
+        1680.0,
+        774.04
+      ]
+    },
+    {
+      "kind": "dish-rack",
+      "container": "plate",
+      "id": "dish-rack-26",
+      "tile": 15,
+      "facing": 0,
+      "kitchen": "coop",
+      "screen": [
+        120.0,
+        358.36
+      ]
+    },
+    {
+      "kind": "dish-rack",
+      "container": "plate",
+      "id": "dish-rack-27",
+      "tile": 30,
+      "facing": 0,
+      "kitchen": "coop",
+      "screen": [
+        120.0,
+        462.28
+      ]
+    },
+    {
+      "kind": "dish-rack",
+      "container": "plate",
+      "id": "dish-rack-28",
+      "tile": 45,
+      "facing": 0,
+      "kitchen": "coop",
+      "screen": [
+        120.0,
+        566.2
+      ]
+    },
+    {
+      "kind": "dish-rack",
+      "container": "cup",
+      "id": "dish-rack-29",
+      "tile": 60,
+      "facing": 0,
+      "kitchen": "coop",
+      "screen": [
+        120.0,
+        670.12
+      ]
+    },
+    {
+      "kind": "dish-rack",
+      "container": "bowl",
+      "id": "dish-rack-30",
+      "tile": 29,
+      "facing": 4,
+      "kitchen": "coop",
+      "screen": [
+        1800.0,
+        358.36
+      ]
+    },
+    {
+      "kind": "extinguisher",
+      "id": "extinguisher-31",
+      "tile": 44,
+      "facing": 4,
+      "kitchen": "coop",
+      "screen": [
+        1800.0,
+        462.28
+      ]
+    }
+  ],
+  "spawns": [
+    {
+      "tile": 31,
+      "kitchen": "coop",
+      "facing": 6,
+      "screen": [
+        240.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 32,
+      "kitchen": "coop",
+      "facing": 6,
+      "screen": [
+        360.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 33,
+      "kitchen": "coop",
+      "facing": 6,
+      "screen": [
+        480.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 34,
+      "kitchen": "coop",
+      "facing": 6,
+      "screen": [
+        600.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 35,
+      "kitchen": "coop",
+      "facing": 6,
+      "screen": [
+        720.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 36,
+      "kitchen": "coop",
+      "facing": 6,
+      "screen": [
+        840.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 37,
+      "kitchen": "coop",
+      "facing": 6,
+      "screen": [
+        960.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 38,
+      "kitchen": "coop",
+      "facing": 6,
+      "screen": [
+        1080.0,
+        462.28
+      ]
+    }
+  ],
+  "tiles": [
+    {
+      "tile": 0,
+      "screen": [
+        120.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 1,
+      "screen": [
+        240.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 2,
+      "screen": [
+        360.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 3,
+      "screen": [
+        480.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 4,
+      "screen": [
+        600.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 5,
+      "screen": [
+        720.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 6,
+      "screen": [
+        840.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 7,
+      "screen": [
+        960.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 8,
+      "screen": [
+        1080.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 9,
+      "screen": [
+        1200.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 10,
+      "screen": [
+        1320.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 11,
+      "screen": [
+        1440.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 12,
+      "screen": [
+        1560.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 13,
+      "screen": [
+        1680.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 14,
+      "screen": [
+        1800.0,
+        254.44
+      ]
+    },
+    {
+      "tile": 15,
+      "screen": [
+        120.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 16,
+      "screen": [
+        240.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 17,
+      "screen": [
+        360.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 18,
+      "screen": [
+        480.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 19,
+      "screen": [
+        600.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 20,
+      "screen": [
+        720.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 21,
+      "screen": [
+        840.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 22,
+      "screen": [
+        960.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 23,
+      "screen": [
+        1080.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 24,
+      "screen": [
+        1200.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 25,
+      "screen": [
+        1320.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 26,
+      "screen": [
+        1440.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 27,
+      "screen": [
+        1560.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 28,
+      "screen": [
+        1680.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 29,
+      "screen": [
+        1800.0,
+        358.36
+      ]
+    },
+    {
+      "tile": 30,
+      "screen": [
+        120.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 31,
+      "screen": [
+        240.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 32,
+      "screen": [
+        360.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 33,
+      "screen": [
+        480.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 34,
+      "screen": [
+        600.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 35,
+      "screen": [
+        720.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 36,
+      "screen": [
+        840.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 37,
+      "screen": [
+        960.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 38,
+      "screen": [
+        1080.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 39,
+      "screen": [
+        1200.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 40,
+      "screen": [
+        1320.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 41,
+      "screen": [
+        1440.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 42,
+      "screen": [
+        1560.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 43,
+      "screen": [
+        1680.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 44,
+      "screen": [
+        1800.0,
+        462.28
+      ]
+    },
+    {
+      "tile": 45,
+      "screen": [
+        120.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 46,
+      "screen": [
+        240.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 47,
+      "screen": [
+        360.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 48,
+      "screen": [
+        480.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 49,
+      "screen": [
+        600.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 50,
+      "screen": [
+        720.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 51,
+      "screen": [
+        840.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 52,
+      "screen": [
+        960.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 53,
+      "screen": [
+        1080.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 54,
+      "screen": [
+        1200.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 55,
+      "screen": [
+        1320.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 56,
+      "screen": [
+        1440.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 57,
+      "screen": [
+        1560.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 58,
+      "screen": [
+        1680.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 59,
+      "screen": [
+        1800.0,
+        566.2
+      ]
+    },
+    {
+      "tile": 60,
+      "screen": [
+        120.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 61,
+      "screen": [
+        240.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 62,
+      "screen": [
+        360.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 63,
+      "screen": [
+        480.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 64,
+      "screen": [
+        600.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 65,
+      "screen": [
+        720.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 66,
+      "screen": [
+        840.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 67,
+      "screen": [
+        960.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 68,
+      "screen": [
+        1080.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 69,
+      "screen": [
+        1200.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 70,
+      "screen": [
+        1320.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 71,
+      "screen": [
+        1440.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 72,
+      "screen": [
+        1560.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 73,
+      "screen": [
+        1680.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 74,
+      "screen": [
+        1800.0,
+        670.12
+      ]
+    },
+    {
+      "tile": 75,
+      "screen": [
+        120.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 76,
+      "screen": [
+        240.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 77,
+      "screen": [
+        360.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 78,
+      "screen": [
+        480.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 79,
+      "screen": [
+        600.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 80,
+      "screen": [
+        720.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 81,
+      "screen": [
+        840.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 82,
+      "screen": [
+        960.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 83,
+      "screen": [
+        1080.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 84,
+      "screen": [
+        1200.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 85,
+      "screen": [
+        1320.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 86,
+      "screen": [
+        1440.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 87,
+      "screen": [
+        1560.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 88,
+      "screen": [
+        1680.0,
+        774.04
+      ]
+    },
+    {
+      "tile": 89,
+      "screen": [
+        1800.0,
+        774.04
+      ]
+    }
+  ]
+}
