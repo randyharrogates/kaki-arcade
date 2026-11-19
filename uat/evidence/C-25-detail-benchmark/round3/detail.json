@@ -1,0 +1,82 @@
+[
+  {
+    "scenario": "auto",
+    "sceneRuns": 1,
+    "measurement": {
+      "schemaVersion": 1,
+      "data": {
+        "mode": "full",
+        "screen": {
+          "width": 1920,
+          "height": 1080,
+          "devicePixelRatio": 1
+        },
+        "userAgentHash": "a4e2e7d4",
+        "lowerBudgetMet": true
+      }
+    },
+    "detail": "full",
+    "assets": "full",
+    "atlas": "http://127.0.0.1:5330/@fs/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-25/assets/dist/peek-poker-cards-0-full.0c83ba8a1ee7ff66.webp",
+    "costMs": 1081.1999999284744,
+    "runs": 1
+  },
+  {
+    "scenario": "cached",
+    "sceneRuns": 0,
+    "measurement": {
+      "schemaVersion": 1,
+      "data": {
+        "mode": "full",
+        "screen": {
+          "width": 1920,
+          "height": 1080,
+          "devicePixelRatio": 1
+        },
+        "userAgentHash": "a4e2e7d4",
+        "lowerBudgetMet": true
+      }
+    },
+    "detail": "full",
+    "costMs": 0.10000002384185791,
+    "runs": 1
+  },
+  {
+    "scenario": "slow",
+    "sceneRuns": 1,
+    "measurement": {
+      "schemaVersion": 1,
+      "data": {
+        "mode": "lower",
+        "screen": {
+          "width": 1920,
+          "height": 1080,
+          "devicePixelRatio": 1
+        },
+        "userAgentHash": "a4e2e7d4",
+        "lowerBudgetMet": true
+      }
+    },
+    "detail": "lower",
+    "assets": "half",
+    "atlas": "http://127.0.0.1:5330/@fs/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-25/assets/dist/peek-poker-cards-0-half.568e63bf3d418ca3.webp",
+    "costMs": 1084.1000000238419,
+    "runs": 2
+  },
+  {
+    "scenario": "explicit-full",
+    "sceneRuns": 0,
+    "measurement": null,
+    "detail": "full",
+    "costMs": 0.20000004768371582,
+    "runs": 2
+  },
+  {
+    "scenario": "no-scene",
+    "sceneRuns": 0,
+    "measurement": null,
+    "detail": "full",
+    "costMs": 0,
+    "runs": 2
+  }
+]

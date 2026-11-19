@@ -84,6 +84,30 @@ interface GameModule<State, Settings, View> {
 }
 ```
 
+The optional host presentation contract `GamePresentation<Target, Assets>` lives alongside
+these pure types in `packages/platform/src/game/presentation.ts`. A host screen may declare
+`benchmarkScene(target, { width, height, assets }) → { draw(timestamp), destroy() }` and
+`loadBenchmarkAssets(detail)`. The loader resolves already decoded round resources; the
+scene draws the busiest scene synchronously on each shell-owned frame, forcing drawing work
+with WebGL flush or a 1-pixel read. Width and height are TV viewport dimensions multiplied
+by devicePixelRatio, in backing pixels. It runs without fetching,
+scheduling frames or changing simulation. This host-only function is separate from the pure
+`GameModule`. No game-specific renderer lives in platform.
+
+During Start, after round assets and before Ready, Auto runs this scene on a detached
+TV-sized target for about one second, discarding five warm-up frames. A 1.4 s timeout bounds
+sampling when rAF stalls (a synchronous draw must itself be bounded). The existing cadence
+judge selects full when at most 5% of intervals exceed 1.5 times the median, the
+median is at most 20.5 ms, and no interval exceeds 50 ms. Otherwise it selects lower
+and checks the lower cadence against 33.3 ms and a 100 ms maximum; lower waits for half-atlas decoding before the host screen
+mounts. The TV stores the verdict per game at
+`kaki.host-device.platform.detail-benchmark-<id>-v2` using the validated host-store wrapper
+and size limit, keyed by UA hash, screen width × height and devicePixelRatio (no idle probe); changing or reselecting the detail setting
+through `setDetailSetting` clears these verdicts. A missing scene keeps Auto at full.
+Hidden pages and failed benchmarks stay full without caching; visible timeouts with too
+few valid intervals select lower. Cancellation never caches. Measurements retain whether
+the lower budget was met. Asset loading time is additional to the sampling window, as with normal Start preparation.
+
 Rules:
 
 - `step` has no access to the DOM, network, timers or `Math.random`. All randomness comes from

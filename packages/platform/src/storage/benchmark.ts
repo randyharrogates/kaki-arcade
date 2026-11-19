@@ -44,17 +44,20 @@ export interface BenchmarkSource {
   request(callback: (timestamp: number) => void): unknown;
   cancel(handle: unknown): void;
   hidden(): boolean;
+  /** Required together when a wall timeout is requested. */
+  setTimer?(callback: () => void, milliseconds: number): unknown;
+  clearTimer?(handle: unknown): void;
   /** Must observe hiding between frames, even if the tab is visible by the next frame. */
   onHidden(callback: () => void): () => void;
 }
 /** Runs the injected representative workload once per frame. Without work, auto
  * stays full with valid=false and reason "no workload yet"; never cache an idle lobby.
  * Discard ten initial callbacks so lobby paint/JIT warm-up cannot set the verdict. */
-export function runDetailBenchmark(source: BenchmarkSource, work?: () => void): {
+export function runDetailBenchmark(source: BenchmarkSource, work?: () => void, options: { durationMs?: number; timeoutMs?: number; warmupFrames?: number } = {}): {
   result: Promise<FrameSample>;
   cancel(): void;
 } {
-  return runFrameSample(source, work, BENCHMARK_FRAME_COUNT);
+  return runFrameSample(source, work, BENCHMARK_FRAME_COUNT, options);
 }
 export interface IdleCadence { median: number; refreshRate: number }
 /** D-113: short idle display probe; never a workload verdict. Invalid probes return null. */
@@ -68,30 +71,39 @@ export function probeIdleCadence(source: BenchmarkSource): {
       ? { median: decision.median, refreshRate: detailRefreshRate(decision.median) } : null;
   }) };
 }
-function runFrameSample(source: BenchmarkSource, work: (() => void) | undefined, count: number): {
+function runFrameSample(source: BenchmarkSource, work: (() => void) | undefined, count: number, options: { durationMs?: number; timeoutMs?: number; warmupFrames?: number } = {}): {
   result: Promise<FrameSample>; cancel(): void;
 } {
+  if (options.timeoutMs !== undefined && (!source.setTimer || !source.clearTimer)) throw new Error('Benchmark timeout requires a timer source');
   const frameTimes: number[] = [];
-  let warmup = BENCHMARK_WARMUP_FRAMES;
+  let warmup = options.warmupFrames ?? BENCHMARK_WARMUP_FRAMES;
+  let started: number | undefined;
+  let timer: unknown;
+  let fail: (error: unknown) => void = () => undefined;
   let previous: number | undefined;
   let handle: unknown;
   let done = false;
+  const isDone = (): boolean => done;
   let unsubscribe = () => { /* Installed before requesting frames. */ };
   let hidden = source.hidden();
   let finish: (sample: FrameSample) => void = () => { /* Installed before requesting a frame. */ };
-  const result = new Promise<FrameSample>(resolve => { finish = resolve; });
-  function complete(): void {
+  const result = new Promise<FrameSample>((resolve, reject) => { finish = resolve; fail = reject; });
+  function complete(error?: unknown, failed = false): void {
     if (done) return;
     done = true;
     source.cancel(handle);
+    if (timer !== undefined) source.clearTimer?.(timer);
     unsubscribe();
-    finish({ frameTimes, hidden });
+    if (failed) fail(error); else finish({ frameTimes, hidden });
   }
   function frame(now: number): void {
     if (done) return;
     hidden ||= source.hidden();
     if (hidden) { complete(); return; }
-    work?.();
+    started ??= now;
+    try { work?.(); } catch (error) { complete(error, true); return; }
+    if (isDone()) return;
+    if (options.durationMs !== undefined && now - started >= options.durationMs) { complete(); return; }
     if (warmup > 0) {
       warmup--;
       handle = source.request(frame);
@@ -99,12 +111,15 @@ function runFrameSample(source: BenchmarkSource, work: (() => void) | undefined,
     }
     if (previous !== undefined) frameTimes.push(now - previous);
     previous = now;
-    if (frameTimes.length === count) complete();
+    if (options.durationMs === undefined && frameTimes.length === count) complete();
     else handle = source.request(frame);
   }
   unsubscribe = source.onHidden(() => { hidden = true; complete(); });
   if (!work) { done = true; unsubscribe(); finish({ frameTimes, hidden, noWorkload: true }); }
   else if (hidden) { complete(); unsubscribe(); }
-  else handle = source.request(frame);
+  else {
+    if (options.timeoutMs !== undefined) timer = source.setTimer?.(complete, options.timeoutMs);
+    handle = source.request(frame);
+  }
   return { result, cancel(): void { hidden = true; complete(); } };
 }

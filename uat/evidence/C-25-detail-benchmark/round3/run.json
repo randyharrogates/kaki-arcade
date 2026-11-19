@@ -1,0 +1,179 @@
+{
+  "slice": "C-25-detail-benchmark",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- C-25-detail-benchmark --phones 1 --out round3",
+  "commit": "ead6f10dd447bca360ec4b205dfa395d1211980c",
+  "viewports": [
+    "1920×1080",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1300.7490420000004,
+      "status": "completed"
+    },
+    {
+      "name": "Join Benchmark",
+      "ms": 333.0462499999999,
+      "status": "completed"
+    }
+  ],
+  "joins": [
+    {
+      "name": "Benchmark",
+      "ms": 141.46391600000015
+    }
+  ],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-auto-starting-1920-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-auto-starting-1920-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-auto-starting-1920-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-auto-ready-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-auto-ready-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-cached-ready-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-cached-ready-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-slow-starting-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-slow-ready-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-slow-ready-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-explicit-full-ready-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-explicit-full-ready-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-no-scene-ready-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-no-scene-ready-1280.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "04-strip-auto-starting-1920.jpg",
+    "05-host-auto-ready-1920.jpg",
+    "06-host-auto-ready-1280.jpg",
+    "07-host-cached-ready-1920.jpg",
+    "08-host-cached-ready-1280.jpg",
+    "09-host-slow-starting-1920.jpg",
+    "10-host-slow-ready-1920.jpg",
+    "11-host-slow-ready-1280.jpg",
+    "12-host-explicit-full-ready-1920.jpg",
+    "13-host-explicit-full-ready-1280.jpg",
+    "14-host-no-scene-ready-1920.jpg",
+    "15-host-no-scene-ready-1280.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "04-strip-auto-starting-1920.jpg",
+      "bytes": 418636
+    },
+    {
+      "file": "05-host-auto-ready-1920.jpg",
+      "bytes": 113309
+    },
+    {
+      "file": "06-host-auto-ready-1280.jpg",
+      "bytes": 52559
+    },
+    {
+      "file": "07-host-cached-ready-1920.jpg",
+      "bytes": 113442
+    },
+    {
+      "file": "08-host-cached-ready-1280.jpg",
+      "bytes": 52559
+    },
+    {
+      "file": "09-host-slow-starting-1920.jpg",
+      "bytes": 113243
+    },
+    {
+      "file": "10-host-slow-ready-1920.jpg",
+      "bytes": 113407
+    },
+    {
+      "file": "11-host-slow-ready-1280.jpg",
+      "bytes": 52445
+    },
+    {
+      "file": "12-host-explicit-full-ready-1920.jpg",
+      "bytes": 113445
+    },
+    {
+      "file": "13-host-explicit-full-ready-1280.jpg",
+      "bytes": 52514
+    },
+    {
+      "file": "14-host-no-scene-ready-1920.jpg",
+      "bytes": 113445
+    },
+    {
+      "file": "15-host-no-scene-ready-1280.jpg",
+      "bytes": 52514
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1693
+    },
+    {
+      "file": "detail.json",
+      "bytes": 1883
+    },
+    {
+      "file": "run.json",
+      "bytes": 3866
+    }
+  ],
+  "totalBytes": 1368997,
+  "maxBytes": 12582912
+}

@@ -1,0 +1,117 @@
+{
+  "slice": "C-25-detail-benchmark",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- C-25-detail-benchmark --phones 1 --out round1",
+  "commit": "939277f093948d74a0b15ec134f10dbcfaab96ce",
+  "viewports": [
+    "1920×1080",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1835.9102919999996,
+      "status": "completed"
+    },
+    {
+      "name": "Join Benchmark",
+      "ms": 575.5294590000012,
+      "status": "completed"
+    }
+  ],
+  "joins": [
+    {
+      "name": "Benchmark",
+      "ms": 184.96041699999842
+    }
+  ],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-auto-starting-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-auto-starting-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-auto-ready.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-slow-starting-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-slow-starting-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-slow-ready.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-auto-starting-1920.jpg",
+    "02-host-auto-starting-1280.jpg",
+    "03-host-auto-ready.jpg",
+    "04-host-slow-starting-1920.jpg",
+    "05-host-slow-starting-1280.jpg",
+    "06-host-slow-ready.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-auto-starting-1920.jpg",
+      "bytes": 113243
+    },
+    {
+      "file": "02-host-auto-starting-1280.jpg",
+      "bytes": 58103
+    },
+    {
+      "file": "03-host-auto-ready.jpg",
+      "bytes": 52568
+    },
+    {
+      "file": "04-host-slow-starting-1920.jpg",
+      "bytes": 113243
+    },
+    {
+      "file": "05-host-slow-starting-1280.jpg",
+      "bytes": 58103
+    },
+    {
+      "file": "06-host-slow-ready.jpg",
+      "bytes": 52494
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1143
+    },
+    {
+      "file": "detail.json",
+      "bytes": 522
+    },
+    {
+      "file": "run.json",
+      "bytes": 2377
+    }
+  ],
+  "totalBytes": 451833,
+  "maxBytes": 12582912
+}

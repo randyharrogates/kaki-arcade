@@ -1,0 +1,16 @@
+[
+  {
+    "slow": false,
+    "detail": "full",
+    "assets": "full",
+    "atlas": "http://127.0.0.1:5330/@fs/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-25/assets/dist/peek-poker-cards-0-full.0c83ba8a1ee7ff66.webp",
+    "costMs": "1117.5"
+  },
+  {
+    "slow": true,
+    "detail": "lower",
+    "assets": "half",
+    "atlas": "http://127.0.0.1:5330/@fs/Users/randy/projects/personal/web-apps/kaki-arcade-wt/C-25/assets/dist/peek-poker-cards-0-half.568e63bf3d418ca3.webp",
+    "costMs": "1071.7000000476837"
+  }
+]

@@ -212,6 +212,7 @@ describe('readSources', () => {
       'option-metrics.ts',
       'phone-placement-types.ts',
       'phone-placement.ts',
+      'presentation.ts',
       'private-placement.ts',
       'purity.ts',
       'settings.ts',

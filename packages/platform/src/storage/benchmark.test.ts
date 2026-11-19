@@ -33,12 +33,12 @@ it('PERF-002 invalid samples cannot be cached', () => {
   for (const frameTimes of [[], [NaN], [Infinity], [0], [-1]]) expect(decide(frameTimes).valid).toBe(false);
   expect(decideDetail({ frameTimes: [10], hidden: true }).valid).toBe(false);
 });
-function source(work: (() => void) | undefined = () => { /* Test adapter has no work here. */ }) {
+function source(work: (() => void) | undefined = () => { /* Test adapter has no work here. */ }, options: Parameters<typeof runDetailBenchmark>[2] = {}) {
   let callback: (timestamp: number) => void = () => { /* Test adapter has no work here. */ };
   let time = 0; let hidden = false; let cancelled = 0; let onHidden = () => { /* Test adapter has no work here. */ };
   const runner = runDetailBenchmark({ request(cb) { callback = cb; return 1; },
     cancel() { cancelled++; }, hidden: () => hidden,
-    onHidden(cb) { onHidden = cb; return () => { onHidden = () => { /* Test adapter has no work here. */ }; }; } }, work);
+    onHidden(cb) { onHidden = cb; return () => { onHidden = () => { /* Test adapter has no work here. */ }; }; } }, work, options);
   return { runner, tick(dt = 1000 / 60) { time += dt; callback(time); },
     hide() { hidden = true; onHidden(); }, show() { hidden = false; }, cancelled: () => cancelled };
 }
@@ -90,4 +90,18 @@ it('PERF-002 D-113 caches idle cadence independently of workload and reuses jitt
     expect(createDetailMeasurement(decideDetail({ frameTimes: [], hidden: false }), idle, 'TV', display)).toBeNull();
     expect(createDetailMeasurement(decision, null, 'TV', display)).toBeNull();
   }
+});
+
+it('PERF-002 duration sampling keeps drawing beyond 120 intervals on fast displays', async () => {
+  let draws = 0;
+  const f = source(() => { draws++; }, { durationMs: 1000, warmupFrames: 0 });
+  for (let i = 0; i <= 1000; i++) f.tick(1);
+  expect((await f.runner.result).frameTimes.length).toBeGreaterThan(120);
+  expect(draws).toBe(1001);
+});
+it('PERF-002 workload throws reject and release sampling', async () => {
+  const f = source(() => { throw new Error('draw'); });
+  f.tick();
+  await expect(f.runner.result).rejects.toThrow('draw');
+  expect(f.cancelled()).toBe(1);
 });

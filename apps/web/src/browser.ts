@@ -1,3 +1,4 @@
+import { prepareDetail } from './detail-preparation';
 import { hostCounts } from './counts';
 import { viewChannel } from './view-channel';
 import { createSessionAdapter, animationFrames } from './session-adapter';
@@ -70,6 +71,15 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
   const links = sessionLinks();
   const session = createSessionAdapter({
     counts,
+    async detail(id, screen, signal) {
+      const start = performance.now();
+      const detail = await prepareDetail(id, screen, undefined, signal);
+      if (import.meta.env.DEV) {
+        document.documentElement.dataset.detailPreparationMs = String(performance.now() - start);
+        document.documentElement.dataset.chosenDetail = detail;
+      }
+      return detail;
+    },
     load: id => loadSessionGame(id, loader), prepare: prepareSession, assets: loadSessionAssets,
     transport: links.transport,
     frames: animationFrames(callback => requestAnimationFrame(callback), handle => { cancelAnimationFrame(handle); }),

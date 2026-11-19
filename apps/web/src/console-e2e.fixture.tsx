@@ -29,3 +29,33 @@ export const consoleE2e: GameModule<State, Record<string, never>, { steps: numbe
 export function ConsoleE2eScreen({ view }: { view: { steps: number; total: number }; width: number; height: number }) {
   return <main class="screen room-status" aria-label="Console test game"><h1>Console test</h1><p>Steps <output data-console-step>{view.steps}</output></p><p>Inputs <output data-console-total>{view.total}</output></p></main>;
 }
+
+// Development-only host presentation exercises the same Start path as installed games.
+ConsoleE2eScreen.loadBenchmarkAssets = async (detail: 'full' | 'half'): Promise<unknown> => {
+  const url = new URL('../../../assets/dist/manifest.json', import.meta.url);
+  const response = await fetch(url);
+  if (!response.ok) throw Error('Benchmark atlas manifest unavailable');
+  const manifest = await response.json() as { atlases: { full: { file: string }; half: { file: string } }[] };
+  const atlas = manifest.atlases[0]; if (!atlas) throw Error('Benchmark atlas unavailable');
+  const image = new Image(); image.src = new URL(atlas[detail].file, url).href;
+  await image.decode();
+  document.documentElement.dataset.benchmarkAssets = detail;
+  document.documentElement.dataset.benchmarkAtlas = image.src;
+  return image;
+};
+ConsoleE2eScreen.benchmarkScene = (target: HTMLElement, options: { width: number; height: number; assets: unknown }) => {
+  document.documentElement.dataset.benchmarkRuns = String(Number(document.documentElement.dataset.benchmarkRuns ?? 0) + 1);
+  const canvas = document.createElement('canvas'); canvas.width = options.width; canvas.height = options.height; target.append(canvas);
+  const context = canvas.getContext('2d');
+  return { draw() {
+    if (options.assets instanceof HTMLImageElement) context?.drawImage(options.assets, 0, 0, canvas.width, canvas.height);
+    context?.getImageData(0, 0, 1, 1); // Force the backing-size drawing work each frame.
+    if (import.meta.env.DEV && new URLSearchParams(location.search).has('benchmark-slow')) {
+      const end = performance.now() + 25; while (performance.now() < end) { /* Development workload. */ }
+    }
+  }, destroy() { canvas.remove(); } };
+};
+
+const fixtureScene = ConsoleE2eScreen.benchmarkScene;
+Object.defineProperty(ConsoleE2eScreen, 'benchmarkScene', { get: () =>
+  new URLSearchParams(location.search).has('benchmark-no-scene') ? undefined : fixtureScene });

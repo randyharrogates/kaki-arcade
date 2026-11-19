@@ -110,3 +110,4 @@ export {
   jsonSize,
   utf8Length,
 } from './json';
+export type { BenchmarkScene, GamePresentation } from './presentation';

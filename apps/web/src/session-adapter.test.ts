@@ -6,7 +6,7 @@ import type { AdapterOptions } from './session-adapter';
 import { hostCounts } from './counts';
 import type { SessionDisplay } from './session-adapter';
 
-function fixture(onDisplay?: (display: SessionDisplay | null) => void, counts?: AdapterOptions['counts'], minPlayers = 1) {
+function fixture(onDisplay?: (display: SessionDisplay | null) => void, counts?: AdapterOptions['counts'], minPlayers = 1, detail?: AdapterOptions['detail']) {
   let room = createRoom();
   room = applyPhoneEvent(room, { connectionId: 'a', deviceId: 'd' }, { type: 'join', name: 'Fern', seatToken: '1'.repeat(32) }, 0).state;
   const calls: string[] = [];
@@ -27,7 +27,7 @@ function fixture(onDisplay?: (display: SessionDisplay | null) => void, counts?: 
   const load = vi.fn(() => { calls.push('load'); return Promise.resolve({ game }); });
   const assets = vi.fn(() => { calls.push('assets'); return Promise.resolve(); });
   const layouts = vi.fn(() => true);
-  const adapter = createSessionAdapter({ ...(counts ? { counts } : {}), load, prepare: () => Promise.resolve({ context: { data: {}, saved: null, teams: false }, settings: {} }), assets, seed: () => 7,
+  const adapter = createSessionAdapter({ ...(detail ? { detail } : {}), ...(counts ? { counts } : {}), load, prepare: () => Promise.resolve({ context: { data: {}, saved: null, teams: false }, settings: {} }), assets, seed: () => 7,
     display: next => { display = next; onDisplay?.(next); }, event: e => { events.push(e); },
     frames: { subscribe(fn) { frame = fn; staleFrames.push(fn); return endFrames; } },
     transport: { sendLayout: layouts, sendPrivateView: () => true, fence: () => undefined, status: () => undefined, subscribe(fn) { receive = fn; return endTransport; } },
@@ -180,4 +180,30 @@ it('RZ-013 quit while short of players saves once through results', async () => 
     await vi.waitFor(() => { expect(save).toHaveBeenCalledOnce(); });
     expect(f.events.filter(event => event.type === 'results')).toHaveLength(1);
   } finally { f.adapter.stop(); save.mockRestore(); }
+});
+
+it('PERF-002 prepares assets then detail then mount/Ready then frames, mapping Lower to half', async () => {
+  const order: string[] = [];
+  const detail = vi.fn(() => { order.push('detail'); expect(f.staleFrames).toHaveLength(0); return Promise.resolve('lower' as const); });
+  const f = fixture(display => { if (display?.ready) { expect(f.staleFrames).toHaveLength(0); order.push('mount'); expect(display.detail).toBe('half'); display.ready(); order.push('ready'); } }, undefined, 1, detail);
+  const Screen = { mount: vi.fn() };
+  f.load.mockImplementation(() => Promise.resolve({ game: f.game, Screen }));
+  f.assets.mockImplementation(() => { order.push('assets'); return Promise.resolve(); });
+  await f.adapter.start('test', f.room); f.frame(17); order.push('frames');
+  expect(order).toEqual(['assets', 'detail', 'mount', 'ready', 'frames']);
+  expect(f.staleFrames).toHaveLength(1); f.adapter.stop();
+});
+it('PERF-002 skips detail without a Screen', async () => {
+  const detail = vi.fn(() => Promise.resolve('full' as const));
+  const f = fixture(undefined, undefined, 1, detail);
+  await f.adapter.start('test', f.room); expect(detail).not.toHaveBeenCalled(); f.adapter.stop();
+});
+it('PERF-002 cancellation during detail aborts and subscribes no frames', async () => {
+  let signal: AbortSignal | undefined;
+  const detail = vi.fn((_id: string, _screen: unknown, abort: AbortSignal) => { signal = abort; return new Promise<'full'>((_resolve, reject) => { abort.addEventListener('abort', () => { reject(Error('Cancelled')); }); }); });
+  const f = fixture(undefined, undefined, 1, detail);
+  f.load.mockImplementation(() => Promise.resolve({ game: f.game, Screen: { mount: vi.fn() } }));
+  const pending = f.adapter.start('test', f.room), rejected = expect(pending).rejects.toThrow('Cancelled');
+  await vi.waitFor(() => { expect(detail).toHaveBeenCalled(); }); f.adapter.stop(); await rejected;
+  expect(signal?.aborted).toBe(true); expect(f.staleFrames).toHaveLength(0);
 });

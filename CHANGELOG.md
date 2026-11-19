@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — C-25: detail benchmark in Start preparation
+
+- PERF-002: optional host benchmark scene in the game presentation contract (ARCHITECTURE §3); about 1 s off-screen behind "Starting…", judged by D-111/D-113, remembered per game on the TV by browser, screen size and pixel ratio (D-289); slow TVs that time out get Lower; invalid samples are never cached; games without a scene stay Full on Auto.
+- PERF-023: on Lower, half atlases are decoded before Ready.
+- Not yet: Tabao Rush's scene (T-17); TV run; detail setting UI (C-13 part 2).
+
 ## 2026-11-19 — T-18: Tabao Rush served dishes on the TV (in progress)
 
 - TR-040, TR-041: completed dishes draw from their recipe container and `composition` layers; kaya toast and kopi/teh use `servedComposition` with the actual drink; partial and dirty containers draw only present contents with `contentCompositions` and `portionScales`; layers sort by `order`, explicit anchors win, all anchors full-resolution at both details (D-286).

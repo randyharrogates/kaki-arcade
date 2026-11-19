@@ -3,25 +3,26 @@ import type { hostCounts } from './counts';
 import { prepareSetup, prepareMatch } from './session-loading';
 import type { PreparedSetup } from './game-setup';
 import { createSession, gamePlayers } from '@kaki/platform';
-import type { GameModule, InitContext, JsonValue, RoomState, SessionEvent, SessionFrames, SessionTransport, Sound } from '@kaki/platform';
+import type { GameModule, InitContext, JsonValue, RoomState, SessionEvent, SessionFrames, SessionTransport, Sound, GamePresentation } from '@kaki/platform';
 import { createInputBuffer } from '@kaki/sim-core';
 import { INPUT_STALE_STEPS, SEQ_MODULO } from '@kaki/protocol';
 import type { ComponentType } from 'preact';
 
 // The registry erases the individual module's state/settings types at this boundary only.
 export type LoadedGame = GameModule<unknown, object>;
-export interface ScreenProps { view: never; width: number; height: number; sound?: Sound | undefined; soundHistory?: { previous: unknown } | undefined }
-export interface MountedHostScreen {
+export interface ScreenProps { view: never; width: number; height: number; detail?: 'full' | 'half'; sound?: Sound | undefined; soundHistory?: { previous: unknown } | undefined }
+export interface MountedHostScreen extends GamePresentation<HTMLElement, unknown> {
   mount(root: HTMLElement, options: ScreenProps): { ready: Promise<void>; update(options: ScreenProps): void; destroy(): void };
 }
-export type HostScreen = ComponentType<ScreenProps> | MountedHostScreen;
-export interface SessionDisplay { gameId: string; view: unknown; Screen?: HostScreen; ready?: (error?: unknown) => void; soundHistory?: { previous: unknown }; paused?: boolean; finalScreen?: boolean; results?: Extract<SessionEvent, { type: 'results' }>['results'] }
+export type HostScreen = (ComponentType<ScreenProps> & GamePresentation<HTMLElement, unknown>) | MountedHostScreen;
+export interface SessionDisplay { detail?: 'full' | 'half'; gameId: string; view: unknown; Screen?: HostScreen; ready?: (error?: unknown) => void; soundHistory?: { previous: unknown }; paused?: boolean; finalScreen?: boolean; results?: Extract<SessionEvent, { type: 'results' }>['results'] }
 export function hostScreen(display: SessionDisplay | null, lobby: boolean): string { return display ? display.results ? display.finalScreen ? 'game' : 'results' : 'game' : lobby ? 'lobby' : 'picker'; }
 export interface AdapterOptions {
   counts?: Pick<ReturnType<typeof hostCounts>, 'begin' | 'frame' | 'end' | 'stop' | 'add'>;
   load(id: string): Promise<{ game: LoadedGame; Screen?: HostScreen; viewKey?: (view: unknown) => unknown; finalScreen?: boolean }>;
   prepare(game: LoadedGame, seed: number, teams?: boolean): Promise<{ context: InitContext; settings: object }>;
   assets(game: LoadedGame, state: unknown): Promise<void>;
+  detail?(id: string, screen: HostScreen, signal: AbortSignal): Promise<'full' | 'lower'>;
   transport: SessionTransport;
   frames: SessionFrames;
   seed(): number;
@@ -34,6 +35,7 @@ export function createSessionAdapter(o: AdapterOptions) {
   const setupVersions = new Map<string, number>();
   const pending = new Map<string, ReturnType<AdapterOptions['load']>>();
   let generation = 0;
+  let detailAbort: AbortController | undefined;
   let cancelReady: (() => void) | undefined;
   let latestRoom: RoomState | undefined;
   let runner: ReturnType<typeof createSession> | undefined;
@@ -49,6 +51,7 @@ export function createSessionAdapter(o: AdapterOptions) {
     return loaded;
   }
   function stop(): void {
+    detailAbort?.abort(); detailAbort = undefined;
     cancelReady?.(); cancelReady = undefined;
     o.counts?.stop();
     revealResults = undefined; generation++; stopFrames?.(); stopFrames = undefined; stopTransport?.(); stopTransport = undefined;
@@ -73,6 +76,7 @@ export function createSessionAdapter(o: AdapterOptions) {
     },
     async start(gameId: string, room: RoomState, settings?: object): Promise<void> {
       stop(); resultsEnded = false; latestRoom = room; const current = generation;
+      const controller = new AbortController(); detailAbort = controller;
       const loaded = await prefetch(gameId);
       const seed = o.seed();
       const prepared = settings ? await prepareMatch(loaded.game, seed, setups.get(gameId) ?? await prepareSetup(loaded.game), settings) : await o.prepare(loaded.game, seed, loaded.game.meta.teams === 'required' || (loaded.game.meta.teams === 'optional' && gamePlayers(loaded.game.meta, room).length > 1 && gamePlayers(loaded.game.meta, room).every(p => p.team !== null)));
@@ -113,6 +117,13 @@ export function createSessionAdapter(o: AdapterOptions) {
       if (setup.failed || next.state === undefined) { stop(); throw new Error('Session setup failed'); }
       try { await o.assets(loaded.game, next.state); }
       catch (error) { if (current === generation) stop(); throw error; }
+      if (current !== generation) throw new Error('Cancelled');
+      if (loaded.Screen && o.detail) {
+        try {
+          const detail = await o.detail(gameId, loaded.Screen, controller.signal);
+          display = { ...display, detail: detail === 'lower' ? 'half' : 'full' };
+        } catch (error) { if (current === generation) stop(); throw error; }
+      }
       if (current !== generation) throw new Error('Cancelled');
       next.updateRoom(latestRoom);
       if (isFailed()) { stop(); throw new Error('Session setup failed'); }
