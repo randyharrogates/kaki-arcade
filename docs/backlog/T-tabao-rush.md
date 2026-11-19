@@ -19,7 +19,8 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 | T-05 | Orders, patience, score and tips, stars, scaling by player count, round timer | TR-001, TR-004, TR-005, TR-006 | T-04 | 1 | merged |
 | T-06 | Level format and loader: collision map, station anchors, twists; a validator that every level fits the screen with no scrolling | TR-050, TR-057 | T-01 | 1 | merged |
 | T-07 | Big-screen renderer: baked background, sprites from atlases, body plus head, interpolation for everything not player-controlled, HUD and order cards | TR-001, TR-004, TR-030, TR-031, TR-061, TR-062, PERF-001 | T-05, S-04, A-02, F-06 | 2 | merged 2026-11-19, in progress (review 8 clean; closure blocked on a production PERF-001 run; step icons A-11, cue sprite A-05, heads beyond the cap and picker T-09; review 8 should-fixes open) |
-| T-08 | Controller layout: stick, A, B, X, Y, Start, optional shake for the wok | TR-020, CTRL-007 | T-01, K-06 | 2 | todo |
+| T-08 | Controller layout: stick, A, B, X, Y, Start; the optional wok shake follows as T-08b once K-06 lands (D-280) | TR-020 | T-01, K-04 | 2 | todo |
+| T-08b | Optional shake for the wok on the Tabao Rush controller, with the button as the fallback | TR-020, CTRL-007 | T-08, K-06 | 3 | todo |
 | T-09 | Cook picker before a round: 8 characters, no two players the same | TR-064 | T-07, A-03 | 2 | todo |
 | T-10 | First-run tutorial, skippable | TR-055 | T-07 | 2 | todo |
 | T-17 | One level, one dish, 1 and 8 players, end to end in the real console, with a quiet-machine performance run | TR-051, TR-056, PERF-001, PERF-010, PERF-024 | T-07 to T-10, C-15 | 3 | todo |
