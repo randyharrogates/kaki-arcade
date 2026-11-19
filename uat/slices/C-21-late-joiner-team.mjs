@@ -117,6 +117,9 @@ export default async function lateTeam(h) {
   await until(async () => (await view()).phase === 'scoreboard');
   assert.equal((await view()).teamScores[team], 100);
   assert.equal(await h.host.locator('.rz-team-panel').count(), 2);
+  // The TV clock is paused: run it past the staggered count-up so the still shows settled totals.
+  await h.host.clock.runFor(3000); await leader.waitForTimeout(30);
+  assert.equal((await view()).phase, 'scoreboard');
   await shot('team-total-scoreboard-tv'); await shot('team-total-scoreboard-phone', newcomer);
   await h.host.clock.resume();
 }
