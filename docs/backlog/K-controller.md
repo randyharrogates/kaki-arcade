@@ -45,7 +45,7 @@ lock on iPhone Safari and pull-to-refresh on Android Chrome.
 | K-07 | Controller UAT on emulated phones and on Randy's real iPhone and Android | CTRL-001 to CTRL-008 | K-04 to K-06 | 3 | todo |
 | K-10 | Selected face-down card: controller-kit `layout.css` selected state for `.ka-layout-card-back` keeps the white inset frame and adds a centred tick (34 px cream disc, 21 px ink tick), crossfading in from 0.95 over `fast`; DOM contrast test; P-07 phone stills re-shot at 667 and 844 (D-218) | PP-005 | K-09, P-07 | 3 | done (merged 2026-11-19; D-269; K-10's own stills at 667 × 375 and 844 × 390 replace the P-07 re-shoot) |
 | K-11 | Could not connect: after 15 s on "Connecting to the host…" the phone shows "This phone could not connect to the big screen. Connect it to the same Wi-Fi as the big screen and scan again." with a Try again button of at least 55 px (D-250) | REL-006 | C-08 | 3 | done (merged 2026-11-19; D-267) |
-| K-11 | Controller fills the screen with no browser bar: on Android Chrome the first touch in landscape enters fullscreen (navigation UI hidden) and turning back to portrait leaves it; a web app manifest with `display: fullscreen` and landscape orientation so "Add to Home screen" opens bar-free on Android and standalone on iPhone (D-297) | CTRL-004 | K-01 | 3 | todo |
+| K-12 | Controller fills the screen with no browser bar: on Android Chrome the first touch in landscape enters fullscreen (navigation UI hidden) and turning back to portrait leaves it; a web app manifest with `display: fullscreen` and landscape orientation so "Add to Home screen" opens bar-free on Android and standalone on iPhone (D-297) | CTRL-004 | K-01 | 3 | todo |
 
 ### K-05 follow-up for C-15 (from the K-05 review, 2026-11-17)
 
