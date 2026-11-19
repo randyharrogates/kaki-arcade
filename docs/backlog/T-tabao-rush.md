@@ -44,7 +44,7 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 | ID | Issue | Requirements | Depends on | Wave | Status |
 |---|---|---|---|---|---|
 | T-14 | Versus: 3 arenas side by side on one screen, team colour themes, normalised scoring, the cross-kitchen interactions chosen on board 3 | TR-052, TR-058, PLAT-025 | T-17, C-11, G-03 | 3 | todo |
-| T-18 | The renderer draws served dishes from the composition fields (portion anchors, containment footprints, outline flags) in `assets/src/pipeline.json`; half-detail metadata anchors are not halved (ART-PIPELINE §10) | TR-041, TR-040 | T-07, A-10 | 3 | todo |
+| T-18 | The renderer draws served dishes from the composition fields (portion anchors, containment footprints, outline flags) in `assets/src/pipeline.json`; half-detail metadata anchors are not halved (ART-PIPELINE §10) | TR-041, TR-040 | T-07, A-10 | 3 | merged 2026-11-19, in progress (closure owes a legible held dish and the 3 m TV check; D-286) |
 
 ## Carried from reviews
 

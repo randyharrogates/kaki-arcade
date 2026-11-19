@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/prefer-for-of -- Indexed hot loops avoid iterator allocation. */
 import { nameText, displayName, nameInset } from './text';
-import { createItemModels } from './item-model';
+import { createItemModels, itemDrawCap } from './item-model';
 import { ViewModel, colourFor, tintFor } from './view-model';
 import { createPanels } from './panels';
 // Registers renderer.prepare (PixiJS 8 adds it only through this extension), used to upload every texture before play.
@@ -31,11 +31,12 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
   root.append(app.canvas); app.canvas.setAttribute('aria-label', 'Tabao Rush kitchen');
   const stage = new Container(); stage.sortableChildren=false; app.stage.addChild(stage);
   const background = new Sprite(); stage.addChild(background); background.zIndex=-1;
-  const pool = new FixedPool<Node>(8 * 5 + ITEM_CAP * 6 + (initial.view as View).stations.length, () => {
+  const ITEM_DRAW_CAP=itemDrawCap(assets);
+  const pool = new FixedPool<Node>(8 * 5 + ITEM_CAP * (ITEM_DRAW_CAP+1) + (initial.view as View).stations.length, () => {
     const sprite = new Sprite(); return { depth:0, sprite, x: 0, y: 0, oldX: 0, oldY: 0, controlled: false, baseScale:1 };
   });
   const panels=createPanels(stage,assets,(initial.view as View).stations.length);
-  const itemModels=createItemModels(assets);
+  const itemModels=createItemModels(assets,ITEM_DRAW_CAP,pool);
   const cookClips=new Map<string,Animation>(),maskNames=new Map<string,string>();
   for(const [name,clip] of assets.animations)if(name.startsWith('tabao-rush-cook-body:')){cookClips.set(clip.action,clip);if(!clip.action.endsWith('-mask'))maskNames.set(clip.action,clip.action+'-mask');}
   const headFrames=Array.from({length:8},()=>({name:'',frames:Array<Packed|undefined>(8),masks:Array<Packed|undefined>(8)}));
@@ -47,15 +48,17 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
   let viewportWidth=-1,viewportHeight=-1;
   let backgroundTexture: Texture | undefined;
   const distances=new Float64Array(8),poseStart=new Float64Array(8),poseActions=Array<string>(8).fill('idle');
-  const vm=new ViewModel();
+  const vm=new ViewModel(pool.entries.length);
   function setDepth(node:Node,depth:number){node.depth=depth;}
   function worldX(x:number) { return projectX(x,view.level.width); }
   function worldY(y:number) { return projectY(y,view.level.height); }
-  function place(packed: Packed | undefined, x: number, y: number, anchor: string, scale = 1, tint?: number, controlled = false, identity=0) {
+  function place(packed: Packed | undefined, x: number, y: number, anchor: string | undefined, scale = 1, tint?: number, controlled = false, identity=0) {
     if (!packed) return;
-    const n = pool.take(); if(!n)return; const f = packed.frame, a = f.anchors[anchor] ?? f.anchor;
+    const n = pool.take(); if(!n)return; const f = packed.frame, a = (anchor===undefined?undefined:f.anchors[anchor]) ?? f.anchor;
     setDepth(n,y*10+pool.used/10000);if(!n.sprite.parent)stage.addChild(n.sprite); n.sprite.texture = packed.texture; n.sprite.visible = true; n.sprite.alpha=1;
+    // bakedOutline pixels already contain ink; item sprites receive no extra outline.
     n.baseScale=scale*assets.divisor;n.sprite.pivot.set(0,0);n.sprite.scale.set(n.baseScale);n.sprite.tint=tint ?? NEUTRAL_TINT;
+    // ART-PIPELINE §10: full-resolution source anchors (including nested anchors) at both details; scale before translation.
     n.x=x+(f.trim[0]-a[0])*scale;n.y=y+(f.trim[1]-a[1])*scale;
     const index=pool.used-1,slot=index*2,same=vm.ids[index]===identity;vm.ids[index]=identity; const oldX=vm.positions[slot],oldY=vm.positions[slot+1];n.oldX=same&&oldX!==undefined&&Number.isFinite(oldX)?oldX:n.x;n.oldY=same&&oldY!==undefined&&Number.isFinite(oldY)?oldY:n.y;vm.positions[slot]=n.x;vm.positions[slot+1]=n.y;n.controlled=controlled;
     n.sprite.position.set(n.x, n.y);
@@ -115,7 +118,7 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
         if(hand && origin)handHeight=origin[1]-hand[1];
         const height=arcHeight(p)+handHeight*(1-p);
         const shadowFactor=1/(1+height/(TILE*0.5));
-        const shadow=place(assets.frames.get('shadow-0'),groundX,groundY,'origin',shadowFactor,undefined,false,item.id*8+8);
+        const shadow=place(assets.frames.get('shadow-0'),groundX,groundY,'origin',shadowFactor,undefined,false,item.id*(ITEM_DRAW_CAP+1)+ITEM_DRAW_CAP+1);
         if(shadow){shadow.sprite.alpha=shadowFactor;setDepth(shadow,0);}
         x=worldX(lerp(item.place.start.x,item.place.end.x,p)); y=worldY(lerp(item.place.start.y,item.place.end.y,p))-height;
       } else { x=worldX(item.place.tile%view.level.width+0.5); y=worldY(Math.floor(item.place.tile/view.level.width)+0.5);if(item.place.kind==='counter'){x+=21;y-=34;} }
@@ -124,19 +127,20 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
       if(item.place.kind==='held'){
         const index=cookIndex(item.place.cook);
         const cook=view.cooks[index];
-        for(let i=begin;i<pool.used;i++){const n=pool.entries[i];if(n && cook)setDepth(n,worldY(cook.y)*10+(animation(poseActions[index] ?? 'idle',DIRECTIONS[cook.facing],index)?.frame.metadata.handsInFront===false?-0.1:0.15));}
+        for(let i=begin;i<pool.used;i++){const n=pool.entries[i];if(n && cook)setDepth(n,worldY(cook.y)*10+(animation(poseActions[index] ?? 'idle',DIRECTIONS[cook.facing],index)?.frame.metadata.handsInFront===false?-0.1:0.15)+(i-begin)/10000);}
       }
     }
   }
   function drawItem(item:Item,x:number,y:number,controlled:boolean,counter:boolean){
     const model=itemModels(item);let fit=1,minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;
-    if(counter){for(let i=0;i<model.used;i++){const d=model.draws[i],f=d?.packed?.frame;if(!d||!f)continue;const left=d.x+(f.trim[0]-f.anchor[0])*d.scale,top=d.y+(f.trim[1]-f.anchor[1])*d.scale;minX=Math.min(minX,left);minY=Math.min(minY,top);maxX=Math.max(maxX,left+f.rect[2]*assets.divisor*d.scale);maxY=Math.max(maxY,top+f.rect[3]*assets.divisor*d.scale);}fit=Math.min(1,55/(maxX-minX),34/(maxY-minY));x-=(minX+maxX)*fit/2;y-=(minY+maxY)*fit/2;}
-    for(let i=0;i<model.used;i++){const draw=model.draws[i];if(draw)place(draw.packed,x+draw.x*fit,y+draw.y*fit,'centre',draw.scale*fit,undefined,controlled,item.id*8+i+1);}
+    if(counter){for(let i=0;i<model.used;i++){const d=model.draws[i],f=d?.packed?.frame;if(!d||!f)continue;const left=d.x+(f.trim[0]-f.anchor[0])*d.scale,top=d.y+(f.trim[1]-f.anchor[1])*d.scale;minX=Math.min(minX,left);minY=Math.min(minY,top);maxX=Math.max(maxX,left+f.rect[2]*d.scale);maxY=Math.max(maxY,top+f.rect[3]*d.scale);}fit=Math.min(1,55/(maxX-minX),34/(maxY-minY));x-=(minX+maxX)*fit/2;y-=(minY+maxY)*fit/2;}
+    for(let i=0;i<model.used;i++){const draw=model.draws[i];if(draw){const node=place(draw.packed,x+draw.x*fit,y+draw.y*fit,undefined,draw.scale*fit,undefined,controlled,item.id*(ITEM_DRAW_CAP+1)+i+1);if(node)setDepth(node,y*10+i/10000);}}
   }
   let publishedCards=-1,publishedOverflow=-1;
   function update(options:Options) {
     const next=options.view as View;
     if(next.level!==view.level || next.tick<view.tick){poseActions.fill('idle');poseStart.fill(next.tick);distances.fill(0);vm.positions.fill(NaN);}
+    const previousUsed=pool.used;
     heads=options.heads; previous=view; view=next; publishedAt=performance.now(); pool.reset();
     if(viewportWidth!==options.width||viewportHeight!==options.height){
     viewportWidth=options.width;viewportHeight=options.height;
@@ -178,7 +182,7 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
       if(panels.vm.dirty){const hud=`[${String(panels.vm.seconds)},${String(panels.vm.score)},${String(panels.vm.tips)},${String(panels.vm.stars)}]`;if(root.dataset.trHud!==hud)root.dataset.trHud=hud;}
       if(publishedOverflow!==pool.overflow){root.dataset.trPoolOverflow=String(pool.overflow);publishedOverflow=pool.overflow;}
     }
-    for(let i=0;i<pool.entries.length;i++){const n=pool.entries[i];if(n){n.sprite.visible=i<pool.used;if(i<pool.used&&n.sprite.zIndex!==n.depth)n.sprite.zIndex=n.depth;if(i>=pool.used&&n.sprite.parent)stage.removeChild(n.sprite);}}
+    for(let i=0;i<Math.max(previousUsed,pool.used);i++){const n=pool.entries[i];if(n){n.sprite.visible=i<pool.used;if(i<pool.used&&n.sprite.zIndex!==n.depth)n.sprite.zIndex=n.depth;if(i>=pool.used&&n.sprite.parent)stage.removeChild(n.sprite);}}
     // Only active pool nodes remain attached; Pixi sorting stays disabled.
     stage.sortableChildren=false;
     // Sort only if their current order is no longer valid.
@@ -199,7 +203,6 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
     panels.render(view.tick+(now-publishedAt)*60/1000,motion.matches);
     app.render(); frame=requestAnimationFrame(render);
   }
-  for(let i=0;i<pool.entries.length;i++){const n=pool.entries[i];if(n)stage.addChild(n.sprite);}
   if((import.meta as ImportMeta & {env:{DEV:boolean}}).env.DEV)root.dataset.trPoolCapacity=String(pool.entries.length);
   root.style.background=THEMES.console.background.colour;
   root.style.height="100%";

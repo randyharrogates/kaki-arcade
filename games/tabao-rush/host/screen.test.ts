@@ -8,7 +8,9 @@ import { loadLevel } from '../src/levels/loader';
 import { FULL_KITCHEN } from '../src/levels/catalogue';
 import { tabaoRush } from '../src/rules/game';
 import { projectX, projectY, TILE } from './model';
+import type { Assets, Packed } from './assets';
 import type { View } from './model';
+const assetConfig=vi.hoisted(()=>({override:undefined as Assets|undefined}));
 const apps=vi.hoisted(()=>({stages:[] as {children:{children:{zIndex:number;visible:boolean}[]}[]}[]}));
 const metrics=vi.hoisted(()=>({nodes:0,textures:0,rasters:0,writes:0,sorts:0,encodes:0,uploads:0}));
 vi.mock('pixi.js/prepare',()=>({}));
@@ -29,9 +31,9 @@ vi.mock('pixi.js',()=>{
 vi.mock('./assets',async()=>{
   const {Texture}=await import('pixi.js');
   const packed={texture:new Texture(),frame:{rect:[0,0,89,89],trim:[0,0],sourceSize:[89,89],anchor:[0,0],anchors:{root:[0,0],hands:[0,-55],head:[0,-89]},metadata:{handsInFront:true}}};
-  return {preload:async()=>({frames:new Map(['body','head-cap-e','head-cap-e-mask','item-chicken-raw','fire-0'].map(id=>[id,packed])),animations:new Map([['tabao-rush-effects:fire',{fps:1,frames:['fire-0']}],['tabao-rush-cook-body:idle',{action:'idle',fps:1,loop:true,directions:{e:['body']}}],['tabao-rush-cook-body:carry-walk',{action:'carry-walk',fps:1,loop:true,directions:{e:['body']}}]]),divisor:1,destroy(){}})};
+  return {preload:async()=>assetConfig.override ?? ({frames:new Map(['body','head-cap-e','head-cap-e-mask','item-chicken-raw','fire-0'].map(id=>[id,packed])),animations:new Map([['tabao-rush-effects:fire',{fps:1,frames:['fire-0']}],['tabao-rush-cook-body:idle',{action:'idle',fps:1,loop:true,directions:{e:['body']}}],['tabao-rush-cook-body:carry-walk',{action:'carry-walk',fps:1,loop:true,directions:{e:['body']}}]]),divisor:1,destroy(){}})};
 });
-afterEach(()=>vi.unstubAllGlobals());
+afterEach(()=>{vi.unstubAllGlobals();assetConfig.override=undefined;});
 it('drives the mounted update through changing cooks, items, station progress and panels without growing render storage (PERF-001)',async()=>{
   const drawn:string[]=[];
   const ctx=new Proxy({fillText:(value:string)=>{drawn.push(value);},measureText:(value:string)=>({width:value.length*8}),createLinearGradient:()=>({addColorStop(){}})}, {get(target,key){return key in target?target[key as keyof typeof target]:()=>{};}});
@@ -169,4 +171,32 @@ it('keeps real Pixi HUD drawn width equal to layout through score changes withou
   const source=new TextureSource({width:377,height:102});const texture=new Texture({source,dynamic:true});const sprite=new Sprite(texture);
   for(const width of [178,233,144,377,178]){sprite.didViewUpdate=false;setHudWidth(texture,width);expect(sprite.didViewUpdate).toBe(true);expect(sprite.width).toBe(width);expect(texture.frame.width).toBe(width);expect(source.width).toBe(377);}
   sprite.destroy();texture.destroy(true);
+});
+
+it('fits a composed counter dish in full-resolution coordinates with half-detail textures (TR-040, TR-041)',async()=>{
+  const {Texture}=await import('pixi.js');
+  const baseTexture=new Texture(),layerTexture=new Texture();
+  const base:Packed={texture:baseTexture,frame:{rect:[0,0,100,80],trim:[10,20],sourceSize:[100,80],anchor:[50,40],anchors:{},metadata:{}}};
+  const layer:Packed={texture:layerTexture,frame:{rect:[0,0,40,20],trim:[0,0],sourceSize:[40,20],anchor:[20,10],anchors:{},metadata:{bakedOutline:true}}};
+  assetConfig.override={frames:new Map<string,Packed>([
+    ['container-plate-clean',base],['portion-rice-cooked',layer],
+    ['dish-chicken-rice-plated',{...base,frame:{...base.frame,metadata:{composition:[{frame:'portion-rice-cooked',anchor:[80,10],order:1}]}}}],
+  ]),animations:new Map(),divisor:2,destroy(){}};
+  const ctx=new Proxy({measureText:()=>({width:0}),createLinearGradient:()=>({addColorStop(){}})},{get:(target,key)=>key in target?target[key as keyof typeof target]:()=>{}});
+  vi.stubGlobal('document',{fonts:{load:async()=>[],ready:Promise.resolve()},createElement:()=>({getContext:()=>ctx,toDataURL:()=>''})});
+  vi.stubGlobal('matchMedia',()=>({matches:false}));vi.stubGlobal('requestAnimationFrame',()=>1);vi.stubGlobal('cancelAnimationFrame',()=>{});
+  const {servedDishes}=await import('../dev/served-dishes.fixture');
+  const state=loadLevel(FULL_KITCHEN,707,[{id:'a',name:'A',seat:1,colour:'seat-1'}]).state;if(!state)throw new Error('Fixture');
+  const item=servedDishes()[0];if(!item)throw new Error('Dish');
+  const view={...tabaoRush.publicView(state) as View,items:[{...item,place:{kind:'counter' as const,tile:0}}]};
+  const {createScreen}=await import('./screen');
+  const screen=await createScreen({append(){},dataset:{},style:{}} as unknown as HTMLElement,{view,width:1920,height:1080},()=>false);
+  const stage=apps.stages.at(-1)?.children[0] as unknown as {children:{texture:unknown;position:{x:number;y:number};scale:{x:number};zIndex:number}[]};
+  const plate=stage.children.find(n=>n.texture===baseTexture),food=stage.children.find(n=>n.texture===layerTexture);
+  expect(plate).toBeDefined();expect(food).toBeDefined();
+  expect(plate?.scale.x).toBeCloseTo(0.68);expect(food?.scale.x).toBeCloseTo(0.68);
+  expect(plate?.position.x).toBeCloseTo(projectX(0.5,view.level.width)+21-17);
+  expect(plate?.position.y).toBeCloseTo(projectY(0.5,view.level.height)-34-10.2);
+  expect((food?.zIndex ?? 0)-(plate?.zIndex ?? 0)).toBeCloseTo(0.0001);
+  screen?.destroy();
 });

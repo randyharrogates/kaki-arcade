@@ -1,0 +1,52 @@
+{
+  "slice": "T-18-served-dishes",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node --expose-gc tools/perf/run.mjs tabao-rush-screen --phones 8 --slice T-18-served-dishes --out perf-8b",
+  "commit": "e4d33dda4e366e95d6bc3df0233027a1328e728a",
+  "viewports": [],
+  "steps": [
+    {
+      "name": "Eight cooks: real simulation",
+      "ms": 29994.477958000003,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [],
+  "screenshots": [],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "PERF.md",
+      "bytes": 2600
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 596
+    },
+    {
+      "file": "perf.json",
+      "bytes": 57298
+    },
+    {
+      "file": "run.json",
+      "bytes": 1055
+    }
+  ],
+  "totalBytes": 61586,
+  "maxBytes": 12582912
+}

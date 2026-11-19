@@ -3,7 +3,7 @@ import { Rectangle, Texture } from 'pixi.js';
 export interface Layer {frame:string;slot?:string;anchor?:[number,number];scale?:number;order:number}
 export interface Frame {
   rect: [number, number, number, number]; trim: [number, number]; sourceSize: [number, number]; anchor: [number, number];
-  anchors: Record<string, [number, number]>; metadata: { handsInFront?: boolean; reducedMotionFrame?: string; portionScales?: Record<string, number>; contentCompositions?: Record<string,Layer[]>; servedComposition?: {container:string;variants:Record<string,Layer[]>} };
+  anchors: Record<string, [number, number]>; metadata: { composition?: Layer[]; bakedOutline?: boolean; handsInFront?: boolean; reducedMotionFrame?: string; portionScales?: Record<string, number>; contentCompositions?: Record<string,Layer[]>; servedComposition?: {container:string;variants:Record<string,Layer[]>} };
 }
 export interface Animation { action: string; releaseFrame?:number; fps: number; loop: boolean; strideTiles?: number; directions?: Record<string, string[]>; frames?: string[] }
 export interface Packed { frame: Frame; texture: Texture }

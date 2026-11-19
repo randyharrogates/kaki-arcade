@@ -1,3 +1,4 @@
+import { servedDishes } from './served-dishes.fixture';
 import { ConsoleScreen } from '../host';
 import { tabaoRush } from '../src/rules/game';
 import { FULL_KITCHEN } from '../src/levels/catalogue';
@@ -10,12 +11,14 @@ import type { SampledInput } from '@kaki/sim-core';
 type Options=Parameters<typeof ConsoleScreen.mount>[1];
 type Mounted=ReturnType<typeof ConsoleScreen.mount>;
 export async function startRenderer(mount:(root:HTMLElement,options:Options)=>Mounted|Promise<Mounted>=(root,options)=>ConsoleScreen.mount(root,options)){
-const count=Math.max(1,Math.min(8,Number(new URLSearchParams(location.search).get('players') ?? 8)));
+const params=new URLSearchParams(location.search);
+const detail=params.get('detail')==='half'?'half' as const:'full' as const;
+const count=Math.max(1,Math.min(8,Number(params.get('players') ?? 8)));
 const players=Array.from({length:count},(_,i)=>({id:`cook-${String(i)}`,seat:i+1,name:`Cook ${String(i+1)}`,colour:PLAYER_COLOURS[i]?.token ?? 'seat-1' as const}));
 const loaded=loadLevel(FULL_KITCHEN,707,players);if(!loaded.state)throw new Error(loaded.problems.join('\n'));
 let state:TabaoState=loaded.state, running=false;
 const root=document.createElement('main');document.body.append(root);
-const options=()=>({view:tabaoRush.publicView(state),width:innerWidth,height:innerHeight});
+const options=()=>({view:tabaoRush.publicView(state),width:innerWidth,height:innerHeight,detail});
 const screen=await mount(root,options());
 function publish(){screen.update(options());}
 function advance(){
@@ -42,6 +45,18 @@ function fixture(name:string,at=0){
   if(name==='extinguish')items.push({id:201,kind:'extinguisher',place:{kind:'held',cook:players[0]?.id ?? ''}});
   if(name==='serve')items.push({id:202,kind:'plate',container:'plate',contents:[{id:203,kind:'cooked',ingredient:'rice'},{id:204,kind:'chopped',ingredient:'chicken'}],place:{kind:'held',cook:players[0]?.id ?? ''}});
   if(station && ['chop','stir','wash','extinguish','showcase','done','rejection','north'].includes(name)){stations[station.tile]={...station,worker:name==='north'?null:players[0]?.seat ?? 1,workedAt:state.tick-1,fire:name==='extinguish'||name==='showcase',progress:name==='done'?60:15,total:60,...(name==='rejection'?{rejection:{reason:{code:'dirty' as const},until:state.tick+60}}:{}),content:{id:300,kind:'raw',ingredient:'chicken',place:{kind:'counter',tile:station.tile}}};}
+  if(name==='served-dishes'||name==='served-dishes-teh'||name==='held-dish'){
+    if(name==='held-dish')state={...state,cooks:state.cooks.map((c,i)=>i===0?{...c,facing:0}:c)};
+    const dishes=servedDishes(name==='served-dishes-teh'?'teh':'kopi');
+    const counters=Object.values(stations).filter(s=>s.type!=='serving');
+    for(let i=0;i<dishes.length;i++){const dish=dishes[i],counter=counters[i];if(dish&&counter)items.push({...dish,place:{kind:'counter',tile:counter.tile}});}
+    const first=dishes[0],serving=Object.values(stations).find(s=>s.type==='serving');
+    if(first){
+      items.push({...first,id:900,contents:first.contents?.slice(0,1) ?? [],place:{kind:'floor',tile:3*state.level.width+5}});
+      items.push({...first,id:901,place:{kind:'held',cook:players[0]?.id ?? ''}});
+      if(serving)stations[serving.tile]={...serving,content:{...first,id:902,place:{kind:'counter',tile:serving.tile}}};
+    }
+  }
   state={...state,stations,inventory:inventory(items),kitchens:state.kitchens?.map(k=>({...k,score:120,tips:20,thresholds:[50,100,200],orders:Array.from({length:6},(_,i)=>({arrivalStep:name==='entrance'?120:state.tick-60,remaining:i===1?1200:i===2?300:2400,total:3600,warning:i===2,id:i,dish:FULL_KITCHEN.allowedDishes[i%FULL_KITCHEN.allowedDishes.length] ?? 'chicken-rice'}))})) ?? []};
   if(name==='showcase'||name==='burning'){
     let index=0;
@@ -57,7 +72,7 @@ function fixture(name:string,at=0){
   publish();
 }
 Object.assign(window,{__trClock(ms:number|undefined){const target=root.querySelector('canvas')?.parentElement as (HTMLElement&{__trClock?:(ms:number|undefined)=>void})|null;target?.__trClock?.(ms);},__trState:fixture,__trRun(){running=true;},__trAdvance:advance});
-void screen.ready.then(()=>{document.documentElement.dataset.trReady='1';fixture('showcase');if(new URLSearchParams(location.search).has('perf'))running=true;});
+void screen.ready.then(()=>{document.documentElement.dataset.trReady='1';fixture('showcase');if(params.has('perf'))running=true;});
 const timer=setInterval(()=>{if(running)advance();},1000/60);
 addEventListener('resize',publish);addEventListener('pagehide',()=>{clearInterval(timer);screen.destroy();},{once:true});
 

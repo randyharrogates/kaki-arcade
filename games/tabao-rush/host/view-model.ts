@@ -8,11 +8,11 @@ export const RECIPE_LABELS = new Map(RECIPES.map(recipe => [recipe.id, {
 }]));
 /** Fixed storage, updated in place; only displayed text/quantised bars dirty the raster. */
 export class ViewModel {
-  readonly ids = new Int32Array(3292);
-  readonly positions = new Float64Array(3292 * 2);
+  readonly ids: Int32Array;
+  readonly positions: Float64Array;
   readonly cards = Array.from({length:6},()=>({id:-1,dish:'',patience:-1,warning:false}));
   score=0; tips=0; stars=0; seconds=-1; count=0; dirty=true;
-  constructor(){this.positions.fill(NaN);}
+  constructor(capacity=3292){this.ids=new Int32Array(capacity);this.positions=new Float64Array(capacity*2);this.positions.fill(NaN);}
   update(view:View):void {
     let score=0,tips=0,stars=0,count=0;
     this.dirty=false;

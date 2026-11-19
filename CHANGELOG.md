@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — T-18: Tabao Rush served dishes on the TV (in progress)
+
+- TR-040, TR-041: completed dishes draw from their recipe container and `composition` layers; kaya toast and kopi/teh use `servedComposition` with the actual drink; partial and dirty containers draw only present contents with `contentCompositions` and `portionScales`; layers sort by `order`, explicit anchors win, all anchors full-resolution at both details (D-286).
+- Draw records are pooled with a cap derived from the manifest (9 per item; overflow counted); only live items update. Quiet 8-cook run: median 16.7 ms, max 17.7 ms.
+- Not yet: a legible held dish, the 3 m TV check.
+
 ## 2026-11-19 — A-11: Tabao Rush recipe step icons (in progress)
 
 - TR-001: eleven one-colour 34 px step glyphs (chop, wok, pot, grill, rice, drinks, mix, spread, plate, bowl, cup) in print red-brown #8E2A18 from `tools/blender/step_icons.py`, packed full and half with the Tabao Rush round; pairwise silhouette gate at both details, aligned for shifted duplicates, and a colour gate on every inked pixel (D-220, D-284).

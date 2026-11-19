@@ -1,0 +1,192 @@
+{
+  "slice": "T-18-served-dishes",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- T-18-served-dishes --phones 1 --out round3",
+  "commit": "e4d33dda4e366e95d6bc3df0233027a1328e728a",
+  "viewports": [
+    "1920×1080",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "full kopi servings at 1920",
+      "ms": 3236.1772079999996,
+      "status": "completed"
+    },
+    {
+      "name": "full teh servings at 1920",
+      "ms": 1782.13425,
+      "status": "completed"
+    },
+    {
+      "name": "full kopi servings at 1280",
+      "ms": 2357.269875000001,
+      "status": "completed"
+    },
+    {
+      "name": "full teh servings at 1280",
+      "ms": 1724.2366249999995,
+      "status": "completed"
+    },
+    {
+      "name": "half kopi servings at 1920",
+      "ms": 2216.468332999999,
+      "status": "completed"
+    },
+    {
+      "name": "half teh servings at 1920",
+      "ms": 1656.3884579999994,
+      "status": "completed"
+    },
+    {
+      "name": "half kopi servings at 1280",
+      "ms": 2163.360790999999,
+      "status": "completed"
+    },
+    {
+      "name": "half teh servings at 1280",
+      "ms": 1527.4464999999982,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-full-kopi-1920-served-dishes.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-full-1920-held-dish.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-full-teh-1920-served-dishes.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-full-kopi-1280-served-dishes.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-full-1280-held-dish.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-full-teh-1280-served-dishes.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-half-kopi-1920-served-dishes.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-half-1920-held-dish.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-half-teh-1920-served-dishes.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-half-kopi-1280-served-dishes.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-half-1280-held-dish.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-half-teh-1280-served-dishes.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-full-kopi-1920-served-dishes.jpg",
+    "02-host-full-1920-held-dish.jpg",
+    "03-host-full-teh-1920-served-dishes.jpg",
+    "04-host-full-kopi-1280-served-dishes.jpg",
+    "05-host-full-1280-held-dish.jpg",
+    "06-host-full-teh-1280-served-dishes.jpg",
+    "07-host-half-kopi-1920-served-dishes.jpg",
+    "08-host-half-1920-held-dish.jpg",
+    "09-host-half-teh-1920-served-dishes.jpg",
+    "10-host-half-kopi-1280-served-dishes.jpg",
+    "11-host-half-1280-held-dish.jpg",
+    "12-host-half-teh-1280-served-dishes.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-full-kopi-1920-served-dishes.jpg",
+      "bytes": 243588
+    },
+    {
+      "file": "02-host-full-1920-held-dish.jpg",
+      "bytes": 243588
+    },
+    {
+      "file": "03-host-full-teh-1920-served-dishes.jpg",
+      "bytes": 243519
+    },
+    {
+      "file": "04-host-full-kopi-1280-served-dishes.jpg",
+      "bytes": 139090
+    },
+    {
+      "file": "05-host-full-1280-held-dish.jpg",
+      "bytes": 139090
+    },
+    {
+      "file": "06-host-full-teh-1280-served-dishes.jpg",
+      "bytes": 139114
+    },
+    {
+      "file": "07-host-half-kopi-1920-served-dishes.jpg",
+      "bytes": 241350
+    },
+    {
+      "file": "08-host-half-1920-held-dish.jpg",
+      "bytes": 241350
+    },
+    {
+      "file": "09-host-half-teh-1920-served-dishes.jpg",
+      "bytes": 241323
+    },
+    {
+      "file": "10-host-half-kopi-1280-served-dishes.jpg",
+      "bytes": 138363
+    },
+    {
+      "file": "11-host-half-1280-held-dish.jpg",
+      "bytes": 138363
+    },
+    {
+      "file": "12-host-half-teh-1280-served-dishes.jpg",
+      "bytes": 138343
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2060
+    },
+    {
+      "file": "run.json",
+      "bytes": 4469
+    }
+  ],
+  "totalBytes": 2293647,
+  "maxBytes": 12582912
+}
