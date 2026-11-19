@@ -1,0 +1,476 @@
+{
+  "idle": {
+    "s": {
+      "anchor": "head",
+      "travelPx": 3.511411798322925,
+      "maxChangedPixels": 2826
+    },
+    "se": {
+      "anchor": "head",
+      "travelPx": 4.123107998277207,
+      "maxChangedPixels": 3168
+    },
+    "e": {
+      "anchor": "head",
+      "travelPx": 4.3392333984375,
+      "maxChangedPixels": 3146
+    },
+    "ne": {
+      "anchor": "head",
+      "travelPx": 4.123107998277207,
+      "maxChangedPixels": 3128
+    },
+    "n": {
+      "anchor": "head",
+      "travelPx": 3.511411798322925,
+      "maxChangedPixels": 3074
+    },
+    "nw": {
+      "anchor": "head",
+      "travelPx": 2.7018543074452275,
+      "maxChangedPixels": 2612
+    },
+    "w": {
+      "anchor": "head",
+      "travelPx": 2.260772705078125,
+      "maxChangedPixels": 2078
+    },
+    "sw": {
+      "anchor": "head",
+      "travelPx": 2.7018543074452275,
+      "maxChangedPixels": 2420
+    }
+  },
+  "walk": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 10.579536437988281,
+      "maxChangedPixels": 6339,
+      "foot_l": 20.264999389648438,
+      "foot_r": 20.264999389648438,
+      "hand_l": 13.346267700195312,
+      "hand_r": 10.762759450108373,
+      "headSidewaysPx": 15.24627685546875,
+      "oppositeChangedPixels": 6240
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 12.000358395902456,
+      "maxChangedPixels": 6356,
+      "foot_l": 20.20494762883986,
+      "foot_r": 20.20494186155978,
+      "hand_l": 15.242319337970947,
+      "hand_r": 9.96874175783268,
+      "headSidewaysPx": 11.999351501464844,
+      "oppositeChangedPixels": 6097
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 13.53578150519568,
+      "maxChangedPixels": 6329,
+      "foot_l": 21.599998474121094,
+      "foot_r": 21.600006103515625,
+      "hand_l": 17.581786606385123,
+      "hand_r": 9.513568444924214,
+      "headSidewaysPx": 8.75372314453125,
+      "oppositeChangedPixels": 5853
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 13.794756811425817,
+      "maxChangedPixels": 6261,
+      "foot_l": 20.20494186155978,
+      "foot_r": 20.20494762883986,
+      "hand_l": 17.59091035522254,
+      "hand_r": 10.186615926723396,
+      "headSidewaysPx": 11.999351501464844,
+      "oppositeChangedPixels": 5896
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 13.418220520019531,
+      "maxChangedPixels": 6489,
+      "foot_l": 20.264999389648438,
+      "foot_r": 20.264991760253906,
+      "hand_l": 16.946266174316406,
+      "hand_r": 11.241855878330314,
+      "headSidewaysPx": 15.24627685546875,
+      "oppositeChangedPixels": 6489
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 13.794756811425817,
+      "maxChangedPixels": 6107,
+      "foot_l": 20.204946856172555,
+      "foot_r": 20.20495262345121,
+      "hand_l": 17.590921082551084,
+      "hand_r": 11.314038040249836,
+      "headSidewaysPx": 11.999351501464844,
+      "oppositeChangedPixels": 5833
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 13.53578150519568,
+      "maxChangedPixels": 5888,
+      "foot_l": 21.600006103515625,
+      "foot_r": 21.600006103515625,
+      "hand_l": 17.581794195690872,
+      "hand_r": 11.284791701384952,
+      "headSidewaysPx": 8.75372314453125,
+      "oppositeChangedPixels": 5694
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 12.000358395902456,
+      "maxChangedPixels": 5922,
+      "foot_l": 20.20494762883986,
+      "foot_r": 20.204953396121173,
+      "hand_l": 15.242316608437259,
+      "hand_r": 11.290176267735635,
+      "headSidewaysPx": 11.999351501464844,
+      "oppositeChangedPixels": 5782
+    }
+  },
+  "carry-walk": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 11.864204406738281,
+      "maxChangedPixels": 5649,
+      "foot_l": 20.264999389648438,
+      "foot_r": 20.264999389648438,
+      "hand_l": 11.869148730613455,
+      "hand_r": 11.869148730613455,
+      "headSidewaysPx": 15.24627685546875,
+      "oppositeChangedPixels": 5322
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 12.102715702733196,
+      "maxChangedPixels": 5851,
+      "foot_l": 20.20494762883986,
+      "foot_r": 20.20494186155978,
+      "hand_l": 12.13653975231559,
+      "hand_r": 12.073619847106292,
+      "headSidewaysPx": 11.999351501464844,
+      "oppositeChangedPixels": 5387
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 12.403683738101595,
+      "maxChangedPixels": 6047,
+      "foot_l": 21.599998474121094,
+      "foot_r": 21.600006103515625,
+      "hand_l": 12.579588601498727,
+      "hand_r": 12.369148327834411,
+      "headSidewaysPx": 8.75372314453125,
+      "oppositeChangedPixels": 5472
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 13.043359642847733,
+      "maxChangedPixels": 5847,
+      "foot_l": 20.20494186155978,
+      "foot_r": 20.20494762883986,
+      "hand_l": 13.043359642847733,
+      "hand_r": 13.043353897148313,
+      "headSidewaysPx": 11.999351501464844,
+      "oppositeChangedPixels": 5347
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 12.901229858398438,
+      "maxChangedPixels": 5400,
+      "foot_l": 20.264999389648438,
+      "foot_r": 20.264991760253906,
+      "hand_l": 12.901229858398438,
+      "hand_r": 12.901229858398438,
+      "headSidewaysPx": 15.24627685546875,
+      "oppositeChangedPixels": 5400
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 13.043359642847733,
+      "maxChangedPixels": 5742,
+      "foot_l": 20.204946856172555,
+      "foot_r": 20.20495262345121,
+      "hand_l": 13.04335891657287,
+      "hand_r": 13.04336466227008,
+      "headSidewaysPx": 11.999351501464844,
+      "oppositeChangedPixels": 5462
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 12.403683738101595,
+      "maxChangedPixels": 5684,
+      "foot_l": 21.600006103515625,
+      "foot_r": 21.600006103515625,
+      "hand_l": 12.369155813290398,
+      "hand_r": 12.579588601498727,
+      "headSidewaysPx": 8.75372314453125,
+      "oppositeChangedPixels": 5446
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 12.102709129805266,
+      "maxChangedPixels": 5571,
+      "foot_l": 20.20494762883986,
+      "foot_r": 20.204953396121173,
+      "hand_l": 12.073628271146177,
+      "hand_r": 12.136549578170472,
+      "headSidewaysPx": 11.999351501464844,
+      "oppositeChangedPixels": 5341
+    }
+  },
+  "chop": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 19.85846268306631,
+      "maxChangedPixels": 1512
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 22.588759556520255,
+      "maxChangedPixels": 591
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 23.857742355049044,
+      "maxChangedPixels": 1016
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 22.32514379886364,
+      "maxChangedPixels": 1749
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 21.811927134760882,
+      "maxChangedPixels": 1848
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 23.510518585671324,
+      "maxChangedPixels": 1873
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 23.40691913482411,
+      "maxChangedPixels": 1893
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 20.634567578096952,
+      "maxChangedPixels": 1998
+    }
+  },
+  "stir": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 19.227700306451368,
+      "maxChangedPixels": 2695
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 19.722656705843015,
+      "maxChangedPixels": 2168
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 19.647174980217432,
+      "maxChangedPixels": 1055
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 19.631630501253138,
+      "maxChangedPixels": 705
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 17.564720598407543,
+      "maxChangedPixels": 1399
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 14.614238930590677,
+      "maxChangedPixels": 1854
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 14.375038150981382,
+      "maxChangedPixels": 1906
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 16.13936466669732,
+      "maxChangedPixels": 2159
+    }
+  },
+  "wash": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 41.915252685546875,
+      "maxChangedPixels": 3623
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 39.20813436801551,
+      "maxChangedPixels": 3233
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 36.29966735839844,
+      "maxChangedPixels": 2857
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 39.20813436801551,
+      "maxChangedPixels": 2284
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 41.915260314941406,
+      "maxChangedPixels": 1814
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 39.20814013529626,
+      "maxChangedPixels": 2080
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 36.29966735839844,
+      "maxChangedPixels": 2607
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 39.20812860073539,
+      "maxChangedPixels": 2958
+    }
+  },
+  "serve": {
+    "s": {
+      "anchor": "hands",
+      "travelPx": 14.568405151367188,
+      "maxChangedPixels": 5481
+    },
+    "se": {
+      "anchor": "hands",
+      "travelPx": 18.00652827354696,
+      "maxChangedPixels": 4922
+    },
+    "e": {
+      "anchor": "hands",
+      "travelPx": 22.5480107697325,
+      "maxChangedPixels": 4756
+    },
+    "ne": {
+      "anchor": "hands",
+      "travelPx": 23.888832454646167,
+      "maxChangedPixels": 4583
+    },
+    "n": {
+      "anchor": "hands",
+      "travelPx": 23.680343627929688,
+      "maxChangedPixels": 4021
+    },
+    "nw": {
+      "anchor": "hands",
+      "travelPx": 23.888832454646167,
+      "maxChangedPixels": 4751
+    },
+    "w": {
+      "anchor": "hands",
+      "travelPx": 22.5480107697325,
+      "maxChangedPixels": 4791
+    },
+    "sw": {
+      "anchor": "hands",
+      "travelPx": 18.006534889643437,
+      "maxChangedPixels": 4827
+    }
+  },
+  "throw": {
+    "s": {
+      "anchor": "throwHand",
+      "travelPx": 57.80909570675789,
+      "maxChangedPixels": 4555
+    },
+    "se": {
+      "anchor": "throwHand",
+      "travelPx": 54.93468909495119,
+      "maxChangedPixels": 3813
+    },
+    "e": {
+      "anchor": "throwHand",
+      "travelPx": 52.83554347850173,
+      "maxChangedPixels": 3620
+    },
+    "ne": {
+      "anchor": "throwHand",
+      "travelPx": 56.503943348219536,
+      "maxChangedPixels": 3115
+    },
+    "n": {
+      "anchor": "throwHand",
+      "travelPx": 57.09867332527203,
+      "maxChangedPixels": 4005
+    },
+    "nw": {
+      "anchor": "throwHand",
+      "travelPx": 50.574105248357384,
+      "maxChangedPixels": 4321
+    },
+    "w": {
+      "anchor": "throwHand",
+      "travelPx": 47.14417974032557,
+      "maxChangedPixels": 4401
+    },
+    "sw": {
+      "anchor": "throwHand",
+      "travelPx": 53.36722123690433,
+      "maxChangedPixels": 4440
+    }
+  },
+  "extinguish": {
+    "s": {
+      "anchor": "nozzle",
+      "travelPx": 52.97074147048635,
+      "maxChangedPixels": 4164
+    },
+    "se": {
+      "anchor": "nozzle",
+      "travelPx": 54.198947389655785,
+      "maxChangedPixels": 3026
+    },
+    "e": {
+      "anchor": "nozzle",
+      "travelPx": 59.730788042321684,
+      "maxChangedPixels": 1960
+    },
+    "ne": {
+      "anchor": "nozzle",
+      "travelPx": 58.61857174708345,
+      "maxChangedPixels": 2375
+    },
+    "n": {
+      "anchor": "nozzle",
+      "travelPx": 52.97074247563476,
+      "maxChangedPixels": 3198
+    },
+    "nw": {
+      "anchor": "nozzle",
+      "travelPx": 54.19895386139528,
+      "maxChangedPixels": 3410
+    },
+    "w": {
+      "anchor": "nozzle",
+      "travelPx": 59.73077684048692,
+      "maxChangedPixels": 3721
+    },
+    "sw": {
+      "anchor": "nozzle",
+      "travelPx": 58.618585566066166,
+      "maxChangedPixels": 4021
+    }
+  }
+}

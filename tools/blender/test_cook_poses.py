@@ -4,10 +4,30 @@ import unittest
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import cook_poses as c
+from cook_gait import poses as c
 
 
 class CookPoseTests(unittest.TestCase):
+    def test_non_walk_transforms_match_frozen_baseline(self):
+        import json
+        import hashlib
+        baseline = json.loads((Path(__file__).parent/'fixtures/cook_non_walk_poses.json').read_text())
+        for action, samples in baseline.items():
+            for i, expected in enumerate(samples):
+                self.assertEqual(json.loads(json.dumps(c.sample(action, i/8))),
+                                 expected, (action, i/8))
+        self.assertEqual(hashlib.sha256(Path(__file__).with_name('cook.py').read_bytes()).hexdigest(),
+                         '5a5797d7e85c98caacba7bff2d12c078d90dd73cc14d27f103f37dd11bcf7dd3')
+
+    def test_projected_walk_hand_margin(self):
+        for action in ('walk', 'carry-walk'):
+            for direction in c.DIRECTIONS:
+                for side in ('l', 'r'):
+                    points = [c.project(c.hand_positions(action, f)[side], direction)
+                              for f in range(c.ACTIONS[action]['count'])]
+                    self.assertGreaterEqual(max(math.dist(a,b) for a in points for b in points), 9,
+                                            (action, direction, side))
+
     def test_table(self):
         expected = [('idle',4,4,True), ('walk',8,24/.72,True), ('carry-walk',8,24/.72,True),
                     ('chop',6,10,True), ('stir',8,10,True), ('wash',6,8,True),
@@ -40,6 +60,20 @@ class CookPoseTests(unittest.TestCase):
                 for phase in range(c.STANCE_FRAMES,8):
                     self.assertGreater(c.legs(start+phase-offset)['leg_'+side][0][2],0)
         self.assertGreater(c.legs(3)['spine'][0][2],c.legs(2)['spine'][0][2])
+
+    def test_stride_sway_and_carried_hands(self):
+        count = c.ACTIONS['walk']['count']
+        for action in ('walk', 'carry-walk'):
+            poses = [c.sample(action, f) for f in range(count)]
+            self.assertAlmostEqual(max(p['spine'][0][2] for p in poses), .03)
+            self.assertAlmostEqual(max(p['spine'][1][2] for p in poses), .04)
+            self.assertAlmostEqual(min(p['spine'][1][2] for p in poses), -.04)
+            for f in range(count*16):
+                pose = c.sample(action, f/16)
+                self.assertEqual(pose, c.sample(action, f/16+count))
+                if action == 'carry-walk':
+                    for side in ('l', 'r'):
+                        self.assertEqual(pose['arm_'+side], c.CARRY['arm_'+side])
 
     def test_keys_and_bounds(self):
         for action,spec in c.ACTIONS.items():

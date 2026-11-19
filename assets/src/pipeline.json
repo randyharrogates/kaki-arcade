@@ -4029,7 +4029,7 @@
     },
     {
       "id": "cook-body-walk",
-      "script": "cook.py",
+      "script": "cook_walk.py",
       "args": [
         "--action",
         "walk",
@@ -4039,7 +4039,9 @@
       "inputs": [],
       "extraInputs": [
         "tools/blender/kalib.py",
-        "tools/blender/cook_poses.py"
+        "tools/blender/cook_poses.py",
+        "tools/blender/cook.py",
+        "tools/blender/cook_gait.py"
       ],
       "outputs": [
         "tabao-rush/cook-body/walk/walk-s-0.png",
@@ -4177,7 +4179,7 @@
     },
     {
       "id": "cook-body-carry-walk",
-      "script": "cook.py",
+      "script": "cook_walk.py",
       "args": [
         "--action",
         "carry-walk",
@@ -4187,7 +4189,9 @@
       "inputs": [],
       "extraInputs": [
         "tools/blender/kalib.py",
-        "tools/blender/cook_poses.py"
+        "tools/blender/cook_poses.py",
+        "tools/blender/cook.py",
+        "tools/blender/cook_gait.py"
       ],
       "outputs": [
         "tabao-rush/cook-body/carry-walk/carry-walk-s-0.png",

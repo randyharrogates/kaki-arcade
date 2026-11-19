@@ -1,0 +1,86 @@
+{
+  "walk": {
+    "s": {
+      "hand_l": 13.346,
+      "hand_r": 10.763,
+      "headSidewaysPx": 15.246
+    },
+    "se": {
+      "hand_l": 15.242,
+      "hand_r": 9.969,
+      "headSidewaysPx": 11.999
+    },
+    "e": {
+      "hand_l": 17.582,
+      "hand_r": 9.514,
+      "headSidewaysPx": 8.754
+    },
+    "ne": {
+      "hand_l": 17.591,
+      "hand_r": 10.187,
+      "headSidewaysPx": 11.999
+    },
+    "n": {
+      "hand_l": 16.946,
+      "hand_r": 11.242,
+      "headSidewaysPx": 15.246
+    },
+    "nw": {
+      "hand_l": 17.591,
+      "hand_r": 11.314,
+      "headSidewaysPx": 11.999
+    },
+    "w": {
+      "hand_l": 17.582,
+      "hand_r": 11.285,
+      "headSidewaysPx": 8.754
+    },
+    "sw": {
+      "hand_l": 15.242,
+      "hand_r": 11.29,
+      "headSidewaysPx": 11.999
+    }
+  },
+  "carry-walk": {
+    "s": {
+      "hand_l": 11.869,
+      "hand_r": 11.869,
+      "headSidewaysPx": 15.246
+    },
+    "se": {
+      "hand_l": 12.137,
+      "hand_r": 12.074,
+      "headSidewaysPx": 11.999
+    },
+    "e": {
+      "hand_l": 12.58,
+      "hand_r": 12.369,
+      "headSidewaysPx": 8.754
+    },
+    "ne": {
+      "hand_l": 13.043,
+      "hand_r": 13.043,
+      "headSidewaysPx": 11.999
+    },
+    "n": {
+      "hand_l": 12.901,
+      "hand_r": 12.901,
+      "headSidewaysPx": 15.246
+    },
+    "nw": {
+      "hand_l": 13.043,
+      "hand_r": 13.043,
+      "headSidewaysPx": 11.999
+    },
+    "w": {
+      "hand_l": 12.369,
+      "hand_r": 12.58,
+      "headSidewaysPx": 8.754
+    },
+    "sw": {
+      "hand_l": 12.074,
+      "hand_r": 12.137,
+      "headSidewaysPx": 11.999
+    }
+  }
+}

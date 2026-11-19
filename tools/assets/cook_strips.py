@@ -120,6 +120,8 @@ def save_variants(sheet, out, stem, output_format='jpg'):
 # Idle is deliberately subtle: >=2px chest travel / >=100 changed pixels.
 MOTION_THRESHOLDS = {a: (13, 400) for a in (*C.WORK_ACTIONS, 'serve', 'throw')}
 MOTION_THRESHOLDS['idle'] = (2, 100)
+for _action in ('walk', 'carry-walk'):
+    MOTION_THRESHOLDS[_action] = (8, 150)
 
 
 def ground_cell_size():
@@ -141,6 +143,21 @@ def motion_metrics(cells, anchors):
     return dict(travelPx=travel, maxChangedPixels=changed)
 
 
+def walk_metrics(cells, anchors):
+    """Published projected rig landmarks plus opposite-phase rendered pixels."""
+    result = {}
+    for name in ('foot_l', 'foot_r', 'hand_l', 'hand_r'):
+        points = [record[name] for record in anchors]
+        result[name] = max(math.dist(a, b) for a in points for b in points)
+    xs = [record['head'][0] for record in anchors]
+    result['headSidewaysPx'] = max(xs)-min(xs)
+    half = len(cells)//2
+    result['oppositeChangedPixels'] = min(
+        motion_metrics([cells[f], cells[f+half]], [(0, 0)]*2)['maxChangedPixels']
+        for f in range(half))
+    return result
+
+
 def motion_report(source, frames):
     report = {}
     for action,spec in C.ACTIONS.items():
@@ -159,9 +176,19 @@ def motion_report(source, frames):
                        'head' in frames[ident]['anchors'] and ident+'-mask' in frames
                        for ident in ids):
                 continue
+            cells = [render_cell(source, frames, ident, 'composed') for ident in ids]
             directions[direction] = dict(anchor=anchor, **motion_metrics(
-                [render_cell(source, frames, ident, 'composed') for ident in ids],
-                [frames[ident]['anchors'][anchor] for ident in ids]))
+                cells, [frames[ident]['anchors'][anchor] for ident in ids]))
+            if action in ('walk', 'carry-walk'):
+                try:
+                    directions[direction].update(walk_metrics(
+                        cells, [frames[ident]['anchors'] for ident in ids]))
+                except KeyError:
+                    directions[direction]['missingLandmarks'] = sorted({
+                        name for record in (frames[ident]['anchors'] for ident in ids)
+                        for name in ('foot_l', 'foot_r', 'hand_l', 'hand_r', 'head')
+                        if name not in record})
+
         if directions:
             report[action] = directions
     return report
@@ -174,6 +201,13 @@ def motion_failures(report):
             metric = report.get(action,{}).get(direction)
             if metric is None or metric['travelPx'] < travel or metric['maxChangedPixels'] < changed:
                 failures.append(f'{action}/{direction}: {metric or "missing frames"}')
+            if action in ('walk', 'carry-walk') and metric is not None:
+                idle = report.get('idle', {}).get(direction, {}).get('maxChangedPixels')
+                limits = dict(foot_l=15, foot_r=15, hand_l=8, hand_r=8, headSidewaysPx=8)
+                if (metric.get('missingLandmarks')
+                        or any(metric.get(key, -1) < limit for key, limit in limits.items())
+                        or idle is None or metric.get('oppositeChangedPixels', -1) < 1.5*idle):
+                    failures.append(f'{action}/{direction}: walk gate {metric}, idle={idle}')
     return failures
 
 

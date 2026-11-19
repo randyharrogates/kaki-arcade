@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — A-02d: Tabao Rush cook walk gait
+- TR-060: walk and carry-walk re-rendered with a once-per-stride torso circuit ±0.05 tiles sideways and fore-and-aft, spine ±0.04 rad pitch and yaw, and 0.03-tile bob; walk arm swing ±0.06 rad; carried hands ride the torso; feet unchanged. Other cook jobs unchanged and not restamped.
+- Walk gate in cook_strips.py --check-motion: each foot ≥ 15 px, each hand ≥ 8 px, head sideways ≥ 8 px, opposite-phase change ≥ 1.5 × idle; all 16 facings pass.
+- Cook sheets 1,805,164 B (+62,440) and 50,818,800 B decoded (+1,838,304); Tabao Rush round 2,491,936 (packed on the merged tree) of 8,000,000 B and 57,289,584 of 256,000,000 B decoded.
+- Level rounds after this merge: 2,590,586 and 2,633,108 B of 8,000,000; 65,583,984 B of 256,000,000 decoded.
+
 ## 2026-11-19 — A-06: Tabao Rush level backgrounds, first two venues (in progress)
 
 - TR-050: the level catalogue is exported to JSON and baked in Blender (floor, walls, counters, A-05 static station bodies) for the kopitiam first shift and the zi char test kitchen, in three looks: Terrazzo (jade trim #5E9C84), Tile (wood trim #C7A16A) and Golden (counter front cream : jade 1.618 : 1). Carried and consumable items are never baked; their counter has an inset steel top. Crates stand without a surround. The floor speckle is gated at 3–9 greyscale standard deviation, checked on the committed renders (D-292). Packed as exact-size q90 WebP in per-level rounds that carry every Tabao Rush set; levelBackgrounds[id].bakedBodies names the stations the host must not draw again.

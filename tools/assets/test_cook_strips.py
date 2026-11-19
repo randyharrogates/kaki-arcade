@@ -44,7 +44,7 @@ class CookStripTests(unittest.TestCase):
         self.assertEqual(s.motion_metrics([first,second],[(0,0),(0,0)])['maxChangedPixels'],500)
 
     def test_motion_thresholds_and_missing(self):
-        report = {a:{d:dict(travelPx=13,maxChangedPixels=400) for d in s.C.DIRECTIONS}
+        report = {a:{d:dict(travelPx=13,maxChangedPixels=400, foot_l=15, foot_r=15, hand_l=8, hand_r=8, headSidewaysPx=8, oppositeChangedPixels=600) for d in s.C.DIRECTIONS}
                   for a in s.MOTION_THRESHOLDS}
         self.assertEqual(s.motion_failures(report),[])
         report['wash']['e']['travelPx'] = 12.99
@@ -88,7 +88,7 @@ class CookStripTests(unittest.TestCase):
                 for f in range(spec['count']):
                     frames[f'{action}-{d}-{f}-mask'] = {}
                     frames[f'{action}-{d}-{f}'] = dict(anchors={
-                        key:(f*5,0) for key in ('hands','throwHand','head','nozzle')})
+                        key:(f*5,0) for key in ('hands','throwHand','head','nozzle','foot_l','foot_r','hand_l','hand_r')})
                 for suffix in ('','-mask'):
                     frames['head-cap-'+d+suffix] = {}
         with patch.object(s,'render_cell',return_value=Image.new('RGBA',(1,1))) as render:
@@ -100,6 +100,21 @@ class CookStripTests(unittest.TestCase):
         with patch.object(s,'render_cell',return_value=Image.new('RGBA',(1,1))):
             report = s.motion_report(Path('.'),frames)
         self.assertTrue(all('n' not in directions for directions in report.values()))
+
+    def test_missing_walk_landmark_is_explicit_failure(self):
+        frames = {}
+        for f in range(8):
+            ident = f'walk-s-{f}'
+            frames[ident] = dict(anchors=dict.fromkeys(
+                ('hands', 'head', 'foot_l', 'foot_r', 'hand_l', 'hand_r'), (f*3, 0)))
+            frames[ident+'-mask'] = {}
+        frames['head-cap-s'] = frames['head-cap-s-mask'] = {}
+        del frames['walk-s-3']['anchors']['hand_r']
+        with patch.object(s, 'render_cell', return_value=Image.new('RGBA', (1,1))):
+            report = s.motion_report(Path('.'), frames)
+        self.assertEqual(report['walk']['s']['missingLandmarks'], ['hand_r'])
+        self.assertTrue(any('walk/s: walk gate' in failure and 'missingLandmarks' in failure
+                            for failure in s.motion_failures(report)))
 
     def test_one_shots_measure_composition_at_release(self):
         frames = {}
@@ -124,3 +139,37 @@ class CookStripTests(unittest.TestCase):
         del frames['head-cap-n']
         with patch.object(s,'render_cell',side_effect=composed):
             self.assertNotIn('n',s.motion_report(Path('.'),frames)['throw'])
+
+
+class WalkGateTests(unittest.TestCase):
+    def test_static_and_small_gait_fail(self):
+        report = {a: {d: dict(travelPx=20, maxChangedPixels=400,
+            foot_l=15, foot_r=15, hand_l=8, hand_r=8, headSidewaysPx=8,
+            oppositeChangedPixels=600) for d in s.C.DIRECTIONS}
+            for a in s.MOTION_THRESHOLDS}
+        self.assertEqual(s.motion_failures(report), [])
+        for key in ('foot_l', 'foot_r', 'hand_l', 'hand_r', 'headSidewaysPx', 'oppositeChangedPixels'):
+            with self.subTest(key=key):
+                old = report['walk']['s'][key]
+                report['walk']['s'][key] = old-.01
+                self.assertTrue(s.motion_failures(report))
+                report['walk']['s'][key] = old
+        cells = [Image.new('RGBA', (20,20)) for _ in range(8)]
+        anchors = [dict.fromkeys(('foot_l','foot_r','hand_l','hand_r','head'), (0,0))]*8
+        static = s.walk_metrics(cells, anchors)
+        self.assertTrue(all(value == 0 for value in static.values()))
+        report['carry-walk']['n'].update(static)
+        self.assertTrue(s.motion_failures(report))
+
+    def test_opposite_phase_pixels_and_individual_landmarks(self):
+        cells = [Image.new('RGBA', (20,20), (0,0,0,255)) for _ in range(8)]
+        for cell in cells[4:]:
+            cell.paste((255,0,0,255), (0,0,15,20))
+        anchors = [dict.fromkeys(('foot_l','foot_r','hand_l','hand_r','head'),
+                                (f*3,0)) for f in range(8)]
+        metric = s.walk_metrics(cells, anchors)
+        self.assertEqual(metric['oppositeChangedPixels'], 300)
+        self.assertEqual(metric['foot_l'], 21)
+        self.assertEqual(metric['headSidewaysPx'], 21)
+        cells[6] = cells[2].copy()
+        self.assertEqual(s.walk_metrics(cells, anchors)['oppositeChangedPixels'], 0)

@@ -1,0 +1,17 @@
+{
+  "baseline": "36b26c07561d991e3bba671edf7380d7b481b187",
+  "actions": [
+    "walk",
+    "carry-walk"
+  ],
+  "facings": [
+    "s",
+    "e",
+    "ne",
+    "n"
+  ],
+  "scales": [
+    1,
+    4
+  ]
+}

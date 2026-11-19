@@ -216,7 +216,7 @@ the remaining actions; the pure pose checks cannot establish finished visual qua
 `--check-motion` also requires one body-only opaque island in every frame of
 every action (8-connectivity, alpha >16/255, ignoring components below 20 pixels
 of antialias dust). This catches detached arms even when hidden by the cap.
-It requires all eight directions for chop, stir, wash, extinguish,
+It requires all eight directions for walk, carry-walk, chop, stir, wash, extinguish,
 serve, throw and idle. Every action measures unannotated tinted body **with the
 tinted cap composited**, including tools. This excludes motion in the body-only
 head-shadow pixels hidden by the cap. Missing body/head masks or anchors fail
@@ -289,8 +289,8 @@ socket. Actual composition and cavity coverage still require visual review.
 `python3 tools/assets/cook_heads_plan.py` regenerates the cook declarations in
 `assets/src/pipeline.cook-heads.json`; it preserves the atlas encoding and family.
 The seven new jobs use the isolated cook_heads.py renderer and cook_heads_contract.py,
-with explicit shared input hashes. The base pipeline.json, cook.py and cook_poses.py
-remain byte-identical to their pre-A-03 versions, preserving items, body and cap stamps.
+with explicit shared input hashes. The cook body uses cook.py and cook_poses.py,
+with walk-only cook_walk.py and cook_gait.py. A-02d changes only the two walk jobs; other jobs retain their stamps.
 
 Render one job at a time using
 `python3 tools/assets/pipeline.py --render --only cook-head-<character> --no-pack`.

@@ -1,0 +1,104 @@
+<title>Cook Gait Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one row per facing; current and proposed loops side by side, 1.618 : 1 text-to-figure split in the header. Spacing on the 5·8·13·21·34·55·89 scale. */
+:root {
+  --paper: #f3ece0; --ink: #2b2118; --muted: #6b5a49; --rule: #d8ccb8; --accent: #b4532a; --well: #e6dcc3;
+  --dot: rgba(43,33,24,.07);
+  --display: "Fraunces", Georgia, serif; --body: "DM Sans", system-ui, sans-serif; --mono: "DM Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #211a14; --ink: #f1e8da; --muted: #b9a891; --rule: #4a3d31; --accent: #e08a5c; --well: #2e251d; --dot: rgba(241,232,218,.06); color-scheme: dark } }
+:root[data-theme="dark"] { --paper: #211a14; --ink: #f1e8da; --muted: #b9a891; --rule: #4a3d31; --accent: #e08a5c; --well: #2e251d; --dot: rgba(241,232,218,.06); color-scheme: dark }
+body { background: var(--paper) radial-gradient(var(--dot) 1.5px, transparent 1.6px) 0 0 / 21px 21px; color: var(--ink); font-family: var(--body); line-height: 1.5;
+  padding-left: max(13px, env(safe-area-inset-left, 0px)); padding-right: max(13px, env(safe-area-inset-right, 0px)); padding-block: 34px 55px; }
+main { max-width: 1100px; margin: 0 auto; display: grid; gap: 34px; }
+header { display: grid; grid-template-columns: 1.618fr 1fr; gap: 34px; align-items: end; }
+@media (max-width: 760px) { header { grid-template-columns: 1fr; } }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(34px, 5vw, 55px); line-height: 1.05; margin: 0; text-wrap: balance; }
+.lede { margin: 13px 0 0; max-width: 62ch; color: var(--muted); }
+.verdict { border: 1px solid var(--rule); border-radius: 13px; padding: 21px; background: var(--well); }
+.verdict b { display: block; font-family: var(--display); font-size: 21px; margin-bottom: 5px; }
+.verdict p { margin: 0; font-size: 14px; }
+.controls { display: flex; flex-wrap: wrap; gap: 13px; align-items: center; font-size: 14px; }
+.controls button { font: inherit; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 8px 21px; cursor: pointer; transition: transform 120ms ease-out; }
+.controls button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.controls button:active { transform: scale(.97); }
+.controls button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+section { display: grid; gap: 13px; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 21px; margin: 0; }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 21px; }
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+figure { margin: 0; display: grid; gap: 8px; }
+figcaption { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .02em; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.cell { position: relative; background: #e6dcc3; border-radius: 8px; overflow: hidden; }
+.cell canvas { display: block; width: 100%; height: auto; image-rendering: auto; }
+.cell span { position: absolute; left: 5px; top: 5px; font-size: 11px; font-family: var(--mono); color: #2b2118; background: rgba(243,236,224,.85); padding: 0 5px; border-radius: 5px; }
+.cell.new span { color: #fff; background: #b4532a; }
+.nums { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+footer { font-size: 13px; color: var(--muted); max-width: 72ch; }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=DM+Sans:wght@400;600&family=DM+Mono&display=swap">
+<main>
+  <header>
+    <div>
+      <h1>Cook gait, current against proposed</h1>
+      <p class="lede">A-02d (TR-060). Once per full stride, the torso moves in a small circuit: ±0.05 tiles sideways and forwards/backwards, with ±0.04 rad of forward/back tilt and turning, and no sideways roll. It rises from 0 at frame 0 to 0.03 tiles at frame 4, then lowers. The keys ease smoothly without overshoot. Walking arm swing falls from ±0.18 to ±0.06 rad; carried hands ride the torso. Each pair loops the same eight frames: the baseline on the left, this branch on the right.</p>
+    </div>
+    <div class="verdict">
+      <b>Recommended: proposed</b>
+      <p>The head shifts sideways and the body rises and falls once per stride, with no wobble or overshoot. Every facing clears the walk gate (feet ≥ 15 px, hands ≥ 8 px, head ≥ 8 px sideways). Cost: cook-body atlases add 62,440 B transferred (total 1,805,164 B) and 1,838,304 B decoded (total 50,818,800 B). Page 2 grows from 1560 × 1954 to 2046 × 1954. The Tabao Rush round uses 2,491,936 / 8,000,000 B transferred and 57,289,584 / 256,000,000 B decoded; PERF-023/024 pass.</p>
+    </div>
+  </header>
+  <div class="controls" role="group" aria-label="Playback speed">
+    <span>Speed</span>
+    <button type="button" data-fps="5" aria-pressed="false">Slow</button>
+    <button type="button" data-fps="10" aria-pressed="true">Game speed (about 10 frames a second)</button>
+    <button type="button" data-fps="0" aria-pressed="false">Pause</button>
+  </div>
+  <section aria-labelledby="walk-h">
+    <h2 id="walk-h">Walk</h2>
+    <div class="grid" data-action="walk"></div>
+  </section>
+  <section aria-labelledby="carry-h">
+    <h2 id="carry-h">Carry-walk (holding an item)</h2>
+    <div class="grid" data-action="carry-walk"></div>
+  </section>
+  <footer>Four of the eight facings are shown; west-facing views are rendered separately. Hand and head figures are the expected travel from geometry, measured again on the rendered strips by the walk gate. Pixel figures are at 1920 × 1080. Randy may overrule; the choice is logged in DECISIONS.</footer>
+</main>
+<script>
+const FACINGS = [['s','South'],['e','East'],['ne','North-east'],['n','North']];
+const NUMS = {
+  walk: { s: [13.3, 10.8, 15.2], e: [17.6, 9.5, 8.8], ne: [17.6, 10.2, 12.0], n: [16.9, 11.2, 15.2] },
+  'carry-walk': { s: [11.9, 11.9], e: [12.6, 12.4], ne: [13.0, 13.0], n: [12.9, 12.9] }
+};
+// Sheet: 2048 × 554; 8 frames of 256 px; current row cook band y 40–262, proposed y 317–539.
+const FW = 256, CY = 40, PY = 317, FH = 222;
+const players = [];
+for (const grid of document.querySelectorAll('.grid')) {
+  const action = grid.dataset.action;
+  for (const [f, label] of FACINGS) {
+    const fig = document.createElement('figure');
+    const pair = document.createElement('div'); pair.className = 'pair';
+    const mk = (cls, text) => { const c = document.createElement('div'); c.className = 'cell ' + cls; const cv = document.createElement('canvas'); cv.width = FW; cv.height = FH; const s = document.createElement('span'); s.textContent = text; c.append(cv, s); pair.append(c); return cv; };
+    const cur = mk('old', 'current'), prop = mk('new', 'proposed');
+    const n = NUMS[action][f];
+    const cap = document.createElement('figcaption');
+    cap.innerHTML = `${label}<br><span class="nums">hands ${n[0]} / ${n[1]} px${n[2] ? ` · head sideways ${n[2]} px` : ''}</span>`;
+    fig.append(pair, cap); grid.append(fig);
+    const img = new Image(); img.src = `${action}-${f}-1x.png`;
+    const p = { img, cur, prop, ready: false }; img.onload = () => { p.ready = true; draw(p, 0); }; players.push(p);
+  }
+}
+function draw(p, i) {
+  if (!p.ready) return;
+  for (const [cv, y] of [[p.cur, CY], [p.prop, PY]]) { const g = cv.getContext('2d'); g.clearRect(0, 0, FW, FH); g.drawImage(p.img, i * FW, y, FW, FH, 0, 0, FW, FH); }
+}
+let fps = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 10, frame = 0, last = 0;
+function setFps(v) { fps = v; for (const b of document.querySelectorAll('[data-fps]')) b.setAttribute('aria-pressed', String(Number(b.dataset.fps) === v)); }
+setFps(fps);
+for (const b of document.querySelectorAll('[data-fps]')) b.addEventListener('click', () => setFps(Number(b.dataset.fps)));
+function tick(t) { if (fps && t - last >= 1000 / fps) { last = t; frame = (frame + 1) % 8; players.forEach(p => draw(p, frame)); } requestAnimationFrame(tick); }
+requestAnimationFrame(tick);
+</script>

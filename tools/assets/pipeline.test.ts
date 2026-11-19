@@ -20,7 +20,7 @@ describe('PERF-023/024 asset pipeline', () => {
   it('validates cook choreography without Blender', () => {
     const result = spawnSync('python3', ['-m', 'unittest', 'discover', '-s', 'tools/blender', '-p', 'test_cook_poses.py'], { timeout: 60_000, encoding: 'utf8' });
     expect(result.status, childFailure(result, 60_000)).toBe(0);
-    expect(result.stderr).toMatch(/Ran 16 tests/);
+    expect(result.stderr).toMatch(/Ran 19 tests/);
     expect(result.stderr).toMatch(/\nOK\b/);
   }, 90_000);
   it('validates card pixels and palette mutations', () => {

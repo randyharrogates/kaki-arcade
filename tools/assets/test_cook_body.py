@@ -8,13 +8,14 @@ import unittest
 from unittest.mock import patch
 import pipeline as p
 sys.path.insert(0, str(p.ROOT/'tools/blender'))
+import cook_gait as gait
 import cook_poses as c
 
 
 class CookBodyTests(unittest.TestCase):
     def test_plan(self):
         data = p.read_json(p.ROOT/'assets/src/pipeline.json')
-        self.assertEqual([j for j in data['renders'] if j['script']=='cook.py'],c.jobs())
+        self.assertEqual([j for j in data['renders'] if j['script'] in ('cook.py', 'cook_walk.py')],gait.jobs())
         body = next(g for g in data['sets'] if g['id']=='tabao-rush-cook-body')
         self.assertEqual(body,dict(id='tabao-rush-cook-body',encoding='lossless',anchors=['root','head','hands'],metadata=['handsInFront'],frameFiles=['tabao-rush/cook-body/'+a+'/frames.json' for a in c.ACTIONS],animations=c.animations()))
         head = next(g for g in data['sets'] if g['id']=='tabao-rush-cook-heads')
@@ -116,6 +117,18 @@ class CookBodyTests(unittest.TestCase):
 
 
 class CookDecisionJobTests(unittest.TestCase):
+    def test_gait_input_is_scoped_to_walk_jobs(self):
+        source = p.ROOT/'assets/src'
+        config = p.render_config(source/'pipeline.json')
+        gait_input = (p.ROOT/'tools/blender/cook_gait.py').resolve()
+        def changed_bytes(path):
+            return path.read_bytes() + (b'\n# gait edit\n' if path == gait_input else b'')
+        for job in config['renders']:
+            digest = p.render_job(job, source)[3]
+            changed = p.render_job(job, source, read_bytes=changed_bytes)[3]
+            self.assertEqual(digest != changed,
+                             job['id'] in ('cook-body-walk', 'cook-body-carry-walk'), job['id'])
+
     def test_retired_jobs_and_stamp_changes(self):
         source = p.ROOT/'assets/src'
         config = p.render_config(source/'pipeline.json')
@@ -133,7 +146,7 @@ class CookDecisionJobTests(unittest.TestCase):
             self.assertNotEqual(changed_digest, digest)
             self.assertEqual(p.stale_reason(outputs, stamp, changed_digest), 'content stamp differs')
         for job in config['renders']:
-            if job['script'] != 'cook.py':
+            if job['script'] not in ('cook.py', 'cook_walk.py'):
                 _, outputs, stamp, digest, _ = p.render_job(job, source)
                 self.assertIsNone(p.stale_reason(outputs, stamp, digest), job['id'])
 
