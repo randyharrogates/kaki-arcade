@@ -1,0 +1,137 @@
+{
+  "slice": "C-29-rejoin-seat",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node --expose-gc tools/perf/run.mjs peek-poker-console --phones 8 --build production --slice C-29-rejoin-seat --out perf-8-main",
+  "commit": "98e9f3acadbbf9e301313fe0d4625c4451ae452a",
+  "viewports": [],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 969.4064579999999,
+      "status": "completed"
+    },
+    {
+      "name": "Picker → start Peek Poker",
+      "ms": 1341.4533330000013,
+      "status": "completed"
+    },
+    {
+      "name": "Round 1 memorise → pick",
+      "ms": 19930.286874999998,
+      "status": "completed"
+    },
+    {
+      "name": "All phones pick and lock in → reveal",
+      "ms": 17491.222124999997,
+      "status": "completed"
+    },
+    {
+      "name": "Round 1 scoreboard",
+      "ms": 7327.838792000002,
+      "status": "completed"
+    },
+    {
+      "name": "Round 2 memorise → pick",
+      "ms": 19753.862083,
+      "status": "completed"
+    },
+    {
+      "name": "All phones pick and lock in → reveal",
+      "ms": 17501.145292,
+      "status": "completed"
+    },
+    {
+      "name": "Round 2 scoreboard",
+      "ms": 6826.763500000001,
+      "status": "completed"
+    },
+    {
+      "name": "Round 3 memorise → pick",
+      "ms": 18225.569583000004,
+      "status": "completed"
+    },
+    {
+      "name": "All phones pick and lock in → reveal",
+      "ms": 17429.170167000004,
+      "status": "completed"
+    },
+    {
+      "name": "Round 3 scoreboard",
+      "ms": 6826.411124999984,
+      "status": "completed"
+    },
+    {
+      "name": "Round 4 memorise → pick",
+      "ms": 16232.017583000008,
+      "status": "completed"
+    },
+    {
+      "name": "All phones pick and lock in → reveal",
+      "ms": 17473.59054200002,
+      "status": "completed"
+    },
+    {
+      "name": "Round 4 scoreboard",
+      "ms": 6841.662792000017,
+      "status": "completed"
+    },
+    {
+      "name": "Round 5 memorise → pick",
+      "ms": 16208.003415999992,
+      "status": "completed"
+    },
+    {
+      "name": "All phones pick and lock in → reveal",
+      "ms": 17449.548750000016,
+      "status": "completed"
+    },
+    {
+      "name": "Round 5 scoreboard",
+      "ms": 6844.339124999999,
+      "status": "completed"
+    },
+    {
+      "name": "Final podium (over)",
+      "ms": 6682.578707999986,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [],
+  "screenshots": [],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "PERF.md",
+      "bytes": 2637
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1518
+    },
+    {
+      "file": "perf.json",
+      "bytes": 374004
+    },
+    {
+      "file": "run.json",
+      "bytes": 3057
+    }
+  ],
+  "totalBytes": 381253,
+  "maxBytes": 12582912
+}
