@@ -1,4 +1,5 @@
 import { blend, GHOST_OPACITY, THEMES, COLOUR_TOKENS, PHI, SHAPE_BUTTONS, SHAPE_NAMES, space, tv, tvType, lineHeight } from '@kaki/ui';
+import { finalRoundCount } from '../src/rules/model';
 import { categoryTitle } from './categories';
 import type { publicView } from '../src/rules/views';
 
@@ -126,7 +127,7 @@ export function screenModel(view: RabakzPublicView, measure: MeasureText = fallb
     picks: reveal ? p.answers ?? [] : [],
   }));
   return {
-    soloBest: view.soloBest, questionId: q.id, identity: `${q.id}:${view.phase}:${view.wrong.join(',')}`, reveal, category: categoryTitle(q.category), heading: `Question ${String(view.round)} of ${String(view.length)}`,
+    doublePoints: view.finalRound, soloBest: view.soloBest, questionId: q.id, identity: `${q.id}:${view.phase}:${view.wrong.join(',')}`, reveal, category: categoryTitle(q.category), heading: `Question ${String(view.round)} of ${String(view.length)}`,
     prompt: q.prompt, fit, picture,
     pictureLabel: 'Picture slot',
     outcome: revealOutcome(view, fit.boxes.awards.width, measure),
@@ -154,5 +155,17 @@ export function createFitCache() {
     const fit = questionFit(q.prompt, q.options, q.type === 'picture', false, measure);
     last = { id: q.id, measure, epoch, fit };
     return fit;
+  };
+}
+
+/** The announcement uses the same fixed artboard and token geometry as play. */
+export function finalCardModel(view: RabakzPublicView) {
+  const count = finalRoundCount(view.length);
+  const height = SCREEN.innerHeight - 2 * space[55];
+  return {
+    title: 'Final round',
+    line: count === 1 ? 'The last question scores double' : `The last ${String(count)} questions score double`,
+    badge: '×2',
+    width: height * PHI, height,
   };
 }

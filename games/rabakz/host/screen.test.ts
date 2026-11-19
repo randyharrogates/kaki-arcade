@@ -1,4 +1,6 @@
-import { inlineStyle, revealTransition, animateBlockWipe, needsBlockWipe, blockMasks, layoutIdentity, successFrames, loadScreenFonts } from './Screen';
+import { isValidElement, toChildArray } from 'preact';
+import type { ComponentChildren } from 'preact';
+import { QuestionFrame, inlineStyle, revealTransition, animateBlockWipe, needsBlockWipe, blockMasks, layoutIdentity, successFrames, loadScreenFonts } from './Screen';
 import * as ts from 'typescript';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it, vi } from 'vitest';
@@ -675,4 +677,60 @@ describe('R-18 RZ-008 outcome streak', () => {
       expect(contrastRatio(THEMES.rabakz.background.ink, paint)).toBeGreaterThanOrEqual(4.5);
     }
   });
+});
+
+it('RZ-009 final card copy and golden panel fit both TV sizes', async () => {
+  const { finalCardModel } = await import('./view-model');
+  for (const [length, line] of [[10, 'The last question scores double'], [30, 'The last 3 questions score double'], [50, 'The last 5 questions score double']] as const) {
+    const card = finalCardModel({ ...rabakz.publicView(scenario('open')), length });
+    expect(card.title).toBe('Final round');
+    expect(card.line).toBe(line);
+    expect(card.badge).toBe('×2');
+    expect(card.width / card.height).toBeCloseTo(1.618, 3);
+    expect(fallbackMeasure(card.title, tvType.hero, 'display')).toBeLessThan(card.width - 2 * space[55]);
+    expect(fallbackMeasure(card.line, tvType.title, 'body')).toBeLessThan(card.width - 2 * space[55]);
+    for (const [width, height] of [[1920,1080],[1280,720]]) {
+      const scale = screenScale(width ?? 0, height ?? 0);
+      expect((card.width + 2 * SCREEN.safe) * scale).toBeLessThanOrEqual(width ?? 0);
+      expect((card.height + 2 * SCREEN.safe) * scale).toBeLessThanOrEqual(height ?? 0);
+    }
+  }
+});
+
+it('RZ-009 Double points chip stays on final questions and reveals', () => {
+  const view = rabakz.publicView(scenario('open'));
+  for (const finalRound of [false, true]) for (const phase of ['question', 'reveal'] as const) {
+    const model = screenModel({ ...view, phase, finalRound });
+    expect(model?.doublePoints).toBe(finalRound);
+    if (!model) throw new Error('Missing question model');
+    const chips: ComponentChildren[] = [];
+    const visit = (children: ComponentChildren): void => {
+      for (const child of toChildArray(children)) if (isValidElement(child)) {
+        if ('class' in child.props && child.props.class === 'rz-double-chip') chips.push(child.props.children);
+        visit(child.props.children);
+      }
+    };
+    visit(QuestionFrame({ model, reduced: true }));
+    expect(chips).toEqual(finalRound ? ['Double points'] : []);
+  }
+});
+
+it.each(['question → final', 'final → question'])('RZ-009 %s uses the paired slow crossfade', async () => {
+  const { animateResultsCrossfade } = await import('./Screen');
+  const { crossfade } = await import('@kaki/ui');
+  for (const reduced of [false, true]) {
+    const incoming = { closest: () => null, animate: vi.fn() };
+    const outgoing = { closest: () => null, animate: vi.fn() };
+    animateResultsCrossfade(incoming as unknown as HTMLElement, outgoing as unknown as HTMLElement, reduced, 1);
+    if (reduced) {
+      expect(incoming.animate).not.toHaveBeenCalled();
+      expect(outgoing.animate).not.toHaveBeenCalled();
+    } else {
+      expect(incoming.animate).toHaveBeenCalledTimes(1);
+      expect(outgoing.animate).toHaveBeenCalledTimes(1);
+      const paired = crossfade({ reduced });
+      expect(incoming.animate.mock.calls[0]).toEqual([paired.incoming.keyframes, { ...paired.incoming.options, delay: paired.incoming.options.delay }]);
+      expect(outgoing.animate.mock.calls[0]).toEqual([paired.outgoing.keyframes, { ...paired.outgoing.options, delay: paired.outgoing.options.delay }]);
+    }
+  }
 });

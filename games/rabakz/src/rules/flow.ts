@@ -4,6 +4,7 @@ import { finalRound, question } from './model';
 import type { State } from './model';
 
 export const TIE_STEPS = secondsToSteps(0.25);
+export const FINAL_STEPS = secondsToSteps(4);
 export const REVEAL_STEPS = secondsToSteps(4);
 export const SCOREBOARD_STEPS = secondsToSteps(20);
 export const IDLE_STEPS = secondsToSteps(30);
@@ -33,7 +34,7 @@ function advance(state: State): State {
   if (state.round + 1 === state.settings.length) return { ...state, phase: 'over' };
   const round = state.round + 1;
   return { ...state, round,
-    phase: round === state.settings.length * 0.9 ? 'final' : 'question', elapsed: 0,
+    phase: finalRound({ ...state, round }) && !finalRound(state) ? 'final' : 'question', elapsed: 0,
     firstCorrect: null, wrong: [], wrongPresses: {}, winners: [], players: state.players.map((player) => ({
       ...player, eligible: true, pick: null, gained: 0, answers: [], skipped: false,
       privateRevision: player.privateRevision + 1,
@@ -62,7 +63,7 @@ export function step(state: State, inputs: StepInputs): State {
         action.player === inputs.leader && action.control === 'continue');
       return continued || elapsed >= SCOREBOARD_STEPS ? advance(state) : { ...state, elapsed };
     }
-    if (elapsed < REVEAL_STEPS) return { ...state, elapsed };
+    if (elapsed < (state.phase === 'final' ? FINAL_STEPS : REVEAL_STEPS)) return { ...state, elapsed };
     if (state.phase === 'final') return { ...state, phase: 'question', elapsed: 0 };
     if (state.round + 1 === state.settings.length) return { ...state, phase: 'over', elapsed: 0 };
     if ((state.round + 1) % 5 === 0) return { ...state, phase: 'scoreboard', elapsed: 0,

@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import { access, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { countUpDuration, STAGGER_MS } from '../../packages/ui/src/index';
 
 /** @param {import('../../tools/uat/harness.ts').Harness} h */
 export default async function fullMatch(h) {
@@ -106,15 +107,53 @@ export default async function fullMatch(h) {
     } finally { clearTimeout(timer); }
     await h.shot(name, page, undefined, false);
   }
-  /** @param {string} label */
-  async function shots(label) {
+  /** @param {string} label @param {boolean} [host] */
+  async function shots(label, host = true) {
     await h.host.clock.runFor(800);
-    await shot(`${label}-tv`, h.host);
+    if (host) await shot(`${label}-tv`, h.host);
     for (const [i, phone] of phones.entries()) await shot(`${label}-phone${String(i + 1)}`, phone);
+  }
+  async function assertIncomingTitle(podium = false) {
+    assert.ok(await h.host.evaluate(podium => {
+      // Hit-testing skips inert subtrees, so lift `inert` from the outgoing layers while probing: wherever an
+      // incoming title or podium content is drawn, the topmost element there must not belong to an outgoing layer.
+      const blocks = [...document.querySelectorAll('.rz-block')];
+      const previous = blocks.map(block => block.getAttribute('style'));
+      const olds = [...document.querySelectorAll('[inert]')];
+      try {
+        for (const block of blocks) if (block instanceof HTMLElement) block.style.pointerEvents = 'auto';
+        olds.forEach(o => { o.removeAttribute('inert'); o.setAttribute('data-outgoing', ''); });
+        const titles = [...document.querySelectorAll('h1')].filter(h => !h.closest('[data-outgoing]')).map(h => h.getBoundingClientRect());
+        const titleOnTop = titles.length > 0 && titles.every(r => [0.1, 0.5, 0.9].every(f => {
+          const hit = document.elementFromPoint(r.x + r.width * f, r.y + r.height / 2);
+          return !!hit && hit.closest('[data-outgoing]') === null;
+        }));
+        const targets = [...document.querySelectorAll('.rz-step, .rz-podium-name')].filter(element => !element.closest('[data-outgoing]'));
+        return titleOnTop && (!podium || targets.length > 0 && targets.every(element => {
+          const r = element.getBoundingClientRect();
+          const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+          return r.width > 0 && r.height > 0 && !!hit && hit.closest('[data-outgoing]') === null;
+        }));
+      } finally {
+        olds.forEach(o => { o.setAttribute('inert', ''); o.removeAttribute('data-outgoing'); });
+        blocks.forEach((block, i) => { const style = previous[i]; if (style === null || style === undefined) block.removeAttribute('style'); else block.setAttribute('style', style); });
+      }
+    }, podium), 'Incoming title and, on the podium, every step and name paint above the outgoing screen');
   }
   /** @param {string} label */
   async function strip(label) {
-    await h.frameStrip(label, h.host, { frames: 6, everyMs: 80, checkFrame: async () => { await h.host.clock.runFor(80); } });
+    if (label === 'podium') await h.host.evaluate(() => {
+      for (const animation of document.getAnimations()) if (animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target.classList.contains('rz-block')) animation.pause();
+    });
+    await h.frameStrip(label, h.host, { frames: 6, everyMs: 80, checkFrame: async index => {
+      if (label === 'podium') {
+        await h.host.evaluate(index => {
+          for (const animation of document.getAnimations()) if (animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target.classList.contains('rz-block')) animation.currentTime = Number(animation.effect.getTiming().duration) * index / 5;
+        }, index);
+        if (index === 5) await assertIncomingTitle(true);
+      } else await h.host.clock.runFor(80);
+    } });
+    if (label === 'podium') await h.host.evaluate(() => { for (const animation of document.getAnimations()) if (animation.playState === 'paused') animation.play(); });
   }
   /** @param {Public} current */
   async function secrecy(current) {
@@ -257,6 +296,10 @@ export default async function fullMatch(h) {
     current = await view();
     assert.equal(current.correct, q.options.indexOf(right));
     for (const p of current.players) assert.equal(p.score, expected.get(p.name) ?? 0, `Score for ${p.name}, question ${String(round)}`);
+    if (round === 10 && h.maxPhones === 8) {
+      assert.equal(await h.host.locator('.rz-block:not([inert]) .rz-double-chip').innerText(), 'Double points');
+      await shot('final-question-reveal-double-points-tv');
+    }
     if (round === 1) { await strip('reveal'); await shots('reveal'); }
     if (round === 5) {
       await until(async () => (await view()).phase === 'scoreboard', 'five-question scoreboard');
@@ -264,25 +307,96 @@ export default async function fullMatch(h) {
       await shots('scoreboard-5'); await click('Continue');
     }
     if (round === 9) {
-      await until(async () => (await view()).phase === 'final', 'double-points announcement');
-      // The phase alone is insufficient: the current TV renderer retains question 9.
-      // RZ-009's announcement has no TV renderer yet (rules only): record it as a named known gap
-      // so the rest of the match is still tested; once a renderer exists, assert its text.
-      const announcement = h.host.getByText(/final round.*double|double.*final round/is);
-      if (await announcement.count() > 0) {
-        assert.match(await announcement.first().innerText(), /final round.*double|double.*final round/is, 'RZ-009: TV announces the double final round before question 10');
-      } else {
-        await h.step('KNOWN GAP RZ-009: no final-round announcement on the TV', async () => {
-          const shown = await h.host.evaluate(() => document.body.innerText.slice(0, 600));
-          await writeFile(join(h.evidence, 'known-gap-RZ-009.json'), `${JSON.stringify({ phase: 'final', tvText: shown }, null, 2)}\n`);
+      // Approach the boundary in one simulation step so entrance frames are retained.
+      while ((await view()).phase !== 'final') await h.host.clock.runFor(16);
+      await h.step('RZ-009 final-round card and double-points header', async () => {
+        const card = h.host.locator('.rz-final-panel');
+        await card.waitFor();
+        // Freeze the mounted boundary before phone assertions or screenshot setup.
+        const freezeBoundary = () => h.host.evaluate(() => {
+          for (const animation of document.getAnimations()) if (animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target.classList.contains('rz-block')) animation.pause();
         });
-      }
-      await shot('final-round-announcement-tv');
+        await freezeBoundary();
+        assert.match(await card.innerText(), /Final round/);
+        assert.match(await card.innerText(), /The last question scores double/);
+        assert.match(await card.innerText(), /×2/);
+        for (const phone of phones) await phone.getByText('Final round · Double points', { exact: true }).waitFor();
+        const panelBox = await card.boundingBox(); assert.ok(panelBox);
+        const centre = { x: Math.floor(panelBox.x + panelBox.width / 2), y: Math.floor(panelBox.y + panelBox.height / 2), width: 1, height: 1 };
+        /** @param {string} name */
+        async function cardStrip(name) {
+          await h.frameStrip(name, h.host, { frames: 8, everyMs: 0, checkFrame: async index => {
+            await h.host.evaluate(index => {
+              for (const animation of document.getAnimations()) if (animation.effect instanceof KeyframeEffect && animation.effect.target instanceof Element && animation.effect.target.classList.contains('rz-block')) {
+                animation.currentTime = Number(animation.effect.getTiming().duration) * index / 7;
+              }
+            }, index);
+            // Paired crossfade (DESIGN §4 4A): one screen stays fully drawn under the panel centre in every frame,
+            // so the frame background never shows through. The centre colour itself blends, by design.
+            // .rz-block has pointer-events: none, which elementsFromPoint skips, so test each block's box.
+            const opaque = await h.host.evaluate(point => Math.max(0, ...[...document.querySelectorAll('.rz-block')]
+              .filter(block => { const r = block.getBoundingClientRect(); return point.x >= r.left && point.x < r.right && point.y >= r.top && point.y < r.bottom; })
+              .map(block => Number(getComputedStyle(block).opacity))), centre);
+            if (name === 'final-round-card-in' && index === 7) await assertIncomingTitle();
+            assert.ok(opaque >= 0.99, `${name}: no fully drawn screen under the panel centre (max opacity ${String(opaque)})`);
+          } });
+          await h.host.evaluate(() => { for (const animation of document.getAnimations()) if (animation.playState === 'paused') animation.play(); });
+        }
+        try {
+          await cardStrip('final-round-card-in');
+          await h.host.setViewportSize({ width: 1920, height: 1080 });
+          await shot('final-round-card-1920-tv');
+          await h.host.setViewportSize({ width: 1280, height: 720 });
+          await shot('final-round-card-1280-tv');
+          await h.host.setViewportSize({ width: 1440, height: 900 });
+          await shot('final-round-card-1440-letterbox-tv');
+          await shots('final-round-double-points', false);
+          await h.host.setViewportSize({ width: 1920, height: 1080 });
+          while ((await view()).phase !== 'question') await h.host.clock.runFor(16);
+          await freezeBoundary();
+          await cardStrip('final-round-card-out');
+          for (const phone of phones) assert.equal(await phone.getByText('Final round · Double points', { exact: true }).count(), 0);
+          assert.equal(await h.host.locator('.rz-double-chip').innerText(), 'Double points');
+          for (const [width, height] of [[1920, 1080], [1280, 720]]) {
+            assert.ok(width && height); await h.host.setViewportSize({ width, height });
+            assert.ok(await h.host.locator('.rz-header').evaluate(header => {
+              const box = header.getBoundingClientRect();
+              const chip = header.querySelector('.rz-double-chip')?.getBoundingClientRect();
+              const category = header.querySelector('.rz-header-detail > .rz-copy')?.getBoundingClientRect();
+              const best = header.querySelector('.rz-play-best')?.getBoundingClientRect();
+              return !!chip && !!category && chip.left >= box.left && chip.top >= box.top && chip.right <= box.right && chip.bottom <= box.bottom && chip.right <= category.left && (!best || chip.right <= best.left);
+            }), 'Double points chip fits the header without overlapping category or solo best');
+            await shot(`final-question-double-points-${String(width)}-tv`);
+          }
+          await h.host.setViewportSize({ width: 1920, height: 1080 });
+        } finally { await h.host.setViewportSize({ width: 1920, height: 1080 }); }
+      });
     }
     if (teams && joiner) assert.ok(await joiner.getByRole('heading', { name: 'Waiting for the lobby', exact: true }).count());
   }, 180000);
-  await until(async () => (await view()).phase === 'over', 'final podium');
-  await strip('podium'); await shots('podium');
+  // Advance one simulation step at a time to retain the outgoing reveal for the strip.
+  for (let step = 0; (await view()).phase !== 'over' && step < 1000; step++) await h.host.clock.runFor(16);
+  assert.equal((await view()).phase, 'over', 'final podium');
+  await strip('podium');
+  const finalTotals = await view();
+  // Score in the Rabakz host uses countUpDuration + index * STAGGER_MS.
+  // Allow every player/team row's stagger and two animation frames for the RAF start/end.
+  await h.host.clock.runFor(countUpDuration() + (finalTotals.players.length + finalTotals.teamScores.length) * STAGGER_MS + 2 * 16);
+  const finalScreen = h.host.locator('.rz-block:not([inert]) .rz-results[data-final="true"]');
+  if (h.maxPhones === 1) {
+    assert.equal(await finalScreen.locator('.rz-solo-total').innerText(), `${String(required(finalTotals.players[0], 'solo player').score)} pts`);
+  } else {
+    const expected = teams
+      ? [...[0, 1].map(team => ({ name: team === 0 ? 'Red team' : 'Blue team', score: finalTotals.teamScores[team] ?? 0 })), ...finalTotals.players]
+      : finalTotals.players;
+    const actual = await finalScreen.locator('.rz-podium-player, .rz-rank').evaluateAll(rows => rows.map(row => ({
+      name: row.querySelector('.rz-rank-name')?.textContent,
+      score: Number(row.querySelector('.rz-total')?.textContent.replace(/ pts$/, '')),
+    })));
+    const byName = (/** @type {{name: string}} */ a, /** @type {{name: string}} */ b) => a.name.localeCompare(b.name);
+    assert.deepEqual(actual.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '')), expected.map(({ name, score }) => ({ name, score })).sort(byName), 'TV final totals match the public view');
+  }
+  await shots('podium');
   if (h.maxPhones === 1) {
     await h.host.locator('.rz-solo').waitFor();
     assert.match(await h.host.locator('.rz-solo').innerText(), /(?:Best|best)/);

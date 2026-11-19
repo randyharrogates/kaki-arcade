@@ -7,7 +7,7 @@ import { STEP_MS } from '@kaki/platform';
 import type { StepInputs } from '@kaki/platform';
 import { DEFAULT_SETTINGS, QUESTION_DATA, questionData, rabakz } from '../index';
 import type { Question, Settings, State } from '../index';
-import { IDLE_STEPS, TIE_STEPS } from './flow';
+import { FINAL_STEPS, IDLE_STEPS, TIE_STEPS } from './flow';
 import { privateView } from './views';
 
 const bank = (length = 10): Question[] => Array.from({ length }, (_, index) => ({
@@ -467,4 +467,33 @@ describe('RZ-006 / RZ-007 same-step solo reveal', () => {
     expect(state.players[0]?.pick).not.toBeNull();
     expect(state.phase).toBe('question');
   });
+});
+
+it('RZ-009 announces once for exactly four seconds before a fresh final question clock, including skips', () => {
+  for (const length of [10, 30, 50] as const) for (const [count, teams] of [[1, false], [8, false], [8, true]] as const) {
+    let state = init(count, length, teams);
+    let cards = 0;
+    while (state.phase !== 'over') {
+      if (state.phase === 'question') {
+        state = tick(state, [], 'skip');
+      } else if (state.phase === 'final') {
+        cards++;
+        expect(state.round).toBe(length * 0.9);
+        expect(state.elapsed).toBe(0);
+        const clock = state.tick;
+        expect(rabakz.publicView(state).question).toBeNull();
+        state = wait(state, FINAL_STEPS - 1);
+        expect(state.phase).toBe('final');
+        state = tick(state, [[0, correct(state)]], 'skip');
+        expect(state).toMatchObject({ phase: 'question', elapsed: 0, tick: clock, firstCorrect: null });
+        expect(state.players.every(p => p.pick === null)).toBe(true);
+        state = wait(state, IDLE_STEPS - 1);
+        expect(state.phase).toBe('question');
+        state = tick(state);
+        expect(state.phase).toBe('reveal');
+      } else if (state.phase === 'scoreboard') state = tick(state, [], 'continue');
+      else state = tick(state);
+    }
+    expect(cards).toBe(1);
+  }
 });

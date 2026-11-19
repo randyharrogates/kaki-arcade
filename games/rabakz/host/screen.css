@@ -40,7 +40,7 @@
 .rz-player-strip { overflow: hidden; }
 .rz-seat-slot > .rz-copy, .rz-seat-slot > .rz-copy > div { height: 100%; }
 .rz-pulse-ring { position: absolute; inset: 0; opacity: 0; border-radius: inherit; box-shadow: inset 0 0 0 var(--ka-space-8) var(--rz-success-colour); }
-.rz-block { position: absolute; inset: 0; pointer-events: none; }
+.rz-block { position: absolute; inset: 0; pointer-events: none; isolation: isolate; }
 .rz-name-tail { white-space: nowrap; }
 .rz-winner, .rz-winner > .rz-copy, .rz-winner > .rz-copy > div { display: inline-block; vertical-align: bottom; }
 @media (prefers-reduced-motion: reduce) { .rz-pulse-ring { display: none; } }
@@ -63,6 +63,7 @@
 .rz-delta { font-family: var(--ka-font-mono); font-variant-numeric: tabular-nums; font-size: var(--ka-type-34); color: var(--ka-secondary); }
 .rz-delta[data-chip] { background: var(--ka-chip); color: var(--ka-accent); border-radius: var(--ka-radius-pill); padding: var(--ka-space-8) var(--ka-space-21); }
 .rz-rank[data-leader] .rz-delta:not([data-chip]) { color: var(--ka-panel-secondary); }
+.rz-results .rz-header h1 { margin: 0; font-weight: var(--ka-weight-regular); }
 .rz-results .rz-header { align-items: baseline; margin-bottom: var(--ka-space-21); }
 .rz-results .rz-header > :last-child { font-size: var(--ka-type-34); color: var(--ka-secondary); line-height: var(--ka-line-display); }
 .rz-round-label { font-family: var(--ka-font-body); font-size: var(--ka-type-34); color: var(--ka-secondary); }
@@ -122,3 +123,10 @@
 
 .rz-header-detail { display: flex; align-items: baseline; gap: var(--ka-space-8); }
 .rz-play-best { font-size: var(--ka-type-34); white-space: nowrap; }
+
+.rz-final { display: grid; place-items: center; }
+.rz-final-panel { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--ka-space-55); padding: var(--ka-space-55); border-radius: var(--ka-radius-corner); background: var(--ka-panel-treatment); color: var(--ka-panel-ink); text-align: center; }
+.rz-final-panel h1 { margin: 0; font: var(--ka-weight-regular) var(--ka-type-144) / var(--ka-line-display) var(--ka-font-display); }
+.rz-final-panel p { margin: 0; font-size: var(--ka-type-55); }
+.rz-double-badge { font-size: var(--ka-type-144); font-family: var(--ka-font-mono); }
+.rz-double-chip { font-size: var(--ka-type-34); padding: var(--ka-space-5) var(--ka-space-13); border-radius: var(--ka-radius-pill); background: var(--ka-chip); color: var(--ka-chip-ink); white-space: nowrap; }

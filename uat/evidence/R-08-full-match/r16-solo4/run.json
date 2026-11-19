@@ -1,0 +1,382 @@
+{
+  "slice": "R-08-full-match",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- R-08-full-match --phones 1 --out r16-solo4",
+  "commit": "0cc1508fe22dd514050fb3a8e59c69ad12d21008",
+  "viewports": [
+    "1920×1080",
+    "844×390",
+    "1280×720",
+    "1440×900"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1733.2440420000003,
+      "status": "completed"
+    },
+    {
+      "name": "Question 1: privacy, inputs, reveal and scores",
+      "ms": 2253.0482920000004,
+      "status": "completed"
+    },
+    {
+      "name": "Question 2: privacy, inputs, reveal and scores",
+      "ms": 1181.7151670000003,
+      "status": "completed"
+    },
+    {
+      "name": "Question 3: privacy, inputs, reveal and scores",
+      "ms": 1887.9420840000002,
+      "status": "completed"
+    },
+    {
+      "name": "Question 4: privacy, inputs, reveal and scores",
+      "ms": 11450.034792,
+      "status": "completed"
+    },
+    {
+      "name": "Question 5: privacy, inputs, reveal and scores",
+      "ms": 4131.738416,
+      "status": "completed"
+    },
+    {
+      "name": "Question 6: privacy, inputs, reveal and scores",
+      "ms": 1069.867875,
+      "status": "completed"
+    },
+    {
+      "name": "Question 7: privacy, inputs, reveal and scores",
+      "ms": 1257.6053339999999,
+      "status": "completed"
+    },
+    {
+      "name": "Question 8: privacy, inputs, reveal and scores",
+      "ms": 2032.6512919999986,
+      "status": "completed"
+    },
+    {
+      "name": "RZ-009 final-round card and double-points header",
+      "ms": 3594.800916,
+      "status": "completed"
+    },
+    {
+      "name": "Question 9: privacy, inputs, reveal and scores",
+      "ms": 6182.131750000004,
+      "status": "completed"
+    },
+    {
+      "name": "Question 10: privacy, inputs, reveal and scores",
+      "ms": 265.16620899999543,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-question-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-question-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-reveal-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-reveal-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-reveal-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-reveal-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-reveal-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-reveal-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-reveal-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-reveal-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-scoreboard-5-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone1-scoreboard-5-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-lock-out-solo-first-wrong-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-lock-out-solo-first-wrong-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-final-round-card-in-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-final-round-card-in-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-host-final-round-card-in-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-host-final-round-card-in-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-final-round-card-in-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-host-final-round-card-in-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-host-final-round-card-in-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-final-round-card-in-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-final-round-card-1920-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-final-round-card-1280-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-host-final-round-card-1440-letterbox-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone1-final-round-double-points-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-final-round-card-out-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-host-final-round-card-out-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-host-final-round-card-out-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-final-round-card-out-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-host-final-round-card-out-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-host-final-round-card-out-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-host-final-round-card-out-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "36-host-final-round-card-out-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "38-host-final-question-double-points-1920-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "39-host-final-question-double-points-1280-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "40-host-podium-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "41-host-podium-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "42-host-podium-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "43-host-podium-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "44-host-podium-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "45-host-podium-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "47-host-podium-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "48-phone1-podium-phone1.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-question-tv.jpg",
+    "02-phone1-question-phone1.jpg",
+    "09-strip-reveal.jpg",
+    "10-host-reveal-tv.jpg",
+    "11-phone1-reveal-phone1.jpg",
+    "12-host-scoreboard-5-tv.jpg",
+    "13-phone1-scoreboard-5-phone1.jpg",
+    "14-host-lock-out-solo-first-wrong-tv.jpg",
+    "15-phone1-lock-out-solo-first-wrong-phone1.jpg",
+    "24-strip-final-round-card-in.jpg",
+    "25-host-final-round-card-1920-tv.jpg",
+    "26-host-final-round-card-1280-tv.jpg",
+    "27-host-final-round-card-1440-letterbox-tv.jpg",
+    "28-phone1-final-round-double-points-phone1.jpg",
+    "37-strip-final-round-card-out.jpg",
+    "38-host-final-question-double-points-1920-tv.jpg",
+    "39-host-final-question-double-points-1280-tv.jpg",
+    "46-strip-podium.jpg",
+    "47-host-podium-tv.jpg",
+    "48-phone1-podium-phone1.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-question-tv.jpg",
+      "bytes": 219422
+    },
+    {
+      "file": "02-phone1-question-phone1.jpg",
+      "bytes": 182702
+    },
+    {
+      "file": "09-strip-reveal.jpg",
+      "bytes": 1460539
+    },
+    {
+      "file": "10-host-reveal-tv.jpg",
+      "bytes": 230387
+    },
+    {
+      "file": "11-phone1-reveal-phone1.jpg",
+      "bytes": 125569
+    },
+    {
+      "file": "12-host-scoreboard-5-tv.jpg",
+      "bytes": 213668
+    },
+    {
+      "file": "13-phone1-scoreboard-5-phone1.jpg",
+      "bytes": 115325
+    },
+    {
+      "file": "14-host-lock-out-solo-first-wrong-tv.jpg",
+      "bytes": 240191
+    },
+    {
+      "file": "15-phone1-lock-out-solo-first-wrong-phone1.jpg",
+      "bytes": 126573
+    },
+    {
+      "file": "24-strip-final-round-card-in.jpg",
+      "bytes": 1831783
+    },
+    {
+      "file": "25-host-final-round-card-1920-tv.jpg",
+      "bytes": 136560
+    },
+    {
+      "file": "26-host-final-round-card-1280-tv.jpg",
+      "bytes": 84822
+    },
+    {
+      "file": "27-host-final-round-card-1440-letterbox-tv.jpg",
+      "bytes": 102155
+    },
+    {
+      "file": "28-phone1-final-round-double-points-phone1.jpg",
+      "bytes": 125181
+    },
+    {
+      "file": "37-strip-final-round-card-out.jpg",
+      "bytes": 1642062
+    },
+    {
+      "file": "38-host-final-question-double-points-1920-tv.jpg",
+      "bytes": 220379
+    },
+    {
+      "file": "39-host-final-question-double-points-1280-tv.jpg",
+      "bytes": 138903
+    },
+    {
+      "file": "46-strip-podium.jpg",
+      "bytes": 1508185
+    },
+    {
+      "file": "47-host-podium-tv.jpg",
+      "bytes": 210237
+    },
+    {
+      "file": "48-phone1-podium-phone1.jpg",
+      "bytes": 112531
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 3134
+    },
+    {
+      "file": "run.json",
+      "bytes": 8955
+    }
+  ],
+  "totalBytes": 9039300,
+  "maxBytes": 12582912
+}

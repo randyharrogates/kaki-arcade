@@ -7,7 +7,12 @@ registerHooks({
   resolve(specifier, context, nextResolve) {
     const url = new URL(specifier, context.parentURL ?? import.meta.url);
     if (url.href.startsWith(library) && url.pathname.endsWith('.js')) return nextResolve(url.href.replace(/\.js$/, '.ts'), context);
-    return nextResolve(specifier, context);
+    // Workspace sources use extensionless relative imports (bundler resolution); try the .ts file.
+    try { return nextResolve(specifier, context); } catch (error) {
+      const missing = /** @type {{ code?: string }} */ (error).code === 'ERR_MODULE_NOT_FOUND';
+      if (!missing || !specifier.startsWith('.') || /\.[cm]?[jt]sx?$/.test(url.pathname)) throw error;
+      try { return nextResolve(`${url.href}.ts`, context); } catch { throw error; }
+    }
   },
 });
 const entry = new URL('./runner.ts', import.meta.url).href;

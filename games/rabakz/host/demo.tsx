@@ -41,6 +41,11 @@ if ((import.meta as ImportMeta & { readonly env: { readonly DEV: boolean } }).en
           ...(saved ? { phase: 'over' as const, players: state.players.map(p => ({ ...p, score: 1600 })) } : {}) };
         draw(); return;
       }
+      if (name === 'final') {
+        state = scenario('open', 8);
+        while (state.phase !== 'final') state = advance(state, state.phase === 'question' ? [{ player: state.players[0]?.info.id ?? '', control: 'skip', revision: 0 }] : []);
+        draw(); return;
+      }
       const next = SCENARIOS.find(value => value === name);
       if (!next) throw new Error('Unknown Rabakz fixture');
       state = scenario(next, 8); draw();

@@ -81,6 +81,9 @@ export function question(state: State): Question {
   if (!current) throw new Error('Missing question');
   return current;
 }
+export function finalRoundCount(length: number): number {
+  return length - Math.ceil(length * 0.9);
+}
 export function finalRound(state: State): boolean {
-  return state.round >= state.settings.length * 0.9;
+  return state.round >= state.settings.length - finalRoundCount(state.settings.length);
 }

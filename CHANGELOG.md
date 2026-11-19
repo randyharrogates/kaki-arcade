@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — R-16: Rabakz final-round card
+
+- RZ-009: a 4 s "Final round" card on the TV before the double-points block (last 1 of 10, 3 of 30, 5 of 50), with "Final round" at 144 px, the count line at 55 px and a mono ×2 on a 1.618 : 1 panel; paired crossfade in and out at slow, none with reduced motion; the question clock starts after the card. A 34 px "Double points" chip on each final question, kept through its reveal. Phones show "Final round · Double points" during the card (D-217, D-290).
+- RZ-030: every Rabakz screen change isolates each screen layer, so the incoming screen always draws above the outgoing one; the results header is an h1 with unchanged type.
+- R-08's "KNOWN GAP RZ-009" step is now a hard assertion, with card, chip, phone and podium stills; podium stills wait for the count-up. The UAT runner resolves a missing extensionless workspace import to its .ts source.
+- Perf: rabakz-screen 8-phone diagnostic, median 16.7, p95 16.7, max 33.4 ms.
+- Not yet: 30- and 50-question cards on the console; real phones and TV; 3 m reading.
+
 ## 2026-11-19 — C-25: detail benchmark in Start preparation
 
 - PERF-002: optional host benchmark scene in the game presentation contract (ARCHITECTURE §3); about 1 s off-screen behind "Starting…", judged by D-111/D-113, remembered per game on the TV by browser, screen size and pixel ratio (D-289); slow TVs that time out get Lower; invalid samples are never cached; games without a scene stay Full on Auto.

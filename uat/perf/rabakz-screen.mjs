@@ -11,7 +11,7 @@ const scenario = {
     await h.host.evaluate(() => document.fonts.ready);
     // Count actual presentation frames, rather than assuming a 60 Hz display.
     for (let repeat = 0; repeat < 5; repeat++) {
-      for (const state of ['open', 'reveal-one-winner', 'perf-next-question', 'picture-question', 'open', 'scoreboard-teams', 'reveal-teams', 'podium-teams', 'perf-solo-best', 'perf-solo-final']) {
+      for (const state of ['open', 'final', 'open', 'reveal-one-winner', 'perf-next-question', 'picture-question', 'open', 'scoreboard-teams', 'reveal-teams', 'podium-teams', 'perf-solo-best', 'perf-solo-final']) {
         await h.step(`Cycle ${String(repeat + 1)}: ${state}`, async () => {
           await h.host.evaluate(name => { /** @type {{ __rzPerfState(name: string): void }} */ (/** @type {unknown} */ (window)).__rzPerfState(name); }, state);
           await h.host.evaluate(async () => {
@@ -20,7 +20,7 @@ const scenario = {
         });
       }
     }
-    // 2750 presentation callbacks, comfortably above the 600-interval minimum.
+    // 3300 presentation callbacks, comfortably above the 600-interval minimum.
     // Do not call roundStart/roundEnd: these fixtures are not a gameplay round.
   },
 };

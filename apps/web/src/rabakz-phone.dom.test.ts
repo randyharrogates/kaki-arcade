@@ -92,13 +92,18 @@ it.each(['phrases', 'words', 'tokens', 'mentsuyu', 'short', 'short-resize', 'con
       for (const optionSet of [selectedOptions[scenario === 'short-resize' ? 'short' : scenario]]) for (const [state,phase,pick,eligible] of [
         ['question','question',null,true], ['scoreboard','scoreboard',null,true],
         ['answered','question',0,true], ['locked-out','question',1,true],
-        ['waiting','question',null,false],
+        ['waiting','question',null,false], ['final','final',null,true],
       ] as const) {
         if (short && (phase !== 'question' || !eligible)) continue;
         await page.evaluate(({phase,pick,eligible,optionSet}) => {
           const draw = Reflect.get(window,'drawStatus') as (phase:string,pick:number | null,theme:string,eligible:boolean,options:string[]) => void;
           draw(phase,pick,'rabakz',eligible,optionSet);
         },{phase,pick,eligible,optionSet});
+        if (phase === 'final') {
+          expect(await page.getByText('Final round · Double points', { exact:true }).count()).toBe(1);
+          expect(await page.locator('[data-part="answer"]').count()).toBe(0);
+          continue;
+        }
         const options = page.locator('.ka-layout-engine > .ka-layout-part .ka-layout-options > button');
         await expect.poll(() => options.count()).toBe(phase === 'question' && eligible ? (short ? 4 : 5) : 1);
         await page.evaluate(() => document.fonts.ready);

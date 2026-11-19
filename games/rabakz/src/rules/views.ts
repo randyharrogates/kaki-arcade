@@ -49,15 +49,16 @@ export function privateView(state: State, id: string): PrivateView | null {
     text(`Score ${String(player.score)}`, 'body'),
     ...(lastPick === undefined ? [] : [text(question(state).options[lastPick] ?? '')]),
   ] };
+  if (state.phase === 'final') return { revision, blocks: [text('Final round · Double points', 'title')] };
   if (!player.eligible) return { revision, blocks: [text('You join at the next question', 'title')] };
-  if (state.phase === 'question' && player.pick === null) return { revision, blocks: [
+  if (player.pick === null) return { revision, blocks: [
     text(`Score ${String(player.score)}`),
   ] };
   return { revision, blocks: [
-    text(lockedOut ? 'Locked out' : player.pick !== null ? 'Locked in' : 'Watch the TV', 'title'),
+    text(lockedOut ? 'Locked out' : 'Locked in', 'title'),
     ...(lockedOut ? [text('Wrong answer. Wait until everyone has taken a turn.')] : []),
-    ...(player.pick === null ? [] : [text(question(state).options[player.pick] ?? '')]),
-    ...(!lockedOut && player.pick !== null ? [text('Watch the TV for the reveal')] : []),
+    text(question(state).options[player.pick] ?? ''),
+    ...(!lockedOut ? [text('Watch the TV for the reveal')] : []),
   ] };
 }
 export function publicView(state: State) {

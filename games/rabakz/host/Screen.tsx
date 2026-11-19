@@ -5,7 +5,7 @@ import { createContext } from 'preact';
 import type { ComponentChildren } from 'preact';
 import { crossfade, motionGeometry, countUpAt, countUpDuration, GHOST_OPACITY, STAGGER_MS, duration, exitDuration, easing, reducedMotion, SEAT_NUMERAL, SHAPE_STROKE, space } from '@kaki/ui';
 import type { Motion } from '@kaki/ui';
-import { createFitCache, cssLength, screenModel, screenScale, viewportStyle, fallbackMeasure as fallback } from './view-model';
+import { finalCardModel, createFitCache, cssLength, screenModel, screenScale, viewportStyle, fallbackMeasure as fallback } from './view-model';
 import type { MeasureText, RabakzPublicView, ScreenModel } from './view-model';
 import './screen.css';
 import { ResultsFrame } from './Results';
@@ -211,7 +211,7 @@ export function QuestionFrame({ model, reduced = reducedMotion(), slow = 1, froz
     </footer>;
   const moving = { reduced, slow };
   return <section class="rz-frame" data-fit={model.fit.fits ? 'fits' : 'failed'} data-theme="rabakz" data-reveal={model.reveal || undefined} data-picture={model.picture || undefined}>
-    <header class="rz-header"><span><Copy identity={model.heading} reduced={reduced} slow={slow}>{model.heading}</Copy></span><span class="rz-header-detail"><Copy identity={model.category} reduced={reduced} slow={slow}>{model.category}</Copy>{model.soloBest !== undefined && <span class="rz-play-best"> · Best {model.soloBest}</span>}</span></header>
+    <header class="rz-header"><span><Copy identity={model.heading} reduced={reduced} slow={slow}>{model.heading}</Copy></span><span class="rz-header-detail">{model.doublePoints && <span class="rz-double-chip">Double points</span>}<Copy identity={model.category} reduced={reduced} slow={slow}>{model.category}</Copy>{model.soloBest !== undefined && <span class="rz-play-best"> · Best {model.soloBest}</span>}</span></header>
     <QuestionBlock model={model} reduced={reduced} slow={slow} />
     <MovingBox className="rz-player-strip" box={model.fit.boxes.awards} {...moving}>{seats}</MovingBox>
   </section>;
@@ -295,11 +295,13 @@ export function RabakzScreen({ view, width, height, reduced = reducedMotion(), s
   if (model) retained.current = model;
   const results = view.phase === 'scoreboard' || view.phase === 'over';
   const board = results ? scoreboardModel(view) : undefined;
-  if (!model && !results) return null;
+  const final = view.phase === 'final';
+  const card = finalCardModel(view);
+  if (!model && !results && !final) return null;
   return <div ref={viewport} class="rz-viewport" data-theme="rabakz" style={viewportStyle(width, height)}>
     <div class="rz-artboard" style={inlineStyle({ transform: `translate(-50%, -50%) scale(${String(screenScale(width, height))})` })}>
-      <ResultsBoundary identity={results ? view.phase : 'question'} reduced={reduced} slow={slow}>
-        {results && board ? <ResultsFrame measure={measure} view={view} board={board} reduced={reduced} slow={slow} frozenAt={frozenAt} /> : model && <QuestionFrame model={model} reduced={reduced} slow={slow} frozenAt={frozenAt} />}
+      <ResultsBoundary identity={final ? 'final' : results ? view.phase : 'question'} reduced={reduced} slow={slow}>
+        {final ? <section class="rz-frame rz-final"><div class="rz-final-panel" style={inlineStyle({ width: cssLength(card.width), height: cssLength(card.height) })}><h1>{card.title}</h1><p>{card.line}</p><span class="rz-double-badge">{card.badge}</span></div></section> : results && board ? <ResultsFrame measure={measure} view={view} board={board} reduced={reduced} slow={slow} frozenAt={frozenAt} /> : model && <QuestionFrame model={model} reduced={reduced} slow={slow} frozenAt={frozenAt} />}
       </ResultsBoundary>
     </div>
   </div>;
