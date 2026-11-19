@@ -102,9 +102,10 @@ export default async function lateTeam(h) {
   const current = await view(); assert.ok(current.question);
   const right = answers[current.question.prompt]; assert.ok(right);
   await newcomer.getByRole('button', { name: right, exact: true }).click();
-  await newcomer.getByText('Locked in', { exact: true }).waitFor();
-  await shot('next-question-answer-phone', newcomer); await shot('next-question-answer-tv');
+  // The TV clock is paused: advance it until the host applies the answer. A right answer ends the question at once,
+  // so the newcomer's phone goes straight to the reveal rather than "Locked in".
   await until(async () => (await view()).phase === 'reveal');
+  await shot('next-question-answer-phone', newcomer); await shot('next-question-answer-tv');
   const revealed = await view();
   assert.equal(revealed.players.find(p => p.name === 'Newcomer')?.score, 100);
   assert.equal(revealed.teamScores[team], (before.teamScores[team] ?? 0) + 100);
