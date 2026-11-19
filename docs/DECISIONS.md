@@ -1904,5 +1904,3 @@ Removal as merged:
 6. **Phone.** The phone list is a column of 55 px rows that scrolls natively (secondary column, 1.618 : 1 in landscape). The selected row expands into the column through a mask, starting at scale 0.95 with ease-out base timing; the exit is shorter; reduced motion has no animation. The leader's own row is listed but cannot be removed; whether it should look different waits on a copy decision.
 
 Randy may overrule.
-
-### Files
