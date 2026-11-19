@@ -1,0 +1,156 @@
+[
+  {
+    "id": "step-chop",
+    "file": "tabao-rush/step-icons/chop.png",
+    "anchor": [
+      17,
+      17
+    ],
+    "anchors": {
+      "centre": [
+        17,
+        17
+      ]
+    }
+  },
+  {
+    "id": "step-wok",
+    "file": "tabao-rush/step-icons/wok.png",
+    "anchor": [
+      17,
+      17
+    ],
+    "anchors": {
+      "centre": [
+        17,
+        17
+      ]
+    }
+  },
+  {
+    "id": "step-pot",
+    "file": "tabao-rush/step-icons/pot.png",
+    "anchor": [
+      17,
+      17
+    ],
+    "anchors": {
+      "centre": [
+        17,
+        17
+      ]
+    }
+  },
+  {
+    "id": "step-grill",
+    "file": "tabao-rush/step-icons/grill.png",
+    "anchor": [
+      17,
+      17
+    ],
+    "anchors": {
+      "centre": [
+        17,
+        17
+      ]
+    }
+  },
+  {
+    "id": "step-rice",
+    "file": "tabao-rush/step-icons/rice.png",
+    "anchor": [
+      17,
+      17
+    ],
+    "anchors": {
+      "centre": [
+        17,
+        17
+      ]
+    }
+  },
+  {
+    "id": "step-drinks",
+    "file": "tabao-rush/step-icons/drinks.png",
+    "anchor": [
+      17,
+      17
+    ],
+    "anchors": {
+      "centre": [
+        17,
+        17
+      ]
+    }
+  },
+  {
+    "id": "step-mix",
+    "file": "tabao-rush/step-icons/mix.png",
+    "anchor": [
+      17,
+      17
+    ],
+    "anchors": {
+      "centre": [
+        17,
+        17
+      ]
+    }
+  },
+  {
+    "id": "step-spread",
+    "file": "tabao-rush/step-icons/spread.png",
+    "anchor": [
+      17,
+      17
+    ],
+    "anchors": {
+      "centre": [
+        17,
+        17
+      ]
+    }
+  },
+  {
+    "id": "step-plate",
+    "file": "tabao-rush/step-icons/plate.png",
+    "anchor": [
+      17,
+      17
+    ],
+    "anchors": {
+      "centre": [
+        17,
+        17
+      ]
+    }
+  },
+  {
+    "id": "step-bowl",
+    "file": "tabao-rush/step-icons/bowl.png",
+    "anchor": [
+      17,
+      17
+    ],
+    "anchors": {
+      "centre": [
+        17,
+        17
+      ]
+    }
+  },
+  {
+    "id": "step-cup",
+    "file": "tabao-rush/step-icons/cup.png",
+    "anchor": [
+      17,
+      17
+    ],
+    "anchors": {
+      "centre": [
+        17,
+        17
+      ]
+    }
+  }
+]

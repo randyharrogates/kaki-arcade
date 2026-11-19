@@ -466,3 +466,59 @@ publishing source PNGs. The default render and its rendered checks remain the ga
 **Half detail**
 - The halfRule halves rect, trim, sourceSize, `anchor` and every named anchor: root [48,64], cue [48,12], progress [48,29], fire [48,60], effect and item [48,38.5].
 - Draw half detail at 2×.
+
+## Step icons
+
+TR-001 recipe-step HUD glyphs are original additive polygon meshes, separate
+from the A-05 world fixtures. `tools/blender/step_icons.py` renders chop, wok,
+pot, grill, rice, drinks, mix, spread, plate, bowl and cup into
+`assets/src/tabao-rush/step-icons/`. `step_icon_geometry.py` owns their pure
+geometry and metadata. Blender supplies only coverage (alpha); `ink_png` in
+`tools/blender/step_icon_geometry.py` writes RGB as exact sRGB **#8E2A18**.
+The front-facing orthographic HUD camera has no world lighting or baked shadow.
+
+Each untrimmed source is **34×34 px**, transparent RGBA. `frames.json` names
+`step-<kind>`; `anchor` and `anchors.centre` are **[17,17]**. The packer records
+`sourceSize=[34,34]`, keeps lossless WebP and creates the half-detail page with
+premultiplied BOX reduction, then per-frame alpha normalisation and an exact-ink
+rewrite in `tools/assets/pipeline.py`, configured by the set’s `halfInk` option.
+Divide rect, trim, sourceSize and anchors
+by two in half detail: sourceSize **[17,17]**, centre **[8.5,8.5]**; draw at 2×
+to recover the 34 px TV box. At a TV width of 1280, scale the 1920 layout by 2/3.
+Top-left = requested glyph centre − anchor×scale + trim×scale. The new
+`tabao-rush-step-icons` set preloads with the Tabao Rush round. Renderer wiring
+belongs to T-07/T-18; this slice adds no runtime usage or recipe mapping.
+
+Render and pack, sequentially:
+
+```sh
+python3 tools/assets/pipeline.py --render --only step-icons --no-pack
+python3 tools/assets/pipeline.py
+python3 tools/assets/step_icon_sheets.py --out uat/evidence/A-11-step-icons/rendered
+python3 tools/assets/pipeline.py --check-stale
+```
+
+The render job fingerprints both geometry and `kalib.py` (exact sRGB conversion).
+The packer creates full and half details; there is no separate half render job.
+Sheets refuse stale step-icon sources, a missing pack, or source/pack mismatch.
+They write compact labelled native 34 px and nearest-neighbour 4× lineups,
+both details on light paper and dark contrast-probe grounds with a single
+faint speckle treatment, and greyscale versions. Dark is the same ink ground
+used by the station review, not an additional shipped HUD theme. Mock chicken
+rice cards show rice → chop → chop → plate with **13 px edge gaps** at 1920
+and 1280 design widths; these are card crops, not full TV screenshots.
+`measurements.json` records icon and round totals and leaves visual review pending.
+No copies of source assets or full-screen evidence are created.
+
+The asset acceptance tests require every source and packed glyph, opaque-pixel
+RGB within ±6 per channel, transparent padding, and all 55 pairwise binary alpha
+silhouettes differing on **at least 6% of the complete 34×34 canvas** (about
+70 pixels), at full and reconstructed half detail. Alpha >128 defines ink.
+This absolute-canvas threshold avoids a large percentage from a tiny occupied
+union and catches near-duplicates; it cannot prove the meaning of a pictogram.
+Greyscale sheets and a physical 3 m TV inspection remain required. The pure
+geometry tests apply the same gate before rendering. Missing unrendered sets
+are explicitly skipped in unit acceptance tests; partially published sets fail.
+Both packed round totals are checked against PERF-023/024, including the
+manifest transfer cost through the existing pipeline checker. Synthetic unit
+packing proves metadata/half plumbing only, never rendered sizes or readability.

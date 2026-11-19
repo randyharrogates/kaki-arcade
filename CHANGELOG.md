@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — A-11: Tabao Rush recipe step icons (in progress)
+
+- TR-001: eleven one-colour 34 px step glyphs (chop, wok, pot, grill, rice, drinks, mix, spread, plate, bowl, cup) in print red-brown #8E2A18 from `tools/blender/step_icons.py`, packed full and half with the Tabao Rush round; pairwise silhouette gate at both details, aligned for shifted duplicates, and a colour gate on every inked pixel (D-220, D-284).
+- Icon page 2,538 B / 43,248 B decoded (half 1,608 B / 10,812 B); Tabao Rush round 2,429,492 of 8,000,000 B and 55,451,280 of 256,000,000 B decoded.
+- Not yet: icons drawn on the TV (T-07/T-18 replace the step words); TV check at 3 m.
+
 ## 2026-11-19 — C-27: TV seat watches private games; a phone leads
 
 - CTRL-009, PLAT-021: games declare `localSeat` (Tabao Rush plays; Peek Poker and Rabakz watch). A watching TV seat is marked "Watching" and never enters the game, private views, scores or results. Alone, it sees "Waiting for a phone" and "⟨game⟩ needs a phone. Go back and scan the code in the lobby to join."; the tile and Select use the same participation count.

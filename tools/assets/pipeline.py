@@ -406,6 +406,21 @@ def pack(config, source, output):
                         records[alias] = records[target]
                 # RGBa is premultiplied; BOX has a bounded footprint and cannot ring or bleed.
                 half = canvas.convert('RGBa').resize((width // 2, height // 2), Image.Resampling.BOX).convert('RGBA')
+                if group.get('halfInk'):
+                    # BOX/unpremultiplication can drift ink RGB and leave
+                    # thin glyphs with no fully opaque core. Normalise each frame
+                    # separately; never change another asset set or the full page.
+                    for record in records.values():
+                        x, y, w, h = record['rect']
+                        box = (x//2, y//2, (x+w)//2, (y+h)//2)
+                        tile = half.crop(box)
+                        alpha = tile.getchannel('A')
+                        peak = alpha.getextrema()[1]
+                        if peak:
+                            alpha = alpha.point(lambda a: round(a*255/peak))
+                        ink = Image.new('RGBA', tile.size, (*bytes.fromhex(group['halfInk'].removeprefix('#')),0))
+                        ink.putalpha(alpha)
+                        half.paste(ink, box[:2])
                 ident = f'{name}-{page}' + (f'-{layer}' if layers != ['default'] else '')
                 atlas = dict(id=ident, set=name, layer=layer, full=emit(bleed(canvas), output, ident + '-full', encoding, quality, name in COOK_SETS),
                     half=emit(bleed(half), output, ident + '-half', encoding, quality, name in COOK_SETS), frames=records,

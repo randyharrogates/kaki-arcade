@@ -1,0 +1,9 @@
+SUPERSEDED by round4-checks.txt. Historical round-2 results follow.
+A-11 round 2 (TR-001): checks run sequentially; no load gating.
+Blender pure-Python: PASS, 39 tests, 6.017 s.
+Asset unittest: BLOCKED at import, 10 errors; ModuleNotFoundError: PIL.
+System Python: /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9
+No dependency installation performed. No render/pack performed.
+Design lint: PASS, 507 files scanned.
+Render-dependent source/packed pixel, margin, silhouette and budget acceptance
+requires the integrator rerender and pack; existing files are round 1 outputs.

@@ -1,0 +1,75 @@
+A-11 round 4 — TR-001 review fixes — 2026-11-19
+Branch: issue/A-11-step-icons
+Checks run one at a time in the requested order, without load gating.
+Each command had a 600-second timeout; none timed out.
+No Blender, render, production pack, verify, UAT, perf, install or commit command was run.
+The requested Python/Vitest suites exercise their existing synthetic packing fixtures.
+
+$ python3 -m unittest discover -s tools/blender -p 'test_*.py'
+Ran 40 tests in 3.802s
+OK
+EXIT 0; elapsed 4.063 s
+
+$ python3 -m unittest discover -s tools/assets -p 'test_*.py'
+Ran 108 tests in 52.142s
+OK
+EXIT 0; elapsed 52.314 s
+
+$ python3 tools/assets/pipeline.py --check-stale
+cards: fresh: content stamp matches and all outputs exist
+items: fresh: content stamp matches and all outputs exist
+cook-body-idle: fresh: content stamp matches and all outputs exist
+cook-body-walk: fresh: content stamp matches and all outputs exist
+cook-body-carry-walk: fresh: content stamp matches and all outputs exist
+cook-body-chop: fresh: content stamp matches and all outputs exist
+cook-body-stir: fresh: content stamp matches and all outputs exist
+cook-body-wash: fresh: content stamp matches and all outputs exist
+cook-body-serve: fresh: content stamp matches and all outputs exist
+cook-body-throw: fresh: content stamp matches and all outputs exist
+cook-body-extinguish: fresh: content stamp matches and all outputs exist
+cook-head-cap: fresh: content stamp matches and all outputs exist
+effect-steam: fresh: content stamp matches and all outputs exist
+effect-sparks: fresh: content stamp matches and all outputs exist
+effect-fire: fresh: content stamp matches and all outputs exist
+effect-spray: fresh: content stamp matches and all outputs exist
+effect-shadow: fresh: content stamp matches and all outputs exist
+station-chop: fresh: content stamp matches and all outputs exist
+station-wok: fresh: content stamp matches and all outputs exist
+station-pot: fresh: content stamp matches and all outputs exist
+station-grill: fresh: content stamp matches and all outputs exist
+station-rice: fresh: content stamp matches and all outputs exist
+station-drinks: fresh: content stamp matches and all outputs exist
+station-plating: fresh: content stamp matches and all outputs exist
+station-sink: fresh: content stamp matches and all outputs exist
+station-bin: fresh: content stamp matches and all outputs exist
+station-serving: fresh: content stamp matches and all outputs exist
+station-dish-rack: fresh: content stamp matches and all outputs exist
+station-return-counter: fresh: content stamp matches and all outputs exist
+station-ingredient-crate: fresh: content stamp matches and all outputs exist
+station-overlays: fresh: content stamp matches and all outputs exist
+station-phi: fresh: content stamp matches and all outputs exist
+step-icons: fresh: content stamp matches and all outputs exist
+cook-head-uncle: fresh: content stamp matches and all outputs exist
+cook-head-auntie: fresh: content stamp matches and all outputs exist
+cook-head-makcik: fresh: content stamp matches and all outputs exist
+cook-head-bun: fresh: content stamp matches and all outputs exist
+cook-head-specs: fresh: content stamp matches and all outputs exist
+cook-head-turban: fresh: content stamp matches and all outputs exist
+cook-head-songkok: fresh: content stamp matches and all outputs exist
+
+EXIT 0; elapsed 0.486 s
+
+$ PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN=false VITEST_MAX_WORKERS=2 pnpm exec vitest run tools --exclude '**/*.dom.test.ts'
+ Test Files  20 passed (20)
+      Tests  291 passed (291)
+   Duration  57.55s (transform 662ms, setup 0ms, import 1.56s, tests 62.22s, environment 2ms)
+EXIT 0; elapsed 58.046 s
+
+$ PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN=false pnpm exec eslint tools --max-warnings 0
+No lint diagnostics.
+EXIT 0; elapsed 7.559 s
+
+Result: all five commands passed; 40/40 render jobs fresh, including step-icons.
+No render input, stamp or hashing change; no rerender needed.
+Review figures in the slice note are attributed to the integrator’s full review.
+Physical 3 m TV check remains owed.

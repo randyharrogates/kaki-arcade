@@ -3749,6 +3749,17 @@
           ]
         }
       ]
+    },
+    {
+      "id": "tabao-rush-step-icons",
+      "halfInk": "#8E2A18",
+      "encoding": "lossless",
+      "anchors": [
+        "centre"
+      ],
+      "frameFiles": [
+        "tabao-rush/step-icons/frames.json"
+      ]
     }
   ],
   "rounds": {
@@ -3761,7 +3772,8 @@
       "tabao-rush-cook-body",
       "tabao-rush-cook-heads",
       "tabao-rush-effects",
-      "tabao-rush-stations"
+      "tabao-rush-stations",
+      "tabao-rush-step-icons"
     ]
   },
   "powerOfTwo": false,
@@ -5444,6 +5456,30 @@
         "tabao-rush/stations/phi/cue-burning.png",
         "tabao-rush/stations/phi/cue-on-fire.png",
         "tabao-rush/stations/phi/frames.json"
+      ],
+      "timeoutSeconds": 300
+    },
+    {
+      "id": "step-icons",
+      "script": "step_icons.py",
+      "inputs": [],
+      "extraInputs": [
+        "tools/blender/step_icon_geometry.py",
+        "tools/blender/kalib.py"
+      ],
+      "outputs": [
+        "tabao-rush/step-icons/chop.png",
+        "tabao-rush/step-icons/wok.png",
+        "tabao-rush/step-icons/pot.png",
+        "tabao-rush/step-icons/grill.png",
+        "tabao-rush/step-icons/rice.png",
+        "tabao-rush/step-icons/drinks.png",
+        "tabao-rush/step-icons/mix.png",
+        "tabao-rush/step-icons/spread.png",
+        "tabao-rush/step-icons/plate.png",
+        "tabao-rush/step-icons/bowl.png",
+        "tabao-rush/step-icons/cup.png",
+        "tabao-rush/step-icons/frames.json"
       ],
       "timeoutSeconds": 300
     }

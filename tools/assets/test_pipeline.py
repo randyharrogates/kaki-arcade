@@ -420,9 +420,11 @@ class PipelineTests(unittest.TestCase):
         items.check_unique_item('item-noodles-cooked', b'b', (3,4), previous)
         # Execute the pure Python self-check examples embedded in the TS coverage test.
         import re
+        from contextlib import chdir
         source = (p.ROOT/'tools/items.test.ts').read_text()
         for example in re.findall(r"execFileSync\('python3', \['-c', `([\s\S]*?)`\]", source):
-            with patch('sys.stdout'):
+            # The embedded examples use repo-relative paths, like the TS runner.
+            with chdir(p.ROOT), patch('sys.stdout'):
                 exec(example, {})
 
     def test_items_publish_listing_and_rim_bytes(self):
