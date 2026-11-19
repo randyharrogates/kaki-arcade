@@ -1841,3 +1841,16 @@ The TV sound unlock as merged.
 6. The UAT measures pause rects only after finite animations finish, because the popover's 0.95 entrance gave sub-pixel differences. The DOM test compares rects with no wait under reduced motion.
 
 Shown to Randy as a side-by-side board (https://claude.ai/artifact/6M8MpCePLFZ5yfXzCiSc31). Randy may ask for R-07's tighter running row or a placeholder in the empty column instead. Chosen by recommendation; Randy may overrule.
+
+**D-295 · 2026-11-19 · Claude, integrator (R-20 review; delegated by Randy, 2026-11-18)** (R-20; RZ-012, RZ-016, RZ-032; refines D-221 and D-233; supersedes D-258's zero-gap clause)
+
+The Rabakz final podium as merged:
+1. One step per place holds all its players in 55 px rows at 34 px with a 0 px row gap. This replaces D-258's tied-team zero member and player gaps and its untied 0 px list gap; steps keep 144, 89 and 55 px surfaces.
+2. In teams only teams are placed, by authoritative team totals. A total may be lower than the sum of its members, because a question scores once per team (RZ-012). The screen never adds up members.
+3. The team header stays C-18's 55 px colour mark plus the 34 px bold name, with the total in "pts" below. The full-width team-colour pill tried in round 1 was dropped rather than put to Randy. Whether the podium takes R-15's team chip is left to Randy as a rendered board.
+4. Podium individual scores drop the repeated "pts" (kept in the accessible label); team totals keep it.
+5. Team totals count up from the previous standings, like player scores.
+6. Every results title, scoreboard included, reserves 13 px below its 55 px line, because the display face's scroll box measured 65 px in Chromium.
+7. The final header is an `h1`, as on the other results screens (R-16).
+
+8. The 8-player free-for-all and late-joiner scoreboards are checked at 1920 and 1280 (round 5). Randy may overrule.

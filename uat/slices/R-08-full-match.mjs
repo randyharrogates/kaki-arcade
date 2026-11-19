@@ -393,6 +393,10 @@ export default async function fullMatch(h) {
       name: row.querySelector('.rz-rank-name')?.textContent,
       score: Number(row.querySelector('.rz-total')?.textContent.replace(/ pts$/, '')),
     })));
+    if (teams) actual.push(...await finalScreen.locator('[data-final-team]').evaluateAll(rows => rows.map(row => ({
+      name: row.querySelector('[data-final-team-title]')?.textContent,
+      score: Number(row.querySelector('[data-final-team-total]')?.textContent.replace(/ pts$/, '')),
+    }))));
     const byName = (/** @type {{name: string}} */ a, /** @type {{name: string}} */ b) => a.name.localeCompare(b.name);
     assert.deepEqual(actual.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '')), expected.map(({ name, score }) => ({ name, score })).sort(byName), 'TV final totals match the public view');
   }

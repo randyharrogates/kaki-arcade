@@ -24,3 +24,15 @@ export function previousScoreboardModel(view: RabakzPublicView) {
   return scoreboardModel({ ...view, players: view.players.map(p => ({ ...p, score: p.previousScore })),
     teamScores: view.previousTeamScores });
 }
+
+/** Final places are competition ranks; tied entrants stay together on one step. */
+export function finalPodiumModel(board: Standings) {
+  const entrants = board.teams.length ? board.teams : board.players;
+  const places = [...new Set(entrants.map(p => p.place))];
+  const order = [2, 1, 3].filter(place => places.includes(place));
+  return order.map(place => ({ place,
+    label: places.length === 1 && entrants.length > 1 ? 'Tied for first' : `${entrants.filter(p => p.place === place).length > 1 ? '=' : ''}${String(place)}`,
+    teams: board.teams.filter(t => t.place === place),
+    players: board.teams.length ? [] : board.players.filter(p => p.place === place),
+  }));
+}

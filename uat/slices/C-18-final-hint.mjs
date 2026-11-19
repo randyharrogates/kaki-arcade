@@ -86,18 +86,25 @@ export default async function finalHint(h) {
       }, 420000);
       await h.host.clock.resume();
       await h.host.waitForTimeout(1000);
-      const rows = game === 'peek-poker' ? '.pp-score-row' : '.rz-rank';
-      assert.equal(await h.host.locator(rows).count(), game === 'rabakz' && !teams ? Math.max(0, count - 2) : count);
+      const rows = game === 'peek-poker' ? '.pp-score-row' : '[data-player], .rz-rank, .rz-solo';
+      assert.equal(await h.host.locator(rows).count(), count);
       if (scoring) {
         assert.equal(answered.size, 3, 'Three phones answered correctly');
-        const totals = await h.host.locator('.rz-podium-player .rz-total').allTextContents();
+        const totals = await h.host.locator('[data-final-team-total]').allTextContents();
         assert.equal(totals.length, 2);
         assert.notEqual(totals[0], totals[1], 'Team final scores differ');
-        assert.ok(await h.host.locator('.rz-rank[data-leader]').count(), 'Scored final includes highlighted rows');
+        const leader = h.host.locator('.rz-step').filter({ has: h.host.locator('.rz-step-place', { hasText: /^1$/ }) });
+        assert.equal(await leader.locator('[data-final-team-title]').innerText(), 'Red team');
       }
-      if (game === 'rabakz' && !teams) assert.equal(await h.host.locator('.rz-podium-player').count(), count === 1 ? 0 : 2);
-      if (teams) assert.equal(await h.host.locator('.rz-group-label').count(), 2);
-      if (teams) assert.ok(await h.host.locator('.rz-row-team').count() >= 8, 'Final players carry team marks');
+      if (game === 'rabakz' && count > 1) {
+        assert.equal(await h.host.locator('.rz-step').count(), scoring ? 2 : 1);
+        assert.deepEqual(await h.host.locator('.rz-step-place').allTextContents(), scoring ? ['2', '1'] : ['Tied for first']);
+      }
+      if (teams) {
+        assert.equal(await h.host.locator('[data-final-team-title]').count(), 2);
+        assert.equal(await h.host.locator('[data-final-team-total]').count(), 2);
+        assert.equal(await h.host.locator('[data-final-team] [data-player]').count(), count);
+      }
       for (const keyboard of [false, true]) {
         if (keyboard) await h.host.keyboard.press('Shift');
         await h.host.getByText(keyboard ? 'Enter: Continue' : 'The leader continues on their phone', { exact: true }).waitFor();

@@ -301,7 +301,7 @@ export function RabakzScreen({ view, width, height, reduced = reducedMotion(), s
   return <div ref={viewport} class="rz-viewport" data-theme="rabakz" style={viewportStyle(width, height)}>
     <div class="rz-artboard" style={inlineStyle({ transform: `translate(-50%, -50%) scale(${String(screenScale(width, height))})` })}>
       <ResultsBoundary identity={final ? 'final' : results ? view.phase : 'question'} reduced={reduced} slow={slow}>
-        {final ? <section class="rz-frame rz-final"><div class="rz-final-panel" style={inlineStyle({ width: cssLength(card.width), height: cssLength(card.height) })}><h1>{card.title}</h1><p>{card.line}</p><span class="rz-double-badge">{card.badge}</span></div></section> : results && board ? <ResultsFrame measure={measure} view={view} board={board} reduced={reduced} slow={slow} frozenAt={frozenAt} /> : model && <QuestionFrame model={model} reduced={reduced} slow={slow} frozenAt={frozenAt} />}
+        {final ? <section class="rz-frame rz-final"><div class="rz-final-panel" style={inlineStyle({ width: cssLength(card.width), height: cssLength(card.height) })}><h1>{card.title}</h1><p>{card.line}</p><span class="rz-double-badge">{card.badge}</span></div></section> : results && board ? <ResultsFrame view={view} board={board} reduced={reduced} slow={slow} frozenAt={frozenAt} /> : model && <QuestionFrame model={model} reduced={reduced} slow={slow} frozenAt={frozenAt} />}
       </ResultsBoundary>
     </div>
   </div>;

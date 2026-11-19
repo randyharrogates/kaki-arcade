@@ -5,10 +5,9 @@ import { rabakz } from '../src/index';
 import { SCREEN } from './view-model';
 import { SCENARIOS, scenario } from './scenarios';
 import { scoreboardModel } from './standings';
-import { podiumFit, podiumSteps, placing, ResultsFrame, PlayerRow, rowPosition, stepHeight, PODIUM_PLAYER_HEIGHT, podiumStepHeight, RESULTS_HEIGHT, RESULTS_HEADER_GAP, TITLE_DESCENDER_RATIO, PODIUM_GEOMETRY } from './Results';
+import { ResultsFrame, PlayerRow, rowPosition, RESULTS_HEIGHT, RESULTS_HEADER_GAP, TITLE_DESCENDER_RATIO } from './Results';
 import { FINAL_HINT_BAND, COLOUR_TOKENS, duration, STAGGER_MS, easing, PHI, space, tvType, lineHeight, enter, pulse } from '@kaki/ui';
 
-const finalHeight = SCREEN.height - FINAL_HINT_BAND - space[13] - (SCREEN.safe + SCREEN.header + RESULTS_HEADER_GAP);
 
 const hooks = vi.hoisted((): { current: unknown; run: boolean; cleanup: undefined | (() => void) } => ({ current: null, run: false, cleanup: undefined }));
 vi.mock('preact/hooks', () => ({
@@ -115,37 +114,6 @@ it('RZ-032 placing glyphs have inline headroom without clipping or smaller type'
   expect(rule).not.toMatch(/overflow|font-size/u);
 });
 
-it('RZ-032 team finals retain every player below the team podium, including late joiners', () => {
-  for (const state of ['podium-teams', 'podium-teams-late', 'scoreboard-teams-late'] as const) {
-    const view = rabakz.publicView(scenario(state, 8));
-    const board = scoreboardModel(view);
-    const tree = nodes(ResultsFrame({ view, board, reduced: true, slow: 1 }));
-    const rows = tree.filter(n => n.type === PlayerRow);
-    expect(rows.map(n => (n.props.player as typeof board.players[number]).id).sort()).toEqual(view.players.map(p => p.id).sort());
-    if (state.endsWith('late')) {
-      expect(board.ordered.at(-1)?.seat).toBe(8);
-      const player = board.ordered.at(-1);
-      if (!player) throw new Error('Missing late joiner');
-      const row = nodes(PlayerRow({ player, index: 7, box: rowPosition(7), reduced: true, slow: 1 }));
-      expect(row.some(n => n.props.children === 'No team')).toBe(true);
-    }
-    for (const team of board.teams) expect(team.players.map(p => p.place)).toEqual(team.players.map(p => 1 + team.players.filter(other => other.score > p.score).length));
-  }
-});
-it('RZ-032 partial ties keep the correct steps, cap each step at two, and preserve every placing', () => {
-  for (const count of [4, 8]) for (const state of ['podium-tie-first', 'podium-tie-second', 'podium-partial-ties', 'podium-ties'] as const) {
-    const board = scoreboardModel(rabakz.publicView(scenario(state, count)));
-    const partition = podiumSteps(board.players);
-    expect([...partition.top, ...partition.rest].map(p => p.id).sort()).toEqual(board.players.map(p => p.id).sort());
-    for (const place of partition.order) expect(partition.top.filter(p => p.place === place).length).toBeLessThanOrEqual(2);
-    expect(partition.order).toEqual(state === 'podium-tie-first' || state === 'podium-partial-ties' ? [1, 3] : state === 'podium-tie-second' ? [2, 1] : [1]);
-    expect(partition.top.map(placing)).toEqual(state === 'podium-tie-second' ? ['1', '=2', '=2'] : state === 'podium-ties' ? ['=1', '=1'] : ['=1', '=1', '3']);
-    if (state === 'podium-ties') expect(partition.rest.every(p => placing(p) === '=1')).toBe(true);
-    expect(podiumFit(partition.top, partition.order.length, 500)).toBe(55);
-    expect(podiumFit(partition.top, partition.order.length, 1)).toBeNull();
-    expect(podiumFit(partition.top, 1000, 500)).toBeNull();
-  }
-});
 it('RZ-034 solo final includes the coloured seat number beside its name', () => {
   const view = rabakz.publicView(scenario('podium', 1));
   const tree = nodes(ResultsFrame({ view, board: scoreboardModel(view), reduced: true, slow: 1 }));
@@ -161,72 +129,6 @@ it('RZ-032 null team from a runtime late join is normalised and retained after b
   expect(board.ordered.at(-1)).toMatchObject({ seat: 8, team: undefined, teamView: true });
 });
 
-it('RZ-032 final podium and eight team rows fit the frame, including a tied team podium', () => {
-  const base = rabakz.publicView(scenario('podium-teams', 8));
-  for (const teamScores of [[300, 200], [300, 300]]) {
-    const view = { ...base, teamScores };
-    const tree = nodes(ResultsFrame({ view, board: scoreboardModel(view), reduced: true, slow: 1 }));
-    const podium = tree.find(n => n.props.class === 'rz-podium');
-    expect(podium?.props['data-fit']).toBe(tree[0]?.props['data-fit']);
-    const body = tree.find(n => n.props.class === 'rz-results-body');
-    const height = Number.parseFloat((body?.props.style as Record<string, string>).height ?? '0');
-    // Final content reserves the shared hint band and row entrance travel.
-    expect(tree[0]?.props['data-fit'] === 'failed').toBe(height > finalHeight);
-    const region = tree.find(n => n.props.class === 'rz-ranked-region');
-    const top = Number.parseFloat((region?.props.style as Record<string, string>).top ?? '0');
-    const last = tree.filter(n => n.type === PlayerRow).at(-1)?.props.box as ReturnType<typeof rowPosition>;
-    expect(top + last.y + last.height).toBeCloseTo(height);
-  }
-});
-
-it('RZ-032 tied third place uses =3 on both rows and the shared step', () => {
-  const base = rabakz.publicView(scenario('podium', 4));
-  const view = { ...base, players: base.players.map((p, i) => ({ ...p, score: [300, 200, 100, 100][i] ?? 0 })) };
-  const board = scoreboardModel(view);
-  const tree = nodes(ResultsFrame({ view, board, reduced: true, slow: 1 }));
-  expect(tree.filter(n => n.props.class === 'rz-step-place').map(n => n.props.children)).toContain('=3');
-  const third = board.players[2];
-  if (!third) throw new Error('Missing third place');
-  expect(nodes(PlayerRow({ player: third, index: 2, box: rowPosition(2), reduced: true, slow: 1 })).find(n => n.props.class === 'rz-place')?.props.children).toBe('=3');
-});
-
-
-it('RZ-032 round 9 final block centres below the shared header at 720p, 1080p and 4K', () => {
-  const gaps: Record<string, number> = {};
-  const css = readFileSync('games/rabakz/host/screen.css', 'utf8');
-  expect(css).not.toContain('justify-content: end; }\n.rz-results[data-final]');
-  expect(css).toContain('.rz-podium { display: flex; align-items: end; gap: var(--rz-column-gap); }');
-  for (const state of ['podium', 'podium-teams', 'podium-ties', 'podium-partial-ties'] as const) for (const count of [2, 4, 8]) {
-    const view = rabakz.publicView(scenario(state, count));
-    const tree = nodes(ResultsFrame({ view, board: scoreboardModel(view), reduced: true, slow: 1 }));
-    const body = tree.find(n => n.props.class === 'rz-results-body')?.props.style as Record<string, string>;
-    const height = Number.parseFloat(body.height ?? '0');
-    const top = Number.parseFloat(body.top ?? '0');
-    const region = tree.find(n => n.props.class === 'rz-ranked-region')?.props.style as Record<string, string>;
-    const podium = tree.find(n => n.props.class === 'rz-podium')?.props.style as Record<string, string>;
-    if (Number.parseFloat(region.height ?? '0')) gaps[`${state}:${String(count)}`] = Number.parseFloat(region.top ?? '0') - Number.parseFloat(podium.height ?? '0');
-    expect(tree.find(n => n.type === 'header')?.props.class).toBe('rz-header');
-    expect(tree[0]?.props.style).not.toHaveProperty('top');
-    const start = SCREEN.safe + SCREEN.header + RESULTS_HEADER_GAP;
-    const bottom = SCREEN.height - FINAL_HINT_BAND - space[13];
-    expect(body.transform).toBeUndefined();
-    expect(top - start).toBeCloseTo(bottom - top - height);
-    expect(tree[0]?.props['data-fit'] === 'failed').toBe(height > finalHeight);
-
-  }
-  expect(gaps).toMatchInlineSnapshot(`
-    {
-      "podium-partial-ties:4": 34,
-      "podium-partial-ties:8": 34,
-      "podium-teams:2": 34,
-      "podium-teams:4": 34,
-      "podium-teams:8": 13,
-      "podium-ties:4": 34,
-      "podium-ties:8": 34,
-      "podium:8": 34,
-    }
-  `);
-});
 it('RZ-032 round 9 unteamed final placing is a dash after both teams', () => {
   const view = rabakz.publicView(scenario('podium-teams-late', 8));
   const board = scoreboardModel(view);
@@ -275,47 +177,6 @@ it('RZ-032 score font padding fits unchanged scoreboard and final row heights', 
   }
 });
 
-it('RZ-032 round 13 budgets real padded podium lines and keeps every final block below the header', () => {
-  const nameHeight = tvType.title * lineHeight.body + 2 * space[5];
-  const pointsHeight = tvType.body * lineHeight.body;
-  const memberHeight = nameHeight + space[5] + pointsHeight;
-  expect(PODIUM_PLAYER_HEIGHT).toBe(memberHeight);
-  const css = readFileSync('games/rabakz/host/screen.css', 'utf8');
-  expect(css).toContain('.rz-podium-player { display: grid; row-gap: var(--rz-player-gap);');
-  expect(css).not.toContain('margin-top: calc(-2 * var(--ka-space-5))');
-  for (const state of ['podium', 'podium-ties', 'podium-tie-first', 'podium-tie-second', 'podium-partial-ties', 'podium-teams', 'podium-teams-late'] as const) {
-    for (const count of [2, 4, 8]) {
-      const view = rabakz.publicView(scenario(state, count));
-      const board = scoreboardModel(view);
-      const tree = nodes(ResultsFrame({ view, board, reduced: true, slow: 1 }));
-      const tiedTeams = board.teams.length > 0 && board.teams[0]?.score === board.teams[1]?.score;
-      const geometry = tiedTeams ? { ...PODIUM_GEOMETRY, memberGap: 0, playerGap: 0 } : PODIUM_GEOMETRY;
-      const steps = tree.filter(n => typeof n.props.level === 'number');
-      const required = Math.max(...steps.map(step => {
-        const members = nodes(step.props.children).filter(n => n.props.class === 'rz-podium-player').length;
-        const place = Number(step.props.level) + 1;
-        const surface = typeof step.props.surfaceHeight === 'number' ? step.props.surfaceHeight : stepHeight(place);
-        expect(surface).toBeGreaterThanOrEqual(space[55]);
-        const height = surface + geometry.memberGap + members * (memberHeight - space[5] + geometry.playerGap) + (members - 1) * geometry.memberGap;
-        expect(podiumStepHeight(place, members, surface, geometry)).toBeCloseTo(height);
-        return height;
-      }));
-      const podium = tree.find(n => n.props.class === 'rz-podium');
-      expect(podium?.props['data-fit']).toBe(tree[0]?.props['data-fit']);
-      expect(Number.parseFloat((podium?.props.style as Record<string, string>).height ?? '0')).toBeCloseTo(required);
-      const body = tree.find(n => n.props.class === 'rz-results-body')?.props.style as Record<string, string>;
-      expect(tree[0]?.props['data-fit'] === 'failed').toBe(Number.parseFloat(body.height ?? '0') > finalHeight);
-      // The previous 55 px display-line assumption must fail this boundary.
-      const oldHeight = Math.max(...steps.map(step => {
-        const members = nodes(step.props.children).filter(n => n.props.class === 'rz-podium-player').length;
-        return stepHeight(Number(step.props.level) + 1) + space[13] + members * (tvType.title * lineHeight.display + pointsHeight) + (members - 1) * space[13];
-      }));
-      const top = podiumSteps(board.players);
-      if (!board.teams.length) expect(podiumFit(top.top, top.order.length, oldHeight)).toBeNull();
-    }
-  }
-});
-
 it('RZ-032 unteamed scoreboard rows never lead and group leaders are overall leaders', () => {
   const view = rabakz.publicView(scenario('scoreboard-teams-late', 8));
   const board = scoreboardModel(view);
@@ -358,101 +219,8 @@ it('RZ-032 round 17 header gap clears measured title descenders at every target 
   }
 });
 
-it('RZ-032 tied-team final tightens its list rhythm without body scaling and excess body height still fails', () => {
-  const view = rabakz.publicView(scenario('podium-teams-tie', 8));
-  const board = scoreboardModel(view);
-  const render = (value: typeof board) => nodes(ResultsFrame({ view, board: value, reduced: true, slow: 1 }));
-  const tree = render(board);
-  const body = tree.find(n => n.props.class === 'rz-results-body')?.props.style as Record<string, string>;
-  const region = tree.find(n => n.props.class === 'rz-ranked-region')?.props.style as Record<string, string>;
-  const podium = tree.find(n => n.props.class === 'rz-podium')?.props.style as Record<string, string>;
-  expect(RESULTS_HEIGHT).toBe(894);
-  expect(Number.parseFloat(body.height ?? '0')).toBeCloseTo(842.8);
-  expect(Number.parseFloat(region.top ?? '0') - Number.parseFloat(podium.height ?? '0')).toBe(8);
-  expect(tree[0]?.props['data-fit']).toBe('tight');
-  const excess = render({ ...board, ordered: [...board.ordered, ...board.ordered] });
-  const excessBody = excess.find(n => n.props.class === 'rz-results-body')?.props.style as Record<string, string>;
-  expect(Number.parseFloat(excessBody.height ?? '0')).toBeGreaterThan(RESULTS_HEIGHT);
-  expect(excess[0]?.props['data-fit']).toBe('failed');
-});
-
-
-it('RZ-032 round 18 keeps the compressed podium surface content within its floor at 720p', () => {
-  // Screen.tsx lays out once at 1080p, then transforms the entire artboard.
-  const view = rabakz.publicView(scenario('podium-teams-tie', 8));
-  const tree = nodes(ResultsFrame({ view, board: scoreboardModel(view), reduced: true, slow: 1 }));
-  const podium = tree.find(n => n.props.class === 'rz-podium')?.props.style as Record<string, string>;
-  const body = tree.find(n => n.props.class === 'rz-results-body')?.props.style as Record<string, string>;
-  const step = tree.find(n => typeof n.type === 'function' && n.type.name === 'PodiumStep');
-  expect(step?.props.surfaceHeight).toBe(55);
-  const placingHeight = tvType.body * lineHeight.body + 2 * space[5];
-  expect(placingHeight).toBeCloseTo(54.2);
-  expect(placingHeight).toBeLessThanOrEqual(55);
-  const source = readFileSync('games/rabakz/host/Results.tsx', 'utf8');
-  expect(source).toContain("'--rz-step-type': cssLength(tvType.body)");
-  for (const scale of [720 / 1080, 1, 2]) {
-    expect(Number.parseFloat(podium.height ?? '0') * scale).toBeCloseTo(306.4 * scale);
-    expect(Number.parseFloat(body.height ?? '0') * scale).toBeCloseTo(842.8 * scale);
-    expect(Number.parseFloat(body.height ?? '0') * scale).toBeLessThanOrEqual(894 * scale);
-  }
-});
-
-it('RZ-032 every results scenario fits at 1, 2, 4 and 8 players', () => {
-  const maxima = new Map<string, number>();
-  for (const state of SCENARIOS.filter(name => name.startsWith('podium') || name.startsWith('scoreboard'))) {
-    for (const count of [1, 2, 4, 8]) {
-      const view = rabakz.publicView(scenario(state, count));
-      const tree = nodes(ResultsFrame({ view, board: scoreboardModel(view), reduced: true, slow: 1 }));
-      expect(tree[0]?.props['data-fit'], state + ':' + String(count)).not.toBe('failed');
-      const body = tree.find(n => n.props.class === 'rz-results-body')?.props.style as Record<string, string>;
-      if (state === 'podium-teams-late' && count === 8) expect(Number.parseFloat(body.height ?? '0')).toBeLessThanOrEqual(RESULTS_HEIGHT);
-      if (view.phase === 'over' && scoreboardModel(view).teams.length) {
-        const region = tree.find(n => n.props.class === 'rz-ranked-region')?.props.style as Record<string, string>;
-        const rows = tree.filter(n => n.type === PlayerRow);
-        const last = rows.at(-1)?.props.box as { y: number; height: number };
-        const occupied = Number.parseFloat(region.top ?? '0') + last.y + last.height;
-        expect(Number.parseFloat(body.height ?? '0')).toBeCloseTo(occupied);
-        expect(occupied).toBeLessThanOrEqual(RESULTS_HEIGHT);
-        const unteamed = rows.findIndex(n => (n.props.player as { team?: number }).team === undefined);
-        if (unteamed > 0) {
-          const previous = rows[unteamed - 1]?.props.box as { y: number; height: number };
-          const next = rows[unteamed]?.props.box as { y: number };
-          expect(next.y - previous.y - previous.height).toBeGreaterThanOrEqual(space[5]);
-        }
-      }
-      maxima.set(state, Math.max(maxima.get(state) ?? 0, Number.parseFloat(body.height ?? '0')));
-    }
-  }
-  expect(Object.fromEntries(maxima)).toMatchInlineSnapshot(`
-    {
-      "podium": 847,
-      "podium-partial-ties": 847,
-      "podium-solo": 847,
-      "podium-teams": 839.0999999999999,
-      "podium-teams-late": 847,
-      "podium-teams-tie": 842.8,
-      "podium-tie-first": 847,
-      "podium-tie-second": 847,
-      "podium-ties": 847,
-      "podium-unicode": 847,
-      "scoreboard": 844.8,
-      "scoreboard-next": 844.8,
-      "scoreboard-teams": 768.3,
-      "scoreboard-teams-late": 844.8,
-      "scoreboard-ties": 844.8,
-      "scoreboard-unicode": 844.8,
-    }
-  `);
-  for (const [state, maximum] of maxima) {
-    expect(maximum, state).toBeLessThanOrEqual(RESULTS_HEIGHT);
-    if (state.startsWith('podium') && !state.includes('teams')) {
-      expect(maximum, state).toBeLessThanOrEqual(RESULTS_HEIGHT - (FINAL_HINT_BAND - SCREEN.safe) - space[13]);
-    }
-  }
-});
-
-it('RZ-032 compact team scoreboard rows retain nonzero gained chips; finals hide them', () => {
-  for (const state of ['scoreboard-teams', 'scoreboard-teams-late', 'podium-teams'] as const) {
+it('RZ-032 compact team scoreboard rows retain nonzero gained chips', () => {
+  for (const state of ['scoreboard-teams', 'scoreboard-teams-late'] as const) {
     const view = rabakz.publicView(scenario(state, 8));
     const frame = nodes(ResultsFrame({ view, board: scoreboardModel(view), reduced: true, slow: 1 }));
     const rows = frame.filter(n => n.type === PlayerRow);
@@ -500,18 +268,119 @@ it('PLAT-022 PLAT-024 RZ-032 2/4/8-player finals budget every ranked row above t
     const view = { ...base, ...(split ? { teamScores: tied ? [300, 300] : [1000, 100] } : {}), players: base.players.map((p, i) => split ? { ...p, team: i < split ? 0 as const : 1 as const } : p) };
     const tree = nodes(ResultsFrame({ view, board: scoreboardModel(view), reduced: true, slow: 1 }));
     const body = tree.find(n => n.props.class === 'rz-results-body')?.props.style as Record<string, string>;
-    const region = tree.find(n => n.props.class === 'rz-ranked-region')?.props.style as Record<string, string>;
+    const region = tree.find(n => n.props.class === 'rz-ranked-region')?.props.style as Record<string, string> | undefined;
     expect(body.transform).toBeUndefined();
     expect(Number.parseFloat(body.top ?? '0') + Number.parseFloat(body.height ?? '0') + space[13]).toBeLessThanOrEqual(SCREEN.height - FINAL_HINT_BAND);
     const rows = tree.filter(n => n.type === PlayerRow);
-    expect(rows).toHaveLength(split ? count : Math.max(0, count - 2));
-    // The two FFA winners occupy the podium; the remaining six occupy list rows.
-    expect(tree.filter(n => n.props.class === 'rz-group-label')).toHaveLength(split ? 2 : 0);
+    expect(rows).toHaveLength(0);
+    expect(tree.filter(n => typeof n.props['data-player'] === 'string')).toHaveLength(count);
+    expect(tree.filter(n => n.props['data-final-team-title'] === true)).toHaveLength(split ? 2 : 0);
     for (const scale of [720 / 1080, 1, 2]) for (const row of rows) {
       const box = row.props.box as { y: number; height: number };
-      const bottom = Number.parseFloat(body.top ?? '0') + (Number.parseFloat(region.top ?? '0') + box.y + box.height);
+      const bottom = Number.parseFloat(body.top ?? '0') + (Number.parseFloat(region?.top ?? '0') + box.y + box.height);
       // Include the row's full token entrance travel, not just its settled rectangle.
       expect((bottom + space[13]) * scale).toBeLessThanOrEqual((SCREEN.height - FINAL_HINT_BAND) * scale);
     }
+  }
+});
+
+it('RZ-012 RZ-016 RZ-032 final places contain all members once, without individual team ranks', () => {
+  for (const count of [2, 4, 8]) for (const state of ['podium', 'podium-ties', 'podium-tie-first', 'podium-teams', 'podium-teams-tie', 'podium-teams-late'] as const) {
+    const view = rabakz.publicView(scenario(state, count));
+    const board = scoreboardModel(view);
+    const tree = nodes(ResultsFrame({ view, board, reduced: true, slow: 1 }));
+    const members = tree.filter(n => typeof n.props['data-player'] === 'string');
+    const rows = tree.filter(n => n.type === PlayerRow);
+    expect([...members.map(n => n.props['data-player']), ...rows.map(n => (n.props.player as typeof board.players[number]).id)].sort()).toEqual(view.players.map(p => p.id).sort());
+    if (board.teams.length) {
+      expect(rows).toHaveLength(0);
+      expect(tree.filter(n => n.props.class === 'rz-place')).toHaveLength(0);
+      expect(tree.filter(n => typeof n.props.level === 'number')).toHaveLength(state === 'podium-teams-tie' ? 1 : new Set(board.teams.map(t => t.place)).size);
+    }
+    if (state === 'podium-ties' || state === 'podium-teams-tie') expect(tree.filter(n => n.props.class === 'rz-step-place').map(n => n.props.children)).toEqual(['Tied for first']);
+    const body = tree.find(n => n.props.class === 'rz-results-body')?.props.style as Record<string, string>;
+    expect(Number.parseFloat(body.height ?? '0')).toBeLessThanOrEqual(847);
+    expect(tree[0]?.props['data-fit']).toBe('fits');
+    const start = SCREEN.safe + SCREEN.header + RESULTS_HEADER_GAP;
+    expect(Number.parseFloat(body.top ?? '0') - start).toBeCloseTo(847 - Number.parseFloat(body.height ?? '0') - (Number.parseFloat(body.top ?? '0') - start));
+  }
+});
+
+it('RZ-032 final steps retain C-18 stagger, ease-out and reduced-motion state', () => {
+  const view = rabakz.publicView(scenario('podium-teams', 4));
+  const tree = nodes(ResultsFrame({ view, board: scoreboardModel(view), reduced: false, slow: 1 }));
+  const steps = tree.filter(n => typeof n.props.level === 'number');
+  const animate = vi.fn(() => ({ cancel: vi.fn() }));
+  hooks.current = { closest: () => null, animate };
+  hooks.run = true;
+  try {
+    for (const step of steps) {
+      const renderStep = step.type as (props: Record<string, unknown>) => unknown;
+      renderStep(step.props);
+      expect(animate).toHaveBeenLastCalledWith(expect.any(Array), expect.objectContaining({ delay: Number(step.props.level) * STAGGER_MS, duration: duration.slow, easing: easing.out }));
+      hooks.cleanup?.();
+      animate.mockClear();
+      const reduced = nodes(renderStep({ ...step.props, reduced: true }));
+      expect(animate).not.toHaveBeenCalled();
+      expect(reduced.some(n => n.props.class === 'rz-step')).toBe(true);
+    }
+  } finally { hooks.run = false; hooks.current = null; }
+});
+
+it('RZ-032 every existing results fixture fits above the shell band at 1/2/4/8 players', () => {
+  for (const state of SCENARIOS.filter(name => name.startsWith('podium') || name.startsWith('scoreboard'))) for (const count of [1, 2, 4, 8]) {
+    const view = rabakz.publicView(scenario(state, count));
+    const tree = nodes(ResultsFrame({ view, board: scoreboardModel(view), reduced: true, slow: 1 }));
+    expect(tree[0]?.props['data-fit'], `${state}:${String(count)}`).not.toBe('failed');
+    const body = tree.find(n => n.props.class === 'rz-results-body')?.props.style as Record<string, string>;
+    if (view.phase === 'over') expect(Number.parseFloat(body.top ?? '0') + Number.parseFloat(body.height ?? '0') + space[13]).toBeLessThanOrEqual(SCREEN.height - FINAL_HINT_BAND);
+  }
+});
+
+
+it('RZ-032 eight-player podium budgets a single column for all six third-place members', () => {
+  const view = rabakz.publicView(scenario('podium', 8));
+  const tree = nodes(ResultsFrame({ view, board: scoreboardModel(view), reduced: true, slow: 1 }));
+  const groups = tree.filter(n => n.props.class === 'rz-step-members');
+  expect(groups).toHaveLength(3);
+  expect(groups.every(n => n.props['data-columns'] === 1)).toBe(true);
+  const podium = tree.find(n => n.props.class === 'rz-podium')?.props.style as Record<string, string>;
+  expect(Number.parseFloat(podium.height ?? '0')).toBe(space[55] + space[13] + 6 * space[55]);
+});
+
+it('RZ-016 single-winner podium team fixtures conserve member scores', () => {
+  for (const name of SCENARIOS.filter(name => name.startsWith('podium') && name.includes('teams'))) for (const count of [4, 8]) {
+    const state = scenario(name, count);
+    for (const team of [0, 1]) expect(state.teamScores[team], `${name}:${String(count)}:${String(team)}`).toBe(state.players.filter(p => p.info.team === team).reduce((sum, p) => sum + p.score, 0));
+    if (name === 'podium-teams-tie') expect(state.teamScores[0]).toBe(state.teamScores[1]);
+  }
+});
+
+it('RZ-016 final team count-up starts at the standings baseline', () => {
+  const view = rabakz.publicView(scenario('podium-teams', 4));
+  view.previousTeamScores = [123, 234];
+  const board = scoreboardModel(view);
+  const tree = nodes(ResultsFrame({ view, board, reduced: false, slow: 1 }));
+  for (const team of board.teams) {
+    const column = tree.find(n => n.props['data-team'] === team.id);
+    const total = nodes(column).find(n => n.props['data-final-team-total'] === true);
+    expect(nodes(total).find(n => n.props.to === team.score)?.props.from).toBe(team.before);
+  }
+});
+
+
+it('RZ-032 every results header reserves display-font scroll clearance, not only finals', () => {
+  const css = readFileSync('games/rabakz/host/screen.css', 'utf8');
+  expect(css).toContain('.rz-results .rz-header > :first-child { padding-bottom: var(--ka-space-13); }');
+  expect(css).not.toContain('.rz-results[data-final] .rz-header > :first-child');
+  // Round-3 Chromium: 65px scroll content in the unpadded 55px line.
+  expect(SCREEN.header + space[13]).toBeGreaterThanOrEqual(65);
+  for (const state of ['scoreboard', 'scoreboard-teams', 'scoreboard-ties', 'podium', 'podium-teams', 'podium-solo'] as const) {
+    const view = rabakz.publicView(scenario(state, 8));
+    const tree = nodes(ResultsFrame({ view, board: scoreboardModel(view), reduced: true, slow: 1 }));
+    expect(String(tree[0]?.props.class).split(' ')).toContain('rz-results');
+    const header = tree.find(n => n.props.class === 'rz-header');
+    expect(header?.type).toBe('header');
+    expect(nodes(header?.props.children)[0]?.type).toBe('h1');
   }
 });

@@ -29,11 +29,12 @@ it('PLAT-022 PLAT-024 RZ-032 Rabakz free-for-all and 2/4/8-player team finals cl
       await page.waitForFunction(() => Reflect.has(window, 'draw'));
       for (const count of [2, 4, 8]) for (const mode of ['ffa', '4-4', '7-1']) for (const keyboard of [false, true]) for (const tied of [false, true]) {
         await page.evaluate(args => { (Reflect.get(window, 'draw') as (k: boolean, m: string, t: boolean, c: number) => void)(...args); }, [keyboard, mode, tied, count] as [boolean, string, boolean, number]);
-        expect(await page.locator('.rz-rank').count()).toBe(mode === 'ffa' ? Math.max(0, count - 2) : count);
+        expect(await page.locator('[data-player]').count()).toBe(count);
+        expect(await page.locator('.rz-rank').count()).toBe(0);
         expect(await page.locator('.rz-results-body').evaluate(n => getComputedStyle(n).transform)).toBe('none');
         expect(await page.locator('.rz-rank, .rz-group-label, .rz-podium-player .rz-total').evaluateAll(rows => rows.every(n => Number.parseFloat(getComputedStyle(n).fontSize) >= 34))).toBe(true);
         expect(await page.locator('.rz-results-body').evaluate(n => Math.abs((n.getBoundingClientRect().left + n.getBoundingClientRect().right) / 2 - innerWidth / 2))).toBeLessThan(0.5);
-        expect(await page.locator('.rz-group-label').count()).toBe(mode === 'ffa' ? 0 : 2);
+        expect(await page.locator('[data-final-team-title]').count()).toBe(mode === 'ffa' ? 0 : 2);
         expect(await page.getByText('Leader can continue', { exact: true }).count()).toBe(0);
         expect(await page.locator('.game-final-hint').evaluate(n => n.getBoundingClientRect().height)).toBeCloseTo(34 * width / 1920);
         expect(await page.locator('.game-final-hint').evaluate(n => {

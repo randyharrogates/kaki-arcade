@@ -5,7 +5,7 @@ import { rabakz, DEFAULT_SETTINGS, QUESTION_DATA, questionData } from '../src/in
 import type { Question, State } from '../src/index';
 import { COLOUR_TOKEN_NAMES } from '@kaki/ui';
 
-export const SCENARIOS = ['jack-u', 'podium-teams-tie', 'podium-solo', 'podium-unicode', 'scoreboard-unicode', 'podium-tie-first', 'podium-tie-second', 'podium-partial-ties', 'scoreboard-teams-late', 'podium-teams-late', 'reveal-teams', 'scoreboard', 'scoreboard-next', 'scoreboard-teams', 'scoreboard-ties', 'podium', 'podium-teams', 'podium-ties', 'open', 'some-answered', 'wrong-marked', 'locked-out', 'reveal-one-winner',
+export const SCENARIOS = ['podium-teams-split', 'jack-u', 'podium-teams-tie', 'podium-solo', 'podium-unicode', 'scoreboard-unicode', 'podium-tie-first', 'podium-tie-second', 'podium-partial-ties', 'scoreboard-teams-late', 'podium-teams-late', 'reveal-teams', 'scoreboard', 'scoreboard-next', 'scoreboard-teams', 'scoreboard-ties', 'podium', 'podium-teams', 'podium-ties', 'open', 'some-answered', 'wrong-marked', 'locked-out', 'reveal-one-winner',
   'reveal-tie', 'reveal-nobody', 'picture', 'longest-text', 'one-player', 'eight-players', 'picture-wrong', 'picture-reveal', 'longest-reveal', 'wide-names', 'three-winners', 'departed-winner', 'departed-during-reveal', 'next-question', 'non-picture-question', 'picture-question', 'perf-next-question'] as const;
 export type Scenario = typeof SCENARIOS[number];
 // Exactly the schema limits: 120 and 40, including spaces, no word over 30 / 15.
@@ -24,7 +24,7 @@ export function scenario(name: Scenario, count = name === 'one-player' ? 1 : 8):
   if (name === 'podium-solo') count = 1;
   const names = ['Mei', 'Ravi', 'Aisyah', 'Daniel', 'Siti', 'Kai', 'Jia Wen', 'Amir'];
   const players: PlayerInfo[] = Array.from({ length: count }, (_, i) => ({
-    id: `seat-${String(i + 1)}`, seat: i + 1, name: ['wide-names', 'longest-reveal', 'three-winners'].includes(name) ? (i % 2 ? '😀'.repeat(12) : '麗'.repeat(12)) : names[i] ?? 'Player', colour: COLOUR_TOKEN_NAMES[i] ?? 'seat-1', ...(name.includes('teams') ? { team: (i % 2) as 0 | 1 } : {}),
+    id: `seat-${String(i + 1)}`, seat: i + 1, name: ['wide-names', 'longest-reveal', 'three-winners'].includes(name) ? (i % 2 ? '😀'.repeat(12) : '麗'.repeat(12)) : names[i] ?? 'Player', colour: COLOUR_TOKEN_NAMES[i] ?? 'seat-1', ...(name.includes('teams') ? { team: (name === 'podium-teams-split' ? i < count - 1 ? 0 : 1 : i % 2) as 0 | 1 } : {}),
   }));
   const questions: Question[] = Array.from({ length: name.startsWith('scoreboard') ? 30 : 10 }, (_, i) => ({
     id: `${name.startsWith('picture') ? 'picture' : name.startsWith('longest') ? 'longest' : 'screen'}-${String(i)}`, prompt: name === 'jack-u' ? "Which singer was featured in Jack Ü (Skrillex & Diplo)'s 2015 song 'Where Are Ü Now'?" : ['longest-text', 'longest-reveal'].includes(name) ? LONG_PROMPT : (i === 0 || name === 'perf-next-question') ? 'What is the capital of Japan?' : `Which fruit grows in a bunch? Question ${String(i + 1)}`,
@@ -45,7 +45,7 @@ export function scenario(name: Scenario, count = name === 'one-player' ? 1 : 8):
     }
     if (name === 'reveal-teams') return state;
     while (state.phase === 'reveal') state = advance(state);
-    const scores = name === 'podium-tie-first' ? [300,300,200,100,90,80,70,60] : name === 'podium-tie-second' ? [300,200,200,100,90,80,70,60] : name === 'podium-partial-ties' ? [300,300,200,100,100,50,40,30] : undefined;
+    const scores = name === 'podium-teams-tie' ? [300,300,0,0,0,0,0,0] : name === 'podium-tie-first' ? [300,300,200,100,90,80,70,60] : name === 'podium-tie-second' ? [300,200,200,100,90,80,70,60] : name === 'podium-partial-ties' ? [300,300,200,100,100,50,40,30] : undefined;
     if (name === 'podium-teams-tie') state = { ...state, teamScores: [300, 300] };
     // Late fixture removes membership after scoring; remove that contribution too.
     if (name.endsWith('late')) {

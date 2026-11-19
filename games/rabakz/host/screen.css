@@ -77,7 +77,7 @@
 .rz-step-place { order: 2; display: grid; place-items: center; width: 100%; height: var(--rz-step-height); border-radius: var(--ka-radius-corner); background: var(--ka-panel-treatment); color: var(--ka-panel-ink); box-shadow: inset 0 0 0 var(--rz-edge) var(--ka-panel-edge-colour); font-family: var(--ka-font-display); padding-block: var(--ka-space-5); flex-shrink: 0; font-size: var(--rz-step-type); font-weight: var(--ka-weight-regular); line-height: var(--ka-line-body); }
 .rz-step-members { width: 100%; display: grid; grid-template-columns: 1fr; gap: var(--rz-member-gap); }
 .rz-podium-name { display: flex; justify-content: center; align-items: center; gap: var(--ka-space-13); }
-.rz-podium-player { display: grid; row-gap: var(--rz-player-gap); text-align: center; font-size: var(--rz-podium-type); line-height: var(--ka-line-display); justify-items: center; }
+.rz-podium-player { display: grid; text-align: center; line-height: var(--ka-line-display); justify-items: center; }
 .rz-solo { height: 100%; display: grid; grid-template-columns: minmax(0, 1fr); place-content: center normal; justify-items: center; text-align: center; gap: var(--ka-space-34); font-size: var(--ka-type-55); }
 .rz-solo-total { font-size: var(--ka-type-34); }
 
@@ -96,8 +96,6 @@
 
 .rz-podium-player .rz-total { font-size: var(--ka-type-34); line-height: var(--rz-podium-line); }
 
-/* Name headroom is included in the podium geometry. */
-.rz-podium-player .rz-rank-name { padding-block: var(--rz-name-padding); }
 
 /* Font content headroom stays within the fixed ranked-row height. */
 .rz-rank .rz-total, .rz-rank .rz-delta { padding-block: var(--ka-space-5); }
@@ -123,6 +121,25 @@
 
 .rz-header-detail { display: flex; align-items: baseline; gap: var(--ka-space-8); }
 .rz-play-best { font-size: var(--ka-type-34); white-space: nowrap; }
+
+/* R-20 — final team places and complete shared podium steps. */
+[data-team-podium] .rz-step { min-width: 0; }
+[data-team-podium] .rz-step-members { grid-template-columns: minmax(0, 1fr); gap: 0; }
+[data-team-podium] .rz-step-members[data-columns="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--ka-space-21); }
+[data-team-podium] [data-final-member] { display: grid; grid-template-columns: var(--ka-space-55) minmax(0, 1fr) max-content; align-items: center; gap: var(--ka-space-13); height: var(--ka-space-55); font-size: var(--ka-type-34); line-height: var(--ka-line-body); text-align: left; justify-items: stretch; }
+[data-team-podium] [data-final-member] .rz-rank-name { padding-block: var(--ka-space-5); }
+[data-team-podium] [data-final-member] .rz-total { padding-block: var(--ka-space-5); line-height: var(--ka-line-body); }
+[data-final-team] { min-width: 0; }
+[data-final-team-title] { height: var(--ka-space-55); display: flex; align-items: center; justify-content: center; gap: var(--ka-space-13); color: var(--ka-ink); font-size: var(--ka-type-34); font-weight: var(--ka-team-text-weight); line-height: var(--ka-line-body); }
+[data-final-team-total] { height: var(--ka-space-55); display: flex; align-items: center; justify-content: center; white-space: pre; margin-bottom: var(--ka-space-13); font-size: var(--ka-type-34); line-height: var(--ka-line-body); }
+[data-final-unassigned] { display: flex; align-items: center; gap: var(--ka-space-13); font-size: var(--ka-type-34); line-height: var(--ka-line-body); }
+[data-final-unassigned] [data-final-member] { flex: 1; }
+
+/* The display face scroll box extends below its 55px line even when ink fits.
+   Reserve the same phi clearance for scoreboards, solo finals and podiums. */
+.rz-results .rz-header > :first-child { padding-bottom: var(--ka-space-13); }
+/* Finals have no gained-points column. Keep the total in its own bounded cell. */
+[data-team-podium] .rz-rank .rz-score-area { grid-template-columns: minmax(0, 1fr); }
 
 .rz-final { display: grid; place-items: center; }
 .rz-final-panel { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--ka-space-55); padding: var(--ka-space-55); border-radius: var(--ka-radius-corner); background: var(--ka-panel-treatment); color: var(--ka-panel-ink); text-align: center; }

@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — R-20: Rabakz team podium and tied places
+
+- RZ-012: the final podium places teams by their totals; each team column shows its mark, name and total above its players by score, with no individual places; late unteamed players are listed as "No team".
+- RZ-016: tied teams share one "Tied for first" step; tied free-for-all players share their step ("=1", "=2", "=3") and are not repeated below; "Tied for first" when everyone ties (D-221, D-233).
+- RZ-032: one step per place holding all its players in 55 px rows at 34 px; the body stays centred above the shared hand-off band; every results title, scoreboards included, reserves 13 px for the display face; the final header is an h1. C-18's and R-08's UAT follow the new podium (D-295).
+- Perf: rabakz-screen 8-phone diagnostic, 3,305 frames, median 16.7, p95 16.8, max 33.3 ms, none over 50 ms.
+- Not yet: phone placings (R-19); real TV and 3 m reading.
+
 ## 2026-11-19 — C-24: sound on a TV nobody has touched
 - RZ-033, TR-063: the landing's Host a game is a real link that, on a plain primary click, starts the shared TV sound engine within the click and moves to the lobby in the same document; modified and middle clicks keep the browser's behaviour; Enter and Space as before (D-255). One click and key callback is removed while sound runs and re-armed if the context is suspended or interrupted.
 - While sound is blocked the lobby hint reads "Click or press a key on this screen to turn on sound" and the pause rows read "Sound is off" in the body font, with `aria-valuetext`; numbers stay mono. Rows keep one height and width across unlock, so nothing moves; the running panel is about 72 px taller than R-07's at 1080p (D-229, D-294).

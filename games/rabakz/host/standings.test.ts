@@ -1,8 +1,8 @@
 import { expect, it } from 'vitest';
 import { rabakz } from '../src/index';
 import { scenario } from './scenarios';
-import { scoreboardModel } from './standings';
-import { rowPosition, RESULTS_HEIGHT, podiumSteps, stepHeight, podiumFit, podiumLayout, teamMark } from './Results';
+import { finalPodiumModel, scoreboardModel } from './standings';
+import { rowPosition, RESULTS_HEIGHT, teamMark } from './Results';
 import { textLines } from './view-model';
 import { space, tvType, lineHeight } from '@kaki/ui';
 
@@ -69,30 +69,6 @@ it('RZ-032 measured rows reserve complete lines at the reading floor at every re
   }
 });
 
-it('RZ-032 podium centres first, shares tied steps and descends in phi heights', () => {
-  const board = scoreboardModel(rabakz.publicView(scenario('podium', 8)));
-  expect(podiumSteps(board.players).order).toEqual([2, 1, 3]);
-  const tied = scoreboardModel(rabakz.publicView(scenario('podium-ties', 8)));
-  const steps = podiumSteps(tied.players);
-  expect(steps.order).toEqual([1]);
-  expect(steps.top).toHaveLength(2);
-  expect(steps.rest).toHaveLength(6);
-  expect(stepHeight(1) / stepHeight(2)).toBeCloseTo(144 / 89);
-  expect(stepHeight(3)).toBe(55);
-  expect(podiumSteps(board.players.slice(0, 2)).order).toEqual([2, 1]);
-});
-
-it('RZ-032 podium measurement retains the reading floor for all counts and tied groups', () => {
-  for (let count = 2; count <= 8; count++) for (const name of ['podium', 'podium-ties'] as const) {
-    const board = scoreboardModel(rabakz.publicView(scenario(name, count)));
-    const { top, order } = podiumSteps(board.players);
-    const height = RESULTS_HEIGHT;
-    const size = podiumFit(top, order.length, height, undefined);
-    expect(size).toBeGreaterThanOrEqual(tvType.body);
-    expect(size).toBe(tvType.title);
-  }
-});
-
 it('RZ-032 fresh host derives player and team deltas solely from publicView', () => {
   const view = rabakz.publicView(scenario('scoreboard-teams', 4));
   const reloaded = JSON.parse(JSON.stringify({ ...view, previousTeamScores: [13, 21],
@@ -102,24 +78,6 @@ it('RZ-032 fresh host derives player and team deltas solely from publicView', ()
   for (const t of board.teams) expect(t.delta).toBe(t.score - (reloaded.previousTeamScores[t.id] ?? 0));
 });
 
-it('RZ-032 podium regions separate extra places within the artboard', () => {
-  for (const count of [2, 4, 8]) {
-    const board = scoreboardModel(rabakz.publicView(scenario('podium', count)));
-    const { rest } = podiumSteps(board.players);
-    const regions = podiumLayout(rest.length);
-    expect(regions.arrangement).toBe(rest.length ? 'vertical' : 'podium-only');
-    if (!rest.length) continue;
-    expect(regions.restHeight).toBe(rest.length * space[55] + (rest.length - 1) * space[8]);
-    expect(regions.podiumHeight + space[34] + regions.restHeight).toBe(RESULTS_HEIGHT);
-    for (const [index] of rest.entries()) {
-      const box = rowPosition(index, true);
-      expect(regions.restY + box.y).toBeGreaterThan(regions.podiumHeight);
-      expect(regions.restY + box.y + box.height).toBeLessThanOrEqual(RESULTS_HEIGHT);
-      expect(tvType.body).toBe(34);
-      expect(tvType.body * lineHeight.body + 2 * space[5]).toBeLessThanOrEqual(box.height);
-    }
-  }
-});
 it('RZ-032 team identity pairs its name with a colour mark and no seat numeral', () => {
   expect(teamMark(0).name).toBe('Red team');
   expect(teamMark(1).name).toBe('Blue team');
@@ -130,4 +88,31 @@ it('RZ-032 team identity pairs its name with a colour mark and no seat numeral',
 it('RZ-032 four-player final rows match eight-player height and start at the region top', () => {
   expect(rowPosition(0, true)).toEqual(rowPosition(0, true));
   expect(rowPosition(0, true).y).toBe(0);
+});
+
+it('RZ-012 RZ-016 RZ-032 final team places use team totals, retain score order and share ties at 2/4/8 players', () => {
+  for (const count of [2, 4, 8]) for (const tied of [false, true]) {
+    const base = rabakz.publicView(scenario('podium-teams', count));
+    const view = { ...base, teamScores: tied ? [300, 300] : [100, 500], players: base.players.map((p, i) => ({ ...p, score: i % 3 * 100 })) };
+    const board = scoreboardModel(view);
+    expect(board.teams.map(t => t.place)).toEqual(tied ? [1, 1] : [1, 2]);
+    expect(board.teams.map(t => t.id)).toEqual(tied ? [0, 1] : [1, 0]);
+    for (const team of board.teams) expect(team.players.map(p => p.score)).toEqual([...team.players.map(p => p.score)].sort((a, b) => b - a));
+    const steps = finalPodiumModel(board);
+    expect(steps).toHaveLength(tied ? 1 : 2);
+    expect(steps.flatMap(step => step.teams.flatMap(t => t.players)).map(p => p.id).sort()).toEqual(view.players.map(p => p.id).sort());
+    if (tied) expect(steps[0]?.label).toBe('Tied for first');
+  }
+});
+it('RZ-016 RZ-032 free-for-all shared steps contain every tied player, including everyone tied', () => {
+  for (const count of [2, 4, 8]) for (const all of [false, true]) {
+    const base = rabakz.publicView(scenario('podium', count));
+    const board = scoreboardModel({ ...base, players: base.players.map((p, i) => ({ ...p, score: all || i < 2 ? 300 : 300 - i * 50 })) });
+    const steps = finalPodiumModel(board);
+    const first = steps.find(step => step.place === 1);
+    expect(first?.players).toHaveLength(all ? count : 2);
+    expect(first?.label).toBe(all || count === 2 ? 'Tied for first' : '=1');
+    expect(steps.flatMap(step => step.players).every(p => p.place <= 3)).toBe(true);
+    expect(new Set(steps.flatMap(step => step.players.map(p => p.id))).size).toBe(steps.flatMap(step => step.players).length);
+  }
 });
