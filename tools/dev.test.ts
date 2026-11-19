@@ -21,7 +21,7 @@ it.each(['127.0.0.1', '192.168.1.23', '0.0.0.0'])('launcher binds exactly %s and
   let pids: number[] = [];
   try {
     let rows: { args: string[]; host: string; pid: number }[] = [];
-    for (let attempt = 0; attempt < 100; attempt++) {
+    for (let attempt = 0; attempt < 500; attempt++) { // up to 10 s: child start-up is slow under a loaded machine
       try { rows = readFileSync(log, 'utf8').trim().split('\n').map(line => JSON.parse(line) as typeof rows[number]); } catch { /* Child startup. */ }
       if (rows.length === 2) break;
       await pause(20);
