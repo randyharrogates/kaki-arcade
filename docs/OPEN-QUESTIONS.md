@@ -120,6 +120,8 @@ Closed 2026-11-18: D-231 — a phone leads whenever one is seated.
 
 **OQ-053 · PLAT-006 wording after C-27.** PLAT-006 says the TV seat leads "only while no phone is seated". Since C-27 (D-282) a disconnected (held) phone no longer blocks the TV seat from leading, so the host is never stuck (PLAT-024). Proposed wording: "…while no phone is connected". Only Randy edits the PRD. Needed by: M8 review.
 
+**OQ-054 · TV lobby status text beside Remove (C-23).** To fit Remove on an occupied seat card, its status line ("Good", "Away") drops from 34 px to 21 px; empty seats keep 34 px "Scan to join". This changes an approved board, so it goes to Randy as a built comparison with the C-23 stills before v1 closes. Needed by: M8 review.
+
 ## Assumptions Claude is working to (say if wrong)
 
 Confirmed 2026-11-18: D-244.
