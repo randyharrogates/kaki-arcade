@@ -1,3 +1,5 @@
+import { PAD_BUTTON_BIT } from '@kaki/platform';
+import type { AnalogInput } from '@kaki/protocol';
 import { CLOSED_ROOM_REASON } from './team-setup';
 import { checkLayout, checkPrivateView } from '@kaki/platform';
 import type { PrivateView } from '@kaki/platform';
@@ -96,7 +98,20 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
   let everSeated = false;
   let unavailable = false;
   let naming = false;
-  let peer: { sendPhone(message: PhoneMessage): boolean } | undefined;
+  let peer: { sendPhone(message: PhoneMessage): boolean; inputSender?: { change(buttons: number, analog: AnalogInput): void } | null } | undefined;
+  const heldControls = new Map<string, number>();
+  let heldStick: string | undefined;
+  let heldButtons = 0;
+  let stick = { x: 0, y: 0 };
+  function sendHeld(): void {
+    heldButtons = 0;
+    for (const bit of heldControls.values()) heldButtons |= bit;
+    peer?.inputSender?.change(heldButtons, { stickX: stick.x, stickY: stick.y, tilt: null });
+  }
+  function neutral(): void {
+    heldControls.clear(); heldStick = undefined; stick = { x: 0, y: 0 };
+    sendHeld();
+  }
   function publish(state: PhoneState, input: Partial<PhoneView> = {}): void {
     if (stopped) return;
     // Signalling retries must not hide the advice; a host seat still proceeds normally.
@@ -107,6 +122,12 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
       if (view.state === 'connecting') publish('could-not-connect');
     }, 15000);
     const next = phoneView(state, { ...view, ...input });
+    if ((view.phase === 'playing' && next.phase !== 'playing') || !next.connected || next.teamSetup) neutral();
+    if (input.gameLayout && (heldStick !== undefined || heldControls.size > 0)) {
+      const controls = input.gameLayout.controls;
+      if ((heldStick !== undefined && !controls.some(c => c.id === heldStick && c.kind === 'stick')) ||
+        [...heldControls].some(([id, mask]) => !controls.some(c => c.id === id && c.kind === 'button' && (1 << PAD_BUTTON_BIT[c.button]) === mask))) neutral();
+    }
     if (!next.connected) naming = false;
     view = { ...next, players: next.connected ? view.players : undefined, teamSetup: next.connected ? (input.teamSetup === undefined ? view.teamSetup : input.teamSetup) : null, layout: next.seat !== null && (input.layout ?? view.layout), picker: next.connected ? (input.picker ?? view.picker) : null, renaming: naming, gameLayout: input.gameLayout ?? view.gameLayout, gameViewRevision: input.gameViewRevision ?? view.gameViewRevision };
     if (view.seat === null || !view.connected) { view.gamePrivateView = null; view.resultStats = []; }
@@ -138,7 +159,7 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
   }
   function begin(code: string, name: string | null, restoring: boolean): void {
     cancelConnecting();
-    generation++; driver?.stop(); naming = false; peer = undefined; const current = generation;
+    generation++; driver?.stop(); naming = false; neutral(); peer = undefined; const current = generation;
     requestedName = name ?? ''; unavailable = false;
     // A deliberate retry starts a new 15-second window, unlike automatic retries.
     view = { ...view, state: 'entry' };
@@ -157,7 +178,7 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
         let cancelled = false; let link: { stop(): void } | undefined; let timer: unknown;
         const start = (): void => {
           if (cancelled || current !== generation) return;
-          link = deps.dial({ ...options, onPeer(next) { peer = next; options.onPeer(next); } }, {
+          link = deps.dial({ ...options, onPeer(next) { peer = next; neutral(); options.onPeer(next); } }, {
             unreachable() {
               if (cancelled || current !== generation) return;
               unavailable = true;
@@ -191,10 +212,30 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
       peer?.sendPhone({ v: 1, t: 'action', rev: view.gameLayout?.revision ?? 0, viewRev: view.gameViewRevision ?? 0, data: { control: action === 'quit' ? 'console-quit' : view.phase === 'paused' ? 'console-resume' : 'console-pause' } });
     },
     controllerInput(output: LayoutOutput): void {
-      if (!view.connected || view.phase !== 'playing' || !view.layout || view.teamSetup || view.gameViewRevision === undefined || output.phase === 'release') return;
-      const value = output.value;
-      if (typeof value !== 'string' && typeof value !== 'number') return;
-      peer?.sendPhone({ v: 1, t: 'action', rev: output.revision, viewRev: view.gameViewRevision, data: { control: output.control, value } });
+      if (output.phase === 'release' || (output.phase === 'change' && typeof output.value === 'object' && output.value.x === 0 && output.value.y === 0 && heldStick === output.control)) {
+        const wasHeld = heldStick === output.control || heldControls.has(output.control);
+        if (heldStick === output.control) { heldStick = undefined; stick = { x: 0, y: 0 }; }
+        heldControls.delete(output.control);
+        if (wasHeld) sendHeld();
+        return;
+      }
+      if (!view.connected || view.phase !== 'playing' || !view.layout || view.teamSetup || view.gameViewRevision === undefined) return;
+      const control = view.gameLayout?.controls.find(part => part.id === output.control);
+      if (control?.kind === 'stick') {
+        if (output.phase === 'change' && typeof output.value === 'object') { heldStick = output.control; stick = output.value; }
+        else return;
+      } else if (control?.kind === 'button') {
+        const mask = 1 << PAD_BUTTON_BIT[control.button];
+        if (output.phase === 'press') heldControls.set(output.control, mask);
+        else return;
+      } else {
+        // Dpad is tap-only for now; a future game needing held directions must use the sampled path.
+        const value = output.value;
+        if (typeof value !== 'string' && typeof value !== 'number') return;
+        peer?.sendPhone({ v: 1, t: 'action', rev: output.revision, viewRev: view.gameViewRevision, data: { control: output.control, value } });
+        return;
+      }
+      sendHeld();
     },
     teamInput(control: string, value?: string): void {
       if (view.connected && view.teamSetup) peer?.sendPhone({ v: 1, t: 'action', rev: 0, viewRev: view.teamSetup.revision, data: { control, ...(value === undefined ? {} : { value }) } });

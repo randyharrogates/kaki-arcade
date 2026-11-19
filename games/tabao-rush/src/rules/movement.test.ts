@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { cloneState, createRng, deepFreeze, hashState, nextFloatBetween, nextInt } from '@kaki/sim-core';
 import type { SampledInput } from '@kaki/sim-core';
-import { createTick, EMPTY_SETUP, STEP_MS, STEPS_PER_SECOND } from '@kaki/platform';
+import { BUTTON, createTick, EMPTY_SETUP, STEP_MS, STEPS_PER_SECOND } from '@kaki/platform';
 import type { StepInputs } from '@kaki/platform';
 import { ROUND_STEPS } from './game';
 import { tabaoRush } from './playing.fixture';
@@ -425,10 +425,10 @@ describe('Tabao Rush pure movement', () => {
     }
   });
 
-  it('TR-020 is deterministic, immutable, shares branches and ignores disabled buttons', () => {
+  it('TR-020 is deterministic, immutable, shares branches and ignores unrelated buttons', () => {
     const state = deepFreeze(initial(8));
     const before = hashState(state);
-    const a = tabaoRush.step(state, input(1, 0, 0xffff), STEP_MS);
+    const a = tabaoRush.step(state, input(1, 0, 0xffff & ~(1 << BUTTON.FACE_LEFT)), STEP_MS);
     const b = tabaoRush.step(cloneState(state), input(1, 0), STEP_MS);
     expect(hashState(a)).toBe(hashState(b));
     expect(hashState(state)).toBe(before);

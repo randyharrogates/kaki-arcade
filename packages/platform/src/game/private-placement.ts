@@ -75,7 +75,34 @@ export function controlContentFits(parts:ReturnType<typeof packLayout>['parts'],
 /** D-132: reserve pure control content floors before allocating the private panel. */
 export function placeController(layout:Layout,view:PrivateView | null | undefined,area:Size,leader:boolean,widths:Readonly<Record<string,number>>,viewport:Size) {
   const blocks = privateBlocks(view,leader);
-  if (!blocks.length) return { ...placeLayout(layout,area,leader,widths,viewport),panel:null,metrics:null };
+  if (!blocks.length) {
+    const result = { ...placeLayout(layout,area,leader,widths,viewport),panel:null,metrics:null };
+    const controls = layout.controls.filter(c => !c.audience || c.audience === 'everyone' || (c.audience === 'leader') === leader);
+    const stick = controls.find(c => c.kind === 'stick');
+    const faces = controls.filter(c => c.kind === 'button' && c.button.startsWith('face'));
+    if (!stick || faces.length !== 4 || controls.length !== 5) return result;
+    // Face floor: 110 px from 844 px wide; below that it reuses the 89 px in-play control floor (D-306).
+    const minimum = viewport.width >= PHONE.width ? PHONE.face : PHONE.inPlay.width;
+    const desired = Math.max(minimum, ...result.parts.filter(p => p.control.kind === 'button').map(p => p.width));
+    const span = (size: number, gap: number) => size + 2 * (size + gap) / Math.SQRT2;
+    const availableAt = (margin: number) => Math.floor(Math.min(area.height - 2 * margin, area.width - 3 * margin - minimum));
+    // Exhaust ring gaps and diameter slack before yielding edge clearance; floors never yield.
+    const margin = [space[13], space[8], space[5]].find(m => Math.ceil(span(minimum, space[13])) <= availableAt(m)) ?? space[5];
+    const available = availableAt(margin);
+    const gap = [space[34], space[21], space[13]].find(g => span(desired, g) <= available) ?? space[13];
+    const size = Math.max(minimum, Math.min(desired, Math.floor((available - Math.SQRT2 * gap) / (1 + Math.SQRT2))));
+    const step = (size + gap) / Math.SQRT2;
+    const extent = Math.ceil(span(size,gap));
+    const left = area.width - margin - extent;
+    const top = margin + Math.max(0,Math.floor((area.height - 2 * margin - extent) / 2));
+    const parts = [{ control: stick, left: margin, top: margin, width: left - 2 * margin, height: area.height - 2 * margin },
+      ...faces.map(control => {
+        const offset = control.kind === 'button' ? ({ 'face-top':[step,0], 'face-left':[0,step], 'face-right':[2*step,step], 'face-bottom':[step,2*step] }[control.button as 'face-top' | 'face-left' | 'face-right' | 'face-bottom']) : undefined;
+        return { control, left: left + (offset?.[0] ?? 0), top: top + (offset?.[1] ?? 0), width: size, height: size };
+      })];
+    const required = { width: Math.max(...parts.map(p => p.left+p.width+margin)), height: Math.max(...parts.map(p => p.top+p.height+margin)) };
+    return { ...result, parts, margin, gap, required, fits: (parts[0]?.width ?? 0) >= minimum && (parts[0]?.height ?? 0) >= minimum && parts.every(p => p.left >= margin && p.top >= margin && p.left + p.width <= area.width - margin + 0.001 && p.top + p.height <= area.height - margin + 0.001) };
+  }
   // Preserve the existing private text measurements; only lone option widths affect this rule.
   const loneWidths:Record<string,number> = {};
   for (const c of layout.controls) {

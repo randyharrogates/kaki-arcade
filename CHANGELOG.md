@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-20 — T-08: Tabao Rush phone controller
+- TR-020: the play controller has a stick and four face buttons (Pick up, Act, Dash, Throw); movement responds on the next step with no smoothing, and the knob follows the thumb directly; Dash moves one tile with a one-second cooldown (provisional).
+- The face buttons and the stick stay 13 px inside the play area at every landscape size tested. On short play areas the gaps between buttons shrink first (34 → 21 → 13 px), then the edge space (13 → 8 → 5 px); buttons never go below 110 px from 844 px wide or 89 px below (D-306).
+- The phone measures its own play area on mount and after every resize or rotation, so it never sizes from an old measurement.
+- The conformance kit and the phone now use the same placement, so a layout passes conformance only where the phone can draw it.
+- Not yet: real phones; the wok shake (T-08b).
+
 ## 2026-11-20 — P-09: Peek Poker match perf run
 - PERF-001: the console perf scenario plays a full five-round match at eight phones as the marked window (D-305); production Chrome 223 s, p95 18.3 ms, max 33.3 ms; not assessed (display rate unknown) and over budget at p95.
 - PERF-010: development-only receipt and apply hooks; 160 timed presses, p95 17.5 ms on direct local links.

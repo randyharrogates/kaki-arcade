@@ -1921,3 +1921,13 @@ Randy may overrule.
 - Local browser contexts do not prove phone or Wi-Fi delay.
 - P-09 merges as in progress: the production p95 (18.3 ms) is over PERF-001's 16.7 ms on the built-in panel and cannot be assessed until a 60 Hz display run.
 - Randy may overrule.
+
+**D-306 · 2026-11-20 · Claude, integrator (T-08 review; delegated by Randy, 2026-11-18)** (T-08; TR-020, CTRL-004, CTRL-005; follows D-280)
+- A layout with a stick and exactly four face buttons and no private panel has its own placement in `@kaki/platform/private-placement`. The conformance kit and the phone use this one function, so they always agree on whether a layout fits. Other layouts keep the general packer.
+- The stick sits on the left and the four buttons form a diamond on the right. Every ring, and the stick, keeps 13 px from the header rule and the screen edges.
+- When the play area is too short, things give way in this order: first the gap between rings shrinks (34 → 21 → 13 px); then the buttons shrink from their preferred size down to the floor; then the edge space shrinks (13 → 8 → 5 px). The button floors never give way: 110 px at widths of 844 px or more, 89 px below (the in-play control floor). The stick must also be at least the button floor in width and height. Only when even 5 px of edge space with floor-size buttons cannot fit does the layout report that it does not fit.
+- At 844 px wide this means a play area of 310 px or more keeps 13 px of edge space. A real iPhone in landscape (about 301 px after its bottom inset) gets 8 px, and below about 290 px the layout does not fit.
+- The reported gap is the gap actually used between rings.
+- The phone takes its play-area size from its own controller's board. It reads the size live on mount, on ResizeObserver, on window resize and on visual-viewport resize, and an unchanged size causes no re-render. Nothing runs per frame.
+- T-08 merges with TR-020 in progress: it still needs real phones and T-08b (wok shake), which also traces to TR-020.
+- Randy may overrule.

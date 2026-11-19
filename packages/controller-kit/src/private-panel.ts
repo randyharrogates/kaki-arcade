@@ -1,1 +1,1 @@
-export { placeController,privateBlocks,panelMetrics } from '@kaki/platform/private-placement';
+export { placeController, privateBlocks, panelMetrics } from '@kaki/platform/private-placement';

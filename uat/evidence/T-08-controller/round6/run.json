@@ -1,0 +1,169 @@
+{
+  "slice": "T-08-controller",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- T-08-controller --phones 2 --out round6",
+  "commit": "ab347813418df685def0d4898e18ba894e3112e3",
+  "viewports": [
+    "844×390",
+    "667×375",
+    "932×430",
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1371.784792,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-phone-844.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-phone-667.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-phone-932.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-stick-drag-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone1-stick-drag-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-stick-drag-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone1-stick-drag-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-stick-drag-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone1-stick-drag-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-stick-drag-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-stick-drag-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-host-tv-stick-moved.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-tv-picked-up.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-host-tv-thrown.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-host-tv-dashed.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone1-phone-act.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-phone-paused.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-phone-844.jpg",
+    "02-phone1-phone-667.jpg",
+    "03-phone1-phone-932.jpg",
+    "12-strip-stick-drag.jpg",
+    "13-host-tv-stick-moved.jpg",
+    "14-host-tv-picked-up.jpg",
+    "15-host-tv-thrown.jpg",
+    "16-host-tv-dashed.jpg",
+    "17-phone1-phone-act.jpg",
+    "18-phone1-phone-paused.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-phone-844.jpg",
+      "bytes": 180255
+    },
+    {
+      "file": "02-phone1-phone-667.jpg",
+      "bytes": 152739
+    },
+    {
+      "file": "03-phone1-phone-932.jpg",
+      "bytes": 207182
+    },
+    {
+      "file": "12-strip-stick-drag.jpg",
+      "bytes": 1634419
+    },
+    {
+      "file": "13-host-tv-stick-moved.jpg",
+      "bytes": 149178
+    },
+    {
+      "file": "14-host-tv-picked-up.jpg",
+      "bytes": 149228
+    },
+    {
+      "file": "15-host-tv-thrown.jpg",
+      "bytes": 149734
+    },
+    {
+      "file": "16-host-tv-dashed.jpg",
+      "bytes": 151057
+    },
+    {
+      "file": "17-phone1-phone-act.jpg",
+      "bytes": 179680
+    },
+    {
+      "file": "18-phone1-phone-paused.jpg",
+      "bytes": 168534
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1346
+    },
+    {
+      "file": "run.json",
+      "bytes": 3457
+    }
+  ],
+  "totalBytes": 3126846,
+  "maxBytes": 12582912
+}

@@ -77,3 +77,47 @@ it('PP-020 reveal notes reserve 13 px text while Points retains its large fit st
     expect(result.metrics?.steps[3]).toBe(13);
   }
 });
+
+it('TR-020 keeps rings and stick 13 px inside every intermediate landscape board', () => {
+  const layout = layoutFixtures['stick-faces'];
+  if (!layout) throw Error('Missing stick-faces');
+  for (let width = 667; width <= 932; width++) {
+    const height = width < 844 ? 375 + (width-667)*15/177 : 390 + (width-844)*40/88;
+    // Include header and wake-message pressure as well as the ordinary shell.
+    for (const reserved of [45,68,79]) {
+      const area = { width,height:height-reserved };
+      const placed = placeController(layout,null,area,true,{}, { width,height });
+      expect(placed.fits, `${String(width)} / ${String(reserved)}`).toBe(true);
+      for (const part of placed.parts) {
+        expect(part.left).toBeGreaterThanOrEqual(13-0.001);
+        expect(part.top).toBeGreaterThanOrEqual(13-0.001);
+        expect(part.left+part.width).toBeLessThanOrEqual(area.width-13+0.001);
+        expect(part.top+part.height).toBeLessThanOrEqual(area.height-13+0.001);
+        if (part.control.kind === 'button') {
+          expect(part.width).toBeGreaterThanOrEqual(width >= 844 ? 110 : 89);
+          expect(part.height).toBe(part.width);
+        }
+      }
+    }
+  }
+});
+
+it('TR-020 yields clearance after gaps and preserves floors on short iPhone boards', () => {
+  const layout = layoutFixtures['stick-faces'];
+  if (!layout) throw Error('Missing stick-faces');
+  for (const [height, margin, fits] of [[390-68-21,8,true],[310,13,true],[300,8,true],[290,5,false]] as const) {
+    const placed = placeController(layout,null,{width:844,height},true,{}, {width:844,height:390});
+    expect(placed.margin).toBe(margin);
+    expect(placed.gap).toBe(13);
+    expect(placed.fits).toBe(fits);
+    for (const part of placed.parts.filter(p => p.control.kind === 'button')) expect(part.width).toBeGreaterThanOrEqual(110);
+  }
+  for (const area of [{width:400,height:320},{width:844,height:100}]) {
+    const placed = placeController(layout,null,area,true,{}, {width:844,height:390});
+    expect(placed.fits).toBe(false);
+  }
+});
+it('TR-020 the kit places with the platform placement conformance uses', async () => {
+  const { placeController: platformPlacement } = await import('@kaki/platform/private-placement');
+  expect(placeController).toBe(platformPlacement);
+});

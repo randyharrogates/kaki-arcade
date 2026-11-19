@@ -48,13 +48,13 @@ describe('Tabao Rush through the harness', { timeout: 60_000 }, () => {  // Whol
     expect(replayMatch(tabaoRush, roundTrip(match.recording())).matches).toBe(true);
   });
 
-  it.each([1, 8])('seeded bots play the round at %i players and never press a disabled button', (players) => {
-    // Circle (bit 5) and square (bit 6) are drawn disabled; cross and triangle are live.
+  it.each([1, 8])('seeded bots play the round at %i players and use the four enabled faces', (players) => {
+    // All four faces are live; undrawn buttons must stay masked.
     let live = 0;
     const guarded = { ...tabaoRush, step: (...args: Parameters<typeof tabaoRush.step>) => {
       for (const frame of args[1].frames.values()) {
-        expect(frame.held & 0b1100000).toBe(0);
-        live |= frame.held & 0b10010000;
+        expect(frame.held & ~0b11110000).toBe(0);
+        live |= frame.held & 0b11110000;
       }
       return tabaoRush.step(...args);
     } };
@@ -63,7 +63,7 @@ describe('Tabao Rush through the harness', { timeout: 60_000 }, () => {  // Whol
     bots.step(ROUND_STEPS);
     expect(match.isOver).toBe(true);
     for (const c of match.state.cooks) expect(Number.isFinite(c.x + c.y)).toBe(true);
-    expect(live).toBe(0b10010000);
+    expect(live).toBe(0b11110000);
     expect(replayMatch(tabaoRush, roundTrip(match.recording())).matches).toBe(true);
   });
 

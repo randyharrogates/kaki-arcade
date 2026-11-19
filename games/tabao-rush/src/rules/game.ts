@@ -25,16 +25,11 @@ const PLAY_LAYOUT: ControllerLayout = {
   revision: 0,
   controls: [
     { kind: 'stick', id: 'move' },
-    { kind: 'button', id: 'cross', button: 'face-bottom', label: 'Pick / place' },
-    { kind: 'button', id: 'circle', button: 'face-right', label: 'Act', disabled: true },
-    { kind: 'button', id: 'square', button: 'face-left', label: 'Dash', disabled: true },
+    { kind: 'button', id: 'cross', button: 'face-bottom', label: 'Pick up' },
+    { kind: 'button', id: 'circle', button: 'face-right', label: 'Act' },
+    { kind: 'button', id: 'square', button: 'face-left', label: 'Dash' },
     { kind: 'button', id: 'triangle', button: 'face-top', label: 'Throw' },
   ],
-};
-const STATION_LAYOUT: ControllerLayout = {
-  revision: 1,
-  controls: PLAY_LAYOUT.controls.map((control) => control.id === 'circle'
-    ? { kind: 'button', id: 'circle', button: 'face-right', label: 'Act' } : control),
 };
 const WATCH_LAYOUT: ControllerLayout = {
   revision: 0,
@@ -140,12 +135,11 @@ export const tabaoRush: GameModule<TabaoState> = {
       endTick: endTick(state),
     };
   },
-  privateView: () => null,
+  privateView() { return null; },
   controllerLayout(state, id) {
     if (state.phase === 'pick' && state.players.some(p => p.id === id)) return pickLayout(state, id);
     const layout = state.players.some((player) => player.id === id && !player.spectating)
-      ? Object.values(state.stations ?? {}).some((s) => s.type !== 'return-counter' && s.type !== 'dish-rack' && s.type !== 'serving' && s.type !== 'bin')
-        ? STATION_LAYOUT : PLAY_LAYOUT
+      ? PLAY_LAYOUT
       : WATCH_LAYOUT;
     return state.picks && layout !== WATCH_LAYOUT ? { ...layout, revision: layout.revision + (state.pickRevision ?? 0) } : layout;
   },

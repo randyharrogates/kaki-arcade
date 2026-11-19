@@ -6,6 +6,9 @@ import type { RngState } from '@kaki/sim-core';
 
 /** Tile units; positive y is down the screen. All tuning is provisional for T-01. */
 export const WALK_SPEED = 3;
+/** Provisional dash tuning: one tile, at most once per second. */
+export const DASH_DISTANCE = 1;
+export const DASH_COOLDOWN = 60;
 export const STICK_DEAD_ZONE = 0.12;
 export const COOK_RADIUS = 0.2;
 export const ALLOWED_OVERLAP = 0.04;
@@ -45,6 +48,7 @@ export interface Level {
 export type Facing = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export interface Cook {
+  readonly dashReadyAt?: number;
   readonly kitchen?: string;
   readonly id: string;
   readonly x: number;

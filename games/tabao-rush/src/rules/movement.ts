@@ -1,9 +1,9 @@
-import { normaliseAxes } from '@kaki/sim-core';
-import { STEPS_PER_SECOND } from '@kaki/platform';
+import { normaliseAxes, wasPressed } from '@kaki/sim-core';
+import { BUTTON, STEPS_PER_SECOND } from '@kaki/platform';
 import type { StepInputs } from '@kaki/platform';
 import { clearOfWalls } from './level';
 import {
-  MIN_SEPARATION, SOFT_PUSH, SOFT_SEPARATION, STICK_DEAD_ZONE, WALK_SPEED,
+  DASH_DISTANCE, DASH_COOLDOWN, MIN_SEPARATION, SOFT_PUSH, SOFT_SEPARATION, STICK_DEAD_ZONE, WALK_SPEED,
 } from './state';
 import type { Cook, Level } from './state';
 import { facingFor, targetTile } from './target';
@@ -84,7 +84,7 @@ function separate(level: Level, i: number, count: number, vx: number, vy: number
   axisMove(level, i, count, Math.max(-SOFT_PUSH, Math.min(SOFT_PUSH, pushY)), 'y');
 }
 
-function moveCook(level: Level, cooks: readonly Cook[], i: number, inputs: StepInputs): Cook {
+function moveCook(level: Level, cooks: readonly Cook[], i: number, inputs: StepInputs, tick: number): Cook {
   const cook = cooks[i];
   if (cook === undefined) throw new Error('Missing cook');
   const frame = inputs.frames.get(cook.id);
@@ -111,13 +111,25 @@ function moveCook(level: Level, cooks: readonly Cook[], i: number, inputs: StepI
     axisMove(level, i, cooks.length, -y * SIDESTEP, 'x');
     axisMove(level, i, cooks.length, x * SIDESTEP, 'y');
   }
+  const dash = frame && wasPressed(frame, BUTTON.FACE_LEFT) && tick >= (cook.dashReadyAt ?? 0);
+  if (dash) {
+    // Small swept segments reuse walk collision checks, including other cooks.
+    const angle = facing * Math.PI / 4;
+    const length = Math.hypot(x, y);
+    const dx = (length ? x / length : Math.cos(angle)) * DASH_DISTANCE / 20;
+    const dy = (length ? y / length : Math.sin(angle)) * DASH_DISTANCE / 20;
+    for (let segment = 0; segment < 20; segment++) {
+      axisMove(level, i, cooks.length, dx, 'x');
+      axisMove(level, i, cooks.length, dy, 'y');
+    }
+  }
   separate(level, i, cooks.length, vx, vy);
   const nextX = scratch.x[i] ?? 0;
   const nextY = scratch.y[i] ?? 0;
   const target = targetTile(level, nextX, nextY, facing);
-  if (nextX === cook.x && nextY === cook.y && vx === cook.vx && vy === cook.vy &&
+  if (!dash && nextX === cook.x && nextY === cook.y && vx === cook.vx && vy === cook.vy &&
       facing === cook.facing && target === cook.targetTile) return cook;
-  return { ...cook, x: nextX, y: nextY, vx, vy, facing, targetTile: target };
+  return { ...cook, ...(dash ? { dashReadyAt: tick + DASH_COOLDOWN } : {}), x: nextX, y: nextY, vx, vy, facing, targetTile: target };
 }
 
 export function moveCooks(
@@ -132,7 +144,7 @@ export function moveCooks(
   // Rotate priority each step; array/frame insertion order never decides traffic priority.
   for (let offset = 0; offset < cooks.length; offset += 1) {
     const i = (tick + offset) % cooks.length;
-    const next = moveCook(level, cooks, i, inputs);
+    const next = moveCook(level, cooks, i, inputs, tick);
     if (next !== cooks[i]) {
       changed ??= cooks.slice();
       changed[i] = next;

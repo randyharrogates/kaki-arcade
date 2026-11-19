@@ -127,18 +127,32 @@ export function PhonePage() {
 }
 
 export function GameController({ controller, view, send, sessionCommand, removePlayer }: { removePlayer?: (seat: number) => void; controller: NonNullable<ReturnType<typeof phoneController>>; view: PhoneView; send: (output: LayoutOutput) => void; sessionCommand?: (action?: 'quit') => void }) {
+  const controls = useRef<HTMLDivElement>(null);
   const [area, setArea] = useState<{ width: number; height: number; viewport: { width: number; height: number } } | null>(null);
   const [pictures, setPictures] = useState<{ id: string; urls: Readonly<Record<string,string>> } | null>(null);
   const gameId = view.picker?.game?.id ?? '';
   useEffect(() => { let active = true; if (gameId) void preloadControllerImages(gameId).then(urls => { if (active) setPictures({ id: gameId, urls }); }, () => { if (active) setPictures({ id: gameId, urls: {} }); /* Failed pictures retain their accessible text fallback. */ }); return () => { active = false; }; }, [gameId]);
-  useEffect(() => {
-    const board = document.querySelector('.ka-controller-play');
+  useLayoutEffect(() => {
+    const board = controls.current?.closest('.ka-controller-play');
     if (!board) return;
-    const observer = new ResizeObserver(([entry]) => {
-      if (entry) setArea({ width: entry.contentRect.width, height: entry.contentRect.height, viewport: { width: innerWidth, height: innerHeight } });
-    });
+    // Read the live box: observer entries can precede the shell's final grid layout.
+    const measure = () => {
+      const { width, height } = board.getBoundingClientRect();
+      const viewport = { width: innerWidth, height: innerHeight };
+      setArea(old => old?.width === width && old.height === height
+        && old.viewport.width === viewport.width && old.viewport.height === viewport.height
+        ? old : { width, height, viewport });
+    };
+    const observer = new ResizeObserver(measure);
     observer.observe(board);
-    return () => { observer.disconnect(); };
+    measure();
+    window.addEventListener('resize', measure);
+    window.visualViewport?.addEventListener('resize', measure);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', measure);
+      window.visualViewport?.removeEventListener('resize', measure);
+    };
   }, []);
   const [header, setHeader] = useState<Element | null>(null);
   useEffect(() => { setHeader(document.querySelector('.ka-controller-header')); }, []);
@@ -171,7 +185,7 @@ export function GameController({ controller, view, send, sessionCommand, removeP
     <PhoneLive announcement={notice}/>
     <ControllerShell {...controller} {...(pictureHeading?.kind === 'text' ? { heading: pictureHeading.text } : {})}>
       {header && sessionCommand && createPortal(<button ref={menu} class="phone-session-button ka-pressable" disabled={blocked} onClick={() => { sessionCommand(); }}><span class="phone-session-pill">Menu</span></button>, header)}
-      <div class="phone-game-controls" inert={blocked || picturesPending} aria-busy={picturesPending} aria-hidden={blocked}>{area && renderedLayout && <LayoutEngine images={pictures?.urls ?? {}} layout={renderedLayout} privateView={view.gamePrivateView} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={output => { if (!blocked && !picturesPending) send(output); }}/>}</div>
+      <div ref={controls} class="phone-game-controls" inert={blocked || picturesPending} aria-busy={picturesPending} aria-hidden={blocked}>{area && renderedLayout && <LayoutEngine images={pictures?.urls ?? {}} layout={renderedLayout} privateView={view.gamePrivateView} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={output => { if (!blocked && !picturesPending) send(output); }}/>}</div>
     </ControllerShell>
       <div ref={veils} class="phone-game-veils"><Overlap fade tempo="base" identity={veil}>{blocked && <section class="phone-game-veil" tabIndex={-1} role="dialog" aria-modal="true" aria-label={view.connected ? 'Paused' : 'Connection lost'}>
         <h1>{view.connected ? 'Paused' : 'Reconnecting…'}</h1>

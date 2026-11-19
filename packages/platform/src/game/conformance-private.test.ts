@@ -177,3 +177,13 @@ it('RZ-003 CTRL-003 caps short guest answers at 34 in the actual placed grid', (
   expect(grid).toMatchObject({left:13,top:81,width:813,height:228});
   for (const label of labels) expect(optionLabelStep(label,(grid.width-placed.gap)/2,(grid.height-placed.gap)/2,true)).toBe(34);
 });
+
+it('TR-020 conformance and the phone agree where the old diamond packer failed', async () => {
+  const { placeLayout } = await import('./phone-placement');
+  const layout = layoutFixtures['stick-faces'];
+  if (!layout) throw Error('Missing stick-faces');
+  const area = {width:844,height:300}, viewport = {width:844,height:390};
+  expect(placeLayout(layout,area,true,{},viewport).fits).toBe(false);
+  expect(placeController(layout,null,area,true,{},viewport).fits).toBe(true);
+  expect(checkPrivatePhoneFit(layout,null,area,viewport)).toEqual([]);
+});

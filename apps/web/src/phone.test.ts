@@ -1,5 +1,6 @@
+import type { AnalogInput, PhoneMessage } from '@kaki/protocol';
 import { CLOSED_ROOM_REASON } from './team-setup';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { createPhoneSeatStore } from '@kaki/platform';
 import type { PhoneReconnectDial } from '@kaki/platform';
 import { createPhone, phoneCopy, phoneView, phoneController } from './phone';
@@ -14,14 +15,16 @@ function fixture(saved = false) {
   let feedback: Parameters<PhoneDependencies['dial']>[1] | undefined;
   let view = phoneView('entry');
   let canSend = true; let closes = 0;
+  const sampled = vi.fn<(buttons: number, analog: AnalogInput) => void>();
   const sent: unknown[] = []; const times: number[] = [];
   const deps: PhoneDependencies = { clock, storage, dial(options, receive) {
     dial = options; feedback = receive; times.push(clock.now());
-    options.onPeer({ sendPhone(message) { sent.push(message); return canSend; } });
+    const peer = { inputSender: { change: sampled }, sendPhone(message: PhoneMessage) { sent.push(message); return canSend; } };
+    options.onPeer(peer);
     return { stop: () => { closes++; } };
   } };
   const phone = createPhone(deps, null, next => { view = next; });
-  return { phone, clock, storage, sent, times, deps, failSend() { canSend = false; },
+  return { phone, clock, storage, sent, sampled, times, deps, failSend() { canSend = false; },
     get closes() { return closes; }, get view() { return view; }, get dial() { if (!dial) throw new Error('No dial'); return dial; },
     get feedback() { if (!feedback) throw new Error('No feedback'); return feedback; },
     seat(name = 'Fern', replaced = false) { dial?.onControl({ v: 1, t: 'seat', seat: 3, colour: 2, name, nameReplaced: replaced, resumed: saved, seatToken: SECRET }); },
@@ -326,4 +329,56 @@ it('TR-064 game theme applies from starting through play and pause, then resets 
     expect(f.view.theme).toBe(phase === 'lobby' ? 'console' : 'tabao-rush');
   }
   f.phone.stop();
+});
+
+describe('TR-020 sampled phone controls', () => {
+  function playing() {
+    const f = fixture(); f.phone.join(CODE, 'Fern'); f.seat();
+    f.dial.onControl({ v: 1, t: 'room', phase: 'playing', players: 2, leader: true, team: null });
+    f.dial.onControl({ v: 1, t: 'layout', rev: 4, layout: { revision: 4, controls: [
+      { kind: 'stick', id: 'move' },
+      { kind: 'button', id: 'cross', button: 'face-bottom', label: 'Pick' },
+      { kind: 'button', id: 'circle', button: 'face-right', label: 'Act' },
+      { kind: 'options', id: 'ready', options: [{ id: 'yes', label: 'Ready' }] },
+    ] } });
+    f.dial.onControl({ v: 1, t: 'view', rev: 8, view: null });
+    f.sampled.mockClear();
+    return f;
+  }
+  it('NET-005 CTRL-005 disconnect clears held stick and buttons at the sender boundary', () => {
+    const f = playing();
+    f.phone.controllerInput({ control: 'move', revision: 4, phase: 'change', value: { x: -1, y: 0 } });
+    f.phone.controllerInput({ control: 'circle', revision: 4, phase: 'press', value: true });
+    expect(f.sampled).toHaveBeenLastCalledWith(32, { stickX: -1, stickY: 0, tilt: null });
+    f.sampled.mockClear();
+    f.dial.onState('closed');
+    expect(f.view.connected).toBe(false);
+    expect(f.sampled).toHaveBeenLastCalledWith(0, { stickX: 0, stickY: 0, tilt: null });
+    f.phone.stop();
+  });
+  it('sends stick axes and explicit release through the sampled sender only', () => {
+    const f = playing();
+    f.phone.controllerInput({ control: 'move', revision: 4, phase: 'change', value: { x: 0.75, y: -0.5 } });
+    expect(f.sampled).toHaveBeenLastCalledWith(0, { stickX: 0.75, stickY: -0.5, tilt: null });
+    f.phone.controllerInput({ control: 'move', revision: 4, phase: 'release', value: { x: 0.75, y: -0.5 } });
+    expect(f.sampled).toHaveBeenLastCalledWith(0, { stickX: 0, stickY: 0, tilt: null });
+    expect(f.sent).toEqual([]); f.phone.stop();
+  });
+  it('keeps a tap as exactly one action and ignores its release', () => {
+    const f = playing();
+    f.phone.controllerInput({ control: 'ready', revision: 4, phase: 'choose', value: 'yes' });
+    f.phone.controllerInput({ control: 'ready', revision: 4, phase: 'release', value: 'yes' });
+    expect(f.sent).toEqual([{ v: 1, t: 'action', rev: 4, viewRev: 8, data: { control: 'ready', value: 'yes' } }]);
+    expect(f.sampled).not.toHaveBeenCalled(); f.phone.stop();
+  });
+  it('preserves axes and simultaneous held buttons on press and release', () => {
+    const f = playing();
+    f.phone.controllerInput({ control: 'move', revision: 4, phase: 'change', value: { x: 1, y: 0 } });
+    for (const [control, phase] of [['cross', 'press'], ['circle', 'press'], ['cross', 'release'], ['circle', 'release']] as const) {
+      f.phone.controllerInput({ control, revision: 4, phase, value: phase === 'press' });
+    }
+    expect(f.sampled.mock.calls.map(call => call[0])).toEqual([0, 16, 48, 32, 0]);
+    expect(f.sampled.mock.calls.every(call => call[1].stickX === 1)).toBe(true);
+    expect(f.sent).toEqual([]); f.phone.stop();
+  });
 });

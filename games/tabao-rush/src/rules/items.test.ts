@@ -162,11 +162,11 @@ it('TR-002 leaving drops held items; leaving throwers do not cancel flights; spe
   expect(itemPress(joined, 'p1', 'cross')).toBe(joined);
 });
 
-it('TR-002 TR-009 TR-023 layouts keep stable revisions, activate cross/triangle only and expose no secrets', () => {
+it('TR-002 TR-009 TR-023 layouts keep stable revisions, enable all four faces and expose no secrets', () => {
   const state = initial();
   const layout = tabaoRush.controllerLayout(state, 'p1');
   expect(layout.controls.filter((control) => control.kind === 'button' && !control.disabled)
-    .map((control) => control.id)).toEqual(['cross', 'triangle']);
+    .map((control) => control.id)).toEqual(['cross', 'circle', 'square', 'triangle']);
   expect(tabaoRush.controllerLayout(itemPress(state, 'p1', 'cross'), 'p1')).toBe(layout);
   expect(tabaoRush.privateView(state, 'p1')).toBeNull();
   expect(tabaoRush.secrets(state)).toEqual([]);
