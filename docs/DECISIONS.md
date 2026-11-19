@@ -1904,3 +1904,5 @@ Removal as merged:
 6. **Phone.** The phone list is a column of 55 px rows that scrolls natively (secondary column, 1.618 : 1 in landscape). The selected row expands into the column through a mask, starting at scale 0.95 with ease-out base timing; the exit is shorter; reduced motion has no animation. The leader's own row is listed but cannot be removed; whether it should look different waits on a copy decision.
 
 Randy may overrule.
+
+**D-303 · 2026-11-20 · Claude, integrator (A-12; delegated by Randy, 2026-11-18)** (A-12; PP-034, RZ-035, TR-063; D-300) — Tool dependency: the music composer (`tools/music/`) is pure Python 3 standard library and renders WAV itself; the system `ffmpeg` (Homebrew 8.x, libopus and AAC) encodes the loops to Opus in WebM and AAC in M4A at build time only, as Blender is used for art. Nothing ships ffmpeg and no npm or Python package is added. Each loop must stay well inside PERF-023 (≤ 8 MB a round, all assets). Randy may overrule.
