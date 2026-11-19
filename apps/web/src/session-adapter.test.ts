@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { createRoom, applyPhoneEvent } from '@kaki/platform';
 import type { GameModule, SessionEvent, SessionTransportEvent } from '@kaki/platform';
 import { createSessionAdapter, hostScreen, animationFrames } from './session-adapter';
-import type { AdapterOptions } from './session-adapter';
+import type { LoadedGame, AdapterOptions } from './session-adapter';
 import { hostCounts } from './counts';
 import type { SessionDisplay } from './session-adapter';
 
@@ -180,4 +180,42 @@ it('RZ-013 quit while short of players saves once through results', async () => 
     await vi.waitFor(() => { expect(save).toHaveBeenCalledOnce(); });
     expect(f.events.filter(event => event.type === 'results')).toHaveLength(1);
   } finally { f.adapter.stop(); save.mockRestore(); }
+});
+
+it.each([false, true])('PLAT-008 PLAT-025 admission reads joinTeam from loaded module (%s)', async supported => {
+  const f = fixture();
+  if (supported) f.game.joinTeam = () => 1;
+  expect(f.adapter.allowsRunningJoin(true)).toBe(false);
+  await f.adapter.start('test', f.room);
+  expect(f.adapter.allowsRunningJoin(false)).toBe(true);
+  expect(f.adapter.allowsRunningJoin(true)).toBe(supported);
+  f.load.mockResolvedValueOnce({ game: { ...f.game, meta: { ...f.game.meta, midGameJoin: false } } });
+  await f.adapter.start('other-test', f.room);
+  expect(f.adapter.allowsRunningJoin(false)).toBe(false);
+  expect(f.adapter.allowsRunningJoin(true)).toBe(false);
+  f.adapter.stop();
+  expect(f.adapter.allowsRunningJoin(true)).toBe(false);
+});
+
+it('PLAT-025 session adapter forwards the team request and joins from the assigned room snapshot', async () => {
+  const { fixture: game } = await import('../../../packages/platform/src/session/session.fixture');
+  const { makeRoom, joinRoom } = await import('../../../packages/platform/src/session/testing.fixture');
+  const { applyHostEvent } = await import('@kaki/platform');
+  const join = vi.fn((...args: Parameters<typeof game.join>) => game.join(...args)), assignTeam = vi.fn((seat: number, team: 0 | 1) => {
+    room = applyHostEvent(room, { type: 'team', seat, team: team === 0 ? 'red' : 'blue' }, room.clock).state;
+    adapter.updateRoom(room);
+  });
+  let room = makeRoom(3, true);
+  const adapter = createSessionAdapter({
+    load: () => Promise.resolve({ game: { ...game, join, joinTeam: () => 1 } as unknown as LoadedGame }),
+    prepare: () => Promise.resolve({ context: { data: {}, saved: null, teams: true }, settings: { steps: 100 } }),
+    assets: () => Promise.resolve(), transport: { sendLayout: () => true, sendPrivateView: () => true, fence: () => undefined, status: () => undefined, subscribe: () => () => undefined }, frames: { subscribe: () => () => undefined },
+    seed: () => 7, display: () => undefined, event: () => undefined,
+  });
+  await adapter.start('session-fixture', room, undefined, assignTeam);
+  room = joinRoom(room, 4); adapter.updateRoom(room);
+  expect(assignTeam).toHaveBeenCalledExactlyOnceWith(4, 1);
+  expect(room.players.find(p => p.seat === 4)?.team).toBe('blue');
+  expect(join).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ id: 'seat-4', team: 1 }));
+  adapter.stop();
 });

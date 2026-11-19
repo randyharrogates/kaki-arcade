@@ -10,12 +10,13 @@ vi.mock('./game-registry', () => ({
   validGameSelection: () => false, sessionRegistrations: {},
 }));
 
-it.each([{ localSeat: 'play', midGameJoin: true, teams: false }, { localSeat: 'play', midGameJoin: false, teams: false }, { localSeat: 'play', midGameJoin: true, teams: true }])('PLAT-008 host applies declaration and team policy %j and releases a held phone on quit', async ({ midGameJoin, teams }) => {
-  const allowed = midGameJoin && !teams;
+it.each([{ localSeat: 'play', midGameJoin: true, teams: false }, { localSeat: 'play', midGameJoin: false, teams: false }, { localSeat: 'play', midGameJoin: true, teams: true, joinTeam: false }, { localSeat: 'play', midGameJoin: true, teams: true, joinTeam: true }])('PLAT-008 host applies declaration and team policy %j and releases a held phone on quit', async ({ midGameJoin, teams, joinTeam }) => {
+  const allowed = midGameJoin && (!teams || !!joinTeam);
   const clock = new Clock(); let callbacks: DialCallbacks | undefined; let serial = 0;
   const updateRoom = vi.fn();
+  let assignTeam: ((seat: number, team: 0 | 1) => void) | undefined;
   const host = createHost({ clock, storage: new MemoryStorage(), mintToken: () => String(++serial).repeat(32),
-    session: { start: () => Promise.resolve(), updateRoom },
+    session: { start: (_id, _room, _settings, assign) => { assignTeam = assign; return Promise.resolve(); }, allowsRunningJoin: enabled => midGameJoin && (!enabled || !!joinTeam), updateRoom },
     dial: (_credentials, cb) => { callbacks = cb; return Promise.resolve({ credentials: { code: CODE, hostToken: SECRET }, reopened: false, stop() { /* Fake wire. */ } }); },
   }, () => undefined);
   await host.start();
@@ -37,6 +38,14 @@ it.each([{ localSeat: 'play', midGameJoin: true, teams: false }, { localSeat: 'p
   expect(host.room.allowRunningJoin).toBe(allowed);
   attach('two'); callbacks?.control('two', { v: 1, t: 'hello', name: 'Moss' });
   expect(host.room.players).toHaveLength(initialPlayers + (allowed ? 1 : 0));
+  if (allowed && teams) {
+    const newcomer = host.room.players.find(p => p.name === 'Moss');
+    if (!newcomer) throw new Error('Missing newcomer');
+    expect(newcomer.team).toBeNull();
+    assignTeam?.(newcomer.seat, 1);
+    expect(host.room.players.find(p => p.name === 'Moss')?.team).toBe('blue');
+    expect(updateRoom).toHaveBeenLastCalledWith(host.room);
+  }
   if (!allowed) expect(messages).toContainEqual({ v: 1, t: 'refused', reason: 'game-running' });
   host.sessionEvent({ type: 'picker' });
   expect(host.picker.screen).toBe('picker');

@@ -68,7 +68,7 @@ it('PLAT-006 fences loading, stale and non-leader edits and starts with chosen s
   f.edit('size', 5); f.edit('size', 3, 'one', rev);
   expect(f.host.teamSetup?.settings?.fields[0]).toMatchObject({ options: [{ chosen: false }, { chosen: true }, { chosen: false }] });
   f.edit('size', 7); expect(JSON.stringify(f.messages.at(-1))).toContain('Choose a larger pool');
-  f.input('start'); expect(f.session.start).toHaveBeenCalledWith(gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 }));
+  f.input('start'); expect(f.session.start).toHaveBeenCalledWith(gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 }), expect.any(Function));
   expect(JSON.stringify([...f.storage.data.values()])).not.toContain('"size"');
   f.host.stop();
 });
@@ -96,7 +96,7 @@ it('PLAT-006 reuses the selected settings for Play again', async () => {
   f.host.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } });
   f.host.playAgain();
   expect(f.session.start).toHaveBeenCalledTimes(2);
-  expect(f.session.start.mock.calls.at(-1)).toEqual([gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 })]);
+  expect(f.session.start.mock.calls.at(-1)).toEqual([gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 }), expect.any(Function)]);
   f.host.stop();
 });
 
@@ -192,7 +192,7 @@ it('PLAT-006/025 PLAT-024 drives setup with Enter and Escape and retains selecte
   expect(f.host.teamSetup?.settings?.fields[0]).toMatchObject({ options: [{ chosen: false }, { chosen: true }, { chosen: false }] });
   f.edit('items', ['a']); key('Enter'); expect(f.session.start).not.toHaveBeenCalled();
   f.edit('items', []); key('Enter');
-  expect(f.session.start).toHaveBeenCalledWith(gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 }));
+  expect(f.session.start).toHaveBeenCalledWith(gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 }), expect.any(Function));
   f.host.stop();
 });
 

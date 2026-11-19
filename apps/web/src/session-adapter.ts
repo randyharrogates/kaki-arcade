@@ -3,7 +3,7 @@ import type { hostCounts } from './counts';
 import { prepareSetup, prepareMatch } from './session-loading';
 import type { PreparedSetup } from './game-setup';
 import { createSession, gamePlayers } from '@kaki/platform';
-import type { GameModule, InitContext, JsonValue, RoomState, SessionEvent, SessionFrames, SessionTransport, Sound } from '@kaki/platform';
+import type { GameModule, InitContext, JsonValue, RoomState, SessionEvent, SessionFrames, SessionTransport, Sound, TeamId } from '@kaki/platform';
 import { createInputBuffer } from '@kaki/sim-core';
 import { INPUT_STALE_STEPS, SEQ_MODULO } from '@kaki/protocol';
 import type { ComponentType } from 'preact';
@@ -39,6 +39,7 @@ export function createSessionAdapter(o: AdapterOptions) {
   let runner: ReturnType<typeof createSession> | undefined;
   let stopFrames: (() => void) | undefined;
   let saveActive: ((state: unknown) => Promise<void>) | undefined;
+  let activeGame: LoadedGame | undefined;
   let resultsEnded = false;
   let revealResults: (() => void) | undefined;
   let stopTransport: (() => void) | undefined;
@@ -52,7 +53,7 @@ export function createSessionAdapter(o: AdapterOptions) {
     cancelReady?.(); cancelReady = undefined;
     o.counts?.stop();
     revealResults = undefined; generation++; stopFrames?.(); stopFrames = undefined; stopTransport?.(); stopTransport = undefined;
-    runner = undefined; for (let seat = 1; seat <= 8; seat++) buffer.remove(`seat-${String(seat)}`); o.display(null);
+    activeGame = undefined; runner = undefined; for (let seat = 1; seat <= 8; seat++) buffer.remove(`seat-${String(seat)}`); o.display(null);
   }
   return {
     buffer, prefetch,
@@ -71,7 +72,8 @@ export function createSessionAdapter(o: AdapterOptions) {
       if (setupVersions.get(id) === version) setups.set(id, setup);
       return setup;
     },
-    async start(gameId: string, room: RoomState, settings?: object): Promise<void> {
+    allowsRunningJoin(teams: boolean): boolean { return !!activeGame?.meta.midGameJoin && (!teams || !!activeGame.joinTeam); },
+    async start(gameId: string, room: RoomState, settings?: object, assignTeam?: (seat: number, team: TeamId) => void): Promise<void> {
       stop(); resultsEnded = false; latestRoom = room; const current = generation;
       const loaded = await prefetch(gameId);
       const seed = o.seed();
@@ -87,6 +89,7 @@ export function createSessionAdapter(o: AdapterOptions) {
         display = { ...display, view }; o.display(display);
       };
       const next = createSession({ game: loaded.game, ...prepared, seed, room: latestRoom, buffer,
+        ...(assignTeam ? { assignTeam } : {}),
         transport: { ...o.transport, subscribe(receive) { stopTransport = o.transport.subscribe(receive); return () => { stopTransport?.(); stopTransport = undefined; }; } },
         publicView(view) {
           const key = loaded.viewKey ? loaded.viewKey(view) : view;
@@ -130,7 +133,7 @@ export function createSessionAdapter(o: AdapterOptions) {
         display = { ...display };
         delete display.ready;
       }
-      runner = next; o.display(display);
+      activeGame = loaded.game; runner = next; o.display(display);
       if (!next.ended) {
         o.counts?.begin();
         try { stopFrames = o.frames.subscribe(ms => { if (current === generation) { o.counts?.frame(ms); next.advance(ms); } }); }

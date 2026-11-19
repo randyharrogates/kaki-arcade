@@ -1,3 +1,4 @@
+import type { ScriptContext } from '@kaki/platform/kit';
 import { conformanceTimeout } from '@kaki/platform/kit';
 import * as fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
@@ -345,15 +346,51 @@ describe('Rabakz rules', () => {
       expect(rabakz.isOver(state)).toBe(true);
     }
   });
+  it.each([
+    { count: 3, scores: [0, 100], expected: 1 },
+    { count: 3, scores: [0, 100], expected: 0, reverse: true },
+    { count: 2, scores: [100, 0], expected: 1 },
+    { count: 2, scores: [0, 100], expected: 0 },
+    { count: 2, scores: [100, 100], expected: 0 },
+  ] as const)('RZ-014 D-234 deterministic placement %j', ({ count, scores, expected, ...options }) => {
+    const original = init(count, 10, true);
+    const state = { ...original, teamScores: scores, players: original.players.map(p =>
+      'reverse' in options ? { ...p, info: { ...p.info, team: p.info.team === 0 ? 1 as const : 0 as const } } : p) };
+    expect(rabakz.joinTeam?.(state)).toBe(expected);
+    expect(rabakz.joinTeam?.(state)).toBe(expected);
+  });
+  it.each([false, true])('RZ-014 team join during question, just before reveal %s', nearReveal => {
+    let state = tick(init(3, 10, true));
+    if (nearReveal) {
+      state = tick(state, [[0, correct(state)]]);
+      state = wait(state, TIE_STEPS - 1);
+    }
+    const team = rabakz.joinTeam?.(state);
+    if (team === undefined) throw new Error('Missing joinTeam');
+    const newcomer = { ...required(makePlayers(4, true)[3]), team };
+    state = rabakz.join(state, newcomer);
+    expect(state.players.at(-1)).toMatchObject({ score: 0, eligible: false, joinedMidGame: true, info: { team: 1 } });
+    expect(JSON.stringify(privateView(state, newcomer.id))).toContain("You're on Blue team");
+    state = tick(state, [[3, correct(state)]]);
+    expect(state.players.at(-1)?.pick).toBeNull();
+    while (state.round === 0) state = tick(state);
+    expect(state.players.at(-1)).toMatchObject({ score: 0, eligible: true });
+    state = tick(state, [[3, correct(state)]]);
+    state = wait(state, TIE_STEPS + 1);
+    expect(state.players.at(-1)?.score).toBe(100);
+    expect(state.teamScores[1]).toBe(100);
+    expect(rabakz.results(state).players.find(p => p.id === newcomer.id)?.joinedMidGame).toBe(true);
+  });
   it('RZ-001 RZ-012 passes conformance at minimum and maximum in FFA and teams', () => {
     const data = { [QUESTION_DATA]: questionData(bank()),
       'categories.json': { budgetBytes: 100, categories: ['general', 'singapore'].map(id => ({ id, title: id, region: id, plain: { easy: 50, medium: 50, hard: 50 }, pictures: { easy: 0, medium: 0, hard: 0 }, bytes: 0, largestPicture: 0 })) } };
     const report = runConformance(rabakz, [
       { name: 'solo', players: 1 }, { name: 'eight', players: 8 },
       { name: 'two teams', players: 2, teams: true },
+      { name: 'team newcomer', players: 3, teams: true, script: (context: ScriptContext) => ({ ...fuzzScript()(context), join: context.step === 30 ? 1 : 0 }) },
       { name: 'eight teams', players: 8, teams: true },
     ].map((scenario) => ({ ...scenario, steps: 5000,
-      script: fuzzScript(),
+      script: scenario.script ?? fuzzScript(),
     })), { sources: readSources(fs, 'games/rabakz/src'), data });
     if (process.env.RABAKZ_EVIDENCE === '1') fs.writeFileSync('uat/evidence/R-01-rabakz-rules/conformance.txt', formatReport(report));
     if (process.env.RABAKZ_EVIDENCE === '1') fs.writeFileSync('uat/evidence/R-01-rabakz-rules/conformance.json',

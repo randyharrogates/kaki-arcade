@@ -320,7 +320,7 @@ it('CTRL-009 PLAT-006 PLAT-021 TV keys keep the earliest phone leader and local-
   expect(host.picker.error).toBeUndefined();
   key('back'); key('previous'); key('next'); key('select');
   expect(host.room.leader).toBe(2);
-  key('start'); expect(start).toHaveBeenCalledWith('peek-poker', host.room);
+  key('start'); expect(start).toHaveBeenCalledWith('peek-poker', host.room, undefined, expect.any(Function));
   host.stop();
 });
 
@@ -333,6 +333,6 @@ it('CTRL-009 Tabao Rush still starts with the TV seat alone', async () => {
   }, () => undefined);
   await host.start(); host.joinLocal(localPlayer());
   for (const action of ['open', 'select', 'start'] as const) { now += 1000; host.keyboard(action); }
-  expect(start).toHaveBeenCalledWith('tabao-rush', host.room);
+  expect(start).toHaveBeenCalledWith('tabao-rush', host.room, undefined, expect.any(Function));
   host.stop();
 });

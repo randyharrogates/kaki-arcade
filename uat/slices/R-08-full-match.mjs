@@ -59,7 +59,7 @@ export default async function fullMatch(h) {
     });
   }
   await h.createRoom();
-  // Seat seven at 8 phones in both modes, so the joiner has a free seat (teams: held for the lobby, D-202).
+  // Seat seven at 8 phones in both modes, so the joiner has a free seat (teams and FFA both admit the newcomer, D-234).
   for (const name of names.slice(0, h.maxPhones === 8 ? 7 : h.maxPhones)) {
     const phone = await h.newPhone(); await observe(phone); phones.push(phone);
     await h.openJoin(phone, name); await phone.getByRole('button', { name: 'Join', exact: true }).click();
@@ -213,16 +213,19 @@ export default async function fullMatch(h) {
     if (round === 2 && h.maxPhones === 8) {
       joiner = await h.newPhone(); await observe(joiner);
       await h.openJoin(joiner, 'R08Newcomer'); await joiner.getByRole('button', { name: 'Join', exact: true }).click();
-      if (teams) await joiner.getByRole('heading', { name: 'Waiting for the lobby', exact: true }).waitFor();
-      else {
+      {
         await until(async () => (await view()).players.some(p => p.name === 'R08Newcomer'), 'new player admitted');
         await joiner.getByText('You join at the next question', { exact: true }).waitFor();
         const p = (await view()).players.find(p => p.name === 'R08Newcomer'); assert.ok(p); assert.ok(p.waiting); assert.equal(p.score, 0);
+        if (teams) {
+          assert.ok(p.team === 0 || p.team === 1);
+          await joiner.getByText(`You're on ${p.team === 0 ? 'Red' : 'Blue'} team`, { exact: true }).waitFor();
+        }
         phones.push(joiner); names[names.length - 1] = 'R08Newcomer'; expected.set('R08Newcomer', 0);
       }
       await shot('joiner-waiting-phone', joiner); await shot('joiner-waiting-tv');
     }
-    if (round === 3 && joiner && !teams) {
+    if (round === 3 && joiner) {
       await joiner.getByRole('button', { name: right, exact: true }).waitFor();
       const p = (await view()).players.find(p => p.name === 'R08Newcomer'); assert.ok(p, 'Newcomer is in the view'); assert.equal(p.waiting, false); assert.equal(p.score, 0);
       await shot('joiner-entered-phone', joiner); await shot('joiner-entered-tv');
@@ -279,7 +282,7 @@ export default async function fullMatch(h) {
       }
       await shot('final-round-announcement-tv');
     }
-    if (teams && joiner) assert.ok(await joiner.getByRole('heading', { name: 'Waiting for the lobby', exact: true }).count());
+    if (teams && joiner) assert.ok((await view()).players.some(p => p.name === 'R08Newcomer' && (p.team === 0 || p.team === 1)));
   }, 180000);
   await until(async () => (await view()).phase === 'over', 'final podium');
   await strip('podium'); await shots('podium');
