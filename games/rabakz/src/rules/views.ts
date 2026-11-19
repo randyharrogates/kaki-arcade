@@ -25,7 +25,7 @@ export function controllerLayout(state: State, id: string): ControllerLayout {
     options: [{ id: 'skip', label: 'Skip' }],
   }] };
 }
-export function privateView(state: State, id: string): PrivateView | null {
+function playerView(state: State, id: string): PrivateView | null {
   const player = state.players.find((item) => item.info.id === id);
   if (!player) return null;
   const revealed = state.phase === 'reveal';
@@ -60,6 +60,13 @@ export function privateView(state: State, id: string): PrivateView | null {
     text(question(state).options[player.pick] ?? ''),
     ...(!lockedOut ? [text('Watch the TV for the reveal')] : []),
   ] };
+}
+export function privateView(state: State, id: string): PrivateView | null {
+  const view = playerView(state, id);
+  const player = state.players.find(item => item.info.id === id);
+  if (!view || !state.teams || !player?.joinedMidGame) return view;
+  return { ...view, blocks: [...view.blocks, { kind: 'text', tone: 'note',
+    text: `You're on ${player.info.team === 0 ? 'Red' : 'Blue'} team` }] };
 }
 export function publicView(state: State) {
   const q = question(state);

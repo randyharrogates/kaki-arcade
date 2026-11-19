@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — C-21: late joiner's team in Rabakz
+
+- RZ-014: a phone joining a running team match is seated on the smaller team (equal: the team behind on points; still equal: Red) and plays from the next question with 0; its points count for its team (D-234, D-285).
+- PLAT-008: a game may name a newcomer's team (optional `GameModule.joinTeam`); the session asks one newcomer at a time and retries a request that has not landed; the host records the team on the room seat and `join` follows with the team set. Admission is read from the loaded game after Start. Team games without it keep the "Waiting for the lobby" hold. The conformance kit places newcomers through `joinTeam` when a game has it.
+- PLAT-025: the late joiner's phone shows "You're on Red team" or "You're on Blue team" in play, reveal and results (in progress; R-15 shows teams during play for everyone).
+- R-08: the teams joiner is now admitted and asserted (named team, next-question entry, final-round card).
+- Not yet: team marks on the TV and other phones (R-15).
+
 ## 2026-11-19 — T-09: Tabao Rush cook picker
 
 - TR-064: eight cooks; seat default; unique picks; Ready toggles until everyone connected is ready; disconnected players keep their pick and count as ready; joiners take the lowest free cook.

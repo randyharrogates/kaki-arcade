@@ -2,7 +2,7 @@ import { gamePlayers } from '../room/room';
 import { cloneState, copyInputFrame, createInputFrame, createSimLoop, resetClock } from '@kaki/sim-core';
 import type { InputBuffer, InputFrame, SimLoopOptions, SimLoop } from '@kaki/sim-core';
 import { BUTTON, STEP_MS, stepModeOf } from '../game/types';
-import type { GameModule, InitContext, PlayerAction, PlayerInfo, Results } from '../game/types';
+import type { GameModule, InitContext, PlayerAction, PlayerInfo, Results, TeamId } from '../game/types';
 import { createTick, driveStep } from '../game/drive';
 import type { Tick } from '../game/drive';
 import { layoutFor, privateViewFor, PAD_BUTTON_BIT } from '../game/layout';
@@ -50,6 +50,7 @@ export interface SessionOptions<State, Settings extends object, View> {
   event(event: SessionEvent): void;
   /** Borrowed, pre-validation tick. Copy here if retaining a recording. No harness dependency. */
   record?(tick: Tick, step: number): void;
+  assignTeam?(seat: number, team: TeamId): void;
   resumeFenceSteps?: number;
   recordInput?(input: SessionInput, step: number): void;
 }
@@ -224,6 +225,18 @@ export function createSession<State, Settings extends object, View>(o: SessionOp
       if (!seats.some(s => s.player.id === action?.player && s.connected && !s.blocked)) taps.splice(i, 1);
     }
     if (loop) { if (seats.length === 0) { finish(); return; } if (!enough()) { shortSince ??= elapsed; setPaused(true); } else shortSince = null; output(); }
+    // Request one seat at a time, after normal joins and output have completed. A
+    // synchronous room update can then join it before selecting the next team.
+    // A team event should land synchronously. Retry on the next sync if it did
+    // not, so a lost request cannot permanently block subsequent newcomers.
+    if (loop && o.context.teams && o.game.joinTeam && o.assignTeam) {
+      const newcomer = gamePlayers(o.game.meta, next).find(p => p.team === null && !seats.some(s => s.room.seatToken === p.seatToken));
+      if (newcomer) {
+        operation = 'joinTeam';
+        const team = o.game.joinTeam(loop.state);
+        o.assignTeam(newcomer.seat, team);
+      }
+    }
   }
   guard(() => {
     // Setup must hand over a complete split; never initialise a partial team match.

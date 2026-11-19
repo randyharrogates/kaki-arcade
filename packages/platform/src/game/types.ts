@@ -324,6 +324,14 @@ export interface GameModule<
    */
   join(state: State, player: PlayerInfo): State;
   /**
+   * Optional. Only for a game that declares `midGameJoin` and uses teams: which team a
+   * newcomer joins in a running team match (C-21, D-285). Pure and deterministic from state.
+   * The session asks before `join`, the host records the team on the room seat, and `join`
+   * then receives `player.team` as usual. Without it, newcomers to a team match wait
+   * for the next lobby.
+   */
+  joinTeam?(state: State): TeamId;
+  /**
    * A player is gone for good (their two minutes to return ran out, or they quit). Must not
    * score: nobody's score changes. Must never throw, whoever leaves: the last player, or the
    * last of a team. An id that is not in the match is ignored.

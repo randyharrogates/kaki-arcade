@@ -5,7 +5,7 @@ import { build } from 'vite';
 import { expect, it } from 'vitest';
 import { contrastRatio } from '@kaki/ui';
 
-it.each(['phrases', 'words', 'tokens', 'mentsuyu', 'short', 'short-resize', 'contrast-light', 'contrast-dark'] as const)(
+it.each(['phrases', 'words', 'tokens', 'mentsuyu', 'short', 'short-resize', 'contrast-light', 'contrast-dark', 'late-team-reveal'] as const)(
   'RZ-003 RZ-005 phone fit and private status AA: %s', async scenario => {
   const path = (relative: string) => fileURLToPath(new URL(relative, import.meta.url));
   // Take the longest actual bank options as well as the integrator's wider fixture.
@@ -46,10 +46,12 @@ it.each(['phrases', 'words', 'tokens', 'mentsuyu', 'short', 'short-resize', 'con
           {length:10,difficulty:'mixed'}, {saved:null,teams:false,data:{[QUESTION_DATA]:questionData(
             Array.from({length:10},(_,i)=>({id:String(i),prompt:'Which?',options,
               correct:0,category:'General',difficulty:'easy',type:'multiple-choice',region:'general'})))}});
-          const state = {...initial,phase,wrong:pick === 1 ? [1] : [],players:initial.players.map(p=>({...p,eligible,pick,answers:pick === null ? [] : [pick]}))};
+          const state = {...initial,...(${String(scenario === 'late-team-reveal')} ? {questions:initial.questions.map(q=>({...q,options,correct:0}))} : {}),teams:${String(scenario === 'late-team-reveal')},phase,wrong:pick === 1 ? [1] : [],players:initial.players.map(p=>({...p,...(${String(scenario === 'late-team-reveal')} ? {info:{...p.info,team:1},joinedMidGame:true,score:100,gained:100,streak:1} : {}),eligible,pick,answers:pick === null ? [] : [pick]}))};
+          // The shipped reveal shows the answer as a note; the late-team case stresses it with three lines.
+          const view = rabakz.privateView(state,'one');
           render(h(ControllerShell,{seat:1,name:'Player 1',link:'connected',theme},
-            h(LayoutEngine,{layout:rabakz.controllerLayout(state,'one'),privateView:rabakz.privateView(state,'one'),
-              area:{width:innerWidth,height:innerHeight - 68},viewport:{width:innerWidth,height:innerHeight},isLeader:${String(!short)},onOutput:()=>{}})),document.body);
+            h(LayoutEngine,{layout:rabakz.controllerLayout(state,'one'),privateView:view,
+              area:{width:innerWidth,height:innerHeight - 68},viewport:{width:innerWidth,height:innerHeight},isLeader:${String(!short && scenario !== 'late-team-reveal')},onOutput:()=>{}})),document.body);
         };`;
     },
   }] });
@@ -69,6 +71,32 @@ it.each(['phrases', 'words', 'tokens', 'mentsuyu', 'short', 'short-resize', 'con
     await page.addScriptTag({ type:'module', content:chunk.code });
     await page.waitForFunction(() => 'drawStatus' in window);
     await page.emulateMedia({ reducedMotion:'reduce' });
+    if (scenario === 'late-team-reveal') {
+      const answer = 'A lovely hot bowl of noodles with prawns\nA lovely hot bowl of noodles with prawns\nA lovely hot bowl of noodles with prawns';
+      await page.addStyleTag({ content: '.ka-private-panel .ka-layout-body { white-space: pre-line; }' });
+      await page.evaluate(answer => {
+        const draw = Reflect.get(window,'drawStatus') as (phase:string,pick:number,theme:string,eligible:boolean,options:string[]) => void;
+        draw('reveal',0,'rabakz',true,[answer,'Two','Three','Four']);
+      }, answer);
+      await page.evaluate(() => document.fonts.ready);
+      const panel = page.locator('.ka-private-panel:not(.ka-private-ghost)');
+      await expect.poll(() => panel.isVisible()).toBe(true);
+      expect(await panel.getByText("You're on Blue team", { exact:true }).isVisible()).toBe(true);
+      expect(await panel.getByText('Right', { exact:true }).isVisible()).toBe(true);
+      const option = panel.locator('.ka-private-block').filter({ hasText: 'A lovely hot bowl' }).last();
+      const lines = await option.evaluate(node => {
+        const range = document.createRange(); range.selectNodeContents(node);
+        return new Set([...range.getClientRects()].filter(rect => rect.width > 0).map(rect => rect.top)).size;
+      });
+      // The answer wraps (the shipped note tone fits the stress text in fewer lines than the 21 px body would).
+      expect(lines).toBeGreaterThanOrEqual(2);
+      const wake = await page.getByText('Keep your screen on', { exact:true }).boundingBox();
+      const bounds = await panel.boundingBox();
+      expect(wake && bounds && bounds.y >= 0 && bounds.y + bounds.height <= wake.y).toBe(true);
+      expect(await panel.evaluate(node => [node, ...node.querySelectorAll<HTMLElement>('.ka-private-block')].every(block =>
+        block.scrollHeight <= block.clientHeight && block.scrollWidth <= block.clientWidth))).toBe(true);
+      return;
+    }
     if (scenario === 'short-resize') {
       // Keep the same keyed targets across the resize; no font or animation waits.
       for (const [width,height] of [[667,375],[844,390]] as const) {

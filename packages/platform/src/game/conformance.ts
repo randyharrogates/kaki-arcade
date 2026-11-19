@@ -1636,7 +1636,7 @@ class Kit<State> {
         while (roster.some((player) => player.seat === seat)) seat += 1;
         const size = (team: TeamId): number =>
           roster.filter((player) => player.team === team).length;
-        const player = makePlayer(seat, teams ? (size(0) <= size(1) ? 0 : 1) : undefined);
+        const player = makePlayer(seat, teams ? (module.joinTeam?.(state) ?? (size(0) <= size(1) ? 0 : 1)) : undefined);
         // A returning seat number gets a fresh id, as a new phone would.
         const fresh = Object.freeze({ ...player, id: `${player.id}-s${String(t)}` });
         roster.push(fresh);

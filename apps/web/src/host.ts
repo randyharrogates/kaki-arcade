@@ -12,7 +12,7 @@ import type { TeamSetupView } from './team-setup';
 import { duration } from '@kaki/ui';
 import { validatePhoneMessage } from '@kaki/protocol';
 import type { PhoneMessage, PickerInput } from '@kaki/protocol';
-import type { HostEvent, RoomState, SessionEvent } from '@kaki/platform';
+import type { HostEvent, RoomState, SessionEvent, TeamId } from '@kaki/platform';
 import { gameMetas, validGameSelection, sessionRegistrations } from './game-registry';
 import { initialPicker, pickerInput, pickerRoom, pickerView, pickerFailed } from '@kaki/platform';
 import { createHostCheckpoints, createHostSnapshotStore, createReconnectRoom, createRoom, restoreHost } from '@kaki/platform';
@@ -35,7 +35,7 @@ export interface HostDependencies {
   mintToken(): string;
   dial(credentials: HostCredentials | undefined, callbacks: DialCallbacks,
     registerStop: (stop: () => void) => void): Promise<HostLink & { reopened: boolean }>;
-  session?: { localPeer?(id: string, peer: SessionPeer): void; command?(action: 'pause' | 'resume' | 'quit', id: string): void; continueResults?(): void; setup?(gameId: string, teams: boolean): Promise<PreparedSetup>; start(gameId: string, room: RoomState, settings?: object): Promise<unknown>; prefetch?(gameId: string): Promise<unknown>; updateRoom?(room: RoomState): void; stop?(): void; control?(id: string, message: unknown): void; dropped?(id: string): void };
+  session?: { localPeer?(id: string, peer: SessionPeer): void; command?(action: 'pause' | 'resume' | 'quit', id: string): void; continueResults?(): void; setup?(gameId: string, teams: boolean): Promise<PreparedSetup>; start(gameId: string, room: RoomState, settings?: object, assignTeam?: (seat: number, team: TeamId) => void): Promise<unknown>; allowsRunningJoin?(teams: boolean): boolean; prefetch?(gameId: string): Promise<unknown>; updateRoom?(room: RoomState): void; stop?(): void; control?(id: string, message: unknown): void; dropped?(id: string): void };
   online?: { subscribe(callback: () => void): () => void };
   lifecycle?: { subscribe(callback: (event?: 'pageshow' | 'pagehide' | 'hidden') => void): () => void };
 }
@@ -270,9 +270,10 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       if (!confirmingTeams) for (const p of roomAdapter.room.players) if (p.team !== null) roomAdapter.host({ type: 'team', seat: p.seat, team: null });
       const loading = ++loadAttempt; const gameId = picker.focus;
       const teamsInUse = confirmingTeams && savedTeams?.enabled === true;
-      const allowRunningJoin = (gameMetas.find(meta => meta.id === gameId)?.midGameJoin ?? false) && !teamsInUse;
-      void (chosenSettings.has(picker.focus) ? deps.session?.start(picker.focus, roomAdapter.room, chosenSettings.get(picker.focus)) : deps.session?.start(picker.focus, roomAdapter.room))?.then(() => {
+      const assignTeam = (seat: number, team: TeamId): void => { roomAdapter?.host({ type: 'team', seat, team: team === 0 ? 'red' : 'blue' }); };
+      void deps.session?.start(gameId, roomAdapter.room, chosenSettings.get(gameId), assignTeam).then(() => {
         if (!stopped && loading === loadAttempt && picker.screen === 'starting' && roomAdapter?.room.phase === 'lobby') {
+          const allowRunningJoin = deps.session?.allowsRunningJoin?.(teamsInUse) ?? ((gameMetas.find(meta => meta.id === gameId)?.midGameJoin ?? false) && !teamsInUse);
           runningAllowsJoin = allowRunningJoin;
           roomAdapter.host({ type: 'phase', phase: 'playing', allowRunningJoin });
         }

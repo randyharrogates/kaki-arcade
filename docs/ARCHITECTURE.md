@@ -72,6 +72,7 @@ interface GameModule<State, Settings, View> {
   init(seed: number, players: PlayerInfo[], settings: Settings, context: InitContext): State;
   step(state: State, inputs: StepInputs, dtMs: number): State;   // pure, deterministic
   join(state: State, player: PlayerInfo): State;  // mid-match (PLAT-008)
+  joinTeam?(state: State): TeamId; // running team match (PLAT-008, D-285)
   leave(state: State, player: PlayerId): State;
   pause?(state: State): State;  resume?(state: State): State;
   publicView(state: State): View;                 // what the big screen draws from
@@ -154,9 +155,12 @@ Rules:
   With it disabled, the reconnect host retains the refused request for that live connection
   and retries admission when the room becomes eligible (including picker/lobby or results),
   without requiring another phone send. Disconnect and explicit leave cancel that request.
-  While a match uses teams, the host does not admit a new phone even if the game declares
-  `midGameJoin`. The phone waits on “Waiting for the lobby” and is let in at the picker or
-  results (D-202; OQ-048).
+  While a match uses teams, a game that declares `midGameJoin` and implements `joinTeam(state)`
+  admits a new phone: the session asks `joinTeam` before `join`, the host records that team on
+  the room seat, and `join` follows with `player.team` set; the joiner plays from its next join
+  point with 0 (Rabakz: smaller team, then the team behind on points, then Red; D-234, D-285).
+  A team game without `joinTeam` keeps D-202's hold: the phone waits on “Waiting for the lobby”
+  and is let in at the picker or results.
   A resumed seat token retains its existing membership and score without another `join`.
 - Mid-game joiners are marked `joinedMidGame`; in co-op they share the team score, in
   competitive play they start at 0 (D-062). Bots live inside a game's own state.

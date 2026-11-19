@@ -1,0 +1,112 @@
+{
+  "slice": "C-21-late-joiner-team",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- C-21-late-joiner-team --phones 4 --out round3",
+  "commit": "9b41bdb67b3a46221760eb20f2074ad634f128b8",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1089.720083,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-joined-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone4-joined-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone4-next-question-locked-in-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-next-question-settled-score-reveal-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone4-next-question-reveal-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-team-total-scoreboard-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone4-team-total-scoreboard-phone.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-joined-tv.jpg",
+    "02-phone4-joined-phone.jpg",
+    "03-phone4-next-question-locked-in-phone.jpg",
+    "04-host-next-question-settled-score-reveal-tv.jpg",
+    "05-phone4-next-question-reveal-phone.jpg",
+    "06-host-team-total-scoreboard-tv.jpg",
+    "07-phone4-team-total-scoreboard-phone.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-joined-tv.jpg",
+      "bytes": 239602
+    },
+    {
+      "file": "02-phone4-joined-phone.jpg",
+      "bytes": 133913
+    },
+    {
+      "file": "03-phone4-next-question-locked-in-phone.jpg",
+      "bytes": 173875
+    },
+    {
+      "file": "04-host-next-question-settled-score-reveal-tv.jpg",
+      "bytes": 243209
+    },
+    {
+      "file": "05-phone4-next-question-reveal-phone.jpg",
+      "bytes": 129632
+    },
+    {
+      "file": "06-host-team-total-scoreboard-tv.jpg",
+      "bytes": 240019
+    },
+    {
+      "file": "07-phone4-team-total-scoreboard-phone.jpg",
+      "bytes": 108775
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1270
+    },
+    {
+      "file": "run.json",
+      "bytes": 2529
+    }
+  ],
+  "totalBytes": 1272861,
+  "maxBytes": 12582912
+}

@@ -62,6 +62,12 @@ export const rabakz: GameModule<State, Settings, ReturnType<typeof publicView>> 
     return { recent: appendRecent(state.savedRecord.recent, state.questions.slice(0, state.round + (state.phase === 'final' ? 0 : 1)).map(q => q.id)), bests };
   },
   step,
+  joinTeam(state) {
+    const red = state.players.filter(player => player.info.team === 0).length;
+    const blue = state.players.filter(player => player.info.team === 1).length;
+    if (red !== blue) return red < blue ? 0 : 1;
+    return state.teamScores[0] <= state.teamScores[1] ? 0 : 1;
+  },
   join(state, player) {
     if (state.players.some((item) => item.info.id === player.id)) return state;
     const added = { ...seat(player, state.tick !== 0, state.nextSeat),
