@@ -100,6 +100,7 @@ These came directly from Randy and override convenience.
 | PLAT-031 | MUST | The interface covers: metadata, player range, controller layout per player and game phase, simulation step, big-screen rendering, per-player private view for the phone, and results. |
 | PLAT-032 | MUST | Game simulation is a pure, deterministic function of state, inputs and a seed, with no access to rendering, network or wall-clock time. (This is what makes automated UAT, bots and phase 2 remote play possible.) |
 | PLAT-033 | MUST | All three v1 games use this interface with no private back doors. Peek Poker, Rabakz and Tabao Rush being different in kind (turn-based with secrets, simultaneous answers, real-time shared space) is the proof. |
+| PLAT-034 | MUST | A player who joins again during a session (with the room code, the QR or the same link) is put back in their own seat with their nickname, score and game state, never seated as a new player: automatically on the same phone, and on another browser by choosing their name from the room's disconnected seats. A disconnected seat is kept until the running match ends. The room code stays readable on the big screen while a game is playing (Randy, 2026-11-20, D-298). |
 
 ### 3.4 Controller kit
 

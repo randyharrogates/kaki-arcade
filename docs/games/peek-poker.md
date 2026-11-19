@@ -20,9 +20,10 @@ No betting, no chips, no real-money element.
 | PP-008 | MUST | At the reveal, the grid flips face up, each player's picks are marked with their colour and seat number, and hands are shown ranked best to worst. |
 | PP-009 | MUST | Round scoring: points by hand rank (table below) plus a bonus for the best hand of the round. Speed counts: among players tied for the best hand, the first to lock in gets +3 and the others +1. A pick filled in at random (PP-010) counts as the slowest. |
 | PP-010 | MUST | A player who has not picked 2 cards when time runs out has the missing picks chosen at random. |
-| PP-011 | MUST | Difficulty rises each round (table below). |
+| PP-011 | MUST | In Rising mode (the default) difficulty rises each round (table below); in Steady mode every round uses round 1's settings (PP-033). |
 | PP-012 | MUST | 1 to 8 players. With 1 player the match is a score attack against a personal best saved on the host device. |
 | PP-013 | MUST | A player who joins mid-match enters at the next round with a score of 0. |
+| PP-033 | MUST | The leader chooses Rising or Steady difficulty before the match. Steady: every round has 20 s to memorise and no twist (Randy, 2026-11-20, D-299). |
 
 ### Rule details (D-069, decided under D-057 on 2026-11-16)
 
@@ -93,6 +94,7 @@ Declared to the controller kit (CTRL-002):
 | PP-030 | MUST | Cards are large enough on a TV to read rank and suit from 3 m, and suits differ by shape and colour. |
 | PP-031 | MUST | Card flips, swaps and the reveal follow `../DESIGN.md` §3 (masks for reveals, arcs for moving cards, no bounce). |
 | PP-032 | MUST | A running scoreboard is visible between rounds and a final podium at match end. |
+| PP-034 | SHOULD | One original music loop plays during the match, with the shared volume controls (Randy, 2026-11-20, D-300). |
 
 ## 4. Why this game is second
 
