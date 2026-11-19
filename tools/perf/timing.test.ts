@@ -2,7 +2,7 @@ import { expect, it } from 'vitest';
 import { readFile } from 'node:fs/promises';
 import { createPerfTiming } from '../../packages/platform/src/harness/perf-timing';
 import type { PerfTimingEvent } from '../../packages/platform/src/harness/perf-timing';
-import { correlate } from './timing.js';
+import { correlate, feedbackMilliseconds } from './timing.js';
 it('opt-in timing stamps touch/receipt/application/feedback and retains incomplete inputs (PERF-010, PERF-012)', () => {
   const events: PerfTimingEvent[] = [];
   let epoch = 1000, frame = 1;
@@ -24,4 +24,9 @@ it('feedback does not depend on receipt or application (PERF-012)', () => {
   const base: PerfTimingEvent = { marker: 'kaki-perf-timing-v1', player: 'p', sequence: 1, stage: 'touch', frame: 2, epochMs: 10 };
   expect(correlate([base, { ...base, stage: 'feedback', frame: 4 }])).toMatchObject({ samples: [], incomplete: 1, feedback: [2], missingFeedback: 0 });
   expect(correlate([base])).toMatchObject({ feedback: [], missingFeedback: 1 });
+});
+
+it('PERF-012 reports elapsed touch to feedback milliseconds independently of apply', () => {
+  const touch: PerfTimingEvent = { marker: 'kaki-perf-timing-v1', player: 'seat-8', sequence: 4, stage: 'touch', frame: 10, epochMs: 100 };
+  expect(feedbackMilliseconds([touch, { ...touch, stage: 'feedback', frame: 11, epochMs: 116.5 }])).toEqual([16.5]);
 });

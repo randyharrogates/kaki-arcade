@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-20 — P-09: Peek Poker match perf run
+- PERF-001: the console perf scenario plays a full five-round match at eight phones as the marked window (D-305); production Chrome 223 s, p95 18.3 ms, max 33.3 ms; not assessed (display rate unknown) and over budget at p95.
+- PERF-010: development-only receipt and apply hooks; 160 timed presses, p95 17.5 ms on direct local links.
+- PERF-012: trusted touch, pressed visual at the next frame for 160 of 160 presses.
+- PP-031: eight-player lock reset and stale-action rules test.
+- Not yet: PERF-001 on a 60 Hz display; real phones.
+
 ## 2026-11-20 — C-28: final-screen hint fades in with the final screen
 - PLAT-022: the shell's hand-off line on Peek Poker and Rabakz final screens fades 0 → 1 once, on the screen crossfade's entrance (`slow`, 377 ms), instead of appearing at full strength over the outgoing screen; reduced motion shows it at once; copy changes do not restart it; it leaves with the outgoing screen as before (D-304).
 - Tests: the Peek Poker results check allows exactly that one entrance and still fails on any other animation.

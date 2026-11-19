@@ -211,3 +211,29 @@ On macOS `system_profiler SPDisplaysDataType` supplies the current-mode refresh 
 Every online display must report the same qualifying rate at the start and round end. Unknown rates, unsupported OSes and conflicting rates across displays cannot qualify. The rate is read again at round end; a change gives “not assessed”. A Chromium pass says “slice gate only; milestone needs --host-browser chrome”.
 The rAF refresh estimate remains diagnostic and cannot satisfy this guard. No budget
 changes or dropped-refresh corrections are applied; other modes are “not assessed”.
+
+### Serial action timing (P-09; PERF-010, PERF-012)
+
+`actionTiming(h, capture, phones)` in `action-timing.ts` connects the existing capture
+observer/correlation layer for console action controls. It returns undefined in
+production. In development it calibrates each context and installs an out-of-band
+host callback. The shell's development-only test hooks observe authenticated tap
+receipt and actions passed into the actual game step; no gameplay message changes.
+
+For each measured press, the helper arms one player/control/value with a capture-local
+sequence on the host and phone before issuing a trusted CDP touch. Only that matching
+action emits receipt/application. It waits for application before permitting the next
+press, so dropped actions time out instead of shifting later correlations. This API
+is serial and intended for discrete controls; do not run its presses concurrently.
+A document capture listener timestamps the trusted pointerdown before the control
+handler. The next phone presentation frame checks the actual button's held attribute
+and computed transform before recording feedback. Missing visuals remain missing
+feedback; the existing correlation rules prevent a pass. The touch remains held for
+two presentation callbacks before cleanup. Lock controls in Peek Poker are exercised
+separately; its 160 measured grid presses alone exceed both 100-observation minima.
+
+`capture.build` exposes the selected build to scenarios. Production reports explicitly
+mark PERF-010/012 not assessed because hooks are development-only, and do not require
+feedback assessment for a frames-only command to complete. Development retains the
+existing timing minima, coverage checks and direct-path verification. These local
+browser contexts still do not measure physical phones or real Wi-Fi.

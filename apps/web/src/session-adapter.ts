@@ -92,9 +92,54 @@ export function createSessionAdapter(o: AdapterOptions) {
         if (current !== generation) return;
         display = { ...display, view }; o.display(display);
       };
-      const next = createSession({ game: loaded.game, ...prepared, seed, room: latestRoom, buffer,
+      // P-09 test-only observer: absent from production, never changes wire data or rules.
+      // Only when the perf harness installed its hook before load; otherwise the game object is passed through untouched.
+      const timing = import.meta.env.DEV ? globalThis.__kakiActionTiming : undefined;
+      const gameRevisions = new Map<string, number>();
+      const wireRevisions = new Map<string, Map<number, number>>();
+      const received: { player: string; control: string; value?: string | number; wireRevision: number; gameRevision: number }[] = [];
+      const observedGame: LoadedGame = timing ? Object.assign(Object.create(loaded.game) as LoadedGame, { controllerLayout(state: unknown, player: string) {
+        const layout = loaded.game.controllerLayout(state, player);
+        gameRevisions.set(player, layout.revision); return layout;
+      }, step(state: unknown, inputs: Parameters<LoadedGame['step']>[1], dt: number) {
+        const result = loaded.game.step(state, inputs, dt);
+        for (const action of inputs.actions) {
+          const index = received.findIndex(r => r.player === action.player && r.control === action.control && r.value === action.value && r.gameRevision === action.revision);
+          const receipt = index < 0 ? undefined : received.splice(index, 1)[0];
+          globalThis.__kakiActionTiming?.('applied', action.player, action.control, action.value, receipt ? {
+            wireRevision: receipt.wireRevision, gameRevision: action.revision,
+            round: state && typeof state === 'object' && 'round' in state && typeof state.round === 'number' ? state.round : null,
+          } : undefined);
+        }
+        received.length = 0;
+        return result;
+      } }) : loaded.game;
+      const next = createSession({ game: observedGame, ...prepared, seed, room: latestRoom, buffer,
         ...(assignTeam ? { assignTeam } : {}),
-        transport: { ...o.transport, subscribe(receive) { stopTransport = o.transport.subscribe(receive); return () => { stopTransport?.(); stopTransport = undefined; }; } },
+        transport: { ...o.transport, sendLayout(connection, layout) {
+          const sent = o.transport.sendLayout(connection, layout);
+          if (timing && sent) {
+            const seat = latestRoom?.players.find(p => p.connectionId === connection)?.seat;
+            const player = `seat-${String(seat)}`, revision = gameRevisions.get(player);
+            if (revision !== undefined) {
+              const revisions = wireRevisions.get(player) ?? new Map<number, number>();
+              for (const [wire, game] of revisions) if (game < revision) revisions.delete(wire);
+              revisions.set(layout.revision, revision); wireRevisions.set(player, revisions);
+            }
+          }
+          return sent;
+        }, subscribe(receive) { stopTransport = o.transport.subscribe(event => {
+          if (timing && event.type === 'tap') {
+            const seat = latestRoom?.players.find(p => p.connectionId === event.connectionId)?.seat;
+            if (seat !== undefined) {
+              const player = `seat-${String(seat)}`;
+              const gameRevision = wireRevisions.get(player)?.get(event.action.revision);
+              if (gameRevision !== undefined) received.push({ player, ...event.action, wireRevision: event.action.revision, gameRevision });
+            }
+            if (seat !== undefined) globalThis.__kakiActionTiming?.('receipt', `seat-${String(seat)}`, event.action.control, event.action.value);
+          }
+          receive(event);
+        }); return () => { stopTransport?.(); stopTransport = undefined; }; } },
         publicView(view) {
           const key = loaded.viewKey ? loaded.viewKey(view) : view;
           if (sameView(key, previousView)) return;
@@ -174,3 +219,8 @@ export function animationFrames(request: typeof requestAnimationFrame, cancel: t
   } };
 }
 export const wireJson = (value: unknown): JsonValue => value as JsonValue;
+
+// Installed only by tools/perf in a development browser capture.
+declare global {
+  var __kakiActionTiming: ((stage: 'receipt' | 'applied', player: string, control: string, value?: string | number, accepted?: { round: number | null; wireRevision: number; gameRevision: number }) => void) | undefined;
+}

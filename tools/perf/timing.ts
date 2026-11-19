@@ -25,3 +25,11 @@ export function correlate(events: readonly PerfTimingEvent[]) {
   }
   return { samples, incomplete, feedback, missingFeedback };
 }
+
+/** Same calibrated phone clock for touch and feedback; independent of host application. */
+export function feedbackMilliseconds(events: readonly PerfTimingEvent[]) {
+  return events.filter(e => e.stage === 'feedback').flatMap(e => {
+    const touch = events.find(t => t.stage === 'touch' && t.player === e.player && t.sequence === e.sequence);
+    return touch ? [e.epochMs - touch.epochMs] : [];
+  });
+}

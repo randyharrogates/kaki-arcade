@@ -57,6 +57,7 @@ export function deployBundleSize(output) {
     if (file.endsWith('.css') && /(?:^|[;{])\s*(?!--)[-a-z]*(?:behaviour|colour|centre)[-a-z]*\s*:/.test(bytes.toString())) throw new Error(`Unknown CSS property: ${file}`);
     if (/unsupportedDemo|unsupported-demo|Cloud Noodle|Pebble Puff|Mango Moon|Waffle Fern|Velvet Kite|Bumble Bean|Puddle Pip|Comet Crumb|demo-seat-|Ah Boy\b|Ah Boyz\b|H7KQ9MXR/.test(bytes.toString())) throw new Error(`Demo fixture shipped: ${file}`);
     const text = bytes.toString();
+    if (file.endsWith('.js') && text.includes('__kakiActionTiming')) throw new Error(`Development action timing hook shipped: ${file}`);
     if (/(?:^|\/)manifest-[^/]+\.json$/.test(file)) {
       const parsed = /** @type {unknown} */ (JSON.parse(text));
       if (!parsed || typeof parsed !== 'object' || !('atlases' in parsed) || !Array.isArray(parsed.atlases)) throw new Error('Missing or invalid atlas: ' + file);

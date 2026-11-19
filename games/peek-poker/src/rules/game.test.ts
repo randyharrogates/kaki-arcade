@@ -476,3 +476,21 @@ it('PP-013 joining preserves earned scores and never deals a waiting player into
   expect(game.privateView(joined, 'p3')).toBeNull();
   expect(game.controllerLayout(joined, 'p3').controls).toEqual([{ kind: 'text', id: 'wait', text: 'You join at the next round' }]);
 });
+
+
+it('PP-005 PP-022 next deal clears every lock and rejects round-one actions in round two', () => {
+  let state = pickPhase(init(8, 5));
+  for (let seat = 1; seat <= 8; seat++) state = choose(state, `p${String(seat)}`);
+  const staleRevision = game.controllerLayout(state, 'p8').revision;
+  for (let seat = 1; seat <= 8; seat++) state = tap(state, `p${String(seat)}`, 'lock', 'go');
+  expect(state.phase).toBe('reveal');
+  while (state.round === 1) state = tick(state);
+  expect(state.players.every(p => !p.locked && p.picks.length === 0)).toBe(true);
+  state = pickPhase(state);
+  state = choose(state, 'p8');
+  state = tick(state, [{ player: 'p8', control: 'lock', value: 'go', revision: staleRevision }]);
+  expect(state.players[7]?.locked).toBe(false);
+  expect(state.players[7]?.picks).toEqual([0, 1]);
+  state = tap(state, 'p8', 'lock', 'go');
+  expect(state.players[7]?.locked).toBe(true);
+});

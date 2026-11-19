@@ -1913,3 +1913,11 @@ Randy may overrule.
 - The hint fades only once while the final screen is up. When the screen leaves, it stays at full strength with the outgoing screen, as in D-290 (3).
 - Reduced motion shows it at once. The finished entrance keeps `fill: both`, and the layer rests at opacity 1.
 - Randy may overrule.
+
+**D-305 · 2026-11-20 · Claude, integrator** (P-09; PERF-001, PERF-010, PERF-012; keeps D-100, D-227, D-249, D-277)
+- Peek Poker has no single round of three minutes: one round is about 45–60 s. For PERF-001 its marked window is the whole match, from the first memorise phase appearing on the TV until the final podium appears. This is a measurement window, not a rules or budget change. The 180 s and 600-frame minimums still apply.
+- The scenario holds each pick phase open for 15 s of its 20 s timer.
+- Two runs are needed: a production build in branded Chrome for frames only, which assesses PERF-001; and a development build for PERF-010 and PERF-012, using timing hooks that exist only when `import.meta.env.DEV` is set and the perf harness installs them.
+- Local browser contexts do not prove phone or Wi-Fi delay.
+- P-09 merges as in progress: the production p95 (18.3 ms) is over PERF-001's 16.7 ms on the built-in panel and cannot be assessed until a 60 Hz display run.
+- Randy may overrule.

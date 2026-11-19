@@ -395,3 +395,49 @@ it.each(['plain-grid', 'picture-grid', 'single-option', 'multi-option'])('CTRL-0
   hooks.effects.at(-2)?.();
   expect(append).toHaveBeenCalledTimes(fades ? 1 : 0);
 });
+
+it('CTRL-002 CTRL-003 single-option Lock in emits once across selection crossfade and pointerup/click', () => {
+  const output = vi.fn<(output: LayoutOutput) => void>();
+  const draw = (selected: boolean) => {
+    const wrapper = children(engine({ revision: selected ? 2 : 1, controls: [{ kind: 'options', id: 'lock', options: [{ id: 'go', label: selected ? 'Locked in' : 'Lock in', state: selected ? 'selected' : 'plain' }] }] }, output))[1];
+    if (!wrapper) throw Error('wrapper');
+    const part = children(wrapper)[0]; if (!part) throw Error('part');
+    hooks.index = 10;
+    const items = children(invoke(part))[0]; if (!items) throw Error('items');
+    const target = children(items)[0]; if (!target) throw Error('target');
+    hooks.index = 20; invoke(target);
+  };
+  class Button extends EventTarget {
+    dataset = { control: 'lock:go', held: 'false' }; style = {}; offsetWidth = 110; offsetHeight = 110;
+    classList = { add: vi.fn() }; inert = false;
+    parentElement = { append: vi.fn() };
+    removeAttribute() { /* cloned attributes do not affect listeners */ }
+    setAttribute() { /* aria attributes */ }
+    remove() { /* animation cleanup */ }
+    getBoundingClientRect() { return { left: 0, top: 0, width: 110, height: 110 }; }
+    getAnimations() { return []; }
+    animate() { return { finished: new Promise(() => { /* retain ghost */ }), cancel: vi.fn() }; }
+    setPointerCapture() { /* capture stub */ }
+    cloneNode() { return ghost; }
+  }
+  const ghost = new Button(), button = new Button();
+  vi.stubGlobal('window', new EventTarget());
+  vi.stubGlobal('document', Object.assign(new EventTarget(), { hidden: false }));
+  vi.stubGlobal('matchMedia', () => ({ matches: false }));
+  draw(false);
+  const ref = hooks.refs[20]; if (!ref) throw Error('ref'); ref.current = button;
+  const dispose = hooks.effects.at(-1)?.();
+  const pointer = (node: Button, type: string) => {
+    const event = new Event(type, { cancelable: true });
+    Object.assign(event, { button: 0, pointerId: 1, clientX: 55, clientY: 55 }); node.dispatchEvent(event);
+  };
+  try {
+    pointer(button, 'pointerdown');
+    draw(true); const cleanup = hooks.effects.at(-2)?.();
+    expect(button.parentElement.append).toHaveBeenCalledWith(ghost);
+    expect(ghost.inert).toBe(true);
+    for (const node of [button, ghost]) { pointer(node, 'pointerup'); pointer(node, 'click'); }
+    expect(output.mock.calls.map(call => call[0])).toEqual([{ control: 'lock', phase: 'choose', value: 'go', revision: 1 }]);
+    if (typeof cleanup === 'function') cleanup();
+  } finally { if (typeof dispose === 'function') dispose(); }
+});

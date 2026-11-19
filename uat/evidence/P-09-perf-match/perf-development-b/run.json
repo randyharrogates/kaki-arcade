@@ -1,0 +1,205 @@
+{
+  "slice": "P-09-perf-match",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chrome",
+      "version": "157.0.8103.80"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node --expose-gc tools/perf/run.mjs peek-poker-console --phones 8 --host-browser chrome --slice P-09-perf-match --out perf-development-b",
+  "commit": "ffa56bf5160d3c8e62fc56d82ba53c85b1e42452",
+  "viewports": [],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 950.1519579999995,
+      "status": "completed"
+    },
+    {
+      "name": "Picker → start Peek Poker",
+      "ms": 1602.600792000001,
+      "status": "completed"
+    },
+    {
+      "name": "Round 1 memorise → pick",
+      "ms": 19963.61825,
+      "status": "completed"
+    },
+    {
+      "name": "All phones pick and lock in → reveal",
+      "ms": 17598.179667000004,
+      "status": "completed"
+    },
+    {
+      "name": "Round 1 scoreboard",
+      "ms": 6821.399124999996,
+      "status": "completed"
+    },
+    {
+      "name": "Round 2 memorise → pick",
+      "ms": 20234.739791,
+      "status": "completed"
+    },
+    {
+      "name": "All phones pick and lock in → reveal",
+      "ms": 17595.569875,
+      "status": "completed"
+    },
+    {
+      "name": "Round 2 scoreboard",
+      "ms": 7313.986333000008,
+      "status": "completed"
+    },
+    {
+      "name": "Round 3 memorise → pick",
+      "ms": 17720.656000000003,
+      "status": "completed"
+    },
+    {
+      "name": "All phones pick and lock in → reveal",
+      "ms": 17650.267167000013,
+      "status": "completed"
+    },
+    {
+      "name": "Round 3 scoreboard",
+      "ms": 6825.289999999979,
+      "status": "completed"
+    },
+    {
+      "name": "Round 4 memorise → pick",
+      "ms": 16249.979208000004,
+      "status": "completed"
+    },
+    {
+      "name": "All phones pick and lock in → reveal",
+      "ms": 17584.098333,
+      "status": "completed"
+    },
+    {
+      "name": "Round 4 scoreboard",
+      "ms": 6845.188208000007,
+      "status": "completed"
+    },
+    {
+      "name": "Round 5 memorise → pick",
+      "ms": 16233.79912500002,
+      "status": "completed"
+    },
+    {
+      "name": "All phones pick and lock in → reveal",
+      "ms": 17561.578540999995,
+      "status": "completed"
+    },
+    {
+      "name": "Round 5 scoreboard",
+      "ms": 6842.03575000001,
+      "status": "completed"
+    },
+    {
+      "name": "Final podium (over)",
+      "ms": 6708.649708000012,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [
+    {
+      "page": "host",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:5980/favicon.ico",
+      "expected": true
+    },
+    {
+      "page": "phone1",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:5980/favicon.ico",
+      "expected": true
+    },
+    {
+      "page": "phone2",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:5980/favicon.ico",
+      "expected": true
+    },
+    {
+      "page": "phone3",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:5980/favicon.ico",
+      "expected": true
+    },
+    {
+      "page": "phone4",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:5980/favicon.ico",
+      "expected": true
+    },
+    {
+      "page": "phone5",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:5980/favicon.ico",
+      "expected": true
+    },
+    {
+      "page": "phone6",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:5980/favicon.ico",
+      "expected": true
+    },
+    {
+      "page": "phone7",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:5980/favicon.ico",
+      "expected": true
+    },
+    {
+      "page": "phone8",
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "url": "http://127.0.0.1:5980/favicon.ico",
+      "expected": true
+    }
+  ],
+  "shotStates": [],
+  "screenshots": [],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "PERF.md",
+      "bytes": 2541
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2364
+    },
+    {
+      "file": "actions.json",
+      "bytes": 37802
+    },
+    {
+      "file": "perf.json",
+      "bytes": 552659
+    },
+    {
+      "file": "run.json",
+      "bytes": 5192
+    }
+  ],
+  "totalBytes": 600595,
+  "maxBytes": 12582912
+}

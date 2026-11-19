@@ -245,3 +245,25 @@ it('PERF-002 cancellation during detail aborts and subscribes no frames', async 
   await vi.waitFor(() => { expect(detail).toHaveBeenCalled(); }); f.adapter.stop(); await rejected;
   expect(signal?.aborted).toBe(true); expect(f.staleFrames).toHaveLength(0);
 });
+
+it('PERF-010 dev trace maps accepted wire revisions to game revisions and excludes stale taps', async () => {
+  const hook = vi.fn();
+  globalThis.__kakiActionTiming = hook;
+  const f = fixture();
+  f.game.isOver = () => false;
+  f.game.controllerLayout = state => ({ revision: state + 7, controls: [{ kind: 'options', id: 'lock', options: [{ id: 'go', label: 'Lock in' }] }] });
+  try {
+    await f.adapter.start('test', f.room);
+    f.receive?.({ type: 'tap', connectionId: 'a', action: { control: 'lock', value: 'go', revision: 0 } });
+    f.frame(17);
+    expect(hook.mock.calls.filter(call => call[0] === 'applied')).toEqual([
+      ['applied', 'seat-1', 'lock', 'go', { round: null, wireRevision: 0, gameRevision: 7 }],
+    ]);
+    f.receive?.({ type: 'tap', connectionId: 'a', action: { control: 'lock', value: 'go', revision: 0 } });
+    f.receive?.({ type: 'tap', connectionId: 'a', action: { control: 'lock', value: 'go', revision: 1 } });
+    f.frame(17);
+    expect(hook.mock.calls.filter(call => call[0] === 'applied').at(-1)).toEqual(
+      ['applied', 'seat-1', 'lock', 'go', { round: null, wireRevision: 1, gameRevision: 8 }]);
+    expect(hook.mock.calls.filter(call => call[0] === 'applied')).toHaveLength(2);
+  } finally { f.adapter.stop(); globalThis.__kakiActionTiming = undefined; }
+});

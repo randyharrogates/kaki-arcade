@@ -60,7 +60,7 @@ it('feedback-only pairs still fail when late; missing feedback never passes (PER
         capture.events.push(touch);
         if (!missing) capture.events.push({ ...touch, stage: 'feedback', frame: 3 });
       }
-    }, 600, false, { feedbackReason: '' });
+    }, 600, false, { feedbackReason: '' }, 'development');
     if (missing) await expect(action).rejects.toThrow(); else await expect(action).rejects.toThrow('Performance');
     expect(saved.report?.assessments[2]?.status).toBe(missing ? 'not assessed' : 'fail');
   }
@@ -70,7 +70,7 @@ it('input budget requires observed direct stats (PERF-010)', async () => {
     const report = await runScenario(async (_h, capture, advance) => {
       await capture.roundStart(); advance(180000); await capture.roundEnd();
       for (let i = 0; i < 100; i++) capture.applied({ touch: 10, receipt: 11, applied: 12, frame: 1 });
-    }, 600, direct, { inputReason: '' });
+    }, 600, direct, { inputReason: '' }, 'development');
     expect(report?.assessments[1]?.status).toBe(direct ? 'pass' : 'not assessed');
   }
 });
@@ -83,7 +83,7 @@ it('correlated feedback cannot pad a manual sample without feedback (PERF-012)',
       capture.events.push(touch, { ...touch, stage: 'feedback', frame: 2 });
     }
     capture.applied({ touch: 10, receipt: 11, applied: 12, frame: 1 });
-  }, 600, false, { feedbackReason: '' })).rejects.toThrow('not assessed');
+  }, 600, false, { feedbackReason: '' }, 'development')).rejects.toThrow('not assessed');
   expect(saved.report?.assessments[2]?.status).toBe('not assessed');
 });
 it('contention at either endpoint revokes passes but preserves failures (PERF-001)', async () => {
@@ -93,7 +93,7 @@ it('contention at either endpoint revokes passes but preserves failures (PERF-00
     await expect(runScenario(async (_h, capture, advance) => {
       await capture.roundStart(); advance(180000); await capture.roundEnd();
       if (fail) for (let i = 0; i < 100; i++) capture.applied({ touch: 0, receipt: 60, applied: 70, frame: 1 });
-    }, 600, true, fail ? { inputReason: '' } : {})).rejects.toThrow();
+    }, 600, true, fail ? { inputReason: '' } : {}, fail ? 'development' : 'production')).rejects.toThrow();
     if (fail) expect(saved.report?.assessments[1]?.status).toBe('fail');
     if (!fail) expect(saved.report?.assessments[0]).toMatchObject({ status: 'not assessed', reason: 'contention' });
   }
@@ -135,4 +135,14 @@ it('labels Chromium passes as slice evidence in JSON and Markdown assessment dat
 it('refuses a development build even with qualifying frames and display (PERF-001)', async () => {
   const report = await runScenario(async (_h, capture, advance) => { await capture.roundStart(); advance(180000); await capture.roundEnd(); }, 600, false, {}, 'development');
   expect(report?.assessments[0]).toMatchObject({ status: 'not assessed', reason: 'PERF-001 requires a production build' });
+});
+
+it('production frame runs explicitly leave development input budgets unassessed', async () => {
+  const report = await runScenario(async (_h, capture, advance) => {
+    expect(capture.build).toBe('production');
+    await capture.roundStart(); advance(210000); await capture.roundEnd();
+  }, 600, true, { inputReason: '', feedbackReason: '' });
+  expect(report?.assessments.map(a => a.status)).toEqual(['pass', 'not assessed', 'not assessed', 'not assessed']);
+  expect(report?.assessments[1]?.reason).toContain('frames only');
+  expect(report?.requiredAssessments).toEqual([]);
 });

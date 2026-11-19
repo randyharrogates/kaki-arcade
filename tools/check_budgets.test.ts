@@ -181,3 +181,14 @@ it.each([null, {}, { atlases: {} }, { atlases: [null] }, { atlases: [{}] },
     expect(() => deployBundleSize(output)).toThrow('Missing or invalid atlas');
   } finally { rmSync(output, { recursive: true, force: true }); }
 });
+
+it('PERF-010 rejects the development action hook in any deployed chunk', () => {
+  const output = mkdtempSync(join(tmpdir(), 'kaki-dev-hook-'));
+  try {
+    mkdirSync(join(output, 'assets'));
+    writeFileSync(join(output, 'assets/lazy.js'), 'globalThis.__kakiActionTiming?.()');
+    expect(() => deployBundleSize(output)).toThrow('Development action timing hook shipped: assets/lazy.js');
+    writeFileSync(join(output, 'assets/lazy.js'), 'export const production = true;');
+    expect(() => deployBundleSize(output)).not.toThrow();
+  } finally { rmSync(output, { recursive: true, force: true }); }
+});
