@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — C-24: sound on a TV nobody has touched
+- RZ-033, TR-063: the landing's Host a game is a real link that, on a plain primary click, starts the shared TV sound engine within the click and moves to the lobby in the same document; modified and middle clicks keep the browser's behaviour; Enter and Space as before (D-255). One click and key callback is removed while sound runs and re-armed if the context is suspended or interrupted.
+- While sound is blocked the lobby hint reads "Click or press a key on this screen to turn on sound" and the pause rows read "Sound is off" in the body font, with `aria-valuetext`; numbers stay mono. Rows keep one height and width across unlock, so nothing moves; the running panel is about 72 px taller than R-07's at 1080p (D-229, D-294).
+- PLAT-009: the host flushes its last checkpoint on disposal and never rewrites a record cleared after that.
+- Not yet: a real TV's autoplay policy, a remote's OK key and sleep and resume (X-09).
+
 ## 2026-11-19 — A-02d: Tabao Rush cook walk gait
 - TR-060: walk and carry-walk re-rendered with a once-per-stride torso circuit ±0.05 tiles sideways and fore-and-aft, spine ±0.04 rad pitch and yaw, and 0.03-tile bob; walk arm swing ±0.06 rad; carried hands ride the torso; feet unchanged. Other cook jobs unchanged and not restamped.
 - Walk gate in cook_strips.py --check-motion: each foot ≥ 15 px, each hand ≥ 8 px, head sideways ≥ 8 px, opposite-phase change ≥ 1.5 × idle; all 16 facings pass.

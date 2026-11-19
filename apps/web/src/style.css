@@ -175,10 +175,17 @@ button:focus-visible, a:focus-visible, [role="button"]:focus-visible, .pause-lev
 
 .team-screen footer p { align-self: baseline; }
 /* RZ-033: TV pause levels share the panel's safe-area scale and type. */
-.pause-level { display: grid; grid-template-columns: 1.618fr auto 1fr auto; align-items: center; gap: var(--ka-space-13); padding: var(--ka-space-13) var(--ka-space-34); font-size: var(--ka-type-34); }
+.pause-level { display: grid; grid-template-columns: 1.618fr auto calc(var(--ka-space-55) + var(--ka-space-13)) auto; grid-template-rows: auto calc(var(--ka-type-34) * var(--ka-line-body)); align-items: center; gap: var(--ka-space-13); padding: var(--ka-space-13) var(--ka-space-34); font-size: var(--ka-type-34); }
 .host-pause .pause-level button { padding: var(--ka-space-8) var(--ka-space-21); min-height: var(--ka-space-55); }
-.pause-level-value { font-family: var(--ka-font-mono); text-align: center; }
-.pause-level-bar { grid-column: 1 / -1; height: var(--ka-space-8); background: var(--ka-panel-edge-colour); overflow: hidden; }
+.pause-level > span:first-child { grid-column: 1; grid-row: 1; }
+.pause-level > button { grid-column: 2; grid-row: 1; }
+.pause-level > button + .pause-level-value + button { grid-column: 4; }
+.pause-level-value { grid-column: 3; grid-row: 1; font-family: var(--ka-font-mono); text-align: center; }
+/* The mono face's inline box is taller than its line; a block keeps the number inside its one-line column. */
+.pause-level-value > span { display: block; }
+.pause-level-off { grid-column: 1 / -1; grid-row: 2; font-family: var(--ka-font-body); line-height: var(--ka-line-body); text-align: center; }
+.pause-level-off[hidden], .pause-level-bar[hidden] { display: none; }
+.pause-level-bar { grid-column: 1 / -1; grid-row: 2; height: var(--ka-space-8); background: var(--ka-panel-edge-colour); overflow: hidden; }
 .pause-level-bar > span { display: block; height: 100%; background: var(--ka-accent); transform-origin: left; transition: transform var(--ka-duration-base) var(--ka-ease-in-out); }
 
 /* REL-002 / D-176: (1920 - 2×55 - 34) / 2.618 = 678.38 px secondary. */

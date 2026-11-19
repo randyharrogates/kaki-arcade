@@ -1,7 +1,8 @@
+import { SoundHint } from './sound-hint';
 import { preloadShellPictures } from './shell-images';
 import { PausePanel } from './pause-panel';
 import type { Sound } from '@kaki/platform';
-import { hostSound } from './host-sound';
+import { sharedHostSound } from './host-sound';
 import { isLocalSeat, activeScreenSound } from '@kaki/platform';
 import type { PadAction } from './gamepad-poll';
 import { gamepadPoll, watchGamepads } from './gamepad-poll';
@@ -66,8 +67,7 @@ function hasSavedRoom(): boolean {
 }
 export function HostLobby() {
   useEffect(() => { void preloadShellPictures().catch(() => undefined); }, []);
-  const audio = useMemo(() => hostSound(), []);
-  useEffect(() => () => { audio.dispose(); }, [audio]);
+  const audio = useMemo(() => sharedHostSound(), []);
   const [view, setView] = useState(() => lobbyView({ room: createRoom(), links: new Map(), code: '', pairing: hasSavedRoom() ? 'restoring' : 'creating', origin: location.origin }));
   const displays = useMemo(sessionDisplayStore, []);
   const [picker, setPicker] = useState(initialPicker(gameMetas));
@@ -88,6 +88,8 @@ export function HostLobby() {
   previous.current = view.seats;
   const host = useRef<ReturnType<typeof createHost>>(null);
   useEffect(() => {
+    // PLAT-009: route markup can change before passive cleanup flushes the final checkpoint.
+    if (import.meta.env.DEV) document.documentElement.dataset.hostLifecycle = 'live';
     let alive = true;
     const demoEvents = new AbortController();
     let latest: Parameters<typeof lobbyView>[0] | undefined;
@@ -118,7 +120,10 @@ export function HostLobby() {
       const controller = createHost(browserDependencies(String(import.meta.env.KAKI_SIGNAL_URL), undefined, undefined, value => { if (alive) displays.publish(value); }, event => { host.current?.sessionEvent(event); }), input => { present({ ...input, origin: location.origin }); });
       host.current = controller; void controller.start();
     }
-    return () => { alive = false; demoEvents.abort(); window.clearInterval(tick); host.current?.stop(); };
+    return () => {
+      alive = false; demoEvents.abort(); window.clearInterval(tick); host.current?.stop();
+      if (import.meta.env.DEV) document.documentElement.dataset.hostLifecycle = 'disposed';
+    };
   }, []);
   const local = useMemo(localPlayer, []);
   const padSlot = useRef<number | undefined>(undefined);
@@ -160,7 +165,7 @@ export function HostLobby() {
   }, [keyboard, local]);
   const action = (element: HTMLButtonElement | null): void => { element?.focus(); };
   const lobby = <main class="screen lobby" aria-label="Host lobby">
-    <header data-crowded={padConnected && room.players.length > 0 && !room.players.some(isLocalSeat)}><h1>Kaki Arcade</h1><span class="ka-chip" role="status">{view.pairing === 'reconnecting' ? 'Reconnecting' : 'Lobby'}</span><div class="lobby-hints" hidden={view.pairing === 'closed-room'}><p class="host-hints">{room.players.length > 0 && <span>Enter: pick a game</span>}{room.players.some(isLocalSeat) ? <span>L: leave</span> : <span>J: join from this keyboard</span>}{padConnected && !room.players.some(isLocalSeat) && <span class="host-pad-hint">Start on a game pad: join</span>}</p></div><span class="player-count">{view.count}</span></header>
+    <header data-crowded={padConnected && room.players.length > 0 && !room.players.some(isLocalSeat)}><h1>Kaki Arcade</h1><span class="ka-chip" role="status">{view.pairing === 'reconnecting' ? 'Reconnecting' : 'Lobby'}</span><div class="lobby-hints" hidden={view.pairing === 'closed-room'}><p class="host-hints"><SoundHint sound={audio.sound}>{room.players.length > 0 && <span>Enter: pick a game</span>}{room.players.some(isLocalSeat) ? <span>L: leave</span> : <span>J: join from this keyboard</span>}{padConnected && !room.players.some(isLocalSeat) && <span class="host-pad-hint">Start on a game pad: join</span>}</SoundHint></p></div><span class="player-count">{view.count}</span></header>
     <section class="ka-panel join-panel" aria-label="Join the room">
       <Overlap identity={view.pairing + view.joinLink}>
         {view.qrPayload ? <div class="join-content">

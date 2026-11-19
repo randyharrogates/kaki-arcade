@@ -71,7 +71,13 @@ function App() {
     resize(); window.addEventListener('resize', resize);
     return () => { window.removeEventListener('resize', resize); };
   }, []);
-  const path = location.pathname.replace(/\/$/, '') || '/';
+  const [pathname, setPathname] = useState(location.pathname);
+  useLayoutEffect(() => {
+    const changed = () => { setPathname(location.pathname); };
+    window.addEventListener('popstate', changed);
+    return () => { window.removeEventListener('popstate', changed); };
+  }, []);
+  const path = pathname.replace(/\/$/, '') || '/';
   if (import.meta.env.DEV && path === '/play' && new URLSearchParams(location.search).get('demo') === 'controller') return <ControllerDemoRoute/>;
   if (import.meta.env.DEV && path === '/host/sound') return <SoundDemoRoute/>;
   if (path === '/privacy' || path === '/credits') return <LegalRoute page={path.slice(1) as 'privacy' | 'credits'}/>;

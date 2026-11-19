@@ -42,6 +42,23 @@ function fixture() {
   };
 }
 describe('host wiring (PLAT-001, PLAT-004, PLAT-009, PLAT-010)', () => {
+  it('PLAT-009 flushes on disposal and never rewrites a subsequently cleared record', async () => {
+    const f = fixture(); const host = f.make(); await host.start();
+    f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v, t: 'hello', name: 'Mei Ling' });
+    // Clearing before passive route cleanup races its intentional final flush.
+    f.values.delete(HOST_STORAGE_KEY);
+    host.stop();
+    expect(f.values.get(HOST_STORAGE_KEY)).toContain('Mei Ling');
+    expect(f.stop).toHaveBeenCalled();
+    f.values.delete(HOST_STORAGE_KEY);
+    f.lifecycle('pagehide'); f.lifecycle('hidden'); f.lifecycle('pageshow');
+    f.advance(120001);
+    await host.start();
+    expect(f.values.has(HOST_STORAGE_KEY)).toBe(false);
+    const next = f.make(); await next.start();
+    expect(f.dial.mock.calls.at(-1)?.[0]).toBeUndefined();
+    next.stop();
+  });
   it('creates a room, authenticates joins, measures quality and expires held seats', async () => {
     const f = fixture(); const host = f.make(); await host.start();
     expect(f.views.at(-1)?.codeGroups).toEqual(['H7KQ', '9MXR']);

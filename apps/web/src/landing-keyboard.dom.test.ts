@@ -24,7 +24,8 @@ it('REL-002 landing supports arrows, native Tab and Enter, Space and editable fo
   const browser = await chromium.launch({ headless: true });
   try {
     const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
-    await page.setContent('<div id="app"></div>');
+    await page.route('http://localhost/**', route => route.fulfill({ contentType: 'text/html', body: '<div id="app"></div>' }));
+    await page.goto('http://localhost/');
     await page.addScriptTag({ type: 'module', content: chunk.code });
     const focused = () => page.evaluate(() => document.activeElement?.textContent);
     await expect.poll(focused).toBe('Host a game');
@@ -77,7 +78,7 @@ it('REL-002 landing supports arrows, native Tab and Enter, Space and editable fo
       }
     }
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto('about:blank');
+    await page.goto('http://localhost/');
     await page.setContent('<div id="app"></div>');
     await page.addScriptTag({ type: 'module', content: chunk.code });
     await page.waitForSelector('.landing-screen');

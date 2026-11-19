@@ -1,3 +1,4 @@
+import { sharedHostSound } from './host-sound';
 import landing from './images/landing.webp';
 import { useEffect, useRef } from 'preact/hooks';
 import { LegalFooter } from './pages/legal-footer';
@@ -22,5 +23,11 @@ export function Landing() {
     };
     window.addEventListener('keydown', key); return () => { window.removeEventListener('keydown', key); };
   }, []);
-  return <main class="screen landing-screen" ref={root}><section class="landing-copy"><h1>Kaki Arcade</h1><p>Bring your friends. Your phones are the controllers.</p><a class="ka-panel" href="/host">Host a game</a><p>Tabao Rush · Peek Poker · Rabakz</p><a class="landing-help" href="/tv-help">Put this on your TV</a></section><img class="landing-picture ka-panel" src={landing} width="678" height="419" alt="Friends on a sofa using their phones to play together on a television"/><LegalFooter/></main>;
+  return <main class="screen landing-screen" ref={root}><section class="landing-copy"><h1>Kaki Arcade</h1><p>Bring your friends. Your phones are the controllers.</p><a class="ka-panel" href="/host" onClick={event => {
+    if (event.defaultPrevented || event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    event.preventDefault();
+    sharedHostSound().start();
+    history.pushState(null, '', '/host');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  }}>Host a game</a><p>Tabao Rush · Peek Poker · Rabakz</p><a class="landing-help" href="/tv-help">Put this on your TV</a></section><img class="landing-picture ka-panel" src={landing} width="678" height="419" alt="Friends on a sofa using their phones to play together on a television"/><LegalFooter/></main>;
 }

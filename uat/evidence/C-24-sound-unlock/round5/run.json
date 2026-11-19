@@ -1,0 +1,137 @@
+{
+  "slice": "C-24-sound-unlock",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- C-24-sound-unlock --phones 1 --host-browser chromium --out round5",
+  "commit": "1567fb66c764d0a8c9b9ab497e587c0990859e86",
+  "viewports": [
+    "1920×1080",
+    "1280×720"
+  ],
+  "steps": [],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-01-lobby-running-1080p.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-page-02-lobby-blocked-1080p.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-page-02-lobby-blocked-720p.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-page-03-lobby-unlocked-1080p.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-page-03-lobby-unlocked-720p.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-page-04-pause-sound-off-1080p.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-page-04-pause-sound-off-720p.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-page-05-pause-click-unlocked-720p.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-page-05-pause-click-unlocked-1080p.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-page-06-pause-effects-100-1080p.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-01-lobby-running-1080p.jpg",
+    "02-page-02-lobby-blocked-1080p.jpg",
+    "03-page-02-lobby-blocked-720p.jpg",
+    "04-page-03-lobby-unlocked-1080p.jpg",
+    "05-page-03-lobby-unlocked-720p.jpg",
+    "06-page-04-pause-sound-off-1080p.jpg",
+    "07-page-04-pause-sound-off-720p.jpg",
+    "08-page-05-pause-click-unlocked-720p.jpg",
+    "09-page-05-pause-click-unlocked-1080p.jpg",
+    "10-page-06-pause-effects-100-1080p.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-01-lobby-running-1080p.jpg",
+      "bytes": 258106
+    },
+    {
+      "file": "02-page-02-lobby-blocked-1080p.jpg",
+      "bytes": 259387
+    },
+    {
+      "file": "03-page-02-lobby-blocked-720p.jpg",
+      "bytes": 148410
+    },
+    {
+      "file": "04-page-03-lobby-unlocked-1080p.jpg",
+      "bytes": 254687
+    },
+    {
+      "file": "05-page-03-lobby-unlocked-720p.jpg",
+      "bytes": 146182
+    },
+    {
+      "file": "06-page-04-pause-sound-off-1080p.jpg",
+      "bytes": 169236
+    },
+    {
+      "file": "07-page-04-pause-sound-off-720p.jpg",
+      "bytes": 95750
+    },
+    {
+      "file": "08-page-05-pause-click-unlocked-720p.jpg",
+      "bytes": 93755
+    },
+    {
+      "file": "09-page-05-pause-click-unlocked-1080p.jpg",
+      "bytes": 165448
+    },
+    {
+      "file": "10-page-06-pause-effects-100-1080p.jpg",
+      "bytes": 165941
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1483
+    },
+    {
+      "file": "sound-policy.json",
+      "bytes": 34
+    },
+    {
+      "file": "run.json",
+      "bytes": 3158
+    }
+  ],
+  "totalBytes": 1761614,
+  "maxBytes": 12582912
+}
