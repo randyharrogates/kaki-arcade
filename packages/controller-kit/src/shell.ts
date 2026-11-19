@@ -16,8 +16,7 @@ export interface ControllerShellProps {
   children?: ComponentChildren;
   theme?: ThemeName;
 }
-/** K-04 owns the empty slot. S-05/C-10 may request orientation/fullscreen from a user gesture;
- * this shell deliberately does neither automatically. Import shell.css with the component. */
+/** Generic controls; the phone route owns room-gated fullscreen. Import shell.css with the component. */
 export function ControllerShell(props: ControllerShellProps) {
   const [wake, setWake] = useState<WakeState>('released');
   useEffect(() => {

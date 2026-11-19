@@ -1,0 +1,9 @@
+{
+  "name": "Kaki Arcade",
+  "start_url": "/play",
+  "scope": "/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#EFEAE2",
+  "theme_color": "#EFEAE2"
+}

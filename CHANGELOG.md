@@ -2,6 +2,12 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-20 — K-12: phone controller fills the screen
+- CTRL-004: on Android Chrome the first touch in landscape in a room enters fullscreen with the browser bar hidden, asked for when the last finger lifts (browsers only count a touch as a gesture on release, and this keeps a held stick); a player's own exit holds until they turn the phone; turning to portrait leaves fullscreen; refusals are ignored (D-297, D-307).
+- The phone page adds a web app manifest (full screen, landscape, starts at `/play`, colours from the console background token) and the `apple-mobile-web-app-capable` and `mobile-web-app-capable` tags; the TV and landing pages carry none.
+- Controller page transfer 162,006 bytes gzip against 300,000; start-up median 175.5 ms against 2,000 (merged tree).
+- Not yet: real Android phones and iPhones, and home-screen installs (S-05).
+
 ## 2026-11-20 — C-29: rejoin your seat, and pause for a missing player
 - PLAT-034: joining again from the same browser returns to the same seat, name and score (stale tabs are closed). Another browser chooses from "Are you one of these players?" (disconnected seats only) or "I'm new"; a claim keeps the seat's score and private view, gets a fresh token, and the TV shows "⟨name⟩ is back on a new phone" for 5 s. The original browser can always take the seat back, which cancels the claimer's token.
 - PLAT-007: a running match holds a disconnected seat until results; the lobby keeps two minutes.

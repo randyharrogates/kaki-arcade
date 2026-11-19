@@ -1,0 +1,86 @@
+{
+  "slice": "K-12-fullscreen",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- K-12-fullscreen --phones 1 --phone-browser chromium --out round4",
+  "commit": "2c5a3096f563a35bf2d1c0c5af71fa164ce3dad2",
+  "viewports": [
+    "844×390",
+    "390×844"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 912.5190830000001,
+      "status": "completed"
+    },
+    {
+      "name": "First landscape touch reaches the host once and enters fullscreen",
+      "ms": 6734.078208000001,
+      "status": "completed"
+    },
+    {
+      "name": "Portrait leaves fullscreen",
+      "ms": 180.2466659999991,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-before-tap.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-after-tap.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone1-portrait.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-before-tap.jpg",
+    "02-phone1-after-tap.jpg",
+    "03-phone1-portrait.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-before-tap.jpg",
+      "bytes": 103500
+    },
+    {
+      "file": "02-phone1-after-tap.jpg",
+      "bytes": 115488
+    },
+    {
+      "file": "03-phone1-portrait.jpg",
+      "bytes": 115133
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 966
+    },
+    {
+      "file": "run.json",
+      "bytes": 1760
+    }
+  ],
+  "totalBytes": 336884,
+  "maxBytes": 12582912
+}

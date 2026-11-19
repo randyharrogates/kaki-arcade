@@ -7,6 +7,7 @@ import { createPortal } from 'preact/compat';
 import { GameSetup } from './game-setup-route';
 import { PhoneTeams, TeamsToggle } from './team-setup-route';
 import { ChoiceShape } from './choice-shape';
+import { installPhoneFullscreen, installPhoneManifest } from './phone-fullscreen';
 import { pageWake, shellAfterWake } from './phone-wake';
 import type { LayoutOutput } from '@kaki/controller-kit';
 import { ControllerShell, LayoutEngine } from '@kaki/controller-kit';
@@ -29,6 +30,11 @@ export function PhonePage() {
   const [code, setCode] = useState(params.get('code') ?? '');
   const [name, setName] = useState('');
   const lastView = useRef(view);
+  useEffect(() => {
+    const removeManifest = installPhoneManifest(document);
+    const stopFullscreen = installPhoneFullscreen(document, window, () => lastView.current.seat !== null, location.pathname);
+    return () => { stopFullscreen(); removeManifest(); };
+  }, []);
   const page = useRef<HTMLElement>(null);
   const phone = useRef<ReturnType<typeof createPhone>>(null);
   useEffect(() => {
