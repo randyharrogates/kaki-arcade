@@ -118,6 +118,8 @@ goes to a phone player when one is present. Built today: start with defaults or 
 Needed by: M6.
 Closed 2026-11-18: D-231 — a phone leads whenever one is seated.
 
+**OQ-053 · PLAT-006 wording after C-27.** PLAT-006 says the TV seat leads "only while no phone is seated". Since C-27 (D-282) a disconnected (held) phone no longer blocks the TV seat from leading, so the host is never stuck (PLAT-024). Proposed wording: "…while no phone is connected". Only Randy edits the PRD. Needed by: M8 review.
+
 ## Assumptions Claude is working to (say if wrong)
 
 Confirmed 2026-11-18: D-244.

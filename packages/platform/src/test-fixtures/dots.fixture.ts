@@ -178,7 +178,7 @@ export const dots: GameModule<DotsState, DotsSettings, DotsView> = {
     players: { min: 1, max: 8 },
     teams: 'optional',
     coop: false,
-    solo: true, midGameJoin: true,
+    solo: true, localSeat: 'play', midGameJoin: true,
   },
   settings: {
     fields: [

@@ -6,7 +6,7 @@ import type { PreparedSetup, SettingsValues } from './game-setup';
 import { LOCAL_CONNECTION } from './local-player';
 import type { SessionPeer } from './session-links';
 import { wireJson } from './session-adapter';
-import { splitTeams, reconcileTeams, switchTeam } from '@kaki/platform';
+import { splitTeams, reconcileTeams, switchTeam, elect, gamePlayers, startRefusal } from '@kaki/platform';
 import { roomPlayers } from './team-setup';
 import type { TeamSetupView } from './team-setup';
 import { duration } from '@kaki/ui';
@@ -51,11 +51,15 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
   let setupGeneration = 0;
   let setupLoading = false;
   let setupProblem: string | null = null;
+  function playingRoom(room: RoomState): RoomState {
+    const game = gameMetas.find(g => g.id === picker.focus);
+    return game ? { ...room, players: gamePlayers(game, room) } : room;
+  }
   function updateSettingsView(): void {
     if (!teamSetup) return;
     const setup = preparedSetups.get(picker.focus);
     teamSetup = { ...teamSetup, teamsOffered: gameMetas.find(g => g.id === picker.focus)?.teams === 'optional',
-      teamsReason: (roomAdapter?.room.players.length ?? 0) < 2 ? 'Teams need 2 players' : null,
+      teamsReason: (roomAdapter ? playingRoom(roomAdapter.room).players.length : 0) < 2 ? 'Teams need 2 players' : null,
       settings: setupLoading ? { loading: true, problem: null, fields: [] } : setupProblem ? { loading: false, problem: setupProblem, fields: [] } : setup?.schema.fields.length ? settingsView(setup.schema, chosenSettings.get(picker.focus) ?? {}) : null };
   }
   function openSetup(enabled = gameMetas.find(g => g.id === picker.focus)?.teams === 'required', rebuild = true): void {
@@ -239,12 +243,15 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     deps.clock.cancel(trailing); trailing = undefined; queued = undefined;
     if (teamSetup?.screen === 'teams' && !confirmingTeams) return;
     const game = gameMetas.find(g => g.id === picker.focus);
+    if (picker.screen === 'start' && message.input === 'start' && game && startRefusal(game, room)) {
+      picker = pickerInput(picker, room, gameMetas, id, message.input, message.revision); sendPicker(); publish(); return;
+    }
     if (picker.screen === 'start' && message.input === 'start' && settingsBlocked()) return;
     if (!confirmingTeams && picker.screen === 'start' && message.input === 'start' && game &&
       (game.teams === 'required' || teamSetup?.enabled)) {
-      if (room.players.length < Math.max(2, game.players.min) || room.players.length > game.players.max) return;
+      if (gamePlayers(game, room).length < Math.max(2, game.players.min) || gamePlayers(game, room).length > game.players.max) return;
       teamSetup = { kind: 'team-setup', revision: ++teamRevision, screen: 'teams', enabled: true,
-        players: savedTeams ? reconcileTeams(savedTeams.players, roomPlayers(room), room.leader) : splitTeams(roomPlayers(room), room.leader), error: null }; sendTeams(); publish(); return;
+        players: savedTeams ? reconcileTeams(savedTeams.players, roomPlayers(playingRoom(room)), room.leader) : splitTeams(roomPlayers(playingRoom(room)), room.leader), error: null }; sendTeams(); publish(); return;
     }
     const before = picker;
     picker = pickerInput(picker, roomAdapter.room, gameMetas, id, message.input, message.revision);
@@ -272,7 +279,8 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       }).catch(() => {
         if (stopped || loading !== loadAttempt || picker.screen !== 'starting' || picker.focus !== gameId) return;
         picker = pickerFailed(picker, gameMetas);
-        openSetup(roomAdapter?.room.players.every(p => p.team !== null) ?? false);
+        const playing = playingRoom(roomAdapter?.room ?? createRoom()).players;
+        openSetup(playing.length > 1 && playing.every(p => p.team !== null));
         sendPicker(); publish();
       });
     }
@@ -375,15 +383,15 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
         changed: room => {
           if (snapshot) snapshot.scores = Object.fromEntries(Object.entries(snapshot.scores).filter(([id]) => room.players.some(p => id === `seat-${String(p.seat)}`)));
           if (!room.players.length) { savedTeams = null; teamNotices.clear(); teamSetup = null; teamRevision++; sendTeams(); }
-          if (savedTeams && !confirmingTeams) savedTeams = { ...savedTeams, players: reconcileTeams(savedTeams.players, roomPlayers(room), room.leader) };
+          if (savedTeams && !confirmingTeams) savedTeams = { ...savedTeams, players: reconcileTeams(savedTeams.players, roomPlayers(playingRoom(room)), room.leader) };
           if (teamSetup?.screen === 'teams') {
             teamNotices.clear();
-            teamSetup = { ...teamSetup, players: reconcileTeams(teamSetup.players, roomPlayers(room), room.leader), error: null, revision: ++teamRevision };
+            teamSetup = { ...teamSetup, players: reconcileTeams(teamSetup.players, roomPlayers(playingRoom(room)), room.leader), error: null, revision: ++teamRevision };
           }
           if (teamSetup?.screen === 'choice') { updateSettingsView(); teamSetup = { ...teamSetup, revision: ++teamRevision }; }
           const wasStarting = picker.screen === 'starting'; picker = pickerRoom(picker, room, previousRoom); if (wasStarting && picker.screen !== 'starting') { loadAttempt++; deps.session?.stop?.(); } previousRoom = room; deps.session?.updateRoom?.(room); checkpoints?.checkpoint(); sendPicker(); if (teamSetup) sendTeams(); publish(); } });
       checkpoints = createHostCheckpoints({ store, clock: deps.clock,
-        capture: () => { const room = roomAdapter?.room ?? captured.room; const players = room.players.filter(p => p.connectionId !== LOCAL_CONNECTION); return { ...captured, room: { ...room, players, leader: players.some(p => p.seat === room.leader) ? room.leader : players.filter(p => p.disconnectedAt === null).reduce<number | null>((seat, p) => seat === null ? p.seat : Math.min(seat, p.seat), null) } }; },
+        capture: () => { const room = roomAdapter?.room ?? captured.room; const players = room.players.filter(p => p.connectionId !== LOCAL_CONNECTION); return { ...captured, room: { ...room, players, leader: elect({ ...room, players }).leader } }; },
         ...(deps.lifecycle ? { lifecycle: deps.lifecycle } : {}) });
       failures = 0; retryAfter = 0;
       deps.clock.cancel(retry);

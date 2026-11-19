@@ -5,7 +5,7 @@ import type { DialCallbacks } from './host';
 import { Clock, MemoryStorage, CODE, SECRET } from './testing.fixture';
 vi.mock('./game-registry', async original => {
   const actual = await original<{ gameMetas: readonly GameMeta[] }>();
-  return { ...actual, gameMetas: [{ id: 'required-fixture', name: 'Required teams', blurb: 'Test', players: { min: 2, max: 8 }, teams: 'required', coop: false, solo: false, midGameJoin: false }] };
+  return { ...actual, gameMetas: [{ id: 'required-fixture', name: 'Required teams', blurb: 'Test', players: { min: 2, max: 8 }, teams: 'required', coop: false, solo: false, localSeat: 'play', midGameJoin: false }] };
 });
 it('PLAT-025 required metadata inserts setup and prevents duplicate initialisation', async () => {
   const clock = new Clock(); let cb: DialCallbacks | undefined; let serial = 0;

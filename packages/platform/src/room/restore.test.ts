@@ -74,7 +74,7 @@ it('PLAT-006 fresh pre-dropped restore stall probe elects seat 2', () => {
   s = res(s, 2, 6000).state;
   expect(h(s, { type: 'expire' }, 100000).state.leader).toBe(2);
 });
-it('PLAT-006 restore elects lowest connected seat after a seat was reused', () => {
+it('PLAT-006 restore elects earliest seated connected phone after a seat was reused', () => {
   let s = j(j(j(createRoom(), 1, 'A').state, 2, 'B').state, 3, 'C').state;
   s = applyPhoneEvent(s, idn(2, 2), { type: 'leave' }, 0).state;
   s = j(s, 4, 'D').state;
@@ -82,5 +82,5 @@ it('PLAT-006 restore elects lowest connected seat after a seat was reused', () =
   s = h(s, { type: 'restore' }, 1000).state;
   s = res(s, 3, 2000).state;
   s = res(s, 4, 3000).state;
-  expect(h(s, { type: 'expire' }, 22000).state.leader).toBe(2);
+  expect(h(s, { type: 'expire' }, 22000).state.leader).toBe(3);
 });

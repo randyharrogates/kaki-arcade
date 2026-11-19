@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { applyPhoneEvent, createRoom } from '@kaki/platform';
 import { PICKER_INPUTS } from '@kaki/protocol';
 import type { GameMeta } from './game';
-const gameMetas: GameMeta[] = ['one', 'two', 'three'].map(id => ({ id, name: id, blurb: 'A game.', players: { min: 1, max: 8 }, teams: 'none', coop: false, solo: true, midGameJoin: true }));
+const gameMetas: GameMeta[] = ['one', 'two', 'three'].map(id => ({ id, name: id, blurb: 'A game.', players: { min: 1, max: 8 }, teams: 'none', coop: false, solo: true, localSeat: 'play', midGameJoin: true }));
 import { initialPicker, pickerInput, pickerRoom, pickerView, unavailable } from './picker';
 import type { PickerModel } from './picker';
 function roomWith(count: number) {

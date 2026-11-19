@@ -5,6 +5,7 @@ import { EMPTY_SETUP } from '@kaki/platform';
 import type { PreparedSetup } from './game-setup';
 import { fieldSummary, groupSelection, reconcileSettings, settingChange, settingsView } from './game-setup';
 import { createHost } from './host';
+import { localPlayer } from './local-player';
 import { hostKeyboard } from './host-keyboard';
 import type { DialCallbacks } from './host';
 import { CODE, SECRET, Clock, MemoryStorage } from './testing.fixture';
@@ -212,5 +213,21 @@ it('PLAT-025 allows Teams off after the second player leaves and refuses turning
   expect(f.host.teamSetup?.enabled).toBe(false);
   f.host.teamInput('one', 'teams-toggle');
   expect(f.host.teamSetup?.enabled).toBe(false);
+  f.host.stop();
+});
+
+it('CTRL-009 PLAT-006 keeps Rabakz teams on after load failure with a watching TV seat', async () => {
+  const f = await hostFixture(2); await f.finish();
+  f.host.joinLocal(localPlayer());
+  f.host.teamInput('one', 'teams-toggle'); await f.finish();
+  expect(f.host.teamSetup?.enabled).toBe(true);
+  f.session.start.mockRejectedValueOnce(new Error('offline'));
+  f.input('start');
+  expect(f.host.teamSetup?.screen).toBe('teams');
+  f.host.teamInput('one', 'teams-start');
+  await Promise.resolve(); await Promise.resolve();
+  expect(f.host.picker.error).toContain('Could not load');
+  expect(f.host.teamSetup?.enabled).toBe(true);
+  expect(f.session.setup).toHaveBeenLastCalledWith('rabakz', true);
   f.host.stop();
 });

@@ -1,3 +1,4 @@
+import { gamePlayers } from '../room/room';
 import { cloneState, copyInputFrame, createInputFrame, createSimLoop, resetClock } from '@kaki/sim-core';
 import type { InputBuffer, InputFrame, SimLoopOptions, SimLoop } from '@kaki/sim-core';
 import { BUTTON, STEP_MS, stepModeOf } from '../game/types';
@@ -190,7 +191,7 @@ export function createSession<State, Settings extends object, View>(o: SessionOp
       if (loop) { operation = 'leave'; loop.state = o.game.leave(loop.state, s.player.id); o.recordInput?.({ kind: 'leave', player: s.player.id }, loop.tick); }
       o.buffer.remove(s.player.id);
     }
-    for (const p of [...next.players].sort((a, b) => a.seat - b.seat)) {
+    for (const p of gamePlayers(o.game.meta, next).sort((a, b) => a.seat - b.seat)) {
       let s = old.find(s => s.room.seatToken === p.seatToken);
       if (!s && o.context.teams && p.team === null) continue;
       if (!s) {
@@ -227,7 +228,7 @@ export function createSession<State, Settings extends object, View>(o: SessionOp
   guard(() => {
     // Setup must hand over a complete split; never initialise a partial team match.
     if ((o.game.meta.teams === 'required' && !o.context.teams) || (o.context.teams &&
-      (room.players.some(p => p.team === null) || !room.players.some(p => p.team === 'red') || !room.players.some(p => p.team === 'blue')))) {
+      (gamePlayers(o.game.meta, room).some(p => p.team === null) || !gamePlayers(o.game.meta, room).some(p => p.team === 'red') || !gamePlayers(o.game.meta, room).some(p => p.team === 'blue')))) {
       operation = 'teams'; throw new Error('Invalid team setup');
     }
     sync(room);

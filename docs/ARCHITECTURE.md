@@ -63,7 +63,7 @@ Every game is a module exporting the interface below. The exact types are in
 
 ```ts
 interface GameModule<State, Settings, View> {
-  meta: { id; name; blurb; players: { min; max }; teams: 'none' | 'optional' | 'required'; coop; solo; midGameJoin: boolean };
+  meta: { id; name; blurb; players: { min; max }; teams: 'none' | 'optional' | 'required'; coop; solo; localSeat: 'play' | 'watch'; midGameJoin: boolean };
   stepMode?: 'returns-new' | 'in-place';          // default returns-new (D-048)
   settings: SettingsSchema<Settings> | ((context: SetupContext) => SettingsSchema<Settings>);
   preload?(settings: Settings | null): AssetManifest;
@@ -107,6 +107,7 @@ Rules:
   them in `secrets` and provides `scrambleSecrets`; nothing a player must not see appears in the
   public view, another phone, a layout or `results` before the rules reveal it (PP-020). A game
   stops declaring a secret once the screen gives it away.
+- `meta.localSeat: 'play' | 'watch'` declares whether the TV keyboard/pad seat plays (CTRL-009; D-230). A watching seat stays in the lobby, marked Watching, but never enters game membership, private output, scores or results. With only that seat, the start screen reads “Waiting for a phone” and Start refuses with “⟨game title⟩ needs a phone. Go back and scan the code in the lobby to join.” Connected phones lead in seating order; the local seat leads only while no phone is connected (after the leader grace or restore wait), and a connected phone takes the lead back (D-282) (D-231). TV setup keys still work through the current leader; local-only starts use defaults or kept settings.
 - `meta.midGameJoin` declares running admission (PLAT-008; D-201). The host applies the running
   game’s declaration in both playing and paused phases. With it enabled, the room seats a
   new phone immediately and the session calls `join` once for its new seat token; the game

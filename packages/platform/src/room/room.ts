@@ -1,9 +1,31 @@
+import type { GameMeta } from '../game/index';
 import {
   canAskToJoin, checkNickname, MAX_PLAYERS, PROTOCOL_VERSION, ROOM_PHASES,
   TOKEN_PATTERN
 } from '@kaki/protocol';
 import type { Json, NameProblem, RefusalReason, RoomPhase, Seat } from '@kaki/protocol';
 import { hasBlockedWord, nameSkeleton, storedName } from './blocked-words';
+/** Reserved host transport identity; never supplied by a phone. */
+export const LOCAL_CONNECTION = 'host-local-player';
+export const isLocalSeat = (player: { connectionId: string }): boolean => player.connectionId === LOCAL_CONNECTION;
+export function gamePlayers(meta: GameMeta, room: RoomState) {
+  return room.players.filter(p => meta.localSeat === 'play' || !isLocalSeat(p));
+}
+/** The end of the watch-game refusal; the picker clears exactly this message on a room change. */
+export const NEEDS_PHONE = ' needs a phone. Go back and scan the code in the lobby to join.';
+export function startRefusal(meta: GameMeta, room: RoomState): string | null {
+  const players = gamePlayers(meta, room);
+  return meta.localSeat === 'watch' && players.length === 0 && room.players.some(isLocalSeat)
+    ? `${meta.name}${NEEDS_PHONE}` : playerCountRefusal(meta, players.length);
+}
+export function playerCountRefusal(meta: GameMeta, count: number): string | null {
+  return count < meta.players.min ? `Needs at least ${String(meta.players.min)} ${meta.players.min === 1 ? 'player' : 'players'}`
+    : count > meta.players.max ? `Takes at most ${String(meta.players.max)} ${meta.players.max === 1 ? 'player' : 'players'}` : null;
+}
+export function selectionRefusal(meta: GameMeta, room: RoomState): string | null {
+  return meta.localSeat === 'watch' && gamePlayers(meta, room).length === 0 && room.players.some(isLocalSeat)
+    ? null : playerCountRefusal(meta, gamePlayers(meta, room).length);
+}
 export const RECONNECT_WINDOW_MS = 120000;
 export const LEADER_GRACE_MS = 10000;
 export interface RoomPlayer {
@@ -118,15 +140,18 @@ export function isRoomLeader(state: RoomState, seat: number): boolean {
   return state.leader === seat && state.players.some((p) => p.seat === seat &&
     p.disconnectedAt === null);
 }
-function elect(state: RoomState): RoomState {
-  const current = state.players.find((p) => p.seat === state.leader);
+export function elect(state: RoomState): RoomState {
+  const phones = state.players.filter(p => !isLocalSeat(p));
+  const connectedPhones = phones.filter(p => p.disconnectedAt === null);
+  const candidates = connectedPhones.length ? connectedPhones : state.players.filter(p => p.disconnectedAt === null);
+  const current = (phones.length ? phones : state.players).find((p) => p.seat === state.leader);
   if (current && ((current.awaitingRestore &&
     (current.restoreDeadline === undefined || state.clock < current.restoreDeadline)) ||
-    current.disconnectedAt === null ||
-    (!current.awaitingRestore && state.clock - current.disconnectedAt < LEADER_GRACE_MS)))
+    (current.disconnectedAt === null && candidates.some(p => p.seat === current.seat)) ||
+    (!current.awaitingRestore && current.disconnectedAt !== null && state.clock - current.disconnectedAt < LEADER_GRACE_MS)))
     return state;
-  const connected = state.players.filter((p) => p.disconnectedAt === null).map((p) => p.seat);
-  return { ...state, leader: connected.length ? Math.min(...connected) : null };
+  const connected = candidates.filter((p) => p.disconnectedAt === null).map((p) => p.seat);
+  return { ...state, leader: connected[0] ?? null };
 }
 function safeName(name: string): boolean {
   return checkNickname(name) === 'ok' &&

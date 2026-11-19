@@ -2,6 +2,11 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — C-27: TV seat watches private games; a phone leads
+
+- CTRL-009, PLAT-021: games declare `localSeat` (Tabao Rush plays; Peek Poker and Rabakz watch). A watching TV seat is marked "Watching" and never enters the game, private views, scores or results. Alone, it sees "Waiting for a phone" and "⟨game⟩ needs a phone. Go back and scan the code in the lobby to join."; the tile and Select use the same participation count.
+- PLAT-006, PLAT-024: connected phones lead in seating order; the TV seat leads only while no phone is connected (after the leader grace), and TV keys work under a phone leader. Snapshots use the same rule. Load-failure messages survive room changes; Rabakz teams survive a failed load with the TV seat present (D-282).
+
 ## 2026-11-19 — A-05: Tabao Rush station art (in progress)
 
 - TR-030, TR-031, TR-010: 12 station kinds and a crate scripted in Blender; state cues on ink-edged cream plaques (42 px at 120 px per tile); an eight-cell unlit gold bar on an ink track, empty cells marked in ink; a four-frame burnt-food smoke loop at 8 fps, reduced motion smoke-2; anchors and painter order (body, food, fire, effect, progress, cue) in the manifest; only the states the rules reach (D-278, D-279).

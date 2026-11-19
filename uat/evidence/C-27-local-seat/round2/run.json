@@ -1,0 +1,85 @@
+{
+  "slice": "C-27-local-seat",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- C-27-local-seat --phones 1 --out round2",
+  "commit": "4d52533a630a2c57dfffb2bc7ae48ecb76681c03",
+  "viewports": [
+    "1920×1080",
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1853.1875840000002,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-01-local-only-start-refused.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-02-phone-leads-tv-watching.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-03-phone-playing-tv-no-hand.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-04-phone-hand.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-01-local-only-start-refused.jpg",
+    "02-host-02-phone-leads-tv-watching.jpg",
+    "03-host-03-phone-playing-tv-no-hand.jpg",
+    "04-phone1-04-phone-hand.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-01-local-only-start-refused.jpg",
+      "bytes": 199891
+    },
+    {
+      "file": "02-host-02-phone-leads-tv-watching.jpg",
+      "bytes": 192611
+    },
+    {
+      "file": "03-host-03-phone-playing-tv-no-hand.jpg",
+      "bytes": 376108
+    },
+    {
+      "file": "04-phone1-04-phone-hand.jpg",
+      "bytes": 368942
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 990
+    },
+    {
+      "file": "run.json",
+      "bytes": 1833
+    }
+  ],
+  "totalBytes": 1140412,
+  "maxBytes": 12582912
+}

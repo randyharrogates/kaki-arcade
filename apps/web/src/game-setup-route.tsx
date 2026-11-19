@@ -52,13 +52,13 @@ function setupRefusal(setup: TeamSetupView): SetupRefusal | null {
     typeof value.revision !== 'number' || !Number.isSafeInteger(value.revision)) return null;
   return value as SetupRefusal;
 }
-export function GameSetupMirror({ setup }: { setup: TeamSetupView | null }) {
-  if (!setup) return null;
-  const refusal = setupRefusal(setup);
-  const problem = refusal?.sentence ?? setup.settings?.problem;
-  return <dl class="game-setup-mirror">{setup.settings?.fields.map(field => <div class="setup-mirror-row" data-refused={refusal?.field === field.id} data-field={field.id} key={field.id}><dt class="setup-mirror-heading" data-refused={refusal?.field === field.id}><span>{field.label}</span></dt><dd><MirrorValue value={fieldSummary(field)}/></dd></div>)}
-    {setup.teamsOffered && <div class="setup-mirror-row"><dt>Teams</dt><dd><MirrorValue value={setup.enabled ? 'On' : 'Off'}/></dd></div>}
-    <MirrorProblem text={problem ?? (setup.settings?.loading ? 'Loading settings…' : '')} warning={Boolean(problem)}/>
+export function GameSetupMirror({ setup, startProblem }: { setup: TeamSetupView | null; startProblem?: string | undefined }) {
+  if (!setup && !startProblem) return null;
+  const refusal = setup ? setupRefusal(setup) : null;
+  const problem = startProblem ?? refusal?.sentence ?? setup?.settings?.problem;
+  return <dl class="game-setup-mirror">{setup?.settings?.fields.map(field => <div class="setup-mirror-row" data-refused={refusal?.field === field.id} data-field={field.id} key={field.id}><dt class="setup-mirror-heading" data-refused={refusal?.field === field.id}><span>{field.label}</span></dt><dd><MirrorValue value={fieldSummary(field)}/></dd></div>)}
+    {setup?.teamsOffered && <div class="setup-mirror-row"><dt>Teams</dt><dd><MirrorValue value={setup.enabled ? 'On' : 'Off'}/></dd></div>}
+    <MirrorProblem text={problem ?? (setup?.settings?.loading ? 'Loading settings…' : '')} warning={Boolean(problem)}/>
   </dl>;
 }
 

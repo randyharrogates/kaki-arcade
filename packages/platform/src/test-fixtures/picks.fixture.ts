@@ -185,7 +185,7 @@ export const picks: GameModule<PicksState, PicksSettings> = {
     players: { min: 1, max: 8 },
     teams: 'none',
     coop: false,
-    solo: true, midGameJoin: true,
+    solo: true, localSeat: 'play', midGameJoin: true,
   },
   stepMode: 'in-place',
   settings: {

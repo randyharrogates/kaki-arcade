@@ -292,3 +292,47 @@ it('PLAT-024 / CTRL-009 leaves results keys untouched and limits L to setup', ()
   keyboard.key({ key: 'd', code: 'KeyD', preventDefault } as unknown as KeyboardEvent);
   expect(keyboard.held.has('KeyD')).toBe(true); expect(preventDefault).toHaveBeenCalledOnce();
 });
+
+it('CTRL-009 PLAT-006 PLAT-021 TV keys keep the earliest phone leader and local-only Start respects game meta', async () => {
+  let callbacks: DialCallbacks | undefined; let now = 1000;
+  const start = vi.fn(() => Promise.resolve());
+  const host = createHost({
+    clock: { now: () => now, schedule: () => 1, cancel() { /* fixture */ } },
+    storage: { getItem: () => null, setItem() { /* fixture */ }, removeItem() { /* fixture */ } },
+    mintToken: () => crypto.randomUUID(), session: { start },
+    dial: (_, cb) => { callbacks = cb; return Promise.resolve({ credentials: { code: 'H7KQ9MXR', hostToken: 'a'.repeat(32) }, reopened: false, stop() { /* fixture */ } }); },
+  }, () => undefined);
+  await host.start(); host.joinLocal(localPlayer());
+  const key = (action: Parameters<typeof host.keyboard>[0]) => { now += 1000; host.keyboard(action); };
+  key('open'); key('next'); key('select'); key('start');
+  expect(host.picker.focus).toBe('peek-poker');
+  expect(host.picker.screen).toBe('start');
+  expect(host.picker.error).toBe('Peek Poker needs a phone. Go back and scan the code in the lobby to join.');
+  expect(start).not.toHaveBeenCalled();
+  key('back'); expect(host.picker.screen).toBe('picker');
+  key('back'); expect(host.picker.screen).toBe('lobby');
+  key('open'); key('select'); key('start');
+  for (const id of ['first-phone', 'later-phone']) {
+    callbacks?.peer(id, { sendHost: () => true, bindIdentity() { /* fixture */ }, close() { /* fixture */ } });
+    callbacks?.control(id, { v: 1, t: 'hello', name: id === 'first-phone' ? 'First' : 'Later' });
+    expect(host.room.leader).toBe(2);
+  }
+  expect(host.picker.error).toBeUndefined();
+  key('back'); key('previous'); key('next'); key('select');
+  expect(host.room.leader).toBe(2);
+  key('start'); expect(start).toHaveBeenCalledWith('peek-poker', host.room);
+  host.stop();
+});
+
+it('CTRL-009 Tabao Rush still starts with the TV seat alone', async () => {
+  let now = 1000; const start = vi.fn(() => Promise.resolve());
+  const host = createHost({ clock: { now: () => now, schedule: () => 1, cancel() { /* fixture */ } },
+    storage: { getItem: () => null, setItem() { /* fixture */ }, removeItem() { /* fixture */ } },
+    mintToken: () => crypto.randomUUID(), session: { start },
+    dial: () => Promise.resolve({ credentials: { code: 'H7KQ9MXR', hostToken: 'a'.repeat(32) }, reopened: false, stop() { /* fixture */ } }),
+  }, () => undefined);
+  await host.start(); host.joinLocal(localPlayer());
+  for (const action of ['open', 'select', 'start'] as const) { now += 1000; host.keyboard(action); }
+  expect(start).toHaveBeenCalledWith('tabao-rush', host.room);
+  host.stop();
+});

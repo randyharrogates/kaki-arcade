@@ -639,6 +639,7 @@ class Kit<State> {
           String(min) +
           '; solo must be true exactly when one player can play',
       );
+    if (!['play', 'watch'].includes(meta.localSeat)) bad('localSeat must be play or watch');
     if (typeof meta.midGameJoin !== 'boolean') bad('midGameJoin must be true or false');
     if (typeof meta.coop !== 'boolean') bad('coop must be true or false');
     if (this.module.tinyStateReason?.trim() === '') {

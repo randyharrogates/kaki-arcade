@@ -94,6 +94,8 @@ export interface GameMeta {
    * at the picker or results (D-202; which team a late joiner gets is OQ-048).
    */
   readonly midGameJoin: boolean;
+  /** CTRL-009: local TV seats play, or watch without game membership or private output. */
+  readonly localSeat: 'play' | 'watch';
 }
 /**
  * How `step`, `join`, `leave`, `pause` and `resume` treat the state they are given.

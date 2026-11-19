@@ -2,7 +2,7 @@ import { saveSession } from './session-storage';
 import type { hostCounts } from './counts';
 import { prepareSetup, prepareMatch } from './session-loading';
 import type { PreparedSetup } from './game-setup';
-import { createSession } from '@kaki/platform';
+import { createSession, gamePlayers } from '@kaki/platform';
 import type { GameModule, InitContext, JsonValue, RoomState, SessionEvent, SessionFrames, SessionTransport, Sound } from '@kaki/platform';
 import { createInputBuffer } from '@kaki/sim-core';
 import { INPUT_STALE_STEPS, SEQ_MODULO } from '@kaki/protocol';
@@ -75,7 +75,7 @@ export function createSessionAdapter(o: AdapterOptions) {
       stop(); resultsEnded = false; latestRoom = room; const current = generation;
       const loaded = await prefetch(gameId);
       const seed = o.seed();
-      const prepared = settings ? await prepareMatch(loaded.game, seed, setups.get(gameId) ?? await prepareSetup(loaded.game), settings) : await o.prepare(loaded.game, seed, loaded.game.meta.teams === 'required' || (loaded.game.meta.teams === 'optional' && room.players.length > 1 && room.players.every(p => p.team !== null)));
+      const prepared = settings ? await prepareMatch(loaded.game, seed, setups.get(gameId) ?? await prepareSetup(loaded.game), settings) : await o.prepare(loaded.game, seed, loaded.game.meta.teams === 'required' || (loaded.game.meta.teams === 'optional' && gamePlayers(loaded.game.meta, room).length > 1 && gamePlayers(loaded.game.meta, room).every(p => p.team !== null)));
       if (current !== generation) throw new Error('Cancelled');
       const setup = { failed: false };
       const isFailed = (): boolean => setup.failed;

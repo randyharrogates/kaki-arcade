@@ -232,3 +232,10 @@ it('round 3 lets a lone waiting joiner finish auto-skips beyond the scenario len
   expect(report.ok, formatReport(report)).toBe(true);
   expect(report.scenarios.some((s) => (s.membershipReplay?.steps ?? 0) > 2000 && (s.membershipReplay?.overAtStep ?? 0) > 2000)).toBe(true);
 });
+
+it('CTRL-009 requires an explicit localSeat declaration', () => {
+  const invalid = { ...dots, meta: { ...dots.meta, localSeat: undefined } } as unknown as typeof dots;
+  const report = runConformance(invalid, [], { sources: DOTS_SOURCES });
+  expect(report.ok).toBe(false);
+  expect(formatReport(report)).toContain('localSeat must be play or watch');
+});

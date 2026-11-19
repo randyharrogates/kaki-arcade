@@ -10,7 +10,7 @@ vi.mock('./game-registry', () => ({
   validGameSelection: () => false, sessionRegistrations: {},
 }));
 
-it.each([{ midGameJoin: true, teams: false }, { midGameJoin: false, teams: false }, { midGameJoin: true, teams: true }])('PLAT-008 host applies declaration and team policy %j and releases a held phone on quit', async ({ midGameJoin, teams }) => {
+it.each([{ localSeat: 'play', midGameJoin: true, teams: false }, { localSeat: 'play', midGameJoin: false, teams: false }, { localSeat: 'play', midGameJoin: true, teams: true }])('PLAT-008 host applies declaration and team policy %j and releases a held phone on quit', async ({ midGameJoin, teams }) => {
   const allowed = midGameJoin && !teams;
   const clock = new Clock(); let callbacks: DialCallbacks | undefined; let serial = 0;
   const updateRoom = vi.fn();

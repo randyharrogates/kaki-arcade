@@ -3,7 +3,7 @@ import type { HostMessage } from '@kaki/protocol';
 import type { HostInput } from '@kaki/netcode';
 import type { Layout } from '@kaki/controller-kit';
 
-export const LOCAL_CONNECTION = 'host-local-player';
+export { LOCAL_CONNECTION } from '@kaki/platform';
 const faces = ['face-bottom', 'face-right', 'face-left', 'face-top', 'shoulder-left', 'shoulder-right'] as const;
 const bits = [BUTTON.faceBottom, BUTTON.faceRight, BUTTON.faceLeft, BUTTON.faceTop, BUTTON.l, BUTTON.r];
 const keys = ['Space', 'KeyE', 'KeyQ', 'KeyR', 'KeyZ', 'KeyX'];

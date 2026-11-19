@@ -7,7 +7,7 @@ interface State {
 }
 export const phasedFixture: GameModule<State, { length: number }> = {
   meta: { id: 'harness-fixture', name: 'Harness fixture', blurb: 'Phases, secrets and teams.',
-    players: { min: 1, max: 8 }, teams: 'optional', coop: false, solo: true, midGameJoin: true },
+    players: { min: 1, max: 8 }, teams: 'optional', coop: false, solo: true, localSeat: 'play', midGameJoin: true },
   settings: { fields: [{ kind: 'number', id: 'length', label: 'Length', min: 12, max: 60, step: 12, default: 12 }] },
   init(seed, players, settings, context) {
     return { tick: 0, length: settings.length, phase: 'prepare', paused: false,

@@ -11,7 +11,7 @@ function fixture(onDisplay?: (display: SessionDisplay | null) => void, counts?: 
   room = applyPhoneEvent(room, { connectionId: 'a', deviceId: 'd' }, { type: 'join', name: 'Fern', seatToken: '1'.repeat(32) }, 0).state;
   const calls: string[] = [];
   const game: GameModule<number, object, number> = {
-    meta: { id: 'test', name: 'Test', blurb: 'Test', players: { min: minPlayers, max: 8 }, teams: 'none', coop: false, solo: true, midGameJoin: true },
+    meta: { id: 'test', name: 'Test', blurb: 'Test', players: { min: minPlayers, max: 8 }, teams: 'none', coop: false, solo: true, localSeat: 'play', midGameJoin: true },
     settings: { fields: [] }, init: () => { calls.push('init'); return 0; },
     step: state => { calls.push('step'); return state + 1; }, join: s => s, leave: s => s,
     publicView: s => s, privateView: () => null, controllerLayout: () => ({ revision: 0, controls: [] }),

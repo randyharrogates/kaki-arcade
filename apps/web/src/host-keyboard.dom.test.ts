@@ -4,7 +4,7 @@ import { expect, it } from 'vitest';
 import { chromium } from 'playwright';
 import { build } from 'vite';
 
-it('PLAT-024 / CTRL-009 keeps board 3 controls absent through 24 phone updates and names the local leader', async () => {
+it('PLAT-024 / CTRL-009 keeps board 3 controls absent through 24 phone updates and passes the lead to the first phone (D-231)', async () => {
   const source = (name: string) => fileURLToPath(new URL(name, import.meta.url));
   const fixture = source('./c12-dom-fixture.tsx');
   const bundle = await build({ configFile: false, define: { 'import.meta.env.KAKI_JOIN_ORIGIN': JSON.stringify('') }, build: { target: 'esnext', write: false, minify: false, lib: { entry: fixture, formats: ['es'], name: 'fixture' }, rolldownOptions: { output: { codeSplitting: false } } }, esbuild: { jsx: 'automatic', jsxImportSource: 'preact' }, plugins: [{
@@ -180,9 +180,9 @@ it('PLAT-024 / CTRL-009 keeps board 3 controls absent through 24 phone updates a
       throw new Error(`Fixture did not finish (${state}): ${errors.join('; ') || String(error)}`);
     });
     expect(await page.evaluate(() => Reflect.get(window, 'hostKeyboardResult') as unknown)).toEqual({
-      closedHintsHidden: true, equalHeaderBands: true, integratedResults: true, longHeadingSafe: true, emptyHint: true, padHint: 'Start on a game pad: join', pickerHint: 'Left and Right: chooseEnter: selectEsc: back', startHint: 'Enter: startEsc: back', teamsHint: 'Enter: startEsc: backT: teams', teamStatus: 'Tap your side on your phone. Player 1 starts.', teamHint: 'Arrows and Enter: chooseEsc: back',
-      stable: true, focusedBack: true, focusedAgain: true, unfocusedAgain: true, zeroStaysLobby: true, hintJoined: true, sharedSeat: true, padHeading: 'Player 1 starts with the controller',
-      localHeading: 'Player 1 starts with the keyboard', phoneHeading: 'Phone One starts on their phone',
+      closedHintsHidden: true, equalHeaderBands: true, integratedResults: true, longHeadingSafe: true, emptyHint: true, padHint: 'Start on a game pad: join', pickerHint: 'Left and Right: chooseEnter: selectEsc: back', startHint: 'Enter: startEsc: back', teamsHint: 'Enter: startEsc: backT: teams', teamStatus: 'Tap your side on your phone. Phone One starts.', teamHint: 'Arrows and Enter: chooseEsc: back',
+      stable: true, focusedBack: true, focusedAgain: true, unfocusedAgain: true, zeroStaysLobby: true, hintJoined: true, sharedSeat: true, padHeading: 'Phone One starts on their phone',
+      localHeading: 'Phone One starts on their phone', phoneHeading: 'Phone One starts on their phone',
     });
     for (const viewport of [{ width: 1920, height: 1080 }, { width: 1280, height: 720 }]) {
       await page.setViewportSize(viewport);

@@ -2,7 +2,7 @@ import type { GameModule, GameMeta, PlayerInfo } from '@kaki/platform';
 
 export const consoleE2eMeta: GameMeta = {
   id: 'console-e2e', name: 'Console test', blurb: 'Development console integration fixture.',
-  players: { min: 1, max: 8 }, teams: 'none', coop: true, solo: true, midGameJoin: false,
+  players: { min: 1, max: 8 }, teams: 'none', coop: true, solo: true, localSeat: 'play', midGameJoin: false,
 };
 export interface State { players: readonly PlayerInfo[]; counts: Record<string, number>; secrets: Record<string, string>; steps: number; joined: readonly string[] }
 export const consoleE2e: GameModule<State, Record<string, never>, { steps: number; total: number }> = {
