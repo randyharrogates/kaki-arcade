@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { ComponentChildren } from 'preact';
 import { Overlap } from './Overlap';
 import type { HostScreen, MountedHostScreen, ScreenProps } from './session-adapter';
@@ -20,7 +20,9 @@ function MountedScreen({ Screen, ready, starting, ...options }: ScreenProps & { 
     return () => { active = false; mounted.current = undefined; screen.destroy(); };
   }, [Screen, root]);
   useLayoutEffect(() => { mounted.current?.update(options); }, [options.view, options.width, options.height, options.sound, options.soundHistory, options.detail]);
-  const attach = (element: HTMLDivElement | null): void => { if (element) element.appendChild(root); };
+  const attach = useCallback((element: HTMLDivElement | null): void => {
+    if (element && root.parentNode !== element) element.appendChild(root);
+  }, [root]);
   return <div class="mounted-game-screen">
     {loading && <div class="mounted-game-preparation" ref={attach}/>}
     <Overlap fade surface identity={loading ? 'starting' : 'ready'}>{loading ? starting : <div ref={attach}/>}</Overlap>

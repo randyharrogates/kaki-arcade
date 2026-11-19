@@ -27,3 +27,5 @@ html.ka-controller-locked, .ka-controller-locked body { overflow: hidden; oversc
 }
 @keyframes ka-turn { from { transform: rotate(0); } to { transform: rotate(90deg); } }
 @media (prefers-reduced-motion: reduce) { .ka-controller-icons span { transition: none; } .ka-controller-rotate { animation: none; transform: rotate(90deg); } }
+
+.ka-controller-connection { display:flex; justify-self:end; align-items:center; gap:var(--ka-space-5); }

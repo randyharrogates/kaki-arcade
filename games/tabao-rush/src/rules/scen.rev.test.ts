@@ -2,7 +2,7 @@ import { withOrder } from './orders.fixture';
 import { required } from './review-fixture';
 import { expect, it } from 'vitest';
 import { secondsToSteps } from '@kaki/platform';
-import { tabaoRush } from './game';
+import { tabaoRush } from './playing.fixture';
 import { items } from './state';
 import type { Item, TabaoState, Food, StationType } from './state';
 import { checkRecipe } from './recipes';

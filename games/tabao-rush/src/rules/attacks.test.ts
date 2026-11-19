@@ -5,7 +5,7 @@ function required<T>(value: T | undefined | null): T {
 import { expect, it } from 'vitest';
 import { BUTTON, createTick, EMPTY_SETUP, STEP_MS } from '@kaki/platform';
 import type { StepInputs } from '@kaki/platform';
-import { tabaoRush } from './game';
+import { tabaoRush } from './playing.fixture';
 import { items } from './state';
 import type { Item, Level, StationType, TabaoState } from './state';
 import { itemPress } from './items';

@@ -1,3 +1,4 @@
+import type { CookPick } from './cook-picker';
 import type { Kitchen, OrderEvent } from './orders';
 import type { ColourToken, PlayerInfo } from '@kaki/platform';
 import type { Rejection, ServiceEvent } from './recipes';
@@ -57,6 +58,7 @@ export interface Cook {
 }
 
 export interface Participant {
+  readonly team?: 0 | 1;
   readonly id: string;
   readonly seat: number;
   readonly name: string;
@@ -98,6 +100,10 @@ export interface Item {
 }
 
 export interface TabaoState {
+  readonly phase?: 'pick' | 'play';
+  readonly picks?: readonly CookPick[];
+  readonly pickRevision?: number;
+  readonly pickSteps?: number;
   readonly kitchens?: readonly Kitchen[];
   readonly orderEvents?: readonly OrderEvent[];
   readonly returns?: readonly { readonly due: number; readonly tile: number; readonly item: Item }[];
@@ -118,6 +124,7 @@ export interface TabaoState {
 
 export function participant(player: PlayerInfo, tick: number): Participant {
   return {
+    ...(player.team === undefined ? {} : { team: player.team }),
     id: player.id,
     seat: player.seat,
     name: player.name,

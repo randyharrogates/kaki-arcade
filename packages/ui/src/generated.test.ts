@@ -41,6 +41,7 @@ describe('tokens.css', () => {
       '--ka-seat-numeral: #2B2118;',
       '--ka-type-233: 233px;',
       '--ka-opacity-ghost: 0.08;',
+      '--ka-opacity-taken: 0.3;',
       '--ka-team-text-weight: 700;',
       '--ka-phone-type-89: 89px;',
       '--ka-duration-fast: 144ms;',

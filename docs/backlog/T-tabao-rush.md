@@ -22,7 +22,7 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 | T-07b | T-07 follow-ups: south-facing held-item evidence at the north counter, seat markers drawn nearer-on-top with a 3 px ink edge and real-glyph centring, ≤ 9 px marker overlap at minimum separation accepted (D-291), reachable-function allocation and string scan, real-font recipe-step check | TR-001, TR-004, TR-030, TR-061, PERF-001 | T-07 | 2 | done (merged 2026-11-19; round15-uat, perf-merged; D-291) |
 | T-08 | Controller layout: stick, A, B, X, Y, Start; the optional wok shake follows as T-08b once K-06 lands (D-280) | TR-020 | T-01, K-04 | 2 | todo |
 | T-08b | Optional shake for the wok on the Tabao Rush controller, with the button as the fallback | TR-020, CTRL-007 | T-08, K-06 | 3 | todo |
-| T-09 | Cook picker before a round: 8 characters, no two players the same | TR-064 | T-07, A-03 | 2 | todo |
+| T-09 | Cook picker before a round: 8 characters, no two players the same | TR-064 | T-07, A-03 | 2 | merged 2026-11-19, in progress (round11, review clean; closure waits on perf on the merged tree, a still that shows the badge fade and a real pad; D-287) |
 | T-10 | First-run tutorial, skippable | TR-055 | T-07 | 2 | todo |
 | T-17 | One level, one dish, 1 and 8 players, end to end in the real console, with a quiet-machine performance run | TR-051, TR-056, PERF-001, PERF-010, PERF-024 | T-07 to T-10, C-15 | 3 | todo |
 

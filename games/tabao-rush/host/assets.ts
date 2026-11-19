@@ -24,7 +24,14 @@ export async function preload(detail: 'full' | 'half') {
     }
   }
   for (const [set, data] of Object.entries(manifest.sets)) if (set.startsWith('tabao-rush-')) for (const animation of data.animations) animations.set(`${set}:${animation.action}`, animation as Animation);
+  const portraits = new Map<string,string>();
+  for (const round of Object.values(manifest.rounds)) for (const file of round.files) {
+    const match = /^portrait-([a-z]+(?:-mask)?)\./.exec(file.file);
+    if (!match?.[1] || portraits.has(match[1])) continue;
+    const image = new Image(); image.src = new URL(file.file,url).href; await image.decode(); portraits.set(match[1],image.src);
+  }
+  if (portraits.size !== 16) throw new Error('Incomplete cook portraits');
   if (!frames.has('head-cap-e') || !frames.has('idle-e-0') || !frames.has('fire-0')) throw new Error('Incomplete Tabao Rush atlas');
-  return { frames, animations, divisor, destroy() { for (const f of frames.values()) f.texture.destroy(); for (const p of pages) p.destroy(true); } };
+  return { frames, animations, divisor, portraits, destroy() { for (const f of frames.values()) f.texture.destroy(); for (const p of pages) p.destroy(true); } };
 }
 export type Assets = Awaited<ReturnType<typeof preload>>;

@@ -13,15 +13,44 @@ import { placeController, privateBlocks } from './private-panel';
 import { observeLabelGroup, labelMeasurementSignature, labelCellBox, measureOptionWidth } from './layout-label';
 import { faceShape, layoutOutput, revisionProblem, layoutTapSignature } from './layout-types';
 import type { Item, Layout, LayoutPart, LayoutOutput, LayoutValue, PrivateView, PanelBlock } from './layout-types';
-export interface LayoutEngineProps { layout: Layout; privateView?: PrivateView | null; area: Size; viewport: Size; isLeader?: boolean; onOutput: (output: LayoutOutput) => void; onRevisionProblem?: (problem: string) => void }
+export interface LayoutEngineProps { images?: Readonly<Record<string, string>>; layout: Layout; privateView?: PrivateView | null; area: Size; viewport: Size; isLeader?: boolean; onOutput: (output: LayoutOutput) => void; onRevisionProblem?: (problem: string) => void }
 function shape(face: keyof typeof faceShape | undefined) {
   if (!face) return null;
   return h('svg', { viewBox: '0 0 24 24', 'aria-hidden': 'true' }, h('path', { d: SHAPE_BUTTONS[faceShape[face]].path, 'stroke-width': SHAPE_STROKE }));
 }
-function Target(props: { box?:Size; id: string; label: string; content?: ComponentChildren; item?: Item; face?: keyof typeof faceShape; disabled?: boolean; held?: boolean; output(phase: LayoutOutput['phase'], value: LayoutValue): void; value: LayoutValue }) {
+function Picture({ url, mask, colour, label }: { url?: string | undefined; mask?: string | undefined; colour?: Item['colour']; label: string }) {
+  const [loaded, setLoaded] = useState(false);
+  useLayoutEffect(() => { setLoaded(false); }, [url]);
+  return h('span', { class: 'ka-layout-picture' }, !loaded && h('span', null, label), url && h('img', { src: url, alt: '', style: { visibility: loaded ? 'visible' : 'hidden' }, onLoad: () => { setLoaded(true); }, onError: () => { setLoaded(false); } }), loaded && mask && colour && h('span', { class: 'ka-layout-picture-tint', style: { backgroundColor: colourTokenVar(colour), maskImage: `url("${mask}")` } }));
+}
+function Target(props: { box?:Size; selectionFade?: boolean; id: string; label: string; content?: ComponentChildren; item?: Item; face?: keyof typeof faceShape; disabled?: boolean; held?: boolean; output(phase: LayoutOutput['phase'], value: LayoutValue): void; value: LayoutValue }) {
   const root = useRef<HTMLButtonElement>(null);
   const latest = useRef(props); latest.current = props;
   const disabled = props.disabled === true || props.item?.state === 'disabled';
+  const selected = props.item?.state === 'selected';
+  const previousSelection = useRef(selected);
+  const outgoingSelection = useRef<HTMLElement | null>(null);
+  if (previousSelection.current !== selected) {
+    outgoingSelection.current = props.selectionFade ? root.current?.cloneNode(true) as HTMLElement | null : null;
+    previousSelection.current = selected;
+  }
+  useLayoutEffect(() => {
+    const node = root.current, old = outgoingSelection.current;
+    outgoingSelection.current = null;
+    if (!node || !old || reducedMotion()) return;
+    old.removeAttribute('data-target'); old.removeAttribute('data-control');
+    old.classList.add('ka-layout-ghost'); old.removeAttribute('aria-pressed'); old.removeAttribute('data-state');
+    old.inert = true; old.setAttribute('aria-hidden', 'true');
+    Object.assign(old.style, { position: 'absolute', left: `${String(node.offsetLeft)}px`, top: `${String(node.offsetTop)}px`, width: `${String(node.offsetWidth)}px`, height: `${String(node.offsetHeight)}px`, pointerEvents: 'none' });
+    node.parentElement?.append(old);
+    const motion = crossfade();
+    const incoming = node.animate(motion.incoming.keyframes, motion.incoming.options);
+    const outgoing = old.animate(motion.outgoing.keyframes, motion.outgoing.options);
+    const cleanup = () => { old.remove(); incoming.cancel(); outgoing.cancel(); };
+    void outgoing.finished.then(cleanup, cleanup);
+    return cleanup;
+  }, [selected]);
+
   useLayoutEffect(() => {
     const node = root.current;
     if (!node) return;
@@ -43,9 +72,9 @@ function Target(props: { box?:Size; id: string; label: string; content?: Compone
       onRelease: () => { feedback(false); release?.(); release = undefined; },
     });
   }, []);
-  return h('button', { ref: root, type: 'button', class: `ka-layout-target${props.item?.faceDown ? ' ka-layout-card-back' : ''}${props.face && !props.item?.faceDown ? ` ka-kit-${faceShape[props.face]}` : ''}${props.held && props.face && !props.item?.faceDown ? ' ka-layout-face' : ''}`, 'data-target': props.id, 'data-control': props.id, 'data-held': 'false', 'data-state': props.item?.state ?? 'plain', 'data-focus': String(props.item?.focus === true), 'aria-disabled':disabled, 'aria-label': props.label, 'aria-pressed': props.item?.state === undefined ? undefined : props.item.state === 'selected', style: props.item?.colour && !disabled && !props.item.faceDown ? { background: colourTokenVar(props.item.colour) } : undefined }, props.item?.faceDown ? null : shape(props.face), h('span', null, props.item?.faceDown ? null : props.content ?? props.label));
+  return h('button', { ref: root, type: 'button', class: `ka-layout-target${props.item?.image ? ' ka-layout-picture-cell' : ''}${props.item?.faceDown ? ' ka-layout-card-back' : ''}${props.face && !props.item?.faceDown ? ` ka-kit-${faceShape[props.face]}` : ''}${props.held && props.face && !props.item?.faceDown ? ' ka-layout-face' : ''}`, 'data-target': props.id, 'data-control': props.id, 'data-held': 'false', 'data-state': props.item?.state ?? 'plain', 'data-focus': String(props.item?.focus === true), 'aria-disabled':disabled, 'aria-label': props.label, 'aria-pressed': props.item?.state === undefined ? undefined : props.item.state === 'selected', style: props.item?.colour && !props.item.image && !disabled && !props.item.faceDown ? { background: colourTokenVar(props.item.colour) } : undefined }, props.item?.faceDown ? null : shape(props.face), h('span', null, props.item?.faceDown ? null : props.content ?? props.label), props.item?.badge && h('span', { class: 'ka-layout-badge', style: { backgroundColor: colourTokenVar(props.item.badge.colour) }, 'aria-label': `Seat ${props.item.badge.text}${props.item.badge.tick ? ', Ready' : ''}` }, props.item.badge.text, props.item.badge.tick && h('span', { class: 'ka-layout-ready', 'aria-hidden': 'true' }, '✓')));
 }
-function Part({ control: c, layout, output, width, height, gap, readOnly = false }: { readOnly?:boolean; control: LayoutPart; layout: Layout; output: LayoutEngineProps['onOutput']; width:number; height:number; gap:number }) {
+function Part({ control: c, layout, output, width, height, gap, readOnly = false, images }: { images?: Readonly<Record<string,string>> | undefined; readOnly?:boolean; control: LayoutPart; layout: Layout; output: LayoutEngineProps['onOutput']; width:number; height:number; gap:number }) {
   const group = useRef<HTMLDivElement>(null);
   const measurement = labelMeasurementSignature(c,width,height,gap,readOnly);
   useLayoutEffect(() => {
@@ -69,14 +98,15 @@ function Part({ control: c, layout, output, width, height, gap, readOnly = false
   if (c.kind === 'text') content = h('div', { class:`ka-layout-text ka-layout-${c.tone ?? 'body'}` }, h('span',null,c.text));
   if (c.kind === 'options' || c.kind === 'grid' || c.kind === 'cards') {
     const items = c.kind === 'options' ? c.options : c.kind === 'grid' ? c.cells : c.cards;
-    content = h('div', { ref:group, class:`ka-layout-items ka-layout-${c.kind}`, style: { gridTemplateColumns: c.kind === 'cards' ? `repeat(${String(items.length)}, 1fr)` : `repeat(${String(c.kind === 'grid' ? c.cols : Math.min(2,items.length))}, 1fr)` } }, ...items.map((item,index) => {
+    const selectionFade = (c.kind === 'grid' && items.some(cell => cell.image !== undefined)) || (c.kind === 'options' && items.length === 1);
+    content = h('div', { ref:group, class:`ka-layout-items ka-layout-${c.kind}`, 'data-single-option': c.kind === 'options' && items.length === 1 ? 'true' : undefined, style: { gridTemplateColumns: c.kind === 'cards' ? `repeat(${String(items.length)}, 1fr)` : `repeat(${String(c.kind === 'grid' ? c.cols : Math.min(2,items.length))}, 1fr)` } }, ...items.map((item,index) => {
       const label = item.faceDown ? c.kind === 'grid' ? `Card ${String(index+1)}` : 'Hidden card' : item.label ?? '';
       const mark = ({ spade:'♠',heart:'♥',club:'♣',diamond:'♦' } as Record<string,string>)[item.mark ?? ''] ?? item.mark;
-      const content = c.kind === 'cards' && !item.faceDown ? h('span',{ class:'ka-layout-card-face' },h('span',null,item.label),h('span',null,mark)) : item.faceDown ? null : label;
+      const content = item.image ? h(Picture, { url: images?.[item.image], mask: images?.[`${item.image}-mask`], ...(item.colour ? { colour: item.colour } : {}), label }) : c.kind === 'cards' && !item.faceDown ? h('span',{ class:'ka-layout-card-face' },h('span',null,item.label),h('span',null,mark)) : item.faceDown ? null : label;
       if ((c.kind === 'cards' && !c.tappable) || (c.kind === 'grid' && readOnly)) return h('div', { key:item.id ?? index, class:'ka-layout-card', 'data-state':item.state, 'data-focus':String(item.focus === true), style:item.colour && !item.faceDown ? { background:colourTokenVar(item.colour) } : undefined, 'aria-label':label, ...(item.faceDown ? { role:'img', class:'ka-layout-card ka-layout-card-back' } : {}) },c.kind === 'grid' ? h('span',{ class:'ka-private-grid-label' },content) : content);
       const columns = c.kind === 'grid' ? c.cols : c.kind === 'options' ? Math.min(2,items.length) : items.length;
       const rows = c.kind === 'grid' ? c.rows : c.kind === 'options' ? Math.ceil(items.length/2) : 1;
-      return h(Target, { ...(c.kind === 'options' || c.kind === 'grid' ? { box:labelCellBox(c.kind,width,height,columns,rows,gap) } : {}), key:item.id ?? index, id:`${c.id}:${item.id ?? String(index)}`, label:label || `Cell ${String(index+1)}`, content, item, value:c.kind === 'grid' ? index : item.id ?? '', output:send, ...(item.face ? { face:item.face } : {}) });
+      return h(Target, { ...(c.kind === 'options' || c.kind === 'grid' ? { box:labelCellBox(c.kind,width,height,columns,rows,gap) } : {}), selectionFade, key:item.id ?? index, id:`${c.id}:${item.id ?? String(index)}`, label:label || `Cell ${String(index+1)}`, content, item, value:c.kind === 'grid' ? index : item.id ?? '', output:send, ...(item.face ? { face:item.face } : {}) });
     }));
   }
   // Sensor and gesture acquisition belongs to K-06; these declarations draw no fake input.
@@ -143,7 +173,7 @@ export function LayoutEngine(props: LayoutEngineProps) {
   useLayoutEffect(() => {
     const node = root.current;
     if (!node) return;
-    const labels = [...node.querySelectorAll<HTMLElement>('.ka-layout-options > :only-child > span, .ka-layout-text > span')];
+    const labels = [...node.querySelectorAll<HTMLElement>('.ka-layout-options[data-single-option="true"] > button[data-control] > span, .ka-layout-text > span')];
     const measure = () => {
       const widths: Record<string, number> = {};
       labels.forEach(label => {
@@ -366,5 +396,5 @@ export function LayoutEngine(props: LayoutEngineProps) {
     snapshot.current = null;
   }, [transition]);
   useLayoutEffect(() => () => { privateFades.current.forEach(finish => { finish(); }); root.current?.parentElement?.querySelectorAll('.ka-layout-ghost, .ka-private-ghost').forEach(el => { el.remove(); }); }, []);
-  return h('div', { ref:root, class:'ka-layout-engine', 'data-fits':String(placement.fits && panelFits), 'data-margin':String(placement.margin), 'data-gap':String(placement.gap), style:{ width:`${String(props.area.width)}px`,height:`${String(props.area.height)}px`, '--layout-gap':`var(--ka-space-${String(placement.gap)})`, '--layout-grid-gap':`var(--ka-space-${String(placement.gap === 5 ? 5 : 8)})` }, 'data-revision':props.layout.revision }, h('div', { class:'ka-layout-surface', 'aria-hidden':'true' }), placement.panel && placement.fits && h('section',{ class:'ka-private-panel','aria-label':'Private display',style:{ flexDirection:placement.metrics.widths ? 'row' : 'column',left:`${String(placement.panel.left)}px`,top:`${String(placement.panel.top)}px`,width:`${String(placement.panel.width)}px`,height:`${String(placement.panel.height)}px` } },...privateBlocks(props.privateView,props.isLeader ?? false).map((block,index) => h('div',{ key:index,class:'ka-private-block',style:{ ...(placement.metrics.widths ? { width:`${String(placement.metrics.widths[index] ?? 0)}px` } : {}),height:`${String(placement.metrics.heights[index] ?? 0)}px`,...(block.kind === 'grid' ? { width:`${String(((placement.metrics.heights[index] ?? 0)-(block.rows-1)*(placement.gap === 5 ? 5 : 8))/block.rows*block.cols+(block.cols-1)*(placement.gap === 5 ? 5 : 8))}px`,alignSelf:'center' } : {}),...(block.kind === 'cards' ? { width:`${String(block.cards.length*(placement.metrics.heights[index] ?? 0)*PHONE.card.width/PHONE.card.height+Math.max(0,block.cards.length-1)*placement.gap)}px`,alignSelf:'center' } : {}), '--private-card-type':`var(--ka-phone-type-${(placement.metrics.heights[index] ?? 0) < PHONE.card.height ? '21' : '34'})`, '--private-stat-value':`var(--ka-phone-type-${String(placement.metrics.steps[index] ?? 21)})`  } },h(PrivateBlock,{ block,layout:props.layout,gap:placement.gap })))), ...placement.parts.map(p => h('div', { key:`${p.control.id}:${p.control.kind}${p.control.kind === 'button' ? p.control.button : ''}`, 'data-part':p.control.id, class:'ka-layout-part', style:{ left:`${String(p.left)}px`,top:`${String(p.top)}px`,width:`${String(p.width)}px`,height:`${String(p.height)}px`, '--control-size':`${String((p.width-2*placement.gap)/3)}px`, '--control-height':`${String((p.height-2*placement.gap)/3)}px` } },h(Part,{ control:p.control,layout:props.layout,output:props.onOutput,width:p.width,height:p.height,gap:placement.gap }))));
+  return h('div', { ref:root, class:'ka-layout-engine', 'data-picture-grid': String(props.layout.controls.some(c => c.kind === 'grid' && c.cells.some(cell => cell.image))), 'data-fits':String(placement.fits && panelFits), 'data-margin':String(placement.margin), 'data-gap':String(placement.gap), style:{ width:`${String(props.area.width)}px`,height:`${String(props.area.height)}px`, '--layout-gap':`var(--ka-space-${String(placement.gap)})`, '--layout-grid-gap':`var(--ka-space-${String(placement.gap === 5 ? 5 : 8)})` }, 'data-revision':props.layout.revision }, h('div', { class:'ka-layout-surface', 'aria-hidden':'true' }), placement.panel && placement.fits && h('section',{ class:'ka-private-panel','aria-label':'Private display',style:{ flexDirection:placement.metrics.widths ? 'row' : 'column',left:`${String(placement.panel.left)}px`,top:`${String(placement.panel.top)}px`,width:`${String(placement.panel.width)}px`,height:`${String(placement.panel.height)}px` } },...privateBlocks(props.privateView,props.isLeader ?? false).map((block,index) => h('div',{ key:index,class:'ka-private-block',style:{ ...(placement.metrics.widths ? { width:`${String(placement.metrics.widths[index] ?? 0)}px` } : {}),height:`${String(placement.metrics.heights[index] ?? 0)}px`,...(block.kind === 'grid' ? { width:`${String(((placement.metrics.heights[index] ?? 0)-(block.rows-1)*(placement.gap === 5 ? 5 : 8))/block.rows*block.cols+(block.cols-1)*(placement.gap === 5 ? 5 : 8))}px`,alignSelf:'center' } : {}),...(block.kind === 'cards' ? { width:`${String(block.cards.length*(placement.metrics.heights[index] ?? 0)*PHONE.card.width/PHONE.card.height+Math.max(0,block.cards.length-1)*placement.gap)}px`,alignSelf:'center' } : {}), '--private-card-type':`var(--ka-phone-type-${(placement.metrics.heights[index] ?? 0) < PHONE.card.height ? '21' : '34'})`, '--private-stat-value':`var(--ka-phone-type-${String(placement.metrics.steps[index] ?? 21)})`  } },h(PrivateBlock,{ block,layout:props.layout,gap:placement.gap,images:props.images })))), ...placement.parts.map(p => h('div', { key:`${p.control.id}:${p.control.kind}${p.control.kind === 'button' ? p.control.button : ''}`, 'data-part':p.control.id, class:'ka-layout-part', style:{ left:`${String(p.left)}px`,top:`${String(p.top)}px`,width:`${String(p.width)}px`,height:`${String(p.height)}px`, '--control-size':`${String((p.width-2*placement.gap)/3)}px`, '--control-height':`${String((p.height-2*placement.gap)/3)}px` } },h(Part,{ control:p.control,layout:props.layout,output:props.onOutput,width:p.width,height:p.height,gap:placement.gap,images:props.images }))));
 }

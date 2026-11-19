@@ -3,8 +3,9 @@ import type { View } from './model';
  * other drawn field; controller-only action previews do not force a redraw. */
 export function sameDrawing(a:View|undefined,b:View):boolean {
   if(!a)return false;
+  if(a.phase!==b.phase||a.picks!==b.picks)return false;
   if(a.tick!==b.tick||a.level!==b.level||a.timer.remaining!==b.timer.remaining||a.cooks.length!==b.cooks.length||a.items.length!==b.items.length||a.players.length!==b.players.length||a.stations.length!==b.stations.length||a.kitchens.length!==b.kitchens.length||a.orderEvents!==b.orderEvents)return false;
-  for(let i=0;i<a.cooks.length;i++){const c=a.cooks[i],d=b.cooks[i];if(!c)return false;if(c.id!==d?.id||c.x!==d.x||c.y!==d.y||c.vx!==d.vx||c.vy!==d.vy||c.facing!==d.facing||c.targetTile!==d.targetTile)return false;}
+  for(let i=0;i<a.cooks.length;i++){const c=a.cooks[i],d=b.cooks[i];if(!c)return false;if(a.heads?.[c.id]!==b.heads?.[c.id]||c.id!==d?.id||c.x!==d.x||c.y!==d.y||c.vx!==d.vx||c.vy!==d.vy||c.facing!==d.facing||c.targetTile!==d.targetTile)return false;}
   for(let i=0;i<a.items.length;i++)if(a.items[i]!==b.items[i])return false;
   for(let i=0;i<a.players.length;i++){const p=a.players[i],q=b.players[i];if(!p)return false;if(p.id!==q?.id||p.seat!==q.seat||p.colour!==q.colour)return false;}
   for(let i=0;i<a.stations.length;i++){const s=a.stations[i],t=b.stations[i];if(!s)return false;if(s.id!==t?.id||s.tile!==t.tile||s.type!==t.type||s.status!==t.status||s.progress!==t.progress||s.total!==t.total||s.fire!==t.fire||s.warning!==t.warning||s.worker!==t.worker||s.rejection!==t.rejection)return false;}

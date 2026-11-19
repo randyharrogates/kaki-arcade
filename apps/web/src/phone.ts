@@ -96,7 +96,7 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     if (!next.connected) naming = false;
     view = { ...next, teamSetup: next.connected ? (input.teamSetup === undefined ? view.teamSetup : input.teamSetup) : null, layout: next.seat !== null && (input.layout ?? view.layout), picker: next.connected ? (input.picker ?? view.picker) : null, renaming: naming, gameLayout: input.gameLayout ?? view.gameLayout, gameViewRevision: input.gameViewRevision ?? view.gameViewRevision };
     if (view.seat === null || !view.connected) { view.gamePrivateView = null; view.resultStats = []; }
-    view.theme = view.connected && !view.teamSetup && (view.phase === 'playing' || view.phase === 'paused') ? phoneThemes[view.picker?.game?.id ?? ''] ?? 'console' : 'console';
+    view.theme = view.connected && !view.teamSetup && (view.picker?.screen === 'starting' || view.phase === 'playing' || view.phase === 'paused') ? phoneThemes[view.picker?.game?.id ?? ''] ?? 'console' : 'console';
     changed(view);
   }
   function message(message: HostMessage): void {

@@ -1,6 +1,7 @@
 import { expect, it } from 'vitest';
 import { createTick, STEP_MS } from '@kaki/platform';
-import { tabaoRush, ROUND_STEPS } from './game';
+import { ROUND_STEPS } from './game';
+import { tabaoRush } from './playing.fixture';
 import { arriveOrders, completeOrder, ageOrders, ensureOrders, scaling, stars } from './orders';
 import { withOrder } from './orders.fixture';
 import { RECIPES } from './recipes';

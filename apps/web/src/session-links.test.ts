@@ -1,4 +1,5 @@
 import { expect, it, vi } from 'vitest';
+import type { SessionTransportEvent } from '@kaki/platform';
 import { applyPhoneEvent, createRoom } from '@kaki/platform';
 import { createInputBuffer } from '@kaki/sim-core';
 import type { HostInput } from '@kaki/netcode';
@@ -109,4 +110,25 @@ it('PLAT-022 failed layout sends do not count and drop restarts the counter', ()
   links.transport.sendLayout('a', layout); links.dropped('a'); links.peer('a', peer); links.transport.sendLayout('a', layout);
   expect(sendHost.mock.calls.map(([message]) => message)).toMatchObject([{ rev: 0, layout: { revision: 0 } }, { rev: 0, layout: { revision: 0 } }, { rev: 1, layout: { revision: 1 } }, { rev: 0, layout: { revision: 0 } }]);
   links.stop();
+});
+
+it('CTRL-009 local controls use the phone layout, view and scalar validation', () => {
+  const links = sessionLinks();
+  const room = applyPhoneEvent(createRoom(), { deviceId: 'tv', connectionId: 'tv' }, { type: 'join', name: 'TV', seatToken: '1'.repeat(32) }, 0).state;
+  let send: ((message: unknown) => void) | undefined;
+  links.peer('tv', { sendHost: () => true, bindInput() { /* No binary inputs. */ }, bindControl(next) { send = message => { next(message as Parameters<typeof next>[0]); }; } });
+  links.setup(room, createInputBuffer<string>({ seqModulus: 65536, staleAfterSteps: 15, axisCount: 4 }));
+  const receive = vi.fn<(event: SessionTransportEvent) => void>(); links.transport.subscribe(receive);
+  links.transport.sendLayout('tv', { revision: 7, controls: [] });
+  links.transport.sendPrivateView('tv', null);
+  const action = { v: 1, t: 'action', rev: 0, viewRev: 0, data: { control: 'ready', value: 'ready' } };
+  send?.({ ...action, rev: 7 });
+  send?.({ ...action, viewRev: 1 });
+  for (const value of [true, null, {}, []]) send?.({ ...action, data: { control: 'ready', value } });
+  expect(receive).not.toHaveBeenCalled();
+  for (const value of ['ready', 1]) send?.({ ...action, data: { control: 'ready', value } });
+  expect(receive.mock.calls.map(([event]) => event.type === 'tap' ? event.action : null)).toEqual([
+    { control: 'ready', revision: 7, value: 'ready' }, { control: 'ready', revision: 7, value: 1 },
+  ]);
+  links.stop(); send?.(action); expect(receive).toHaveBeenCalledTimes(2);
 });

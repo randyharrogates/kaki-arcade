@@ -42,8 +42,9 @@ it('CTRL-003 / PLAT-031 keeps team setup routing and rejects malformed content f
   f.send({ v: 1, t: 'view', rev: 2, view: { kind: 'team-setup', revision: 0, screen: 'teams', enabled: true, players: [], error: null } });
   expect(f.view.teamSetup?.revision).toBe(2); expect(f.view.gamePrivateView).toBeNull(); f.phone.stop();
 });
-it.each([['rabakz', 'rabakz'], ['peek-poker', 'peek-poker'], ['tabao-rush', 'tabao-rush'], ['unknown', 'console']])('CTRL-003 / PLAT-031 applies the phone theme for %s only during play and pause', (id, theme) => {
-  const f = fixture(); f.picker('starting', id); expect(f.view.theme).toBe('console');
+it.each([['rabakz', 'rabakz'], ['peek-poker', 'peek-poker'], ['tabao-rush', 'tabao-rush'], ['unknown', 'console']])('CTRL-003 / PLAT-031 applies the phone theme for %s during starting, play and pause', (id, theme) => {
+  const f = fixture(); f.picker('starting', id); expect(f.view.theme).toBe(theme);
+  f.picker('picker', id); expect(f.view.theme).toBe('console');
   for (const phase of ['playing', 'paused', 'results', 'lobby'] as const) {
     f.room(phase); expect(f.view.theme).toBe(phase === 'playing' || phase === 'paused' ? theme : 'console');
   }

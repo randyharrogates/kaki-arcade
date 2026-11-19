@@ -10,6 +10,9 @@ export function hostKeyboard(input: {
   command(action: 'pause' | 'resume' | 'open' | 'teams-back' | 'back' | 'previous' | 'next' | 'select' | 'start' | 'teams-toggle'): void;
 }) {
   const held = new Set<string>();
+  const latched = new Set<string>();
+  const sampled = new Set<string>();
+  const clear = (): void => { held.clear(); latched.clear(); };
   let focusPause = false;
   let focused: HTMLElement | undefined;
   let label: string | null = null;
@@ -19,13 +22,20 @@ export function hostKeyboard(input: {
   };
   return {
     held,
+    sample: (): ReadonlySet<string> => {
+      sampled.clear();
+      for (const code of held) sampled.add(code);
+      for (const code of latched) sampled.add(code);
+      latched.clear();
+      return sampled;
+    },
     remember: (): void => {
       const active = input.active();
       focused = input.controls().find(node => node === active);
       label = focused?.textContent ?? null;
     },
-    clear: (): void => { held.clear(); },
-    visibility: (hidden: boolean): void => { if (hidden) held.clear(); },
+    clear,
+    visibility: (hidden: boolean): void => { if (hidden) clear(); },
     rendered(): void {
       const nodes = input.controls();
       const active = input.active();
@@ -46,16 +56,17 @@ export function hostKeyboard(input: {
       if (event.type === 'keyup') { held.delete(event.code); return; }
       const { phase, teams, picker, localSeat } = input.state();
       if (event.code === 'KeyJ' && phase === 'lobby') { input.join(); return; }
-      if (event.code === 'KeyL' && phase === 'lobby' && !teams && (picker === undefined || picker === 'lobby' || picker === 'picker' || picker === 'start')) { held.clear(); input.leave(); return; }
+      if (event.code === 'KeyL' && phase === 'lobby' && !teams && (picker === undefined || picker === 'lobby' || picker === 'picker' || picker === 'start')) { clear(); input.leave(); return; }
       if (phase === 'playing' && event.code !== 'Escape') {
-        if (localSeat && ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'Space', 'Enter', 'KeyE', 'KeyQ', 'KeyR', 'KeyZ', 'KeyX'].includes(event.code)) { held.add(event.code); event.preventDefault(); }
+        if (event.repeat && (event.code === 'Space' || event.code === 'Enter')) { event.preventDefault(); return; }
+        if (localSeat && ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'Space', 'Enter', 'KeyE', 'KeyQ', 'KeyR', 'KeyZ', 'KeyX'].includes(event.code)) { held.add(event.code); if (!event.repeat) latched.add(event.code); event.preventDefault(); }
         return;
       }
       if (phase === 'results' && (event.key === 'Escape' || event.key === 'Enter')) return;
       if (event.key === 'Escape') {
         if (event.repeat) return;
         event.preventDefault();
-        if (phase === 'playing') { held.clear(); focusPause = true; input.command('pause'); }
+        if (phase === 'playing') { clear(); focusPause = true; input.command('pause'); }
         else if (phase === 'paused') input.command('resume');
         else input.command(teams ? 'teams-back' : 'back');
         return;

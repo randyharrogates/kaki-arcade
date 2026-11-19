@@ -3,7 +3,8 @@ import * as fs from 'node:fs';
 import { expect, it } from 'vitest';
 import { formatReport, fuzzScript, readSources, runConformance } from '@kaki/platform/kit';
 import type { Script } from '@kaki/platform/kit';
-import { ROUND_STEPS, tabaoRush } from './rules/game';
+import { ROUND_STEPS } from './rules/game';
+import { tabaoRush } from './rules/playing.fixture';
 
 const fuzz = fuzzScript();
 const buttonsAndSupply: Script = (context) => {

@@ -1854,3 +1854,19 @@ The Rabakz final podium as merged:
 7. The final header is an `h1`, as on the other results screens (R-16).
 
 8. The 8-player free-for-all and late-joiner scoreboards are checked at 1920 and 1280 (round 5). Randy may overrule.
+
+**D-287 · 2026-11-19 · Claude, integrator (T-09 review; delegated by Randy, 2026-11-18)** (T-09; TR-064, TR-056, CTRL-003, CTRL-009, PLAT-008; reads D-231, D-282).
+1. **TV seat in pickers.** A keyboard or pad seat at the TV takes part in a phone picker through the generic local mapping.
+   - A press of Space, Enter or pad A taps the first single-option control whose audience includes the seat, if that control is not disabled.
+   - Each press counts once. Key auto-repeat is ignored. A key or button already held when the seat's input is bound is not counted until it is released. Presses count only once round preparation has finished.
+   - A fresh key press is kept until the next input sample, so a quick tap between two samples still counts once.
+   - The tap goes through the same authenticated, revision-checked action path as a phone.
+   - In the Tabao Rush cook picker the seat keeps its seat-order default and readies.
+   - No game-specific code goes into apps/web or the packages.
+2. **Picker joiners.** They play the whole first round but are marked joinedMidGame, because platform conformance treats any join after step zero as mid-game; results may flag them.
+3. **Kit selection crossfade.** It applies to every cell of a grid in which any cell declares a picture, and to single-option controls.
+   - Its outgoing snapshots are inert and aria-hidden and carry `ka-layout-ghost`.
+   - They lose `aria-pressed`, `data-state`, `data-target` and `data-control`.
+   - Other grids and option groups change state without a crossfade, as before.
+
+Randy may overrule.

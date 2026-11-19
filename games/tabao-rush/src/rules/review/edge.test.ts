@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { BUTTON, createTick, EMPTY_SETUP, secondsToSteps, STEP_MS } from '@kaki/platform';
 import type { SampledInput } from '@kaki/sim-core';
-import { tabaoRush } from '../game';
+import { tabaoRush } from '../playing.fixture';
 import { FLOOR_LIMIT, heldItem, itemPress, THROW_STEPS } from '../items';
 import { inventory, items } from '../state';
 import type { Cook, Item, Level, TabaoState } from '../state';

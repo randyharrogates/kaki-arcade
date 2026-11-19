@@ -44,6 +44,25 @@ export function packLayout(layout: Layout, area: Size, leader: boolean, optionWi
   const shoulders = controls.filter(c => c.kind === 'button' && c.button.startsWith('shoulder'));
   const moving = controls.filter(c => c.kind === 'stick' || c.kind === 'dpad' || c.kind === 'swipe');
   const panels = controls.filter(c => ['options', 'grid', 'cards', 'text'].includes(c.kind));
+  // A picture grid beside its instructions follows the board's primary/secondary split.
+  const pictures = panels.find(c => c.kind === 'grid' && c.cells.every(cell => cell.image));
+  if (pictures?.kind === 'grid' && controls.every(c => ['grid', 'text', 'options'].includes(c.kind))) {
+    const heading = controls.filter(c => c.kind === 'text').length > 2 ? controls.find(c => c.kind === 'text' && c.tone === 'note') : undefined;
+    const info = controls.filter(c => c !== pictures && c !== heading);
+    const headerHeight = heading ? PHONE.line.note + gap : 0;
+    const top = margin + headerHeight;
+    const bodyHeight = h - headerHeight;
+    const leftWidth = (w - PHONE.columnGap) * 1.618 / 2.618;
+    const rightWidth = w - PHONE.columnGap - leftWidth;
+    if (heading) put(heading, margin, margin, w, PHONE.line.note);
+    put(pictures, margin, top, leftWidth, bodyHeight);
+    const heights = info.map(c => c.kind === 'options' ? PHONE.inPlay.height : c.kind === 'text' && c.tone === 'title' ? PHONE.line.title : PHONE.line.note * 2);
+    const total = heights.reduce((a,b) => a+b,0) + (info.length-1)*gap;
+    let y = top + (bodyHeight-total)/2;
+    info.forEach((c,i) => { const height = heights[i] ?? 0; put(c, margin+leftWidth+PHONE.columnGap, y, rightWidth, height); y += height+gap; });
+    const fits = (leftWidth-(pictures.cols-1)*gridGap)/pictures.cols >= PHONE.tappable && (bodyHeight-(pictures.rows-1)*gridGap)/pictures.rows >= PHONE.tappable && total <= bodyHeight;
+    return { parts, margin, gap, required: { width: area.width, height: area.height }, fits };
+  }
   const header = 0;
   const shoulderWidth = shoulders.length ? floor.inPlayWidth + gap : 0;
   const bodyH = h - header;

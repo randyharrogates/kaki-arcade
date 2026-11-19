@@ -241,10 +241,20 @@ def layout_page(pending, batches):
     return best[0], best[1]
 
 
+def file_gpu_bytes(folder, files):
+    """Standalone phone pictures are decoded too, at both detail settings."""
+    amount = 0
+    for file in files:
+        if file['file'].endswith('.webp'):
+            with Image.open(Path(folder) / file['file']) as picture:
+                amount += picture.width * picture.height * 4
+    return amount
+
+
 def pack(config, source, output):
     output.mkdir(parents=True, exist_ok=True)
     for stale in output.iterdir():
-        if re.fullmatch(r'[a-z0-9_-]+-(full|half)\.[0-9a-f]{16}\.webp', stale.name):
+        if re.fullmatch(r'[a-z0-9_-]+-(full|half)\.[0-9a-f]{16}\.webp', stale.name) or re.fullmatch(r'portrait-[a-z]+(-mask)?\.[0-9a-f]{16}\.webp', stale.name):
             stale.unlink()
     config = copy.deepcopy(config)
     for group in config['sets']:
@@ -472,6 +482,12 @@ def pack(config, source, output):
             **({k: next(f['file'] for f in files if f['source'] == round_spec[k]) for k in ('collisionMap', 'stationAnchors') if k in round_spec} if isinstance(round_spec, dict) else {}))
     if not rounds or set(sets) != {s for r in rounds.values() for s in r['sets']}:
         raise ValueError('Every set must belong to a preload round')
+    if (source / 'tabao-rush/cook-heads/songkok/head-songkok-s.png').exists():
+        from cook_portraits import pack_portraits
+        portraits = pack_portraits(source, output)
+        for name, round_data in rounds.items():
+            if any(member.startswith('tabao-rush-') for member in round_data['sets']):
+                round_data['files'].extend(portraits)
     manifest = dict(version=1, alphaMode='straight', mipmaps=False, halfRule='Divide rect, trim, sourceSize, anchor and named anchors coordinates by two; metadata is unchanged', atlases=atlases,
         sets={s: dict(anchors=next(g for g in config['sets'] if g['id'] == s).get('anchors', []), layers=next(g for g in config['sets'] if g['id'] == s).get('layers', ['default']), metadata=next(g for g in config['sets'] if g['id'] == s).get('metadata', []), encoding=next(g for g in config['sets'] if g['id'] == s).get('encoding', 'lossless'), quality=next(g for g in config['sets'] if g['id'] == s).get('quality', 90), atlases=members, animations=packed_animations[s],
                      totals={d: total([a for a in atlases if a['set'] == s], d) for d in ('full', 'half')})
@@ -482,6 +498,7 @@ def pack(config, source, output):
     for r in rounds.values():
         for d in ('full', 'half'):
             r['totals'][d]['bytes'] += sum(f['bytes'] for f in r['files'])
+            r['totals'][d]['gpuBytes'] += file_gpu_bytes(output, r['files'])
     manifest['levelBackgrounds'] = {
         read_json(source_path(source, g['levelSource']))['id']: dict(
             type='level-background', set=g['id'], look=g['look'],
@@ -574,6 +591,7 @@ def check(path):
         for detail in ('full', 'half'):
             amounts = total(chosen, detail)
             amounts['bytes'] += sum(f['bytes'] for f in group.get('files', []))
+            amounts['gpuBytes'] += file_gpu_bytes(Path(path).parent, group.get('files', []))
             if group['totals'][detail] != amounts:
                 raise ValueError(f'Round {name}: totals mismatch')
             for key, limit, req, extra in [('bytes', DOWNLOAD, 'PERF-023', manifest_bytes), ('gpuBytes', DECODED, 'PERF-024', 0)]:

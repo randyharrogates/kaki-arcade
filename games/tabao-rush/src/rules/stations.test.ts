@@ -6,7 +6,8 @@ import { cloneState, decodeState, deepFreeze, encodeState, hashState } from '@ka
 import { BUTTON, createTick, EMPTY_SETUP, STEP_MS } from '@kaki/platform';
 import type { StepInputs } from '@kaki/platform';
 import { formatReport, readSources, runConformance } from '@kaki/platform/kit';
-import { tabaoRush, ROUND_STEPS } from './game';
+import { ROUND_STEPS } from './game';
+import { tabaoRush } from './playing.fixture';
 import { inventory, items } from './state';
 import type { Item, Level, StationType, TabaoState } from './state';
 import { containerOf } from './recipes';

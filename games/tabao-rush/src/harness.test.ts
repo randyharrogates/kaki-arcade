@@ -2,7 +2,8 @@
 import { describe, expect, it } from 'vitest';
 import { createBots, createMatch, replayMatch } from '@kaki/platform/harness';
 import type { MatchRecording, PlayerScript } from '@kaki/platform/harness';
-import { ROUND_STEPS, tabaoRush } from './index';
+import { ROUND_STEPS } from './index';
+import { tabaoRush } from './rules/playing.fixture';
 import type { TabaoState } from './index';
 import { THROW_STEPS } from './rules/items';
 import { targetTile } from './rules/target';

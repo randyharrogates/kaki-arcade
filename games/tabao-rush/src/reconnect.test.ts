@@ -6,7 +6,7 @@ import { applyHostEvent, applyPhoneEvent, createRoom, createSession,
 import type { SessionTransport } from '@kaki/platform';
 import { cloneState, createInputBuffer, hashState } from '@kaki/sim-core';
 import { findSecret } from '../../../packages/platform/src/game/json';
-import { tabaoRush as game } from './index';
+import { tabaoRush as game } from './rules/playing.fixture';
 
 const settings = {} as const;
 const context = { data: {}, saved: null, teams: false };

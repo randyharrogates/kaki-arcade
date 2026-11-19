@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/prefer-for-of -- Hot action selection uses indexed loops. */
+import type { CookPick } from '../src/rules/cook-picker';
 import type { Cook, Item, Level, Participant } from '../src/rules/state';
 import type { Kitchen, OrderEvent } from '../src/rules/orders';
 import type { stationViews } from '../src/rules/stations';
 /** The simulation's GameModule intentionally erases its public return to unknown. */
 export interface View {
+  readonly phase?: 'pick' | 'play';
+  readonly picks?: readonly CookPick[];
+  readonly heads?: Readonly<Record<string,string>>;
   readonly level: Level;
   readonly cooks: readonly Cook[];
   readonly players: readonly Participant[];

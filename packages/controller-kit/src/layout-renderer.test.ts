@@ -339,3 +339,59 @@ it('PP-005 copies the full shell felt box and retains its opaque paint during la
   if (typeof dispose === 'function') dispose();
   expect(disconnect).toHaveBeenCalledOnce();
 });
+it('CTRL-003 picture targets retain accessible names, label fallback and token badge metadata', () => {
+  hooks.index = 0; hooks.effects = [];
+  const node = LayoutEngine({ layout:{revision:0,controls:[{kind:'grid',id:'pictures',rows:1,cols:1,cells:[{image:'portrait',label:'Portrait',colour:'seat-2',badge:{colour:'seat-1',text:'1',tick:true}}]}]}, images:{portrait:'/picture.webp','portrait-mask':'/mask.webp'},area:{width:844,height:314},viewport:{width:844,height:390},onOutput:vi.fn() });
+  const wrapper=children(node)[1]; if(!wrapper)throw Error('Missing part');
+  hooks.index=10;
+  const partNode=children(wrapper)[0]; if(!partNode)throw Error('Missing content');
+  const part=invoke(partNode), grid=children(part)[0]; if(!grid)throw Error('Missing grid');
+  const targetNode=children(grid)[0]; if(!targetNode)throw Error('Missing target');
+  hooks.index=20;
+  const target=invoke(targetNode);
+  expect((target.props as Record<string,unknown>)['aria-label']).toBe('Portrait');
+  const badge=children(target).find(n=>(n.props as Record<string,unknown>).class==='ka-layout-badge');
+  expect((badge?.props as Record<string,unknown>)['aria-label']).toBe('Seat 1, Ready');
+  const label=children(target)[0]; if(!label)throw Error('Missing label');
+  const picture=children(label)[0]; if(!picture)throw Error('Missing picture');
+  expect(picture.props).toMatchObject({url:'/picture.webp',mask:'/mask.webp',colour:'seat-2',label:'Portrait'});
+  hooks.index=30;
+  const fallback=invoke(picture);
+  expect(children(fallback)[0]?.props).toMatchObject({children:'Portrait'});
+});
+
+it.each(['plain-grid', 'picture-grid', 'single-option', 'multi-option'])('CTRL-003 selection snapshots are scoped to picture grids and single options (%s)', kind => {
+  const picture = kind === 'picture-grid';
+  const fades = picture || kind === 'single-option';
+  const renderTarget = (selected: boolean) => {
+    let layout: Layout = { revision: 1, controls: [{ kind: 'grid', id: 'grid', rows: 4, cols: 4, cells: Array.from({ length: 16 }, () => ({ state: selected ? 'selected' : 'plain', ...(picture ? { image: 'cook' } : { faceDown: true }) })) }] };
+    if (kind.endsWith('option')) layout = { revision: 1, controls: [{ kind: 'options', id: 'options', options: Array.from({ length: kind === 'single-option' ? 1 : 2 }, (_, index) => ({ id: String(index), label: String(index), state: selected ? 'selected' : 'plain' })) }] };
+    const wrapper = children(engine(layout))[1]; if (!wrapper) throw Error('wrapper');
+    const part = children(wrapper)[0]; if (!part) throw Error('part');
+    hooks.index = 10;
+    const grid = children(invoke(part))[0]; if (!grid) throw Error('grid');
+    const target = children(grid)[0]; if (!target) throw Error('target');
+    hooks.index = 20;
+    invoke(target);
+  };
+  const attributes = new Map([['aria-pressed', 'false'], ['data-state', 'plain'], ['data-target', 'target'], ['data-control', 'control']]);
+  const old = { style: {}, classList: { add: vi.fn() }, removeAttribute: (key: string) => attributes.delete(key), setAttribute: (key: string, value: string) => attributes.set(key, value), animate: () => ({ finished: new Promise(() => { /* keep the snapshot alive for inspection */ }), cancel: vi.fn() }), remove: vi.fn() };
+  const append = vi.fn(), cloneNode = vi.fn(() => old);
+  renderTarget(false);
+  const ref = hooks.refs[20]; if (!ref) throw Error('ref');
+  ref.current = { cloneNode, parentElement: { append }, animate: () => ({ cancel: vi.fn() }) };
+  vi.stubGlobal('matchMedia', () => ({ matches: false }));
+  renderTarget(true);
+  hooks.effects.at(-2)?.();
+  expect(cloneNode).toHaveBeenCalledTimes(fades ? 1 : 0);
+  expect(append).toHaveBeenCalledTimes(fades ? 1 : 0);
+  if (fades) {
+    expect(old.classList.add).toHaveBeenCalledWith('ka-layout-ghost');
+    for (const key of ['aria-pressed', 'data-state', 'data-target', 'data-control']) expect(attributes.has(key)).toBe(false);
+    expect(attributes.get('aria-hidden')).toBe('true');
+  }
+  cloneNode.mockClear(); append.mockClear();
+  renderTarget(false);
+  hooks.effects.at(-2)?.();
+  expect(append).toHaveBeenCalledTimes(fades ? 1 : 0);
+});

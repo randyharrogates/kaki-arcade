@@ -4,7 +4,7 @@ import { cloneState, createRng, deepFreeze, hashState, nextInt } from '@kaki/sim
 import type { SampledInput } from '@kaki/sim-core';
 import { BUTTON, createTick, EMPTY_SETUP, STEP_MS } from '@kaki/platform';
 import type { StepInputs } from '@kaki/platform';
-import { tabaoRush } from './game';
+import { tabaoRush } from './playing.fixture';
 import { heldItem, itemPress, THROW_RANGE, THROW_STEPS } from './items';
 import { clearOfWalls } from './level';
 import { MIN_SEPARATION } from './state';

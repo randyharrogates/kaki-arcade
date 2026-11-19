@@ -139,7 +139,7 @@ export function HostLobby() {
   }), [local]);
   useLayoutEffect(() => { keyboard.rendered(); });
   useEffect(() => {
-    const { held, key, clear, remember } = keyboard;
+    const { held, sample, key, clear, remember } = keyboard;
     window.addEventListener('keydown', key); window.addEventListener('keyup', key); window.addEventListener('blur', clear); window.addEventListener('focusin', remember);
     const previous: boolean[][] = [];
     const actions: PadAction[] = [];
@@ -147,7 +147,7 @@ export function HostLobby() {
     const disconnected = (event: GamepadEvent): void => { previous[event.gamepad.index]?.fill(false); if (padSlot.current === event.gamepad.index) padSlot.current = undefined; };
     document.addEventListener('visibilitychange', hidden);
     window.addEventListener('gamepaddisconnected', disconnected);
-    const keyboardTick = window.setInterval(() => { if (host.current?.room.players.some(isLocalSeat)) tickLocalInput('keyboard', padSlot.current, local, held, null); }, 1000 / 60);
+    const keyboardTick = window.setInterval(() => { if (host.current?.room.players.some(isLocalSeat)) tickLocalInput('keyboard', padSlot.current, local, padSlot.current === undefined ? sample() : held, null); }, 1000 / 60);
     const stopPolling = watchGamepads(window, navigator, pads => {
       const seated = host.current?.room.players.some(isLocalSeat);
       if (!seated) padSlot.current = undefined;
@@ -159,7 +159,7 @@ export function HostLobby() {
           (document.activeElement ?? window).dispatchEvent(new KeyboardEvent('keydown', { key: action.key, code: action.key, bubbles: true, cancelable: true }));
         }
       }
-      if (host.current?.room.players.some(isLocalSeat)) tickLocalInput('gamepad', padSlot.current, local, held, document.hidden || padSlot.current === undefined ? null : pads[padSlot.current] ?? null);
+      if (host.current?.room.players.some(isLocalSeat)) tickLocalInput('gamepad', padSlot.current, local, padSlot.current === undefined ? held : sample(), document.hidden || padSlot.current === undefined ? null : pads[padSlot.current] ?? null);
     }, setPadConnected);
     return () => { document.removeEventListener('visibilitychange', hidden); window.removeEventListener('gamepaddisconnected', disconnected); stopPolling(); window.clearInterval(keyboardTick); window.removeEventListener('keydown', key); window.removeEventListener('keyup', key); window.removeEventListener('blur', clear); window.removeEventListener('focusin', remember); };
   }, [keyboard, local]);

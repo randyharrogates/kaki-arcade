@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-for-of -- Indexed hot loops avoid iterator allocation. */
 import { nameText, displayName, nameInset } from './text';
 import { createItemModels, itemDrawCap } from './item-model';
+import { createCookPicker } from './cook-picker';
 import { ViewModel, colourFor, tintFor } from './view-model';
 import { createPanels } from './panels';
 // Registers renderer.prepare (PixiJS 8 adds it only through this extension), used to upload every texture before play.
@@ -29,6 +30,8 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
   app.stop();
   if (cancelled()) { app.destroy(true); assets.destroy(); return undefined; }
   root.append(app.canvas); app.canvas.setAttribute('aria-label', 'Tabao Rush kitchen');
+  root.style.position = 'relative';
+  const picker = createCookPicker(root, assets.portraits);
   const stage = new Container(); stage.sortableChildren=false; app.stage.addChild(stage);
   const background = new Sprite(); stage.addChild(background); background.zIndex=-1;
   const ITEM_DRAW_CAP=itemDrawCap(assets);
@@ -141,13 +144,14 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
     const next=options.view as View;
     if(next.level!==view.level || next.tick<view.tick){poseActions.fill('idle');poseStart.fill(next.tick);distances.fill(0);vm.positions.fill(NaN);}
     const previousUsed=pool.used;
-    heads=options.heads; previous=view; view=next; publishedAt=performance.now(); pool.reset();
+    heads=options.heads ?? next.heads; previous=view; view=next; publishedAt=performance.now(); pool.reset();
     if(viewportWidth!==options.width||viewportHeight!==options.height){
     viewportWidth=options.width;viewportHeight=options.height;
     const fit=Math.min(options.width/1920,options.height/1080);
     app.canvas.style.display="block";app.canvas.style.margin=`${String((options.height-1080*fit)/2)}px auto`;
     app.canvas.style.width=`${String(1920*fit)}px`; app.canvas.style.height=`${String(1080*fit)}px`;
     }
+    if(view.phase==='pick'||previous.phase==='pick')picker.update(view,options.width,options.height);
     if(!backgroundTexture || previous.level!==view.level) drawBackground();
     for(let i=0;i<view.cooks.length;i++) {
       const cook=view.cooks[i]; if(!cook) continue;
@@ -210,5 +214,5 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
   await app.renderer.prepare.upload([...Array.from(assets.frames.values(), packed => packed.texture),...panels.textures]);
   app.render(); // upload and draw every active texture before readiness
   frame=requestAnimationFrame(render);
-  return { update, destroy() { destroyed=true; cancelAnimationFrame(frame); app.destroy(true,{children:true}); panels.destroy(); backgroundTexture?.destroy(true); assets.destroy(); }, capacity: pool.entries.length };
+  return { update, destroy() { destroyed=true; cancelAnimationFrame(frame); app.destroy(true,{children:true}); panels.destroy(); picker.destroy(); backgroundTexture?.destroy(true); assets.destroy(); }, capacity: pool.entries.length };
 }

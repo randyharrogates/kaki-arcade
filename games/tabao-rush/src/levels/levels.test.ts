@@ -8,7 +8,7 @@ import { readSources, scanSources } from '@kaki/platform/kit';
 import { LEVELS, FIRST_KITCHEN, FULL_KITCHEN } from './catalogue';
 import { validateLevel, validateLevels } from './validator';
 import { compileLevel, loadLevel } from './loader';
-import { tabaoRush } from '../rules/game';
+import { tabaoRush } from '../rules/playing.fixture';
 import { prepareStations } from '../rules/stations';
 import { items } from '../rules/state';
 import type { LevelDefinition } from './format';

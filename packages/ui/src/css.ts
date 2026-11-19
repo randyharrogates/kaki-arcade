@@ -4,7 +4,7 @@
 
 import { BUTTON_FLOOR, buttonSizeCss } from './buttons';
 import type { ButtonKind } from './buttons';
-import { DISABLED_FILL, DISABLED_INK, COLOUR_TOKEN_NAMES, COLOUR_TOKENS, colourTokenProperty, ON_COLOUR, SEAT_NUMERAL } from './colour';
+import { TAKEN_OPACITY, DISABLED_FILL, DISABLED_INK, COLOUR_TOKEN_NAMES, COLOUR_TOKENS, colourTokenProperty, ON_COLOUR, SEAT_NUMERAL } from './colour';
 import {
   GHOST_OPACITY,
   derivedDuration,
@@ -51,6 +51,7 @@ export function sharedDeclarations(): Declaration[] {
     ...SPACING.map((value): Declaration => [`--ka-space-${String(value)}`, px(value)]),
     ...RADIUS_NAMES.map((name): Declaration => [`--ka-radius-${name}`, px(radius[name])]),
     ['--ka-opacity-ghost', String(GHOST_OPACITY)],
+    ['--ka-opacity-taken', String(TAKEN_OPACITY)],
     ['--ka-phi', String(PHI)],
     ['--ka-golden-columns', GOLDEN_COLUMNS],
     ['--ka-golden-columns-reversed', GOLDEN_COLUMNS_REVERSED],

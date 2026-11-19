@@ -1,6 +1,6 @@
 import { initialLevelState } from './initial';
 import { BUTTON, createTick, STEP_MS } from '@kaki/platform';
-import { tabaoRush } from './game';
+import { tabaoRush } from './playing.fixture';
 import { checkRecipe, containerOf, RECIPES } from './recipes';
 import type { Recipe } from './recipes';
 import type { Container, Item, Level, StationType, TabaoState } from './state';

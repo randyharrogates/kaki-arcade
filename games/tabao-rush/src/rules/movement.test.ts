@@ -3,7 +3,8 @@ import { cloneState, createRng, deepFreeze, hashState, nextFloatBetween, nextInt
 import type { SampledInput } from '@kaki/sim-core';
 import { createTick, EMPTY_SETUP, STEP_MS, STEPS_PER_SECOND } from '@kaki/platform';
 import type { StepInputs } from '@kaki/platform';
-import { ROUND_STEPS, tabaoRush } from './game';
+import { ROUND_STEPS } from './game';
+import { tabaoRush } from './playing.fixture';
 import { clearOfWalls, TEST_LEVEL } from './level';
 import { moveCooks } from './movement';
 import { COOK_RADIUS, MIN_SEPARATION, STICK_DEAD_ZONE, WALK_SPEED } from './state';

@@ -104,6 +104,9 @@ export interface OptionsControl extends ControlBase {
   readonly size?: 'large';
 }
 export interface GridCell {
+  /** Id in the module's controllerImages declaration. */
+  readonly image?: string;
+  readonly badge?: { readonly colour: ColourToken; readonly text: string; readonly tick?: boolean };
   readonly faceDown?: boolean;
   readonly label?: string;
   readonly colour?: ColourToken;
@@ -386,12 +389,24 @@ function checkCells(problems: Problems, where: string, source: Loose): void {
       problems.add(at, 'must be an object');
       return;
     }
-    problems.keys(at, cell, ['label', 'colour', 'state', 'focus', 'faceDown']);
+    problems.keys(at, cell, ['label', 'colour', 'state', 'focus', 'faceDown', 'image', 'badge']);
     problems.flag(`${at} faceDown`, cell.faceDown);
     if (cell.faceDown === true && (cell.label !== undefined || cell.mark !== undefined))
       problems.add(at, 'face-down cell must not carry a label or mark');
     problems.flag(`${at} focus`, cell.focus);
-    problems.text(`${at} label`, cell.label, PHONE_LIMITS.cellLabel, false);
+    problems.text(`${at} label`, cell.label, cell.image === undefined ? PHONE_LIMITS.cellLabel : PHONE_LIMITS.optionLabel, cell.image !== undefined);
+    if (cell.image !== undefined) problems.id(`${at} image`, cell.image);
+    if (cell.faceDown === true && (cell.image !== undefined || cell.badge !== undefined)) problems.add(at, 'face-down cell must not carry a picture or badge');
+    if (cell.badge !== undefined) {
+      if (!isObject(cell.badge)) problems.add(at, 'badge must be an object');
+      else {
+        problems.keys(`${at} badge`, cell.badge, ['colour', 'text', 'tick']);
+        if (cell.badge.colour === undefined) problems.add(at, 'badge needs a colour');
+        problems.token(`${at} badge colour`, cell.badge.colour);
+        problems.text(`${at} badge text`, cell.badge.text, 2);
+        problems.flag(`${at} badge tick`, cell.badge.tick);
+      }
+    }
     problems.token(`${at} colour`, cell.colour);
     problems.oneOf(`${at} state`, cell.state, ITEM_STATES, false);
   });
@@ -1107,7 +1122,7 @@ export function tapSignature(layout: ControllerLayout): string {
           audience,
           control.rows,
           control.cols,
-          control.cells.map((cell) => cell.label ?? ''),
+          control.cells.map((cell) => cell.image ? [cell.label ?? '', cell.image, cell.badge?.colour ?? '', cell.badge?.text ?? '', cell.badge?.tick ?? false] : cell.label ?? ''),
         ]);
         break;
       case 'cards':

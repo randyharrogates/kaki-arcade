@@ -17,7 +17,7 @@ export function layoutTapSignature(layout: Layout): string {
   return signature(layout.controls.flatMap<unknown>(part => {
     const base = [part.id, part.audience ?? 'everyone'];
     if (part.kind === 'options') return [[...base, part.options.map(item => [item.id, item.label])]];
-    if (part.kind === 'grid') return [[...base, part.rows, part.cols, part.cells.map(item => item.label ?? '')]];
+    if (part.kind === 'grid') return [[...base, part.rows, part.cols, part.cells.map(item => item.image ? [item.label ?? '', item.image, item.badge?.colour ?? '', item.badge?.text ?? '', item.badge?.tick ?? false] : item.label ?? '')]];
     if (part.kind === 'cards' && part.tappable) return [[...base, part.cards.map(item => [item.id, item.label, item.faceDown === true])]];
     if (part.kind === 'swipe') return [base];
     return [];

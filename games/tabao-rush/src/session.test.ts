@@ -1,6 +1,7 @@
 // C-10 review: Tabao Rush through createSession and the harness with identical inputs.
 import { describe, expect, it } from 'vitest';
-import { ROUND_STEPS, tabaoRush } from './index';
+import { ROUND_STEPS } from './index';
+import { tabaoRush } from './rules/playing.fixture';
 import { twin } from '../../../packages/platform/src/session/testing.fixture';
 
 const CROSS = 1 << 4, TRIANGLE = 1 << 7, CIRCLE = 1 << 5, SHOULDER = 1 << 8;

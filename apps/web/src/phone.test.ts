@@ -314,3 +314,15 @@ describe('REL-006 connecting timeout', () => {
     expect(f.clock.tasks.size).toBe(0); f.phone.stop();
   });
 });
+
+it('TR-064 game theme applies from starting through play and pause, then resets in the lobby', () => {
+  const f = fixture(); f.phone.join(CODE, 'Fern'); f.dial.onState('control-open'); f.seat();
+  f.dial.onControl({ v: 1, t: 'picker-state', revision: 1, screen: 'starting', game: { id: 'tabao-rush', name: 'Tabao Rush', blurb: 'Cook', min: 1, max: 8 }, leaderName: 'Fern', reason: null, failed: false });
+  expect(f.view.theme).toBe('tabao-rush');
+  for (const phase of ['playing', 'paused', 'lobby'] as const) {
+    if (phase === 'lobby') f.dial.onControl({ v: 1, t: 'picker-state', revision: 2, screen: 'lobby', game: null, leaderName: 'Fern', reason: null, failed: false });
+    f.dial.onControl({ v: 1, t: 'room', phase, players: 1, leader: true, team: null });
+    expect(f.view.theme).toBe(phase === 'lobby' ? 'console' : 'tabao-rush');
+  }
+  f.phone.stop();
+});

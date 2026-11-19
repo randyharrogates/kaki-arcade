@@ -1,4 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
+import type { VNode } from 'preact';
+import { ControllerShell } from './shell';
+vi.mock('preact/hooks', () => ({ useState: () => ['released', vi.fn()], useEffect: vi.fn() }));
 import { PLAYER_COLOURS } from '@kaki/ui';
 import { headerModel } from './model';
 import { installPageLock } from './lock';
@@ -100,4 +103,26 @@ describe('CTRL-004/008 controller helpers', () => {
     }
   });
 
+});
+
+it.each(['connected', 'reconnecting', 'lost'] as const)('CTRL-008 heading preserves the %s status word', link => {
+  const tree = ControllerShell({ seat: 1, name: 'Fern', heading: 'Choose a picture', link });
+  const nodes: VNode[] = [];
+  const walk = (node: unknown): void => {
+    if (!node || typeof node !== 'object' || !('props' in node)) return;
+    const vnode = node as VNode<{ children?: unknown }>;
+    nodes.push(vnode);
+    const children = vnode.props.children;
+    for (const child of Array.isArray(children) ? children : [children]) walk(child);
+  };
+  walk(tree);
+  const word = nodes.find(n => (n.props as { class?: string }).class === 'ka-controller-word');
+  expect(word?.props).toMatchObject({ children: link.charAt(0).toUpperCase() + link.slice(1) });
+  const status = nodes.find(n => (n.props as { role?: string; class?: string }).class === 'ka-controller-link' && (n.props as { role?: string }).role === 'status');
+  expect(status?.props).toMatchObject({ role: 'status' });
+  expect(nodes.filter(n => (n.props as { class?: string }).class === 'ka-controller-link')).toHaveLength(1);
+  expect(nodes.filter(n => (n.props as { class?: string }).class === 'ka-controller-connection')).toHaveLength(1);
+  const heading = nodes.find(n => (n.props as { class?: string }).class === 'ka-controller-heading');
+  expect(heading?.props).toMatchObject({ children: 'Choose a picture' });
+  expect((heading?.props as { role?: string }).role).toBeUndefined();
 });

@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { createSession, STEP_MS, AXIS_COUNT } from '@kaki/platform';
 import { createInputBuffer } from '@kaki/sim-core';
-import { tabaoRush } from './index';
+import { tabaoRush } from './rules/playing.fixture';
 import { FakeTransport, makeRoom } from '../../../packages/platform/src/session/testing.fixture';
 // Timing diagnostics live in C-10 evidence; this regression asserts delivery structure.
 it('8-player session completes steps without resending identical layouts', () => {

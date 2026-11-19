@@ -1,6 +1,6 @@
 /* RZ-003 / RZ-005: leave room for bold single-action labels on short phones
  * without reducing the target, shape, gap or the 34 / 21 px type ladder. */
-.ka-controller-shell[data-theme='rabakz'] .ka-layout-options > :only-child {
+.ka-controller-shell[data-theme='rabakz'] .ka-layout-options[data-single-option='true'] > button {
   padding-inline: var(--ka-space-8);
 }
 

@@ -3,12 +3,12 @@ import { dirname, posix, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Plugin } from 'vite';
 
-interface Manifest { atlases: { full: { file: string }; half: { file: string } }[] }
+interface Manifest { rounds?: Record<string, { files: {file:string}[] }>; atlases: { full: { file: string }; half: { file: string } }[] }
 /** Pipeline names already contain content hashes. Keep them relative to Vite's manifest. */
 export function publishAtlases(source: string, manifestFile: string, read: (file: string) => Uint8Array,
   emit: (fileName: string, source: Uint8Array) => void) {
   const manifest = JSON.parse(source) as Manifest;
-  const files = new Set(manifest.atlases.flatMap(atlas => [atlas.full.file, atlas.half.file]));
+  const files = new Set([...manifest.atlases.flatMap(atlas => [atlas.full.file, atlas.half.file]), ...Object.values(manifest.rounds ?? {}).flatMap(round => round.files.filter(file => file.file.endsWith('.webp')).map(file => file.file))]);
   for (const file of files) {
     if (!/^[\w.-]+\.webp$/.test(file)) throw new Error(`Invalid atlas filename: ${file}`);
     emit(posix.join(posix.dirname(manifestFile), file), read(file));

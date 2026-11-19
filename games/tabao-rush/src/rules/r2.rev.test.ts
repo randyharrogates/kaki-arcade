@@ -1,7 +1,7 @@
 import { withOrder } from './orders.fixture';
 import { expect, it } from 'vitest';
 import { decodeState, encodeState, hashState } from '@kaki/sim-core';
-import { tabaoRush } from './game';
+import { tabaoRush } from './playing.fixture';
 import { items } from './state';
 import type { Item, TabaoState, Food, StationType, Process } from './state';
 import { checkRecipe, RECIPES, containerOf, food } from './recipes';

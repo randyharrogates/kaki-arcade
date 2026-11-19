@@ -1,5 +1,5 @@
 import { BUTTON, unitToAxis } from '@kaki/protocol';
-import type { HostMessage } from '@kaki/protocol';
+import type { HostMessage, PhoneMessage } from '@kaki/protocol';
 import type { HostInput } from '@kaki/netcode';
 import type { Layout } from '@kaki/controller-kit';
 
@@ -26,7 +26,7 @@ export function localMapping(layout: Layout, held: ReadonlySet<string>, pad: Pic
     }
     if (control.kind === 'button' && !control.disabled) {
       const index = faces.indexOf(control.button);
-      if (index >= 0 && (held.has(keys[index] ?? '') || pad?.buttons[index]?.pressed)) buttons |= bits[index] ?? 0;
+      if (index >= 0 && ((held.has(keys[index] ?? '') || (index === 0 && held.has('Enter'))) || pad?.buttons[index]?.pressed)) buttons |= bits[index] ?? 0;
     }
   }
   frame.buttons = buttons; frame.stickX = stick ? unitToAxis(x) : 0; frame.stickY = stick ? unitToAxis(y) : 0;
@@ -37,19 +37,32 @@ export function localPlayer() {
   let layout: Layout = { revision: 0, controls: [] };
   let input: HostInput | undefined;
   let sequence = 0;
+  let primaryHeld: boolean | undefined;
+  let viewRevision: number | null = null;
+  let control: ((message: PhoneMessage) => void) | undefined;
   let leader = false;
   const frame = { buttons: 0, stickX: 0, stickY: 0, tilt: null, seq: 0, history: Array<number>(8).fill(0) };
   return {
     sendHost(message: HostMessage): boolean {
       if (message.t === 'layout') layout = message.layout as unknown as Layout;
+      if (message.t === 'view') viewRevision = message.rev;
       if (message.t === 'room') leader = message.leader;
       return true;
     },
+    bindControl(send: (message: PhoneMessage) => void) { control = send; },
     bindIdentity() { /* Room authentication is still performed by createReconnectRoom. */ },
-    bindInput(next: HostInput) { input = next; },
-    close() { input?.pause(); input = undefined; layout = { revision: 0, controls: [] }; },
+    bindInput(next: HostInput) { input = next; primaryHeld = undefined; },
+    close() { input?.pause(); input = undefined; layout = { revision: 0, controls: [] }; primaryHeld = undefined; viewRevision = null; control = undefined; },
     tick(held: ReadonlySet<string>, pad: Pick<Gamepad, 'axes' | 'buttons'> | null) {
       if (!input) return;
+      const pressed = held.has('Space') || held.has('Enter') || pad?.buttons[0]?.pressed === true;
+      if (pressed && primaryHeld === false) {
+        const primary = layout.controls.find(part => part.kind === 'options' && part.options.length === 1 && (!part.audience || part.audience === 'everyone' || (part.audience === 'leader') === leader));
+        if (primary?.kind === 'options' && primary.options[0]?.state !== 'disabled') {
+          control?.({ v: 1, t: 'action', rev: layout.revision, viewRev: viewRevision, data: { control: primary.id, value: primary.options[0]?.id ?? '' } });
+        }
+      }
+      primaryHeld = pressed;
       localMapping(layout, held, pad, leader, frame);
       frame.seq = sequence++ % 65536; frame.history.fill(frame.buttons);
       input.receiveInput(frame);

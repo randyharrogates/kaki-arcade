@@ -1,3 +1,5 @@
+import { HEADS, pickLayout, pickStep } from './cook-picker';
+import { controllerImages } from './controller-images';
 import { meta } from './meta';
 import { ageOrders, arriveOrders, ensureOrders, resizeOrders, stars } from './orders';
 import { createRng } from '@kaki/sim-core';
@@ -57,9 +59,11 @@ function spawn(state: TabaoState, player: PlayerInfo): Cook {
 
 export const tabaoRush: GameModule<TabaoState> = {
   meta,
+  controllerImages,
   settings: { fields: [] },
   init(seed, players) {
     let state: TabaoState = {
+      phase: 'pick', pickRevision: 0,
       inventory: inventory(),
       nextItemId: 0,
       rng: createRng(seed),
@@ -70,9 +74,10 @@ export const tabaoRush: GameModule<TabaoState> = {
       endTick: ROUND_STEPS,
     };
     for (const player of players) state = tabaoRush.join(state, player);
-    return state;
+    return { ...state, picks: state.players.map(p => ({ player: p.id, head: p.seat - 1, ready: false })) };
   },
   step(state, inputs) {
+    if (state.phase === 'pick') return pickStep(state, inputs);
     const end = endTick(state);
     if (state.tick >= end) return state.orderEvents?.length || state.serviceEvents?.length
       ? { ...state, orderEvents: [], serviceEvents: [] } : state;
@@ -90,16 +95,21 @@ export const tabaoRush: GameModule<TabaoState> = {
     if (state.players.some((entry) => entry.id === player.id) || state.players.length >= 8) {
       return state;
     }
-    const players = [...state.players, participant(player, state.tick)]
+    const joined = participant(player, state.tick);
+    const midGame = state.tick > 0 || (state.pickSteps ?? 0) > 0;
+    const players = [...state.players, { ...joined, joinedMidGame: midGame, spectating: state.phase === 'pick' ? false : state.phase === 'play' || joined.spectating }]
       .sort((a, b) => a.seat - b.seat);
-    const cooks = state.tick === 0 ? [...state.cooks, spawn(state, player)] : state.cooks;
-    return { ...state, players, cooks };
+    const cooks = state.tick === 0 && !(state.phase === 'play' && (state.pickSteps ?? 0) > 0) ? [...state.cooks, spawn(state, player)] : state.cooks;
+    const taken = new Set(state.picks?.map(p => p.head));
+    const head = HEADS.findIndex((_, i) => !taken.has(i));
+    return { ...state, players, cooks, ...(state.picks ? { picks: [...state.picks, { player: player.id, head, ready: false }], pickRevision: (state.pickRevision ?? 0) + (state.phase === 'pick' ? 1 : 0) } : {}) };
   },
   leave(state, id) {
     if (!state.players.some((entry) => entry.id === id)) return state;
     const dropped = dropLeaving(state, id);
     return resizeOrders({
       ...dropped,
+      ...(state.picks ? { picks: state.picks.filter(p => p.player !== id), pickRevision: (state.pickRevision ?? 0) + (state.phase === 'pick' ? 1 : 0) } : {}),
       players: state.players.filter((entry) => entry.id !== id),
       cooks: state.cooks.filter((cook) => cook.id !== id),
     });
@@ -108,6 +118,9 @@ export const tabaoRush: GameModule<TabaoState> = {
     const prepared = prepareStations(ensureOrders(state));
     const inTransit = new Set(prepared.returns?.map((r) => r.item.id));
     return {
+      phase: state.phase ?? 'play',
+      picks: state.picks ?? [],
+      heads: Object.fromEntries((state.picks ?? []).map(p => [p.player, HEADS[p.head] ?? 'cap'])),
       level: state.level,
       items: items(prepared).filter((item) => !inTransit.has(item.id)),
       stations: stationViews(prepared),
@@ -129,10 +142,12 @@ export const tabaoRush: GameModule<TabaoState> = {
   },
   privateView: () => null,
   controllerLayout(state, id) {
-    return state.players.some((player) => player.id === id && !player.spectating)
+    if (state.phase === 'pick' && state.players.some(p => p.id === id)) return pickLayout(state, id);
+    const layout = state.players.some((player) => player.id === id && !player.spectating)
       ? Object.values(state.stations ?? {}).some((s) => s.type !== 'return-counter' && s.type !== 'dish-rack' && s.type !== 'serving' && s.type !== 'bin')
         ? STATION_LAYOUT : PLAY_LAYOUT
       : WATCH_LAYOUT;
+    return state.picks && layout !== WATCH_LAYOUT ? { ...layout, revision: layout.revision + (state.pickRevision ?? 0) } : layout;
   },
   isOver: (state) => state.tick >= endTick(state),
   results: (state) => {

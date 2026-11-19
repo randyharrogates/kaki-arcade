@@ -67,6 +67,7 @@ interface GameModule<State, Settings, View> {
   stepMode?: 'returns-new' | 'in-place';          // default returns-new (D-048)
   settings: SettingsSchema<Settings> | ((context: SetupContext) => SettingsSchema<Settings>);
   preload?(settings: Settings | null): AssetManifest;
+  controllerImages?: Readonly<Record<string, string>>; // picture id → packed asset source key
   save?(state: State): JsonValue;                 // what the console may store at any time
   init(seed: number, players: PlayerInfo[], settings: Settings, context: InitContext): State;
   step(state: State, inputs: StepInputs, dtMs: number): State;   // pure, deterministic
@@ -107,6 +108,18 @@ through `setDetailSetting` clears these verdicts. A missing scene keeps Auto at 
 Hidden pages and failed benchmarks stay full without caching; visible timeouts with too
 few valid intervals select lower. Cancellation never caches. Measurements retain whether
 the lower budget was met. Asset loading time is additional to the sampling window, as with normal Start preparation.
+
+Grid cells may declare `image` (an id in `controllerImages`, with a required accessible
+`label`) and `badge: { colour: ColourToken; text: string; tick?: boolean }` (at most two
+characters). Pictures fill the cell with contain sizing and a 5 px inset; until decoded,
+the label remains visible. A declared companion picture named `<id>-mask` is an optional
+alpha mask for tinting with the cell's existing `colour`; the mask uses the same source
+box as the base image and multiplies only those pixels, retaining their shading. Badges are 34 px with a 3 px edge. Existing `disabled` cells
+refuse taps; picture contents fade to 0.3 while their badges remain legible. Selected picture cells use a 5 px accent outline
+with zero offset so the outline fits inside the grid gap. The phone preloads declared pictures on game selection,
+never at cold start; the build resolves asset references to hashed URLs. The app registry
+loads each game's data-only picture declaration (the same value referenced by the module),
+without importing host rules or private content onto a phone.
 
 Rules:
 

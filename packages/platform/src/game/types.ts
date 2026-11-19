@@ -276,6 +276,8 @@ export interface GameModule<
   View = unknown,
 > {
   readonly meta: GameMeta;
+  /** Phone picture ids to packed source keys; the shell resolves hashed URLs after selection. */
+  readonly controllerImages?: Readonly<Record<string, string>>;
   /** Leave out for `returns-new`. */
   readonly stepMode?: StepMode;
   /** Opt out of the structural-sharing check only for genuinely tiny states. Explain why. */

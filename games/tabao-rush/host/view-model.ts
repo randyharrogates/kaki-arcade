@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/prefer-for-of -- Indexed hot loops avoid iterator allocation. */
-import { PLAYER_COLOURS, ON_COLOUR } from '../../../packages/ui/src/colour';
+import { PLAYER_COLOURS, TEAM_THEMES, ON_COLOUR } from '../../../packages/ui/src/colour';
 import { RECIPES } from '../src/rules/recipes';
 import type { View } from './model';
 export const RECIPE_LABELS = new Map(RECIPES.map(recipe => [recipe.id, {
@@ -31,7 +31,7 @@ export class ViewModel {
 
 export function playerFor(view:View,id:string){for(let i=0;i<view.players.length;i++){const player=view.players[i];if(player?.id===id)return player;}return undefined;}
 const COLOURS=new Map<string,string>(PLAYER_COLOURS.map(player=>[player.token,player.colour]));
-export function colourFor(view:View,index:number){const cook=view.cooks[index],player=cook?playerFor(view,cook.id):undefined;return COLOURS.get(player?.colour ?? 'seat-1') ?? PLAYER_COLOURS[index%8]?.colour ?? '';}
+export function colourFor(view:View,index:number){const cook=view.cooks[index],player=cook?playerFor(view,cook.id):undefined;if(player?.team !== undefined)return player.team === 0 ? TEAM_THEMES.red.colour : TEAM_THEMES.blue.colour;return COLOURS.get(player?.colour ?? 'seat-1') ?? PLAYER_COLOURS[index%8]?.colour ?? '';}
 
 const TINTS=new Map<string,number>(PLAYER_COLOURS.map(player=>[player.colour,Number.parseInt(player.colour.slice(1),16)]));
 export function tintFor(colour:string){return TINTS.get(colour) ?? Number.parseInt(ON_COLOUR.slice(1),16);}

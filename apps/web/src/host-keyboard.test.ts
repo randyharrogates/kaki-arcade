@@ -336,3 +336,46 @@ it('CTRL-009 Tabao Rush still starts with the TV seat alone', async () => {
   expect(start).toHaveBeenCalledWith('tabao-rush', host.room);
   host.stop();
 });
+
+
+it.each(['Space', 'Enter'])('CTRL-009 ignores repeated %s held through start into a picker', code => {
+  let phase: 'lobby' | 'playing' = 'lobby';
+  const start = { click() { phase = 'playing'; } } as unknown as HTMLElement;
+  const keyboard = hostKeyboard({ state: () => ({ phase, teams: false, picker: 'start', localSeat: true }), controls: () => [start], active: () => start, join() { /* unused fixture callback */ }, leave() { /* unused fixture callback */ }, command() { /* unused fixture callback */ } });
+  const key = code === 'Space' ? ' ' : 'Enter';
+  keyboard.key({ type: 'keydown', key, code, preventDefault() { /* unused fixture callback */ } } as KeyboardEvent);
+  expect(phase).toBe('playing');
+  keyboard.key({ type: 'keydown', key, code, repeat: true, preventDefault() { /* unused fixture callback */ } } as KeyboardEvent);
+  expect(keyboard.held.has(code)).toBe(false);
+  keyboard.key({ type: 'keyup', key, code } as KeyboardEvent);
+  keyboard.key({ type: 'keydown', key, code, repeat: false, preventDefault() { /* unused fixture callback */ } } as KeyboardEvent);
+  expect(keyboard.held.has(code)).toBe(true);
+});
+
+
+it('CTRL-009 latches a fresh Space tap until one sample in playing with a local seat', () => {
+  const { keyboard } = keyboardFixture();
+  keyboard.key({ type: 'keydown', key: ' ', code: 'Space', repeat: false, preventDefault() { /* fixture */ } } as KeyboardEvent);
+  keyboard.key({ type: 'keyup', key: ' ', code: 'Space' } as KeyboardEvent);
+  expect(keyboard.held.has('Space')).toBe(false);
+  expect(keyboard.sample().has('Space')).toBe(true);
+  expect(keyboard.sample().has('Space')).toBe(false);
+});
+
+it('CTRL-009 does not latch a repeat keydown', () => {
+  const { keyboard } = keyboardFixture();
+  keyboard.key({ type: 'keydown', key: ' ', code: 'Space', repeat: true, preventDefault() { /* fixture */ } } as KeyboardEvent);
+  expect(keyboard.sample().has('Space')).toBe(false);
+});
+
+it.each(['clear', 'hidden'] as const)('CTRL-009 %s drops a latched Space tap', reset => {
+  const { keyboard } = keyboardFixture();
+  keyboard.key({ type: 'keydown', key: ' ', code: 'Space', preventDefault() { /* fixture */ } } as KeyboardEvent);
+  keyboard.key({ type: 'keyup', key: ' ', code: 'Space' } as KeyboardEvent);
+  expect(keyboard.sample().has('Space')).toBe(true);
+  keyboard.key({ type: 'keydown', key: ' ', code: 'Space', preventDefault() { /* fixture */ } } as KeyboardEvent);
+  keyboard.key({ type: 'keyup', key: ' ', code: 'Space' } as KeyboardEvent);
+  if (reset === 'clear') keyboard.clear();
+  else keyboard.visibility(true);
+  expect(keyboard.sample().has('Space')).toBe(false);
+});

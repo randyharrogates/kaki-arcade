@@ -6,13 +6,14 @@ import type * as Pixi from 'pixi.js';
 import { fileURLToPath } from 'node:url';
 import { loadLevel } from '../src/levels/loader';
 import { FULL_KITCHEN } from '../src/levels/catalogue';
-import { tabaoRush } from '../src/rules/game';
+import { tabaoRush } from '../src/rules/playing.fixture';
 import { projectX, projectY, TILE } from './model';
 import type { Assets, Packed } from './assets';
 import type { View } from './model';
 const assetConfig=vi.hoisted(()=>({override:undefined as Assets|undefined}));
 const apps=vi.hoisted(()=>({stages:[] as {children:{children:{zIndex:number;visible:boolean}[]}[]}[]}));
 const metrics=vi.hoisted(()=>({nodes:0,textures:0,rasters:0,writes:0,sorts:0,encodes:0,uploads:0}));
+vi.mock('./cook-picker',()=>({createCookPicker:()=>({update(){},destroy(){}})}));
 vi.mock('pixi.js/prepare',()=>({}));
 vi.mock('pixi.js',()=>{
   class Point{x=0;y=0;set(x:number,y=x){this.x=x;this.y=y;}}
@@ -127,6 +128,8 @@ function scanHotPath(planted?:string){
     'card.patience!==patience||card.urgency!==urgency',
     'r.nameLevel!==view.level||r.nameTile!==station.tile||r.nameType!==station.type',
     'r.rejection!==rejection','colour!==r.colour||seat!==r.seat',
+    // DOM picker work runs only before play or once at its exit.
+    "view.phase==='pick'||previous.phase==='pick'",
     'level!==view.level','r.note.sprite.visible&&r.notePending',
     'cached.name!==name','!backgroundTexture || previous.level!==view.level',
     'viewportWidth!==options.width||viewportHeight!==options.height',
@@ -199,7 +202,7 @@ it('fits a composed counter dish in full-resolution coordinates with half-detail
   assetConfig.override={frames:new Map<string,Packed>([
     ['container-plate-clean',base],['portion-rice-cooked',layer],
     ['dish-chicken-rice-plated',{...base,frame:{...base.frame,metadata:{composition:[{frame:'portion-rice-cooked',anchor:[80,10],order:1}]}}}],
-  ]),animations:new Map(),divisor:2,destroy(){}};
+  ]),animations:new Map(),portraits:new Map(),divisor:2,destroy(){}};
   const ctx=new Proxy({measureText:()=>({width:0}),createLinearGradient:()=>({addColorStop(){}})},{get:(target,key)=>key in target?target[key as keyof typeof target]:()=>{}});
   vi.stubGlobal('document',{fonts:{load:async()=>[],ready:Promise.resolve()},createElement:()=>({getContext:()=>ctx,toDataURL:()=>''})});
   vi.stubGlobal('matchMedia',()=>({matches:false}));vi.stubGlobal('requestAnimationFrame',()=>1);vi.stubGlobal('cancelAnimationFrame',()=>{});

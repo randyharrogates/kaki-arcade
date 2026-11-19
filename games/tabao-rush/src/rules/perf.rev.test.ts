@@ -7,7 +7,8 @@ const gcs: [
 new PerformanceObserver((l) => { for (const e of l.getEntries())
     gcs.push([e.startTime, e.duration]); }).observe({ entryTypes: ['gc'] });
 import { it } from 'vitest';
-import { tabaoRush, ROUND_STEPS } from './game';
+import { ROUND_STEPS } from './game';
+import { tabaoRush } from './playing.fixture';
 import type { Item, TabaoState, Station } from './state';
 import { RECIPES } from './recipes';
 import { aimAt, circle, cross, frame, setup, stationTiles, stepWith } from './review-fixture';

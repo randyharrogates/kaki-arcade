@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-19 — T-09: Tabao Rush cook picker
+
+- TR-064: eight cooks; seat default; unique picks; Ready toggles until everyone connected is ready; disconnected players keep their pick and count as ready; joiners take the lowest free cook.
+- CTRL-003, PLAT-031: phone picture cells with apron mask tint, seat badges and ready ticks; selection crossfade only on picture grids and single options (D-287).
+- CTRL-009: the TV seat readies with Space, Enter or pad A, once per press; a button held when the seat is bound does not count; a quick key tap is kept until the next input sample. (The branch commits say TR-009 in error.)
+- Portraits 53,018 / 60,000 B; each Tabao Rush round grows by the portraits only (+53,018 B sent, +3,016,704 B decoded). Stale portrait files are now cleaned from the pack.
+- Not yet: versus colours in play, a still that shows the badge fade, perf on the merged tree.
+
 ## 2026-11-19 — R-20: Rabakz team podium and tied places
 
 - RZ-012: the final podium places teams by their totals; each team column shows its mark, name and total above its players by score, with no individual places; late unteamed players are listed as "No team".

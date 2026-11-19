@@ -54,7 +54,7 @@ it('CTRL-002 steps long answers to 21 and measures wrapped height within the but
 it('CTRL-002 keeps the only-child span nowrap at step 34 and permits wrapping only at 21', () => {
   const css = readFileSync(new URL('./layout.css',import.meta.url),'utf8');
   const rules = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)];
-  const whiteSpace = (step:string) => rules.filter(([,selector]) => selector?.includes('.ka-layout-options > :only-child') && (!selector.includes('[data-label-step=') || selector.includes(`[data-label-step="${step}"]`)))
+  const whiteSpace = (step:string) => rules.filter(([,selector]) => selector?.includes(".ka-layout-options[data-single-option='true'] > button") && (!selector.includes('[data-label-step=') || selector.includes(`[data-label-step="${step}"]`)))
     .flatMap(([, ,body]) => [...(body ?? '').matchAll(/white-space:\s*(\w+)/g)].map(match => match[1])).at(-1);
   expect(whiteSpace('34')).toBe('normal');
   expect(whiteSpace('21')).toBe('normal');

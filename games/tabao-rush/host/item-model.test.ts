@@ -7,7 +7,7 @@ import { CAPACITY, RECIPES, checkRecipe } from '../src/rules/recipes';
 import { createItemModels, itemDrawCap } from './item-model';
 import type { Assets, Frame, Layer } from './assets';
 const manifest=JSON.parse(readFileSync(new URL('../../../assets/dist/manifest.json',import.meta.url),'utf8')) as {atlases:{frames:Record<string,Frame>}[]};
-function assets(divisor=1):Assets{return {frames:new Map(manifest.atlases.flatMap(a=>Object.entries(a.frames).map(([id,frame])=>[id,{frame,texture:Texture.EMPTY}] as const))),animations:new Map(),divisor,destroy(){/* Test textures are shared. */}};}
+function assets(divisor=1):Assets{return {frames:new Map(manifest.atlases.flatMap(a=>Object.entries(a.frames).map(([id,frame])=>[id,{frame,texture:Texture.EMPTY}] as const))),animations:new Map(),portraits:new Map(),divisor,destroy(){/* Test textures are shared. */}};}
 describe('T-18 serving compositions (TR-040, TR-041)',()=>{
   for(const divisor of [1,2])for(const drink of ['kopi','teh'])it(`draws all seven dishes in order at detail divisor ${String(divisor)} with ${drink}`,()=>{
     const a=assets(divisor),model=createItemModels(a);

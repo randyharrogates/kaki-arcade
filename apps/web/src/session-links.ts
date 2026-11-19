@@ -1,12 +1,12 @@
 import { validatePhoneMessage } from '@kaki/protocol';
 import { createHostInput } from '@kaki/netcode';
 import type { HostInput } from '@kaki/netcode';
-import type { HostMessage } from '@kaki/protocol';
+import type { PhoneMessage, HostMessage } from '@kaki/protocol';
 import type { RoomState, SessionTransport, SessionTransportEvent } from '@kaki/platform';
 import type { InputBuffer } from '@kaki/sim-core';
 import { wireJson } from './session-adapter';
 
-export interface SessionPeer { sendHost(message: HostMessage): boolean; bindInput(input: HostInput): void }
+export interface SessionPeer { sendHost(message: HostMessage): boolean; bindInput(input: HostInput): void; bindControl?(send: (message: PhoneMessage) => void): void }
 /** Only the current room-authenticated connection is allowed to feed its seat's buffer. */
 export function sessionLinks() {
   const peers = new Map<string, SessionPeer>();
@@ -46,11 +46,11 @@ export function sessionLinks() {
     },
     subscribe(callback) { receive = callback; bind(); return () => { receive = undefined; for (const input of inputs.values()) input.pause(); inputs.clear(); }; },
   };
-  return {
+  const links = {
     transport,
     setup(next: RoomState, nextBuffer: InputBuffer<string>) { room = next; buffer = nextBuffer; if (receive) bind(); },
     updateRoom(next: RoomState) { room = next; if (receive) bind(); },
-    peer(id: string, peer: SessionPeer) { peers.set(id, peer); if (receive) bind(); },
+    peer(id: string, peer: SessionPeer) { peers.set(id, peer); peer.bindControl?.(message => { links.control(id, message); }); if (receive) bind(); },
     dropped(id: string) { inputs.get(id)?.pause(); inputs.delete(id); peers.delete(id); views.delete(id); layouts.delete(id); receive?.({ type: 'connection', connectionId: id, connected: false }); },
     control(id: string, message: unknown) {
       if (!receive || !room?.players.some(p => p.connectionId === id && p.disconnectedAt === null)) return;
@@ -65,4 +65,5 @@ export function sessionLinks() {
     },
     stop() { for (const input of inputs.values()) input.pause(); inputs.clear(); peers.clear(); views.clear(); layouts.clear(); room = undefined; buffer = undefined; receive = undefined; },
   };
+  return links;
 }

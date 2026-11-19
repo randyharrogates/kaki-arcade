@@ -20,9 +20,11 @@ import { phoneBrowserDependencies } from './phone-browser';
 import { Icon } from './icons';
 import { Overlap } from './Overlap';
 import './phone.css';
+import { preloadControllerImages } from './controller-images';
 export function PhonePage() {
   const params = new URLSearchParams(location.search);
   const [view, setView] = useState<PhoneView>(() => phoneView('entry', { code: params.get('code') ?? '' }));
+  useEffect(() => { if (view.picker?.game?.id && view.picker.screen !== 'picker' && view.picker.screen !== 'lobby') void preloadControllerImages(view.picker.game.id).catch(() => { /* The controller retries and keeps Ready unavailable. */ }); }, [view.picker?.game?.id, view.picker?.screen]);
   const [code, setCode] = useState(params.get('code') ?? '');
   const [name, setName] = useState('');
   const lastView = useRef(view);
@@ -124,6 +126,9 @@ export function PhonePage() {
 
 export function GameController({ controller, view, send, sessionCommand }: { controller: NonNullable<ReturnType<typeof phoneController>>; view: PhoneView; send: (output: LayoutOutput) => void; sessionCommand?: (action?: 'quit') => void }) {
   const [area, setArea] = useState<{ width: number; height: number; viewport: { width: number; height: number } } | null>(null);
+  const [pictures, setPictures] = useState<{ id: string; urls: Readonly<Record<string,string>> } | null>(null);
+  const gameId = view.picker?.game?.id ?? '';
+  useEffect(() => { let active = true; if (gameId) void preloadControllerImages(gameId).then(urls => { if (active) setPictures({ id: gameId, urls }); }, () => { if (active) setPictures({ id: gameId, urls: {} }); /* Failed pictures retain their accessible text fallback. */ }); return () => { active = false; }; }, [gameId]);
   useEffect(() => {
     const board = document.querySelector('.ka-controller-play');
     if (!board) return;
@@ -135,6 +140,10 @@ export function GameController({ controller, view, send, sessionCommand }: { con
   }, []);
   const [header, setHeader] = useState<Element | null>(null);
   useEffect(() => { setHeader(document.querySelector('.ka-controller-header')); }, []);
+  const needsPictures = view.gameLayout?.controls.some(c => c.kind === 'grid' && c.cells.some(cell => cell.image)) === true;
+  const pictureHeading = needsPictures ? view.gameLayout?.controls.find(c => c.kind === 'text' && c.tone === 'note') : undefined;
+  const renderedLayout = pictureHeading && view.gameLayout ? { ...view.gameLayout, controls: view.gameLayout.controls.filter(c => c !== pictureHeading) } : view.gameLayout;
+  const picturesPending = needsPictures && pictures?.id !== gameId;
   const blocked = !view.connected || view.phase === 'paused';
   const veil = !view.connected ? 'lost' : view.phase === 'paused' ? 'paused' : 'playing';
   const veils = useRef<HTMLDivElement>(null);
@@ -158,9 +167,9 @@ export function GameController({ controller, view, send, sessionCommand }: { con
   const notice = !view.connected ? 'Host disconnected. Reconnecting… Your seat is kept for 2 minutes.' : view.phase === 'paused' ? 'Paused. Only the leader can quit.' : '';
   return <div class="phone-game-page" data-console-controls={Boolean(sessionCommand)} data-blocked={blocked} data-theme={controller.theme}>
     <PhoneLive announcement={notice}/>
-    <ControllerShell {...controller}>
+    <ControllerShell {...controller} {...(pictureHeading?.kind === 'text' ? { heading: pictureHeading.text } : {})}>
       {header && sessionCommand && createPortal(<button ref={menu} class="phone-session-button ka-pressable" disabled={blocked} onClick={() => { sessionCommand(); }}><span class="phone-session-pill">Menu</span></button>, header)}
-      <div class="phone-game-controls" inert={blocked} aria-hidden={blocked}>{area && view.gameLayout && <LayoutEngine layout={view.gameLayout} privateView={view.gamePrivateView} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={output => { if (!blocked) send(output); }}/>}</div>
+      <div class="phone-game-controls" inert={blocked || picturesPending} aria-busy={picturesPending} aria-hidden={blocked}>{area && renderedLayout && <LayoutEngine images={pictures?.urls ?? {}} layout={renderedLayout} privateView={view.gamePrivateView} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={output => { if (!blocked && !picturesPending) send(output); }}/>}</div>
     </ControllerShell>
       <div ref={veils} class="phone-game-veils"><Overlap fade tempo="base" identity={veil}>{blocked && <section class="phone-game-veil" tabIndex={-1} role="dialog" aria-modal="true" aria-label={view.connected ? 'Paused' : 'Connection lost'}>
         <h1>{view.connected ? 'Paused' : 'Reconnecting…'}</h1>

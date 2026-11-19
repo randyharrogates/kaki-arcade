@@ -1,5 +1,5 @@
 import { BUTTON, createTick, EMPTY_SETUP, STEP_MS } from '@kaki/platform';
-import { tabaoRush } from './game';
+import { tabaoRush } from './playing.fixture';
 import { prepareStations } from './stations';
 import type { Item, Level, StationType, TabaoState, Tile, Cook } from './state';
 

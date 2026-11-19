@@ -11,6 +11,7 @@ import type { WakeState } from './wake';
 export interface ControllerShellProps {
   seat: SeatNumber;
   name: string;
+  heading?: string;
   link: LinkState;
   children?: ComponentChildren;
   theme?: ThemeName;
@@ -30,9 +31,11 @@ export function ControllerShell(props: ControllerShellProps) {
       h('div', { class: 'ka-controller-player' },
         h('span', { class: 'ka-controller-seat', style: { backgroundColor: model.colour } }, model.seat),
         h('strong', null, model.name)),
+      h('div', { class: 'ka-controller-connection' },
+        props.heading && h('span', { class: 'ka-controller-heading' }, props.heading),
       h('span', { class: 'ka-controller-link', role: 'status' },
         h('span', { class: 'ka-controller-icons', 'aria-hidden': 'true' },
-          ...Object.entries(indicators).map(([state, indicator]) => h('span', { key: state, 'data-active': state === props.link }, indicator.icon))), h('span', { class: 'ka-controller-word' }, model.word))),
+          ...Object.entries(indicators).map(([state, indicator]) => h('span', { key: state, 'data-active': state === props.link }, indicator.icon))), h('span', { class: 'ka-controller-word' }, model.word)))),
     h('section', { class: 'ka-controller-board' },
       h('div', { class: 'ka-controller-play' }, props.children),
       h('div', { class: 'ka-controller-portrait', role: 'status' },

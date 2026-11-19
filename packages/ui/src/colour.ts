@@ -2,6 +2,9 @@
 // (docs/DESIGN.md §4.2 and §4.4, D-047, D-048, D-050). This package is the only place a raw
 // colour may be written.
 
+/** Taken pictures retain their identity while their seat badges stay opaque. */
+export const TAKEN_OPACITY = 0.3;
+
 /** Seat numerals use dark ink on every player colour (D-056). */
 export const SEAT_NUMERAL = '#2B2118';
 

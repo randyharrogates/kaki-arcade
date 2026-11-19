@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { decodeState, encodeState, hashState } from '@kaki/sim-core';
-import { tabaoRush, ROUND_STEPS } from './game';
+import { ROUND_STEPS } from './game';
+import { tabaoRush } from './playing.fixture';
 import { items } from './state';
 import type { Item, TabaoState, Cook } from './state';
 import { food, CAPACITY, checkRecipe, RECIPES } from './recipes';
