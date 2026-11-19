@@ -347,6 +347,8 @@ export interface GameModule<
    * `pause` lets a game hide what must not be studied while paused (cards being memorised);
    * `resume` must undo it exactly: `resume(pause(state))` has the same hash as `state`.
    */
+  /** PLAT-035: false on inter-round scoreboards/final screens; pure absent-player pause eligibility. */
+  pauseOnDisconnect?(state: State): boolean;
   pause?(state: State): State;
   resume?(state: State): State;
   /** What the TV draws. Plain JSON. Pure: no change to the state, equal output for equal state. */

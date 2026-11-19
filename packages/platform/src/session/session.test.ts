@@ -236,3 +236,108 @@ it('PLAT-008 held membership never reaches join; allowed seat joins once; resume
   room = applyPhoneEvent(room, { deviceId: 'd3', connectionId: 'c3-new', seat: 3 }, { type: 'leave' }, 2).state;
   s.session.updateRoom(room); expect(s.session.state?.players).toHaveLength(2);
 });
+
+it('PLAT-035 pauses after more than three seconds, freezes simulation, counts down and cancels on another drop', () => {
+  const s = setup(3, fixture, 100000);
+  let room = applyHostEvent(s.room, { type: 'disconnect', seat: 2 }, 0).state;
+  s.session.updateRoom(room); s.frame(2999); expect(s.session.paused).toBe(false);
+  s.frame(1); expect(s.session.paused).toBe(false);
+  s.frame(1); expect(s.session.paused).toBe(true);
+  const tick = s.session.step; s.frame(1000); expect(s.session.step).toBe(tick);
+  room = applyHostEvent(room, { type: 'disconnect', seat: 3 }, 0).state; s.session.updateRoom(room);
+  expect(s.events.at(-1)).toMatchObject({ message: 'Waiting for Guest 2 and Guest 3 to rejoin' });
+  for (const seat of [2, 3]) room = applyPhoneEvent(room, { deviceId: `d${String(seat)}`, connectionId: `new${String(seat)}` }, { type: 'resume', seatToken: String(seat).repeat(32) }, 0).state;
+  s.session.updateRoom(room); expect(s.events.at(-1)).toMatchObject({ countdown: 3 });
+  s.frame(1000); expect(s.events.at(-1)).toMatchObject({ countdown: 2 });
+  room = applyHostEvent(room, { type: 'disconnect', seat: 2 }, 0).state; s.session.updateRoom(room);
+  s.frame(3001); expect(s.session.paused).toBe(true); expect(s.events.at(-1)).toMatchObject({ countdown: null });
+  room = applyPhoneEvent(room, { deviceId: 'd2', connectionId: 'again' }, { type: 'resume', seatToken: '2'.repeat(32) }, 0).state;
+  s.session.updateRoom(room);
+  for (const countdown of [2, 1]) { s.frame(1000); expect(s.events.at(-1)).toMatchObject({ countdown }); }
+  s.frame(1000); expect(s.session.paused).toBe(false);
+});
+it('PLAT-035 carry on requires the connected leader and does not repeatedly pause for held seats', () => {
+  const s = setup(3, fixture, 100000);
+  s.session.updateRoom(applyHostEvent(s.room, { type: 'disconnect', seat: 3 }, 0).state);
+  s.frame(3001); s.session.resume('seat-2'); expect(s.session.paused).toBe(true);
+  s.session.resume('seat-1'); expect(s.session.paused).toBe(false);
+  s.frame(4000); expect(s.session.paused).toBe(false); expect(s.session.state?.players).toHaveLength(3);
+});
+it('PLAT-035 never auto-resumes a pause players chose, including one chosen during countdown', () => {
+  const s = setup(2, fixture, 100000);
+  s.session.pause('seat-1');
+  let room = applyHostEvent(s.room, { type: 'disconnect', seat: 2 }, 0).state;
+  s.session.updateRoom(room); s.frame(3001);
+  room = applyPhoneEvent(room, { deviceId: 'd2', connectionId: 'new' }, { type: 'resume', seatToken: '2'.repeat(32) }, 0).state;
+  s.session.updateRoom(room); s.frame(4000); expect(s.session.paused).toBe(true);
+});
+it.each(['lobby', 'results', 'scoreboard', 'final'] as const)('PLAT-035 no automatic pause on %s', phase => {
+  const s = setup(2, { ...fixture, pauseOnDisconnect: () => phase !== 'scoreboard' && phase !== 'final' }, 100000);
+  const room = applyHostEvent(s.room, { type: 'disconnect', seat: 2 }, 0).state;
+  s.session.updateRoom({ ...room, phase: phase === 'lobby' || phase === 'results' ? phase : 'playing' });
+  s.frame(4000); expect(s.session.paused).toBe(false);
+});
+it('PLAT-034 same-browser takeover preserves simulation state and score without calling join', () => {
+  const game = { ...fixture, results(state: FixtureState) { const result = fixture.results(state); return { ...result, players: result.players.map(p => ({ ...p, score: state.presses })) }; } };
+  const s = setup(2, game, 100000); s.buffer.receive('seat-2', 0, 1, [0, 0, 0, 0]); s.frame();
+  const before = s.session.state; const scores = before && game.results(before);
+  expect(scores?.players[1]?.score).toBe(1);
+  const room = { ...s.room, players: s.room.players.map(p => ({ ...p, browserId: `browser-${String(p.seat)}` })) };
+  s.session.updateRoom(room);
+  const result = applyPhoneEvent(room, { browserId: 'browser-2', deviceId: 'fresh', connectionId: 'fresh' }, { type: 'join', name: 'Guest 2', seatToken: 'new-unused-token-123456789' }, 0);
+  s.session.updateRoom(result.state);
+  expect(s.session.state).toBe(before); expect(before && game.results(before)).toEqual(scores);
+});
+it('PLAT-011 walks all session outputs for three phones and public views without leaking browser IDs or tokens', () => {
+  const s = setup(3, fixture, 100000);
+  const room = { ...s.room, players: s.room.players.map(p => ({ ...p, browserId: `secret-browser-${String(p.seat)}`, claimedBy: `secret-claimer-${String(p.seat)}` })) };
+  s.session.updateRoom(room); s.session.pause('seat-2'); s.session.resume('seat-1'); s.frame();
+  const secrets = room.players.flatMap(p => [p.browserId, p.claimedBy, p.seatToken]);
+  const walk = (value: unknown): void => {
+    if (typeof value === 'string') { for (const secret of secrets) expect(value).not.toContain(secret); }
+    else if (value && typeof value === 'object') for (const [key, child] of Object.entries(value)) { expect(['browserId', 'claimedBy', 'seatToken']).not.toContain(key); walk(child); }
+  };
+  for (const message of s.transport.messages) walk(message);
+  for (const view of s.views) walk(view);
+  for (const [connection, status] of s.transport.statuses) walk({ connection, status });
+  expect(new Set(s.transport.messages.map(m => m.connection))).toEqual(new Set(['c1', 'c2', 'c3']));
+  expect(new Set(s.transport.messages.map(m => m.type))).toEqual(new Set(['layout', 'view']));
+});
+it('PLAT-035 more than two missing names use the count; a chosen pause during countdown stays paused', () => {
+  const s = setup(4, fixture, 100000); let room = s.room;
+  for (const seat of [2, 3, 4]) room = applyHostEvent(room, { type: 'disconnect', seat }, 0).state;
+  s.session.updateRoom(room); s.frame(3001);
+  expect(s.events.at(-1)).toMatchObject({ message: 'Waiting for 3 players to rejoin' });
+  for (const seat of [2, 3, 4]) room = applyPhoneEvent(room, { deviceId: `d${String(seat)}`, connectionId: `new${String(seat)}` }, { type: 'resume', seatToken: String(seat).repeat(32) }, 0).state;
+  s.session.updateRoom(room); expect(s.events.at(-1)).toMatchObject({ countdown: 3 });
+  s.session.pause('seat-1'); s.frame(4000); expect(s.session.paused).toBe(true);
+});
+
+it('PLAT-034 name claim preserves non-zero score, eligibility and private state without join or leave', () => {
+  const calls: string[] = [];
+  const game = { ...fixture,
+    init(...args: Parameters<typeof fixture.init>) { return { ...fixture.init(...args), data: { eligible: true, hand: ['private-card'] } }; },
+    join(s: FixtureState) { calls.push('join'); return s; },
+    leave(s: FixtureState) { calls.push('leave'); return s; },
+    results(s: FixtureState) { const result = fixture.results(s); return { ...result, players: result.players.map(p => ({ ...p, score: s.presses })) }; },
+  };
+  const s = setup(2, game, 100000);
+  s.buffer.receive('seat-2', 0, 1, [0, 0, 0, 0]); s.frame();
+  const before = s.session.state;
+  if (!before) throw new Error('Expected running state');
+  const scores = game.results(before);
+  const privateState = game.privateView(before, 'seat-2');
+  expect(scores.players[1]?.score).toBeGreaterThan(0);
+  const held = applyHostEvent(s.room, { type: 'disconnect', seat: 2 }, 0).state;
+  s.session.updateRoom(held);
+  const claimed = applyPhoneEvent(held, { browserId: 'fresh-browser-123456', connectionId: 'fresh', deviceId: 'fresh' }, { type: 'claim', seat: 2, seatToken: 'fresh-token-1234567890123456' }, 0);
+  expect(claimed.result.ok).toBe(true); s.session.updateRoom(claimed.state);
+  expect(s.session.state).toBe(before);
+  const after = s.session.state;
+  if (!after) throw new Error('Expected claimed state');
+  expect(game.results(after)).toEqual(scores);
+  expect(game.privateView(after, 'seat-2')).toEqual(privateState);
+  expect(s.session.state?.players).toEqual(before.players);
+  expect(s.session.state?.data).toEqual({ eligible: true, hand: ['private-card'] });
+  expect(calls).toEqual([]);
+});

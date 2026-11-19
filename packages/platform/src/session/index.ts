@@ -25,6 +25,7 @@ export interface SessionTransport {
   fence(connectionId: string, nextSequence: number | null): void;
   /** Shell draws pause state and forwards it through its room-state message. */
   status(connectionId: string, paused: boolean, generation: number): void;
+  waiting?(connectionId: string, message: string | null, countdown: number | null): void;
   subscribe(receive: (event: SessionTransportEvent) => void): () => void;
 }
 /** Elapsed frame time is supplied externally. No timers or clock reads in platform. */
@@ -33,7 +34,8 @@ export type SessionEvent =
   | { type: 'results'; results: Results }
   | { type: 'error'; seed: number; step: number; operation: string }
   | { type: 'picker' }
-  | { type: 'paused'; paused: boolean };
+  | { type: 'paused'; paused: boolean }
+  | { type: 'waiting'; message: string | null; countdown: number | null };
 /** Host-only lifecycle log supplements sampled ticks for replay across room and pause changes. */
 export type SessionInput = MatchEvent;
 export interface SessionOptions<State, Settings extends object, View> {
@@ -87,6 +89,14 @@ export function createSession<State, Settings extends object, View>(o: SessionOp
   let seats: Seat[] = [];
   let room = o.room;
   let paused = false;
+  let userPaused = false;
+  let disconnectPaused = false;
+  let countdownAt: number | null = null;
+  let waitingMessage: string | null = null;
+  let waitingCount: number | null = null;
+  let missingMask = 0;
+  const drops = new Map<string, number>();
+  const ignoredDrops = new Map<string, number>();
   let ended = false;
   let operation = 'init';
   let generation = 0;
@@ -188,12 +198,13 @@ export function createSession<State, Settings extends object, View>(o: SessionOp
     if (ended) return;
     const old = seats;
     const updated: Seat[] = [];
-    for (const s of old) if (!next.players.some(p => p.seatToken === s.room.seatToken)) {
+    for (const s of old) if (!next.players.some(p => (p.seatKey ?? p.seatToken) === (s.room.seatKey ?? s.room.seatToken))) {
       if (loop) { operation = 'leave'; loop.state = o.game.leave(loop.state, s.player.id); o.recordInput?.({ kind: 'leave', player: s.player.id }, loop.tick); }
       o.buffer.remove(s.player.id);
+      drops.delete(s.player.id); ignoredDrops.delete(s.player.id);
     }
     for (const p of gamePlayers(o.game.meta, next).sort((a, b) => a.seat - b.seat)) {
-      let s = old.find(s => s.room.seatToken === p.seatToken);
+      let s = old.find(s => (s.room.seatKey ?? s.room.seatToken) === (p.seatKey ?? p.seatToken));
       if (!s && o.context.teams && p.team === null) continue;
       if (!s) {
         const player = playerInfo(p);
@@ -230,7 +241,7 @@ export function createSession<State, Settings extends object, View>(o: SessionOp
     // A team event should land synchronously. Retry on the next sync if it did
     // not, so a lost request cannot permanently block subsequent newcomers.
     if (loop && o.context.teams && o.game.joinTeam && o.assignTeam) {
-      const newcomer = gamePlayers(o.game.meta, next).find(p => p.team === null && !seats.some(s => s.room.seatToken === p.seatToken));
+      const newcomer = gamePlayers(o.game.meta, next).find(p => p.team === null && !seats.some(s => (s.room.seatKey ?? s.room.seatToken) === (p.seatKey ?? p.seatToken)));
       if (newcomer) {
         operation = 'joinTeam';
         const team = o.game.joinTeam(loop.state);
@@ -266,7 +277,7 @@ export function createSession<State, Settings extends object, View>(o: SessionOp
           const start = s.frame.pressed & (1 << BUTTON.START);
           s.frame.held &= s.buttons; s.frame.pressed &= s.buttons; s.frame.released &= s.buttons;
           for (let i = 0; i < s.frame.axes.length; i++) if (!(s.axes & (1 << i))) s.frame.axes[i] = 0;
-          if (start !== 0) { setPaused(true); throw INTERRUPTED; }
+          if (start !== 0) { userPaused = true; setPaused(true); throw INTERRUPTED; }
         }
         // Stable object, frames and arrays are borrowed by the game/recording subscriber.
         return tick;
@@ -282,11 +293,60 @@ export function createSession<State, Settings extends object, View>(o: SessionOp
     output(); operation = 'isOver'; if (o.game.isOver(loop.state)) finish();
     if (!enough()) { shortSince = elapsed; setPaused(true); }
   });
+  function publishWaiting(message: string | null, countdown: number | null): void {
+    if (waitingMessage === message && waitingCount === countdown) return;
+    waitingMessage = message; waitingCount = countdown;
+    for (const s of seats) if (s.connected) o.transport.waiting?.(s.room.connectionId, message, countdown);
+    o.event({ type: 'waiting', message, countdown });
+  }
+  function checkDisconnects(): void {
+    if (!loop || ended) return;
+    let allConnected = true;
+    for (const s of seats) if (!s.connected) { allConnected = false; break; }
+    if (allConnected && !disconnectPaused && !paused) {
+      drops.clear(); ignoredDrops.clear(); missingMask = 0; return;
+    }
+    let mask = 0;
+    let count = 0;
+    let overdue = false;
+    for (const s of seats) {
+      if (s.connected) { drops.delete(s.player.id); ignoredDrops.delete(s.player.id); }
+      else {
+        if (!drops.has(s.player.id)) drops.set(s.player.id, s.room.disconnectedAt ?? elapsed);
+        if (ignoredDrops.get(s.player.id) !== drops.get(s.player.id)) {
+          mask |= 1 << s.player.seat; count++;
+          if (elapsed - (drops.get(s.player.id) ?? elapsed) > 3000) overdue = true;
+        }
+      }
+    }
+    const eligible = room.phase !== 'lobby' && room.phase !== 'results' && (o.game.pauseOnDisconnect?.(loop.state) ?? true);
+    if (!disconnectPaused && eligible && overdue) {
+      disconnectPaused = true; setPaused(true);
+    }
+    if (!disconnectPaused) return;
+    if (count) {
+      countdownAt = null;
+      if (mask !== missingMask || waitingCount !== null || waitingMessage === null) {
+        let names = '';
+        if (count <= 2) for (const s of seats) if (mask & (1 << s.player.seat)) names += (names ? ' and ' : '') + s.player.name;
+        publishWaiting(`Waiting for ${count > 2 ? `${String(count)} players` : names} to rejoin`, null);
+      }
+      missingMask = mask;
+    } else if (!userPaused) {
+      countdownAt ??= elapsed;
+      const remaining = 3 - Math.floor((elapsed - countdownAt) / 1000);
+      if (remaining > 0) publishWaiting(waitingMessage, remaining);
+      else { disconnectPaused = false; countdownAt = null; publishWaiting(null, null); if (enough()) setPaused(false); }
+    } else { countdownAt = null; publishWaiting(null, null); }
+  }
   function advance(elapsedMs: number): void {
     if (ended || !loop) return;
     elapsed = Math.max(elapsed + Math.max(0, elapsedMs), room.clock);
+    const wasPaused = paused;
+    guard(checkDisconnects);
+    if (isEnded()) return;
     if (shortSince !== null && elapsed - shortSince >= RECONNECT_WINDOW_MS) { guard(finish); return; }
-    if (paused) { guard(output); return; }
+    if (paused || wasPaused) { guard(output); return; }
     try { loop.advance(elapsedMs); } catch (error) { if (error !== INTERRUPTED) fail(); }
   }
   function receive(e: SessionTransportEvent): void {
@@ -320,9 +380,9 @@ export function createSession<State, Settings extends object, View>(o: SessionOp
   }
   return {
     advance,
-    updateRoom(next: RoomState): void { guard(() => { sync(next); }); },
-    pause(id: string): void { if (seats.some(s => s.player.id === id && s.connected)) guard(() => { setPaused(true); }); },
-    resume(id: string): void { if (id === leader && enough() && seats.some(s => s.player.id === id && s.connected)) guard(() => { setPaused(false); }); },
+    updateRoom(next: RoomState): void { guard(() => { sync(next); checkDisconnects(); for (const s of seats) if (s.connected) o.transport.waiting?.(s.room.connectionId, waitingMessage, waitingCount); }); },
+    pause(id: string): void { if (seats.some(s => s.player.id === id && s.connected)) guard(() => { userPaused = true; countdownAt = null; setPaused(true); }); },
+    resume(id: string): void { if (id === leader && enough() && seats.some(s => s.player.id === id && s.connected)) guard(() => { userPaused = false; disconnectPaused = false; countdownAt = null; for (const [key, value] of drops) ignoredDrops.set(key, value); publishWaiting(null, null); setPaused(false); }); },
     /** First request prompts the shell; confirmation is an explicit second UI action. */
     quit(id: string, confirmed = false): 'forbidden' | 'confirm' | 'quit' {
       if (ended || id !== leader || !seats.some(s => s.player.id === id && s.connected)) return 'forbidden';

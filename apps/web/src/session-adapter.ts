@@ -15,7 +15,7 @@ export interface MountedHostScreen extends GamePresentation<HTMLElement, unknown
   mount(root: HTMLElement, options: ScreenProps): { ready: Promise<void>; update(options: ScreenProps): void; destroy(): void };
 }
 export type HostScreen = (ComponentType<ScreenProps> & GamePresentation<HTMLElement, unknown>) | MountedHostScreen;
-export interface SessionDisplay { detail?: 'full' | 'half'; gameId: string; view: unknown; Screen?: HostScreen; ready?: (error?: unknown) => void; soundHistory?: { previous: unknown }; paused?: boolean; finalScreen?: boolean; results?: Extract<SessionEvent, { type: 'results' }>['results'] }
+export interface SessionDisplay { detail?: 'full' | 'half'; gameId: string; view: unknown; Screen?: HostScreen; ready?: (error?: unknown) => void; soundHistory?: { previous: unknown }; paused?: boolean; waiting?: { message: string | null; countdown: number | null }; finalScreen?: boolean; results?: Extract<SessionEvent, { type: 'results' }>['results'] }
 export function hostScreen(display: SessionDisplay | null, lobby: boolean): string { return display ? display.results ? display.finalScreen ? 'game' : 'results' : 'game' : lobby ? 'lobby' : 'picker'; }
 export interface AdapterOptions {
   counts?: Pick<ReturnType<typeof hostCounts>, 'begin' | 'frame' | 'end' | 'stop' | 'add'>;
@@ -146,6 +146,7 @@ export function createSessionAdapter(o: AdapterOptions) {
           previousView = key; display = { ...display, view }; if (runner) o.display(display);
         },
         event(event) {
+          if (event.type === 'waiting') { display = { ...display, waiting: { message: event.message, countdown: event.countdown } }; if (runner) o.display(display); }
           if (event.type === 'paused') { display = { ...display, paused: event.paused }; if (runner) o.display(display); }
           if (event.type === 'error') { setup.failed = true; o.counts?.add('error:host:session'); o.counts?.stop(); }
           if (event.type === 'results') {

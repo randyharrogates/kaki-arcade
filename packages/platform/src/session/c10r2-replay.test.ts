@@ -27,7 +27,7 @@ for (const [name, game, settings] of [['tabao', tabaoRush, {}], ['peek', peekPok
     if (i === 300) { session.pause('seat-3'); }
     if (i === 340) { session.resume('seat-1'); }
     if (i === 500) { room = applyPhoneEvent(room, { deviceId: 'd3', connectionId: 'c3', seat: 3 }, { type: 'leave' }, 0).state; session.updateRoom(room); }
-    if (i === 600) { room = applyHostEvent(room, { type: 'disconnect', seat: 1 }, 0).state; session.updateRoom(room); }
+    if (i === 600) { room = applyHostEvent(room, { type: 'disconnect', seat: 1 }, 600 * STEP_MS).state; session.updateRoom(room); }
     frame(STEP_MS);
   }
   const file = { format: 'kaki-match-3' as const, game: game.meta.id, options: { seed: 77, players, settings, teams: false, context: { data: {}, saved: null } },

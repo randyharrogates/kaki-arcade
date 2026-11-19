@@ -3,6 +3,7 @@ import { expect, it } from 'vitest';
 import { createHostTransport, createPhoneTransport } from '@kaki/netcode';
 import { createPhoneSeatStore } from '@kaki/platform';
 import { Clock, MemoryStorage, CODE, SECRET, SignalRoom, PeerHub, settle } from '../../../packages/platform/src/reconnect/testing.fixture';
+import { viewChannel } from './view-channel';
 import { createHost } from './host';
 import { createPhone } from './phone';
 import { lobbyView } from './view-model';
@@ -25,7 +26,10 @@ it.each(['room-not-found', 'room-expired', 'not-allowed'])('PLAT-002/003/004/007
       async dial(credentials, callbacks, register) {
         const transport = await createHostTransport({ baseUrl: 'https://signal', clock, socket, factory: hub.factory,
           ...(credentials ? { credentials } : {}), fetch: () => Promise.resolve({ ok: true, json: () => Promise.resolve({ code: CODE, hostToken: SECRET }) }),
-          onRoom: () => undefined, onPeer: (id, peer) => { callbacks.peer(id, peer); },
+          onRoom: () => undefined, onPeer: (id, peer) => {
+            const channel = viewChannel();
+            callbacks.peer(id, { ...peer, sendHost: message => channel.send(message, (message, revisioned) => peer.sendHost(message, revisioned)) });
+          },
           onControl: (message, _identity, id) => { callbacks.control(id, message); },
           onPairingState: state => {
             if (state === 'reconnecting') callbacks.state('reconnecting');
@@ -106,8 +110,12 @@ it.each(['room-not-found', 'room-expired', 'not-allowed'])('PLAT-002/003/004/007
   expect(views[0]?.state).toBe('unreachable');
   expect(dialTimes[0]?.filter(time => time > droppedAt).map(time => time - droppedAt)).toEqual([1000, 3000, 7000, 15000, 31000, 61000]);
   expect(hostView?.seats.filter(seat => seat.held).map(seat => seat.number)).toEqual([1]);
-  expect(views.slice(1, 8).map(view => ({ ...view, leader: false, players: undefined }))).toEqual(beforeOutage.slice(1, 8));
-  expect(views[1]?.players).toHaveLength(8);
+  expect(views.slice(1, 8).map(view => ({ ...view, leader: false, players: undefined }))).toEqual(beforeOutage.slice(1, 8).map(view => ({ ...view, leader: false, players: undefined })));
+  for (const view of views.slice(1, 8)) {
+    expect(view.players).toHaveLength(8);
+    expect(view.players?.find(player => player.seat === 1)?.connected).toBe(false);
+    expect(view.players?.filter(player => player.seat !== 1).every(player => player.connected)).toBe(true);
+  }
   expect(views[1]?.leader).toBe(true); // Normal leader grace elapsed after the real channel loss.
   offline = false;
   for (let second = 0; second < 40; second++) { clock.advance(1000); await settle(clock); }

@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-20 — C-29: rejoin your seat, and pause for a missing player
+- PLAT-034: joining again from the same browser returns to the same seat, name and score (stale tabs are closed). Another browser chooses from "Are you one of these players?" (disconnected seats only) or "I'm new"; a claim keeps the seat's score and private view, gets a fresh token, and the TV shows "⟨name⟩ is back on a new phone" for 5 s. The original browser can always take the seat back, which cancels the claimer's token.
+- PLAT-007: a running match holds a disconnected seat until results; the lobby keeps two minutes.
+- PLAT-035: more than 3 s after a phone drops in live play the game pauses; the TV shows "Waiting for ⟨name⟩ to rejoin" with the room code and join address; the leader carries on from the phone or TV keyboard; when everyone is back a 3-2-1 resumes (no animation under reduced motion); a new drop cancels it; a chosen pause is never resumed by it; lobby, scoreboards and final screens do not pause. Phones list Away and Here.
+- PLAT-011: removing a seat taken by name blocks the owner, the claimer and any earlier claimers; a name claim needs a browser id; phones cannot remove the TV seat.
+- Not yet: the room code during play and the panel layout (Randy's choice); a console perf run; real phones.
+
 ## 2026-11-20 — P-12: shared cards covered while memorising
 - PP-004: the three shared cards are face down on the TV during memorise and turn face up as the grid turns face down, on the same flip frames, timing and mask; they stay up for the rest of the round; reduced motion shows them at once (D-296, D-309).
 - PP-020: during memorise the public view carries only their count and a face-down flag; their faces are declared secrets until the grid hides.

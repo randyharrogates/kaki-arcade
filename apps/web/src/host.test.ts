@@ -1,12 +1,13 @@
 import { CLOSED_ROOM_REASON } from './team-setup';
 import { describe, expect, it, vi } from 'vitest';
 import { HOST_STORAGE_KEY } from '@kaki/platform';
+import type { HostMessage } from '@kaki/protocol';
 import type { HostCredentials } from '@kaki/platform';
 import { PROTOCOL_VERSION as v } from '@kaki/protocol';
 import { createHost } from './host';
 import type { DialCallbacks, HostDependencies } from './host';
 import { lobbyView } from './view-model';
-import type { LobbyView } from './view-model';
+import type { LobbyView, LobbyInput } from './view-model';
 
 function fixture() {
   let now = 100;
@@ -410,4 +411,45 @@ it('PLAT-011 unauthorised removal bypasses session and team input', async () => 
   expect(control).not.toHaveBeenCalled();
   expect(host.teamSetup).toMatchObject({ screen: setup.screen, enabled: setup.enabled, players: setup.players });
   expect(host.room.players).toHaveLength(2); host.stop();
+});
+
+it('PLAT-011 room-players and every shell outbound message keep all three phones’ identities private', async () => {
+  const f = fixture(); const host = f.make(); await host.start();
+  const phones = [f.peer(), f.peer(), f.peer()];
+  const ids = ['a', 'b', 'c']; const browsers = ids.map(id => `browser-private-${id}-123456789`);
+  for (let i = 0; i < 3; i++) {
+    const id = ids[i], peer = phones[i]; if (!id || !peer) throw new Error('Missing phone');
+    f.callbacks.peer(id, peer); f.callbacks.control(id, { v, t: 'hello', name: `Phone ${String(i + 1)}`, browserId: browsers[i] });
+  }
+  const tokens = phones.map(peer => (peer.sendHost.mock.calls as unknown as [HostMessage][]).find(([m]) => m.t === 'seat')?.[0]).map(m => m?.t === 'seat' ? m.seatToken : '');
+  for (const [index, peer] of phones.entries()) for (const [message] of peer.sendHost.mock.calls as unknown as [HostMessage][]) {
+    const wire = JSON.stringify(message); expect(wire).not.toContain('browserId');
+    for (const browser of browsers) expect(wire).not.toContain(browser);
+    for (const [owner, token] of tokens.entries()) if (owner !== index || message.t !== 'seat') expect(wire).not.toContain(token);
+  }
+  expect(JSON.stringify(phones[0]?.sendHost.mock.calls)).toContain('room-players'); host.stop();
+});
+it('PLAT-035 waiting status never ends the match or returns the room to the lobby', async () => {
+  const f = fixture(); const stopSession = vi.fn(); const updateRoom = vi.fn(); f.deps.session = { start: () => Promise.resolve(undefined), stop: stopSession, updateRoom };
+  const host = f.make(); await host.start();
+  f.callbacks.peer('a', f.peer()); f.callbacks.control('a', { v, t: 'hello', name: 'Mei' });
+  host.sessionEvent({ type: 'paused', paused: true }); stopSession.mockClear();
+  host.sessionEvent({ type: 'waiting', message: 'Waiting for Randy to rejoin', countdown: 3 });
+  expect(stopSession).not.toHaveBeenCalled(); expect(updateRoom).toHaveBeenLastCalledWith(expect.objectContaining({ phase: 'paused' })); host.stop();
+});
+
+it('PLAT-034 publishes the exact claim notice for five seconds and never for same-browser return', async () => {
+  const f = fixture(); const inputs: Omit<LobbyInput, 'origin'>[] = [];
+  const host = createHost(f.deps, input => inputs.push(input)); await host.start();
+  f.callbacks.peer('original', f.peer());
+  f.callbacks.control('original', { v, t: 'hello', name: 'Mei', browserId: 'original-browser-123456' });
+  f.callbacks.dropped('original'); f.callbacks.peer('fresh', f.peer());
+  f.callbacks.control('fresh', { v, t: 'hello', name: 'New', browserId: 'fresh-browser-123456' });
+  f.callbacks.control('fresh', { v, t: 'action', rev: 0, viewRev: null, data: { control: 'rejoin-seat', seat: 1 } });
+  expect(inputs.at(-1)?.rejoinNotice).toEqual({ id: 1, text: 'Mei is back on a new phone' });
+  f.advance(4999); expect(inputs.at(-1)?.rejoinNotice?.id).toBe(1);
+  f.advance(1); expect(inputs.at(-1)?.rejoinNotice).toBeNull();
+  f.callbacks.peer('return', f.peer());
+  f.callbacks.control('return', { v, t: 'hello', name: 'Mei', browserId: 'original-browser-123456' });
+  expect(inputs.at(-1)?.rejoinNotice).toBeNull(); host.stop();
 });

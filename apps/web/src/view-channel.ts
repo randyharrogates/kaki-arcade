@@ -8,7 +8,7 @@ export function viewChannel() {
     send(message: HostMessage, send: (message: HostMessage, revisioned?: boolean) => boolean): boolean {
       if (message.t !== 'view') return send(message);
       // room-players is a reserved view kind.
-      if (message.view && typeof message.view === 'object' && !Array.isArray(message.view) && message.view.kind === 'room-players') return send(message, false);
+      if (message.view && typeof message.view === 'object' && !Array.isArray(message.view) && typeof message.view.kind === 'string' && ['room-players', 'rejoin-seats', 'rejoin-waiting'].includes(message.view.kind)) return send(message, false);
       const wire = revision + 1;
       if (!send({ ...message, rev: wire })) return false;
       revision = wire; latest = { wire, source: message.rev }; return true;
@@ -19,7 +19,7 @@ export function viewChannel() {
       // Removal addresses a room seat, independently of any game/private view.
       // The room reducer authenticates the connected actor and current leader.
       const { data, viewRev } = checked.value;
-      if (viewRev === null && data && typeof data === 'object' && !Array.isArray(data) && data.control === 'remove-player') return checked.value;
+      if (viewRev === null && data && typeof data === 'object' && !Array.isArray(data) && (data.control === 'remove-player' || data.control === 'rejoin-seat')) return checked.value;
       if (viewRev !== latest?.wire) return null;
       return { ...checked.value, viewRev: latest.source };
     },

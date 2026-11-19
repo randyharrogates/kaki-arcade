@@ -55,7 +55,7 @@ describe('C-08 phone view (PLAT-002 to PLAT-009, CTRL-008)', () => {
     expect(f.view.state).toBe('too-long'); f.phone.join(CODE, 'Fern'); f.seat('Fern 2'); expect(f.view.notice).toContain('Name taken');
     f.seat('Player 3', true); expect(f.view.notice).toContain('changed'); f.phone.stop();
   });
-  it.each([['room-full', 'room-full'], ['room-not-found', 'room-not-found'], ['room-expired', 'room-not-found'], ['not-allowed', 'replaced'], ['bad-token', 'cannot-connect'], ['bad-message', 'cannot-connect'], ['opening-timeout', 'cannot-connect'], ['bad-version', 'out-of-date'], ['unsupported-version', 'out-of-date']])('maps %s to %s', (error, state) => {
+  it.each([['room-full', 'room-full'], ['room-not-found', 'room-not-found'], ['room-expired', 'room-not-found'], ['not-allowed', 'entry'], ['bad-token', 'cannot-connect'], ['bad-message', 'cannot-connect'], ['opening-timeout', 'cannot-connect'], ['bad-version', 'out-of-date'], ['unsupported-version', 'out-of-date']])('maps %s to %s', (error, state) => {
     const f = fixture(); f.phone.join(CODE, 'Fern'); f.dial.onError(error); expect(f.view.state).toBe(state); f.phone.stop();
   });
   it('shows full for the ninth join, then allows another room', () => {
@@ -88,7 +88,7 @@ describe('C-08 phone view (PLAT-002 to PLAT-009, CTRL-008)', () => {
     f.phone.stop();
   });
   it('handles replaced, room closure, leave, invalid code and fresh code over saved seat', () => {
-    const f = fixture(true); f.seat(); f.dial.onControl({ v: 1, t: 'close', reason: 'replaced' }); expect(f.view.state).toBe('replaced');
+    const f = fixture(true); f.seat(); f.dial.onControl({ v: 1, t: 'close', reason: 'replaced' }); expect(f.view.state).toBe('entry');
     f.phone.edit(); f.phone.join('no', 'Fern'); expect(f.view.state).toBe('invalid-code');
     f.phone.join(CODE, 'Fern'); f.seat(); f.dial.onControl({ v: 1, t: 'close', reason: 'room-closed' }); expect(f.view.state).toBe('room-gone');
     f.phone.edit(); f.phone.join(CODE, 'Fern'); f.seat(); f.phone.leave(); expect(f.view.state).toBe('left');
@@ -116,7 +116,7 @@ it('PLAT-007 sleeps and wakes without retyping or losing the saved token', () =>
   expect(createPhoneSeatStore(f.storage).read()?.nickname).toBe('Fern'); phone.stop();
 });
 
-it.each([['unsupported-version', 'out-of-date'], ['bad-message', 'cannot-connect'], ['replaced', 'replaced'], ['room-closed', 'room-gone']] as const)('maps trusted host close %s to %s and stops retrying', (reason, state) => {
+it.each([['unsupported-version', 'out-of-date'], ['bad-message', 'cannot-connect'], ['replaced', 'entry'], ['room-closed', 'room-gone']] as const)('maps trusted host close %s to %s and stops retrying', (reason, state) => {
   const f = fixture(true); f.seat(); f.dial.onControl({ v: 1, t: 'close', reason });
   expect(f.view.state).toBe(state); const count = f.times.length; f.clock.advance(180000); expect(f.times).toHaveLength(count); f.phone.stop();
 });
@@ -328,6 +328,28 @@ it('TR-064 game theme applies from starting through play and pause, then resets 
     f.dial.onControl({ v: 1, t: 'room', phase, players: 1, leader: true, team: null });
     expect(f.view.theme).toBe(phase === 'lobby' ? 'console' : 'tabao-rush');
   }
+  f.phone.stop();
+});
+
+it('PLAT-034 name choices are separate from game-private content and send a room claim', () => {
+  const f = fixture(); f.phone.join(CODE, 'New'); f.dial.onState('control-open');
+  f.dial.onControl({ v: 1, t: 'view', rev: 0, view: { kind: 'rejoin-seats', players: [{ seat: 2, colour: 1, name: 'Randy' }] } });
+  expect(f.view.rejoinSeats).toEqual([{ seat: 2, colour: 1, name: 'Randy' }]);
+  f.phone.claimSeat(2);
+  expect(f.sent.at(-1)).toMatchObject({ t: 'action', viewRev: null, data: { control: 'rejoin-seat', seat: 2 } });
+  f.seat('Randy'); expect(f.view.rejoinSeats).toBeUndefined(); f.phone.stop();
+});
+
+it('PLAT-034 a claimed phone returns to normal join when the original browser retakes the seat', () => {
+  const f = fixture(); f.phone.join(CODE, 'New'); f.dial.onState('control-open');
+  f.phone.claimSeat(2); f.seat('Randy');
+  f.dial.onControl({ v: 1, t: 'close', reason: 'replaced' });
+  expect(f.view).toMatchObject({ state: 'entry', seat: null, leader: false });
+  expect(f.view.rejoinSeats).toBeUndefined();
+  f.phone.join(CODE, 'New'); f.dial.onState('control-open');
+  expect(f.sent.at(-1)).toMatchObject({ t: 'hello', name: 'New' });
+  f.dial.onControl({ v: 1, t: 'view', rev: 0, view: { kind: 'rejoin-seats', players: [{ seat: 3, colour: 2, name: 'Cloud' }] } });
+  expect(f.view.rejoinSeats).toEqual([{ seat: 3, colour: 2, name: 'Cloud' }]);
   f.phone.stop();
 });
 

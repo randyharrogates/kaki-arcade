@@ -23,7 +23,8 @@ export function RemovePlayer({ name, remove }: { name: string; remove: () => voi
 }
 
 /** PLAT-011: the selected name expands into its column, keeping the list's scroll position. */
-export function PhonePlayers({ players, ownSeat, remove }: { players: readonly { seat: number; name: string }[]; ownSeat: number | null; remove: (seat: number) => void }) {
+export function PhonePlayers({ players, ownSeat, remove, waiting = false }: { players: readonly { seat: number; name: string; connected?: boolean }[]; ownSeat: number | null; remove?: ((seat: number) => void) | undefined; waiting?: boolean }) {
+  const orderedPlayers = waiting ? [...players].sort((a, b) => Number(a.connected !== false) - Number(b.connected !== false)) : players;
   const [selected, setSelected] = useState<{ seat: number; name: string; top: number; bottom: number } | null>(null);
   const column = useRef<HTMLDivElement>(null);
   const panel = useRef<HTMLDivElement>(null);
@@ -61,19 +62,19 @@ export function PhonePlayers({ players, ownSeat, remove }: { players: readonly {
   return <div ref={column} class="phone-player-column" data-confirm={Boolean(selected)} onKeyDown={event => {
     if (event.key === 'Escape' && selected) { event.stopPropagation(); close(); }
   }}>
-    <ol class="phone-players" aria-label="Players" inert={Boolean(selected)} aria-hidden={Boolean(selected)}>{players.map((player, index) => <li key={player.seat}>
-      {player.seat === ownSeat ? <span class="phone-player-own ka-panel" tabIndex={-1} data-seat={player.seat}>{player.name}</span> : <button class="ka-panel ka-pressable" data-seat={player.seat} aria-label={`Remove ${player.name}`} onClick={event => {
+    <ol class="phone-players" aria-label="Players" inert={Boolean(selected)} aria-hidden={Boolean(selected)}>{orderedPlayers.map((player, index) => <li key={player.seat}>
+      {!remove || player.seat === ownSeat ? <span class="phone-player-own ka-panel" tabIndex={-1} data-seat={player.seat}>{player.name}{waiting && <span class="phone-presence ka-chip" data-away={player.connected === false}>{player.connected === false ? 'Away' : 'Here'}</span>}</span> : <button class="ka-panel ka-pressable" data-seat={player.seat} aria-label={`Remove ${player.name}`} onClick={event => {
         const bounds = column.current?.getBoundingClientRect();
         if (!bounds) return;
         const row = event.currentTarget.getBoundingClientRect();
-        const candidates = [...players.slice(index + 1), ...players.slice(0, index)].filter(candidate => candidate.seat !== ownSeat);
+        const candidates = [...orderedPlayers.slice(index + 1), ...orderedPlayers.slice(0, index)].filter(candidate => candidate.seat !== ownSeat);
         nextFocus.current = candidates[0]?.seat ?? ownSeat;
         setSelected({ ...player, top: Math.max(0, row.top - bounds.top), bottom: Math.max(0, bounds.bottom - row.bottom) });
-      }}>{player.name}</button>}
+      }}>{player.name}{waiting && <span class="phone-presence ka-chip" data-away={player.connected === false}>{player.connected === false ? 'Away' : 'Here'}</span>}</button>}
     </li>)}</ol>
     {selected && <div ref={panel} class="phone-player-confirm ka-panel" role="group" aria-label={`Remove ${selected.name}?`} style={{ transformOrigin: `center ${String(selected.top)}px` }}>
       <p>Remove {selected.name}?</p>
-      <button class="ka-panel ka-pressable" onClick={() => { remove(selected.seat); }}>Remove</button>
+      <button class="ka-panel ka-pressable" onClick={() => { remove?.(selected.seat); }}>Remove</button>
       <button class="ka-panel ka-pressable" onClick={close}>Cancel</button>
     </div>}
   </div>;

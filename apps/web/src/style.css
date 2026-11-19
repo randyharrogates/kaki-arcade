@@ -148,6 +148,7 @@ button:focus-visible, a:focus-visible, [role="button"]:focus-visible, .pause-lev
 
 .host-hints { position: absolute; bottom: var(--ka-space-55); left: var(--ka-space-55); display: flex; gap: var(--ka-space-21); font-size: var(--ka-type-34); }
 .host-hints span + span::before { content: '·'; margin-right: var(--ka-space-21); }
+.host-pause:has([data-waiting="true"]), #app:has(.host-rejoin-notice p) .host-pause { padding-bottom: calc(var(--ka-tv-safe-margin) + var(--ka-space-144)); }
 .host-pause { z-index: 5; display: grid; place-items: center; pointer-events: none; }
 .host-pause section { pointer-events: auto; padding: var(--ka-space-55); display: grid; gap: var(--ka-space-21); }
 .host-pause h2 { font-size: var(--ka-type-55); }
@@ -242,3 +243,13 @@ button:focus-visible, a:focus-visible, [role="button"]:focus-visible, .pause-lev
 .picker-player-name { overflow: hidden; text-overflow: ellipsis; }
 /* Bound each frozen column while the tile-local wipe passes over it. */
 .game-tile-content[data-snapshot] > .game-copy, .game-tile-content[data-snapshot] > .game-picture-slot { clip-path: inset(0); min-width: 0; }
+
+.pause-controls { display: grid; gap: var(--ka-space-21); }
+.host-pause section[data-waiting="true"] { width: 100%; grid-template-columns: minmax(0, 1.618fr) minmax(0, 1fr); gap: var(--ka-space-34); }
+.pause-rejoin { min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--ka-space-21); }
+.pause-rejoin .room-code { flex-wrap: wrap; gap: var(--ka-space-21); }
+.rejoin-countdown { font: var(--ka-weight-bold) var(--ka-type-144)/var(--ka-line-display) var(--ka-font-mono); }
+
+/* PLAT-034: the existing pause-panel surface, above lobby and play. */
+.host-rejoin-notice { z-index: 6; pointer-events: none; display: flex; align-items: flex-end; justify-content: center; }
+.host-rejoin-notice p { margin: 0; padding: var(--ka-space-21) var(--ka-space-34); font-size: calc(var(--ka-type-34) / var(--screen-scale, 1)); }

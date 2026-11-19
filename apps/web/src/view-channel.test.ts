@@ -32,3 +32,12 @@ it('PLAT-011 roster views preserve the current game action revision', () => {
   expect(revisionSpaces).toEqual([undefined, false]);
   expect(channel.receive({ v: 1, t: 'action', rev: 0, viewRev: 0, data: { control: 'play' } })).toMatchObject({ viewRev: 7 });
 });
+it('PLAT-034 PLAT-035 name lists and waiting status bypass game revisions; only the room claim bypasses action fencing', () => {
+  const channel = viewChannel(); const sent: (boolean | undefined)[] = [];
+  const send = (_m: HostMessage, revisioned?: boolean) => { sent.push(revisioned); return true; };
+  channel.send({ v: 1, t: 'view', rev: 7, view: null }, send);
+  for (const kind of ['rejoin-seats', 'rejoin-waiting']) channel.send({ v: 1, t: 'view', rev: 0, view: { kind, players: [] } }, send);
+  expect(sent).toEqual([undefined, false, false]);
+  expect(channel.receive({ v: 1, t: 'action', rev: 0, viewRev: null, data: { control: 'rejoin-seat', seat: 2 } })).toMatchObject({ data: { seat: 2 } });
+  expect(channel.receive({ v: 1, t: 'action', rev: 0, viewRev: 0, data: { control: 'play' } })).toMatchObject({ viewRev: 7 });
+});

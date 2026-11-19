@@ -83,6 +83,7 @@ export const rabakz: GameModule<State, Settings, ReturnType<typeof publicView>> 
       players: state.players.filter((player) => player.info.id !== id) };
   },
   publicView, privateView, controllerLayout, results, secrets, scrambleSecrets,
+  pauseOnDisconnect: (state) => state.phase !== 'scoreboard' && state.phase !== 'final' && state.phase !== 'over',
   isOver: (state) => state.phase === 'over',
   assets: (state) => state.questions.flatMap((q) => q.picture ?
     [{ key: q.picture.file, kind: 'image' as const }] : []),

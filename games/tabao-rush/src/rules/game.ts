@@ -143,6 +143,7 @@ export const tabaoRush: GameModule<TabaoState> = {
       : WATCH_LAYOUT;
     return state.picks && layout !== WATCH_LAYOUT ? { ...layout, revision: layout.revision + (state.pickRevision ?? 0) } : layout;
   },
+  pauseOnDisconnect: (state) => state.tick < endTick(state),
   isOver: (state) => state.tick >= endTick(state),
   results: (state) => {
     const kitchens = ensureOrders(state).kitchens ?? [];

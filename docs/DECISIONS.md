@@ -1941,3 +1941,28 @@ Randy may overrule.
 - **Perf at 8 phones** (development build, Chromium, slice gate only): frame p95 18.2 ms, max 33.4 ms, no long tasks; PERF-010 pass; PERF-012 160 of 160; unchanged from P-09's development run. PERF-001 stays not assessed, as in D-305.
 - Randy may overrule.
 
+
+**D-310 · 2026-11-20 · Claude, integrator (C-29 review)** (PLAT-034, PLAT-035, PLAT-007, PLAT-011, PLAT-023; D-298, D-301, D-302)
+- **Rejoining.** Joining again keys on the browser id first: the same browser always retakes its seat and closes any other connection.
+- **Name claims.**
+  - A claim is allowed only for disconnected seats and only from a phone that sends a browser id.
+  - It gives the seat a fresh token. The game player is kept through a private seat key that is set at admission and never rotated, so score, eligibility and private view survive.
+  - The claiming browser is recorded privately as `claimedBy`, and the TV shows "⟨name⟩ is back on a new phone" for 5 s.
+  - When the owner's browser retakes the seat, the token rotates again and the claimer moves onto a private former-claimers list.
+  - Removal blocks the owner, the claimer, every former claimer and the current token.
+  - Browser ids, tokens, seat keys and claimer records never reach a phone or the TV.
+- **Holds.** Running and paused matches hold disconnected seats until results.
+- **Pausing.**
+  - The session pauses after more than 3 s without a phone, when the game's new optional, pure `pauseOnDisconnect(state)` allows it. This keeps game phases out of the platform; all three games exclude scoreboards and final screens.
+  - The 3-2-1 button reads Resume.
+  - A chosen pause is never auto-resumed.
+- **Views.**
+  - The reserved view kinds `rejoin-seats` (seat, colour and name only) and `rejoin-waiting`, and the `rejoin-seat` action, sit outside the private-view revision space.
+  - `room-players` now goes to every phone, with only seat, name and a connected flag.
+  - ARCHITECTURE §3 and the networking section are updated.
+- **Accepted risk.** Anyone with the room code can take a disconnected seat, and with it its score and private view. Randy accepted this under D-298; the safeguards are the fresh token, owner win-back, removal of every browser involved, and the TV notice.
+- **Open.**
+  - PLAT-034 and PLAT-035 stay in progress until Randy chooses, from an artifact, the room code's placement during play and the waiting-panel layout.
+  - A console perf run is still to come.
+- **T-10's "phones follow the TV into a new room".** This is the PLAT-009 restore of the same room, because the step cleared localStorage while the host snapshot lives in sessionStorage. A phone joins only the code it holds (signal `core/room.ts:208`).
+- Evidence: round4 UAT ran before main's P-12 merge; after merging main, tsc and the overlapping unit and DOM tests passed (2029 and 4). Randy may overrule.

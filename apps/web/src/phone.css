@@ -161,3 +161,16 @@
 }
 
 .phone-page[data-seated="true"]:has(.phone-lobby[data-players="true"]) { overflow: hidden; }
+
+.rejoin-choice { display: flex; align-items: center; gap: var(--ka-space-13); }
+.rejoin-colour { display: grid; place-items: center; min-width: var(--ka-space-55); min-height: var(--ka-space-55); border-radius: var(--ka-radius-pill); color: var(--ka-seat-numeral); }
+
+.phone-game-page[data-waiting="true"] .phone-veil-actions button:first-child { width: var(--ka-space-233); min-height: var(--ka-space-89); height: auto; }
+.phone-game-page[data-waiting="true"] .phone-game-veil h1 { font-size: var(--ka-phone-type-34); overflow-wrap: anywhere; }
+
+/* PLAT-035: words and chip outlines distinguish absent seats. */
+.phone-presence { margin-left: auto; padding: var(--ka-space-5) var(--ka-space-8); }
+.phone-presence[data-away="true"] { background: transparent; color: var(--ka-panel-secondary); border: var(--ka-panel-edge); border-style: dashed; }
+.phone-game-page[data-waiting="true"] .phone-players { gap: var(--ka-space-8); }
+.phone-game-page[data-waiting="true"] .phone-players button,
+.phone-game-page[data-waiting="true"] .phone-player-own { gap: var(--ka-space-13); min-height: var(--ka-space-55); }

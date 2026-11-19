@@ -40,6 +40,7 @@ export function sessionLinks() {
       return sent;
     },
     fence(id, sequence) { if (sequence === null) inputs.get(id)?.pause(); else inputs.get(id)?.acknowledgeResume(sequence); },
+    waiting(id, message, countdown) { peers.get(id)?.sendHost({ v: 1, t: 'view', rev: 0, view: { kind: 'rejoin-waiting', message, countdown } }); },
     status(id, paused) {
       const p = room?.players.find(p => p.connectionId === id);
       if (room && p) peers.get(id)?.sendHost({ v: 1, t: 'room', phase: paused ? 'paused' : 'playing', players: room.players.length, leader: p.seat === room.leader, team: p.team ? { id: p.team === 'red' ? 0 : 1, name: p.team === 'red' ? 'Red' : 'Blue' } : null });

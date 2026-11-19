@@ -74,6 +74,7 @@ interface GameModule<State, Settings, View> {
   join(state: State, player: PlayerInfo): State;  // mid-match (PLAT-008)
   joinTeam?(state: State): TeamId; // running team match (PLAT-008, D-285)
   leave(state: State, player: PlayerId): State;
+  pauseOnDisconnect?(state: State): boolean; // live phases eligible for automatic disconnect pause
   pause?(state: State): State;  resume?(state: State): State;
   publicView(state: State): View;                 // what the big screen draws from
   privateView(state: State, player: PlayerId): PrivateView | null;       // carries a revision
@@ -85,6 +86,12 @@ interface GameModule<State, Settings, View> {
   scrambleSecrets?(state: State, viewer: PlayerId | null, salt: number): State;
 }
 ```
+
+`pauseOnDisconnect(state)` lets a game restrict automatic disconnect pauses to live
+play (for example, excluding scoreboards and final screens); omission defaults to true.
+Outside the lobby and results, a phone missing for more than 3000 ms pauses the session.
+The leader may carry on, or all missing players returning starts a 3-2-1 countdown.
+A pause players chose is never automatically resumed.
 
 The optional host presentation contract `GamePresentation<Target, Assets>` lives alongside
 these pure types in `packages/platform/src/game/presentation.ts`. A host screen may declare
@@ -365,9 +372,15 @@ Only the cue's oscillators and envelope gains are created during playback; no fi
   privately in its room snapshot, refusing either match with `refused: removed`, alongside
   `room-full`, `seat-expired` and `game-running`. A connected removed phone receives the
   same refusal before its channel closes. The existing `view` path carries a `room-players` console menu
-  containing only seat numbers and names to the current leader; the leader requests removal through an `action` with `control: remove-player`
+  containing only seat, name and connected to every connected phone; the leader requests removal through an `action` with `control: remove-player`
   and a target `seat`. The host validates current leadership and rejects self-removal.
-  Browser ids, tokens and the blocked set never enter public room views or another phone. The host keeps its credentials, the room
+  Reserved views `rejoin-seats` (disconnected players: seat, colour, name) and
+  `rejoin-waiting` (message and countdown) support seat recovery and disconnect pauses.
+  The `rejoin-seat` action supplies a seat number to claim, or null for ordinary admission;
+  claims require the hello's browserId. The host-private `claim` room event rotates the
+  token while preserving the admission seat key and game player. Owner retakes rotate
+  credentials again; former claimers remain privately recorded for removal blocking.
+  Browser ids, tokens, admission seat keys and the blocked set never enter public room views or another phone. The host keeps its credentials, the room
   (seats, names, colours, teams, leader and each phone's original drop time), the last results, completed-round totals keyed by seat and then by game id (a results screen adds to the selected game's total once; an interrupted round adds nothing; a freed seat loses all its totals; a stored snapshot from before C-22 with one number per seat keeps its room and results and drops its scores, D-226, D-270)
   and the game selection with its `save()` output in `sessionStorage`
   (`kaki.host-reconnect.v1`, at most 64 KiB). It writes at most once a second plus at every

@@ -24,10 +24,11 @@ it('PP-005 phone game surface covers the viewport and K-09 targets fit all three
         let theme='console';
         let view={...phoneView('lobby',{seat:1,leader:true,phase:'playing'}),gameLayout:peekPoker.controllerLayout(state,'p1'),gamePrivateView:peekPoker.privateView(state,'p1')};
         const app=document.createElement('div');app.id='app';document.body.append(app);
-        const draw=()=>render(h(GameController,{controller:{seat:1,name:'Fern',theme:view.connected?theme:'console',link:view.connected?'connected':'reconnecting'},view,send(){},sessionCommand(action){document.body.dataset.command=action??'menu';}}),app);
+        const draw=()=>render(h(GameController,{controller:{seat:1,name:'Fern',theme:view.connected?theme:'console',link:view.connected?'connected':'reconnecting'},view,send(){},removePlayer(){},sessionCommand(action){document.body.dataset.command=action??'menu';}}),app);
         window.showPoker=()=>{theme='peek-poker';draw();};
         window.showPicking=()=>{state=startPicking(state);view={...view,gameLayout:peekPoker.controllerLayout(state,'p1'),gamePrivateView:null};draw();};
-        window.consoleState=(phase,leader,connected)=>{view={...view,phase,leader,connected};draw();};draw();
+        window.waitingState=leader=>{view={...view,phase:'paused',connected:true,leader,waiting:{message:'Waiting for Randy to rejoin',countdown:null},players:[{seat:1,name:'Mei',connected:true},{seat:2,name:'Randy',connected:false},{seat:3,name:'Cloud',connected:true}]};draw();};
+        window.consoleState=(phase,leader,connected)=>{view={...view,phase,leader,connected,waiting:null};draw();};draw();
       `; },
     }] });
   const output = Array.isArray(bundle) ? bundle[0] : bundle;
@@ -170,6 +171,12 @@ it('PP-005 phone game surface covers the viewport and K-09 targets fit all three
       // Before any pointer input (Chromium shows :focus-visible on a script-focused
       // container then), a lost link focuses its dialog with no outline drawn.
       await page.keyboard.press('Shift');
+      for (const leader of [true, false]) {
+        await page.evaluate(leader => { (Reflect.get(window, 'waitingState') as (leader: boolean) => void)(leader); }, leader);
+        expect(await page.locator('.phone-players li').allTextContents()).toEqual(['RandyAway', 'MeiHere', 'CloudHere']);
+        expect(await page.locator('.phone-presence[data-away="true"]').innerText()).toBe('Away');
+        expect(await page.locator('.phone-players button').count()).toBe(leader ? 2 : 0);
+      }
       await page.evaluate(() => { (window as unknown as { consoleState(phase: string, leader: boolean, connected: boolean): void }).consoleState('playing', false, false); });
       const consolePaint = await page.locator('.ka-layout-engine:not(.ka-layout-ghost) > .ka-layout-surface').evaluate((el, expected) => {
         const probe = document.createElement('div');
@@ -197,7 +204,7 @@ it('PP-005 phone game surface covers the viewport and K-09 targets fit all three
         expect(await dialog.evaluate(n => n.contains(document.activeElement))).toBe(true);
         expect(await dialog.evaluate((n, leader) => document.activeElement === (leader ? n.querySelector('button') : n), leader)).toBe(true);
         expect(await page.locator('.phone-game-controls').evaluate(n => n.hasAttribute('inert'))).toBe(true);
-        expect(await dialog.getByText('Only the leader can quit.', { exact: true }).count()).toBe(1);
+        expect(await dialog.getByText('Only the leader can quit.', { exact: true }).count()).toBe(leader ? 0 : 1);
         for (const name of ['Resume', 'Quit to picker']) {
           const button = dialog.getByRole('button', { name, exact: true });
           expect(await button.isDisabled()).toBe(!leader);

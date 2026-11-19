@@ -79,6 +79,7 @@ export function PhonePage() {
   const form = view.action === 'Join' && !view.renaming;
   const feedback = (): void => { if ('vibrate' in navigator) navigator.vibrate(duration.fast); };
   const teamChoice = offersTeamChoice(view) && view.teamSetup?.screen === 'choice' ? <TeamsToggle enabled={view.teamSetup.enabled} toggle={() => { feedback(); phone.current?.teamInput('teams-toggle'); }}/> : null;
+  if (view.rejoinSeats) return <main class="phone-page ka-surface" data-theme="console"><section class="phone-join ka-panel"><h1>Are you one of these players?</h1><div class="phone-fields">{view.rejoinSeats.map(player => <button class="ka-panel ka-pressable rejoin-choice" key={player.seat} onClick={() => { phone.current?.claimSeat(player.seat); }}><span class="rejoin-colour" style={{ background: `var(--ka-seat-${String(player.colour + 1)})` }}>{player.seat}</span>{player.name}</button>)}<button class="ka-panel ka-pressable" onClick={() => { phone.current?.claimSeat(null); }}>I'm new</button></div></section></main>;
   if (controller && wakeReady) return <GameController removePlayer={seat => { phone.current?.removePlayer(seat); }} sessionCommand={action => { phone.current?.sessionCommand(action); }} controller={controller} view={view} send={output => { phone.current?.controllerInput(output); }}/>;
   return <main ref={page} class="phone-page ka-surface" data-seated={view.seat !== null} data-setup={view.leader && view.teamSetup?.screen === 'choice' && picker?.screen === 'start'} data-theme={view.theme} aria-label="Phone lobby">
     <PhoneLive announcement={announcement}><span>{teamAnnouncement}</span></PhoneLive>
@@ -180,16 +181,16 @@ export function GameController({ controller, view, send, sessionCommand, removeP
       menu.current?.focus();
     }
   }, [veil, view.leader, header]);
-  const notice = !view.connected ? 'Host disconnected. Reconnecting… Your seat is kept for 2 minutes.' : view.phase === 'paused' ? 'Paused. Only the leader can quit.' : '';
-  return <div class="phone-game-page" data-console-controls={Boolean(sessionCommand)} data-blocked={blocked} data-theme={controller.theme}>
+  const notice = !view.connected ? 'Host disconnected. Reconnecting… Your seat is kept for 2 minutes.' : view.phase === 'paused' ? view.waiting?.message ?? (view.leader ? 'Paused.' : 'Paused. Only the leader can quit.') : '';
+  return <div class="phone-game-page" data-console-controls={Boolean(sessionCommand)} data-waiting={Boolean(view.waiting?.message)} data-blocked={blocked} data-theme={controller.theme}>
     <PhoneLive announcement={notice}/>
     <ControllerShell {...controller} {...(pictureHeading?.kind === 'text' ? { heading: pictureHeading.text } : {})}>
       {header && sessionCommand && createPortal(<button ref={menu} class="phone-session-button ka-pressable" disabled={blocked} onClick={() => { sessionCommand(); }}><span class="phone-session-pill">Menu</span></button>, header)}
       <div ref={controls} class="phone-game-controls" inert={blocked || picturesPending} aria-busy={picturesPending} aria-hidden={blocked}>{area && renderedLayout && <LayoutEngine images={pictures?.urls ?? {}} layout={renderedLayout} privateView={view.gamePrivateView} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={output => { if (!blocked && !picturesPending) send(output); }}/>}</div>
     </ControllerShell>
       <div ref={veils} class="phone-game-veils"><Overlap fade tempo="base" identity={veil}>{blocked && <section class="phone-game-veil" tabIndex={-1} role="dialog" aria-modal="true" aria-label={view.connected ? 'Paused' : 'Connection lost'}>
-        <h1>{view.connected ? 'Paused' : 'Reconnecting…'}</h1>
-        {view.connected ? <><div class="phone-veil-actions"><button class="ka-pressable" disabled={!view.leader} onClick={() => { sessionCommand?.(); }}>Resume</button><button class="ka-pressable" disabled={!view.leader} onClick={() => { sessionCommand?.('quit'); }}>Quit to picker</button></div><p>Only the leader can quit.</p>{view.leader && removePlayer && <PhonePlayers players={view.players ?? []} ownSeat={view.seat} remove={removePlayer}/>}</> : <><p>Your seat is kept for 2 minutes.</p><p>Host disconnected</p></>}
+        <h1>{view.connected ? view.waiting?.countdown ?? view.waiting?.message ?? 'Paused' : 'Reconnecting…'}</h1>
+        {view.connected ? <><div class="phone-veil-actions"><button class="ka-pressable" disabled={!view.leader} onClick={() => { sessionCommand?.(); }}>{view.waiting?.message && view.waiting.countdown === null ? 'Carry on without them' : 'Resume'}</button><button class="ka-pressable" disabled={!view.leader} onClick={() => { sessionCommand?.('quit'); }}>Quit to picker</button></div>{!view.leader && <p>Only the leader can quit.</p>}{(Boolean(view.waiting?.message) || view.leader && Boolean(removePlayer)) && <PhonePlayers waiting={Boolean(view.waiting?.message)} players={view.players ?? []} ownSeat={view.seat} remove={view.leader ? removePlayer : undefined}/>}</> : <><p>Your seat is kept for 2 minutes.</p><p>Host disconnected</p></>}
       </section>}</Overlap></div>
   </div>;
 }

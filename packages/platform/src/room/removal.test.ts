@@ -39,11 +39,14 @@ it('PLAT-011 blocks fresh transport joins by browser id and resumes by either cr
 it('PLAT-011 keeps blocked identities and seated browser ids through host snapshot restore', async () => {
   const clock = new Clock(); const storage = new MemoryStorage();
   const store = createHostSnapshotStore({ clock, storage, validateSelection: () => true });
-  const state = applyHostEvent(room(), { type: 'remove', seat: 3 }, clock.now()).state;
+  let held = applyHostEvent(room(), { type: 'disconnect', seat: 3 }, clock.now()).state;
+  held = applyPhoneEvent(held, identity(8), { type: 'claim', seat: 3, seatToken: token(9) }, clock.now()).state;
+  const state = applyHostEvent(held, { type: 'remove', seat: 3 }, clock.now()).state;
   expect(store.write({ credentials: { code: CODE, hostToken: SECRET }, createdAt: 1000, room: state, scores: {}, results: [], selection: null })).toBe(true);
   const restored = await restoreHost({ clock, store, reopen: () => Promise.resolve({ code: CODE, hostToken: SECRET, reopened: true, link: { stop() { /* No live link in this fake. */ } } }) });
   if (!restored || restored.retryable) throw new Error('Expected restored room');
   expect(restored.room.blocked).toEqual(state.blocked);
+  expect(applyPhoneEvent(restored.room, identity(8), { type: 'join', name: null, seatToken: token(7) }, clock.now()).result).toMatchObject({ reason: 'removed' });
   expect(restored.room.players[0]?.browserId).toBe(token(1));
   expect(applyPhoneEvent(restored.room, identity(3), { type: 'resume', seatToken: token(6) }, clock.now()).result).toMatchObject({ reason: 'removed' });
 });
@@ -65,4 +68,31 @@ it('PLAT-011 elects a connected phone ahead of an earlier local seat after remov
   expect(applyHostEvent(state, { type: 'remove', seat: 1 }, 1000).state.leader).toBe(3);
   const offline = { ...state, players: state.players.map(p => p.seat === 3 ? { ...p, disconnectedAt: 1000 } : p) };
   expect(applyHostEvent(offline, { type: 'remove', seat: 1 }, 1000).state.leader).toBe(2);
+});
+
+it.each(['host', 'leader'] as const)('PLAT-011 PLAT-034 %s removal blocks the owner, claimer and claim token', actor => {
+  let state = applyHostEvent(room(), { type: 'disconnect', seat: 3 }, 1000).state;
+  state = applyPhoneEvent(state, identity(8), { type: 'claim', seat: 3, seatToken: token(9) }, 1001).state;
+  expect(state.players.find(p => p.seat === 3)?.claimedBy).toBe(token(8));
+  state = applyPhoneEvent(state, identity(8), { type: 'resume', seatToken: token(9) }, 1002).state;
+  expect(state.players.find(p => p.seat === 3)?.claimedBy).toBe(token(8));
+  state = (actor === 'host' ? applyHostEvent(state, { type: 'remove', seat: 3 }, 1003)
+    : applyPhoneEvent(state, identity(1), { type: 'remove', seat: 3 }, 1003)).state;
+  for (const id of [identity(3), identity(8)]) for (const event of [
+    { type: 'join', name: null, seatToken: token(7) },
+    { type: 'claim', seat: 2, seatToken: token(7) },
+  ]) expect(applyPhoneEvent(state, id, event, 1004).result).toMatchObject({ ok: false, reason: 'removed' });
+  expect(applyPhoneEvent(state, identity(7), { type: 'resume', seatToken: token(9) }, 1004).result).toMatchObject({ ok: false, reason: 'removed' });
+});
+it('PLAT-011 PLAT-034 owner takeover rotates the token and retains former claimers for removal', () => {
+  let state = applyHostEvent(room(), { type: 'disconnect', seat: 3 }, 1000).state;
+  state = applyPhoneEvent(state, identity(8), { type: 'claim', seat: 3, seatToken: token(9) }, 1001).state;
+  state = applyPhoneEvent(state, identity(3), { type: 'join', name: null, seatToken: token(7) }, 1002).state;
+  expect(state.players.find(p => p.seat === 3)?.claimedBy).toBeUndefined();
+  expect(state.players.find(p => p.seat === 3)?.seatToken).toBe(token(7));
+  expect(applyPhoneEvent(state, identity(8), { type: 'resume', seatToken: token(9) }, 1002).result).toMatchObject({ reason: 'seat-expired' });
+  state = applyHostEvent(state, { type: 'remove', seat: 3 }, 1003).state;
+  expect(state.blocked?.at(-1)?.formerClaimers).toContain(token(8));
+  expect(applyPhoneEvent(state, identity(3), { type: 'join', name: null, seatToken: token(7) }, 1004).result).toMatchObject({ reason: 'removed' });
+  expect(applyPhoneEvent(state, identity(8), { type: 'join', name: null, seatToken: token(7) }, 1004).result).toMatchObject({ reason: 'removed' });
 });

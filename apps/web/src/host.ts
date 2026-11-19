@@ -46,6 +46,9 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
   let teamSetup: (TeamSetupView & { refusal?: SetupRefusal | null }) | null = null;
   let teamRevision = 0;
   let refusalTimer: unknown;
+  let rejoinNotice: Exclude<LobbyInput['rejoinNotice'], undefined> = null;
+  let claimSerial = 0;
+  let claimTimer: unknown;
   const chosenSettings = new Map<string, SettingsValues>();
   const preparedSetups = new Map<string, PreparedSetup>();
   let setupGeneration = 0;
@@ -116,7 +119,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
   }
   const unsubscribeOnline = deps.online?.subscribe(() => { if (pairing === 'unreachable') void start(); });
   function publish(): void {
-    if (!stopped) changed({ room: roomAdapter?.room ?? createRoom(), links, pairing, code, picker, teamSetup });
+    if (!stopped) changed({ room: roomAdapter?.room ?? createRoom(), links, pairing, code, picker, teamSetup, rejoinNotice });
   }
   function sendTeams(): void {
     if (!roomAdapter) return;
@@ -200,7 +203,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     const base = pickerView(picker, roomAdapter.room, gameMetas);
     const message = pairing === 'closed-room' && roomAdapter.room.phase === 'lobby' ? { ...base, reason: CLOSED_ROOM_REASON } : base;
     for (const player of roomAdapter.room.players) if (player.disconnectedAt === null) {
-      if (player.seat === roomAdapter.room.leader && !isLocalSeat(player)) peers.get(player.connectionId)?.sendHost({ v: 1, t: 'view', rev: 0, view: { kind: 'room-players', players: roomAdapter.room.players.filter(p => !isLocalSeat(p)).map(p => ({ seat: p.seat, name: p.name })) } });
+      if (!isLocalSeat(player)) peers.get(player.connectionId)?.sendHost({ v: 1, t: 'view', rev: 0, view: { kind: 'room-players', players: roomAdapter.room.players.filter(p => !isLocalSeat(p)).map(p => ({ seat: p.seat, name: p.name, connected: p.disconnectedAt === null })) } });
       peers.get(player.connectionId)?.sendHost(message);
     }
   }
@@ -296,6 +299,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     if (picker.screen === 'starting') picker = pickerFailed(picker, gameMetas);
     loadAttempt++; acceptedAt = -Infinity; acceptedLeader = null;
     deps.clock.cancel(refusalTimer);
+    deps.clock.cancel(claimTimer); rejoinNotice = null;
     checkpoints?.stop(); checkpoints = undefined;
     roomAdapter?.stop(); roomAdapter = undefined;
     link?.stop(); link = undefined;
@@ -385,6 +389,11 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       const captured = snapshot;
       let previousRoom = captured.room;
       roomAdapter = createReconnectRoom({ room: captured.room, clock: deps.clock, mintToken: () => deps.mintToken(),
+        claimed: name => {
+          deps.clock.cancel(claimTimer);
+          rejoinNotice = { id: ++claimSerial, text: `${name} is back on a new phone` };
+          claimTimer = deps.clock.schedule(() => { rejoinNotice = null; publish(); }, 5000);
+        },
         changed: room => {
           if (snapshot) snapshot.scores = Object.fromEntries(Object.entries(snapshot.scores).filter(([id]) => room.players.some(p => id === `seat-${String(p.seat)}`)));
           if (!room.players.length) { savedTeams = null; teamNotices.clear(); teamSetup = null; teamRevision++; sendTeams(); }
@@ -471,6 +480,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     leaderInput(connection: string, action: PickerInput, revision = picker.revision): void { input(connection, { v: 1, t: 'picker-input', input: action, revision }); },
     roomInput(event: HostEvent): void { roomAdapter?.host(event); },
     sessionEvent(event: SessionEvent): void {
+      if (event.type === 'waiting') return; // Presentation/status only; not a match lifecycle transition.
       if (event.type === 'paused') roomAdapter?.host({ type: 'phase', phase: event.paused ? 'paused' : 'playing', allowRunningJoin: runningAllowsJoin });
       else if (event.type === 'results') {
         if (snapshot && roomAdapter?.room.phase !== 'results') {

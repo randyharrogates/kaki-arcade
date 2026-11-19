@@ -124,6 +124,9 @@ export function createPhoneReconnect(o: PhoneReconnectOptions) {
     const checked = validateHostMessage(input);
     if (!checked.ok) return;
     const message = checked.value;
+    if (message.t === 'view' && message.view && typeof message.view === 'object' && !Array.isArray(message.view) && message.view.kind === 'rejoin-seats') {
+      cancel(); awaiting = null;
+    }
     if (message.t === 'seat' && code) {
       nickname = message.name; droppedAt = null; failures = 0; awaiting = null; inSeat = true;
       saved = { code, seatToken: message.seatToken, nickname, roomToken, droppedAt: null };

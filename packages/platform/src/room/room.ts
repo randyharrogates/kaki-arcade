@@ -33,7 +33,13 @@ export interface RoomPlayer {
   readonly colour: number;
   readonly name: string;
   readonly seatToken: string;
+  /** Admission identity; host-private and never rotated. */
+  readonly seatKey?: string;
+  readonly formerClaimers?: readonly string[];
+  readonly tokenRotated?: boolean;
   readonly browserId?: string | undefined;
+  /** Host-private browser currently claiming another browser’s seat. */
+  readonly claimedBy?: string | undefined;
   readonly deviceId: string;
   readonly connectionId: string;
   readonly disconnectedAt: number | null;
@@ -45,7 +51,7 @@ export interface RoomPlayer {
 }
 export interface RoomState {
   /** Host-private and durable across reloads; excluded from publicRoom. */
-  readonly blocked?: readonly { browserId: string; seatToken: string }[];
+  readonly blocked?: readonly { browserId: string; claimedBy?: string | undefined; formerClaimers?: readonly string[]; seatToken: string }[];
   readonly players: readonly RoomPlayer[];
   readonly leader: number | null;
   readonly phase: RoomPhase;
@@ -80,8 +86,13 @@ export type PhoneEvent = {
   readonly name: string | null;
   readonly seatToken: string;
 } | {
+  readonly type: 'claim';
+  readonly seat: number;
+  readonly seatToken: string;
+} | {
   readonly type: 'resume';
   readonly seatToken: string;
+  readonly freshToken?: string;
 } | {
   readonly type: 'rename';
   readonly name: string;
@@ -213,6 +224,7 @@ function validEvent(value: unknown, host: boolean): boolean {
   switch (value.type) {
     case 'join': return token && (value.name === null || typeof value.name === 'string');
     case 'resume': return token;
+    case 'claim': return seat && token;
     case 'rename': return typeof value.name === 'string';
     case 'remove': return seat;
     case 'leave': return true;
@@ -278,7 +290,7 @@ function apply(state: RoomState, input: unknown, time: number,
   }
   const now = Math.max(Math.floor(time), state.clock);
   const players = state.players.filter((p) => {
-    const expired = p.disconnectedAt !== null && now - p.disconnectedAt > RECONNECT_WINDOW_MS;
+    const expired = state.phase !== 'playing' && state.phase !== 'paused' && p.disconnectedAt !== null && now - p.disconnectedAt > RECONNECT_WINDOW_MS;
     if (expired)
       effects.push({ type: 'seat-expired', seat: p.seat });
     return !expired;
@@ -307,12 +319,16 @@ function apply(state: RoomState, input: unknown, time: number,
     next = { ...next, phase: event.phase, allowRunningJoin: event.allowRunningJoin };
     return finish();
   }
-  if (event.type === 'resume' || event.type === 'join') {
-    if (next.blocked?.some(p => p.seatToken === event.seatToken || p.browserId !== '' && p.browserId === identity?.browserId)) return finish('removed');
-    const existing = event.type === 'resume'
+  if (event.type === 'resume' || event.type === 'join' || event.type === 'claim') {
+    if (event.type === 'claim' && !identity?.browserId) return finish('seat-expired');
+    if (next.blocked?.some(p => ('seatToken' in event && p.seatToken === event.seatToken) || p.browserId !== '' && p.browserId === identity?.browserId || p.claimedBy !== undefined && p.claimedBy === identity?.browserId || p.formerClaimers?.some(id => id === identity?.browserId))) return finish('removed');
+    const own = identity?.browserId ? next.players.find(p => !isLocalSeat(p) && p.browserId === identity.browserId) : undefined;
+    const existing = own ?? (event.type === 'claim'
+      ? next.players.find(p => p.seat === event.seat && p.disconnectedAt !== null && !isLocalSeat(p))
+      : event.type === 'resume'
       ? next.players.find((p) => p.seatToken === event.seatToken)
       : next.players.find((p) => p.connectionId === identity?.connectionId
-        || p.deviceId === identity?.deviceId);
+        || p.deviceId === identity?.deviceId));
     if (existing) {
       if (event.type === 'join' && existing.connectionId === identity?.connectionId) {
         notice(existing, false, true);
@@ -329,9 +345,16 @@ function apply(state: RoomState, input: unknown, time: number,
               ? { ...p, restoreDeadline: now + 20000 } : p)
         };
       }
+      const retaking = Boolean(own && (existing.claimedBy !== undefined || existing.tokenRotated === true));
       const restored = {
         ...existing, disconnectedAt: null, awaitingRestore: false,
-        browserId: identity?.browserId ?? existing.browserId,
+        browserId: existing.browserId ?? identity?.browserId,
+        claimedBy: own ? undefined : event.type === 'claim' && existing.browserId
+          ? identity?.browserId : existing.claimedBy,
+        seatKey: existing.seatKey ?? existing.seatToken,
+        formerClaimers: [...new Set([...(existing.formerClaimers ?? []), ...(existing.claimedBy ? [existing.claimedBy] : [])])],
+        tokenRotated: (existing.tokenRotated ?? false) || event.type === 'claim' && !own,
+        seatToken: retaking ? (event.type === 'resume' ? event.freshToken ?? event.seatToken : event.seatToken) : event.type === 'claim' && !own ? event.seatToken : existing.seatToken,
         deviceId: identity?.deviceId ?? existing.deviceId,
         connectionId: identity?.connectionId ?? existing.connectionId
       };
@@ -339,7 +362,7 @@ function apply(state: RoomState, input: unknown, time: number,
       notice(restored, false, true);
       return finish();
     }
-    if (event.type === 'resume')
+    if (event.type === 'resume' || event.type === 'claim')
       return finish('seat-expired');
   }
   const seat = identity ? next.players.find((p) => p.seat === identity.seat &&
@@ -350,7 +373,8 @@ function apply(state: RoomState, input: unknown, time: number,
     if (identity && (!isRoomLeader(next, seat ?? 0) || seat === event.seat)) return finish('bad-event');
     const removed = next.players.find(p => p.seat === event.seat);
     if (!removed) return finish('player-missing');
-    next = { ...next, players: next.players.filter(p => p !== removed), blocked: [...(next.blocked ?? []), { browserId: removed.browserId ?? '', seatToken: removed.seatToken }].slice(-64) };
+    if (isLocalSeat(removed)) return finish('bad-event');
+    next = { ...next, players: next.players.filter(p => p !== removed), blocked: [...(next.blocked ?? []), { browserId: removed.browserId ?? '', ...(removed.claimedBy ? { claimedBy: removed.claimedBy } : {}), formerClaimers: removed.formerClaimers ?? [], seatToken: removed.seatToken }].slice(-64) };
     effects.push({ type: 'player-left', seat: removed.seat }, { type: 'close', connectionId: removed.connectionId, reason: 'removed' });
     return finish();
   }
@@ -382,6 +406,7 @@ function apply(state: RoomState, input: unknown, time: number,
       `Player ${String(number)}` : requested, next.players.filter((p) => p !== player), number);
     const updated: RoomPlayer = player ? { ...player, name } : {
       seat: number,
+      seatKey: event.type === 'join' ? event.seatToken : '',
       colour: number - 1, name,
       browserId: identity?.browserId,
       seatToken: event.type === 'join' ? event.seatToken : '', deviceId: identity?.deviceId ?? '',

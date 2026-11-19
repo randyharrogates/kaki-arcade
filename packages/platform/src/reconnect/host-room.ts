@@ -35,6 +35,7 @@ export function createReconnectRoom(o: {
   mintToken(): string;
   session?: { updateRoom(room: RoomState): void };
   changed?(room: RoomState): void;
+  claimed?(name: string): void;
   seated?(connectionId: string, seat: number, peer: ReconnectHostPeer): void;
 }) {
   let room = o.room;
@@ -49,16 +50,19 @@ export function createReconnectRoom(o: {
     let due = Infinity;
     for (const p of room.players) {
       if (p.disconnectedAt === null) continue;
-      due = Math.min(due, p.disconnectedAt + RECONNECT_WINDOW_MS + 1);
+      if (room.phase !== 'playing' && room.phase !== 'paused') due = Math.min(due, p.disconnectedAt + RECONNECT_WINDOW_MS + 1);
       if (p.seat === room.leader) {
         if (p.awaitingRestore) due = Math.min(due, p.restoreDeadline ?? Infinity);
-        else due = Math.min(due, p.disconnectedAt + LEADER_GRACE_MS);
+        else if (room.clock < p.disconnectedAt + LEADER_GRACE_MS) due = Math.min(due, p.disconnectedAt + LEADER_GRACE_MS);
       }
     }
     if (Number.isFinite(due)) timer = o.clock.schedule(() => {
       commit(applyHostEvent(room, { type: 'expire' }, o.clock.now()));
     }, Math.max(0, due - o.clock.now()));
   }
+  const choosing = new Map<string, { name: string | null; browserId?: string | undefined }>();
+  const choices = () => room.players.filter(p => p.disconnectedAt !== null && p.connectionId !== 'host-local-player').map(p => ({ seat: p.seat, colour: p.colour, name: p.name }));
+  function offer(id: string): void { peers.get(id)?.sendHost({ v, t: 'view', rev: 0, view: { kind: 'rejoin-seats', players: choices() } }); }
   function commit(result: RoomResult, id?: string): void {
     room = result.state;
     for (const effect of result.effects) {
@@ -89,6 +93,7 @@ export function createReconnectRoom(o: {
         team: seat?.team ? { id: seat.team === 'red' ? 0 : 1,
           name: seat.team === 'red' ? 'Red' : 'Blue' } : null });
     }
+    for (const id of choosing.keys()) offer(id);
     o.changed?.(room); schedule();
   }
   schedule();
@@ -108,8 +113,29 @@ export function createReconnectRoom(o: {
       const identity = { browserId: message.t === 'hello' || message.t === 'resume' ? message.browserId : seat?.browserId, connectionId: id, deviceId: seat?.deviceId ?? id,
         ...(seat ? { seat: seat.seat } : {}) };
       let result: RoomResult;
+      if (message.t === 'hello' && !seat && !room.blocked?.some(p => p.browserId && p.browserId === message.browserId || p.claimedBy !== undefined && p.claimedBy === message.browserId || p.formerClaimers?.some(id => id === message.browserId)) && !room.players.some(p => message.browserId && p.browserId === message.browserId) && choices().length) {
+        choosing.set(id, { name: message.name, browserId: message.browserId }); offer(id); return;
+      }
+      if (message.t === 'action' && message.data && typeof message.data === 'object' && !Array.isArray(message.data) && message.data.control === 'rejoin-seat') {
+        const request = choosing.get(id);
+        if (!request || seat) return;
+        if (message.data.seat !== null && request.browserId === undefined) {
+          choosing.delete(id); peer.sendHost({ v, t: 'refused', reason: 'seat-expired' }); return;
+        }
+        const actor = { ...identity, browserId: request.browserId };
+        result = message.data.seat === null
+          ? applyPhoneEvent(room, actor, { type: 'join', name: request.name, seatToken: o.mintToken() }, o.clock.now())
+          : applyPhoneEvent(room, actor, { type: 'claim', seat: message.data.seat, seatToken: o.mintToken() }, o.clock.now());
+        if (!result.result.ok && message.data.seat !== null && result.result.reason !== 'removed') { offer(id); return; }
+        if (result.result.ok && message.data.seat !== null) {
+          const claimed = result.state.players.find(p => p.connectionId === id);
+          if (claimed && claimed.seatToken !== room.players.find(p => p.seat === claimed.seat)?.seatToken) o.claimed?.(claimed.name);
+        }
+        choosing.delete(id);
+        if (!result.result.ok && result.result.reason === 'game-running') waiting.set(id, request);
+      } else
       if (message.t === 'resume') result = applyPhoneEvent(room, identity,
-        { type: 'resume', seatToken: message.seatToken }, o.clock.now());
+        { type: 'resume', seatToken: message.seatToken, freshToken: o.mintToken() }, o.clock.now());
       else if (message.t === 'hello') result = applyPhoneEvent(room, identity,
         { type: 'join', name: message.name, seatToken: o.mintToken() }, o.clock.now());
       else if (message.t === 'action' && message.data && typeof message.data === 'object' && !Array.isArray(message.data) && message.data.control === 'remove-player') result = applyPhoneEvent(room, identity, { type: 'remove', seat: message.data.seat }, o.clock.now());
@@ -133,7 +159,7 @@ export function createReconnectRoom(o: {
     },
     dropped(id: string): void {
       if (stopped || !peers.delete(id)) return;
-      waiting.delete(id);
+      waiting.delete(id); choosing.delete(id);
       const seat = room.players.find(p => p.connectionId === id);
       if (seat) commit(applyHostEvent(room, { type: 'disconnect', seat: seat.seat },
         o.clock.now()));
@@ -148,13 +174,17 @@ export function createReconnectRoom(o: {
           if (!(canAskToJoin(room.phase) || room.allowRunningJoin)) break;
           waiting.delete(id);
           if (room.players.some(player => player.connectionId === id)) continue;
-          adapter.receive(id, { v, t: 'hello', ...request });
+          const result = applyPhoneEvent(room, { connectionId: id, deviceId: id, browserId: request.browserId }, { type: 'join', name: request.name, seatToken: o.mintToken() }, o.clock.now());
+          const accepted = result.state.players.find(p => p.connectionId === id);
+          const peer = peers.get(id);
+          if (accepted && peer) { peer.bindIdentity(accepted.seatToken); o.seated?.(id, accepted.seat, peer); }
+          commit(result, id);
         }
       }
     },
     stop(): void {
       stopped = true; o.clock.cancel(timer);
-      const old = [...peers.values()]; peers.clear(); waiting.clear();
+      const old = [...peers.values()]; peers.clear(); waiting.clear(); choosing.clear();
       for (const peer of old) peer.close();
     },
   };

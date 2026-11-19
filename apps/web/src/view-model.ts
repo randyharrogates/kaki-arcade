@@ -9,6 +9,7 @@ import { PLAYER_COLOURS } from '@kaki/ui';
 export type PairingState = 'creating' | 'restoring' | 'ready' | 'reconnecting' | 'unreachable' | 'expired' | 'replaced' | 'closed-room';
 import type { PickerModel } from '@kaki/platform';
 export interface LobbyInput {
+  rejoinNotice?: { id: number; text: string } | null;
   teamSetup?: TeamSetupView | null;
   picker?: PickerModel;
   room: RoomState;

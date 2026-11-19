@@ -128,6 +128,7 @@ export const peekPoker: GameModule<State, Settings, ReturnType<typeof publicView
   pause: (state) => state.phase === 'memorise' ? { ...state, paused: true } : state,
   resume: (state) => state.paused ? { ...state, paused: false } : state,
   controllerLayout, privateView, publicView, results, secrets, scrambleSecrets,
+  pauseOnDisconnect: (state) => state.phase !== 'scoreboard' && state.phase !== 'over',
   isOver: (state) => state.phase === 'over',
   assets: () => [],
   save: (state) => ({ best: state.solo && state.players.length === 1 && state.phase === 'over' ?

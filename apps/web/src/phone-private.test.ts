@@ -99,3 +99,11 @@ it('PLAT-023 phone session button sends pause/resume only while connected and au
   const count = f.sent.length; f.phone.sessionCommand(); expect(f.sent).toHaveLength(count);
   f.disconnect(); f.phone.sessionCommand(); expect(f.sent).toHaveLength(count); f.phone.stop();
 });
+it('PLAT-035 waiting messages and countdown never replace a game’s private-view revision', () => {
+  const f = fixture(); f.room('playing'); f.privateView(4);
+  f.send({ v: 1, t: 'view', rev: 0, view: { kind: 'rejoin-waiting', message: 'Waiting for Randy to rejoin', countdown: null } });
+  expect(f.view.waiting?.message).toBe('Waiting for Randy to rejoin'); expect(f.view.gameViewRevision).toBe(4);
+  f.send({ v: 1, t: 'view', rev: 0, view: { kind: 'rejoin-waiting', message: 'Waiting for Randy to rejoin', countdown: 3 } });
+  expect(f.view.waiting?.countdown).toBe(3); expect(f.view.gameViewRevision).toBe(4);
+  f.phone.stop();
+});

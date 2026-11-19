@@ -37,6 +37,7 @@ it('PLAT-003 deterministic builds and golden hash', () => {
   const a = run();
   expect(run()).toBe(a);
   expect(createHash('sha256').update(a).digest('hex')).toBe(
-    '9ed19a1b312bb103c36f4fb6b8dc88e2ee6a569d26784d57a5185af13a22ecaa',
+    // PLAT-034 admission keys and retained claim metadata are part of the deterministic host state.
+    '6d593dca258b3c7cf3860d9b36e97829962b4ef115e54ed2fb49702bd03fddb5',
   );
 });

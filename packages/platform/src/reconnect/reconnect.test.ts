@@ -144,6 +144,7 @@ describe('PLAT-007 automatic seat return over real signalling and simulated data
         p.wire?.peer?.close();
       }
       await settle(r.clock); r.clock.advance(gap);
+      const sentBeforeReturn = r.sent.length;
       if (mode === 'reload') returning = createPhoneReconnect(p.options);
       else { r.server.offlinePhones = false; p.lifecycle('wake'); }
       await settle(r.clock);
@@ -151,13 +152,16 @@ describe('PLAT-007 automatic seat return over real signalling and simulated data
       const after = r.room.room.players[0];
       expect(after).toMatchObject({ seat: before?.seat, colour: before?.colour,
         name: before?.name, seatToken: before?.seatToken, disconnectedAt: null });
+      // PLAT-035: the retained state is restored after the reconnect countdown.
+      if (session.paused) { session.advance(3000); await settle(r.clock); }
       expect(session.state).toEqual(state);
       expect(fixture.results(session.state).players[0]?.score).toBe(score);
       expect(p.messages.findLast(m => m.t === 'view')).toMatchObject({
         t: 'view', view: privateBefore && 'view' in privateBefore ? privateBefore.view : null,
       });
       // Reconnect reset accepts sequence zero at once, with no acknowledgement barrier.
-      expect(r.sent.slice(-2).map(s => s.kind)).toEqual(['layout', 'view']);
+      expect(r.sent.slice(sentBeforeReturn).map(s => s.kind)).toContain('layout');
+      expect(r.sent.at(-1)?.kind).toBe('view');
       p.wire?.peer?.inputSender?.change(1, { stickX: 0, stickY: 0, tilt: null });
       await settle(r.clock); session.advance(1000 / 60);
       expect(session.state.presses).toBe(1);
@@ -183,6 +187,8 @@ describe('PLAT-007 automatic seat return over real signalling and simulated data
     p.lifecycle('wake'); await settle(r.clock);
     expect(p.driver.state).toBe('back-in-seat');
     expect(r.room.room.players[0]?.team).toBe(team);
+    // A disconnect pause resumes after 3-2-1; a chosen pause stays paused.
+    if (mode !== 'pause' && session.paused) session.advance(3000);
     expect(session.paused).toBe(mode === 'pause');
     expect(r.room.room.leader).toBe(2);
     r.stop();

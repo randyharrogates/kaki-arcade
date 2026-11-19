@@ -1,3 +1,5 @@
+import { rejoinSeats, rejoinWaiting } from './rejoin';
+import type { RejoinSeat } from './rejoin';
 import { PAD_BUTTON_BIT } from '@kaki/platform';
 import type { AnalogInput } from '@kaki/protocol';
 import { CLOSED_ROOM_REASON } from './team-setup';
@@ -26,10 +28,10 @@ export function normaliseJoinCode(code: string): string {
 /** Host-private identities never enter the console's public player menu. */
 function roomPlayers(value: JsonValue): NonNullable<PhoneView['players']> | null {
   if (!value || typeof value !== 'object' || Array.isArray(value) || value.kind !== 'room-players' || !Array.isArray(value.players)) return null;
-  const players: { seat: number; name: string }[] = [];
+  const players: { seat: number; name: string; connected?: boolean }[] = [];
   for (const player of value.players) {
     if (!player || typeof player !== 'object' || Array.isArray(player) || typeof player.seat !== 'number' || typeof player.name !== 'string') return null;
-    players.push({ seat: player.seat, name: player.name });
+    players.push({ seat: player.seat, name: player.name, connected: player.connected !== false });
   }
   return players;
 }
@@ -63,7 +65,9 @@ export const phoneCopy = {
 } as const;
 export type PhoneState = keyof typeof phoneCopy;
 export interface PhoneView {
-  players?: readonly { seat: number; name: string }[] | undefined;
+  rejoinSeats?: RejoinSeat[] | undefined;
+  waiting?: { message: string | null; countdown: number | null } | undefined;
+  players?: readonly { seat: number; name: string; connected?: boolean }[] | undefined;
   resultStats?: { label: string; value: string | number }[];
   gamePrivateView: PrivateView | null; gameLayout?: Layout | undefined; gameViewRevision?: number | undefined; teamSetup: TeamSetupView | null; layout: boolean; theme: ThemeName; picker: PickerState | null; phase: RoomPhase; state: PhoneState; title: string; detail: string; code: string; name: string;
   seat: number | null; colour: string; leader: boolean; connected: boolean;
@@ -135,8 +139,11 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     changed(view);
   }
   function message(message: HostMessage): void {
-    if (message.t === 'view' && roomPlayers(message.view)) { view = { ...view, players: roomPlayers(message.view) ?? [] }; changed(view); }
+    if (message.t === 'view' && rejoinSeats(message.view)) { cancelConnecting(); view = { ...view, rejoinSeats: rejoinSeats(message.view) ?? [] }; changed(view); }
+    else if (message.t === 'view' && rejoinWaiting(message.view)) { view = { ...view, waiting: rejoinWaiting(message.view) ?? undefined }; changed(view); }
+    else if (message.t === 'view' && roomPlayers(message.view)) { view = { ...view, players: roomPlayers(message.view) ?? [] }; changed(view); }
     else if (message.t === 'seat') {
+      view = { ...view, rejoinSeats: undefined };
       naming = false; everSeated = true; failures = 0; allowedAt = 0; unavailable = false;
       const notice = message.nameReplaced ? 'Your name was changed by the room.' : !message.resumed && message.name !== requestedName ? 'Name taken. The room added a number to your name.' : '';
       publish(message.nameReplaced ? 'name-replaced' : notice ? 'name-taken' : 'lobby', { seat: message.seat, colour: `var(--ka-seat-${String(message.colour + 1)})`, name: message.name, notice });
@@ -168,6 +175,7 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
       ...(deps.lifecycle ? { lifecycle: deps.lifecycle } : {}),
       state(state: PhoneReconnectState) {
         if (current !== generation) return;
+        if (state === 'replaced') { everSeated = false; publish('entry', { seat: null, colour: '', leader: false, notice: '', phase: 'lobby', rejoinSeats: undefined, waiting: undefined }); return; }
         if (state === 'back-in-seat') { if (view.seat !== null) publish('lobby'); return; } // Seat message supplies the public identity.
         // No host has answered a fresh join yet: keep its connecting window running.
         // A phone that never had a seat has no hold to end: keep (or show) the advice instead (D-267).
@@ -204,6 +212,10 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     publish(codeQuery !== null && !query ? 'invalid-code' : 'entry', { code: query || (codeQuery ?? '') });
   }
   return {
+    claimSeat(seat: number | null): void {
+      peer?.sendPhone({ v: 1, t: 'action', rev: 0, viewRev: null, data: { control: 'rejoin-seat', seat } });
+      if (seat === null) { view = { ...view, rejoinSeats: undefined }; changed(view); }
+    },
     removePlayer(seat: number): void {
       if (view.connected && view.leader && seat !== view.seat) peer?.sendPhone({ v: 1, t: 'action', rev: 0, viewRev: null, data: { control: 'remove-player', seat } });
     },

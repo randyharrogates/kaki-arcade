@@ -1,6 +1,7 @@
+import { RejoinNotice } from './rejoin-notice';
 import { SoundHint } from './sound-hint';
 import { preloadShellPictures } from './shell-images';
-import { PausePanel } from './pause-panel';
+import { SessionPausePanel } from './pause-panel';
 import type { Sound } from '@kaki/platform';
 import { sharedHostSound } from './host-sound';
 import { isLocalSeat, activeScreenSound } from '@kaki/platform';
@@ -26,7 +27,7 @@ import { createRoom, HOST_STORAGE_KEY } from '@kaki/platform';
 import { browserDependencies } from './browser';
 import { createHost } from './host';
 import { lobbyView, seatIdentity } from './view-model';
-import type { LobbyView } from './view-model';
+import type { LobbyView, LobbyInput } from './view-model';
 import { Overlap } from './Overlap';
 import { qrPath } from './qr';
 import { Icon } from './icons';
@@ -74,6 +75,7 @@ export function HostLobby() {
   const displays = useMemo(sessionDisplayStore, []);
   const [picker, setPicker] = useState(initialPicker(gameMetas));
   const [teamSetup, setTeamSetup] = useState<TeamSetupView | null>(null);
+  const [rejoinNotice, setRejoinNotice] = useState<LobbyInput['rejoinNotice']>(null);
   const [room, setRoom] = useState<RoomState>(createRoom());
   const previous = useRef<LobbyView['seats']>([]);
   const changedSeats = view.seats.filter((seat, i) => !previous.current[i] || seatIdentity(seat) !== seatIdentity(previous.current[i])).length;
@@ -98,7 +100,7 @@ export function HostLobby() {
     const clock = { now: () => Date.now() };
     let demoClock = false;
     const present = (input: Parameters<typeof lobbyView>[0]): void => {
-      if (alive) { setPicker(input.picker ?? initialPicker(gameMetas)); setRoom(input.room); setTeamSetup(input.teamSetup ?? null); }
+      if (alive) { setRejoinNotice(input.rejoinNotice ?? null); setPicker(input.picker ?? initialPicker(gameMetas)); setRoom(input.room); setTeamSetup(input.teamSetup ?? null); }
       latest = { ...input, origin: location.origin, joinOrigin: String(import.meta.env.KAKI_JOIN_ORIGIN) };
       if (alive) setView(lobbyView(latest, demoClock ? { now: () => performance.now() - demoStart } : clock));
     };
@@ -185,10 +187,10 @@ export function HostLobby() {
     <div class="announcements" aria-live="polite" aria-atomic="true">{announcement.current}</div>
     <ol class="seats" data-wrap={view.seats.some(seat => seat.connection === 'Scan to join' || seat.connection === 'Seat held')} aria-label="Player seats">{view.seats.map((seat, index) => <Seat key={seat.number} localSeat={room.players.find(isLocalSeat)?.seat} seat={seat} remove={() => { host.current?.removePlayer(seat.number); }} index={changedSeats > 1 ? index : 0}/>)}</ol>
   </main>;
-  return <><SessionSurface sound={audio.sound} displays={displays} room={room} picker={picker} lobby={lobby} teamSetup={teamSetup} localDevice={localDevice} command={(action, value) => { host.current?.keyboard(action, value); }}
+  return <><RejoinNotice notice={rejoinNotice}/><SessionSurface sound={audio.sound} displays={displays} room={room} picker={picker} lobby={lobby} teamSetup={teamSetup} localDevice={localDevice} command={(action, value) => { host.current?.keyboard(action, value); }}
     startTeams={() => { host.current?.keyboard('teams-start'); }}
     back={() => { host.current?.returnToPicker(); }} again={() => { host.current?.playAgain(); }} continued={() => { host.current?.continueResults(); }}/>
-    <PausePanel sound={audio.sound} paused={room.phase === 'paused'} resume={() => { host.current?.keyboard('resume'); }} quit={() => { host.current?.keyboard('quit'); }}/></>;
+    <SessionPausePanel displays={displays} codeGroups={view.codeGroups} joinLink={view.joinLink} sound={audio.sound} paused={room.phase === 'paused'} resume={() => { host.current?.keyboard('resume'); }} quit={() => { host.current?.keyboard('quit'); }}/></>;
 }
 export function SessionSurface({ displays, room, picker, lobby, teamSetup, startTeams, back, again, continued, command, localDevice, sound }: {
   sound: Sound;
