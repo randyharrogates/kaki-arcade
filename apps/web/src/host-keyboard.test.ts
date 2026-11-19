@@ -18,11 +18,13 @@ it('PLAT-024 / CTRL-009 honours seats, leader validation, leave and reload', asy
   await host.start();
   host.keyboard('open'); expect(host.picker.screen).toBe('lobby');
   const sharedLocal = localPlayer();
+  const sendLocal = vi.spyOn(sharedLocal, 'sendHost');
   expect(host.joinLocal(sharedLocal)).toBe(true);
   const seatBeforePad = host.room.players[0];
   expect(host.joinLocal(sharedLocal)).toBe(true);
   expect(host.room.players).toEqual([seatBeforePad]);
   expect(host.room.leader).toBe(1);
+  expect(sendLocal.mock.calls.some(([message]) => message.t === 'view' && JSON.stringify(message.view).includes('room-players'))).toBe(false);
   const seatBeforeQuit = host.room.players[0];
   host.roomInput({ type: 'phase', phase: 'paused', allowRunningJoin: false });
   host.keyboard('quit');

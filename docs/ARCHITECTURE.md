@@ -359,7 +359,15 @@ Only the cue's oscillators and envelope gains are created during playback; no fi
   not-allowed from the pairing server do not tear down the channel, clear the stored seat or
   change what the phone shows; only with no open data channel do they mean the room is gone or
   the phone has been replaced (D-095 f). An ICE 'disconnected' state counts as channel loss only if it lasts 3 seconds. On the host, a room reported gone while a game is running over open links enters a closed state: play continues, no new phone or local join is accepted, the code is hidden and nothing more is checkpointed; after the game the TV offers a new room (D-099). A newly
-  entered valid room code wins over a stored seat. The host keeps its credentials, the room
+  entered valid room code wins over a stored seat.
+  `hello` and `resume` carry the browser's private `browserId` (localStorage `kaki.device`,
+  per-tab fallback on storage denial). The host keeps removed browser ids and seat tokens
+  privately in its room snapshot, refusing either match with `refused: removed`, alongside
+  `room-full`, `seat-expired` and `game-running`. A connected removed phone receives the
+  same refusal before its channel closes. The existing `view` path carries a `room-players` console menu
+  containing only seat numbers and names to the current leader; the leader requests removal through an `action` with `control: remove-player`
+  and a target `seat`. The host validates current leadership and rejects self-removal.
+  Browser ids, tokens and the blocked set never enter public room views or another phone. The host keeps its credentials, the room
   (seats, names, colours, teams, leader and each phone's original drop time), the last results, completed-round totals keyed by seat and then by game id (a results screen adds to the selected game's total once; an interrupted round adds nothing; a freed seat loses all its totals; a stored snapshot from before C-22 with one number per seat keeps its room and results and drops its scores, D-226, D-270)
   and the game selection with its `save()` output in `sessionStorage`
   (`kaki.host-reconnect.v1`, at most 64 KiB). It writes at most once a second plus at every

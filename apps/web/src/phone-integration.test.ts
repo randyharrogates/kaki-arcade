@@ -106,7 +106,8 @@ it.each(['room-not-found', 'room-expired', 'not-allowed'])('PLAT-002/003/004/007
   expect(views[0]?.state).toBe('unreachable');
   expect(dialTimes[0]?.filter(time => time > droppedAt).map(time => time - droppedAt)).toEqual([1000, 3000, 7000, 15000, 31000, 61000]);
   expect(hostView?.seats.filter(seat => seat.held).map(seat => seat.number)).toEqual([1]);
-  expect(views.slice(1, 8).map(view => ({ ...view, leader: false }))).toEqual(beforeOutage.slice(1, 8));
+  expect(views.slice(1, 8).map(view => ({ ...view, leader: false, players: undefined }))).toEqual(beforeOutage.slice(1, 8));
+  expect(views[1]?.players).toHaveLength(8);
   expect(views[1]?.leader).toBe(true); // Normal leader grace elapsed after the real channel loss.
   offline = false;
   for (let second = 0; second < 40; second++) { clock.advance(1000); await settle(clock); }

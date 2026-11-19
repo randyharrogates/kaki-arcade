@@ -161,7 +161,7 @@ export function browserDependencies(baseUrl: string, transportFactory: typeof cr
         onRoom: message => { acknowledgement = { code: message.code, hostToken: message.hostToken, reopened: message.reopened }; finish(); },
         onPeer: (id, peer) => {
           const channel = viewChannel(); channels.set(id, channel);
-          const wrapped = { ...peer, sendHost: (message: Parameters<typeof peer.sendHost>[0]) => channel.send(message, m => peer.sendHost(m)) };
+          const wrapped = { ...peer, sendHost: (message: Parameters<typeof peer.sendHost>[0]) => channel.send(message, (m, revisioned) => peer.sendHost(m, revisioned)) };
           links.peer(id, wrapped); callbacks.peer(id, wrapped);
         },
         onControl: (message, _identity, id) => { callbacks.control(id, channels.get(id)?.receive(message) ?? null); },

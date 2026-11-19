@@ -5,7 +5,7 @@ import type { PhoneSeat, PhoneSeatStore } from './phone-store';
 import type { ReconnectClock } from './storage';
 export type PhoneReconnectState = 'connecting' | 'hold-over' | 'back-in-seat' | 'seat-expired' |
   'room-gone' | 'room-full' | 'host-disconnected' | 'waiting-for-lobby' | 'left' | 'replaced' |
-  'out-of-date' | 'cannot-connect';
+  'out-of-date' | 'cannot-connect' | 'removed';
 /** Structural netcode surface: inject createPhoneTransport with browser adapters prebound. */
 export interface PhoneReconnectPeer {
   sendPhone(message: PhoneMessage): boolean;
@@ -22,6 +22,7 @@ export interface PhoneReconnectDial {
 }
 export interface PhoneReconnectOptions {
   store: PhoneSeatStore;
+  browserId?: string | undefined;
   clock: ReconnectClock;
   /** Required for a fresh join; omitted on page load when the store supplies it. */
   initial?: { code: string; nickname: string | null };
@@ -96,12 +97,12 @@ export function createPhoneReconnect(o: PhoneReconnectOptions) {
   }
   function hello(): void {
     awaiting = null;
-    if (!peer?.sendPhone({ v, t: 'hello', name: nickname })) awaiting = 'hello';
+    if (!peer?.sendPhone({ v, t: 'hello', name: nickname, ...(o.browserId ? { browserId: o.browserId } : {}) })) awaiting = 'hello';
   }
   function request(): void {
     if (!peer) return;
     awaiting = saved ? 'resume' : null;
-    if (saved && peer.sendPhone({ v, t: 'resume', seatToken: saved.seatToken }) && awaiting === 'resume')
+    if (saved && peer.sendPhone({ v, t: 'resume', seatToken: saved.seatToken, ...(o.browserId ? { browserId: o.browserId } : {}) }) && awaiting === 'resume')
       awaiting = null;
     if (!saved) hello();
   }
@@ -129,7 +130,8 @@ export function createPhoneReconnect(o: PhoneReconnectOptions) {
       o.store.write(saved); cancel(); o.clock.cancel(holdTimer); holdTimer = undefined;
       retry = undefined; state('back-in-seat');
     } else if (message.t === 'refused') {
-      if (message.reason === 'seat-expired') { expire(); hello(); }
+      if (message.reason === 'removed') terminal('removed', false);
+      else if (message.reason === 'seat-expired') { expire(); hello(); }
       else if (message.reason === 'room-full') terminal('room-full', false);
       else { awaiting = 'hello'; cancel(); state('waiting-for-lobby'); }
     } else if (message.t === 'room' && awaiting === 'resume') request();

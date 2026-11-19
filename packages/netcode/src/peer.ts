@@ -243,15 +243,16 @@ export function createPeer(options: PeerOptions) {
         else throw new Error('Too many pending candidates');
       });
     },
-    sendHost(message: HostMessage): boolean {
+    /** Adapters may send views outside the private-view revision space without advancing its fence. */
+    sendHost(message: HostMessage, revisioned = true): boolean {
       if (options.role !== 'host' || closed || control?.readyState !== 'open' || control.bufferedAmount > 16384) return false;
       const checked = validateHostMessage(message);
       if (!checked.ok) return false;
       if (message.t === 'layout' && message.rev === layoutRev) return false;
-      if (message.t === 'view' && message.rev === viewRev) return false;
+      if (message.t === 'view' && revisioned && message.rev === viewRev) return false;
       control.send(encodeHostMessage(checked.value));
       if (message.t === 'layout') layoutRev = message.rev;
-      if (message.t === 'view') viewRev = message.rev;
+      if (message.t === 'view' && revisioned) viewRev = message.rev;
       return true;
     },
     sendPhone(message: PhoneMessage): boolean {

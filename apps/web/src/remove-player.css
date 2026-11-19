@@ -1,0 +1,56 @@
+.remove-player { display: grid; gap: var(--ka-space-5); }
+.remove-confirm { transform-origin: top; animation: remove-confirm-in var(--ka-duration-base) var(--ka-ease-out); }
+@keyframes remove-confirm-in { from { opacity: 0; transform: scale(.95); } to { opacity: 1; transform: scale(1); } }
+
+
+.remove-player button { min-height: var(--ka-space-55); padding: var(--ka-space-5) var(--ka-space-8); }
+.remove-confirm { display: grid; gap: var(--ka-space-5); }
+.remove-confirm p { margin: 0; }
+.seat { position: relative; }
+.seat:has(.remove-player[data-confirm="true"]) { z-index: 1; }
+
+
+.remove-player .outgoing .remove-confirm { animation: remove-confirm-out var(--ka-duration-base-exit) var(--ka-ease-out); }
+@keyframes remove-confirm-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(.95); } }
+@media (prefers-reduced-motion: reduce) { .remove-confirm, .remove-player .outgoing .remove-confirm { animation: none; } }
+/* PLAT-011: reuse the name/status space; removal never changes the board rows. */
+.lobby .seats, .lobby .seat, .lobby .seat > .overlap { min-height: 0; }
+.lobby .seat-content {
+  position: relative;
+  padding-block: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  grid-template-rows: var(--ka-space-55) minmax(0, 1fr) var(--ka-space-55) calc(var(--ka-type-34) * var(--ka-line-body));
+  align-items: center;
+  justify-items: center;
+}
+.lobby .seat-number { grid-area: 1 / 1 / 2 / -1; }
+.lobby .nickname { grid-area: 2 / 1 / 3 / -1; height: auto; line-height: var(--ka-line-body); max-height: calc(var(--ka-type-34) * var(--ka-line-body) * 3); }
+.lobby .seat-content .connection { grid-area: 3 / 1; height: auto; min-height: 0; margin: 0; gap: var(--ka-space-5); }
+.lobby .seat-content:has(.remove-player) .connection { font-size: var(--ka-type-21); }
+.lobby .seat-content:has(.remove-player) .connection .icon { width: var(--ka-type-21); height: var(--ka-type-21); }
+/* Keep 34 px body glyphs inside their body-height row, including font descent. */
+.lobby .leader { grid-area: 4 / 1 / 5 / -1; height: calc(var(--ka-type-34) * var(--ka-line-body)); line-height: var(--ka-line-body); display: flex; align-items: center; gap: var(--ka-space-5); }
+.lobby .leader .icon { display: block; overflow: visible; }
+.lobby .remove-player { grid-area: 3 / 2; min-width: 0; width: 100%; min-height: var(--ka-space-55); }
+.lobby .remove-player button { font-size: var(--ka-type-21); min-width: 0; padding: var(--ka-space-5); }
+/* Retained fade layers must stay out of track sizing even after Cancel. */
+.lobby .remove-player > .overlap {
+  position: absolute;
+  inset-inline: var(--ka-space-13);
+  top: calc(var(--ka-space-55) + var(--ka-space-5));
+  bottom: calc(var(--ka-type-34) * var(--ka-line-body) + var(--ka-space-5));
+  min-height: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.lobby .remove-player[data-confirm="true"] .remove-confirm { pointer-events: auto; }
+.lobby .seat-content:has(.remove-player[data-confirm="true"]) > .nickname,
+.lobby .seat-content:has(.remove-player[data-confirm="true"]) > .connection { visibility: hidden; }
+.lobby .remove-confirm { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto var(--ka-space-55); align-content: center; font-size: var(--ka-type-21); }
+.lobby .remove-confirm p { grid-column: 1 / -1; overflow-wrap: anywhere; }
+.lobby .seats[data-wrap="true"] .connection { min-height: 0; }
+.lobby .seat-content:not(:has(.remove-player)) .connection { grid-column: 1 / -1; }
+
+.lobby .remove-player button:focus-visible { outline-offset: calc(-1 * var(--ka-space-5)); }

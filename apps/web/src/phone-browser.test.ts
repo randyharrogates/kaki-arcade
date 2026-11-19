@@ -45,3 +45,26 @@ it('DATA-003 phones send no counts when hidden or shown', () => {
   listeners.get('visibilitychange')?.(); listeners.get('pagehide')?.(); listeners.get('pageshow')?.();
   expect(hostCounts).not.toHaveBeenCalled(); expect(fetch).not.toHaveBeenCalled(); expect(beacon).not.toHaveBeenCalled(); unsubscribe?.();
 });
+
+it('PLAT-011 browser identity persists once in localStorage, with a stable per-tab fallback', () => {
+  const local = new MemoryStorage();
+  vi.stubGlobal('localStorage', local);
+  const first = phoneBrowserDependencies('').browserId;
+  expect(first).toMatch(/^[A-Za-z0-9_-]{16,128}$/);
+  expect(local.getItem('kaki.device')).toBe(first);
+  expect(phoneBrowserDependencies('').browserId).toBe(first);
+  const stored = 'other-browser-identity-123456';
+  local.setItem('kaki.device', stored);
+  expect(phoneBrowserDependencies('').browserId).toBe(stored);
+  vi.stubGlobal('localStorage', { getItem() { throw new Error('denied'); } });
+  const fallback = phoneBrowserDependencies('').browserId;
+  expect(phoneBrowserDependencies('').browserId).toBe(fallback);
+});
+
+it('PLAT-011 creates a LAN browser identity without randomUUID', async () => {
+  vi.resetModules();
+  vi.stubGlobal('crypto', { getRandomValues: (bytes: Uint8Array) => bytes.fill(17) });
+  vi.stubGlobal('localStorage', new MemoryStorage());
+  const { phoneBrowserDependencies: dependencies } = await import('./phone-browser');
+  expect(dependencies('').browserId).toBe('11'.repeat(32));
+});

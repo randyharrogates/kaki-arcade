@@ -2,10 +2,20 @@ import { createPhoneTransport } from '@kaki/netcode';
 import type { Socket } from '@kaki/netcode';
 import { peerConnection, retryAfterDelay } from './browser';
 import type { PhoneDependencies } from './phone';
+let tabIdentity: string | undefined;
+function browserIdentity(): string {
+  tabIdentity ??= Array.from(crypto.getRandomValues(new Uint8Array(32)), byte => byte.toString(16).padStart(2, '0')).join('');
+  try {
+    const saved = localStorage.getItem('kaki.device');
+    if (saved && /^[a-zA-Z0-9_-]{16,128}$/.test(saved)) return saved;
+    localStorage.setItem('kaki.device', tabIdentity);
+  } catch { /* Storage denial keeps a per-tab identity. */ }
+  return tabIdentity;
+}
 export function phoneBrowserDependencies(baseUrl: string): PhoneDependencies {
   const clock = { now: () => Date.now(), schedule: (fn: () => void, ms: number) => window.setTimeout(fn, ms),
     cancel: (id: unknown) => { if (typeof id === 'number') window.clearTimeout(id); } };
-  return { clock,
+  return { clock, browserId: browserIdentity(),
     storage: { getItem: key => sessionStorage.getItem(key), setItem: (key, value) => { sessionStorage.setItem(key, value); }, removeItem: key => { sessionStorage.removeItem(key); } },
     lifecycle: { subscribe(receive) {
       const sleep = (): void => { receive('sleep'); };

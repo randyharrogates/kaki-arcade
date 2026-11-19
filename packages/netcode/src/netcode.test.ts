@@ -3,7 +3,7 @@ import { decodeHostSignal, decodeOpeningSignal, decodePhoneFrame, decodePhoneSig
   decodeToHostSignal, decodeToPhoneSignal, encodeInput, encodeSignal, parseHostSubprotocols,
   createInputSender, setButtons, nextInputSend,
   PROTOCOL_VERSION as v, RELEASED, SIGNAL_SUBPROTOCOL } from '@kaki/protocol';
-import type { AnySignal, HostSignal, PhoneSignal, OpeningSignal } from '@kaki/protocol';
+import type { HostMessage, AnySignal, HostSignal, PhoneSignal, OpeningSignal } from '@kaki/protocol';
 import { createInputBuffer } from '../../sim-core/src/input';
 import { createHostInput, createPhoneInput, createHostPairing, createPhonePairing,
   createHostTransport, createPhoneTransport, createPeer, LinkMeter } from './index';
@@ -476,6 +476,24 @@ describe('control and link checks', () => {
       [{ v, t: 'hello', name: 'Player' }, { connectionId: 'peer1', deviceId: 'device-1' }],
     ]);
     host.close(); phone.close(); expect(clock.tasks.size).toBe(0);
+  });
+  it('PLAT-011 NET-001 views outside the revision space are delivered without changing ordinary deduplication', () => {
+    const clock = new Clock(); const hostPC = new FakePC(clock); const phonePC = new FakePC(clock);
+    const received: unknown[] = [];
+    const host = createPeer({ ...peerOptions(clock, hostPC), role: 'host' });
+    const phone = createPeer({ ...peerOptions(clock, phonePC), role: 'phone', onControl: m => received.push(m) });
+    joinChannels(hostPC, phonePC);
+    const ordinary: HostMessage = { v, t: 'view', rev: 0, view: null };
+    const roster: HostMessage = { v, t: 'view', rev: 0, view: { kind: 'room-players', players: [] } };
+    expect(host.sendHost(roster, false)).toBe(true);
+    expect(host.sendHost(roster, false)).toBe(true);
+    expect(host.sendHost(ordinary)).toBe(true);
+    expect(host.sendHost({ ...roster, rev: 9 }, false)).toBe(true);
+    expect(host.sendHost(ordinary)).toBe(false);
+    expect(host.sendHost({ ...ordinary, rev: 9 })).toBe(true);
+    clock.advance(0);
+    expect(received).toEqual([roster, roster, ordinary, { ...roster, rev: 9 }, { ...ordinary, rev: 9 }]);
+    host.close(); phone.close();
   });
   it('NET-002 NET-005 12 binary pings on connect, one per second, pong RTT and no scheduled work after teardown', async () => {
     const clock = new Clock(); const hostPC = new FakePC(clock); const phonePC = new FakePC(clock);

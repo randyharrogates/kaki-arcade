@@ -33,19 +33,20 @@ function credentials(value: unknown): value is HostCredentials {
 }
 function validRoom(value: unknown): value is RoomState {
   if (!object(value) || !keys(value,
-    ['players', 'leader', 'phase', 'allowRunningJoin', 'clock']) || !Array.isArray(value.players) ||
+    ('blocked' in value ? ['players', 'leader', 'phase', 'allowRunningJoin', 'clock', 'blocked'] : ['players', 'leader', 'phase', 'allowRunningJoin', 'clock'])) || !Array.isArray(value.players) ||
     value.players.length > 8 || typeof value.allowRunningJoin !== 'boolean' ||
     !natural(value.clock) || !ROOM_PHASES.some(p => p === value.phase)) return false;
+  if (value.blocked !== undefined && (!Array.isArray(value.blocked) || !value.blocked.every((p: unknown) => object(p) && keys(p, ['browserId', 'seatToken']) && typeof p.browserId === 'string' && (p.browserId === '' || TOKEN_PATTERN.test(p.browserId)) && typeof p.seatToken === 'string' && TOKEN_PATTERN.test(p.seatToken)))) return false;
   const seats = new Set<number>();
   const tokens = new Set<string>();
   const names = new Set<string>();
   for (const p of value.players as unknown[]) {
-    if (!object(p) || !keys(p, ['seat', 'colour', 'name', 'seatToken', 'deviceId',
+    if (!object(p) || !keys(p, [...('browserId' in p ? ['browserId'] : []), 'seat', 'colour', 'name', 'seatToken', 'deviceId',
       'connectionId', 'disconnectedAt', 'midGameJoin', 'team', 'quality']) ||
       !natural(p.seat) || p.seat < 1 || p.seat > 8 || p.colour !== p.seat - 1 ||
       typeof p.name !== 'string' || checkNickname(p.name) !== 'ok' || hasBlockedWord(p.name) ||
       typeof p.seatToken !== 'string' || !TOKEN_PATTERN.test(p.seatToken) ||
-      p.deviceId !== '' || p.connectionId !== '' || !(p.disconnectedAt === null || natural(p.disconnectedAt)) ||
+      (p.browserId !== undefined && (typeof p.browserId !== 'string' || !TOKEN_PATTERN.test(p.browserId))) || p.deviceId !== '' || p.connectionId !== '' || !(p.disconnectedAt === null || natural(p.disconnectedAt)) ||
       typeof p.midGameJoin !== 'boolean' || !(p.team === null || p.team === 'red' || p.team === 'blue') ||
       p.quality !== null || seats.has(p.seat) || tokens.has(p.seatToken) || names.has(nameSkeleton(p.name)))
       return false;
@@ -112,7 +113,7 @@ function persistable(input: HostSnapshotInput, now: number): HostSnapshot {
   return { version: HOST_SNAPSHOT_VERSION, writtenAt: now, createdAt: Math.floor(input.createdAt),
     credentials: { ...input.credentials }, room: { ...input.room,
       players: input.room.players.map(p => ({ seat: p.seat, colour: p.colour, name: p.name,
-        seatToken: p.seatToken, deviceId: '', connectionId: '', disconnectedAt: p.disconnectedAt,
+        ...(p.browserId ? { browserId: p.browserId } : {}), seatToken: p.seatToken, deviceId: '', connectionId: '', disconnectedAt: p.disconnectedAt,
         midGameJoin: p.midGameJoin, team: p.team, quality: null })) },
     scores: input.scores, results, selection };
 }

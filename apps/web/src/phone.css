@@ -60,6 +60,7 @@
 /* The seated shell measures the header intrinsically; content uses the remaining height. */
 .phone-page[data-seated="true"] { display: flex; flex-direction: column; gap: var(--ka-space-21); }
 .phone-page[data-seated="true"] > .overlap { flex: 1; min-height: 0; }
+.phone-page[data-seated="true"] > .overlap > .incoming:has(> .phone-lobby[data-players="true"]) { height: 100%; min-height: 0; }
 .phone-id { display: grid; grid-template-columns: var(--ka-space-55) minmax(0, 1fr) auto; gap: var(--ka-space-8) var(--ka-space-13); flex: none; }
 .phone-id strong { grid-column: 2 / -1; overflow: visible; text-overflow: clip; white-space: normal; overflow-wrap: anywhere; }
 .phone-connection { grid-column: 1 / 3; grid-row: 2; justify-self: end; margin-left: 0; }
@@ -133,3 +134,30 @@
 
 /* Leave inside the action row: the row's gap spaces it, so the header margin must not push it past the edge (C-17). */
 .phone-page .phone-actions button.phone-leave { margin-left: 0; }
+
+/* PLAT-011: keep the lobby primary and the room-seat actions secondary. */
+.phone-lobby[data-seated="true"][data-players="true"] { height: 100%; min-height: 0; grid-template-rows: minmax(0, 1fr) auto; }
+/* Native touch scrolling tracks the finger and retains boundary rubber-banding. */
+.phone-player-column { position: relative; min-width: 0; min-height: 0; height: 100%; overflow: hidden; }
+.phone-players { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--ka-space-5); height: 100%; overflow-y: auto; overscroll-behavior-y: contain; touch-action: pan-y; font-size: var(--ka-phone-type-13); }
+.phone-players [data-seat]:focus-visible { outline: var(--ka-space-5) solid var(--ka-ink); outline-offset: calc(-1 * var(--ka-space-5)); }
+.phone-players > li { flex: none; min-width: 0; }
+.phone-players button, .phone-player-own { display: flex; align-items: center; width: 100%; min-height: var(--ka-space-55); padding: var(--ka-space-8) var(--ka-space-13); font: inherit; overflow-wrap: anywhere; }
+.phone-player-confirm { position: absolute; inset: 0; display: grid; align-content: center; gap: var(--ka-space-13); padding: var(--ka-space-13); overflow: hidden; }
+.phone-player-confirm p { margin: 0; overflow-wrap: anywhere; }
+.phone-player-confirm button { min-height: var(--ka-space-55); padding: var(--ka-space-8); font: inherit; }
+.phone-game-veil > .phone-player-column { width: 100%; flex: 1; }
+@media (orientation: landscape) {
+  .phone-lobby[data-seated="true"][data-players="true"] { grid-template-columns: var(--ka-golden-columns); grid-template-rows: minmax(0, 1fr); height: 100%; min-height: 0; align-items: center; }
+  .phone-lobby[data-players="true"] > .phone-message { grid-column: 1; grid-row: 1; display: flex; flex-direction: column; align-items: stretch; gap: var(--ka-space-8); }
+  .phone-lobby[data-players="true"] > .phone-player-column { grid-column: 2; grid-row: 1; }
+  .phone-lobby[data-seated="true"][data-players="true"] { height: 100%; min-height: 0; grid-template-rows: minmax(0, 1fr); }
+  .phone-lobby[data-players="true"] .phone-status h2, .phone-lobby[data-players="true"] .phone-status p { margin: 0; }
+  .phone-lobby[data-players="true"] .phone-status h2 { line-height: var(--ka-line-body); }
+  .phone-lobby[data-players="true"] .phone-actions button { width: 100%; }
+}
+@media (orientation: landscape) {
+  .phone-lobby[data-players="true"] .phone-status p, .phone-lobby[data-players="true"] .phone-leader { font-size: var(--ka-phone-type-13); }
+}
+
+.phone-page[data-seated="true"]:has(.phone-lobby[data-players="true"]) { overflow: hidden; }

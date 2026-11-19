@@ -194,6 +194,7 @@ it('PLAT-009 uses separate unreachable title and detail and typographic apostrop
   expect(phoneCopy.unreachable).toEqual(['Can’t reach the room', 'We’ll keep trying.']);
   expect(phoneView('lobby', { leader: true }).detail).not.toContain("'");
   expect(Object.values(phoneCopy).flat().join(' ')).not.toContain("'");
+  expect(phoneView('removed')).toMatchObject({ title: 'You were removed from this game', detail: "You can’t rejoin this room.", action: 'Join another room' });
 });
 
 it('PLAT-006 gives the lobby leader an invitation and watchers waiting copy', () => {

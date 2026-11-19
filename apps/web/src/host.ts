@@ -6,7 +6,7 @@ import type { PreparedSetup, SettingsValues } from './game-setup';
 import { LOCAL_CONNECTION } from './local-player';
 import type { SessionPeer } from './session-links';
 import { wireJson } from './session-adapter';
-import { splitTeams, reconcileTeams, switchTeam, elect, gamePlayers, startRefusal } from '@kaki/platform';
+import { splitTeams, reconcileTeams, switchTeam, elect, isLocalSeat, gamePlayers, startRefusal } from '@kaki/platform';
 import { roomPlayers } from './team-setup';
 import type { TeamSetupView } from './team-setup';
 import { duration } from '@kaki/ui';
@@ -199,7 +199,10 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     if (!roomAdapter) return;
     const base = pickerView(picker, roomAdapter.room, gameMetas);
     const message = pairing === 'closed-room' && roomAdapter.room.phase === 'lobby' ? { ...base, reason: CLOSED_ROOM_REASON } : base;
-    for (const player of roomAdapter.room.players) if (player.disconnectedAt === null) peers.get(player.connectionId)?.sendHost(message);
+    for (const player of roomAdapter.room.players) if (player.disconnectedAt === null) {
+      if (player.seat === roomAdapter.room.leader && !isLocalSeat(player)) peers.get(player.connectionId)?.sendHost({ v: 1, t: 'view', rev: 0, view: { kind: 'room-players', players: roomAdapter.room.players.filter(p => !isLocalSeat(p)).map(p => ({ seat: p.seat, name: p.name })) } });
+      peers.get(player.connectionId)?.sendHost(message);
+    }
   }
   let loadAttempt = 0;
   let acceptedAt = -Infinity;
@@ -322,6 +325,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       control: (id, message) => { if (pairing === 'closed-room' && !roomAdapter?.room.players.some(p => p.connectionId === id && p.disconnectedAt === null)) return; const checked = validatePhoneMessage(message); if (!checked.ok) return;
         run(() => { const value = checked.value;
           if (value.t === 'action' && value.data && typeof value.data === 'object' && !Array.isArray(value.data) && typeof value.data.control === 'string' && value.data.control.startsWith('console-')) { sessionInput(id, value); return; }
+          if (value.t === 'action' && value.data && typeof value.data === 'object' && !Array.isArray(value.data) && value.data.control === 'remove-player') { roomAdapter?.receive(id, value); return; }
           teamInput(id, value); input(id, value); roomAdapter?.receive(id, value); deps.session?.control?.(id, value);
         }); },
       dropped: id => { run(() => { deps.session?.dropped?.(id); peers.delete(id); links.delete(id); qualityRuns.delete(id); roomAdapter?.dropped(id); }); },
@@ -463,6 +467,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     get teamSetup() { return teamSetup; },
     get picker() { return picker; },
     get room() { return roomAdapter?.room ?? createRoom(); },
+    removePlayer(seat: number): void { roomAdapter?.host({ type: 'remove', seat }); },
     leaderInput(connection: string, action: PickerInput, revision = picker.revision): void { input(connection, { v: 1, t: 'picker-input', input: action, revision }); },
     roomInput(event: HostEvent): void { roomAdapter?.host(event); },
     sessionEvent(event: SessionEvent): void {

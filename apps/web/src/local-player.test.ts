@@ -15,6 +15,7 @@ it('CTRL-009 discards private views and uses the same sequenced receiver as phon
   peer.bindInput({ receiveInput, pause } as unknown as Parameters<typeof peer.bindInput>[0]);
   peer.sendHost({ v: 1, t: 'layout', rev: 0, layout: layout as never });
   peer.sendHost({ v: 1, t: 'view', rev: 0, view: { secret: 'hidden' } });
+  peer.sendHost({ v: 1, t: 'view', rev: 99, view: { kind: 'room-players', players: [] } });
   peer.tick(new Set(['KeyD']), null); peer.tick(new Set(), null);
   expect(receiveInput.mock.results[0]?.value).toMatchObject({ seq: 0, stickX: 127 });
   expect(receiveInput.mock.results[1]?.value).toMatchObject({ seq: 1, stickX: 0 });

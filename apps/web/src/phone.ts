@@ -21,7 +21,19 @@ export function normaliseJoinCode(code: string): string {
   return clean.length === CODE_LENGTH && Array.from(clean).every(char => CODE_ALPHABET.includes(char)) ? clean : '';
 }
 
+/** Host-private identities never enter the console's public player menu. */
+function roomPlayers(value: JsonValue): NonNullable<PhoneView['players']> | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value) || value.kind !== 'room-players' || !Array.isArray(value.players)) return null;
+  const players: { seat: number; name: string }[] = [];
+  for (const player of value.players) {
+    if (!player || typeof player !== 'object' || Array.isArray(player) || typeof player.seat !== 'number' || typeof player.name !== 'string') return null;
+    players.push({ seat: player.seat, name: player.name });
+  }
+  return players;
+}
+
 export const phoneCopy = {
+  removed: ['You were removed from this game', "You can’t rejoin this room."],
   rename: ['Change your name', ''],
   'name-not-sent': ['Your name could not be sent', 'Try again when connected.'],
   entry: ['Join the room on the TV', 'Enter the room code and your name.'],
@@ -49,20 +61,22 @@ export const phoneCopy = {
 } as const;
 export type PhoneState = keyof typeof phoneCopy;
 export interface PhoneView {
+  players?: readonly { seat: number; name: string }[] | undefined;
   resultStats?: { label: string; value: string | number }[];
   gamePrivateView: PrivateView | null; gameLayout?: Layout | undefined; gameViewRevision?: number | undefined; teamSetup: TeamSetupView | null; layout: boolean; theme: ThemeName; picker: PickerState | null; phase: RoomPhase; state: PhoneState; title: string; detail: string; code: string; name: string;
   seat: number | null; colour: string; leader: boolean; connected: boolean;
   notice: string; renaming: boolean; action: 'Try again' | 'Join' | 'Join another room' | 'Join again' | 'Reload' | null;
 }
 export function phoneView(state: PhoneState, input: Partial<Pick<PhoneView, 'code' | 'name' | 'seat' | 'colour' | 'leader' | 'notice' | 'phase'>> = {}): PhoneView {
-  if (['seat-expired', 'room-gone', 'waiting-for-lobby', 'left'].includes(state)) input = { ...input, seat: null, colour: '', leader: false };
+  if (['removed', 'seat-expired', 'room-gone', 'waiting-for-lobby', 'left'].includes(state)) input = { ...input, seat: null, colour: '', leader: false };
   return { gamePrivateView: null, teamSetup: null, layout: false, theme: 'console', picker: null, phase: 'lobby', renaming: state === 'rename', code: '', name: '', seat: null, colour: '', leader: false, notice: '', ...input,
     state, title: phoneCopy[state][0], detail: state === 'lobby' && (input.phase === 'playing' || input.phase === 'paused') ? 'Watch the TV.' : state === 'lobby' && input.leader ? "Pick a game when everyone’s in." : phoneCopy[state][1], connected: state === 'lobby' || state === 'name-taken' || state === 'name-replaced' || (input.seat !== null && input.seat !== undefined && ['entry', 'invalid-code', 'blank', 'too-long', 'bad-characters', 'rename', 'name-not-sent'].includes(state)),
     action: ['entry', 'invalid-code', 'blank', 'too-long', 'bad-characters', 'left'].includes(state) ? 'Join'
-      : ['room-full', 'room-not-found', 'room-gone', 'cannot-connect'].includes(state) ? 'Join another room'
+      : ['removed', 'room-full', 'room-not-found', 'room-gone', 'cannot-connect'].includes(state) ? 'Join another room'
       : state === 'could-not-connect' ? 'Try again' : state === 'hold-over' || state === 'seat-expired' ? 'Join again' : state === 'out-of-date' ? 'Reload' : null };
 }
 export interface PhoneDependencies {
+  browserId?: string | undefined;
   clock: ReconnectClock; storage: ReconnectStorage;
   dial(options: PhoneReconnectDial, feedback: { unreachable(): void; retryAfter(ms: number): void }): { stop(): void };
   lifecycle?: PhoneReconnectOptions['lifecycle'];
@@ -94,13 +108,14 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     }, 15000);
     const next = phoneView(state, { ...view, ...input });
     if (!next.connected) naming = false;
-    view = { ...next, teamSetup: next.connected ? (input.teamSetup === undefined ? view.teamSetup : input.teamSetup) : null, layout: next.seat !== null && (input.layout ?? view.layout), picker: next.connected ? (input.picker ?? view.picker) : null, renaming: naming, gameLayout: input.gameLayout ?? view.gameLayout, gameViewRevision: input.gameViewRevision ?? view.gameViewRevision };
+    view = { ...next, players: next.connected ? view.players : undefined, teamSetup: next.connected ? (input.teamSetup === undefined ? view.teamSetup : input.teamSetup) : null, layout: next.seat !== null && (input.layout ?? view.layout), picker: next.connected ? (input.picker ?? view.picker) : null, renaming: naming, gameLayout: input.gameLayout ?? view.gameLayout, gameViewRevision: input.gameViewRevision ?? view.gameViewRevision };
     if (view.seat === null || !view.connected) { view.gamePrivateView = null; view.resultStats = []; }
     view.theme = view.connected && !view.teamSetup && (view.picker?.screen === 'starting' || view.phase === 'playing' || view.phase === 'paused') ? phoneThemes[view.picker?.game?.id ?? ''] ?? 'console' : 'console';
     changed(view);
   }
   function message(message: HostMessage): void {
-    if (message.t === 'seat') {
+    if (message.t === 'view' && roomPlayers(message.view)) { view = { ...view, players: roomPlayers(message.view) ?? [] }; changed(view); }
+    else if (message.t === 'seat') {
       naming = false; everSeated = true; failures = 0; allowedAt = 0; unavailable = false;
       const notice = message.nameReplaced ? 'Your name was changed by the room.' : !message.resumed && message.name !== requestedName ? 'Name taken. The room added a number to your name.' : '';
       publish(message.nameReplaced ? 'name-replaced' : notice ? 'name-taken' : 'lobby', { seat: message.seat, colour: `var(--ka-seat-${String(message.colour + 1)})`, name: message.name, notice });
@@ -128,7 +143,7 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     // A deliberate retry starts a new 15-second window, unlike automatic retries.
     view = { ...view, state: 'entry' };
     publish('connecting', { code, ...(restoring ? {} : { phase: 'lobby', name: name ?? '', seat: null, colour: '', leader: false, notice: '' }) });
-    const created = createPhoneReconnect({ store, clock: deps.clock, attemptDelayMs: () => allowedAt - deps.clock.now(), initial: { code, nickname: name },
+    const created = createPhoneReconnect({ browserId: deps.browserId, store, clock: deps.clock, attemptDelayMs: () => allowedAt - deps.clock.now(), initial: { code, nickname: name },
       ...(deps.lifecycle ? { lifecycle: deps.lifecycle } : {}),
       state(state: PhoneReconnectState) {
         if (current !== generation) return;
@@ -168,6 +183,9 @@ export function createPhone(deps: PhoneDependencies, codeQuery: string | null, c
     publish(codeQuery !== null && !query ? 'invalid-code' : 'entry', { code: query || (codeQuery ?? '') });
   }
   return {
+    removePlayer(seat: number): void {
+      if (view.connected && view.leader && seat !== view.seat) peer?.sendPhone({ v: 1, t: 'action', rev: 0, viewRev: null, data: { control: 'remove-player', seat } });
+    },
     sessionCommand(action?: 'quit'): void {
       if (!view.connected || !view.layout || (view.phase !== 'playing' && !(view.phase === 'paused' && view.leader))) return;
       peer?.sendPhone({ v: 1, t: 'action', rev: view.gameLayout?.revision ?? 0, viewRev: view.gameViewRevision ?? 0, data: { control: action === 'quit' ? 'console-quit' : view.phase === 'paused' ? 'console-resume' : 'console-pause' } });

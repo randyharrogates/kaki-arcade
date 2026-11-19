@@ -30,6 +30,7 @@ import type { LobbyView } from './view-model';
 import { Overlap } from './Overlap';
 import { qrPath } from './qr';
 import { Icon } from './icons';
+import { RemovePlayer } from './remove-player';
 function QR({ payload }: { payload: string }) {
   const { path, size } = useMemo(() => qrPath(payload), [payload]);
   return <svg class="qr" viewBox={`0 0 ${String(size)} ${String(size)}`} role="img" aria-label={`Join at ${payload}. Room code ${new URL(payload).searchParams.get('code')?.split('').join(' ') ?? ''}`} shape-rendering="crispEdges"><path d={path}/></svg>;
@@ -49,12 +50,13 @@ function Nickname({ value }: { value: string }) {
   }, [value]);
   return <span ref={nameElement} class="nickname">{name.lines.map((line, index) => <span class="name-line" key={index}>{line}</span>)}</span>;
 }
-function Seat({ seat, index }: { seat: LobbyView['seats'][number]; index: number }) {
+export function Seat({ seat, index, remove, localSeat }: { seat: LobbyView['seats'][number]; index: number; remove?: () => void; localSeat?: number | undefined }) {
   return <li class="ka-panel seat" data-empty={!seat.occupied}>
     <Overlap identity={seatIdentity(seat)} row index={index}>
       <div class="seat-content" data-empty={!seat.occupied} data-held={seat.held} data-dimmed={seat.dimmed}>
         <span class="seat-number" style={{ backgroundColor: seat.held ? 'var(--ka-panel-to)' : seat.colour, borderColor: seat.colour }}>{seat.number}</span>
         <Nickname value={seat.name}/>
+        {seat.occupied && seat.number !== localSeat && remove && <RemovePlayer name={seat.name} remove={remove}/>}
         <span class="connection">{seat.connection && <>{seat.icon && <Icon kind={seat.icon}/>}<span>{seat.connection}</span></>}</span>
         <span class="leader">{seat.held ? countdownLabel(seat.holdSeconds) : seat.leader ? <><Icon kind="leader"/> Leader</> : '\u00a0'}</span>
       </div>
@@ -181,7 +183,7 @@ export function HostLobby() {
       </Overlap>
     </section>
     <div class="announcements" aria-live="polite" aria-atomic="true">{announcement.current}</div>
-    <ol class="seats" data-wrap={view.seats.some(seat => seat.connection === 'Scan to join' || seat.connection === 'Seat held')} aria-label="Player seats">{view.seats.map((seat, index) => <Seat key={seat.number} seat={seat} index={changedSeats > 1 ? index : 0}/>)}</ol>
+    <ol class="seats" data-wrap={view.seats.some(seat => seat.connection === 'Scan to join' || seat.connection === 'Seat held')} aria-label="Player seats">{view.seats.map((seat, index) => <Seat key={seat.number} localSeat={room.players.find(isLocalSeat)?.seat} seat={seat} remove={() => { host.current?.removePlayer(seat.number); }} index={changedSeats > 1 ? index : 0}/>)}</ol>
   </main>;
   return <><SessionSurface sound={audio.sound} displays={displays} room={room} picker={picker} lobby={lobby} teamSetup={teamSetup} localDevice={localDevice} command={(action, value) => { host.current?.keyboard(action, value); }}
     startTeams={() => { host.current?.keyboard('teams-start'); }}

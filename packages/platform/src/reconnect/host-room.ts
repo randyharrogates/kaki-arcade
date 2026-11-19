@@ -42,7 +42,7 @@ export function createReconnectRoom(o: {
   let stopped = false;
   const peers = new Map<string, ReconnectHostPeer>();
   // Keep the original request: admission must not depend on a second phone send.
-  const waiting = new Map<string, string | null>();
+  const waiting = new Map<string, { name: string | null; browserId?: string | undefined }>();
   function schedule(): void {
     o.clock.cancel(timer);
     if (stopped) return;
@@ -68,12 +68,13 @@ export function createReconnectRoom(o: {
         const old = peers.get(effect.connectionId);
         // Remove before close: synchronous stale disconnect callbacks cannot affect the winner.
         peers.delete(effect.connectionId);
-        old?.sendHost({ v, t: 'close', reason: 'replaced' }); old?.close();
+        waiting.delete(effect.connectionId);
+        old?.sendHost(effect.reason === 'removed' ? { v, t: 'refused', reason: 'removed' } : { v, t: 'close', reason: 'replaced' }); old?.close();
       }
     }
     if (id && !result.result.ok && !result.result.hostInternal) {
       const reason = result.result.reason;
-      if (reason === 'seat-expired' || reason === 'room-full' || reason === 'game-running')
+      if (reason === 'removed' || reason === 'seat-expired' || reason === 'room-full' || reason === 'game-running')
         peers.get(id)?.sendHost({ v, t: 'refused', reason });
       else if (reason === 'blank' || reason === 'too-long' || reason === 'bad-characters') {
         peers.get(id)?.sendHost({ v, t: 'name-refused', reason });
@@ -104,20 +105,21 @@ export function createReconnectRoom(o: {
       if (!peer || !checked.ok) return;
       const message = checked.value;
       const seat = room.players.find(p => p.connectionId === id);
-      const identity = { connectionId: id, deviceId: seat?.deviceId ?? id,
+      const identity = { browserId: message.t === 'hello' || message.t === 'resume' ? message.browserId : seat?.browserId, connectionId: id, deviceId: seat?.deviceId ?? id,
         ...(seat ? { seat: seat.seat } : {}) };
       let result: RoomResult;
       if (message.t === 'resume') result = applyPhoneEvent(room, identity,
         { type: 'resume', seatToken: message.seatToken }, o.clock.now());
       else if (message.t === 'hello') result = applyPhoneEvent(room, identity,
         { type: 'join', name: message.name, seatToken: o.mintToken() }, o.clock.now());
+      else if (message.t === 'action' && message.data && typeof message.data === 'object' && !Array.isArray(message.data) && message.data.control === 'remove-player') result = applyPhoneEvent(room, identity, { type: 'remove', seat: message.data.seat }, o.clock.now());
       else if (message.t === 'leave') result = applyPhoneEvent(room, identity,
         { type: 'leave' }, o.clock.now());
       else if (message.t === 'set-name') result = applyPhoneEvent(room, identity,
         { type: 'rename', name: message.name }, o.clock.now());
       else return;
       if (message.t === 'hello' && !result.result.ok && result.result.reason === 'game-running')
-        waiting.set(id, message.name);
+        waiting.set(id, { name: message.name, browserId: message.browserId });
       else if (result.result.ok || message.t === 'leave') waiting.delete(id);
       if (result.result.ok) {
         const accepted = result.state.players.find(p => p.connectionId === id);
@@ -140,13 +142,13 @@ export function createReconnectRoom(o: {
       if (stopped) return;
       commit(applyHostEvent(room, event, o.clock.now()));
       if (canAskToJoin(room.phase) || room.allowRunningJoin) {
-        for (const [id, name] of [...waiting]) {
+        for (const [id, request] of [...waiting]) {
           // Broadcasts and changed callbacks can synchronously admit/cancel requests.
           if (!waiting.has(id)) continue;
           if (!(canAskToJoin(room.phase) || room.allowRunningJoin)) break;
           waiting.delete(id);
           if (room.players.some(player => player.connectionId === id)) continue;
-          adapter.receive(id, { v, t: 'hello', name });
+          adapter.receive(id, { v, t: 'hello', ...request });
         }
       }
     },

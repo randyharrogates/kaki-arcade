@@ -392,3 +392,22 @@ it.each(['left', 'expired'])('PLAT-009 clears completed scores when a seat is %s
   expect(JSON.parse(f.values.get(HOST_STORAGE_KEY) ?? '{}')).toMatchObject({ scores: {} });
   host.stop();
 });
+
+it('PLAT-011 unauthorised removal bypasses session and team input', async () => {
+  const f = fixture(); const control = vi.fn();
+  f.deps.session = { start: vi.fn().mockResolvedValue(undefined), control };
+  const host = f.make(); await host.start();
+  for (const id of ['a', 'b']) { f.callbacks.peer(id, f.peer()); f.callbacks.control(id, { v, t: 'hello', name: id }); }
+  for (const action of ['open', 'next', 'next', 'select'] as const) { f.advance(200); host.leaderInput('a', action); }
+  host.teamInput('a', 'teams-toggle');
+  f.advance(200); host.leaderInput('a', 'start');
+  const setup = host.teamSetup;
+  expect(setup).not.toBeNull();
+  if (!setup) throw new Error('Missing team setup');
+  expect(setup).toMatchObject({ screen: 'teams', enabled: true, players: [{ seat: 1, team: 0 }, { seat: 2, team: 1 }] });
+  control.mockClear();
+  f.callbacks.control('b', { v, t: 'action', rev: 0, viewRev: setup.revision, data: { control: 'remove-player', seat: 1 } });
+  expect(control).not.toHaveBeenCalled();
+  expect(host.teamSetup).toMatchObject({ screen: setup.screen, enabled: setup.enabled, players: setup.players });
+  expect(host.room.players).toHaveLength(2); host.stop();
+});

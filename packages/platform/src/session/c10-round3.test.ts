@@ -106,3 +106,13 @@ describe('C-10 round 3', () => {
     expect(s.session.state?.actions).toEqual(['seat-1:pick:yes']);
   });
 });
+
+it('PLAT-011 removing a running player invokes the existing game leave path once', () => {
+  const left: string[] = [];
+  const game = { ...fixture, leave(state: FixtureState, id: string) { left.push(id); return fixture.leave(state, id); } };
+  const s = setup(3, game); s.run(2);
+  const result = applyHostEvent(s.room, { type: 'remove', seat: 3 }, s.room.clock);
+  s.session.updateRoom(result.state); s.session.updateRoom(result.state);
+  expect(left).toEqual(['seat-3']);
+  expect(s.session.state?.players.map(p => p.id)).not.toContain('seat-3');
+});

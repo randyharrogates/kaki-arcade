@@ -5,13 +5,13 @@ import type { PhoneReconnectDial, PhoneReconnectState } from './phone';
 import { createPhoneSeatStore } from './phone-store';
 import { Clock, CODE, MemoryStorage, SECRET } from './testing.fixture';
 
-function unit(saved = true) {
+function unit(saved = true, browserId?: string) {
   const storage = new MemoryStorage(); const store = createPhoneSeatStore(storage);
   if (saved) store.write({ code: CODE, seatToken: SECRET, nickname: 'Guest', roomToken: null, droppedAt: null });
   const clock = new Clock(); const attempts: number[] = []; const sent: PhoneMessage[] = [];
   let dial: PhoneReconnectDial | undefined;
   const states: PhoneReconnectState[] = [];
-  const driver = createPhoneReconnect({ clock, store,
+  const driver = createPhoneReconnect({ clock, store, browserId,
     initial: { code: CODE, nickname: 'Guest' }, state: state => states.push(state),
     dial(options) {
       dial = options; attempts.push(clock.now());
@@ -142,4 +142,23 @@ it('attemptDelayMs starts the negotiation deadline after the admission wait', ()
     state: () => undefined, dial: () => { attempts++; return { stop() { /* No transport resources in this fixture. */ } }; } });
   clock.advance(44999); expect(attempts).toBe(1);
   clock.advance(1001); expect(attempts).toBe(2); driver.stop();
+});
+
+it('PLAT-011 removed is terminal, keeps the token for refusal after reload and never retries', () => {
+  const r = unit();
+  r.dial.onControl({ v: 1, t: 'refused', reason: 'removed' });
+  expect(r.driver.state).toBe('removed');
+  expect(r.store.read()?.seatToken).toBe(SECRET);
+  const attempts = r.attempts.length;
+  r.clock.advance(300000); r.driver.rejoin(); r.driver.wake();
+  expect(r.attempts).toHaveLength(attempts);
+});
+
+it('PLAT-011 every join and resume carries the same private browser identity', () => {
+  const browserId = 'browser-identity-123456789';
+  const r = unit(true, browserId); r.dial.onState('control-open');
+  expect(r.sent.at(-1)).toMatchObject({ t: 'resume', browserId });
+  r.dial.onControl({ v: 1, t: 'refused', reason: 'seat-expired' });
+  expect(r.sent.at(-1)).toMatchObject({ t: 'hello', browserId });
+  r.driver.stop();
 });

@@ -45,6 +45,8 @@ type V = typeof PROTOCOL_VERSION;
 export interface Hello {
   readonly v: V;
   readonly t: 'hello';
+  /** Private persistent browser identity; omitted only by local seats or legacy clients. */
+  readonly browserId?: string;
   readonly name: string | null;
 }
 
@@ -56,6 +58,8 @@ export interface Hello {
 export interface Resume {
   readonly v: V;
   readonly t: 'resume';
+  /** Private persistent browser identity; omitted only by local seats or legacy clients. */
+  readonly browserId?: string;
   readonly seatToken: string;
 }
 
@@ -149,12 +153,13 @@ export interface NameRefused {
 /**
  * Why the host would not seat a phone.
  *
+ * - `removed`       this browser or seat token was removed from this room (PLAT-011)
  * - `room-full`     eight players are seated (PLAT-003)
  * - `seat-expired`  the seat asked for in `resume` is gone; the phone may send `hello`
  * - `game-running`  this game does not take new players mid-round (PLAT-008); the channel
  *                   stays open and the phone asks again when the phase changes
  */
-export const REFUSAL_REASONS = ['room-full', 'seat-expired', 'game-running'] as const;
+export const REFUSAL_REASONS = ['room-full', 'seat-expired', 'game-running', 'removed'] as const;
 export type RefusalReason = (typeof REFUSAL_REASONS)[number];
 
 export interface Refused {
@@ -284,10 +289,12 @@ export type HostMessage =
 
 // --- Validators -------------------------------------------------------------------------
 
+const browserIdentity = (value: unknown) => value === undefined ? undefined : token(value);
+
 const PHONE_SHAPES: MessageShapes<PhoneMessage> = {
   'picker-input': { revision: counter, input: oneOf(PICKER_INPUTS) },
-  hello: { name: nullable(requestedName) },
-  resume: { seatToken: token },
+  hello: { name: nullable(requestedName), browserId: browserIdentity },
+  resume: { seatToken: token, browserId: browserIdentity },
   'set-name': { name: requestedName },
   action: { rev: counter, viewRev: nullable(counter), data: json(MAX_ACTION_BYTES) },
   control: { request: oneOf(CONTROL_REQUESTS) },

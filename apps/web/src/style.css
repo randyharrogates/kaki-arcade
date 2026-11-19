@@ -49,8 +49,8 @@ button:focus-visible, a:focus-visible, [role="button"]:focus-visible, .pause-lev
 
 .icon { width: var(--ka-type-34); height: var(--ka-type-34); vertical-align: middle; flex: none; }
 .nickname { word-break: normal; overflow: hidden; }
-.connection { display: flex; align-items: flex-start; justify-content: center; gap: var(--ka-space-8); min-height: var(--ka-type-34); line-height: var(--ka-line-display); }
-.leader { height: var(--ka-type-34); line-height: var(--ka-line-display); }
+.connection { display: flex; align-items: flex-start; justify-content: center; gap: var(--ka-space-8); min-height: var(--ka-type-34); line-height: var(--ka-line-body); }
+.leader { height: calc(var(--ka-type-34) * var(--ka-line-body)); line-height: var(--ka-line-body); }
 .announcements { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 
 .name-line { display: block; white-space: nowrap; }

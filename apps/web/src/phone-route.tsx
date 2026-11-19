@@ -20,6 +20,7 @@ import { phoneBrowserDependencies } from './phone-browser';
 import { Icon } from './icons';
 import { Overlap } from './Overlap';
 import './phone.css';
+import { PhonePlayers } from './remove-player';
 import { preloadControllerImages } from './controller-images';
 export function PhonePage() {
   const params = new URLSearchParams(location.search);
@@ -78,7 +79,7 @@ export function PhonePage() {
   const form = view.action === 'Join' && !view.renaming;
   const feedback = (): void => { if ('vibrate' in navigator) navigator.vibrate(duration.fast); };
   const teamChoice = offersTeamChoice(view) && view.teamSetup?.screen === 'choice' ? <TeamsToggle enabled={view.teamSetup.enabled} toggle={() => { feedback(); phone.current?.teamInput('teams-toggle'); }}/> : null;
-  if (controller && wakeReady) return <GameController sessionCommand={action => { phone.current?.sessionCommand(action); }} controller={controller} view={view} send={output => { phone.current?.controllerInput(output); }}/>;
+  if (controller && wakeReady) return <GameController removePlayer={seat => { phone.current?.removePlayer(seat); }} sessionCommand={action => { phone.current?.sessionCommand(action); }} controller={controller} view={view} send={output => { phone.current?.controllerInput(output); }}/>;
   return <main ref={page} class="phone-page ka-surface" data-seated={view.seat !== null} data-setup={view.leader && view.teamSetup?.screen === 'choice' && picker?.screen === 'start'} data-theme={view.theme} aria-label="Phone lobby">
     <PhoneLive announcement={announcement}><span>{teamAnnouncement}</span></PhoneLive>
     {view.seat !== null && <header class="phone-id"><span class="phone-badge" style={{ backgroundColor: view.colour }}>{view.seat}</span><strong>{view.name}</strong><span class="phone-connection" role="img" aria-label={view.connected ? 'Connected' : 'Disconnected'} data-connected={view.connected}><Icon kind={view.connected ? 'good' : 'weak'}/><span aria-hidden="true">{view.connected ? 'Connected' : 'Disconnected'}{ownTeam === undefined ? '' : ` · on ${ownTeam === 0 ? 'Red' : 'Blue'}`}</span></span><button class="phone-leave ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button></header>}
@@ -114,7 +115,8 @@ export function PhonePage() {
         <span id="name-help" class="phone-help">1 to 12 visible characters</span>
         <div class="phone-feedback">{view.state !== 'entry' && <><strong>{view.title}</strong><p>{view.detail}</p></>}</div>
       </form>
-    </section> : <section class="phone-lobby" data-seated={view.seat !== null} data-setup={view.teamSetup?.screen === 'choice' && picker?.screen === 'start'}>
+    </section> : <section class="phone-lobby" data-players={view.connected && view.leader} data-seated={view.seat !== null} data-setup={view.teamSetup?.screen === 'choice' && picker?.screen === 'start'}>
+      {view.connected && view.leader && <PhonePlayers players={view.players ?? []} ownSeat={view.seat} remove={seat => { phone.current?.removePlayer(seat); }}/>}
       <div class="phone-message">{view.leader && <strong class="phone-leader">You’re the leader</strong>}<Overlap fade identity={view.state}><div class="phone-status"><h2>{view.title}</h2><p>{view.detail}</p></div></Overlap>
         {view.connected && view.leader && picker?.screen === 'lobby' && <button class="ka-panel ka-pressable" onClick={() => { feedback(); phone.current?.pickerInput('open'); }}>Pick a game</button>}
         {(view.connected || ['waiting-for-lobby', 'hold-over'].includes(view.state)) && <div class="phone-actions">{view.connected && <button class="ka-panel ka-pressable" onClick={() => { setName(view.name); feedback(); phone.current?.changeName(); }}>Change name</button>}{view.seat === null && <button class="ka-panel ka-pressable phone-leave" onClick={() => { feedback(); phone.current?.leave(); }}>Leave</button>}</div>}
@@ -124,7 +126,7 @@ export function PhonePage() {
   </main>;
 }
 
-export function GameController({ controller, view, send, sessionCommand }: { controller: NonNullable<ReturnType<typeof phoneController>>; view: PhoneView; send: (output: LayoutOutput) => void; sessionCommand?: (action?: 'quit') => void }) {
+export function GameController({ controller, view, send, sessionCommand, removePlayer }: { removePlayer?: (seat: number) => void; controller: NonNullable<ReturnType<typeof phoneController>>; view: PhoneView; send: (output: LayoutOutput) => void; sessionCommand?: (action?: 'quit') => void }) {
   const [area, setArea] = useState<{ width: number; height: number; viewport: { width: number; height: number } } | null>(null);
   const [pictures, setPictures] = useState<{ id: string; urls: Readonly<Record<string,string>> } | null>(null);
   const gameId = view.picker?.game?.id ?? '';
@@ -173,7 +175,7 @@ export function GameController({ controller, view, send, sessionCommand }: { con
     </ControllerShell>
       <div ref={veils} class="phone-game-veils"><Overlap fade tempo="base" identity={veil}>{blocked && <section class="phone-game-veil" tabIndex={-1} role="dialog" aria-modal="true" aria-label={view.connected ? 'Paused' : 'Connection lost'}>
         <h1>{view.connected ? 'Paused' : 'Reconnecting…'}</h1>
-        {view.connected ? <><div class="phone-veil-actions"><button class="ka-pressable" disabled={!view.leader} onClick={() => { sessionCommand?.(); }}>Resume</button><button class="ka-pressable" disabled={!view.leader} onClick={() => { sessionCommand?.('quit'); }}>Quit to picker</button></div><p>Only the leader can quit.</p></> : <><p>Your seat is kept for 2 minutes.</p><p>Host disconnected</p></>}
+        {view.connected ? <><div class="phone-veil-actions"><button class="ka-pressable" disabled={!view.leader} onClick={() => { sessionCommand?.(); }}>Resume</button><button class="ka-pressable" disabled={!view.leader} onClick={() => { sessionCommand?.('quit'); }}>Quit to picker</button></div><p>Only the leader can quit.</p>{view.leader && removePlayer && <PhonePlayers players={view.players ?? []} ownSeat={view.seat} remove={removePlayer}/>}</> : <><p>Your seat is kept for 2 minutes.</p><p>Host disconnected</p></>}
       </section>}</Overlap></div>
   </div>;
 }

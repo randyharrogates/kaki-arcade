@@ -2,6 +2,15 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-20 — C-23: removing a player from the lobby
+
+- PLAT-011: the TV lobby (pointer or keyboard) and the leader's phone remove a player after a confirmation in the same card or column; the host can remove the leader, and leadership passes on through the leave path; a running game's leave hook runs once.
+- The removed phone gets `refused: removed`, stops retrying and shows "You were removed from this game" with Join another room; its browser id (localStorage `kaki.device`, per-tab fallback) and seat token stay in the room's private block list (last 64), which survives a host reload. Neither ever reaches a public view or another phone.
+- Contract: `browserId` on hello and resume, `removed` as a refusal reason, a leader-only `room-players` view outside the private-view revision space, and the `remove-player` action (D-302).
+- PLAT-024: the TV keyboard reaches Remove and its confirmation.
+- TV seat cards fit a three-line nickname with the Leader mark; occupied-card status, Remove and confirmation text are 21 px (OQ-054, waiting for Randy); empty seats and the TV seat keep 34 px.
+- Not yet: real phones and a real TV; private-window rejoin stays possible (accepted).
+
 ## 2026-11-19 — C-21: late joiner's team in Rabakz
 
 - RZ-014: a phone joining a running team match is seated on the smaller team (equal: the team behind on points; still equal: Red) and plays from the next question with 0; its points count for its team (D-234, D-285).

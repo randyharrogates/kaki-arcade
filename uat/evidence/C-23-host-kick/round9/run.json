@@ -1,0 +1,141 @@
+{
+  "slice": "C-23-host-kick",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- C-23-host-kick --phones 3 --out round9",
+  "commit": "267f492ccf224c700d1700400868583a7520621a",
+  "viewports": [
+    "667×375",
+    "844×390",
+    "1920×1080",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1382.300166,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-leader-lobby-667-before-removal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-leader-lobby-844-before-removal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-01-tv-confirm-1920.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-02-tv-confirm-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-03-lobby-after-host-removal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone3-04-removed-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone3-05-reload-refused.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone1-06-leader-confirm.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-07-lobby-after-leader-removal.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-phone1-leader-lobby-after-removing-moss.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-leader-lobby-667-before-removal.jpg",
+    "02-phone1-leader-lobby-844-before-removal.jpg",
+    "03-host-01-tv-confirm-1920.jpg",
+    "04-host-02-tv-confirm-1280.jpg",
+    "05-host-03-lobby-after-host-removal.jpg",
+    "06-phone3-04-removed-phone.jpg",
+    "07-phone3-05-reload-refused.jpg",
+    "08-phone1-06-leader-confirm.jpg",
+    "09-host-07-lobby-after-leader-removal.jpg",
+    "10-phone1-leader-lobby-after-removing-moss.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-leader-lobby-667-before-removal.jpg",
+      "bytes": 154246
+    },
+    {
+      "file": "02-phone1-leader-lobby-844-before-removal.jpg",
+      "bytes": 171136
+    },
+    {
+      "file": "03-host-01-tv-confirm-1920.jpg",
+      "bytes": 262954
+    },
+    {
+      "file": "04-host-02-tv-confirm-1280.jpg",
+      "bytes": 151291
+    },
+    {
+      "file": "05-host-03-lobby-after-host-removal.jpg",
+      "bytes": 153294
+    },
+    {
+      "file": "06-phone3-04-removed-phone.jpg",
+      "bytes": 117070
+    },
+    {
+      "file": "07-phone3-05-reload-refused.jpg",
+      "bytes": 117070
+    },
+    {
+      "file": "08-phone1-06-leader-confirm.jpg",
+      "bytes": 185423
+    },
+    {
+      "file": "09-host-07-lobby-after-leader-removal.jpg",
+      "bytes": 151912
+    },
+    {
+      "file": "10-phone1-leader-lobby-after-removing-moss.jpg",
+      "bytes": 150754
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1543
+    },
+    {
+      "file": "run.json",
+      "bytes": 3235
+    }
+  ],
+  "totalBytes": 1619965,
+  "maxBytes": 12582912
+}

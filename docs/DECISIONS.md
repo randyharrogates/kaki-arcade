@@ -1884,3 +1884,25 @@ Randy may overrule.
 **D-300 · 2026-11-20 · Randy** (PP-034, RZ-035, TR-063) — Randy asked for background music in the games and chose original music for all three: one loop each for Peek Poker and Rabakz and one per Tabao Rush venue (TR-063), composed for Kaki Arcade by a script in the repo so every track is original and reproducible, played through the existing Effects and Music levels. Two or three style samples go to Randy as an artifact before the full set is made. Built as A-12 (composer and samples), then wired per game.
 
 **D-301 · 2026-11-20 · Randy, details by Claude, integrator** (PLAT-035; PLAT-023, PLAT-034) — Randy: "Maybe we should also pause the game if someone disconnects." Built with C-29. Details (Claude's recommendation, delegated 2026-11-18): the pause starts after 3 seconds without the phone, so a Wi-Fi blip does not stop play; the TV shows "Waiting for ⟨name⟩ to rejoin" with the room code in large type (this also gives PLAT-034's code during play); when every missing player is back the game resumes after a 3-2-1; the leader can choose "Carry on without them" (in Tabao Rush their cook stands still; in Peek Poker and Rabakz they are skipped as today); their seat stays held until the match ends. The lobby, scoreboards between rounds and the final screen do not pause; a drop there is shown only on the seat. The paused simulation does not step, so `step` stays pure. Randy may overrule.
+
+**D-302 · 2026-11-20 · Claude, integrator (C-23 review; delegated by Randy, 2026-11-18)** (C-23; PLAT-011, PLAT-024, CTRL-009; settles D-247's build details; DESIGN §4.3, §6; OQ-054)
+
+Removal as merged:
+
+1. **Who can remove.** The host can remove any phone player, including the leader. The connected leader can remove anyone but themselves. Each request is bound to the sender's connected seat and checked against current leadership; a request from anyone else is ignored and reaches neither the game nor team setup. Removal frees the seat through the ordinary leave path: the running game's leave hook, then leader election. The TV's own keyboard seat has no Remove.
+2. **Contract.** `hello` and `resume` carry an optional `browserId`: a random 32-byte hex id in localStorage `kaki.device`, with a per-tab id when storage is denied. `refused` gains `removed`. The leader receives a `room-players` view containing only seat numbers and names, never the TV's own seat. `room-players` is a reserved view kind and sits outside the private-view revision space: the view channel neither bumps nor stores its revision, and netcode's `sendHost(message, revisioned = false)` neither de-duplicates nor fences it. Removal is an `action` whose data is `control: 'remove-player'`. There is no new wire message and no pairing-server change.
+3. **Block list.** The host keeps removed browser ids and seat tokens in a private block list in the room snapshot, keeping the last 64. A match on either is refused on join and on resume. A connected removed phone is sent the refusal before its channel closes, and its phone stops retrying.
+4. **Accepted v1 limits.** A private window, cleared site data, or a modified client that omits `browserId` can join again. The block is per room. This meets PLAT-011 against ordinary rejoining only.
+5. **TV layout.** The confirmation opens inside the same seat card. The card rows, in board px:
+   - seat number 55;
+   - name, up to three 34 px body lines (135.34 available against 132.6 needed);
+   - status with Remove 55;
+   - Leader 44.2 (34 × 1.3);
+   - 5 px gaps and no block padding.
+
+   Card height (310.54) does not change and the card ends at 1025, inside the 55 px safe margin. Remove and the confirmation buttons are at least 55 px tall with 21 px type and an inset focus ring. Occupied-seat status text, Remove and the confirmation text are 21 px: below DESIGN §6's 34 px reading floor, which is written for play, results and final screens. This is legible on a large TV from 3 m but small, and goes to Randy with OQ-054. Empty seats and the TV seat keep 34 px text and icons.
+6. **Phone.** The phone list is a column of 55 px rows that scrolls natively (secondary column, 1.618 : 1 in landscape). The selected row expands into the column through a mask, starting at scale 0.95 with ease-out base timing; the exit is shorter; reduced motion has no animation. The leader's own row is listed but cannot be removed; whether it should look different waits on a copy decision.
+
+Randy may overrule.
+
+### Files

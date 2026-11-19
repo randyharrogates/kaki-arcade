@@ -33,6 +33,7 @@ export interface RoomPlayer {
   readonly colour: number;
   readonly name: string;
   readonly seatToken: string;
+  readonly browserId?: string | undefined;
   readonly deviceId: string;
   readonly connectionId: string;
   readonly disconnectedAt: number | null;
@@ -43,6 +44,8 @@ export interface RoomPlayer {
   readonly quality: Json;
 }
 export interface RoomState {
+  /** Host-private and durable across reloads; excluded from publicRoom. */
+  readonly blocked?: readonly { browserId: string; seatToken: string }[];
   readonly players: readonly RoomPlayer[];
   readonly leader: number | null;
   readonly phase: RoomPhase;
@@ -50,6 +53,9 @@ export interface RoomState {
   readonly clock: number;
 }
 export type HostEvent = {
+  readonly type: 'remove';
+  readonly seat: number;
+} | {
   readonly type: 'expire';
 } | {
   readonly type: 'restore';
@@ -80,10 +86,14 @@ export type PhoneEvent = {
   readonly type: 'rename';
   readonly name: string;
 } | {
+  readonly type: 'remove';
+  readonly seat: number;
+} | {
   readonly type: 'leave';
 };
 /** Trusted transport binding, never taken from the phone message. Tokens are host-minted. */
 export interface PhoneIdentity {
+  readonly browserId?: string | undefined;
   readonly deviceId: string;
   readonly connectionId: string;
   readonly seat?: number;
@@ -94,7 +104,7 @@ export type RoomRefusal = RefusalReason | NameProblem
 export type RoomEffect = Seat | {
   readonly type: 'close';
   readonly connectionId: string;
-  readonly reason: 'replaced';
+  readonly reason: 'replaced' | 'removed';
 } | {
   readonly type: 'leader-changed';
   readonly leader: number | null;
@@ -129,7 +139,7 @@ export function createRoom(): RoomState {
 /** This is the only shareable room projection. Seat notices are private channel effects. */
 export function publicRoom(state: RoomState) {
   return {
-    ...state, players: state.players.map((p) => ({
+    leader: state.leader, phase: state.phase, allowRunningJoin: state.allowRunningJoin, clock: state.clock, players: state.players.map((p) => ({
       seat: p.seat, colour: p.colour,
       name: p.name, disconnectedAt: p.disconnectedAt, midGameJoin: p.midGameJoin, team: p.team,
       quality: p.quality
@@ -191,6 +201,7 @@ function validEvent(value: unknown, host: boolean): boolean {
     switch (value.type) {
       case 'expire':
       case 'restore': return true;
+      case 'remove':
       case 'disconnect': return seat;
       case 'phase': return ROOM_PHASES.some((p) => p === value.phase) &&
         typeof value.allowRunningJoin === 'boolean';
@@ -203,6 +214,7 @@ function validEvent(value: unknown, host: boolean): boolean {
     case 'join': return token && (value.name === null || typeof value.name === 'string');
     case 'resume': return token;
     case 'rename': return typeof value.name === 'string';
+    case 'remove': return seat;
     case 'leave': return true;
     default: return false;
   }
@@ -296,6 +308,7 @@ function apply(state: RoomState, input: unknown, time: number,
     return finish();
   }
   if (event.type === 'resume' || event.type === 'join') {
+    if (next.blocked?.some(p => p.seatToken === event.seatToken || p.browserId !== '' && p.browserId === identity?.browserId)) return finish('removed');
     const existing = event.type === 'resume'
       ? next.players.find((p) => p.seatToken === event.seatToken)
       : next.players.find((p) => p.connectionId === identity?.connectionId
@@ -318,6 +331,7 @@ function apply(state: RoomState, input: unknown, time: number,
       }
       const restored = {
         ...existing, disconnectedAt: null, awaitingRestore: false,
+        browserId: identity?.browserId ?? existing.browserId,
         deviceId: identity?.deviceId ?? existing.deviceId,
         connectionId: identity?.connectionId ?? existing.connectionId
       };
@@ -332,6 +346,14 @@ function apply(state: RoomState, input: unknown, time: number,
     p.connectionId === identity.connectionId
     && p.deviceId === identity.deviceId)?.seat
     : 'seat' in event ? event.seat : undefined;
+  if (event.type === 'remove') {
+    if (identity && (!isRoomLeader(next, seat ?? 0) || seat === event.seat)) return finish('bad-event');
+    const removed = next.players.find(p => p.seat === event.seat);
+    if (!removed) return finish('player-missing');
+    next = { ...next, players: next.players.filter(p => p !== removed), blocked: [...(next.blocked ?? []), { browserId: removed.browserId ?? '', seatToken: removed.seatToken }].slice(-64) };
+    effects.push({ type: 'player-left', seat: removed.seat }, { type: 'close', connectionId: removed.connectionId, reason: 'removed' });
+    return finish();
+  }
   const player = event.type === 'join' ? undefined
     : next.players.find((p) => p.seat === seat);
   if (event.type === 'join' || event.type === 'rename') {
@@ -361,6 +383,7 @@ function apply(state: RoomState, input: unknown, time: number,
     const updated: RoomPlayer = player ? { ...player, name } : {
       seat: number,
       colour: number - 1, name,
+      browserId: identity?.browserId,
       seatToken: event.type === 'join' ? event.seatToken : '', deviceId: identity?.deviceId ?? '',
       connectionId: identity?.connectionId ?? '', disconnectedAt: null,
       midGameJoin: !canAskToJoin(next.phase), team: null, quality: null
