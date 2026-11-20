@@ -341,3 +341,15 @@ it('CTRL-003 does no style, probe or range work for face-down empty labels', () 
   try { measureLabelGroup([button],{width:89,height:68}); expect(read).not.toHaveBeenCalled(); }
   finally { vi.unstubAllGlobals(); }
 });
+
+it('PLAT-022 status titles share the smallest measured step and recover on resize', async () => {
+  const { measureTitleGroup } = await import('./layout-label');
+  const titles = [{style:{}},{style:{}}] as HTMLElement[];
+  const fits = (node:HTMLElement) => node !== titles[1] || node.style.fontSize !== 'var(--ka-phone-type-34)';
+  expect(measureTitleGroup(titles,fits)).toBe(true);
+  expect(titles.map(node => node.style.fontSize)).toEqual(['var(--ka-phone-type-21)','var(--ka-phone-type-21)']);
+  expect(measureTitleGroup(titles,() => true)).toBe(true);
+  expect(titles.map(node => node.style.fontSize)).toEqual(['var(--ka-phone-type-34)','var(--ka-phone-type-34)']);
+  expect(measureTitleGroup(titles,() => false)).toBe(false);
+  expect(titles.map(node => node.style.fontSize)).toEqual(['var(--ka-phone-type-13)','var(--ka-phone-type-13)']);
+});

@@ -209,3 +209,5 @@ Closed 2026-11-18: D-235 — built versions kept; pulse on success only; one tit
 Decided 2026-11-18 (D-250): Firefox by hand at X-09; 15 s "could not connect" state (K-11). Still open: real iPhone and Safari runs (K-07, X-09).
 
 **OQ-052 · Peek Poker reveal: order of tied hands (raised 2026-11-18 by P-07's review).** Hands of equal strength were listed by seat, so the +3 speed winner could sit below a +1 player (P-07 round3-p8/55). Closed 2026-11-18: D-223 — by points, then lock-in time; seat last.
+
+**OQ-056 · Phone Results: should Play again and Continue keep the cross shape? (raised 2026-11-20 by R-19's review; PLAT-022, CTRL-005).** On the platform Results screen the leader's Play again carries the red cross, the platform's "confirm" shape from the game picker. D-222 made Rabakz's own Continue words only. Recommendation: keep the cross on platform controls for one shape language across games, and change it only if Randy prefers words-only buttons there too; a board with both would go to Randy as an artifact before any change. Seen in R-19 round7 15 and 32.

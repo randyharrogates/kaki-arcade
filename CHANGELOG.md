@@ -2,6 +2,16 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-20 — R-19: Rabakz phone polish
+- RZ-031: the phone's status title pulses once only on success ("Right"); "Wrong", "Locked out" and neutral titles stay still; reduced motion drops the pulse and keeps the state (D-235). A game opts a title into the kit's pulse from its own stylesheet; the kit matches no text.
+- Titles in one status strip share the smallest size any of them needs at that width.
+- RZ-032: the leader's scoreboard Continue is words only, with no shape (D-222).
+- RZ-016, PLAT-022: Place is labelled above Score on the scoreboard and on Results. Free-for-all ties read "=2nd". In teams the place is the team's ("=1st" when level), with the team name on its own line; a player without a team sees "No team" (D-221, D-312).
+- The locked-out phone labels the chosen answer ("Your answer: 4").
+- Controller start-up 174.4 ms against 2,000.
+- A late joiner in teams sees their team named once on the scoreboard and Results.
+- Not yet: the reveal's answer label; the platform Results cross and clipped third button; real phones.
+
 ## 2026-11-20 — T-10: Tabao Rush first-run tutorial
 - TR-055: the first Tabao Rush match in a room opens with a playable tutorial (move, pick up, chop, serve) in a practice kitchen with three chop boards and no orders, timer, score or burning; each lesson waits for every connected cook; only the leader can skip, from the phone or with K or pad Back on the TV seat; the real round then starts fresh, and players who joined during the tutorial play in it (D-311).
 - TV: board B step rail beside the kitchen (1187 : 733); the backdrop stays still while the kitchen slides; a ring moves to each target on an arc and pulses once; the current step is in dark ink with a highlight bar; reduced motion changes at once.

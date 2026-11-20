@@ -1,5 +1,6 @@
 /// <reference lib="dom" />
 import { space } from '@kaki/ui';
+import { PRIVATE_TEXT_STEPS } from '@kaki/platform/private-placement';
 import type { Size } from '@kaki/ui';
 import type { LayoutPart } from './layout-types';
 /** D-127: measured label bounds at 34 px select the next phone type step on overflow. */
@@ -202,4 +203,19 @@ export function labelMeasurementSignature(control:LayoutPart, width:number, heig
   return JSON.stringify([control.kind,readOnly,width,height,gap,
     control.kind === 'grid' ? [control.cols,control.rows] : [Math.min(2,items.length),Math.ceil(items.length/2)],
     items.map(item => [item.id,item.label,item.face,item.faceDown,item.colour,item.state === 'disabled'])]);
+}
+
+/** One status strip shares its smallest measured title step. Called on content,
+ * font or box changes by the panel observer, never by an animation loop. */
+export function measureTitleGroup(titles: readonly HTMLElement[], fits: (node: HTMLElement) => boolean): boolean {
+  const steps = titles.map(node => {
+    for (const step of PRIVATE_TEXT_STEPS) {
+      node.style.fontSize = `var(--ka-phone-type-${String(step)})`;
+      if (fits(node)) return step;
+    }
+    return 0;
+  });
+  const step = Math.min(34,...steps);
+  titles.forEach(node => { node.style.fontSize = `var(--ka-phone-type-${String(step || 13)})`; });
+  return step > 0 && titles.every(fits);
 }

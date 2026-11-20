@@ -2,15 +2,16 @@
 import { createElement as h } from 'preact';
 import type { ComponentChildren } from 'preact';
 import { useLayoutEffect, useMemo, useRef, useState } from 'preact/hooks';
-import { SHAPE_BUTTONS, SHAPE_STROKE, colourTokenVar, crossfade, pulse, press, pressScale, cardTurn, reducedMotion } from '@kaki/ui';
+import { SHAPE_BUTTONS, SHAPE_STROKE, colourTokenVar, crossfade, press, pressScale, cardTurn, reducedMotion } from '@kaki/ui';
 import { PRIVATE_TEXT_STEPS, PRIVATE_STAT_STEPS } from '@kaki/platform/private-placement';
 import { PHONE } from '@kaki/platform/layout';
 import type { Size } from '@kaki/ui';
 import { Stick } from './stick';
+import { pulseStatusTitle } from './status-title';
 import { DPad } from './buttons';
 import { bindControlEvents, controlHit, vibratePress } from './button-input';
 import { placeController, privateBlocks } from './private-panel';
-import { observeLabelGroup, labelMeasurementSignature, labelCellBox, measureOptionWidth } from './layout-label';
+import { measureTitleGroup, observeLabelGroup, labelMeasurementSignature, labelCellBox, measureOptionWidth } from './layout-label';
 import { faceShape, layoutOutput, revisionProblem, layoutTapSignature } from './layout-types';
 import type { Item, Layout, LayoutPart, LayoutOutput, LayoutValue, PrivateView, PanelBlock } from './layout-types';
 /** Watch the animation timeline so a late first frame cannot shorten a fade.
@@ -159,15 +160,13 @@ function PrivateBlock({ block,layout,gap }: { block:PanelBlock; layout:Layout; g
   }, [block]);
   const title = block.kind === 'text' && block.tone === 'title' ? block.text : null;
   useLayoutEffect(() => {
-    const node = root.current?.querySelector('.ka-layout-title > span');
-    if (!title || !node || reducedMotion()) return;
-    const motion = pulse();
-    const animation = node.animate(motion.keyframes,motion.options);
-    return () => { animation.cancel(); };
+    const node = root.current?.querySelector<HTMLElement>('.ka-layout-title > span');
+    if (!title || !node) return;
+    return pulseStatusTitle(node);
   }, [title]);
   if (block.kind === 'stat') return h('div',{ class:'ka-private-stat' },h('span',{ class:'ka-private-stat-label' },block.label),h('span',{ class:'ka-private-stat-value' },String(block.value)));
   const control: LayoutPart = { ...block,id:'private:block' };
-  return h('div',{ ref:root,class:'ka-layout-content' },h(Part,{ control,layout,readOnly:true,output:() => { /* Read-only blocks cannot emit input. */ },width:0,height:0,gap }));
+  return h('div',{ ref:root,class:'ka-layout-content','data-status-title':title ?? undefined },h(Part,{ control,layout,readOnly:true,output:() => { /* Read-only blocks cannot emit input. */ },width:0,height:0,gap }));
 }
 /** Stable keys preserve held controls. Removed parts unmount and release before their inert
  * visual snapshot exits; snapshots can never produce input. Import layout.css too. */
@@ -235,7 +234,10 @@ export function LayoutEngine(props: LayoutEngineProps) {
       const stats = [...panel.querySelectorAll<HTMLElement>('.ka-private-stat-value')];
       const grids = [...panel.querySelectorAll<HTMLElement>('.ka-private-grid-label')];
       const titles = labels.filter(node => node.classList.contains('ka-layout-title'));
-      const titlesFit = titles.map(node => choose(node,PRIVATE_TEXT_STEPS)).every(Boolean);
+      const titlesFit = measureTitleGroup(titles,node => {
+        const span = node.querySelector('span');
+        return fitsBox(node) && (!span || fitsBox(span) && span.offsetWidth <= node.clientWidth && span.offsetHeight <= node.clientHeight);
+      });
       const titleSize = Math.min(Infinity,...titles.map(node => parseFloat(getComputedStyle(node).fontSize)));
       const textFits = labels.filter(node => !titles.includes(node)).map(node => choose(node,
         (node.classList.contains('ka-layout-note') ? [13] : !titles.length ? PRIVATE_TEXT_STEPS : node.classList.contains('ka-layout-body') ? [21,13] : PRIVATE_TEXT_STEPS).filter(step => step <= titleSize))).every(Boolean) && titlesFit;

@@ -9,3 +9,8 @@
 .ka-controller-shell[data-theme='rabakz'] .ka-layout-options > button > span {
   line-height: var(--ka-line-body);
 }
+
+/* RZ-031 D-235: only success gets the kit's existing one-shot pulse. */
+.ka-controller-shell[data-theme='rabakz'] [data-status-title='Right'] .ka-layout-title > span {
+  --ka-status-pulse: success;
+}

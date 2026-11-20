@@ -142,7 +142,7 @@ it('RZ-005 skipped reveal has no invented pick; scoreboard and end show shared p
   expect(reveal?.blocks).toHaveLength(4);
   for (const phase of ['scoreboard','over'] as const) {
     const scored = {...state,phase,players:state.players.map((p,i) => ({...p,score:i ? 800 : 700}))};
-    expect(privateView(scored,id)?.blocks).toEqual([{kind:'text',tone:'title',text:'2nd · 700'}]);
+    expect(privateView(scored,id)?.blocks).toEqual([{kind:'stat',label:'Place',value:'2nd'},{kind:'stat',label:'Score',value:700}]);
   }
 });
 it('RZ-005 status remains at least as large as every secondary line at both phone sizes', () => {
@@ -252,4 +252,59 @@ describe('RZ-005 / RZ-007 reveal answer status', () => {
     expect(title(t.match.state, leader)).toMatchObject({ text: 'Skipped' });
     expect(title(t.match.state, guest)).toMatchObject({ text: 'No answer' });
   });
+});
+
+it('RZ-032 PLAT-022 Continue has words and no shape', () => {
+  const state = twin({ ...options, players:3 }).match.state;
+  const control = controllerLayout({ ...state, phase:'scoreboard' },state.players[0]?.info.id ?? '').controls[0];
+  expect(control).toMatchObject({ kind:'options',options:[{ id:'next',label:'Continue' }] });
+  expect(control?.kind === 'options' && control.options[0]).not.toHaveProperty('face');
+});
+
+it('RZ-016 places teams by team totals and marks free-for-all ties', () => {
+  const initial = twin({ ...options, players:3 }).match.state;
+  const players = initial.players.map((p,i) => ({ ...p,score:i === 0 ? 100 : 0,info:{ ...p.info,team:i === 2 ? 1 as const : 0 as const } }));
+  const state: State = { ...initial,phase:'scoreboard',players,teams:true,teamScores:[100,200] };
+  const places = (s:State) => s.players.map(p => privateView(s,p.info.id)?.blocks.find(b => b.kind === 'stat' && b.label === 'Place'));
+  expect(places(state)).toEqual([
+    {kind:'stat',label:'Place',value:'2nd'},
+    {kind:'stat',label:'Place',value:'2nd'},
+    {kind:'stat',label:'Place',value:'1st'},
+  ]);
+  expect(privateView({...state,teamScores:[100,100]},players[0]?.info.id ?? '')?.revision).not.toBe(privateView(state,players[0]?.info.id ?? '')?.revision);
+  const ffa = {...state,teams:false};
+  const untied = {...ffa,players:players.map((p,i) => ({...p,score:i === 2 ? -1 : p.score}))};
+  expect(privateView(ffa,players[1]?.info.id ?? '')?.revision).not.toBe(privateView(untied,players[1]?.info.id ?? '')?.revision);
+  expect(places({...state,teams:false}).map(b => b?.kind === 'stat' && b.value)).toEqual(['1st','=2nd','=2nd']);
+  expect(places({...state,teamScores:[100,100]}).map(b => b?.kind === 'stat' && b.value)).toEqual(['=1st','=1st','=1st']);
+  for (const phase of ['scoreboard','over'] as const) {
+    for (const [i,player] of players.entries()) {
+      expect(privateView({...state,phase},player.info.id)?.blocks).toEqual([
+        {kind:'stat',label:'Place',value:i === 2 ? '1st' : '2nd'},
+        {kind:'text',tone:'body',text:i === 2 ? 'Blue team' : 'Red team'},
+        {kind:'stat',label:'Score',value:player.score},
+      ]);
+    }
+  }
+});
+
+it('RZ-031 labels the locked-out number as the selected answer, not a count', () => {
+  const initial = twin({ ...options, players:3 }).match.state;
+  const correct = initial.questions[0]?.correct ?? 0;
+  const wrong = (correct+1)%4;
+  const state = own({...initial,questions:initial.questions.map(q => ({...q,options:q.options.map((label,i) => i === wrong ? '4' : label)}))},wrong);
+  const blocks = privateView(state,state.players[0]?.info.id ?? '')?.blocks;
+  expect(blocks).toContainEqual({kind:'text',text:'Your answer: 4',tone:'note'});
+  expect(blocks).not.toContainEqual({kind:'text',text:'4',tone:'note'});
+});
+
+it('RZ-016 gives a teamless player No team and no individual place', () => {
+  const initial = twin({ ...options, players:3 }).match.state;
+  const players = initial.players.map(p => ({...p,joinedMidGame:true,info:{id:p.info.id,name:p.info.name,seat:p.info.seat,colour:p.info.colour}}));
+  for (const phase of ['scoreboard','over'] as const) {
+    expect(privateView({...initial,players,teams:true,phase},players[0]?.info.id ?? '')?.blocks).toEqual([
+      {kind:'text',tone:'body',text:'No team'},
+      {kind:'stat',label:'Score',value:0},
+    ]);
+  }
 });

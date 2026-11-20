@@ -226,7 +226,8 @@ describe('D-071 review fixes', () => {
     expect(s.phase).toBe('scoreboard');
     const controls = rabakz.controllerLayout(s, id(s, 0)).controls;
     expect(controls[0]).toMatchObject({ id: 'continue', audience: 'leader',
-      options: [{ face: 'face-bottom' }] });
+      options: [{ label: 'Continue' }] });
+    expect(controls[0]?.kind === 'options' && controls[0].options[0]).not.toHaveProperty('face');
     for (let i = 0; i < 1199; i++) s = step(s, [], [], null);
     expect(s.phase).toBe('scoreboard');
     s = step(s, [], [], null);

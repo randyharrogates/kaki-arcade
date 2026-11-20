@@ -373,6 +373,10 @@ describe('Rabakz rules', () => {
     expect(JSON.stringify(privateView(state, newcomer.id))).toContain("You're on Blue team");
     state = tick(state, [[3, correct(state)]]);
     expect(state.players.at(-1)?.pick).toBeNull();
+    for (const phase of ['scoreboard', 'over'] as const) {
+      // The scoreboard and Results name the team on their own line, so the joiner note is not added.
+      expect(JSON.stringify(privateView({ ...state, phase }, newcomer.id))).not.toContain("You're on");
+    }
     while (state.round === 0) state = tick(state);
     expect(state.players.at(-1)).toMatchObject({ score: 0, eligible: true });
     state = tick(state, [[3, correct(state)]]);

@@ -1,0 +1,386 @@
+{
+  "slice": "R-19-rabakz-phone-polish",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- R-19-rabakz-phone-polish --phones 3 --max-mb 24 --timeout-min 10 --out round7",
+  "commit": "b8c2ff1c8914a9ef488e52abdf325772302082b7",
+  "viewports": [
+    "844×390"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1204.27875,
+      "status": "completed"
+    },
+    {
+      "name": "ffa question 1",
+      "ms": 4031.754417,
+      "status": "completed"
+    },
+    {
+      "name": "ffa question 2",
+      "ms": 2344.6489579999998,
+      "status": "completed"
+    },
+    {
+      "name": "ffa question 3",
+      "ms": 2353.9622089999993,
+      "status": "completed"
+    },
+    {
+      "name": "ffa question 4",
+      "ms": 2344.419334,
+      "status": "completed"
+    },
+    {
+      "name": "ffa question 5",
+      "ms": 3145.412833000002,
+      "status": "completed"
+    },
+    {
+      "name": "ffa question 6",
+      "ms": 2384.5240000000013,
+      "status": "completed"
+    },
+    {
+      "name": "ffa question 7",
+      "ms": 2351.3939580000006,
+      "status": "completed"
+    },
+    {
+      "name": "ffa question 8",
+      "ms": 2346.7310829999988,
+      "status": "completed"
+    },
+    {
+      "name": "ffa question 9",
+      "ms": 2336.9331249999996,
+      "status": "completed"
+    },
+    {
+      "name": "ffa question 10",
+      "ms": 3798.386458000001,
+      "status": "completed"
+    },
+    {
+      "name": "teams question 1",
+      "ms": 4012.9056249999994,
+      "status": "completed"
+    },
+    {
+      "name": "teams question 2",
+      "ms": 2433.7182909999974,
+      "status": "completed"
+    },
+    {
+      "name": "teams question 3",
+      "ms": 2357.034833999998,
+      "status": "completed"
+    },
+    {
+      "name": "teams question 4",
+      "ms": 2349.814624999999,
+      "status": "completed"
+    },
+    {
+      "name": "teams question 5",
+      "ms": 3139.571499999998,
+      "status": "completed"
+    },
+    {
+      "name": "teams question 6",
+      "ms": 2387.7497079999957,
+      "status": "completed"
+    },
+    {
+      "name": "teams question 7",
+      "ms": 2425.179250000001,
+      "status": "completed"
+    },
+    {
+      "name": "teams question 8",
+      "ms": 2660.665541999995,
+      "status": "completed"
+    },
+    {
+      "name": "teams question 9",
+      "ms": 2665.657041999999,
+      "status": "completed"
+    },
+    {
+      "name": "teams question 10",
+      "ms": 4224.968416999996,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-ffa-locked-out.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-ffa-wrong.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone2-ffa-right.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone2-ffa-right-pulse-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-phone2-ffa-right-pulse-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone2-ffa-right-pulse-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-phone2-ffa-right-pulse-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-phone2-ffa-right-pulse-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-phone2-ffa-right-pulse-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-phone1-ffa-continue.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-phone1-ffa-place-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "13-phone2-ffa-place-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-phone3-ffa-place-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-ffa-final-place-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone2-ffa-final-place-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-phone3-ffa-final-place-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-teams-locked-out.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone1-teams-wrong.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-phone2-teams-right.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone2-teams-right-pulse-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone2-teams-right-pulse-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-phone2-teams-right-pulse-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-phone2-teams-right-pulse-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-phone2-teams-right-pulse-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-phone2-teams-right-pulse-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-phone1-teams-continue.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-phone1-teams-place-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-phone2-teams-place-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-phone3-teams-place-phone3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-phone1-teams-final-place-phone1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "33-phone2-teams-final-place-phone2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-phone3-teams-final-place-phone3.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-ffa-locked-out.jpg",
+    "02-phone1-ffa-wrong.jpg",
+    "03-phone2-ffa-right.jpg",
+    "10-strip-ffa-right-pulse.jpg",
+    "11-phone1-ffa-continue.jpg",
+    "12-phone1-ffa-place-phone1.jpg",
+    "13-phone2-ffa-place-phone2.jpg",
+    "14-phone3-ffa-place-phone3.jpg",
+    "15-phone1-ffa-final-place-phone1.jpg",
+    "16-phone2-ffa-final-place-phone2.jpg",
+    "17-phone3-ffa-final-place-phone3.jpg",
+    "18-phone1-teams-locked-out.jpg",
+    "19-phone1-teams-wrong.jpg",
+    "20-phone2-teams-right.jpg",
+    "27-strip-teams-right-pulse.jpg",
+    "28-phone1-teams-continue.jpg",
+    "29-phone1-teams-place-phone1.jpg",
+    "30-phone2-teams-place-phone2.jpg",
+    "31-phone3-teams-place-phone3.jpg",
+    "32-phone1-teams-final-place-phone1.jpg",
+    "33-phone2-teams-final-place-phone2.jpg",
+    "34-phone3-teams-final-place-phone3.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-ffa-locked-out.jpg",
+      "bytes": 202003
+    },
+    {
+      "file": "02-phone1-ffa-wrong.jpg",
+      "bytes": 125283
+    },
+    {
+      "file": "03-phone2-ffa-right.jpg",
+      "bytes": 127765
+    },
+    {
+      "file": "10-strip-ffa-right-pulse.jpg",
+      "bytes": 814063
+    },
+    {
+      "file": "11-phone1-ffa-continue.jpg",
+      "bytes": 118797
+    },
+    {
+      "file": "12-phone1-ffa-place-phone1.jpg",
+      "bytes": 118797
+    },
+    {
+      "file": "13-phone2-ffa-place-phone2.jpg",
+      "bytes": 112164
+    },
+    {
+      "file": "14-phone3-ffa-place-phone3.jpg",
+      "bytes": 109183
+    },
+    {
+      "file": "15-phone1-ffa-final-place-phone1.jpg",
+      "bytes": 125574
+    },
+    {
+      "file": "16-phone2-ffa-final-place-phone2.jpg",
+      "bytes": 101241
+    },
+    {
+      "file": "17-phone3-ffa-final-place-phone3.jpg",
+      "bytes": 97969
+    },
+    {
+      "file": "18-phone1-teams-locked-out.jpg",
+      "bytes": 182432
+    },
+    {
+      "file": "19-phone1-teams-wrong.jpg",
+      "bytes": 123520
+    },
+    {
+      "file": "20-phone2-teams-right.jpg",
+      "bytes": 125782
+    },
+    {
+      "file": "27-strip-teams-right-pulse.jpg",
+      "bytes": 803081
+    },
+    {
+      "file": "28-phone1-teams-continue.jpg",
+      "bytes": 128096
+    },
+    {
+      "file": "29-phone1-teams-place-phone1.jpg",
+      "bytes": 128096
+    },
+    {
+      "file": "30-phone2-teams-place-phone2.jpg",
+      "bytes": 119026
+    },
+    {
+      "file": "31-phone3-teams-place-phone3.jpg",
+      "bytes": 114134
+    },
+    {
+      "file": "32-phone1-teams-final-place-phone1.jpg",
+      "bytes": 128855
+    },
+    {
+      "file": "33-phone2-teams-final-place-phone2.jpg",
+      "bytes": 101727
+    },
+    {
+      "file": "34-phone3-teams-final-place-phone3.jpg",
+      "bytes": 97453
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 3233
+    },
+    {
+      "file": "run.json",
+      "bytes": 8609
+    }
+  ],
+  "totalBytes": 4116920,
+  "maxBytes": 25165824
+}

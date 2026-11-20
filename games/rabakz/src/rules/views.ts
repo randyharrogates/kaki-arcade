@@ -10,7 +10,7 @@ export function controllerLayout(state: State, id: string): ControllerLayout {
   if (!player) return { revision, controls: [] };
   if (state.phase === 'scoreboard') return { revision, controls: [{
     kind: 'options', id: 'continue', audience: 'leader',
-    options: [{ id: 'next', label: 'Continue', face: 'face-bottom' }],
+    options: [{ id: 'next', label: 'Continue' }],
   }] };
   if (state.phase !== 'question') return { revision, controls: [] };
   return { revision, controls: [...(player.eligible ? [{
@@ -37,10 +37,20 @@ function playerView(state: State, id: string): PrivateView | null {
   const text = (text: string, tone: 'title' | 'body' | 'note' = 'note') =>
     ({ kind: 'text' as const, text, tone });
   if (state.phase === 'scoreboard' || state.phase === 'over') {
-    const place = 1 + state.players.filter(other => other.score > player.score).length;
+    const team = player.info.team;
+    const teamPlace = state.teams && (team === 0 || team === 1);
+    const score = teamPlace ? state.teamScores[team] : player.score;
+    const scores = teamPlace ? state.teamScores : state.players.map(other => other.score);
+    const place = 1 + scores.filter(other => other > score).length;
+    const tied = scores.filter(other => other === score).length > 1;
     const suffix = place % 100 >= 11 && place % 100 <= 13 ? 'th' :
       ({ 1: 'st', 2: 'nd', 3: 'rd' } as Record<number, string>)[place % 10] ?? 'th';
-    return { revision: revision * 10 + place, blocks: [text(`${String(place)}${suffix} · ${String(player.score)}`, 'title')] };
+    const placing = `${tied ? '=' : ''}${String(place)}${suffix}`;
+    return { revision: revision * 100 + place * 2 + Number(tied), blocks: [
+      ...(!state.teams || teamPlace ? [{ kind: 'stat' as const, label: 'Place', value: placing }] : []),
+      ...(state.teams ? [text(teamPlace ? `${team === 0 ? 'Red' : 'Blue'} team` : 'No team', 'body')] : []),
+      { kind: 'stat', label: 'Score', value: player.score },
+    ] };
   }
   if (revealed) return { revision, blocks: [
     text(lastPick === undefined ? (player.skipped ? 'Skipped' : 'No answer') : lastPick === question(state).correct ? 'Right' : 'Wrong', 'title'),
@@ -57,14 +67,16 @@ function playerView(state: State, id: string): PrivateView | null {
   return { revision, blocks: [
     text(lockedOut ? 'Locked out' : 'Locked in', 'title'),
     ...(lockedOut ? [text('Wrong answer. Wait until everyone has taken a turn.')] : []),
-    text(question(state).options[player.pick] ?? ''),
+    text(`${lockedOut ? 'Your answer: ' : ''}${question(state).options[player.pick] ?? ''}`),
     ...(!lockedOut ? [text('Watch the TV for the reveal')] : []),
   ] };
 }
 export function privateView(state: State, id: string): PrivateView | null {
   const view = playerView(state, id);
   const player = state.players.find(item => item.info.id === id);
-  if (!view || !state.teams || !player?.joinedMidGame) return view;
+  // The scoreboard and Results already name the team on their own line.
+  if (!view || !state.teams || !player?.joinedMidGame || state.phase === 'scoreboard' || state.phase === 'over' ||
+    (player.info.team !== 0 && player.info.team !== 1)) return view;
   return { ...view, blocks: [...view.blocks, { kind: 'text', tone: 'note',
     text: `You're on ${player.info.team === 0 ? 'Red' : 'Blue'} team` }] };
 }
