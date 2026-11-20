@@ -138,3 +138,4 @@
 .ka-layout-engine[data-picture-grid='true'] .ka-layout-options > button { background:var(--ka-accent); color:var(--ka-accent-ink); font-size:var(--ka-phone-type-21) !important; font-weight:var(--ka-weight-bold); }
 
 .ka-layout-engine[data-picture-grid='true'] .ka-layout-options[data-single-option='true'] > button[data-state='selected'] { background:var(--ka-panel-treatment); color:var(--ka-accent); border-color:var(--ka-accent); }
+.ka-layout-part[data-highlighted='true'] { z-index:1; outline:var(--ka-space-5) solid var(--ka-highlight); outline-offset:0; border-radius:var(--ka-radius-corner); }

@@ -23,7 +23,7 @@ vi.mock('virtual:rabakz-bank-index', async () => {
 
 it('RZ-001/010/011 setup and selector agree across the real bank and seeded subsets', () => {
   const table = setupTable(bank.index);
-  const schema = settingsSchema(rabakz, { data: { 'categories.json': table }, saved: null, teams: false });
+  const schema = settingsSchema(rabakz, { firstInRoom: false, data: { 'categories.json': table }, saved: null, teams: false });
   expect(checkSettingsSchema(schema)).toEqual([]);
   expect(validateSettings(schema, defaultSettings(schema)).ok).toBe(true);
   expect(table.categories).toHaveLength(16);

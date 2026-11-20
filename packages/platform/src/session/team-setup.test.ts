@@ -9,7 +9,7 @@ it('PLAT-025 runner refuses missing and empty team splits before init', () => {
     const room = makeRoom(2, mode !== 'missing');
     const players = mode === 'empty' ? room.players.map(p => ({ ...p, team: 'red' as const })) : room.players;
     createSession({ game: { ...fixture, init, meta: { ...fixture.meta, teams: 'required' } }, settings: { steps: 30 }, seed: 7,
-      room: { ...room, players }, context: { data: {}, saved: null, teams: true }, buffer: createInputBuffer<string>({ axisCount: 4, seqModulus: 65536, staleAfterSteps: 15 }),
+      room: { ...room, players }, context: { firstInRoom: false, data: {}, saved: null, teams: true }, buffer: createInputBuffer<string>({ axisCount: 4, seqModulus: 65536, staleAfterSteps: 15 }),
       transport: new FakeTransport(), publicView: () => undefined, event });
     expect(init).not.toHaveBeenCalled(); expect(event).toHaveBeenCalledWith(expect.objectContaining({ type: 'error', operation: 'teams' }));
   }
@@ -20,7 +20,7 @@ it('PLAT-025 D-149 runner initialises an uneven eight-player split', () => {
   const room = makeRoom(8, true);
   createSession({ game: { ...fixture, init, meta: { ...fixture.meta, teams: 'required' } }, settings: { steps: 30 }, seed: 7,
     room: { ...room, players: room.players.map((p, i) => ({ ...p, team: i < 7 ? 'red' as const : 'blue' as const })) },
-    context: { data: {}, saved: null, teams: true }, buffer: createInputBuffer<string>({ axisCount: 4, seqModulus: 65536, staleAfterSteps: 15 }),
+    context: { firstInRoom: false, data: {}, saved: null, teams: true }, buffer: createInputBuffer<string>({ axisCount: 4, seqModulus: 65536, staleAfterSteps: 15 }),
     transport: new FakeTransport(), publicView: () => undefined, event: () => undefined });
   expect(init).toHaveBeenCalledOnce();
 });

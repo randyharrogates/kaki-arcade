@@ -59,7 +59,7 @@ export function hostKeyboard(input: {
       if (event.code === 'KeyL' && phase === 'lobby' && !teams && (picker === undefined || picker === 'lobby' || picker === 'picker' || picker === 'start')) { clear(); input.leave(); return; }
       if (phase === 'playing' && event.code !== 'Escape') {
         if (event.repeat && (event.code === 'Space' || event.code === 'Enter')) { event.preventDefault(); return; }
-        if (localSeat && ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'Space', 'Enter', 'KeyE', 'KeyQ', 'KeyR', 'KeyZ', 'KeyX'].includes(event.code)) { held.add(event.code); if (!event.repeat) latched.add(event.code); event.preventDefault(); }
+        if (localSeat && ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'KeyW', 'KeyA', 'KeyS', 'KeyD', 'Space', 'Enter', 'KeyE', 'KeyQ', 'KeyR', 'KeyZ', 'KeyX', 'KeyK'].includes(event.code)) { held.add(event.code); if (!event.repeat) latched.add(event.code); event.preventDefault(); }
         return;
       }
       if (phase === 'results' && (event.key === 'Escape' || event.key === 'Enter')) return;

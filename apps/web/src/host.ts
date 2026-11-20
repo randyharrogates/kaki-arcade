@@ -1,3 +1,5 @@
+import type { SessionStartOptions } from './session-adapter';
+import { firstInRoom } from './first-in-room';
 import { CLOSED_ROOM_REASON } from './team-setup';
 import { REFUSAL_HOLD_MS } from './team-setup';
 import type { SetupRefusal } from './game-setup-route';
@@ -35,7 +37,7 @@ export interface HostDependencies {
   mintToken(): string;
   dial(credentials: HostCredentials | undefined, callbacks: DialCallbacks,
     registerStop: (stop: () => void) => void): Promise<HostLink & { reopened: boolean }>;
-  session?: { localPeer?(id: string, peer: SessionPeer): void; command?(action: 'pause' | 'resume' | 'quit', id: string): void; continueResults?(): void; setup?(gameId: string, teams: boolean): Promise<PreparedSetup>; start(gameId: string, room: RoomState, settings?: object, assignTeam?: (seat: number, team: TeamId) => void): Promise<unknown>; allowsRunningJoin?(teams: boolean): boolean; prefetch?(gameId: string): Promise<unknown>; updateRoom?(room: RoomState): void; stop?(): void; control?(id: string, message: unknown): void; dropped?(id: string): void };
+  session?: { localPeer?(id: string, peer: SessionPeer): void; command?(action: 'pause' | 'resume' | 'quit', id: string): void; continueResults?(): void; setup?(gameId: string, teams: boolean, firstInRoom?: boolean): Promise<PreparedSetup>; start(gameId: string, room: RoomState, settings?: object, options?: SessionStartOptions): Promise<unknown>; allowsRunningJoin?(teams: boolean): boolean; prefetch?(gameId: string): Promise<unknown>; updateRoom?(room: RoomState): void; stop?(): void; control?(id: string, message: unknown): void; dropped?(id: string): void };
   online?: { subscribe(callback: () => void): () => void };
   lifecycle?: { subscribe(callback: (event?: 'pageshow' | 'pagehide' | 'hidden') => void): () => void };
 }
@@ -75,7 +77,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
     setupLoading = deps.session?.setup !== undefined && (rebuild || cached?.context.teams !== enabled); setupProblem = null;
     updateSettingsView(); sendTeams(); publish();
     if (!setupLoading || !deps.session?.setup) { if (!offered && !cached?.schema.fields.length) { teamSetup = null; sendTeams(); publish(); } return; }
-    void deps.session.setup(gameId, enabled).then(setup => {
+    void deps.session.setup(gameId, enabled, firstInRoom(snapshot?.scores ?? {}, gameId)).then(setup => {
       if (stopped || generation !== setupGeneration || picker.focus !== gameId || picker.screen !== 'start') return;
       preparedSetups.set(gameId, setup);
       chosenSettings.set(gameId, reconcileSettings(setup.schema, chosenSettings.get(gameId)));
@@ -277,7 +279,7 @@ export function createHost(deps: HostDependencies, changed: (input: Omit<LobbyIn
       const loading = ++loadAttempt; const gameId = picker.focus;
       const teamsInUse = confirmingTeams && savedTeams?.enabled === true;
       const assignTeam = (seat: number, team: TeamId): void => { roomAdapter?.host({ type: 'team', seat, team: team === 0 ? 'red' : 'blue' }); };
-      void deps.session?.start(gameId, roomAdapter.room, chosenSettings.get(gameId), assignTeam).then(() => {
+      void deps.session?.start(gameId, roomAdapter.room, chosenSettings.get(gameId), { firstInRoom: firstInRoom(snapshot?.scores ?? {}, gameId), assignTeam }).then(() => {
         if (!stopped && loading === loadAttempt && picker.screen === 'starting' && roomAdapter?.room.phase === 'lobby') {
           const allowRunningJoin = deps.session?.allowsRunningJoin?.(teamsInUse) ?? ((gameMetas.find(meta => meta.id === gameId)?.midGameJoin ?? false) && !teamsInUse);
           runningAllowsJoin = allowRunningJoin;

@@ -129,6 +129,18 @@ never at cold start; the build resolves asset references to hashed URLs. The app
 loads each game's data-only picture declaration (the same value referenced by the module),
 without importing host rules or private content onto a phone.
 
+`SetupContext.firstInRoom` is a read-only host fact: true when none of the room’s
+completed-round seat totals has an own entry for this game id (including a zero total).
+It adds no persistence. Restoring the existing room snapshot retains the fact. A tutorial
+completed before any real round is completed can therefore appear again after a TV reload.
+Fixtures default it to false; a first-run scenario opts in explicitly.
+
+Controls may declare `highlighted?: boolean`, a presentation-only gold outline that preserves
+held input and tap meaning. The generic phone header hook consumes a text control with id
+`header-heading` and a single-option control with id `header-action`; they retain the normal
+audience, revision and action validation. These controls occupy the header rather than the
+play-area packing. A header action uses the shell’s 55 px minimum target.
+
 Rules:
 
 - `step` has no access to the DOM, network, timers or `Math.random`. All randomness comes from

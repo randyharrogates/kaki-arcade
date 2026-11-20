@@ -11,8 +11,9 @@ import { projectX, projectY, TILE } from './model';
 import type { Assets, Packed } from './assets';
 import type { View } from './model';
 const assetConfig=vi.hoisted(()=>({override:undefined as Assets|undefined}));
-const apps=vi.hoisted(()=>({stages:[] as {children:{children:{zIndex:number;visible:boolean}[]}[]}[]}));
+const apps=vi.hoisted(()=>({stages:[] as {children:{position:{x:number};children:{zIndex:number;visible:boolean}[]}[]}[]}));
 const metrics=vi.hoisted(()=>({nodes:0,textures:0,rasters:0,writes:0,sorts:0,encodes:0,uploads:0}));
+vi.mock('./tutorial',()=>({TUTORIAL_OFFSET:367,createTutorial:()=>({update(){},destroy(){}})}));
 vi.mock('./cook-picker',()=>({createCookPicker:()=>({update(){},destroy(){}})}));
 vi.mock('pixi.js/prepare',()=>({}));
 vi.mock('pixi.js',()=>{
@@ -47,6 +48,18 @@ it('drives the mounted update through changing cooks, items, station progress an
   // Prepare views outside the measured update path; no unchanged-view identity tautology.
   const views=Array.from({length:32},(_,i)=>({...view,tick:120+i,cooks:view.cooks.map(c=>({...c,x:2+i/32,y:3,facing:0 as const})),items:[{id:1,kind:'raw' as const,ingredient:'chicken' as const,place:{kind:'held' as const,cook:'a'}}],kitchens:[{id:'coop',score:120,tips:20,stars:2,orders:Array.from({length:6},(_,n)=>({id:n,dish:'chicken-rice',remaining:2400-i*60,total:3600,warning:false,arrivalStep:0}))}],orderEvents:[{type:'served' as const,kitchen:'coop',order:i%6,dish:'chicken-rice',step:120+i,cook:'a',seat:1,points:100,tip:i%2?12:0,delta:100}],stations:view.stations.map(s=>({...s,progress:i+1,total:60}))}));
   const {createScreen}=await import('./screen');const screen=await createScreen(root,{view:views[0],width:1920,height:1080},()=>false);expect(screen).toBeDefined();
+  // TR-055: backdrop is a fixed sibling; tutorial exit only selects uploaded textures.
+  const { TUTORIAL_LEVEL } = await import('../src/rules/tutorial');
+  const prepared = { ...metrics };
+  screen?.update({ view: { ...view, phase: 'tutorial', level: TUTORIAL_LEVEL, tutorial: { step: 0, done: [] } }, width: 1920, height: 1080 });
+  render(performance.now()+1000);
+  const scene = apps.stages[apps.stages.length-1];
+  expect(scene?.children[0]?.position.x).toBe(0);
+  expect(scene?.children[1]?.position.x).toBe(-367);
+  expect(scene?.children[1]?.children.length).toBeGreaterThan(0);
+  screen?.update({ view, width: 1920, height: 1080 });
+  expect(metrics.encodes).toBe(prepared.encodes);
+  expect(metrics.textures).toBe(prepared.textures);
   for(const next of views)screen?.update({view:next,width:1920,height:1080});
   const before={...metrics};
   for(let i=0;i<3600;i++){screen?.update({view:views[i%32],width:1920,height:1080});render(performance.now()+16);}
@@ -88,7 +101,7 @@ it('drives the mounted update through changing cooks, items, station progress an
   isolated.render(907,true);expect(isolated.stations[0]?.cue.sprite.scale.x).toBe(1);
   const burning={...view,stations:view.stations.map(s=>({...s,fire:true})),cooks:view.cooks.map(c=>({...c,y:view.level.height-1.5}))};
   screen?.update({view:burning,width:1920,height:1080});
-  const actual=apps.stages[0]?.children[0]?.children ?? [];
+  const actual=apps.stages[0]?.children[1]?.children ?? [];
   const fires=actual.filter(s=>s.visible&&s.zIndex===19999.5);
   expect(fires.length).toBeGreaterThan(0);
   const expectedCook=projectY(view.level.height-1.5,view.level.height)*10;
@@ -131,6 +144,7 @@ function scanHotPath(planted?:string){
     // DOM picker work runs only before play or once at its exit.
     "view.phase==='pick'||previous.phase==='pick'",
     'level!==view.level','r.note.sprite.visible&&r.notePending',
+    "view.phase==='tutorial'||previous.phase==='tutorial'",
     'cached.name!==name','!backgroundTexture || previous.level!==view.level',
     'viewportWidth!==options.width||viewportHeight!==options.height',
     '(import.meta as ImportMeta & {env:{DEV:boolean}}).env.DEV',
@@ -212,7 +226,7 @@ it('fits a composed counter dish in full-resolution coordinates with half-detail
   const view={...tabaoRush.publicView(state) as View,items:[{...item,place:{kind:'counter' as const,tile:0}}]};
   const {createScreen}=await import('./screen');
   const screen=await createScreen({append(){},dataset:{},style:{}} as unknown as HTMLElement,{view,width:1920,height:1080},()=>false);
-  const stage=apps.stages.at(-1)?.children[0] as unknown as {children:{texture:unknown;position:{x:number;y:number};scale:{x:number};zIndex:number}[]};
+  const stage=apps.stages.at(-1)?.children[1] as unknown as {children:{texture:unknown;position:{x:number;y:number};scale:{x:number};zIndex:number}[]};
   const plate=stage.children.find(n=>n.texture===baseTexture),food=stage.children.find(n=>n.texture===layerTexture);
   expect(plate).toBeDefined();expect(food).toBeDefined();
   expect(plate?.scale.x).toBeCloseTo(0.68);expect(food?.scale.x).toBeCloseTo(0.68);

@@ -11,7 +11,7 @@ for (const [name, game, settings] of [['tabao', tabaoRush, {}], ['peek', peekPok
   let room = makeRoom(3);
   const buffer = createInputBuffer<string>({ axisCount: AXIS_COUNT, seqModulus: 65536, staleAfterSteps: 15 });
   const transport = new FakeTransport(); const events: unknown[] = []; let frame: (ms: number) => void = () => undefined;
-  const session = createSession({ game: game as never, settings, seed: 77, room, context: { data: {}, saved: null, teams: false }, buffer, transport,
+  const session = createSession({ game: game as never, settings, seed: 77, room, context: { firstInRoom: false, data: {}, saved: null, teams: false }, buffer, transport,
     frames: { subscribe(f) { frame = f; return () => undefined; } },
     publicView() { /**/ }, event() { /**/ }, recordInput(e) { events.push(encodeState(cloneState(e))); } });
   const players = cloneState((session.state as { players: (PlayerInfo | { info: PlayerInfo })[] }).players.map(p => 'info' in p ? p.info : p));

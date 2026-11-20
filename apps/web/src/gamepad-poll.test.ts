@@ -11,6 +11,8 @@ it('CTRL-009 leaves once on Back, ignores other pads, and clears unplugged bindi
 });
 it('CTRL-009 only offers joins in lobby and does not bind a refused join', () => {
   expect(gamepadPoll([], [pad(0, 9)], undefined, 'playing')).toEqual([]);
+  // TR-055: Back remains bound to the local seat's in-game header action.
+  expect(gamepadPoll([], [pad(0, 8)], 0, 'playing')).toEqual([]);
   expect(gamepadPoll([], [pad(0, 9)], undefined, 'lobby')).toEqual([{ type: 'join', index: 0 }]);
   expect(gamepadPoll([], [pad(0, 8)], undefined, 'lobby')).toEqual([]);
 });

@@ -43,7 +43,7 @@ it('same game object skips traversal, but an audience change still refreshes del
   } };
   const room = makeRoom(2), transport = new FakeTransport();
   const session = createSession({ game: { ...fixture, controllerLayout: () => layout, privateView: () => view },
-    settings: { steps: 100 }, seed: 1, room, context: { data: {}, saved: null, teams: false },
+    settings: { steps: 100 }, seed: 1, room, context: { firstInRoom: false, data: {}, saved: null, teams: false },
     buffer: createInputBuffer<string>({ axisCount: 4, seqModulus: 65536, staleAfterSteps: 15 }), transport,
     publicView() { /* sink */ }, event() { /* sink */ } });
   const initialReads = reads;

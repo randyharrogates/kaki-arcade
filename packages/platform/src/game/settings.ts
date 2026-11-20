@@ -107,6 +107,7 @@ export type SettingsResult<Settings> =
     };
 /** A context with nothing loaded, nothing saved and teams off. */
 export const EMPTY_SETUP: SetupContext = Object.freeze({
+  firstInRoom: false,
   data: Object.freeze({}),
   saved: null,
   teams: false,

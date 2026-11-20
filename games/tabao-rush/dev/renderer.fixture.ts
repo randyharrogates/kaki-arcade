@@ -1,3 +1,4 @@
+import { tutorialFixture, tutorialFixtureTick } from './tutorial.fixture';
 import { servedDishes } from './served-dishes.fixture';
 import { ConsoleScreen } from '../host';
 import { tabaoRush } from '../src/rules/game';
@@ -12,18 +13,19 @@ type Options=Parameters<typeof ConsoleScreen.mount>[1];
 type Mounted=ReturnType<typeof ConsoleScreen.mount>;
 export async function startRenderer(mount:(root:HTMLElement,options:Options)=>Mounted|Promise<Mounted>=(root,options)=>ConsoleScreen.mount(root,options)){
 const params=new URLSearchParams(location.search);
+const tutorial=params.get('tutorial')==='1';
 const detail=params.get('detail')==='half'?'half' as const:'full' as const;
 const count=Math.max(1,Math.min(8,Number(params.get('players') ?? 8)));
 const players=Array.from({length:count},(_,i)=>({id:`cook-${String(i)}`,seat:i+1,name:`Cook ${String(i+1)}`,colour:PLAYER_COLOURS[i]?.token ?? 'seat-1' as const}));
 const loaded=loadLevel(FULL_KITCHEN,707,players);if(!loaded.state)throw new Error(loaded.problems.join('\n'));
-let state:TabaoState=loaded.state, running=false;
+let state:TabaoState=tutorial?tutorialFixture(players):loaded.state, running=false;
 const root=document.createElement('main');document.body.append(root);
 const options=()=>({view:tabaoRush.publicView(state),width:innerWidth,height:innerHeight,detail});
 const screen=await mount(root,options());
-function publish(){screen.update(options());}
+function publish(){screen.update(options());if(tutorial)document.documentElement.dataset.trPhase=state.phase;}
 function advance(){
   const frames=new Map<string,SampledInput>(players.map((p,i)=>[p.id,{held:0,pressed:0,released:0,age:0,seq:state.tick,axes:[Math.sin(state.tick/120+i),Math.cos(state.tick/120+i),0,0]}]));
-  state=tabaoRush.step(state,createTick({frames}),1/60);
+  state=tabaoRush.step(state,(tutorial?tutorialFixtureTick(state,frames):createTick({frames})),1/60);
   publish();
 }
 /** Real rules continue running for performance. Named review states seed station/item
@@ -76,7 +78,7 @@ function fixture(name:string,at=0){
   publish();
 }
 Object.assign(window,{__trClock(ms:number|undefined){const target=root.querySelector('canvas')?.parentElement as (HTMLElement&{__trClock?:(ms:number|undefined)=>void})|null;target?.__trClock?.(ms);},__trState:fixture,__trRun(){running=true;},__trAdvance:advance});
-void screen.ready.then(()=>{document.documentElement.dataset.trReady='1';fixture('showcase');if(params.has('perf'))running=true;});
+void screen.ready.then(()=>{document.documentElement.dataset.trReady='1';if(tutorial)publish();else fixture('showcase');if(tutorial?!params.has('perf'):params.has('perf'))running=true;});
 const timer=setInterval(()=>{if(running)advance();},1000/60);
 addEventListener('resize',publish);addEventListener('pagehide',()=>{clearInterval(timer);screen.destroy();},{once:true});
 

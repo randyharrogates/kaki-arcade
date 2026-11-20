@@ -129,6 +129,7 @@ export function themeDeclarations(theme: Theme): Declaration[] {
     ['--ka-accent', theme.accent.fill],
     ['--ka-accent-ink', theme.accent.ink],
     ['--ka-stick-outline', theme.stickOutline],
+    ['--ka-highlight', theme.highlight],
     ['--ka-chip', theme.chip.fill],
     ['--ka-chip-ink', theme.chip.ink],
   ];

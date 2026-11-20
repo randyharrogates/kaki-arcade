@@ -10,13 +10,14 @@ import type { ComponentType } from 'preact';
 
 // The registry erases the individual module's state/settings types at this boundary only.
 export type LoadedGame = GameModule<unknown, object>;
-export interface ScreenProps { view: never; width: number; height: number; detail?: 'full' | 'half'; sound?: Sound | undefined; soundHistory?: { previous: unknown } | undefined }
+export interface ScreenProps { localLeader?: boolean; view: never; width: number; height: number; detail?: 'full' | 'half'; sound?: Sound | undefined; soundHistory?: { previous: unknown } | undefined }
 export interface MountedHostScreen extends GamePresentation<HTMLElement, unknown> {
   mount(root: HTMLElement, options: ScreenProps): { ready: Promise<void>; update(options: ScreenProps): void; destroy(): void };
 }
 export type HostScreen = (ComponentType<ScreenProps> & GamePresentation<HTMLElement, unknown>) | MountedHostScreen;
 export interface SessionDisplay { detail?: 'full' | 'half'; gameId: string; view: unknown; Screen?: HostScreen; ready?: (error?: unknown) => void; soundHistory?: { previous: unknown }; paused?: boolean; waiting?: { message: string | null; countdown: number | null }; finalScreen?: boolean; results?: Extract<SessionEvent, { type: 'results' }>['results'] }
 export function hostScreen(display: SessionDisplay | null, lobby: boolean): string { return display ? display.results ? display.finalScreen ? 'game' : 'results' : 'game' : lobby ? 'lobby' : 'picker'; }
+export interface SessionStartOptions { firstInRoom?: boolean; assignTeam?: (seat: number, team: TeamId) => void }
 export interface AdapterOptions {
   counts?: Pick<ReturnType<typeof hostCounts>, 'begin' | 'frame' | 'end' | 'stop' | 'add'>;
   load(id: string): Promise<{ game: LoadedGame; Screen?: HostScreen; viewKey?: (view: unknown) => unknown; finalScreen?: boolean }>;
@@ -68,15 +69,15 @@ export function createSessionAdapter(o: AdapterOptions) {
       } else if (action === 'pause') runner?.pause(id);
       else runner?.resume(id);
     },
-    async setup(id: string, teams: boolean) {
+    async setup(id: string, teams: boolean, firstInRoom = false) {
       const version = (setupVersions.get(id) ?? 0) + 1; setupVersions.set(id, version);
       const loaded = await prefetch(id);
-      const setup = await prepareSetup(loaded.game, teams);
+      const setup = await prepareSetup(loaded.game, teams, firstInRoom);
       if (setupVersions.get(id) === version) setups.set(id, setup);
       return setup;
     },
     allowsRunningJoin(teams: boolean): boolean { return !!activeGame?.meta.midGameJoin && (!teams || !!activeGame.joinTeam); },
-    async start(gameId: string, room: RoomState, settings?: object, assignTeam?: (seat: number, team: TeamId) => void): Promise<void> {
+    async start(gameId: string, room: RoomState, settings?: object, { firstInRoom = false, assignTeam }: SessionStartOptions = {}): Promise<void> {
       stop(); resultsEnded = false; latestRoom = room; const current = generation;
       const controller = new AbortController(); detailAbort = controller;
       const loaded = await prefetch(gameId);
@@ -114,7 +115,7 @@ export function createSessionAdapter(o: AdapterOptions) {
         received.length = 0;
         return result;
       } }) : loaded.game;
-      const next = createSession({ game: observedGame, ...prepared, seed, room: latestRoom, buffer,
+      const next = createSession({ game: observedGame, ...prepared, context: { ...prepared.context, firstInRoom }, seed, room: latestRoom, buffer,
         ...(assignTeam ? { assignTeam } : {}),
         transport: { ...o.transport, sendLayout(connection, layout) {
           const sent = o.transport.sendLayout(connection, layout);

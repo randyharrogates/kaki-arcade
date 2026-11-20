@@ -1,3 +1,4 @@
+import { tutorialKitchen } from './tutorial';
 import type { ControllerLayout, StepInputs } from '@kaki/platform';
 import type { TabaoState } from './state';
 export const HEADS = ['cap', 'uncle', 'auntie', 'makcik', 'bun', 'specs', 'turban', 'songkok'] as const;
@@ -17,7 +18,8 @@ export function pickStep(state: TabaoState, inputs: StepInputs): TabaoState {
     }
   }
   const allReady = picks.some(p => !inputs.disconnected.includes(p.player)) && picks.every(p => p.ready || inputs.disconnected.includes(p.player));
-  return { ...state, picks, pickSteps: (state.pickSteps ?? 0) + 1, pickRevision: (state.pickRevision ?? 0) + (picks === state.picks && !allReady ? 0 : 1), phase: allReady ? 'play' : 'pick' };
+  const next: TabaoState = { ...state, picks, pickSteps: (state.pickSteps ?? 0) + 1, pickRevision: (state.pickRevision ?? 0) + (picks === state.picks && !allReady ? 0 : 1), phase: allReady ? 'play' : 'pick' };
+  return allReady && state.tutorial ? tutorialKitchen(next) : next;
 }
 export function pickLayout(state: TabaoState, id: string): ControllerLayout {
   const own = state.picks?.find(p => p.player === id);

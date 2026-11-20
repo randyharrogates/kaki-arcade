@@ -2,6 +2,14 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-20 — T-10: Tabao Rush first-run tutorial
+- TR-055: the first Tabao Rush match in a room opens with a playable tutorial (move, pick up, chop, serve) in a practice kitchen with three chop boards and no orders, timer, score or burning; each lesson waits for every connected cook; only the leader can skip, from the phone or with K or pad Back on the TV seat; the real round then starts fresh, and players who joined during the tutorial play in it (D-311).
+- TV: board B step rail beside the kitchen (1187 : 733); the backdrop stays still while the kitchen slides; a ring moves to each target on an arc and pulses once; the current step is in dark ink with a highlight bar; reduced motion changes at once.
+- Phones: "Step n of 4" in the header, the button to use outlined, Skip tutorial for the leader.
+- Platform: games can be told it is the room's first match of that game (`firstInRoom`), outline any control (`highlighted`, shared highlight colour), and put a heading and a single action in the phone header. A pad's Back now leaves the TV seat only in the lobby.
+- Perf (development build, Chromium): through the tutorial-to-round hand-off, p95 18.0 ms, max 18.8 ms; PERF-040 passes.
+- Not yet: real phones and a real TV; a timed eight-cook tutorial.
+
 ## 2026-11-20 — P-13: Steady difficulty in Peek Poker
 - PP-033: the leader chooses Difficulty, Rising (default) or Steady, beside Rounds on the phone; the TV setup card mirrors it (D-299, D-308).
 - PP-011: Steady gives every round 20 s to memorise and no twist; Rising is unchanged.

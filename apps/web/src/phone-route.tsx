@@ -164,8 +164,10 @@ export function GameController({ controller, view, send, sessionCommand, removeP
   const [header, setHeader] = useState<Element | null>(null);
   useEffect(() => { setHeader(document.querySelector('.ka-controller-header')); }, []);
   const needsPictures = view.gameLayout?.controls.some(c => c.kind === 'grid' && c.cells.some(cell => cell.image)) === true;
-  const pictureHeading = needsPictures ? view.gameLayout?.controls.find(c => c.kind === 'text' && c.tone === 'note') : undefined;
-  const renderedLayout = pictureHeading && view.gameLayout ? { ...view.gameLayout, controls: view.gameLayout.controls.filter(c => c !== pictureHeading) } : view.gameLayout;
+  const headerHeading = view.gameLayout?.controls.find(c => c.id === 'header-heading' && c.kind === 'text');
+  const headerAction = view.gameLayout?.controls.find(c => c.id === 'header-action' && c.kind === 'options' && c.options.length === 1 && (!c.audience || c.audience === 'everyone' || (c.audience === 'leader') === view.leader));
+  const pictureHeading = headerHeading ?? (needsPictures ? view.gameLayout?.controls.find(c => c.kind === 'text' && c.tone === 'note') : undefined);
+  const renderedLayout = pictureHeading && view.gameLayout ? { ...view.gameLayout, controls: view.gameLayout.controls.filter(c => c !== pictureHeading && c !== headerAction) } : view.gameLayout;
   const picturesPending = needsPictures && pictures?.id !== gameId;
   const blocked = !view.connected || view.phase === 'paused';
   const veil = !view.connected ? 'lost' : view.phase === 'paused' ? 'paused' : 'playing';
@@ -191,6 +193,7 @@ export function GameController({ controller, view, send, sessionCommand, removeP
   return <div class="phone-game-page" data-console-controls={Boolean(sessionCommand)} data-waiting={Boolean(view.waiting?.message)} data-blocked={blocked} data-theme={controller.theme}>
     <PhoneLive announcement={notice}/>
     <ControllerShell {...controller} {...(pictureHeading?.kind === 'text' ? { heading: pictureHeading.text } : {})}>
+      {header && headerAction?.kind === 'options' && createPortal(<button class="phone-header-action ka-panel ka-pressable" disabled={blocked} onClick={() => { const option = headerAction.options[0]; if (option && view.gameLayout) send({ control: headerAction.id, revision: view.gameLayout.revision, phase: 'choose', value: option.id }); }}><span class="phone-session-pill">{headerAction.options[0]?.label}</span></button>, header)}
       {header && sessionCommand && createPortal(<button ref={menu} class="phone-session-button ka-pressable" disabled={blocked} onClick={() => { sessionCommand(); }}><span class="phone-session-pill">Menu</span></button>, header)}
       <div ref={controls} class="phone-game-controls" inert={blocked || picturesPending} aria-busy={picturesPending} aria-hidden={blocked}>{area && renderedLayout && <LayoutEngine images={pictures?.urls ?? {}} layout={renderedLayout} privateView={view.gamePrivateView} area={area} viewport={area.viewport} isLeader={view.leader} onOutput={output => { if (!blocked && !picturesPending) send(output); }}/>}</div>
     </ControllerShell>

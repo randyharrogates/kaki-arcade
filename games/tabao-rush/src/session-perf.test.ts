@@ -9,7 +9,7 @@ it('8-player session completes steps without resending identical layouts', () =>
   const transport = new FakeTransport();
   const events: unknown[] = [];
   const session = createSession({ game: tabaoRush, settings: {}, seed: 1, room: makeRoom(8),
-    context: { data: {}, saved: null, teams: false }, buffer, transport,
+    context: { firstInRoom: false, data: {}, saved: null, teams: false }, buffer, transport,
     publicView() { /* TV */ }, event(e) { events.push(e); } });
   expect(transport.sent.filter(m => m.type === 'layout')).toHaveLength(8);
   for (let i = 0; i < 600; i++) session.advance(STEP_MS);

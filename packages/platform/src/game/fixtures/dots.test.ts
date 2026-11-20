@@ -32,7 +32,7 @@ function players(count: number, teams = false): PlayerInfo[] {
   });
 }
 describe('fixture game: Dots', () => {
-  const settings = defaultSettings(settingsSchema(dots, { data: {}, saved: null, teams: false }));
+  const settings = defaultSettings(settingsSchema(dots, { firstInRoom: false, data: {}, saved: null, teams: false }));
   const frame = (x: number, y: number, held = 0) => ({
     held,
     pressed: 0,
@@ -42,7 +42,7 @@ describe('fixture game: Dots', () => {
     age: 0,
   });
   it('moves a dot by its stick, the same distance straight or diagonally', () => {
-    const start = dots.init(1, players(2), settings, { data: {}, saved: null, teams: false });
+    const start = dots.init(1, players(2), settings, { firstInRoom: false, data: {}, saved: null, teams: false });
     const [a, b] = start.dots;
     const next = dots.step(
       start,
@@ -59,7 +59,7 @@ describe('fixture game: Dots', () => {
     expect(Math.hypot((b2?.x ?? 0) - (b?.x ?? 0), (b2?.y ?? 0) - (b?.y ?? 0))).toBeCloseTo(0.6);
   });
   it('shares what did not change and never touches the old state', () => {
-    const start = dots.init(1, players(3), settings, { data: {}, saved: null, teams: false });
+    const start = dots.init(1, players(3), settings, { firstInRoom: false, data: {}, saved: null, teams: false });
     const next = dots.step(start, createTick({ frames: new Map([['p1', frame(1, 0)]]) }), 16);
     expect(next).not.toBe(start);
     expect(next.dots[0]).not.toBe(start.dots[0]);
@@ -71,7 +71,7 @@ describe('fixture game: Dots', () => {
       5,
       players(1),
       { ...settings, gemPoints: 3 },
-      { data: {}, saved: null, teams: false },
+      { firstInRoom: false, data: {}, saved: null, teams: false },
     );
     const onGem: DotsState = {
       ...start,
@@ -81,7 +81,7 @@ describe('fixture game: Dots', () => {
     expect(next.dots[0]?.score).toBe(3);
     expect(next.gem).not.toEqual(start.gem);
     expect(start.rng).toEqual(
-      dots.init(5, players(1), settings, { data: {}, saved: null, teams: false }).rng,
+      dots.init(5, players(1), settings, { firstInRoom: false, data: {}, saved: null, teams: false }).rng,
     );
     const slow = dots.step(
       start,
@@ -95,7 +95,7 @@ describe('fixture game: Dots', () => {
       2,
       players(4, true),
       { ...settings, seconds: 10 },
-      { data: {}, saved: null, teams: false },
+      { firstInRoom: false, data: {}, saved: null, teams: false },
     );
     state = {
       ...state,

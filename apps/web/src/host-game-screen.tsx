@@ -19,7 +19,7 @@ function MountedScreen({ Screen, ready, starting, ...options }: ScreenProps & { 
     void screen.ready.then(() => { if (active) { setLoading(false); ready?.(); } }, (error: unknown) => { if (active) ready?.(error); });
     return () => { active = false; mounted.current = undefined; screen.destroy(); };
   }, [Screen, root]);
-  useLayoutEffect(() => { mounted.current?.update(options); }, [options.view, options.width, options.height, options.sound, options.soundHistory, options.detail]);
+  useLayoutEffect(() => { mounted.current?.update(options); }, [options.view, options.width, options.height, options.sound, options.soundHistory, options.detail, options.localLeader]);
   const attach = useCallback((element: HTMLDivElement | null): void => {
     if (element && root.parentNode !== element) element.appendChild(root);
   }, [root]);

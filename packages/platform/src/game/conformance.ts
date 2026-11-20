@@ -160,6 +160,7 @@ export interface ScriptContext {
 export type Script = (context: ScriptContext) => ScenarioTick | undefined;
 export interface Scenario<Settings extends object = Record<string, never>> {
   readonly name: string;
+  readonly firstInRoom?: boolean;
   /** Players at the start. The scenarios must include the game's fewest and its most. */
   readonly players: number;
   /** Play in teams. Default: only when the game requires teams. */
@@ -691,7 +692,7 @@ class Kit<State> {
       return null;
     }
     // Frozen, so a game that keeps what it was handed instead of copying it finds out at once.
-    return deepFreeze(cloneState({ data: given, saved: saved ?? null, teams }));
+    return deepFreeze(cloneState({ firstInRoom: false, data: given, saved: saved ?? null, teams }));
   }
   settings(): void {
     const { ledger, module } = this;
@@ -1060,13 +1061,15 @@ class Kit<State> {
     changes: object,
     data: Readonly<Record<string, JsonValue>> | undefined,
     saved: JsonValue | undefined,
+    firstInRoom = false,
   ): {
     state: State;
     settings: object;
     context: InitContext;
   } | null {
     const { ledger, module } = this;
-    const context = this.setupContext(where, data, saved, teamsInUse(players));
+    const baseContext = this.setupContext(where, data, saved, teamsInUse(players));
+    const context = baseContext === null ? null : deepFreeze({ ...baseContext, firstInRoom });
     if (context === null) return null;
     try {
       const schema = settingsSchema(module, context);
@@ -1325,6 +1328,7 @@ class Kit<State> {
       scenario.settings ?? {},
       scenario.data,
       scenario.saved,
+      scenario.firstInRoom,
     );
     if (started === null) return null;
     let state = started.state;

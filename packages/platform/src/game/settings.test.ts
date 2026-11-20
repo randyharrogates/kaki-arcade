@@ -312,7 +312,7 @@ it('builds settings from loaded data, saved progress and the teams switch', asyn
       ],
     }),
   };
-  const context = {
+  const context = { firstInRoom: false,
     data: { categories: ['Food', 'Places'] },
     saved: { category: 'Places' },
     teams: false,

@@ -33,7 +33,7 @@ function options(a: readonly OptionItem[], b: readonly OptionItem[]): boolean {
 }
 function control(a: LayoutControl, b: LayoutControl): boolean {
   if (a === b) return true;
-  if (a.id !== b.id || a.audience !== b.audience) return false;
+  if (a.id !== b.id || a.audience !== b.audience || a.highlighted !== b.highlighted) return false;
   switch (a.kind) {
     case 'stick': return b.kind === 'stick';
     case 'dpad': return b.kind === 'dpad';

@@ -46,6 +46,8 @@ export const PAD_BUTTON_BIT: Readonly<Record<PadButton, number>> = {
  */
 export type Audience = 'everyone' | 'leader' | 'not-leader';
 interface ControlBase {
+  /** Gold emphasis; presentation only, never changes input or tap meaning. */
+  readonly highlighted?: boolean;
   /** Names the control in a `PlayerAction`. Unique within the layout. */
   readonly id: string;
   readonly audience?: Audience;
@@ -443,7 +445,8 @@ function checkCards(problems: Problems, where: string, cards: unknown): void {
 }
 function checkControl(problems: Problems, where: string, control: Loose): void {
   const kind = control.kind as LayoutControl['kind'];
-  problems.keys(where, control, ['kind', 'id', 'audience', ...CONTROL_KEYS[kind]]);
+  problems.keys(where, control, ['kind', 'id', 'audience', 'highlighted', ...CONTROL_KEYS[kind]]);
+  problems.flag(`${where} highlighted`, control.highlighted);
   problems.oneOf(`${where} audience`, control.audience, AUDIENCES, false);
   switch (kind) {
     case 'stick':
@@ -823,6 +826,7 @@ export function packPhone(layout: ControllerLayout, view: PrivateView | null): P
     panel.push(() => box);
   };
   for (const control of layout.controls) {
+    if (control.id === 'header-heading' && control.kind === 'text' || control.id === 'header-action' && control.kind === 'options' && control.options.length === 1) continue;
     switch (control.kind) {
       case 'stick':
       case 'swipe':

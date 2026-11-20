@@ -23,7 +23,7 @@ it('eight-phone constant objects send only once and complete every step', () => 
     const transport = new FakeTransport();
     const session = createSession({ game: { ...fixture, stepMode: 'in-place', step: s => s,
       publicView: () => publicView, controllerLayout: () => layout, privateView: () => view, isOver: () => false },
-    settings: { steps: 100000 }, seed: 1, room: makeRoom(8), context: { data: {}, saved: null, teams: false }, buffer, transport,
+    settings: { steps: 100000 }, seed: 1, room: makeRoom(8), context: { firstInRoom: false, data: {}, saved: null, teams: false }, buffer, transport,
     publicView() { /* sink */ }, event() { /* sink */ }, ...(record ? { recordInput() { /* sink */ } } : {}) });
     const ids = Array.from({ length: 8 }, (_, i) => `seat-${String(i + 1)}`);
     const axes = [0.5, 0.5, 0, 0];
@@ -53,7 +53,7 @@ function measureGame<S, Settings extends object, V>(name: string, game: GameModu
     const buffer = createInputBuffer<string>({ axisCount: 4, seqModulus: 65536, staleAfterSteps: 15 });
     const transport = new FakeTransport();
     const events: unknown[] = [];
-    const session = createSession({ game, settings, seed: 1, room: makeRoom(8), context: { data: {}, saved: null, teams: false },
+    const session = createSession({ game, settings, seed: 1, room: makeRoom(8), context: { firstInRoom: false, data: {}, saved: null, teams: false },
       buffer, transport, publicView() { /* sink */ }, event(e) { events.push(e); },
       ...(record ? { recordInput() { /* sink */ } } : {}) });
     const phaseLayouts = new Map<string, Set<string>>();

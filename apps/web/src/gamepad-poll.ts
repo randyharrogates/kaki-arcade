@@ -14,7 +14,7 @@ export function gamepadPoll(previous: boolean[][], pads: readonly (Gamepad | nul
         if (binding === undefined && phase === 'lobby' && button === 9) actions.push({ type: 'join', index: pad.index });
         if (binding === pad.index) {
           if (button === 9 && phase === 'playing') actions.push({ type: 'key', key: 'Escape' });
-          else if (button === 8) actions.push({ type: 'leave' });
+          else if (button === 8 && phase === 'lobby') actions.push({ type: 'leave' });
           else if (phase !== 'playing') {
             const key = button === 0 ? 'Enter' : button === 1 ? 'Escape' : button === 12 ? 'ArrowUp' : button === 13 ? 'ArrowDown' : button === 14 ? 'ArrowLeft' : button === 15 ? 'ArrowRight' : null;
             if (key) actions.push({ type: 'key', key });

@@ -4,7 +4,7 @@ import type { PlayerInfo, StepInputs } from '@kaki/platform';
 import { loadGame, gameMetas } from './game-registry';
 const players: PlayerInfo[] = Array.from({ length: 8 }, (_, i) => ({ id: `seat-${String(i + 1)}`, seat: i + 1, name: `Phone ${String(i + 1)}`, colour: `seat-${String(i + 1)}` as PlayerInfo['colour'] }));
 it('PLAT-030 fixture is deterministic, counts all eight inputs and isolates secrets', () => {
-  const context = { data: {}, saved: null, teams: false };
+  const context = { firstInRoom: false, data: {}, saved: null, teams: false };
   const initial = game.init(15, players, {}, context);
   const inputs: StepInputs = { frames: new Map(), disconnected: [], connected: new Map(players.map(p => [p.id, true])), actions: players.map(p => ({ player: p.id, control: 'advance', revision: 1 })), leader: 'seat-1' };
   const next = game.step(initial, inputs, 1000 / 60);

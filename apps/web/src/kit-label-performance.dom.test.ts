@@ -23,7 +23,7 @@ it('PERF-012 CTRL-003 measures Peek Poker 4×4 and Rabakz options within a quart
         const pp = scenario('picking');
         const player = pp.players[0].info.id;
         const rz = rabakz.init(42,[{id:'one',name:'Player 1',seat:1,colour:'seat-1'}],
-          {length:10,difficulty:'mixed'},{saved:null,teams:false,data:{[QUESTION_DATA]:questionData(
+          {length:10,difficulty:'mixed'},{ firstInRoom: false, saved: null, teams: false, data:{[QUESTION_DATA]:questionData(
             Array.from({length:10},(_,i)=>({id:String(i),prompt:'Which?',
               options:['Christopher Walken','David Hasselhoff','Jerry Springer','Patrick Swayze'],
               correct:0,category:'General',difficulty:'easy',type:'multiple-choice',region:'general'})))}});

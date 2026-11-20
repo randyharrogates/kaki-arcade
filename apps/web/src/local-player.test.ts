@@ -126,3 +126,24 @@ it('CTRL-009 ignores pad A held across bind and rebind until release and a new p
     peer.close();
   }
 });
+
+it('TR-055 tutorial cross stays live and only K or Back invokes the leader header action', () => {
+  const peer = localPlayer(), send = vi.fn();
+  peer.bindInput({ receiveInput() { /* fixture */ }, pause() { /* fixture */ } } as unknown as Parameters<typeof peer.bindInput>[0]);
+  peer.bindControl(send);
+  peer.sendHost({ v: 1, t: 'room', leader: true } as never);
+  peer.sendHost({ v: 1, t: 'layout', rev: 3, layout: { ...layout, revision: 3, controls: [...layout.controls, { kind: 'options', id: 'header-action', audience: 'leader', options: [{ id: 'skip-tutorial', label: 'Skip tutorial' }] }] } as never });
+  peer.tick(new Set(), null);
+  for (const key of ['Space', 'Enter']) {
+    expect(peer.tick(new Set([key]), null)?.buttons).toBe(BUTTON.faceBottom);
+    peer.tick(new Set(), null);
+  }
+  peer.tick(new Set(), { axes: [], buttons: [{ pressed: true } as GamepadButton] });
+  expect(send).not.toHaveBeenCalled();
+  peer.tick(new Set(), null); peer.tick(new Set(['KeyK']), null); peer.tick(new Set(['KeyK']), null);
+  expect(send).toHaveBeenCalledOnce();
+  expect(send).toHaveBeenCalledWith(expect.objectContaining({ data: { control: 'header-action', value: 'skip-tutorial' } }));
+  peer.tick(new Set(), null);
+  peer.tick(new Set(), { axes: [], buttons: Array.from({ length: 9 }, (_, i) => ({ pressed: i === 8 } as GamepadButton)) });
+  expect(send).toHaveBeenCalledTimes(2);
+});

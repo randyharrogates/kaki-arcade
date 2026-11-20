@@ -64,6 +64,8 @@ export interface Theme {
   };
   /** Outline of the floating stick area (D-056). */
   readonly stickOutline: string;
+  /** Shared attention outline, contrasted against the controller surface. */
+  readonly highlight: string;
   /** Small pills: room code, labels, counters. */
   readonly chip: {
     readonly fill: string;
@@ -110,6 +112,7 @@ const consoleTheme: Theme = {
   },
   accent: { fill: '#B5371F', ink: ON_COLOUR },
   stickOutline: '#6B4426',
+  highlight: '#805700',
   chip: { fill: '#6B4426', ink: ON_COLOUR },
 };
 
@@ -138,6 +141,7 @@ const rabakzTheme: Theme = {
   },
   accent: { fill: '#FF9DB8', ink: '#3A1730' },
   stickOutline: '#E9B7C8',
+  highlight: '#E0A63A',
   chip: { fill: '#7A3563', ink: ON_COLOUR },
 };
 
@@ -167,6 +171,7 @@ const peekPokerTheme: Theme = {
   },
   accent: { fill: '#E0A63A', ink: '#17352A' },
   stickOutline: '#BFE3D2',
+  highlight: '#E0A63A',
   chip: { fill: '#14402F', ink: ON_COLOUR },
 };
 
@@ -186,6 +191,7 @@ const tabaoRushTheme: Theme = {
   },
   accent: { fill: '#B5371F', ink: ON_COLOUR },
   stickOutline: '#B5371F',
+  highlight: '#805700',
   chip: { fill: '#B5371F', ink: ON_COLOUR },
 };
 

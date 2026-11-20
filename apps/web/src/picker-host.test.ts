@@ -32,7 +32,7 @@ it('PLAT-020 validates stored selections against installed module schemas', asyn
   await loadGame('tabao-rush');
   const { tabaoRush: game } = await import('../../../games/tabao-rush/src/index');
   expect(validGameSelection(game.meta.id, { unknown: 'bad' })).toBe(false);
-  const schema = settingsSchema(game, { data: {}, saved: null, teams: false });
+  const schema = settingsSchema(game, { firstInRoom: false, data: {}, saved: null, teams: false });
   const settings = mergeSettings(schema, {});
   expect(validGameSelection(game.meta.id, settings)).toBe(true);
   const clock = new Clock(); const storage = new MemoryStorage();

@@ -7,7 +7,7 @@ it('CTRL-003 routes A only to A, public rendering only publicView, and sends on 
   let revision = 0;
   const transport = new FakeTransport();
   const publicViews: unknown[] = [];
-  const session = createSession({ game:{ ...fixture, privateView:(_state,id) => ({ revision,blocks:[{ kind:'text',text:`secret-${id}` }] }) }, settings:{ steps:100 }, seed:1,room:makeRoom(2),context:{ data:{},saved:null,teams:false },transport,
+  const session = createSession({ game:{ ...fixture, privateView:(_state,id) => ({ revision,blocks:[{ kind:'text',text:`secret-${id}` }] }) }, settings:{ steps:100 }, seed:1,room:makeRoom(2),context:{ firstInRoom: false, data: {}, saved:null, teams:false },transport,
     buffer:createInputBuffer<string>({ axisCount:AXIS_COUNT,seqModulus:65536,staleAfterSteps:15 }),publicView:view => { publicViews.push(view); },event:() => { /* No event handling needed. */ } });
   const views = () => transport.sent.filter(s => s.type === 'view');
   expect(views()).toHaveLength(2);

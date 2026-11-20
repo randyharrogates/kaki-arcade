@@ -36,7 +36,7 @@ function optionLabelsFit(placement:Placement):boolean {
 }
 export function packLayout(layout: Layout, area: Size, leader: boolean, optionWidths: Readonly<Record<string, number>>, margin: 13 | 8, gap: 13 | 8 | 5 = space[13], viewport: Size = area, contentWidths:Readonly<Record<string,number>> = {}): Placement {
   const gridGap = gap === space[5] ? gap : space[8];
-  const controls = visibleParts(layout, leader);
+  const controls = visibleParts(layout, leader).filter(c => !(c.id === 'header-heading' && c.kind === 'text' || c.id === 'header-action' && c.kind === 'options' && c.options.length === 1));
   const parts: PlacedPart[] = [];
   const put = (control: LayoutPart, left: number, top: number, width: number, height: number) => { parts.push({ control, left, top, width, height }); };
   const w = Math.max(0, area.width - 2 * margin), h = Math.max(0, area.height - 2 * margin);

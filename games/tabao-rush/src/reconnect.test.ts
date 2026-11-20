@@ -9,7 +9,7 @@ import { findSecret } from '../../../packages/platform/src/game/json';
 import { tabaoRush as game } from './rules/playing.fixture';
 
 const settings = {} as const;
-const context = { data: {}, saved: null, teams: false };
+const context = { firstInRoom: false, data: {}, saved: null, teams: false };
 
 function setup(teams = false) {
   let now = 1000;

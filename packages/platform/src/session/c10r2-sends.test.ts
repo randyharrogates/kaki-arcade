@@ -8,7 +8,7 @@ it('sends per step', () => {
   for (const [name, game, settings] of [['tabao', tabaoRush, {}], ['peek', peekPoker, { rounds: 3 }]] as const) {
     const t = new FakeTransport(); const events: unknown[] = [];
     const buffer = createInputBuffer<string>({ axisCount: AXIS_COUNT, seqModulus: 65536, staleAfterSteps: 15 });
-    const s = createSession({ game: game as never, settings, seed: 1, room: makeRoom(8), context: { data: {}, saved: null, teams: false }, buffer, transport: t, publicView() { /**/ }, event(e) { events.push(e); } });
+    const s = createSession({ game: game as never, settings, seed: 1, room: makeRoom(8), context: { firstInRoom: false, data: {}, saved: null, teams: false }, buffer, transport: t, publicView() { /**/ }, event(e) { events.push(e); } });
     const initialLayouts = t.sent.filter(m => m.type === 'layout').length;
     expect(initialLayouts, name).toBe(8);
     for (let i = 0; i < 600; i++) s.advance(STEP_MS);

@@ -1,7 +1,7 @@
 import type { ColourToken as ColourTokenName } from './types';
 export type Face = 'face-bottom' | 'face-right' | 'face-left' | 'face-top';
 export interface Item { readonly image?: string; readonly badge?: { readonly colour: ColourTokenName; readonly text: string; readonly tick?: boolean }; readonly id?: string; readonly label?: string; readonly state?: 'plain' | 'selected' | 'disabled'; readonly focus?: boolean; readonly colour?: ColourTokenName; readonly face?: Face; readonly faceDown?: boolean; readonly mark?: string }
-interface Base { readonly id: string; readonly audience?: 'everyone' | 'leader' | 'not-leader' }
+interface Base { readonly highlighted?: boolean; readonly id: string; readonly audience?: 'everyone' | 'leader' | 'not-leader' }
 export type LayoutPart = Base & (
   | { readonly kind: 'stick' | 'dpad' | 'tilt' }
   | { readonly kind: 'button'; readonly button: Face | 'shoulder-left' | 'shoulder-right'; readonly label: string; readonly disabled?: boolean; readonly colour?: ColourTokenName }

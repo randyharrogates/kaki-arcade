@@ -88,6 +88,7 @@ export function themeContrastPairs(theme: Theme): ContrastPair[] {
   add('ink', theme.panel.ink, 'panel', panel, 'body');
   add('secondary', theme.panel.secondary, 'panel', panel, 'body');
   add('accent text', theme.accent.ink, 'accent fill', [theme.accent.fill], 'body');
+  add('highlight', theme.highlight, 'background', background, 'large');
   add('stick outline', theme.stickOutline, 'background', background, 'large');
   add('chip text', theme.chip.ink, 'chip', [theme.chip.fill], 'body');
   return pairs;

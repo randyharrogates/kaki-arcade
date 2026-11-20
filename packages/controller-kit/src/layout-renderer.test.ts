@@ -459,6 +459,14 @@ it.each(['plain-grid', 'picture-grid', 'single-option', 'multi-option'])('CTRL-0
   expect(append).toHaveBeenCalledTimes(fades ? 1 : 0);
 });
 
+it('TR-055 marks a highlighted control without replacing its stable input node', () => {
+  const base: Layout = { revision: 0, controls: [{ kind: 'stick', id: 'move' }] };
+  const before = children(engine(base)).find(n => (n.props as Record<string, unknown>)['data-part'] === 'move');
+  const after = children(engine({ ...base, controls: [{ kind: 'stick', id: 'move', highlighted: true }] })).find(n => (n.props as Record<string, unknown>)['data-part'] === 'move');
+  expect(before?.key).toBe(after?.key);
+  expect((after?.props as Record<string, unknown>)['data-highlighted']).toBe('true');
+});
+
 it('CTRL-002 CTRL-003 single-option Lock in emits once across selection crossfade and pointerup/click', () => {
   const output = vi.fn<(output: LayoutOutput) => void>();
   const draw = (selected: boolean) => {

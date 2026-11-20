@@ -1,0 +1,317 @@
+{
+  "slice": "T-10-tutorial",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- T-10-tutorial --phones 3 --out round14",
+  "commit": "3f4d086d7e8ea4c2afd02689336dd83e0c4e6536",
+  "viewports": [
+    "1920×1080",
+    "844×390",
+    "1280×720"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1231.6840839999998,
+      "status": "completed"
+    },
+    {
+      "name": "Start and capture the first lesson",
+      "ms": 10796.252416000001,
+      "status": "completed"
+    },
+    {
+      "name": "All three cooks move through real phone sticks",
+      "ms": 12775.716499999999,
+      "status": "completed"
+    },
+    {
+      "name": "All three cooks pick up from the real crate",
+      "ms": 12203.637582999996,
+      "status": "completed"
+    },
+    {
+      "name": "Every cook places and chops their ingredient with cross and held circle",
+      "ms": 19520.978875,
+      "status": "completed"
+    },
+    {
+      "name": "Every cook places on Serve and the first real round starts",
+      "ms": 9522.686792000008,
+      "status": "completed"
+    },
+    {
+      "name": "After a completed real round the same room has no tutorial",
+      "ms": 221944.44887499997,
+      "status": "completed"
+    },
+    {
+      "name": "Create room through host page",
+      "ms": 915.1144999999669,
+      "status": "completed"
+    },
+    {
+      "name": "New room with reduced motion and leader skip at step two",
+      "ms": 28151.656957999978,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-host-tv-step-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-phone1-phone-leader-step-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-phone2-phone-cook-step-1.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-tv-step-1-1280.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-ring-move-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-host-ring-move-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "07-host-ring-move-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "08-host-ring-move-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "09-host-ring-move-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "10-host-ring-move-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "11-host-ring-move-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "12-host-ring-move-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "14-host-tv-step-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "15-phone1-phone-leader-step-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "16-phone2-phone-cook-step-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "17-host-tv-step-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "18-phone1-phone-leader-step-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "19-phone2-phone-cook-step-3.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "20-host-tv-step-4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "21-phone1-phone-leader-step-4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "22-phone2-phone-cook-step-4.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "23-host-tv-first-real-round.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "24-host-tv-second-round-no-tutorial.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "25-host-ring-move-reduced-frame01.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "26-host-ring-move-reduced-frame02.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "27-host-ring-move-reduced-frame03.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "28-host-ring-move-reduced-frame04.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "29-host-ring-move-reduced-frame05.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "30-host-ring-move-reduced-frame06.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "31-host-ring-move-reduced-frame07.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "32-host-ring-move-reduced-frame08.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "34-host-tv-skip-step-2.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "35-host-tv-skipped-real-round.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-host-tv-step-1.jpg",
+    "02-phone1-phone-leader-step-1.jpg",
+    "03-phone2-phone-cook-step-1.jpg",
+    "04-host-tv-step-1-1280.jpg",
+    "13-strip-ring-move.jpg",
+    "14-host-tv-step-2.jpg",
+    "15-phone1-phone-leader-step-2.jpg",
+    "16-phone2-phone-cook-step-2.jpg",
+    "17-host-tv-step-3.jpg",
+    "18-phone1-phone-leader-step-3.jpg",
+    "19-phone2-phone-cook-step-3.jpg",
+    "20-host-tv-step-4.jpg",
+    "21-phone1-phone-leader-step-4.jpg",
+    "22-phone2-phone-cook-step-4.jpg",
+    "23-host-tv-first-real-round.jpg",
+    "24-host-tv-second-round-no-tutorial.jpg",
+    "33-strip-ring-move-reduced.jpg",
+    "34-host-tv-skip-step-2.jpg",
+    "35-host-tv-skipped-real-round.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-host-tv-step-1.jpg",
+      "bytes": 148600
+    },
+    {
+      "file": "02-phone1-phone-leader-step-1.jpg",
+      "bytes": 206552
+    },
+    {
+      "file": "03-phone2-phone-cook-step-1.jpg",
+      "bytes": 198492
+    },
+    {
+      "file": "04-host-tv-step-1-1280.jpg",
+      "bytes": 87252
+    },
+    {
+      "file": "13-strip-ring-move.jpg",
+      "bytes": 1249431
+    },
+    {
+      "file": "14-host-tv-step-2.jpg",
+      "bytes": 151353
+    },
+    {
+      "file": "15-phone1-phone-leader-step-2.jpg",
+      "bytes": 201168
+    },
+    {
+      "file": "16-phone2-phone-cook-step-2.jpg",
+      "bytes": 193117
+    },
+    {
+      "file": "17-host-tv-step-3.jpg",
+      "bytes": 157519
+    },
+    {
+      "file": "18-phone1-phone-leader-step-3.jpg",
+      "bytes": 201595
+    },
+    {
+      "file": "19-phone2-phone-cook-step-3.jpg",
+      "bytes": 193423
+    },
+    {
+      "file": "20-host-tv-step-4.jpg",
+      "bytes": 151458
+    },
+    {
+      "file": "21-phone1-phone-leader-step-4.jpg",
+      "bytes": 200771
+    },
+    {
+      "file": "22-phone2-phone-cook-step-4.jpg",
+      "bytes": 192595
+    },
+    {
+      "file": "23-host-tv-first-real-round.jpg",
+      "bytes": 155758
+    },
+    {
+      "file": "24-host-tv-second-round-no-tutorial.jpg",
+      "bytes": 155772
+    },
+    {
+      "file": "33-strip-ring-move-reduced.jpg",
+      "bytes": 1250292
+    },
+    {
+      "file": "34-host-tv-skip-step-2.jpg",
+      "bytes": 151572
+    },
+    {
+      "file": "35-host-tv-skipped-real-round.jpg",
+      "bytes": 155758
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 2697
+    },
+    {
+      "file": "run.json",
+      "bytes": 7191
+    }
+  ],
+  "totalBytes": 5412403,
+  "maxBytes": 12582912
+}

@@ -41,3 +41,18 @@ it('NFR-DES seated layouts reserve intrinsic header space and never truncate ide
   expect(header).not.toContain("picker.screen");
   expect(route).toContain('role="img" aria-label={view.connected');
 });
+
+it('TR-055 leader header actions preserve the non-leader height contract', () => {
+  const css = readFileSync(new URL('./phone.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+  const rule = (selector: string) => [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)]
+    .filter(match => match[1]?.trim() === selector).map(match => match[2]).join(';');
+  const header = rule('.phone-game-page[data-console-controls="true"] .ka-controller-header');
+  expect(header).toContain('grid-template-rows: var(--ka-space-34)');
+  const leader = rule('.phone-game-page .ka-controller-header:has(.phone-header-action)');
+  expect(leader).toContain('padding-right:');
+  expect(leader).not.toMatch(/(?:height|grid-template-rows|padding-top|padding-bottom):/);
+  const action = rule('.phone-game-page .phone-header-action');
+  expect(action).toContain('position: absolute');
+  expect(action).toContain('min-height: var(--ka-space-55)');
+  expect(action).toContain('width: var(--ka-space-144)');
+});

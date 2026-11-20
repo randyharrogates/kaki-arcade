@@ -23,7 +23,8 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 | T-08 | Controller layout: stick, A, B, X, Y, Start; the optional wok shake follows as T-08b once K-06 lands (D-280) | TR-020 | T-01, K-04 | 2 | done (merged 2026-11-20; round6; D-306) |
 | T-08b | Optional shake for the wok on the Tabao Rush controller, with the button as the fallback | TR-020, CTRL-007 | T-08, K-06 | 3 | todo |
 | T-09 | Cook picker before a round: 8 characters, no two players the same | TR-064 | T-07, A-03 | 2 | merged 2026-11-19, in progress (round11, review clean; closure waits on perf on the merged tree, a still that shows the badge fade and a real pad; D-287) |
-| T-10 | First-run tutorial, skippable | TR-055 | T-07 | 2 | todo |
+| T-10 | First-run tutorial, skippable | TR-055 | T-07 | 2 | done (merged 2026-11-20; round14; perf-tutorial; D-311) |
+| T-10b | Tutorial polish from the T-10 review: a ring that reads on counter tiles (light core, ink edge, contrast-tested) and one outline around the three chop boards; every step row aligned; the leader hint at 34 px; the Peek Poker card tokens in their own file so the cards job no longer depends on all of `themes.ts` (D-311) | TR-055 | T-10 | 3 | todo |
 | T-17 | One level, one dish, 1 and 8 players, end to end in the real console, with a quiet-machine performance run | TR-051, TR-056, PERF-001, PERF-010, PERF-024 | T-07 to T-10, C-15 | 3 | todo |
 
 ## Story T2 — There is a whole game of levels, and I can play it alone

@@ -1,3 +1,7 @@
+import { TUTORIAL_LEVEL } from '../src/rules/tutorial';
+import { TEST_LEVEL } from '../src/rules/level';
+import { duration, bezierAt, bezier } from '../../../packages/ui/src/motion-tokens';
+import { createTutorial, TUTORIAL_OFFSET } from './tutorial';
 /* eslint-disable @typescript-eslint/prefer-for-of -- Indexed hot loops avoid iterator allocation. */
 import { nameText, displayName, nameInset } from './text';
 import { createItemModels, itemDrawCap } from './item-model';
@@ -16,9 +20,10 @@ import type { View } from './model';
 import { preload } from './assets';
 import type { Packed, Animation } from './assets';
 const depthOrder=(a:Container,b:Container)=>a.zIndex-b.zIndex;
+const kitchenMoveCurve = Array.from({ length: duration.slow + 1 }, (_, i) => bezierAt(bezier.inOut, i / duration.slow));
 const NEUTRAL_TINT=Number.parseInt(ON_COLOUR.slice(1),16);
 const theme = THEMES['tabao-rush'];
-export interface Options { view: unknown; width: number; height: number; detail?: 'full' | 'half'; heads?: Readonly<Record<string,string>> }
+export interface Options { localLeader?: boolean; view: unknown; width: number; height: number; detail?: 'full' | 'half'; heads?: Readonly<Record<string,string>> }
 interface Node { depth:number; sprite: Sprite; x: number; y: number; oldX: number; oldY: number; controlled: boolean; baseScale:number }
 /** A single WebGL sprite scene. UI text is rasterised only at publication, never in RAF. */
 export async function createScreen(root: HTMLElement, initial: Options, cancelled: () => boolean) {
@@ -32,13 +37,17 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
   root.append(app.canvas); app.canvas.setAttribute('aria-label', 'Tabao Rush kitchen');
   root.style.position = 'relative';
   const picker = createCookPicker(root, assets.portraits);
+  const tutorial = createTutorial(root);
+  const backdrop = new Sprite(); app.stage.addChild(backdrop);
   const stage = new Container(); stage.sortableChildren=false; app.stage.addChild(stage);
   const background = new Sprite(); stage.addChild(background); background.zIndex=-1;
   const ITEM_DRAW_CAP=itemDrawCap(assets);
-  const pool = new FixedPool<Node>(8 * 5 + ITEM_CAP * (ITEM_DRAW_CAP+1) + (initial.view as View).stations.length, () => {
+  // Reserve every practice board before readiness, even when mounting the picker.
+  const stationCapacity = Math.max((initial.view as View).stations.length, ...[TUTORIAL_LEVEL, TEST_LEVEL].map(level => level.tiles.filter(tile => tile.kind === 'station' && tile.stationType && !tile.ingredient).length));
+  const pool = new FixedPool<Node>(8 * 5 + ITEM_CAP * (ITEM_DRAW_CAP+1) + stationCapacity, () => {
     const sprite = new Sprite(); return { depth:0, sprite, x: 0, y: 0, oldX: 0, oldY: 0, controlled: false, baseScale:1 };
   });
-  const panels=createPanels(stage,assets,(initial.view as View).stations.length);
+  const panels=createPanels(stage,assets,Math.max(1,stationCapacity));
   const itemModels=createItemModels(assets,ITEM_DRAW_CAP,pool);
   const cookClips=new Map<string,Animation>(),maskNames=new Map<string,string>();
   for(const [name,clip] of assets.animations)if(name.startsWith('tabao-rush-cook-body:')){cookClips.set(clip.action,clip);if(!clip.action.endsWith('-mask'))maskNames.set(clip.action,clip.action+'-mask');}
@@ -50,6 +59,8 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
   let view = initial.view as View, previous = view, publishedAt = performance.now(), frame = 0, destroyed = false;
   let viewportWidth=-1,viewportHeight=-1;
   let backgroundTexture: Texture | undefined;
+  const kitchenTextures = new Map<View['level'], Texture>();
+  let stageFrom = 0, stageTo = 0, stageAt = 0;
   const distances=new Float64Array(8),poseStart=new Float64Array(8),poseActions=Array<string>(8).fill('idle');
   const vm=new ViewModel(pool.entries.length);
   function setDepth(node:Node,depth:number){node.depth=depth;}
@@ -68,26 +79,29 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
     return n;
   }
   function drawBackground() {
-    backgroundTexture?.destroy(true);
     const canvas = document.createElement('canvas'); canvas.width = 1920; canvas.height = 1080;
     const ctx = canvas.getContext('2d'); if (!ctx) throw new Error('Canvas unavailable');
     ctx.fillStyle = THEMES.console.background.colour; ctx.fillRect(0,0,1920,1080);
     const paints=THEMES.console.background.treatment.paints;for(let y=0;y<1080;y+=89)for(let x=0;x<1920;x+=89){for(let i=0;i<paints.length;i++){ctx.fillStyle=paints[i] ?? THEMES.console.background.colour;ctx.beginPath();ctx.arc(x+89*(i+1)/(paints.length+1),y+89*(i%2?0.62:0.3),5,0,Math.PI*2);ctx.fill();}}
-    root.style.backgroundImage=`url(${canvas.toDataURL()})`;
-    ctx.strokeStyle = THEMES.console.panel.edge.colour;
-    for (let i=0;i<view.level.tiles.length;i++) {
-      const tile = view.level.tiles[i]; if (!tile) continue;
-      const x=worldX(i%view.level.width), y=worldY(Math.floor(i/view.level.width));
-      ctx.fillStyle = tile.kind === 'floor' ? THEMES.console.panel.to : THEMES.console.chip.fill;
-      ctx.fillRect(x,y,TILE,TILE*DEPTH); ctx.strokeRect(x,y,TILE,TILE*DEPTH);
-      if (i===view.level.extinguisherTile) { ctx.fillStyle=ON_COLOUR; nameText(ctx,'Extinguisher',x+nameInset(view.level,i,-1),y+34,TILE-nameInset(view.level,i,-1)-nameInset(view.level,i,1)); }
-      if (tile.kind === 'station' && tile.ingredient) { ctx.fillStyle = ON_COLOUR; nameText(ctx,tile.ingredient==='rice'?'Rice':displayName(tile.ingredient),x+nameInset(view.level,i,-1),y+34,TILE-nameInset(view.level,i,-1)-nameInset(view.level,i,1)); }
-    }
-    for(let i=0;i<view.stations.length;i++){const station=view.stations[i];if(!station)continue;const x=worldX(station.tile%view.level.width),y=worldY(Math.floor(station.tile/view.level.width));ctx.fillStyle=THEMES.console.chip.fill;ctx.fillRect(x,y,TILE,TILE*DEPTH);}
-
     ctx.fillStyle = theme.panel.ink; ctx.font = `${String(tvType.label)}px ${fontStack.body}`;
     ctx.fillText('A-06 geometry placeholder · A-05 station placeholders · A-11 step-icon placeholders',55,55);
-    backgroundTexture = Texture.from(canvas); background.texture=backgroundTexture;
+    root.style.backgroundImage=`url(${canvas.toDataURL()})`;
+    backgroundTexture = Texture.from(canvas); backdrop.texture = backgroundTexture;
+  }
+  function drawKitchen(level: View['level']) {
+    const canvas = document.createElement('canvas'); canvas.width = 1920; canvas.height = 1080;
+    const ctx = canvas.getContext('2d'); if (!ctx) throw new Error('Canvas unavailable');
+    ctx.strokeStyle = THEMES.console.panel.edge.colour;
+    for (let i=0;i<level.tiles.length;i++) {
+      const tile = level.tiles[i]; if (!tile) continue;
+      const x=projectX(i%level.width,level.width), y=projectY(Math.floor(i/level.width),level.height);
+      ctx.fillStyle = tile.kind === 'floor' ? THEMES.console.panel.to : THEMES.console.chip.fill;
+      ctx.fillRect(x,y,TILE,TILE*DEPTH); ctx.strokeRect(x,y,TILE,TILE*DEPTH);
+      if (tile.kind === 'counter' && tile.label) { ctx.fillStyle = ON_COLOUR; nameText(ctx,tile.label,x+21,y+34,TILE-34); }
+      if (i===level.extinguisherTile) { ctx.fillStyle=ON_COLOUR; nameText(ctx,'Extinguisher',x+nameInset(level,i,-1),y+34,TILE-nameInset(level,i,-1)-nameInset(level,i,1)); }
+      if (tile.kind === 'station' && tile.ingredient) { ctx.fillStyle = ON_COLOUR; nameText(ctx,tile.ingredient==='rice'?'Rice':displayName(tile.ingredient),x+nameInset(level,i,-1),y+34,TILE-nameInset(level,i,-1)-nameInset(level,i,1)); }
+    }
+    return Texture.from(canvas);
   }
   function animation(actionName:string,direction:string,index:number) {
     const anim=cookClips.get(actionName), ids=anim?.directions?.[direction];
@@ -151,8 +165,12 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
     app.canvas.style.display="block";app.canvas.style.margin=`${String((options.height-1080*fit)/2)}px auto`;
     app.canvas.style.width=`${String(1920*fit)}px`; app.canvas.style.height=`${String(1080*fit)}px`;
     }
+    const destination = view.phase === 'tutorial' ? -TUTORIAL_OFFSET : 0;
+    if (destination !== stageTo) { stageFrom = stage.position.x; stageTo = destination; stageAt = performance.now(); }
+    if (motion.matches) stage.position.x = stageTo;
+    if(view.phase==='tutorial'||previous.phase==='tutorial')tutorial.update(view, options.width, options.height, options.localLeader);
     if(view.phase==='pick'||previous.phase==='pick')picker.update(view,options.width,options.height);
-    if(!backgroundTexture || previous.level!==view.level) drawBackground();
+    background.texture = kitchenTextures.get(view.level) ?? kitchenTextures.get(view.phase === 'tutorial' ? TUTORIAL_LEVEL : TEST_LEVEL) ?? Texture.EMPTY;
     for(let i=0;i<view.cooks.length;i++) {
       const cook=view.cooks[i]; if(!cook) continue;
       const direction=DIRECTIONS[cook.facing];
@@ -195,6 +213,7 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
 
   }
   let pinned:number|undefined;
+  if((import.meta as ImportMeta & {env:{DEV:boolean}}).env.DEV)Object.defineProperty(root,'__trView',{ configurable:true,get:()=>view });
   if((import.meta as ImportMeta & {env:{DEV:boolean}}).env.DEV)Object.assign(root,{__trClock(ms:number|undefined){pinned=ms;}});
   function render(now:number) {
     if(pinned!==undefined)now=publishedAt+pinned;
@@ -205,14 +224,18 @@ export async function createScreen(root: HTMLElement, initial: Options, cancelle
       n.sprite.position.set(cookPosition(n.oldX,n.x,alpha,n.controlled),cookPosition(n.oldY,n.y,alpha,n.controlled));
     }
     panels.render(view.tick+(now-publishedAt)*60/1000,motion.matches);
+    const progress = motion.matches ? 1 : Math.min(1, (now-stageAt)/duration.slow);
+    stage.position.x = lerp(stageFrom,stageTo,kitchenMoveCurve[Math.max(0, Math.round(progress * duration.slow))] ?? 1);
     app.render(); frame=requestAnimationFrame(render);
   }
   if((import.meta as ImportMeta & {env:{DEV:boolean}}).env.DEV)root.dataset.trPoolCapacity=String(pool.entries.length);
   root.style.background=THEMES.console.background.colour;
   root.style.height="100%";
+  drawBackground();
+  for (const level of new Set([TUTORIAL_LEVEL, TEST_LEVEL, view.level])) kitchenTextures.set(level, drawKitchen(level));
   update(initial);
-  await app.renderer.prepare.upload([...Array.from(assets.frames.values(), packed => packed.texture),...panels.textures]);
+  await app.renderer.prepare.upload([...Array.from(assets.frames.values(), packed => packed.texture),...panels.textures,...kitchenTextures.values(),...(backgroundTexture ? [backgroundTexture] : [])]);
   app.render(); // upload and draw every active texture before readiness
   frame=requestAnimationFrame(render);
-  return { update, destroy() { destroyed=true; cancelAnimationFrame(frame); app.destroy(true,{children:true}); panels.destroy(); picker.destroy(); backgroundTexture?.destroy(true); assets.destroy(); }, capacity: pool.entries.length };
+  return { update, destroy() { destroyed=true; cancelAnimationFrame(frame); app.destroy(true,{children:true}); panels.destroy(); picker.destroy(); tutorial.destroy(); backgroundTexture?.destroy(true); kitchenTextures.forEach(texture => { texture.destroy(true); }); assets.destroy(); }, capacity: pool.entries.length };
 }

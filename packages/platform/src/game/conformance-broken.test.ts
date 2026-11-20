@@ -611,7 +611,7 @@ describe('the kit catches each kind of broken game', () => {
             step: 10,
             default: 25,
           },
-          ...settingsSchema(dots, { data: {}, saved: null, teams: false }).fields.slice(1),
+          ...settingsSchema(dots, { firstInRoom: false, data: {}, saved: null, teams: false }).fields.slice(1),
         ],
       },
     });

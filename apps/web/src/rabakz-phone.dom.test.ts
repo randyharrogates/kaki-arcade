@@ -43,7 +43,7 @@ it.each(['phrases', 'words', 'tokens', 'mentsuyu', 'short', 'short-resize', 'con
         import { rabakz, questionData, QUESTION_DATA } from '${path('../../../games/rabakz/src/index.ts')}';
         window.drawStatus = (phase, pick, theme, eligible = true, options = ${JSON.stringify(longOptions)}) => {
         const initial = rabakz.init(42, [{id:'one',name:'Player 1',seat:1,colour:'seat-1'}],
-          {length:10,difficulty:'mixed'}, {saved:null,teams:false,data:{[QUESTION_DATA]:questionData(
+          {length:10,difficulty:'mixed'}, { firstInRoom: false, saved: null, teams: false, data:{[QUESTION_DATA]:questionData(
             Array.from({length:10},(_,i)=>({id:String(i),prompt:'Which?',options,
               correct:0,category:'General',difficulty:'easy',type:'multiple-choice',region:'general'})))}});
           const state = {...initial,...(${String(scenario === 'late-team-reveal')} ? {questions:initial.questions.map(q=>({...q,options,correct:0}))} : {}),teams:${String(scenario === 'late-team-reveal')},phase,wrong:pick === 1 ? [1] : [],players:initial.players.map(p=>({...p,...(${String(scenario === 'late-team-reveal')} ? {info:{...p.info,team:1},joinedMidGame:true,score:100,gained:100,streak:1} : {}),eligible,pick,answers:pick === null ? [] : [pick]}))};

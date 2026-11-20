@@ -1,3 +1,4 @@
+import { TUTORIAL_STEPS, tutorialStep } from './tutorial';
 import { HEADS, pickLayout, pickStep } from './cook-picker';
 import { controllerImages } from './controller-images';
 import { meta } from './meta';
@@ -56,9 +57,10 @@ export const tabaoRush: GameModule<TabaoState> = {
   meta,
   controllerImages,
   settings: { fields: [] },
-  init(seed, players) {
+  init(seed, players, _settings, context) {
     let state: TabaoState = {
       phase: 'pick', pickRevision: 0,
+      ...(context.firstInRoom ? { tutorial: { step: 0, done: [] } } : {}),
       inventory: inventory(),
       nextItemId: 0,
       rng: createRng(seed),
@@ -73,6 +75,7 @@ export const tabaoRush: GameModule<TabaoState> = {
   },
   step(state, inputs) {
     if (state.phase === 'pick') return pickStep(state, inputs);
+    if (state.phase === 'tutorial') return tutorialStep(state, inputs);
     const end = endTick(state);
     if (state.tick >= end) return state.orderEvents?.length || state.serviceEvents?.length
       ? { ...state, orderEvents: [], serviceEvents: [] } : state;
@@ -110,10 +113,11 @@ export const tabaoRush: GameModule<TabaoState> = {
     });
   },
   publicView(state) {
-    const prepared = prepareStations(ensureOrders(state));
+    const prepared = prepareStations(state.phase === 'tutorial' ? state : ensureOrders(state));
     const inTransit = new Set(prepared.returns?.map((r) => r.item.id));
     return {
       phase: state.phase ?? 'play',
+      ...(state.phase === 'tutorial' ? { tutorial: state.tutorial } : {}),
       picks: state.picks ?? [],
       heads: Object.fromEntries((state.picks ?? []).map(p => [p.player, HEADS[p.head] ?? 'cap'])),
       level: state.level,
@@ -138,19 +142,28 @@ export const tabaoRush: GameModule<TabaoState> = {
   privateView() { return null; },
   controllerLayout(state, id) {
     if (state.phase === 'pick' && state.players.some(p => p.id === id)) return pickLayout(state, id);
+    if (state.phase === 'tutorial' && state.tutorial && state.cooks.some(c => c.id === id)) {
+      const step = state.tutorial.step;
+      return { revision: state.pickRevision ?? 0, controls: [
+        { kind: 'text', id: 'header-heading', text: `Step ${String(step + 1)} of 4`, tone: 'note' },
+        { kind: 'options', id: 'header-action', audience: 'leader', options: [{ id: 'skip-tutorial', label: 'Skip tutorial' }] },
+        ...PLAY_LAYOUT.controls.map(c => ({ ...c, ...(c.kind === 'button' ? { disabled: false } : {}), highlighted: c.id === TUTORIAL_STEPS[step]?.control })),
+      ] };
+    }
     const layout = state.players.some((player) => player.id === id && !player.spectating)
       ? PLAY_LAYOUT
       : WATCH_LAYOUT;
     return state.picks && layout !== WATCH_LAYOUT ? { ...layout, revision: layout.revision + (state.pickRevision ?? 0) } : layout;
   },
-  pauseOnDisconnect: (state) => state.tick < endTick(state),
-  isOver: (state) => state.tick >= endTick(state),
+  // The tutorial has no clock and treats a disconnected cook as done, so it never pauses for a missing player.
+  pauseOnDisconnect: (state) => state.phase !== 'tutorial' && state.tick < endTick(state),
+  isOver: (state) => state.phase !== 'tutorial' && state.tick >= endTick(state),
   results: (state) => {
-    const kitchens = ensureOrders(state).kitchens ?? [];
+    const kitchens = state.phase === 'tutorial' ? [] : ensureOrders(state).kitchens ?? [];
     const score = kitchens.reduce((sum, k) => sum + k.score, 0);
     return {
       mode: 'coop', score,
-      ...(state.players.length ? { extras: { stars: kitchens[0] ? stars(kitchens[0]) : 0 } } : {}),
+      ...(state.phase !== 'tutorial' && state.players.length ? { extras: { stars: kitchens[0] ? stars(kitchens[0]) : 0 } } : {}),
       players: state.players.map((player) => ({
         id: player.id, place: 1, score, joinedMidGame: player.joinedMidGame,
       })),

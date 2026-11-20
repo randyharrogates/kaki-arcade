@@ -182,6 +182,11 @@ export type AssetManifest = readonly Asset[];
 /** What a game is given before a match exists: for its settings screen and for `init`. */
 export interface SetupContext {
   /**
+   * True until this room completes a round of this game; derived from room totals.
+   * Absent means false, so contexts built by tests and other games need not set it.
+   */
+  readonly firstInRoom?: boolean;
+  /**
    * The parsed contents of every `data` asset named so far, by key: those from
    * `preload(null)` when the settings are being drawn, and also those from
    * `preload(settings)` by the time `init` is called.

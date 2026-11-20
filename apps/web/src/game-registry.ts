@@ -33,7 +33,7 @@ function register<State, Settings extends object, View>(game: GameModule<State, 
 function selectionCheck<State, Settings extends object, View>(game: GameModule<State, Settings, View>) {
   return (id: string, settings: JsonValue): boolean => {
     if (id !== game.meta.id) return false;
-    try { return validateSettings(settingsSchema(game, { data: {}, saved: null, teams: false }), settings).ok; }
+    try { return validateSettings(settingsSchema(game, { firstInRoom: false, data: {}, saved: null, teams: false }), settings).ok; }
     catch { return false; }
   };
 }

@@ -38,6 +38,7 @@ export function localPlayer() {
   let input: HostInput | undefined;
   let sequence = 0;
   let primaryHeld: boolean | undefined;
+  let skipHeld = true;
   let viewRevision: number | null = null;
   let control: ((message: PhoneMessage) => void) | undefined;
   let leader = false;
@@ -57,12 +58,16 @@ export function localPlayer() {
       if (!input) return;
       const pressed = held.has('Space') || held.has('Enter') || pad?.buttons[0]?.pressed === true;
       if (pressed && primaryHeld === false) {
-        const primary = layout.controls.find(part => part.kind === 'options' && part.options.length === 1 && (!part.audience || part.audience === 'everyone' || (part.audience === 'leader') === leader));
+        const primary = layout.controls.find(part => part.id !== 'header-action' && part.kind === 'options' && part.options.length === 1 && (!part.audience || part.audience === 'everyone' || (part.audience === 'leader') === leader));
         if (primary?.kind === 'options' && primary.options[0]?.state !== 'disabled') {
           control?.({ v: 1, t: 'action', rev: layout.revision, viewRev: viewRevision, data: { control: primary.id, value: primary.options[0]?.id ?? '' } });
         }
       }
       primaryHeld = pressed;
+      const skip = held.has('KeyK') || pad?.buttons[8]?.pressed === true;
+      const header = layout.controls.find(part => part.id === 'header-action' && part.kind === 'options' && part.options.length === 1 && (!part.audience || part.audience === 'everyone' || (part.audience === 'leader') === leader));
+      if (skip && !skipHeld && header?.kind === 'options' && header.options[0]?.state !== 'disabled') control?.({ v: 1, t: 'action', rev: layout.revision, viewRev: viewRevision, data: { control: header.id, value: header.options[0]?.id ?? '' } });
+      skipHeld = skip;
       localMapping(layout, held, pad, leader, frame);
       frame.seq = sequence++ % 65536; frame.history.fill(frame.buttons);
       input.receiveInput(frame);

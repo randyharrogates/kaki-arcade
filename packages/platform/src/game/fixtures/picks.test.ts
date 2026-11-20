@@ -30,10 +30,10 @@ function players(count: number): PlayerInfo[] {
 }
 describe('fixture game: Picks', () => {
   const settings = defaultSettings(
-    settingsSchema(picks, { data: PICKS_DATA, saved: null, teams: false }),
+    settingsSchema(picks, { firstInRoom: false, data: PICKS_DATA, saved: null, teams: false }),
   );
   const start = (count: number): PicksState =>
-    picks.init(3, players(count), settings, { data: PICKS_DATA, saved: null, teams: false });
+    picks.init(3, players(count), settings, { firstInRoom: false, data: PICKS_DATA, saved: null, teams: false });
   const tap = (player: string, control: string, value?: number) => ({
     player,
     control,

@@ -66,6 +66,7 @@ export function createPanels(stage:Container,assets:Assets,stationCount:number){
     let x=1920-55;for(let i=hud.length-1;i>=0;i--){const panel=hud[i];if(!panel)continue;const w=panel.texture.frame.width;panel.sprite.pivot.set(w/2,panel.canvas.height/2);panel.sprite.position.set(x-w/2,1080-55-panel.canvas.height/2);hudPanelBox(panel.drawnBox,x,w);x-=w+13;}
   }
   function update(view:View,reduced:boolean){
+    layer.visible = view.phase !== 'tutorial';
     const levelChanged=level!==view.level;
     currentView=view;
     if(level!==view.level||view.tick<tick){for(let cardIndex=0;cardIndex<cards.length;cardIndex++){const card=cards[cardIndex];if(!card)continue;card.sprite.visible=false;card.id=-1;}servedAt=-1000;for(let pi=0;pi<pops.length;pi++){const pop=pops[pi];if(pop){pop.sprite.visible=false;pop.step=-1000;}}}
@@ -111,7 +112,7 @@ export function createPanels(stage:Container,assets:Assets,stationCount:number){
     }
     for(let ci=0;ci<cards.length;ci++){const card=cards[ci];if(card&&card.sprite.visible&&!card.seen&&!card.exiting){card.exiting=true;card.exitAt=tick;card.fromX=card.sprite.x;card.fromY=card.sprite.y;}}
     for(let i=0;i<stations.length;i++){
-      const r=stations[i],station=view.stations[i];if(!r)continue;r.sprite.visible=!!station;if(!station)continue;
+      const r=stations[i],station=view.stations[i];if(!r)continue;r.sprite.visible=!!station;if(!station){r.cue.sprite.visible=false;r.note.sprite.visible=false;continue;}
       const rejection=station.rejection===r.rejectionRef?r.rejection:station.rejection?rejectionText(station.rejection):'';
       r.rejectionRef=station.rejection;
       if(r.nameLevel!==view.level||r.nameTile!==station.tile||r.nameType!==station.type){

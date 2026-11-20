@@ -135,6 +135,11 @@
 /* Leave inside the action row: the row's gap spaces it, so the header margin must not push it past the edge (C-17). */
 .phone-page .phone-actions button.phone-leave { margin-left: 0; }
 
+/* Header actions share Menu's compact pill, with an out-of-flow touch target.
+   Reserving horizontal room must never change the controller's 34 px row. */
+.phone-game-page .ka-controller-header:has(.phone-header-action) { padding-right: calc(var(--ka-button-in-play-width-floor) + var(--ka-space-21) + var(--ka-space-144) + var(--ka-space-13)); }
+.phone-game-page .phone-header-action { position: absolute; top: 0; right: calc(var(--ka-button-in-play-width-floor) + var(--ka-space-21)); z-index: 2; width: var(--ka-space-144); min-height: var(--ka-space-55); border: 0; padding: 0; box-shadow: none; background: transparent; color: var(--ka-chip-ink); font: var(--ka-weight-bold) var(--ka-phone-type-13)/var(--ka-line-body) var(--ka-font-mono); touch-action: manipulation; }
+
 /* PLAT-011: keep the lobby primary and the room-seat actions secondary. */
 .phone-lobby[data-seated="true"][data-players="true"] { height: 100%; min-height: 0; grid-template-rows: minmax(0, 1fr) auto; }
 /* Native touch scrolling tracks the finger and retains boundary rubber-banding. */

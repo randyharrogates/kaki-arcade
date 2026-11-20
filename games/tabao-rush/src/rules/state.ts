@@ -1,3 +1,4 @@
+import type { Tutorial } from './tutorial';
 import type { CookPick } from './cook-picker';
 import type { Kitchen, OrderEvent } from './orders';
 import type { ColourToken, PlayerInfo } from '@kaki/platform';
@@ -20,7 +21,7 @@ export const STATION_REACH = 0.85;
 export type Tile =
   | { readonly kind: 'floor' }
   | { readonly kind: 'wall' }
-  | { readonly kind: 'counter' }
+  | { readonly kind: 'counter'; readonly label?: string }
   | { readonly kind: 'station'; readonly stationId: string; readonly ingredient?: string; readonly kitchen?: string; readonly container?: Container; readonly stationType?: StationType; readonly stock?: number; readonly facing?: Facing };
 
 export interface Level {
@@ -104,7 +105,8 @@ export interface Item {
 }
 
 export interface TabaoState {
-  readonly phase?: 'pick' | 'play';
+  readonly phase?: 'pick' | 'tutorial' | 'play';
+  readonly tutorial?: Tutorial;
   readonly picks?: readonly CookPick[];
   readonly pickRevision?: number;
   readonly pickSteps?: number;

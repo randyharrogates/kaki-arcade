@@ -16,7 +16,7 @@ it.each([{ localSeat: 'play', midGameJoin: true, teams: false }, { localSeat: 'p
   const updateRoom = vi.fn();
   let assignTeam: ((seat: number, team: 0 | 1) => void) | undefined;
   const host = createHost({ clock, storage: new MemoryStorage(), mintToken: () => String(++serial).repeat(32),
-    session: { start: (_id, _room, _settings, assign) => { assignTeam = assign; return Promise.resolve(); }, allowsRunningJoin: enabled => midGameJoin && (!enabled || !!joinTeam), updateRoom },
+    session: { start: (_id, _room, _settings, assign) => { assignTeam = assign?.assignTeam; return Promise.resolve(); }, allowsRunningJoin: enabled => midGameJoin && (!enabled || !!joinTeam), updateRoom },
     dial: (_credentials, cb) => { callbacks = cb; return Promise.resolve({ credentials: { code: CODE, hostToken: SECRET }, reopened: false, stop() { /* Fake wire. */ } }); },
   }, () => undefined);
   await host.start();

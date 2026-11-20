@@ -68,7 +68,7 @@ it('PLAT-006 fences loading, stale and non-leader edits and starts with chosen s
   f.edit('size', 5); f.edit('size', 3, 'one', rev);
   expect(f.host.teamSetup?.settings?.fields[0]).toMatchObject({ options: [{ chosen: false }, { chosen: true }, { chosen: false }] });
   f.edit('size', 7); expect(JSON.stringify(f.messages.at(-1))).toContain('Choose a larger pool');
-  f.input('start'); expect(f.session.start).toHaveBeenCalledWith(gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 }), expect.any(Function));
+  f.input('start'); expect(f.session.start).toHaveBeenCalledWith(gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 }), expect.objectContaining({ firstInRoom: true, assignTeam: expect.any(Function) as unknown }));
   expect(JSON.stringify([...f.storage.data.values()])).not.toContain('"size"');
   f.host.stop();
 });
@@ -96,7 +96,7 @@ it('PLAT-006 reuses the selected settings for Play again', async () => {
   f.host.sessionEvent({ type: 'results', results: { mode: 'players', players: [] } });
   f.host.playAgain();
   expect(f.session.start).toHaveBeenCalledTimes(2);
-  expect(f.session.start.mock.calls.at(-1)).toEqual([gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 }), expect.any(Function)]);
+  expect(f.session.start.mock.calls.at(-1)).toEqual([gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 }), expect.objectContaining({ firstInRoom: true, assignTeam: expect.any(Function) as unknown })]);
   f.host.stop();
 });
 
@@ -143,7 +143,7 @@ it('PLAT-006 resends the retained choice after a leader phone resumes its seat',
 it('PLAT-025 rebuilds the schema for Teams and retains only values still valid for their fields', async () => {
   const f = await hostFixture(2); await f.finish(); f.edit('size', 5);
   f.host.teamInput('one', 'teams-toggle');
-  expect(f.session.setup).toHaveBeenLastCalledWith(gameMetas[2]?.id, true);
+  expect(f.session.setup).toHaveBeenLastCalledWith(gameMetas[2]?.id, true, true);
   expect(f.host.teamSetup?.settings?.loading).toBe(true); f.input('start'); expect(f.session.start).not.toHaveBeenCalled();
   const changed = { fields: fields.map(field => field.id === 'size' && field.kind === 'choice' ? { ...field, options: field.options.filter(option => option.value !== 5) } : field) } as unknown as SettingsSchema<object>;
   await f.finish(changed);
@@ -192,7 +192,7 @@ it('PLAT-006/025 PLAT-024 drives setup with Enter and Escape and retains selecte
   expect(f.host.teamSetup?.settings?.fields[0]).toMatchObject({ options: [{ chosen: false }, { chosen: true }, { chosen: false }] });
   f.edit('items', ['a']); key('Enter'); expect(f.session.start).not.toHaveBeenCalled();
   f.edit('items', []); key('Enter');
-  expect(f.session.start).toHaveBeenCalledWith(gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 }), expect.any(Function));
+  expect(f.session.start).toHaveBeenCalledWith(gameMetas[0]?.id, expect.anything(), expect.objectContaining({ size: 5 }), expect.objectContaining({ firstInRoom: true, assignTeam: expect.any(Function) as unknown }));
   f.host.stop();
 });
 
@@ -228,7 +228,7 @@ it('CTRL-009 PLAT-006 keeps Rabakz teams on after load failure with a watching T
   await Promise.resolve(); await Promise.resolve();
   expect(f.host.picker.error).toContain('Could not load');
   expect(f.host.teamSetup?.enabled).toBe(true);
-  expect(f.session.setup).toHaveBeenLastCalledWith('rabakz', true);
+  expect(f.session.setup).toHaveBeenLastCalledWith('rabakz', true, true);
   f.host.stop();
 });
 
@@ -248,6 +248,6 @@ it('PP-033 leader difficulty choice round-trips through setup to the session', a
     expect(JSON.stringify(f.messages.at(-1))).toContain('steady');
     expect(f.host.teamSetup?.settings?.fields[1]).toMatchObject({ options: [{ chosen: false }, { chosen: true }] });
     f.input('start');
-    expect(f.session.start).toHaveBeenCalledWith('peek-poker', expect.anything(), { rounds: 5, difficulty: 'steady' }, expect.any(Function));
+    expect(f.session.start).toHaveBeenCalledWith('peek-poker', expect.anything(), { rounds: 5, difficulty: 'steady' }, expect.anything());
   } finally { f.host.stop(); }
 });

@@ -144,6 +144,7 @@
   --ka-accent: #B5371F;
   --ka-accent-ink: #FFFFFF;
   --ka-stick-outline: #6B4426;
+  --ka-highlight: #805700;
   --ka-chip: #6B4426;
   --ka-chip-ink: #FFFFFF;
 }
@@ -166,6 +167,7 @@
   --ka-accent: #FF9DB8;
   --ka-accent-ink: #3A1730;
   --ka-stick-outline: #E9B7C8;
+  --ka-highlight: #E0A63A;
   --ka-chip: #7A3563;
   --ka-chip-ink: #FFFFFF;
 }
@@ -188,6 +190,7 @@
   --ka-accent: #E0A63A;
   --ka-accent-ink: #17352A;
   --ka-stick-outline: #BFE3D2;
+  --ka-highlight: #E0A63A;
   --ka-chip: #14402F;
   --ka-chip-ink: #FFFFFF;
 }
@@ -210,6 +213,7 @@
   --ka-accent: #B5371F;
   --ka-accent-ink: #FFFFFF;
   --ka-stick-outline: #B5371F;
+  --ka-highlight: #805700;
   --ka-chip: #B5371F;
   --ka-chip-ink: #FFFFFF;
 }

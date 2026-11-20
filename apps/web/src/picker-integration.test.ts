@@ -61,7 +61,7 @@ it('PLAT-020/021/006/009 real host and two phones pick, watch, back, start, hand
   await act('back'); expect(host.picker.screen).toBe('picker');
   await act('select'); await act('start'); expect(host.picker.screen).toBe('starting');
   expect(session.start).toHaveBeenCalledTimes(1);
-  expect(session.start).toHaveBeenLastCalledWith(host.picker.focus, expect.objectContaining({ players: host.room.players, phase: 'lobby' }), undefined, expect.any(Function));
+  expect(session.start).toHaveBeenLastCalledWith(host.picker.focus, expect.objectContaining({ players: host.room.players, phase: 'lobby' }), undefined, expect.objectContaining({ firstInRoom: true, assignTeam: expect.any(Function) as unknown }));
   expect(host.room.phase).toBe('playing');
   await reloadLeader();
   await act('start'); expect(session.start).toHaveBeenCalledTimes(1);

@@ -78,7 +78,7 @@ describe('Tabao Rush through the harness', { timeout: 60_000 }, () => {  // Whol
 
   it('TR-002 a cook facing the crate picks up a cucumber with cross and throws it with triangle', () => {
     // Crafted start: p1 stands below the cucumber crate at (3, 1), facing up.
-    const base = tabaoRush.init(42, [{ id: 'p1', seat: 1, name: 'Cook', colour: 'seat-1' }], {}, { data: {}, saved: null, teams: false });
+    const base = tabaoRush.init(42, [{ id: 'p1', seat: 1, name: 'Cook', colour: 'seat-1' }], {}, { firstInRoom: false, data: {}, saved: null, teams: false });
     const first = base.cooks[0];
     if (!first) throw new Error('no cook');
     const cook = { ...first, x: 3.5, y: 2.5, facing: 6 as const, targetTile: targetTile(base.level, 3.5, 2.5, 6) };

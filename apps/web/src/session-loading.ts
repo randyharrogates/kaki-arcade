@@ -11,8 +11,8 @@ export async function loadSessionGame(id: string, loader: typeof loadGame = load
   return { game: game as unknown as LoadedGame, finalScreen: sessionRegistrations[id]?.finalScreen ?? false, ...(Screen ? { Screen } : {}), ...(viewKey ? { viewKey } : {}) };
 }
 /** Resolve setup data before asking the module for its contextual schema. */
-export async function prepareSetup(game: LoadedGame, teams = false) {
-  const context: InitContext = { data: {}, saved: null, teams };
+export async function prepareSetup(game: LoadedGame, teams = false, firstInRoom = false) {
+  const context: InitContext = { firstInRoom, data: {}, saved: null, teams };
   await resolveData(game, context, null, 0);
   return { context, schema: settingsSchema(game, context) };
 }

@@ -65,6 +65,7 @@ describe('WCAG contrast', () => {
         'accent text on accent fill',
         'chip text on chip',
         'stick outline on background',
+        'highlight on background',
       ]) {
         expect(ids).toContain(`${theme}: ${what}`);
       }

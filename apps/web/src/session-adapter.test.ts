@@ -27,7 +27,7 @@ function fixture(onDisplay?: (display: SessionDisplay | null) => void, counts?: 
   const load = vi.fn(() => { calls.push('load'); return Promise.resolve({ game }); });
   const assets = vi.fn(() => { calls.push('assets'); return Promise.resolve(); });
   const layouts = vi.fn(() => true);
-  const adapter = createSessionAdapter({ ...(detail ? { detail } : {}), ...(counts ? { counts } : {}), load, prepare: () => Promise.resolve({ context: { data: {}, saved: null, teams: false }, settings: {} }), assets, seed: () => 7,
+  const adapter = createSessionAdapter({ ...(detail ? { detail } : {}), ...(counts ? { counts } : {}), load, prepare: () => Promise.resolve({ context: { firstInRoom: false, data: {}, saved: null, teams: false }, settings: {} }), assets, seed: () => 7,
     display: next => { display = next; onDisplay?.(next); }, event: e => { events.push(e); },
     frames: { subscribe(fn) { frame = fn; staleFrames.push(fn); return endFrames; } },
     transport: { sendLayout: layouts, sendPrivateView: () => true, fence: () => undefined, status: () => undefined, subscribe(fn) { receive = fn; return endTransport; } },
@@ -115,7 +115,7 @@ it('PLAT-025 passes an optional team split and context to game init', async () =
   const room = { ...f.room, players: [{ ...p, team: 'red' as const }, { ...p, seat: 2, deviceId: 'second', connectionId: 'second', seatToken: '2'.repeat(32), team: 'blue' as const }] };
   // The actual preparation boundary receives teams before it resolves settings/data.
   const adapter = createSessionAdapter({ load: () => Promise.resolve({ game }),
-    prepare: (_game, _seed, teams) => Promise.resolve({ context: { data: {}, saved: null, teams: teams ?? false }, settings: {} }),
+    prepare: (_game, _seed, teams) => Promise.resolve({ context: { firstInRoom: false, data: {}, saved: null, teams: teams ?? false }, settings: {} }),
     assets: () => Promise.resolve(), seed: () => 7, display: () => undefined, event: () => undefined,
     frames: { subscribe: () => () => undefined },
     transport: { sendLayout: () => true, sendPrivateView: () => true, fence: () => undefined, status: () => undefined, subscribe: () => () => undefined } });
@@ -212,7 +212,7 @@ it('PLAT-025 session adapter forwards the team request and joins from the assign
     assets: () => Promise.resolve(), transport: { sendLayout: () => true, sendPrivateView: () => true, fence: () => undefined, status: () => undefined, subscribe: () => () => undefined }, frames: { subscribe: () => () => undefined },
     seed: () => 7, display: () => undefined, event: () => undefined,
   });
-  await adapter.start('session-fixture', room, undefined, assignTeam);
+  await adapter.start('session-fixture', room, undefined, { firstInRoom: true, assignTeam });
   room = joinRoom(room, 4); adapter.updateRoom(room);
   expect(assignTeam).toHaveBeenCalledExactlyOnceWith(4, 1);
   expect(room.players.find(p => p.seat === 4)?.team).toBe('blue');

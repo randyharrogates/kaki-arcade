@@ -79,7 +79,7 @@ export interface TwinOptions<S, Settings extends object, View> {
 export function twin<S, Settings extends object, View>(o: TwinOptions<S, Settings, View>) {
   const teams = o.teams ?? false;
   const room = makeRoom(o.players, teams);
-  const context: InitContext = { data: {}, saved: null, ...o.context, teams };
+  const context: InitContext = { firstInRoom: false, data: {}, saved: null, ...o.context, teams };
   const buffer = createInputBuffer<string>({ axisCount: AXIS_COUNT, seqModulus: SEQ_MODULO, staleAfterSteps: INPUT_STALE_STEPS });
   const transport = new FakeTransport();
   const events: SessionEvent[] = [];
