@@ -64,7 +64,7 @@ Declared to the controller kit (CTRL-002):
 | RZ-032 | MUST | A scoreboard is shown after every 5 questions and a podium at the end; in team mode both show team totals first. |
 | RZ-033 | SHOULD | Sound effects for an answer, correct, wrong and unlock, with the shared volume controls. |
 | RZ-034 | MUST | Players appear as seat number, colour and nickname. Cook characters are not used in this game. |
-| RZ-035 | SHOULD | One original music loop plays during the match, with the shared volume controls (Randy, 2026-11-20, D-300). |
+| RZ-035 | SHOULD | One original music loop, "Kopitiam lo-fi" (the menu's style), plays during the match, with the shared volume controls (Randy, 2026-11-20, D-300, D-314). |
 
 ## 5. Why this game is in v1
 

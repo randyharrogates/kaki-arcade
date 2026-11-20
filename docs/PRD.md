@@ -102,6 +102,7 @@ These came directly from Randy and override convenience.
 | PLAT-033 | MUST | All three v1 games use this interface with no private back doors. Peek Poker, Rabakz and Tabao Rush being different in kind (turn-based with secrets, simultaneous answers, real-time shared space) is the proof. |
 | PLAT-034 | MUST | A player who joins again during a session (with the room code, the QR or the same link) is put back in their own seat with their nickname, score and game state, never seated as a new player: automatically on the same phone, and on another browser by choosing their name from the room's disconnected seats. A disconnected seat is kept until the running match ends. The room code stays readable on the big screen while a game is playing (Randy, 2026-11-20, D-298). |
 | PLAT-035 | MUST | When a player in a running game disconnects for more than 3 seconds, the game pauses and the big screen shows "Waiting for ⟨name⟩ to rejoin" with the room code large. When everyone is back the game resumes after a 3-2-1; the leader can instead carry on without them, and their seat stays held until the match ends. The lobby and final screens do not pause (Randy, 2026-11-20, D-301). |
+| PLAT-036 | SHOULD | Original music, "Kopitiam lo-fi", plays on the big screen in the menus (lobby and game picker), with the shared volume controls (Randy, 2026-11-20, D-314). |
 
 ### 3.4 Controller kit
 

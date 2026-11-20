@@ -94,7 +94,7 @@ Declared to the controller kit (CTRL-002):
 | PP-030 | MUST | Cards are large enough on a TV to read rank and suit from 3 m, and suits differ by shape and colour. |
 | PP-031 | MUST | Card flips, swaps and the reveal follow `../DESIGN.md` §3 (masks for reveals, arcs for moving cards, no bounce). |
 | PP-032 | MUST | A running scoreboard is visible between rounds and a final podium at match end. |
-| PP-034 | SHOULD | One original music loop plays during the match, with the shared volume controls (Randy, 2026-11-20, D-300). |
+| PP-034 | SHOULD | Original music plays during the match, with the shared volume controls: two loops, "Arcade bright" and "Gamelan pop", taking turns, one per match (Randy, 2026-11-20, D-300, D-314). |
 
 ## 4. Why this game is second
 

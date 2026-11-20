@@ -92,7 +92,7 @@ plating counter · serving counter · sink and dish rack · bin.
 | TR-061 | MUST | Every player is identifiable by their own character head, a colour **and** a seat number marker above their cook. In co-op the colour is the player's; in versus it is the team's. |
 | TR-062 | MUST | Game motion follows `../DESIGN.md` §3: no bounce or overshoot, ease-out entrances, a pulse to confirm a served order, nothing tweened while a player is controlling it. |
 | TR-064 | MUST | At least 8 different cook characters. Before a round each player picks one on their phone from those not yet taken, with a default by seat; no two players have the same character. |
-| TR-063 | SHOULD | Sound effects for every action and one music loop per setting, with separate volume controls on the big screen. |
+| TR-063 | SHOULD | Sound effects for every action, and original music: two loops, "Arcade bright" and "Gamelan pop", taking turns, one per round, with separate volume controls on the big screen (music changed from one loop per setting by Randy, 2026-11-20, D-314). |
 
 ## 7. Open design points
 
