@@ -25,6 +25,7 @@ Wave 1 issues are pure rules with unit tests; nothing is drawn.
 | T-09 | Cook picker before a round: 8 characters, no two players the same | TR-064 | T-07, A-03 | 2 | merged 2026-11-19, in progress (round11, review clean; closure waits on perf on the merged tree, a still that shows the badge fade and a real pad; D-287) |
 | T-10 | First-run tutorial, skippable | TR-055 | T-07 | 2 | done (merged 2026-11-20; round14; perf-tutorial; D-311) |
 | T-10b | Tutorial polish from the T-10 review: a ring that reads on counter tiles (light core, ink edge, contrast-tested) and one outline around the three chop boards; every step row aligned; the leader hint at 34 px; the Peek Poker card tokens in their own file so the cards job no longer depends on all of `themes.ts` (D-311) | TR-055 | T-10 | 3 | todo |
+| T-19 | The first Ready tap on the cook picker is dropped: in F-11's T-10 round 12, phone 1's first Ready press was ignored in 3 of 3 rooms while phones 2 and 3 registered first time. It is probably tapped while the picker is still entering. Find the cause; every press gives feedback within one frame and lands | CTRL-006, CTRL-005 | F-11 | 2 | todo (found 2026-11-20 by F-11's press counts) |
 | T-17 | One level, one dish, 1 and 8 players, end to end in the real console, with a quiet-machine performance run | TR-051, TR-056, PERF-001, PERF-010, PERF-024 | T-07 to T-10, C-15 | 3 | todo |
 
 ## Story T2 — There is a whole game of levels, and I can play it alone
