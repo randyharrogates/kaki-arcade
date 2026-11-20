@@ -2,9 +2,12 @@ import type { PlayerInfo } from '@kaki/platform';
 import type { RngState } from '@kaki/sim-core';
 import type { Card } from './cards';
 import type { Hand } from './evaluator';
+import type { PokerBests } from './records';
 
 export interface Settings {
   rounds: 3 | 5 | 7;
+  /** Missing in older fixtures and states means Rising. */
+  difficulty?: 'rising' | 'steady';
 }
 export interface Picker {
   info: PlayerInfo;
@@ -41,6 +44,7 @@ export interface State {
   swapIndex: number;
   paused: boolean;
   solo: boolean;
+  bests: PokerBests;
   best: number;
   bestAtStart: number;
   recordable: boolean;

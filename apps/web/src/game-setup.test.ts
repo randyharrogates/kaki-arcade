@@ -231,3 +231,23 @@ it('CTRL-009 PLAT-006 keeps Rabakz teams on after load failure with a watching T
   expect(f.session.setup).toHaveBeenLastCalledWith('rabakz', true);
   f.host.stop();
 });
+
+it('PP-033 leader difficulty choice round-trips through setup to the session', async () => {
+  const f = await hostFixture(1);
+  try {
+    const { peekPoker } = await import('../../../games/peek-poker/src');
+    const { settingsSchema } = await import('@kaki/platform');
+    await f.finish(settingsSchema(peekPoker, EMPTY_SETUP) as SettingsSchema<object>);
+    expect(f.host.teamSetup?.settings?.fields[1]).toMatchObject({
+      id: 'difficulty', label: 'Difficulty', options: [
+        { value: 'rising', label: 'Rising', chosen: true },
+        { value: 'steady', label: 'Steady', chosen: false },
+      ],
+    });
+    f.edit('difficulty', 'steady');
+    expect(JSON.stringify(f.messages.at(-1))).toContain('steady');
+    expect(f.host.teamSetup?.settings?.fields[1]).toMatchObject({ options: [{ chosen: false }, { chosen: true }] });
+    f.input('start');
+    expect(f.session.start).toHaveBeenCalledWith('peek-poker', expect.anything(), { rounds: 5, difficulty: 'steady' }, expect.any(Function));
+  } finally { f.host.stop(); }
+});

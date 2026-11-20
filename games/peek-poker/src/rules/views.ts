@@ -65,6 +65,7 @@ export function publicView(state: State) {
   const revealed = state.phase === 'reveal' || state.phase === 'scoreboard' || state.phase === 'over';
   const faceUp = revealed || (state.phase === 'memorise' && !state.paused);
   return {
+    difficulty: state.settings.difficulty ?? 'rising',
     soloBest: state.recordable && state.solo && state.players.length === 1 ? state.bestAtStart : null,
     newBest: false,
     phase: state.phase, round: state.round, totalRounds: state.settings.rounds,

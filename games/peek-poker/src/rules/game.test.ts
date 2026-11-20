@@ -39,7 +39,7 @@ describe('Peek Poker pure rules', () => {
   it('PP-001 leader settings offer only 3, 5, 7 rounds and default to 5', () => {
     expect(typeof game.settings).toBe('object');
     expect(defaultSettings(game.settings as Parameters<typeof defaultSettings<Settings>>[0]))
-      .toEqual({ rounds: 5 });
+      .toEqual({ rounds: 5, difficulty: 'rising' });
   });
   it.each([3, 5, 7] as const)('PP-001 %i rounds sum scores and rank ties equally', (rounds) => {
     let state = init(2, rounds);
@@ -287,15 +287,19 @@ describe('Peek Poker pure rules', () => {
     }
   });
   it.each([3, 5, 7] as const)('PP-011 exact ramp and sequential twists in %i rounds', (rounds) => {
+    const seconds = { 3: [20, 12, 8], 5: [20, 16, 12, 10, 8], 7: [20, 16, 12, 10, 8, 7, 6] }[rounds];
+    const swaps = { 3: [0, 1, 2], 5: [0, 0, 1, 1, 2], 7: [0, 0, 1, 1, 2, 3, 3] }[rounds];
     let state = init(1, rounds);
     for (let round = 1; round <= rounds; round += 1) {
       expect(state.phase).toBe('memorise');
       const row = difficulty(round, rounds);
+      expect(state.left).toBe(secondsToSteps(must(seconds[round - 1])));
       expect(state.left).toBe(secondsToSteps(must(MEMORISE_SECONDS[row])));
       const shared = state.shared;
       const grid = state.grid;
       state = advance(state, state.left);
       const count = row < 2 ? 0 : row < 4 ? 1 : row === 4 ? 2 : 3;
+      expect(state.swaps).toHaveLength(must(swaps[round - 1]));
       expect(state.swaps).toHaveLength(count);
       for (let i = 0; i < count; i += 1) {
         expect(state.phase).toBe('swap');
@@ -322,11 +326,11 @@ describe('Peek Poker pure rules', () => {
   it('PP-012 solo persists a completed personal best and never overwrites it early', () => {
     let state = game.init(4, makePlayers(1, false), { rounds: 3 },
       { ...EMPTY_SETUP, saved: { best: 1 } });
-    expect(game.save?.(state)).toEqual({ best: 1 });
+    expect(game.save?.(state)).toEqual({ bests: { rising: 1, steady: 0 } });
     while (!game.isOver(state)) state = tick(state);
-    expect(game.save?.(state)).toEqual({ best: must(state.players[0]).score });
+    expect(game.save?.(state)).toEqual({ bests: { rising: must(state.players[0]).score, steady: 0 } });
     expect(tick(state)).toBe(state);
-    expect(game.save?.(game.leave(state, 'p1'))).toEqual({ best: 1 });
+    expect(game.save?.(game.leave(state, 'p1'))).toEqual({ bests: { rising: 1, steady: 0 } });
   });
   it('PP-013 waiting newcomer starts at zero and first plays next round', () => {
     let state = tick(init(1));
@@ -454,16 +458,16 @@ it('PP-012 save preserves the starting record on quit, ties, lower scores and mu
   let state = game.init(42, makePlayers(1, false), { rounds: 3 }, { data: {}, saved: { best: 10 }, teams: false });
   must(state.players[0]).score = 30;
   state.best = 99; // Derived display state must never become the persistence baseline.
-  expect(game.save?.(state)).toEqual({ best: 10 });
+  expect(game.save?.(state)).toEqual({ bests: { rising: 10, steady: 0 } });
   state.phase = 'over';
   for (const score of [9, 10, 11]) {
     must(state.players[0]).score = score;
-    expect(game.save?.(state)).toEqual({ best: Math.max(10, score) });
+    expect(game.save?.(state)).toEqual({ bests: { rising: Math.max(10, score), steady: 0 } });
   }
   state = game.join(state, must(makePlayers(2, false)[1]));
-  expect(game.save?.(state)).toEqual({ best: 10 });
+  expect(game.save?.(state)).toEqual({ bests: { rising: 10, steady: 0 } });
   state = game.leave(state, 'p2');
-  expect(game.save?.(state)).toEqual({ best: 10 });
+  expect(game.save?.(state)).toEqual({ bests: { rising: 10, steady: 0 } });
 });
 it('PP-012 unreadable storage suppresses best claims throughout the match', () => {
   const state = game.init(42, makePlayers(1, false), { rounds: 3 }, { data: {}, saved: null, teams: false });
@@ -483,6 +487,26 @@ it('PP-013 joining preserves earned scores and never deals a waiting player into
   expect(game.controllerLayout(joined, 'p3').controls).toEqual([{ kind: 'text', id: 'wait', text: 'You join at the next round' }]);
 });
 
+it.each([3, 5, 7] as const)('PP-033 Steady uses round one throughout %i rounds', rounds => {
+  let state = game.init(42, makePlayers(1, false), { rounds, difficulty: 'steady' }, EMPTY_SETUP);
+  for (let round = 1; round <= rounds; round++) {
+    expect(state.round).toBe(round);
+    expect(state.phase).toBe('memorise');
+    expect(state.left).toBe(secondsToSteps(20));
+    const grid = state.grid;
+    const before = hashState(state);
+    expect(tick(state)).toEqual(tick(state));
+    expect(hashState(state)).toBe(before);
+    state = advance(state, state.left);
+    expect(state.phase).toBe('pick');
+    expect(state.swaps).toEqual([]);
+    expect(state.grid).toEqual(grid);
+    state = advance(state, state.left);
+    state = advance(state, state.left);
+    state = advance(state, state.left);
+  }
+  expect(game.isOver(state)).toBe(true);
+});
 
 it('PP-005 PP-022 next deal clears every lock and rejects round-one actions in round two', () => {
   let state = pickPhase(init(8, 5));

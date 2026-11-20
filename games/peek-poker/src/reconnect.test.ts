@@ -8,7 +8,7 @@ import { cloneState, createInputBuffer, hashState } from '@kaki/sim-core';
 import { findSecret } from '../../../packages/platform/src/game/json';
 import { peekPoker as game } from './index';
 
-const settings = { rounds: 3 } as const;
+const settings = { rounds: 3, difficulty: 'rising' } as const;
 const context = { data: {}, saved: null, teams: false };
 
 function setup(teams = false) {

@@ -11,7 +11,7 @@ it('PP-030 PP-031 registers the public-only console table', async () => {
 it('PP-012 registers the shell record codec with a non-null empty record', async () => {
   const record = await sessionRegistrations['peek-poker']?.record?.();
   expect(record?.version).toBe(1);
-  expect(record?.empty()).toEqual({ best: 0 });
+  expect(record?.empty()).toEqual({ bests: { rising: 0, steady: 0 } });
   expect(record?.validate({ best: 12 })).toBe(true);
   expect(record?.validate({ best: -1 })).toBe(false);
   const state = peekPoker.init(42, makePlayers(1, false), { rounds: 3 }, { data: {}, saved: { best: 10 }, teams: false });

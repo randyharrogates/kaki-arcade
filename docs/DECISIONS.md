@@ -1968,3 +1968,26 @@ Randy may overrule.
 - Evidence: round4 UAT ran before main's P-12 merge; after merging main, tsc and the overlapping unit and DOM tests passed (2029 and 4). Randy may overrule.
 
 **D-307 · 2026-11-20 · Claude, integrator (K-12 review; delegated by Randy, 2026-11-18)** (K-12; CTRL-004; D-297) — K-12 merged. The phone page asks for fullscreen (`navigationUI: 'hide'`) only on `/play`, while seated, in landscape, when the browser offers fullscreen and the page is not already fullscreen. A touch asks when the last finger lifts, not when it lands: browsers grant a touch its user gesture only on release, so a request on touch-down is refused on a real first touch (Playwright's own page scripts count as gestures and hid this in the first UAT). Waiting for the last finger also keeps the resize from cancelling a held stick. A mouse asks on press; a cancelled touch never asks. Turning to portrait leaves fullscreen. A refusal is ignored and the next touch tries again; after a player leaves fullscreen themselves in landscape, it is not asked for again until they turn to portrait and back. The manifest (`display: fullscreen`, landscape, start `/play`, scope `/`, colours `#EFEAE2` = `THEMES.console.background.colour`, tested) and the two home-screen meta tags are added only by the phone page, because the app shares one `index.html`. No icons: installs use the browser's generated icon (Chromium 156 reports no installability errors). A home-screen launch opens on code entry. Controller transfer 162,006 B gzip of 300,000; start-up 175.5 ms of 2,000 on the merged tree. Evidence is Chromium Android emulation only (`uat/evidence/K-12-fullscreen/round4/`). Still to check on real phones (S-05): Android hides the bar and keeps a held stick through the resize; Android and iPhone home-screen launches open with no bar, including iPhone reading tags added at runtime. CTRL-004 stays in progress. Randy may overrule.
+
+**D-308 · 2026-11-20 · Claude, integrator (P-13 review; delegated by Randy, 2026-11-18)** (PP-033, PP-011, PP-012; builds on D-299) — P-13 merged as built.
+1. **Setting.**
+   - Peek Poker's settings gain "Difficulty" beside "Rounds", with "Rising" (the default) and "Steady".
+   - It uses the generic setup controls: it shows on the leader's phone and as a mirror row on the TV setup card, with no layout or copy hint.
+   - The TV keyboard does not edit settings.
+   - Settings with no difficulty (older fixtures and states) count as Rising. The host snapshot store still checks saved selections strictly.
+2. **Rules.**
+   - Steady uses round 1's row of the difficulty table every round: 20 s to memorise, no twist, then pick.
+   - Rising is unchanged and is now pinned by literal expectations.
+   - The simulation stays pure and seeded.
+3. **Solo bests.**
+   - The host-device record keeps one best per difficulty, `{ bests: { rising, steady } }`. Round counts share a best within a difficulty, as before.
+   - Record version 1 accepts the old `{ best }` and the new shape. An old best counts as Rising, and Steady starts at 0.
+   - Saving keeps the other difficulty's best. An unreadable record still makes no best claim. The registry's empty record is the new shape.
+4. **Copy (integrator's choice, P-13 round 3).**
+   - In Steady the TV reads "Steady best N" and, after a successful save, "New steady best · N". Rising keeps "Best N" and "New best · N".
+   - The public view carries the match difficulty for this. The phone shows no best.
+5. **Merge.** The `Screen.tsx` conflict with P-12 kept both the shared-card face-down update and the difficulty-aware best label. The stills show both working.
+6. **UAT note.** Playwright's fake clock does not advance Web Animations. A still taken on a paused host clock must wait for `document.getAnimations()` to finish in real time. P-13's solo stills wait for animations to finish in real time (solo5).
+7. **Status.** PP-033 is done: the merged-tree perf runs pass as Chromium slice gates (8-phone `peek-poker-console`, development build: PERF-010 input p95 32.2 ms, PERF-012 160 of 160, frames p95 18.2 ms and max 33.3 ms, PERF-001 not assessed; `pnpm perf` PERF-040 Peek Poker p95 0.000208 ms). The scenario plays Rising, the heavier case. PP-011 stays in progress; PP-012 stays done.
+
+Randy may overrule.

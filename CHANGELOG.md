@@ -2,6 +2,13 @@
 
 Newest first. One entry per closed slice, naming the requirement IDs.
 
+## 2026-11-20 — P-13: Steady difficulty in Peek Poker
+- PP-033: the leader chooses Difficulty, Rising (default) or Steady, beside Rounds on the phone; the TV setup card mirrors it (D-299, D-308).
+- PP-011: Steady gives every round 20 s to memorise and no twist; Rising is unchanged.
+- PP-012: solo bests are kept per difficulty (`{ bests: { rising, steady } }`); an existing `{ best }` counts as Rising; the TV reads "Steady best N" and "New steady best · N" in Steady.
+- Perf on the merged tree, 8 phones (Chromium, development build): PERF-010 input p95 32.2 ms, PERF-012 160 of 160; PERF-040 Peek Poker p95 0.000208 ms.
+- Not yet: real phones and a real TV.
+
 ## 2026-11-20 — K-12: phone controller fills the screen
 - CTRL-004: on Android Chrome the first touch in landscape in a room enters fullscreen with the browser bar hidden, asked for when the last finger lifts (browsers only count a touch as a gesture on release, and this keeps a held stick); a player's own exit holds until they turn the phone; turning to portrait leaves fullscreen; refusals are ignored (D-297, D-307).
 - The phone page adds a web app manifest (full screen, landscape, starts at `/play`, colours from the console background token) and the `apple-mobile-web-app-capable` and `mobile-web-app-capable` tags; the TV and landing pages carry none.

@@ -1,0 +1,123 @@
+{
+  "slice": "P-13-steady-mode",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- P-13-steady-mode --phones 3 --out round3",
+  "commit": "c3a40390fbb1256fd8baafd3fefec0f731e9b567",
+  "viewports": [
+    "844×390",
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1921.098458,
+      "status": "completed"
+    },
+    {
+      "name": "Choose Steady on the leader phone and mirror it on TV",
+      "ms": 1924.8552920000002,
+      "status": "completed"
+    },
+    {
+      "name": "Round 1 uses 20 seconds and proceeds directly to pick",
+      "ms": 5193.027375000001,
+      "status": "completed"
+    },
+    {
+      "name": "Round 2 uses 20 seconds and proceeds directly to pick",
+      "ms": 3405.7354170000017,
+      "status": "completed"
+    },
+    {
+      "name": "Round 3 uses 20 seconds and proceeds directly to pick",
+      "ms": 2568.3429170000018,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-setup-steady-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-setup-steady-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-round-3-memorise-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-phone1-round-3-memorise-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "05-host-round-3-pick-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "06-phone1-round-3-pick-phone.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-setup-steady-phone.jpg",
+    "02-host-setup-steady-tv.jpg",
+    "03-host-round-3-memorise-tv.jpg",
+    "04-phone1-round-3-memorise-phone.jpg",
+    "05-host-round-3-pick-tv.jpg",
+    "06-phone1-round-3-pick-phone.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-setup-steady-phone.jpg",
+      "bytes": 105274
+    },
+    {
+      "file": "02-host-setup-steady-tv.jpg",
+      "bytes": 201482
+    },
+    {
+      "file": "03-host-round-3-memorise-tv.jpg",
+      "bytes": 338780
+    },
+    {
+      "file": "04-phone1-round-3-memorise-phone.jpg",
+      "bytes": 378161
+    },
+    {
+      "file": "05-host-round-3-pick-tv.jpg",
+      "bytes": 386113
+    },
+    {
+      "file": "06-phone1-round-3-pick-phone.jpg",
+      "bytes": 397639
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1420
+    },
+    {
+      "file": "run.json",
+      "bytes": 2764
+    }
+  ],
+  "totalBytes": 1811670,
+  "maxBytes": 12582912
+}

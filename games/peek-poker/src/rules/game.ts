@@ -1,4 +1,5 @@
 import { meta } from './meta';
+import { readPokerBests } from './records';
 import { STEPS_PER_SECOND, secondsToSteps } from '@kaki/platform';
 import type { GameModule, StepInputs } from '@kaki/platform';
 import { createRng } from '@kaki/sim-core';
@@ -99,15 +100,17 @@ export const peekPoker: GameModule<State, Settings, ReturnType<typeof publicView
     { kind: 'choice', id: 'rounds', label: 'Rounds', default: 5, options: [
       { value: 3, label: '3' }, { value: 5, label: '5' }, { value: 7, label: '7' },
     ] },
+    { kind: 'choice', id: 'difficulty', label: 'Difficulty', default: 'rising', options: [
+      { value: 'rising', label: 'Rising' }, { value: 'steady', label: 'Steady' },
+    ] },
   ] },
   init(seed, players, settings, context) {
-    const saved = context.saved;
-    const best = saved !== null && typeof saved === 'object' && !Array.isArray(saved) &&
-      typeof saved.best === 'number' && Number.isFinite(saved.best) ? Math.max(0, saved.best) : 0;
+    const bests = readPokerBests(context.saved);
+    const best = bests[settings.difficulty ?? 'rising'];
     return deal({
       rng: createRng(seed), settings: { ...settings }, phase: 'memorise', round: 1,
       left: secondsToSteps(20), ticks: 0, grid: [], shared: [], lockCount: 0,
-      swaps: [], swapIndex: 0, paused: false, solo: players.length === 1, best, bestAtStart: best, recordable: context.saved !== null,
+      swaps: [], swapIndex: 0, paused: false, solo: players.length === 1, bests, best, bestAtStart: best, recordable: context.saved !== null,
       players: players.map((p) => newPicker(p, false, false)),
     });
   },
@@ -131,6 +134,6 @@ export const peekPoker: GameModule<State, Settings, ReturnType<typeof publicView
   pauseOnDisconnect: (state) => state.phase !== 'scoreboard' && state.phase !== 'over',
   isOver: (state) => state.phase === 'over',
   assets: () => [],
-  save: (state) => ({ best: state.solo && state.players.length === 1 && state.phase === 'over' ?
-    Math.max(state.bestAtStart, state.players[0]?.score ?? 0) : state.bestAtStart }),
+  save: (state) => ({ bests: { ...state.bests, [state.settings.difficulty ?? 'rising']: state.solo && state.players.length === 1 && state.phase === 'over' ?
+    Math.max(state.bestAtStart, state.players[0]?.score ?? 0) : state.bestAtStart } }),
 };

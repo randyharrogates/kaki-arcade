@@ -31,7 +31,7 @@ Rules for working an issue are in `../PLAN.md` §5 and §6. Status: `todo` · `d
 | P-08 | Publish the card atlas WebP files in the production build so the manifest's relative atlas URLs resolve; today Start fails in production and the TV returns to the picker | PP-030, PP-031, PERF-020 | P-06 | 3 | merged |
 | P-09 | Assessed performance run of a full 5-round console match at 8 phones on a quiet machine (a round of at least 180 s for PERF-001; input and feedback instrumented for PERF-010/012), on a production build once P-08 lands | PERF-001, PERF-010, PERF-012, PP-031 | P-06, P-08 | 3 | in progress (merged 2026-11-20; D-305): harness and dev input/feedback pass merged; PERF-001 awaits a 60 Hz display run (p95 18.3 ms on the built-in panel) |
 | P-12 | Shared cards hidden while memorising: the 3 shared cards are dealt face down on the TV during memorise and flip face up as the grid flips face down (same flip art and timing), then stay up; phones and public view never show them early (D-296) | PP-004, PP-020, PP-031 | P-07 | 3 | done (merged 2026-11-20; D-309; P-12-shared-cards/round3, perf-8; P-04-table/p12b; P-06-table-in-console/p12-p1; P-07-full-match/p12-8b) |
-| P-13 | Steady difficulty: a Rising or Steady choice in setup beside Rounds; Steady gives every round 20 s to memorise and no twist; Rising is the default (D-299) | PP-033, PP-011 | P-07 | 3 | todo |
+| P-13 | Steady difficulty: a Rising or Steady choice in setup beside Rounds; Steady gives every round 20 s to memorise and no twist; Rising is the default (D-299) | PP-033, PP-011 | P-07 | 3 | done (merged 2026-11-20; D-308; P-13-steady-mode/round3, solo5, perf-merged) |
 
 ### Carried from P-06's review (2026-11-18)
 

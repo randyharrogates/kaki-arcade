@@ -1,0 +1,135 @@
+{
+  "slice": "P-13-steady-mode",
+  "status": "completed-awaiting-visual-review",
+  "engines": {
+    "host": {
+      "engine": "chromium",
+      "version": "156.0.8078.4"
+    },
+    "phone": {
+      "engine": "chromium (legacy iPhone emulation)",
+      "version": "156.0.8078.4"
+    }
+  },
+  "command": "node tools/uat/run.mjs -- P-13-steady-mode --phones 1 --out solo5",
+  "commit": "39c7758aaac0da8ef5a7faf72b566c9474b833ef",
+  "viewports": [
+    "844×390",
+    "1920×1080"
+  ],
+  "steps": [
+    {
+      "name": "Create room through host page",
+      "ms": 1716.5086660000002,
+      "status": "completed"
+    },
+    {
+      "name": "Choose Steady on the leader phone and mirror it on TV",
+      "ms": 2021.3756670000002,
+      "status": "completed"
+    },
+    {
+      "name": "Solo play shows the seeded Steady best",
+      "ms": 788.2449579999993,
+      "status": "completed"
+    },
+    {
+      "name": "Solo round 1 locks two picks",
+      "ms": 3618.4827910000013,
+      "status": "completed"
+    },
+    {
+      "name": "Solo round 2 locks two picks",
+      "ms": 2360.961625,
+      "status": "completed"
+    },
+    {
+      "name": "Solo round 3 locks two picks",
+      "ms": 2345.4993749999994,
+      "status": "completed"
+    },
+    {
+      "name": "Solo round 4 locks two picks",
+      "ms": 2245.865334000002,
+      "status": "completed"
+    },
+    {
+      "name": "Solo round 5 locks two picks",
+      "ms": 2283.43275,
+      "status": "completed"
+    },
+    {
+      "name": "Solo round 6 locks two picks",
+      "ms": 2353.276667000002,
+      "status": "completed"
+    },
+    {
+      "name": "Solo round 7 locks two picks",
+      "ms": 2457.675625,
+      "status": "completed"
+    },
+    {
+      "name": "Solo final shows a new Steady best above 12",
+      "ms": 675.9430420000026,
+      "status": "completed"
+    }
+  ],
+  "joins": [],
+  "errors": [],
+  "shotStates": [
+    {
+      "file": "01-phone1-setup-steady-phone.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "02-host-setup-steady-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "03-host-steady-best-play-tv.jpg",
+      "unsettled": false
+    },
+    {
+      "file": "04-host-steady-best-final-tv.jpg",
+      "unsettled": false
+    }
+  ],
+  "screenshots": [
+    "01-phone1-setup-steady-phone.jpg",
+    "02-host-setup-steady-tv.jpg",
+    "03-host-steady-best-play-tv.jpg",
+    "04-host-steady-best-final-tv.jpg"
+  ],
+  "files": [
+    {
+      "file": ".uat-run",
+      "bytes": 37
+    },
+    {
+      "file": "01-phone1-setup-steady-phone.jpg",
+      "bytes": 105245
+    },
+    {
+      "file": "02-host-setup-steady-tv.jpg",
+      "bytes": 191328
+    },
+    {
+      "file": "03-host-steady-best-play-tv.jpg",
+      "bytes": 336661
+    },
+    {
+      "file": "04-host-steady-best-final-tv.jpg",
+      "bytes": 296757
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 1537
+    },
+    {
+      "file": "run.json",
+      "bytes": 2985
+    }
+  ],
+  "totalBytes": 934550,
+  "maxBytes": 12582912
+}

@@ -59,7 +59,7 @@ it('PLAT-006/025 contains setup in the real host route and scaled TV stage', asy
     for (const game of ['tabao-rush', 'peek-poker', 'rabakz']) {
       await input('select');
       const card = page.locator('.game-tile[data-expanded="true"]');
-      if (game !== 'tabao-rush') await expect.poll(() => card.locator('.setup-mirror-row').count()).toBe(game === 'rabakz' ? 4 : 1);
+      if (game !== 'tabao-rush') await expect.poll(() => card.locator('.setup-mirror-row').count()).toBe(game === 'rabakz' ? 4 : 2);
       await expect.poll(() => card.locator('.setup-mirror-problem [role="status"]').allTextContents()).toEqual(game === 'tabao-rush' ? [] : ['']);
       // Wait for the real picker expansion and host surface crossfade to finish.
       await expect.poll(() => page.evaluate(() => document.getAnimations().filter(a => a.playState === 'running').length)).toBe(0);

@@ -88,6 +88,13 @@ it('PLAT-006/025 fits generic setup and grouped panels on phones and mirrors TV 
       for (const index of [2, 1, -1]) {
         await setFixture(index); await expect.poll(fits).toBe(true);
         if (index === 2) expect(await page.locator('.setup-field-row').count()).toBe(3);
+        if (index === 1) {
+          expect(await page.locator('[data-field="difficulty"]').innerText()).toContain('Difficulty');
+          expect(await page.getByRole('button', { name: 'Rising', exact: true }).getAttribute('aria-pressed')).toBe('true');
+          await page.getByRole('button', { name: 'Steady', exact: true }).click();
+          expect(await page.getByRole('button', { name: 'Steady', exact: true }).getAttribute('aria-pressed')).toBe('true');
+          await expect.poll(fits).toBe(true);
+        }
         if (index === 2 || index === -1) {
           await page.locator('.setup-field-row').filter({ hasText: 'Categories' }).getByRole('button').click();
           const grid = page.locator('.setup-option-grid');

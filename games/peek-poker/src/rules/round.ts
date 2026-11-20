@@ -10,7 +10,8 @@ export const SWAP_SECONDS = 2;
 export const SWAP_STEPS = secondsToSteps(SWAP_SECONDS);
 export const REVEAL_STEPS = secondsToSteps(8);
 export const SCOREBOARD_STEPS = secondsToSteps(5);
-export function difficulty(round: number, rounds: number): number {
+export function difficulty(round: number, rounds: number, mode: State['settings']['difficulty'] = 'rising'): number {
+  if (mode === 'steady') return 0;
   return rounds === 3 ? (round - 1) * 2 : round - 1;
 }
 
@@ -19,7 +20,7 @@ export function deal(state: State): State {
   const cards = dealCards(rng);
   return {
     ...state, ...cards, rng, phase: 'memorise',
-    left: secondsToSteps(must(MEMORISE_SECONDS[difficulty(state.round, state.settings.rounds)])),
+    left: secondsToSteps(must(MEMORISE_SECONDS[difficulty(state.round, state.settings.rounds, state.settings.difficulty)])),
     lockCount: 0, swaps: [], swapIndex: 0,
     players: state.players.map((p) => ({
       ...p, picks: [], locked: false, lockOrder: null, waiting: false,
@@ -29,7 +30,7 @@ export function deal(state: State): State {
 }
 
 export function hide(state: State): State {
-  const row = difficulty(state.round, state.settings.rounds);
+  const row = difficulty(state.round, state.settings.rounds, state.settings.difficulty);
   if (row < 2) return startPicking(state);
   const rng = cloneRng(state.rng);
   const swaps: Swap[] = [];

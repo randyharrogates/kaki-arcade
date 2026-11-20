@@ -61,7 +61,7 @@ export const sessionRegistrations: Record<string, SessionRegistration> = {
     record: async () => {
       const { pokerRecordSchema, savedView } = await import('../../../games/peek-poker/src');
       return { version: 1, validate: (value: unknown): value is JsonValue => pokerRecordSchema.validate(value),
-        empty: () => ({ best: 0 }), savedView: (view, state) => savedView(view as Parameters<typeof savedView>[0], state as Parameters<typeof savedView>[1]) };
+        empty: () => ({ bests: { rising: 0, steady: 0 } }), savedView: (view, state) => savedView(view as Parameters<typeof savedView>[0], state as Parameters<typeof savedView>[1]) };
     },
     finalHintTheme: THEMES['peek-poker'], finalScreen: true, data: {},
     screen: async () => (await import('../../../games/peek-poker/host')).ConsoleScreen,

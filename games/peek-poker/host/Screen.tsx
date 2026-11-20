@@ -1,3 +1,4 @@
+import { bestLabel } from './best';
 import { resultsBoard, updateResultBest } from './results';
 import { must } from '../src/rules/invariant';
 import { perpendicularArcPoint, bezierAt, bezier, cardTurnAt, duration, pulse, SEAT_NUMERAL, tv, space, EDGE_WIDTH, radius, fontStack, cardLift } from '../../../packages/ui/src/index';
@@ -107,14 +108,14 @@ export function fitName(ctx:Pick<CanvasRenderingContext2D,'measureText'>, name:s
   return end ? `${name.slice(0,end)}…` : '';
 }
 /** Drawing key: phase/round/totalRounds/seconds; grid and shared card codes;
- * swap kind/from/to; player id/name/seat/colour/score/waiting/locked/picks; soloBest/newBest; hand
+ * swap kind/from/to; player id/name/seat/colour/score/waiting/locked/picks; difficulty/soloBest/newBest; hand
  * id/name/points and ordering. These feed screenModel, canvas and mounted rows.
  * Hand.cards and other simulation metadata are not drawn. Keep this list and
  * the field-mutation test aligned when the table gains visible fields. */
 export function sameTable(a:PokerPublicView|undefined,b:PokerPublicView):boolean {
   if(a === b) return true;
   if(!a) return false;
-  if(a.soloBest !== b.soloBest || a.newBest !== b.newBest) return false;
+  if(a.difficulty !== b.difficulty || a.soloBest !== b.soloBest || a.newBest !== b.newBest) return false;
   if(a.phase !== b.phase || a.round !== b.round || a.totalRounds !== b.totalRounds || a.seconds !== b.seconds || a.swap?.kind !== b.swap?.kind || a.swap?.from !== b.swap?.from || a.swap?.to !== b.swap?.to) return false;
   if(a.sharedCount !== b.sharedCount || a.sharedFaceDown !== b.sharedFaceDown || (a.shared === null) !== (b.shared === null)) return false;
   if((a.grid === null) !== (b.grid === null)) return false;
@@ -158,7 +159,7 @@ export function PeekPokerScreen(root: HTMLElement, deck: CardDeck) {
     last=model;cancelAnimationFrame(frame);
     const scale=Math.min(width/tv.width,height/tv.height);table.style.transform=`translate(-50%, -50%) scale(${String(scale)})`;table.dataset.phase=model.phase;
     for(const card of shared) card.dataset.faceDown=String(model.sharedFaceDown);
-    best.textContent=view.soloBest !== null && view.soloBest > 0 ? `Best ${String(view.soloBest)}` : '';
+    best.textContent=view.soloBest !== null && view.soloBest > 0 ? bestLabel(view.difficulty,view.soloBest) : '';
     if(view.phase === 'scoreboard' || view.phase === 'over') {
       const nextResults=JSON.stringify([view.phase,view.round,view.players.map(p=>[p.id,p.name,p.seat,p.colour,p.score]),view.soloBest,quiet]);
       if(nextResults !== resultsKey) {resultsKey=nextResults;resultsBoard(results,view,quiet);} else updateResultBest(results,view,quiet);

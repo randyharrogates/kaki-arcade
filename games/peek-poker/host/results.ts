@@ -1,4 +1,5 @@
 import { enter, pulse, SEAT_NUMERAL } from '../../../packages/ui/src/index';
+import { bestLabel } from './best';
 import { scoreboardModel } from './standings';
 import type { PokerPublicView } from './view-model';
 export function resultsBoard(root: HTMLElement, view: PokerPublicView, reduced: boolean) {
@@ -29,7 +30,7 @@ export function resultsBoard(root: HTMLElement, view: PokerPublicView, reduced: 
 export function updateResultBest(root: HTMLElement, view: PokerPublicView, reduced: boolean) {
   let best=root.querySelector<HTMLElement>('.pp-result-best');
   if(view.soloBest === null || (!view.newBest && view.soloBest <= 0)) {best?.remove();return;}
-  const text=view.newBest ? `New best · ${String(view.players[0]?.score ?? 0)}` : `Best ${String(view.soloBest)}`;
+  const text=bestLabel(view.difficulty,view.newBest ? view.players[0]?.score ?? 0 : view.soloBest,view.newBest);
   if(best?.textContent === text) return;
   if(!best) {best=document.createElement('p');best.className='pp-result-best';root.querySelector('.pp-winner-line')?.after(best);}
   best.textContent=text;
