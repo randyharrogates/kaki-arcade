@@ -27,6 +27,9 @@ differ.
 ## 0. Plan
 
 1. Pick the next requirement IDs from `TRACEABILITY.md`, following `ROADMAP.md` order.
+   **The critical path comes first** (D-313): the issues that unblock the most remaining work
+   (today Tabao Rush: T-17, then T-11 with A-06b, then T-12) take the first free Codex slot.
+   Polish and follow-ups fill only slots the critical path cannot use.
 2. Create `docs/slices/NNN-short-name.md` with:
    - **Goal** in one sentence.
    - **Requirement IDs** covered (and any only partly covered, saying which part).
@@ -65,6 +68,17 @@ Run `pnpm verify`. It must pass completely before UAT:
 A failing check is fixed, never skipped or loosened. Changing a threshold is a PRD-level
 decision for Randy.
 
+**Per-slice and full verify (D-313).** A slice branch runs every check above, but its unit
+tests only for the areas it touches since `main`: each changed game plus `apps/web`; a change
+under `packages/`, `apps/`, `tools/` or a root config runs the whole suite. The full
+`pnpm verify` runs on `main` after each batch of merges and before a milestone closes, and a
+failure there is fixed before the next batch merges. A full verify does not run beside more
+than one Codex round: their own test runs starve its slow tests into timeouts.
+
+**Merging in batches (D-313).** Open branches take `main` once per batch of merges (or when
+they need something that just landed), not after every single merge, and the batch is
+type-checked with `tsconfig.build.json` before any check is queued.
+
 ## 3. Test (UAT with screenshots)
 
 Follow `UAT.md`. In short:
@@ -98,11 +112,16 @@ until review is clean. If three rounds do not converge, stop and raise it with R
 
 Only when verify, UAT and review are all clean:
 
-1. `TRACEABILITY.md`: set status, fill code paths, test names and evidence links.
-2. `STATUS.md`: update what works, performance numbers and known gaps.
+1. `TRACEABILITY.md`: set status, fill code paths, test names and evidence links. Paths and
+   names only: no prose in the cells.
+2. `STATUS.md`: update what works, performance numbers and known gaps. One short bullet per
+   feature (at most three lines), kept to what a player can do today; the detail lives in the
+   slice note and the CHANGELOG.
 3. `CHANGELOG.md`: one entry.
-4. Commit with a Conventional Commits message that names the requirement IDs.
-5. If the slice completes a milestone, stop for Randy's demo before starting the next
+4. `DECISIONS.md`, when the slice decided something: what was decided and why, in at most
+   five lines; evidence and review detail stay in the slice note.
+5. Commit with a Conventional Commits message that names the requirement IDs.
+6. If the slice completes a milestone, stop for Randy's demo before starting the next
    milestone.
 
 ---
